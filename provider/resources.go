@@ -17,7 +17,6 @@ package auth0
 import (
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
@@ -81,15 +80,11 @@ func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig
 	return nil
 }
 
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
-// Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	// Instantiate the Terraform provider
-	p := auth0.Provider().(*schema.Provider)
+	p := auth0.Provider()
 
-	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "auth0",
@@ -99,52 +94,92 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-auth0",
 		Config:      map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: makeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+			"domain": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AUTH0_DOMAIN"},
+				},
+			},
+			"client_id": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AUTH0_CLIENT_ID"},
+				},
+			},
+			"client_secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AUTH0_CLIENT_SECRET"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: makeResource(mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: makeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: makeType(mainPkg, "Tags")},
-			// 	},
-			// },
+			"auth0_client": {
+				Tok: makeResource(mainMod, "Client"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"description": {
+						Default: managedByPulumi,
+					},
+				},
+			},
+			"auth0_client_grant": {
+				Tok: makeResource(mainMod, "ClientGrant"),
+			},
+			"auth0_global_client": {
+				Tok: makeResource(mainMod, "GlobalClient"),
+			},
+			"auth0_connection": {
+				Tok: makeResource(mainMod, "Connection"),
+			},
+			"auth0_custom_domain": {
+				Tok: makeResource(mainMod, "CustomDomain"),
+			},
+			"auth0_email": {
+				Tok: makeResource(mainMod, "Email"),
+			},
+			"auth0_email_template": {
+				Tok: makeResource(mainMod, "EmailTemplate"),
+			},
+			"auth0_hook": {
+				Tok: makeResource(mainMod, "Hook"),
+			},
+			"auth0_prompt": {
+				Tok: makeResource(mainMod, "Prompt"),
+			},
+			"auth0_resource_server": {
+				Tok: makeResource(mainMod, "ResourceServer"),
+			},
+			"auth0_role": {
+				Tok: makeResource(mainMod, "Role"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"description": {
+						Default: managedByPulumi,
+					},
+				},
+			},
+			"auth0_rule": {
+				Tok: makeResource(mainMod, "Rule"),
+			},
+			"auth0_rule_config": {
+				Tok: makeResource(mainMod, "RuleConfig"),
+			},
+			"auth0_tenant": {
+				Tok: makeResource(mainMod, "Tenant"),
+			},
+			"auth0_user": {
+				Tok: makeResource(mainMod, "User"),
+			},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
-		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			AsyncDataSources: true,
-			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
+				"@types/node": "^8.0.25",
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=2.0.0,<3.0.0",
 			},
@@ -157,7 +192,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
+	// For all resources with name properties, we will add an auto-name property. Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
 	const nameProperty = "name"
 	for resname, res := range prov.Resources {
