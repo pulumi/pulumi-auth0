@@ -1,52 +1,8 @@
-# Terraform Bridge Provider Boilerplate
+# Auth0 Resource Provider
 
-This repository contains boilerplate code for building a new Pulumi provider which wraps an existing
-Terraform provider, if the existing provider uses _Go Modules_.
+The Auth0 Resource Provider lets you manage Auth0 resources.
 
 Modify this README to describe:
-
-- The type of resources the provider manages
-- Add a build status image from Travis at the top of the README
-- Update package names in the information below
-- Add any important documentation of concepts (e.g. the "serverless" components in the AWS provider).
-
-## Creating a Pulumi Terraform Bridge Provider
-
-First, clone this repo with the name of the desired provider in place of `auth0`:
-
-```
-git clone https://github.com/pulumi/pulumi-tf-provider-boilerplate pulumi-auth0
-```
-
-Second, replace references to `auth0` with the name of your provider:
-
-```
-make prepare NAME=foo REPOSITORY=github.com/pulumi/pulumi-foo
-```
-
-Next, list the configuration points for the provider in the area of the README.
-
-
-> Note: If the name of the desired Pulumi provider differs from the name of the Terraform provider, you will need to carefully distinguish between the references - see https://github.com/pulumi/pulumi-azure for an example.
-
-### Add dependencies
-
-In order to properly build the sdks, the following tools are expected:
-- tf2pulumi (See the project's README for installation instructions: https://github.com/pulumi/tf2pulumi)
-- pandoc (`brew install pandoc`)
-
-In the root of the repository, run:
-
-- `GO111MODULE=on go get github.com/pulumi/pulumi-terraform@master`
-- `(cd provider && go get github.com/terraform-providers/terraform-provider-foo)`  (where `foo` is the name of the provider - note the parenthesis to run this in a subshell)
-- `(cd provider && go mod vendor)`
-- `make ensure`
-
-### Build the provider:
-
-- Edit `provider/resources.go` to map each resource, and specify provider information
-- Enumerate any examples in `examples/examples_test.go`
-- `make`
 
 ## Installing
 
@@ -56,34 +12,33 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/xyx
+    $ npm install @pulumi/auth0
 
 or `yarn`:
 
-    $ yarn add @pulumi/xyx
+    $ yarn add @pulumi/auth0
 
 ### Python
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_xyx
+    $ pip install pulumi_auth0
 
 ### Go
 
 To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-auth0/sdk/go/...
-
+    
 ## Configuration
 
-The following configuration points are available for the `auth0` provider:
+The following configuration points are available:
 
-- `auth0:apiKey` (environment: `XYZ_API_KEY`) - the API key for `auth0`
-- `auth0:region` (environment: `XYZ_REGION`) - the region in which to deploy resources
+- `auth0:domain` - (Required) Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+- `auth0:client_id` - (Required) Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+- `auth0:client_secret` - (Required) Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+- `auth0:debug` - (Optional) Indicates whether or not to turn on debug mode.
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs][1].
-
-
-[1]: https://pulumi.io/reference/pkg/nodejs/pulumi/x/
+For detailed reference documentation, please visit [the API docs](https://pulumi.io/reference/pkg/nodejs/@pulumi/auth0/index.html).
