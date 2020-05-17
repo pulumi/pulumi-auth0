@@ -1,0 +1,17 @@
+{
+  "name": "client",
+  "version": "0.0.1",
+  "main": "bin/index.js",
+  "typings": "bin/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.26",
+    "typescript": "^3.0.0"
+  },
+  "license": "MIT"
+}
