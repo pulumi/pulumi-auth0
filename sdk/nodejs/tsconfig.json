@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "files": [
+        "client.ts",
+        "clientGrant.ts",
+        "config/index.ts",
+        "config/vars.ts",
+        "connection.ts",
+        "customDomain.ts",
+        "email.ts",
+        "emailTemplate.ts",
+        "globalClient.ts",
+        "hook.ts",
+        "index.ts",
+        "prompt.ts",
+        "provider.ts",
+        "resourceServer.ts",
+        "role.ts",
+        "rule.ts",
+        "ruleConfig.ts",
+        "tenant.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
+        "user.ts",
+        "utilities.ts"
+    ]
+}
+
