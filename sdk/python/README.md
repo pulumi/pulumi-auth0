@@ -2,8 +2,6 @@
 
 The Auth0 Resource Provider lets you manage Auth0 resources.
 
-Modify this README to describe:
-
 ## Installing
 
 This package is available in many languages in the standard packaging formats.

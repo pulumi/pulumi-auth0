@@ -43,6 +43,8 @@ class Provider(pulumi.ProviderResource):
             if client_secret is None:
                 client_secret = utilities.get_env('AUTH0_CLIENT_SECRET')
             __props__['client_secret'] = client_secret
+            if debug is None:
+                debug = utilities.get_env_bool('AUTH0_DEBUG')
             __props__['debug'] = pulumi.Output.from_input(debug).apply(json.dumps) if debug is not None else None
             if domain is None:
                 domain = utilities.get_env('AUTH0_DOMAIN')

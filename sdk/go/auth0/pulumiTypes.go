@@ -1939,11 +1939,13 @@ type ConnectionOptions struct {
 	AppDomain *string `pulumi:"appDomain"`
 	// String
 	AppId *string `pulumi:"appId"`
+	// String.
+	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
 	// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 	BruteForceProtection *bool `pulumi:"bruteForceProtection"`
-	// String. Client ID for your Azure AD application.
+	// String. Client ID given by your OIDC provider.
 	ClientId *string `pulumi:"clientId"`
-	// String, Case-sensitive. Client secret for your Azure AD application.
+	// String, Case-sensitive. Client secret given by your OIDC provider.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// String.
 	CommunityBaseUrl *string `pulumi:"communityBaseUrl"`
@@ -1953,8 +1955,10 @@ type ConnectionOptions struct {
 	CustomScripts map[string]string `pulumi:"customScripts"`
 	DisableCache  *bool             `pulumi:"disableCache"`
 	// Boolean. Indicates whether or not to allow user sign-ups to your application.
-	DisableSignup *bool   `pulumi:"disableSignup"`
-	Domain        *string `pulumi:"domain"`
+	DisableSignup *bool `pulumi:"disableSignup"`
+	// String. Usually an URL ending with `/.well-known/openid-configuration`
+	DiscoveryUrl *string `pulumi:"discoveryUrl"`
+	Domain       *string `pulumi:"domain"`
 	// List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 	DomainAliases []string `pulumi:"domainAliases"`
 	// Boolean.
@@ -1966,6 +1970,11 @@ type ConnectionOptions struct {
 	// Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 	ImportMode *bool    `pulumi:"importMode"`
 	Ips        []string `pulumi:"ips"`
+	// String. URL of the issuer.
+	Issuer *string `pulumi:"issuer"`
+	// String.
+	JwksUri *string `pulumi:"jwksUri"`
+	KeyId   *string `pulumi:"keyId"`
 	// String. Maximum number of groups to retrieve.
 	MaxGroupsToRetrieve *string `pulumi:"maxGroupsToRetrieve"`
 	// String. SID for Copilot. Used when SMS Source is Copilot.
@@ -1978,31 +1987,40 @@ type ConnectionOptions struct {
 	PasswordDictionary *ConnectionOptionsPasswordDictionary `pulumi:"passwordDictionary"`
 	// List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
 	PasswordHistories []ConnectionOptionsPasswordHistory `pulumi:"passwordHistories"`
-	// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
+	// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
 	PasswordNoPersonalInfo *ConnectionOptionsPasswordNoPersonalInfo `pulumi:"passwordNoPersonalInfo"`
 	// String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 	PasswordPolicy *string `pulumi:"passwordPolicy"`
 	// Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
-	RequiresUsername *bool    `pulumi:"requiresUsername"`
-	Scopes           []string `pulumi:"scopes"`
-	StrategyVersion  *string  `pulumi:"strategyVersion"`
-	Subject          *string  `pulumi:"subject"`
+	RequiresUsername *bool `pulumi:"requiresUsername"`
+	// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+	Scopes []string `pulumi:"scopes"`
+	// Int. Version 1 is deprecated, use version 2.
+	StrategyVersion *int    `pulumi:"strategyVersion"`
+	Subject         *string `pulumi:"subject"`
 	// String. Syntax of the SMS. Options include `markdown` and `liquid`.
 	Syntax *string `pulumi:"syntax"`
+	TeamId *string `pulumi:"teamId"`
 	// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
 	Template *string `pulumi:"template"`
 	// String
 	TenantDomain *string `pulumi:"tenantDomain"`
+	// String.
+	TokenEndpoint *string `pulumi:"tokenEndpoint"`
 	// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
 	Totp *ConnectionOptionsTotp `pulumi:"totp"`
 	// String. SID for your Twilio account.
 	TwilioSid *string `pulumi:"twilioSid"`
 	// String, Case-sensitive. AuthToken for your Twilio account.
 	TwilioToken *string `pulumi:"twilioToken"`
+	// String. Value must be `backChannel` or `frontChannel`
+	Type        *string `pulumi:"type"`
 	UseCertAuth *bool   `pulumi:"useCertAuth"`
 	UseKerberos *bool   `pulumi:"useKerberos"`
 	// Bool
 	UseWsfed *bool `pulumi:"useWsfed"`
+	// String.
+	UserinfoEndpoint *string `pulumi:"userinfoEndpoint"`
 	// String.
 	Validation map[string]string `pulumi:"validation"`
 	// Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
@@ -2033,11 +2051,13 @@ type ConnectionOptionsArgs struct {
 	AppDomain pulumi.StringPtrInput `pulumi:"appDomain"`
 	// String
 	AppId pulumi.StringPtrInput `pulumi:"appId"`
+	// String.
+	AuthorizationEndpoint pulumi.StringPtrInput `pulumi:"authorizationEndpoint"`
 	// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 	BruteForceProtection pulumi.BoolPtrInput `pulumi:"bruteForceProtection"`
-	// String. Client ID for your Azure AD application.
+	// String. Client ID given by your OIDC provider.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// String, Case-sensitive. Client secret for your Azure AD application.
+	// String, Case-sensitive. Client secret given by your OIDC provider.
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// String.
 	CommunityBaseUrl pulumi.StringPtrInput `pulumi:"communityBaseUrl"`
@@ -2047,8 +2067,10 @@ type ConnectionOptionsArgs struct {
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
 	DisableCache  pulumi.BoolPtrInput   `pulumi:"disableCache"`
 	// Boolean. Indicates whether or not to allow user sign-ups to your application.
-	DisableSignup pulumi.BoolPtrInput   `pulumi:"disableSignup"`
-	Domain        pulumi.StringPtrInput `pulumi:"domain"`
+	DisableSignup pulumi.BoolPtrInput `pulumi:"disableSignup"`
+	// String. Usually an URL ending with `/.well-known/openid-configuration`
+	DiscoveryUrl pulumi.StringPtrInput `pulumi:"discoveryUrl"`
+	Domain       pulumi.StringPtrInput `pulumi:"domain"`
 	// List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
 	// Boolean.
@@ -2060,6 +2082,11 @@ type ConnectionOptionsArgs struct {
 	// Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 	ImportMode pulumi.BoolPtrInput     `pulumi:"importMode"`
 	Ips        pulumi.StringArrayInput `pulumi:"ips"`
+	// String. URL of the issuer.
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// String.
+	JwksUri pulumi.StringPtrInput `pulumi:"jwksUri"`
+	KeyId   pulumi.StringPtrInput `pulumi:"keyId"`
 	// String. Maximum number of groups to retrieve.
 	MaxGroupsToRetrieve pulumi.StringPtrInput `pulumi:"maxGroupsToRetrieve"`
 	// String. SID for Copilot. Used when SMS Source is Copilot.
@@ -2072,31 +2099,40 @@ type ConnectionOptionsArgs struct {
 	PasswordDictionary ConnectionOptionsPasswordDictionaryPtrInput `pulumi:"passwordDictionary"`
 	// List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
 	PasswordHistories ConnectionOptionsPasswordHistoryArrayInput `pulumi:"passwordHistories"`
-	// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
+	// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
 	PasswordNoPersonalInfo ConnectionOptionsPasswordNoPersonalInfoPtrInput `pulumi:"passwordNoPersonalInfo"`
 	// String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 	PasswordPolicy pulumi.StringPtrInput `pulumi:"passwordPolicy"`
 	// Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
-	RequiresUsername pulumi.BoolPtrInput     `pulumi:"requiresUsername"`
-	Scopes           pulumi.StringArrayInput `pulumi:"scopes"`
-	StrategyVersion  pulumi.StringPtrInput   `pulumi:"strategyVersion"`
-	Subject          pulumi.StringPtrInput   `pulumi:"subject"`
+	RequiresUsername pulumi.BoolPtrInput `pulumi:"requiresUsername"`
+	// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Int. Version 1 is deprecated, use version 2.
+	StrategyVersion pulumi.IntPtrInput    `pulumi:"strategyVersion"`
+	Subject         pulumi.StringPtrInput `pulumi:"subject"`
 	// String. Syntax of the SMS. Options include `markdown` and `liquid`.
 	Syntax pulumi.StringPtrInput `pulumi:"syntax"`
+	TeamId pulumi.StringPtrInput `pulumi:"teamId"`
 	// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
 	Template pulumi.StringPtrInput `pulumi:"template"`
 	// String
 	TenantDomain pulumi.StringPtrInput `pulumi:"tenantDomain"`
+	// String.
+	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
 	// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
 	Totp ConnectionOptionsTotpPtrInput `pulumi:"totp"`
 	// String. SID for your Twilio account.
 	TwilioSid pulumi.StringPtrInput `pulumi:"twilioSid"`
 	// String, Case-sensitive. AuthToken for your Twilio account.
 	TwilioToken pulumi.StringPtrInput `pulumi:"twilioToken"`
+	// String. Value must be `backChannel` or `frontChannel`
+	Type        pulumi.StringPtrInput `pulumi:"type"`
 	UseCertAuth pulumi.BoolPtrInput   `pulumi:"useCertAuth"`
 	UseKerberos pulumi.BoolPtrInput   `pulumi:"useKerberos"`
 	// Bool
 	UseWsfed pulumi.BoolPtrInput `pulumi:"useWsfed"`
+	// String.
+	UserinfoEndpoint pulumi.StringPtrInput `pulumi:"userinfoEndpoint"`
 	// String.
 	Validation pulumi.StringMapInput `pulumi:"validation"`
 	// Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
@@ -2207,17 +2243,22 @@ func (o ConnectionOptionsOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppId }).(pulumi.StringPtrOutput)
 }
 
+// String.
+func (o ConnectionOptionsOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.AuthorizationEndpoint }).(pulumi.StringPtrOutput)
+}
+
 // Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 func (o ConnectionOptionsOutput) BruteForceProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.BruteForceProtection }).(pulumi.BoolPtrOutput)
 }
 
-// String. Client ID for your Azure AD application.
+// String. Client ID given by your OIDC provider.
 func (o ConnectionOptionsOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// String, Case-sensitive. Client secret for your Azure AD application.
+// String, Case-sensitive. Client secret given by your OIDC provider.
 func (o ConnectionOptionsOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -2244,6 +2285,11 @@ func (o ConnectionOptionsOutput) DisableCache() pulumi.BoolPtrOutput {
 // Boolean. Indicates whether or not to allow user sign-ups to your application.
 func (o ConnectionOptionsOutput) DisableSignup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableSignup }).(pulumi.BoolPtrOutput)
+}
+
+// String. Usually an URL ending with `/.well-known/openid-configuration`
+func (o ConnectionOptionsOutput) DiscoveryUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsOutput) Domain() pulumi.StringPtrOutput {
@@ -2282,6 +2328,20 @@ func (o ConnectionOptionsOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
+// String. URL of the issuer.
+func (o ConnectionOptionsOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o ConnectionOptionsOutput) JwksUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.JwksUri }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
 // String. Maximum number of groups to retrieve.
 func (o ConnectionOptionsOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.MaxGroupsToRetrieve }).(pulumi.StringPtrOutput)
@@ -2314,7 +2374,7 @@ func (o ConnectionOptionsOutput) PasswordHistories() ConnectionOptionsPasswordHi
 	return o.ApplyT(func(v ConnectionOptions) []ConnectionOptionsPasswordHistory { return v.PasswordHistories }).(ConnectionOptionsPasswordHistoryArrayOutput)
 }
 
-// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
+// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
 func (o ConnectionOptionsOutput) PasswordNoPersonalInfo() ConnectionOptionsPasswordNoPersonalInfoPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasswordNoPersonalInfo { return v.PasswordNoPersonalInfo }).(ConnectionOptionsPasswordNoPersonalInfoPtrOutput)
 }
@@ -2329,12 +2389,14 @@ func (o ConnectionOptionsOutput) RequiresUsername() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.RequiresUsername }).(pulumi.BoolPtrOutput)
 }
 
+// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
 func (o ConnectionOptionsOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-func (o ConnectionOptionsOutput) StrategyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.StrategyVersion }).(pulumi.StringPtrOutput)
+// Int. Version 1 is deprecated, use version 2.
+func (o ConnectionOptionsOutput) StrategyVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *int { return v.StrategyVersion }).(pulumi.IntPtrOutput)
 }
 
 func (o ConnectionOptionsOutput) Subject() pulumi.StringPtrOutput {
@@ -2346,6 +2408,10 @@ func (o ConnectionOptionsOutput) Syntax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Syntax }).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectionOptionsOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.TeamId }).(pulumi.StringPtrOutput)
+}
+
 // String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
 func (o ConnectionOptionsOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Template }).(pulumi.StringPtrOutput)
@@ -2354,6 +2420,11 @@ func (o ConnectionOptionsOutput) Template() pulumi.StringPtrOutput {
 // String
 func (o ConnectionOptionsOutput) TenantDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TenantDomain }).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o ConnectionOptionsOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
@@ -2371,6 +2442,11 @@ func (o ConnectionOptionsOutput) TwilioToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TwilioToken }).(pulumi.StringPtrOutput)
 }
 
+// String. Value must be `backChannel` or `frontChannel`
+func (o ConnectionOptionsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectionOptionsOutput) UseCertAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseCertAuth }).(pulumi.BoolPtrOutput)
 }
@@ -2382,6 +2458,11 @@ func (o ConnectionOptionsOutput) UseKerberos() pulumi.BoolPtrOutput {
 // Bool
 func (o ConnectionOptionsOutput) UseWsfed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseWsfed }).(pulumi.BoolPtrOutput)
+}
+
+// String.
+func (o ConnectionOptionsOutput) UserinfoEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.UserinfoEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // String.
@@ -2466,6 +2547,16 @@ func (o ConnectionOptionsPtrOutput) AppId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// String.
+func (o ConnectionOptionsPtrOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
 // Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 func (o ConnectionOptionsPtrOutput) BruteForceProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
@@ -2476,7 +2567,7 @@ func (o ConnectionOptionsPtrOutput) BruteForceProtection() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// String. Client ID for your Azure AD application.
+// String. Client ID given by your OIDC provider.
 func (o ConnectionOptionsPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2486,7 +2577,7 @@ func (o ConnectionOptionsPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String, Case-sensitive. Client secret for your Azure AD application.
+// String, Case-sensitive. Client secret given by your OIDC provider.
 func (o ConnectionOptionsPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2543,6 +2634,16 @@ func (o ConnectionOptionsPtrOutput) DisableSignup() pulumi.BoolPtrOutput {
 		}
 		return v.DisableSignup
 	}).(pulumi.BoolPtrOutput)
+}
+
+// String. Usually an URL ending with `/.well-known/openid-configuration`
+func (o ConnectionOptionsPtrOutput) DiscoveryUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
@@ -2621,6 +2722,35 @@ func (o ConnectionOptionsPtrOutput) Ips() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// String. URL of the issuer.
+func (o ConnectionOptionsPtrOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Issuer
+	}).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o ConnectionOptionsPtrOutput) JwksUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwksUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
 // String. Maximum number of groups to retrieve.
 func (o ConnectionOptionsPtrOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
@@ -2681,7 +2811,7 @@ func (o ConnectionOptionsPtrOutput) PasswordHistories() ConnectionOptionsPasswor
 	}).(ConnectionOptionsPasswordHistoryArrayOutput)
 }
 
-// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
+// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
 func (o ConnectionOptionsPtrOutput) PasswordNoPersonalInfo() ConnectionOptionsPasswordNoPersonalInfoPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasswordNoPersonalInfo {
 		if v == nil {
@@ -2711,6 +2841,7 @@ func (o ConnectionOptionsPtrOutput) RequiresUsername() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
 func (o ConnectionOptionsPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectionOptions) []string {
 		if v == nil {
@@ -2720,13 +2851,14 @@ func (o ConnectionOptionsPtrOutput) Scopes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o ConnectionOptionsPtrOutput) StrategyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionOptions) *string {
+// Int. Version 1 is deprecated, use version 2.
+func (o ConnectionOptionsPtrOutput) StrategyVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *int {
 		if v == nil {
 			return nil
 		}
 		return v.StrategyVersion
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) Subject() pulumi.StringPtrOutput {
@@ -2748,6 +2880,15 @@ func (o ConnectionOptionsPtrOutput) Syntax() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ConnectionOptionsPtrOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamId
+	}).(pulumi.StringPtrOutput)
+}
+
 // String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
 func (o ConnectionOptionsPtrOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
@@ -2765,6 +2906,16 @@ func (o ConnectionOptionsPtrOutput) TenantDomain() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TenantDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o ConnectionOptionsPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenEndpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2798,6 +2949,16 @@ func (o ConnectionOptionsPtrOutput) TwilioToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// String. Value must be `backChannel` or `frontChannel`
+func (o ConnectionOptionsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectionOptionsPtrOutput) UseCertAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
 		if v == nil {
@@ -2824,6 +2985,16 @@ func (o ConnectionOptionsPtrOutput) UseWsfed() pulumi.BoolPtrOutput {
 		}
 		return v.UseWsfed
 	}).(pulumi.BoolPtrOutput)
+}
+
+// String.
+func (o ConnectionOptionsPtrOutput) UserinfoEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserinfoEndpoint
+	}).(pulumi.StringPtrOutput)
 }
 
 // String.

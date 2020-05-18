@@ -45,19 +45,25 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? AppId { get; set; }
 
         /// <summary>
+        /// String.
+        /// </summary>
+        [Input("authorizationEndpoint")]
+        public Input<string>? AuthorizationEndpoint { get; set; }
+
+        /// <summary>
         /// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         /// </summary>
         [Input("bruteForceProtection")]
         public Input<bool>? BruteForceProtection { get; set; }
 
         /// <summary>
-        /// String. Client ID for your Azure AD application.
+        /// String. Client ID given by your OIDC provider.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
-        /// String, Case-sensitive. Client secret for your Azure AD application.
+        /// String, Case-sensitive. Client secret given by your OIDC provider.
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
@@ -100,6 +106,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("disableSignup")]
         public Input<bool>? DisableSignup { get; set; }
+
+        /// <summary>
+        /// String. Usually an URL ending with `/.well-known/openid-configuration`
+        /// </summary>
+        [Input("discoveryUrl")]
+        public Input<string>? DiscoveryUrl { get; set; }
 
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -149,6 +161,21 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
+        /// String. URL of the issuer.
+        /// </summary>
+        [Input("issuer")]
+        public Input<string>? Issuer { get; set; }
+
+        /// <summary>
+        /// String.
+        /// </summary>
+        [Input("jwksUri")]
+        public Input<string>? JwksUri { get; set; }
+
+        [Input("keyId")]
+        public Input<string>? KeyId { get; set; }
+
+        /// <summary>
         /// String. Maximum number of groups to retrieve.
         /// </summary>
         [Input("maxGroupsToRetrieve")]
@@ -191,7 +218,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
+        /// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
         /// </summary>
         [Input("passwordNoPersonalInfo")]
         public Input<Inputs.ConnectionOptionsPasswordNoPersonalInfoArgs>? PasswordNoPersonalInfo { get; set; }
@@ -210,14 +237,21 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("scopes")]
         private InputList<string>? _scopes;
+
+        /// <summary>
+        /// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+        /// </summary>
         public InputList<string> Scopes
         {
             get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
 
+        /// <summary>
+        /// Int. Version 1 is deprecated, use version 2.
+        /// </summary>
         [Input("strategyVersion")]
-        public Input<string>? StrategyVersion { get; set; }
+        public Input<int>? StrategyVersion { get; set; }
 
         [Input("subject")]
         public Input<string>? Subject { get; set; }
@@ -227,6 +261,9 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("syntax")]
         public Input<string>? Syntax { get; set; }
+
+        [Input("teamId")]
+        public Input<string>? TeamId { get; set; }
 
         /// <summary>
         /// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
@@ -239,6 +276,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("tenantDomain")]
         public Input<string>? TenantDomain { get; set; }
+
+        /// <summary>
+        /// String.
+        /// </summary>
+        [Input("tokenEndpoint")]
+        public Input<string>? TokenEndpoint { get; set; }
 
         /// <summary>
         /// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
@@ -258,6 +301,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("twilioToken")]
         public Input<string>? TwilioToken { get; set; }
 
+        /// <summary>
+        /// String. Value must be `back_channel` or `front_channel`
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         [Input("useCertAuth")]
         public Input<bool>? UseCertAuth { get; set; }
 
@@ -269,6 +318,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("useWsfed")]
         public Input<bool>? UseWsfed { get; set; }
+
+        /// <summary>
+        /// String.
+        /// </summary>
+        [Input("userinfoEndpoint")]
+        public Input<string>? UserinfoEndpoint { get; set; }
 
         [Input("validation")]
         private InputMap<string>? _validation;

@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
 
         public static string? ClientSecret { get; set; } = __config.Get("clientSecret") ?? Utilities.GetEnv("AUTH0_CLIENT_SECRET");
 
-        public static bool? Debug { get; set; } = __config.GetBoolean("debug");
+        public static bool? Debug { get; set; } = __config.GetBoolean("debug") ?? Utilities.GetEnvBoolean("AUTH0_DEBUG");
 
         public static string? Domain { get; set; } = __config.Get("domain") ?? Utilities.GetEnv("AUTH0_DOMAIN");
 

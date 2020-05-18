@@ -31,15 +31,19 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? AppId;
         /// <summary>
+        /// String.
+        /// </summary>
+        public readonly string? AuthorizationEndpoint;
+        /// <summary>
         /// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         /// </summary>
         public readonly bool? BruteForceProtection;
         /// <summary>
-        /// String. Client ID for your Azure AD application.
+        /// String. Client ID given by your OIDC provider.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// String, Case-sensitive. Client secret for your Azure AD application.
+        /// String, Case-sensitive. Client secret given by your OIDC provider.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
@@ -59,6 +63,10 @@ namespace Pulumi.Auth0.Outputs
         /// Boolean. Indicates whether or not to allow user sign-ups to your application.
         /// </summary>
         public readonly bool? DisableSignup;
+        /// <summary>
+        /// String. Usually an URL ending with `/.well-known/openid-configuration`
+        /// </summary>
+        public readonly string? DiscoveryUrl;
         public readonly string? Domain;
         /// <summary>
         /// List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
@@ -79,6 +87,15 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? ImportMode;
         public readonly ImmutableArray<string> Ips;
+        /// <summary>
+        /// String. URL of the issuer.
+        /// </summary>
+        public readonly string? Issuer;
+        /// <summary>
+        /// String.
+        /// </summary>
+        public readonly string? JwksUri;
+        public readonly string? KeyId;
         /// <summary>
         /// String. Maximum number of groups to retrieve.
         /// </summary>
@@ -104,7 +121,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionOptionsPasswordHistory> PasswordHistories;
         /// <summary>
-        /// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
+        /// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
         /// </summary>
         public readonly Outputs.ConnectionOptionsPasswordNoPersonalInfo? PasswordNoPersonalInfo;
         /// <summary>
@@ -115,13 +132,20 @@ namespace Pulumi.Auth0.Outputs
         /// Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
         /// </summary>
         public readonly bool? RequiresUsername;
+        /// <summary>
+        /// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+        /// </summary>
         public readonly ImmutableArray<string> Scopes;
-        public readonly string? StrategyVersion;
+        /// <summary>
+        /// Int. Version 1 is deprecated, use version 2.
+        /// </summary>
+        public readonly int? StrategyVersion;
         public readonly string? Subject;
         /// <summary>
         /// String. Syntax of the SMS. Options include `markdown` and `liquid`.
         /// </summary>
         public readonly string? Syntax;
+        public readonly string? TeamId;
         /// <summary>
         /// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
         /// </summary>
@@ -130,6 +154,10 @@ namespace Pulumi.Auth0.Outputs
         /// String
         /// </summary>
         public readonly string? TenantDomain;
+        /// <summary>
+        /// String.
+        /// </summary>
+        public readonly string? TokenEndpoint;
         /// <summary>
         /// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
         /// </summary>
@@ -142,12 +170,20 @@ namespace Pulumi.Auth0.Outputs
         /// String, Case-sensitive. AuthToken for your Twilio account.
         /// </summary>
         public readonly string? TwilioToken;
+        /// <summary>
+        /// String. Value must be `back_channel` or `front_channel`
+        /// </summary>
+        public readonly string? Type;
         public readonly bool? UseCertAuth;
         public readonly bool? UseKerberos;
         /// <summary>
         /// Bool
         /// </summary>
         public readonly bool? UseWsfed;
+        /// <summary>
+        /// String.
+        /// </summary>
+        public readonly string? UserinfoEndpoint;
         /// <summary>
         /// String.
         /// </summary>
@@ -173,6 +209,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? appId,
 
+            string? authorizationEndpoint,
+
             bool? bruteForceProtection,
 
             string? clientId,
@@ -189,6 +227,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool? disableSignup,
 
+            string? discoveryUrl,
+
             string? domain,
 
             ImmutableArray<string> domainAliases,
@@ -204,6 +244,12 @@ namespace Pulumi.Auth0.Outputs
             bool? importMode,
 
             ImmutableArray<string> ips,
+
+            string? issuer,
+
+            string? jwksUri,
+
+            string? keyId,
 
             string? maxGroupsToRetrieve,
 
@@ -225,15 +271,19 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<string> scopes,
 
-            string? strategyVersion,
+            int? strategyVersion,
 
             string? subject,
 
             string? syntax,
 
+            string? teamId,
+
             string? template,
 
             string? tenantDomain,
+
+            string? tokenEndpoint,
 
             Outputs.ConnectionOptionsTotp? totp,
 
@@ -241,11 +291,15 @@ namespace Pulumi.Auth0.Outputs
 
             string? twilioToken,
 
+            string? type,
+
             bool? useCertAuth,
 
             bool? useKerberos,
 
             bool? useWsfed,
+
+            string? userinfoEndpoint,
 
             ImmutableDictionary<string, string>? validation,
 
@@ -258,6 +312,7 @@ namespace Pulumi.Auth0.Outputs
             ApiEnableUsers = apiEnableUsers;
             AppDomain = appDomain;
             AppId = appId;
+            AuthorizationEndpoint = authorizationEndpoint;
             BruteForceProtection = bruteForceProtection;
             ClientId = clientId;
             ClientSecret = clientSecret;
@@ -266,6 +321,7 @@ namespace Pulumi.Auth0.Outputs
             CustomScripts = customScripts;
             DisableCache = disableCache;
             DisableSignup = disableSignup;
+            DiscoveryUrl = discoveryUrl;
             Domain = domain;
             DomainAliases = domainAliases;
             EnabledDatabaseCustomization = enabledDatabaseCustomization;
@@ -274,6 +330,9 @@ namespace Pulumi.Auth0.Outputs
             IdentityApi = identityApi;
             ImportMode = importMode;
             Ips = ips;
+            Issuer = issuer;
+            JwksUri = jwksUri;
+            KeyId = keyId;
             MaxGroupsToRetrieve = maxGroupsToRetrieve;
             MessagingServiceSid = messagingServiceSid;
             Name = name;
@@ -287,14 +346,18 @@ namespace Pulumi.Auth0.Outputs
             StrategyVersion = strategyVersion;
             Subject = subject;
             Syntax = syntax;
+            TeamId = teamId;
             Template = template;
             TenantDomain = tenantDomain;
+            TokenEndpoint = tokenEndpoint;
             Totp = totp;
             TwilioSid = twilioSid;
             TwilioToken = twilioToken;
+            Type = type;
             UseCertAuth = useCertAuth;
             UseKerberos = useKerberos;
             UseWsfed = useWsfed;
+            UserinfoEndpoint = userinfoEndpoint;
             Validation = validation;
             WaadCommonEndpoint = waadCommonEndpoint;
             WaadProtocol = waadProtocol;

@@ -56,6 +56,12 @@ namespace Pulumi.Auth0
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
 
+        /// <summary>
+        /// Int. Version 1 is deprecated, use version 2.
+        /// </summary>
+        [Output("strategyVersion")]
+        public Output<string> StrategyVersion { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Connection resource with the given unique name, arguments, and options.
@@ -156,6 +162,12 @@ namespace Pulumi.Auth0
         [Input("strategy", required: true)]
         public Input<string> Strategy { get; set; } = null!;
 
+        /// <summary>
+        /// Int. Version 1 is deprecated, use version 2.
+        /// </summary>
+        [Input("strategyVersion")]
+        public Input<string>? StrategyVersion { get; set; }
+
         public ConnectionArgs()
         {
         }
@@ -216,6 +228,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
+
+        /// <summary>
+        /// Int. Version 1 is deprecated, use version 2.
+        /// </summary>
+        [Input("strategyVersion")]
+        public Input<string>? StrategyVersion { get; set; }
 
         public ConnectionState()
         {

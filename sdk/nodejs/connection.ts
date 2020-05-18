@@ -115,6 +115,10 @@ export class Connection extends pulumi.CustomResource {
      * String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
      */
     public readonly strategy!: pulumi.Output<string>;
+    /**
+     * Int. Version 1 is deprecated, use version 2.
+     */
+    public readonly strategyVersion!: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -135,6 +139,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["options"] = state ? state.options : undefined;
             inputs["realms"] = state ? state.realms : undefined;
             inputs["strategy"] = state ? state.strategy : undefined;
+            inputs["strategyVersion"] = state ? state.strategyVersion : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if (!args || args.strategy === undefined) {
@@ -147,6 +152,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["options"] = args ? args.options : undefined;
             inputs["realms"] = args ? args.realms : undefined;
             inputs["strategy"] = args ? args.strategy : undefined;
+            inputs["strategyVersion"] = args ? args.strategyVersion : undefined;
         }
         if (!opts) {
             opts = {}
@@ -191,6 +197,10 @@ export interface ConnectionState {
      * String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
      */
     readonly strategy?: pulumi.Input<string>;
+    /**
+     * Int. Version 1 is deprecated, use version 2.
+     */
+    readonly strategyVersion?: pulumi.Input<string>;
 }
 
 /**
@@ -225,4 +235,8 @@ export interface ConnectionArgs {
      * String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
      */
     readonly strategy: pulumi.Input<string>;
+    /**
+     * Int. Version 1 is deprecated, use version 2.
+     */
+    readonly strategyVersion?: pulumi.Input<string>;
 }

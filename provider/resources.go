@@ -109,6 +109,11 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"AUTH0_CLIENT_SECRET"},
 				},
 			},
+			"debug": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AUTH0_DEBUG"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources:            map[string]*tfbridge.ResourceInfo{

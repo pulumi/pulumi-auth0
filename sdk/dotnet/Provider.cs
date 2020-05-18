@@ -60,6 +60,7 @@ namespace Pulumi.Auth0
         {
             ClientId = Utilities.GetEnv("AUTH0_CLIENT_ID");
             ClientSecret = Utilities.GetEnv("AUTH0_CLIENT_SECRET");
+            Debug = Utilities.GetEnvBoolean("AUTH0_DEBUG");
             Domain = Utilities.GetEnv("AUTH0_DOMAIN");
         }
     }

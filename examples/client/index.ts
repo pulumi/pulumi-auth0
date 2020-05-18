@@ -48,4 +48,4 @@ let client = new auth0.Client("test", {
     ]
 });
 
-export let clietnId = client.clientId;
+export let clientId = client.clientId;

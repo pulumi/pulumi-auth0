@@ -15,7 +15,7 @@ client_id = __config__.get('clientId') or utilities.get_env('AUTH0_CLIENT_ID')
 
 client_secret = __config__.get('clientSecret') or utilities.get_env('AUTH0_CLIENT_SECRET')
 
-debug = __config__.get('debug')
+debug = __config__.get('debug') or utilities.get_env_bool('AUTH0_DEBUG')
 
 domain = __config__.get('domain') or utilities.get_env('AUTH0_DOMAIN')
 

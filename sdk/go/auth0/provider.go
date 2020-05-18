@@ -29,6 +29,9 @@ func NewProvider(ctx *pulumi.Context,
 	if args.ClientSecret == nil {
 		args.ClientSecret = pulumi.StringPtr(getEnvOrDefault("", nil, "AUTH0_CLIENT_SECRET").(string))
 	}
+	if args.Debug == nil {
+		args.Debug = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "AUTH0_DEBUG").(bool))
+	}
 	if args.Domain == nil {
 		args.Domain = pulumi.StringPtr(getEnvOrDefault("", nil, "AUTH0_DOMAIN").(string))
 	}

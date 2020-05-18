@@ -23,7 +23,11 @@ func GetClientSecret(ctx *pulumi.Context) string {
 	return getEnvOrDefault("", nil, "AUTH0_CLIENT_SECRET").(string)
 }
 func GetDebug(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "auth0:debug")
+	v, err := config.TryBool(ctx, "auth0:debug")
+	if err == nil {
+		return v
+	}
+	return getEnvOrDefault(false, parseEnvBool, "AUTH0_DEBUG").(bool)
 }
 func GetDomain(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "auth0:domain")

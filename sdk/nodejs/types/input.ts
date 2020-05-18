@@ -280,15 +280,19 @@ export interface ConnectionOptions {
      */
     appId?: pulumi.Input<string>;
     /**
+     * String.
+     */
+    authorizationEndpoint?: pulumi.Input<string>;
+    /**
      * Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      */
     bruteForceProtection?: pulumi.Input<boolean>;
     /**
-     * String. Client ID for your Azure AD application.
+     * String. Client ID given by your OIDC provider.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. Client secret for your Azure AD application.
+     * String, Case-sensitive. Client secret given by your OIDC provider.
      */
     clientSecret?: pulumi.Input<string>;
     /**
@@ -308,6 +312,10 @@ export interface ConnectionOptions {
      * Boolean. Indicates whether or not to allow user sign-ups to your application.
      */
     disableSignup?: pulumi.Input<boolean>;
+    /**
+     * String. Usually an URL ending with `/.well-known/openid-configuration`
+     */
+    discoveryUrl?: pulumi.Input<string>;
     domain?: pulumi.Input<string>;
     /**
      * List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
@@ -328,6 +336,15 @@ export interface ConnectionOptions {
      */
     importMode?: pulumi.Input<boolean>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * String. URL of the issuer.
+     */
+    issuer?: pulumi.Input<string>;
+    /**
+     * String.
+     */
+    jwksUri?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string>;
     /**
      * String. Maximum number of groups to retrieve.
      */
@@ -353,7 +370,7 @@ export interface ConnectionOptions {
      */
     passwordHistories?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsPasswordHistory>[]>;
     /**
-     * List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
+     * List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
      */
     passwordNoPersonalInfo?: pulumi.Input<inputs.ConnectionOptionsPasswordNoPersonalInfo>;
     /**
@@ -364,13 +381,20 @@ export interface ConnectionOptions {
      * Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
      */
     requiresUsername?: pulumi.Input<boolean>;
+    /**
+     * List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+     */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
-    strategyVersion?: pulumi.Input<string>;
+    /**
+     * Int. Version 1 is deprecated, use version 2.
+     */
+    strategyVersion?: pulumi.Input<number>;
     subject?: pulumi.Input<string>;
     /**
      * String. Syntax of the SMS. Options include `markdown` and `liquid`.
      */
     syntax?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string>;
     /**
      * String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
      */
@@ -379,6 +403,10 @@ export interface ConnectionOptions {
      * String
      */
     tenantDomain?: pulumi.Input<string>;
+    /**
+     * String.
+     */
+    tokenEndpoint?: pulumi.Input<string>;
     /**
      * Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
      */
@@ -391,12 +419,20 @@ export interface ConnectionOptions {
      * String, Case-sensitive. AuthToken for your Twilio account.
      */
     twilioToken?: pulumi.Input<string>;
+    /**
+     * String. Value must be `backChannel` or `frontChannel`
+     */
+    type?: pulumi.Input<string>;
     useCertAuth?: pulumi.Input<boolean>;
     useKerberos?: pulumi.Input<boolean>;
     /**
      * Bool
      */
     useWsfed?: pulumi.Input<boolean>;
+    /**
+     * String.
+     */
+    userinfoEndpoint?: pulumi.Input<string>;
     /**
      * String.
      */

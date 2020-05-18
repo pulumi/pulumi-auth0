@@ -280,15 +280,19 @@ export interface ConnectionOptions {
      */
     appId?: string;
     /**
+     * String.
+     */
+    authorizationEndpoint?: string;
+    /**
      * Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      */
     bruteForceProtection?: boolean;
     /**
-     * String. Client ID for your Azure AD application.
+     * String. Client ID given by your OIDC provider.
      */
     clientId?: string;
     /**
-     * String, Case-sensitive. Client secret for your Azure AD application.
+     * String, Case-sensitive. Client secret given by your OIDC provider.
      */
     clientSecret?: string;
     /**
@@ -308,6 +312,10 @@ export interface ConnectionOptions {
      * Boolean. Indicates whether or not to allow user sign-ups to your application.
      */
     disableSignup?: boolean;
+    /**
+     * String. Usually an URL ending with `/.well-known/openid-configuration`
+     */
+    discoveryUrl?: string;
     domain?: string;
     /**
      * List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
@@ -328,6 +336,15 @@ export interface ConnectionOptions {
      */
     importMode?: boolean;
     ips?: string[];
+    /**
+     * String. URL of the issuer.
+     */
+    issuer?: string;
+    /**
+     * String.
+     */
+    jwksUri?: string;
+    keyId?: string;
     /**
      * String. Maximum number of groups to retrieve.
      */
@@ -353,7 +370,7 @@ export interface ConnectionOptions {
      */
     passwordHistories: outputs.ConnectionOptionsPasswordHistory[];
     /**
-     * List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
+     * List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
      */
     passwordNoPersonalInfo?: outputs.ConnectionOptionsPasswordNoPersonalInfo;
     /**
@@ -364,13 +381,20 @@ export interface ConnectionOptions {
      * Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
      */
     requiresUsername?: boolean;
+    /**
+     * List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+     */
     scopes?: string[];
-    strategyVersion: string;
+    /**
+     * Int. Version 1 is deprecated, use version 2.
+     */
+    strategyVersion: number;
     subject?: string;
     /**
      * String. Syntax of the SMS. Options include `markdown` and `liquid`.
      */
     syntax?: string;
+    teamId?: string;
     /**
      * String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
      */
@@ -379,6 +403,10 @@ export interface ConnectionOptions {
      * String
      */
     tenantDomain?: string;
+    /**
+     * String.
+     */
+    tokenEndpoint?: string;
     /**
      * Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
      */
@@ -391,12 +419,20 @@ export interface ConnectionOptions {
      * String, Case-sensitive. AuthToken for your Twilio account.
      */
     twilioToken?: string;
+    /**
+     * String. Value must be `backChannel` or `frontChannel`
+     */
+    type?: string;
     useCertAuth?: boolean;
     useKerberos?: boolean;
     /**
      * Bool
      */
     useWsfed?: boolean;
+    /**
+     * String.
+     */
+    userinfoEndpoint?: string;
     /**
      * String.
      */
