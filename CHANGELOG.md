@@ -2,6 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Initial release of the provider against v0.10.1 of the Auth0 Terraform Provider
+_(none)_
 
 ---
+
+## 1.0.0 (2020-05-18)
+* Initial release of the provider against v0.10.1 of the Auth0 Terraform Provider
