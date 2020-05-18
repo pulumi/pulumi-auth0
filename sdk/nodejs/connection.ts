@@ -14,6 +14,48 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myConnection = new auth0.Connection("myConnection", {
+ *     options: {
+ *         bruteForceProtection: true,
+ *         configuration: {
+ *             bar: "baz",
+ *             foo: "bar",
+ *         },
+ *         customScripts: {
+ *             get_user: `function getByEmail (email, callback) {
+ *   return callback(new Error("Whoops!"))
+ * }
+ * `,
+ *         },
+ *         enabledDatabaseCustomization: true,
+ *         passwordHistories: [{
+ *             enable: true,
+ *             size: 3,
+ *         }],
+ *         passwordPolicy: "excellent",
+ *     },
+ *     strategy: "auth0",
+ * });
+ * const myWaadConnection = new auth0.Connection("myWaadConnection", {
+ *     options: {
+ *         apiEnableUsers: true,
+ *         appDomain: "my-auth0-app.eu.auth0.com",
+ *         basicProfile: true,
+ *         clientId: "1234",
+ *         clientSecret: "1234",
+ *         domainAliases: ["example.io"],
+ *         extGroups: true,
+ *         extProfile: true,
+ *         tenantDomain: "exmaple.onmicrosoft.com",
+ *         useWsfed: false,
+ *         waadCommonEndpoint: false,
+ *         waadProtocol: "openid-connect",
+ *     },
+ *     strategy: "waad",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/connection.html.md.

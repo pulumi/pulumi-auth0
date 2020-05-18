@@ -27,61 +27,95 @@ export interface ClientAddons {
     cloudbees?: pulumi.Input<{[key: string]: any}>;
     /**
      * String
-     * * `dropbox`- (Optional) String
-     * * `echosign`- (Optional) String
-     * * `egnyte`- (Optional) String
-     * * `firebase`- (Optional) String
      */
     concur?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     dropbox?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     echosign?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     egnyte?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     firebase?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     layer?: pulumi.Input<{[key: string]: any}>;
     /**
      * String
-     * * `newrelic`- (Optional) String
-     * * `office365`- (Optional) String
      */
     mscrm?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     newrelic?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     office365?: pulumi.Input<{[key: string]: any}>;
     /**
      * String
-     * * `salesforce`- (Optional) String
-     * * `salesforceApi`- (Optional) String
-     * * `salesforceSandboxApi`- (Optional) String
      */
     rms?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     salesforce?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     salesforceApi?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     salesforceSandboxApi?: pulumi.Input<{[key: string]: any}>;
     /**
      * List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-     * * `layer`- (Optional) String
-     * * `sapApi`- (Optional) String
      */
     samlp?: pulumi.Input<inputs.ClientAddonsSamlp>;
+    /**
+     * String
+     */
     sapApi?: pulumi.Input<{[key: string]: any}>;
     /**
      * String
-     * * `sharepoint`- (Optional) String
      */
     sentry?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     sharepoint?: pulumi.Input<{[key: string]: any}>;
     /**
      * String
-     * * `springcm`- (Optional) String
-     * * `wams`- (Optional) String
-     * * `wsfed`- (Optional) String
-     * * `zendesk`- (Optional) String
-     * * `zoom`- (Optional) String
      */
     slack?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     springcm?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     wams?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     wsfed?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     zendesk?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * String
+     */
     zoom?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -378,6 +412,9 @@ export interface ConnectionOptions {
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {
+    /**
+     * Integer. Minimum number of characters allowed in passwords.
+     */
     minLength?: pulumi.Input<number>;
 }
 

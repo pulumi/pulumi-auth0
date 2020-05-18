@@ -22,51 +22,51 @@ type ClientAddons struct {
 	// String
 	Cloudbees map[string]interface{} `pulumi:"cloudbees"`
 	// String
-	// * `dropbox`- (Optional) String
-	// * `echosign`- (Optional) String
-	// * `egnyte`- (Optional) String
-	// * `firebase`- (Optional) String
-	Concur   map[string]interface{} `pulumi:"concur"`
-	Dropbox  map[string]interface{} `pulumi:"dropbox"`
-	Echosign map[string]interface{} `pulumi:"echosign"`
-	Egnyte   map[string]interface{} `pulumi:"egnyte"`
-	Firebase map[string]interface{} `pulumi:"firebase"`
-	Layer    map[string]interface{} `pulumi:"layer"`
+	Concur map[string]interface{} `pulumi:"concur"`
 	// String
-	// * `newrelic`- (Optional) String
-	// * `office365`- (Optional) String
-	Mscrm     map[string]interface{} `pulumi:"mscrm"`
-	Newrelic  map[string]interface{} `pulumi:"newrelic"`
+	Dropbox map[string]interface{} `pulumi:"dropbox"`
+	// String
+	Echosign map[string]interface{} `pulumi:"echosign"`
+	// String
+	Egnyte map[string]interface{} `pulumi:"egnyte"`
+	// String
+	Firebase map[string]interface{} `pulumi:"firebase"`
+	// String
+	Layer map[string]interface{} `pulumi:"layer"`
+	// String
+	Mscrm map[string]interface{} `pulumi:"mscrm"`
+	// String
+	Newrelic map[string]interface{} `pulumi:"newrelic"`
+	// String
 	Office365 map[string]interface{} `pulumi:"office365"`
 	// String
-	// * `salesforce`- (Optional) String
-	// * `salesforceApi`- (Optional) String
-	// * `salesforceSandboxApi`- (Optional) String
-	Rms                  map[string]interface{} `pulumi:"rms"`
-	Salesforce           map[string]interface{} `pulumi:"salesforce"`
-	SalesforceApi        map[string]interface{} `pulumi:"salesforceApi"`
+	Rms map[string]interface{} `pulumi:"rms"`
+	// String
+	Salesforce map[string]interface{} `pulumi:"salesforce"`
+	// String
+	SalesforceApi map[string]interface{} `pulumi:"salesforceApi"`
+	// String
 	SalesforceSandboxApi map[string]interface{} `pulumi:"salesforceSandboxApi"`
 	// List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-	// * `layer`- (Optional) String
-	// * `sapApi`- (Optional) String
-	Samlp  *ClientAddonsSamlp     `pulumi:"samlp"`
+	Samlp *ClientAddonsSamlp `pulumi:"samlp"`
+	// String
 	SapApi map[string]interface{} `pulumi:"sapApi"`
 	// String
-	// * `sharepoint`- (Optional) String
-	Sentry     map[string]interface{} `pulumi:"sentry"`
+	Sentry map[string]interface{} `pulumi:"sentry"`
+	// String
 	Sharepoint map[string]interface{} `pulumi:"sharepoint"`
 	// String
-	// * `springcm`- (Optional) String
-	// * `wams`- (Optional) String
-	// * `wsfed`- (Optional) String
-	// * `zendesk`- (Optional) String
-	// * `zoom`- (Optional) String
-	Slack    map[string]interface{} `pulumi:"slack"`
+	Slack map[string]interface{} `pulumi:"slack"`
+	// String
 	Springcm map[string]interface{} `pulumi:"springcm"`
-	Wams     map[string]interface{} `pulumi:"wams"`
-	Wsfed    map[string]interface{} `pulumi:"wsfed"`
-	Zendesk  map[string]interface{} `pulumi:"zendesk"`
-	Zoom     map[string]interface{} `pulumi:"zoom"`
+	// String
+	Wams map[string]interface{} `pulumi:"wams"`
+	// String
+	Wsfed map[string]interface{} `pulumi:"wsfed"`
+	// String
+	Zendesk map[string]interface{} `pulumi:"zendesk"`
+	// String
+	Zoom map[string]interface{} `pulumi:"zoom"`
 }
 
 // ClientAddonsInput is an input type that accepts ClientAddonsArgs and ClientAddonsOutput values.
@@ -93,51 +93,51 @@ type ClientAddonsArgs struct {
 	// String
 	Cloudbees pulumi.MapInput `pulumi:"cloudbees"`
 	// String
-	// * `dropbox`- (Optional) String
-	// * `echosign`- (Optional) String
-	// * `egnyte`- (Optional) String
-	// * `firebase`- (Optional) String
-	Concur   pulumi.MapInput `pulumi:"concur"`
-	Dropbox  pulumi.MapInput `pulumi:"dropbox"`
-	Echosign pulumi.MapInput `pulumi:"echosign"`
-	Egnyte   pulumi.MapInput `pulumi:"egnyte"`
-	Firebase pulumi.MapInput `pulumi:"firebase"`
-	Layer    pulumi.MapInput `pulumi:"layer"`
+	Concur pulumi.MapInput `pulumi:"concur"`
 	// String
-	// * `newrelic`- (Optional) String
-	// * `office365`- (Optional) String
-	Mscrm     pulumi.MapInput `pulumi:"mscrm"`
-	Newrelic  pulumi.MapInput `pulumi:"newrelic"`
+	Dropbox pulumi.MapInput `pulumi:"dropbox"`
+	// String
+	Echosign pulumi.MapInput `pulumi:"echosign"`
+	// String
+	Egnyte pulumi.MapInput `pulumi:"egnyte"`
+	// String
+	Firebase pulumi.MapInput `pulumi:"firebase"`
+	// String
+	Layer pulumi.MapInput `pulumi:"layer"`
+	// String
+	Mscrm pulumi.MapInput `pulumi:"mscrm"`
+	// String
+	Newrelic pulumi.MapInput `pulumi:"newrelic"`
+	// String
 	Office365 pulumi.MapInput `pulumi:"office365"`
 	// String
-	// * `salesforce`- (Optional) String
-	// * `salesforceApi`- (Optional) String
-	// * `salesforceSandboxApi`- (Optional) String
-	Rms                  pulumi.MapInput `pulumi:"rms"`
-	Salesforce           pulumi.MapInput `pulumi:"salesforce"`
-	SalesforceApi        pulumi.MapInput `pulumi:"salesforceApi"`
+	Rms pulumi.MapInput `pulumi:"rms"`
+	// String
+	Salesforce pulumi.MapInput `pulumi:"salesforce"`
+	// String
+	SalesforceApi pulumi.MapInput `pulumi:"salesforceApi"`
+	// String
 	SalesforceSandboxApi pulumi.MapInput `pulumi:"salesforceSandboxApi"`
 	// List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-	// * `layer`- (Optional) String
-	// * `sapApi`- (Optional) String
-	Samlp  ClientAddonsSamlpPtrInput `pulumi:"samlp"`
-	SapApi pulumi.MapInput           `pulumi:"sapApi"`
+	Samlp ClientAddonsSamlpPtrInput `pulumi:"samlp"`
 	// String
-	// * `sharepoint`- (Optional) String
-	Sentry     pulumi.MapInput `pulumi:"sentry"`
+	SapApi pulumi.MapInput `pulumi:"sapApi"`
+	// String
+	Sentry pulumi.MapInput `pulumi:"sentry"`
+	// String
 	Sharepoint pulumi.MapInput `pulumi:"sharepoint"`
 	// String
-	// * `springcm`- (Optional) String
-	// * `wams`- (Optional) String
-	// * `wsfed`- (Optional) String
-	// * `zendesk`- (Optional) String
-	// * `zoom`- (Optional) String
-	Slack    pulumi.MapInput `pulumi:"slack"`
+	Slack pulumi.MapInput `pulumi:"slack"`
+	// String
 	Springcm pulumi.MapInput `pulumi:"springcm"`
-	Wams     pulumi.MapInput `pulumi:"wams"`
-	Wsfed    pulumi.MapInput `pulumi:"wsfed"`
-	Zendesk  pulumi.MapInput `pulumi:"zendesk"`
-	Zoom     pulumi.MapInput `pulumi:"zoom"`
+	// String
+	Wams pulumi.MapInput `pulumi:"wams"`
+	// String
+	Wsfed pulumi.MapInput `pulumi:"wsfed"`
+	// String
+	Zendesk pulumi.MapInput `pulumi:"zendesk"`
+	// String
+	Zoom pulumi.MapInput `pulumi:"zoom"`
 }
 
 func (ClientAddonsArgs) ElementType() reflect.Type {
@@ -244,116 +244,116 @@ func (o ClientAddonsOutput) Cloudbees() pulumi.MapOutput {
 }
 
 // String
-// * `dropbox`- (Optional) String
-// * `echosign`- (Optional) String
-// * `egnyte`- (Optional) String
-// * `firebase`- (Optional) String
 func (o ClientAddonsOutput) Concur() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Dropbox() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Echosign() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Egnyte() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Firebase() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Layer() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
 }
 
 // String
-// * `newrelic`- (Optional) String
-// * `office365`- (Optional) String
 func (o ClientAddonsOutput) Mscrm() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Newrelic() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Office365() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
 }
 
 // String
-// * `salesforce`- (Optional) String
-// * `salesforceApi`- (Optional) String
-// * `salesforceSandboxApi`- (Optional) String
 func (o ClientAddonsOutput) Rms() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Salesforce() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) SalesforceApi() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) SalesforceSandboxApi() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
 }
 
 // List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-// * `layer`- (Optional) String
-// * `sapApi`- (Optional) String
 func (o ClientAddonsOutput) Samlp() ClientAddonsSamlpPtrOutput {
 	return o.ApplyT(func(v ClientAddons) *ClientAddonsSamlp { return v.Samlp }).(ClientAddonsSamlpPtrOutput)
 }
 
+// String
 func (o ClientAddonsOutput) SapApi() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
 }
 
 // String
-// * `sharepoint`- (Optional) String
 func (o ClientAddonsOutput) Sentry() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Sharepoint() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
 }
 
 // String
-// * `springcm`- (Optional) String
-// * `wams`- (Optional) String
-// * `wsfed`- (Optional) String
-// * `zendesk`- (Optional) String
-// * `zoom`- (Optional) String
 func (o ClientAddonsOutput) Slack() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Springcm() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Wams() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Wsfed() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Zendesk() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsOutput) Zoom() pulumi.MapOutput {
 	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
 }
@@ -378,142 +378,282 @@ func (o ClientAddonsPtrOutput) Elem() ClientAddonsOutput {
 
 // String
 func (o ClientAddonsPtrOutput) Aws() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Aws
+	}).(pulumi.MapOutput)
 }
 
 // String
 func (o ClientAddonsPtrOutput) AzureBlob() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.AzureBlob }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AzureBlob
+	}).(pulumi.MapOutput)
 }
 
 // String
 func (o ClientAddonsPtrOutput) AzureSb() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.AzureSb }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSb
+	}).(pulumi.MapOutput)
 }
 
 // String
 func (o ClientAddonsPtrOutput) Box() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Box }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Box
+	}).(pulumi.MapOutput)
 }
 
 // String
 func (o ClientAddonsPtrOutput) Cloudbees() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Cloudbees }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Cloudbees
+	}).(pulumi.MapOutput)
 }
 
 // String
-// * `dropbox`- (Optional) String
-// * `echosign`- (Optional) String
-// * `egnyte`- (Optional) String
-// * `firebase`- (Optional) String
 func (o ClientAddonsPtrOutput) Concur() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Concur
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Dropbox() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Dropbox
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Echosign() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Echosign
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Egnyte() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Egnyte
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Firebase() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Firebase
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Layer() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Layer
+	}).(pulumi.MapOutput)
 }
 
 // String
-// * `newrelic`- (Optional) String
-// * `office365`- (Optional) String
 func (o ClientAddonsPtrOutput) Mscrm() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
-}
-
-func (o ClientAddonsPtrOutput) Newrelic() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
-}
-
-func (o ClientAddonsPtrOutput) Office365() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Mscrm
+	}).(pulumi.MapOutput)
 }
 
 // String
-// * `salesforce`- (Optional) String
-// * `salesforceApi`- (Optional) String
-// * `salesforceSandboxApi`- (Optional) String
+func (o ClientAddonsPtrOutput) Newrelic() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Newrelic
+	}).(pulumi.MapOutput)
+}
+
+// String
+func (o ClientAddonsPtrOutput) Office365() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Office365
+	}).(pulumi.MapOutput)
+}
+
+// String
 func (o ClientAddonsPtrOutput) Rms() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Rms
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Salesforce() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Salesforce
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) SalesforceApi() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceApi
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) SalesforceSandboxApi() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceSandboxApi
+	}).(pulumi.MapOutput)
 }
 
 // List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-// * `layer`- (Optional) String
-// * `sapApi`- (Optional) String
 func (o ClientAddonsPtrOutput) Samlp() ClientAddonsSamlpPtrOutput {
-	return o.ApplyT(func(v ClientAddons) *ClientAddonsSamlp { return v.Samlp }).(ClientAddonsSamlpPtrOutput)
+	return o.ApplyT(func(v *ClientAddons) *ClientAddonsSamlp {
+		if v == nil {
+			return nil
+		}
+		return v.Samlp
+	}).(ClientAddonsSamlpPtrOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) SapApi() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SapApi
+	}).(pulumi.MapOutput)
 }
 
 // String
-// * `sharepoint`- (Optional) String
 func (o ClientAddonsPtrOutput) Sentry() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
-}
-
-func (o ClientAddonsPtrOutput) Sharepoint() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Sentry
+	}).(pulumi.MapOutput)
 }
 
 // String
-// * `springcm`- (Optional) String
-// * `wams`- (Optional) String
-// * `wsfed`- (Optional) String
-// * `zendesk`- (Optional) String
-// * `zoom`- (Optional) String
+func (o ClientAddonsPtrOutput) Sharepoint() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Sharepoint
+	}).(pulumi.MapOutput)
+}
+
+// String
 func (o ClientAddonsPtrOutput) Slack() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Slack
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Springcm() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Springcm
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Wams() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Wams
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Wsfed() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Wsfed
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Zendesk() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Zendesk
+	}).(pulumi.MapOutput)
 }
 
+// String
 func (o ClientAddonsPtrOutput) Zoom() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddons) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Zoom
+	}).(pulumi.MapOutput)
 }
 
 type ClientAddonsSamlp struct {
@@ -803,97 +943,192 @@ func (o ClientAddonsSamlpPtrOutput) Elem() ClientAddonsSamlpOutput {
 
 // String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
 func (o ClientAddonsSamlpPtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Audience }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
 }
 
 // String. Class reference of the authentication context.
 func (o ClientAddonsSamlpPtrOutput) AuthnContextClassRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.AuthnContextClassRef }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthnContextClassRef
+	}).(pulumi.StringPtrOutput)
 }
 
 // String. Protocol binding used for SAML logout responses.
 func (o ClientAddonsSamlpPtrOutput) Binding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Binding }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Binding
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
 func (o ClientAddonsSamlpPtrOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.CreateUpnClaim }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateUpnClaim
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
 func (o ClientAddonsSamlpPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Destination }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.StringPtrOutput)
 }
 
 // String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
 func (o ClientAddonsSamlpPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DigestAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
 func (o ClientAddonsSamlpPtrOutput) IncludeAttributeNameFormat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeAttributeNameFormat
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Integer, (Default=3600). Number of seconds during which the token is valid.
 func (o ClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // Map(Resource). Configuration settings for logout. For details, see Logout.
 func (o ClientAddonsSamlpPtrOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *ClientAddonsSamlpLogout { return v.Logout }).(ClientAddonsSamlpLogoutPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *ClientAddonsSamlpLogout {
+		if v == nil {
+			return nil
+		}
+		return v.Logout
+	}).(ClientAddonsSamlpLogoutPtrOutput)
 }
 
 // Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
 func (o ClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.MapIdentities }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MapIdentities
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
 func (o ClientAddonsSamlpPtrOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MapUnknownClaimsAsIs
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
 func (o ClientAddonsSamlpPtrOutput) Mappings() pulumi.MapOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Mappings
+	}).(pulumi.MapOutput)
 }
 
 // String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
 func (o ClientAddonsSamlpPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.NameIdentifierFormat }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameIdentifierFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 // List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
 func (o ClientAddonsSamlpPtrOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameIdentifierProbes
+	}).(pulumi.StringArrayOutput)
 }
 
 // Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
 func (o ClientAddonsSamlpPtrOutput) PassthroughClaimsWithNoMapping() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PassthroughClaimsWithNoMapping
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
 func (o ClientAddonsSamlpPtrOutput) Recipient() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Recipient }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Recipient
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
 func (o ClientAddonsSamlpPtrOutput) SignResponse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.SignResponse }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SignResponse
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 func (o ClientAddonsSamlpPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignatureAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
 func (o ClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.TypedAttributes }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TypedAttributes
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClientAddonsSamlpLogout struct {
@@ -1030,12 +1265,22 @@ func (o ClientAddonsSamlpLogoutPtrOutput) Elem() ClientAddonsSamlpLogoutOutput {
 
 // String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
 func (o ClientAddonsSamlpLogoutPtrOutput) Callback() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlpLogout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Callback
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
 func (o ClientAddonsSamlpLogoutPtrOutput) SloEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlpLogout) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SloEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClientJwtConfiguration struct {
@@ -1190,22 +1435,42 @@ func (o ClientJwtConfigurationPtrOutput) Elem() ClientJwtConfigurationOutput {
 
 // String. Algorithm used to sign JWTs.
 func (o ClientJwtConfigurationPtrOutput) Alg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientJwtConfiguration) *string { return v.Alg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientJwtConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Alg
+	}).(pulumi.StringPtrOutput)
 }
 
 // Integer. Number of seconds during which the JWT will be valid.
 func (o ClientJwtConfigurationPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClientJwtConfiguration) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ClientJwtConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // Map(String). Permissions (scopes) included in JWTs.
 func (o ClientJwtConfigurationPtrOutput) Scopes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ClientJwtConfiguration) map[string]string { return v.Scopes }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *ClientJwtConfiguration) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringMapOutput)
 }
 
 // Boolean. Indicates whether or not the client secret is base64 encoded.
 func (o ClientJwtConfigurationPtrOutput) SecretEncoded() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientJwtConfiguration) *bool { return v.SecretEncoded }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ClientJwtConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecretEncoded
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClientMobile struct {
@@ -1342,12 +1607,22 @@ func (o ClientMobilePtrOutput) Elem() ClientMobileOutput {
 
 // List(Resource). Configuration settings for Android native apps. For details, see Android.
 func (o ClientMobilePtrOutput) Android() ClientMobileAndroidPtrOutput {
-	return o.ApplyT(func(v ClientMobile) *ClientMobileAndroid { return v.Android }).(ClientMobileAndroidPtrOutput)
+	return o.ApplyT(func(v *ClientMobile) *ClientMobileAndroid {
+		if v == nil {
+			return nil
+		}
+		return v.Android
+	}).(ClientMobileAndroidPtrOutput)
 }
 
 // List(Resource). Configuration settings for i0S native apps. For details, see iOS.
 func (o ClientMobilePtrOutput) Ios() ClientMobileIosPtrOutput {
-	return o.ApplyT(func(v ClientMobile) *ClientMobileIos { return v.Ios }).(ClientMobileIosPtrOutput)
+	return o.ApplyT(func(v *ClientMobile) *ClientMobileIos {
+		if v == nil {
+			return nil
+		}
+		return v.Ios
+	}).(ClientMobileIosPtrOutput)
 }
 
 type ClientMobileAndroid struct {
@@ -1484,12 +1759,22 @@ func (o ClientMobileAndroidPtrOutput) Elem() ClientMobileAndroidOutput {
 
 // String
 func (o ClientMobileAndroidPtrOutput) AppPackageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientMobileAndroid) *string { return v.AppPackageName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientMobileAndroid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppPackageName
+	}).(pulumi.StringPtrOutput)
 }
 
 // List(String)
 func (o ClientMobileAndroidPtrOutput) Sha256CertFingerprints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ClientMobileAndroid) []string { return v.Sha256CertFingerprints }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ClientMobileAndroid) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256CertFingerprints
+	}).(pulumi.StringArrayOutput)
 }
 
 type ClientMobileIos struct {
@@ -1626,12 +1911,22 @@ func (o ClientMobileIosPtrOutput) Elem() ClientMobileIosOutput {
 
 // String
 func (o ClientMobileIosPtrOutput) AppBundleIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientMobileIos) *string { return v.AppBundleIdentifier }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientMobileIos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppBundleIdentifier
+	}).(pulumi.StringPtrOutput)
 }
 
 // String
 func (o ClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientMobileIos) *string { return v.TeamId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ClientMobileIos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptions struct {
@@ -2124,221 +2419,445 @@ func (o ConnectionOptionsPtrOutput) Elem() ConnectionOptionsOutput {
 
 // String. ADFS Metadata source.
 func (o ConnectionOptionsPtrOutput) AdfsServer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.AdfsServer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdfsServer
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ConnectionOptions) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ConnectionOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAudiences
+	}).(pulumi.StringArrayOutput)
 }
 
 // Boolean.
 func (o ConnectionOptionsPtrOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.ApiEnableUsers }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApiEnableUsers
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String. Azure AD domain name.
 func (o ConnectionOptionsPtrOutput) AppDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 // String
 func (o ConnectionOptionsPtrOutput) AppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 func (o ConnectionOptionsPtrOutput) BruteForceProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.BruteForceProtection }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BruteForceProtection
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String. Client ID for your Azure AD application.
 func (o ConnectionOptionsPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
 // String, Case-sensitive. Client secret for your Azure AD application.
 func (o ConnectionOptionsPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 // String.
 func (o ConnectionOptionsPtrOutput) CommunityBaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.CommunityBaseUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommunityBaseUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // Map(String), Case-sensitive.
 func (o ConnectionOptionsPtrOutput) Configuration() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Configuration }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(pulumi.StringMapOutput)
 }
 
 // Map(String).
 func (o ConnectionOptionsPtrOutput) CustomScripts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.CustomScripts }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomScripts
+	}).(pulumi.StringMapOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) DisableCache() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableCache }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableCache
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not to allow user sign-ups to your application.
 func (o ConnectionOptionsPtrOutput) DisableSignup() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableSignup }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableSignup
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.Domain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
 }
 
 // List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 func (o ConnectionOptionsPtrOutput) DomainAliases() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ConnectionOptions) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ConnectionOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainAliases
+	}).(pulumi.StringArrayOutput)
 }
 
 // Boolean.
 func (o ConnectionOptionsPtrOutput) EnabledDatabaseCustomization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.EnabledDatabaseCustomization }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledDatabaseCustomization
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String. SMS number for the sender. Used when SMS Source is From.
 func (o ConnectionOptionsPtrOutput) From() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.From }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.From
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) IconUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.IconUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IconUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) IdentityApi() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.IdentityApi }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityApi
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 func (o ConnectionOptionsPtrOutput) ImportMode() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.ImportMode }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ImportMode
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) Ips() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ConnectionOptions) []string { return v.Ips }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ConnectionOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ips
+	}).(pulumi.StringArrayOutput)
 }
 
 // String. Maximum number of groups to retrieve.
 func (o ConnectionOptionsPtrOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.MaxGroupsToRetrieve }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxGroupsToRetrieve
+	}).(pulumi.StringPtrOutput)
 }
 
 // String. SID for Copilot. Used when SMS Source is Copilot.
 func (o ConnectionOptionsPtrOutput) MessagingServiceSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.MessagingServiceSid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessagingServiceSid
+	}).(pulumi.StringPtrOutput)
 }
 
 // String.
 func (o ConnectionOptionsPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
 func (o ConnectionOptionsPtrOutput) PasswordComplexityOptions() ConnectionOptionsPasswordComplexityOptionsPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasswordComplexityOptions {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasswordComplexityOptions {
+		if v == nil {
+			return nil
+		}
 		return v.PasswordComplexityOptions
 	}).(ConnectionOptionsPasswordComplexityOptionsPtrOutput)
 }
 
 // List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
 func (o ConnectionOptionsPtrOutput) PasswordDictionary() ConnectionOptionsPasswordDictionaryPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasswordDictionary { return v.PasswordDictionary }).(ConnectionOptionsPasswordDictionaryPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasswordDictionary {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordDictionary
+	}).(ConnectionOptionsPasswordDictionaryPtrOutput)
 }
 
 // List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
 func (o ConnectionOptionsPtrOutput) PasswordHistories() ConnectionOptionsPasswordHistoryArrayOutput {
-	return o.ApplyT(func(v ConnectionOptions) []ConnectionOptionsPasswordHistory { return v.PasswordHistories }).(ConnectionOptionsPasswordHistoryArrayOutput)
+	return o.ApplyT(func(v *ConnectionOptions) []ConnectionOptionsPasswordHistory {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordHistories
+	}).(ConnectionOptionsPasswordHistoryArrayOutput)
 }
 
 // List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or firstpart of the user's email. For details, see Password No Personal Info.
 func (o ConnectionOptionsPtrOutput) PasswordNoPersonalInfo() ConnectionOptionsPasswordNoPersonalInfoPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasswordNoPersonalInfo { return v.PasswordNoPersonalInfo }).(ConnectionOptionsPasswordNoPersonalInfoPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasswordNoPersonalInfo {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordNoPersonalInfo
+	}).(ConnectionOptionsPasswordNoPersonalInfoPtrOutput)
 }
 
 // String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 func (o ConnectionOptionsPtrOutput) PasswordPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.PasswordPolicy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordPolicy
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
 func (o ConnectionOptionsPtrOutput) RequiresUsername() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.RequiresUsername }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequiresUsername
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ConnectionOptions) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ConnectionOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) StrategyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.StrategyVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StrategyVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) Subject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.Subject }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subject
+	}).(pulumi.StringPtrOutput)
 }
 
 // String. Syntax of the SMS. Options include `markdown` and `liquid`.
 func (o ConnectionOptionsPtrOutput) Syntax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.Syntax }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Syntax
+	}).(pulumi.StringPtrOutput)
 }
 
 // String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
 func (o ConnectionOptionsPtrOutput) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.Template }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Template
+	}).(pulumi.StringPtrOutput)
 }
 
 // String
 func (o ConnectionOptionsPtrOutput) TenantDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.TenantDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 // Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
 func (o ConnectionOptionsPtrOutput) Totp() ConnectionOptionsTotpPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsTotp { return v.Totp }).(ConnectionOptionsTotpPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsTotp {
+		if v == nil {
+			return nil
+		}
+		return v.Totp
+	}).(ConnectionOptionsTotpPtrOutput)
 }
 
 // String. SID for your Twilio account.
 func (o ConnectionOptionsPtrOutput) TwilioSid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.TwilioSid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TwilioSid
+	}).(pulumi.StringPtrOutput)
 }
 
 // String, Case-sensitive. AuthToken for your Twilio account.
 func (o ConnectionOptionsPtrOutput) TwilioToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.TwilioToken }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TwilioToken
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) UseCertAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseCertAuth }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseCertAuth
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) UseKerberos() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseKerberos }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseKerberos
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Bool
 func (o ConnectionOptionsPtrOutput) UseWsfed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseWsfed }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseWsfed
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String.
 func (o ConnectionOptionsPtrOutput) Validation() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Validation }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Validation
+	}).(pulumi.StringMapOutput)
 }
 
 // Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
 func (o ConnectionOptionsPtrOutput) WaadCommonEndpoint() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *bool { return v.WaadCommonEndpoint }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaadCommonEndpoint
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String
 func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.WaadProtocol }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WaadProtocol
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsPasswordComplexityOptions struct {
+	// Integer. Minimum number of characters allowed in passwords.
 	MinLength *int `pulumi:"minLength"`
 }
 
@@ -2355,6 +2874,7 @@ type ConnectionOptionsPasswordComplexityOptionsInput interface {
 }
 
 type ConnectionOptionsPasswordComplexityOptionsArgs struct {
+	// Integer. Minimum number of characters allowed in passwords.
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
 }
 
@@ -2435,6 +2955,8 @@ func (o ConnectionOptionsPasswordComplexityOptionsOutput) ToConnectionOptionsPas
 		return &v
 	}).(ConnectionOptionsPasswordComplexityOptionsPtrOutput)
 }
+
+// Integer. Minimum number of characters allowed in passwords.
 func (o ConnectionOptionsPasswordComplexityOptionsOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordComplexityOptions) *int { return v.MinLength }).(pulumi.IntPtrOutput)
 }
@@ -2459,8 +2981,14 @@ func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) Elem() ConnectionOp
 	}).(ConnectionOptionsPasswordComplexityOptionsOutput)
 }
 
+// Integer. Minimum number of characters allowed in passwords.
 func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) MinLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsPasswordComplexityOptions) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptionsPasswordComplexityOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinLength
+	}).(pulumi.IntPtrOutput)
 }
 
 type ConnectionOptionsPasswordDictionary struct {
@@ -2597,12 +3125,22 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) Elem() ConnectionOptionsPa
 
 // Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 func (o ConnectionOptionsPasswordDictionaryPtrOutput) Dictionaries() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) []string { return v.Dictionaries }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Dictionaries
+	}).(pulumi.StringArrayOutput)
 }
 
 // Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
 func (o ConnectionOptionsPasswordDictionaryPtrOutput) Enable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionOptionsPasswordHistory struct {
@@ -2838,7 +3376,12 @@ func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) Elem() ConnectionOptio
 
 // Boolean. Indicates whether the password personal info check is enabled for this connection.
 func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) Enable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsPasswordNoPersonalInfo) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptionsPasswordNoPersonalInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionOptionsTotp struct {
@@ -2975,12 +3518,22 @@ func (o ConnectionOptionsTotpPtrOutput) Elem() ConnectionOptionsTotpOutput {
 
 // Integer. Length of the one-time password.
 func (o ConnectionOptionsTotpPtrOutput) Length() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsTotp) *int { return v.Length }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptionsTotp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Length
+	}).(pulumi.IntPtrOutput)
 }
 
 // Integer. Seconds between allowed generation of new passwords.
 func (o ConnectionOptionsTotpPtrOutput) TimeStep() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsTotp) *int { return v.TimeStep }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ConnectionOptionsTotp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeStep
+	}).(pulumi.IntPtrOutput)
 }
 
 type CustomDomainVerification struct {
@@ -3108,7 +3661,12 @@ func (o CustomDomainVerificationPtrOutput) Elem() CustomDomainVerificationOutput
 
 // List(Map). Verification methods for the domain.
 func (o CustomDomainVerificationPtrOutput) Methods() pulumi.ArrayOutput {
-	return o.ApplyT(func(v CustomDomainVerification) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
+	return o.ApplyT(func(v *CustomDomainVerification) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Methods
+	}).(pulumi.ArrayOutput)
 }
 
 type EmailCredentials struct {
@@ -3314,51 +3872,101 @@ func (o EmailCredentialsPtrOutput) Elem() EmailCredentialsOutput {
 
 // String, Case-sensitive. AWS Access Key ID. Used only for AWS.
 func (o EmailCredentialsPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
 }
 
 // String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
 func (o EmailCredentialsPtrOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // String. API User for your email service.
 func (o EmailCredentialsPtrOutput) ApiUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.ApiUser }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiUser
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o EmailCredentialsPtrOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.Domain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
 }
 
 // String. Default region. Used only for AWS, Mailgun, and SparkPost.
 func (o EmailCredentialsPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.Region }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
 }
 
 // String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
 func (o EmailCredentialsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // String. Hostname or IP address of your SMTP server. Used only for SMTP.
 func (o EmailCredentialsPtrOutput) SmtpHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.SmtpHost }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmtpHost
+	}).(pulumi.StringPtrOutput)
 }
 
 // String, Case-sensitive. SMTP password. Used only for SMTP.
 func (o EmailCredentialsPtrOutput) SmtpPass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.SmtpPass }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmtpPass
+	}).(pulumi.StringPtrOutput)
 }
 
 // Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
 func (o EmailCredentialsPtrOutput) SmtpPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *int { return v.SmtpPort }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SmtpPort
+	}).(pulumi.IntPtrOutput)
 }
 
 // String. SMTP username. Used only for SMTP.
 func (o EmailCredentialsPtrOutput) SmtpUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *string { return v.SmtpUser }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EmailCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmtpUser
+	}).(pulumi.StringPtrOutput)
 }
 
 type GlobalClientAddons struct {
@@ -3643,115 +4251,255 @@ func (o GlobalClientAddonsPtrOutput) Elem() GlobalClientAddonsOutput {
 }
 
 func (o GlobalClientAddonsPtrOutput) Aws() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Aws
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) AzureBlob() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.AzureBlob }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AzureBlob
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) AzureSb() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.AzureSb }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSb
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Box() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Box }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Box
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Cloudbees() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Cloudbees }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Cloudbees
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Concur() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Concur
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Dropbox() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Dropbox
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Echosign() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Echosign
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Egnyte() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Egnyte
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Firebase() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Firebase
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Layer() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Layer
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Mscrm() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Mscrm
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Newrelic() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Newrelic
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Office365() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Office365
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Rms() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Rms
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Salesforce() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Salesforce
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) SalesforceApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceApi
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) SalesforceSandboxApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceSandboxApi
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Samlp() GlobalClientAddonsSamlpPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddons) *GlobalClientAddonsSamlp { return v.Samlp }).(GlobalClientAddonsSamlpPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) *GlobalClientAddonsSamlp {
+		if v == nil {
+			return nil
+		}
+		return v.Samlp
+	}).(GlobalClientAddonsSamlpPtrOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) SapApi() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SapApi
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Sentry() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Sentry
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Sharepoint() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Sharepoint
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Slack() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Slack
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Springcm() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Springcm
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Wams() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Wams
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Wsfed() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Wsfed
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Zendesk() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Zendesk
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Zoom() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Zoom
+	}).(pulumi.MapOutput)
 }
 
 type GlobalClientAddonsSamlp struct {
@@ -3982,79 +4730,174 @@ func (o GlobalClientAddonsSamlpPtrOutput) Elem() GlobalClientAddonsSamlpOutput {
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Audience }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) AuthnContextClassRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.AuthnContextClassRef }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthnContextClassRef
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) Binding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Binding }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Binding
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.CreateUpnClaim }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateUpnClaim
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Destination }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DigestAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) IncludeAttributeNameFormat() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeAttributeNameFormat
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) Logout() GlobalClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *GlobalClientAddonsSamlpLogout { return v.Logout }).(GlobalClientAddonsSamlpLogoutPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *GlobalClientAddonsSamlpLogout {
+		if v == nil {
+			return nil
+		}
+		return v.Logout
+	}).(GlobalClientAddonsSamlpLogoutPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.MapIdentities }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MapIdentities
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MapUnknownClaimsAsIs
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) Mappings() pulumi.MapOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Mappings
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.NameIdentifierFormat }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameIdentifierFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameIdentifierProbes
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) PassthroughClaimsWithNoMapping() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PassthroughClaimsWithNoMapping
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) Recipient() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Recipient }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Recipient
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) SignResponse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.SignResponse }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SignResponse
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignatureAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *bool { return v.TypedAttributes }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TypedAttributes
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GlobalClientAddonsSamlpLogout struct {
@@ -4183,11 +5026,21 @@ func (o GlobalClientAddonsSamlpLogoutPtrOutput) Elem() GlobalClientAddonsSamlpLo
 }
 
 func (o GlobalClientAddonsSamlpLogoutPtrOutput) Callback() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlpLogout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Callback
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpLogoutPtrOutput) SloEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlpLogout) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SloEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GlobalClientJwtConfiguration struct {
@@ -4328,19 +5181,39 @@ func (o GlobalClientJwtConfigurationPtrOutput) Elem() GlobalClientJwtConfigurati
 }
 
 func (o GlobalClientJwtConfigurationPtrOutput) Alg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) *string { return v.Alg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientJwtConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Alg
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientJwtConfigurationPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *GlobalClientJwtConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GlobalClientJwtConfigurationPtrOutput) Scopes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) map[string]string { return v.Scopes }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *GlobalClientJwtConfiguration) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringMapOutput)
 }
 
 func (o GlobalClientJwtConfigurationPtrOutput) SecretEncoded() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) *bool { return v.SecretEncoded }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *GlobalClientJwtConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecretEncoded
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GlobalClientMobile struct {
@@ -4469,11 +5342,21 @@ func (o GlobalClientMobilePtrOutput) Elem() GlobalClientMobileOutput {
 }
 
 func (o GlobalClientMobilePtrOutput) Android() GlobalClientMobileAndroidPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobile) *GlobalClientMobileAndroid { return v.Android }).(GlobalClientMobileAndroidPtrOutput)
+	return o.ApplyT(func(v *GlobalClientMobile) *GlobalClientMobileAndroid {
+		if v == nil {
+			return nil
+		}
+		return v.Android
+	}).(GlobalClientMobileAndroidPtrOutput)
 }
 
 func (o GlobalClientMobilePtrOutput) Ios() GlobalClientMobileIosPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobile) *GlobalClientMobileIos { return v.Ios }).(GlobalClientMobileIosPtrOutput)
+	return o.ApplyT(func(v *GlobalClientMobile) *GlobalClientMobileIos {
+		if v == nil {
+			return nil
+		}
+		return v.Ios
+	}).(GlobalClientMobileIosPtrOutput)
 }
 
 type GlobalClientMobileAndroid struct {
@@ -4602,11 +5485,21 @@ func (o GlobalClientMobileAndroidPtrOutput) Elem() GlobalClientMobileAndroidOutp
 }
 
 func (o GlobalClientMobileAndroidPtrOutput) AppPackageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobileAndroid) *string { return v.AppPackageName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientMobileAndroid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppPackageName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientMobileAndroidPtrOutput) Sha256CertFingerprints() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GlobalClientMobileAndroid) []string { return v.Sha256CertFingerprints }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *GlobalClientMobileAndroid) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256CertFingerprints
+	}).(pulumi.StringArrayOutput)
 }
 
 type GlobalClientMobileIos struct {
@@ -4735,11 +5628,21 @@ func (o GlobalClientMobileIosPtrOutput) Elem() GlobalClientMobileIosOutput {
 }
 
 func (o GlobalClientMobileIosPtrOutput) AppBundleIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobileIos) *string { return v.AppBundleIdentifier }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientMobileIos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppBundleIdentifier
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobileIos) *string { return v.TeamId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GlobalClientMobileIos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceServerScope struct {
@@ -5091,13 +5994,23 @@ func (o TenantChangePasswordPtrOutput) Elem() TenantChangePasswordOutput {
 }
 
 // Boolean. Indicates whether or not to use the custom change password page.
-func (o TenantChangePasswordPtrOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v TenantChangePassword) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o TenantChangePasswordPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantChangePassword) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String, HTML format with supported Liquid syntax. Customized content of the change password page.
-func (o TenantChangePasswordPtrOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantChangePassword) string { return v.Html }).(pulumi.StringOutput)
+func (o TenantChangePasswordPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantChangePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
+	}).(pulumi.StringPtrOutput)
 }
 
 type TenantErrorPage struct {
@@ -5242,18 +6155,33 @@ func (o TenantErrorPagePtrOutput) Elem() TenantErrorPageOutput {
 }
 
 // String, HTML format with supported Liquid syntax. Customized content of the error page.
-func (o TenantErrorPagePtrOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantErrorPage) string { return v.Html }).(pulumi.StringOutput)
+func (o TenantErrorPagePtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantErrorPage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean. Indicates whether or not to show the link to logs as part of the default error page.
-func (o TenantErrorPagePtrOutput) ShowLogLink() pulumi.BoolOutput {
-	return o.ApplyT(func(v TenantErrorPage) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
+func (o TenantErrorPagePtrOutput) ShowLogLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantErrorPage) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShowLogLink
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String. URL to redirect to when an error occurs rather than showing the default error page.
-func (o TenantErrorPagePtrOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantErrorPage) string { return v.Url }).(pulumi.StringOutput)
+func (o TenantErrorPagePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantErrorPage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 type TenantFlags struct {
@@ -5468,56 +6396,111 @@ func (o TenantFlagsPtrOutput) Elem() TenantFlagsOutput {
 
 // Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
 func (o TenantFlagsPtrOutput) ChangePwdFlowV1() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.ChangePwdFlowV1 }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ChangePwdFlowV1
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
 func (o TenantFlagsPtrOutput) DisableClickjackProtectionHeaders() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.DisableClickjackProtectionHeaders }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableClickjackProtectionHeaders
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not the APIs section is enabled for the tenant.
 func (o TenantFlagsPtrOutput) EnableApisSection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableApisSection }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableApisSection
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
 func (o TenantFlagsPtrOutput) EnableClientConnections() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableClientConnections }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableClientConnections
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not the tenant allows custom domains in emails.
 func (o TenantFlagsPtrOutput) EnableCustomDomainInEmails() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableCustomDomainInEmails }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCustomDomainInEmails
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not the tenant allows dynamic client registration.
 func (o TenantFlagsPtrOutput) EnableDynamicClientRegistration() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableDynamicClientRegistration }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDynamicClientRegistration
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not to use the older v2 legacy logs search.
 func (o TenantFlagsPtrOutput) EnableLegacyLogsSearchV2() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableLegacyLogsSearchV2 }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableLegacyLogsSearchV2
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
 func (o TenantFlagsPtrOutput) EnablePipeline2() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.EnablePipeline2 }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePipeline2
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not the public sign up process shows a userExists error if the user already exists.
 func (o TenantFlagsPtrOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePublicSignupUserExistsError
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether or not the tenant uses universal login.
 func (o TenantFlagsPtrOutput) UniversalLogin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.UniversalLogin }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UniversalLogin
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o TenantFlagsPtrOutput) UseScopeDescriptionsForConsent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.UseScopeDescriptionsForConsent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseScopeDescriptionsForConsent
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TenantGuardianMfaPage struct {
@@ -5653,13 +6636,23 @@ func (o TenantGuardianMfaPagePtrOutput) Elem() TenantGuardianMfaPageOutput {
 }
 
 // Boolean. Indicates whether or not to use the custom Guardian page.
-func (o TenantGuardianMfaPagePtrOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v TenantGuardianMfaPage) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o TenantGuardianMfaPagePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantGuardianMfaPage) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
-func (o TenantGuardianMfaPagePtrOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantGuardianMfaPage) string { return v.Html }).(pulumi.StringOutput)
+func (o TenantGuardianMfaPagePtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantGuardianMfaPage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
+	}).(pulumi.StringPtrOutput)
 }
 
 type TenantUniversalLogin struct {
@@ -5787,7 +6780,12 @@ func (o TenantUniversalLoginPtrOutput) Elem() TenantUniversalLoginOutput {
 
 // List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
 func (o TenantUniversalLoginPtrOutput) Colors() TenantUniversalLoginColorsPtrOutput {
-	return o.ApplyT(func(v TenantUniversalLogin) *TenantUniversalLoginColors { return v.Colors }).(TenantUniversalLoginColorsPtrOutput)
+	return o.ApplyT(func(v *TenantUniversalLogin) *TenantUniversalLoginColors {
+		if v == nil {
+			return nil
+		}
+		return v.Colors
+	}).(TenantUniversalLoginColorsPtrOutput)
 }
 
 type TenantUniversalLoginColors struct {
@@ -5924,12 +6922,22 @@ func (o TenantUniversalLoginColorsPtrOutput) Elem() TenantUniversalLoginColorsOu
 
 // String, Hexadecimal. Background color of login pages.
 func (o TenantUniversalLoginColorsPtrOutput) PageBackground() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TenantUniversalLoginColors) *string { return v.PageBackground }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TenantUniversalLoginColors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PageBackground
+	}).(pulumi.StringPtrOutput)
 }
 
 // String, Hexadecimal. Primary button background color.
 func (o TenantUniversalLoginColorsPtrOutput) Primary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TenantUniversalLoginColors) *string { return v.Primary }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TenantUniversalLoginColors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

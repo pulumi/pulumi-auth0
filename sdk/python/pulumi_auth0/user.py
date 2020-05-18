@@ -71,6 +71,27 @@ class User(pulumi.CustomResource):
         """
         With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        admin = auth0.Role("admin", description="Administrator")
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            user_id="12345",
+            username="unique_username",
+            given_name="Firstname",
+            family_name="Lastname",
+            nickname="some.nickname",
+            email="test@test.com",
+            email_verified=True,
+            password="passpass$12$12",
+            roles=[admin.id])
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -55,7 +55,7 @@ class Connection(pulumi.CustomResource):
       * `messagingServiceSid` (`str`) - String. SID for Copilot. Used when SMS Source is Copilot.
       * `name` (`str`) - String. 
       * `passwordComplexityOptions` (`dict`) - List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
-        * `minLength` (`float`)
+        * `minLength` (`float`) - Integer. Minimum number of characters allowed in passwords.
 
       * `passwordDictionary` (`dict`) - List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
         * `dictionaries` (`list`) - Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
@@ -101,6 +101,53 @@ class Connection(pulumi.CustomResource):
         """
         With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_connection = auth0.Connection("myConnection",
+            options={
+                "bruteForceProtection": "true",
+                "configuration": {
+                    "bar": "baz",
+                    "foo": "bar",
+                },
+                "customScripts": {
+                    "getUser": \"\"\"function getByEmail (email, callback) {
+          return callback(new Error("Whoops!"))
+        }
+
+        \"\"\",
+                },
+                "enabledDatabaseCustomization": "true",
+                "passwordHistory": [{
+                    "enable": True,
+                    "size": 3,
+                }],
+                "passwordPolicy": "excellent",
+            },
+            strategy="auth0")
+        my_waad_connection = auth0.Connection("myWaadConnection",
+            options={
+                "apiEnableUsers": True,
+                "appDomain": "my-auth0-app.eu.auth0.com",
+                "basicProfile": True,
+                "clientId": "1234",
+                "clientSecret": "1234",
+                "domainAliases": ["example.io"],
+                "extGroups": True,
+                "extProfile": True,
+                "tenantDomain": "exmaple.onmicrosoft.com",
+                "useWsfed": False,
+                "waadCommonEndpoint": False,
+                "waadProtocol": "openid-connect",
+            },
+            strategy="waad")
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -140,7 +187,7 @@ class Connection(pulumi.CustomResource):
           * `messagingServiceSid` (`pulumi.Input[str]`) - String. SID for Copilot. Used when SMS Source is Copilot.
           * `name` (`pulumi.Input[str]`) - String. 
           * `passwordComplexityOptions` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
-            * `minLength` (`pulumi.Input[float]`)
+            * `minLength` (`pulumi.Input[float]`) - Integer. Minimum number of characters allowed in passwords.
 
           * `passwordDictionary` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
             * `dictionaries` (`pulumi.Input[list]`) - Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
@@ -250,7 +297,7 @@ class Connection(pulumi.CustomResource):
           * `messagingServiceSid` (`pulumi.Input[str]`) - String. SID for Copilot. Used when SMS Source is Copilot.
           * `name` (`pulumi.Input[str]`) - String. 
           * `passwordComplexityOptions` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
-            * `minLength` (`pulumi.Input[float]`)
+            * `minLength` (`pulumi.Input[float]`) - Integer. Minimum number of characters allowed in passwords.
 
           * `passwordDictionary` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
             * `dictionaries` (`pulumi.Input[list]`) - Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.

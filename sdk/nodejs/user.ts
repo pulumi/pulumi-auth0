@@ -14,6 +14,22 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const admin = new auth0.Role("admin", {description: "Administrator"});
+ * const user = new auth0.User("user", {
+ *     connectionName: "Username-Password-Authentication",
+ *     userId: "12345",
+ *     username: "uniqueUsername",
+ *     givenName: "Firstname",
+ *     familyName: "Lastname",
+ *     nickname: "some.nickname",
+ *     email: "test@test.com",
+ *     emailVerified: true,
+ *     password: `passpass$12$12`,
+ *     roles: [admin.id],
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/user.html.md.

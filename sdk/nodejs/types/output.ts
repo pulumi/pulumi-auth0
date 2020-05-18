@@ -27,61 +27,95 @@ export interface ClientAddons {
     cloudbees?: {[key: string]: any};
     /**
      * String
-     * * `dropbox`- (Optional) String
-     * * `echosign`- (Optional) String
-     * * `egnyte`- (Optional) String
-     * * `firebase`- (Optional) String
      */
     concur?: {[key: string]: any};
+    /**
+     * String
+     */
     dropbox?: {[key: string]: any};
+    /**
+     * String
+     */
     echosign?: {[key: string]: any};
+    /**
+     * String
+     */
     egnyte?: {[key: string]: any};
+    /**
+     * String
+     */
     firebase?: {[key: string]: any};
+    /**
+     * String
+     */
     layer?: {[key: string]: any};
     /**
      * String
-     * * `newrelic`- (Optional) String
-     * * `office365`- (Optional) String
      */
     mscrm?: {[key: string]: any};
+    /**
+     * String
+     */
     newrelic?: {[key: string]: any};
+    /**
+     * String
+     */
     office365?: {[key: string]: any};
     /**
      * String
-     * * `salesforce`- (Optional) String
-     * * `salesforceApi`- (Optional) String
-     * * `salesforceSandboxApi`- (Optional) String
      */
     rms?: {[key: string]: any};
+    /**
+     * String
+     */
     salesforce?: {[key: string]: any};
+    /**
+     * String
+     */
     salesforceApi?: {[key: string]: any};
+    /**
+     * String
+     */
     salesforceSandboxApi?: {[key: string]: any};
     /**
      * List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-     * * `layer`- (Optional) String
-     * * `sapApi`- (Optional) String
      */
     samlp?: outputs.ClientAddonsSamlp;
+    /**
+     * String
+     */
     sapApi?: {[key: string]: any};
     /**
      * String
-     * * `sharepoint`- (Optional) String
      */
     sentry?: {[key: string]: any};
+    /**
+     * String
+     */
     sharepoint?: {[key: string]: any};
     /**
      * String
-     * * `springcm`- (Optional) String
-     * * `wams`- (Optional) String
-     * * `wsfed`- (Optional) String
-     * * `zendesk`- (Optional) String
-     * * `zoom`- (Optional) String
      */
     slack?: {[key: string]: any};
+    /**
+     * String
+     */
     springcm?: {[key: string]: any};
+    /**
+     * String
+     */
     wams?: {[key: string]: any};
+    /**
+     * String
+     */
     wsfed?: {[key: string]: any};
+    /**
+     * String
+     */
     zendesk?: {[key: string]: any};
+    /**
+     * String
+     */
     zoom?: {[key: string]: any};
 }
 
@@ -378,6 +412,9 @@ export interface ConnectionOptions {
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {
+    /**
+     * Integer. Minimum number of characters allowed in passwords.
+     */
     minLength?: number;
 }
 

@@ -14,6 +14,14 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myCustomDomain = new auth0.CustomDomain("myCustomDomain", {
+ *     domain: "auth.example.com",
+ *     type: "auth0ManagedCerts",
+ *     verificationMethod: "txt",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/custom_domain.html.md.

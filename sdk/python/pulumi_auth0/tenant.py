@@ -105,6 +105,38 @@ class Tenant(pulumi.CustomResource):
         """
         With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        tenant = auth0.Tenant("tenant",
+            allowed_logout_urls=["http://mysite/logout"],
+            change_password={
+                "enabled": True,
+                "html": (lambda path: open(path).read())("./password_reset.html"),
+            },
+            default_audience="<client_id>",
+            default_directory="Connection-Name",
+            error_page={
+                "html": (lambda path: open(path).read())("./error.html"),
+                "showLogLink": True,
+                "url": "http://mysite/errors",
+            },
+            friendly_name="Tenant Name",
+            guardian_mfa_page={
+                "enabled": True,
+                "html": (lambda path: open(path).read())("./guardian_multifactor.html"),
+            },
+            picture_url="http://mysite/logo.png",
+            sandbox_version="8",
+            session_lifetime=46000,
+            support_email="support@mysite",
+            support_url="http://mysite/support")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -35,61 +35,95 @@ namespace Pulumi.Auth0.Outputs
         public readonly ImmutableDictionary<string, object>? Cloudbees;
         /// <summary>
         /// String
-        /// * `dropbox`- (Optional) String
-        /// * `echosign`- (Optional) String
-        /// * `egnyte`- (Optional) String
-        /// * `firebase`- (Optional) String
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Concur;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Dropbox;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Echosign;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Egnyte;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Firebase;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Layer;
         /// <summary>
         /// String
-        /// * `newrelic`- (Optional) String
-        /// * `office365`- (Optional) String
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Mscrm;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Newrelic;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Office365;
         /// <summary>
         /// String
-        /// * `salesforce`- (Optional) String
-        /// * `salesforce_api`- (Optional) String
-        /// * `salesforce_sandbox_api`- (Optional) String
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Rms;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Salesforce;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? SalesforceApi;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? SalesforceSandboxApi;
         /// <summary>
         /// List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-        /// * `layer`- (Optional) String
-        /// * `sap_api`- (Optional) String
         /// </summary>
         public readonly Outputs.ClientAddonsSamlp? Samlp;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? SapApi;
         /// <summary>
         /// String
-        /// * `sharepoint`- (Optional) String
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Sentry;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Sharepoint;
         /// <summary>
         /// String
-        /// * `springcm`- (Optional) String
-        /// * `wams`- (Optional) String
-        /// * `wsfed`- (Optional) String
-        /// * `zendesk`- (Optional) String
-        /// * `zoom`- (Optional) String
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Slack;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Springcm;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Wams;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Wsfed;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Zendesk;
+        /// <summary>
+        /// String
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Zoom;
 
         [OutputConstructor]

@@ -14,6 +14,67 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myClient = new auth0.Client("myClient", {
+ *     addons: {
+ *         firebase: {
+ *             client_email: "john.doe@example.com",
+ *             lifetime_in_seconds: 1,
+ *             private_key: "wer",
+ *             private_key_id: "qwreerwerwe",
+ *         },
+ *         samlp: {
+ *             audience: "https://example.com/saml",
+ *             createUpnClaim: false,
+ *             mapIdentities: false,
+ *             mapUnknownClaimsAsIs: false,
+ *             mappings: {
+ *                 email: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+ *                 name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+ *             },
+ *             nameIdentifierFormat: "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+ *             nameIdentifierProbes: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+ *             passthroughClaimsWithNoMapping: false,
+ *         },
+ *     },
+ *     allowedLogoutUrls: ["https://example.com"],
+ *     allowedOrigins: ["https://example.com"],
+ *     appType: "nonInteractive",
+ *     callbacks: ["https://example.com/callback"],
+ *     clientMetadata: {
+ *         foo: "zoo",
+ *     },
+ *     customLoginPageOn: true,
+ *     description: "Test Applications Long Description",
+ *     grantTypes: [
+ *         "authorizationCode",
+ *         "http://auth0.com/oauth/grant-type/password-realm",
+ *         "implicit",
+ *         "password",
+ *         "refreshToken",
+ *     ],
+ *     isFirstParty: true,
+ *     isTokenEndpointIpHeaderTrusted: true,
+ *     jwtConfiguration: {
+ *         alg: "RS256",
+ *         lifetimeInSeconds: 300,
+ *         scopes: {
+ *             foo: "bar",
+ *         },
+ *         secretEncoded: true,
+ *     },
+ *     mobile: {
+ *         ios: {
+ *             appBundleIdentifier: "com.my.bundle.id",
+ *             teamId: "9JA89QQLNQ",
+ *         },
+ *     },
+ *     oidcConformant: false,
+ *     tokenEndpointAuthMethod: "clientSecretPost",
+ *     webOrigins: ["https://example.com"],
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/client.html.md.

@@ -14,6 +14,26 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
+ *     allowOfflineAccess: true,
+ *     identifier: "https://api.example.com",
+ *     scopes: [
+ *         {
+ *             description: "Create foos",
+ *             value: "create:foo",
+ *         },
+ *         {
+ *             description: "Create bars",
+ *             value: "create:bar",
+ *         },
+ *     ],
+ *     signingAlg: "RS256",
+ *     skipConsentForVerifiableFirstPartyClients: true,
+ *     tokenLifetime: 8600,
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/resource_server.html.md.

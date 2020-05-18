@@ -14,6 +14,28 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myEmailProvider = new auth0.Email("myEmailProvider", {
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
+ *     credentials: {
+ *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
+ *         secretAccessKey: "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *         region: "us-east-1",
+ *     },
+ * });
+ * const myEmailTemplate = new auth0.EmailTemplate("myEmailTemplate", {
+ *     template: "welcomeEmail",
+ *     body: "<html><body><h1>Welcome!</h1></body></html>",
+ *     from: "welcome@example.com",
+ *     resultUrl: "https://example.com/welcome",
+ *     subject: "Welcome",
+ *     syntax: "liquid",
+ *     urlLifetimeInSeconds: 3600,
+ *     enabled: true,
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/email_template.html.md.

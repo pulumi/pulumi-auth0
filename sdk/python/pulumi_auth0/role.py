@@ -29,6 +29,39 @@ class Role(pulumi.CustomResource):
         """
         With this resource, you can created and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_resource_server = auth0.ResourceServer("myResourceServer",
+            enforce_policies=True,
+            identifier="my-resource-server-identifier",
+            scopes=[{
+                "description": "read something",
+                "value": "read:something",
+            }],
+            signing_alg="RS256",
+            skip_consent_for_verifiable_first_party_clients=True,
+            token_lifetime=86400)
+        my_role = auth0.Role("myRole",
+            description="Role Description...",
+            permissions=[{
+                "name": "read:something",
+                "resourceServerIdentifier": my_resource_server.identifier,
+            }])
+        my_user = auth0.User("myUser",
+            connection_name="Username-Password-Authentication",
+            email="test@test.com",
+            nickname="testnick",
+            password="passpass$$12$$12",
+            roles=[my_role.id],
+            user_id="auth0|1234567890",
+            username="testnick")
+        ```
 
 
         :param str resource_name: The name of the resource.

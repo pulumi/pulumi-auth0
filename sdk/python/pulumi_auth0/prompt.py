@@ -15,6 +15,16 @@ class Prompt(pulumi.CustomResource):
         """
         With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        example = auth0.Prompt("example", universal_login_experience="classic")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -16,6 +16,17 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myHook = new auth0.Hook("myHook", {
+ *     enabled: true,
+ *     script: `function (user, context, callback) { 
+ *   callback(null, { user }); 
+ * }
+ * `,
+ *     triggerId: "pre-user-registration",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/hook.html.md.

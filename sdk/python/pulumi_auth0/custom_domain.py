@@ -40,6 +40,19 @@ class CustomDomain(pulumi.CustomResource):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_custom_domain = auth0.CustomDomain("myCustomDomain",
+            domain="auth.example.com",
+            type="auth0_managed_certs",
+            verification_method="txt")
+        ```
 
 
         :param str resource_name: The name of the resource.

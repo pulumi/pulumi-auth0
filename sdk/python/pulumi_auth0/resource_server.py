@@ -69,6 +69,31 @@ class ResourceServer(pulumi.CustomResource):
         """
         With this resource, you can set up APIs that can be consumed from your authorized applications.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_resource_server = auth0.ResourceServer("myResourceServer",
+            allow_offline_access=True,
+            identifier="https://api.example.com",
+            scopes=[
+                {
+                    "description": "Create foos",
+                    "value": "create:foo",
+                },
+                {
+                    "description": "Create bars",
+                    "value": "create:bar",
+                },
+            ],
+            signing_alg="RS256",
+            skip_consent_for_verifiable_first_party_clients=True,
+            token_lifetime=8600)
+        ```
 
 
         :param str resource_name: The name of the resource.

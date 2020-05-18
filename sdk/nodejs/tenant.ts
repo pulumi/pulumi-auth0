@@ -14,6 +14,34 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * import * as fs from "fs";
+ * 
+ * const tenant = new auth0.Tenant("tenant", {
+ *     allowedLogoutUrls: ["http://mysite/logout"],
+ *     changePassword: {
+ *         enabled: true,
+ *         html: fs.readFileSync("./password_reset.html", "utf-8"),
+ *     },
+ *     defaultAudience: "<client_id>",
+ *     defaultDirectory: "Connection-Name",
+ *     errorPage: {
+ *         html: fs.readFileSync("./error.html", "utf-8"),
+ *         showLogLink: true,
+ *         url: "http://mysite/errors",
+ *     },
+ *     friendlyName: "Tenant Name",
+ *     guardianMfaPage: {
+ *         enabled: true,
+ *         html: fs.readFileSync("./guardian_multifactor.html", "utf-8"),
+ *     },
+ *     pictureUrl: "http://mysite/logo.png",
+ *     sandboxVersion: "8",
+ *     sessionLifetime: 46000,
+ *     supportEmail: "support@mysite",
+ *     supportUrl: "http://mysite/support",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/tenant.html.md.

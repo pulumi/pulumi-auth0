@@ -14,6 +14,36 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
+ *     enforcePolicies: true,
+ *     identifier: "my-resource-server-identifier",
+ *     scopes: [{
+ *         description: "read something",
+ *         value: "read:something",
+ *     }],
+ *     signingAlg: "RS256",
+ *     skipConsentForVerifiableFirstPartyClients: true,
+ *     tokenLifetime: 86400,
+ * });
+ * const myRole = new auth0.Role("myRole", {
+ *     description: "Role Description...",
+ *     permissions: [{
+ *         name: "read:something",
+ *         resourceServerIdentifier: myResourceServer.identifier,
+ *     }],
+ * });
+ * const myUser = new auth0.User("myUser", {
+ *     connectionName: "Username-Password-Authentication",
+ *     email: "test@test.com",
+ *     nickname: "testnick",
+ *     password: "passpass$12$12",
+ *     roles: [myRole.id],
+ *     userId: "auth0|1234567890",
+ *     username: "testnick",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/role.html.md.

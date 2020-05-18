@@ -41,6 +41,23 @@ class Email(pulumi.CustomResource):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_email_provider = auth0.Email("myEmailProvider",
+            credentials={
+                "accessKeyId": "AKIAXXXXXXXXXXXXXXXX",
+                "region": "us-east-1",
+                "secretAccessKey": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            },
+            default_from_address="accounts@example.com",
+            enabled=True)
+        ```
 
 
         :param str resource_name: The name of the resource.

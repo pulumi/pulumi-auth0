@@ -14,6 +14,28 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myClient = new auth0.Client("myClient", {});
+ * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
+ *     identifier: "https://api.example.com/client-grant",
+ *     scopes: [
+ *         {
+ *             description: "Create foos",
+ *             value: "create:foo",
+ *         },
+ *         {
+ *             description: "Create bars",
+ *             value: "create:bar",
+ *         },
+ *     ],
+ * });
+ * const myClientGrant = new auth0.ClientGrant("myClientGrant", {
+ *     audience: myResourceServer.identifier,
+ *     clientId: myClient.id,
+ *     scopes: ["create:foo"],
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/client_grant.html.md.

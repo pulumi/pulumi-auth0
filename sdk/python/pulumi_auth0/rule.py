@@ -30,6 +30,25 @@ class Rule(pulumi.CustomResource):
         """
         With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the .RuleConfig resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_rule = auth0.Rule("myRule",
+            enabled=True,
+            script=\"\"\"function (user, context, callback) {
+          callback(null, user, context);
+        }
+
+        \"\"\")
+        my_rule_config = auth0.RuleConfig("myRuleConfig",
+            key="foo",
+            value="bar")
+        ```
 
 
         :param str resource_name: The name of the resource.

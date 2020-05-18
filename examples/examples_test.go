@@ -17,7 +17,7 @@ func getCwd(t *testing.T) string {
 	return cwd
 }
 
-func TestAccPolicy(t *testing.T) {
+func TestAccClient(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "client"),

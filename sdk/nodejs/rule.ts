@@ -14,6 +14,20 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myRule = new auth0.Rule("myRule", {
+ *     enabled: true,
+ *     script: `function (user, context, callback) {
+ *   callback(null, user, context);
+ * }
+ * `,
+ * });
+ * const myRuleConfig = new auth0.RuleConfig("myRuleConfig", {
+ *     key: "foo",
+ *     value: "bar",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/rule.html.md.

@@ -20,30 +20,19 @@ class Client(pulumi.CustomResource):
       * `box` (`dict`) - String
       * `cloudbees` (`dict`) - String
       * `concur` (`dict`) - String
-        * `dropbox`- (Optional) String
-        * `echosign`- (Optional) String
-        * `egnyte`- (Optional) String
-        * `firebase`- (Optional) String
-      * `dropbox` (`dict`)
-      * `echosign` (`dict`)
-      * `egnyte` (`dict`)
-      * `firebase` (`dict`)
-      * `layer` (`dict`)
+      * `dropbox` (`dict`) - String
+      * `echosign` (`dict`) - String
+      * `egnyte` (`dict`) - String
+      * `firebase` (`dict`) - String
+      * `layer` (`dict`) - String
       * `mscrm` (`dict`) - String
-        * `newrelic`- (Optional) String
-        * `office365`- (Optional) String
-      * `newrelic` (`dict`)
-      * `office365` (`dict`)
+      * `newrelic` (`dict`) - String
+      * `office365` (`dict`) - String
       * `rms` (`dict`) - String
-        * `salesforce`- (Optional) String
-        * `salesforce_api`- (Optional) String
-        * `salesforce_sandbox_api`- (Optional) String
-      * `salesforce` (`dict`)
-      * `salesforceApi` (`dict`)
-      * `salesforceSandboxApi` (`dict`)
+      * `salesforce` (`dict`) - String
+      * `salesforceApi` (`dict`) - String
+      * `salesforceSandboxApi` (`dict`) - String
       * `samlp` (`dict`) - List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-        * `layer`- (Optional) String
-        * `sap_api`- (Optional) String
         * `audience` (`str`) - String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
         * `authnContextClassRef` (`str`) - String. Class reference of the authentication context.
         * `binding` (`str`) - String. Protocol binding used for SAML logout responses.
@@ -67,21 +56,15 @@ class Client(pulumi.CustomResource):
         * `signatureAlgorithm` (`str`) - String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
         * `typedAttributes` (`bool`) - Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
 
-      * `sapApi` (`dict`)
+      * `sapApi` (`dict`) - String
       * `sentry` (`dict`) - String
-        * `sharepoint`- (Optional) String
-      * `sharepoint` (`dict`)
+      * `sharepoint` (`dict`) - String
       * `slack` (`dict`) - String
-        * `springcm`- (Optional) String
-        * `wams`- (Optional) String
-        * `wsfed`- (Optional) String
-        * `zendesk`- (Optional) String
-        * `zoom`- (Optional) String
-      * `springcm` (`dict`)
-      * `wams` (`dict`)
-      * `wsfed` (`dict`)
-      * `zendesk` (`dict`)
-      * `zoom` (`dict`)
+      * `springcm` (`dict`) - String
+      * `wams` (`dict`) - String
+      * `wsfed` (`dict`) - String
+      * `zendesk` (`dict`) - String
+      * `zoom` (`dict`) - String
     """
     allowed_logout_urls: pulumi.Output[list]
     """
@@ -213,6 +196,72 @@ class Client(pulumi.CustomResource):
         """
         With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_client = auth0.Client("myClient",
+            addons={
+                "firebase": {
+                    "client_email": "john.doe@example.com",
+                    "lifetime_in_seconds": 1,
+                    "private_key": "wer",
+                    "private_key_id": "qwreerwerwe",
+                },
+                "samlp": {
+                    "audience": "https://example.com/saml",
+                    "createUpnClaim": False,
+                    "mapIdentities": False,
+                    "mapUnknownClaimsAsIs": False,
+                    "mappings": {
+                        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+                        "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                    },
+                    "nameIdentifierFormat": "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    "nameIdentifierProbes": ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+                    "passthroughClaimsWithNoMapping": False,
+                },
+            },
+            allowed_logout_urls=["https://example.com"],
+            allowed_origins=["https://example.com"],
+            app_type="non_interactive",
+            callbacks=["https://example.com/callback"],
+            client_metadata={
+                "foo": "zoo",
+            },
+            custom_login_page_on=True,
+            description="Test Applications Long Description",
+            grant_types=[
+                "authorization_code",
+                "http://auth0.com/oauth/grant-type/password-realm",
+                "implicit",
+                "password",
+                "refresh_token",
+            ],
+            is_first_party=True,
+            is_token_endpoint_ip_header_trusted=True,
+            jwt_configuration={
+                "alg": "RS256",
+                "lifetimeInSeconds": 300,
+                "scopes": {
+                    "foo": "bar",
+                },
+                "secretEncoded": True,
+            },
+            mobile={
+                "ios": {
+                    "appBundleIdentifier": "com.my.bundle.id",
+                    "teamId": "9JA89QQLNQ",
+                },
+            },
+            oidc_conformant=False,
+            token_endpoint_auth_method="client_secret_post",
+            web_origins=["https://example.com"])
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -253,30 +302,19 @@ class Client(pulumi.CustomResource):
           * `box` (`pulumi.Input[dict]`) - String
           * `cloudbees` (`pulumi.Input[dict]`) - String
           * `concur` (`pulumi.Input[dict]`) - String
-            * `dropbox`- (Optional) String
-            * `echosign`- (Optional) String
-            * `egnyte`- (Optional) String
-            * `firebase`- (Optional) String
-          * `dropbox` (`pulumi.Input[dict]`)
-          * `echosign` (`pulumi.Input[dict]`)
-          * `egnyte` (`pulumi.Input[dict]`)
-          * `firebase` (`pulumi.Input[dict]`)
-          * `layer` (`pulumi.Input[dict]`)
+          * `dropbox` (`pulumi.Input[dict]`) - String
+          * `echosign` (`pulumi.Input[dict]`) - String
+          * `egnyte` (`pulumi.Input[dict]`) - String
+          * `firebase` (`pulumi.Input[dict]`) - String
+          * `layer` (`pulumi.Input[dict]`) - String
           * `mscrm` (`pulumi.Input[dict]`) - String
-            * `newrelic`- (Optional) String
-            * `office365`- (Optional) String
-          * `newrelic` (`pulumi.Input[dict]`)
-          * `office365` (`pulumi.Input[dict]`)
+          * `newrelic` (`pulumi.Input[dict]`) - String
+          * `office365` (`pulumi.Input[dict]`) - String
           * `rms` (`pulumi.Input[dict]`) - String
-            * `salesforce`- (Optional) String
-            * `salesforce_api`- (Optional) String
-            * `salesforce_sandbox_api`- (Optional) String
-          * `salesforce` (`pulumi.Input[dict]`)
-          * `salesforceApi` (`pulumi.Input[dict]`)
-          * `salesforceSandboxApi` (`pulumi.Input[dict]`)
+          * `salesforce` (`pulumi.Input[dict]`) - String
+          * `salesforceApi` (`pulumi.Input[dict]`) - String
+          * `salesforceSandboxApi` (`pulumi.Input[dict]`) - String
           * `samlp` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-            * `layer`- (Optional) String
-            * `sap_api`- (Optional) String
             * `audience` (`pulumi.Input[str]`) - String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
             * `authnContextClassRef` (`pulumi.Input[str]`) - String. Class reference of the authentication context.
             * `binding` (`pulumi.Input[str]`) - String. Protocol binding used for SAML logout responses.
@@ -300,21 +338,15 @@ class Client(pulumi.CustomResource):
             * `signatureAlgorithm` (`pulumi.Input[str]`) - String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
             * `typedAttributes` (`pulumi.Input[bool]`) - Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
 
-          * `sapApi` (`pulumi.Input[dict]`)
+          * `sapApi` (`pulumi.Input[dict]`) - String
           * `sentry` (`pulumi.Input[dict]`) - String
-            * `sharepoint`- (Optional) String
-          * `sharepoint` (`pulumi.Input[dict]`)
+          * `sharepoint` (`pulumi.Input[dict]`) - String
           * `slack` (`pulumi.Input[dict]`) - String
-            * `springcm`- (Optional) String
-            * `wams`- (Optional) String
-            * `wsfed`- (Optional) String
-            * `zendesk`- (Optional) String
-            * `zoom`- (Optional) String
-          * `springcm` (`pulumi.Input[dict]`)
-          * `wams` (`pulumi.Input[dict]`)
-          * `wsfed` (`pulumi.Input[dict]`)
-          * `zendesk` (`pulumi.Input[dict]`)
-          * `zoom` (`pulumi.Input[dict]`)
+          * `springcm` (`pulumi.Input[dict]`) - String
+          * `wams` (`pulumi.Input[dict]`) - String
+          * `wsfed` (`pulumi.Input[dict]`) - String
+          * `zendesk` (`pulumi.Input[dict]`) - String
+          * `zoom` (`pulumi.Input[dict]`) - String
 
         The **jwt_configuration** object supports the following:
 
@@ -435,30 +467,19 @@ class Client(pulumi.CustomResource):
           * `box` (`pulumi.Input[dict]`) - String
           * `cloudbees` (`pulumi.Input[dict]`) - String
           * `concur` (`pulumi.Input[dict]`) - String
-            * `dropbox`- (Optional) String
-            * `echosign`- (Optional) String
-            * `egnyte`- (Optional) String
-            * `firebase`- (Optional) String
-          * `dropbox` (`pulumi.Input[dict]`)
-          * `echosign` (`pulumi.Input[dict]`)
-          * `egnyte` (`pulumi.Input[dict]`)
-          * `firebase` (`pulumi.Input[dict]`)
-          * `layer` (`pulumi.Input[dict]`)
+          * `dropbox` (`pulumi.Input[dict]`) - String
+          * `echosign` (`pulumi.Input[dict]`) - String
+          * `egnyte` (`pulumi.Input[dict]`) - String
+          * `firebase` (`pulumi.Input[dict]`) - String
+          * `layer` (`pulumi.Input[dict]`) - String
           * `mscrm` (`pulumi.Input[dict]`) - String
-            * `newrelic`- (Optional) String
-            * `office365`- (Optional) String
-          * `newrelic` (`pulumi.Input[dict]`)
-          * `office365` (`pulumi.Input[dict]`)
+          * `newrelic` (`pulumi.Input[dict]`) - String
+          * `office365` (`pulumi.Input[dict]`) - String
           * `rms` (`pulumi.Input[dict]`) - String
-            * `salesforce`- (Optional) String
-            * `salesforce_api`- (Optional) String
-            * `salesforce_sandbox_api`- (Optional) String
-          * `salesforce` (`pulumi.Input[dict]`)
-          * `salesforceApi` (`pulumi.Input[dict]`)
-          * `salesforceSandboxApi` (`pulumi.Input[dict]`)
+          * `salesforce` (`pulumi.Input[dict]`) - String
+          * `salesforceApi` (`pulumi.Input[dict]`) - String
+          * `salesforceSandboxApi` (`pulumi.Input[dict]`) - String
           * `samlp` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-            * `layer`- (Optional) String
-            * `sap_api`- (Optional) String
             * `audience` (`pulumi.Input[str]`) - String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
             * `authnContextClassRef` (`pulumi.Input[str]`) - String. Class reference of the authentication context.
             * `binding` (`pulumi.Input[str]`) - String. Protocol binding used for SAML logout responses.
@@ -482,21 +503,15 @@ class Client(pulumi.CustomResource):
             * `signatureAlgorithm` (`pulumi.Input[str]`) - String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
             * `typedAttributes` (`pulumi.Input[bool]`) - Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
 
-          * `sapApi` (`pulumi.Input[dict]`)
+          * `sapApi` (`pulumi.Input[dict]`) - String
           * `sentry` (`pulumi.Input[dict]`) - String
-            * `sharepoint`- (Optional) String
-          * `sharepoint` (`pulumi.Input[dict]`)
+          * `sharepoint` (`pulumi.Input[dict]`) - String
           * `slack` (`pulumi.Input[dict]`) - String
-            * `springcm`- (Optional) String
-            * `wams`- (Optional) String
-            * `wsfed`- (Optional) String
-            * `zendesk`- (Optional) String
-            * `zoom`- (Optional) String
-          * `springcm` (`pulumi.Input[dict]`)
-          * `wams` (`pulumi.Input[dict]`)
-          * `wsfed` (`pulumi.Input[dict]`)
-          * `zendesk` (`pulumi.Input[dict]`)
-          * `zoom` (`pulumi.Input[dict]`)
+          * `springcm` (`pulumi.Input[dict]`) - String
+          * `wams` (`pulumi.Input[dict]`) - String
+          * `wsfed` (`pulumi.Input[dict]`) - String
+          * `zendesk` (`pulumi.Input[dict]`) - String
+          * `zoom` (`pulumi.Input[dict]`) - String
 
         The **jwt_configuration** object supports the following:
 

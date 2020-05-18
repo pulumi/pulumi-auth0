@@ -14,6 +14,18 @@ import * as utilities from "./utilities";
  * 
  * 
  * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * 
+ * const myEmailProvider = new auth0.Email("myEmailProvider", {
+ *     credentials: {
+ *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
+ *         region: "us-east-1",
+ *         secretAccessKey: "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     },
+ *     defaultFromAddress: "accounts@example.com",
+ *     enabled: true,
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/email.html.md.

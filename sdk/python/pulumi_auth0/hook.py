@@ -32,6 +32,23 @@ class Hook(pulumi.CustomResource):
 
         Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_hook = auth0.Hook("myHook",
+            enabled=True,
+            script=\"\"\"function (user, context, callback) { 
+          callback(null, { user }); 
+        }
+
+        \"\"\",
+            trigger_id="pre-user-registration")
+        ```
 
 
         :param str resource_name: The name of the resource.
