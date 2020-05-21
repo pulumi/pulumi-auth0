@@ -8,17 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
- * 
+ *
  * Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const myHook = new auth0.Hook("myHook", {
  *     enabled: true,
  *     script: `function (user, context, callback) { 
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     triggerId: "pre-user-registration",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/hook.html.md.
  */
 export class Hook extends pulumi.CustomResource {
     /**

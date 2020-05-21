@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the auth0..RuleConfig resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const myRule = new auth0.Rule("myRule", {
  *     enabled: true,
  *     script: `function (user, context, callback) {
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *     value: "bar",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/rule.html.md.
  */
 export class Rule extends pulumi.CustomResource {
     /**

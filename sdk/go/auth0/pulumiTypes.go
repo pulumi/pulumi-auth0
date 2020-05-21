@@ -1936,6 +1936,8 @@ type ConnectionOptions struct {
 	// Boolean.
 	ApiEnableUsers *bool `pulumi:"apiEnableUsers"`
 	// String. Azure AD domain name.
+	//
+	// Deprecated: use domain instead
 	AppDomain *string `pulumi:"appDomain"`
 	// String
 	AppId *string `pulumi:"appId"`
@@ -2048,6 +2050,8 @@ type ConnectionOptionsArgs struct {
 	// Boolean.
 	ApiEnableUsers pulumi.BoolPtrInput `pulumi:"apiEnableUsers"`
 	// String. Azure AD domain name.
+	//
+	// Deprecated: use domain instead
 	AppDomain pulumi.StringPtrInput `pulumi:"appDomain"`
 	// String
 	AppId pulumi.StringPtrInput `pulumi:"appId"`
@@ -2234,6 +2238,8 @@ func (o ConnectionOptionsOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 }
 
 // String. Azure AD domain name.
+//
+// Deprecated: use domain instead
 func (o ConnectionOptionsOutput) AppDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppDomain }).(pulumi.StringPtrOutput)
 }
@@ -2528,6 +2534,8 @@ func (o ConnectionOptionsPtrOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 }
 
 // String. Azure AD domain name.
+//
+// Deprecated: use domain instead
 func (o ConnectionOptionsPtrOutput) AppDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {

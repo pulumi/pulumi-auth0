@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const myConnection = new auth0.Connection("myConnection", {
  *     options: {
  *         bruteForceProtection: true,
@@ -57,8 +57,6 @@ import * as utilities from "./utilities";
  *     strategy: "waad",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/connection.html.md.
  */
 export class Connection extends pulumi.CustomResource {
     /**

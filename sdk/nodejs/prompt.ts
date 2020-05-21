@@ -8,21 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const example = new auth0.Prompt("example", {
  *     universalLoginExperience: "classic",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/prompt.html.md.
  */
 export class Prompt extends pulumi.CustomResource {
     /**

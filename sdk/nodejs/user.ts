@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const admin = new auth0.Role("admin", {description: "Administrator"});
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
@@ -31,8 +31,6 @@ import * as utilities from "./utilities";
  *     roles: [admin.id],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/user.html.md.
  */
 export class User extends pulumi.CustomResource {
     /**
