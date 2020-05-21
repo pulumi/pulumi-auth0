@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * With this resource, you can created and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
  *     enforcePolicies: true,
  *     identifier: "my-resource-server-identifier",
@@ -45,8 +45,6 @@ import * as utilities from "./utilities";
  *     username: "testnick",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/role.html.md.
  */
 export class Role extends pulumi.CustomResource {
     /**

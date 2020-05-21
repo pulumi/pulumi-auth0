@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * With this resource, you can set up APIs that can be consumed from your authorized applications.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
  *     allowOfflineAccess: true,
  *     identifier: "https://api.example.com",
@@ -35,8 +35,6 @@ import * as utilities from "./utilities";
  *     tokenLifetime: 8600,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/resource_server.html.md.
  */
 export class ResourceServer extends pulumi.CustomResource {
     /**

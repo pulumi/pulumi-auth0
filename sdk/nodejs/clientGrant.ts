@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const myClient = new auth0.Client("myClient", {});
  * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
  *     identifier: "https://api.example.com/client-grant",
@@ -37,8 +37,6 @@ import * as utilities from "./utilities";
  *     scopes: ["create:foo"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/client_grant.html.md.
  */
 export class ClientGrant extends pulumi.CustomResource {
     /**

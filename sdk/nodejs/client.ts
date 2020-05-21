@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * 
+ *
  * const myClient = new auth0.Client("myClient", {
  *     addons: {
  *         firebase: {
@@ -76,8 +76,6 @@ import * as utilities from "./utilities";
  *     webOrigins: ["https://example.com"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/client.html.md.
  */
 export class Client extends pulumi.CustomResource {
     /**

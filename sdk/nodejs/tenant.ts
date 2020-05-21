@@ -8,16 +8,16 @@ import * as utilities from "./utilities";
 
 /**
  * With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  * import * as fs from "fs";
- * 
+ *
  * const tenant = new auth0.Tenant("tenant", {
  *     allowedLogoutUrls: ["http://mysite/logout"],
  *     changePassword: {
@@ -43,8 +43,6 @@ import * as utilities from "./utilities";
  *     supportUrl: "http://mysite/support",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-auth0/blob/master/website/docs/r/tenant.html.md.
  */
 export class Tenant extends pulumi.CustomResource {
     /**
