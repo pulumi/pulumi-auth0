@@ -45,4 +45,4 @@ The following configuration points are available:
 
 ## Reference
 
-For further information, please visit [the GitHub provider docs](https://www.pulumi.com/docs/intro/cloud-providers/github) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/github).
+For further information, please visit [the Auth0 provider docs](https://www.pulumi.com/docs/intro/cloud-providers/auth0) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/auth0).
