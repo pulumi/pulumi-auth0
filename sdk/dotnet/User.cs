@@ -11,6 +11,43 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = new Auth0.Role("admin", new Auth0.RoleArgs
+    ///         {
+    ///             Description = "Administrator",
+    ///         });
+    ///         var user = new Auth0.User("user", new Auth0.UserArgs
+    ///         {
+    ///             ConnectionName = "Username-Password-Authentication",
+    ///             UserId = "12345",
+    ///             Username = "unique_username",
+    ///             GivenName = "Firstname",
+    ///             FamilyName = "Lastname",
+    ///             Nickname = "some.nickname",
+    ///             Email = "test@test.com",
+    ///             EmailVerified = true,
+    ///             Password = "passpass$12$12",
+    ///             Roles = 
+    ///             {
+    ///                 admin.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {

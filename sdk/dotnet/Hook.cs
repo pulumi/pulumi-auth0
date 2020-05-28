@@ -13,6 +13,33 @@ namespace Pulumi.Auth0
     /// Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
     /// 
     /// Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myHook = new Auth0.Hook("myHook", new Auth0.HookArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Script = @"function (user, context, callback) { 
+    ///   callback(null, { user }); 
+    /// }
+    /// 
+    /// ",
+    ///             TriggerId = "pre-user-registration",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Hook : Pulumi.CustomResource
     {

@@ -11,6 +11,76 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myConnection = new Auth0.Connection("myConnection", new Auth0.ConnectionArgs
+    ///         {
+    ///             Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///             {
+    ///                 BruteForceProtection = "true",
+    ///                 Configuration = 
+    ///                 {
+    ///                     { "bar", "baz" },
+    ///                     { "foo", "bar" },
+    ///                 },
+    ///                 CustomScripts = 
+    ///                 {
+    ///                     { "getUser", @"function getByEmail (email, callback) {
+    ///   return callback(new Error(""Whoops!""))
+    /// }
+    /// 
+    /// " },
+    ///                 },
+    ///                 EnabledDatabaseCustomization = "true",
+    ///                 PasswordHistory = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "enable", true },
+    ///                         { "size", 3 },
+    ///                     },
+    ///                 },
+    ///                 PasswordPolicy = "excellent",
+    ///             },
+    ///             Strategy = "auth0",
+    ///         });
+    ///         var myWaadConnection = new Auth0.Connection("myWaadConnection", new Auth0.ConnectionArgs
+    ///         {
+    ///             Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///             {
+    ///                 ApiEnableUsers = true,
+    ///                 AppDomain = "my-auth0-app.eu.auth0.com",
+    ///                 BasicProfile = true,
+    ///                 ClientId = "1234",
+    ///                 ClientSecret = "1234",
+    ///                 DomainAliases = 
+    ///                 {
+    ///                     "example.io",
+    ///                 },
+    ///                 ExtGroups = true,
+    ///                 ExtProfile = true,
+    ///                 TenantDomain = "exmaple.onmicrosoft.com",
+    ///                 UseWsfed = false,
+    ///                 WaadCommonEndpoint = false,
+    ///                 WaadProtocol = "openid-connect",
+    ///             },
+    ///             Strategy = "waad",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

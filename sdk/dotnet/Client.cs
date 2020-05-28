@@ -11,6 +11,107 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myClient = new Auth0.Client("myClient", new Auth0.ClientArgs
+    ///         {
+    ///             Addons = new Auth0.Inputs.ClientAddonsArgs
+    ///             {
+    ///                 Firebase = 
+    ///                 {
+    ///                     { "client_email", "john.doe@example.com" },
+    ///                     { "lifetime_in_seconds", 1 },
+    ///                     { "private_key", "wer" },
+    ///                     { "private_key_id", "qwreerwerwe" },
+    ///                 },
+    ///                 Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs
+    ///                 {
+    ///                     Audience = "https://example.com/saml",
+    ///                     CreateUpnClaim = false,
+    ///                     MapIdentities = false,
+    ///                     MapUnknownClaimsAsIs = false,
+    ///                     Mappings = 
+    ///                     {
+    ///                         { "email", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" },
+    ///                         { "name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
+    ///                     },
+    ///                     NameIdentifierFormat = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+    ///                     NameIdentifierProbes = 
+    ///                     {
+    ///                         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+    ///                     },
+    ///                     PassthroughClaimsWithNoMapping = false,
+    ///                 },
+    ///             },
+    ///             AllowedLogoutUrls = 
+    ///             {
+    ///                 "https://example.com",
+    ///             },
+    ///             AllowedOrigins = 
+    ///             {
+    ///                 "https://example.com",
+    ///             },
+    ///             AppType = "non_interactive",
+    ///             Callbacks = 
+    ///             {
+    ///                 "https://example.com/callback",
+    ///             },
+    ///             ClientMetadata = 
+    ///             {
+    ///                 { "foo", "zoo" },
+    ///             },
+    ///             CustomLoginPageOn = true,
+    ///             Description = "Test Applications Long Description",
+    ///             GrantTypes = 
+    ///             {
+    ///                 "authorization_code",
+    ///                 "http://auth0.com/oauth/grant-type/password-realm",
+    ///                 "implicit",
+    ///                 "password",
+    ///                 "refresh_token",
+    ///             },
+    ///             IsFirstParty = true,
+    ///             IsTokenEndpointIpHeaderTrusted = true,
+    ///             JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs
+    ///             {
+    ///                 Alg = "RS256",
+    ///                 LifetimeInSeconds = 300,
+    ///                 Scopes = 
+    ///                 {
+    ///                     { "foo", "bar" },
+    ///                 },
+    ///                 SecretEncoded = true,
+    ///             },
+    ///             Mobile = new Auth0.Inputs.ClientMobileArgs
+    ///             {
+    ///                 Ios = new Auth0.Inputs.ClientMobileIosArgs
+    ///                 {
+    ///                     AppBundleIdentifier = "com.my.bundle.id",
+    ///                     TeamId = "9JA89QQLNQ",
+    ///                 },
+    ///             },
+    ///             OidcConformant = false,
+    ///             TokenEndpointAuthMethod = "client_secret_post",
+    ///             WebOrigins = 
+    ///             {
+    ///                 "https://example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Client : Pulumi.CustomResource
     {

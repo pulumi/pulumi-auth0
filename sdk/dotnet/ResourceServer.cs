@@ -11,6 +11,44 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With this resource, you can set up APIs that can be consumed from your authorized applications.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myResourceServer = new Auth0.ResourceServer("myResourceServer", new Auth0.ResourceServerArgs
+    ///         {
+    ///             AllowOfflineAccess = true,
+    ///             Identifier = "https://api.example.com",
+    ///             Scopes = 
+    ///             {
+    ///                 new Auth0.Inputs.ResourceServerScopeArgs
+    ///                 {
+    ///                     Description = "Create foos",
+    ///                     Value = "create:foo",
+    ///                 },
+    ///                 new Auth0.Inputs.ResourceServerScopeArgs
+    ///                 {
+    ///                     Description = "Create bars",
+    ///                     Value = "create:bar",
+    ///                 },
+    ///             },
+    ///             SigningAlg = "RS256",
+    ///             SkipConsentForVerifiableFirstPartyClients = true,
+    ///             TokenLifetime = 8600,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ResourceServer : Pulumi.CustomResource
     {

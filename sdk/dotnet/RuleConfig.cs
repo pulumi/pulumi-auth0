@@ -11,6 +11,37 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myRule = new Auth0.Rule("myRule", new Auth0.RuleArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Script = @"function (user, context, callback) {
+    ///   callback(null, user, context);
+    /// }
+    /// 
+    /// ",
+    ///         });
+    ///         var myRuleConfig = new Auth0.RuleConfig("myRuleConfig", new Auth0.RuleConfigArgs
+    ///         {
+    ///             Key = "foo",
+    ///             Value = "bar",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RuleConfig : Pulumi.CustomResource
     {

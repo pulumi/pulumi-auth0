@@ -11,6 +11,52 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myClient = new Auth0.Client("myClient", new Auth0.ClientArgs
+    ///         {
+    ///         });
+    ///         var myResourceServer = new Auth0.ResourceServer("myResourceServer", new Auth0.ResourceServerArgs
+    ///         {
+    ///             Identifier = "https://api.example.com/client-grant",
+    ///             Scopes = 
+    ///             {
+    ///                 new Auth0.Inputs.ResourceServerScopeArgs
+    ///                 {
+    ///                     Description = "Create foos",
+    ///                     Value = "create:foo",
+    ///                 },
+    ///                 new Auth0.Inputs.ResourceServerScopeArgs
+    ///                 {
+    ///                     Description = "Create bars",
+    ///                     Value = "create:bar",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var myClientGrant = new Auth0.ClientGrant("myClientGrant", new Auth0.ClientGrantArgs
+    ///         {
+    ///             Audience = myResourceServer.Identifier,
+    ///             ClientId = myClient.Id,
+    ///             Scopes = 
+    ///             {
+    ///                 "create:foo",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ClientGrant : Pulumi.CustomResource
     {

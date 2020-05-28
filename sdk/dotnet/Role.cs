@@ -11,6 +11,64 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With this resource, you can created and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myResourceServer = new Auth0.ResourceServer("myResourceServer", new Auth0.ResourceServerArgs
+    ///         {
+    ///             EnforcePolicies = true,
+    ///             Identifier = "my-resource-server-identifier",
+    ///             Scopes = 
+    ///             {
+    ///                 new Auth0.Inputs.ResourceServerScopeArgs
+    ///                 {
+    ///                     Description = "read something",
+    ///                     Value = "read:something",
+    ///                 },
+    ///             },
+    ///             SigningAlg = "RS256",
+    ///             SkipConsentForVerifiableFirstPartyClients = true,
+    ///             TokenLifetime = 86400,
+    ///         });
+    ///         var myRole = new Auth0.Role("myRole", new Auth0.RoleArgs
+    ///         {
+    ///             Description = "Role Description...",
+    ///             Permissions = 
+    ///             {
+    ///                 new Auth0.Inputs.RolePermissionArgs
+    ///                 {
+    ///                     Name = "read:something",
+    ///                     ResourceServerIdentifier = myResourceServer.Identifier,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var myUser = new Auth0.User("myUser", new Auth0.UserArgs
+    ///         {
+    ///             ConnectionName = "Username-Password-Authentication",
+    ///             Email = "test@test.com",
+    ///             Nickname = "testnick",
+    ///             Password = "passpass$$12$$12",
+    ///             Roles = 
+    ///             {
+    ///                 myRole.Id,
+    ///             },
+    ///             UserId = "auth0|1234567890",
+    ///             Username = "testnick",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {

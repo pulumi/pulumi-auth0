@@ -11,6 +11,34 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myEmailProvider = new Auth0.Email("myEmailProvider", new Auth0.EmailArgs
+    ///         {
+    ///             Credentials = new Auth0.Inputs.EmailCredentialsArgs
+    ///             {
+    ///                 AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
+    ///                 Region = "us-east-1",
+    ///                 SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///             },
+    ///             DefaultFromAddress = "accounts@example.com",
+    ///             Enabled = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Email : Pulumi.CustomResource
     {
