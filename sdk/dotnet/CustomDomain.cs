@@ -11,6 +11,29 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myCustomDomain = new Auth0.CustomDomain("myCustomDomain", new Auth0.CustomDomainArgs
+    ///         {
+    ///             Domain = "auth.example.com",
+    ///             Type = "auth0_managed_certs",
+    ///             VerificationMethod = "txt",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class CustomDomain : Pulumi.CustomResource
     {

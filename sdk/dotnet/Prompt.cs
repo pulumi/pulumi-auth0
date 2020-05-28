@@ -11,6 +11,27 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Auth0.Prompt("example", new Auth0.PromptArgs
+    ///         {
+    ///             UniversalLoginExperience = "classic",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Prompt : Pulumi.CustomResource
     {

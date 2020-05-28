@@ -11,6 +11,55 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tenant = new Auth0.Tenant("tenant", new Auth0.TenantArgs
+    ///         {
+    ///             AllowedLogoutUrls = 
+    ///             {
+    ///                 "http://mysite/logout",
+    ///             },
+    ///             ChangePassword = new Auth0.Inputs.TenantChangePasswordArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Html = File.ReadAllText("./password_reset.html"),
+    ///             },
+    ///             DefaultAudience = "&lt;client_id&gt;",
+    ///             DefaultDirectory = "Connection-Name",
+    ///             ErrorPage = new Auth0.Inputs.TenantErrorPageArgs
+    ///             {
+    ///                 Html = File.ReadAllText("./error.html"),
+    ///                 ShowLogLink = true,
+    ///                 Url = "http://mysite/errors",
+    ///             },
+    ///             FriendlyName = "Tenant Name",
+    ///             GuardianMfaPage = new Auth0.Inputs.TenantGuardianMfaPageArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Html = File.ReadAllText("./guardian_multifactor.html"),
+    ///             },
+    ///             PictureUrl = "http://mysite/logo.png",
+    ///             SandboxVersion = "8",
+    ///             SessionLifetime = 46000,
+    ///             SupportEmail = "support@mysite",
+    ///             SupportUrl = "http://mysite/support",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Tenant : Pulumi.CustomResource
     {

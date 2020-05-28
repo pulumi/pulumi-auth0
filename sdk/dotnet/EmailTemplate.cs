@@ -11,6 +11,45 @@ namespace Pulumi.Auth0
 {
     /// <summary>
     /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myEmailProvider = new Auth0.Email("myEmailProvider", new Auth0.EmailArgs
+    ///         {
+    ///             Enabled = true,
+    ///             DefaultFromAddress = "accounts@example.com",
+    ///             Credentials = new Auth0.Inputs.EmailCredentialsArgs
+    ///             {
+    ///                 AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
+    ///                 SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///                 Region = "us-east-1",
+    ///             },
+    ///         });
+    ///         var myEmailTemplate = new Auth0.EmailTemplate("myEmailTemplate", new Auth0.EmailTemplateArgs
+    ///         {
+    ///             Template = "welcome_email",
+    ///             Body = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///             From = "welcome@example.com",
+    ///             ResultUrl = "https://example.com/welcome",
+    ///             Subject = "Welcome",
+    ///             Syntax = "liquid",
+    ///             UrlLifetimeInSeconds = 3600,
+    ///             Enabled = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class EmailTemplate : Pulumi.CustomResource
     {
