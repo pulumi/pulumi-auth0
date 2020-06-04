@@ -12,6 +12,7 @@ env:
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TRAVIS_OS_NAME: linux
 jobs:
   build_sdk:
@@ -85,7 +86,7 @@ jobs:
         pythonversion:
         - "3.7"
   lint:
-    container: golangci/golangci-lint:v1.25.1
+    container: golangci/golangci-lint:latest
     name: lint
     runs-on: ubuntu-latest
     steps:
@@ -111,7 +112,7 @@ jobs:
     - name: Run golangci
       run: make -f Makefile.github lint_provider
   lint_sdk:
-    container: golangci/golangci-lint:v1.25.1
+    container: golangci/golangci-lint:latest
     name: lint-sdk
     needs: build_sdk
     runs-on: ubuntu-latest
@@ -167,6 +168,12 @@ jobs:
       with:
         name: pulumi-${{ env.PROVIDER }}
         path: ${{ github.workspace }}/bin
+    - if: '!success()'
+      name: Notify Slack
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,commit,author,action
   test:
     name: test
     needs: build_sdk

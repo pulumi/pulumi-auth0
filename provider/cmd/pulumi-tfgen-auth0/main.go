@@ -23,5 +23,5 @@ import (
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("auth0", version.Version, auth0.Provider())
+	tfgen.Main("auth0", version.Version, auth0.Provider()
 }
