@@ -639,7 +639,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "lifetimeInSeconds",
+                        "secretEncoded"
+                    ]
+                }
+            }
         },
         "auth0:/ClientMobile:ClientMobile": {
             "properties": {
@@ -1216,7 +1224,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "passwordHistories",
+                        "passwordPolicy",
+                        "strategyVersion"
+                    ]
+                }
+            }
         },
         "auth0:/ConnectionOptionsPasswordComplexityOptions:ConnectionOptionsPasswordComplexityOptions": {
             "properties": {
@@ -1333,7 +1350,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "methods"
+                    ]
+                }
+            }
         },
         "auth0:/EmailCredentials:EmailCredentials": {
             "properties": {
@@ -1961,7 +1985,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "lifetimeInSeconds",
+                        "secretEncoded"
+                    ]
+                }
+            }
         },
         "auth0:/GlobalClientMobile:GlobalClientMobile": {
             "properties": {
@@ -2247,7 +2279,24 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "changePwdFlowV1",
+                        "disableClickjackProtectionHeaders",
+                        "enableApisSection",
+                        "enableClientConnections",
+                        "enableCustomDomainInEmails",
+                        "enableDynamicClientRegistration",
+                        "enableLegacyLogsSearchV2",
+                        "enablePipeline2",
+                        "enablePublicSignupUserExistsError",
+                        "universalLogin",
+                        "useScopeDescriptionsForConsent"
+                    ]
+                }
+            }
         },
         "auth0:/TenantGuardianMfaPage:TenantGuardianMfaPage": {
             "properties": {
@@ -2311,7 +2360,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "pageBackground",
+                        "primary"
+                    ]
+                }
+            }
         }
     },
     "provider": {
@@ -2871,7 +2928,7 @@
             }
         },
         "auth0:index/connection:Connection": {
-            "description": "With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myConnection = new auth0.Connection(\"my_connection\", {\n    options: {\n        bruteForceProtection: true,\n        configuration: {\n            bar: \"baz\",\n            foo: \"bar\",\n        },\n        customScripts: {\n            get_user: `function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n`,\n        },\n        enabledDatabaseCustomization: true,\n        passwordHistories: [{\n            enable: true,\n            size: 3,\n        }],\n        passwordPolicy: \"excellent\",\n    },\n    strategy: \"auth0\",\n});\nconst myWaadConnection = new auth0.Connection(\"my_waad_connection\", {\n    options: {\n        apiEnableUsers: true,\n        appDomain: \"my-auth0-app.eu.auth0.com\",\n        basicProfile: true,\n        clientId: \"1234\",\n        clientSecret: \"1234\",\n        domainAliases: [\"example.io\"],\n        extGroups: true,\n        extProfile: true,\n        tenantDomain: \"exmaple.onmicrosoft.com\",\n        useWsfed: false,\n        waadCommonEndpoint: false,\n        waadProtocol: \"openid-connect\",\n    },\n    strategy: \"waad\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_connection = auth0.Connection(\"myConnection\",\n    options={\n        \"bruteForceProtection\": \"true\",\n        \"configuration\": {\n            \"bar\": \"baz\",\n            \"foo\": \"bar\",\n        },\n        \"customScripts\": {\n            \"getUser\": \"\"\"function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n\n\"\"\",\n        },\n        \"enabledDatabaseCustomization\": \"true\",\n        \"passwordHistory\": [{\n            \"enable\": True,\n            \"size\": 3,\n        }],\n        \"passwordPolicy\": \"excellent\",\n    },\n    strategy=\"auth0\")\nmy_waad_connection = auth0.Connection(\"myWaadConnection\",\n    options={\n        \"apiEnableUsers\": True,\n        \"appDomain\": \"my-auth0-app.eu.auth0.com\",\n        \"basicProfile\": True,\n        \"client_id\": \"1234\",\n        \"client_secret\": \"1234\",\n        \"domainAliases\": [\"example.io\"],\n        \"extGroups\": True,\n        \"extProfile\": True,\n        \"tenantDomain\": \"exmaple.onmicrosoft.com\",\n        \"useWsfed\": False,\n        \"waadCommonEndpoint\": False,\n        \"waadProtocol\": \"openid-connect\",\n    },\n    strategy=\"waad\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myConnection = new Auth0.Connection(\"myConnection\", new Auth0.ConnectionArgs\n        {\n            Options = new Auth0.Inputs.ConnectionOptionsArgs\n            {\n                BruteForceProtection = \"true\",\n                Configuration = \n                {\n                    { \"bar\", \"baz\" },\n                    { \"foo\", \"bar\" },\n                },\n                CustomScripts = \n                {\n                    { \"getUser\", @\"function getByEmail (email, callback) {\n  return callback(new Error(\"\"Whoops!\"\"))\n}\n\n\" },\n                },\n                EnabledDatabaseCustomization = \"true\",\n                PasswordHistory = \n                {\n                    \n                    {\n                        { \"enable\", true },\n                        { \"size\", 3 },\n                    },\n                },\n                PasswordPolicy = \"excellent\",\n            },\n            Strategy = \"auth0\",\n        });\n        var myWaadConnection = new Auth0.Connection(\"myWaadConnection\", new Auth0.ConnectionArgs\n        {\n            Options = new Auth0.Inputs.ConnectionOptionsArgs\n            {\n                ApiEnableUsers = true,\n                AppDomain = \"my-auth0-app.eu.auth0.com\",\n                BasicProfile = true,\n                ClientId = \"1234\",\n                ClientSecret = \"1234\",\n                DomainAliases = \n                {\n                    \"example.io\",\n                },\n                ExtGroups = true,\n                ExtProfile = true,\n                TenantDomain = \"exmaple.onmicrosoft.com\",\n                UseWsfed = false,\n                WaadCommonEndpoint = false,\n                WaadProtocol = \"openid-connect\",\n            },\n            Strategy = \"waad\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myConnection = new auth0.Connection(\"my_connection\", {\n    options: {\n        bruteForceProtection: true,\n        configuration: {\n            bar: \"baz\",\n            foo: \"bar\",\n        },\n        customScripts: {\n            get_user: `function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n`,\n        },\n        enabledDatabaseCustomization: true,\n        passwordHistories: [{\n            enable: true,\n            size: 3,\n        }],\n        passwordPolicy: \"excellent\",\n    },\n    strategy: \"auth0\",\n});\nconst myWaadConnection = new auth0.Connection(\"my_waad_connection\", {\n    options: {\n        apiEnableUsers: true,\n        appDomain: \"my-auth0-app.eu.auth0.com\",\n        basicProfile: true,\n        clientId: \"1234\",\n        clientSecret: \"1234\",\n        domainAliases: [\"example.io\"],\n        extGroups: true,\n        extProfile: true,\n        tenantDomain: \"exmaple.onmicrosoft.com\",\n        useWsfed: false,\n        waadCommonEndpoint: false,\n        waadProtocol: \"openid-connect\",\n    },\n    strategy: \"waad\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_connection = auth0.Connection(\"myConnection\",\n    options={\n        \"bruteForceProtection\": \"true\",\n        \"configuration\": {\n            \"bar\": \"baz\",\n            \"foo\": \"bar\",\n        },\n        \"customScripts\": {\n            \"getUser\": \"\"\"function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n\n\"\"\",\n        },\n        \"enabledDatabaseCustomization\": \"true\",\n        \"passwordHistory\": [{\n            \"enable\": True,\n            \"size\": 3,\n        }],\n        \"passwordPolicy\": \"excellent\",\n    },\n    strategy=\"auth0\")\nmy_waad_connection = auth0.Connection(\"myWaadConnection\",\n    options={\n        \"apiEnableUsers\": True,\n        \"appDomain\": \"my-auth0-app.eu.auth0.com\",\n        \"basicProfile\": True,\n        \"client_id\": \"1234\",\n        \"client_secret\": \"1234\",\n        \"domainAliases\": [\"example.io\"],\n        \"extGroups\": True,\n        \"extProfile\": True,\n        \"tenantDomain\": \"exmaple.onmicrosoft.com\",\n        \"useWsfed\": False,\n        \"waadCommonEndpoint\": False,\n        \"waadProtocol\": \"openid-connect\",\n    },\n    strategy=\"waad\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myConnection = new Auth0.Connection(\"myConnection\", new Auth0.ConnectionArgs\n        {\n            Options = new Auth0.Inputs.ConnectionOptionsArgs\n            {\n                BruteForceProtection = true,\n                Configuration = \n                {\n                    { \"bar\", \"baz\" },\n                    { \"foo\", \"bar\" },\n                },\n                CustomScripts = \n                {\n                    { \"getUser\", @\"function getByEmail (email, callback) {\n  return callback(new Error(\"\"Whoops!\"\"))\n}\n\n\" },\n                },\n                EnabledDatabaseCustomization = true,\n                PasswordHistory = \n                {\n                    \n                    {\n                        { \"enable\", true },\n                        { \"size\", 3 },\n                    },\n                },\n                PasswordPolicy = \"excellent\",\n            },\n            Strategy = \"auth0\",\n        });\n        var myWaadConnection = new Auth0.Connection(\"myWaadConnection\", new Auth0.ConnectionArgs\n        {\n            Options = new Auth0.Inputs.ConnectionOptionsArgs\n            {\n                ApiEnableUsers = true,\n                AppDomain = \"my-auth0-app.eu.auth0.com\",\n                BasicProfile = true,\n                ClientId = \"1234\",\n                ClientSecret = \"1234\",\n                DomainAliases = \n                {\n                    \"example.io\",\n                },\n                ExtGroups = true,\n                ExtProfile = true,\n                TenantDomain = \"exmaple.onmicrosoft.com\",\n                UseWsfed = false,\n                WaadCommonEndpoint = false,\n                WaadProtocol = \"openid-connect\",\n            },\n            Strategy = \"waad\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "displayName": {
                     "type": "string",
@@ -4610,8 +4667,10 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing auth0 cloud resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-auth0)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-auth0` repo](https://github.com/pulumi/pulumi-auth0/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-auth0` repo](https://github.com/terraform-providers/terraform-provider-auth0/issues).",
             "typescriptVersion": ""
         },
         "python": {

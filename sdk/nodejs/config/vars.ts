@@ -2,11 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("auth0");
 
 export let clientId: string | undefined = __config.get("clientId") || utilities.getEnv("AUTH0_CLIENT_ID");
 export let clientSecret: string | undefined = __config.get("clientSecret") || utilities.getEnv("AUTH0_CLIENT_SECRET");
-export let debug: boolean | undefined = __config.getObject<boolean>("debug") || utilities.getEnvBoolean("AUTH0_DEBUG");
+export let debug: boolean | undefined = __config.getObject<boolean>("debug") || <any>utilities.getEnvBoolean("AUTH0_DEBUG");
 export let domain: string | undefined = __config.get("domain") || utilities.getEnv("AUTH0_DOMAIN");

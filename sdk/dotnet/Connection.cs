@@ -28,7 +28,7 @@ namespace Pulumi.Auth0
     ///         {
     ///             Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///             {
-    ///                 BruteForceProtection = "true",
+    ///                 BruteForceProtection = true,
     ///                 Configuration = 
     ///                 {
     ///                     { "bar", "baz" },
@@ -42,7 +42,7 @@ namespace Pulumi.Auth0
     /// 
     /// " },
     ///                 },
-    ///                 EnabledDatabaseCustomization = "true",
+    ///                 EnabledDatabaseCustomization = true,
     ///                 PasswordHistory = 
     ///                 {
     ///                     
