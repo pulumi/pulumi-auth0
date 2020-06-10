@@ -5,6 +5,8 @@ CHANGELOG
 _(none)_
 
 ---
+## 1.0.2 (2020-06-10)
+* Switch to GitHub actions for build
 
 ## 1.0.1 (2020-05-28)
 * Upgrade to Pulumi v2.4.0
