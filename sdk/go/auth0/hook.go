@@ -13,6 +13,33 @@ import (
 // Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
 //
 // Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewHook(ctx, "myHook", &auth0.HookArgs{
+// 			Enabled:   pulumi.Bool(true),
+// 			Script:    pulumi.String(fmt.Sprintf("%v%v%v%v", "function (user, context, callback) { \n", "  callback(null, { user }); \n", "}\n", "\n")),
+// 			TriggerId: pulumi.String("pre-user-registration"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Hook struct {
 	pulumi.CustomResourceState
 

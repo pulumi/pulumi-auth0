@@ -10,6 +10,29 @@ import (
 )
 
 // With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewPrompt(ctx, "example", &auth0.PromptArgs{
+// 			UniversalLoginExperience: pulumi.String("classic"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Prompt struct {
 	pulumi.CustomResourceState
 

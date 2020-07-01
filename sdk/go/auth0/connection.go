@@ -11,6 +11,71 @@ import (
 )
 
 // With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewConnection(ctx, "myConnection", &auth0.ConnectionArgs{
+// 			Options: &auth0.ConnectionOptionsArgs{
+// 				BruteForceProtection: pulumi.Bool(true),
+// 				Configuration: pulumi.StringMap{
+// 					"bar": pulumi.String("baz"),
+// 					"foo": pulumi.String("bar"),
+// 				},
+// 				CustomScripts: pulumi.StringMap{
+// 					"getUser": pulumi.String(fmt.Sprintf("%v%v%v%v", "function getByEmail (email, callback) {\n", "  return callback(new Error(\"Whoops!\"))\n", "}\n", "\n")),
+// 				},
+// 				EnabledDatabaseCustomization: pulumi.Bool(true),
+// 				PasswordHistories: auth0.ConnectionOptionsPasswordHistoryArray{
+// 					&auth0.ConnectionOptionsPasswordHistoryArgs{
+// 						Enable: pulumi.Bool(true),
+// 						Size:   pulumi.Int(3),
+// 					},
+// 				},
+// 				PasswordPolicy: pulumi.String("excellent"),
+// 			},
+// 			Strategy: pulumi.String("auth0"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = auth0.NewConnection(ctx, "myWaadConnection", &auth0.ConnectionArgs{
+// 			Options: &auth0.ConnectionOptionsArgs{
+// 				ApiEnableUsers: pulumi.Bool(true),
+// 				AppDomain:      pulumi.String("my-auth0-app.eu.auth0.com"),
+// 				BasicProfile:   pulumi.Bool(true),
+// 				ClientId:       pulumi.String("1234"),
+// 				ClientSecret:   pulumi.String("1234"),
+// 				DomainAliases: pulumi.StringArray{
+// 					pulumi.String("example.io"),
+// 				},
+// 				ExtGroups:          pulumi.Bool(true),
+// 				ExtProfile:         pulumi.Bool(true),
+// 				TenantDomain:       pulumi.String("exmaple.onmicrosoft.com"),
+// 				UseWsfed:           pulumi.Bool(false),
+// 				WaadCommonEndpoint: pulumi.Bool(false),
+// 				WaadProtocol:       pulumi.String("openid-connect"),
+// 			},
+// 			Strategy: pulumi.String("waad"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 

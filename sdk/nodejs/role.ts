@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
+ * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
  *     enforcePolicies: true,
  *     identifier: "my-resource-server-identifier",
  *     scopes: [{
@@ -28,14 +26,14 @@ import * as utilities from "./utilities";
  *     skipConsentForVerifiableFirstPartyClients: true,
  *     tokenLifetime: 86400,
  * });
- * const myRole = new auth0.Role("myRole", {
+ * const myRole = new auth0.Role("my_role", {
  *     description: "Role Description...",
  *     permissions: [{
  *         name: "read:something",
  *         resourceServerIdentifier: myResourceServer.identifier,
  *     }],
  * });
- * const myUser = new auth0.User("myUser", {
+ * const myUser = new auth0.User("my_user", {
  *     connectionName: "Username-Password-Authentication",
  *     email: "test@test.com",
  *     nickname: "testnick",

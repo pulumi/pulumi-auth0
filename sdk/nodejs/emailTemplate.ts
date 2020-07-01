@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -25,7 +23,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const myEmailTemplate = new auth0.EmailTemplate("myEmailTemplate", {
- *     template: "welcomeEmail",
+ *     template: "welcome_email",
  *     body: "<html><body><h1>Welcome!</h1></body></html>",
  *     from: "welcome@example.com",
  *     resultUrl: "https://example.com/welcome",
@@ -33,6 +31,8 @@ import * as utilities from "./utilities";
  *     syntax: "liquid",
  *     urlLifetimeInSeconds: 3600,
  *     enabled: true,
+ * }, {
+ *     dependsOn: [myEmailProvider],
  * });
  * ```
  */

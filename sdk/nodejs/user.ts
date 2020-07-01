@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -19,7 +17,7 @@ import * as utilities from "./utilities";
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
  *     userId: "12345",
- *     username: "uniqueUsername",
+ *     username: "unique_username",
  *     givenName: "Firstname",
  *     familyName: "Lastname",
  *     nickname: "some.nickname",
@@ -87,7 +85,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections. 
+     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     public readonly phoneNumber!: pulumi.Output<string | undefined>;
     /**
@@ -214,7 +212,7 @@ export interface UserState {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections. 
+     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     readonly phoneNumber?: pulumi.Input<string>;
     /**
@@ -277,7 +275,7 @@ export interface UserArgs {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections. 
+     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     readonly phoneNumber?: pulumi.Input<string>;
     /**

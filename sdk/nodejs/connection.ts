@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myConnection = new auth0.Connection("myConnection", {
+ * const myConnection = new auth0.Connection("my_connection", {
  *     options: {
  *         bruteForceProtection: true,
  *         configuration: {
@@ -39,7 +37,7 @@ import * as utilities from "./utilities";
  *     },
  *     strategy: "auth0",
  * });
- * const myWaadConnection = new auth0.Connection("myWaadConnection", {
+ * const myWaadConnection = new auth0.Connection("my_waad_connection", {
  *     options: {
  *         apiEnableUsers: true,
  *         appDomain: "my-auth0-app.eu.auth0.com",

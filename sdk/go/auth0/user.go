@@ -11,6 +11,48 @@ import (
 )
 
 // With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
+// 			Description: pulumi.String("Administrator"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = auth0.NewUser(ctx, "user", &auth0.UserArgs{
+// 			ConnectionName: pulumi.String("Username-Password-Authentication"),
+// 			UserId:         pulumi.String("12345"),
+// 			Username:       pulumi.String("unique_username"),
+// 			GivenName:      pulumi.String("Firstname"),
+// 			FamilyName:     pulumi.String("Lastname"),
+// 			Nickname:       pulumi.String("some.nickname"),
+// 			Email:          pulumi.String("test@test.com"),
+// 			EmailVerified:  pulumi.Bool(true),
+// 			Password:       pulumi.String(fmt.Sprintf("%v%v%v%v%v", "passpass", "$", "12", "$", "12")),
+// 			Roles: pulumi.StringArray{
+// 				admin.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type User struct {
 	pulumi.CustomResourceState
 

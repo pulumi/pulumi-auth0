@@ -14,8 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
@@ -43,12 +41,12 @@ namespace Pulumi.Auth0
     /// " },
     ///                 },
     ///                 EnabledDatabaseCustomization = true,
-    ///                 PasswordHistory = 
+    ///                 PasswordHistories = 
     ///                 {
-    ///                     
+    ///                     new Auth0.Inputs.ConnectionOptionsPasswordHistoryArgs
     ///                     {
-    ///                         { "enable", true },
-    ///                         { "size", 3 },
+    ///                         Enable = true,
+    ///                         Size = 3,
     ///                     },
     ///                 },
     ///                 PasswordPolicy = "excellent",

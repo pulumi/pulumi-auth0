@@ -11,6 +11,35 @@ import (
 )
 
 // With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
+// 			Credentials: &auth0.EmailCredentialsArgs{
+// 				AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
+// 				Region:          pulumi.String("us-east-1"),
+// 				SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+// 			},
+// 			DefaultFromAddress: pulumi.String("accounts@example.com"),
+// 			Enabled:            pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Email struct {
 	pulumi.CustomResourceState
 

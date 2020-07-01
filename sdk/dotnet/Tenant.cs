@@ -14,8 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.IO;
     /// using Pulumi;
@@ -127,7 +125,7 @@ namespace Pulumi.Auth0
         public Output<int> IdleSessionLifetime { get; private set; } = null!;
 
         /// <summary>
-        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used. 
+        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Output("pictureUrl")]
         public Output<string> PictureUrl { get; private set; } = null!;
@@ -283,7 +281,7 @@ namespace Pulumi.Auth0
         public Input<int>? IdleSessionLifetime { get; set; }
 
         /// <summary>
-        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used. 
+        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Input("pictureUrl")]
         public Input<string>? PictureUrl { get; set; }
@@ -400,7 +398,7 @@ namespace Pulumi.Auth0
         public Input<int>? IdleSessionLifetime { get; set; }
 
         /// <summary>
-        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used. 
+        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Input("pictureUrl")]
         public Input<string>? PictureUrl { get; set; }

@@ -11,6 +11,50 @@ import (
 )
 
 // With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myEmailProvider, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
+// 			Enabled:            pulumi.Bool(true),
+// 			DefaultFromAddress: pulumi.String("accounts@example.com"),
+// 			Credentials: &auth0.EmailCredentialsArgs{
+// 				AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
+// 				SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+// 				Region:          pulumi.String("us-east-1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = auth0.NewEmailTemplate(ctx, "myEmailTemplate", &auth0.EmailTemplateArgs{
+// 			Template:             pulumi.String("welcome_email"),
+// 			Body:                 pulumi.String("<html><body><h1>Welcome!</h1></body></html>"),
+// 			From:                 pulumi.String("welcome@example.com"),
+// 			ResultUrl:            pulumi.String("https://example.com/welcome"),
+// 			Subject:              pulumi.String("Welcome"),
+// 			Syntax:               pulumi.String("liquid"),
+// 			UrlLifetimeInSeconds: pulumi.Int(3600),
+// 			Enabled:              pulumi.Bool(true),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			myEmailProvider,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type EmailTemplate struct {
 	pulumi.CustomResourceState
 

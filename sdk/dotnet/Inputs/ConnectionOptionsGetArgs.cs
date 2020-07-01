@@ -90,7 +90,7 @@ namespace Pulumi.Auth0.Inputs
         private InputMap<string>? _customScripts;
 
         /// <summary>
-        /// Map(String). 
+        /// Map(String).
         /// </summary>
         public InputMap<string> CustomScripts
         {
@@ -188,7 +188,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? MessagingServiceSid { get; set; }
 
         /// <summary>
-        /// String. 
+        /// String.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

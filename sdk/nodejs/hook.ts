@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myHook = new auth0.Hook("myHook", {
+ * const myHook = new auth0.Hook("my_hook", {
  *     enabled: true,
  *     script: `function (user, context, callback) { 
  *   callback(null, { user }); 

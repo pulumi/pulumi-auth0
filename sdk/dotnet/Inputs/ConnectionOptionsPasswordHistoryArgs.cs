@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Integer, (Maximum=24). Indicates the number of passwords to keep in history. 
+        /// Integer, (Maximum=24). Indicates the number of passwords to keep in history.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

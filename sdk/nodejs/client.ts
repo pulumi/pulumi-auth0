@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myClient = new auth0.Client("myClient", {
+ * const myClient = new auth0.Client("my_client", {
  *     addons: {
  *         firebase: {
  *             client_email: "john.doe@example.com",
@@ -41,7 +39,7 @@ import * as utilities from "./utilities";
  *     },
  *     allowedLogoutUrls: ["https://example.com"],
  *     allowedOrigins: ["https://example.com"],
- *     appType: "nonInteractive",
+ *     appType: "non_interactive",
  *     callbacks: ["https://example.com/callback"],
  *     clientMetadata: {
  *         foo: "zoo",
@@ -49,11 +47,11 @@ import * as utilities from "./utilities";
  *     customLoginPageOn: true,
  *     description: "Test Applications Long Description",
  *     grantTypes: [
- *         "authorizationCode",
+ *         "authorization_code",
  *         "http://auth0.com/oauth/grant-type/password-realm",
  *         "implicit",
  *         "password",
- *         "refreshToken",
+ *         "refresh_token",
  *     ],
  *     isFirstParty: true,
  *     isTokenEndpointIpHeaderTrusted: true,
@@ -72,7 +70,7 @@ import * as utilities from "./utilities";
  *         },
  *     },
  *     oidcConformant: false,
- *     tokenEndpointAuthMethod: "clientSecretPost",
+ *     tokenEndpointAuthMethod: "client_secret_post",
  *     webOrigins: ["https://example.com"],
  * });
  * ```
@@ -142,7 +140,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly clientSecretRotationTrigger!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests. 
+     * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
      */
     public readonly crossOriginAuth!: pulumi.Output<boolean | undefined>;
     /**
@@ -350,7 +348,7 @@ export interface ClientState {
      */
     readonly clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests. 
+     * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
      */
     readonly crossOriginAuth?: pulumi.Input<boolean>;
     /**
@@ -465,7 +463,7 @@ export interface ClientArgs {
      */
     readonly clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests. 
+     * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
      */
     readonly crossOriginAuth?: pulumi.Input<boolean>;
     /**

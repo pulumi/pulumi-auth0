@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
@@ -114,7 +112,7 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly idleSessionLifetime!: pulumi.Output<number>;
     /**
-     * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used. 
+     * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     public readonly pictureUrl!: pulumi.Output<string>;
     /**
@@ -244,7 +242,7 @@ export interface TenantState {
      */
     readonly idleSessionLifetime?: pulumi.Input<number>;
     /**
-     * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used. 
+     * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     readonly pictureUrl?: pulumi.Input<string>;
     /**
@@ -315,7 +313,7 @@ export interface TenantArgs {
      */
     readonly idleSessionLifetime?: pulumi.Input<number>;
     /**
-     * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used. 
+     * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     readonly pictureUrl?: pulumi.Input<string>;
     /**
