@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// Integer, (Maximum=24). Indicates the number of passwords to keep in history. 
+        /// Integer, (Maximum=24). Indicates the number of passwords to keep in history.
         /// </summary>
         public readonly int? Size;
 

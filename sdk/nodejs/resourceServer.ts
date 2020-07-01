@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
+ * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
  *     allowOfflineAccess: true,
  *     identifier: "https://api.example.com",
  *     scopes: [

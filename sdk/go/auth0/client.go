@@ -10,6 +10,94 @@ import (
 )
 
 // With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewClient(ctx, "myClient", &auth0.ClientArgs{
+// 			Addons: &auth0.ClientAddonsArgs{
+// 				Firebase: pulumi.Map{
+// 					"clientEmail":       pulumi.String("john.doe@example.com"),
+// 					"lifetimeInSeconds": pulumi.Float64(1),
+// 					"privateKey":        pulumi.String("wer"),
+// 					"privateKeyId":      pulumi.String("qwreerwerwe"),
+// 				},
+// 				Samlp: &auth0.ClientAddonsSamlpArgs{
+// 					Audience:             pulumi.String("https://example.com/saml"),
+// 					CreateUpnClaim:       pulumi.Bool(false),
+// 					MapIdentities:        pulumi.Bool(false),
+// 					MapUnknownClaimsAsIs: pulumi.Bool(false),
+// 					Mappings: pulumi.StringMap{
+// 						"email": pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+// 						"name":  pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
+// 					},
+// 					NameIdentifierFormat: pulumi.String("urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"),
+// 					NameIdentifierProbes: pulumi.StringArray{
+// 						pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+// 					},
+// 					PassthroughClaimsWithNoMapping: pulumi.Bool(false),
+// 				},
+// 			},
+// 			AllowedLogoutUrls: pulumi.StringArray{
+// 				pulumi.String("https://example.com"),
+// 			},
+// 			AllowedOrigins: pulumi.StringArray{
+// 				pulumi.String("https://example.com"),
+// 			},
+// 			AppType: pulumi.String("non_interactive"),
+// 			Callbacks: pulumi.StringArray{
+// 				pulumi.String("https://example.com/callback"),
+// 			},
+// 			ClientMetadata: pulumi.StringMap{
+// 				"foo": pulumi.String("zoo"),
+// 			},
+// 			CustomLoginPageOn: pulumi.Bool(true),
+// 			Description:       pulumi.String("Test Applications Long Description"),
+// 			GrantTypes: pulumi.StringArray{
+// 				pulumi.String("authorization_code"),
+// 				pulumi.String("http://auth0.com/oauth/grant-type/password-realm"),
+// 				pulumi.String("implicit"),
+// 				pulumi.String("password"),
+// 				pulumi.String("refresh_token"),
+// 			},
+// 			IsFirstParty:                   pulumi.Bool(true),
+// 			IsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),
+// 			JwtConfiguration: &auth0.ClientJwtConfigurationArgs{
+// 				Alg:               pulumi.String("RS256"),
+// 				LifetimeInSeconds: pulumi.Int(300),
+// 				Scopes: pulumi.StringMap{
+// 					"foo": pulumi.String("bar"),
+// 				},
+// 				SecretEncoded: pulumi.Bool(true),
+// 			},
+// 			Mobile: &auth0.ClientMobileArgs{
+// 				Ios: &auth0.ClientMobileIosArgs{
+// 					AppBundleIdentifier: pulumi.String("com.my.bundle.id"),
+// 					TeamId:              pulumi.String("9JA89QQLNQ"),
+// 				},
+// 			},
+// 			OidcConformant:          pulumi.Bool(false),
+// 			TokenEndpointAuthMethod: pulumi.String("client_secret_post"),
+// 			WebOrigins: pulumi.StringArray{
+// 				pulumi.String("https://example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Client struct {
 	pulumi.CustomResourceState
 

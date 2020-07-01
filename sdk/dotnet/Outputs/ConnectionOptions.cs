@@ -55,7 +55,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Configuration;
         /// <summary>
-        /// Map(String). 
+        /// Map(String).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomScripts;
         public readonly bool? DisableCache;
@@ -105,7 +105,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? MessagingServiceSid;
         /// <summary>
-        /// String. 
+        /// String.
         /// </summary>
         public readonly string? Name;
         /// <summary>

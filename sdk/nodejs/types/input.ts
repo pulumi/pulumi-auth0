@@ -307,7 +307,7 @@ export interface ConnectionOptions {
      */
     configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Map(String). 
+     * Map(String).
      */
     customScripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     disableCache?: pulumi.Input<boolean>;
@@ -357,7 +357,7 @@ export interface ConnectionOptions {
      */
     messagingServiceSid?: pulumi.Input<string>;
     /**
-     * String. 
+     * String.
      */
     name?: pulumi.Input<string>;
     /**
@@ -474,7 +474,7 @@ export interface ConnectionOptionsPasswordHistory {
      */
     enable?: pulumi.Input<boolean>;
     /**
-     * Integer, (Maximum=24). Indicates the number of passwords to keep in history. 
+     * Integer, (Maximum=24). Indicates the number of passwords to keep in history.
      */
     size?: pulumi.Input<number>;
 }

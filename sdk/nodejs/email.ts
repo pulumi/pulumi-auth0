@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myEmailProvider = new auth0.Email("myEmailProvider", {
+ * const myEmailProvider = new auth0.Email("my_email_provider", {
  *     credentials: {
  *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
  *         region: "us-east-1",

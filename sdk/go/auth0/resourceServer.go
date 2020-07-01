@@ -10,6 +10,43 @@ import (
 )
 
 // With this resource, you can set up APIs that can be consumed from your authorized applications.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
+// 			AllowOfflineAccess: pulumi.Bool(true),
+// 			Identifier:         pulumi.String("https://api.example.com"),
+// 			Scopes: auth0.ResourceServerScopeArray{
+// 				&auth0.ResourceServerScopeArgs{
+// 					Description: pulumi.String("Create foos"),
+// 					Value:       pulumi.String("create:foo"),
+// 				},
+// 				&auth0.ResourceServerScopeArgs{
+// 					Description: pulumi.String("Create bars"),
+// 					Value:       pulumi.String("create:bar"),
+// 				},
+// 			},
+// 			SigningAlg: pulumi.String("RS256"),
+// 			SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
+// 			TokenLifetime: pulumi.Int(8600),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ResourceServer struct {
 	pulumi.CustomResourceState
 

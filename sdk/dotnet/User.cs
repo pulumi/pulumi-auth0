@@ -14,8 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
@@ -100,7 +98,7 @@ namespace Pulumi.Auth0
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections. 
+        /// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         /// </summary>
         [Output("phoneNumber")]
         public Output<string?> PhoneNumber { get; private set; } = null!;
@@ -239,7 +237,7 @@ namespace Pulumi.Auth0
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections. 
+        /// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         /// </summary>
         [Input("phoneNumber")]
         public Input<string>? PhoneNumber { get; set; }
@@ -345,7 +343,7 @@ namespace Pulumi.Auth0
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections. 
+        /// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         /// </summary>
         [Input("phoneNumber")]
         public Input<string>? PhoneNumber { get; set; }

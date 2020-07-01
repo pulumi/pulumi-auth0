@@ -14,8 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
@@ -57,7 +55,7 @@ namespace Pulumi.Auth0
     ///             ConnectionName = "Username-Password-Authentication",
     ///             Email = "test@test.com",
     ///             Nickname = "testnick",
-    ///             Password = "passpass$$12$$12",
+    ///             Password = "passpass$12$12",
     ///             Roles = 
     ///             {
     ///                 myRole.Id,

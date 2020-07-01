@@ -9,14 +9,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myClient = new auth0.Client("myClient", {});
- * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
+ * const myClient = new auth0.Client("my_client", {});
+ * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
  *     identifier: "https://api.example.com/client-grant",
  *     scopes: [
  *         {
@@ -29,7 +27,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * const myClientGrant = new auth0.ClientGrant("myClientGrant", {
+ * const myClientGrant = new auth0.ClientGrant("my_client_grant", {
  *     audience: myResourceServer.identifier,
  *     clientId: myClient.id,
  *     scopes: ["create:foo"],

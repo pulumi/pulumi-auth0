@@ -10,6 +10,67 @@ import (
 )
 
 // With this resource, you can created and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
+// 			EnforcePolicies: pulumi.Bool(true),
+// 			Identifier:      pulumi.String("my-resource-server-identifier"),
+// 			Scopes: auth0.ResourceServerScopeArray{
+// 				&auth0.ResourceServerScopeArgs{
+// 					Description: pulumi.String("read something"),
+// 					Value:       pulumi.String("read:something"),
+// 				},
+// 			},
+// 			SigningAlg: pulumi.String("RS256"),
+// 			SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
+// 			TokenLifetime: pulumi.Int(86400),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		myRole, err := auth0.NewRole(ctx, "myRole", &auth0.RoleArgs{
+// 			Description: pulumi.String("Role Description..."),
+// 			Permissions: auth0.RolePermissionArray{
+// 				&auth0.RolePermissionArgs{
+// 					Name:                     pulumi.String("read:something"),
+// 					ResourceServerIdentifier: myResourceServer.Identifier,
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = auth0.NewUser(ctx, "myUser", &auth0.UserArgs{
+// 			ConnectionName: pulumi.String("Username-Password-Authentication"),
+// 			Email:          pulumi.String("test@test.com"),
+// 			Nickname:       pulumi.String("testnick"),
+// 			Password:       pulumi.String(fmt.Sprintf("%v%v%v%v%v", "passpass", "$", "12", "$", "12")),
+// 			Roles: pulumi.StringArray{
+// 				myRole.ID(),
+// 			},
+// 			UserId:   pulumi.String("auth0|1234567890"),
+// 			Username: pulumi.String("testnick"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Role struct {
 	pulumi.CustomResourceState
 

@@ -14,8 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
@@ -38,7 +36,7 @@ namespace Pulumi.Auth0
     public partial class CustomDomain : Pulumi.CustomResource
     {
         /// <summary>
-        /// String. Name of the custom domain. 
+        /// String. Name of the custom domain.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -120,7 +118,7 @@ namespace Pulumi.Auth0
     public sealed class CustomDomainArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Name of the custom domain. 
+        /// String. Name of the custom domain.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -145,7 +143,7 @@ namespace Pulumi.Auth0
     public sealed class CustomDomainState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Name of the custom domain. 
+        /// String. Name of the custom domain.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }

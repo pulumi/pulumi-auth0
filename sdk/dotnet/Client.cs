@@ -14,8 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
@@ -30,10 +28,10 @@ namespace Pulumi.Auth0
     ///             {
     ///                 Firebase = 
     ///                 {
-    ///                     { "client_email", "john.doe@example.com" },
-    ///                     { "lifetime_in_seconds", 1 },
-    ///                     { "private_key", "wer" },
-    ///                     { "private_key_id", "qwreerwerwe" },
+    ///                     { "clientEmail", "john.doe@example.com" },
+    ///                     { "lifetimeInSeconds", 1 },
+    ///                     { "privateKey", "wer" },
+    ///                     { "privateKeyId", "qwreerwerwe" },
     ///                 },
     ///                 Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs
     ///                 {
@@ -170,7 +168,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, object>?> ClientSecretRotationTrigger { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests. 
+        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         /// </summary>
         [Output("crossOriginAuth")]
         public Output<bool?> CrossOriginAuth { get; private set; } = null!;
@@ -411,7 +409,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests. 
+        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         /// </summary>
         [Input("crossOriginAuth")]
         public Input<bool>? CrossOriginAuth { get; set; }
@@ -644,7 +642,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests. 
+        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         /// </summary>
         [Input("crossOriginAuth")]
         public Input<bool>? CrossOriginAuth { get; set; }

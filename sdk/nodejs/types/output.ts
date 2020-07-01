@@ -307,7 +307,7 @@ export interface ConnectionOptions {
      */
     configuration?: {[key: string]: string};
     /**
-     * Map(String). 
+     * Map(String).
      */
     customScripts?: {[key: string]: string};
     disableCache?: boolean;
@@ -357,7 +357,7 @@ export interface ConnectionOptions {
      */
     messagingServiceSid?: string;
     /**
-     * String. 
+     * String.
      */
     name?: string;
     /**
@@ -474,7 +474,7 @@ export interface ConnectionOptionsPasswordHistory {
      */
     enable?: boolean;
     /**
-     * Integer, (Maximum=24). Indicates the number of passwords to keep in history. 
+     * Integer, (Maximum=24). Indicates the number of passwords to keep in history.
      */
     size?: number;
 }

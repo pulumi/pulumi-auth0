@@ -14,8 +14,6 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
@@ -45,6 +43,12 @@ namespace Pulumi.Auth0
     ///             Syntax = "liquid",
     ///             UrlLifetimeInSeconds = 3600,
     ///             Enabled = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 myEmailProvider,
+    ///             },
     ///         });
     ///     }
     /// 
