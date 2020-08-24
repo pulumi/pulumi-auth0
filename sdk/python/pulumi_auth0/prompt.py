@@ -5,13 +5,20 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Prompt']
 
 
 class Prompt(pulumi.CustomResource):
-    universal_login_experience: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, universal_login_experience=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 universal_login_experience: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
 
@@ -26,6 +33,7 @@ class Prompt(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -38,7 +46,7 @@ class Prompt(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -52,14 +60,18 @@ class Prompt(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, universal_login_experience=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            universal_login_experience: Optional[pulumi.Input[str]] = None) -> 'Prompt':
         """
         Get an existing Prompt resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -68,8 +80,17 @@ class Prompt(pulumi.CustomResource):
         __props__["universal_login_experience"] = universal_login_experience
         return Prompt(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="universalLoginExperience")
+    def universal_login_experience(self) -> Optional[str]:
+        """
+        Which login experience to use. Options include `classic` and `new`.
+        """
+        return pulumi.get(self, "universal_login_experience")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

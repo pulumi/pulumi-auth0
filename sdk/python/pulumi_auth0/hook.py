@@ -5,28 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Hook']
 
 
 class Hook(pulumi.CustomResource):
-    enabled: pulumi.Output[bool]
-    """
-    Whether the hook is enabled, or disabled
-    """
-    name: pulumi.Output[str]
-    """
-    Name of this hook
-    """
-    script: pulumi.Output[str]
-    """
-    Code to be executed when this hook runs
-    """
-    trigger_id: pulumi.Output[str]
-    """
-    Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
-    """
-    def __init__(__self__, resource_name, opts=None, enabled=None, name=None, script=None, trigger_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 script: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
 
@@ -66,7 +61,7 @@ class Hook(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -87,13 +82,19 @@ class Hook(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, enabled=None, name=None, script=None, trigger_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            script: Optional[pulumi.Input[str]] = None,
+            trigger_id: Optional[pulumi.Input[str]] = None) -> 'Hook':
         """
         Get an existing Hook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled
         :param pulumi.Input[str] name: Name of this hook
@@ -110,8 +111,41 @@ class Hook(pulumi.CustomResource):
         __props__["trigger_id"] = trigger_id
         return Hook(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the hook is enabled, or disabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of this hook
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def script(self) -> str:
+        """
+        Code to be executed when this hook runs
+        """
+        return pulumi.get(self, "script")
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> str:
+        """
+        Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
+        """
+        return pulumi.get(self, "trigger_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

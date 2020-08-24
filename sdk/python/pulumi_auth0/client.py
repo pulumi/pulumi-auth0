@@ -5,194 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Client']
 
 
 class Client(pulumi.CustomResource):
-    addons: pulumi.Output[dict]
-    """
-    List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
-
-      * `aws` (`dict`) - String
-      * `azureBlob` (`dict`) - String
-      * `azureSb` (`dict`) - String
-      * `box` (`dict`) - String
-      * `cloudbees` (`dict`) - String
-      * `concur` (`dict`) - String
-      * `dropbox` (`dict`) - String
-      * `echosign` (`dict`) - String
-      * `egnyte` (`dict`) - String
-      * `firebase` (`dict`) - String
-      * `layer` (`dict`) - String
-      * `mscrm` (`dict`) - String
-      * `newrelic` (`dict`) - String
-      * `office365` (`dict`) - String
-      * `rms` (`dict`) - String
-      * `salesforce` (`dict`) - String
-      * `salesforceApi` (`dict`) - String
-      * `salesforceSandboxApi` (`dict`) - String
-      * `samlp` (`dict`) - List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-        * `audience` (`str`) - String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
-        * `authnContextClassRef` (`str`) - String. Class reference of the authentication context.
-        * `binding` (`str`) - String. Protocol binding used for SAML logout responses.
-        * `createUpnClaim` (`bool`) - Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
-        * `destination` (`str`) - String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
-        * `digestAlgorithm` (`str`) - String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
-        * `includeAttributeNameFormat` (`bool`) - Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-        * `lifetimeInSeconds` (`float`) - Integer, (Default=3600). Number of seconds during which the token is valid.
-        * `logout` (`dict`) - Map(Resource). Configuration settings for logout. For details, see Logout.
-          * `callback` (`str`) - String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-          * `sloEnabled` (`bool`) - Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-
-        * `mapIdentities` (`bool`) - Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
-        * `mapUnknownClaimsAsIs` (`bool`) - Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
-        * `mappings` (`dict`) - Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-        * `nameIdentifierFormat` (`str`) - String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-        * `nameIdentifierProbes` (`list`) - List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-        * `passthroughClaimsWithNoMapping` (`bool`) - Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
-        * `recipient` (`str`) - String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
-        * `signResponse` (`bool`) - Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-        * `signatureAlgorithm` (`str`) - String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
-        * `typedAttributes` (`bool`) - Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
-
-      * `sapApi` (`dict`) - String
-      * `sentry` (`dict`) - String
-      * `sharepoint` (`dict`) - String
-      * `slack` (`dict`) - String
-      * `springcm` (`dict`) - String
-      * `wams` (`dict`) - String
-      * `wsfed` (`dict`) - String
-      * `zendesk` (`dict`) - String
-      * `zoom` (`dict`) - String
-    """
-    allowed_logout_urls: pulumi.Output[list]
-    """
-    List(String). URLs that Auth0 may redirect to after logout.
-    """
-    allowed_origins: pulumi.Output[list]
-    """
-    List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-    """
-    app_type: pulumi.Output[str]
-    """
-    String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
-    """
-    callbacks: pulumi.Output[list]
-    """
-    List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
-    """
-    client_id: pulumi.Output[str]
-    """
-    String. ID of the client.
-    """
-    client_metadata: pulumi.Output[dict]
-    """
-    Map(String)
-    """
-    client_secret: pulumi.Output[str]
-    """
-    String. Secret for the client; keep this private.
-    """
-    client_secret_rotation_trigger: pulumi.Output[dict]
-    """
-    Map.
-    """
-    cross_origin_auth: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
-    """
-    cross_origin_loc: pulumi.Output[str]
-    """
-    String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
-    """
-    custom_login_page: pulumi.Output[str]
-    """
-    String. Content of the custom login page.
-    """
-    custom_login_page_on: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not a custom login page is to be used.
-    """
-    custom_login_page_preview: pulumi.Output[str]
-    """
-    String.
-    """
-    description: pulumi.Output[str]
-    """
-    String, (Max length = 140 characters). Description of the purpose of the client.
-    """
-    encryption_key: pulumi.Output[dict]
-    """
-    Map(String).
-    """
-    form_template: pulumi.Output[str]
-    """
-    String. Form template for WS-Federation protocol.
-    """
-    grant_types: pulumi.Output[list]
-    """
-    List(String). Types of grants that this client is authorized to use.
-    """
-    initiate_login_uri: pulumi.Output[str]
-    is_first_party: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not this client is a first-party client.
-    """
-    is_token_endpoint_ip_header_trusted: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not the token endpoint IP header is trusted.
-    """
-    jwt_configuration: pulumi.Output[dict]
-    """
-    List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
-
-      * `alg` (`str`) - String. Algorithm used to sign JWTs.
-      * `lifetimeInSeconds` (`float`) - Integer. Number of seconds during which the JWT will be valid.
-      * `scopes` (`dict`) - Map(String). Permissions (scopes) included in JWTs.
-      * `secretEncoded` (`bool`) - Boolean. Indicates whether or not the client secret is base64 encoded.
-    """
-    logo_uri: pulumi.Output[str]
-    """
-    String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
-    """
-    mobile: pulumi.Output[dict]
-    """
-    List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
-
-      * `android` (`dict`) - List(Resource). Configuration settings for Android native apps. For details, see Android.
-        * `appPackageName` (`str`) - String
-        * `sha256CertFingerprints` (`list`) - List(String)
-
-      * `ios` (`dict`) - List(Resource). Configuration settings for i0S native apps. For details, see iOS.
-        * `appBundleIdentifier` (`str`) - String
-        * `teamId` (`str`) - String
-    """
-    name: pulumi.Output[str]
-    """
-    String. Name of the client.
-    """
-    oidc_conformant: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
-    """
-    sso: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
-    """
-    sso_disabled: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not SSO is disabled.
-    """
-    token_endpoint_auth_method: pulumi.Output[str]
-    """
-    String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-    """
-    web_origins: pulumi.Output[list]
-    """
-    List(String). URLs that represent valid web origins for use with web message response mode.
-    """
-    def __init__(__self__, resource_name, opts=None, addons=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_metadata=None, client_secret_rotation_trigger=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, custom_login_page_preview=None, description=None, encryption_key=None, form_template=None, grant_types=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configuration=None, logo_uri=None, mobile=None, name=None, oidc_conformant=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
+                 allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 app_type: Optional[pulumi.Input[str]] = None,
+                 callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cross_origin_auth: Optional[pulumi.Input[bool]] = None,
+                 cross_origin_loc: Optional[pulumi.Input[str]] = None,
+                 custom_login_page: Optional[pulumi.Input[str]] = None,
+                 custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+                 custom_login_page_preview: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 form_template: Optional[pulumi.Input[str]] = None,
+                 grant_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 initiate_login_uri: Optional[pulumi.Input[str]] = None,
+                 is_first_party: Optional[pulumi.Input[bool]] = None,
+                 is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
+                 jwt_configuration: Optional[pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']]] = None,
+                 logo_uri: Optional[pulumi.Input[str]] = None,
+                 mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 sso: Optional[pulumi.Input[bool]] = None,
+                 sso_disabled: Optional[pulumi.Input[bool]] = None,
+                 token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
+                 web_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.
 
@@ -203,27 +58,27 @@ class Client(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_client = auth0.Client("myClient",
-            addons={
-                "firebase": {
+            addons=auth0.ClientAddonsArgs(
+                firebase={
                     "clientEmail": "john.doe@example.com",
                     "lifetimeInSeconds": 1,
                     "privateKey": "wer",
                     "privateKeyId": "qwreerwerwe",
                 },
-                "samlp": {
-                    "audience": "https://example.com/saml",
-                    "createUpnClaim": False,
-                    "mapIdentities": False,
-                    "mapUnknownClaimsAsIs": False,
-                    "mappings": {
+                samlp=auth0.ClientAddonsSamlpArgs(
+                    audience="https://example.com/saml",
+                    create_upn_claim=False,
+                    map_identities=False,
+                    map_unknown_claims_as_is=False,
+                    mappings={
                         "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
                         "name": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
                     },
-                    "nameIdentifierFormat": "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-                    "nameIdentifierProbes": ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
-                    "passthroughClaimsWithNoMapping": False,
-                },
-            },
+                    name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                    name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+                    passthrough_claims_with_no_mapping=False,
+                ),
+            ),
             allowed_logout_urls=["https://example.com"],
             allowed_origins=["https://example.com"],
             app_type="non_interactive",
@@ -242,20 +97,20 @@ class Client(pulumi.CustomResource):
             ],
             is_first_party=True,
             is_token_endpoint_ip_header_trusted=True,
-            jwt_configuration={
-                "alg": "RS256",
-                "lifetimeInSeconds": 300,
-                "scopes": {
+            jwt_configuration=auth0.ClientJwtConfigurationArgs(
+                alg="RS256",
+                lifetime_in_seconds=300,
+                scopes={
                     "foo": "bar",
                 },
-                "secretEncoded": True,
-            },
-            mobile={
-                "ios": {
-                    "appBundleIdentifier": "com.my.bundle.id",
-                    "teamId": "9JA89QQLNQ",
-                },
-            },
+                secret_encoded=True,
+            ),
+            mobile=auth0.ClientMobileArgs(
+                ios=auth0.ClientMobileIosArgs(
+                    app_bundle_identifier="com.my.bundle.id",
+                    team_id="9JA89QQLNQ",
+                ),
+            ),
             oidc_conformant=False,
             token_endpoint_auth_method="client_secret_post",
             web_origins=["https://example.com"])
@@ -263,104 +118,33 @@ class Client(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
-        :param pulumi.Input[list] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
-        :param pulumi.Input[list] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
-        :param pulumi.Input[list] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
-        :param pulumi.Input[dict] client_metadata: Map(String)
-        :param pulumi.Input[dict] client_secret_rotation_trigger: Map.
+        :param pulumi.Input[List[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map.
         :param pulumi.Input[bool] cross_origin_auth: Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         :param pulumi.Input[str] cross_origin_loc: String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
         :param pulumi.Input[str] custom_login_page: String. Content of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Boolean. Indicates whether or not a custom login page is to be used.
         :param pulumi.Input[str] custom_login_page_preview: String.
         :param pulumi.Input[str] description: String, (Max length = 140 characters). Description of the purpose of the client.
-        :param pulumi.Input[dict] encryption_key: Map(String).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Map(String).
         :param pulumi.Input[str] form_template: String. Form template for WS-Federation protocol.
-        :param pulumi.Input[list] grant_types: List(String). Types of grants that this client is authorized to use.
+        :param pulumi.Input[List[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
         :param pulumi.Input[bool] is_first_party: Boolean. Indicates whether or not this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Boolean. Indicates whether or not the token endpoint IP header is trusted.
-        :param pulumi.Input[dict] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+        :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
         :param pulumi.Input[str] logo_uri: String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
-        :param pulumi.Input[dict] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+        :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
         :param pulumi.Input[str] token_endpoint_auth_method: String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        :param pulumi.Input[list] web_origins: List(String). URLs that represent valid web origins for use with web message response mode.
-
-        The **addons** object supports the following:
-
-          * `aws` (`pulumi.Input[dict]`) - String
-          * `azureBlob` (`pulumi.Input[dict]`) - String
-          * `azureSb` (`pulumi.Input[dict]`) - String
-          * `box` (`pulumi.Input[dict]`) - String
-          * `cloudbees` (`pulumi.Input[dict]`) - String
-          * `concur` (`pulumi.Input[dict]`) - String
-          * `dropbox` (`pulumi.Input[dict]`) - String
-          * `echosign` (`pulumi.Input[dict]`) - String
-          * `egnyte` (`pulumi.Input[dict]`) - String
-          * `firebase` (`pulumi.Input[dict]`) - String
-          * `layer` (`pulumi.Input[dict]`) - String
-          * `mscrm` (`pulumi.Input[dict]`) - String
-          * `newrelic` (`pulumi.Input[dict]`) - String
-          * `office365` (`pulumi.Input[dict]`) - String
-          * `rms` (`pulumi.Input[dict]`) - String
-          * `salesforce` (`pulumi.Input[dict]`) - String
-          * `salesforceApi` (`pulumi.Input[dict]`) - String
-          * `salesforceSandboxApi` (`pulumi.Input[dict]`) - String
-          * `samlp` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-            * `audience` (`pulumi.Input[str]`) - String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
-            * `authnContextClassRef` (`pulumi.Input[str]`) - String. Class reference of the authentication context.
-            * `binding` (`pulumi.Input[str]`) - String. Protocol binding used for SAML logout responses.
-            * `createUpnClaim` (`pulumi.Input[bool]`) - Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
-            * `destination` (`pulumi.Input[str]`) - String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
-            * `digestAlgorithm` (`pulumi.Input[str]`) - String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
-            * `includeAttributeNameFormat` (`pulumi.Input[bool]`) - Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-            * `lifetimeInSeconds` (`pulumi.Input[float]`) - Integer, (Default=3600). Number of seconds during which the token is valid.
-            * `logout` (`pulumi.Input[dict]`) - Map(Resource). Configuration settings for logout. For details, see Logout.
-              * `callback` (`pulumi.Input[str]`) - String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-              * `sloEnabled` (`pulumi.Input[bool]`) - Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-
-            * `mapIdentities` (`pulumi.Input[bool]`) - Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
-            * `mapUnknownClaimsAsIs` (`pulumi.Input[bool]`) - Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
-            * `mappings` (`pulumi.Input[dict]`) - Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-            * `nameIdentifierFormat` (`pulumi.Input[str]`) - String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-            * `nameIdentifierProbes` (`pulumi.Input[list]`) - List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-            * `passthroughClaimsWithNoMapping` (`pulumi.Input[bool]`) - Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
-            * `recipient` (`pulumi.Input[str]`) - String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
-            * `signResponse` (`pulumi.Input[bool]`) - Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-            * `signatureAlgorithm` (`pulumi.Input[str]`) - String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
-            * `typedAttributes` (`pulumi.Input[bool]`) - Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
-
-          * `sapApi` (`pulumi.Input[dict]`) - String
-          * `sentry` (`pulumi.Input[dict]`) - String
-          * `sharepoint` (`pulumi.Input[dict]`) - String
-          * `slack` (`pulumi.Input[dict]`) - String
-          * `springcm` (`pulumi.Input[dict]`) - String
-          * `wams` (`pulumi.Input[dict]`) - String
-          * `wsfed` (`pulumi.Input[dict]`) - String
-          * `zendesk` (`pulumi.Input[dict]`) - String
-          * `zoom` (`pulumi.Input[dict]`) - String
-
-        The **jwt_configuration** object supports the following:
-
-          * `alg` (`pulumi.Input[str]`) - String. Algorithm used to sign JWTs.
-          * `lifetimeInSeconds` (`pulumi.Input[float]`) - Integer. Number of seconds during which the JWT will be valid.
-          * `scopes` (`pulumi.Input[dict]`) - Map(String). Permissions (scopes) included in JWTs.
-          * `secretEncoded` (`pulumi.Input[bool]`) - Boolean. Indicates whether or not the client secret is base64 encoded.
-
-        The **mobile** object supports the following:
-
-          * `android` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for Android native apps. For details, see Android.
-            * `appPackageName` (`pulumi.Input[str]`) - String
-            * `sha256CertFingerprints` (`pulumi.Input[list]`) - List(String)
-
-          * `ios` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for i0S native apps. For details, see iOS.
-            * `appBundleIdentifier` (`pulumi.Input[str]`) - String
-            * `teamId` (`pulumi.Input[str]`) - String
+        :param pulumi.Input[List[pulumi.Input[str]]] web_origins: List(String). URLs that represent valid web origins for use with web message response mode.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -373,7 +157,7 @@ class Client(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -418,114 +202,75 @@ class Client(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, addons=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_id=None, client_metadata=None, client_secret=None, client_secret_rotation_trigger=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, custom_login_page_preview=None, description=None, encryption_key=None, form_template=None, grant_types=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configuration=None, logo_uri=None, mobile=None, name=None, oidc_conformant=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
+            allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            app_type: Optional[pulumi.Input[str]] = None,
+            callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            client_id: Optional[pulumi.Input[str]] = None,
+            client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            client_secret: Optional[pulumi.Input[str]] = None,
+            client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            cross_origin_auth: Optional[pulumi.Input[bool]] = None,
+            cross_origin_loc: Optional[pulumi.Input[str]] = None,
+            custom_login_page: Optional[pulumi.Input[str]] = None,
+            custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+            custom_login_page_preview: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            form_template: Optional[pulumi.Input[str]] = None,
+            grant_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            initiate_login_uri: Optional[pulumi.Input[str]] = None,
+            is_first_party: Optional[pulumi.Input[bool]] = None,
+            is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
+            jwt_configuration: Optional[pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']]] = None,
+            logo_uri: Optional[pulumi.Input[str]] = None,
+            mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            oidc_conformant: Optional[pulumi.Input[bool]] = None,
+            sso: Optional[pulumi.Input[bool]] = None,
+            sso_disabled: Optional[pulumi.Input[bool]] = None,
+            token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
+            web_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Client':
         """
         Get an existing Client resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
-        :param pulumi.Input[list] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
-        :param pulumi.Input[list] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
-        :param pulumi.Input[list] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param pulumi.Input[List[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[str] client_id: String. ID of the client.
-        :param pulumi.Input[dict] client_metadata: Map(String)
+        :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
         :param pulumi.Input[str] client_secret: String. Secret for the client; keep this private.
-        :param pulumi.Input[dict] client_secret_rotation_trigger: Map.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map.
         :param pulumi.Input[bool] cross_origin_auth: Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         :param pulumi.Input[str] cross_origin_loc: String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
         :param pulumi.Input[str] custom_login_page: String. Content of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Boolean. Indicates whether or not a custom login page is to be used.
         :param pulumi.Input[str] custom_login_page_preview: String.
         :param pulumi.Input[str] description: String, (Max length = 140 characters). Description of the purpose of the client.
-        :param pulumi.Input[dict] encryption_key: Map(String).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Map(String).
         :param pulumi.Input[str] form_template: String. Form template for WS-Federation protocol.
-        :param pulumi.Input[list] grant_types: List(String). Types of grants that this client is authorized to use.
+        :param pulumi.Input[List[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
         :param pulumi.Input[bool] is_first_party: Boolean. Indicates whether or not this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Boolean. Indicates whether or not the token endpoint IP header is trusted.
-        :param pulumi.Input[dict] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+        :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
         :param pulumi.Input[str] logo_uri: String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
-        :param pulumi.Input[dict] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+        :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
         :param pulumi.Input[str] token_endpoint_auth_method: String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        :param pulumi.Input[list] web_origins: List(String). URLs that represent valid web origins for use with web message response mode.
-
-        The **addons** object supports the following:
-
-          * `aws` (`pulumi.Input[dict]`) - String
-          * `azureBlob` (`pulumi.Input[dict]`) - String
-          * `azureSb` (`pulumi.Input[dict]`) - String
-          * `box` (`pulumi.Input[dict]`) - String
-          * `cloudbees` (`pulumi.Input[dict]`) - String
-          * `concur` (`pulumi.Input[dict]`) - String
-          * `dropbox` (`pulumi.Input[dict]`) - String
-          * `echosign` (`pulumi.Input[dict]`) - String
-          * `egnyte` (`pulumi.Input[dict]`) - String
-          * `firebase` (`pulumi.Input[dict]`) - String
-          * `layer` (`pulumi.Input[dict]`) - String
-          * `mscrm` (`pulumi.Input[dict]`) - String
-          * `newrelic` (`pulumi.Input[dict]`) - String
-          * `office365` (`pulumi.Input[dict]`) - String
-          * `rms` (`pulumi.Input[dict]`) - String
-          * `salesforce` (`pulumi.Input[dict]`) - String
-          * `salesforceApi` (`pulumi.Input[dict]`) - String
-          * `salesforceSandboxApi` (`pulumi.Input[dict]`) - String
-          * `samlp` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-            * `audience` (`pulumi.Input[str]`) - String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
-            * `authnContextClassRef` (`pulumi.Input[str]`) - String. Class reference of the authentication context.
-            * `binding` (`pulumi.Input[str]`) - String. Protocol binding used for SAML logout responses.
-            * `createUpnClaim` (`pulumi.Input[bool]`) - Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
-            * `destination` (`pulumi.Input[str]`) - String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
-            * `digestAlgorithm` (`pulumi.Input[str]`) - String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
-            * `includeAttributeNameFormat` (`pulumi.Input[bool]`) - Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-            * `lifetimeInSeconds` (`pulumi.Input[float]`) - Integer, (Default=3600). Number of seconds during which the token is valid.
-            * `logout` (`pulumi.Input[dict]`) - Map(Resource). Configuration settings for logout. For details, see Logout.
-              * `callback` (`pulumi.Input[str]`) - String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-              * `sloEnabled` (`pulumi.Input[bool]`) - Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-
-            * `mapIdentities` (`pulumi.Input[bool]`) - Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
-            * `mapUnknownClaimsAsIs` (`pulumi.Input[bool]`) - Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
-            * `mappings` (`pulumi.Input[dict]`) - Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-            * `nameIdentifierFormat` (`pulumi.Input[str]`) - String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-            * `nameIdentifierProbes` (`pulumi.Input[list]`) - List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-            * `passthroughClaimsWithNoMapping` (`pulumi.Input[bool]`) - Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
-            * `recipient` (`pulumi.Input[str]`) - String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
-            * `signResponse` (`pulumi.Input[bool]`) - Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-            * `signatureAlgorithm` (`pulumi.Input[str]`) - String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
-            * `typedAttributes` (`pulumi.Input[bool]`) - Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
-
-          * `sapApi` (`pulumi.Input[dict]`) - String
-          * `sentry` (`pulumi.Input[dict]`) - String
-          * `sharepoint` (`pulumi.Input[dict]`) - String
-          * `slack` (`pulumi.Input[dict]`) - String
-          * `springcm` (`pulumi.Input[dict]`) - String
-          * `wams` (`pulumi.Input[dict]`) - String
-          * `wsfed` (`pulumi.Input[dict]`) - String
-          * `zendesk` (`pulumi.Input[dict]`) - String
-          * `zoom` (`pulumi.Input[dict]`) - String
-
-        The **jwt_configuration** object supports the following:
-
-          * `alg` (`pulumi.Input[str]`) - String. Algorithm used to sign JWTs.
-          * `lifetimeInSeconds` (`pulumi.Input[float]`) - Integer. Number of seconds during which the JWT will be valid.
-          * `scopes` (`pulumi.Input[dict]`) - Map(String). Permissions (scopes) included in JWTs.
-          * `secretEncoded` (`pulumi.Input[bool]`) - Boolean. Indicates whether or not the client secret is base64 encoded.
-
-        The **mobile** object supports the following:
-
-          * `android` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for Android native apps. For details, see Android.
-            * `appPackageName` (`pulumi.Input[str]`) - String
-            * `sha256CertFingerprints` (`pulumi.Input[list]`) - List(String)
-
-          * `ios` (`pulumi.Input[dict]`) - List(Resource). Configuration settings for i0S native apps. For details, see iOS.
-            * `appBundleIdentifier` (`pulumi.Input[str]`) - String
-            * `teamId` (`pulumi.Input[str]`) - String
+        :param pulumi.Input[List[pulumi.Input[str]]] web_origins: List(String). URLs that represent valid web origins for use with web message response mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -563,8 +308,246 @@ class Client(pulumi.CustomResource):
         __props__["web_origins"] = web_origins
         return Client(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def addons(self) -> Optional['outputs.ClientAddons']:
+        """
+        List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        """
+        return pulumi.get(self, "addons")
+
+    @property
+    @pulumi.getter(name="allowedLogoutUrls")
+    def allowed_logout_urls(self) -> Optional[List[str]]:
+        """
+        List(String). URLs that Auth0 may redirect to after logout.
+        """
+        return pulumi.get(self, "allowed_logout_urls")
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Optional[List[str]]:
+        """
+        List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> Optional[str]:
+        """
+        String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        """
+        return pulumi.get(self, "app_type")
+
+    @property
+    @pulumi.getter
+    def callbacks(self) -> Optional[List[str]]:
+        """
+        List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        """
+        return pulumi.get(self, "callbacks")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        String. ID of the client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientMetadata")
+    def client_metadata(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map(String)
+        """
+        return pulumi.get(self, "client_metadata")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        """
+        String. Secret for the client; keep this private.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="clientSecretRotationTrigger")
+    def client_secret_rotation_trigger(self) -> Optional[Mapping[str, Any]]:
+        """
+        Map.
+        """
+        return pulumi.get(self, "client_secret_rotation_trigger")
+
+    @property
+    @pulumi.getter(name="crossOriginAuth")
+    def cross_origin_auth(self) -> Optional[bool]:
+        """
+        Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+        """
+        return pulumi.get(self, "cross_origin_auth")
+
+    @property
+    @pulumi.getter(name="crossOriginLoc")
+    def cross_origin_loc(self) -> Optional[str]:
+        """
+        String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+        """
+        return pulumi.get(self, "cross_origin_loc")
+
+    @property
+    @pulumi.getter(name="customLoginPage")
+    def custom_login_page(self) -> Optional[str]:
+        """
+        String. Content of the custom login page.
+        """
+        return pulumi.get(self, "custom_login_page")
+
+    @property
+    @pulumi.getter(name="customLoginPageOn")
+    def custom_login_page_on(self) -> bool:
+        """
+        Boolean. Indicates whether or not a custom login page is to be used.
+        """
+        return pulumi.get(self, "custom_login_page_on")
+
+    @property
+    @pulumi.getter(name="customLoginPagePreview")
+    def custom_login_page_preview(self) -> Optional[str]:
+        """
+        String.
+        """
+        return pulumi.get(self, "custom_login_page_preview")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        String, (Max length = 140 characters). Description of the purpose of the client.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[Mapping[str, str]]:
+        """
+        Map(String).
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="formTemplate")
+    def form_template(self) -> Optional[str]:
+        """
+        String. Form template for WS-Federation protocol.
+        """
+        return pulumi.get(self, "form_template")
+
+    @property
+    @pulumi.getter(name="grantTypes")
+    def grant_types(self) -> List[str]:
+        """
+        List(String). Types of grants that this client is authorized to use.
+        """
+        return pulumi.get(self, "grant_types")
+
+    @property
+    @pulumi.getter(name="initiateLoginUri")
+    def initiate_login_uri(self) -> Optional[str]:
+        return pulumi.get(self, "initiate_login_uri")
+
+    @property
+    @pulumi.getter(name="isFirstParty")
+    def is_first_party(self) -> bool:
+        """
+        Boolean. Indicates whether or not this client is a first-party client.
+        """
+        return pulumi.get(self, "is_first_party")
+
+    @property
+    @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
+    def is_token_endpoint_ip_header_trusted(self) -> bool:
+        """
+        Boolean. Indicates whether or not the token endpoint IP header is trusted.
+        """
+        return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
+
+    @property
+    @pulumi.getter(name="jwtConfiguration")
+    def jwt_configuration(self) -> 'outputs.ClientJwtConfiguration':
+        """
+        List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+        """
+        return pulumi.get(self, "jwt_configuration")
+
+    @property
+    @pulumi.getter(name="logoUri")
+    def logo_uri(self) -> Optional[str]:
+        """
+        String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        """
+        return pulumi.get(self, "logo_uri")
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> Optional['outputs.ClientMobile']:
+        """
+        List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+        """
+        return pulumi.get(self, "mobile")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        String. Name of the client.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oidcConformant")
+    def oidc_conformant(self) -> bool:
+        """
+        Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        """
+        return pulumi.get(self, "oidc_conformant")
+
+    @property
+    @pulumi.getter
+    def sso(self) -> Optional[bool]:
+        """
+        Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+        """
+        return pulumi.get(self, "sso")
+
+    @property
+    @pulumi.getter(name="ssoDisabled")
+    def sso_disabled(self) -> Optional[bool]:
+        """
+        Boolean. Indicates whether or not SSO is disabled.
+        """
+        return pulumi.get(self, "sso_disabled")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> str:
+        """
+        String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        """
+        return pulumi.get(self, "token_endpoint_auth_method")
+
+    @property
+    @pulumi.getter(name="webOrigins")
+    def web_origins(self) -> Optional[List[str]]:
+        """
+        List(String). URLs that represent valid web origins for use with web message response mode.
+        """
+        return pulumi.get(self, "web_origins")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

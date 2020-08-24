@@ -5,69 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['User']
 
 
 class User(pulumi.CustomResource):
-    app_metadata: pulumi.Output[str]
-    """
-    String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
-    """
-    blocked: pulumi.Output[bool]
-    connection_name: pulumi.Output[str]
-    """
-    String. Name of the connection from which the user information was sourced.
-    """
-    email: pulumi.Output[str]
-    """
-    String. Email address of the user.
-    """
-    email_verified: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not the email address has been verified.
-    """
-    family_name: pulumi.Output[str]
-    given_name: pulumi.Output[str]
-    name: pulumi.Output[str]
-    nickname: pulumi.Output[str]
-    """
-    String. Preferred nickname or alias of the user.
-    """
-    password: pulumi.Output[str]
-    """
-    String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
-    """
-    phone_number: pulumi.Output[str]
-    """
-    String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
-    """
-    phone_verified: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not the phone number has been verified.
-    """
-    picture: pulumi.Output[str]
-    roles: pulumi.Output[list]
-    """
-    Set(String). Set of IDs of roles assigned to the user.
-    """
-    user_id: pulumi.Output[str]
-    """
-    String. ID of the user.
-    """
-    user_metadata: pulumi.Output[str]
-    """
-    String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
-    """
-    username: pulumi.Output[str]
-    """
-    String. Username of the user. Only valid if the connection requires a username.
-    """
-    verify_email: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
-    """
-    def __init__(__self__, resource_name, opts=None, app_metadata=None, blocked=None, connection_name=None, email=None, email_verified=None, family_name=None, given_name=None, name=None, nickname=None, password=None, phone_number=None, phone_verified=None, picture=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_metadata: Optional[pulumi.Input[str]] = None,
+                 blocked: Optional[pulumi.Input[bool]] = None,
+                 connection_name: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 email_verified: Optional[pulumi.Input[bool]] = None,
+                 family_name: Optional[pulumi.Input[str]] = None,
+                 given_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nickname: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 phone_number: Optional[pulumi.Input[str]] = None,
+                 phone_verified: Optional[pulumi.Input[bool]] = None,
+                 picture: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 user_metadata: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 verify_email: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
 
@@ -101,7 +69,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] password: String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
         :param pulumi.Input[str] phone_number: String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Boolean. Indicates whether or not the phone number has been verified.
-        :param pulumi.Input[list] roles: Set(String). Set of IDs of roles assigned to the user.
+        :param pulumi.Input[List[pulumi.Input[str]]] roles: Set(String). Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: String. ID of the user.
         :param pulumi.Input[str] user_metadata: String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         :param pulumi.Input[str] username: String. Username of the user. Only valid if the connection requires a username.
@@ -118,7 +86,7 @@ class User(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -151,13 +119,33 @@ class User(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_metadata=None, blocked=None, connection_name=None, email=None, email_verified=None, family_name=None, given_name=None, name=None, nickname=None, password=None, phone_number=None, phone_verified=None, picture=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_metadata: Optional[pulumi.Input[str]] = None,
+            blocked: Optional[pulumi.Input[bool]] = None,
+            connection_name: Optional[pulumi.Input[str]] = None,
+            email: Optional[pulumi.Input[str]] = None,
+            email_verified: Optional[pulumi.Input[bool]] = None,
+            family_name: Optional[pulumi.Input[str]] = None,
+            given_name: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            nickname: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            phone_number: Optional[pulumi.Input[str]] = None,
+            phone_verified: Optional[pulumi.Input[bool]] = None,
+            picture: Optional[pulumi.Input[str]] = None,
+            roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            user_id: Optional[pulumi.Input[str]] = None,
+            user_metadata: Optional[pulumi.Input[str]] = None,
+            username: Optional[pulumi.Input[str]] = None,
+            verify_email: Optional[pulumi.Input[bool]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_metadata: String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         :param pulumi.Input[str] connection_name: String. Name of the connection from which the user information was sourced.
@@ -167,7 +155,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] password: String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
         :param pulumi.Input[str] phone_number: String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Boolean. Indicates whether or not the phone number has been verified.
-        :param pulumi.Input[list] roles: Set(String). Set of IDs of roles assigned to the user.
+        :param pulumi.Input[List[pulumi.Input[str]]] roles: Set(String). Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: String. ID of the user.
         :param pulumi.Input[str] user_metadata: String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         :param pulumi.Input[str] username: String. Username of the user. Only valid if the connection requires a username.
@@ -197,8 +185,138 @@ class User(pulumi.CustomResource):
         __props__["verify_email"] = verify_email
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="appMetadata")
+    def app_metadata(self) -> Optional[str]:
+        """
+        String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+        """
+        return pulumi.get(self, "app_metadata")
+
+    @property
+    @pulumi.getter
+    def blocked(self) -> Optional[bool]:
+        return pulumi.get(self, "blocked")
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> str:
+        """
+        String. Name of the connection from which the user information was sourced.
+        """
+        return pulumi.get(self, "connection_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        String. Email address of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="emailVerified")
+    def email_verified(self) -> Optional[bool]:
+        """
+        Boolean. Indicates whether or not the email address has been verified.
+        """
+        return pulumi.get(self, "email_verified")
+
+    @property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> Optional[str]:
+        return pulumi.get(self, "family_name")
+
+    @property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> Optional[str]:
+        return pulumi.get(self, "given_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def nickname(self) -> Optional[str]:
+        """
+        String. Preferred nickname or alias of the user.
+        """
+        return pulumi.get(self, "nickname")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> Optional[str]:
+        """
+        String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @property
+    @pulumi.getter(name="phoneVerified")
+    def phone_verified(self) -> Optional[bool]:
+        """
+        Boolean. Indicates whether or not the phone number has been verified.
+        """
+        return pulumi.get(self, "phone_verified")
+
+    @property
+    @pulumi.getter
+    def picture(self) -> Optional[str]:
+        return pulumi.get(self, "picture")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[List[str]]:
+        """
+        Set(String). Set of IDs of roles assigned to the user.
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        String. ID of the user.
+        """
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="userMetadata")
+    def user_metadata(self) -> Optional[str]:
+        """
+        String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+        """
+        return pulumi.get(self, "user_metadata")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        String. Username of the user. Only valid if the connection requires a username.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="verifyEmail")
+    def verify_email(self) -> Optional[bool]:
+        """
+        Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        """
+        return pulumi.get(self, "verify_email")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

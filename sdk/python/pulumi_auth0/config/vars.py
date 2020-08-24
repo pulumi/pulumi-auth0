@@ -5,16 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'client_id',
+    'client_secret',
+    'debug',
+    'domain',
+]
 
 __config__ = pulumi.Config('auth0')
 
-client_id = __config__.get('clientId') or utilities.get_env('AUTH0_CLIENT_ID')
+client_id = __config__.get('clientId') or _utilities.get_env('AUTH0_CLIENT_ID')
 
-client_secret = __config__.get('clientSecret') or utilities.get_env('AUTH0_CLIENT_SECRET')
+client_secret = __config__.get('clientSecret') or _utilities.get_env('AUTH0_CLIENT_SECRET')
 
-debug = __config__.get('debug') or utilities.get_env_bool('AUTH0_DEBUG')
+debug = __config__.get('debug') or _utilities.get_env_bool('AUTH0_DEBUG')
 
-domain = __config__.get('domain') or utilities.get_env('AUTH0_DOMAIN')
+domain = __config__.get('domain') or _utilities.get_env('AUTH0_DOMAIN')
 

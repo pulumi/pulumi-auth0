@@ -5,38 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['CustomDomain']
 
 
 class CustomDomain(pulumi.CustomResource):
-    domain: pulumi.Output[str]
-    """
-    String. Name of the custom domain.
-    """
-    primary: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not this is a primary domain.
-    """
-    status: pulumi.Output[str]
-    """
-    String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
-    """
-    type: pulumi.Output[str]
-    """
-    String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-    """
-    verification: pulumi.Output[dict]
-    """
-    List(Resource). Configuration settings for verification. For details, see Verification.
-
-      * `methods` (`list`) - List(Map). Verification methods for the domain.
-    """
-    verification_method: pulumi.Output[str]
-    """
-    String. Domain verification method. Options include `txt`.
-    """
-    def __init__(__self__, resource_name, opts=None, domain=None, type=None, verification_method=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 verification_method: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
 
@@ -69,7 +55,7 @@ class CustomDomain(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -94,24 +80,28 @@ class CustomDomain(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, domain=None, primary=None, status=None, type=None, verification=None, verification_method=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain: Optional[pulumi.Input[str]] = None,
+            primary: Optional[pulumi.Input[bool]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            verification: Optional[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]] = None,
+            verification_method: Optional[pulumi.Input[str]] = None) -> 'CustomDomain':
         """
         Get an existing CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
         :param pulumi.Input[bool] primary: Boolean. Indicates whether or not this is a primary domain.
         :param pulumi.Input[str] status: String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[dict] verification: List(Resource). Configuration settings for verification. For details, see Verification.
+        :param pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']] verification: List(Resource). Configuration settings for verification. For details, see Verification.
         :param pulumi.Input[str] verification_method: String. Domain verification method. Options include `txt`.
-
-        The **verification** object supports the following:
-
-          * `methods` (`pulumi.Input[list]`) - List(Map). Verification methods for the domain.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -125,8 +115,57 @@ class CustomDomain(pulumi.CustomResource):
         __props__["verification_method"] = verification_method
         return CustomDomain(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        String. Name of the custom domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def primary(self) -> bool:
+        """
+        Boolean. Indicates whether or not this is a primary domain.
+        """
+        return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def verification(self) -> 'outputs.CustomDomainVerification':
+        """
+        List(Resource). Configuration settings for verification. For details, see Verification.
+        """
+        return pulumi.get(self, "verification")
+
+    @property
+    @pulumi.getter(name="verificationMethod")
+    def verification_method(self) -> str:
+        """
+        String. Domain verification method. Options include `txt`.
+        """
+        return pulumi.get(self, "verification_method")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

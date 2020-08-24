@@ -5,117 +5,52 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['GlobalClient']
 
 
 class GlobalClient(pulumi.CustomResource):
-    addons: pulumi.Output[dict]
-    allowed_logout_urls: pulumi.Output[list]
-    allowed_origins: pulumi.Output[list]
-    app_type: pulumi.Output[str]
-    callbacks: pulumi.Output[list]
-    client_id: pulumi.Output[str]
-    client_metadata: pulumi.Output[dict]
-    client_secret: pulumi.Output[str]
-    client_secret_rotation_trigger: pulumi.Output[dict]
-    cross_origin_auth: pulumi.Output[bool]
-    cross_origin_loc: pulumi.Output[str]
-    custom_login_page: pulumi.Output[str]
-    custom_login_page_on: pulumi.Output[bool]
-    custom_login_page_preview: pulumi.Output[str]
-    description: pulumi.Output[str]
-    encryption_key: pulumi.Output[dict]
-    form_template: pulumi.Output[str]
-    grant_types: pulumi.Output[list]
-    initiate_login_uri: pulumi.Output[str]
-    is_first_party: pulumi.Output[bool]
-    is_token_endpoint_ip_header_trusted: pulumi.Output[bool]
-    jwt_configuration: pulumi.Output[dict]
-    logo_uri: pulumi.Output[str]
-    mobile: pulumi.Output[dict]
-    name: pulumi.Output[str]
-    oidc_conformant: pulumi.Output[bool]
-    sso: pulumi.Output[bool]
-    sso_disabled: pulumi.Output[bool]
-    token_endpoint_auth_method: pulumi.Output[str]
-    web_origins: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, addons=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_metadata=None, client_secret_rotation_trigger=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, custom_login_page_preview=None, description=None, encryption_key=None, form_template=None, grant_types=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configuration=None, logo_uri=None, mobile=None, oidc_conformant=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
+                 allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 app_type: Optional[pulumi.Input[str]] = None,
+                 callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cross_origin_auth: Optional[pulumi.Input[bool]] = None,
+                 cross_origin_loc: Optional[pulumi.Input[str]] = None,
+                 custom_login_page: Optional[pulumi.Input[str]] = None,
+                 custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+                 custom_login_page_preview: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 form_template: Optional[pulumi.Input[str]] = None,
+                 grant_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 initiate_login_uri: Optional[pulumi.Input[str]] = None,
+                 is_first_party: Optional[pulumi.Input[bool]] = None,
+                 is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
+                 jwt_configuration: Optional[pulumi.Input[pulumi.InputType['GlobalClientJwtConfigurationArgs']]] = None,
+                 logo_uri: Optional[pulumi.Input[str]] = None,
+                 mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
+                 oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 sso: Optional[pulumi.Input[bool]] = None,
+                 sso_disabled: Optional[pulumi.Input[bool]] = None,
+                 token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
+                 web_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a GlobalClient resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        The **addons** object supports the following:
-
-          * `aws` (`pulumi.Input[dict]`)
-          * `azureBlob` (`pulumi.Input[dict]`)
-          * `azureSb` (`pulumi.Input[dict]`)
-          * `box` (`pulumi.Input[dict]`)
-          * `cloudbees` (`pulumi.Input[dict]`)
-          * `concur` (`pulumi.Input[dict]`)
-          * `dropbox` (`pulumi.Input[dict]`)
-          * `echosign` (`pulumi.Input[dict]`)
-          * `egnyte` (`pulumi.Input[dict]`)
-          * `firebase` (`pulumi.Input[dict]`)
-          * `layer` (`pulumi.Input[dict]`)
-          * `mscrm` (`pulumi.Input[dict]`)
-          * `newrelic` (`pulumi.Input[dict]`)
-          * `office365` (`pulumi.Input[dict]`)
-          * `rms` (`pulumi.Input[dict]`)
-          * `salesforce` (`pulumi.Input[dict]`)
-          * `salesforceApi` (`pulumi.Input[dict]`)
-          * `salesforceSandboxApi` (`pulumi.Input[dict]`)
-          * `samlp` (`pulumi.Input[dict]`)
-            * `audience` (`pulumi.Input[str]`)
-            * `authnContextClassRef` (`pulumi.Input[str]`)
-            * `binding` (`pulumi.Input[str]`)
-            * `createUpnClaim` (`pulumi.Input[bool]`)
-            * `destination` (`pulumi.Input[str]`)
-            * `digestAlgorithm` (`pulumi.Input[str]`)
-            * `includeAttributeNameFormat` (`pulumi.Input[bool]`)
-            * `lifetimeInSeconds` (`pulumi.Input[float]`)
-            * `logout` (`pulumi.Input[dict]`)
-              * `callback` (`pulumi.Input[str]`)
-              * `sloEnabled` (`pulumi.Input[bool]`)
-
-            * `mapIdentities` (`pulumi.Input[bool]`)
-            * `mapUnknownClaimsAsIs` (`pulumi.Input[bool]`)
-            * `mappings` (`pulumi.Input[dict]`)
-            * `nameIdentifierFormat` (`pulumi.Input[str]`)
-            * `nameIdentifierProbes` (`pulumi.Input[list]`)
-            * `passthroughClaimsWithNoMapping` (`pulumi.Input[bool]`)
-            * `recipient` (`pulumi.Input[str]`)
-            * `signResponse` (`pulumi.Input[bool]`)
-            * `signatureAlgorithm` (`pulumi.Input[str]`)
-            * `typedAttributes` (`pulumi.Input[bool]`)
-
-          * `sapApi` (`pulumi.Input[dict]`)
-          * `sentry` (`pulumi.Input[dict]`)
-          * `sharepoint` (`pulumi.Input[dict]`)
-          * `slack` (`pulumi.Input[dict]`)
-          * `springcm` (`pulumi.Input[dict]`)
-          * `wams` (`pulumi.Input[dict]`)
-          * `wsfed` (`pulumi.Input[dict]`)
-          * `zendesk` (`pulumi.Input[dict]`)
-          * `zoom` (`pulumi.Input[dict]`)
-
-        The **jwt_configuration** object supports the following:
-
-          * `alg` (`pulumi.Input[str]`)
-          * `lifetimeInSeconds` (`pulumi.Input[float]`)
-          * `scopes` (`pulumi.Input[dict]`)
-          * `secretEncoded` (`pulumi.Input[bool]`)
-
-        The **mobile** object supports the following:
-
-          * `android` (`pulumi.Input[dict]`)
-            * `appPackageName` (`pulumi.Input[str]`)
-            * `sha256CertFingerprints` (`pulumi.Input[list]`)
-
-          * `ios` (`pulumi.Input[dict]`)
-            * `appBundleIdentifier` (`pulumi.Input[str]`)
-            * `teamId` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -128,7 +63,7 @@ class GlobalClient(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -171,85 +106,46 @@ class GlobalClient(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, addons=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_id=None, client_metadata=None, client_secret=None, client_secret_rotation_trigger=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, custom_login_page_preview=None, description=None, encryption_key=None, form_template=None, grant_types=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configuration=None, logo_uri=None, mobile=None, name=None, oidc_conformant=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
+            allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            app_type: Optional[pulumi.Input[str]] = None,
+            callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            client_id: Optional[pulumi.Input[str]] = None,
+            client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            client_secret: Optional[pulumi.Input[str]] = None,
+            client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            cross_origin_auth: Optional[pulumi.Input[bool]] = None,
+            cross_origin_loc: Optional[pulumi.Input[str]] = None,
+            custom_login_page: Optional[pulumi.Input[str]] = None,
+            custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+            custom_login_page_preview: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            form_template: Optional[pulumi.Input[str]] = None,
+            grant_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            initiate_login_uri: Optional[pulumi.Input[str]] = None,
+            is_first_party: Optional[pulumi.Input[bool]] = None,
+            is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
+            jwt_configuration: Optional[pulumi.Input[pulumi.InputType['GlobalClientJwtConfigurationArgs']]] = None,
+            logo_uri: Optional[pulumi.Input[str]] = None,
+            mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            oidc_conformant: Optional[pulumi.Input[bool]] = None,
+            sso: Optional[pulumi.Input[bool]] = None,
+            sso_disabled: Optional[pulumi.Input[bool]] = None,
+            token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
+            web_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'GlobalClient':
         """
         Get an existing GlobalClient resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        The **addons** object supports the following:
-
-          * `aws` (`pulumi.Input[dict]`)
-          * `azureBlob` (`pulumi.Input[dict]`)
-          * `azureSb` (`pulumi.Input[dict]`)
-          * `box` (`pulumi.Input[dict]`)
-          * `cloudbees` (`pulumi.Input[dict]`)
-          * `concur` (`pulumi.Input[dict]`)
-          * `dropbox` (`pulumi.Input[dict]`)
-          * `echosign` (`pulumi.Input[dict]`)
-          * `egnyte` (`pulumi.Input[dict]`)
-          * `firebase` (`pulumi.Input[dict]`)
-          * `layer` (`pulumi.Input[dict]`)
-          * `mscrm` (`pulumi.Input[dict]`)
-          * `newrelic` (`pulumi.Input[dict]`)
-          * `office365` (`pulumi.Input[dict]`)
-          * `rms` (`pulumi.Input[dict]`)
-          * `salesforce` (`pulumi.Input[dict]`)
-          * `salesforceApi` (`pulumi.Input[dict]`)
-          * `salesforceSandboxApi` (`pulumi.Input[dict]`)
-          * `samlp` (`pulumi.Input[dict]`)
-            * `audience` (`pulumi.Input[str]`)
-            * `authnContextClassRef` (`pulumi.Input[str]`)
-            * `binding` (`pulumi.Input[str]`)
-            * `createUpnClaim` (`pulumi.Input[bool]`)
-            * `destination` (`pulumi.Input[str]`)
-            * `digestAlgorithm` (`pulumi.Input[str]`)
-            * `includeAttributeNameFormat` (`pulumi.Input[bool]`)
-            * `lifetimeInSeconds` (`pulumi.Input[float]`)
-            * `logout` (`pulumi.Input[dict]`)
-              * `callback` (`pulumi.Input[str]`)
-              * `sloEnabled` (`pulumi.Input[bool]`)
-
-            * `mapIdentities` (`pulumi.Input[bool]`)
-            * `mapUnknownClaimsAsIs` (`pulumi.Input[bool]`)
-            * `mappings` (`pulumi.Input[dict]`)
-            * `nameIdentifierFormat` (`pulumi.Input[str]`)
-            * `nameIdentifierProbes` (`pulumi.Input[list]`)
-            * `passthroughClaimsWithNoMapping` (`pulumi.Input[bool]`)
-            * `recipient` (`pulumi.Input[str]`)
-            * `signResponse` (`pulumi.Input[bool]`)
-            * `signatureAlgorithm` (`pulumi.Input[str]`)
-            * `typedAttributes` (`pulumi.Input[bool]`)
-
-          * `sapApi` (`pulumi.Input[dict]`)
-          * `sentry` (`pulumi.Input[dict]`)
-          * `sharepoint` (`pulumi.Input[dict]`)
-          * `slack` (`pulumi.Input[dict]`)
-          * `springcm` (`pulumi.Input[dict]`)
-          * `wams` (`pulumi.Input[dict]`)
-          * `wsfed` (`pulumi.Input[dict]`)
-          * `zendesk` (`pulumi.Input[dict]`)
-          * `zoom` (`pulumi.Input[dict]`)
-
-        The **jwt_configuration** object supports the following:
-
-          * `alg` (`pulumi.Input[str]`)
-          * `lifetimeInSeconds` (`pulumi.Input[float]`)
-          * `scopes` (`pulumi.Input[dict]`)
-          * `secretEncoded` (`pulumi.Input[bool]`)
-
-        The **mobile** object supports the following:
-
-          * `android` (`pulumi.Input[dict]`)
-            * `appPackageName` (`pulumi.Input[str]`)
-            * `sha256CertFingerprints` (`pulumi.Input[list]`)
-
-          * `ios` (`pulumi.Input[dict]`)
-            * `appBundleIdentifier` (`pulumi.Input[str]`)
-            * `teamId` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -287,8 +183,159 @@ class GlobalClient(pulumi.CustomResource):
         __props__["web_origins"] = web_origins
         return GlobalClient(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def addons(self) -> Optional['outputs.GlobalClientAddons']:
+        return pulumi.get(self, "addons")
+
+    @property
+    @pulumi.getter(name="allowedLogoutUrls")
+    def allowed_logout_urls(self) -> Optional[List[str]]:
+        return pulumi.get(self, "allowed_logout_urls")
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Optional[List[str]]:
+        return pulumi.get(self, "allowed_origins")
+
+    @property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> Optional[str]:
+        return pulumi.get(self, "app_type")
+
+    @property
+    @pulumi.getter
+    def callbacks(self) -> Optional[List[str]]:
+        return pulumi.get(self, "callbacks")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientMetadata")
+    def client_metadata(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "client_metadata")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="clientSecretRotationTrigger")
+    def client_secret_rotation_trigger(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "client_secret_rotation_trigger")
+
+    @property
+    @pulumi.getter(name="crossOriginAuth")
+    def cross_origin_auth(self) -> Optional[bool]:
+        return pulumi.get(self, "cross_origin_auth")
+
+    @property
+    @pulumi.getter(name="crossOriginLoc")
+    def cross_origin_loc(self) -> Optional[str]:
+        return pulumi.get(self, "cross_origin_loc")
+
+    @property
+    @pulumi.getter(name="customLoginPage")
+    def custom_login_page(self) -> Optional[str]:
+        return pulumi.get(self, "custom_login_page")
+
+    @property
+    @pulumi.getter(name="customLoginPageOn")
+    def custom_login_page_on(self) -> bool:
+        return pulumi.get(self, "custom_login_page_on")
+
+    @property
+    @pulumi.getter(name="customLoginPagePreview")
+    def custom_login_page_preview(self) -> Optional[str]:
+        return pulumi.get(self, "custom_login_page_preview")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="formTemplate")
+    def form_template(self) -> Optional[str]:
+        return pulumi.get(self, "form_template")
+
+    @property
+    @pulumi.getter(name="grantTypes")
+    def grant_types(self) -> List[str]:
+        return pulumi.get(self, "grant_types")
+
+    @property
+    @pulumi.getter(name="initiateLoginUri")
+    def initiate_login_uri(self) -> Optional[str]:
+        return pulumi.get(self, "initiate_login_uri")
+
+    @property
+    @pulumi.getter(name="isFirstParty")
+    def is_first_party(self) -> bool:
+        return pulumi.get(self, "is_first_party")
+
+    @property
+    @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
+    def is_token_endpoint_ip_header_trusted(self) -> bool:
+        return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
+
+    @property
+    @pulumi.getter(name="jwtConfiguration")
+    def jwt_configuration(self) -> 'outputs.GlobalClientJwtConfiguration':
+        return pulumi.get(self, "jwt_configuration")
+
+    @property
+    @pulumi.getter(name="logoUri")
+    def logo_uri(self) -> Optional[str]:
+        return pulumi.get(self, "logo_uri")
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> Optional['outputs.GlobalClientMobile']:
+        return pulumi.get(self, "mobile")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oidcConformant")
+    def oidc_conformant(self) -> bool:
+        return pulumi.get(self, "oidc_conformant")
+
+    @property
+    @pulumi.getter
+    def sso(self) -> Optional[bool]:
+        return pulumi.get(self, "sso")
+
+    @property
+    @pulumi.getter(name="ssoDisabled")
+    def sso_disabled(self) -> Optional[bool]:
+        return pulumi.get(self, "sso_disabled")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> str:
+        return pulumi.get(self, "token_endpoint_auth_method")
+
+    @property
+    @pulumi.getter(name="webOrigins")
+    def web_origins(self) -> Optional[List[str]]:
+        return pulumi.get(self, "web_origins")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
