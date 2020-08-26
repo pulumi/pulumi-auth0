@@ -5,44 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['EmailTemplate']
 
 
 class EmailTemplate(pulumi.CustomResource):
-    body: pulumi.Output[str]
-    """
-    String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not the template is enabled.
-    """
-    from_: pulumi.Output[str]
-    """
-    String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-    """
-    result_url: pulumi.Output[str]
-    """
-    String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
-    """
-    subject: pulumi.Output[str]
-    """
-    String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-    """
-    syntax: pulumi.Output[str]
-    """
-    String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
-    """
-    template: pulumi.Output[str]
-    """
-    String. Template name. Options include `verify_email`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).
-    """
-    url_lifetime_in_seconds: pulumi.Output[float]
-    """
-    Integer. Number of seconds during which the link within the email will be valid.
-    """
-    def __init__(__self__, resource_name, opts=None, body=None, enabled=None, from_=None, result_url=None, subject=None, syntax=None, template=None, url_lifetime_in_seconds=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 body: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 from_: Optional[pulumi.Input[str]] = None,
+                 result_url: Optional[pulumi.Input[str]] = None,
+                 subject: Optional[pulumi.Input[str]] = None,
+                 syntax: Optional[pulumi.Input[str]] = None,
+                 template: Optional[pulumi.Input[str]] = None,
+                 url_lifetime_in_seconds: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
 
@@ -55,11 +38,11 @@ class EmailTemplate(pulumi.CustomResource):
         my_email_provider = auth0.Email("myEmailProvider",
             enabled=True,
             default_from_address="accounts@example.com",
-            credentials={
-                "accessKeyId": "AKIAXXXXXXXXXXXXXXXX",
-                "secretAccessKey": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "region": "us-east-1",
-            })
+            credentials=auth0.EmailCredentialsArgs(
+                access_key_id="AKIAXXXXXXXXXXXXXXXX",
+                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                region="us-east-1",
+            ))
         my_email_template = auth0.EmailTemplate("myEmailTemplate",
             template="welcome_email",
             body="<html><body><h1>Welcome!</h1></body></html>",
@@ -94,7 +77,7 @@ class EmailTemplate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -127,13 +110,23 @@ class EmailTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, body=None, enabled=None, from_=None, result_url=None, subject=None, syntax=None, template=None, url_lifetime_in_seconds=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            body: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            from_: Optional[pulumi.Input[str]] = None,
+            result_url: Optional[pulumi.Input[str]] = None,
+            subject: Optional[pulumi.Input[str]] = None,
+            syntax: Optional[pulumi.Input[str]] = None,
+            template: Optional[pulumi.Input[str]] = None,
+            url_lifetime_in_seconds: Optional[pulumi.Input[float]] = None) -> 'EmailTemplate':
         """
         Get an existing EmailTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the template is enabled.
@@ -158,8 +151,73 @@ class EmailTemplate(pulumi.CustomResource):
         __props__["url_lifetime_in_seconds"] = url_lifetime_in_seconds
         return EmailTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def body(self) -> str:
+        """
+        String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
+        return pulumi.get(self, "body")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Boolean. Indicates whether or not the template is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> str:
+        """
+        String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter(name="resultUrl")
+    def result_url(self) -> Optional[str]:
+        """
+        String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+        """
+        return pulumi.get(self, "result_url")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> str:
+        """
+        String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter
+    def syntax(self) -> str:
+        """
+        String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+        """
+        return pulumi.get(self, "syntax")
+
+    @property
+    @pulumi.getter
+    def template(self) -> str:
+        """
+        String. Template name. Options include `verify_email`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).
+        """
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter(name="urlLifetimeInSeconds")
+    def url_lifetime_in_seconds(self) -> Optional[float]:
+        """
+        Integer. Number of seconds during which the link within the email will be valid.
+        """
+        return pulumi.get(self, "url_lifetime_in_seconds")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

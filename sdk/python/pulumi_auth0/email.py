@@ -5,39 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Email']
 
 
 class Email(pulumi.CustomResource):
-    credentials: pulumi.Output[dict]
-    """
-    List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
-
-      * `accessKeyId` (`str`) - String, Case-sensitive. AWS Access Key ID. Used only for AWS.
-      * `apiKey` (`str`) - String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
-      * `apiUser` (`str`) - String. API User for your email service.
-      * `domain` (`str`)
-      * `region` (`str`) - String. Default region. Used only for AWS, Mailgun, and SparkPost.
-      * `secretAccessKey` (`str`) - String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
-      * `smtpHost` (`str`) - String. Hostname or IP address of your SMTP server. Used only for SMTP.
-      * `smtpPass` (`str`) - String, Case-sensitive. SMTP password. Used only for SMTP.
-      * `smtpPort` (`float`) - Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
-      * `smtpUser` (`str`) - String. SMTP username. Used only for SMTP.
-    """
-    default_from_address: pulumi.Output[str]
-    """
-    String. Email address to use as the sender when no other "from" address is specified.
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Boolean. Indicates whether or not the email provider is enabled.
-    """
-    name: pulumi.Output[str]
-    """
-    String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
-    """
-    def __init__(__self__, resource_name, opts=None, credentials=None, default_from_address=None, enabled=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 credentials: Optional[pulumi.Input[pulumi.InputType['EmailCredentialsArgs']]] = None,
+                 default_from_address: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 
@@ -48,34 +34,21 @@ class Email(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_email_provider = auth0.Email("myEmailProvider",
-            credentials={
-                "accessKeyId": "AKIAXXXXXXXXXXXXXXXX",
-                "region": "us-east-1",
-                "secretAccessKey": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            },
+            credentials=auth0.EmailCredentialsArgs(
+                access_key_id="AKIAXXXXXXXXXXXXXXXX",
+                region="us-east-1",
+                secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            ),
             default_from_address="accounts@example.com",
             enabled=True)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] credentials: List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+        :param pulumi.Input[pulumi.InputType['EmailCredentialsArgs']] credentials: List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
         :param pulumi.Input[str] default_from_address: String. Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the email provider is enabled.
         :param pulumi.Input[str] name: String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
-
-        The **credentials** object supports the following:
-
-          * `accessKeyId` (`pulumi.Input[str]`) - String, Case-sensitive. AWS Access Key ID. Used only for AWS.
-          * `apiKey` (`pulumi.Input[str]`) - String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
-          * `apiUser` (`pulumi.Input[str]`) - String. API User for your email service.
-          * `domain` (`pulumi.Input[str]`)
-          * `region` (`pulumi.Input[str]`) - String. Default region. Used only for AWS, Mailgun, and SparkPost.
-          * `secretAccessKey` (`pulumi.Input[str]`) - String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
-          * `smtpHost` (`pulumi.Input[str]`) - String. Hostname or IP address of your SMTP server. Used only for SMTP.
-          * `smtpPass` (`pulumi.Input[str]`) - String, Case-sensitive. SMTP password. Used only for SMTP.
-          * `smtpPort` (`pulumi.Input[float]`) - Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
-          * `smtpUser` (`pulumi.Input[str]`) - String. SMTP username. Used only for SMTP.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,7 +61,7 @@ class Email(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -109,31 +82,24 @@ class Email(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, credentials=None, default_from_address=None, enabled=None, name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            credentials: Optional[pulumi.Input[pulumi.InputType['EmailCredentialsArgs']]] = None,
+            default_from_address: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None) -> 'Email':
         """
         Get an existing Email resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] credentials: List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+        :param pulumi.Input[pulumi.InputType['EmailCredentialsArgs']] credentials: List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
         :param pulumi.Input[str] default_from_address: String. Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the email provider is enabled.
         :param pulumi.Input[str] name: String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
-
-        The **credentials** object supports the following:
-
-          * `accessKeyId` (`pulumi.Input[str]`) - String, Case-sensitive. AWS Access Key ID. Used only for AWS.
-          * `apiKey` (`pulumi.Input[str]`) - String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
-          * `apiUser` (`pulumi.Input[str]`) - String. API User for your email service.
-          * `domain` (`pulumi.Input[str]`)
-          * `region` (`pulumi.Input[str]`) - String. Default region. Used only for AWS, Mailgun, and SparkPost.
-          * `secretAccessKey` (`pulumi.Input[str]`) - String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
-          * `smtpHost` (`pulumi.Input[str]`) - String. Hostname or IP address of your SMTP server. Used only for SMTP.
-          * `smtpPass` (`pulumi.Input[str]`) - String, Case-sensitive. SMTP password. Used only for SMTP.
-          * `smtpPort` (`pulumi.Input[float]`) - Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
-          * `smtpUser` (`pulumi.Input[str]`) - String. SMTP username. Used only for SMTP.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -145,8 +111,41 @@ class Email(pulumi.CustomResource):
         __props__["name"] = name
         return Email(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def credentials(self) -> 'outputs.EmailCredentials':
+        """
+        List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="defaultFromAddress")
+    def default_from_address(self) -> str:
+        """
+        String. Email address to use as the sender when no other "from" address is specified.
+        """
+        return pulumi.get(self, "default_from_address")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Boolean. Indicates whether or not the email provider is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        """
+        return pulumi.get(self, "name")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ClientGrant']
 
 
 class ClientGrant(pulumi.CustomResource):
-    audience: pulumi.Output[str]
-    """
-    String. Audience or API Identifier for this grant.
-    """
-    client_id: pulumi.Output[str]
-    """
-    String. ID of the client for this grant.
-    """
-    scopes: pulumi.Output[list]
-    """
-    List(String). Permissions (scopes) included in this grant.
-    """
-    def __init__(__self__, resource_name, opts=None, audience=None, client_id=None, scopes=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audience: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
 
@@ -36,14 +34,14 @@ class ClientGrant(pulumi.CustomResource):
         my_resource_server = auth0.ResourceServer("myResourceServer",
             identifier="https://api.example.com/client-grant",
             scopes=[
-                {
-                    "description": "Create foos",
-                    "value": "create:foo",
-                },
-                {
-                    "description": "Create bars",
-                    "value": "create:bar",
-                },
+                auth0.ResourceServerScopeArgs(
+                    description="Create foos",
+                    value="create:foo",
+                ),
+                auth0.ResourceServerScopeArgs(
+                    description="Create bars",
+                    value="create:bar",
+                ),
             ])
         my_client_grant = auth0.ClientGrant("myClientGrant",
             audience=my_resource_server.identifier,
@@ -55,7 +53,7 @@ class ClientGrant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
         :param pulumi.Input[str] client_id: String. ID of the client for this grant.
-        :param pulumi.Input[list] scopes: List(String). Permissions (scopes) included in this grant.
+        :param pulumi.Input[List[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -68,7 +66,7 @@ class ClientGrant(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -90,17 +88,22 @@ class ClientGrant(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, audience=None, client_id=None, scopes=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audience: Optional[pulumi.Input[str]] = None,
+            client_id: Optional[pulumi.Input[str]] = None,
+            scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ClientGrant':
         """
         Get an existing ClientGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
         :param pulumi.Input[str] client_id: String. ID of the client for this grant.
-        :param pulumi.Input[list] scopes: List(String). Permissions (scopes) included in this grant.
+        :param pulumi.Input[List[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -111,8 +114,33 @@ class ClientGrant(pulumi.CustomResource):
         __props__["scopes"] = scopes
         return ClientGrant(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def audience(self) -> str:
+        """
+        String. Audience or API Identifier for this grant.
+        """
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        String. ID of the client for this grant.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> List[str]:
+        """
+        List(String). Permissions (scopes) included in this grant.
+        """
+        return pulumi.get(self, "scopes")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

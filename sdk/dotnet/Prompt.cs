@@ -33,6 +33,9 @@ namespace Pulumi.Auth0
     /// </summary>
     public partial class Prompt : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Which login experience to use. Options include `classic` and `new`.
+        /// </summary>
         [Output("universalLoginExperience")]
         public Output<string?> UniversalLoginExperience { get; private set; } = null!;
 
@@ -82,6 +85,9 @@ namespace Pulumi.Auth0
 
     public sealed class PromptArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Which login experience to use. Options include `classic` and `new`.
+        /// </summary>
         [Input("universalLoginExperience")]
         public Input<string>? UniversalLoginExperience { get; set; }
 
@@ -92,6 +98,9 @@ namespace Pulumi.Auth0
 
     public sealed class PromptState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Which login experience to use. Options include `classic` and `new`.
+        /// </summary>
         [Input("universalLoginExperience")]
         public Input<string>? UniversalLoginExperience { get; set; }
 

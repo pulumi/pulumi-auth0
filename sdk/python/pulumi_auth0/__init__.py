@@ -19,3 +19,10 @@ from .rule import *
 from .rule_config import *
 from .tenant import *
 from .user import *
+from ._inputs import *
+from . import outputs
+
+# Make subpackages available:
+from . import (
+    config,
+)

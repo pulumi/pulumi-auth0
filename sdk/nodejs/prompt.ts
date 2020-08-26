@@ -46,6 +46,9 @@ export class Prompt extends pulumi.CustomResource {
         return obj['__pulumiType'] === Prompt.__pulumiType;
     }
 
+    /**
+     * Which login experience to use. Options include `classic` and `new`.
+     */
     public readonly universalLoginExperience!: pulumi.Output<string | undefined>;
 
     /**
@@ -80,6 +83,9 @@ export class Prompt extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Prompt resources.
  */
 export interface PromptState {
+    /**
+     * Which login experience to use. Options include `classic` and `new`.
+     */
     readonly universalLoginExperience?: pulumi.Input<string>;
 }
 
@@ -87,5 +93,8 @@ export interface PromptState {
  * The set of arguments for constructing a Prompt resource.
  */
 export interface PromptArgs {
+    /**
+     * Which login experience to use. Options include `classic` and `new`.
+     */
     readonly universalLoginExperience?: pulumi.Input<string>;
 }

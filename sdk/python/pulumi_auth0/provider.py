@@ -6,12 +6,23 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, client_id=None, client_secret=None, debug=None, domain=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 debug: Optional[pulumi.Input[bool]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the auth0 package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -32,23 +43,23 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             if client_id is None:
-                client_id = utilities.get_env('AUTH0_CLIENT_ID')
+                client_id = _utilities.get_env('AUTH0_CLIENT_ID')
             __props__['client_id'] = client_id
             if client_secret is None:
-                client_secret = utilities.get_env('AUTH0_CLIENT_SECRET')
+                client_secret = _utilities.get_env('AUTH0_CLIENT_SECRET')
             __props__['client_secret'] = client_secret
             if debug is None:
-                debug = utilities.get_env_bool('AUTH0_DEBUG')
+                debug = _utilities.get_env_bool('AUTH0_DEBUG')
             __props__['debug'] = pulumi.Output.from_input(debug).apply(json.dumps) if debug is not None else None
             if domain is None:
-                domain = utilities.get_env('AUTH0_DOMAIN')
+                domain = _utilities.get_env('AUTH0_DOMAIN')
             __props__['domain'] = domain
         super(Provider, __self__).__init__(
             'auth0',
@@ -57,7 +68,8 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

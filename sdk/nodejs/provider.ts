@@ -35,10 +35,12 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        inputs["clientId"] = (args ? args.clientId : undefined) || utilities.getEnv("AUTH0_CLIENT_ID");
-        inputs["clientSecret"] = (args ? args.clientSecret : undefined) || utilities.getEnv("AUTH0_CLIENT_SECRET");
-        inputs["debug"] = pulumi.output((args ? args.debug : undefined) || <any>utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
-        inputs["domain"] = (args ? args.domain : undefined) || utilities.getEnv("AUTH0_DOMAIN");
+        {
+            inputs["clientId"] = (args ? args.clientId : undefined) || utilities.getEnv("AUTH0_CLIENT_ID");
+            inputs["clientSecret"] = (args ? args.clientSecret : undefined) || utilities.getEnv("AUTH0_CLIENT_SECRET");
+            inputs["debug"] = pulumi.output((args ? args.debug : undefined) || <any>utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
+            inputs["domain"] = (args ? args.domain : undefined) || utilities.getEnv("AUTH0_DOMAIN");
+        }
         if (!opts) {
             opts = {}
         }
