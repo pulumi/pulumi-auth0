@@ -15,7 +15,7 @@ __all__ = ['Role']
 
 class Role(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         String. Description of the role.
         """
@@ -129,7 +129,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         String. Name for this role.
         """
@@ -137,7 +137,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def permissions(self) -> Optional[List['outputs.RolePermission']]:
+    def permissions(self) -> pulumi.Output[Optional[List['outputs.RolePermission']]]:
         """
         Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
         """

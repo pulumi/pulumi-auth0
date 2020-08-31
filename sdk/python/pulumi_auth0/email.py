@@ -15,7 +15,7 @@ __all__ = ['Email']
 
 class Email(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  credentials: Optional[pulumi.Input[pulumi.InputType['EmailCredentialsArgs']]] = None,
                  default_from_address: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class Email(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def credentials(self) -> 'outputs.EmailCredentials':
+    def credentials(self) -> pulumi.Output['outputs.EmailCredentials']:
         """
         List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
         """
@@ -121,7 +121,7 @@ class Email(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultFromAddress")
-    def default_from_address(self) -> str:
+    def default_from_address(self) -> pulumi.Output[str]:
         """
         String. Email address to use as the sender when no other "from" address is specified.
         """
@@ -129,7 +129,7 @@ class Email(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not the email provider is enabled.
         """
@@ -137,7 +137,7 @@ class Email(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         """

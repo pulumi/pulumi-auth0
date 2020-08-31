@@ -15,7 +15,7 @@ __all__ = ['CustomDomain']
 
 class CustomDomain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -117,7 +117,7 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         String. Name of the custom domain.
         """
@@ -125,7 +125,7 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def primary(self) -> bool:
+    def primary(self) -> pulumi.Output[bool]:
         """
         Boolean. Indicates whether or not this is a primary domain.
         """
@@ -133,7 +133,7 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         """
@@ -141,7 +141,7 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         """
@@ -149,7 +149,7 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def verification(self) -> 'outputs.CustomDomainVerification':
+    def verification(self) -> pulumi.Output['outputs.CustomDomainVerification']:
         """
         List(Resource). Configuration settings for verification. For details, see Verification.
         """
@@ -157,7 +157,7 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="verificationMethod")
-    def verification_method(self) -> str:
+    def verification_method(self) -> pulumi.Output[str]:
         """
         String. Domain verification method. Options include `txt`.
         """

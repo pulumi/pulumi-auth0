@@ -13,7 +13,7 @@ __all__ = ['Rule']
 
 class Rule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether the rule is enabled.
         """
@@ -119,7 +119,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         """
@@ -127,7 +127,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def order(self) -> float:
+    def order(self) -> pulumi.Output[float]:
         """
         Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         """
@@ -135,7 +135,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def script(self) -> str:
+    def script(self) -> pulumi.Output[str]:
         """
         String. Code to be executed when the rule runs.
         """

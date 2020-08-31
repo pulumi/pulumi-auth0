@@ -15,7 +15,7 @@ __all__ = ['GlobalClient']
 
 class GlobalClient(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -185,152 +185,152 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def addons(self) -> Optional['outputs.GlobalClientAddons']:
+    def addons(self) -> pulumi.Output[Optional['outputs.GlobalClientAddons']]:
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
-    def allowed_logout_urls(self) -> Optional[List[str]]:
+    def allowed_logout_urls(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "allowed_logout_urls")
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> Optional[List[str]]:
+    def allowed_origins(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "allowed_origins")
 
     @property
     @pulumi.getter(name="appType")
-    def app_type(self) -> Optional[str]:
+    def app_type(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "app_type")
 
     @property
     @pulumi.getter
-    def callbacks(self) -> Optional[List[str]]:
+    def callbacks(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "callbacks")
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
+    def client_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientMetadata")
-    def client_metadata(self) -> Optional[Mapping[str, Any]]:
+    def client_metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "client_metadata")
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> str:
+    def client_secret(self) -> pulumi.Output[str]:
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="clientSecretRotationTrigger")
-    def client_secret_rotation_trigger(self) -> Optional[Mapping[str, Any]]:
+    def client_secret_rotation_trigger(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         return pulumi.get(self, "client_secret_rotation_trigger")
 
     @property
     @pulumi.getter(name="crossOriginAuth")
-    def cross_origin_auth(self) -> Optional[bool]:
+    def cross_origin_auth(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "cross_origin_auth")
 
     @property
     @pulumi.getter(name="crossOriginLoc")
-    def cross_origin_loc(self) -> Optional[str]:
+    def cross_origin_loc(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cross_origin_loc")
 
     @property
     @pulumi.getter(name="customLoginPage")
-    def custom_login_page(self) -> Optional[str]:
+    def custom_login_page(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "custom_login_page")
 
     @property
     @pulumi.getter(name="customLoginPageOn")
-    def custom_login_page_on(self) -> bool:
+    def custom_login_page_on(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "custom_login_page_on")
 
     @property
     @pulumi.getter(name="customLoginPagePreview")
-    def custom_login_page_preview(self) -> Optional[str]:
+    def custom_login_page_preview(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "custom_login_page_preview")
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[Mapping[str, str]]:
+    def encryption_key(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "encryption_key")
 
     @property
     @pulumi.getter(name="formTemplate")
-    def form_template(self) -> Optional[str]:
+    def form_template(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "form_template")
 
     @property
     @pulumi.getter(name="grantTypes")
-    def grant_types(self) -> List[str]:
+    def grant_types(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "grant_types")
 
     @property
     @pulumi.getter(name="initiateLoginUri")
-    def initiate_login_uri(self) -> Optional[str]:
+    def initiate_login_uri(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "initiate_login_uri")
 
     @property
     @pulumi.getter(name="isFirstParty")
-    def is_first_party(self) -> bool:
+    def is_first_party(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "is_first_party")
 
     @property
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
-    def is_token_endpoint_ip_header_trusted(self) -> bool:
+    def is_token_endpoint_ip_header_trusted(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
     @property
     @pulumi.getter(name="jwtConfiguration")
-    def jwt_configuration(self) -> 'outputs.GlobalClientJwtConfiguration':
+    def jwt_configuration(self) -> pulumi.Output['outputs.GlobalClientJwtConfiguration']:
         return pulumi.get(self, "jwt_configuration")
 
     @property
     @pulumi.getter(name="logoUri")
-    def logo_uri(self) -> Optional[str]:
+    def logo_uri(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "logo_uri")
 
     @property
     @pulumi.getter
-    def mobile(self) -> Optional['outputs.GlobalClientMobile']:
+    def mobile(self) -> pulumi.Output[Optional['outputs.GlobalClientMobile']]:
         return pulumi.get(self, "mobile")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="oidcConformant")
-    def oidc_conformant(self) -> bool:
+    def oidc_conformant(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "oidc_conformant")
 
     @property
     @pulumi.getter
-    def sso(self) -> Optional[bool]:
+    def sso(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "sso")
 
     @property
     @pulumi.getter(name="ssoDisabled")
-    def sso_disabled(self) -> Optional[bool]:
+    def sso_disabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "sso_disabled")
 
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
-    def token_endpoint_auth_method(self) -> str:
+    def token_endpoint_auth_method(self) -> pulumi.Output[str]:
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @property
     @pulumi.getter(name="webOrigins")
-    def web_origins(self) -> Optional[List[str]]:
+    def web_origins(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "web_origins")
 
     def translate_output_property(self, prop):

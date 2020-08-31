@@ -13,7 +13,7 @@ __all__ = ['Prompt']
 
 class Prompt(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  universal_login_experience: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -82,7 +82,7 @@ class Prompt(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="universalLoginExperience")
-    def universal_login_experience(self) -> Optional[str]:
+    def universal_login_experience(self) -> pulumi.Output[Optional[str]]:
         """
         Which login experience to use. Options include `classic` and `new`.
         """

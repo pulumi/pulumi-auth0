@@ -15,7 +15,7 @@ __all__ = ['Tenant']
 
 class Tenant(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  change_password: Optional[pulumi.Input[pulumi.InputType['TenantChangePasswordArgs']]] = None,
@@ -200,7 +200,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
-    def allowed_logout_urls(self) -> List[str]:
+    def allowed_logout_urls(self) -> pulumi.Output[List[str]]:
         """
         List(String). URLs that Auth0 may redirect to after logout.
         """
@@ -208,7 +208,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="changePassword")
-    def change_password(self) -> 'outputs.TenantChangePassword':
+    def change_password(self) -> pulumi.Output['outputs.TenantChangePassword']:
         """
         List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
         """
@@ -216,7 +216,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultAudience")
-    def default_audience(self) -> str:
+    def default_audience(self) -> pulumi.Output[str]:
         """
         String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         """
@@ -224,7 +224,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultDirectory")
-    def default_directory(self) -> str:
+    def default_directory(self) -> pulumi.Output[str]:
         """
         String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         """
@@ -232,7 +232,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultRedirectionUri")
-    def default_redirection_uri(self) -> str:
+    def default_redirection_uri(self) -> pulumi.Output[str]:
         """
         String. The default absolute redirection uri, must be https and cannot contain a fragment.
         """
@@ -240,12 +240,12 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enabledLocales")
-    def enabled_locales(self) -> List[str]:
+    def enabled_locales(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "enabled_locales")
 
     @property
     @pulumi.getter(name="errorPage")
-    def error_page(self) -> 'outputs.TenantErrorPage':
+    def error_page(self) -> pulumi.Output['outputs.TenantErrorPage']:
         """
         List(Resource). Configuration settings for error pages. For details, see Error Page.
         """
@@ -253,7 +253,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def flags(self) -> 'outputs.TenantFlags':
+    def flags(self) -> pulumi.Output['outputs.TenantFlags']:
         """
         List(Resource). Configuration settings for tenant flags. For details, see Flags.
         """
@@ -261,7 +261,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> str:
+    def friendly_name(self) -> pulumi.Output[str]:
         """
         String. Friendly name for the tenant.
         """
@@ -269,7 +269,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guardianMfaPage")
-    def guardian_mfa_page(self) -> 'outputs.TenantGuardianMfaPage':
+    def guardian_mfa_page(self) -> pulumi.Output['outputs.TenantGuardianMfaPage']:
         """
         List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
         """
@@ -277,7 +277,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idleSessionLifetime")
-    def idle_session_lifetime(self) -> float:
+    def idle_session_lifetime(self) -> pulumi.Output[float]:
         """
         Integer. Number of hours during which a session can be inactive before the user must log in again.
         """
@@ -285,7 +285,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pictureUrl")
-    def picture_url(self) -> str:
+    def picture_url(self) -> pulumi.Output[str]:
         """
         . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         """
@@ -293,7 +293,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sandboxVersion")
-    def sandbox_version(self) -> str:
+    def sandbox_version(self) -> pulumi.Output[str]:
         """
         String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         """
@@ -301,7 +301,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sessionLifetime")
-    def session_lifetime(self) -> float:
+    def session_lifetime(self) -> pulumi.Output[float]:
         """
         Integer. Number of hours during which a session will stay valid.
         """
@@ -309,7 +309,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="supportEmail")
-    def support_email(self) -> str:
+    def support_email(self) -> pulumi.Output[str]:
         """
         String. Support email address for authenticating users.
         """
@@ -317,7 +317,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="supportUrl")
-    def support_url(self) -> str:
+    def support_url(self) -> pulumi.Output[str]:
         """
         String. Support URL for authenticating users.
         """
@@ -325,7 +325,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="universalLogin")
-    def universal_login(self) -> 'outputs.TenantUniversalLogin':
+    def universal_login(self) -> pulumi.Output['outputs.TenantUniversalLogin']:
         """
         List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
         """
