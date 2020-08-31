@@ -13,7 +13,7 @@ __all__ = ['RuleConfig']
 
 class RuleConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
@@ -101,7 +101,7 @@ class RuleConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         String. Key for a rules configuration variable.
         """
@@ -109,7 +109,7 @@ class RuleConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         String, Case-sensitive. Value for a rules configuration variable.
         """

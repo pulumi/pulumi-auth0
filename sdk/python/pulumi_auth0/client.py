@@ -15,7 +15,7 @@ __all__ = ['Client']
 
 class Client(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -310,7 +310,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def addons(self) -> Optional['outputs.ClientAddons']:
+    def addons(self) -> pulumi.Output[Optional['outputs.ClientAddons']]:
         """
         List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
         """
@@ -318,7 +318,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
-    def allowed_logout_urls(self) -> Optional[List[str]]:
+    def allowed_logout_urls(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List(String). URLs that Auth0 may redirect to after logout.
         """
@@ -326,7 +326,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> Optional[List[str]]:
+    def allowed_origins(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         """
@@ -334,7 +334,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appType")
-    def app_type(self) -> Optional[str]:
+    def app_type(self) -> pulumi.Output[Optional[str]]:
         """
         String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         """
@@ -342,7 +342,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def callbacks(self) -> Optional[List[str]]:
+    def callbacks(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         """
@@ -350,7 +350,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
+    def client_id(self) -> pulumi.Output[str]:
         """
         String. ID of the client.
         """
@@ -358,7 +358,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientMetadata")
-    def client_metadata(self) -> Optional[Mapping[str, Any]]:
+    def client_metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map(String)
         """
@@ -366,7 +366,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> str:
+    def client_secret(self) -> pulumi.Output[str]:
         """
         String. Secret for the client; keep this private.
         """
@@ -374,7 +374,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientSecretRotationTrigger")
-    def client_secret_rotation_trigger(self) -> Optional[Mapping[str, Any]]:
+    def client_secret_rotation_trigger(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Map.
         """
@@ -382,7 +382,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="crossOriginAuth")
-    def cross_origin_auth(self) -> Optional[bool]:
+    def cross_origin_auth(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         """
@@ -390,7 +390,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="crossOriginLoc")
-    def cross_origin_loc(self) -> Optional[str]:
+    def cross_origin_loc(self) -> pulumi.Output[Optional[str]]:
         """
         String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
         """
@@ -398,7 +398,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customLoginPage")
-    def custom_login_page(self) -> Optional[str]:
+    def custom_login_page(self) -> pulumi.Output[Optional[str]]:
         """
         String. Content of the custom login page.
         """
@@ -406,7 +406,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customLoginPageOn")
-    def custom_login_page_on(self) -> bool:
+    def custom_login_page_on(self) -> pulumi.Output[bool]:
         """
         Boolean. Indicates whether or not a custom login page is to be used.
         """
@@ -414,7 +414,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customLoginPagePreview")
-    def custom_login_page_preview(self) -> Optional[str]:
+    def custom_login_page_preview(self) -> pulumi.Output[Optional[str]]:
         """
         String.
         """
@@ -422,7 +422,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         String, (Max length = 140 characters). Description of the purpose of the client.
         """
@@ -430,7 +430,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[Mapping[str, str]]:
+    def encryption_key(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map(String).
         """
@@ -438,7 +438,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="formTemplate")
-    def form_template(self) -> Optional[str]:
+    def form_template(self) -> pulumi.Output[Optional[str]]:
         """
         String. Form template for WS-Federation protocol.
         """
@@ -446,7 +446,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="grantTypes")
-    def grant_types(self) -> List[str]:
+    def grant_types(self) -> pulumi.Output[List[str]]:
         """
         List(String). Types of grants that this client is authorized to use.
         """
@@ -454,12 +454,12 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initiateLoginUri")
-    def initiate_login_uri(self) -> Optional[str]:
+    def initiate_login_uri(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "initiate_login_uri")
 
     @property
     @pulumi.getter(name="isFirstParty")
-    def is_first_party(self) -> bool:
+    def is_first_party(self) -> pulumi.Output[bool]:
         """
         Boolean. Indicates whether or not this client is a first-party client.
         """
@@ -467,7 +467,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
-    def is_token_endpoint_ip_header_trusted(self) -> bool:
+    def is_token_endpoint_ip_header_trusted(self) -> pulumi.Output[bool]:
         """
         Boolean. Indicates whether or not the token endpoint IP header is trusted.
         """
@@ -475,7 +475,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jwtConfiguration")
-    def jwt_configuration(self) -> 'outputs.ClientJwtConfiguration':
+    def jwt_configuration(self) -> pulumi.Output['outputs.ClientJwtConfiguration']:
         """
         List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
         """
@@ -483,7 +483,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logoUri")
-    def logo_uri(self) -> Optional[str]:
+    def logo_uri(self) -> pulumi.Output[Optional[str]]:
         """
         String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         """
@@ -491,7 +491,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mobile(self) -> Optional['outputs.ClientMobile']:
+    def mobile(self) -> pulumi.Output[Optional['outputs.ClientMobile']]:
         """
         List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         """
@@ -499,7 +499,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         String. Name of the client.
         """
@@ -507,7 +507,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oidcConformant")
-    def oidc_conformant(self) -> bool:
+    def oidc_conformant(self) -> pulumi.Output[bool]:
         """
         Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         """
@@ -515,7 +515,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def sso(self) -> Optional[bool]:
+    def sso(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         """
@@ -523,7 +523,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ssoDisabled")
-    def sso_disabled(self) -> Optional[bool]:
+    def sso_disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not SSO is disabled.
         """
@@ -531,7 +531,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
-    def token_endpoint_auth_method(self) -> str:
+    def token_endpoint_auth_method(self) -> pulumi.Output[str]:
         """
         String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
         """
@@ -539,7 +539,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webOrigins")
-    def web_origins(self) -> Optional[List[str]]:
+    def web_origins(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List(String). URLs that represent valid web origins for use with web message response mode.
         """

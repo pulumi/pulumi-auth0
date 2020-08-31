@@ -13,7 +13,7 @@ __all__ = ['EmailTemplate']
 
 class EmailTemplate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  body: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -153,7 +153,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def body(self) -> str:
+    def body(self) -> pulumi.Output[str]:
         """
         String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         """
@@ -161,7 +161,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Boolean. Indicates whether or not the template is enabled.
         """
@@ -169,7 +169,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="from")
-    def from_(self) -> str:
+    def from_(self) -> pulumi.Output[str]:
         """
         String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         """
@@ -177,7 +177,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resultUrl")
-    def result_url(self) -> Optional[str]:
+    def result_url(self) -> pulumi.Output[Optional[str]]:
         """
         String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
         """
@@ -185,7 +185,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subject(self) -> str:
+    def subject(self) -> pulumi.Output[str]:
         """
         String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         """
@@ -193,7 +193,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def syntax(self) -> str:
+    def syntax(self) -> pulumi.Output[str]:
         """
         String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
         """
@@ -201,7 +201,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def template(self) -> str:
+    def template(self) -> pulumi.Output[str]:
         """
         String. Template name. Options include `verify_email`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).
         """
@@ -209,7 +209,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="urlLifetimeInSeconds")
-    def url_lifetime_in_seconds(self) -> Optional[float]:
+    def url_lifetime_in_seconds(self) -> pulumi.Output[Optional[float]]:
         """
         Integer. Number of seconds during which the link within the email will be valid.
         """

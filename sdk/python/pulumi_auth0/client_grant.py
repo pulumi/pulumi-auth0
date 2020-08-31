@@ -13,7 +13,7 @@ __all__ = ['ClientGrant']
 
 class ClientGrant(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
@@ -116,7 +116,7 @@ class ClientGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def audience(self) -> str:
+    def audience(self) -> pulumi.Output[str]:
         """
         String. Audience or API Identifier for this grant.
         """
@@ -124,7 +124,7 @@ class ClientGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
+    def client_id(self) -> pulumi.Output[str]:
         """
         String. ID of the client for this grant.
         """
@@ -132,7 +132,7 @@ class ClientGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scopes(self) -> List[str]:
+    def scopes(self) -> pulumi.Output[List[str]]:
         """
         List(String). Permissions (scopes) included in this grant.
         """

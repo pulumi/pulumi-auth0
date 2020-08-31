@@ -15,7 +15,7 @@ __all__ = ['Connection']
 
 class Connection(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled_clients: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -165,7 +165,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name used in login screen
         """
@@ -173,7 +173,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enabledClients")
-    def enabled_clients(self) -> List[str]:
+    def enabled_clients(self) -> pulumi.Output[List[str]]:
         """
         Set(String). IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         """
@@ -181,7 +181,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDomainConnection")
-    def is_domain_connection(self) -> bool:
+    def is_domain_connection(self) -> pulumi.Output[bool]:
         """
         Boolean. Indicates whether or not the connection is domain level.
         """
@@ -189,7 +189,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         String. Name of the connection.
         """
@@ -197,7 +197,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> Optional['outputs.ConnectionOptions']:
+    def options(self) -> pulumi.Output[Optional['outputs.ConnectionOptions']]:
         """
         List(Resource). Configuration settings for connection options. For details, see Options.
         """
@@ -205,7 +205,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def realms(self) -> List[str]:
+    def realms(self) -> pulumi.Output[List[str]]:
         """
         List(String). Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
         """
@@ -213,7 +213,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def strategy(self) -> str:
+    def strategy(self) -> pulumi.Output[str]:
         """
         String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         """
@@ -221,7 +221,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="strategyVersion")
-    def strategy_version(self) -> str:
+    def strategy_version(self) -> pulumi.Output[str]:
         """
         Int. Version 1 is deprecated, use version 2.
         """

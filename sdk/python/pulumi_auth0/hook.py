@@ -13,7 +13,7 @@ __all__ = ['Hook']
 
 class Hook(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class Hook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the hook is enabled, or disabled
         """
@@ -121,7 +121,7 @@ class Hook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of this hook
         """
@@ -129,7 +129,7 @@ class Hook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def script(self) -> str:
+    def script(self) -> pulumi.Output[str]:
         """
         Code to be executed when this hook runs
         """
@@ -137,7 +137,7 @@ class Hook(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="triggerId")
-    def trigger_id(self) -> str:
+    def trigger_id(self) -> pulumi.Output[str]:
         """
         Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
         """

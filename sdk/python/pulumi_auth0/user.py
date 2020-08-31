@@ -13,7 +13,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_metadata: Optional[pulumi.Input[str]] = None,
                  blocked: Optional[pulumi.Input[bool]] = None,
@@ -187,7 +187,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appMetadata")
-    def app_metadata(self) -> Optional[str]:
+    def app_metadata(self) -> pulumi.Output[Optional[str]]:
         """
         String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         """
@@ -195,12 +195,12 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def blocked(self) -> Optional[bool]:
+    def blocked(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "blocked")
 
     @property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> str:
+    def connection_name(self) -> pulumi.Output[str]:
         """
         String. Name of the connection from which the user information was sourced.
         """
@@ -208,7 +208,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
+    def email(self) -> pulumi.Output[Optional[str]]:
         """
         String. Email address of the user.
         """
@@ -216,7 +216,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="emailVerified")
-    def email_verified(self) -> Optional[bool]:
+    def email_verified(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not the email address has been verified.
         """
@@ -224,22 +224,22 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="familyName")
-    def family_name(self) -> Optional[str]:
+    def family_name(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "family_name")
 
     @property
     @pulumi.getter(name="givenName")
-    def given_name(self) -> Optional[str]:
+    def given_name(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "given_name")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def nickname(self) -> Optional[str]:
+    def nickname(self) -> pulumi.Output[Optional[str]]:
         """
         String. Preferred nickname or alias of the user.
         """
@@ -247,7 +247,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
         """
@@ -255,7 +255,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[str]:
+    def phone_number(self) -> pulumi.Output[Optional[str]]:
         """
         String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         """
@@ -263,7 +263,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="phoneVerified")
-    def phone_verified(self) -> Optional[bool]:
+    def phone_verified(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not the phone number has been verified.
         """
@@ -271,12 +271,12 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def picture(self) -> Optional[str]:
+    def picture(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "picture")
 
     @property
     @pulumi.getter
-    def roles(self) -> Optional[List[str]]:
+    def roles(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Set(String). Set of IDs of roles assigned to the user.
         """
@@ -284,7 +284,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userId")
-    def user_id(self) -> str:
+    def user_id(self) -> pulumi.Output[str]:
         """
         String. ID of the user.
         """
@@ -292,7 +292,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userMetadata")
-    def user_metadata(self) -> Optional[str]:
+    def user_metadata(self) -> pulumi.Output[Optional[str]]:
         """
         String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         """
@@ -300,7 +300,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[str]:
+    def username(self) -> pulumi.Output[Optional[str]]:
         """
         String. Username of the user. Only valid if the connection requires a username.
         """
@@ -308,7 +308,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="verifyEmail")
-    def verify_email(self) -> Optional[bool]:
+    def verify_email(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         """

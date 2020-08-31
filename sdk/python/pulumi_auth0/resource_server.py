@@ -15,7 +15,7 @@ __all__ = ['ResourceServer']
 
 class ResourceServer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_offline_access: Optional[pulumi.Input[bool]] = None,
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
@@ -171,7 +171,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowOfflineAccess")
-    def allow_offline_access(self) -> Optional[bool]:
+    def allow_offline_access(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
         """
@@ -179,7 +179,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enforcePolicies")
-    def enforce_policies(self) -> Optional[bool]:
+    def enforce_policies(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not authorization polices are enforced.
         """
@@ -187,7 +187,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> pulumi.Output[Optional[str]]:
         """
         String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
         """
@@ -195,7 +195,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         String. Friendly name for the resource server. Cannot include `<` or `>` characters.
         """
@@ -203,7 +203,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> Optional[Mapping[str, str]]:
+    def options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map(String). Used to store additional metadata
         """
@@ -211,7 +211,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scopes(self) -> Optional[List['outputs.ResourceServerScope']]:
+    def scopes(self) -> pulumi.Output[Optional[List['outputs.ResourceServerScope']]]:
         """
         Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
         """
@@ -219,7 +219,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="signingAlg")
-    def signing_alg(self) -> str:
+    def signing_alg(self) -> pulumi.Output[str]:
         """
         String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         """
@@ -227,7 +227,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="signingSecret")
-    def signing_secret(self) -> str:
+    def signing_secret(self) -> pulumi.Output[str]:
         """
         String. Secret used to sign tokens when using symmetric algorithms (HS256).
         """
@@ -235,7 +235,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="skipConsentForVerifiableFirstPartyClients")
-    def skip_consent_for_verifiable_first_party_clients(self) -> Optional[bool]:
+    def skip_consent_for_verifiable_first_party_clients(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
         """
@@ -243,7 +243,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenDialect")
-    def token_dialect(self) -> Optional[str]:
+    def token_dialect(self) -> pulumi.Output[Optional[str]]:
         """
         String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
         """
@@ -251,7 +251,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenLifetime")
-    def token_lifetime(self) -> float:
+    def token_lifetime(self) -> pulumi.Output[float]:
         """
         Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         """
@@ -259,7 +259,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenLifetimeForWeb")
-    def token_lifetime_for_web(self) -> float:
+    def token_lifetime_for_web(self) -> pulumi.Output[float]:
         """
         Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         """
@@ -267,7 +267,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="verificationLocation")
-    def verification_location(self) -> Optional[str]:
+    def verification_location(self) -> pulumi.Output[Optional[str]]:
         """
         String
         """
