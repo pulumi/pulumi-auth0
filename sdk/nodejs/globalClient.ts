@@ -34,36 +34,37 @@ export class GlobalClient extends pulumi.CustomResource {
         return obj['__pulumiType'] === GlobalClient.__pulumiType;
     }
 
-    public readonly addons!: pulumi.Output<outputs.GlobalClientAddons | undefined>;
-    public readonly allowedLogoutUrls!: pulumi.Output<string[] | undefined>;
-    public readonly allowedOrigins!: pulumi.Output<string[] | undefined>;
-    public readonly appType!: pulumi.Output<string | undefined>;
-    public readonly callbacks!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
-    public readonly clientMetadata!: pulumi.Output<{[key: string]: any} | undefined>;
-    public /*out*/ readonly clientSecret!: pulumi.Output<string>;
+    public readonly addons!: pulumi.Output<outputs.GlobalClientAddons>;
+    public readonly allowedLogoutUrls!: pulumi.Output<string[]>;
+    public readonly allowedOrigins!: pulumi.Output<string[]>;
+    public readonly appType!: pulumi.Output<string>;
+    public readonly callbacks!: pulumi.Output<string[]>;
+    public readonly clientId!: pulumi.Output<string>;
+    public readonly clientMetadata!: pulumi.Output<{[key: string]: any}>;
+    public readonly clientSecret!: pulumi.Output<string>;
     public readonly clientSecretRotationTrigger!: pulumi.Output<{[key: string]: any} | undefined>;
-    public readonly crossOriginAuth!: pulumi.Output<boolean | undefined>;
-    public readonly crossOriginLoc!: pulumi.Output<string | undefined>;
-    public readonly customLoginPage!: pulumi.Output<string | undefined>;
+    public readonly crossOriginAuth!: pulumi.Output<boolean>;
+    public readonly crossOriginLoc!: pulumi.Output<string>;
+    public readonly customLoginPage!: pulumi.Output<string>;
     public readonly customLoginPageOn!: pulumi.Output<boolean>;
-    public readonly customLoginPagePreview!: pulumi.Output<string | undefined>;
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly encryptionKey!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly formTemplate!: pulumi.Output<string | undefined>;
+    public readonly customLoginPagePreview!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
+    public readonly encryptionKey!: pulumi.Output<{[key: string]: string}>;
+    public readonly formTemplate!: pulumi.Output<string>;
     public readonly grantTypes!: pulumi.Output<string[]>;
-    public readonly initiateLoginUri!: pulumi.Output<string | undefined>;
+    public readonly initiateLoginUri!: pulumi.Output<string>;
     public readonly isFirstParty!: pulumi.Output<boolean>;
     public readonly isTokenEndpointIpHeaderTrusted!: pulumi.Output<boolean>;
     public readonly jwtConfiguration!: pulumi.Output<outputs.GlobalClientJwtConfiguration>;
-    public readonly logoUri!: pulumi.Output<string | undefined>;
-    public readonly mobile!: pulumi.Output<outputs.GlobalClientMobile | undefined>;
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly logoUri!: pulumi.Output<string>;
+    public readonly mobile!: pulumi.Output<outputs.GlobalClientMobile>;
+    public readonly name!: pulumi.Output<string>;
     public readonly oidcConformant!: pulumi.Output<boolean>;
-    public readonly sso!: pulumi.Output<boolean | undefined>;
-    public readonly ssoDisabled!: pulumi.Output<boolean | undefined>;
+    public readonly refreshToken!: pulumi.Output<outputs.GlobalClientRefreshToken>;
+    public readonly sso!: pulumi.Output<boolean>;
+    public readonly ssoDisabled!: pulumi.Output<boolean>;
     public readonly tokenEndpointAuthMethod!: pulumi.Output<string>;
-    public readonly webOrigins!: pulumi.Output<string[] | undefined>;
+    public readonly webOrigins!: pulumi.Output<string[]>;
 
     /**
      * Create a GlobalClient resource with the given unique name, arguments, and options.
@@ -103,6 +104,7 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["mobile"] = state ? state.mobile : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oidcConformant"] = state ? state.oidcConformant : undefined;
+            inputs["refreshToken"] = state ? state.refreshToken : undefined;
             inputs["sso"] = state ? state.sso : undefined;
             inputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
             inputs["tokenEndpointAuthMethod"] = state ? state.tokenEndpointAuthMethod : undefined;
@@ -114,7 +116,9 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["allowedOrigins"] = args ? args.allowedOrigins : undefined;
             inputs["appType"] = args ? args.appType : undefined;
             inputs["callbacks"] = args ? args.callbacks : undefined;
+            inputs["clientId"] = args ? args.clientId : undefined;
             inputs["clientMetadata"] = args ? args.clientMetadata : undefined;
+            inputs["clientSecret"] = args ? args.clientSecret : undefined;
             inputs["clientSecretRotationTrigger"] = args ? args.clientSecretRotationTrigger : undefined;
             inputs["crossOriginAuth"] = args ? args.crossOriginAuth : undefined;
             inputs["crossOriginLoc"] = args ? args.crossOriginLoc : undefined;
@@ -131,14 +135,13 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["jwtConfiguration"] = args ? args.jwtConfiguration : undefined;
             inputs["logoUri"] = args ? args.logoUri : undefined;
             inputs["mobile"] = args ? args.mobile : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["oidcConformant"] = args ? args.oidcConformant : undefined;
+            inputs["refreshToken"] = args ? args.refreshToken : undefined;
             inputs["sso"] = args ? args.sso : undefined;
             inputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
             inputs["tokenEndpointAuthMethod"] = args ? args.tokenEndpointAuthMethod : undefined;
             inputs["webOrigins"] = args ? args.webOrigins : undefined;
-            inputs["clientId"] = undefined /*out*/;
-            inputs["clientSecret"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -181,6 +184,7 @@ export interface GlobalClientState {
     readonly mobile?: pulumi.Input<inputs.GlobalClientMobile>;
     readonly name?: pulumi.Input<string>;
     readonly oidcConformant?: pulumi.Input<boolean>;
+    readonly refreshToken?: pulumi.Input<inputs.GlobalClientRefreshToken>;
     readonly sso?: pulumi.Input<boolean>;
     readonly ssoDisabled?: pulumi.Input<boolean>;
     readonly tokenEndpointAuthMethod?: pulumi.Input<string>;
@@ -196,7 +200,9 @@ export interface GlobalClientArgs {
     readonly allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     readonly appType?: pulumi.Input<string>;
     readonly callbacks?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly clientId?: pulumi.Input<string>;
     readonly clientMetadata?: pulumi.Input<{[key: string]: any}>;
+    readonly clientSecret?: pulumi.Input<string>;
     readonly clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
     readonly crossOriginAuth?: pulumi.Input<boolean>;
     readonly crossOriginLoc?: pulumi.Input<string>;
@@ -213,7 +219,9 @@ export interface GlobalClientArgs {
     readonly jwtConfiguration?: pulumi.Input<inputs.GlobalClientJwtConfiguration>;
     readonly logoUri?: pulumi.Input<string>;
     readonly mobile?: pulumi.Input<inputs.GlobalClientMobile>;
+    readonly name?: pulumi.Input<string>;
     readonly oidcConformant?: pulumi.Input<boolean>;
+    readonly refreshToken?: pulumi.Input<inputs.GlobalClientRefreshToken>;
     readonly sso?: pulumi.Input<boolean>;
     readonly ssoDisabled?: pulumi.Input<boolean>;
     readonly tokenEndpointAuthMethod?: pulumi.Input<string>;

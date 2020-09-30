@@ -151,7 +151,8 @@ type Client struct {
 	// String. Name of the client.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
-	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
+	OidcConformant pulumi.BoolOutput        `pulumi:"oidcConformant"`
+	RefreshToken   ClientRefreshTokenOutput `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso pulumi.BoolPtrOutput `pulumi:"sso"`
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -243,7 +244,8 @@ type clientState struct {
 	// String. Name of the client.
 	Name *string `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
-	OidcConformant *bool `pulumi:"oidcConformant"`
+	OidcConformant *bool               `pulumi:"oidcConformant"`
+	RefreshToken   *ClientRefreshToken `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso *bool `pulumi:"sso"`
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -306,6 +308,7 @@ type ClientState struct {
 	Name pulumi.StringPtrInput
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolPtrInput
+	RefreshToken   ClientRefreshTokenPtrInput
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso pulumi.BoolPtrInput
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -367,7 +370,8 @@ type clientArgs struct {
 	// String. Name of the client.
 	Name *string `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
-	OidcConformant *bool `pulumi:"oidcConformant"`
+	OidcConformant *bool               `pulumi:"oidcConformant"`
+	RefreshToken   *ClientRefreshToken `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso *bool `pulumi:"sso"`
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -427,6 +431,7 @@ type ClientArgs struct {
 	Name pulumi.StringPtrInput
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolPtrInput
+	RefreshToken   ClientRefreshTokenPtrInput
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso pulumi.BoolPtrInput
 	// Boolean. Indicates whether or not SSO is disabled.

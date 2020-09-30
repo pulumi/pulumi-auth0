@@ -22,7 +22,9 @@ class GlobalClient(pulumi.CustomResource):
                  allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
                  callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
@@ -39,7 +41,9 @@ class GlobalClient(pulumi.CustomResource):
                  jwt_configuration: Optional[pulumi.Input[pulumi.InputType['GlobalClientJwtConfigurationArgs']]] = None,
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -74,7 +78,9 @@ class GlobalClient(pulumi.CustomResource):
             __props__['allowed_origins'] = allowed_origins
             __props__['app_type'] = app_type
             __props__['callbacks'] = callbacks
+            __props__['client_id'] = client_id
             __props__['client_metadata'] = client_metadata
+            __props__['client_secret'] = client_secret
             __props__['client_secret_rotation_trigger'] = client_secret_rotation_trigger
             __props__['cross_origin_auth'] = cross_origin_auth
             __props__['cross_origin_loc'] = cross_origin_loc
@@ -91,14 +97,13 @@ class GlobalClient(pulumi.CustomResource):
             __props__['jwt_configuration'] = jwt_configuration
             __props__['logo_uri'] = logo_uri
             __props__['mobile'] = mobile
+            __props__['name'] = name
             __props__['oidc_conformant'] = oidc_conformant
+            __props__['refresh_token'] = refresh_token
             __props__['sso'] = sso
             __props__['sso_disabled'] = sso_disabled
             __props__['token_endpoint_auth_method'] = token_endpoint_auth_method
             __props__['web_origins'] = web_origins
-            __props__['client_id'] = None
-            __props__['client_secret'] = None
-            __props__['name'] = None
         super(GlobalClient, __self__).__init__(
             'auth0:index/globalClient:GlobalClient',
             resource_name,
@@ -135,6 +140,7 @@ class GlobalClient(pulumi.CustomResource):
             mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
+            refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
             token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -177,6 +183,7 @@ class GlobalClient(pulumi.CustomResource):
         __props__["mobile"] = mobile
         __props__["name"] = name
         __props__["oidc_conformant"] = oidc_conformant
+        __props__["refresh_token"] = refresh_token
         __props__["sso"] = sso
         __props__["sso_disabled"] = sso_disabled
         __props__["token_endpoint_auth_method"] = token_endpoint_auth_method
@@ -185,27 +192,27 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def addons(self) -> pulumi.Output[Optional['outputs.GlobalClientAddons']]:
+    def addons(self) -> pulumi.Output['outputs.GlobalClientAddons']:
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
-    def allowed_logout_urls(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_logout_urls(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "allowed_logout_urls")
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_origins(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "allowed_origins")
 
     @property
     @pulumi.getter(name="appType")
-    def app_type(self) -> pulumi.Output[Optional[str]]:
+    def app_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "app_type")
 
     @property
     @pulumi.getter
-    def callbacks(self) -> pulumi.Output[Optional[List[str]]]:
+    def callbacks(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "callbacks")
 
     @property
@@ -215,7 +222,7 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientMetadata")
-    def client_metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def client_metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         return pulumi.get(self, "client_metadata")
 
     @property
@@ -230,17 +237,17 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="crossOriginAuth")
-    def cross_origin_auth(self) -> pulumi.Output[Optional[bool]]:
+    def cross_origin_auth(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "cross_origin_auth")
 
     @property
     @pulumi.getter(name="crossOriginLoc")
-    def cross_origin_loc(self) -> pulumi.Output[Optional[str]]:
+    def cross_origin_loc(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cross_origin_loc")
 
     @property
     @pulumi.getter(name="customLoginPage")
-    def custom_login_page(self) -> pulumi.Output[Optional[str]]:
+    def custom_login_page(self) -> pulumi.Output[str]:
         return pulumi.get(self, "custom_login_page")
 
     @property
@@ -250,22 +257,22 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customLoginPagePreview")
-    def custom_login_page_preview(self) -> pulumi.Output[Optional[str]]:
+    def custom_login_page_preview(self) -> pulumi.Output[str]:
         return pulumi.get(self, "custom_login_page_preview")
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def encryption_key(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "encryption_key")
 
     @property
     @pulumi.getter(name="formTemplate")
-    def form_template(self) -> pulumi.Output[Optional[str]]:
+    def form_template(self) -> pulumi.Output[str]:
         return pulumi.get(self, "form_template")
 
     @property
@@ -275,7 +282,7 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initiateLoginUri")
-    def initiate_login_uri(self) -> pulumi.Output[Optional[str]]:
+    def initiate_login_uri(self) -> pulumi.Output[str]:
         return pulumi.get(self, "initiate_login_uri")
 
     @property
@@ -295,12 +302,12 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logoUri")
-    def logo_uri(self) -> pulumi.Output[Optional[str]]:
+    def logo_uri(self) -> pulumi.Output[str]:
         return pulumi.get(self, "logo_uri")
 
     @property
     @pulumi.getter
-    def mobile(self) -> pulumi.Output[Optional['outputs.GlobalClientMobile']]:
+    def mobile(self) -> pulumi.Output['outputs.GlobalClientMobile']:
         return pulumi.get(self, "mobile")
 
     @property
@@ -314,13 +321,18 @@ class GlobalClient(pulumi.CustomResource):
         return pulumi.get(self, "oidc_conformant")
 
     @property
+    @pulumi.getter(name="refreshToken")
+    def refresh_token(self) -> pulumi.Output['outputs.GlobalClientRefreshToken']:
+        return pulumi.get(self, "refresh_token")
+
+    @property
     @pulumi.getter
-    def sso(self) -> pulumi.Output[Optional[bool]]:
+    def sso(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "sso")
 
     @property
     @pulumi.getter(name="ssoDisabled")
-    def sso_disabled(self) -> pulumi.Output[Optional[bool]]:
+    def sso_disabled(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "sso_disabled")
 
     @property
@@ -330,7 +342,7 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webOrigins")
-    def web_origins(self) -> pulumi.Output[Optional[List[str]]]:
+    def web_origins(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "web_origins")
 
     def translate_output_property(self, prop):

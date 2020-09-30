@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ConnectionOptionsPasswordNoPersonalInfo
     {
         /// <summary>
-        /// Boolean. Indicates whether the password personal info check is enabled for this connection.
+        /// Indicates whether the password personal info check is enabled for this connection.
         /// </summary>
         public readonly bool? Enable;
 

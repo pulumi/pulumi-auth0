@@ -14,36 +14,33 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ConnectionOptions
     {
         /// <summary>
-        /// String. ADFS Metadata source.
+        /// ADFS Metadata source.
         /// </summary>
         public readonly string? AdfsServer;
-        public readonly ImmutableArray<string> AllowedAudiences;
         /// <summary>
-        /// Boolean.
+        /// List of allowed audiences.
         /// </summary>
+        public readonly ImmutableArray<string> AllowedAudiences;
         public readonly bool? ApiEnableUsers;
         /// <summary>
-        /// String. Azure AD domain name.
+        /// Azure AD domain name.
         /// </summary>
         public readonly string? AppDomain;
         /// <summary>
-        /// String
+        /// Azure AD app ID.
         /// </summary>
         public readonly string? AppId;
-        /// <summary>
-        /// String.
-        /// </summary>
         public readonly string? AuthorizationEndpoint;
         /// <summary>
-        /// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+        /// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         /// </summary>
         public readonly bool? BruteForceProtection;
         /// <summary>
-        /// String. Client ID given by your OIDC provider.
+        /// OIDC provider client ID.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// String, Case-sensitive. Client secret given by your OIDC provider.
+        /// OIDC provider client secret.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
@@ -51,150 +48,181 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? CommunityBaseUrl;
         /// <summary>
-        /// Map(String), Case-sensitive.
+        /// A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Configuration;
         /// <summary>
-        /// Map(String).
+        /// Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomScripts;
+        /// <summary>
+        /// (Boolean) When enabled additional debugging information will be generated.
+        /// </summary>
+        public readonly bool? Debug;
+        /// <summary>
+        /// Sign Request Algorithm Digest
+        /// </summary>
+        public readonly string? DigestAlgorithm;
         public readonly bool? DisableCache;
         /// <summary>
         /// Boolean. Indicates whether or not to allow user sign-ups to your application.
         /// </summary>
         public readonly bool? DisableSignup;
         /// <summary>
-        /// String. Usually an URL ending with `/.well-known/openid-configuration`
+        /// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
         /// </summary>
         public readonly string? DiscoveryUrl;
         public readonly string? Domain;
         /// <summary>
-        /// List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+        /// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
         /// </summary>
         public readonly ImmutableArray<string> DomainAliases;
-        /// <summary>
-        /// Boolean.
-        /// </summary>
         public readonly bool? EnabledDatabaseCustomization;
         /// <summary>
-        /// String. SMS number for the sender. Used when SMS Source is From.
+        /// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? FieldsMap;
+        /// <summary>
+        /// SMS number for the sender. Used when SMS Source is From.
         /// </summary>
         public readonly string? From;
         public readonly string? IconUrl;
         public readonly string? IdentityApi;
+        public readonly Outputs.ConnectionOptionsIdpInitiated? IdpInitiated;
         /// <summary>
-        /// Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+        /// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
         /// </summary>
         public readonly bool? ImportMode;
         public readonly ImmutableArray<string> Ips;
         /// <summary>
-        /// String. URL of the issuer.
+        /// Issuer URL. E.g. `https://auth.example.com`
         /// </summary>
         public readonly string? Issuer;
-        /// <summary>
-        /// String.
-        /// </summary>
         public readonly string? JwksUri;
+        /// <summary>
+        /// Key ID.
+        /// </summary>
         public readonly string? KeyId;
         /// <summary>
-        /// String. Maximum number of groups to retrieve.
+        /// Maximum number of groups to retrieve.
         /// </summary>
         public readonly string? MaxGroupsToRetrieve;
         /// <summary>
-        /// String. SID for Copilot. Used when SMS Source is Copilot.
+        /// SID for Copilot. Used when SMS Source is Copilot.
         /// </summary>
         public readonly string? MessagingServiceSid;
         /// <summary>
-        /// String.
+        /// Name of the connection.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
+        /// Configuration settings for password complexity. For details, see Password Complexity Options.
         /// </summary>
         public readonly Outputs.ConnectionOptionsPasswordComplexityOptions? PasswordComplexityOptions;
         /// <summary>
-        /// List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+        /// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
         /// </summary>
         public readonly Outputs.ConnectionOptionsPasswordDictionary? PasswordDictionary;
         /// <summary>
-        /// List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+        /// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionOptionsPasswordHistory> PasswordHistories;
         /// <summary>
-        /// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+        /// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
         /// </summary>
         public readonly Outputs.ConnectionOptionsPasswordNoPersonalInfo? PasswordNoPersonalInfo;
         /// <summary>
-        /// String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+        /// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         /// </summary>
         public readonly string? PasswordPolicy;
         /// <summary>
-        /// Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
+        /// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+        /// </summary>
+        public readonly string? ProtocolBinding;
+        /// <summary>
+        /// Template that formats the SAML request
+        /// </summary>
+        public readonly string? RequestTemplate;
+        /// <summary>
+        /// Indicates whether or not the user is required to provide a username in addition to an email address.
         /// </summary>
         public readonly bool? RequiresUsername;
         /// <summary>
-        /// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+        /// Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
+        public readonly ImmutableDictionary<string, string>? Scripts;
         /// <summary>
-        /// Int. Version 1 is deprecated, use version 2.
+        /// SAML single login URL for the connection.
+        /// </summary>
+        public readonly string? SignInEndpoint;
+        /// <summary>
+        /// SAML single logout URL for the connection.
+        /// </summary>
+        public readonly string? SignOutEndpoint;
+        /// <summary>
+        /// (Boolean) When enabled, the SAML authentication request will be signed.
+        /// </summary>
+        public readonly bool? SignSamlRequest;
+        /// <summary>
+        /// Sign Request Algorithm
+        /// </summary>
+        public readonly string? SignatureAlgorithm;
+        /// <summary>
+        /// The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+        /// </summary>
+        public readonly string? SigningCert;
+        /// <summary>
+        /// Version 1 is deprecated, use version 2.
         /// </summary>
         public readonly int? StrategyVersion;
         public readonly string? Subject;
         /// <summary>
-        /// String. Syntax of the SMS. Options include `markdown` and `liquid`.
+        /// Syntax of the SMS. Options include `markdown` and `liquid`.
         /// </summary>
         public readonly string? Syntax;
+        /// <summary>
+        /// Team ID.
+        /// </summary>
         public readonly string? TeamId;
         /// <summary>
-        /// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+        /// Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
         /// </summary>
         public readonly string? Template;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly string? TenantDomain;
-        /// <summary>
-        /// String.
-        /// </summary>
         public readonly string? TokenEndpoint;
         /// <summary>
-        /// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
+        /// Configuration options for one-time passwords. For details, see TOTP.
         /// </summary>
         public readonly Outputs.ConnectionOptionsTotp? Totp;
         /// <summary>
-        /// String. SID for your Twilio account.
+        /// SID for your Twilio account.
         /// </summary>
         public readonly string? TwilioSid;
         /// <summary>
-        /// String, Case-sensitive. AuthToken for your Twilio account.
+        /// AuthToken for your Twilio account.
         /// </summary>
         public readonly string? TwilioToken;
         /// <summary>
-        /// String. Value must be `back_channel` or `front_channel`
+        /// Value can be `back_channel` or `front_channel`.
         /// </summary>
         public readonly string? Type;
         public readonly bool? UseCertAuth;
         public readonly bool? UseKerberos;
-        /// <summary>
-        /// Bool
-        /// </summary>
         public readonly bool? UseWsfed;
         /// <summary>
-        /// String.
+        /// Attribute in the SAML token that will be mapped to the user_id property in Auth0.
         /// </summary>
+        public readonly string? UserIdAttribute;
         public readonly string? UserinfoEndpoint;
         /// <summary>
-        /// String.
+        /// A map defining the validation options.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Validation;
         /// <summary>
-        /// Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+        /// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         /// </summary>
         public readonly bool? WaadCommonEndpoint;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly string? WaadProtocol;
 
         [OutputConstructor]
@@ -223,6 +251,10 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableDictionary<string, string>? customScripts,
 
+            bool? debug,
+
+            string? digestAlgorithm,
+
             bool? disableCache,
 
             bool? disableSignup,
@@ -235,11 +267,15 @@ namespace Pulumi.Auth0.Outputs
 
             bool? enabledDatabaseCustomization,
 
+            ImmutableDictionary<string, string>? fieldsMap,
+
             string? from,
 
             string? iconUrl,
 
             string? identityApi,
+
+            Outputs.ConnectionOptionsIdpInitiated? idpInitiated,
 
             bool? importMode,
 
@@ -267,9 +303,25 @@ namespace Pulumi.Auth0.Outputs
 
             string? passwordPolicy,
 
+            string? protocolBinding,
+
+            string? requestTemplate,
+
             bool? requiresUsername,
 
             ImmutableArray<string> scopes,
+
+            ImmutableDictionary<string, string>? scripts,
+
+            string? signInEndpoint,
+
+            string? signOutEndpoint,
+
+            bool? signSamlRequest,
+
+            string? signatureAlgorithm,
+
+            string? signingCert,
 
             int? strategyVersion,
 
@@ -299,6 +351,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool? useWsfed,
 
+            string? userIdAttribute,
+
             string? userinfoEndpoint,
 
             ImmutableDictionary<string, string>? validation,
@@ -319,15 +373,19 @@ namespace Pulumi.Auth0.Outputs
             CommunityBaseUrl = communityBaseUrl;
             Configuration = configuration;
             CustomScripts = customScripts;
+            Debug = debug;
+            DigestAlgorithm = digestAlgorithm;
             DisableCache = disableCache;
             DisableSignup = disableSignup;
             DiscoveryUrl = discoveryUrl;
             Domain = domain;
             DomainAliases = domainAliases;
             EnabledDatabaseCustomization = enabledDatabaseCustomization;
+            FieldsMap = fieldsMap;
             From = from;
             IconUrl = iconUrl;
             IdentityApi = identityApi;
+            IdpInitiated = idpInitiated;
             ImportMode = importMode;
             Ips = ips;
             Issuer = issuer;
@@ -341,8 +399,16 @@ namespace Pulumi.Auth0.Outputs
             PasswordHistories = passwordHistories;
             PasswordNoPersonalInfo = passwordNoPersonalInfo;
             PasswordPolicy = passwordPolicy;
+            ProtocolBinding = protocolBinding;
+            RequestTemplate = requestTemplate;
             RequiresUsername = requiresUsername;
             Scopes = scopes;
+            Scripts = scripts;
+            SignInEndpoint = signInEndpoint;
+            SignOutEndpoint = signOutEndpoint;
+            SignSamlRequest = signSamlRequest;
+            SignatureAlgorithm = signatureAlgorithm;
+            SigningCert = signingCert;
             StrategyVersion = strategyVersion;
             Subject = subject;
             Syntax = syntax;
@@ -357,6 +423,7 @@ namespace Pulumi.Auth0.Outputs
             UseCertAuth = useCertAuth;
             UseKerberos = useKerberos;
             UseWsfed = useWsfed;
+            UserIdAttribute = userIdAttribute;
             UserinfoEndpoint = userinfoEndpoint;
             Validation = validation;
             WaadCommonEndpoint = waadCommonEndpoint;

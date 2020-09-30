@@ -204,6 +204,7 @@ export class Client extends pulumi.CustomResource {
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
     public readonly oidcConformant!: pulumi.Output<boolean>;
+    public readonly refreshToken!: pulumi.Output<outputs.ClientRefreshToken>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
      */
@@ -259,6 +260,7 @@ export class Client extends pulumi.CustomResource {
             inputs["mobile"] = state ? state.mobile : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oidcConformant"] = state ? state.oidcConformant : undefined;
+            inputs["refreshToken"] = state ? state.refreshToken : undefined;
             inputs["sso"] = state ? state.sso : undefined;
             inputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
             inputs["tokenEndpointAuthMethod"] = state ? state.tokenEndpointAuthMethod : undefined;
@@ -289,6 +291,7 @@ export class Client extends pulumi.CustomResource {
             inputs["mobile"] = args ? args.mobile : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oidcConformant"] = args ? args.oidcConformant : undefined;
+            inputs["refreshToken"] = args ? args.refreshToken : undefined;
             inputs["sso"] = args ? args.sso : undefined;
             inputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
             inputs["tokenEndpointAuthMethod"] = args ? args.tokenEndpointAuthMethod : undefined;
@@ -412,6 +415,7 @@ export interface ClientState {
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
     readonly oidcConformant?: pulumi.Input<boolean>;
+    readonly refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
      */
@@ -527,6 +531,7 @@ export interface ClientArgs {
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
     readonly oidcConformant?: pulumi.Input<boolean>;
+    readonly refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
      */

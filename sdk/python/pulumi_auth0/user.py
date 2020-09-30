@@ -239,7 +239,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def nickname(self) -> pulumi.Output[Optional[str]]:
+    def nickname(self) -> pulumi.Output[str]:
         """
         String. Preferred nickname or alias of the user.
         """
@@ -271,7 +271,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def picture(self) -> pulumi.Output[Optional[str]]:
+    def picture(self) -> pulumi.Output[str]:
         return pulumi.get(self, "picture")
 
     @property

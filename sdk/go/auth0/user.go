@@ -69,14 +69,14 @@ type User struct {
 	GivenName     pulumi.StringPtrOutput `pulumi:"givenName"`
 	Name          pulumi.StringOutput    `pulumi:"name"`
 	// String. Preferred nickname or alias of the user.
-	Nickname pulumi.StringPtrOutput `pulumi:"nickname"`
+	Nickname pulumi.StringOutput `pulumi:"nickname"`
 	// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrOutput `pulumi:"phoneNumber"`
 	// Boolean. Indicates whether or not the phone number has been verified.
-	PhoneVerified pulumi.BoolPtrOutput   `pulumi:"phoneVerified"`
-	Picture       pulumi.StringPtrOutput `pulumi:"picture"`
+	PhoneVerified pulumi.BoolPtrOutput `pulumi:"phoneVerified"`
+	Picture       pulumi.StringOutput  `pulumi:"picture"`
 	// Set(String). Set of IDs of roles assigned to the user.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	// String. ID of the user.

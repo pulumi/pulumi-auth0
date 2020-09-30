@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ConnectionOptionsPasswordNoPersonalInfoGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether the password personal info check is enabled for this connection.
+        /// Indicates whether the password personal info check is enabled for this connection.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

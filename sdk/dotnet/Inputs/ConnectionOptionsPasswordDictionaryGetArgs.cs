@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _dictionaries;
 
         /// <summary>
-        /// Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+        /// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
         /// </summary>
         public InputList<string> Dictionaries
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+        /// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

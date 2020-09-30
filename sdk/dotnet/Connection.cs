@@ -53,32 +53,12 @@ namespace Pulumi.Auth0
     ///             },
     ///             Strategy = "auth0",
     ///         });
-    ///         var myWaadConnection = new Auth0.Connection("myWaadConnection", new Auth0.ConnectionArgs
-    ///         {
-    ///             Options = new Auth0.Inputs.ConnectionOptionsArgs
-    ///             {
-    ///                 ApiEnableUsers = true,
-    ///                 AppDomain = "my-auth0-app.eu.auth0.com",
-    ///                 BasicProfile = true,
-    ///                 ClientId = "1234",
-    ///                 ClientSecret = "1234",
-    ///                 DomainAliases = 
-    ///                 {
-    ///                     "example.io",
-    ///                 },
-    ///                 ExtGroups = true,
-    ///                 ExtProfile = true,
-    ///                 TenantDomain = "exmaple.onmicrosoft.com",
-    ///                 UseWsfed = false,
-    ///                 WaadCommonEndpoint = false,
-    ///                 WaadProtocol = "openid-connect",
-    ///             },
-    ///             Strategy = "waad",
-    ///         });
     ///     }
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allowes the creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {
@@ -89,43 +69,43 @@ namespace Pulumi.Auth0
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Set(String). IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        /// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         /// </summary>
         [Output("enabledClients")]
         public Output<ImmutableArray<string>> EnabledClients { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the connection is domain level.
+        /// Indicates whether or not the connection is domain level.
         /// </summary>
         [Output("isDomainConnection")]
         public Output<bool> IsDomainConnection { get; private set; } = null!;
 
         /// <summary>
-        /// String. Name of the connection.
+        /// Name of the connection.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for connection options. For details, see Options.
+        /// Configuration settings for connection options. For details, see Options.
         /// </summary>
         [Output("options")]
         public Output<Outputs.ConnectionOptions?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        /// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
         /// </summary>
         [Output("realms")]
         public Output<ImmutableArray<string>> Realms { get; private set; } = null!;
 
         /// <summary>
-        /// String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        /// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         /// </summary>
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
 
         /// <summary>
-        /// Int. Version 1 is deprecated, use version 2.
+        /// Version 1 is deprecated, use version 2.
         /// </summary>
         [Output("strategyVersion")]
         public Output<string> StrategyVersion { get; private set; } = null!;
@@ -186,7 +166,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _enabledClients;
 
         /// <summary>
-        /// Set(String). IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        /// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         /// </summary>
         public InputList<string> EnabledClients
         {
@@ -195,19 +175,19 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the connection is domain level.
+        /// Indicates whether or not the connection is domain level.
         /// </summary>
         [Input("isDomainConnection")]
         public Input<bool>? IsDomainConnection { get; set; }
 
         /// <summary>
-        /// String. Name of the connection.
+        /// Name of the connection.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for connection options. For details, see Options.
+        /// Configuration settings for connection options. For details, see Options.
         /// </summary>
         [Input("options")]
         public Input<Inputs.ConnectionOptionsArgs>? Options { get; set; }
@@ -216,7 +196,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _realms;
 
         /// <summary>
-        /// List(String). Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        /// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
         /// </summary>
         public InputList<string> Realms
         {
@@ -225,13 +205,13 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        /// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         /// </summary>
         [Input("strategy", required: true)]
         public Input<string> Strategy { get; set; } = null!;
 
         /// <summary>
-        /// Int. Version 1 is deprecated, use version 2.
+        /// Version 1 is deprecated, use version 2.
         /// </summary>
         [Input("strategyVersion")]
         public Input<string>? StrategyVersion { get; set; }
@@ -253,7 +233,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _enabledClients;
 
         /// <summary>
-        /// Set(String). IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        /// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         /// </summary>
         public InputList<string> EnabledClients
         {
@@ -262,19 +242,19 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the connection is domain level.
+        /// Indicates whether or not the connection is domain level.
         /// </summary>
         [Input("isDomainConnection")]
         public Input<bool>? IsDomainConnection { get; set; }
 
         /// <summary>
-        /// String. Name of the connection.
+        /// Name of the connection.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for connection options. For details, see Options.
+        /// Configuration settings for connection options. For details, see Options.
         /// </summary>
         [Input("options")]
         public Input<Inputs.ConnectionOptionsGetArgs>? Options { get; set; }
@@ -283,7 +263,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _realms;
 
         /// <summary>
-        /// List(String). Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        /// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
         /// </summary>
         public InputList<string> Realms
         {
@@ -292,13 +272,13 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        /// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 
         /// <summary>
-        /// Int. Version 1 is deprecated, use version 2.
+        /// Version 1 is deprecated, use version 2.
         /// </summary>
         [Input("strategyVersion")]
         public Input<string>? StrategyVersion { get; set; }

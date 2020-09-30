@@ -79,7 +79,7 @@ export class User extends pulumi.CustomResource {
     /**
      * String. Preferred nickname or alias of the user.
      */
-    public readonly nickname!: pulumi.Output<string | undefined>;
+    public readonly nickname!: pulumi.Output<string>;
     /**
      * String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
      */
@@ -92,7 +92,7 @@ export class User extends pulumi.CustomResource {
      * Boolean. Indicates whether or not the phone number has been verified.
      */
     public readonly phoneVerified!: pulumi.Output<boolean | undefined>;
-    public readonly picture!: pulumi.Output<string | undefined>;
+    public readonly picture!: pulumi.Output<string>;
     /**
      * Set(String). Set of IDs of roles assigned to the user.
      */

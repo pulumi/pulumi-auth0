@@ -89,7 +89,7 @@ namespace Pulumi.Auth0
         /// String. Preferred nickname or alias of the user.
         /// </summary>
         [Output("nickname")]
-        public Output<string?> Nickname { get; private set; } = null!;
+        public Output<string> Nickname { get; private set; } = null!;
 
         /// <summary>
         /// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
@@ -110,7 +110,7 @@ namespace Pulumi.Auth0
         public Output<bool?> PhoneVerified { get; private set; } = null!;
 
         [Output("picture")]
-        public Output<string?> Picture { get; private set; } = null!;
+        public Output<string> Picture { get; private set; } = null!;
 
         /// <summary>
         /// Set(String). Set of IDs of roles assigned to the user.
