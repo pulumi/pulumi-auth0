@@ -4,6 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Upgrade to pulumi-terraform-bridge v2.8.0
 * Upgrade to Pulumi v2.10.0
+* Upgrade to v0.15.1 of the Auth0 Terraform Provider
 
 ---
 

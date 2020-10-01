@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ConnectionOptionsPasswordHistoryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+        /// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Integer, (Maximum=24). Indicates the number of passwords to keep in history.
+        /// Indicates the number of passwords to keep in history with a maximum of 24.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

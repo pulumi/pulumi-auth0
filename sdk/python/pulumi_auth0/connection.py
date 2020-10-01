@@ -59,34 +59,20 @@ class Connection(pulumi.CustomResource):
                 password_policy="excellent",
             ),
             strategy="auth0")
-        my_waad_connection = auth0.Connection("myWaadConnection",
-            options=auth0.ConnectionOptionsArgs(
-                api_enable_users=True,
-                app_domain="my-auth0-app.eu.auth0.com",
-                basic_profile=True,
-                client_id="1234",
-                client_secret="1234",
-                domain_aliases=["example.io"],
-                ext_groups=True,
-                ext_profile=True,
-                tenant_domain="exmaple.onmicrosoft.com",
-                use_wsfed=False,
-                waad_common_endpoint=False,
-                waad_protocol="openid-connect",
-            ),
-            strategy="waad")
         ```
+
+        > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allowes the creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used in login screen
-        :param pulumi.Input[List[pulumi.Input[str]]] enabled_clients: Set(String). IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
-        :param pulumi.Input[bool] is_domain_connection: Boolean. Indicates whether or not the connection is domain level.
-        :param pulumi.Input[str] name: String. Name of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: List(Resource). Configuration settings for connection options. For details, see Options.
-        :param pulumi.Input[List[pulumi.Input[str]]] realms: List(String). Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
-        :param pulumi.Input[str] strategy: String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-        :param pulumi.Input[str] strategy_version: Int. Version 1 is deprecated, use version 2.
+        :param pulumi.Input[List[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        :param pulumi.Input[bool] is_domain_connection: Indicates whether or not the connection is domain level.
+        :param pulumi.Input[str] name: Name of the connection.
+        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
+        :param pulumi.Input[List[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -141,13 +127,13 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used in login screen
-        :param pulumi.Input[List[pulumi.Input[str]]] enabled_clients: Set(String). IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
-        :param pulumi.Input[bool] is_domain_connection: Boolean. Indicates whether or not the connection is domain level.
-        :param pulumi.Input[str] name: String. Name of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: List(Resource). Configuration settings for connection options. For details, see Options.
-        :param pulumi.Input[List[pulumi.Input[str]]] realms: List(String). Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
-        :param pulumi.Input[str] strategy: String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-        :param pulumi.Input[str] strategy_version: Int. Version 1 is deprecated, use version 2.
+        :param pulumi.Input[List[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        :param pulumi.Input[bool] is_domain_connection: Indicates whether or not the connection is domain level.
+        :param pulumi.Input[str] name: Name of the connection.
+        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
+        :param pulumi.Input[List[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -175,7 +161,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="enabledClients")
     def enabled_clients(self) -> pulumi.Output[List[str]]:
         """
-        Set(String). IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         """
         return pulumi.get(self, "enabled_clients")
 
@@ -183,7 +169,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="isDomainConnection")
     def is_domain_connection(self) -> pulumi.Output[bool]:
         """
-        Boolean. Indicates whether or not the connection is domain level.
+        Indicates whether or not the connection is domain level.
         """
         return pulumi.get(self, "is_domain_connection")
 
@@ -191,7 +177,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        String. Name of the connection.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -199,7 +185,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional['outputs.ConnectionOptions']]:
         """
-        List(Resource). Configuration settings for connection options. For details, see Options.
+        Configuration settings for connection options. For details, see Options.
         """
         return pulumi.get(self, "options")
 
@@ -207,7 +193,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def realms(self) -> pulumi.Output[List[str]]:
         """
-        List(String). Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
         """
         return pulumi.get(self, "realms")
 
@@ -215,7 +201,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def strategy(self) -> pulumi.Output[str]:
         """
-        String. Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         """
         return pulumi.get(self, "strategy")
 
@@ -223,7 +209,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="strategyVersion")
     def strategy_version(self) -> pulumi.Output[str]:
         """
-        Int. Version 1 is deprecated, use version 2.
+        Version 1 is deprecated, use version 2.
         """
         return pulumi.get(self, "strategy_version")
 

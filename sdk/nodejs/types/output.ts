@@ -262,40 +262,44 @@ export interface ClientMobileIos {
     teamId?: string;
 }
 
+export interface ClientRefreshToken {
+    expirationType: string;
+    leeway?: number;
+    rotationType: string;
+    tokenLifetime?: number;
+}
+
 export interface ConnectionOptions {
     /**
-     * String. ADFS Metadata source.
+     * ADFS Metadata source.
      */
     adfsServer?: string;
-    allowedAudiences?: string[];
     /**
-     * Boolean.
+     * List of allowed audiences.
      */
+    allowedAudiences?: string[];
     apiEnableUsers?: boolean;
     /**
-     * String. Azure AD domain name.
+     * Azure AD domain name.
      *
      * @deprecated use domain instead
      */
     appDomain?: string;
     /**
-     * String
+     * Azure AD app ID.
      */
     appId?: string;
-    /**
-     * String.
-     */
     authorizationEndpoint?: string;
     /**
-     * Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     * Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      */
     bruteForceProtection?: boolean;
     /**
-     * String. Client ID given by your OIDC provider.
+     * OIDC provider client ID.
      */
     clientId?: string;
     /**
-     * String, Case-sensitive. Client secret given by your OIDC provider.
+     * OIDC provider client secret.
      */
     clientSecret?: string;
     /**
@@ -303,185 +307,225 @@ export interface ConnectionOptions {
      */
     communityBaseUrl?: string;
     /**
-     * Map(String), Case-sensitive.
+     * A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      */
     configuration?: {[key: string]: string};
     /**
-     * Map(String).
+     * Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
      */
     customScripts?: {[key: string]: string};
+    /**
+     * (Boolean) When enabled additional debugging information will be generated.
+     */
+    debug?: boolean;
+    /**
+     * Sign Request Algorithm Digest
+     */
+    digestAlgorithm?: string;
     disableCache?: boolean;
     /**
      * Boolean. Indicates whether or not to allow user sign-ups to your application.
      */
     disableSignup?: boolean;
     /**
-     * String. Usually an URL ending with `/.well-known/openid-configuration`
+     * OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
      */
     discoveryUrl?: string;
     domain?: string;
     /**
-     * List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+     * List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
      */
     domainAliases?: string[];
-    /**
-     * Boolean.
-     */
     enabledDatabaseCustomization?: boolean;
     /**
-     * String. SMS number for the sender. Used when SMS Source is From.
+     * SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     */
+    fieldsMap?: {[key: string]: string};
+    /**
+     * SMS number for the sender. Used when SMS Source is From.
      */
     from?: string;
     iconUrl?: string;
     identityApi?: string;
+    idpInitiated?: outputs.ConnectionOptionsIdpInitiated;
     /**
-     * Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+     * Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
      */
     importMode?: boolean;
     ips?: string[];
     /**
-     * String. URL of the issuer.
+     * Issuer URL. E.g. `https://auth.example.com`
      */
     issuer?: string;
-    /**
-     * String.
-     */
     jwksUri?: string;
+    /**
+     * Key ID.
+     */
     keyId?: string;
     /**
-     * String. Maximum number of groups to retrieve.
+     * Maximum number of groups to retrieve.
      */
     maxGroupsToRetrieve?: string;
     /**
-     * String. SID for Copilot. Used when SMS Source is Copilot.
+     * SID for Copilot. Used when SMS Source is Copilot.
      */
     messagingServiceSid?: string;
     /**
-     * String.
+     * Name of the connection.
      */
     name?: string;
     /**
-     * List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
+     * Configuration settings for password complexity. For details, see Password Complexity Options.
      */
     passwordComplexityOptions?: outputs.ConnectionOptionsPasswordComplexityOptions;
     /**
-     * List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+     * Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
      */
     passwordDictionary?: outputs.ConnectionOptionsPasswordDictionary;
     /**
-     * List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+     * Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
      */
     passwordHistories: outputs.ConnectionOptionsPasswordHistory[];
     /**
-     * List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+     * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
      */
     passwordNoPersonalInfo?: outputs.ConnectionOptionsPasswordNoPersonalInfo;
     /**
-     * String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+     * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
     passwordPolicy: string;
     /**
-     * Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
+     * The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+     */
+    protocolBinding?: string;
+    /**
+     * Template that formats the SAML request
+     */
+    requestTemplate?: string;
+    /**
+     * Indicates whether or not the user is required to provide a username in addition to an email address.
      */
     requiresUsername?: boolean;
     /**
-     * List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+     * Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
      */
     scopes?: string[];
+    scripts?: {[key: string]: string};
     /**
-     * Int. Version 1 is deprecated, use version 2.
+     * SAML single login URL for the connection.
+     */
+    signInEndpoint?: string;
+    /**
+     * SAML single logout URL for the connection.
+     */
+    signOutEndpoint?: string;
+    /**
+     * (Boolean) When enabled, the SAML authentication request will be signed.
+     */
+    signSamlRequest?: boolean;
+    /**
+     * Sign Request Algorithm
+     */
+    signatureAlgorithm?: string;
+    /**
+     * The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+     */
+    signingCert?: string;
+    /**
+     * Version 1 is deprecated, use version 2.
      */
     strategyVersion: number;
     subject?: string;
     /**
-     * String. Syntax of the SMS. Options include `markdown` and `liquid`.
+     * Syntax of the SMS. Options include `markdown` and `liquid`.
      */
     syntax?: string;
+    /**
+     * Team ID.
+     */
     teamId?: string;
     /**
-     * String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+     * Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
      */
     template?: string;
-    /**
-     * String
-     */
     tenantDomain?: string;
-    /**
-     * String.
-     */
     tokenEndpoint?: string;
     /**
-     * Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
+     * Configuration options for one-time passwords. For details, see TOTP.
      */
     totp?: outputs.ConnectionOptionsTotp;
     /**
-     * String. SID for your Twilio account.
+     * SID for your Twilio account.
      */
     twilioSid?: string;
     /**
-     * String, Case-sensitive. AuthToken for your Twilio account.
+     * AuthToken for your Twilio account.
      */
     twilioToken?: string;
     /**
-     * String. Value must be `backChannel` or `frontChannel`
+     * Value can be `backChannel` or `frontChannel`.
      */
     type?: string;
     useCertAuth?: boolean;
     useKerberos?: boolean;
-    /**
-     * Bool
-     */
     useWsfed?: boolean;
     /**
-     * String.
+     * Attribute in the SAML token that will be mapped to the userId property in Auth0.
      */
+    userIdAttribute?: string;
     userinfoEndpoint?: string;
     /**
-     * String.
+     * A map defining the validation options.
      */
     validation?: {[key: string]: string};
     /**
-     * Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+     * Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
      */
     waadCommonEndpoint?: boolean;
-    /**
-     * String
-     */
     waadProtocol?: string;
+}
+
+export interface ConnectionOptionsIdpInitiated {
+    clientAuthorizeQuery?: string;
+    /**
+     * Facebook client ID.
+     */
+    clientId?: string;
+    clientProtocol?: string;
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {
     /**
-     * Integer. Minimum number of characters allowed in passwords.
+     * Minimum number of characters allowed in passwords.
      */
     minLength?: number;
 }
 
 export interface ConnectionOptionsPasswordDictionary {
     /**
-     * Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+     * Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
      */
     dictionaries?: string[];
     /**
-     * Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+     * Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
      */
     enable?: boolean;
 }
 
 export interface ConnectionOptionsPasswordHistory {
     /**
-     * Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+     * Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
      */
     enable?: boolean;
     /**
-     * Integer, (Maximum=24). Indicates the number of passwords to keep in history.
+     * Indicates the number of passwords to keep in history with a maximum of 24.
      */
     size?: number;
 }
 
 export interface ConnectionOptionsPasswordNoPersonalInfo {
     /**
-     * Boolean. Indicates whether the password personal info check is enabled for this connection.
+     * Indicates whether the password personal info check is enabled for this connection.
      */
     enable?: boolean;
 }
@@ -622,6 +666,13 @@ export interface GlobalClientMobileAndroid {
 export interface GlobalClientMobileIos {
     appBundleIdentifier?: string;
     teamId?: string;
+}
+
+export interface GlobalClientRefreshToken {
+    expirationType: string;
+    leeway?: number;
+    rotationType: string;
+    tokenLifetime?: number;
 }
 
 export interface ResourceServerScope {

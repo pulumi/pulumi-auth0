@@ -41,6 +41,7 @@ class Client(pulumi.CustomResource):
                  mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -189,6 +190,7 @@ class Client(pulumi.CustomResource):
             __props__['mobile'] = mobile
             __props__['name'] = name
             __props__['oidc_conformant'] = oidc_conformant
+            __props__['refresh_token'] = refresh_token
             __props__['sso'] = sso
             __props__['sso_disabled'] = sso_disabled
             __props__['token_endpoint_auth_method'] = token_endpoint_auth_method
@@ -231,6 +233,7 @@ class Client(pulumi.CustomResource):
             mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
+            refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
             token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -302,6 +305,7 @@ class Client(pulumi.CustomResource):
         __props__["mobile"] = mobile
         __props__["name"] = name
         __props__["oidc_conformant"] = oidc_conformant
+        __props__["refresh_token"] = refresh_token
         __props__["sso"] = sso
         __props__["sso_disabled"] = sso_disabled
         __props__["token_endpoint_auth_method"] = token_endpoint_auth_method
@@ -512,6 +516,11 @@ class Client(pulumi.CustomResource):
         Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         """
         return pulumi.get(self, "oidc_conformant")
+
+    @property
+    @pulumi.getter(name="refreshToken")
+    def refresh_token(self) -> pulumi.Output['outputs.ClientRefreshToken']:
+        return pulumi.get(self, "refresh_token")
 
     @property
     @pulumi.getter

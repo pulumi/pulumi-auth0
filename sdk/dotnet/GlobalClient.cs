@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public partial class GlobalClient : Pulumi.CustomResource
     {
         [Output("addons")]
-        public Output<Outputs.GlobalClientAddons?> Addons { get; private set; } = null!;
+        public Output<Outputs.GlobalClientAddons> Addons { get; private set; } = null!;
 
         [Output("allowedLogoutUrls")]
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
@@ -21,7 +21,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedOrigins { get; private set; } = null!;
 
         [Output("appType")]
-        public Output<string?> AppType { get; private set; } = null!;
+        public Output<string> AppType { get; private set; } = null!;
 
         [Output("callbacks")]
         public Output<ImmutableArray<string>> Callbacks { get; private set; } = null!;
@@ -30,7 +30,7 @@ namespace Pulumi.Auth0
         public Output<string> ClientId { get; private set; } = null!;
 
         [Output("clientMetadata")]
-        public Output<ImmutableDictionary<string, object>?> ClientMetadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> ClientMetadata { get; private set; } = null!;
 
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
@@ -39,34 +39,34 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, object>?> ClientSecretRotationTrigger { get; private set; } = null!;
 
         [Output("crossOriginAuth")]
-        public Output<bool?> CrossOriginAuth { get; private set; } = null!;
+        public Output<bool> CrossOriginAuth { get; private set; } = null!;
 
         [Output("crossOriginLoc")]
-        public Output<string?> CrossOriginLoc { get; private set; } = null!;
+        public Output<string> CrossOriginLoc { get; private set; } = null!;
 
         [Output("customLoginPage")]
-        public Output<string?> CustomLoginPage { get; private set; } = null!;
+        public Output<string> CustomLoginPage { get; private set; } = null!;
 
         [Output("customLoginPageOn")]
         public Output<bool> CustomLoginPageOn { get; private set; } = null!;
 
         [Output("customLoginPagePreview")]
-        public Output<string?> CustomLoginPagePreview { get; private set; } = null!;
+        public Output<string> CustomLoginPagePreview { get; private set; } = null!;
 
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         [Output("encryptionKey")]
-        public Output<ImmutableDictionary<string, string>?> EncryptionKey { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EncryptionKey { get; private set; } = null!;
 
         [Output("formTemplate")]
-        public Output<string?> FormTemplate { get; private set; } = null!;
+        public Output<string> FormTemplate { get; private set; } = null!;
 
         [Output("grantTypes")]
         public Output<ImmutableArray<string>> GrantTypes { get; private set; } = null!;
 
         [Output("initiateLoginUri")]
-        public Output<string?> InitiateLoginUri { get; private set; } = null!;
+        public Output<string> InitiateLoginUri { get; private set; } = null!;
 
         [Output("isFirstParty")]
         public Output<bool> IsFirstParty { get; private set; } = null!;
@@ -78,10 +78,10 @@ namespace Pulumi.Auth0
         public Output<Outputs.GlobalClientJwtConfiguration> JwtConfiguration { get; private set; } = null!;
 
         [Output("logoUri")]
-        public Output<string?> LogoUri { get; private set; } = null!;
+        public Output<string> LogoUri { get; private set; } = null!;
 
         [Output("mobile")]
-        public Output<Outputs.GlobalClientMobile?> Mobile { get; private set; } = null!;
+        public Output<Outputs.GlobalClientMobile> Mobile { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -89,11 +89,14 @@ namespace Pulumi.Auth0
         [Output("oidcConformant")]
         public Output<bool> OidcConformant { get; private set; } = null!;
 
+        [Output("refreshToken")]
+        public Output<Outputs.GlobalClientRefreshToken> RefreshToken { get; private set; } = null!;
+
         [Output("sso")]
-        public Output<bool?> Sso { get; private set; } = null!;
+        public Output<bool> Sso { get; private set; } = null!;
 
         [Output("ssoDisabled")]
-        public Output<bool?> SsoDisabled { get; private set; } = null!;
+        public Output<bool> SsoDisabled { get; private set; } = null!;
 
         [Output("tokenEndpointAuthMethod")]
         public Output<string> TokenEndpointAuthMethod { get; private set; } = null!;
@@ -177,6 +180,9 @@ namespace Pulumi.Auth0
             set => _callbacks = value;
         }
 
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
         [Input("clientMetadata")]
         private InputMap<object>? _clientMetadata;
         public InputMap<object> ClientMetadata
@@ -184,6 +190,9 @@ namespace Pulumi.Auth0
             get => _clientMetadata ?? (_clientMetadata = new InputMap<object>());
             set => _clientMetadata = value;
         }
+
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
 
         [Input("clientSecretRotationTrigger")]
         private InputMap<object>? _clientSecretRotationTrigger;
@@ -248,8 +257,14 @@ namespace Pulumi.Auth0
         [Input("mobile")]
         public Input<Inputs.GlobalClientMobileArgs>? Mobile { get; set; }
 
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
+
+        [Input("refreshToken")]
+        public Input<Inputs.GlobalClientRefreshTokenArgs>? RefreshToken { get; set; }
 
         [Input("sso")]
         public Input<bool>? Sso { get; set; }
@@ -387,6 +402,9 @@ namespace Pulumi.Auth0
 
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
+
+        [Input("refreshToken")]
+        public Input<Inputs.GlobalClientRefreshTokenGetArgs>? RefreshToken { get; set; }
 
         [Input("sso")]
         public Input<bool>? Sso { get; set; }

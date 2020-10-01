@@ -1915,106 +1915,295 @@ func (o ClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClientRefreshToken struct {
+	ExpirationType string `pulumi:"expirationType"`
+	Leeway         *int   `pulumi:"leeway"`
+	RotationType   string `pulumi:"rotationType"`
+	TokenLifetime  *int   `pulumi:"tokenLifetime"`
+}
+
+// ClientRefreshTokenInput is an input type that accepts ClientRefreshTokenArgs and ClientRefreshTokenOutput values.
+// You can construct a concrete instance of `ClientRefreshTokenInput` via:
+//
+//          ClientRefreshTokenArgs{...}
+type ClientRefreshTokenInput interface {
+	pulumi.Input
+
+	ToClientRefreshTokenOutput() ClientRefreshTokenOutput
+	ToClientRefreshTokenOutputWithContext(context.Context) ClientRefreshTokenOutput
+}
+
+type ClientRefreshTokenArgs struct {
+	ExpirationType pulumi.StringInput `pulumi:"expirationType"`
+	Leeway         pulumi.IntPtrInput `pulumi:"leeway"`
+	RotationType   pulumi.StringInput `pulumi:"rotationType"`
+	TokenLifetime  pulumi.IntPtrInput `pulumi:"tokenLifetime"`
+}
+
+func (ClientRefreshTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientRefreshToken)(nil)).Elem()
+}
+
+func (i ClientRefreshTokenArgs) ToClientRefreshTokenOutput() ClientRefreshTokenOutput {
+	return i.ToClientRefreshTokenOutputWithContext(context.Background())
+}
+
+func (i ClientRefreshTokenArgs) ToClientRefreshTokenOutputWithContext(ctx context.Context) ClientRefreshTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientRefreshTokenOutput)
+}
+
+func (i ClientRefreshTokenArgs) ToClientRefreshTokenPtrOutput() ClientRefreshTokenPtrOutput {
+	return i.ToClientRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (i ClientRefreshTokenArgs) ToClientRefreshTokenPtrOutputWithContext(ctx context.Context) ClientRefreshTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientRefreshTokenOutput).ToClientRefreshTokenPtrOutputWithContext(ctx)
+}
+
+// ClientRefreshTokenPtrInput is an input type that accepts ClientRefreshTokenArgs, ClientRefreshTokenPtr and ClientRefreshTokenPtrOutput values.
+// You can construct a concrete instance of `ClientRefreshTokenPtrInput` via:
+//
+//          ClientRefreshTokenArgs{...}
+//
+//  or:
+//
+//          nil
+type ClientRefreshTokenPtrInput interface {
+	pulumi.Input
+
+	ToClientRefreshTokenPtrOutput() ClientRefreshTokenPtrOutput
+	ToClientRefreshTokenPtrOutputWithContext(context.Context) ClientRefreshTokenPtrOutput
+}
+
+type clientRefreshTokenPtrType ClientRefreshTokenArgs
+
+func ClientRefreshTokenPtr(v *ClientRefreshTokenArgs) ClientRefreshTokenPtrInput {
+	return (*clientRefreshTokenPtrType)(v)
+}
+
+func (*clientRefreshTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientRefreshToken)(nil)).Elem()
+}
+
+func (i *clientRefreshTokenPtrType) ToClientRefreshTokenPtrOutput() ClientRefreshTokenPtrOutput {
+	return i.ToClientRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *clientRefreshTokenPtrType) ToClientRefreshTokenPtrOutputWithContext(ctx context.Context) ClientRefreshTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientRefreshTokenPtrOutput)
+}
+
+type ClientRefreshTokenOutput struct{ *pulumi.OutputState }
+
+func (ClientRefreshTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientRefreshToken)(nil)).Elem()
+}
+
+func (o ClientRefreshTokenOutput) ToClientRefreshTokenOutput() ClientRefreshTokenOutput {
+	return o
+}
+
+func (o ClientRefreshTokenOutput) ToClientRefreshTokenOutputWithContext(ctx context.Context) ClientRefreshTokenOutput {
+	return o
+}
+
+func (o ClientRefreshTokenOutput) ToClientRefreshTokenPtrOutput() ClientRefreshTokenPtrOutput {
+	return o.ToClientRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (o ClientRefreshTokenOutput) ToClientRefreshTokenPtrOutputWithContext(ctx context.Context) ClientRefreshTokenPtrOutput {
+	return o.ApplyT(func(v ClientRefreshToken) *ClientRefreshToken {
+		return &v
+	}).(ClientRefreshTokenPtrOutput)
+}
+func (o ClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
+}
+
+func (o ClientRefreshTokenOutput) Leeway() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientRefreshToken) *int { return v.Leeway }).(pulumi.IntPtrOutput)
+}
+
+func (o ClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
+}
+
+func (o ClientRefreshTokenOutput) TokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientRefreshToken) *int { return v.TokenLifetime }).(pulumi.IntPtrOutput)
+}
+
+type ClientRefreshTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientRefreshTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientRefreshToken)(nil)).Elem()
+}
+
+func (o ClientRefreshTokenPtrOutput) ToClientRefreshTokenPtrOutput() ClientRefreshTokenPtrOutput {
+	return o
+}
+
+func (o ClientRefreshTokenPtrOutput) ToClientRefreshTokenPtrOutputWithContext(ctx context.Context) ClientRefreshTokenPtrOutput {
+	return o
+}
+
+func (o ClientRefreshTokenPtrOutput) Elem() ClientRefreshTokenOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) ClientRefreshToken { return *v }).(ClientRefreshTokenOutput)
+}
+
+func (o ClientRefreshTokenPtrOutput) ExpirationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpirationType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientRefreshTokenPtrOutput) Leeway() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Leeway
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClientRefreshTokenPtrOutput) RotationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RotationType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TokenLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
 type ConnectionOptions struct {
-	// String. ADFS Metadata source.
-	AdfsServer       *string  `pulumi:"adfsServer"`
+	// ADFS Metadata source.
+	AdfsServer *string `pulumi:"adfsServer"`
+	// List of allowed audiences.
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
-	// Boolean.
-	ApiEnableUsers *bool `pulumi:"apiEnableUsers"`
-	// String. Azure AD domain name.
+	ApiEnableUsers   *bool    `pulumi:"apiEnableUsers"`
+	// Azure AD domain name.
 	//
 	// Deprecated: use domain instead
 	AppDomain *string `pulumi:"appDomain"`
-	// String
-	AppId *string `pulumi:"appId"`
-	// String.
+	// Azure AD app ID.
+	AppId                 *string `pulumi:"appId"`
 	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
-	// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+	// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 	BruteForceProtection *bool `pulumi:"bruteForceProtection"`
-	// String. Client ID given by your OIDC provider.
+	// OIDC provider client ID.
 	ClientId *string `pulumi:"clientId"`
-	// String, Case-sensitive. Client secret given by your OIDC provider.
+	// OIDC provider client secret.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// String.
 	CommunityBaseUrl *string `pulumi:"communityBaseUrl"`
-	// Map(String), Case-sensitive.
+	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
 	Configuration map[string]string `pulumi:"configuration"`
-	// Map(String).
+	// Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
 	CustomScripts map[string]string `pulumi:"customScripts"`
-	DisableCache  *bool             `pulumi:"disableCache"`
+	// (Boolean) When enabled additional debugging information will be generated.
+	Debug *bool `pulumi:"debug"`
+	// Sign Request Algorithm Digest
+	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
+	DisableCache    *bool   `pulumi:"disableCache"`
 	// Boolean. Indicates whether or not to allow user sign-ups to your application.
 	DisableSignup *bool `pulumi:"disableSignup"`
-	// String. Usually an URL ending with `/.well-known/openid-configuration`
+	// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
 	DiscoveryUrl *string `pulumi:"discoveryUrl"`
 	Domain       *string `pulumi:"domain"`
-	// List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
-	DomainAliases []string `pulumi:"domainAliases"`
-	// Boolean.
-	EnabledDatabaseCustomization *bool `pulumi:"enabledDatabaseCustomization"`
-	// String. SMS number for the sender. Used when SMS Source is From.
-	From        *string `pulumi:"from"`
-	IconUrl     *string `pulumi:"iconUrl"`
-	IdentityApi *string `pulumi:"identityApi"`
-	// Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+	// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+	DomainAliases                []string `pulumi:"domainAliases"`
+	EnabledDatabaseCustomization *bool    `pulumi:"enabledDatabaseCustomization"`
+	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+	FieldsMap map[string]string `pulumi:"fieldsMap"`
+	// SMS number for the sender. Used when SMS Source is From.
+	From         *string                        `pulumi:"from"`
+	IconUrl      *string                        `pulumi:"iconUrl"`
+	IdentityApi  *string                        `pulumi:"identityApi"`
+	IdpInitiated *ConnectionOptionsIdpInitiated `pulumi:"idpInitiated"`
+	// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 	ImportMode *bool    `pulumi:"importMode"`
 	Ips        []string `pulumi:"ips"`
-	// String. URL of the issuer.
-	Issuer *string `pulumi:"issuer"`
-	// String.
+	// Issuer URL. E.g. `https://auth.example.com`
+	Issuer  *string `pulumi:"issuer"`
 	JwksUri *string `pulumi:"jwksUri"`
-	KeyId   *string `pulumi:"keyId"`
-	// String. Maximum number of groups to retrieve.
+	// Key ID.
+	KeyId *string `pulumi:"keyId"`
+	// Maximum number of groups to retrieve.
 	MaxGroupsToRetrieve *string `pulumi:"maxGroupsToRetrieve"`
-	// String. SID for Copilot. Used when SMS Source is Copilot.
+	// SID for Copilot. Used when SMS Source is Copilot.
 	MessagingServiceSid *string `pulumi:"messagingServiceSid"`
-	// String.
+	// Name of the connection.
 	Name *string `pulumi:"name"`
-	// List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
+	// Configuration settings for password complexity. For details, see Password Complexity Options.
 	PasswordComplexityOptions *ConnectionOptionsPasswordComplexityOptions `pulumi:"passwordComplexityOptions"`
-	// List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
 	PasswordDictionary *ConnectionOptionsPasswordDictionary `pulumi:"passwordDictionary"`
-	// List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+	// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
 	PasswordHistories []ConnectionOptionsPasswordHistory `pulumi:"passwordHistories"`
-	// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+	// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
 	PasswordNoPersonalInfo *ConnectionOptionsPasswordNoPersonalInfo `pulumi:"passwordNoPersonalInfo"`
-	// String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+	// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 	PasswordPolicy *string `pulumi:"passwordPolicy"`
-	// Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
+	// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+	ProtocolBinding *string `pulumi:"protocolBinding"`
+	// Template that formats the SAML request
+	RequestTemplate *string `pulumi:"requestTemplate"`
+	// Indicates whether or not the user is required to provide a username in addition to an email address.
 	RequiresUsername *bool `pulumi:"requiresUsername"`
-	// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
-	Scopes []string `pulumi:"scopes"`
-	// Int. Version 1 is deprecated, use version 2.
+	// Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
+	Scopes  []string          `pulumi:"scopes"`
+	Scripts map[string]string `pulumi:"scripts"`
+	// SAML single login URL for the connection.
+	SignInEndpoint *string `pulumi:"signInEndpoint"`
+	// SAML single logout URL for the connection.
+	SignOutEndpoint *string `pulumi:"signOutEndpoint"`
+	// (Boolean) When enabled, the SAML authentication request will be signed.
+	SignSamlRequest *bool `pulumi:"signSamlRequest"`
+	// Sign Request Algorithm
+	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
+	// The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+	SigningCert *string `pulumi:"signingCert"`
+	// Version 1 is deprecated, use version 2.
 	StrategyVersion *int    `pulumi:"strategyVersion"`
 	Subject         *string `pulumi:"subject"`
-	// String. Syntax of the SMS. Options include `markdown` and `liquid`.
+	// Syntax of the SMS. Options include `markdown` and `liquid`.
 	Syntax *string `pulumi:"syntax"`
+	// Team ID.
 	TeamId *string `pulumi:"teamId"`
-	// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
-	Template *string `pulumi:"template"`
-	// String
-	TenantDomain *string `pulumi:"tenantDomain"`
-	// String.
+	// Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+	Template      *string `pulumi:"template"`
+	TenantDomain  *string `pulumi:"tenantDomain"`
 	TokenEndpoint *string `pulumi:"tokenEndpoint"`
-	// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
+	// Configuration options for one-time passwords. For details, see TOTP.
 	Totp *ConnectionOptionsTotp `pulumi:"totp"`
-	// String. SID for your Twilio account.
+	// SID for your Twilio account.
 	TwilioSid *string `pulumi:"twilioSid"`
-	// String, Case-sensitive. AuthToken for your Twilio account.
+	// AuthToken for your Twilio account.
 	TwilioToken *string `pulumi:"twilioToken"`
-	// String. Value must be `backChannel` or `frontChannel`
+	// Value can be `backChannel` or `frontChannel`.
 	Type        *string `pulumi:"type"`
 	UseCertAuth *bool   `pulumi:"useCertAuth"`
 	UseKerberos *bool   `pulumi:"useKerberos"`
-	// Bool
-	UseWsfed *bool `pulumi:"useWsfed"`
-	// String.
+	UseWsfed    *bool   `pulumi:"useWsfed"`
+	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+	UserIdAttribute  *string `pulumi:"userIdAttribute"`
 	UserinfoEndpoint *string `pulumi:"userinfoEndpoint"`
-	// String.
+	// A map defining the validation options.
 	Validation map[string]string `pulumi:"validation"`
-	// Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
-	WaadCommonEndpoint *bool `pulumi:"waadCommonEndpoint"`
-	// String
-	WaadProtocol *string `pulumi:"waadProtocol"`
+	// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+	WaadCommonEndpoint *bool   `pulumi:"waadCommonEndpoint"`
+	WaadProtocol       *string `pulumi:"waadProtocol"`
 }
 
 // ConnectionOptionsInput is an input type that accepts ConnectionOptionsArgs and ConnectionOptionsOutput values.
@@ -2029,105 +2218,123 @@ type ConnectionOptionsInput interface {
 }
 
 type ConnectionOptionsArgs struct {
-	// String. ADFS Metadata source.
-	AdfsServer       pulumi.StringPtrInput   `pulumi:"adfsServer"`
+	// ADFS Metadata source.
+	AdfsServer pulumi.StringPtrInput `pulumi:"adfsServer"`
+	// List of allowed audiences.
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
-	// Boolean.
-	ApiEnableUsers pulumi.BoolPtrInput `pulumi:"apiEnableUsers"`
-	// String. Azure AD domain name.
+	ApiEnableUsers   pulumi.BoolPtrInput     `pulumi:"apiEnableUsers"`
+	// Azure AD domain name.
 	//
 	// Deprecated: use domain instead
 	AppDomain pulumi.StringPtrInput `pulumi:"appDomain"`
-	// String
-	AppId pulumi.StringPtrInput `pulumi:"appId"`
-	// String.
+	// Azure AD app ID.
+	AppId                 pulumi.StringPtrInput `pulumi:"appId"`
 	AuthorizationEndpoint pulumi.StringPtrInput `pulumi:"authorizationEndpoint"`
-	// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+	// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 	BruteForceProtection pulumi.BoolPtrInput `pulumi:"bruteForceProtection"`
-	// String. Client ID given by your OIDC provider.
+	// OIDC provider client ID.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// String, Case-sensitive. Client secret given by your OIDC provider.
+	// OIDC provider client secret.
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// String.
 	CommunityBaseUrl pulumi.StringPtrInput `pulumi:"communityBaseUrl"`
-	// Map(String), Case-sensitive.
+	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
 	Configuration pulumi.StringMapInput `pulumi:"configuration"`
-	// Map(String).
+	// Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
-	DisableCache  pulumi.BoolPtrInput   `pulumi:"disableCache"`
+	// (Boolean) When enabled additional debugging information will be generated.
+	Debug pulumi.BoolPtrInput `pulumi:"debug"`
+	// Sign Request Algorithm Digest
+	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
+	DisableCache    pulumi.BoolPtrInput   `pulumi:"disableCache"`
 	// Boolean. Indicates whether or not to allow user sign-ups to your application.
 	DisableSignup pulumi.BoolPtrInput `pulumi:"disableSignup"`
-	// String. Usually an URL ending with `/.well-known/openid-configuration`
+	// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
 	DiscoveryUrl pulumi.StringPtrInput `pulumi:"discoveryUrl"`
 	Domain       pulumi.StringPtrInput `pulumi:"domain"`
-	// List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
-	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
-	// Boolean.
-	EnabledDatabaseCustomization pulumi.BoolPtrInput `pulumi:"enabledDatabaseCustomization"`
-	// String. SMS number for the sender. Used when SMS Source is From.
-	From        pulumi.StringPtrInput `pulumi:"from"`
-	IconUrl     pulumi.StringPtrInput `pulumi:"iconUrl"`
-	IdentityApi pulumi.StringPtrInput `pulumi:"identityApi"`
-	// Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+	// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+	DomainAliases                pulumi.StringArrayInput `pulumi:"domainAliases"`
+	EnabledDatabaseCustomization pulumi.BoolPtrInput     `pulumi:"enabledDatabaseCustomization"`
+	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+	FieldsMap pulumi.StringMapInput `pulumi:"fieldsMap"`
+	// SMS number for the sender. Used when SMS Source is From.
+	From         pulumi.StringPtrInput                 `pulumi:"from"`
+	IconUrl      pulumi.StringPtrInput                 `pulumi:"iconUrl"`
+	IdentityApi  pulumi.StringPtrInput                 `pulumi:"identityApi"`
+	IdpInitiated ConnectionOptionsIdpInitiatedPtrInput `pulumi:"idpInitiated"`
+	// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 	ImportMode pulumi.BoolPtrInput     `pulumi:"importMode"`
 	Ips        pulumi.StringArrayInput `pulumi:"ips"`
-	// String. URL of the issuer.
-	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
-	// String.
+	// Issuer URL. E.g. `https://auth.example.com`
+	Issuer  pulumi.StringPtrInput `pulumi:"issuer"`
 	JwksUri pulumi.StringPtrInput `pulumi:"jwksUri"`
-	KeyId   pulumi.StringPtrInput `pulumi:"keyId"`
-	// String. Maximum number of groups to retrieve.
+	// Key ID.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// Maximum number of groups to retrieve.
 	MaxGroupsToRetrieve pulumi.StringPtrInput `pulumi:"maxGroupsToRetrieve"`
-	// String. SID for Copilot. Used when SMS Source is Copilot.
+	// SID for Copilot. Used when SMS Source is Copilot.
 	MessagingServiceSid pulumi.StringPtrInput `pulumi:"messagingServiceSid"`
-	// String.
+	// Name of the connection.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
+	// Configuration settings for password complexity. For details, see Password Complexity Options.
 	PasswordComplexityOptions ConnectionOptionsPasswordComplexityOptionsPtrInput `pulumi:"passwordComplexityOptions"`
-	// List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
 	PasswordDictionary ConnectionOptionsPasswordDictionaryPtrInput `pulumi:"passwordDictionary"`
-	// List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+	// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
 	PasswordHistories ConnectionOptionsPasswordHistoryArrayInput `pulumi:"passwordHistories"`
-	// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+	// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
 	PasswordNoPersonalInfo ConnectionOptionsPasswordNoPersonalInfoPtrInput `pulumi:"passwordNoPersonalInfo"`
-	// String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+	// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 	PasswordPolicy pulumi.StringPtrInput `pulumi:"passwordPolicy"`
-	// Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
+	// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+	ProtocolBinding pulumi.StringPtrInput `pulumi:"protocolBinding"`
+	// Template that formats the SAML request
+	RequestTemplate pulumi.StringPtrInput `pulumi:"requestTemplate"`
+	// Indicates whether or not the user is required to provide a username in addition to an email address.
 	RequiresUsername pulumi.BoolPtrInput `pulumi:"requiresUsername"`
-	// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// Int. Version 1 is deprecated, use version 2.
+	// Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
+	Scopes  pulumi.StringArrayInput `pulumi:"scopes"`
+	Scripts pulumi.StringMapInput   `pulumi:"scripts"`
+	// SAML single login URL for the connection.
+	SignInEndpoint pulumi.StringPtrInput `pulumi:"signInEndpoint"`
+	// SAML single logout URL for the connection.
+	SignOutEndpoint pulumi.StringPtrInput `pulumi:"signOutEndpoint"`
+	// (Boolean) When enabled, the SAML authentication request will be signed.
+	SignSamlRequest pulumi.BoolPtrInput `pulumi:"signSamlRequest"`
+	// Sign Request Algorithm
+	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
+	// The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+	SigningCert pulumi.StringPtrInput `pulumi:"signingCert"`
+	// Version 1 is deprecated, use version 2.
 	StrategyVersion pulumi.IntPtrInput    `pulumi:"strategyVersion"`
 	Subject         pulumi.StringPtrInput `pulumi:"subject"`
-	// String. Syntax of the SMS. Options include `markdown` and `liquid`.
+	// Syntax of the SMS. Options include `markdown` and `liquid`.
 	Syntax pulumi.StringPtrInput `pulumi:"syntax"`
+	// Team ID.
 	TeamId pulumi.StringPtrInput `pulumi:"teamId"`
-	// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
-	Template pulumi.StringPtrInput `pulumi:"template"`
-	// String
-	TenantDomain pulumi.StringPtrInput `pulumi:"tenantDomain"`
-	// String.
+	// Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+	Template      pulumi.StringPtrInput `pulumi:"template"`
+	TenantDomain  pulumi.StringPtrInput `pulumi:"tenantDomain"`
 	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
-	// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
+	// Configuration options for one-time passwords. For details, see TOTP.
 	Totp ConnectionOptionsTotpPtrInput `pulumi:"totp"`
-	// String. SID for your Twilio account.
+	// SID for your Twilio account.
 	TwilioSid pulumi.StringPtrInput `pulumi:"twilioSid"`
-	// String, Case-sensitive. AuthToken for your Twilio account.
+	// AuthToken for your Twilio account.
 	TwilioToken pulumi.StringPtrInput `pulumi:"twilioToken"`
-	// String. Value must be `backChannel` or `frontChannel`
+	// Value can be `backChannel` or `frontChannel`.
 	Type        pulumi.StringPtrInput `pulumi:"type"`
 	UseCertAuth pulumi.BoolPtrInput   `pulumi:"useCertAuth"`
 	UseKerberos pulumi.BoolPtrInput   `pulumi:"useKerberos"`
-	// Bool
-	UseWsfed pulumi.BoolPtrInput `pulumi:"useWsfed"`
-	// String.
+	UseWsfed    pulumi.BoolPtrInput   `pulumi:"useWsfed"`
+	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+	UserIdAttribute  pulumi.StringPtrInput `pulumi:"userIdAttribute"`
 	UserinfoEndpoint pulumi.StringPtrInput `pulumi:"userinfoEndpoint"`
-	// String.
+	// A map defining the validation options.
 	Validation pulumi.StringMapInput `pulumi:"validation"`
-	// Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
-	WaadCommonEndpoint pulumi.BoolPtrInput `pulumi:"waadCommonEndpoint"`
-	// String
-	WaadProtocol pulumi.StringPtrInput `pulumi:"waadProtocol"`
+	// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+	WaadCommonEndpoint pulumi.BoolPtrInput   `pulumi:"waadCommonEndpoint"`
+	WaadProtocol       pulumi.StringPtrInput `pulumi:"waadProtocol"`
 }
 
 func (ConnectionOptionsArgs) ElementType() reflect.Type {
@@ -2207,48 +2414,47 @@ func (o ConnectionOptionsOutput) ToConnectionOptionsPtrOutputWithContext(ctx con
 	}).(ConnectionOptionsPtrOutput)
 }
 
-// String. ADFS Metadata source.
+// ADFS Metadata source.
 func (o ConnectionOptionsOutput) AdfsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AdfsServer }).(pulumi.StringPtrOutput)
 }
 
+// List of allowed audiences.
 func (o ConnectionOptionsOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
 }
 
-// Boolean.
 func (o ConnectionOptionsOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.ApiEnableUsers }).(pulumi.BoolPtrOutput)
 }
 
-// String. Azure AD domain name.
+// Azure AD domain name.
 //
 // Deprecated: use domain instead
 func (o ConnectionOptionsOutput) AppDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppDomain }).(pulumi.StringPtrOutput)
 }
 
-// String
+// Azure AD app ID.
 func (o ConnectionOptionsOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppId }).(pulumi.StringPtrOutput)
 }
 
-// String.
 func (o ConnectionOptionsOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AuthorizationEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 func (o ConnectionOptionsOutput) BruteForceProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.BruteForceProtection }).(pulumi.BoolPtrOutput)
 }
 
-// String. Client ID given by your OIDC provider.
+// OIDC provider client ID.
 func (o ConnectionOptionsOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// String, Case-sensitive. Client secret given by your OIDC provider.
+// OIDC provider client secret.
 func (o ConnectionOptionsOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -2258,14 +2464,24 @@ func (o ConnectionOptionsOutput) CommunityBaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.CommunityBaseUrl }).(pulumi.StringPtrOutput)
 }
 
-// Map(String), Case-sensitive.
+// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
 func (o ConnectionOptionsOutput) Configuration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Configuration }).(pulumi.StringMapOutput)
 }
 
-// Map(String).
+// Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
 func (o ConnectionOptionsOutput) CustomScripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.CustomScripts }).(pulumi.StringMapOutput)
+}
+
+// (Boolean) When enabled additional debugging information will be generated.
+func (o ConnectionOptionsOutput) Debug() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.Debug }).(pulumi.BoolPtrOutput)
+}
+
+// Sign Request Algorithm Digest
+func (o ConnectionOptionsOutput) DigestAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsOutput) DisableCache() pulumi.BoolPtrOutput {
@@ -2277,7 +2493,7 @@ func (o ConnectionOptionsOutput) DisableSignup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableSignup }).(pulumi.BoolPtrOutput)
 }
 
-// String. Usually an URL ending with `/.well-known/openid-configuration`
+// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
 func (o ConnectionOptionsOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
 }
@@ -2286,17 +2502,21 @@ func (o ConnectionOptionsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 func (o ConnectionOptionsOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
 }
 
-// Boolean.
 func (o ConnectionOptionsOutput) EnabledDatabaseCustomization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.EnabledDatabaseCustomization }).(pulumi.BoolPtrOutput)
 }
 
-// String. SMS number for the sender. Used when SMS Source is From.
+// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+func (o ConnectionOptionsOutput) FieldsMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.FieldsMap }).(pulumi.StringMapOutput)
+}
+
+// SMS number for the sender. Used when SMS Source is From.
 func (o ConnectionOptionsOutput) From() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.From }).(pulumi.StringPtrOutput)
 }
@@ -2309,7 +2529,11 @@ func (o ConnectionOptionsOutput) IdentityApi() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.IdentityApi }).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+func (o ConnectionOptionsOutput) IdpInitiated() ConnectionOptionsIdpInitiatedPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsIdpInitiated { return v.IdpInitiated }).(ConnectionOptionsIdpInitiatedPtrOutput)
+}
+
+// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 func (o ConnectionOptionsOutput) ImportMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.ImportMode }).(pulumi.BoolPtrOutput)
 }
@@ -2318,73 +2542,112 @@ func (o ConnectionOptionsOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-// String. URL of the issuer.
+// Issuer URL. E.g. `https://auth.example.com`
 func (o ConnectionOptionsOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Issuer }).(pulumi.StringPtrOutput)
 }
 
-// String.
 func (o ConnectionOptionsOutput) JwksUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.JwksUri }).(pulumi.StringPtrOutput)
 }
 
+// Key ID.
 func (o ConnectionOptionsOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
 
-// String. Maximum number of groups to retrieve.
+// Maximum number of groups to retrieve.
 func (o ConnectionOptionsOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.MaxGroupsToRetrieve }).(pulumi.StringPtrOutput)
 }
 
-// String. SID for Copilot. Used when SMS Source is Copilot.
+// SID for Copilot. Used when SMS Source is Copilot.
 func (o ConnectionOptionsOutput) MessagingServiceSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.MessagingServiceSid }).(pulumi.StringPtrOutput)
 }
 
-// String.
+// Name of the connection.
 func (o ConnectionOptionsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
+// Configuration settings for password complexity. For details, see Password Complexity Options.
 func (o ConnectionOptionsOutput) PasswordComplexityOptions() ConnectionOptionsPasswordComplexityOptionsPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasswordComplexityOptions {
 		return v.PasswordComplexityOptions
 	}).(ConnectionOptionsPasswordComplexityOptionsPtrOutput)
 }
 
-// List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
 func (o ConnectionOptionsOutput) PasswordDictionary() ConnectionOptionsPasswordDictionaryPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasswordDictionary { return v.PasswordDictionary }).(ConnectionOptionsPasswordDictionaryPtrOutput)
 }
 
-// List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
 func (o ConnectionOptionsOutput) PasswordHistories() ConnectionOptionsPasswordHistoryArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []ConnectionOptionsPasswordHistory { return v.PasswordHistories }).(ConnectionOptionsPasswordHistoryArrayOutput)
 }
 
-// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
 func (o ConnectionOptionsOutput) PasswordNoPersonalInfo() ConnectionOptionsPasswordNoPersonalInfoPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasswordNoPersonalInfo { return v.PasswordNoPersonalInfo }).(ConnectionOptionsPasswordNoPersonalInfoPtrOutput)
 }
 
-// String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 func (o ConnectionOptionsOutput) PasswordPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.PasswordPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
+// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+func (o ConnectionOptionsOutput) ProtocolBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.ProtocolBinding }).(pulumi.StringPtrOutput)
+}
+
+// Template that formats the SAML request
+func (o ConnectionOptionsOutput) RequestTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.RequestTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not the user is required to provide a username in addition to an email address.
 func (o ConnectionOptionsOutput) RequiresUsername() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.RequiresUsername }).(pulumi.BoolPtrOutput)
 }
 
-// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+// Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
 func (o ConnectionOptionsOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// Int. Version 1 is deprecated, use version 2.
+func (o ConnectionOptionsOutput) Scripts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
+}
+
+// SAML single login URL for the connection.
+func (o ConnectionOptionsOutput) SignInEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.SignInEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// SAML single logout URL for the connection.
+func (o ConnectionOptionsOutput) SignOutEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.SignOutEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// (Boolean) When enabled, the SAML authentication request will be signed.
+func (o ConnectionOptionsOutput) SignSamlRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.SignSamlRequest }).(pulumi.BoolPtrOutput)
+}
+
+// Sign Request Algorithm
+func (o ConnectionOptionsOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+func (o ConnectionOptionsOutput) SigningCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.SigningCert }).(pulumi.StringPtrOutput)
+}
+
+// Version 1 is deprecated, use version 2.
 func (o ConnectionOptionsOutput) StrategyVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *int { return v.StrategyVersion }).(pulumi.IntPtrOutput)
 }
@@ -2393,46 +2656,45 @@ func (o ConnectionOptionsOutput) Subject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Subject }).(pulumi.StringPtrOutput)
 }
 
-// String. Syntax of the SMS. Options include `markdown` and `liquid`.
+// Syntax of the SMS. Options include `markdown` and `liquid`.
 func (o ConnectionOptionsOutput) Syntax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Syntax }).(pulumi.StringPtrOutput)
 }
 
+// Team ID.
 func (o ConnectionOptionsOutput) TeamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TeamId }).(pulumi.StringPtrOutput)
 }
 
-// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+// Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
 func (o ConnectionOptionsOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Template }).(pulumi.StringPtrOutput)
 }
 
-// String
 func (o ConnectionOptionsOutput) TenantDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TenantDomain }).(pulumi.StringPtrOutput)
 }
 
-// String.
 func (o ConnectionOptionsOutput) TokenEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
+// Configuration options for one-time passwords. For details, see TOTP.
 func (o ConnectionOptionsOutput) Totp() ConnectionOptionsTotpPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsTotp { return v.Totp }).(ConnectionOptionsTotpPtrOutput)
 }
 
-// String. SID for your Twilio account.
+// SID for your Twilio account.
 func (o ConnectionOptionsOutput) TwilioSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TwilioSid }).(pulumi.StringPtrOutput)
 }
 
-// String, Case-sensitive. AuthToken for your Twilio account.
+// AuthToken for your Twilio account.
 func (o ConnectionOptionsOutput) TwilioToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TwilioToken }).(pulumi.StringPtrOutput)
 }
 
-// String. Value must be `backChannel` or `frontChannel`
+// Value can be `backChannel` or `frontChannel`.
 func (o ConnectionOptionsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2445,27 +2707,29 @@ func (o ConnectionOptionsOutput) UseKerberos() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseKerberos }).(pulumi.BoolPtrOutput)
 }
 
-// Bool
 func (o ConnectionOptionsOutput) UseWsfed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseWsfed }).(pulumi.BoolPtrOutput)
 }
 
-// String.
+// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+func (o ConnectionOptionsOutput) UserIdAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.UserIdAttribute }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectionOptionsOutput) UserinfoEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.UserinfoEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// String.
+// A map defining the validation options.
 func (o ConnectionOptionsOutput) Validation() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Validation }).(pulumi.StringMapOutput)
 }
 
-// Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
 func (o ConnectionOptionsOutput) WaadCommonEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.WaadCommonEndpoint }).(pulumi.BoolPtrOutput)
 }
 
-// String
 func (o ConnectionOptionsOutput) WaadProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.WaadProtocol }).(pulumi.StringPtrOutput)
 }
@@ -2488,7 +2752,7 @@ func (o ConnectionOptionsPtrOutput) Elem() ConnectionOptionsOutput {
 	return o.ApplyT(func(v *ConnectionOptions) ConnectionOptions { return *v }).(ConnectionOptionsOutput)
 }
 
-// String. ADFS Metadata source.
+// ADFS Metadata source.
 func (o ConnectionOptionsPtrOutput) AdfsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2498,6 +2762,7 @@ func (o ConnectionOptionsPtrOutput) AdfsServer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of allowed audiences.
 func (o ConnectionOptionsPtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectionOptions) []string {
 		if v == nil {
@@ -2507,7 +2772,6 @@ func (o ConnectionOptionsPtrOutput) AllowedAudiences() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Boolean.
 func (o ConnectionOptionsPtrOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
 		if v == nil {
@@ -2517,7 +2781,7 @@ func (o ConnectionOptionsPtrOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// String. Azure AD domain name.
+// Azure AD domain name.
 //
 // Deprecated: use domain instead
 func (o ConnectionOptionsPtrOutput) AppDomain() pulumi.StringPtrOutput {
@@ -2529,7 +2793,7 @@ func (o ConnectionOptionsPtrOutput) AppDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String
+// Azure AD app ID.
 func (o ConnectionOptionsPtrOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2539,7 +2803,6 @@ func (o ConnectionOptionsPtrOutput) AppId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String.
 func (o ConnectionOptionsPtrOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2549,7 +2812,7 @@ func (o ConnectionOptionsPtrOutput) AuthorizationEndpoint() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 func (o ConnectionOptionsPtrOutput) BruteForceProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
 		if v == nil {
@@ -2559,7 +2822,7 @@ func (o ConnectionOptionsPtrOutput) BruteForceProtection() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// String. Client ID given by your OIDC provider.
+// OIDC provider client ID.
 func (o ConnectionOptionsPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2569,7 +2832,7 @@ func (o ConnectionOptionsPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String, Case-sensitive. Client secret given by your OIDC provider.
+// OIDC provider client secret.
 func (o ConnectionOptionsPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2589,7 +2852,7 @@ func (o ConnectionOptionsPtrOutput) CommunityBaseUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Map(String), Case-sensitive.
+// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
 func (o ConnectionOptionsPtrOutput) Configuration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
 		if v == nil {
@@ -2599,7 +2862,7 @@ func (o ConnectionOptionsPtrOutput) Configuration() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Map(String).
+// Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
 func (o ConnectionOptionsPtrOutput) CustomScripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
 		if v == nil {
@@ -2607,6 +2870,26 @@ func (o ConnectionOptionsPtrOutput) CustomScripts() pulumi.StringMapOutput {
 		}
 		return v.CustomScripts
 	}).(pulumi.StringMapOutput)
+}
+
+// (Boolean) When enabled additional debugging information will be generated.
+func (o ConnectionOptionsPtrOutput) Debug() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Debug
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sign Request Algorithm Digest
+func (o ConnectionOptionsPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DigestAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) DisableCache() pulumi.BoolPtrOutput {
@@ -2628,7 +2911,7 @@ func (o ConnectionOptionsPtrOutput) DisableSignup() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// String. Usually an URL ending with `/.well-known/openid-configuration`
+// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
 func (o ConnectionOptionsPtrOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2647,7 +2930,7 @@ func (o ConnectionOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List(String). List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 func (o ConnectionOptionsPtrOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectionOptions) []string {
 		if v == nil {
@@ -2657,7 +2940,6 @@ func (o ConnectionOptionsPtrOutput) DomainAliases() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Boolean.
 func (o ConnectionOptionsPtrOutput) EnabledDatabaseCustomization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
 		if v == nil {
@@ -2667,7 +2949,17 @@ func (o ConnectionOptionsPtrOutput) EnabledDatabaseCustomization() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// String. SMS number for the sender. Used when SMS Source is From.
+// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+func (o ConnectionOptionsPtrOutput) FieldsMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldsMap
+	}).(pulumi.StringMapOutput)
+}
+
+// SMS number for the sender. Used when SMS Source is From.
 func (o ConnectionOptionsPtrOutput) From() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2695,7 +2987,16 @@ func (o ConnectionOptionsPtrOutput) IdentityApi() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+func (o ConnectionOptionsPtrOutput) IdpInitiated() ConnectionOptionsIdpInitiatedPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsIdpInitiated {
+		if v == nil {
+			return nil
+		}
+		return v.IdpInitiated
+	}).(ConnectionOptionsIdpInitiatedPtrOutput)
+}
+
+// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 func (o ConnectionOptionsPtrOutput) ImportMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
 		if v == nil {
@@ -2714,7 +3015,7 @@ func (o ConnectionOptionsPtrOutput) Ips() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// String. URL of the issuer.
+// Issuer URL. E.g. `https://auth.example.com`
 func (o ConnectionOptionsPtrOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2724,7 +3025,6 @@ func (o ConnectionOptionsPtrOutput) Issuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String.
 func (o ConnectionOptionsPtrOutput) JwksUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2734,6 +3034,7 @@ func (o ConnectionOptionsPtrOutput) JwksUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Key ID.
 func (o ConnectionOptionsPtrOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2743,7 +3044,7 @@ func (o ConnectionOptionsPtrOutput) KeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String. Maximum number of groups to retrieve.
+// Maximum number of groups to retrieve.
 func (o ConnectionOptionsPtrOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2753,7 +3054,7 @@ func (o ConnectionOptionsPtrOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// String. SID for Copilot. Used when SMS Source is Copilot.
+// SID for Copilot. Used when SMS Source is Copilot.
 func (o ConnectionOptionsPtrOutput) MessagingServiceSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2763,7 +3064,7 @@ func (o ConnectionOptionsPtrOutput) MessagingServiceSid() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// String.
+// Name of the connection.
 func (o ConnectionOptionsPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2773,7 +3074,7 @@ func (o ConnectionOptionsPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List(Resource). Configuration settings for password complexity. For details, see Password Complexity Options.
+// Configuration settings for password complexity. For details, see Password Complexity Options.
 func (o ConnectionOptionsPtrOutput) PasswordComplexityOptions() ConnectionOptionsPasswordComplexityOptionsPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasswordComplexityOptions {
 		if v == nil {
@@ -2783,7 +3084,7 @@ func (o ConnectionOptionsPtrOutput) PasswordComplexityOptions() ConnectionOption
 	}).(ConnectionOptionsPasswordComplexityOptionsPtrOutput)
 }
 
-// List(Resource). Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
 func (o ConnectionOptionsPtrOutput) PasswordDictionary() ConnectionOptionsPasswordDictionaryPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasswordDictionary {
 		if v == nil {
@@ -2793,7 +3094,7 @@ func (o ConnectionOptionsPtrOutput) PasswordDictionary() ConnectionOptionsPasswo
 	}).(ConnectionOptionsPasswordDictionaryPtrOutput)
 }
 
-// List(Resource). Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
 func (o ConnectionOptionsPtrOutput) PasswordHistories() ConnectionOptionsPasswordHistoryArrayOutput {
 	return o.ApplyT(func(v *ConnectionOptions) []ConnectionOptionsPasswordHistory {
 		if v == nil {
@@ -2803,7 +3104,7 @@ func (o ConnectionOptionsPtrOutput) PasswordHistories() ConnectionOptionsPasswor
 	}).(ConnectionOptionsPasswordHistoryArrayOutput)
 }
 
-// List(Resource). Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
 func (o ConnectionOptionsPtrOutput) PasswordNoPersonalInfo() ConnectionOptionsPasswordNoPersonalInfoPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasswordNoPersonalInfo {
 		if v == nil {
@@ -2813,7 +3114,7 @@ func (o ConnectionOptionsPtrOutput) PasswordNoPersonalInfo() ConnectionOptionsPa
 	}).(ConnectionOptionsPasswordNoPersonalInfoPtrOutput)
 }
 
-// String. Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 func (o ConnectionOptionsPtrOutput) PasswordPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2823,7 +3124,27 @@ func (o ConnectionOptionsPtrOutput) PasswordPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether or not the user is required to provide a username in addition to an email address.
+// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+func (o ConnectionOptionsPtrOutput) ProtocolBinding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtocolBinding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Template that formats the SAML request
+func (o ConnectionOptionsPtrOutput) RequestTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not the user is required to provide a username in addition to an email address.
 func (o ConnectionOptionsPtrOutput) RequiresUsername() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
 		if v == nil {
@@ -2833,7 +3154,7 @@ func (o ConnectionOptionsPtrOutput) RequiresUsername() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// List(String). Value must be a list of scopes. For example `["openid", "profile", "email"]`
+// Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
 func (o ConnectionOptionsPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectionOptions) []string {
 		if v == nil {
@@ -2843,7 +3164,66 @@ func (o ConnectionOptionsPtrOutput) Scopes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Int. Version 1 is deprecated, use version 2.
+func (o ConnectionOptionsPtrOutput) Scripts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Scripts
+	}).(pulumi.StringMapOutput)
+}
+
+// SAML single login URL for the connection.
+func (o ConnectionOptionsPtrOutput) SignInEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignInEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// SAML single logout URL for the connection.
+func (o ConnectionOptionsPtrOutput) SignOutEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignOutEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Boolean) When enabled, the SAML authentication request will be signed.
+func (o ConnectionOptionsPtrOutput) SignSamlRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SignSamlRequest
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sign Request Algorithm
+func (o ConnectionOptionsPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignatureAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+func (o ConnectionOptionsPtrOutput) SigningCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SigningCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version 1 is deprecated, use version 2.
 func (o ConnectionOptionsPtrOutput) StrategyVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *int {
 		if v == nil {
@@ -2862,7 +3242,7 @@ func (o ConnectionOptionsPtrOutput) Subject() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String. Syntax of the SMS. Options include `markdown` and `liquid`.
+// Syntax of the SMS. Options include `markdown` and `liquid`.
 func (o ConnectionOptionsPtrOutput) Syntax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2872,6 +3252,7 @@ func (o ConnectionOptionsPtrOutput) Syntax() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Team ID.
 func (o ConnectionOptionsPtrOutput) TeamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2881,7 +3262,7 @@ func (o ConnectionOptionsPtrOutput) TeamId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String. Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+// Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
 func (o ConnectionOptionsPtrOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2891,7 +3272,6 @@ func (o ConnectionOptionsPtrOutput) Template() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String
 func (o ConnectionOptionsPtrOutput) TenantDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2901,7 +3281,6 @@ func (o ConnectionOptionsPtrOutput) TenantDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String.
 func (o ConnectionOptionsPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2911,7 +3290,7 @@ func (o ConnectionOptionsPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Map(Resource). Configuration options for one-time passwords. For details, see TOTP.
+// Configuration options for one-time passwords. For details, see TOTP.
 func (o ConnectionOptionsPtrOutput) Totp() ConnectionOptionsTotpPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsTotp {
 		if v == nil {
@@ -2921,7 +3300,7 @@ func (o ConnectionOptionsPtrOutput) Totp() ConnectionOptionsTotpPtrOutput {
 	}).(ConnectionOptionsTotpPtrOutput)
 }
 
-// String. SID for your Twilio account.
+// SID for your Twilio account.
 func (o ConnectionOptionsPtrOutput) TwilioSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2931,7 +3310,7 @@ func (o ConnectionOptionsPtrOutput) TwilioSid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String, Case-sensitive. AuthToken for your Twilio account.
+// AuthToken for your Twilio account.
 func (o ConnectionOptionsPtrOutput) TwilioToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2941,7 +3320,7 @@ func (o ConnectionOptionsPtrOutput) TwilioToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String. Value must be `backChannel` or `frontChannel`
+// Value can be `backChannel` or `frontChannel`.
 func (o ConnectionOptionsPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2969,7 +3348,6 @@ func (o ConnectionOptionsPtrOutput) UseKerberos() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Bool
 func (o ConnectionOptionsPtrOutput) UseWsfed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
 		if v == nil {
@@ -2979,7 +3357,16 @@ func (o ConnectionOptionsPtrOutput) UseWsfed() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// String.
+// Attribute in the SAML token that will be mapped to the userId property in Auth0.
+func (o ConnectionOptionsPtrOutput) UserIdAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserIdAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectionOptionsPtrOutput) UserinfoEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -2989,7 +3376,7 @@ func (o ConnectionOptionsPtrOutput) UserinfoEndpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// String.
+// A map defining the validation options.
 func (o ConnectionOptionsPtrOutput) Validation() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
 		if v == nil {
@@ -2999,7 +3386,7 @@ func (o ConnectionOptionsPtrOutput) Validation() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Boolean. Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
 func (o ConnectionOptionsPtrOutput) WaadCommonEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
 		if v == nil {
@@ -3009,7 +3396,6 @@ func (o ConnectionOptionsPtrOutput) WaadCommonEndpoint() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// String
 func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -3019,8 +3405,168 @@ func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionOptionsIdpInitiated struct {
+	ClientAuthorizeQuery *string `pulumi:"clientAuthorizeQuery"`
+	// Facebook client ID.
+	ClientId       *string `pulumi:"clientId"`
+	ClientProtocol *string `pulumi:"clientProtocol"`
+}
+
+// ConnectionOptionsIdpInitiatedInput is an input type that accepts ConnectionOptionsIdpInitiatedArgs and ConnectionOptionsIdpInitiatedOutput values.
+// You can construct a concrete instance of `ConnectionOptionsIdpInitiatedInput` via:
+//
+//          ConnectionOptionsIdpInitiatedArgs{...}
+type ConnectionOptionsIdpInitiatedInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsIdpInitiatedOutput() ConnectionOptionsIdpInitiatedOutput
+	ToConnectionOptionsIdpInitiatedOutputWithContext(context.Context) ConnectionOptionsIdpInitiatedOutput
+}
+
+type ConnectionOptionsIdpInitiatedArgs struct {
+	ClientAuthorizeQuery pulumi.StringPtrInput `pulumi:"clientAuthorizeQuery"`
+	// Facebook client ID.
+	ClientId       pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientProtocol pulumi.StringPtrInput `pulumi:"clientProtocol"`
+}
+
+func (ConnectionOptionsIdpInitiatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsIdpInitiated)(nil)).Elem()
+}
+
+func (i ConnectionOptionsIdpInitiatedArgs) ToConnectionOptionsIdpInitiatedOutput() ConnectionOptionsIdpInitiatedOutput {
+	return i.ToConnectionOptionsIdpInitiatedOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsIdpInitiatedArgs) ToConnectionOptionsIdpInitiatedOutputWithContext(ctx context.Context) ConnectionOptionsIdpInitiatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsIdpInitiatedOutput)
+}
+
+func (i ConnectionOptionsIdpInitiatedArgs) ToConnectionOptionsIdpInitiatedPtrOutput() ConnectionOptionsIdpInitiatedPtrOutput {
+	return i.ToConnectionOptionsIdpInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsIdpInitiatedArgs) ToConnectionOptionsIdpInitiatedPtrOutputWithContext(ctx context.Context) ConnectionOptionsIdpInitiatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsIdpInitiatedOutput).ToConnectionOptionsIdpInitiatedPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsIdpInitiatedPtrInput is an input type that accepts ConnectionOptionsIdpInitiatedArgs, ConnectionOptionsIdpInitiatedPtr and ConnectionOptionsIdpInitiatedPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsIdpInitiatedPtrInput` via:
+//
+//          ConnectionOptionsIdpInitiatedArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionOptionsIdpInitiatedPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsIdpInitiatedPtrOutput() ConnectionOptionsIdpInitiatedPtrOutput
+	ToConnectionOptionsIdpInitiatedPtrOutputWithContext(context.Context) ConnectionOptionsIdpInitiatedPtrOutput
+}
+
+type connectionOptionsIdpInitiatedPtrType ConnectionOptionsIdpInitiatedArgs
+
+func ConnectionOptionsIdpInitiatedPtr(v *ConnectionOptionsIdpInitiatedArgs) ConnectionOptionsIdpInitiatedPtrInput {
+	return (*connectionOptionsIdpInitiatedPtrType)(v)
+}
+
+func (*connectionOptionsIdpInitiatedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsIdpInitiated)(nil)).Elem()
+}
+
+func (i *connectionOptionsIdpInitiatedPtrType) ToConnectionOptionsIdpInitiatedPtrOutput() ConnectionOptionsIdpInitiatedPtrOutput {
+	return i.ToConnectionOptionsIdpInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsIdpInitiatedPtrType) ToConnectionOptionsIdpInitiatedPtrOutputWithContext(ctx context.Context) ConnectionOptionsIdpInitiatedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsIdpInitiatedPtrOutput)
+}
+
+type ConnectionOptionsIdpInitiatedOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsIdpInitiatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsIdpInitiated)(nil)).Elem()
+}
+
+func (o ConnectionOptionsIdpInitiatedOutput) ToConnectionOptionsIdpInitiatedOutput() ConnectionOptionsIdpInitiatedOutput {
+	return o
+}
+
+func (o ConnectionOptionsIdpInitiatedOutput) ToConnectionOptionsIdpInitiatedOutputWithContext(ctx context.Context) ConnectionOptionsIdpInitiatedOutput {
+	return o
+}
+
+func (o ConnectionOptionsIdpInitiatedOutput) ToConnectionOptionsIdpInitiatedPtrOutput() ConnectionOptionsIdpInitiatedPtrOutput {
+	return o.ToConnectionOptionsIdpInitiatedPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsIdpInitiatedOutput) ToConnectionOptionsIdpInitiatedPtrOutputWithContext(ctx context.Context) ConnectionOptionsIdpInitiatedPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *ConnectionOptionsIdpInitiated {
+		return &v
+	}).(ConnectionOptionsIdpInitiatedPtrOutput)
+}
+func (o ConnectionOptionsIdpInitiatedOutput) ClientAuthorizeQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientAuthorizeQuery }).(pulumi.StringPtrOutput)
+}
+
+// Facebook client ID.
+func (o ConnectionOptionsIdpInitiatedOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsIdpInitiatedOutput) ClientProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientProtocol }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsIdpInitiatedPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsIdpInitiatedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsIdpInitiated)(nil)).Elem()
+}
+
+func (o ConnectionOptionsIdpInitiatedPtrOutput) ToConnectionOptionsIdpInitiatedPtrOutput() ConnectionOptionsIdpInitiatedPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsIdpInitiatedPtrOutput) ToConnectionOptionsIdpInitiatedPtrOutputWithContext(ctx context.Context) ConnectionOptionsIdpInitiatedPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsIdpInitiatedPtrOutput) Elem() ConnectionOptionsIdpInitiatedOutput {
+	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) ConnectionOptionsIdpInitiated { return *v }).(ConnectionOptionsIdpInitiatedOutput)
+}
+
+func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientAuthorizeQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientAuthorizeQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+// Facebook client ID.
+func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionOptionsPasswordComplexityOptions struct {
-	// Integer. Minimum number of characters allowed in passwords.
+	// Minimum number of characters allowed in passwords.
 	MinLength *int `pulumi:"minLength"`
 }
 
@@ -3036,7 +3582,7 @@ type ConnectionOptionsPasswordComplexityOptionsInput interface {
 }
 
 type ConnectionOptionsPasswordComplexityOptionsArgs struct {
-	// Integer. Minimum number of characters allowed in passwords.
+	// Minimum number of characters allowed in passwords.
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
 }
 
@@ -3117,7 +3663,7 @@ func (o ConnectionOptionsPasswordComplexityOptionsOutput) ToConnectionOptionsPas
 	}).(ConnectionOptionsPasswordComplexityOptionsPtrOutput)
 }
 
-// Integer. Minimum number of characters allowed in passwords.
+// Minimum number of characters allowed in passwords.
 func (o ConnectionOptionsPasswordComplexityOptionsOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordComplexityOptions) *int { return v.MinLength }).(pulumi.IntPtrOutput)
 }
@@ -3142,7 +3688,7 @@ func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) Elem() ConnectionOp
 	}).(ConnectionOptionsPasswordComplexityOptionsOutput)
 }
 
-// Integer. Minimum number of characters allowed in passwords.
+// Minimum number of characters allowed in passwords.
 func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordComplexityOptions) *int {
 		if v == nil {
@@ -3153,9 +3699,9 @@ func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) MinLength() pulumi.
 }
 
 type ConnectionOptionsPasswordDictionary struct {
-	// Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+	// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 	Dictionaries []string `pulumi:"dictionaries"`
-	// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+	// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
 	Enable *bool `pulumi:"enable"`
 }
 
@@ -3171,9 +3717,9 @@ type ConnectionOptionsPasswordDictionaryInput interface {
 }
 
 type ConnectionOptionsPasswordDictionaryArgs struct {
-	// Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+	// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 	Dictionaries pulumi.StringArrayInput `pulumi:"dictionaries"`
-	// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+	// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 }
 
@@ -3254,12 +3800,12 @@ func (o ConnectionOptionsPasswordDictionaryOutput) ToConnectionOptionsPasswordDi
 	}).(ConnectionOptionsPasswordDictionaryPtrOutput)
 }
 
-// Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 func (o ConnectionOptionsPasswordDictionaryOutput) Dictionaries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) []string { return v.Dictionaries }).(pulumi.StringArrayOutput)
 }
 
-// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
 func (o ConnectionOptionsPasswordDictionaryOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -3282,7 +3828,7 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) Elem() ConnectionOptionsPa
 	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) ConnectionOptionsPasswordDictionary { return *v }).(ConnectionOptionsPasswordDictionaryOutput)
 }
 
-// Set(String), (Maximum=2000 characters). Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 func (o ConnectionOptionsPasswordDictionaryPtrOutput) Dictionaries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) []string {
 		if v == nil {
@@ -3292,7 +3838,7 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) Dictionaries() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
-// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
 func (o ConnectionOptionsPasswordDictionaryPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) *bool {
 		if v == nil {
@@ -3303,9 +3849,9 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) Enable() pulumi.BoolPtrOut
 }
 
 type ConnectionOptionsPasswordHistory struct {
-	// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+	// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
 	Enable *bool `pulumi:"enable"`
-	// Integer, (Maximum=24). Indicates the number of passwords to keep in history.
+	// Indicates the number of passwords to keep in history with a maximum of 24.
 	Size *int `pulumi:"size"`
 }
 
@@ -3321,9 +3867,9 @@ type ConnectionOptionsPasswordHistoryInput interface {
 }
 
 type ConnectionOptionsPasswordHistoryArgs struct {
-	// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+	// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Integer, (Maximum=24). Indicates the number of passwords to keep in history.
+	// Indicates the number of passwords to keep in history with a maximum of 24.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -3378,12 +3924,12 @@ func (o ConnectionOptionsPasswordHistoryOutput) ToConnectionOptionsPasswordHisto
 	return o
 }
 
-// Boolean. Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
 func (o ConnectionOptionsPasswordHistoryOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordHistory) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Integer, (Maximum=24). Indicates the number of passwords to keep in history.
+// Indicates the number of passwords to keep in history with a maximum of 24.
 func (o ConnectionOptionsPasswordHistoryOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordHistory) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -3409,7 +3955,7 @@ func (o ConnectionOptionsPasswordHistoryArrayOutput) Index(i pulumi.IntInput) Co
 }
 
 type ConnectionOptionsPasswordNoPersonalInfo struct {
-	// Boolean. Indicates whether the password personal info check is enabled for this connection.
+	// Indicates whether the password personal info check is enabled for this connection.
 	Enable *bool `pulumi:"enable"`
 }
 
@@ -3425,7 +3971,7 @@ type ConnectionOptionsPasswordNoPersonalInfoInput interface {
 }
 
 type ConnectionOptionsPasswordNoPersonalInfoArgs struct {
-	// Boolean. Indicates whether the password personal info check is enabled for this connection.
+	// Indicates whether the password personal info check is enabled for this connection.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 }
 
@@ -3506,7 +4052,7 @@ func (o ConnectionOptionsPasswordNoPersonalInfoOutput) ToConnectionOptionsPasswo
 	}).(ConnectionOptionsPasswordNoPersonalInfoPtrOutput)
 }
 
-// Boolean. Indicates whether the password personal info check is enabled for this connection.
+// Indicates whether the password personal info check is enabled for this connection.
 func (o ConnectionOptionsPasswordNoPersonalInfoOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordNoPersonalInfo) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -3529,7 +4075,7 @@ func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) Elem() ConnectionOptio
 	return o.ApplyT(func(v *ConnectionOptionsPasswordNoPersonalInfo) ConnectionOptionsPasswordNoPersonalInfo { return *v }).(ConnectionOptionsPasswordNoPersonalInfoOutput)
 }
 
-// Boolean. Indicates whether the password personal info check is enabled for this connection.
+// Indicates whether the password personal info check is enabled for this connection.
 func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordNoPersonalInfo) *bool {
 		if v == nil {
@@ -5780,6 +6326,177 @@ func (o GlobalClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GlobalClientRefreshToken struct {
+	ExpirationType string `pulumi:"expirationType"`
+	Leeway         *int   `pulumi:"leeway"`
+	RotationType   string `pulumi:"rotationType"`
+	TokenLifetime  *int   `pulumi:"tokenLifetime"`
+}
+
+// GlobalClientRefreshTokenInput is an input type that accepts GlobalClientRefreshTokenArgs and GlobalClientRefreshTokenOutput values.
+// You can construct a concrete instance of `GlobalClientRefreshTokenInput` via:
+//
+//          GlobalClientRefreshTokenArgs{...}
+type GlobalClientRefreshTokenInput interface {
+	pulumi.Input
+
+	ToGlobalClientRefreshTokenOutput() GlobalClientRefreshTokenOutput
+	ToGlobalClientRefreshTokenOutputWithContext(context.Context) GlobalClientRefreshTokenOutput
+}
+
+type GlobalClientRefreshTokenArgs struct {
+	ExpirationType pulumi.StringInput `pulumi:"expirationType"`
+	Leeway         pulumi.IntPtrInput `pulumi:"leeway"`
+	RotationType   pulumi.StringInput `pulumi:"rotationType"`
+	TokenLifetime  pulumi.IntPtrInput `pulumi:"tokenLifetime"`
+}
+
+func (GlobalClientRefreshTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientRefreshToken)(nil)).Elem()
+}
+
+func (i GlobalClientRefreshTokenArgs) ToGlobalClientRefreshTokenOutput() GlobalClientRefreshTokenOutput {
+	return i.ToGlobalClientRefreshTokenOutputWithContext(context.Background())
+}
+
+func (i GlobalClientRefreshTokenArgs) ToGlobalClientRefreshTokenOutputWithContext(ctx context.Context) GlobalClientRefreshTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientRefreshTokenOutput)
+}
+
+func (i GlobalClientRefreshTokenArgs) ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput {
+	return i.ToGlobalClientRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (i GlobalClientRefreshTokenArgs) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientRefreshTokenOutput).ToGlobalClientRefreshTokenPtrOutputWithContext(ctx)
+}
+
+// GlobalClientRefreshTokenPtrInput is an input type that accepts GlobalClientRefreshTokenArgs, GlobalClientRefreshTokenPtr and GlobalClientRefreshTokenPtrOutput values.
+// You can construct a concrete instance of `GlobalClientRefreshTokenPtrInput` via:
+//
+//          GlobalClientRefreshTokenArgs{...}
+//
+//  or:
+//
+//          nil
+type GlobalClientRefreshTokenPtrInput interface {
+	pulumi.Input
+
+	ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput
+	ToGlobalClientRefreshTokenPtrOutputWithContext(context.Context) GlobalClientRefreshTokenPtrOutput
+}
+
+type globalClientRefreshTokenPtrType GlobalClientRefreshTokenArgs
+
+func GlobalClientRefreshTokenPtr(v *GlobalClientRefreshTokenArgs) GlobalClientRefreshTokenPtrInput {
+	return (*globalClientRefreshTokenPtrType)(v)
+}
+
+func (*globalClientRefreshTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClientRefreshToken)(nil)).Elem()
+}
+
+func (i *globalClientRefreshTokenPtrType) ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput {
+	return i.ToGlobalClientRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *globalClientRefreshTokenPtrType) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientRefreshTokenPtrOutput)
+}
+
+type GlobalClientRefreshTokenOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientRefreshTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientRefreshToken)(nil)).Elem()
+}
+
+func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenOutput() GlobalClientRefreshTokenOutput {
+	return o
+}
+
+func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenOutputWithContext(ctx context.Context) GlobalClientRefreshTokenOutput {
+	return o
+}
+
+func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput {
+	return o.ToGlobalClientRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
+	return o.ApplyT(func(v GlobalClientRefreshToken) *GlobalClientRefreshToken {
+		return &v
+	}).(GlobalClientRefreshTokenPtrOutput)
+}
+func (o GlobalClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientRefreshTokenOutput) Leeway() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GlobalClientRefreshToken) *int { return v.Leeway }).(pulumi.IntPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientRefreshTokenOutput) TokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GlobalClientRefreshToken) *int { return v.TokenLifetime }).(pulumi.IntPtrOutput)
+}
+
+type GlobalClientRefreshTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientRefreshTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClientRefreshToken)(nil)).Elem()
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) ToGlobalClientRefreshTokenPtrOutput() GlobalClientRefreshTokenPtrOutput {
+	return o
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
+	return o
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) Elem() GlobalClientRefreshTokenOutput {
+	return o.ApplyT(func(v *GlobalClientRefreshToken) GlobalClientRefreshToken { return *v }).(GlobalClientRefreshTokenOutput)
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) ExpirationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalClientRefreshToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpirationType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) Leeway() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GlobalClientRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Leeway
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) RotationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalClientRefreshToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RotationType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GlobalClientRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TokenLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
 type ResourceServerScope struct {
 	// String. Description of the permission (scope).
 	Description *string `pulumi:"description"`
@@ -7074,8 +7791,12 @@ func init() {
 	pulumi.RegisterOutputType(ClientMobileAndroidPtrOutput{})
 	pulumi.RegisterOutputType(ClientMobileIosOutput{})
 	pulumi.RegisterOutputType(ClientMobileIosPtrOutput{})
+	pulumi.RegisterOutputType(ClientRefreshTokenOutput{})
+	pulumi.RegisterOutputType(ClientRefreshTokenPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordComplexityOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordComplexityOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordDictionaryOutput{})
@@ -7104,6 +7825,8 @@ func init() {
 	pulumi.RegisterOutputType(GlobalClientMobileAndroidPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientMobileIosOutput{})
 	pulumi.RegisterOutputType(GlobalClientMobileIosPtrOutput{})
+	pulumi.RegisterOutputType(GlobalClientRefreshTokenOutput{})
+	pulumi.RegisterOutputType(GlobalClientRefreshTokenPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionOutput{})

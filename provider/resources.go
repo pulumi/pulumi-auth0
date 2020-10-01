@@ -17,11 +17,11 @@ package auth0
 import (
 	"unicode"
 
+	"github.com/alexkappa/terraform-provider-auth0/auth0"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-auth0/auth0"
 )
 
 // all of the token components used below.
@@ -70,6 +70,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "auth0"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
+		GitHubOrg:   "alexkappa",
 		Repository:  "https://github.com/pulumi/pulumi-auth0",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"domain": {

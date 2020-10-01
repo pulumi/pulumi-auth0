@@ -266,6 +266,9 @@ namespace Pulumi.Auth0
         [Output("oidcConformant")]
         public Output<bool> OidcConformant { get; private set; } = null!;
 
+        [Output("refreshToken")]
+        public Output<Outputs.ClientRefreshToken> RefreshToken { get; private set; } = null!;
+
         /// <summary>
         /// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         /// </summary>
@@ -519,6 +522,9 @@ namespace Pulumi.Auth0
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
 
+        [Input("refreshToken")]
+        public Input<Inputs.ClientRefreshTokenArgs>? RefreshToken { get; set; }
+
         /// <summary>
         /// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         /// </summary>
@@ -751,6 +757,9 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
+
+        [Input("refreshToken")]
+        public Input<Inputs.ClientRefreshTokenGetArgs>? RefreshToken { get; set; }
 
         /// <summary>
         /// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
