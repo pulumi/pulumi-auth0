@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -509,13 +509,13 @@ class ClientAddonsSamlpArgs:
                  destination: Optional[pulumi.Input[str]] = None,
                  digest_algorithm: Optional[pulumi.Input[str]] = None,
                  include_attribute_name_format: Optional[pulumi.Input[bool]] = None,
-                 lifetime_in_seconds: Optional[pulumi.Input[float]] = None,
+                 lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
                  logout: Optional[pulumi.Input['ClientAddonsSamlpLogoutArgs']] = None,
                  map_identities: Optional[pulumi.Input[bool]] = None,
                  map_unknown_claims_as_is: Optional[pulumi.Input[bool]] = None,
                  mappings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name_identifier_format: Optional[pulumi.Input[str]] = None,
-                 name_identifier_probes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name_identifier_probes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  passthrough_claims_with_no_mapping: Optional[pulumi.Input[bool]] = None,
                  recipient: Optional[pulumi.Input[str]] = None,
                  sign_response: Optional[pulumi.Input[bool]] = None,
@@ -529,13 +529,13 @@ class ClientAddonsSamlpArgs:
         :param pulumi.Input[str] destination: String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
         :param pulumi.Input[str] digest_algorithm: String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
         :param pulumi.Input[bool] include_attribute_name_format: Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-        :param pulumi.Input[float] lifetime_in_seconds: Integer, (Default=3600). Number of seconds during which the token is valid.
+        :param pulumi.Input[int] lifetime_in_seconds: Integer, (Default=3600). Number of seconds during which the token is valid.
         :param pulumi.Input['ClientAddonsSamlpLogoutArgs'] logout: Map(Resource). Configuration settings for logout. For details, see Logout.
         :param pulumi.Input[bool] map_identities: Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
         :param pulumi.Input[bool] map_unknown_claims_as_is: Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
         :param pulumi.Input[Mapping[str, Any]] mappings: Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
         :param pulumi.Input[str] name_identifier_format: String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-        :param pulumi.Input[List[pulumi.Input[str]]] name_identifier_probes: List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_identifier_probes: List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
         :param pulumi.Input[bool] passthrough_claims_with_no_mapping: Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
         :param pulumi.Input[str] recipient: String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
         :param pulumi.Input[bool] sign_response: Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
@@ -667,14 +667,14 @@ class ClientAddonsSamlpArgs:
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")
-    def lifetime_in_seconds(self) -> Optional[pulumi.Input[float]]:
+    def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         Integer, (Default=3600). Number of seconds during which the token is valid.
         """
         return pulumi.get(self, "lifetime_in_seconds")
 
     @lifetime_in_seconds.setter
-    def lifetime_in_seconds(self, value: Optional[pulumi.Input[float]]):
+    def lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lifetime_in_seconds", value)
 
     @property
@@ -739,14 +739,14 @@ class ClientAddonsSamlpArgs:
 
     @property
     @pulumi.getter(name="nameIdentifierProbes")
-    def name_identifier_probes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def name_identifier_probes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
         """
         return pulumi.get(self, "name_identifier_probes")
 
     @name_identifier_probes.setter
-    def name_identifier_probes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def name_identifier_probes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "name_identifier_probes", value)
 
     @property
@@ -853,12 +853,12 @@ class ClientAddonsSamlpLogoutArgs:
 class ClientJwtConfigurationArgs:
     def __init__(__self__, *,
                  alg: Optional[pulumi.Input[str]] = None,
-                 lifetime_in_seconds: Optional[pulumi.Input[float]] = None,
+                 lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
                  scopes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  secret_encoded: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] alg: String. Algorithm used to sign JWTs.
-        :param pulumi.Input[float] lifetime_in_seconds: Integer. Number of seconds during which the JWT will be valid.
+        :param pulumi.Input[int] lifetime_in_seconds: Integer. Number of seconds during which the JWT will be valid.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scopes: Map(String). Permissions (scopes) included in JWTs.
         :param pulumi.Input[bool] secret_encoded: Boolean. Indicates whether or not the client secret is base64 encoded.
         """
@@ -885,14 +885,14 @@ class ClientJwtConfigurationArgs:
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")
-    def lifetime_in_seconds(self) -> Optional[pulumi.Input[float]]:
+    def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         Integer. Number of seconds during which the JWT will be valid.
         """
         return pulumi.get(self, "lifetime_in_seconds")
 
     @lifetime_in_seconds.setter
-    def lifetime_in_seconds(self, value: Optional[pulumi.Input[float]]):
+    def lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lifetime_in_seconds", value)
 
     @property
@@ -963,10 +963,10 @@ class ClientMobileArgs:
 class ClientMobileAndroidArgs:
     def __init__(__self__, *,
                  app_package_name: Optional[pulumi.Input[str]] = None,
-                 sha256_cert_fingerprints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 sha256_cert_fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] app_package_name: String
-        :param pulumi.Input[List[pulumi.Input[str]]] sha256_cert_fingerprints: List(String)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_cert_fingerprints: List(String)
         """
         if app_package_name is not None:
             pulumi.set(__self__, "app_package_name", app_package_name)
@@ -987,14 +987,14 @@ class ClientMobileAndroidArgs:
 
     @property
     @pulumi.getter(name="sha256CertFingerprints")
-    def sha256_cert_fingerprints(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def sha256_cert_fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List(String)
         """
         return pulumi.get(self, "sha256_cert_fingerprints")
 
     @sha256_cert_fingerprints.setter
-    def sha256_cert_fingerprints(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def sha256_cert_fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "sha256_cert_fingerprints", value)
 
 
@@ -1042,8 +1042,8 @@ class ClientRefreshTokenArgs:
     def __init__(__self__, *,
                  expiration_type: pulumi.Input[str],
                  rotation_type: pulumi.Input[str],
-                 leeway: Optional[pulumi.Input[float]] = None,
-                 token_lifetime: Optional[pulumi.Input[float]] = None):
+                 leeway: Optional[pulumi.Input[int]] = None,
+                 token_lifetime: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "expiration_type", expiration_type)
         pulumi.set(__self__, "rotation_type", rotation_type)
         if leeway is not None:
@@ -1071,20 +1071,20 @@ class ClientRefreshTokenArgs:
 
     @property
     @pulumi.getter
-    def leeway(self) -> Optional[pulumi.Input[float]]:
+    def leeway(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "leeway")
 
     @leeway.setter
-    def leeway(self, value: Optional[pulumi.Input[float]]):
+    def leeway(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "leeway", value)
 
     @property
     @pulumi.getter(name="tokenLifetime")
-    def token_lifetime(self) -> Optional[pulumi.Input[float]]:
+    def token_lifetime(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "token_lifetime")
 
     @token_lifetime.setter
-    def token_lifetime(self, value: Optional[pulumi.Input[float]]):
+    def token_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "token_lifetime", value)
 
 
@@ -1092,7 +1092,7 @@ class ClientRefreshTokenArgs:
 class ConnectionOptionsArgs:
     def __init__(__self__, *,
                  adfs_server: Optional[pulumi.Input[str]] = None,
-                 allowed_audiences: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  api_enable_users: Optional[pulumi.Input[bool]] = None,
                  app_domain: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
@@ -1109,7 +1109,7 @@ class ConnectionOptionsArgs:
                  disable_signup: Optional[pulumi.Input[bool]] = None,
                  discovery_url: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
-                 domain_aliases: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 domain_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled_database_customization: Optional[pulumi.Input[bool]] = None,
                  fields_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  from_: Optional[pulumi.Input[str]] = None,
@@ -1117,7 +1117,7 @@ class ConnectionOptionsArgs:
                  identity_api: Optional[pulumi.Input[str]] = None,
                  idp_initiated: Optional[pulumi.Input['ConnectionOptionsIdpInitiatedArgs']] = None,
                  import_mode: Optional[pulumi.Input[bool]] = None,
-                 ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  issuer: Optional[pulumi.Input[str]] = None,
                  jwks_uri: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
@@ -1126,20 +1126,20 @@ class ConnectionOptionsArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  password_complexity_options: Optional[pulumi.Input['ConnectionOptionsPasswordComplexityOptionsArgs']] = None,
                  password_dictionary: Optional[pulumi.Input['ConnectionOptionsPasswordDictionaryArgs']] = None,
-                 password_histories: Optional[pulumi.Input[List[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]] = None,
+                 password_histories: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]] = None,
                  password_no_personal_info: Optional[pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgs']] = None,
                  password_policy: Optional[pulumi.Input[str]] = None,
                  protocol_binding: Optional[pulumi.Input[str]] = None,
                  request_template: Optional[pulumi.Input[str]] = None,
                  requires_username: Optional[pulumi.Input[bool]] = None,
-                 scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  sign_in_endpoint: Optional[pulumi.Input[str]] = None,
                  sign_out_endpoint: Optional[pulumi.Input[str]] = None,
                  sign_saml_request: Optional[pulumi.Input[bool]] = None,
                  signature_algorithm: Optional[pulumi.Input[str]] = None,
                  signing_cert: Optional[pulumi.Input[str]] = None,
-                 strategy_version: Optional[pulumi.Input[float]] = None,
+                 strategy_version: Optional[pulumi.Input[int]] = None,
                  subject: Optional[pulumi.Input[str]] = None,
                  syntax: Optional[pulumi.Input[str]] = None,
                  team_id: Optional[pulumi.Input[str]] = None,
@@ -1160,7 +1160,7 @@ class ConnectionOptionsArgs:
                  waad_protocol: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] adfs_server: ADFS Metadata source.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_audiences: List of allowed audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_audiences: List of allowed audiences.
         :param pulumi.Input[str] app_domain: Azure AD domain name.
         :param pulumi.Input[str] app_id: Azure AD app ID.
         :param pulumi.Input[bool] brute_force_protection: Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -1173,7 +1173,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] digest_algorithm: Sign Request Algorithm Digest
         :param pulumi.Input[bool] disable_signup: Boolean. Indicates whether or not to allow user sign-ups to your application.
         :param pulumi.Input[str] discovery_url: OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
-        :param pulumi.Input[List[pulumi.Input[str]]] domain_aliases: List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_aliases: List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields_map: SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         :param pulumi.Input[str] from_: SMS number for the sender. Used when SMS Source is From.
         :param pulumi.Input[bool] import_mode: Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
@@ -1184,19 +1184,19 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsPasswordComplexityOptionsArgs'] password_complexity_options: Configuration settings for password complexity. For details, see Password Complexity Options.
         :param pulumi.Input['ConnectionOptionsPasswordDictionaryArgs'] password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
-        :param pulumi.Input[List[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
         :param pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgs'] password_no_personal_info: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
         :param pulumi.Input[str] password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         :param pulumi.Input[str] protocol_binding: The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
         :param pulumi.Input[str] request_template: Template that formats the SAML request
         :param pulumi.Input[bool] requires_username: Indicates whether or not the user is required to provide a username in addition to an email address.
-        :param pulumi.Input[List[pulumi.Input[str]]] scopes: Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
         :param pulumi.Input[str] sign_in_endpoint: SAML single login URL for the connection.
         :param pulumi.Input[str] sign_out_endpoint: SAML single logout URL for the connection.
         :param pulumi.Input[bool] sign_saml_request: (Boolean) When enabled, the SAML authentication request will be signed.
         :param pulumi.Input[str] signature_algorithm: Sign Request Algorithm
         :param pulumi.Input[str] signing_cert: The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
-        :param pulumi.Input[float] strategy_version: Version 1 is deprecated, use version 2.
+        :param pulumi.Input[int] strategy_version: Version 1 is deprecated, use version 2.
         :param pulumi.Input[str] syntax: Syntax of the SMS. Options include `markdown` and `liquid`.
         :param pulumi.Input[str] team_id: Team ID.
         :param pulumi.Input[str] template: Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
@@ -1360,14 +1360,14 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter(name="allowedAudiences")
-    def allowed_audiences(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of allowed audiences.
         """
         return pulumi.get(self, "allowed_audiences")
 
     @allowed_audiences.setter
-    def allowed_audiences(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_audiences", value)
 
     @property
@@ -1552,14 +1552,14 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter(name="domainAliases")
-    def domain_aliases(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def domain_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
         """
         return pulumi.get(self, "domain_aliases")
 
     @domain_aliases.setter
-    def domain_aliases(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def domain_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "domain_aliases", value)
 
     @property
@@ -1636,11 +1636,11 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
 
     @property
@@ -1738,14 +1738,14 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter(name="passwordHistories")
-    def password_histories(self) -> Optional[pulumi.Input[List[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]]:
+    def password_histories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]]:
         """
         Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
         """
         return pulumi.get(self, "password_histories")
 
     @password_histories.setter
-    def password_histories(self, value: Optional[pulumi.Input[List[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]]):
+    def password_histories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]]):
         pulumi.set(self, "password_histories", value)
 
     @property
@@ -1810,14 +1810,14 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scopes", value)
 
     @property
@@ -1891,14 +1891,14 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter(name="strategyVersion")
-    def strategy_version(self) -> Optional[pulumi.Input[float]]:
+    def strategy_version(self) -> Optional[pulumi.Input[int]]:
         """
         Version 1 is deprecated, use version 2.
         """
         return pulumi.get(self, "strategy_version")
 
     @strategy_version.setter
-    def strategy_version(self, value: Optional[pulumi.Input[float]]):
+    def strategy_version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "strategy_version", value)
 
     @property
@@ -2144,33 +2144,33 @@ class ConnectionOptionsIdpInitiatedArgs:
 @pulumi.input_type
 class ConnectionOptionsPasswordComplexityOptionsArgs:
     def __init__(__self__, *,
-                 min_length: Optional[pulumi.Input[float]] = None):
+                 min_length: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] min_length: Minimum number of characters allowed in passwords.
+        :param pulumi.Input[int] min_length: Minimum number of characters allowed in passwords.
         """
         if min_length is not None:
             pulumi.set(__self__, "min_length", min_length)
 
     @property
     @pulumi.getter(name="minLength")
-    def min_length(self) -> Optional[pulumi.Input[float]]:
+    def min_length(self) -> Optional[pulumi.Input[int]]:
         """
         Minimum number of characters allowed in passwords.
         """
         return pulumi.get(self, "min_length")
 
     @min_length.setter
-    def min_length(self, value: Optional[pulumi.Input[float]]):
+    def min_length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_length", value)
 
 
 @pulumi.input_type
 class ConnectionOptionsPasswordDictionaryArgs:
     def __init__(__self__, *,
-                 dictionaries: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 dictionaries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] dictionaries: Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dictionaries: Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
         :param pulumi.Input[bool] enable: Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
         """
         if dictionaries is not None:
@@ -2180,14 +2180,14 @@ class ConnectionOptionsPasswordDictionaryArgs:
 
     @property
     @pulumi.getter
-    def dictionaries(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def dictionaries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
         """
         return pulumi.get(self, "dictionaries")
 
     @dictionaries.setter
-    def dictionaries(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def dictionaries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dictionaries", value)
 
     @property
@@ -2207,10 +2207,10 @@ class ConnectionOptionsPasswordDictionaryArgs:
 class ConnectionOptionsPasswordHistoryArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
-                 size: Optional[pulumi.Input[float]] = None):
+                 size: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enable: Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-        :param pulumi.Input[float] size: Indicates the number of passwords to keep in history with a maximum of 24.
+        :param pulumi.Input[int] size: Indicates the number of passwords to keep in history with a maximum of 24.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -2231,14 +2231,14 @@ class ConnectionOptionsPasswordHistoryArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[float]]:
+    def size(self) -> Optional[pulumi.Input[int]]:
         """
         Indicates the number of passwords to keep in history with a maximum of 24.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[float]]):
+    def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
 
 
@@ -2268,11 +2268,11 @@ class ConnectionOptionsPasswordNoPersonalInfoArgs:
 @pulumi.input_type
 class ConnectionOptionsTotpArgs:
     def __init__(__self__, *,
-                 length: Optional[pulumi.Input[float]] = None,
-                 time_step: Optional[pulumi.Input[float]] = None):
+                 length: Optional[pulumi.Input[int]] = None,
+                 time_step: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] length: Integer. Length of the one-time password.
-        :param pulumi.Input[float] time_step: Integer. Seconds between allowed generation of new passwords.
+        :param pulumi.Input[int] length: Integer. Length of the one-time password.
+        :param pulumi.Input[int] time_step: Integer. Seconds between allowed generation of new passwords.
         """
         if length is not None:
             pulumi.set(__self__, "length", length)
@@ -2281,49 +2281,49 @@ class ConnectionOptionsTotpArgs:
 
     @property
     @pulumi.getter
-    def length(self) -> Optional[pulumi.Input[float]]:
+    def length(self) -> Optional[pulumi.Input[int]]:
         """
         Integer. Length of the one-time password.
         """
         return pulumi.get(self, "length")
 
     @length.setter
-    def length(self, value: Optional[pulumi.Input[float]]):
+    def length(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "length", value)
 
     @property
     @pulumi.getter(name="timeStep")
-    def time_step(self) -> Optional[pulumi.Input[float]]:
+    def time_step(self) -> Optional[pulumi.Input[int]]:
         """
         Integer. Seconds between allowed generation of new passwords.
         """
         return pulumi.get(self, "time_step")
 
     @time_step.setter
-    def time_step(self, value: Optional[pulumi.Input[float]]):
+    def time_step(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "time_step", value)
 
 
 @pulumi.input_type
 class CustomDomainVerificationArgs:
     def __init__(__self__, *,
-                 methods: Optional[pulumi.Input[List[Any]]] = None):
+                 methods: Optional[pulumi.Input[Sequence[Any]]] = None):
         """
-        :param pulumi.Input[List[Any]] methods: List(Map). Verification methods for the domain.
+        :param pulumi.Input[Sequence[Any]] methods: List(Map). Verification methods for the domain.
         """
         if methods is not None:
             pulumi.set(__self__, "methods", methods)
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[List[Any]]]:
+    def methods(self) -> Optional[pulumi.Input[Sequence[Any]]]:
         """
         List(Map). Verification methods for the domain.
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[List[Any]]]):
+    def methods(self, value: Optional[pulumi.Input[Sequence[Any]]]):
         pulumi.set(self, "methods", value)
 
 
@@ -2338,7 +2338,7 @@ class EmailCredentialsArgs:
                  secret_access_key: Optional[pulumi.Input[str]] = None,
                  smtp_host: Optional[pulumi.Input[str]] = None,
                  smtp_pass: Optional[pulumi.Input[str]] = None,
-                 smtp_port: Optional[pulumi.Input[float]] = None,
+                 smtp_port: Optional[pulumi.Input[int]] = None,
                  smtp_user: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] access_key_id: String, Case-sensitive. AWS Access Key ID. Used only for AWS.
@@ -2348,7 +2348,7 @@ class EmailCredentialsArgs:
         :param pulumi.Input[str] secret_access_key: String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
         :param pulumi.Input[str] smtp_host: String. Hostname or IP address of your SMTP server. Used only for SMTP.
         :param pulumi.Input[str] smtp_pass: String, Case-sensitive. SMTP password. Used only for SMTP.
-        :param pulumi.Input[float] smtp_port: Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+        :param pulumi.Input[int] smtp_port: Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
         :param pulumi.Input[str] smtp_user: String. SMTP username. Used only for SMTP.
         """
         if access_key_id is not None:
@@ -2467,14 +2467,14 @@ class EmailCredentialsArgs:
 
     @property
     @pulumi.getter(name="smtpPort")
-    def smtp_port(self) -> Optional[pulumi.Input[float]]:
+    def smtp_port(self) -> Optional[pulumi.Input[int]]:
         """
         Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
         """
         return pulumi.get(self, "smtp_port")
 
     @smtp_port.setter
-    def smtp_port(self, value: Optional[pulumi.Input[float]]):
+    def smtp_port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "smtp_port", value)
 
     @property
@@ -2841,13 +2841,13 @@ class GlobalClientAddonsSamlpArgs:
                  destination: Optional[pulumi.Input[str]] = None,
                  digest_algorithm: Optional[pulumi.Input[str]] = None,
                  include_attribute_name_format: Optional[pulumi.Input[bool]] = None,
-                 lifetime_in_seconds: Optional[pulumi.Input[float]] = None,
+                 lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
                  logout: Optional[pulumi.Input['GlobalClientAddonsSamlpLogoutArgs']] = None,
                  map_identities: Optional[pulumi.Input[bool]] = None,
                  map_unknown_claims_as_is: Optional[pulumi.Input[bool]] = None,
                  mappings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name_identifier_format: Optional[pulumi.Input[str]] = None,
-                 name_identifier_probes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name_identifier_probes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  passthrough_claims_with_no_mapping: Optional[pulumi.Input[bool]] = None,
                  recipient: Optional[pulumi.Input[str]] = None,
                  sign_response: Optional[pulumi.Input[bool]] = None,
@@ -2957,11 +2957,11 @@ class GlobalClientAddonsSamlpArgs:
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")
-    def lifetime_in_seconds(self) -> Optional[pulumi.Input[float]]:
+    def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "lifetime_in_seconds")
 
     @lifetime_in_seconds.setter
-    def lifetime_in_seconds(self, value: Optional[pulumi.Input[float]]):
+    def lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lifetime_in_seconds", value)
 
     @property
@@ -3011,11 +3011,11 @@ class GlobalClientAddonsSamlpArgs:
 
     @property
     @pulumi.getter(name="nameIdentifierProbes")
-    def name_identifier_probes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def name_identifier_probes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "name_identifier_probes")
 
     @name_identifier_probes.setter
-    def name_identifier_probes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def name_identifier_probes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "name_identifier_probes", value)
 
     @property
@@ -3097,7 +3097,7 @@ class GlobalClientAddonsSamlpLogoutArgs:
 class GlobalClientJwtConfigurationArgs:
     def __init__(__self__, *,
                  alg: Optional[pulumi.Input[str]] = None,
-                 lifetime_in_seconds: Optional[pulumi.Input[float]] = None,
+                 lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
                  scopes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  secret_encoded: Optional[pulumi.Input[bool]] = None):
         if alg is not None:
@@ -3120,11 +3120,11 @@ class GlobalClientJwtConfigurationArgs:
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")
-    def lifetime_in_seconds(self) -> Optional[pulumi.Input[float]]:
+    def lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "lifetime_in_seconds")
 
     @lifetime_in_seconds.setter
-    def lifetime_in_seconds(self, value: Optional[pulumi.Input[float]]):
+    def lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lifetime_in_seconds", value)
 
     @property
@@ -3179,7 +3179,7 @@ class GlobalClientMobileArgs:
 class GlobalClientMobileAndroidArgs:
     def __init__(__self__, *,
                  app_package_name: Optional[pulumi.Input[str]] = None,
-                 sha256_cert_fingerprints: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 sha256_cert_fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if app_package_name is not None:
             pulumi.set(__self__, "app_package_name", app_package_name)
         if sha256_cert_fingerprints is not None:
@@ -3196,11 +3196,11 @@ class GlobalClientMobileAndroidArgs:
 
     @property
     @pulumi.getter(name="sha256CertFingerprints")
-    def sha256_cert_fingerprints(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def sha256_cert_fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "sha256_cert_fingerprints")
 
     @sha256_cert_fingerprints.setter
-    def sha256_cert_fingerprints(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def sha256_cert_fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "sha256_cert_fingerprints", value)
 
 
@@ -3238,8 +3238,8 @@ class GlobalClientRefreshTokenArgs:
     def __init__(__self__, *,
                  expiration_type: pulumi.Input[str],
                  rotation_type: pulumi.Input[str],
-                 leeway: Optional[pulumi.Input[float]] = None,
-                 token_lifetime: Optional[pulumi.Input[float]] = None):
+                 leeway: Optional[pulumi.Input[int]] = None,
+                 token_lifetime: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "expiration_type", expiration_type)
         pulumi.set(__self__, "rotation_type", rotation_type)
         if leeway is not None:
@@ -3267,20 +3267,20 @@ class GlobalClientRefreshTokenArgs:
 
     @property
     @pulumi.getter
-    def leeway(self) -> Optional[pulumi.Input[float]]:
+    def leeway(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "leeway")
 
     @leeway.setter
-    def leeway(self, value: Optional[pulumi.Input[float]]):
+    def leeway(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "leeway", value)
 
     @property
     @pulumi.getter(name="tokenLifetime")
-    def token_lifetime(self) -> Optional[pulumi.Input[float]]:
+    def token_lifetime(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "token_lifetime")
 
     @token_lifetime.setter
-    def token_lifetime(self, value: Optional[pulumi.Input[float]]):
+    def token_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "token_lifetime", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,10 +18,10 @@ class GlobalClient(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
-                 allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
-                 callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -34,7 +34,7 @@ class GlobalClient(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
-                 grant_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  initiate_login_uri: Optional[pulumi.Input[str]] = None,
                  is_first_party: Optional[pulumi.Input[bool]] = None,
                  is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
@@ -47,7 +47,7 @@ class GlobalClient(pulumi.CustomResource):
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
-                 web_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -115,10 +115,10 @@ class GlobalClient(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
-            allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             app_type: Optional[pulumi.Input[str]] = None,
-            callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             client_secret: Optional[pulumi.Input[str]] = None,
@@ -131,7 +131,7 @@ class GlobalClient(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             form_template: Optional[pulumi.Input[str]] = None,
-            grant_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             initiate_login_uri: Optional[pulumi.Input[str]] = None,
             is_first_party: Optional[pulumi.Input[bool]] = None,
             is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
@@ -144,7 +144,7 @@ class GlobalClient(pulumi.CustomResource):
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
             token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
-            web_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'GlobalClient':
+            web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'GlobalClient':
         """
         Get an existing GlobalClient resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -197,12 +197,12 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
-    def allowed_logout_urls(self) -> pulumi.Output[List[str]]:
+    def allowed_logout_urls(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "allowed_logout_urls")
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> pulumi.Output[List[str]]:
+    def allowed_origins(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "allowed_origins")
 
     @property
@@ -212,7 +212,7 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def callbacks(self) -> pulumi.Output[List[str]]:
+    def callbacks(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "callbacks")
 
     @property
@@ -277,7 +277,7 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="grantTypes")
-    def grant_types(self) -> pulumi.Output[List[str]]:
+    def grant_types(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "grant_types")
 
     @property
@@ -342,7 +342,7 @@ class GlobalClient(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webOrigins")
-    def web_origins(self) -> pulumi.Output[List[str]]:
+    def web_origins(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "web_origins")
 
     def translate_output_property(self, prop):

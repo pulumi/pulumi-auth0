@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['User']
@@ -28,7 +28,7 @@ class User(pulumi.CustomResource):
                  phone_number: Optional[pulumi.Input[str]] = None,
                  phone_verified: Optional[pulumi.Input[bool]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
-                 roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_metadata: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -69,7 +69,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] password: String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
         :param pulumi.Input[str] phone_number: String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Boolean. Indicates whether or not the phone number has been verified.
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: Set(String). Set of IDs of roles assigned to the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set(String). Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: String. ID of the user.
         :param pulumi.Input[str] user_metadata: String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         :param pulumi.Input[str] username: String. Username of the user. Only valid if the connection requires a username.
@@ -135,7 +135,7 @@ class User(pulumi.CustomResource):
             phone_number: Optional[pulumi.Input[str]] = None,
             phone_verified: Optional[pulumi.Input[bool]] = None,
             picture: Optional[pulumi.Input[str]] = None,
-            roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             user_id: Optional[pulumi.Input[str]] = None,
             user_metadata: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None,
@@ -155,7 +155,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] password: String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
         :param pulumi.Input[str] phone_number: String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Boolean. Indicates whether or not the phone number has been verified.
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: Set(String). Set of IDs of roles assigned to the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set(String). Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: String. ID of the user.
         :param pulumi.Input[str] user_metadata: String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         :param pulumi.Input[str] username: String. Username of the user. Only valid if the connection requires a username.
@@ -276,7 +276,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> pulumi.Output[Optional[List[str]]]:
+    def roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Set(String). Set of IDs of roles assigned to the user.
         """

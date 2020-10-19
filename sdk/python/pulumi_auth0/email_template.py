@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['EmailTemplate']
@@ -22,7 +22,7 @@ class EmailTemplate(pulumi.CustomResource):
                  subject: Optional[pulumi.Input[str]] = None,
                  syntax: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
-                 url_lifetime_in_seconds: Optional[pulumi.Input[float]] = None,
+                 url_lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -64,7 +64,7 @@ class EmailTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param pulumi.Input[str] syntax: String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
         :param pulumi.Input[str] template: String. Template name. Options include `verify_email`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).
-        :param pulumi.Input[float] url_lifetime_in_seconds: Integer. Number of seconds during which the link within the email will be valid.
+        :param pulumi.Input[int] url_lifetime_in_seconds: Integer. Number of seconds during which the link within the email will be valid.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -120,7 +120,7 @@ class EmailTemplate(pulumi.CustomResource):
             subject: Optional[pulumi.Input[str]] = None,
             syntax: Optional[pulumi.Input[str]] = None,
             template: Optional[pulumi.Input[str]] = None,
-            url_lifetime_in_seconds: Optional[pulumi.Input[float]] = None) -> 'EmailTemplate':
+            url_lifetime_in_seconds: Optional[pulumi.Input[int]] = None) -> 'EmailTemplate':
         """
         Get an existing EmailTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -135,7 +135,7 @@ class EmailTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param pulumi.Input[str] syntax: String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
         :param pulumi.Input[str] template: String. Template name. Options include `verify_email`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).
-        :param pulumi.Input[float] url_lifetime_in_seconds: Integer. Number of seconds during which the link within the email will be valid.
+        :param pulumi.Input[int] url_lifetime_in_seconds: Integer. Number of seconds during which the link within the email will be valid.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -209,7 +209,7 @@ class EmailTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="urlLifetimeInSeconds")
-    def url_lifetime_in_seconds(self) -> pulumi.Output[Optional[float]]:
+    def url_lifetime_in_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         Integer. Number of seconds during which the link within the email will be valid.
         """

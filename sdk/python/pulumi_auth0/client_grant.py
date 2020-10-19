@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ClientGrant']
@@ -17,7 +17,7 @@ class ClientGrant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
-                 scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -53,7 +53,7 @@ class ClientGrant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
         :param pulumi.Input[str] client_id: String. ID of the client for this grant.
-        :param pulumi.Input[List[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +93,7 @@ class ClientGrant(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             audience: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
-            scopes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ClientGrant':
+            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ClientGrant':
         """
         Get an existing ClientGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -103,7 +103,7 @@ class ClientGrant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
         :param pulumi.Input[str] client_id: String. ID of the client for this grant.
-        :param pulumi.Input[List[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -132,7 +132,7 @@ class ClientGrant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scopes(self) -> pulumi.Output[List[str]]:
+    def scopes(self) -> pulumi.Output[Sequence[str]]:
         """
         List(String). Permissions (scopes) included in this grant.
         """
