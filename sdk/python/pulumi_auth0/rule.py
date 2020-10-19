@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Rule']
@@ -17,7 +17,7 @@ class Rule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 order: Optional[pulumi.Input[float]] = None,
+                 order: Optional[pulumi.Input[int]] = None,
                  script: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -47,7 +47,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Boolean. Indicates whether the rule is enabled.
         :param pulumi.Input[str] name: String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-        :param pulumi.Input[float] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        :param pulumi.Input[int] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         :param pulumi.Input[str] script: String. Code to be executed when the rule runs.
         """
         if __name__ is not None:
@@ -85,7 +85,7 @@ class Rule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            order: Optional[pulumi.Input[float]] = None,
+            order: Optional[pulumi.Input[int]] = None,
             script: Optional[pulumi.Input[str]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
@@ -96,7 +96,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Boolean. Indicates whether the rule is enabled.
         :param pulumi.Input[str] name: String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-        :param pulumi.Input[float] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        :param pulumi.Input[int] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         :param pulumi.Input[str] script: String. Code to be executed when the rule runs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -127,7 +127,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def order(self) -> pulumi.Output[float]:
+    def order(self) -> pulumi.Output[int]:
         """
         Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         """

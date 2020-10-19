@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,13 +22,13 @@ class ResourceServer(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 scopes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]]] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
                  skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
                  token_dialect: Optional[pulumi.Input[str]] = None,
-                 token_lifetime: Optional[pulumi.Input[float]] = None,
-                 token_lifetime_for_web: Optional[pulumi.Input[float]] = None,
+                 token_lifetime: Optional[pulumi.Input[int]] = None,
+                 token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
                  verification_location: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -67,13 +67,13 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
         :param pulumi.Input[str] name: String. Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map(String). Used to store additional metadata
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
         :param pulumi.Input[str] signing_alg: String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: String. Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
-        :param pulumi.Input[float] token_lifetime: Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
-        :param pulumi.Input[float] token_lifetime_for_web: Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        :param pulumi.Input[int] token_lifetime: Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+        :param pulumi.Input[int] token_lifetime_for_web: Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: String
         """
         if __name__ is not None:
@@ -121,13 +121,13 @@ class ResourceServer(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            scopes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]]] = None,
+            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]]] = None,
             signing_alg: Optional[pulumi.Input[str]] = None,
             signing_secret: Optional[pulumi.Input[str]] = None,
             skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[bool]] = None,
             token_dialect: Optional[pulumi.Input[str]] = None,
-            token_lifetime: Optional[pulumi.Input[float]] = None,
-            token_lifetime_for_web: Optional[pulumi.Input[float]] = None,
+            token_lifetime: Optional[pulumi.Input[int]] = None,
+            token_lifetime_for_web: Optional[pulumi.Input[int]] = None,
             verification_location: Optional[pulumi.Input[str]] = None) -> 'ResourceServer':
         """
         Get an existing ResourceServer resource's state with the given name, id, and optional extra
@@ -141,13 +141,13 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
         :param pulumi.Input[str] name: String. Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map(String). Used to store additional metadata
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
         :param pulumi.Input[str] signing_alg: String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: String. Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
-        :param pulumi.Input[float] token_lifetime: Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
-        :param pulumi.Input[float] token_lifetime_for_web: Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        :param pulumi.Input[int] token_lifetime: Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+        :param pulumi.Input[int] token_lifetime_for_web: Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[str] verification_location: String
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -211,7 +211,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scopes(self) -> pulumi.Output[Optional[List['outputs.ResourceServerScope']]]:
+    def scopes(self) -> pulumi.Output[Optional[Sequence['outputs.ResourceServerScope']]]:
         """
         Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
         """
@@ -251,7 +251,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenLifetime")
-    def token_lifetime(self) -> pulumi.Output[float]:
+    def token_lifetime(self) -> pulumi.Output[int]:
         """
         Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         """
@@ -259,7 +259,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenLifetimeForWeb")
-    def token_lifetime_for_web(self) -> pulumi.Output[float]:
+    def token_lifetime_for_web(self) -> pulumi.Output[int]:
         """
         Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         """

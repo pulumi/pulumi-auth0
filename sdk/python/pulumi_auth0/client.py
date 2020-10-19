@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,10 +18,10 @@ class Client(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
-                 allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
-                 callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  cross_origin_auth: Optional[pulumi.Input[bool]] = None,
@@ -32,7 +32,7 @@ class Client(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
-                 grant_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  initiate_login_uri: Optional[pulumi.Input[str]] = None,
                  is_first_party: Optional[pulumi.Input[bool]] = None,
                  is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
@@ -45,7 +45,7 @@ class Client(pulumi.CustomResource):
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
-                 web_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -120,10 +120,10 @@ class Client(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
-        :param pulumi.Input[List[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
         :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map.
         :param pulumi.Input[bool] cross_origin_auth: Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
@@ -134,7 +134,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] description: String, (Max length = 140 characters). Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Map(String).
         :param pulumi.Input[str] form_template: String. Form template for WS-Federation protocol.
-        :param pulumi.Input[List[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
         :param pulumi.Input[bool] is_first_party: Boolean. Indicates whether or not this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Boolean. Indicates whether or not the token endpoint IP header is trusted.
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
@@ -145,7 +145,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
         :param pulumi.Input[str] token_endpoint_auth_method: String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        :param pulumi.Input[List[pulumi.Input[str]]] web_origins: List(String). URLs that represent valid web origins for use with web message response mode.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: List(String). URLs that represent valid web origins for use with web message response mode.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -208,10 +208,10 @@ class Client(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
-            allowed_logout_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             app_type: Optional[pulumi.Input[str]] = None,
-            callbacks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             client_secret: Optional[pulumi.Input[str]] = None,
@@ -224,7 +224,7 @@ class Client(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             form_template: Optional[pulumi.Input[str]] = None,
-            grant_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             initiate_login_uri: Optional[pulumi.Input[str]] = None,
             is_first_party: Optional[pulumi.Input[bool]] = None,
             is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
@@ -237,7 +237,7 @@ class Client(pulumi.CustomResource):
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
             token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
-            web_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Client':
+            web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Client':
         """
         Get an existing Client resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -246,10 +246,10 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
-        :param pulumi.Input[List[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[str] client_id: String. ID of the client.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
         :param pulumi.Input[str] client_secret: String. Secret for the client; keep this private.
@@ -262,7 +262,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] description: String, (Max length = 140 characters). Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Map(String).
         :param pulumi.Input[str] form_template: String. Form template for WS-Federation protocol.
-        :param pulumi.Input[List[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
         :param pulumi.Input[bool] is_first_party: Boolean. Indicates whether or not this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Boolean. Indicates whether or not the token endpoint IP header is trusted.
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
@@ -273,7 +273,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
         :param pulumi.Input[str] token_endpoint_auth_method: String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        :param pulumi.Input[List[pulumi.Input[str]]] web_origins: List(String). URLs that represent valid web origins for use with web message response mode.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: List(String). URLs that represent valid web origins for use with web message response mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -322,7 +322,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
-    def allowed_logout_urls(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_logout_urls(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List(String). URLs that Auth0 may redirect to after logout.
         """
@@ -330,7 +330,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_origins(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         """
@@ -346,7 +346,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def callbacks(self) -> pulumi.Output[Optional[List[str]]]:
+    def callbacks(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         """
@@ -450,7 +450,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="grantTypes")
-    def grant_types(self) -> pulumi.Output[List[str]]:
+    def grant_types(self) -> pulumi.Output[Sequence[str]]:
         """
         List(String). Types of grants that this client is authorized to use.
         """
@@ -548,7 +548,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webOrigins")
-    def web_origins(self) -> pulumi.Output[Optional[List[str]]]:
+    def web_origins(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List(String). URLs that represent valid web origins for use with web message response mode.
         """
