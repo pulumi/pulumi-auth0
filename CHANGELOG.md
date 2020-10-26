@@ -2,10 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to Pulumi v2.12.0 and pulumi-terraform-bridge v2.11.0
-* Improving the accuracy of previews leading to a more accurate understanding of what will actually change rather than assuming all output properties will change
+_(none)_
 
 ---
+
+## 1.3.0 (2020-10-26)
+* Upgrade to Pulumi v2.12.0 and pulumi-terraform-bridge v2.11.0
+* Improving the accuracy of previews leading to a more accurate understanding of what will actually change rather than assuming all output properties will change.  
+  ** PLEASE NOTE:**  
+  This new preview functionality can be disabled by setting `PULUMI_DISABLE_PROVIDER_PREVIEW` to `1` or `false`.
 
 ## 1.2.0 (2020-10-01)
 * Upgrade to pulumi-terraform-bridge v2.8.0
