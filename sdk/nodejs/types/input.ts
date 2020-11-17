@@ -675,6 +675,27 @@ export interface GlobalClientRefreshToken {
     tokenLifetime?: pulumi.Input<number>;
 }
 
+export interface LogStreamSink {
+    awsAccountId?: pulumi.Input<string>;
+    awsPartnerEventSource?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string>;
+    azurePartnerTopic?: pulumi.Input<string>;
+    azureRegion?: pulumi.Input<string>;
+    azureResourceGroup?: pulumi.Input<string>;
+    azureSubscriptionId?: pulumi.Input<string>;
+    datadogApiKey?: pulumi.Input<string>;
+    datadogRegion?: pulumi.Input<string>;
+    httpAuthorization?: pulumi.Input<string>;
+    httpContentFormat?: pulumi.Input<string>;
+    httpContentType?: pulumi.Input<string>;
+    httpCustomHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    httpEndpoint?: pulumi.Input<string>;
+    splunkDomain?: pulumi.Input<string>;
+    splunkPort?: pulumi.Input<string>;
+    splunkSecure?: pulumi.Input<boolean>;
+    splunkToken?: pulumi.Input<string>;
+}
+
 export interface ResourceServerScope {
     /**
      * String. Description of the permission (scope).

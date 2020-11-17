@@ -152,6 +152,7 @@ func Provider() tfbridge.ProviderInfo {
 			"auth0_user": {
 				Tok: makeResource(mainMod, "User"),
 			},
+			"auth0_log_stream": {Tok: makeResource(mainMod, "LogStream")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

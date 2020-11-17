@@ -34,6 +34,7 @@ __all__ = [
     'GlobalClientMobileAndroidArgs',
     'GlobalClientMobileIosArgs',
     'GlobalClientRefreshTokenArgs',
+    'LogStreamSinkArgs',
     'ResourceServerScopeArgs',
     'RolePermissionArgs',
     'TenantChangePasswordArgs',
@@ -3282,6 +3283,227 @@ class GlobalClientRefreshTokenArgs:
     @token_lifetime.setter
     def token_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "token_lifetime", value)
+
+
+@pulumi.input_type
+class LogStreamSinkArgs:
+    def __init__(__self__, *,
+                 aws_account_id: Optional[pulumi.Input[str]] = None,
+                 aws_partner_event_source: Optional[pulumi.Input[str]] = None,
+                 aws_region: Optional[pulumi.Input[str]] = None,
+                 azure_partner_topic: Optional[pulumi.Input[str]] = None,
+                 azure_region: Optional[pulumi.Input[str]] = None,
+                 azure_resource_group: Optional[pulumi.Input[str]] = None,
+                 azure_subscription_id: Optional[pulumi.Input[str]] = None,
+                 datadog_api_key: Optional[pulumi.Input[str]] = None,
+                 datadog_region: Optional[pulumi.Input[str]] = None,
+                 http_authorization: Optional[pulumi.Input[str]] = None,
+                 http_content_format: Optional[pulumi.Input[str]] = None,
+                 http_content_type: Optional[pulumi.Input[str]] = None,
+                 http_custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 splunk_domain: Optional[pulumi.Input[str]] = None,
+                 splunk_port: Optional[pulumi.Input[str]] = None,
+                 splunk_secure: Optional[pulumi.Input[bool]] = None,
+                 splunk_token: Optional[pulumi.Input[str]] = None):
+        if aws_account_id is not None:
+            pulumi.set(__self__, "aws_account_id", aws_account_id)
+        if aws_partner_event_source is not None:
+            pulumi.set(__self__, "aws_partner_event_source", aws_partner_event_source)
+        if aws_region is not None:
+            pulumi.set(__self__, "aws_region", aws_region)
+        if azure_partner_topic is not None:
+            pulumi.set(__self__, "azure_partner_topic", azure_partner_topic)
+        if azure_region is not None:
+            pulumi.set(__self__, "azure_region", azure_region)
+        if azure_resource_group is not None:
+            pulumi.set(__self__, "azure_resource_group", azure_resource_group)
+        if azure_subscription_id is not None:
+            pulumi.set(__self__, "azure_subscription_id", azure_subscription_id)
+        if datadog_api_key is not None:
+            pulumi.set(__self__, "datadog_api_key", datadog_api_key)
+        if datadog_region is not None:
+            pulumi.set(__self__, "datadog_region", datadog_region)
+        if http_authorization is not None:
+            pulumi.set(__self__, "http_authorization", http_authorization)
+        if http_content_format is not None:
+            pulumi.set(__self__, "http_content_format", http_content_format)
+        if http_content_type is not None:
+            pulumi.set(__self__, "http_content_type", http_content_type)
+        if http_custom_headers is not None:
+            pulumi.set(__self__, "http_custom_headers", http_custom_headers)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if splunk_domain is not None:
+            pulumi.set(__self__, "splunk_domain", splunk_domain)
+        if splunk_port is not None:
+            pulumi.set(__self__, "splunk_port", splunk_port)
+        if splunk_secure is not None:
+            pulumi.set(__self__, "splunk_secure", splunk_secure)
+        if splunk_token is not None:
+            pulumi.set(__self__, "splunk_token", splunk_token)
+
+    @property
+    @pulumi.getter(name="awsAccountId")
+    def aws_account_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_account_id")
+
+    @aws_account_id.setter
+    def aws_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_account_id", value)
+
+    @property
+    @pulumi.getter(name="awsPartnerEventSource")
+    def aws_partner_event_source(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_partner_event_source")
+
+    @aws_partner_event_source.setter
+    def aws_partner_event_source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_partner_event_source", value)
+
+    @property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_region")
+
+    @aws_region.setter
+    def aws_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_region", value)
+
+    @property
+    @pulumi.getter(name="azurePartnerTopic")
+    def azure_partner_topic(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "azure_partner_topic")
+
+    @azure_partner_topic.setter
+    def azure_partner_topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "azure_partner_topic", value)
+
+    @property
+    @pulumi.getter(name="azureRegion")
+    def azure_region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "azure_region")
+
+    @azure_region.setter
+    def azure_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "azure_region", value)
+
+    @property
+    @pulumi.getter(name="azureResourceGroup")
+    def azure_resource_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "azure_resource_group")
+
+    @azure_resource_group.setter
+    def azure_resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "azure_resource_group", value)
+
+    @property
+    @pulumi.getter(name="azureSubscriptionId")
+    def azure_subscription_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "azure_subscription_id")
+
+    @azure_subscription_id.setter
+    def azure_subscription_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "azure_subscription_id", value)
+
+    @property
+    @pulumi.getter(name="datadogApiKey")
+    def datadog_api_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "datadog_api_key")
+
+    @datadog_api_key.setter
+    def datadog_api_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datadog_api_key", value)
+
+    @property
+    @pulumi.getter(name="datadogRegion")
+    def datadog_region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "datadog_region")
+
+    @datadog_region.setter
+    def datadog_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datadog_region", value)
+
+    @property
+    @pulumi.getter(name="httpAuthorization")
+    def http_authorization(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_authorization")
+
+    @http_authorization.setter
+    def http_authorization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_authorization", value)
+
+    @property
+    @pulumi.getter(name="httpContentFormat")
+    def http_content_format(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_content_format")
+
+    @http_content_format.setter
+    def http_content_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_content_format", value)
+
+    @property
+    @pulumi.getter(name="httpContentType")
+    def http_content_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_content_type")
+
+    @http_content_type.setter
+    def http_content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_content_type", value)
+
+    @property
+    @pulumi.getter(name="httpCustomHeaders")
+    def http_custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "http_custom_headers")
+
+    @http_custom_headers.setter
+    def http_custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "http_custom_headers", value)
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_endpoint", value)
+
+    @property
+    @pulumi.getter(name="splunkDomain")
+    def splunk_domain(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "splunk_domain")
+
+    @splunk_domain.setter
+    def splunk_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "splunk_domain", value)
+
+    @property
+    @pulumi.getter(name="splunkPort")
+    def splunk_port(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "splunk_port")
+
+    @splunk_port.setter
+    def splunk_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "splunk_port", value)
+
+    @property
+    @pulumi.getter(name="splunkSecure")
+    def splunk_secure(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "splunk_secure")
+
+    @splunk_secure.setter
+    def splunk_secure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "splunk_secure", value)
+
+    @property
+    @pulumi.getter(name="splunkToken")
+    def splunk_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "splunk_token")
+
+    @splunk_token.setter
+    def splunk_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "splunk_token", value)
 
 
 @pulumi.input_type

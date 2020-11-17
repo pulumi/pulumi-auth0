@@ -10,6 +10,7 @@ export * from "./email";
 export * from "./emailTemplate";
 export * from "./globalClient";
 export * from "./hook";
+export * from "./logStream";
 export * from "./prompt";
 export * from "./provider";
 export * from "./resourceServer";

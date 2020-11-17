@@ -675,6 +675,27 @@ export interface GlobalClientRefreshToken {
     tokenLifetime?: number;
 }
 
+export interface LogStreamSink {
+    awsAccountId?: string;
+    awsPartnerEventSource: string;
+    awsRegion?: string;
+    azurePartnerTopic: string;
+    azureRegion?: string;
+    azureResourceGroup?: string;
+    azureSubscriptionId?: string;
+    datadogApiKey?: string;
+    datadogRegion?: string;
+    httpAuthorization?: string;
+    httpContentFormat?: string;
+    httpContentType?: string;
+    httpCustomHeaders?: string[];
+    httpEndpoint?: string;
+    splunkDomain?: string;
+    splunkPort?: string;
+    splunkSecure?: boolean;
+    splunkToken?: string;
+}
+
 export interface ResourceServerScope {
     /**
      * String. Description of the permission (scope).
