@@ -2288,6 +2288,166 @@
                 "rotationType"
             ]
         },
+        "auth0:index/LogStreamSink:LogStreamSink": {
+            "properties": {
+                "awsAccountId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsPartnerEventSource": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsRegion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "azurePartnerTopic": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "azureRegion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "azureResourceGroup": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "azureSubscriptionId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "datadogApiKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "datadogRegion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpAuthorization": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpContentFormat": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpContentType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpCustomHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpEndpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "splunkDomain": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "splunkPort": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "splunkSecure": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "splunkToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "awsPartnerEventSource",
+                        "azurePartnerTopic"
+                    ]
+                }
+            }
+        },
         "auth0:index/ResourceServerScope:ResourceServerScope": {
             "properties": {
                 "description": {
@@ -4048,6 +4208,70 @@
                 "type": "object"
             }
         },
+        "auth0:index/logStream:LogStream": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "sink": {
+                    "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the LogStream\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the log stream, which indicates the sink provider\n"
+                }
+            },
+            "required": [
+                "name",
+                "sink",
+                "status",
+                "type"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "sink": {
+                    "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the LogStream\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the log stream, which indicates the sink provider\n"
+                }
+            },
+            "requiredInputs": [
+                "sink",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LogStream resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "sink": {
+                        "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the LogStream\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the log stream, which indicates the sink provider\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/prompt:Prompt": {
             "description": "With this resource, you can manage your Auth0 prompts, including choosing the login experience version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst example = new auth0.Prompt(\"example\", {\n    universalLoginExperience: \"classic\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nexample = auth0.Prompt(\"example\", universal_login_experience=\"classic\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Auth0.Prompt(\"example\", new Auth0.PromptArgs\n        {\n            UniversalLoginExperience = \"classic\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPrompt(ctx, \"example\", \u0026auth0.PromptArgs{\n\t\t\tUniversalLoginExperience: pulumi.String(\"classic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -4495,7 +4719,7 @@
                     "description": "List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.\n"
                 },
                 "idleSessionLifetime": {
-                    "type": "integer",
+                    "type": "number",
                     "description": "Integer. Number of hours during which a session can be inactive before the user must log in again.\n"
                 },
                 "pictureUrl": {
@@ -4507,7 +4731,7 @@
                     "description": "String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.\n"
                 },
                 "sessionLifetime": {
-                    "type": "integer",
+                    "type": "number",
                     "description": "Integer. Number of hours during which a session will stay valid.\n"
                 },
                 "supportEmail": {
@@ -4589,7 +4813,7 @@
                     "description": "List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.\n"
                 },
                 "idleSessionLifetime": {
-                    "type": "integer",
+                    "type": "number",
                     "description": "Integer. Number of hours during which a session can be inactive before the user must log in again.\n"
                 },
                 "pictureUrl": {
@@ -4601,7 +4825,7 @@
                     "description": "String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.\n"
                 },
                 "sessionLifetime": {
-                    "type": "integer",
+                    "type": "number",
                     "description": "Integer. Number of hours during which a session will stay valid.\n"
                 },
                 "supportEmail": {
@@ -4666,7 +4890,7 @@
                         "description": "List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.\n"
                     },
                     "idleSessionLifetime": {
-                        "type": "integer",
+                        "type": "number",
                         "description": "Integer. Number of hours during which a session can be inactive before the user must log in again.\n"
                     },
                     "pictureUrl": {
@@ -4678,7 +4902,7 @@
                         "description": "String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.\n"
                     },
                     "sessionLifetime": {
-                        "type": "integer",
+                        "type": "number",
                         "description": "Integer. Number of hours during which a session will stay valid.\n"
                     },
                     "supportEmail": {

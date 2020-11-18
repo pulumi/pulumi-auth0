@@ -11,6 +11,7 @@ from .email import *
 from .email_template import *
 from .global_client import *
 from .hook import *
+from .log_stream import *
 from .prompt import *
 from .provider import *
 from .resource_server import *

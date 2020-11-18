@@ -126,7 +126,7 @@ namespace Pulumi.Auth0
         /// Integer. Number of hours during which a session can be inactive before the user must log in again.
         /// </summary>
         [Output("idleSessionLifetime")]
-        public Output<int> IdleSessionLifetime { get; private set; } = null!;
+        public Output<double> IdleSessionLifetime { get; private set; } = null!;
 
         /// <summary>
         /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
@@ -144,7 +144,7 @@ namespace Pulumi.Auth0
         /// Integer. Number of hours during which a session will stay valid.
         /// </summary>
         [Output("sessionLifetime")]
-        public Output<int> SessionLifetime { get; private set; } = null!;
+        public Output<double> SessionLifetime { get; private set; } = null!;
 
         /// <summary>
         /// String. Support email address for authenticating users.
@@ -282,7 +282,7 @@ namespace Pulumi.Auth0
         /// Integer. Number of hours during which a session can be inactive before the user must log in again.
         /// </summary>
         [Input("idleSessionLifetime")]
-        public Input<int>? IdleSessionLifetime { get; set; }
+        public Input<double>? IdleSessionLifetime { get; set; }
 
         /// <summary>
         /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
@@ -300,7 +300,7 @@ namespace Pulumi.Auth0
         /// Integer. Number of hours during which a session will stay valid.
         /// </summary>
         [Input("sessionLifetime")]
-        public Input<int>? SessionLifetime { get; set; }
+        public Input<double>? SessionLifetime { get; set; }
 
         /// <summary>
         /// String. Support email address for authenticating users.
@@ -399,7 +399,7 @@ namespace Pulumi.Auth0
         /// Integer. Number of hours during which a session can be inactive before the user must log in again.
         /// </summary>
         [Input("idleSessionLifetime")]
-        public Input<int>? IdleSessionLifetime { get; set; }
+        public Input<double>? IdleSessionLifetime { get; set; }
 
         /// <summary>
         /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
@@ -417,7 +417,7 @@ namespace Pulumi.Auth0
         /// Integer. Number of hours during which a session will stay valid.
         /// </summary>
         [Input("sessionLifetime")]
-        public Input<int>? SessionLifetime { get; set; }
+        public Input<double>? SessionLifetime { get; set; }
 
         /// <summary>
         /// String. Support email address for authenticating users.

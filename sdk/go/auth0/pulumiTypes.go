@@ -6497,6 +6497,387 @@ func (o GlobalClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type LogStreamSink struct {
+	AwsAccountId          *string  `pulumi:"awsAccountId"`
+	AwsPartnerEventSource *string  `pulumi:"awsPartnerEventSource"`
+	AwsRegion             *string  `pulumi:"awsRegion"`
+	AzurePartnerTopic     *string  `pulumi:"azurePartnerTopic"`
+	AzureRegion           *string  `pulumi:"azureRegion"`
+	AzureResourceGroup    *string  `pulumi:"azureResourceGroup"`
+	AzureSubscriptionId   *string  `pulumi:"azureSubscriptionId"`
+	DatadogApiKey         *string  `pulumi:"datadogApiKey"`
+	DatadogRegion         *string  `pulumi:"datadogRegion"`
+	HttpAuthorization     *string  `pulumi:"httpAuthorization"`
+	HttpContentFormat     *string  `pulumi:"httpContentFormat"`
+	HttpContentType       *string  `pulumi:"httpContentType"`
+	HttpCustomHeaders     []string `pulumi:"httpCustomHeaders"`
+	HttpEndpoint          *string  `pulumi:"httpEndpoint"`
+	SplunkDomain          *string  `pulumi:"splunkDomain"`
+	SplunkPort            *string  `pulumi:"splunkPort"`
+	SplunkSecure          *bool    `pulumi:"splunkSecure"`
+	SplunkToken           *string  `pulumi:"splunkToken"`
+}
+
+// LogStreamSinkInput is an input type that accepts LogStreamSinkArgs and LogStreamSinkOutput values.
+// You can construct a concrete instance of `LogStreamSinkInput` via:
+//
+//          LogStreamSinkArgs{...}
+type LogStreamSinkInput interface {
+	pulumi.Input
+
+	ToLogStreamSinkOutput() LogStreamSinkOutput
+	ToLogStreamSinkOutputWithContext(context.Context) LogStreamSinkOutput
+}
+
+type LogStreamSinkArgs struct {
+	AwsAccountId          pulumi.StringPtrInput   `pulumi:"awsAccountId"`
+	AwsPartnerEventSource pulumi.StringPtrInput   `pulumi:"awsPartnerEventSource"`
+	AwsRegion             pulumi.StringPtrInput   `pulumi:"awsRegion"`
+	AzurePartnerTopic     pulumi.StringPtrInput   `pulumi:"azurePartnerTopic"`
+	AzureRegion           pulumi.StringPtrInput   `pulumi:"azureRegion"`
+	AzureResourceGroup    pulumi.StringPtrInput   `pulumi:"azureResourceGroup"`
+	AzureSubscriptionId   pulumi.StringPtrInput   `pulumi:"azureSubscriptionId"`
+	DatadogApiKey         pulumi.StringPtrInput   `pulumi:"datadogApiKey"`
+	DatadogRegion         pulumi.StringPtrInput   `pulumi:"datadogRegion"`
+	HttpAuthorization     pulumi.StringPtrInput   `pulumi:"httpAuthorization"`
+	HttpContentFormat     pulumi.StringPtrInput   `pulumi:"httpContentFormat"`
+	HttpContentType       pulumi.StringPtrInput   `pulumi:"httpContentType"`
+	HttpCustomHeaders     pulumi.StringArrayInput `pulumi:"httpCustomHeaders"`
+	HttpEndpoint          pulumi.StringPtrInput   `pulumi:"httpEndpoint"`
+	SplunkDomain          pulumi.StringPtrInput   `pulumi:"splunkDomain"`
+	SplunkPort            pulumi.StringPtrInput   `pulumi:"splunkPort"`
+	SplunkSecure          pulumi.BoolPtrInput     `pulumi:"splunkSecure"`
+	SplunkToken           pulumi.StringPtrInput   `pulumi:"splunkToken"`
+}
+
+func (LogStreamSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogStreamSink)(nil)).Elem()
+}
+
+func (i LogStreamSinkArgs) ToLogStreamSinkOutput() LogStreamSinkOutput {
+	return i.ToLogStreamSinkOutputWithContext(context.Background())
+}
+
+func (i LogStreamSinkArgs) ToLogStreamSinkOutputWithContext(ctx context.Context) LogStreamSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogStreamSinkOutput)
+}
+
+func (i LogStreamSinkArgs) ToLogStreamSinkPtrOutput() LogStreamSinkPtrOutput {
+	return i.ToLogStreamSinkPtrOutputWithContext(context.Background())
+}
+
+func (i LogStreamSinkArgs) ToLogStreamSinkPtrOutputWithContext(ctx context.Context) LogStreamSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogStreamSinkOutput).ToLogStreamSinkPtrOutputWithContext(ctx)
+}
+
+// LogStreamSinkPtrInput is an input type that accepts LogStreamSinkArgs, LogStreamSinkPtr and LogStreamSinkPtrOutput values.
+// You can construct a concrete instance of `LogStreamSinkPtrInput` via:
+//
+//          LogStreamSinkArgs{...}
+//
+//  or:
+//
+//          nil
+type LogStreamSinkPtrInput interface {
+	pulumi.Input
+
+	ToLogStreamSinkPtrOutput() LogStreamSinkPtrOutput
+	ToLogStreamSinkPtrOutputWithContext(context.Context) LogStreamSinkPtrOutput
+}
+
+type logStreamSinkPtrType LogStreamSinkArgs
+
+func LogStreamSinkPtr(v *LogStreamSinkArgs) LogStreamSinkPtrInput {
+	return (*logStreamSinkPtrType)(v)
+}
+
+func (*logStreamSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogStreamSink)(nil)).Elem()
+}
+
+func (i *logStreamSinkPtrType) ToLogStreamSinkPtrOutput() LogStreamSinkPtrOutput {
+	return i.ToLogStreamSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *logStreamSinkPtrType) ToLogStreamSinkPtrOutputWithContext(ctx context.Context) LogStreamSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogStreamSinkPtrOutput)
+}
+
+type LogStreamSinkOutput struct{ *pulumi.OutputState }
+
+func (LogStreamSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogStreamSink)(nil)).Elem()
+}
+
+func (o LogStreamSinkOutput) ToLogStreamSinkOutput() LogStreamSinkOutput {
+	return o
+}
+
+func (o LogStreamSinkOutput) ToLogStreamSinkOutputWithContext(ctx context.Context) LogStreamSinkOutput {
+	return o
+}
+
+func (o LogStreamSinkOutput) ToLogStreamSinkPtrOutput() LogStreamSinkPtrOutput {
+	return o.ToLogStreamSinkPtrOutputWithContext(context.Background())
+}
+
+func (o LogStreamSinkOutput) ToLogStreamSinkPtrOutputWithContext(ctx context.Context) LogStreamSinkPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *LogStreamSink {
+		return &v
+	}).(LogStreamSinkPtrOutput)
+}
+func (o LogStreamSinkOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsPartnerEventSource }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) AzurePartnerTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.AzurePartnerTopic }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) AzureRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.AzureRegion }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) AzureResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.AzureResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) DatadogApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) DatadogRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogRegion }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) HttpAuthorization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpAuthorization }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) HttpContentFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpContentFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) HttpContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) HttpCustomHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogStreamSink) []string { return v.HttpCustomHeaders }).(pulumi.StringArrayOutput)
+}
+
+func (o LogStreamSinkOutput) HttpEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) SplunkDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.SplunkDomain }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) SplunkPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.SplunkPort }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) SplunkSecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *bool { return v.SplunkSecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o LogStreamSinkOutput) SplunkToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.SplunkToken }).(pulumi.StringPtrOutput)
+}
+
+type LogStreamSinkPtrOutput struct{ *pulumi.OutputState }
+
+func (LogStreamSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogStreamSink)(nil)).Elem()
+}
+
+func (o LogStreamSinkPtrOutput) ToLogStreamSinkPtrOutput() LogStreamSinkPtrOutput {
+	return o
+}
+
+func (o LogStreamSinkPtrOutput) ToLogStreamSinkPtrOutputWithContext(ctx context.Context) LogStreamSinkPtrOutput {
+	return o
+}
+
+func (o LogStreamSinkPtrOutput) Elem() LogStreamSinkOutput {
+	return o.ApplyT(func(v *LogStreamSink) LogStreamSink { return *v }).(LogStreamSinkOutput)
+}
+
+func (o LogStreamSinkPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsPartnerEventSource
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) AzurePartnerTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzurePartnerTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) AzureRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) AzureResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureSubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) DatadogRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) HttpAuthorization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpAuthorization
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) HttpContentFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpContentFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) HttpContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) HttpCustomHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LogStreamSink) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpCustomHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o LogStreamSinkPtrOutput) HttpEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) SplunkDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SplunkDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) SplunkPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SplunkPort
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) SplunkSecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SplunkSecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) SplunkToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SplunkToken
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceServerScope struct {
 	// String. Description of the permission (scope).
 	Description *string `pulumi:"description"`
@@ -7827,6 +8208,8 @@ func init() {
 	pulumi.RegisterOutputType(GlobalClientMobileIosPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GlobalClientRefreshTokenPtrOutput{})
+	pulumi.RegisterOutputType(LogStreamSinkOutput{})
+	pulumi.RegisterOutputType(LogStreamSinkPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionOutput{})

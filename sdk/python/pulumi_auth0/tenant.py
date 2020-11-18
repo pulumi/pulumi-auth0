@@ -27,10 +27,10 @@ class Tenant(pulumi.CustomResource):
                  flags: Optional[pulumi.Input[pulumi.InputType['TenantFlagsArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  guardian_mfa_page: Optional[pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']]] = None,
-                 idle_session_lifetime: Optional[pulumi.Input[int]] = None,
+                 idle_session_lifetime: Optional[pulumi.Input[float]] = None,
                  picture_url: Optional[pulumi.Input[str]] = None,
                  sandbox_version: Optional[pulumi.Input[str]] = None,
-                 session_lifetime: Optional[pulumi.Input[int]] = None,
+                 session_lifetime: Optional[pulumi.Input[float]] = None,
                  support_email: Optional[pulumi.Input[str]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  universal_login: Optional[pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']]] = None,
@@ -86,10 +86,10 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: List(Resource). Configuration settings for tenant flags. For details, see Flags.
         :param pulumi.Input[str] friendly_name: String. Friendly name for the tenant.
         :param pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']] guardian_mfa_page: List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
-        :param pulumi.Input[int] idle_session_lifetime: Integer. Number of hours during which a session can be inactive before the user must log in again.
+        :param pulumi.Input[float] idle_session_lifetime: Integer. Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[str] picture_url: . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[str] sandbox_version: String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
-        :param pulumi.Input[int] session_lifetime: Integer. Number of hours during which a session will stay valid.
+        :param pulumi.Input[float] session_lifetime: Integer. Number of hours during which a session will stay valid.
         :param pulumi.Input[str] support_email: String. Support email address for authenticating users.
         :param pulumi.Input[str] support_url: String. Support URL for authenticating users.
         :param pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']] universal_login: List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
@@ -148,10 +148,10 @@ class Tenant(pulumi.CustomResource):
             flags: Optional[pulumi.Input[pulumi.InputType['TenantFlagsArgs']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             guardian_mfa_page: Optional[pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']]] = None,
-            idle_session_lifetime: Optional[pulumi.Input[int]] = None,
+            idle_session_lifetime: Optional[pulumi.Input[float]] = None,
             picture_url: Optional[pulumi.Input[str]] = None,
             sandbox_version: Optional[pulumi.Input[str]] = None,
-            session_lifetime: Optional[pulumi.Input[int]] = None,
+            session_lifetime: Optional[pulumi.Input[float]] = None,
             support_email: Optional[pulumi.Input[str]] = None,
             support_url: Optional[pulumi.Input[str]] = None,
             universal_login: Optional[pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']]] = None) -> 'Tenant':
@@ -171,10 +171,10 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: List(Resource). Configuration settings for tenant flags. For details, see Flags.
         :param pulumi.Input[str] friendly_name: String. Friendly name for the tenant.
         :param pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']] guardian_mfa_page: List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
-        :param pulumi.Input[int] idle_session_lifetime: Integer. Number of hours during which a session can be inactive before the user must log in again.
+        :param pulumi.Input[float] idle_session_lifetime: Integer. Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[str] picture_url: . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[str] sandbox_version: String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
-        :param pulumi.Input[int] session_lifetime: Integer. Number of hours during which a session will stay valid.
+        :param pulumi.Input[float] session_lifetime: Integer. Number of hours during which a session will stay valid.
         :param pulumi.Input[str] support_email: String. Support email address for authenticating users.
         :param pulumi.Input[str] support_url: String. Support URL for authenticating users.
         :param pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']] universal_login: List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
@@ -281,7 +281,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idleSessionLifetime")
-    def idle_session_lifetime(self) -> pulumi.Output[int]:
+    def idle_session_lifetime(self) -> pulumi.Output[float]:
         """
         Integer. Number of hours during which a session can be inactive before the user must log in again.
         """
@@ -305,7 +305,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sessionLifetime")
-    def session_lifetime(self) -> pulumi.Output[int]:
+    def session_lifetime(self) -> pulumi.Output[float]:
         """
         Integer. Number of hours during which a session will stay valid.
         """

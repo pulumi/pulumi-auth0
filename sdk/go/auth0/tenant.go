@@ -37,13 +37,13 @@ type Tenant struct {
 	// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
 	GuardianMfaPage TenantGuardianMfaPageOutput `pulumi:"guardianMfaPage"`
 	// Integer. Number of hours during which a session can be inactive before the user must log in again.
-	IdleSessionLifetime pulumi.IntOutput `pulumi:"idleSessionLifetime"`
+	IdleSessionLifetime pulumi.Float64Output `pulumi:"idleSessionLifetime"`
 	// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringOutput `pulumi:"pictureUrl"`
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringOutput `pulumi:"sandboxVersion"`
 	// Integer. Number of hours during which a session will stay valid.
-	SessionLifetime pulumi.IntOutput `pulumi:"sessionLifetime"`
+	SessionLifetime pulumi.Float64Output `pulumi:"sessionLifetime"`
 	// String. Support email address for authenticating users.
 	SupportEmail pulumi.StringOutput `pulumi:"supportEmail"`
 	// String. Support URL for authenticating users.
@@ -100,13 +100,13 @@ type tenantState struct {
 	// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
 	GuardianMfaPage *TenantGuardianMfaPage `pulumi:"guardianMfaPage"`
 	// Integer. Number of hours during which a session can be inactive before the user must log in again.
-	IdleSessionLifetime *int `pulumi:"idleSessionLifetime"`
+	IdleSessionLifetime *float64 `pulumi:"idleSessionLifetime"`
 	// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion *string `pulumi:"sandboxVersion"`
 	// Integer. Number of hours during which a session will stay valid.
-	SessionLifetime *int `pulumi:"sessionLifetime"`
+	SessionLifetime *float64 `pulumi:"sessionLifetime"`
 	// String. Support email address for authenticating users.
 	SupportEmail *string `pulumi:"supportEmail"`
 	// String. Support URL for authenticating users.
@@ -136,13 +136,13 @@ type TenantState struct {
 	// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
 	GuardianMfaPage TenantGuardianMfaPagePtrInput
 	// Integer. Number of hours during which a session can be inactive before the user must log in again.
-	IdleSessionLifetime pulumi.IntPtrInput
+	IdleSessionLifetime pulumi.Float64PtrInput
 	// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringPtrInput
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringPtrInput
 	// Integer. Number of hours during which a session will stay valid.
-	SessionLifetime pulumi.IntPtrInput
+	SessionLifetime pulumi.Float64PtrInput
 	// String. Support email address for authenticating users.
 	SupportEmail pulumi.StringPtrInput
 	// String. Support URL for authenticating users.
@@ -176,13 +176,13 @@ type tenantArgs struct {
 	// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
 	GuardianMfaPage *TenantGuardianMfaPage `pulumi:"guardianMfaPage"`
 	// Integer. Number of hours during which a session can be inactive before the user must log in again.
-	IdleSessionLifetime *int `pulumi:"idleSessionLifetime"`
+	IdleSessionLifetime *float64 `pulumi:"idleSessionLifetime"`
 	// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion *string `pulumi:"sandboxVersion"`
 	// Integer. Number of hours during which a session will stay valid.
-	SessionLifetime *int `pulumi:"sessionLifetime"`
+	SessionLifetime *float64 `pulumi:"sessionLifetime"`
 	// String. Support email address for authenticating users.
 	SupportEmail *string `pulumi:"supportEmail"`
 	// String. Support URL for authenticating users.
@@ -213,13 +213,13 @@ type TenantArgs struct {
 	// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
 	GuardianMfaPage TenantGuardianMfaPagePtrInput
 	// Integer. Number of hours during which a session can be inactive before the user must log in again.
-	IdleSessionLifetime pulumi.IntPtrInput
+	IdleSessionLifetime pulumi.Float64PtrInput
 	// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringPtrInput
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringPtrInput
 	// Integer. Number of hours during which a session will stay valid.
-	SessionLifetime pulumi.IntPtrInput
+	SessionLifetime pulumi.Float64PtrInput
 	// String. Support email address for authenticating users.
 	SupportEmail pulumi.StringPtrInput
 	// String. Support URL for authenticating users.

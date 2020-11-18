@@ -24,6 +24,7 @@
         "globalClient.ts",
         "hook.ts",
         "index.ts",
+        "logStream.ts",
         "prompt.ts",
         "provider.ts",
         "resourceServer.ts",
