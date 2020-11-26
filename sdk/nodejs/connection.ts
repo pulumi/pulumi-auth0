@@ -101,6 +101,10 @@ export class Connection extends pulumi.CustomResource {
      * Version 1 is deprecated, use version 2.
      */
     public readonly strategyVersion!: pulumi.Output<string>;
+    /**
+     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+     */
+    public readonly validation!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -122,6 +126,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["realms"] = state ? state.realms : undefined;
             inputs["strategy"] = state ? state.strategy : undefined;
             inputs["strategyVersion"] = state ? state.strategyVersion : undefined;
+            inputs["validation"] = state ? state.validation : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if (!args || args.strategy === undefined) {
@@ -135,6 +140,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["realms"] = args ? args.realms : undefined;
             inputs["strategy"] = args ? args.strategy : undefined;
             inputs["strategyVersion"] = args ? args.strategyVersion : undefined;
+            inputs["validation"] = args ? args.validation : undefined;
         }
         if (!opts) {
             opts = {}
@@ -183,6 +189,10 @@ export interface ConnectionState {
      * Version 1 is deprecated, use version 2.
      */
     readonly strategyVersion?: pulumi.Input<string>;
+    /**
+     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+     */
+    readonly validation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -221,4 +231,8 @@ export interface ConnectionArgs {
      * Version 1 is deprecated, use version 2.
      */
     readonly strategyVersion?: pulumi.Input<string>;
+    /**
+     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+     */
+    readonly validation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -24,6 +24,8 @@ __all__ = [
     'ConnectionOptionsPasswordHistoryArgs',
     'ConnectionOptionsPasswordNoPersonalInfoArgs',
     'ConnectionOptionsTotpArgs',
+    'ConnectionOptionsValidationArgs',
+    'ConnectionOptionsValidationUsernameArgs',
     'CustomDomainVerificationArgs',
     'EmailCredentialsArgs',
     'GlobalClientAddonsArgs',
@@ -1156,7 +1158,7 @@ class ConnectionOptionsArgs:
                  use_wsfed: Optional[pulumi.Input[bool]] = None,
                  user_id_attribute: Optional[pulumi.Input[str]] = None,
                  userinfo_endpoint: Optional[pulumi.Input[str]] = None,
-                 validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 validation: Optional[pulumi.Input['ConnectionOptionsValidationArgs']] = None,
                  waad_common_endpoint: Optional[pulumi.Input[bool]] = None,
                  waad_protocol: Optional[pulumi.Input[str]] = None):
         """
@@ -1206,7 +1208,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] twilio_token: AuthToken for your Twilio account.
         :param pulumi.Input[str] type: Value can be `back_channel` or `front_channel`.
         :param pulumi.Input[str] user_id_attribute: Attribute in the SAML token that will be mapped to the user_id property in Auth0.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: A map defining the validation options.
+        :param pulumi.Input['ConnectionOptionsValidationArgs'] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         :param pulumi.Input[bool] waad_common_endpoint: Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         """
         if adfs_server is not None:
@@ -2063,14 +2065,14 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter
-    def validation(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def validation(self) -> Optional[pulumi.Input['ConnectionOptionsValidationArgs']]:
         """
-        A map defining the validation options.
+        Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         """
         return pulumi.get(self, "validation")
 
     @validation.setter
-    def validation(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def validation(self, value: Optional[pulumi.Input['ConnectionOptionsValidationArgs']]):
         pulumi.set(self, "validation", value)
 
     @property
@@ -2303,6 +2305,58 @@ class ConnectionOptionsTotpArgs:
     @time_step.setter
     def time_step(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "time_step", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsValidationArgs:
+    def __init__(__self__, *,
+                 username: Optional[pulumi.Input['ConnectionOptionsValidationUsernameArgs']] = None):
+        """
+        :param pulumi.Input['ConnectionOptionsValidationUsernameArgs'] username: Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+        """
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input['ConnectionOptionsValidationUsernameArgs']]:
+        """
+        Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input['ConnectionOptionsValidationUsernameArgs']]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class ConnectionOptionsValidationUsernameArgs:
+    def __init__(__self__, *,
+                 max: Optional[pulumi.Input[int]] = None,
+                 min: Optional[pulumi.Input[int]] = None):
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min", value)
 
 
 @pulumi.input_type

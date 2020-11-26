@@ -25,6 +25,8 @@ __all__ = [
     'ConnectionOptionsPasswordHistory',
     'ConnectionOptionsPasswordNoPersonalInfo',
     'ConnectionOptionsTotp',
+    'ConnectionOptionsValidation',
+    'ConnectionOptionsValidationUsername',
     'CustomDomainVerification',
     'EmailCredentials',
     'GlobalClientAddons',
@@ -929,7 +931,7 @@ class ConnectionOptions(dict):
                  use_wsfed: Optional[bool] = None,
                  user_id_attribute: Optional[str] = None,
                  userinfo_endpoint: Optional[str] = None,
-                 validation: Optional[Mapping[str, str]] = None,
+                 validation: Optional['outputs.ConnectionOptionsValidation'] = None,
                  waad_common_endpoint: Optional[bool] = None,
                  waad_protocol: Optional[str] = None):
         """
@@ -979,7 +981,7 @@ class ConnectionOptions(dict):
         :param str twilio_token: AuthToken for your Twilio account.
         :param str type: Value can be `back_channel` or `front_channel`.
         :param str user_id_attribute: Attribute in the SAML token that will be mapped to the user_id property in Auth0.
-        :param Mapping[str, str] validation: A map defining the validation options.
+        :param 'ConnectionOptionsValidationArgs' validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         :param bool waad_common_endpoint: Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         """
         if adfs_server is not None:
@@ -1577,9 +1579,9 @@ class ConnectionOptions(dict):
 
     @property
     @pulumi.getter
-    def validation(self) -> Optional[Mapping[str, str]]:
+    def validation(self) -> Optional['outputs.ConnectionOptionsValidation']:
         """
-        A map defining the validation options.
+        Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         """
         return pulumi.get(self, "validation")
 
@@ -1779,6 +1781,52 @@ class ConnectionOptionsTotp(dict):
         Integer. Seconds between allowed generation of new passwords.
         """
         return pulumi.get(self, "time_step")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ConnectionOptionsValidation(dict):
+    def __init__(__self__, *,
+                 username: Optional['outputs.ConnectionOptionsValidationUsername'] = None):
+        """
+        :param 'ConnectionOptionsValidationUsernameArgs' username: Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+        """
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional['outputs.ConnectionOptionsValidationUsername']:
+        """
+        Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+        """
+        return pulumi.get(self, "username")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ConnectionOptionsValidationUsername(dict):
+    def __init__(__self__, *,
+                 max: Optional[int] = None,
+                 min: Optional[int] = None):
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[int]:
+        return pulumi.get(self, "max")
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[int]:
+        return pulumi.get(self, "min")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -25,6 +25,7 @@ class Connection(pulumi.CustomResource):
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
                  strategy_version: Optional[pulumi.Input[str]] = None,
+                 validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -73,6 +74,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,6 +103,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'strategy'")
             __props__['strategy'] = strategy
             __props__['strategy_version'] = strategy_version
+            __props__['validation'] = validation
         super(Connection, __self__).__init__(
             'auth0:index/connection:Connection',
             resource_name,
@@ -118,7 +121,8 @@ class Connection(pulumi.CustomResource):
             options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             strategy: Optional[pulumi.Input[str]] = None,
-            strategy_version: Optional[pulumi.Input[str]] = None) -> 'Connection':
+            strategy_version: Optional[pulumi.Input[str]] = None,
+            validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -134,6 +138,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -147,6 +152,7 @@ class Connection(pulumi.CustomResource):
         __props__["realms"] = realms
         __props__["strategy"] = strategy
         __props__["strategy_version"] = strategy_version
+        __props__["validation"] = validation
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -212,6 +218,14 @@ class Connection(pulumi.CustomResource):
         Version 1 is deprecated, use version 2.
         """
         return pulumi.get(self, "strategy_version")
+
+    @property
+    @pulumi.getter
+    def validation(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        """
+        return pulumi.get(self, "validation")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

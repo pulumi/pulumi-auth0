@@ -110,6 +110,12 @@ namespace Pulumi.Auth0
         [Output("strategyVersion")]
         public Output<string> StrategyVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        /// </summary>
+        [Output("validation")]
+        public Output<ImmutableDictionary<string, string>?> Validation { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Connection resource with the given unique name, arguments, and options.
@@ -216,6 +222,18 @@ namespace Pulumi.Auth0
         [Input("strategyVersion")]
         public Input<string>? StrategyVersion { get; set; }
 
+        [Input("validation")]
+        private InputMap<string>? _validation;
+
+        /// <summary>
+        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        /// </summary>
+        public InputMap<string> Validation
+        {
+            get => _validation ?? (_validation = new InputMap<string>());
+            set => _validation = value;
+        }
+
         public ConnectionArgs()
         {
         }
@@ -282,6 +300,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("strategyVersion")]
         public Input<string>? StrategyVersion { get; set; }
+
+        [Input("validation")]
+        private InputMap<string>? _validation;
+
+        /// <summary>
+        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        /// </summary>
+        public InputMap<string> Validation
+        {
+            get => _validation ?? (_validation = new InputMap<string>());
+            set => _validation = value;
+        }
 
         public ConnectionState()
         {

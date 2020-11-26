@@ -394,17 +394,11 @@ namespace Pulumi.Auth0.Inputs
         [Input("userinfoEndpoint")]
         public Input<string>? UserinfoEndpoint { get; set; }
 
-        [Input("validation")]
-        private InputMap<string>? _validation;
-
         /// <summary>
-        /// A map defining the validation options.
+        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         /// </summary>
-        public InputMap<string> Validation
-        {
-            get => _validation ?? (_validation = new InputMap<string>());
-            set => _validation = value;
-        }
+        [Input("validation")]
+        public Input<Inputs.ConnectionOptionsValidationGetArgs>? Validation { get; set; }
 
         /// <summary>
         /// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
