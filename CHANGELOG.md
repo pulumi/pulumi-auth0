@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.16.1 of the Auth0 Terraform Provider
+_(none)_
 
 ---
+
+## 1.4.0 (2020-12-08)
+* Upgrade to v0.16.1 of the Auth0 Terraform Provider
 
 ## 1.3.0 (2020-10-26)
 * Upgrade to Pulumi v2.12.0 and pulumi-terraform-bridge v2.11.0
