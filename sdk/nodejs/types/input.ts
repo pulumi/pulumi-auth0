@@ -475,9 +475,9 @@ export interface ConnectionOptions {
     userIdAttribute?: pulumi.Input<string>;
     userinfoEndpoint?: pulumi.Input<string>;
     /**
-     * A map defining the validation options.
+     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
      */
-    validation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    validation?: pulumi.Input<inputs.ConnectionOptionsValidation>;
     /**
      * Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
      */
@@ -539,6 +539,18 @@ export interface ConnectionOptionsTotp {
      * Integer. Seconds between allowed generation of new passwords.
      */
     timeStep?: pulumi.Input<number>;
+}
+
+export interface ConnectionOptionsValidation {
+    /**
+     * Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+     */
+    username?: pulumi.Input<inputs.ConnectionOptionsValidationUsername>;
+}
+
+export interface ConnectionOptionsValidationUsername {
+    max?: pulumi.Input<number>;
+    min?: pulumi.Input<number>;
 }
 
 export interface CustomDomainVerification {

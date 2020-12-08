@@ -1351,11 +1351,8 @@
                     }
                 },
                 "validation": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "A map defining the validation options.\n",
+                    "$ref": "#/types/auth0:index/ConnectionOptionsValidation:ConnectionOptionsValidation",
+                    "description": "Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1512,6 +1509,41 @@
                 "timeStep": {
                     "type": "integer",
                     "description": "Integer. Seconds between allowed generation of new passwords.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsValidation:ConnectionOptionsValidation": {
+            "properties": {
+                "username": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsValidationUsername:ConnectionOptionsValidationUsername",
+                    "description": "Specifies the `min` and `max` values of username length. `min` and `max` are integers.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsValidationUsername:ConnectionOptionsValidationUsername": {
+            "properties": {
+                "max": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "min": {
+                    "type": "integer",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3364,6 +3396,13 @@
                 "strategyVersion": {
                     "type": "string",
                     "description": "Version 1 is deprecated, use version 2.\n"
+                },
+                "validation": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.\n"
                 }
             },
             "required": [
@@ -3412,6 +3451,13 @@
                 "strategyVersion": {
                     "type": "string",
                     "description": "Version 1 is deprecated, use version 2.\n"
+                },
+                "validation": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.\n"
                 }
             },
             "requiredInputs": [
@@ -3457,6 +3503,13 @@
                     "strategyVersion": {
                         "type": "string",
                         "description": "Version 1 is deprecated, use version 2.\n"
+                    },
+                    "validation": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.\n"
                     }
                 },
                 "type": "object"

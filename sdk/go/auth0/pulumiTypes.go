@@ -2199,8 +2199,8 @@ type ConnectionOptions struct {
 	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
 	UserIdAttribute  *string `pulumi:"userIdAttribute"`
 	UserinfoEndpoint *string `pulumi:"userinfoEndpoint"`
-	// A map defining the validation options.
-	Validation map[string]string `pulumi:"validation"`
+	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+	Validation *ConnectionOptionsValidation `pulumi:"validation"`
 	// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
 	WaadCommonEndpoint *bool   `pulumi:"waadCommonEndpoint"`
 	WaadProtocol       *string `pulumi:"waadProtocol"`
@@ -2330,8 +2330,8 @@ type ConnectionOptionsArgs struct {
 	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
 	UserIdAttribute  pulumi.StringPtrInput `pulumi:"userIdAttribute"`
 	UserinfoEndpoint pulumi.StringPtrInput `pulumi:"userinfoEndpoint"`
-	// A map defining the validation options.
-	Validation pulumi.StringMapInput `pulumi:"validation"`
+	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+	Validation ConnectionOptionsValidationPtrInput `pulumi:"validation"`
 	// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
 	WaadCommonEndpoint pulumi.BoolPtrInput   `pulumi:"waadCommonEndpoint"`
 	WaadProtocol       pulumi.StringPtrInput `pulumi:"waadProtocol"`
@@ -2720,9 +2720,9 @@ func (o ConnectionOptionsOutput) UserinfoEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.UserinfoEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// A map defining the validation options.
-func (o ConnectionOptionsOutput) Validation() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Validation }).(pulumi.StringMapOutput)
+// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+func (o ConnectionOptionsOutput) Validation() ConnectionOptionsValidationPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsValidation { return v.Validation }).(ConnectionOptionsValidationPtrOutput)
 }
 
 // Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
@@ -3376,14 +3376,14 @@ func (o ConnectionOptionsPtrOutput) UserinfoEndpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A map defining the validation options.
-func (o ConnectionOptionsPtrOutput) Validation() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
+// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+func (o ConnectionOptionsPtrOutput) Validation() ConnectionOptionsValidationPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsValidation {
 		if v == nil {
 			return nil
 		}
 		return v.Validation
-	}).(pulumi.StringMapOutput)
+	}).(ConnectionOptionsValidationPtrOutput)
 }
 
 // Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
@@ -4232,6 +4232,278 @@ func (o ConnectionOptionsTotpPtrOutput) TimeStep() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.TimeStep
+	}).(pulumi.IntPtrOutput)
+}
+
+type ConnectionOptionsValidation struct {
+	// Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+	Username *ConnectionOptionsValidationUsername `pulumi:"username"`
+}
+
+// ConnectionOptionsValidationInput is an input type that accepts ConnectionOptionsValidationArgs and ConnectionOptionsValidationOutput values.
+// You can construct a concrete instance of `ConnectionOptionsValidationInput` via:
+//
+//          ConnectionOptionsValidationArgs{...}
+type ConnectionOptionsValidationInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsValidationOutput() ConnectionOptionsValidationOutput
+	ToConnectionOptionsValidationOutputWithContext(context.Context) ConnectionOptionsValidationOutput
+}
+
+type ConnectionOptionsValidationArgs struct {
+	// Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+	Username ConnectionOptionsValidationUsernamePtrInput `pulumi:"username"`
+}
+
+func (ConnectionOptionsValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsValidation)(nil)).Elem()
+}
+
+func (i ConnectionOptionsValidationArgs) ToConnectionOptionsValidationOutput() ConnectionOptionsValidationOutput {
+	return i.ToConnectionOptionsValidationOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsValidationArgs) ToConnectionOptionsValidationOutputWithContext(ctx context.Context) ConnectionOptionsValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsValidationOutput)
+}
+
+func (i ConnectionOptionsValidationArgs) ToConnectionOptionsValidationPtrOutput() ConnectionOptionsValidationPtrOutput {
+	return i.ToConnectionOptionsValidationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsValidationArgs) ToConnectionOptionsValidationPtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsValidationOutput).ToConnectionOptionsValidationPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsValidationPtrInput is an input type that accepts ConnectionOptionsValidationArgs, ConnectionOptionsValidationPtr and ConnectionOptionsValidationPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsValidationPtrInput` via:
+//
+//          ConnectionOptionsValidationArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionOptionsValidationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsValidationPtrOutput() ConnectionOptionsValidationPtrOutput
+	ToConnectionOptionsValidationPtrOutputWithContext(context.Context) ConnectionOptionsValidationPtrOutput
+}
+
+type connectionOptionsValidationPtrType ConnectionOptionsValidationArgs
+
+func ConnectionOptionsValidationPtr(v *ConnectionOptionsValidationArgs) ConnectionOptionsValidationPtrInput {
+	return (*connectionOptionsValidationPtrType)(v)
+}
+
+func (*connectionOptionsValidationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsValidation)(nil)).Elem()
+}
+
+func (i *connectionOptionsValidationPtrType) ToConnectionOptionsValidationPtrOutput() ConnectionOptionsValidationPtrOutput {
+	return i.ToConnectionOptionsValidationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsValidationPtrType) ToConnectionOptionsValidationPtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsValidationPtrOutput)
+}
+
+type ConnectionOptionsValidationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsValidation)(nil)).Elem()
+}
+
+func (o ConnectionOptionsValidationOutput) ToConnectionOptionsValidationOutput() ConnectionOptionsValidationOutput {
+	return o
+}
+
+func (o ConnectionOptionsValidationOutput) ToConnectionOptionsValidationOutputWithContext(ctx context.Context) ConnectionOptionsValidationOutput {
+	return o
+}
+
+func (o ConnectionOptionsValidationOutput) ToConnectionOptionsValidationPtrOutput() ConnectionOptionsValidationPtrOutput {
+	return o.ToConnectionOptionsValidationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsValidationOutput) ToConnectionOptionsValidationPtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsValidation) *ConnectionOptionsValidation {
+		return &v
+	}).(ConnectionOptionsValidationPtrOutput)
+}
+
+// Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+func (o ConnectionOptionsValidationOutput) Username() ConnectionOptionsValidationUsernamePtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsValidation) *ConnectionOptionsValidationUsername { return v.Username }).(ConnectionOptionsValidationUsernamePtrOutput)
+}
+
+type ConnectionOptionsValidationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsValidationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsValidation)(nil)).Elem()
+}
+
+func (o ConnectionOptionsValidationPtrOutput) ToConnectionOptionsValidationPtrOutput() ConnectionOptionsValidationPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsValidationPtrOutput) ToConnectionOptionsValidationPtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsValidationPtrOutput) Elem() ConnectionOptionsValidationOutput {
+	return o.ApplyT(func(v *ConnectionOptionsValidation) ConnectionOptionsValidation { return *v }).(ConnectionOptionsValidationOutput)
+}
+
+// Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+func (o ConnectionOptionsValidationPtrOutput) Username() ConnectionOptionsValidationUsernamePtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsValidation) *ConnectionOptionsValidationUsername {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(ConnectionOptionsValidationUsernamePtrOutput)
+}
+
+type ConnectionOptionsValidationUsername struct {
+	Max *int `pulumi:"max"`
+	Min *int `pulumi:"min"`
+}
+
+// ConnectionOptionsValidationUsernameInput is an input type that accepts ConnectionOptionsValidationUsernameArgs and ConnectionOptionsValidationUsernameOutput values.
+// You can construct a concrete instance of `ConnectionOptionsValidationUsernameInput` via:
+//
+//          ConnectionOptionsValidationUsernameArgs{...}
+type ConnectionOptionsValidationUsernameInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsValidationUsernameOutput() ConnectionOptionsValidationUsernameOutput
+	ToConnectionOptionsValidationUsernameOutputWithContext(context.Context) ConnectionOptionsValidationUsernameOutput
+}
+
+type ConnectionOptionsValidationUsernameArgs struct {
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (ConnectionOptionsValidationUsernameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsValidationUsername)(nil)).Elem()
+}
+
+func (i ConnectionOptionsValidationUsernameArgs) ToConnectionOptionsValidationUsernameOutput() ConnectionOptionsValidationUsernameOutput {
+	return i.ToConnectionOptionsValidationUsernameOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsValidationUsernameArgs) ToConnectionOptionsValidationUsernameOutputWithContext(ctx context.Context) ConnectionOptionsValidationUsernameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsValidationUsernameOutput)
+}
+
+func (i ConnectionOptionsValidationUsernameArgs) ToConnectionOptionsValidationUsernamePtrOutput() ConnectionOptionsValidationUsernamePtrOutput {
+	return i.ToConnectionOptionsValidationUsernamePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsValidationUsernameArgs) ToConnectionOptionsValidationUsernamePtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationUsernamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsValidationUsernameOutput).ToConnectionOptionsValidationUsernamePtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsValidationUsernamePtrInput is an input type that accepts ConnectionOptionsValidationUsernameArgs, ConnectionOptionsValidationUsernamePtr and ConnectionOptionsValidationUsernamePtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsValidationUsernamePtrInput` via:
+//
+//          ConnectionOptionsValidationUsernameArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionOptionsValidationUsernamePtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsValidationUsernamePtrOutput() ConnectionOptionsValidationUsernamePtrOutput
+	ToConnectionOptionsValidationUsernamePtrOutputWithContext(context.Context) ConnectionOptionsValidationUsernamePtrOutput
+}
+
+type connectionOptionsValidationUsernamePtrType ConnectionOptionsValidationUsernameArgs
+
+func ConnectionOptionsValidationUsernamePtr(v *ConnectionOptionsValidationUsernameArgs) ConnectionOptionsValidationUsernamePtrInput {
+	return (*connectionOptionsValidationUsernamePtrType)(v)
+}
+
+func (*connectionOptionsValidationUsernamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsValidationUsername)(nil)).Elem()
+}
+
+func (i *connectionOptionsValidationUsernamePtrType) ToConnectionOptionsValidationUsernamePtrOutput() ConnectionOptionsValidationUsernamePtrOutput {
+	return i.ToConnectionOptionsValidationUsernamePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsValidationUsernamePtrType) ToConnectionOptionsValidationUsernamePtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationUsernamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsValidationUsernamePtrOutput)
+}
+
+type ConnectionOptionsValidationUsernameOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsValidationUsernameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsValidationUsername)(nil)).Elem()
+}
+
+func (o ConnectionOptionsValidationUsernameOutput) ToConnectionOptionsValidationUsernameOutput() ConnectionOptionsValidationUsernameOutput {
+	return o
+}
+
+func (o ConnectionOptionsValidationUsernameOutput) ToConnectionOptionsValidationUsernameOutputWithContext(ctx context.Context) ConnectionOptionsValidationUsernameOutput {
+	return o
+}
+
+func (o ConnectionOptionsValidationUsernameOutput) ToConnectionOptionsValidationUsernamePtrOutput() ConnectionOptionsValidationUsernamePtrOutput {
+	return o.ToConnectionOptionsValidationUsernamePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsValidationUsernameOutput) ToConnectionOptionsValidationUsernamePtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationUsernamePtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsValidationUsername) *ConnectionOptionsValidationUsername {
+		return &v
+	}).(ConnectionOptionsValidationUsernamePtrOutput)
+}
+func (o ConnectionOptionsValidationUsernameOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsValidationUsername) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionOptionsValidationUsernameOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsValidationUsername) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type ConnectionOptionsValidationUsernamePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsValidationUsernamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsValidationUsername)(nil)).Elem()
+}
+
+func (o ConnectionOptionsValidationUsernamePtrOutput) ToConnectionOptionsValidationUsernamePtrOutput() ConnectionOptionsValidationUsernamePtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsValidationUsernamePtrOutput) ToConnectionOptionsValidationUsernamePtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationUsernamePtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsValidationUsernamePtrOutput) Elem() ConnectionOptionsValidationUsernameOutput {
+	return o.ApplyT(func(v *ConnectionOptionsValidationUsername) ConnectionOptionsValidationUsername { return *v }).(ConnectionOptionsValidationUsernameOutput)
+}
+
+func (o ConnectionOptionsValidationUsernamePtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsValidationUsername) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionOptionsValidationUsernamePtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsValidationUsername) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -8188,6 +8460,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordNoPersonalInfoPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsTotpOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsTotpPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsValidationOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsValidationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernameOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernamePtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationPtrOutput{})
 	pulumi.RegisterOutputType(EmailCredentialsOutput{})

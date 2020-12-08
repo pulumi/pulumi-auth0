@@ -475,9 +475,9 @@ export interface ConnectionOptions {
     userIdAttribute?: string;
     userinfoEndpoint?: string;
     /**
-     * A map defining the validation options.
+     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
      */
-    validation?: {[key: string]: string};
+    validation?: outputs.ConnectionOptionsValidation;
     /**
      * Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
      */
@@ -539,6 +539,18 @@ export interface ConnectionOptionsTotp {
      * Integer. Seconds between allowed generation of new passwords.
      */
     timeStep?: number;
+}
+
+export interface ConnectionOptionsValidation {
+    /**
+     * Specifies the `min` and `max` values of username length. `min` and `max` are integers.
+     */
+    username?: outputs.ConnectionOptionsValidationUsername;
+}
+
+export interface ConnectionOptionsValidationUsername {
+    max?: number;
+    min?: number;
 }
 
 export interface CustomDomainVerification {

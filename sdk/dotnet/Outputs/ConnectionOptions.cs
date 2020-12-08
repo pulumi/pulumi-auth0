@@ -216,9 +216,9 @@ namespace Pulumi.Auth0.Outputs
         public readonly string? UserIdAttribute;
         public readonly string? UserinfoEndpoint;
         /// <summary>
-        /// A map defining the validation options.
+        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Validation;
+        public readonly Outputs.ConnectionOptionsValidation? Validation;
         /// <summary>
         /// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         /// </summary>
@@ -355,7 +355,7 @@ namespace Pulumi.Auth0.Outputs
 
             string? userinfoEndpoint,
 
-            ImmutableDictionary<string, string>? validation,
+            Outputs.ConnectionOptionsValidation? validation,
 
             bool? waadCommonEndpoint,
 

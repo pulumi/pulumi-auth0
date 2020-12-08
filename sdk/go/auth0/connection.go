@@ -75,6 +75,8 @@ type Connection struct {
 	Strategy pulumi.StringOutput `pulumi:"strategy"`
 	// Version 1 is deprecated, use version 2.
 	StrategyVersion pulumi.StringOutput `pulumi:"strategyVersion"`
+	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+	Validation pulumi.StringMapOutput `pulumi:"validation"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -124,6 +126,8 @@ type connectionState struct {
 	Strategy *string `pulumi:"strategy"`
 	// Version 1 is deprecated, use version 2.
 	StrategyVersion *string `pulumi:"strategyVersion"`
+	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+	Validation map[string]string `pulumi:"validation"`
 }
 
 type ConnectionState struct {
@@ -143,6 +147,8 @@ type ConnectionState struct {
 	Strategy pulumi.StringPtrInput
 	// Version 1 is deprecated, use version 2.
 	StrategyVersion pulumi.StringPtrInput
+	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+	Validation pulumi.StringMapInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -166,6 +172,8 @@ type connectionArgs struct {
 	Strategy string `pulumi:"strategy"`
 	// Version 1 is deprecated, use version 2.
 	StrategyVersion *string `pulumi:"strategyVersion"`
+	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+	Validation map[string]string `pulumi:"validation"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -186,6 +194,8 @@ type ConnectionArgs struct {
 	Strategy pulumi.StringInput
 	// Version 1 is deprecated, use version 2.
 	StrategyVersion pulumi.StringPtrInput
+	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+	Validation pulumi.StringMapInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {
