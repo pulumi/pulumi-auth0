@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.17.1 of the Auth0 Terraform Provider
+* Upgrade to v0.17.2 of the Auth0 Terraform Provider
 
 ---
 
