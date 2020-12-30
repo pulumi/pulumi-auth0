@@ -8,7 +8,7 @@ replace (
 )
 
 require (
-	github.com/alexkappa/terraform-provider-auth0 v0.16.1
+	github.com/alexkappa/terraform-provider-auth0 v0.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.11.1-0.20201020163502-64cff1e50894
 	github.com/pulumi/pulumi/sdk/v2 v2.12.0
 )
