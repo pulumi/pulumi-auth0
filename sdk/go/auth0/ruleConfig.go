@@ -4,6 +4,7 @@
 package auth0
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -121,4 +122,43 @@ type RuleConfigArgs struct {
 
 func (RuleConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleConfigArgs)(nil)).Elem()
+}
+
+type RuleConfigInput interface {
+	pulumi.Input
+
+	ToRuleConfigOutput() RuleConfigOutput
+	ToRuleConfigOutputWithContext(ctx context.Context) RuleConfigOutput
+}
+
+func (RuleConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleConfig)(nil)).Elem()
+}
+
+func (i RuleConfig) ToRuleConfigOutput() RuleConfigOutput {
+	return i.ToRuleConfigOutputWithContext(context.Background())
+}
+
+func (i RuleConfig) ToRuleConfigOutputWithContext(ctx context.Context) RuleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigOutput)
+}
+
+type RuleConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (RuleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleConfigOutput)(nil)).Elem()
+}
+
+func (o RuleConfigOutput) ToRuleConfigOutput() RuleConfigOutput {
+	return o
+}
+
+func (o RuleConfigOutput) ToRuleConfigOutputWithContext(ctx context.Context) RuleConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RuleConfigOutput{})
 }

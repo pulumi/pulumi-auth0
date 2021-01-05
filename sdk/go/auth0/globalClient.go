@@ -4,6 +4,7 @@
 package auth0
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -215,4 +216,43 @@ type GlobalClientArgs struct {
 
 func (GlobalClientArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalClientArgs)(nil)).Elem()
+}
+
+type GlobalClientInput interface {
+	pulumi.Input
+
+	ToGlobalClientOutput() GlobalClientOutput
+	ToGlobalClientOutputWithContext(ctx context.Context) GlobalClientOutput
+}
+
+func (GlobalClient) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClient)(nil)).Elem()
+}
+
+func (i GlobalClient) ToGlobalClientOutput() GlobalClientOutput {
+	return i.ToGlobalClientOutputWithContext(context.Background())
+}
+
+func (i GlobalClient) ToGlobalClientOutputWithContext(ctx context.Context) GlobalClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientOutput)
+}
+
+type GlobalClientOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientOutput)(nil)).Elem()
+}
+
+func (o GlobalClientOutput) ToGlobalClientOutput() GlobalClientOutput {
+	return o
+}
+
+func (o GlobalClientOutput) ToGlobalClientOutputWithContext(ctx context.Context) GlobalClientOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalClientOutput{})
 }
