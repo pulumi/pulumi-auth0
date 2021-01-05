@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.13.2
-  * This adds support for import specific examples in documentation
+_(none)_
 
 ---
+
+## 1.5.1 (2021-01-05)
+* Upgrade to pulumi-terraform-bridge v2.13.2
+  * This adds support for import specific examples in documentation
 
 ## 1.5.0 (2020-12-30)
 * Upgrade to v0.17.2 of the Auth0 Terraform Provider
