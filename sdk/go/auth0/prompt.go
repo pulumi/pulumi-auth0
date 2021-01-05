@@ -4,6 +4,7 @@
 package auth0
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -94,4 +95,43 @@ type PromptArgs struct {
 
 func (PromptArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*promptArgs)(nil)).Elem()
+}
+
+type PromptInput interface {
+	pulumi.Input
+
+	ToPromptOutput() PromptOutput
+	ToPromptOutputWithContext(ctx context.Context) PromptOutput
+}
+
+func (Prompt) ElementType() reflect.Type {
+	return reflect.TypeOf((*Prompt)(nil)).Elem()
+}
+
+func (i Prompt) ToPromptOutput() PromptOutput {
+	return i.ToPromptOutputWithContext(context.Background())
+}
+
+func (i Prompt) ToPromptOutputWithContext(ctx context.Context) PromptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptOutput)
+}
+
+type PromptOutput struct {
+	*pulumi.OutputState
+}
+
+func (PromptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptOutput)(nil)).Elem()
+}
+
+func (o PromptOutput) ToPromptOutput() PromptOutput {
+	return o
+}
+
+func (o PromptOutput) ToPromptOutputWithContext(ctx context.Context) PromptOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PromptOutput{})
 }

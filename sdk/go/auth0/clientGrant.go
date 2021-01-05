@@ -4,6 +4,7 @@
 package auth0
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -148,4 +149,43 @@ type ClientGrantArgs struct {
 
 func (ClientGrantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientGrantArgs)(nil)).Elem()
+}
+
+type ClientGrantInput interface {
+	pulumi.Input
+
+	ToClientGrantOutput() ClientGrantOutput
+	ToClientGrantOutputWithContext(ctx context.Context) ClientGrantOutput
+}
+
+func (ClientGrant) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientGrant)(nil)).Elem()
+}
+
+func (i ClientGrant) ToClientGrantOutput() ClientGrantOutput {
+	return i.ToClientGrantOutputWithContext(context.Background())
+}
+
+func (i ClientGrant) ToClientGrantOutputWithContext(ctx context.Context) ClientGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantOutput)
+}
+
+type ClientGrantOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClientGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientGrantOutput)(nil)).Elem()
+}
+
+func (o ClientGrantOutput) ToClientGrantOutput() ClientGrantOutput {
+	return o
+}
+
+func (o ClientGrantOutput) ToClientGrantOutputWithContext(ctx context.Context) ClientGrantOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClientGrantOutput{})
 }

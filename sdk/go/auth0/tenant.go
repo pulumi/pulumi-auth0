@@ -4,6 +4,7 @@
 package auth0
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -230,4 +231,43 @@ type TenantArgs struct {
 
 func (TenantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantArgs)(nil)).Elem()
+}
+
+type TenantInput interface {
+	pulumi.Input
+
+	ToTenantOutput() TenantOutput
+	ToTenantOutputWithContext(ctx context.Context) TenantOutput
+}
+
+func (Tenant) ElementType() reflect.Type {
+	return reflect.TypeOf((*Tenant)(nil)).Elem()
+}
+
+func (i Tenant) ToTenantOutput() TenantOutput {
+	return i.ToTenantOutputWithContext(context.Background())
+}
+
+func (i Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantOutput)
+}
+
+type TenantOutput struct {
+	*pulumi.OutputState
+}
+
+func (TenantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantOutput)(nil)).Elem()
+}
+
+func (o TenantOutput) ToTenantOutput() TenantOutput {
+	return o
+}
+
+func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TenantOutput{})
 }

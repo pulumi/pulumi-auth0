@@ -4,6 +4,7 @@
 package auth0
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -228,4 +229,43 @@ type ResourceServerArgs struct {
 
 func (ResourceServerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceServerArgs)(nil)).Elem()
+}
+
+type ResourceServerInput interface {
+	pulumi.Input
+
+	ToResourceServerOutput() ResourceServerOutput
+	ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput
+}
+
+func (ResourceServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServer)(nil)).Elem()
+}
+
+func (i ResourceServer) ToResourceServerOutput() ResourceServerOutput {
+	return i.ToResourceServerOutputWithContext(context.Background())
+}
+
+func (i ResourceServer) ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerOutput)
+}
+
+type ResourceServerOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerOutput)(nil)).Elem()
+}
+
+func (o ResourceServerOutput) ToResourceServerOutput() ResourceServerOutput {
+	return o
+}
+
+func (o ResourceServerOutput) ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourceServerOutput{})
 }
