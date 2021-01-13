@@ -69,10 +69,10 @@ class Hook(pulumi.CustomResource):
 
             __props__['enabled'] = enabled
             __props__['name'] = name
-            if script is None:
+            if script is None and not opts.urn:
                 raise TypeError("Missing required property 'script'")
             __props__['script'] = script
-            if trigger_id is None:
+            if trigger_id is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_id'")
             __props__['trigger_id'] = trigger_id
         super(Hook, __self__).__init__(

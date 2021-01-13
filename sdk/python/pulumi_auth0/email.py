@@ -67,10 +67,10 @@ class Email(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if credentials is None:
+            if credentials is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials'")
             __props__['credentials'] = credentials
-            if default_from_address is None:
+            if default_from_address is None and not opts.urn:
                 raise TypeError("Missing required property 'default_from_address'")
             __props__['default_from_address'] = default_from_address
             __props__['enabled'] = enabled

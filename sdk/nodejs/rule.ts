@@ -89,7 +89,7 @@ export class Rule extends pulumi.CustomResource {
             inputs["script"] = state ? state.script : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if (!args || args.script === undefined) {
+            if ((!args || args.script === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'script'");
             }
             inputs["enabled"] = args ? args.enabled : undefined;

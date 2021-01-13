@@ -47,6 +47,7 @@ func NewPrompt(ctx *pulumi.Context,
 	if args == nil {
 		args = &PromptArgs{}
 	}
+
 	var resource Prompt
 	err := ctx.RegisterResource("auth0:index/prompt:Prompt", name, args, &resource, opts...)
 	if err != nil {

@@ -146,7 +146,7 @@ export class User extends pulumi.CustomResource {
             inputs["verifyEmail"] = state ? state.verifyEmail : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if (!args || args.connectionName === undefined) {
+            if ((!args || args.connectionName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'connectionName'");
             }
             inputs["appMetadata"] = args ? args.appMetadata : undefined;

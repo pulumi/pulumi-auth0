@@ -57,14 +57,15 @@ type Email struct {
 // NewEmail registers a new resource with the given unique name, arguments, and options.
 func NewEmail(ctx *pulumi.Context,
 	name string, args *EmailArgs, opts ...pulumi.ResourceOption) (*Email, error) {
-	if args == nil || args.Credentials == nil {
-		return nil, errors.New("missing required argument 'Credentials'")
-	}
-	if args == nil || args.DefaultFromAddress == nil {
-		return nil, errors.New("missing required argument 'DefaultFromAddress'")
-	}
 	if args == nil {
-		args = &EmailArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Credentials == nil {
+		return nil, errors.New("invalid value for required argument 'Credentials'")
+	}
+	if args.DefaultFromAddress == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultFromAddress'")
 	}
 	var resource Email
 	err := ctx.RegisterResource("auth0:index/email:Email", name, args, &resource, opts...)

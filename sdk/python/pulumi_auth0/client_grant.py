@@ -72,13 +72,13 @@ class ClientGrant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if audience is None:
+            if audience is None and not opts.urn:
                 raise TypeError("Missing required property 'audience'")
             __props__['audience'] = audience
-            if client_id is None:
+            if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")
             __props__['client_id'] = client_id
-            if scopes is None:
+            if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__['scopes'] = scopes
         super(ClientGrant, __self__).__init__(

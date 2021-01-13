@@ -70,7 +70,7 @@ class Rule(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['name'] = name
             __props__['order'] = order
-            if script is None:
+            if script is None and not opts.urn:
                 raise TypeError("Missing required property 'script'")
             __props__['script'] = script
         super(Rule, __self__).__init__(

@@ -62,10 +62,10 @@ export class LogStream extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LogStreamArgs | undefined;
-            if (!args || args.sink === undefined) {
+            if ((!args || args.sink === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sink'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["name"] = args ? args.name : undefined;

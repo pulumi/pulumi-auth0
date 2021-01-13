@@ -170,6 +170,7 @@ func NewClient(ctx *pulumi.Context,
 	if args == nil {
 		args = &ClientArgs{}
 	}
+
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}

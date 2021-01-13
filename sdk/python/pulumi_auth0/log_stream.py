@@ -49,11 +49,11 @@ class LogStream(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if sink is None:
+            if sink is None and not opts.urn:
                 raise TypeError("Missing required property 'sink'")
             __props__['sink'] = sink
             __props__['status'] = status
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(LogStream, __self__).__init__(

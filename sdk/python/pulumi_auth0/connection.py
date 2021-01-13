@@ -99,7 +99,7 @@ class Connection(pulumi.CustomResource):
             __props__['name'] = name
             __props__['options'] = options
             __props__['realms'] = realms
-            if strategy is None:
+            if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__['strategy'] = strategy
             __props__['strategy_version'] = strategy_version

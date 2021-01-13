@@ -73,17 +73,18 @@ type ClientGrant struct {
 // NewClientGrant registers a new resource with the given unique name, arguments, and options.
 func NewClientGrant(ctx *pulumi.Context,
 	name string, args *ClientGrantArgs, opts ...pulumi.ResourceOption) (*ClientGrant, error) {
-	if args == nil || args.Audience == nil {
-		return nil, errors.New("missing required argument 'Audience'")
-	}
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.Scopes == nil {
-		return nil, errors.New("missing required argument 'Scopes'")
-	}
 	if args == nil {
-		args = &ClientGrantArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Audience == nil {
+		return nil, errors.New("invalid value for required argument 'Audience'")
+	}
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.Scopes == nil {
+		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	var resource ClientGrant
 	err := ctx.RegisterResource("auth0:index/clientGrant:ClientGrant", name, args, &resource, opts...)

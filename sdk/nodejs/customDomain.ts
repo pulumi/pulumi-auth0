@@ -94,13 +94,13 @@ export class CustomDomain extends pulumi.CustomResource {
             inputs["verificationMethod"] = state ? state.verificationMethod : undefined;
         } else {
             const args = argsOrState as CustomDomainArgs | undefined;
-            if (!args || args.domain === undefined) {
+            if ((!args || args.domain === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domain'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
-            if (!args || args.verificationMethod === undefined) {
+            if ((!args || args.verificationMethod === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'verificationMethod'");
             }
             inputs["domain"] = args ? args.domain : undefined;
