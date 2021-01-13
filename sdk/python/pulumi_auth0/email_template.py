@@ -52,7 +52,7 @@ class EmailTemplate(pulumi.CustomResource):
             syntax="liquid",
             url_lifetime_in_seconds=3600,
             enabled=True,
-            opts=ResourceOptions(depends_on=[my_email_provider]))
+            opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
 
         :param str resource_name: The name of the resource.
@@ -83,23 +83,23 @@ class EmailTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if body is None:
+            if body is None and not opts.urn:
                 raise TypeError("Missing required property 'body'")
             __props__['body'] = body
-            if enabled is None:
+            if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__['enabled'] = enabled
-            if from_ is None:
+            if from_ is None and not opts.urn:
                 raise TypeError("Missing required property 'from_'")
             __props__['from_'] = from_
             __props__['result_url'] = result_url
-            if subject is None:
+            if subject is None and not opts.urn:
                 raise TypeError("Missing required property 'subject'")
             __props__['subject'] = subject
-            if syntax is None:
+            if syntax is None and not opts.urn:
                 raise TypeError("Missing required property 'syntax'")
             __props__['syntax'] = syntax
-            if template is None:
+            if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__['template'] = template
             __props__['url_lifetime_in_seconds'] = url_lifetime_in_seconds

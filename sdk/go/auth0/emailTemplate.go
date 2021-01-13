@@ -80,26 +80,27 @@ type EmailTemplate struct {
 // NewEmailTemplate registers a new resource with the given unique name, arguments, and options.
 func NewEmailTemplate(ctx *pulumi.Context,
 	name string, args *EmailTemplateArgs, opts ...pulumi.ResourceOption) (*EmailTemplate, error) {
-	if args == nil || args.Body == nil {
-		return nil, errors.New("missing required argument 'Body'")
-	}
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.From == nil {
-		return nil, errors.New("missing required argument 'From'")
-	}
-	if args == nil || args.Subject == nil {
-		return nil, errors.New("missing required argument 'Subject'")
-	}
-	if args == nil || args.Syntax == nil {
-		return nil, errors.New("missing required argument 'Syntax'")
-	}
-	if args == nil || args.Template == nil {
-		return nil, errors.New("missing required argument 'Template'")
-	}
 	if args == nil {
-		args = &EmailTemplateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Body == nil {
+		return nil, errors.New("invalid value for required argument 'Body'")
+	}
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.From == nil {
+		return nil, errors.New("invalid value for required argument 'From'")
+	}
+	if args.Subject == nil {
+		return nil, errors.New("invalid value for required argument 'Subject'")
+	}
+	if args.Syntax == nil {
+		return nil, errors.New("invalid value for required argument 'Syntax'")
+	}
+	if args.Template == nil {
+		return nil, errors.New("invalid value for required argument 'Template'")
 	}
 	var resource EmailTemplate
 	err := ctx.RegisterResource("auth0:index/emailTemplate:EmailTemplate", name, args, &resource, opts...)

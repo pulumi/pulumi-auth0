@@ -61,11 +61,12 @@ type Rule struct {
 // NewRule registers a new resource with the given unique name, arguments, and options.
 func NewRule(ctx *pulumi.Context,
 	name string, args *RuleArgs, opts ...pulumi.ResourceOption) (*Rule, error) {
-	if args == nil || args.Script == nil {
-		return nil, errors.New("missing required argument 'Script'")
-	}
 	if args == nil {
-		args = &RuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Script == nil {
+		return nil, errors.New("invalid value for required argument 'Script'")
 	}
 	var resource Rule
 	err := ctx.RegisterResource("auth0:index/rule:Rule", name, args, &resource, opts...)

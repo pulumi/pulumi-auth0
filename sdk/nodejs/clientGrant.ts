@@ -92,13 +92,13 @@ export class ClientGrant extends pulumi.CustomResource {
             inputs["scopes"] = state ? state.scopes : undefined;
         } else {
             const args = argsOrState as ClientGrantArgs | undefined;
-            if (!args || args.audience === undefined) {
+            if ((!args || args.audience === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'audience'");
             }
-            if (!args || args.clientId === undefined) {
+            if ((!args || args.clientId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if (!args || args.scopes === undefined) {
+            if ((!args || args.scopes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'scopes'");
             }
             inputs["audience"] = args ? args.audience : undefined;

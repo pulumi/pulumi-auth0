@@ -128,7 +128,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["validation"] = state ? state.validation : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if (!args || args.strategy === undefined) {
+            if ((!args || args.strategy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'strategy'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;

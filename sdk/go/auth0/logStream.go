@@ -25,14 +25,15 @@ type LogStream struct {
 // NewLogStream registers a new resource with the given unique name, arguments, and options.
 func NewLogStream(ctx *pulumi.Context,
 	name string, args *LogStreamArgs, opts ...pulumi.ResourceOption) (*LogStream, error) {
-	if args == nil || args.Sink == nil {
-		return nil, errors.New("missing required argument 'Sink'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &LogStreamArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Sink == nil {
+		return nil, errors.New("invalid value for required argument 'Sink'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource LogStream
 	err := ctx.RegisterResource("auth0:index/logStream:LogStream", name, args, &resource, opts...)

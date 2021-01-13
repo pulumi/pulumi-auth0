@@ -85,6 +85,7 @@ func NewResourceServer(ctx *pulumi.Context,
 	if args == nil {
 		args = &ResourceServerArgs{}
 	}
+
 	var resource ResourceServer
 	err := ctx.RegisterResource("auth0:index/resourceServer:ResourceServer", name, args, &resource, opts...)
 	if err != nil {

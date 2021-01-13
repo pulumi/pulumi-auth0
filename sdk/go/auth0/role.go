@@ -89,6 +89,7 @@ func NewRole(ctx *pulumi.Context,
 	if args == nil {
 		args = &RoleArgs{}
 	}
+
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}

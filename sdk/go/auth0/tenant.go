@@ -59,6 +59,7 @@ func NewTenant(ctx *pulumi.Context,
 	if args == nil {
 		args = &TenantArgs{}
 	}
+
 	var resource Tenant
 	err := ctx.RegisterResource("auth0:index/tenant:Tenant", name, args, &resource, opts...)
 	if err != nil {

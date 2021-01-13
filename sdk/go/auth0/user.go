@@ -93,11 +93,12 @@ type User struct {
 // NewUser registers a new resource with the given unique name, arguments, and options.
 func NewUser(ctx *pulumi.Context,
 	name string, args *UserArgs, opts ...pulumi.ResourceOption) (*User, error) {
-	if args == nil || args.ConnectionName == nil {
-		return nil, errors.New("missing required argument 'ConnectionName'")
-	}
 	if args == nil {
-		args = &UserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConnectionName == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionName'")
 	}
 	var resource User
 	err := ctx.RegisterResource("auth0:index/user:User", name, args, &resource, opts...)

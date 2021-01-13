@@ -119,22 +119,22 @@ export class EmailTemplate extends pulumi.CustomResource {
             inputs["urlLifetimeInSeconds"] = state ? state.urlLifetimeInSeconds : undefined;
         } else {
             const args = argsOrState as EmailTemplateArgs | undefined;
-            if (!args || args.body === undefined) {
+            if ((!args || args.body === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'body'");
             }
-            if (!args || args.enabled === undefined) {
+            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if (!args || args.from === undefined) {
+            if ((!args || args.from === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'from'");
             }
-            if (!args || args.subject === undefined) {
+            if ((!args || args.subject === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subject'");
             }
-            if (!args || args.syntax === undefined) {
+            if ((!args || args.syntax === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'syntax'");
             }
-            if (!args || args.template === undefined) {
+            if ((!args || args.template === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'template'");
             }
             inputs["body"] = args ? args.body : undefined;

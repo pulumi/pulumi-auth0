@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.ClientId == nil {
 		args.ClientId = pulumi.StringPtr(getEnvOrDefault("", nil, "AUTH0_CLIENT_ID").(string))
 	}

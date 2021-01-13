@@ -57,17 +57,18 @@ type CustomDomain struct {
 // NewCustomDomain registers a new resource with the given unique name, arguments, and options.
 func NewCustomDomain(ctx *pulumi.Context,
 	name string, args *CustomDomainArgs, opts ...pulumi.ResourceOption) (*CustomDomain, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.VerificationMethod == nil {
-		return nil, errors.New("missing required argument 'VerificationMethod'")
-	}
 	if args == nil {
-		args = &CustomDomainArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Domain == nil {
+		return nil, errors.New("invalid value for required argument 'Domain'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.VerificationMethod == nil {
+		return nil, errors.New("invalid value for required argument 'VerificationMethod'")
 	}
 	var resource CustomDomain
 	err := ctx.RegisterResource("auth0:index/customDomain:CustomDomain", name, args, &resource, opts...)

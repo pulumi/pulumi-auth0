@@ -88,10 +88,10 @@ export class Email extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as EmailArgs | undefined;
-            if (!args || args.credentials === undefined) {
+            if ((!args || args.credentials === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'credentials'");
             }
-            if (!args || args.defaultFromAddress === undefined) {
+            if ((!args || args.defaultFromAddress === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'defaultFromAddress'");
             }
             inputs["credentials"] = args ? args.credentials : undefined;

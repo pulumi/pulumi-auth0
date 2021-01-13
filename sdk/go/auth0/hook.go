@@ -57,14 +57,15 @@ type Hook struct {
 // NewHook registers a new resource with the given unique name, arguments, and options.
 func NewHook(ctx *pulumi.Context,
 	name string, args *HookArgs, opts ...pulumi.ResourceOption) (*Hook, error) {
-	if args == nil || args.Script == nil {
-		return nil, errors.New("missing required argument 'Script'")
-	}
-	if args == nil || args.TriggerId == nil {
-		return nil, errors.New("missing required argument 'TriggerId'")
-	}
 	if args == nil {
-		args = &HookArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Script == nil {
+		return nil, errors.New("invalid value for required argument 'Script'")
+	}
+	if args.TriggerId == nil {
+		return nil, errors.New("invalid value for required argument 'TriggerId'")
 	}
 	var resource Hook
 	err := ctx.RegisterResource("auth0:index/hook:Hook", name, args, &resource, opts...)

@@ -57,14 +57,15 @@ type RuleConfig struct {
 // NewRuleConfig registers a new resource with the given unique name, arguments, and options.
 func NewRuleConfig(ctx *pulumi.Context,
 	name string, args *RuleConfigArgs, opts ...pulumi.ResourceOption) (*RuleConfig, error) {
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &RuleConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource RuleConfig
 	err := ctx.RegisterResource("auth0:index/ruleConfig:RuleConfig", name, args, &resource, opts...)

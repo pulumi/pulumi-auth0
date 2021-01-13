@@ -52,6 +52,7 @@ func NewGlobalClient(ctx *pulumi.Context,
 	if args == nil {
 		args = &GlobalClientArgs{}
 	}
+
 	var resource GlobalClient
 	err := ctx.RegisterResource("auth0:index/globalClient:GlobalClient", name, args, &resource, opts...)
 	if err != nil {
