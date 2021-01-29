@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Auth0
 {
+    [Auth0ResourceType("auth0:index/globalClient:GlobalClient")]
     public partial class GlobalClient : Pulumi.CustomResource
     {
         [Output("addons")]

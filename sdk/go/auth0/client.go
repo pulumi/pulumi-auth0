@@ -19,6 +19,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -455,15 +456,15 @@ type ClientInput interface {
 	ToClientOutputWithContext(ctx context.Context) ClientOutput
 }
 
-func (Client) ElementType() reflect.Type {
-	return reflect.TypeOf((*Client)(nil)).Elem()
+func (*Client) ElementType() reflect.Type {
+	return reflect.TypeOf((*Client)(nil))
 }
 
-func (i Client) ToClientOutput() ClientOutput {
+func (i *Client) ToClientOutput() ClientOutput {
 	return i.ToClientOutputWithContext(context.Background())
 }
 
-func (i Client) ToClientOutputWithContext(ctx context.Context) ClientOutput {
+func (i *Client) ToClientOutputWithContext(ctx context.Context) ClientOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientOutput)
 }
 
@@ -472,7 +473,7 @@ type ClientOutput struct {
 }
 
 func (ClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientOutput)(nil)).Elem()
+	return reflect.TypeOf((*Client)(nil))
 }
 
 func (o ClientOutput) ToClientOutput() ClientOutput {

@@ -19,6 +19,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -239,15 +240,15 @@ type ResourceServerInput interface {
 	ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput
 }
 
-func (ResourceServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceServer)(nil)).Elem()
+func (*ResourceServer) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServer)(nil))
 }
 
-func (i ResourceServer) ToResourceServerOutput() ResourceServerOutput {
+func (i *ResourceServer) ToResourceServerOutput() ResourceServerOutput {
 	return i.ToResourceServerOutputWithContext(context.Background())
 }
 
-func (i ResourceServer) ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput {
+func (i *ResourceServer) ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerOutput)
 }
 
@@ -256,7 +257,7 @@ type ResourceServerOutput struct {
 }
 
 func (ResourceServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceServerOutput)(nil)).Elem()
+	return reflect.TypeOf((*ResourceServer)(nil))
 }
 
 func (o ResourceServerOutput) ToResourceServerOutput() ResourceServerOutput {

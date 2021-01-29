@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Auth0
 {
+    [Auth0ResourceType("auth0:index/logStream:LogStream")]
     public partial class LogStream : Pulumi.CustomResource
     {
         [Output("name")]

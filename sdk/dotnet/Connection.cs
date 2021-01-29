@@ -60,6 +60,7 @@ namespace Pulumi.Auth0
     /// 
     /// &gt; The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allowes the creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
     /// </summary>
+    [Auth0ResourceType("auth0:index/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

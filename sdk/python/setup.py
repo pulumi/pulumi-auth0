@@ -48,7 +48,7 @@ setup(name='pulumi_auth0',
       packages=find_packages(),
       package_data={
           'pulumi_auth0': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

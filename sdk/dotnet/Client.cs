@@ -111,6 +111,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/client:Client")]
     public partial class Client : Pulumi.CustomResource
     {
         /// <summary>

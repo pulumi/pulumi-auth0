@@ -38,6 +38,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/email:Email")]
     public partial class Email : Pulumi.CustomResource
     {
         /// <summary>

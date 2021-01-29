@@ -22,6 +22,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -211,15 +212,15 @@ type ConnectionInput interface {
 	ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput
 }
 
-func (Connection) ElementType() reflect.Type {
-	return reflect.TypeOf((*Connection)(nil)).Elem()
+func (*Connection) ElementType() reflect.Type {
+	return reflect.TypeOf((*Connection)(nil))
 }
 
-func (i Connection) ToConnectionOutput() ConnectionOutput {
+func (i *Connection) ToConnectionOutput() ConnectionOutput {
 	return i.ToConnectionOutputWithContext(context.Background())
 }
 
-func (i Connection) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
+func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
 }
 
@@ -228,7 +229,7 @@ type ConnectionOutput struct {
 }
 
 func (ConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Connection)(nil))
 }
 
 func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {

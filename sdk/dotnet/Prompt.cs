@@ -31,6 +31,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/prompt:Prompt")]
     public partial class Prompt : Pulumi.CustomResource
     {
         /// <summary>

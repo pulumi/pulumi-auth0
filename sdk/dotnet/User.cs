@@ -47,6 +47,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/user:User")]
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>
