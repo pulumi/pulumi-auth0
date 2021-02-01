@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -215,15 +216,15 @@ type EmailTemplateInput interface {
 	ToEmailTemplateOutputWithContext(ctx context.Context) EmailTemplateOutput
 }
 
-func (EmailTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailTemplate)(nil)).Elem()
+func (*EmailTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailTemplate)(nil))
 }
 
-func (i EmailTemplate) ToEmailTemplateOutput() EmailTemplateOutput {
+func (i *EmailTemplate) ToEmailTemplateOutput() EmailTemplateOutput {
 	return i.ToEmailTemplateOutputWithContext(context.Background())
 }
 
-func (i EmailTemplate) ToEmailTemplateOutputWithContext(ctx context.Context) EmailTemplateOutput {
+func (i *EmailTemplate) ToEmailTemplateOutputWithContext(ctx context.Context) EmailTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailTemplateOutput)
 }
 
@@ -232,7 +233,7 @@ type EmailTemplateOutput struct {
 }
 
 func (EmailTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*EmailTemplate)(nil))
 }
 
 func (o EmailTemplateOutput) ToEmailTemplateOutput() EmailTemplateOutput {

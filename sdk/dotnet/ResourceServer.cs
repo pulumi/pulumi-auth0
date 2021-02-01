@@ -48,6 +48,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/resourceServer:ResourceServer")]
     public partial class ResourceServer : Pulumi.CustomResource
     {
         /// <summary>

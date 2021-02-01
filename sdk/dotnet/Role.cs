@@ -68,6 +68,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/role:Role")]
     public partial class Role : Pulumi.CustomResource
     {
         /// <summary>

@@ -33,6 +33,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/customDomain:CustomDomain")]
     public partial class CustomDomain : Pulumi.CustomResource
     {
         /// <summary>

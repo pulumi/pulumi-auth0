@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -148,15 +148,15 @@ type HookInput interface {
 	ToHookOutputWithContext(ctx context.Context) HookOutput
 }
 
-func (Hook) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hook)(nil)).Elem()
+func (*Hook) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hook)(nil))
 }
 
-func (i Hook) ToHookOutput() HookOutput {
+func (i *Hook) ToHookOutput() HookOutput {
 	return i.ToHookOutputWithContext(context.Background())
 }
 
-func (i Hook) ToHookOutputWithContext(ctx context.Context) HookOutput {
+func (i *Hook) ToHookOutputWithContext(ctx context.Context) HookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HookOutput)
 }
 
@@ -165,7 +165,7 @@ type HookOutput struct {
 }
 
 func (HookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HookOutput)(nil)).Elem()
+	return reflect.TypeOf((*Hook)(nil))
 }
 
 func (o HookOutput) ToHookOutput() HookOutput {

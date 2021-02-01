@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -105,15 +105,15 @@ type PromptInput interface {
 	ToPromptOutputWithContext(ctx context.Context) PromptOutput
 }
 
-func (Prompt) ElementType() reflect.Type {
-	return reflect.TypeOf((*Prompt)(nil)).Elem()
+func (*Prompt) ElementType() reflect.Type {
+	return reflect.TypeOf((*Prompt)(nil))
 }
 
-func (i Prompt) ToPromptOutput() PromptOutput {
+func (i *Prompt) ToPromptOutput() PromptOutput {
 	return i.ToPromptOutputWithContext(context.Background())
 }
 
-func (i Prompt) ToPromptOutputWithContext(ctx context.Context) PromptOutput {
+func (i *Prompt) ToPromptOutputWithContext(ctx context.Context) PromptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PromptOutput)
 }
 
@@ -122,7 +122,7 @@ type PromptOutput struct {
 }
 
 func (PromptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PromptOutput)(nil)).Elem()
+	return reflect.TypeOf((*Prompt)(nil))
 }
 
 func (o PromptOutput) ToPromptOutput() PromptOutput {

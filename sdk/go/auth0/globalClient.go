@@ -226,15 +226,15 @@ type GlobalClientInput interface {
 	ToGlobalClientOutputWithContext(ctx context.Context) GlobalClientOutput
 }
 
-func (GlobalClient) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClient)(nil)).Elem()
+func (*GlobalClient) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClient)(nil))
 }
 
-func (i GlobalClient) ToGlobalClientOutput() GlobalClientOutput {
+func (i *GlobalClient) ToGlobalClientOutput() GlobalClientOutput {
 	return i.ToGlobalClientOutputWithContext(context.Background())
 }
 
-func (i GlobalClient) ToGlobalClientOutputWithContext(ctx context.Context) GlobalClientOutput {
+func (i *GlobalClient) ToGlobalClientOutputWithContext(ctx context.Context) GlobalClientOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientOutput)
 }
 
@@ -243,7 +243,7 @@ type GlobalClientOutput struct {
 }
 
 func (GlobalClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientOutput)(nil)).Elem()
+	return reflect.TypeOf((*GlobalClient)(nil))
 }
 
 func (o GlobalClientOutput) ToGlobalClientOutput() GlobalClientOutput {

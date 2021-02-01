@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -132,15 +132,15 @@ type RuleConfigInput interface {
 	ToRuleConfigOutputWithContext(ctx context.Context) RuleConfigOutput
 }
 
-func (RuleConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleConfig)(nil)).Elem()
+func (*RuleConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleConfig)(nil))
 }
 
-func (i RuleConfig) ToRuleConfigOutput() RuleConfigOutput {
+func (i *RuleConfig) ToRuleConfigOutput() RuleConfigOutput {
 	return i.ToRuleConfigOutputWithContext(context.Background())
 }
 
-func (i RuleConfig) ToRuleConfigOutputWithContext(ctx context.Context) RuleConfigOutput {
+func (i *RuleConfig) ToRuleConfigOutputWithContext(ctx context.Context) RuleConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigOutput)
 }
 
@@ -149,7 +149,7 @@ type RuleConfigOutput struct {
 }
 
 func (RuleConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*RuleConfig)(nil))
 }
 
 func (o RuleConfigOutput) ToRuleConfigOutput() RuleConfigOutput {

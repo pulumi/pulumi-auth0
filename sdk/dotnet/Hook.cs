@@ -39,6 +39,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/hook:Hook")]
     public partial class Hook : Pulumi.CustomResource
     {
         /// <summary>

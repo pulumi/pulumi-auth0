@@ -63,6 +63,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/tenant:Tenant")]
     public partial class Tenant : Pulumi.CustomResource
     {
         /// <summary>

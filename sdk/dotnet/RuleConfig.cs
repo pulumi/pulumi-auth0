@@ -41,6 +41,7 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// </summary>
+    [Auth0ResourceType("auth0:index/ruleConfig:RuleConfig")]
     public partial class RuleConfig : Pulumi.CustomResource
     {
         /// <summary>
