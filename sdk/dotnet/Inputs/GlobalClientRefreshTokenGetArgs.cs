@@ -15,6 +15,15 @@ namespace Pulumi.Auth0.Inputs
         [Input("expirationType", required: true)]
         public Input<string> ExpirationType { get; set; } = null!;
 
+        [Input("idleTokenLifetime")]
+        public Input<int>? IdleTokenLifetime { get; set; }
+
+        [Input("infiniteIdleTokenLifetime")]
+        public Input<bool>? InfiniteIdleTokenLifetime { get; set; }
+
+        [Input("infiniteTokenLifetime")]
+        public Input<bool>? InfiniteTokenLifetime { get; set; }
+
         [Input("leeway")]
         public Input<int>? Leeway { get; set; }
 

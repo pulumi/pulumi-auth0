@@ -100,6 +100,16 @@ namespace Pulumi.Auth0
     ///                 },
     ///             },
     ///             OidcConformant = false,
+    ///             RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs
+    ///             {
+    ///                 ExpirationType = "expiring",
+    ///                 IdleTokenLifetime = 1296000,
+    ///                 InfiniteIdleTokenLifetime = true,
+    ///                 InfiniteTokenLifetime = false,
+    ///                 Leeway = 15,
+    ///                 RotationType = "rotating",
+    ///                 TokenLifetime = 84600,
+    ///             },
     ///             TokenEndpointAuthMethod = "client_secret_post",
     ///             WebOrigins = 
     ///             {
@@ -267,6 +277,9 @@ namespace Pulumi.Auth0
         [Output("oidcConformant")]
         public Output<bool> OidcConformant { get; private set; } = null!;
 
+        /// <summary>
+        /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        /// </summary>
         [Output("refreshToken")]
         public Output<Outputs.ClientRefreshToken> RefreshToken { get; private set; } = null!;
 
@@ -523,6 +536,9 @@ namespace Pulumi.Auth0
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
 
+        /// <summary>
+        /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        /// </summary>
         [Input("refreshToken")]
         public Input<Inputs.ClientRefreshTokenArgs>? RefreshToken { get; set; }
 
@@ -759,6 +775,9 @@ namespace Pulumi.Auth0
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
 
+        /// <summary>
+        /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        /// </summary>
         [Input("refreshToken")]
         public Input<Inputs.ClientRefreshTokenGetArgs>? RefreshToken { get; set; }
 

@@ -69,6 +69,15 @@ import * as utilities from "./utilities";
  *         },
  *     },
  *     oidcConformant: false,
+ *     refreshToken: {
+ *         expirationType: "expiring",
+ *         idleTokenLifetime: 1296000,
+ *         infiniteIdleTokenLifetime: true,
+ *         infiniteTokenLifetime: false,
+ *         leeway: 15,
+ *         rotationType: "rotating",
+ *         tokenLifetime: 84600,
+ *     },
  *     tokenEndpointAuthMethod: "client_secret_post",
  *     webOrigins: ["https://example.com"],
  * });
@@ -203,6 +212,9 @@ export class Client extends pulumi.CustomResource {
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
     public readonly oidcConformant!: pulumi.Output<boolean>;
+    /**
+     * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+     */
     public readonly refreshToken!: pulumi.Output<outputs.ClientRefreshToken>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
@@ -414,6 +426,9 @@ export interface ClientState {
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
     readonly oidcConformant?: pulumi.Input<boolean>;
+    /**
+     * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+     */
     readonly refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
@@ -530,6 +545,9 @@ export interface ClientArgs {
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
     readonly oidcConformant?: pulumi.Input<boolean>;
+    /**
+     * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+     */
     readonly refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.

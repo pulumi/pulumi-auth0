@@ -113,6 +113,15 @@ class Client(pulumi.CustomResource):
                 ),
             ),
             oidc_conformant=False,
+            refresh_token=auth0.ClientRefreshTokenArgs(
+                expiration_type="expiring",
+                idle_token_lifetime=1296000,
+                infinite_idle_token_lifetime=True,
+                infinite_token_lifetime=False,
+                leeway=15,
+                rotation_type="rotating",
+                token_lifetime=84600,
+            ),
             token_endpoint_auth_method="client_secret_post",
             web_origins=["https://example.com"])
         ```
@@ -142,6 +151,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
         :param pulumi.Input[str] token_endpoint_auth_method: String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
@@ -270,6 +280,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
         :param pulumi.Input[str] token_endpoint_auth_method: String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
@@ -520,6 +531,9 @@ class Client(pulumi.CustomResource):
     @property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> pulumi.Output['outputs.ClientRefreshToken']:
+        """
+        List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        """
         return pulumi.get(self, "refresh_token")
 
     @property

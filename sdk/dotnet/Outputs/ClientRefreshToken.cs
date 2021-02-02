@@ -13,14 +13,44 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientRefreshToken
     {
+        /// <summary>
+        /// String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        /// </summary>
         public readonly string ExpirationType;
+        /// <summary>
+        /// Integer. The time in seconds after which inactive refresh tokens will expire.
+        /// </summary>
+        public readonly int? IdleTokenLifetime;
+        /// <summary>
+        /// Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+        /// </summary>
+        public readonly bool? InfiniteIdleTokenLifetime;
+        /// <summary>
+        /// Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+        /// </summary>
+        public readonly bool? InfiniteTokenLifetime;
+        /// <summary>
+        /// Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+        /// </summary>
         public readonly int? Leeway;
+        /// <summary>
+        /// String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        /// </summary>
         public readonly string RotationType;
+        /// <summary>
+        /// Integer. The absolute lifetime of a refresh token in seconds.
+        /// </summary>
         public readonly int? TokenLifetime;
 
         [OutputConstructor]
         private ClientRefreshToken(
             string expirationType,
+
+            int? idleTokenLifetime,
+
+            bool? infiniteIdleTokenLifetime,
+
+            bool? infiniteTokenLifetime,
 
             int? leeway,
 
@@ -29,6 +59,9 @@ namespace Pulumi.Auth0.Outputs
             int? tokenLifetime)
         {
             ExpirationType = expirationType;
+            IdleTokenLifetime = idleTokenLifetime;
+            InfiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
+            InfiniteTokenLifetime = infiniteTokenLifetime;
             Leeway = leeway;
             RotationType = rotationType;
             TokenLifetime = tokenLifetime;

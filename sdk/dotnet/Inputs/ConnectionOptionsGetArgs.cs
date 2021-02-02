@@ -210,6 +210,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? MessagingServiceSid { get; set; }
 
         /// <summary>
+        /// Configuration settings Options for multifactor authentication. For details, see MFA Options.
+        /// </summary>
+        [Input("mfa")]
+        public Input<Inputs.ConnectionOptionsMfaGetArgs>? Mfa { get; set; }
+
+        /// <summary>
         /// Name of the connection.
         /// </summary>
         [Input("name")]

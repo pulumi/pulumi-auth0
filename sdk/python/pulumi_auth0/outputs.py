@@ -20,6 +20,7 @@ __all__ = [
     'ClientRefreshToken',
     'ConnectionOptions',
     'ConnectionOptionsIdpInitiated',
+    'ConnectionOptionsMfa',
     'ConnectionOptionsPasswordComplexityOptions',
     'ConnectionOptionsPasswordDictionary',
     'ConnectionOptionsPasswordHistory',
@@ -831,10 +832,28 @@ class ClientRefreshToken(dict):
     def __init__(__self__, *,
                  expiration_type: str,
                  rotation_type: str,
+                 idle_token_lifetime: Optional[int] = None,
+                 infinite_idle_token_lifetime: Optional[bool] = None,
+                 infinite_token_lifetime: Optional[bool] = None,
                  leeway: Optional[int] = None,
                  token_lifetime: Optional[int] = None):
+        """
+        :param str expiration_type: String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        :param str rotation_type: String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        :param int idle_token_lifetime: Integer. The time in seconds after which inactive refresh tokens will expire.
+        :param bool infinite_idle_token_lifetime: Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+        :param bool infinite_token_lifetime: Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+        :param int leeway: Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+        :param int token_lifetime: Integer. The absolute lifetime of a refresh token in seconds.
+        """
         pulumi.set(__self__, "expiration_type", expiration_type)
         pulumi.set(__self__, "rotation_type", rotation_type)
+        if idle_token_lifetime is not None:
+            pulumi.set(__self__, "idle_token_lifetime", idle_token_lifetime)
+        if infinite_idle_token_lifetime is not None:
+            pulumi.set(__self__, "infinite_idle_token_lifetime", infinite_idle_token_lifetime)
+        if infinite_token_lifetime is not None:
+            pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
         if leeway is not None:
             pulumi.set(__self__, "leeway", leeway)
         if token_lifetime is not None:
@@ -843,21 +862,57 @@ class ClientRefreshToken(dict):
     @property
     @pulumi.getter(name="expirationType")
     def expiration_type(self) -> str:
+        """
+        String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        """
         return pulumi.get(self, "expiration_type")
 
     @property
     @pulumi.getter(name="rotationType")
     def rotation_type(self) -> str:
+        """
+        String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        """
         return pulumi.get(self, "rotation_type")
+
+    @property
+    @pulumi.getter(name="idleTokenLifetime")
+    def idle_token_lifetime(self) -> Optional[int]:
+        """
+        Integer. The time in seconds after which inactive refresh tokens will expire.
+        """
+        return pulumi.get(self, "idle_token_lifetime")
+
+    @property
+    @pulumi.getter(name="infiniteIdleTokenLifetime")
+    def infinite_idle_token_lifetime(self) -> Optional[bool]:
+        """
+        Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+        """
+        return pulumi.get(self, "infinite_idle_token_lifetime")
+
+    @property
+    @pulumi.getter(name="infiniteTokenLifetime")
+    def infinite_token_lifetime(self) -> Optional[bool]:
+        """
+        Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+        """
+        return pulumi.get(self, "infinite_token_lifetime")
 
     @property
     @pulumi.getter
     def leeway(self) -> Optional[int]:
+        """
+        Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+        """
         return pulumi.get(self, "leeway")
 
     @property
     @pulumi.getter(name="tokenLifetime")
     def token_lifetime(self) -> Optional[int]:
+        """
+        Integer. The absolute lifetime of a refresh token in seconds.
+        """
         return pulumi.get(self, "token_lifetime")
 
     def _translate_property(self, prop):
@@ -899,6 +954,7 @@ class ConnectionOptions(dict):
                  key_id: Optional[str] = None,
                  max_groups_to_retrieve: Optional[str] = None,
                  messaging_service_sid: Optional[str] = None,
+                 mfa: Optional['outputs.ConnectionOptionsMfa'] = None,
                  name: Optional[str] = None,
                  password_complexity_options: Optional['outputs.ConnectionOptionsPasswordComplexityOptions'] = None,
                  password_dictionary: Optional['outputs.ConnectionOptionsPasswordDictionary'] = None,
@@ -957,6 +1013,7 @@ class ConnectionOptions(dict):
         :param str key_id: Key ID.
         :param str max_groups_to_retrieve: Maximum number of groups to retrieve.
         :param str messaging_service_sid: SID for Copilot. Used when SMS Source is Copilot.
+        :param 'ConnectionOptionsMfaArgs' mfa: Configuration settings Options for multifactor authentication. For details, see MFA Options.
         :param str name: Name of the connection.
         :param 'ConnectionOptionsPasswordComplexityOptionsArgs' password_complexity_options: Configuration settings for password complexity. For details, see Password Complexity Options.
         :param 'ConnectionOptionsPasswordDictionaryArgs' password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
@@ -1048,6 +1105,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "max_groups_to_retrieve", max_groups_to_retrieve)
         if messaging_service_sid is not None:
             pulumi.set(__self__, "messaging_service_sid", messaging_service_sid)
+        if mfa is not None:
+            pulumi.set(__self__, "mfa", mfa)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if password_complexity_options is not None:
@@ -1347,6 +1406,14 @@ class ConnectionOptions(dict):
 
     @property
     @pulumi.getter
+    def mfa(self) -> Optional['outputs.ConnectionOptionsMfa']:
+        """
+        Configuration settings Options for multifactor authentication. For details, see MFA Options.
+        """
+        return pulumi.get(self, "mfa")
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[str]:
         """
         Name of the connection.
@@ -1635,6 +1702,40 @@ class ConnectionOptionsIdpInitiated(dict):
     @pulumi.getter(name="clientProtocol")
     def client_protocol(self) -> Optional[str]:
         return pulumi.get(self, "client_protocol")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ConnectionOptionsMfa(dict):
+    def __init__(__self__, *,
+                 active: Optional[bool] = None,
+                 return_enroll_settings: Optional[bool] = None):
+        """
+        :param bool active: Indicates whether multifactor authentication is enabled for this connection.
+        :param bool return_enroll_settings: Indicates whether multifactor authentication enrollment settings will be returned.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if return_enroll_settings is not None:
+            pulumi.set(__self__, "return_enroll_settings", return_enroll_settings)
+
+    @property
+    @pulumi.getter
+    def active(self) -> Optional[bool]:
+        """
+        Indicates whether multifactor authentication is enabled for this connection.
+        """
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="returnEnrollSettings")
+    def return_enroll_settings(self) -> Optional[bool]:
+        """
+        Indicates whether multifactor authentication enrollment settings will be returned.
+        """
+        return pulumi.get(self, "return_enroll_settings")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -2513,10 +2614,19 @@ class GlobalClientRefreshToken(dict):
     def __init__(__self__, *,
                  expiration_type: str,
                  rotation_type: str,
+                 idle_token_lifetime: Optional[int] = None,
+                 infinite_idle_token_lifetime: Optional[bool] = None,
+                 infinite_token_lifetime: Optional[bool] = None,
                  leeway: Optional[int] = None,
                  token_lifetime: Optional[int] = None):
         pulumi.set(__self__, "expiration_type", expiration_type)
         pulumi.set(__self__, "rotation_type", rotation_type)
+        if idle_token_lifetime is not None:
+            pulumi.set(__self__, "idle_token_lifetime", idle_token_lifetime)
+        if infinite_idle_token_lifetime is not None:
+            pulumi.set(__self__, "infinite_idle_token_lifetime", infinite_idle_token_lifetime)
+        if infinite_token_lifetime is not None:
+            pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
         if leeway is not None:
             pulumi.set(__self__, "leeway", leeway)
         if token_lifetime is not None:
@@ -2531,6 +2641,21 @@ class GlobalClientRefreshToken(dict):
     @pulumi.getter(name="rotationType")
     def rotation_type(self) -> str:
         return pulumi.get(self, "rotation_type")
+
+    @property
+    @pulumi.getter(name="idleTokenLifetime")
+    def idle_token_lifetime(self) -> Optional[int]:
+        return pulumi.get(self, "idle_token_lifetime")
+
+    @property
+    @pulumi.getter(name="infiniteIdleTokenLifetime")
+    def infinite_idle_token_lifetime(self) -> Optional[bool]:
+        return pulumi.get(self, "infinite_idle_token_lifetime")
+
+    @property
+    @pulumi.getter(name="infiniteTokenLifetime")
+    def infinite_token_lifetime(self) -> Optional[bool]:
+        return pulumi.get(self, "infinite_token_lifetime")
 
     @property
     @pulumi.getter
