@@ -14,6 +14,9 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GlobalClientRefreshToken
     {
         public readonly string ExpirationType;
+        public readonly int? IdleTokenLifetime;
+        public readonly bool? InfiniteIdleTokenLifetime;
+        public readonly bool? InfiniteTokenLifetime;
         public readonly int? Leeway;
         public readonly string RotationType;
         public readonly int? TokenLifetime;
@@ -22,6 +25,12 @@ namespace Pulumi.Auth0.Outputs
         private GlobalClientRefreshToken(
             string expirationType,
 
+            int? idleTokenLifetime,
+
+            bool? infiniteIdleTokenLifetime,
+
+            bool? infiniteTokenLifetime,
+
             int? leeway,
 
             string rotationType,
@@ -29,6 +38,9 @@ namespace Pulumi.Auth0.Outputs
             int? tokenLifetime)
         {
             ExpirationType = expirationType;
+            IdleTokenLifetime = idleTokenLifetime;
+            InfiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
+            InfiniteTokenLifetime = infiniteTokenLifetime;
             Leeway = leeway;
             RotationType = rotationType;
             TokenLifetime = tokenLifetime;

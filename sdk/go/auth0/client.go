@@ -87,7 +87,16 @@ import (
 // 					TeamId:              pulumi.String("9JA89QQLNQ"),
 // 				},
 // 			},
-// 			OidcConformant:          pulumi.Bool(false),
+// 			OidcConformant: pulumi.Bool(false),
+// 			RefreshToken: &auth0.ClientRefreshTokenArgs{
+// 				ExpirationType:            pulumi.String("expiring"),
+// 				IdleTokenLifetime:         pulumi.Int(1296000),
+// 				InfiniteIdleTokenLifetime: pulumi.Bool(true),
+// 				InfiniteTokenLifetime:     pulumi.Bool(false),
+// 				Leeway:                    pulumi.Int(15),
+// 				RotationType:              pulumi.String("rotating"),
+// 				TokenLifetime:             pulumi.Int(84600),
+// 			},
 // 			TokenEndpointAuthMethod: pulumi.String("client_secret_post"),
 // 			WebOrigins: pulumi.StringArray{
 // 				pulumi.String("https://example.com"),
@@ -153,8 +162,9 @@ type Client struct {
 	// String. Name of the client.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
-	OidcConformant pulumi.BoolOutput        `pulumi:"oidcConformant"`
-	RefreshToken   ClientRefreshTokenOutput `pulumi:"refreshToken"`
+	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
+	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+	RefreshToken ClientRefreshTokenOutput `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso pulumi.BoolPtrOutput `pulumi:"sso"`
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -247,8 +257,9 @@ type clientState struct {
 	// String. Name of the client.
 	Name *string `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
-	OidcConformant *bool               `pulumi:"oidcConformant"`
-	RefreshToken   *ClientRefreshToken `pulumi:"refreshToken"`
+	OidcConformant *bool `pulumi:"oidcConformant"`
+	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso *bool `pulumi:"sso"`
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -311,7 +322,8 @@ type ClientState struct {
 	Name pulumi.StringPtrInput
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolPtrInput
-	RefreshToken   ClientRefreshTokenPtrInput
+	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+	RefreshToken ClientRefreshTokenPtrInput
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso pulumi.BoolPtrInput
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -373,8 +385,9 @@ type clientArgs struct {
 	// String. Name of the client.
 	Name *string `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
-	OidcConformant *bool               `pulumi:"oidcConformant"`
-	RefreshToken   *ClientRefreshToken `pulumi:"refreshToken"`
+	OidcConformant *bool `pulumi:"oidcConformant"`
+	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso *bool `pulumi:"sso"`
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -434,7 +447,8 @@ type ClientArgs struct {
 	Name pulumi.StringPtrInput
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolPtrInput
-	RefreshToken   ClientRefreshTokenPtrInput
+	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+	RefreshToken ClientRefreshTokenPtrInput
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso pulumi.BoolPtrInput
 	// Boolean. Indicates whether or not SSO is disabled.

@@ -1916,10 +1916,20 @@ func (o ClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
 }
 
 type ClientRefreshToken struct {
+	// String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
 	ExpirationType string `pulumi:"expirationType"`
-	Leeway         *int   `pulumi:"leeway"`
-	RotationType   string `pulumi:"rotationType"`
-	TokenLifetime  *int   `pulumi:"tokenLifetime"`
+	// Integer. The time in seconds after which inactive refresh tokens will expire.
+	IdleTokenLifetime *int `pulumi:"idleTokenLifetime"`
+	// Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+	InfiniteIdleTokenLifetime *bool `pulumi:"infiniteIdleTokenLifetime"`
+	// Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set
+	InfiniteTokenLifetime *bool `pulumi:"infiniteTokenLifetime"`
+	// Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+	Leeway *int `pulumi:"leeway"`
+	// String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+	RotationType string `pulumi:"rotationType"`
+	// Integer. The absolute lifetime of a refresh token in seconds.
+	TokenLifetime *int `pulumi:"tokenLifetime"`
 }
 
 // ClientRefreshTokenInput is an input type that accepts ClientRefreshTokenArgs and ClientRefreshTokenOutput values.
@@ -1934,10 +1944,20 @@ type ClientRefreshTokenInput interface {
 }
 
 type ClientRefreshTokenArgs struct {
+	// String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
 	ExpirationType pulumi.StringInput `pulumi:"expirationType"`
-	Leeway         pulumi.IntPtrInput `pulumi:"leeway"`
-	RotationType   pulumi.StringInput `pulumi:"rotationType"`
-	TokenLifetime  pulumi.IntPtrInput `pulumi:"tokenLifetime"`
+	// Integer. The time in seconds after which inactive refresh tokens will expire.
+	IdleTokenLifetime pulumi.IntPtrInput `pulumi:"idleTokenLifetime"`
+	// Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+	InfiniteIdleTokenLifetime pulumi.BoolPtrInput `pulumi:"infiniteIdleTokenLifetime"`
+	// Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set
+	InfiniteTokenLifetime pulumi.BoolPtrInput `pulumi:"infiniteTokenLifetime"`
+	// Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+	Leeway pulumi.IntPtrInput `pulumi:"leeway"`
+	// String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+	RotationType pulumi.StringInput `pulumi:"rotationType"`
+	// Integer. The absolute lifetime of a refresh token in seconds.
+	TokenLifetime pulumi.IntPtrInput `pulumi:"tokenLifetime"`
 }
 
 func (ClientRefreshTokenArgs) ElementType() reflect.Type {
@@ -2016,18 +2036,38 @@ func (o ClientRefreshTokenOutput) ToClientRefreshTokenPtrOutputWithContext(ctx c
 		return &v
 	}).(ClientRefreshTokenPtrOutput)
 }
+
+// String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
 func (o ClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
 }
 
+// Integer. The time in seconds after which inactive refresh tokens will expire.
+func (o ClientRefreshTokenOutput) IdleTokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientRefreshToken) *int { return v.IdleTokenLifetime }).(pulumi.IntPtrOutput)
+}
+
+// Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+func (o ClientRefreshTokenOutput) InfiniteIdleTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientRefreshToken) *bool { return v.InfiniteIdleTokenLifetime }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set
+func (o ClientRefreshTokenOutput) InfiniteTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientRefreshToken) *bool { return v.InfiniteTokenLifetime }).(pulumi.BoolPtrOutput)
+}
+
+// Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
 func (o ClientRefreshTokenOutput) Leeway() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientRefreshToken) *int { return v.Leeway }).(pulumi.IntPtrOutput)
 }
 
+// String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 func (o ClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
 }
 
+// Integer. The absolute lifetime of a refresh token in seconds.
 func (o ClientRefreshTokenOutput) TokenLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientRefreshToken) *int { return v.TokenLifetime }).(pulumi.IntPtrOutput)
 }
@@ -2050,6 +2090,7 @@ func (o ClientRefreshTokenPtrOutput) Elem() ClientRefreshTokenOutput {
 	return o.ApplyT(func(v *ClientRefreshToken) ClientRefreshToken { return *v }).(ClientRefreshTokenOutput)
 }
 
+// String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
 func (o ClientRefreshTokenPtrOutput) ExpirationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientRefreshToken) *string {
 		if v == nil {
@@ -2059,6 +2100,37 @@ func (o ClientRefreshTokenPtrOutput) ExpirationType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Integer. The time in seconds after which inactive refresh tokens will expire.
+func (o ClientRefreshTokenPtrOutput) IdleTokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTokenLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+func (o ClientRefreshTokenPtrOutput) InfiniteIdleTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InfiniteIdleTokenLifetime
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set
+func (o ClientRefreshTokenPtrOutput) InfiniteTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientRefreshToken) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InfiniteTokenLifetime
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
 func (o ClientRefreshTokenPtrOutput) Leeway() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientRefreshToken) *int {
 		if v == nil {
@@ -2068,6 +2140,7 @@ func (o ClientRefreshTokenPtrOutput) Leeway() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
 func (o ClientRefreshTokenPtrOutput) RotationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientRefreshToken) *string {
 		if v == nil {
@@ -2077,6 +2150,7 @@ func (o ClientRefreshTokenPtrOutput) RotationType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Integer. The absolute lifetime of a refresh token in seconds.
 func (o ClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientRefreshToken) *int {
 		if v == nil {
@@ -2143,6 +2217,8 @@ type ConnectionOptions struct {
 	MaxGroupsToRetrieve *string `pulumi:"maxGroupsToRetrieve"`
 	// SID for Copilot. Used when SMS Source is Copilot.
 	MessagingServiceSid *string `pulumi:"messagingServiceSid"`
+	// Configuration settings Options for multifactor authentication. For details, see MFA Options.
+	Mfa *ConnectionOptionsMfa `pulumi:"mfa"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
 	// Configuration settings for password complexity. For details, see Password Complexity Options.
@@ -2274,6 +2350,8 @@ type ConnectionOptionsArgs struct {
 	MaxGroupsToRetrieve pulumi.StringPtrInput `pulumi:"maxGroupsToRetrieve"`
 	// SID for Copilot. Used when SMS Source is Copilot.
 	MessagingServiceSid pulumi.StringPtrInput `pulumi:"messagingServiceSid"`
+	// Configuration settings Options for multifactor authentication. For details, see MFA Options.
+	Mfa ConnectionOptionsMfaPtrInput `pulumi:"mfa"`
 	// Name of the connection.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Configuration settings for password complexity. For details, see Password Complexity Options.
@@ -2564,6 +2642,11 @@ func (o ConnectionOptionsOutput) MaxGroupsToRetrieve() pulumi.StringPtrOutput {
 // SID for Copilot. Used when SMS Source is Copilot.
 func (o ConnectionOptionsOutput) MessagingServiceSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.MessagingServiceSid }).(pulumi.StringPtrOutput)
+}
+
+// Configuration settings Options for multifactor authentication. For details, see MFA Options.
+func (o ConnectionOptionsOutput) Mfa() ConnectionOptionsMfaPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsMfa { return v.Mfa }).(ConnectionOptionsMfaPtrOutput)
 }
 
 // Name of the connection.
@@ -3062,6 +3145,16 @@ func (o ConnectionOptionsPtrOutput) MessagingServiceSid() pulumi.StringPtrOutput
 		}
 		return v.MessagingServiceSid
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration settings Options for multifactor authentication. For details, see MFA Options.
+func (o ConnectionOptionsPtrOutput) Mfa() ConnectionOptionsMfaPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsMfa {
+		if v == nil {
+			return nil
+		}
+		return v.Mfa
+	}).(ConnectionOptionsMfaPtrOutput)
 }
 
 // Name of the connection.
@@ -3563,6 +3656,156 @@ func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientProtocol() pulumi.StringPt
 		}
 		return v.ClientProtocol
 	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsMfa struct {
+	// Indicates whether multifactor authentication is enabled for this connection.
+	Active *bool `pulumi:"active"`
+	// Indicates whether multifactor authentication enrollment settings will be returned.
+	ReturnEnrollSettings *bool `pulumi:"returnEnrollSettings"`
+}
+
+// ConnectionOptionsMfaInput is an input type that accepts ConnectionOptionsMfaArgs and ConnectionOptionsMfaOutput values.
+// You can construct a concrete instance of `ConnectionOptionsMfaInput` via:
+//
+//          ConnectionOptionsMfaArgs{...}
+type ConnectionOptionsMfaInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsMfaOutput() ConnectionOptionsMfaOutput
+	ToConnectionOptionsMfaOutputWithContext(context.Context) ConnectionOptionsMfaOutput
+}
+
+type ConnectionOptionsMfaArgs struct {
+	// Indicates whether multifactor authentication is enabled for this connection.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Indicates whether multifactor authentication enrollment settings will be returned.
+	ReturnEnrollSettings pulumi.BoolPtrInput `pulumi:"returnEnrollSettings"`
+}
+
+func (ConnectionOptionsMfaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsMfa)(nil)).Elem()
+}
+
+func (i ConnectionOptionsMfaArgs) ToConnectionOptionsMfaOutput() ConnectionOptionsMfaOutput {
+	return i.ToConnectionOptionsMfaOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsMfaArgs) ToConnectionOptionsMfaOutputWithContext(ctx context.Context) ConnectionOptionsMfaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsMfaOutput)
+}
+
+func (i ConnectionOptionsMfaArgs) ToConnectionOptionsMfaPtrOutput() ConnectionOptionsMfaPtrOutput {
+	return i.ToConnectionOptionsMfaPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsMfaArgs) ToConnectionOptionsMfaPtrOutputWithContext(ctx context.Context) ConnectionOptionsMfaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsMfaOutput).ToConnectionOptionsMfaPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsMfaPtrInput is an input type that accepts ConnectionOptionsMfaArgs, ConnectionOptionsMfaPtr and ConnectionOptionsMfaPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsMfaPtrInput` via:
+//
+//          ConnectionOptionsMfaArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionOptionsMfaPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsMfaPtrOutput() ConnectionOptionsMfaPtrOutput
+	ToConnectionOptionsMfaPtrOutputWithContext(context.Context) ConnectionOptionsMfaPtrOutput
+}
+
+type connectionOptionsMfaPtrType ConnectionOptionsMfaArgs
+
+func ConnectionOptionsMfaPtr(v *ConnectionOptionsMfaArgs) ConnectionOptionsMfaPtrInput {
+	return (*connectionOptionsMfaPtrType)(v)
+}
+
+func (*connectionOptionsMfaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsMfa)(nil)).Elem()
+}
+
+func (i *connectionOptionsMfaPtrType) ToConnectionOptionsMfaPtrOutput() ConnectionOptionsMfaPtrOutput {
+	return i.ToConnectionOptionsMfaPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsMfaPtrType) ToConnectionOptionsMfaPtrOutputWithContext(ctx context.Context) ConnectionOptionsMfaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsMfaPtrOutput)
+}
+
+type ConnectionOptionsMfaOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsMfaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsMfa)(nil)).Elem()
+}
+
+func (o ConnectionOptionsMfaOutput) ToConnectionOptionsMfaOutput() ConnectionOptionsMfaOutput {
+	return o
+}
+
+func (o ConnectionOptionsMfaOutput) ToConnectionOptionsMfaOutputWithContext(ctx context.Context) ConnectionOptionsMfaOutput {
+	return o
+}
+
+func (o ConnectionOptionsMfaOutput) ToConnectionOptionsMfaPtrOutput() ConnectionOptionsMfaPtrOutput {
+	return o.ToConnectionOptionsMfaPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsMfaOutput) ToConnectionOptionsMfaPtrOutputWithContext(ctx context.Context) ConnectionOptionsMfaPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsMfa) *ConnectionOptionsMfa {
+		return &v
+	}).(ConnectionOptionsMfaPtrOutput)
+}
+
+// Indicates whether multifactor authentication is enabled for this connection.
+func (o ConnectionOptionsMfaOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsMfa) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether multifactor authentication enrollment settings will be returned.
+func (o ConnectionOptionsMfaOutput) ReturnEnrollSettings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsMfa) *bool { return v.ReturnEnrollSettings }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsMfaPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsMfaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsMfa)(nil)).Elem()
+}
+
+func (o ConnectionOptionsMfaPtrOutput) ToConnectionOptionsMfaPtrOutput() ConnectionOptionsMfaPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsMfaPtrOutput) ToConnectionOptionsMfaPtrOutputWithContext(ctx context.Context) ConnectionOptionsMfaPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsMfaPtrOutput) Elem() ConnectionOptionsMfaOutput {
+	return o.ApplyT(func(v *ConnectionOptionsMfa) ConnectionOptionsMfa { return *v }).(ConnectionOptionsMfaOutput)
+}
+
+// Indicates whether multifactor authentication is enabled for this connection.
+func (o ConnectionOptionsMfaPtrOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsMfa) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Active
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether multifactor authentication enrollment settings will be returned.
+func (o ConnectionOptionsMfaPtrOutput) ReturnEnrollSettings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsMfa) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnEnrollSettings
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionOptionsPasswordComplexityOptions struct {
@@ -6599,10 +6842,13 @@ func (o GlobalClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
 }
 
 type GlobalClientRefreshToken struct {
-	ExpirationType string `pulumi:"expirationType"`
-	Leeway         *int   `pulumi:"leeway"`
-	RotationType   string `pulumi:"rotationType"`
-	TokenLifetime  *int   `pulumi:"tokenLifetime"`
+	ExpirationType            string `pulumi:"expirationType"`
+	IdleTokenLifetime         *int   `pulumi:"idleTokenLifetime"`
+	InfiniteIdleTokenLifetime *bool  `pulumi:"infiniteIdleTokenLifetime"`
+	InfiniteTokenLifetime     *bool  `pulumi:"infiniteTokenLifetime"`
+	Leeway                    *int   `pulumi:"leeway"`
+	RotationType              string `pulumi:"rotationType"`
+	TokenLifetime             *int   `pulumi:"tokenLifetime"`
 }
 
 // GlobalClientRefreshTokenInput is an input type that accepts GlobalClientRefreshTokenArgs and GlobalClientRefreshTokenOutput values.
@@ -6617,10 +6863,13 @@ type GlobalClientRefreshTokenInput interface {
 }
 
 type GlobalClientRefreshTokenArgs struct {
-	ExpirationType pulumi.StringInput `pulumi:"expirationType"`
-	Leeway         pulumi.IntPtrInput `pulumi:"leeway"`
-	RotationType   pulumi.StringInput `pulumi:"rotationType"`
-	TokenLifetime  pulumi.IntPtrInput `pulumi:"tokenLifetime"`
+	ExpirationType            pulumi.StringInput  `pulumi:"expirationType"`
+	IdleTokenLifetime         pulumi.IntPtrInput  `pulumi:"idleTokenLifetime"`
+	InfiniteIdleTokenLifetime pulumi.BoolPtrInput `pulumi:"infiniteIdleTokenLifetime"`
+	InfiniteTokenLifetime     pulumi.BoolPtrInput `pulumi:"infiniteTokenLifetime"`
+	Leeway                    pulumi.IntPtrInput  `pulumi:"leeway"`
+	RotationType              pulumi.StringInput  `pulumi:"rotationType"`
+	TokenLifetime             pulumi.IntPtrInput  `pulumi:"tokenLifetime"`
 }
 
 func (GlobalClientRefreshTokenArgs) ElementType() reflect.Type {
@@ -6703,6 +6952,18 @@ func (o GlobalClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GlobalClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
 }
 
+func (o GlobalClientRefreshTokenOutput) IdleTokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GlobalClientRefreshToken) *int { return v.IdleTokenLifetime }).(pulumi.IntPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenOutput) InfiniteIdleTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GlobalClientRefreshToken) *bool { return v.InfiniteIdleTokenLifetime }).(pulumi.BoolPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenOutput) InfiniteTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GlobalClientRefreshToken) *bool { return v.InfiniteTokenLifetime }).(pulumi.BoolPtrOutput)
+}
+
 func (o GlobalClientRefreshTokenOutput) Leeway() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GlobalClientRefreshToken) *int { return v.Leeway }).(pulumi.IntPtrOutput)
 }
@@ -6740,6 +7001,33 @@ func (o GlobalClientRefreshTokenPtrOutput) ExpirationType() pulumi.StringPtrOutp
 		}
 		return &v.ExpirationType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) IdleTokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GlobalClientRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTokenLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) InfiniteIdleTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GlobalClientRefreshToken) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InfiniteIdleTokenLifetime
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GlobalClientRefreshTokenPtrOutput) InfiniteTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GlobalClientRefreshToken) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InfiniteTokenLifetime
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GlobalClientRefreshTokenPtrOutput) Leeway() pulumi.IntPtrOutput {
@@ -8450,6 +8738,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsMfaOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsMfaPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordComplexityOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordComplexityOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordDictionaryOutput{})

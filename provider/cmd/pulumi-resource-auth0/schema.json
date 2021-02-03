@@ -725,6 +725,34 @@
             "properties": {
                 "expirationType": {
                     "type": "string",
+                    "description": "String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "idleTokenLifetime": {
+                    "type": "integer",
+                    "description": "Integer. The time in seconds after which inactive refresh tokens will expire.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "infiniteIdleTokenLifetime": {
+                    "type": "boolean",
+                    "description": "Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "infiniteTokenLifetime": {
+                    "type": "boolean",
+                    "description": "Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -733,6 +761,7 @@
                 },
                 "leeway": {
                     "type": "integer",
+                    "description": "Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -741,6 +770,7 @@
                 },
                 "rotationType": {
                     "type": "string",
+                    "description": "String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -749,6 +779,7 @@
                 },
                 "tokenLifetime": {
                     "type": "integer",
+                    "description": "Integer. The absolute lifetime of a refresh token in seconds.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1055,6 +1086,15 @@
                 "messagingServiceSid": {
                     "type": "string",
                     "description": "SID for Copilot. Used when SMS Source is Copilot.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mfa": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsMfa:ConnectionOptionsMfa",
+                    "description": "Configuration settings Options for multifactor authentication. For details, see MFA Options.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1409,6 +1449,29 @@
                 },
                 "clientProtocol": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ConnectionOptionsMfa:ConnectionOptionsMfa": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Indicates whether multifactor authentication is enabled for this connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "returnEnrollSettings": {
+                    "type": "boolean",
+                    "description": "Indicates whether multifactor authentication enrollment settings will be returned.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2289,6 +2352,30 @@
                         }
                     }
                 },
+                "idleTokenLifetime": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "infiniteIdleTokenLifetime": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "infiniteTokenLifetime": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "leeway": {
                     "type": "integer",
                     "language": {
@@ -2829,7 +2916,7 @@
     },
     "resources": {
         "auth0:index/client:Client": {
-            "description": "With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {\n    addons: {\n        firebase: {\n            client_email: \"john.doe@example.com\",\n            lifetime_in_seconds: 1,\n            private_key: \"wer\",\n            private_key_id: \"qwreerwerwe\",\n        },\n        samlp: {\n            audience: \"https://example.com/saml\",\n            createUpnClaim: false,\n            mapIdentities: false,\n            mapUnknownClaimsAsIs: false,\n            mappings: {\n                email: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                name: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            nameIdentifierFormat: \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            nameIdentifierProbes: [\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthroughClaimsWithNoMapping: false,\n        },\n    },\n    allowedLogoutUrls: [\"https://example.com\"],\n    allowedOrigins: [\"https://example.com\"],\n    appType: \"non_interactive\",\n    callbacks: [\"https://example.com/callback\"],\n    clientMetadata: {\n        foo: \"zoo\",\n    },\n    customLoginPageOn: true,\n    description: \"Test Applications Long Description\",\n    grantTypes: [\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    isFirstParty: true,\n    isTokenEndpointIpHeaderTrusted: true,\n    jwtConfiguration: {\n        alg: \"RS256\",\n        lifetimeInSeconds: 300,\n        scopes: {\n            foo: \"bar\",\n        },\n        secretEncoded: true,\n    },\n    mobile: {\n        ios: {\n            appBundleIdentifier: \"com.my.bundle.id\",\n            teamId: \"9JA89QQLNQ\",\n        },\n    },\n    oidcConformant: false,\n    tokenEndpointAuthMethod: \"client_secret_post\",\n    webOrigins: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"myClient\",\n    addons=auth0.ClientAddonsArgs(\n        firebase={\n            \"clientEmail\": \"john.doe@example.com\",\n            \"lifetimeInSeconds\": 1,\n            \"privateKey\": \"wer\",\n            \"privateKeyId\": \"qwreerwerwe\",\n        },\n        samlp=auth0.ClientAddonsSamlpArgs(\n            audience=\"https://example.com/saml\",\n            create_upn_claim=False,\n            map_identities=False,\n            map_unknown_claims_as_is=False,\n            mappings={\n                \"email\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                \"name\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            name_identifier_format=\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            name_identifier_probes=[\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthrough_claims_with_no_mapping=False,\n        ),\n    ),\n    allowed_logout_urls=[\"https://example.com\"],\n    allowed_origins=[\"https://example.com\"],\n    app_type=\"non_interactive\",\n    callbacks=[\"https://example.com/callback\"],\n    client_metadata={\n        \"foo\": \"zoo\",\n    },\n    custom_login_page_on=True,\n    description=\"Test Applications Long Description\",\n    grant_types=[\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    is_first_party=True,\n    is_token_endpoint_ip_header_trusted=True,\n    jwt_configuration=auth0.ClientJwtConfigurationArgs(\n        alg=\"RS256\",\n        lifetime_in_seconds=300,\n        scopes={\n            \"foo\": \"bar\",\n        },\n        secret_encoded=True,\n    ),\n    mobile=auth0.ClientMobileArgs(\n        ios=auth0.ClientMobileIosArgs(\n            app_bundle_identifier=\"com.my.bundle.id\",\n            team_id=\"9JA89QQLNQ\",\n        ),\n    ),\n    oidc_conformant=False,\n    token_endpoint_auth_method=\"client_secret_post\",\n    web_origins=[\"https://example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myClient = new Auth0.Client(\"myClient\", new Auth0.ClientArgs\n        {\n            Addons = new Auth0.Inputs.ClientAddonsArgs\n            {\n                Firebase = \n                {\n                    { \"clientEmail\", \"john.doe@example.com\" },\n                    { \"lifetimeInSeconds\", 1 },\n                    { \"privateKey\", \"wer\" },\n                    { \"privateKeyId\", \"qwreerwerwe\" },\n                },\n                Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs\n                {\n                    Audience = \"https://example.com/saml\",\n                    CreateUpnClaim = false,\n                    MapIdentities = false,\n                    MapUnknownClaimsAsIs = false,\n                    Mappings = \n                    {\n                        { \"email\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\" },\n                        { \"name\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\" },\n                    },\n                    NameIdentifierFormat = \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n                    NameIdentifierProbes = \n                    {\n                        \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                    },\n                    PassthroughClaimsWithNoMapping = false,\n                },\n            },\n            AllowedLogoutUrls = \n            {\n                \"https://example.com\",\n            },\n            AllowedOrigins = \n            {\n                \"https://example.com\",\n            },\n            AppType = \"non_interactive\",\n            Callbacks = \n            {\n                \"https://example.com/callback\",\n            },\n            ClientMetadata = \n            {\n                { \"foo\", \"zoo\" },\n            },\n            CustomLoginPageOn = true,\n            Description = \"Test Applications Long Description\",\n            GrantTypes = \n            {\n                \"authorization_code\",\n                \"http://auth0.com/oauth/grant-type/password-realm\",\n                \"implicit\",\n                \"password\",\n                \"refresh_token\",\n            },\n            IsFirstParty = true,\n            IsTokenEndpointIpHeaderTrusted = true,\n            JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs\n            {\n                Alg = \"RS256\",\n                LifetimeInSeconds = 300,\n                Scopes = \n                {\n                    { \"foo\", \"bar\" },\n                },\n                SecretEncoded = true,\n            },\n            Mobile = new Auth0.Inputs.ClientMobileArgs\n            {\n                Ios = new Auth0.Inputs.ClientMobileIosArgs\n                {\n                    AppBundleIdentifier = \"com.my.bundle.id\",\n                    TeamId = \"9JA89QQLNQ\",\n                },\n            },\n            OidcConformant = false,\n            TokenEndpointAuthMethod = \"client_secret_post\",\n            WebOrigins = \n            {\n                \"https://example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/go/auth0\"\n\t\"github.com/pulumi/pulumi-auth0/sdk/go/auth0/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewClient(ctx, \"myClient\", \u0026auth0.ClientArgs{\n\t\t\tAddons: \u0026auth0.ClientAddonsArgs{\n\t\t\t\tFirebase: pulumi.Map{\n\t\t\t\t\t\"clientEmail\":       pulumi.String(\"john.doe@example.com\"),\n\t\t\t\t\t\"lifetimeInSeconds\": pulumi.Float64(1),\n\t\t\t\t\t\"privateKey\":        pulumi.String(\"wer\"),\n\t\t\t\t\t\"privateKeyId\":      pulumi.String(\"qwreerwerwe\"),\n\t\t\t\t},\n\t\t\t\tSamlp: \u0026auth0.ClientAddonsSamlpArgs{\n\t\t\t\t\tAudience:             pulumi.String(\"https://example.com/saml\"),\n\t\t\t\t\tCreateUpnClaim:       pulumi.Bool(false),\n\t\t\t\t\tMapIdentities:        pulumi.Bool(false),\n\t\t\t\t\tMapUnknownClaimsAsIs: pulumi.Bool(false),\n\t\t\t\t\tMappings: pulumi.StringMap{\n\t\t\t\t\t\t\"email\": pulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t\t\"name\":  pulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\"),\n\t\t\t\t\t},\n\t\t\t\t\tNameIdentifierFormat: pulumi.String(\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\"),\n\t\t\t\t\tNameIdentifierProbes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t},\n\t\t\t\t\tPassthroughClaimsWithNoMapping: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAppType: pulumi.String(\"non_interactive\"),\n\t\t\tCallbacks: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com/callback\"),\n\t\t\t},\n\t\t\tClientMetadata: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"zoo\"),\n\t\t\t},\n\t\t\tCustomLoginPageOn: pulumi.Bool(true),\n\t\t\tDescription:       pulumi.String(\"Test Applications Long Description\"),\n\t\t\tGrantTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"authorization_code\"),\n\t\t\t\tpulumi.String(\"http://auth0.com/oauth/grant-type/password-realm\"),\n\t\t\t\tpulumi.String(\"implicit\"),\n\t\t\t\tpulumi.String(\"password\"),\n\t\t\t\tpulumi.String(\"refresh_token\"),\n\t\t\t},\n\t\t\tIsFirstParty:                   pulumi.Bool(true),\n\t\t\tIsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),\n\t\t\tJwtConfiguration: \u0026auth0.ClientJwtConfigurationArgs{\n\t\t\t\tAlg:               pulumi.String(\"RS256\"),\n\t\t\t\tLifetimeInSeconds: pulumi.Int(300),\n\t\t\t\tScopes: pulumi.StringMap{\n\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t},\n\t\t\t\tSecretEncoded: pulumi.Bool(true),\n\t\t\t},\n\t\t\tMobile: \u0026auth0.ClientMobileArgs{\n\t\t\t\tIos: \u0026auth0.ClientMobileIosArgs{\n\t\t\t\t\tAppBundleIdentifier: pulumi.String(\"com.my.bundle.id\"),\n\t\t\t\t\tTeamId:              pulumi.String(\"9JA89QQLNQ\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOidcConformant:          pulumi.Bool(false),\n\t\t\tTokenEndpointAuthMethod: pulumi.String(\"client_secret_post\"),\n\t\t\tWebOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {\n    addons: {\n        firebase: {\n            client_email: \"john.doe@example.com\",\n            lifetime_in_seconds: 1,\n            private_key: \"wer\",\n            private_key_id: \"qwreerwerwe\",\n        },\n        samlp: {\n            audience: \"https://example.com/saml\",\n            createUpnClaim: false,\n            mapIdentities: false,\n            mapUnknownClaimsAsIs: false,\n            mappings: {\n                email: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                name: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            nameIdentifierFormat: \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            nameIdentifierProbes: [\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthroughClaimsWithNoMapping: false,\n        },\n    },\n    allowedLogoutUrls: [\"https://example.com\"],\n    allowedOrigins: [\"https://example.com\"],\n    appType: \"non_interactive\",\n    callbacks: [\"https://example.com/callback\"],\n    clientMetadata: {\n        foo: \"zoo\",\n    },\n    customLoginPageOn: true,\n    description: \"Test Applications Long Description\",\n    grantTypes: [\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    isFirstParty: true,\n    isTokenEndpointIpHeaderTrusted: true,\n    jwtConfiguration: {\n        alg: \"RS256\",\n        lifetimeInSeconds: 300,\n        scopes: {\n            foo: \"bar\",\n        },\n        secretEncoded: true,\n    },\n    mobile: {\n        ios: {\n            appBundleIdentifier: \"com.my.bundle.id\",\n            teamId: \"9JA89QQLNQ\",\n        },\n    },\n    oidcConformant: false,\n    refreshToken: {\n        expirationType: \"expiring\",\n        idleTokenLifetime: 1296000,\n        infiniteIdleTokenLifetime: true,\n        infiniteTokenLifetime: false,\n        leeway: 15,\n        rotationType: \"rotating\",\n        tokenLifetime: 84600,\n    },\n    tokenEndpointAuthMethod: \"client_secret_post\",\n    webOrigins: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"myClient\",\n    addons=auth0.ClientAddonsArgs(\n        firebase={\n            \"clientEmail\": \"john.doe@example.com\",\n            \"lifetimeInSeconds\": 1,\n            \"privateKey\": \"wer\",\n            \"privateKeyId\": \"qwreerwerwe\",\n        },\n        samlp=auth0.ClientAddonsSamlpArgs(\n            audience=\"https://example.com/saml\",\n            create_upn_claim=False,\n            map_identities=False,\n            map_unknown_claims_as_is=False,\n            mappings={\n                \"email\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                \"name\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            name_identifier_format=\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            name_identifier_probes=[\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthrough_claims_with_no_mapping=False,\n        ),\n    ),\n    allowed_logout_urls=[\"https://example.com\"],\n    allowed_origins=[\"https://example.com\"],\n    app_type=\"non_interactive\",\n    callbacks=[\"https://example.com/callback\"],\n    client_metadata={\n        \"foo\": \"zoo\",\n    },\n    custom_login_page_on=True,\n    description=\"Test Applications Long Description\",\n    grant_types=[\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    is_first_party=True,\n    is_token_endpoint_ip_header_trusted=True,\n    jwt_configuration=auth0.ClientJwtConfigurationArgs(\n        alg=\"RS256\",\n        lifetime_in_seconds=300,\n        scopes={\n            \"foo\": \"bar\",\n        },\n        secret_encoded=True,\n    ),\n    mobile=auth0.ClientMobileArgs(\n        ios=auth0.ClientMobileIosArgs(\n            app_bundle_identifier=\"com.my.bundle.id\",\n            team_id=\"9JA89QQLNQ\",\n        ),\n    ),\n    oidc_conformant=False,\n    refresh_token=auth0.ClientRefreshTokenArgs(\n        expiration_type=\"expiring\",\n        idle_token_lifetime=1296000,\n        infinite_idle_token_lifetime=True,\n        infinite_token_lifetime=False,\n        leeway=15,\n        rotation_type=\"rotating\",\n        token_lifetime=84600,\n    ),\n    token_endpoint_auth_method=\"client_secret_post\",\n    web_origins=[\"https://example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myClient = new Auth0.Client(\"myClient\", new Auth0.ClientArgs\n        {\n            Addons = new Auth0.Inputs.ClientAddonsArgs\n            {\n                Firebase = \n                {\n                    { \"clientEmail\", \"john.doe@example.com\" },\n                    { \"lifetimeInSeconds\", 1 },\n                    { \"privateKey\", \"wer\" },\n                    { \"privateKeyId\", \"qwreerwerwe\" },\n                },\n                Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs\n                {\n                    Audience = \"https://example.com/saml\",\n                    CreateUpnClaim = false,\n                    MapIdentities = false,\n                    MapUnknownClaimsAsIs = false,\n                    Mappings = \n                    {\n                        { \"email\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\" },\n                        { \"name\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\" },\n                    },\n                    NameIdentifierFormat = \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n                    NameIdentifierProbes = \n                    {\n                        \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                    },\n                    PassthroughClaimsWithNoMapping = false,\n                },\n            },\n            AllowedLogoutUrls = \n            {\n                \"https://example.com\",\n            },\n            AllowedOrigins = \n            {\n                \"https://example.com\",\n            },\n            AppType = \"non_interactive\",\n            Callbacks = \n            {\n                \"https://example.com/callback\",\n            },\n            ClientMetadata = \n            {\n                { \"foo\", \"zoo\" },\n            },\n            CustomLoginPageOn = true,\n            Description = \"Test Applications Long Description\",\n            GrantTypes = \n            {\n                \"authorization_code\",\n                \"http://auth0.com/oauth/grant-type/password-realm\",\n                \"implicit\",\n                \"password\",\n                \"refresh_token\",\n            },\n            IsFirstParty = true,\n            IsTokenEndpointIpHeaderTrusted = true,\n            JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs\n            {\n                Alg = \"RS256\",\n                LifetimeInSeconds = 300,\n                Scopes = \n                {\n                    { \"foo\", \"bar\" },\n                },\n                SecretEncoded = true,\n            },\n            Mobile = new Auth0.Inputs.ClientMobileArgs\n            {\n                Ios = new Auth0.Inputs.ClientMobileIosArgs\n                {\n                    AppBundleIdentifier = \"com.my.bundle.id\",\n                    TeamId = \"9JA89QQLNQ\",\n                },\n            },\n            OidcConformant = false,\n            RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs\n            {\n                ExpirationType = \"expiring\",\n                IdleTokenLifetime = 1296000,\n                InfiniteIdleTokenLifetime = true,\n                InfiniteTokenLifetime = false,\n                Leeway = 15,\n                RotationType = \"rotating\",\n                TokenLifetime = 84600,\n            },\n            TokenEndpointAuthMethod = \"client_secret_post\",\n            WebOrigins = \n            {\n                \"https://example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/go/auth0\"\n\t\"github.com/pulumi/pulumi-auth0/sdk/go/auth0/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewClient(ctx, \"myClient\", \u0026auth0.ClientArgs{\n\t\t\tAddons: \u0026auth0.ClientAddonsArgs{\n\t\t\t\tFirebase: pulumi.Map{\n\t\t\t\t\t\"clientEmail\":       pulumi.String(\"john.doe@example.com\"),\n\t\t\t\t\t\"lifetimeInSeconds\": pulumi.Float64(1),\n\t\t\t\t\t\"privateKey\":        pulumi.String(\"wer\"),\n\t\t\t\t\t\"privateKeyId\":      pulumi.String(\"qwreerwerwe\"),\n\t\t\t\t},\n\t\t\t\tSamlp: \u0026auth0.ClientAddonsSamlpArgs{\n\t\t\t\t\tAudience:             pulumi.String(\"https://example.com/saml\"),\n\t\t\t\t\tCreateUpnClaim:       pulumi.Bool(false),\n\t\t\t\t\tMapIdentities:        pulumi.Bool(false),\n\t\t\t\t\tMapUnknownClaimsAsIs: pulumi.Bool(false),\n\t\t\t\t\tMappings: pulumi.StringMap{\n\t\t\t\t\t\t\"email\": pulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t\t\"name\":  pulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\"),\n\t\t\t\t\t},\n\t\t\t\t\tNameIdentifierFormat: pulumi.String(\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\"),\n\t\t\t\t\tNameIdentifierProbes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t},\n\t\t\t\t\tPassthroughClaimsWithNoMapping: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAppType: pulumi.String(\"non_interactive\"),\n\t\t\tCallbacks: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com/callback\"),\n\t\t\t},\n\t\t\tClientMetadata: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"zoo\"),\n\t\t\t},\n\t\t\tCustomLoginPageOn: pulumi.Bool(true),\n\t\t\tDescription:       pulumi.String(\"Test Applications Long Description\"),\n\t\t\tGrantTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"authorization_code\"),\n\t\t\t\tpulumi.String(\"http://auth0.com/oauth/grant-type/password-realm\"),\n\t\t\t\tpulumi.String(\"implicit\"),\n\t\t\t\tpulumi.String(\"password\"),\n\t\t\t\tpulumi.String(\"refresh_token\"),\n\t\t\t},\n\t\t\tIsFirstParty:                   pulumi.Bool(true),\n\t\t\tIsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),\n\t\t\tJwtConfiguration: \u0026auth0.ClientJwtConfigurationArgs{\n\t\t\t\tAlg:               pulumi.String(\"RS256\"),\n\t\t\t\tLifetimeInSeconds: pulumi.Int(300),\n\t\t\t\tScopes: pulumi.StringMap{\n\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t},\n\t\t\t\tSecretEncoded: pulumi.Bool(true),\n\t\t\t},\n\t\t\tMobile: \u0026auth0.ClientMobileArgs{\n\t\t\t\tIos: \u0026auth0.ClientMobileIosArgs{\n\t\t\t\t\tAppBundleIdentifier: pulumi.String(\"com.my.bundle.id\"),\n\t\t\t\t\tTeamId:              pulumi.String(\"9JA89QQLNQ\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOidcConformant: pulumi.Bool(false),\n\t\t\tRefreshToken: \u0026auth0.ClientRefreshTokenArgs{\n\t\t\t\tExpirationType:            pulumi.String(\"expiring\"),\n\t\t\t\tIdleTokenLifetime:         pulumi.Int(1296000),\n\t\t\t\tInfiniteIdleTokenLifetime: pulumi.Bool(true),\n\t\t\t\tInfiniteTokenLifetime:     pulumi.Bool(false),\n\t\t\t\tLeeway:                    pulumi.Int(15),\n\t\t\t\tRotationType:              pulumi.String(\"rotating\"),\n\t\t\t\tTokenLifetime:             pulumi.Int(84600),\n\t\t\t},\n\t\t\tTokenEndpointAuthMethod: pulumi.String(\"client_secret_post\"),\n\t\t\tWebOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "addons": {
                     "$ref": "#/types/auth0:index/ClientAddons:ClientAddons",
@@ -2957,7 +3044,8 @@
                     "description": "Boolean. Indicates whether or not this client will conform to strict OIDC specifications.\n"
                 },
                 "refreshToken": {
-                    "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken"
+                    "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken",
+                    "description": "List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.\n"
                 },
                 "sso": {
                     "type": "boolean",
@@ -3112,7 +3200,8 @@
                     "description": "Boolean. Indicates whether or not this client will conform to strict OIDC specifications.\n"
                 },
                 "refreshToken": {
-                    "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken"
+                    "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken",
+                    "description": "List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.\n"
                 },
                 "sso": {
                     "type": "boolean",
@@ -3263,7 +3352,8 @@
                         "description": "Boolean. Indicates whether or not this client will conform to strict OIDC specifications.\n"
                     },
                     "refreshToken": {
-                        "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken"
+                        "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken",
+                        "description": "List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.\n"
                     },
                     "sso": {
                         "type": "boolean",

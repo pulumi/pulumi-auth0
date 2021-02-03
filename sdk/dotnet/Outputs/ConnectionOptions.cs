@@ -112,6 +112,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? MessagingServiceSid;
         /// <summary>
+        /// Configuration settings Options for multifactor authentication. For details, see MFA Options.
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsMfa? Mfa;
+        /// <summary>
         /// Name of the connection.
         /// </summary>
         public readonly string? Name;
@@ -291,6 +295,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? messagingServiceSid,
 
+            Outputs.ConnectionOptionsMfa? mfa,
+
             string? name,
 
             Outputs.ConnectionOptionsPasswordComplexityOptions? passwordComplexityOptions,
@@ -393,6 +399,7 @@ namespace Pulumi.Auth0.Outputs
             KeyId = keyId;
             MaxGroupsToRetrieve = maxGroupsToRetrieve;
             MessagingServiceSid = messagingServiceSid;
+            Mfa = mfa;
             Name = name;
             PasswordComplexityOptions = passwordComplexityOptions;
             PasswordDictionary = passwordDictionary;

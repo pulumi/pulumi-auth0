@@ -262,9 +262,33 @@ export interface ClientMobileIos {
 }
 
 export interface ClientRefreshToken {
+    /**
+     * String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     */
     expirationType: string;
+    /**
+     * Integer. The time in seconds after which inactive refresh tokens will expire.
+     */
+    idleTokenLifetime?: number;
+    /**
+     * Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+     */
+    infiniteIdleTokenLifetime?: boolean;
+    /**
+     * Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set
+     */
+    infiniteTokenLifetime?: boolean;
+    /**
+     * Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+     */
     leeway?: number;
+    /**
+     * String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     */
     rotationType: string;
+    /**
+     * Integer. The absolute lifetime of a refresh token in seconds.
+     */
     tokenLifetime?: number;
 }
 
@@ -369,6 +393,10 @@ export interface ConnectionOptions {
      * SID for Copilot. Used when SMS Source is Copilot.
      */
     messagingServiceSid?: string;
+    /**
+     * Configuration settings Options for multifactor authentication. For details, see MFA Options.
+     */
+    mfa?: outputs.ConnectionOptionsMfa;
     /**
      * Name of the connection.
      */
@@ -491,6 +519,17 @@ export interface ConnectionOptionsIdpInitiated {
      */
     clientId?: string;
     clientProtocol?: string;
+}
+
+export interface ConnectionOptionsMfa {
+    /**
+     * Indicates whether multifactor authentication is enabled for this connection.
+     */
+    active?: boolean;
+    /**
+     * Indicates whether multifactor authentication enrollment settings will be returned.
+     */
+    returnEnrollSettings?: boolean;
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {
@@ -681,6 +720,9 @@ export interface GlobalClientMobileIos {
 
 export interface GlobalClientRefreshToken {
     expirationType: string;
+    idleTokenLifetime?: number;
+    infiniteIdleTokenLifetime?: boolean;
+    infiniteTokenLifetime?: boolean;
     leeway?: number;
     rotationType: string;
     tokenLifetime?: number;
