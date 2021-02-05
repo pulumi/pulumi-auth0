@@ -966,6 +966,7 @@ class ConnectionOptions(dict):
                  requires_username: Optional[bool] = None,
                  scopes: Optional[Sequence[str]] = None,
                  scripts: Optional[Mapping[str, str]] = None,
+                 set_user_root_attributes: Optional[str] = None,
                  sign_in_endpoint: Optional[str] = None,
                  sign_out_endpoint: Optional[str] = None,
                  sign_saml_request: Optional[bool] = None,
@@ -1024,6 +1025,7 @@ class ConnectionOptions(dict):
         :param str request_template: Template that formats the SAML request
         :param bool requires_username: Indicates whether or not the user is required to provide a username in addition to an email address.
         :param Sequence[str] scopes: Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
+        :param str set_user_root_attributes: Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
         :param str sign_in_endpoint: SAML single login URL for the connection.
         :param str sign_out_endpoint: SAML single logout URL for the connection.
         :param bool sign_saml_request: (Boolean) When enabled, the SAML authentication request will be signed.
@@ -1129,6 +1131,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "scopes", scopes)
         if scripts is not None:
             pulumi.set(__self__, "scripts", scripts)
+        if set_user_root_attributes is not None:
+            pulumi.set(__self__, "set_user_root_attributes", set_user_root_attributes)
         if sign_in_endpoint is not None:
             pulumi.set(__self__, "sign_in_endpoint", sign_in_endpoint)
         if sign_out_endpoint is not None:
@@ -1496,6 +1500,14 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def scripts(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "scripts")
+
+    @property
+    @pulumi.getter(name="setUserRootAttributes")
+    def set_user_root_attributes(self) -> Optional[str]:
+        """
+        Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+        """
+        return pulumi.get(self, "set_user_root_attributes")
 
     @property
     @pulumi.getter(name="signInEndpoint")

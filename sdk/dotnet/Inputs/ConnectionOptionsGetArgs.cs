@@ -296,6 +296,12 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
+        /// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+        /// </summary>
+        [Input("setUserRootAttributes")]
+        public Input<string>? SetUserRootAttributes { get; set; }
+
+        /// <summary>
         /// SAML single login URL for the connection.
         /// </summary>
         [Input("signInEndpoint")]
