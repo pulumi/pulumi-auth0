@@ -157,6 +157,10 @@ namespace Pulumi.Auth0.Outputs
         public readonly ImmutableArray<string> Scopes;
         public readonly ImmutableDictionary<string, string>? Scripts;
         /// <summary>
+        /// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+        /// </summary>
+        public readonly string? SetUserRootAttributes;
+        /// <summary>
         /// SAML single login URL for the connection.
         /// </summary>
         public readonly string? SignInEndpoint;
@@ -319,6 +323,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableDictionary<string, string>? scripts,
 
+            string? setUserRootAttributes,
+
             string? signInEndpoint,
 
             string? signOutEndpoint,
@@ -411,6 +417,7 @@ namespace Pulumi.Auth0.Outputs
             RequiresUsername = requiresUsername;
             Scopes = scopes;
             Scripts = scripts;
+            SetUserRootAttributes = setUserRootAttributes;
             SignInEndpoint = signInEndpoint;
             SignOutEndpoint = signOutEndpoint;
             SignSamlRequest = signSamlRequest;

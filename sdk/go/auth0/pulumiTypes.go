@@ -2240,6 +2240,8 @@ type ConnectionOptions struct {
 	// Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
 	Scopes  []string          `pulumi:"scopes"`
 	Scripts map[string]string `pulumi:"scripts"`
+	// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
+	SetUserRootAttributes *string `pulumi:"setUserRootAttributes"`
 	// SAML single login URL for the connection.
 	SignInEndpoint *string `pulumi:"signInEndpoint"`
 	// SAML single logout URL for the connection.
@@ -2373,6 +2375,8 @@ type ConnectionOptionsArgs struct {
 	// Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
 	Scopes  pulumi.StringArrayInput `pulumi:"scopes"`
 	Scripts pulumi.StringMapInput   `pulumi:"scripts"`
+	// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
+	SetUserRootAttributes pulumi.StringPtrInput `pulumi:"setUserRootAttributes"`
 	// SAML single login URL for the connection.
 	SignInEndpoint pulumi.StringPtrInput `pulumi:"signInEndpoint"`
 	// SAML single logout URL for the connection.
@@ -2703,6 +2707,11 @@ func (o ConnectionOptionsOutput) Scopes() pulumi.StringArrayOutput {
 
 func (o ConnectionOptionsOutput) Scripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
+}
+
+// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
+func (o ConnectionOptionsOutput) SetUserRootAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.SetUserRootAttributes }).(pulumi.StringPtrOutput)
 }
 
 // SAML single login URL for the connection.
@@ -3264,6 +3273,16 @@ func (o ConnectionOptionsPtrOutput) Scripts() pulumi.StringMapOutput {
 		}
 		return v.Scripts
 	}).(pulumi.StringMapOutput)
+}
+
+// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
+func (o ConnectionOptionsPtrOutput) SetUserRootAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SetUserRootAttributes
+	}).(pulumi.StringPtrOutput)
 }
 
 // SAML single login URL for the connection.

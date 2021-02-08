@@ -439,6 +439,10 @@ export interface ConnectionOptions {
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     scripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
+     */
+    setUserRootAttributes?: pulumi.Input<string>;
+    /**
      * SAML single login URL for the connection.
      */
     signInEndpoint?: pulumi.Input<string>;
