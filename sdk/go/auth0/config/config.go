@@ -9,18 +9,10 @@ import (
 )
 
 func GetClientId(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "auth0:clientId")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "AUTH0_CLIENT_ID").(string)
+	return config.Get(ctx, "auth0:clientId")
 }
 func GetClientSecret(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "auth0:clientSecret")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "AUTH0_CLIENT_SECRET").(string)
+	return config.Get(ctx, "auth0:clientSecret")
 }
 func GetDebug(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "auth0:debug")
@@ -30,9 +22,5 @@ func GetDebug(ctx *pulumi.Context) bool {
 	return getEnvOrDefault(false, parseEnvBool, "AUTH0_DEBUG").(bool)
 }
 func GetDomain(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "auth0:domain")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "AUTH0_DOMAIN").(string)
+	return config.Get(ctx, "auth0:domain")
 }

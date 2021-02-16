@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -144,6 +144,85 @@ func (i *RuleConfig) ToRuleConfigOutputWithContext(ctx context.Context) RuleConf
 	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigOutput)
 }
 
+func (i *RuleConfig) ToRuleConfigPtrOutput() RuleConfigPtrOutput {
+	return i.ToRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *RuleConfig) ToRuleConfigPtrOutputWithContext(ctx context.Context) RuleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigPtrOutput)
+}
+
+type RuleConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleConfigPtrOutput() RuleConfigPtrOutput
+	ToRuleConfigPtrOutputWithContext(ctx context.Context) RuleConfigPtrOutput
+}
+
+type ruleConfigPtrType RuleConfigArgs
+
+func (*ruleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleConfig)(nil))
+}
+
+func (i *ruleConfigPtrType) ToRuleConfigPtrOutput() RuleConfigPtrOutput {
+	return i.ToRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleConfigPtrType) ToRuleConfigPtrOutputWithContext(ctx context.Context) RuleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigPtrOutput)
+}
+
+// RuleConfigArrayInput is an input type that accepts RuleConfigArray and RuleConfigArrayOutput values.
+// You can construct a concrete instance of `RuleConfigArrayInput` via:
+//
+//          RuleConfigArray{ RuleConfigArgs{...} }
+type RuleConfigArrayInput interface {
+	pulumi.Input
+
+	ToRuleConfigArrayOutput() RuleConfigArrayOutput
+	ToRuleConfigArrayOutputWithContext(context.Context) RuleConfigArrayOutput
+}
+
+type RuleConfigArray []RuleConfigInput
+
+func (RuleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RuleConfig)(nil))
+}
+
+func (i RuleConfigArray) ToRuleConfigArrayOutput() RuleConfigArrayOutput {
+	return i.ToRuleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RuleConfigArray) ToRuleConfigArrayOutputWithContext(ctx context.Context) RuleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigArrayOutput)
+}
+
+// RuleConfigMapInput is an input type that accepts RuleConfigMap and RuleConfigMapOutput values.
+// You can construct a concrete instance of `RuleConfigMapInput` via:
+//
+//          RuleConfigMap{ "key": RuleConfigArgs{...} }
+type RuleConfigMapInput interface {
+	pulumi.Input
+
+	ToRuleConfigMapOutput() RuleConfigMapOutput
+	ToRuleConfigMapOutputWithContext(context.Context) RuleConfigMapOutput
+}
+
+type RuleConfigMap map[string]RuleConfigInput
+
+func (RuleConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RuleConfig)(nil))
+}
+
+func (i RuleConfigMap) ToRuleConfigMapOutput() RuleConfigMapOutput {
+	return i.ToRuleConfigMapOutputWithContext(context.Background())
+}
+
+func (i RuleConfigMap) ToRuleConfigMapOutputWithContext(ctx context.Context) RuleConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigMapOutput)
+}
+
 type RuleConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -160,6 +239,75 @@ func (o RuleConfigOutput) ToRuleConfigOutputWithContext(ctx context.Context) Rul
 	return o
 }
 
+func (o RuleConfigOutput) ToRuleConfigPtrOutput() RuleConfigPtrOutput {
+	return o.ToRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleConfigOutput) ToRuleConfigPtrOutputWithContext(ctx context.Context) RuleConfigPtrOutput {
+	return o.ApplyT(func(v RuleConfig) *RuleConfig {
+		return &v
+	}).(RuleConfigPtrOutput)
+}
+
+type RuleConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RuleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleConfig)(nil))
+}
+
+func (o RuleConfigPtrOutput) ToRuleConfigPtrOutput() RuleConfigPtrOutput {
+	return o
+}
+
+func (o RuleConfigPtrOutput) ToRuleConfigPtrOutputWithContext(ctx context.Context) RuleConfigPtrOutput {
+	return o
+}
+
+type RuleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleConfig)(nil))
+}
+
+func (o RuleConfigArrayOutput) ToRuleConfigArrayOutput() RuleConfigArrayOutput {
+	return o
+}
+
+func (o RuleConfigArrayOutput) ToRuleConfigArrayOutputWithContext(ctx context.Context) RuleConfigArrayOutput {
+	return o
+}
+
+func (o RuleConfigArrayOutput) Index(i pulumi.IntInput) RuleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleConfig {
+		return vs[0].([]RuleConfig)[vs[1].(int)]
+	}).(RuleConfigOutput)
+}
+
+type RuleConfigMapOutput struct{ *pulumi.OutputState }
+
+func (RuleConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RuleConfig)(nil))
+}
+
+func (o RuleConfigMapOutput) ToRuleConfigMapOutput() RuleConfigMapOutput {
+	return o
+}
+
+func (o RuleConfigMapOutput) ToRuleConfigMapOutputWithContext(ctx context.Context) RuleConfigMapOutput {
+	return o
+}
+
+func (o RuleConfigMapOutput) MapIndex(k pulumi.StringInput) RuleConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RuleConfig {
+		return vs[0].(map[string]RuleConfig)[vs[1].(string)]
+	}).(RuleConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RuleConfigOutput{})
+	pulumi.RegisterOutputType(RuleConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuleConfigArrayOutput{})
+	pulumi.RegisterOutputType(RuleConfigMapOutput{})
 }

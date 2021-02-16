@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
-// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -172,6 +171,85 @@ func (i *ClientGrant) ToClientGrantOutputWithContext(ctx context.Context) Client
 	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantOutput)
 }
 
+func (i *ClientGrant) ToClientGrantPtrOutput() ClientGrantPtrOutput {
+	return i.ToClientGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *ClientGrant) ToClientGrantPtrOutputWithContext(ctx context.Context) ClientGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantPtrOutput)
+}
+
+type ClientGrantPtrInput interface {
+	pulumi.Input
+
+	ToClientGrantPtrOutput() ClientGrantPtrOutput
+	ToClientGrantPtrOutputWithContext(ctx context.Context) ClientGrantPtrOutput
+}
+
+type clientGrantPtrType ClientGrantArgs
+
+func (*clientGrantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientGrant)(nil))
+}
+
+func (i *clientGrantPtrType) ToClientGrantPtrOutput() ClientGrantPtrOutput {
+	return i.ToClientGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *clientGrantPtrType) ToClientGrantPtrOutputWithContext(ctx context.Context) ClientGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantPtrOutput)
+}
+
+// ClientGrantArrayInput is an input type that accepts ClientGrantArray and ClientGrantArrayOutput values.
+// You can construct a concrete instance of `ClientGrantArrayInput` via:
+//
+//          ClientGrantArray{ ClientGrantArgs{...} }
+type ClientGrantArrayInput interface {
+	pulumi.Input
+
+	ToClientGrantArrayOutput() ClientGrantArrayOutput
+	ToClientGrantArrayOutputWithContext(context.Context) ClientGrantArrayOutput
+}
+
+type ClientGrantArray []ClientGrantInput
+
+func (ClientGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClientGrant)(nil))
+}
+
+func (i ClientGrantArray) ToClientGrantArrayOutput() ClientGrantArrayOutput {
+	return i.ToClientGrantArrayOutputWithContext(context.Background())
+}
+
+func (i ClientGrantArray) ToClientGrantArrayOutputWithContext(ctx context.Context) ClientGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantArrayOutput)
+}
+
+// ClientGrantMapInput is an input type that accepts ClientGrantMap and ClientGrantMapOutput values.
+// You can construct a concrete instance of `ClientGrantMapInput` via:
+//
+//          ClientGrantMap{ "key": ClientGrantArgs{...} }
+type ClientGrantMapInput interface {
+	pulumi.Input
+
+	ToClientGrantMapOutput() ClientGrantMapOutput
+	ToClientGrantMapOutputWithContext(context.Context) ClientGrantMapOutput
+}
+
+type ClientGrantMap map[string]ClientGrantInput
+
+func (ClientGrantMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClientGrant)(nil))
+}
+
+func (i ClientGrantMap) ToClientGrantMapOutput() ClientGrantMapOutput {
+	return i.ToClientGrantMapOutputWithContext(context.Background())
+}
+
+func (i ClientGrantMap) ToClientGrantMapOutputWithContext(ctx context.Context) ClientGrantMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantMapOutput)
+}
+
 type ClientGrantOutput struct {
 	*pulumi.OutputState
 }
@@ -188,6 +266,75 @@ func (o ClientGrantOutput) ToClientGrantOutputWithContext(ctx context.Context) C
 	return o
 }
 
+func (o ClientGrantOutput) ToClientGrantPtrOutput() ClientGrantPtrOutput {
+	return o.ToClientGrantPtrOutputWithContext(context.Background())
+}
+
+func (o ClientGrantOutput) ToClientGrantPtrOutputWithContext(ctx context.Context) ClientGrantPtrOutput {
+	return o.ApplyT(func(v ClientGrant) *ClientGrant {
+		return &v
+	}).(ClientGrantPtrOutput)
+}
+
+type ClientGrantPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClientGrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientGrant)(nil))
+}
+
+func (o ClientGrantPtrOutput) ToClientGrantPtrOutput() ClientGrantPtrOutput {
+	return o
+}
+
+func (o ClientGrantPtrOutput) ToClientGrantPtrOutputWithContext(ctx context.Context) ClientGrantPtrOutput {
+	return o
+}
+
+type ClientGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientGrant)(nil))
+}
+
+func (o ClientGrantArrayOutput) ToClientGrantArrayOutput() ClientGrantArrayOutput {
+	return o
+}
+
+func (o ClientGrantArrayOutput) ToClientGrantArrayOutputWithContext(ctx context.Context) ClientGrantArrayOutput {
+	return o
+}
+
+func (o ClientGrantArrayOutput) Index(i pulumi.IntInput) ClientGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientGrant {
+		return vs[0].([]ClientGrant)[vs[1].(int)]
+	}).(ClientGrantOutput)
+}
+
+type ClientGrantMapOutput struct{ *pulumi.OutputState }
+
+func (ClientGrantMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClientGrant)(nil))
+}
+
+func (o ClientGrantMapOutput) ToClientGrantMapOutput() ClientGrantMapOutput {
+	return o
+}
+
+func (o ClientGrantMapOutput) ToClientGrantMapOutputWithContext(ctx context.Context) ClientGrantMapOutput {
+	return o
+}
+
+func (o ClientGrantMapOutput) MapIndex(k pulumi.StringInput) ClientGrantOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClientGrant {
+		return vs[0].(map[string]ClientGrant)[vs[1].(string)]
+	}).(ClientGrantOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClientGrantOutput{})
+	pulumi.RegisterOutputType(ClientGrantPtrOutput{})
+	pulumi.RegisterOutputType(ClientGrantArrayOutput{})
+	pulumi.RegisterOutputType(ClientGrantMapOutput{})
 }

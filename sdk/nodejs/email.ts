@@ -80,7 +80,8 @@ export class Email extends pulumi.CustomResource {
     constructor(name: string, args: EmailArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EmailArgs | EmailState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EmailState | undefined;
             inputs["credentials"] = state ? state.credentials : undefined;
             inputs["defaultFromAddress"] = state ? state.defaultFromAddress : undefined;
@@ -88,10 +89,10 @@ export class Email extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as EmailArgs | undefined;
-            if ((!args || args.credentials === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.credentials === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
-            if ((!args || args.defaultFromAddress === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.defaultFromAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultFromAddress'");
             }
             inputs["credentials"] = args ? args.credentials : undefined;
@@ -99,12 +100,8 @@ export class Email extends pulumi.CustomResource {
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Email.__pulumiType, name, inputs, opts);
     }

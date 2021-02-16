@@ -243,7 +243,8 @@ export class Client extends pulumi.CustomResource {
     constructor(name: string, args?: ClientArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientArgs | ClientState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClientState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
             inputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
@@ -310,12 +311,8 @@ export class Client extends pulumi.CustomResource {
             inputs["clientId"] = undefined /*out*/;
             inputs["clientSecret"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Client.__pulumiType, name, inputs, opts);
     }

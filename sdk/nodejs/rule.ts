@@ -81,7 +81,8 @@ export class Rule extends pulumi.CustomResource {
     constructor(name: string, args: RuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RuleState | undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -89,7 +90,7 @@ export class Rule extends pulumi.CustomResource {
             inputs["script"] = state ? state.script : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.script === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.script === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
             inputs["enabled"] = args ? args.enabled : undefined;
@@ -97,12 +98,8 @@ export class Rule extends pulumi.CustomResource {
             inputs["order"] = args ? args.order : undefined;
             inputs["script"] = args ? args.script : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Rule.__pulumiType, name, inputs, opts);
     }

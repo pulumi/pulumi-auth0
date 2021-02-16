@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
-// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -228,6 +227,85 @@ func (i *EmailTemplate) ToEmailTemplateOutputWithContext(ctx context.Context) Em
 	return pulumi.ToOutputWithContext(ctx, i).(EmailTemplateOutput)
 }
 
+func (i *EmailTemplate) ToEmailTemplatePtrOutput() EmailTemplatePtrOutput {
+	return i.ToEmailTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *EmailTemplate) ToEmailTemplatePtrOutputWithContext(ctx context.Context) EmailTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailTemplatePtrOutput)
+}
+
+type EmailTemplatePtrInput interface {
+	pulumi.Input
+
+	ToEmailTemplatePtrOutput() EmailTemplatePtrOutput
+	ToEmailTemplatePtrOutputWithContext(ctx context.Context) EmailTemplatePtrOutput
+}
+
+type emailTemplatePtrType EmailTemplateArgs
+
+func (*emailTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailTemplate)(nil))
+}
+
+func (i *emailTemplatePtrType) ToEmailTemplatePtrOutput() EmailTemplatePtrOutput {
+	return i.ToEmailTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *emailTemplatePtrType) ToEmailTemplatePtrOutputWithContext(ctx context.Context) EmailTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailTemplatePtrOutput)
+}
+
+// EmailTemplateArrayInput is an input type that accepts EmailTemplateArray and EmailTemplateArrayOutput values.
+// You can construct a concrete instance of `EmailTemplateArrayInput` via:
+//
+//          EmailTemplateArray{ EmailTemplateArgs{...} }
+type EmailTemplateArrayInput interface {
+	pulumi.Input
+
+	ToEmailTemplateArrayOutput() EmailTemplateArrayOutput
+	ToEmailTemplateArrayOutputWithContext(context.Context) EmailTemplateArrayOutput
+}
+
+type EmailTemplateArray []EmailTemplateInput
+
+func (EmailTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EmailTemplate)(nil))
+}
+
+func (i EmailTemplateArray) ToEmailTemplateArrayOutput() EmailTemplateArrayOutput {
+	return i.ToEmailTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i EmailTemplateArray) ToEmailTemplateArrayOutputWithContext(ctx context.Context) EmailTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailTemplateArrayOutput)
+}
+
+// EmailTemplateMapInput is an input type that accepts EmailTemplateMap and EmailTemplateMapOutput values.
+// You can construct a concrete instance of `EmailTemplateMapInput` via:
+//
+//          EmailTemplateMap{ "key": EmailTemplateArgs{...} }
+type EmailTemplateMapInput interface {
+	pulumi.Input
+
+	ToEmailTemplateMapOutput() EmailTemplateMapOutput
+	ToEmailTemplateMapOutputWithContext(context.Context) EmailTemplateMapOutput
+}
+
+type EmailTemplateMap map[string]EmailTemplateInput
+
+func (EmailTemplateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EmailTemplate)(nil))
+}
+
+func (i EmailTemplateMap) ToEmailTemplateMapOutput() EmailTemplateMapOutput {
+	return i.ToEmailTemplateMapOutputWithContext(context.Background())
+}
+
+func (i EmailTemplateMap) ToEmailTemplateMapOutputWithContext(ctx context.Context) EmailTemplateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailTemplateMapOutput)
+}
+
 type EmailTemplateOutput struct {
 	*pulumi.OutputState
 }
@@ -244,6 +322,75 @@ func (o EmailTemplateOutput) ToEmailTemplateOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o EmailTemplateOutput) ToEmailTemplatePtrOutput() EmailTemplatePtrOutput {
+	return o.ToEmailTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o EmailTemplateOutput) ToEmailTemplatePtrOutputWithContext(ctx context.Context) EmailTemplatePtrOutput {
+	return o.ApplyT(func(v EmailTemplate) *EmailTemplate {
+		return &v
+	}).(EmailTemplatePtrOutput)
+}
+
+type EmailTemplatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EmailTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailTemplate)(nil))
+}
+
+func (o EmailTemplatePtrOutput) ToEmailTemplatePtrOutput() EmailTemplatePtrOutput {
+	return o
+}
+
+func (o EmailTemplatePtrOutput) ToEmailTemplatePtrOutputWithContext(ctx context.Context) EmailTemplatePtrOutput {
+	return o
+}
+
+type EmailTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (EmailTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EmailTemplate)(nil))
+}
+
+func (o EmailTemplateArrayOutput) ToEmailTemplateArrayOutput() EmailTemplateArrayOutput {
+	return o
+}
+
+func (o EmailTemplateArrayOutput) ToEmailTemplateArrayOutputWithContext(ctx context.Context) EmailTemplateArrayOutput {
+	return o
+}
+
+func (o EmailTemplateArrayOutput) Index(i pulumi.IntInput) EmailTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailTemplate {
+		return vs[0].([]EmailTemplate)[vs[1].(int)]
+	}).(EmailTemplateOutput)
+}
+
+type EmailTemplateMapOutput struct{ *pulumi.OutputState }
+
+func (EmailTemplateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EmailTemplate)(nil))
+}
+
+func (o EmailTemplateMapOutput) ToEmailTemplateMapOutput() EmailTemplateMapOutput {
+	return o
+}
+
+func (o EmailTemplateMapOutput) ToEmailTemplateMapOutputWithContext(ctx context.Context) EmailTemplateMapOutput {
+	return o
+}
+
+func (o EmailTemplateMapOutput) MapIndex(k pulumi.StringInput) EmailTemplateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EmailTemplate {
+		return vs[0].(map[string]EmailTemplate)[vs[1].(string)]
+	}).(EmailTemplateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EmailTemplateOutput{})
+	pulumi.RegisterOutputType(EmailTemplatePtrOutput{})
+	pulumi.RegisterOutputType(EmailTemplateArrayOutput{})
+	pulumi.RegisterOutputType(EmailTemplateMapOutput{})
 }

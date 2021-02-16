@@ -48,17 +48,17 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if client_id is None:
-                client_id = _utilities.get_env('AUTH0_CLIENT_ID')
+            if client_id is None and not opts.urn:
+                raise TypeError("Missing required property 'client_id'")
             __props__['client_id'] = client_id
-            if client_secret is None:
-                client_secret = _utilities.get_env('AUTH0_CLIENT_SECRET')
+            if client_secret is None and not opts.urn:
+                raise TypeError("Missing required property 'client_secret'")
             __props__['client_secret'] = client_secret
             if debug is None:
                 debug = _utilities.get_env_bool('AUTH0_DEBUG')
             __props__['debug'] = pulumi.Output.from_input(debug).apply(pulumi.runtime.to_json) if debug is not None else None
-            if domain is None:
-                domain = _utilities.get_env('AUTH0_DOMAIN')
+            if domain is None and not opts.urn:
+                raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
         super(Provider, __self__).__init__(
             'auth0',

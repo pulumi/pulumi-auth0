@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("auth0", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -45,24 +45,21 @@ namespace Pulumi.Auth0
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        [Input("clientId", required: true)]
+        public Input<string> ClientId { get; set; } = null!;
 
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        [Input("clientSecret", required: true)]
+        public Input<string> ClientSecret { get; set; } = null!;
 
         [Input("debug", json: true)]
         public Input<bool>? Debug { get; set; }
 
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
 
         public ProviderArgs()
         {
-            ClientId = Utilities.GetEnv("AUTH0_CLIENT_ID");
-            ClientSecret = Utilities.GetEnv("AUTH0_CLIENT_SECRET");
             Debug = Utilities.GetEnvBoolean("AUTH0_DEBUG");
-            Domain = Utilities.GetEnv("AUTH0_DOMAIN");
         }
     }
 }

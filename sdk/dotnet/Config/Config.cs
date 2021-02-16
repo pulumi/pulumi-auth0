@@ -8,13 +8,13 @@ namespace Pulumi.Auth0
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("auth0");
-        public static string? ClientId { get; set; } = __config.Get("clientId") ?? Utilities.GetEnv("AUTH0_CLIENT_ID");
+        public static string? ClientId { get; set; } = __config.Get("clientId");
 
-        public static string? ClientSecret { get; set; } = __config.Get("clientSecret") ?? Utilities.GetEnv("AUTH0_CLIENT_SECRET");
+        public static string? ClientSecret { get; set; } = __config.Get("clientSecret");
 
         public static bool? Debug { get; set; } = __config.GetBoolean("debug") ?? Utilities.GetEnvBoolean("AUTH0_DEBUG");
 
-        public static string? Domain { get; set; } = __config.Get("domain") ?? Utilities.GetEnv("AUTH0_DOMAIN");
+        public static string? Domain { get; set; } = __config.Get("domain");
 
     }
 }
