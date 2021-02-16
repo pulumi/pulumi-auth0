@@ -124,7 +124,8 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as UserState | undefined;
             inputs["appMetadata"] = state ? state.appMetadata : undefined;
             inputs["blocked"] = state ? state.blocked : undefined;
@@ -146,7 +147,7 @@ export class User extends pulumi.CustomResource {
             inputs["verifyEmail"] = state ? state.verifyEmail : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.connectionName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.connectionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionName'");
             }
             inputs["appMetadata"] = args ? args.appMetadata : undefined;
@@ -168,12 +169,8 @@ export class User extends pulumi.CustomResource {
             inputs["username"] = args ? args.username : undefined;
             inputs["verifyEmail"] = args ? args.verifyEmail : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(User.__pulumiType, name, inputs, opts);
     }

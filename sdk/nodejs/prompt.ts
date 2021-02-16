@@ -61,19 +61,16 @@ export class Prompt extends pulumi.CustomResource {
     constructor(name: string, args?: PromptArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PromptArgs | PromptState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PromptState | undefined;
             inputs["universalLoginExperience"] = state ? state.universalLoginExperience : undefined;
         } else {
             const args = argsOrState as PromptArgs | undefined;
             inputs["universalLoginExperience"] = args ? args.universalLoginExperience : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Prompt.__pulumiType, name, inputs, opts);
     }

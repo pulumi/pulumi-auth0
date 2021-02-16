@@ -85,32 +85,29 @@ export class ClientGrant extends pulumi.CustomResource {
     constructor(name: string, args: ClientGrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientGrantArgs | ClientGrantState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClientGrantState | undefined;
             inputs["audience"] = state ? state.audience : undefined;
             inputs["clientId"] = state ? state.clientId : undefined;
             inputs["scopes"] = state ? state.scopes : undefined;
         } else {
             const args = argsOrState as ClientGrantArgs | undefined;
-            if ((!args || args.audience === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.audience === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'audience'");
             }
-            if ((!args || args.clientId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clientId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if ((!args || args.scopes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.scopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
             inputs["audience"] = args ? args.audience : undefined;
             inputs["clientId"] = args ? args.clientId : undefined;
             inputs["scopes"] = args ? args.scopes : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClientGrant.__pulumiType, name, inputs, opts);
     }

@@ -107,7 +107,8 @@ export class EmailTemplate extends pulumi.CustomResource {
     constructor(name: string, args: EmailTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EmailTemplateArgs | EmailTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EmailTemplateState | undefined;
             inputs["body"] = state ? state.body : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -119,22 +120,22 @@ export class EmailTemplate extends pulumi.CustomResource {
             inputs["urlLifetimeInSeconds"] = state ? state.urlLifetimeInSeconds : undefined;
         } else {
             const args = argsOrState as EmailTemplateArgs | undefined;
-            if ((!args || args.body === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.body === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'body'");
             }
-            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.from === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.from === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'from'");
             }
-            if ((!args || args.subject === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subject === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subject'");
             }
-            if ((!args || args.syntax === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.syntax === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'syntax'");
             }
-            if ((!args || args.template === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
             inputs["body"] = args ? args.body : undefined;
@@ -146,12 +147,8 @@ export class EmailTemplate extends pulumi.CustomResource {
             inputs["template"] = args ? args.template : undefined;
             inputs["urlLifetimeInSeconds"] = args ? args.urlLifetimeInSeconds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EmailTemplate.__pulumiType, name, inputs, opts);
     }

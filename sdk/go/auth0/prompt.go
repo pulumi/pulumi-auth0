@@ -18,7 +18,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -117,6 +117,85 @@ func (i *Prompt) ToPromptOutputWithContext(ctx context.Context) PromptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PromptOutput)
 }
 
+func (i *Prompt) ToPromptPtrOutput() PromptPtrOutput {
+	return i.ToPromptPtrOutputWithContext(context.Background())
+}
+
+func (i *Prompt) ToPromptPtrOutputWithContext(ctx context.Context) PromptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptPtrOutput)
+}
+
+type PromptPtrInput interface {
+	pulumi.Input
+
+	ToPromptPtrOutput() PromptPtrOutput
+	ToPromptPtrOutputWithContext(ctx context.Context) PromptPtrOutput
+}
+
+type promptPtrType PromptArgs
+
+func (*promptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Prompt)(nil))
+}
+
+func (i *promptPtrType) ToPromptPtrOutput() PromptPtrOutput {
+	return i.ToPromptPtrOutputWithContext(context.Background())
+}
+
+func (i *promptPtrType) ToPromptPtrOutputWithContext(ctx context.Context) PromptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptPtrOutput)
+}
+
+// PromptArrayInput is an input type that accepts PromptArray and PromptArrayOutput values.
+// You can construct a concrete instance of `PromptArrayInput` via:
+//
+//          PromptArray{ PromptArgs{...} }
+type PromptArrayInput interface {
+	pulumi.Input
+
+	ToPromptArrayOutput() PromptArrayOutput
+	ToPromptArrayOutputWithContext(context.Context) PromptArrayOutput
+}
+
+type PromptArray []PromptInput
+
+func (PromptArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Prompt)(nil))
+}
+
+func (i PromptArray) ToPromptArrayOutput() PromptArrayOutput {
+	return i.ToPromptArrayOutputWithContext(context.Background())
+}
+
+func (i PromptArray) ToPromptArrayOutputWithContext(ctx context.Context) PromptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptArrayOutput)
+}
+
+// PromptMapInput is an input type that accepts PromptMap and PromptMapOutput values.
+// You can construct a concrete instance of `PromptMapInput` via:
+//
+//          PromptMap{ "key": PromptArgs{...} }
+type PromptMapInput interface {
+	pulumi.Input
+
+	ToPromptMapOutput() PromptMapOutput
+	ToPromptMapOutputWithContext(context.Context) PromptMapOutput
+}
+
+type PromptMap map[string]PromptInput
+
+func (PromptMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Prompt)(nil))
+}
+
+func (i PromptMap) ToPromptMapOutput() PromptMapOutput {
+	return i.ToPromptMapOutputWithContext(context.Background())
+}
+
+func (i PromptMap) ToPromptMapOutputWithContext(ctx context.Context) PromptMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptMapOutput)
+}
+
 type PromptOutput struct {
 	*pulumi.OutputState
 }
@@ -133,6 +212,75 @@ func (o PromptOutput) ToPromptOutputWithContext(ctx context.Context) PromptOutpu
 	return o
 }
 
+func (o PromptOutput) ToPromptPtrOutput() PromptPtrOutput {
+	return o.ToPromptPtrOutputWithContext(context.Background())
+}
+
+func (o PromptOutput) ToPromptPtrOutputWithContext(ctx context.Context) PromptPtrOutput {
+	return o.ApplyT(func(v Prompt) *Prompt {
+		return &v
+	}).(PromptPtrOutput)
+}
+
+type PromptPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PromptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Prompt)(nil))
+}
+
+func (o PromptPtrOutput) ToPromptPtrOutput() PromptPtrOutput {
+	return o
+}
+
+func (o PromptPtrOutput) ToPromptPtrOutputWithContext(ctx context.Context) PromptPtrOutput {
+	return o
+}
+
+type PromptArrayOutput struct{ *pulumi.OutputState }
+
+func (PromptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Prompt)(nil))
+}
+
+func (o PromptArrayOutput) ToPromptArrayOutput() PromptArrayOutput {
+	return o
+}
+
+func (o PromptArrayOutput) ToPromptArrayOutputWithContext(ctx context.Context) PromptArrayOutput {
+	return o
+}
+
+func (o PromptArrayOutput) Index(i pulumi.IntInput) PromptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Prompt {
+		return vs[0].([]Prompt)[vs[1].(int)]
+	}).(PromptOutput)
+}
+
+type PromptMapOutput struct{ *pulumi.OutputState }
+
+func (PromptMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Prompt)(nil))
+}
+
+func (o PromptMapOutput) ToPromptMapOutput() PromptMapOutput {
+	return o
+}
+
+func (o PromptMapOutput) ToPromptMapOutputWithContext(ctx context.Context) PromptMapOutput {
+	return o
+}
+
+func (o PromptMapOutput) MapIndex(k pulumi.StringInput) PromptOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Prompt {
+		return vs[0].(map[string]Prompt)[vs[1].(string)]
+	}).(PromptOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PromptOutput{})
+	pulumi.RegisterOutputType(PromptPtrOutput{})
+	pulumi.RegisterOutputType(PromptArrayOutput{})
+	pulumi.RegisterOutputType(PromptMapOutput{})
 }

@@ -33,20 +33,26 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            inputs["clientId"] = (args ? args.clientId : undefined) || utilities.getEnv("AUTH0_CLIENT_ID");
-            inputs["clientSecret"] = (args ? args.clientSecret : undefined) || utilities.getEnv("AUTH0_CLIENT_SECRET");
+            if ((!args || args.clientId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clientId'");
+            }
+            if ((!args || args.clientSecret === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clientSecret'");
+            }
+            if ((!args || args.domain === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domain'");
+            }
+            inputs["clientId"] = args ? args.clientId : undefined;
+            inputs["clientSecret"] = args ? args.clientSecret : undefined;
             inputs["debug"] = pulumi.output((args ? args.debug : undefined) || <any>utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
-            inputs["domain"] = (args ? args.domain : undefined) || utilities.getEnv("AUTH0_DOMAIN");
+            inputs["domain"] = args ? args.domain : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }
@@ -56,8 +62,8 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    readonly clientId?: pulumi.Input<string>;
-    readonly clientSecret?: pulumi.Input<string>;
+    readonly clientId: pulumi.Input<string>;
+    readonly clientSecret: pulumi.Input<string>;
     readonly debug?: pulumi.Input<boolean>;
-    readonly domain?: pulumi.Input<string>;
+    readonly domain: pulumi.Input<string>;
 }

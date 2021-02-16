@@ -124,7 +124,8 @@ export class ResourceServer extends pulumi.CustomResource {
     constructor(name: string, args?: ResourceServerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourceServerArgs | ResourceServerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ResourceServerState | undefined;
             inputs["allowOfflineAccess"] = state ? state.allowOfflineAccess : undefined;
             inputs["enforcePolicies"] = state ? state.enforcePolicies : undefined;
@@ -155,12 +156,8 @@ export class ResourceServer extends pulumi.CustomResource {
             inputs["tokenLifetimeForWeb"] = args ? args.tokenLifetimeForWeb : undefined;
             inputs["verificationLocation"] = args ? args.verificationLocation : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ResourceServer.__pulumiType, name, inputs, opts);
     }

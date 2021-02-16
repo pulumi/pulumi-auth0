@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0/"
+// 	"github.com/pulumi/pulumi-auth0/sdk/go/auth0"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -160,6 +160,85 @@ func (i *Hook) ToHookOutputWithContext(ctx context.Context) HookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HookOutput)
 }
 
+func (i *Hook) ToHookPtrOutput() HookPtrOutput {
+	return i.ToHookPtrOutputWithContext(context.Background())
+}
+
+func (i *Hook) ToHookPtrOutputWithContext(ctx context.Context) HookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HookPtrOutput)
+}
+
+type HookPtrInput interface {
+	pulumi.Input
+
+	ToHookPtrOutput() HookPtrOutput
+	ToHookPtrOutputWithContext(ctx context.Context) HookPtrOutput
+}
+
+type hookPtrType HookArgs
+
+func (*hookPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hook)(nil))
+}
+
+func (i *hookPtrType) ToHookPtrOutput() HookPtrOutput {
+	return i.ToHookPtrOutputWithContext(context.Background())
+}
+
+func (i *hookPtrType) ToHookPtrOutputWithContext(ctx context.Context) HookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HookPtrOutput)
+}
+
+// HookArrayInput is an input type that accepts HookArray and HookArrayOutput values.
+// You can construct a concrete instance of `HookArrayInput` via:
+//
+//          HookArray{ HookArgs{...} }
+type HookArrayInput interface {
+	pulumi.Input
+
+	ToHookArrayOutput() HookArrayOutput
+	ToHookArrayOutputWithContext(context.Context) HookArrayOutput
+}
+
+type HookArray []HookInput
+
+func (HookArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Hook)(nil))
+}
+
+func (i HookArray) ToHookArrayOutput() HookArrayOutput {
+	return i.ToHookArrayOutputWithContext(context.Background())
+}
+
+func (i HookArray) ToHookArrayOutputWithContext(ctx context.Context) HookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HookArrayOutput)
+}
+
+// HookMapInput is an input type that accepts HookMap and HookMapOutput values.
+// You can construct a concrete instance of `HookMapInput` via:
+//
+//          HookMap{ "key": HookArgs{...} }
+type HookMapInput interface {
+	pulumi.Input
+
+	ToHookMapOutput() HookMapOutput
+	ToHookMapOutputWithContext(context.Context) HookMapOutput
+}
+
+type HookMap map[string]HookInput
+
+func (HookMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Hook)(nil))
+}
+
+func (i HookMap) ToHookMapOutput() HookMapOutput {
+	return i.ToHookMapOutputWithContext(context.Background())
+}
+
+func (i HookMap) ToHookMapOutputWithContext(ctx context.Context) HookMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HookMapOutput)
+}
+
 type HookOutput struct {
 	*pulumi.OutputState
 }
@@ -176,6 +255,75 @@ func (o HookOutput) ToHookOutputWithContext(ctx context.Context) HookOutput {
 	return o
 }
 
+func (o HookOutput) ToHookPtrOutput() HookPtrOutput {
+	return o.ToHookPtrOutputWithContext(context.Background())
+}
+
+func (o HookOutput) ToHookPtrOutputWithContext(ctx context.Context) HookPtrOutput {
+	return o.ApplyT(func(v Hook) *Hook {
+		return &v
+	}).(HookPtrOutput)
+}
+
+type HookPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hook)(nil))
+}
+
+func (o HookPtrOutput) ToHookPtrOutput() HookPtrOutput {
+	return o
+}
+
+func (o HookPtrOutput) ToHookPtrOutputWithContext(ctx context.Context) HookPtrOutput {
+	return o
+}
+
+type HookArrayOutput struct{ *pulumi.OutputState }
+
+func (HookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hook)(nil))
+}
+
+func (o HookArrayOutput) ToHookArrayOutput() HookArrayOutput {
+	return o
+}
+
+func (o HookArrayOutput) ToHookArrayOutputWithContext(ctx context.Context) HookArrayOutput {
+	return o
+}
+
+func (o HookArrayOutput) Index(i pulumi.IntInput) HookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hook {
+		return vs[0].([]Hook)[vs[1].(int)]
+	}).(HookOutput)
+}
+
+type HookMapOutput struct{ *pulumi.OutputState }
+
+func (HookMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Hook)(nil))
+}
+
+func (o HookMapOutput) ToHookMapOutput() HookMapOutput {
+	return o
+}
+
+func (o HookMapOutput) ToHookMapOutputWithContext(ctx context.Context) HookMapOutput {
+	return o
+}
+
+func (o HookMapOutput) MapIndex(k pulumi.StringInput) HookOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Hook {
+		return vs[0].(map[string]Hook)[vs[1].(string)]
+	}).(HookOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(HookOutput{})
+	pulumi.RegisterOutputType(HookPtrOutput{})
+	pulumi.RegisterOutputType(HookArrayOutput{})
+	pulumi.RegisterOutputType(HookMapOutput{})
 }

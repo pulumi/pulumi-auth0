@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("auth0");
 
-export let clientId: string | undefined = __config.get("clientId") || utilities.getEnv("AUTH0_CLIENT_ID");
-export let clientSecret: string | undefined = __config.get("clientSecret") || utilities.getEnv("AUTH0_CLIENT_SECRET");
+export let clientId: string | undefined = __config.get("clientId");
+export let clientSecret: string | undefined = __config.get("clientSecret");
 export let debug: boolean | undefined = __config.getObject<boolean>("debug") || <any>utilities.getEnvBoolean("AUTH0_DEBUG");
-export let domain: string | undefined = __config.get("domain") || utilities.getEnv("AUTH0_DOMAIN");
+export let domain: string | undefined = __config.get("domain");

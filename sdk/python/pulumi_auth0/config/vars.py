@@ -17,11 +17,11 @@ __all__ = [
 
 __config__ = pulumi.Config('auth0')
 
-client_id = __config__.get('clientId') or _utilities.get_env('AUTH0_CLIENT_ID')
+client_id = __config__.get('clientId')
 
-client_secret = __config__.get('clientSecret') or _utilities.get_env('AUTH0_CLIENT_SECRET')
+client_secret = __config__.get('clientSecret')
 
 debug = __config__.get('debug') or _utilities.get_env_bool('AUTH0_DEBUG')
 
-domain = __config__.get('domain') or _utilities.get_env('AUTH0_DOMAIN')
+domain = __config__.get('domain')
 

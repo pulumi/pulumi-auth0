@@ -238,6 +238,85 @@ func (i *GlobalClient) ToGlobalClientOutputWithContext(ctx context.Context) Glob
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientOutput)
 }
 
+func (i *GlobalClient) ToGlobalClientPtrOutput() GlobalClientPtrOutput {
+	return i.ToGlobalClientPtrOutputWithContext(context.Background())
+}
+
+func (i *GlobalClient) ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientPtrOutput)
+}
+
+type GlobalClientPtrInput interface {
+	pulumi.Input
+
+	ToGlobalClientPtrOutput() GlobalClientPtrOutput
+	ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput
+}
+
+type globalClientPtrType GlobalClientArgs
+
+func (*globalClientPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClient)(nil))
+}
+
+func (i *globalClientPtrType) ToGlobalClientPtrOutput() GlobalClientPtrOutput {
+	return i.ToGlobalClientPtrOutputWithContext(context.Background())
+}
+
+func (i *globalClientPtrType) ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientPtrOutput)
+}
+
+// GlobalClientArrayInput is an input type that accepts GlobalClientArray and GlobalClientArrayOutput values.
+// You can construct a concrete instance of `GlobalClientArrayInput` via:
+//
+//          GlobalClientArray{ GlobalClientArgs{...} }
+type GlobalClientArrayInput interface {
+	pulumi.Input
+
+	ToGlobalClientArrayOutput() GlobalClientArrayOutput
+	ToGlobalClientArrayOutputWithContext(context.Context) GlobalClientArrayOutput
+}
+
+type GlobalClientArray []GlobalClientInput
+
+func (GlobalClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GlobalClient)(nil))
+}
+
+func (i GlobalClientArray) ToGlobalClientArrayOutput() GlobalClientArrayOutput {
+	return i.ToGlobalClientArrayOutputWithContext(context.Background())
+}
+
+func (i GlobalClientArray) ToGlobalClientArrayOutputWithContext(ctx context.Context) GlobalClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientArrayOutput)
+}
+
+// GlobalClientMapInput is an input type that accepts GlobalClientMap and GlobalClientMapOutput values.
+// You can construct a concrete instance of `GlobalClientMapInput` via:
+//
+//          GlobalClientMap{ "key": GlobalClientArgs{...} }
+type GlobalClientMapInput interface {
+	pulumi.Input
+
+	ToGlobalClientMapOutput() GlobalClientMapOutput
+	ToGlobalClientMapOutputWithContext(context.Context) GlobalClientMapOutput
+}
+
+type GlobalClientMap map[string]GlobalClientInput
+
+func (GlobalClientMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GlobalClient)(nil))
+}
+
+func (i GlobalClientMap) ToGlobalClientMapOutput() GlobalClientMapOutput {
+	return i.ToGlobalClientMapOutputWithContext(context.Background())
+}
+
+func (i GlobalClientMap) ToGlobalClientMapOutputWithContext(ctx context.Context) GlobalClientMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMapOutput)
+}
+
 type GlobalClientOutput struct {
 	*pulumi.OutputState
 }
@@ -254,6 +333,75 @@ func (o GlobalClientOutput) ToGlobalClientOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o GlobalClientOutput) ToGlobalClientPtrOutput() GlobalClientPtrOutput {
+	return o.ToGlobalClientPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalClientOutput) ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput {
+	return o.ApplyT(func(v GlobalClient) *GlobalClient {
+		return &v
+	}).(GlobalClientPtrOutput)
+}
+
+type GlobalClientPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalClientPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClient)(nil))
+}
+
+func (o GlobalClientPtrOutput) ToGlobalClientPtrOutput() GlobalClientPtrOutput {
+	return o
+}
+
+func (o GlobalClientPtrOutput) ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput {
+	return o
+}
+
+type GlobalClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalClient)(nil))
+}
+
+func (o GlobalClientArrayOutput) ToGlobalClientArrayOutput() GlobalClientArrayOutput {
+	return o
+}
+
+func (o GlobalClientArrayOutput) ToGlobalClientArrayOutputWithContext(ctx context.Context) GlobalClientArrayOutput {
+	return o
+}
+
+func (o GlobalClientArrayOutput) Index(i pulumi.IntInput) GlobalClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalClient {
+		return vs[0].([]GlobalClient)[vs[1].(int)]
+	}).(GlobalClientOutput)
+}
+
+type GlobalClientMapOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GlobalClient)(nil))
+}
+
+func (o GlobalClientMapOutput) ToGlobalClientMapOutput() GlobalClientMapOutput {
+	return o
+}
+
+func (o GlobalClientMapOutput) ToGlobalClientMapOutputWithContext(ctx context.Context) GlobalClientMapOutput {
+	return o
+}
+
+func (o GlobalClientMapOutput) MapIndex(k pulumi.StringInput) GlobalClientOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GlobalClient {
+		return vs[0].(map[string]GlobalClient)[vs[1].(string)]
+	}).(GlobalClientOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GlobalClientOutput{})
+	pulumi.RegisterOutputType(GlobalClientPtrOutput{})
+	pulumi.RegisterOutputType(GlobalClientArrayOutput{})
+	pulumi.RegisterOutputType(GlobalClientMapOutput{})
 }

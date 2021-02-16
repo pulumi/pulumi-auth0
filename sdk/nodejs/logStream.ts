@@ -54,7 +54,8 @@ export class LogStream extends pulumi.CustomResource {
     constructor(name: string, args: LogStreamArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LogStreamArgs | LogStreamState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LogStreamState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["sink"] = state ? state.sink : undefined;
@@ -62,10 +63,10 @@ export class LogStream extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LogStreamArgs | undefined;
-            if ((!args || args.sink === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sink === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sink'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["name"] = args ? args.name : undefined;
@@ -73,12 +74,8 @@ export class LogStream extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LogStream.__pulumiType, name, inputs, opts);
     }

@@ -75,7 +75,8 @@ export class GlobalClient extends pulumi.CustomResource {
     constructor(name: string, args?: GlobalClientArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalClientArgs | GlobalClientState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GlobalClientState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
             inputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
@@ -142,12 +143,8 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["tokenEndpointAuthMethod"] = args ? args.tokenEndpointAuthMethod : undefined;
             inputs["webOrigins"] = args ? args.webOrigins : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GlobalClient.__pulumiType, name, inputs, opts);
     }

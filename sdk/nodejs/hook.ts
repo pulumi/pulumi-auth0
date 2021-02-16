@@ -80,7 +80,8 @@ export class Hook extends pulumi.CustomResource {
     constructor(name: string, args: HookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HookArgs | HookState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HookState | undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -88,10 +89,10 @@ export class Hook extends pulumi.CustomResource {
             inputs["triggerId"] = state ? state.triggerId : undefined;
         } else {
             const args = argsOrState as HookArgs | undefined;
-            if ((!args || args.script === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.script === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
-            if ((!args || args.triggerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.triggerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggerId'");
             }
             inputs["enabled"] = args ? args.enabled : undefined;
@@ -99,12 +100,8 @@ export class Hook extends pulumi.CustomResource {
             inputs["script"] = args ? args.script : undefined;
             inputs["triggerId"] = args ? args.triggerId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Hook.__pulumiType, name, inputs, opts);
     }

@@ -77,21 +77,6 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:   "alexkappa",
 		Repository:  "https://github.com/pulumi/pulumi-auth0",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"domain": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"AUTH0_DOMAIN"},
-				},
-			},
-			"client_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"AUTH0_CLIENT_ID"},
-				},
-			},
-			"client_secret": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"AUTH0_CLIENT_SECRET"},
-				},
-			},
 			"debug": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"AUTH0_DEBUG"},
