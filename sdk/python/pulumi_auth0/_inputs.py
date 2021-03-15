@@ -1290,7 +1290,7 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "api_enable_users", api_enable_users)
         if app_domain is not None:
             warnings.warn("""use domain instead""", DeprecationWarning)
-            pulumi.log.warn("app_domain is deprecated: use domain instead")
+            pulumi.log.warn("""app_domain is deprecated: use domain instead""")
         if app_domain is not None:
             pulumi.set(__self__, "app_domain", app_domain)
         if app_id is not None:

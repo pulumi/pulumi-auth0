@@ -102,7 +102,7 @@ export class Role extends pulumi.CustomResource {
             inputs["permissions"] = state ? state.permissions : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            inputs["description"] = (args ? args.description : undefined) || "Managed by Pulumi";
+            inputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
             inputs["name"] = args ? args.name : undefined;
             inputs["permissions"] = args ? args.permissions : undefined;
         }

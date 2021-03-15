@@ -291,7 +291,7 @@ export class Client extends pulumi.CustomResource {
             inputs["customLoginPage"] = args ? args.customLoginPage : undefined;
             inputs["customLoginPageOn"] = args ? args.customLoginPageOn : undefined;
             inputs["customLoginPagePreview"] = args ? args.customLoginPagePreview : undefined;
-            inputs["description"] = (args ? args.description : undefined) || "Managed by Pulumi";
+            inputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
             inputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             inputs["formTemplate"] = args ? args.formTemplate : undefined;
             inputs["grantTypes"] = args ? args.grantTypes : undefined;

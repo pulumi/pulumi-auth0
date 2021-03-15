@@ -48,7 +48,7 @@ export class Provider extends pulumi.ProviderResource {
             }
             inputs["clientId"] = args ? args.clientId : undefined;
             inputs["clientSecret"] = args ? args.clientSecret : undefined;
-            inputs["debug"] = pulumi.output((args ? args.debug : undefined) || <any>utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
+            inputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? <any>utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
             inputs["domain"] = args ? args.domain : undefined;
         }
         if (!opts.version) {
