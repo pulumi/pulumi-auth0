@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? ClientAuthorizeQuery { get; set; }
 
         /// <summary>
-        /// Facebook client ID.
+        /// Google client ID.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }

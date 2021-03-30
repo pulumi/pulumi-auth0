@@ -96,6 +96,9 @@ namespace Pulumi.Auth0
         [Output("defaultRedirectionUri")]
         public Output<string> DefaultRedirectionUri { get; private set; } = null!;
 
+        /// <summary>
+        /// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        /// </summary>
         [Output("enabledLocales")]
         public Output<ImmutableArray<string>> EnabledLocales { get; private set; } = null!;
 
@@ -249,6 +252,10 @@ namespace Pulumi.Auth0
 
         [Input("enabledLocales")]
         private InputList<string>? _enabledLocales;
+
+        /// <summary>
+        /// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        /// </summary>
         public InputList<string> EnabledLocales
         {
             get => _enabledLocales ?? (_enabledLocales = new InputList<string>());
@@ -366,6 +373,10 @@ namespace Pulumi.Auth0
 
         [Input("enabledLocales")]
         private InputList<string>? _enabledLocales;
+
+        /// <summary>
+        /// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        /// </summary>
         public InputList<string> EnabledLocales
         {
             get => _enabledLocales ?? (_enabledLocales = new InputList<string>());

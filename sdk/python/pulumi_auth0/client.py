@@ -261,8 +261,8 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[str] client_id: String. ID of the client.
+               * `client_secret`<sup>1</sup> - String. Secret for the client; keep this private.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
-        :param pulumi.Input[str] client_secret: String. Secret for the client; keep this private.
         :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map.
         :param pulumi.Input[bool] cross_origin_auth: Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         :param pulumi.Input[str] cross_origin_loc: String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
@@ -368,6 +368,7 @@ class Client(pulumi.CustomResource):
     def client_id(self) -> pulumi.Output[str]:
         """
         String. ID of the client.
+        * `client_secret`<sup>1</sup> - String. Secret for the client; keep this private.
         """
         return pulumi.get(self, "client_id")
 
@@ -382,9 +383,6 @@ class Client(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[str]:
-        """
-        String. Secret for the client; keep this private.
-        """
         return pulumi.get(self, "client_secret")
 
     @property

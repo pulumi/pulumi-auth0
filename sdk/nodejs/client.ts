@@ -133,15 +133,13 @@ export class Client extends pulumi.CustomResource {
     public readonly callbacks!: pulumi.Output<string[] | undefined>;
     /**
      * String. ID of the client.
+     * * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
      * Map(String)
      */
     public readonly clientMetadata!: pulumi.Output<{[key: string]: any} | undefined>;
-    /**
-     * String. Secret for the client; keep this private.
-     */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
     /**
      * Map.
@@ -344,15 +342,13 @@ export interface ClientState {
     readonly callbacks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * String. ID of the client.
+     * * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
      */
     readonly clientId?: pulumi.Input<string>;
     /**
      * Map(String)
      */
     readonly clientMetadata?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String. Secret for the client; keep this private.
-     */
     readonly clientSecret?: pulumi.Input<string>;
     /**
      * Map.

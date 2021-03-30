@@ -519,7 +519,7 @@ export interface ConnectionOptions {
 export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: pulumi.Input<string>;
     /**
-     * Facebook client ID.
+     * Google client ID.
      */
     clientId?: pulumi.Input<string>;
     clientProtocol?: pulumi.Input<string>;
@@ -751,6 +751,7 @@ export interface LogStreamSink {
     splunkPort?: pulumi.Input<string>;
     splunkSecure?: pulumi.Input<boolean>;
     splunkToken?: pulumi.Input<string>;
+    sumoSourceAddress?: pulumi.Input<string>;
 }
 
 export interface ResourceServerScope {

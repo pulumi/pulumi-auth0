@@ -82,6 +82,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] default_audience: String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: String. The default absolute redirection uri, must be https and cannot contain a fragment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[pulumi.InputType['TenantErrorPageArgs']] error_page: List(Resource). Configuration settings for error pages. For details, see Error Page.
         :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: List(Resource). Configuration settings for tenant flags. For details, see Flags.
         :param pulumi.Input[str] friendly_name: String. Friendly name for the tenant.
@@ -167,6 +168,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] default_audience: String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: String. The default absolute redirection uri, must be https and cannot contain a fragment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[pulumi.InputType['TenantErrorPageArgs']] error_page: List(Resource). Configuration settings for error pages. For details, see Error Page.
         :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: List(Resource). Configuration settings for tenant flags. For details, see Flags.
         :param pulumi.Input[str] friendly_name: String. Friendly name for the tenant.
@@ -245,6 +247,9 @@ class Tenant(pulumi.CustomResource):
     @property
     @pulumi.getter(name="enabledLocales")
     def enabled_locales(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        """
         return pulumi.get(self, "enabled_locales")
 
     @property

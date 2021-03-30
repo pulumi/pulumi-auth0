@@ -31,6 +31,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly string? SplunkPort;
         public readonly bool? SplunkSecure;
         public readonly string? SplunkToken;
+        public readonly string? SumoSourceAddress;
 
         [OutputConstructor]
         private LogStreamSink(
@@ -68,7 +69,9 @@ namespace Pulumi.Auth0.Outputs
 
             bool? splunkSecure,
 
-            string? splunkToken)
+            string? splunkToken,
+
+            string? sumoSourceAddress)
         {
             AwsAccountId = awsAccountId;
             AwsPartnerEventSource = awsPartnerEventSource;
@@ -88,6 +91,7 @@ namespace Pulumi.Auth0.Outputs
             SplunkPort = splunkPort;
             SplunkSecure = splunkSecure;
             SplunkToken = splunkToken;
+            SumoSourceAddress = sumoSourceAddress;
         }
     }
 }

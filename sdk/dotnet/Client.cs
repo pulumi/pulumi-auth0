@@ -156,6 +156,7 @@ namespace Pulumi.Auth0
 
         /// <summary>
         /// String. ID of the client.
+        /// * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
@@ -166,9 +167,6 @@ namespace Pulumi.Auth0
         [Output("clientMetadata")]
         public Output<ImmutableDictionary<string, object>?> ClientMetadata { get; private set; } = null!;
 
-        /// <summary>
-        /// String. Secret for the client; keep this private.
-        /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
@@ -630,6 +628,7 @@ namespace Pulumi.Auth0
 
         /// <summary>
         /// String. ID of the client.
+        /// * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -646,9 +645,6 @@ namespace Pulumi.Auth0
             set => _clientMetadata = value;
         }
 
-        /// <summary>
-        /// String. Secret for the client; keep this private.
-        /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 

@@ -2203,7 +2203,7 @@ class ConnectionOptionsIdpInitiatedArgs:
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_protocol: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] client_id: Facebook client ID.
+        :param pulumi.Input[str] client_id: Google client ID.
         """
         if client_authorize_query is not None:
             pulumi.set(__self__, "client_authorize_query", client_authorize_query)
@@ -2225,7 +2225,7 @@ class ConnectionOptionsIdpInitiatedArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Facebook client ID.
+        Google client ID.
         """
         return pulumi.get(self, "client_id")
 
@@ -3533,7 +3533,8 @@ class LogStreamSinkArgs:
                  splunk_domain: Optional[pulumi.Input[str]] = None,
                  splunk_port: Optional[pulumi.Input[str]] = None,
                  splunk_secure: Optional[pulumi.Input[bool]] = None,
-                 splunk_token: Optional[pulumi.Input[str]] = None):
+                 splunk_token: Optional[pulumi.Input[str]] = None,
+                 sumo_source_address: Optional[pulumi.Input[str]] = None):
         if aws_account_id is not None:
             pulumi.set(__self__, "aws_account_id", aws_account_id)
         if aws_partner_event_source is not None:
@@ -3570,6 +3571,8 @@ class LogStreamSinkArgs:
             pulumi.set(__self__, "splunk_secure", splunk_secure)
         if splunk_token is not None:
             pulumi.set(__self__, "splunk_token", splunk_token)
+        if sumo_source_address is not None:
+            pulumi.set(__self__, "sumo_source_address", sumo_source_address)
 
     @property
     @pulumi.getter(name="awsAccountId")
@@ -3732,6 +3735,15 @@ class LogStreamSinkArgs:
     @splunk_token.setter
     def splunk_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "splunk_token", value)
+
+    @property
+    @pulumi.getter(name="sumoSourceAddress")
+    def sumo_source_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sumo_source_address")
+
+    @sumo_source_address.setter
+    def sumo_source_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sumo_source_address", value)
 
 
 @pulumi.input_type

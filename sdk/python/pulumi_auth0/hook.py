@@ -15,9 +15,11 @@ class Hook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None,
+                 secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -34,9 +36,12 @@ class Hook(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_hook = auth0.Hook("myHook",
+            dependencies={
+                "auth0": "2.30.0",
+            },
             enabled=True,
-            script=\"\"\"function (user, context, callback) { 
-          callback(null, { user }); 
+            script=\"\"\"function (user, context, callback) {
+          callback(null, { user });
         }
 
         \"\"\",
@@ -45,9 +50,11 @@ class Hook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, Any]] dependencies: Dependencies of this hook used by webtask server
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled
         :param pulumi.Input[str] name: Name of this hook
         :param pulumi.Input[str] script: Code to be executed when this hook runs
+        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
         """
         if __name__ is not None:
@@ -67,11 +74,13 @@ class Hook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['dependencies'] = dependencies
             __props__['enabled'] = enabled
             __props__['name'] = name
             if script is None and not opts.urn:
                 raise TypeError("Missing required property 'script'")
             __props__['script'] = script
+            __props__['secrets'] = secrets
             if trigger_id is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_id'")
             __props__['trigger_id'] = trigger_id
@@ -85,9 +94,11 @@ class Hook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             script: Optional[pulumi.Input[str]] = None,
+            secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             trigger_id: Optional[pulumi.Input[str]] = None) -> 'Hook':
         """
         Get an existing Hook resource's state with the given name, id, and optional extra
@@ -96,24 +107,36 @@ class Hook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, Any]] dependencies: Dependencies of this hook used by webtask server
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled
         :param pulumi.Input[str] name: Name of this hook
         :param pulumi.Input[str] script: Code to be executed when this hook runs
+        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["dependencies"] = dependencies
         __props__["enabled"] = enabled
         __props__["name"] = name
         __props__["script"] = script
+        __props__["secrets"] = secrets
         __props__["trigger_id"] = trigger_id
         return Hook(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[bool]]:
+    def dependencies(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Dependencies of this hook used by webtask server
+        """
+        return pulumi.get(self, "dependencies")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether the hook is enabled, or disabled
         """
@@ -134,6 +157,14 @@ class Hook(pulumi.CustomResource):
         Code to be executed when this hook runs
         """
         return pulumi.get(self, "script")
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The secrets associated with the hook
+        """
+        return pulumi.get(self, "secrets")
 
     @property
     @pulumi.getter(name="triggerId")

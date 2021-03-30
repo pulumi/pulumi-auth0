@@ -519,7 +519,7 @@ export interface ConnectionOptions {
 export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: string;
     /**
-     * Facebook client ID.
+     * Google client ID.
      */
     clientId?: string;
     clientProtocol?: string;
@@ -751,6 +751,7 @@ export interface LogStreamSink {
     splunkPort?: string;
     splunkSecure?: boolean;
     splunkToken?: string;
+    sumoSourceAddress?: string;
 }
 
 export interface ResourceServerScope {

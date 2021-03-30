@@ -16,9 +16,12 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myHook = new auth0.Hook("my_hook", {
+ *     dependencies: {
+ *         auth0: "2.30.0",
+ *     },
  *     enabled: true,
- *     script: `function (user, context, callback) { 
- *   callback(null, { user }); 
+ *     script: `function (user, context, callback) {
+ *   callback(null, { user });
  * }
  * `,
  *     triggerId: "pre-user-registration",
@@ -54,9 +57,13 @@ export class Hook extends pulumi.CustomResource {
     }
 
     /**
+     * Dependencies of this hook used by webtask server
+     */
+    public readonly dependencies!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * Whether the hook is enabled, or disabled
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean>;
     /**
      * Name of this hook
      */
@@ -65,6 +72,10 @@ export class Hook extends pulumi.CustomResource {
      * Code to be executed when this hook runs
      */
     public readonly script!: pulumi.Output<string>;
+    /**
+     * The secrets associated with the hook
+     */
+    public readonly secrets!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
      */
@@ -83,9 +94,11 @@ export class Hook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HookState | undefined;
+            inputs["dependencies"] = state ? state.dependencies : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["script"] = state ? state.script : undefined;
+            inputs["secrets"] = state ? state.secrets : undefined;
             inputs["triggerId"] = state ? state.triggerId : undefined;
         } else {
             const args = argsOrState as HookArgs | undefined;
@@ -95,9 +108,11 @@ export class Hook extends pulumi.CustomResource {
             if ((!args || args.triggerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggerId'");
             }
+            inputs["dependencies"] = args ? args.dependencies : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["script"] = args ? args.script : undefined;
+            inputs["secrets"] = args ? args.secrets : undefined;
             inputs["triggerId"] = args ? args.triggerId : undefined;
         }
         if (!opts.version) {
@@ -112,6 +127,10 @@ export class Hook extends pulumi.CustomResource {
  */
 export interface HookState {
     /**
+     * Dependencies of this hook used by webtask server
+     */
+    readonly dependencies?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Whether the hook is enabled, or disabled
      */
     readonly enabled?: pulumi.Input<boolean>;
@@ -124,6 +143,10 @@ export interface HookState {
      */
     readonly script?: pulumi.Input<string>;
     /**
+     * The secrets associated with the hook
+     */
+    readonly secrets?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
      */
     readonly triggerId?: pulumi.Input<string>;
@@ -133,6 +156,10 @@ export interface HookState {
  * The set of arguments for constructing a Hook resource.
  */
 export interface HookArgs {
+    /**
+     * Dependencies of this hook used by webtask server
+     */
+    readonly dependencies?: pulumi.Input<{[key: string]: any}>;
     /**
      * Whether the hook is enabled, or disabled
      */
@@ -145,6 +172,10 @@ export interface HookArgs {
      * Code to be executed when this hook runs
      */
     readonly script: pulumi.Input<string>;
+    /**
+     * The secrets associated with the hook
+     */
+    readonly secrets?: pulumi.Input<{[key: string]: any}>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
      */

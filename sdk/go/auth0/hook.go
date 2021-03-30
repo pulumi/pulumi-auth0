@@ -30,8 +30,11 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewHook(ctx, "myHook", &auth0.HookArgs{
+// 			Dependencies: pulumi.StringMap{
+// 				"auth0": pulumi.String("2.30.0"),
+// 			},
 // 			Enabled:   pulumi.Bool(true),
-// 			Script:    pulumi.String(fmt.Sprintf("%v%v%v%v", "function (user, context, callback) { \n", "  callback(null, { user }); \n", "}\n", "\n")),
+// 			Script:    pulumi.String(fmt.Sprintf("%v%v%v%v", "function (user, context, callback) {\n", "  callback(null, { user });\n", "}\n", "\n")),
 // 			TriggerId: pulumi.String("pre-user-registration"),
 // 		})
 // 		if err != nil {
@@ -44,12 +47,16 @@ import (
 type Hook struct {
 	pulumi.CustomResourceState
 
+	// Dependencies of this hook used by webtask server
+	Dependencies pulumi.MapOutput `pulumi:"dependencies"`
 	// Whether the hook is enabled, or disabled
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Name of this hook
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Code to be executed when this hook runs
 	Script pulumi.StringOutput `pulumi:"script"`
+	// The secrets associated with the hook
+	Secrets pulumi.MapOutput `pulumi:"secrets"`
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
 	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 }
@@ -89,23 +96,31 @@ func GetHook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Hook resources.
 type hookState struct {
+	// Dependencies of this hook used by webtask server
+	Dependencies map[string]interface{} `pulumi:"dependencies"`
 	// Whether the hook is enabled, or disabled
 	Enabled *bool `pulumi:"enabled"`
 	// Name of this hook
 	Name *string `pulumi:"name"`
 	// Code to be executed when this hook runs
 	Script *string `pulumi:"script"`
+	// The secrets associated with the hook
+	Secrets map[string]interface{} `pulumi:"secrets"`
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
 	TriggerId *string `pulumi:"triggerId"`
 }
 
 type HookState struct {
+	// Dependencies of this hook used by webtask server
+	Dependencies pulumi.MapInput
 	// Whether the hook is enabled, or disabled
 	Enabled pulumi.BoolPtrInput
 	// Name of this hook
 	Name pulumi.StringPtrInput
 	// Code to be executed when this hook runs
 	Script pulumi.StringPtrInput
+	// The secrets associated with the hook
+	Secrets pulumi.MapInput
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
 	TriggerId pulumi.StringPtrInput
 }
@@ -115,24 +130,32 @@ func (HookState) ElementType() reflect.Type {
 }
 
 type hookArgs struct {
+	// Dependencies of this hook used by webtask server
+	Dependencies map[string]interface{} `pulumi:"dependencies"`
 	// Whether the hook is enabled, or disabled
 	Enabled *bool `pulumi:"enabled"`
 	// Name of this hook
 	Name *string `pulumi:"name"`
 	// Code to be executed when this hook runs
 	Script string `pulumi:"script"`
+	// The secrets associated with the hook
+	Secrets map[string]interface{} `pulumi:"secrets"`
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
 	TriggerId string `pulumi:"triggerId"`
 }
 
 // The set of arguments for constructing a Hook resource.
 type HookArgs struct {
+	// Dependencies of this hook used by webtask server
+	Dependencies pulumi.MapInput
 	// Whether the hook is enabled, or disabled
 	Enabled pulumi.BoolPtrInput
 	// Name of this hook
 	Name pulumi.StringPtrInput
 	// Code to be executed when this hook runs
 	Script pulumi.StringInput
+	// The secrets associated with the hook
+	Secrets pulumi.MapInput
 	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
 	TriggerId pulumi.StringInput
 }

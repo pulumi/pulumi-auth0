@@ -1435,7 +1435,7 @@
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "Facebook client ID.\n",
+                    "description": "Google client ID.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2550,6 +2550,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "sumoSourceAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -2934,7 +2942,7 @@
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "String. ID of the client.\n"
+                    "description": "String. ID of the client.\n* `client_secret`\u003csup\u003e1\u003c/sup\u003e - String. Secret for the client; keep this private.\n"
                 },
                 "clientMetadata": {
                     "type": "object",
@@ -2944,8 +2952,7 @@
                     "description": "Map(String)\n"
                 },
                 "clientSecret": {
-                    "type": "string",
-                    "description": "String. Secret for the client; keep this private.\n"
+                    "type": "string"
                 },
                 "clientSecretRotationTrigger": {
                     "type": "object",
@@ -3242,7 +3249,7 @@
                     },
                     "clientId": {
                         "type": "string",
-                        "description": "String. ID of the client.\n"
+                        "description": "String. ID of the client.\n* `client_secret`\u003csup\u003e1\u003c/sup\u003e - String. Secret for the client; keep this private.\n"
                     },
                     "clientMetadata": {
                         "type": "object",
@@ -3252,8 +3259,7 @@
                         "description": "Map(String)\n"
                     },
                     "clientSecret": {
-                        "type": "string",
-                        "description": "String. Secret for the client; keep this private.\n"
+                        "type": "string"
                     },
                     "clientSecretRotationTrigger": {
                         "type": "object",
@@ -3775,7 +3781,7 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "String. Template name. Options include `verify_email`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
+                    "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
                 },
                 "urlLifetimeInSeconds": {
                     "type": "integer",
@@ -3817,7 +3823,7 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "String. Template name. Options include `verify_email`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
+                    "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
                 },
                 "urlLifetimeInSeconds": {
                     "type": "integer",
@@ -3861,7 +3867,7 @@
                     },
                     "template": {
                         "type": "string",
-                        "description": "String. Template name. Options include `verify_email`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
+                        "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
                     },
                     "urlLifetimeInSeconds": {
                         "type": "integer",
@@ -4267,8 +4273,15 @@
             }
         },
         "auth0:index/hook:Hook": {
-            "description": "Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.\n\nDepending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myHook = new auth0.Hook(\"my_hook\", {\n    enabled: true,\n    script: `function (user, context, callback) { \n  callback(null, { user }); \n}\n`,\n    triggerId: \"pre-user-registration\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_hook = auth0.Hook(\"myHook\",\n    enabled=True,\n    script=\"\"\"function (user, context, callback) { \n  callback(null, { user }); \n}\n\n\"\"\",\n    trigger_id=\"pre-user-registration\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myHook = new Auth0.Hook(\"myHook\", new Auth0.HookArgs\n        {\n            Enabled = true,\n            Script = @\"function (user, context, callback) { \n  callback(null, { user }); \n}\n\n\",\n            TriggerId = \"pre-user-registration\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewHook(ctx, \"myHook\", \u0026auth0.HookArgs{\n\t\t\tEnabled:   pulumi.Bool(true),\n\t\t\tScript:    pulumi.String(fmt.Sprintf(\"%v%v%v%v\", \"function (user, context, callback) { \\n\", \"  callback(null, { user }); \\n\", \"}\\n\", \"\\n\")),\n\t\t\tTriggerId: pulumi.String(\"pre-user-registration\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.\n\nDepending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myHook = new auth0.Hook(\"my_hook\", {\n    dependencies: {\n        auth0: \"2.30.0\",\n    },\n    enabled: true,\n    script: `function (user, context, callback) {\n  callback(null, { user });\n}\n`,\n    triggerId: \"pre-user-registration\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_hook = auth0.Hook(\"myHook\",\n    dependencies={\n        \"auth0\": \"2.30.0\",\n    },\n    enabled=True,\n    script=\"\"\"function (user, context, callback) {\n  callback(null, { user });\n}\n\n\"\"\",\n    trigger_id=\"pre-user-registration\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myHook = new Auth0.Hook(\"myHook\", new Auth0.HookArgs\n        {\n            Dependencies = \n            {\n                { \"auth0\", \"2.30.0\" },\n            },\n            Enabled = true,\n            Script = @\"function (user, context, callback) {\n  callback(null, { user });\n}\n\n\",\n            TriggerId = \"pre-user-registration\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewHook(ctx, \"myHook\", \u0026auth0.HookArgs{\n\t\t\tDependencies: pulumi.StringMap{\n\t\t\t\t\"auth0\": pulumi.String(\"2.30.0\"),\n\t\t\t},\n\t\t\tEnabled:   pulumi.Bool(true),\n\t\t\tScript:    pulumi.String(fmt.Sprintf(\"%v%v%v%v\", \"function (user, context, callback) {\\n\", \"  callback(null, { user });\\n\", \"}\\n\", \"\\n\")),\n\t\t\tTriggerId: pulumi.String(\"pre-user-registration\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "dependencies": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Dependencies of this hook used by webtask server\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the hook is enabled, or disabled\n"
@@ -4280,6 +4293,13 @@
                 "script": {
                     "type": "string",
                     "description": "Code to be executed when this hook runs\n"
+                },
+                "secrets": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The secrets associated with the hook\n"
                 },
                 "triggerId": {
                     "type": "string",
@@ -4287,11 +4307,19 @@
                 }
             },
             "required": [
+                "enabled",
                 "name",
                 "script",
                 "triggerId"
             ],
             "inputProperties": {
+                "dependencies": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Dependencies of this hook used by webtask server\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the hook is enabled, or disabled\n"
@@ -4303,6 +4331,13 @@
                 "script": {
                     "type": "string",
                     "description": "Code to be executed when this hook runs\n"
+                },
+                "secrets": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The secrets associated with the hook\n"
                 },
                 "triggerId": {
                     "type": "string",
@@ -4316,6 +4351,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Hook resources.\n",
                 "properties": {
+                    "dependencies": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Dependencies of this hook used by webtask server\n"
+                    },
                     "enabled": {
                         "type": "boolean",
                         "description": "Whether the hook is enabled, or disabled\n"
@@ -4327,6 +4369,13 @@
                     "script": {
                         "type": "string",
                         "description": "Code to be executed when this hook runs\n"
+                    },
+                    "secrets": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The secrets associated with the hook\n"
                     },
                     "triggerId": {
                         "type": "string",
@@ -4403,12 +4452,18 @@
         "auth0:index/prompt:Prompt": {
             "description": "With this resource, you can manage your Auth0 prompts, including choosing the login experience version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst example = new auth0.Prompt(\"example\", {\n    universalLoginExperience: \"classic\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nexample = auth0.Prompt(\"example\", universal_login_experience=\"classic\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Auth0.Prompt(\"example\", new Auth0.PromptArgs\n        {\n            UniversalLoginExperience = \"classic\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPrompt(ctx, \"example\", \u0026auth0.PromptArgs{\n\t\t\tUniversalLoginExperience: pulumi.String(\"classic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "identifierFirst": {
+                    "type": "boolean"
+                },
                 "universalLoginExperience": {
                     "type": "string",
                     "description": "Which login experience to use. Options include `classic` and `new`.\n"
                 }
             },
             "inputProperties": {
+                "identifierFirst": {
+                    "type": "boolean"
+                },
                 "universalLoginExperience": {
                     "type": "string",
                     "description": "Which login experience to use. Options include `classic` and `new`.\n"
@@ -4417,6 +4472,9 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Prompt resources.\n",
                 "properties": {
+                    "identifierFirst": {
+                        "type": "boolean"
+                    },
                     "universalLoginExperience": {
                         "type": "string",
                         "description": "Which login experience to use. Options include `classic` and `new`.\n"
@@ -4828,7 +4886,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.\n"
                 },
                 "errorPage": {
                     "$ref": "#/types/auth0:index/TenantErrorPage:TenantErrorPage",
@@ -4922,7 +4981,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.\n"
                 },
                 "errorPage": {
                     "$ref": "#/types/auth0:index/TenantErrorPage:TenantErrorPage",
@@ -4999,7 +5059,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.\n"
                     },
                     "errorPage": {
                         "$ref": "#/types/auth0:index/TenantErrorPage:TenantErrorPage",

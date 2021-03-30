@@ -37,6 +37,7 @@ import (
 type Prompt struct {
 	pulumi.CustomResourceState
 
+	IdentifierFirst pulumi.BoolPtrOutput `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrOutput `pulumi:"universalLoginExperience"`
 }
@@ -70,11 +71,13 @@ func GetPrompt(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Prompt resources.
 type promptState struct {
+	IdentifierFirst *bool `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience *string `pulumi:"universalLoginExperience"`
 }
 
 type PromptState struct {
+	IdentifierFirst pulumi.BoolPtrInput
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrInput
 }
@@ -84,12 +87,14 @@ func (PromptState) ElementType() reflect.Type {
 }
 
 type promptArgs struct {
+	IdentifierFirst *bool `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience *string `pulumi:"universalLoginExperience"`
 }
 
 // The set of arguments for constructing a Prompt resource.
 type PromptArgs struct {
+	IdentifierFirst pulumi.BoolPtrInput
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrInput
 }

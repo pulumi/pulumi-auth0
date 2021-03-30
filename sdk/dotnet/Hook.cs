@@ -26,9 +26,13 @@ namespace Pulumi.Auth0
     ///     {
     ///         var myHook = new Auth0.Hook("myHook", new Auth0.HookArgs
     ///         {
+    ///             Dependencies = 
+    ///             {
+    ///                 { "auth0", "2.30.0" },
+    ///             },
     ///             Enabled = true,
-    ///             Script = @"function (user, context, callback) { 
-    ///   callback(null, { user }); 
+    ///             Script = @"function (user, context, callback) {
+    ///   callback(null, { user });
     /// }
     /// 
     /// ",
@@ -43,10 +47,16 @@ namespace Pulumi.Auth0
     public partial class Hook : Pulumi.CustomResource
     {
         /// <summary>
+        /// Dependencies of this hook used by webtask server
+        /// </summary>
+        [Output("dependencies")]
+        public Output<ImmutableDictionary<string, object>?> Dependencies { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the hook is enabled, or disabled
         /// </summary>
         [Output("enabled")]
-        public Output<bool?> Enabled { get; private set; } = null!;
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// Name of this hook
@@ -59,6 +69,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("script")]
         public Output<string> Script { get; private set; } = null!;
+
+        /// <summary>
+        /// The secrets associated with the hook
+        /// </summary>
+        [Output("secrets")]
+        public Output<ImmutableDictionary<string, object>?> Secrets { get; private set; } = null!;
 
         /// <summary>
         /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
@@ -112,6 +128,18 @@ namespace Pulumi.Auth0
 
     public sealed class HookArgs : Pulumi.ResourceArgs
     {
+        [Input("dependencies")]
+        private InputMap<object>? _dependencies;
+
+        /// <summary>
+        /// Dependencies of this hook used by webtask server
+        /// </summary>
+        public InputMap<object> Dependencies
+        {
+            get => _dependencies ?? (_dependencies = new InputMap<object>());
+            set => _dependencies = value;
+        }
+
         /// <summary>
         /// Whether the hook is enabled, or disabled
         /// </summary>
@@ -130,6 +158,18 @@ namespace Pulumi.Auth0
         [Input("script", required: true)]
         public Input<string> Script { get; set; } = null!;
 
+        [Input("secrets")]
+        private InputMap<object>? _secrets;
+
+        /// <summary>
+        /// The secrets associated with the hook
+        /// </summary>
+        public InputMap<object> Secrets
+        {
+            get => _secrets ?? (_secrets = new InputMap<object>());
+            set => _secrets = value;
+        }
+
         /// <summary>
         /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
         /// </summary>
@@ -143,6 +183,18 @@ namespace Pulumi.Auth0
 
     public sealed class HookState : Pulumi.ResourceArgs
     {
+        [Input("dependencies")]
+        private InputMap<object>? _dependencies;
+
+        /// <summary>
+        /// Dependencies of this hook used by webtask server
+        /// </summary>
+        public InputMap<object> Dependencies
+        {
+            get => _dependencies ?? (_dependencies = new InputMap<object>());
+            set => _dependencies = value;
+        }
+
         /// <summary>
         /// Whether the hook is enabled, or disabled
         /// </summary>
@@ -160,6 +212,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("script")]
         public Input<string>? Script { get; set; }
+
+        [Input("secrets")]
+        private InputMap<object>? _secrets;
+
+        /// <summary>
+        /// The secrets associated with the hook
+        /// </summary>
+        public InputMap<object> Secrets
+        {
+            get => _secrets ?? (_secrets = new InputMap<object>());
+            set => _secrets = value;
+        }
 
         /// <summary>
         /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
