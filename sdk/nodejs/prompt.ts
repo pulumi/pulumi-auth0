@@ -46,6 +46,7 @@ export class Prompt extends pulumi.CustomResource {
         return obj['__pulumiType'] === Prompt.__pulumiType;
     }
 
+    public readonly identifierFirst!: pulumi.Output<boolean | undefined>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
@@ -64,9 +65,11 @@ export class Prompt extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PromptState | undefined;
+            inputs["identifierFirst"] = state ? state.identifierFirst : undefined;
             inputs["universalLoginExperience"] = state ? state.universalLoginExperience : undefined;
         } else {
             const args = argsOrState as PromptArgs | undefined;
+            inputs["identifierFirst"] = args ? args.identifierFirst : undefined;
             inputs["universalLoginExperience"] = args ? args.universalLoginExperience : undefined;
         }
         if (!opts.version) {
@@ -80,6 +83,7 @@ export class Prompt extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Prompt resources.
  */
 export interface PromptState {
+    readonly identifierFirst?: pulumi.Input<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
@@ -90,6 +94,7 @@ export interface PromptState {
  * The set of arguments for constructing a Prompt resource.
  */
 export interface PromptArgs {
+    readonly identifierFirst?: pulumi.Input<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */

@@ -27,8 +27,9 @@ type Tenant struct {
 	// String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory pulumi.StringOutput `pulumi:"defaultDirectory"`
 	// String. The default absolute redirection uri, must be https and cannot contain a fragment.
-	DefaultRedirectionUri pulumi.StringOutput      `pulumi:"defaultRedirectionUri"`
-	EnabledLocales        pulumi.StringArrayOutput `pulumi:"enabledLocales"`
+	DefaultRedirectionUri pulumi.StringOutput `pulumi:"defaultRedirectionUri"`
+	// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+	EnabledLocales pulumi.StringArrayOutput `pulumi:"enabledLocales"`
 	// List(Resource). Configuration settings for error pages. For details, see Error Page.
 	ErrorPage TenantErrorPageOutput `pulumi:"errorPage"`
 	// List(Resource). Configuration settings for tenant flags. For details, see Flags.
@@ -91,8 +92,9 @@ type tenantState struct {
 	// String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory *string `pulumi:"defaultDirectory"`
 	// String. The default absolute redirection uri, must be https and cannot contain a fragment.
-	DefaultRedirectionUri *string  `pulumi:"defaultRedirectionUri"`
-	EnabledLocales        []string `pulumi:"enabledLocales"`
+	DefaultRedirectionUri *string `pulumi:"defaultRedirectionUri"`
+	// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+	EnabledLocales []string `pulumi:"enabledLocales"`
 	// List(Resource). Configuration settings for error pages. For details, see Error Page.
 	ErrorPage *TenantErrorPage `pulumi:"errorPage"`
 	// List(Resource). Configuration settings for tenant flags. For details, see Flags.
@@ -128,7 +130,8 @@ type TenantState struct {
 	DefaultDirectory pulumi.StringPtrInput
 	// String. The default absolute redirection uri, must be https and cannot contain a fragment.
 	DefaultRedirectionUri pulumi.StringPtrInput
-	EnabledLocales        pulumi.StringArrayInput
+	// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+	EnabledLocales pulumi.StringArrayInput
 	// List(Resource). Configuration settings for error pages. For details, see Error Page.
 	ErrorPage TenantErrorPagePtrInput
 	// List(Resource). Configuration settings for tenant flags. For details, see Flags.
@@ -167,8 +170,9 @@ type tenantArgs struct {
 	// String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory *string `pulumi:"defaultDirectory"`
 	// String. The default absolute redirection uri, must be https and cannot contain a fragment.
-	DefaultRedirectionUri *string  `pulumi:"defaultRedirectionUri"`
-	EnabledLocales        []string `pulumi:"enabledLocales"`
+	DefaultRedirectionUri *string `pulumi:"defaultRedirectionUri"`
+	// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+	EnabledLocales []string `pulumi:"enabledLocales"`
 	// List(Resource). Configuration settings for error pages. For details, see Error Page.
 	ErrorPage *TenantErrorPage `pulumi:"errorPage"`
 	// List(Resource). Configuration settings for tenant flags. For details, see Flags.
@@ -205,7 +209,8 @@ type TenantArgs struct {
 	DefaultDirectory pulumi.StringPtrInput
 	// String. The default absolute redirection uri, must be https and cannot contain a fragment.
 	DefaultRedirectionUri pulumi.StringPtrInput
-	EnabledLocales        pulumi.StringArrayInput
+	// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+	EnabledLocales pulumi.StringArrayInput
 	// List(Resource). Configuration settings for error pages. For details, see Error Page.
 	ErrorPage TenantErrorPagePtrInput
 	// List(Resource). Configuration settings for tenant flags. For details, see Flags.

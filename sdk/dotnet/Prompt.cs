@@ -34,6 +34,9 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/prompt:Prompt")]
     public partial class Prompt : Pulumi.CustomResource
     {
+        [Output("identifierFirst")]
+        public Output<bool?> IdentifierFirst { get; private set; } = null!;
+
         /// <summary>
         /// Which login experience to use. Options include `classic` and `new`.
         /// </summary>
@@ -86,6 +89,9 @@ namespace Pulumi.Auth0
 
     public sealed class PromptArgs : Pulumi.ResourceArgs
     {
+        [Input("identifierFirst")]
+        public Input<bool>? IdentifierFirst { get; set; }
+
         /// <summary>
         /// Which login experience to use. Options include `classic` and `new`.
         /// </summary>
@@ -99,6 +105,9 @@ namespace Pulumi.Auth0
 
     public sealed class PromptState : Pulumi.ResourceArgs
     {
+        [Input("identifierFirst")]
+        public Input<bool>? IdentifierFirst { get; set; }
+
         /// <summary>
         /// Which login experience to use. Options include `classic` and `new`.
         /// </summary>

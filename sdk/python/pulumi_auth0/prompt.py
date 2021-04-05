@@ -15,6 +15,7 @@ class Prompt(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 identifier_first: Optional[pulumi.Input[bool]] = None,
                  universal_login_experience: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -52,6 +53,7 @@ class Prompt(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['identifier_first'] = identifier_first
             __props__['universal_login_experience'] = universal_login_experience
         super(Prompt, __self__).__init__(
             'auth0:index/prompt:Prompt',
@@ -63,6 +65,7 @@ class Prompt(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            identifier_first: Optional[pulumi.Input[bool]] = None,
             universal_login_experience: Optional[pulumi.Input[str]] = None) -> 'Prompt':
         """
         Get an existing Prompt resource's state with the given name, id, and optional extra
@@ -77,8 +80,14 @@ class Prompt(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["identifier_first"] = identifier_first
         __props__["universal_login_experience"] = universal_login_experience
         return Prompt(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="identifierFirst")
+    def identifier_first(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "identifier_first")
 
     @property
     @pulumi.getter(name="universalLoginExperience")

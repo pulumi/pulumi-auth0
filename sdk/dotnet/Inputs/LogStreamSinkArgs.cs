@@ -71,6 +71,9 @@ namespace Pulumi.Auth0.Inputs
         [Input("splunkToken")]
         public Input<string>? SplunkToken { get; set; }
 
+        [Input("sumoSourceAddress")]
+        public Input<string>? SumoSourceAddress { get; set; }
+
         public LogStreamSinkArgs()
         {
         }

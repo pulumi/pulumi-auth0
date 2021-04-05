@@ -3519,7 +3519,7 @@ func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
 
 type ConnectionOptionsIdpInitiated struct {
 	ClientAuthorizeQuery *string `pulumi:"clientAuthorizeQuery"`
-	// Facebook client ID.
+	// Google client ID.
 	ClientId       *string `pulumi:"clientId"`
 	ClientProtocol *string `pulumi:"clientProtocol"`
 }
@@ -3537,7 +3537,7 @@ type ConnectionOptionsIdpInitiatedInput interface {
 
 type ConnectionOptionsIdpInitiatedArgs struct {
 	ClientAuthorizeQuery pulumi.StringPtrInput `pulumi:"clientAuthorizeQuery"`
-	// Facebook client ID.
+	// Google client ID.
 	ClientId       pulumi.StringPtrInput `pulumi:"clientId"`
 	ClientProtocol pulumi.StringPtrInput `pulumi:"clientProtocol"`
 }
@@ -3622,7 +3622,7 @@ func (o ConnectionOptionsIdpInitiatedOutput) ClientAuthorizeQuery() pulumi.Strin
 	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientAuthorizeQuery }).(pulumi.StringPtrOutput)
 }
 
-// Facebook client ID.
+// Google client ID.
 func (o ConnectionOptionsIdpInitiatedOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
@@ -3658,7 +3658,7 @@ func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientAuthorizeQuery() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Facebook client ID.
+// Google client ID.
 func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) *string {
 		if v == nil {
@@ -7095,6 +7095,7 @@ type LogStreamSink struct {
 	SplunkPort            *string  `pulumi:"splunkPort"`
 	SplunkSecure          *bool    `pulumi:"splunkSecure"`
 	SplunkToken           *string  `pulumi:"splunkToken"`
+	SumoSourceAddress     *string  `pulumi:"sumoSourceAddress"`
 }
 
 // LogStreamSinkInput is an input type that accepts LogStreamSinkArgs and LogStreamSinkOutput values.
@@ -7127,6 +7128,7 @@ type LogStreamSinkArgs struct {
 	SplunkPort            pulumi.StringPtrInput   `pulumi:"splunkPort"`
 	SplunkSecure          pulumi.BoolPtrInput     `pulumi:"splunkSecure"`
 	SplunkToken           pulumi.StringPtrInput   `pulumi:"splunkToken"`
+	SumoSourceAddress     pulumi.StringPtrInput   `pulumi:"sumoSourceAddress"`
 }
 
 func (LogStreamSinkArgs) ElementType() reflect.Type {
@@ -7275,6 +7277,10 @@ func (o LogStreamSinkOutput) SplunkSecure() pulumi.BoolPtrOutput {
 
 func (o LogStreamSinkOutput) SplunkToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.SplunkToken }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkOutput) SumoSourceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.SumoSourceAddress }).(pulumi.StringPtrOutput)
 }
 
 type LogStreamSinkPtrOutput struct{ *pulumi.OutputState }
@@ -7454,6 +7460,15 @@ func (o LogStreamSinkPtrOutput) SplunkToken() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SplunkToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamSinkPtrOutput) SumoSourceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SumoSourceAddress
 	}).(pulumi.StringPtrOutput)
 }
 

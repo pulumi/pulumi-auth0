@@ -15,7 +15,7 @@ namespace Pulumi.Auth0.Outputs
     {
         public readonly string? ClientAuthorizeQuery;
         /// <summary>
-        /// Facebook client ID.
+        /// Google client ID.
         /// </summary>
         public readonly string? ClientId;
         public readonly string? ClientProtocol;

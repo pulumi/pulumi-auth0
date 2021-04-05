@@ -93,6 +93,9 @@ export class Tenant extends pulumi.CustomResource {
      * String. The default absolute redirection uri, must be https and cannot contain a fragment.
      */
     public readonly defaultRedirectionUri!: pulumi.Output<string>;
+    /**
+     * List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+     */
     public readonly enabledLocales!: pulumi.Output<string[]>;
     /**
      * List(Resource). Configuration settings for error pages. For details, see Error Page.
@@ -220,6 +223,9 @@ export interface TenantState {
      * String. The default absolute redirection uri, must be https and cannot contain a fragment.
      */
     readonly defaultRedirectionUri?: pulumi.Input<string>;
+    /**
+     * List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+     */
     readonly enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(Resource). Configuration settings for error pages. For details, see Error Page.
@@ -291,6 +297,9 @@ export interface TenantArgs {
      * String. The default absolute redirection uri, must be https and cannot contain a fragment.
      */
     readonly defaultRedirectionUri?: pulumi.Input<string>;
+    /**
+     * List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+     */
     readonly enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(Resource). Configuration settings for error pages. For details, see Error Page.

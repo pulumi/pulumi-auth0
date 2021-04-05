@@ -122,11 +122,11 @@ type Client struct {
 	// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayOutput `pulumi:"callbacks"`
 	// String. ID of the client.
+	// * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Map(String)
-	ClientMetadata pulumi.MapOutput `pulumi:"clientMetadata"`
-	// String. Secret for the client; keep this private.
-	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	ClientMetadata pulumi.MapOutput    `pulumi:"clientMetadata"`
+	ClientSecret   pulumi.StringOutput `pulumi:"clientSecret"`
 	// Map.
 	ClientSecretRotationTrigger pulumi.MapOutput `pulumi:"clientSecretRotationTrigger"`
 	// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
@@ -217,11 +217,11 @@ type clientState struct {
 	// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
 	// String. ID of the client.
+	// * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
 	ClientId *string `pulumi:"clientId"`
 	// Map(String)
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
-	// String. Secret for the client; keep this private.
-	ClientSecret *string `pulumi:"clientSecret"`
+	ClientSecret   *string                `pulumi:"clientSecret"`
 	// Map.
 	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
 	// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
@@ -281,11 +281,11 @@ type ClientState struct {
 	// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput
 	// String. ID of the client.
+	// * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
 	ClientId pulumi.StringPtrInput
 	// Map(String)
 	ClientMetadata pulumi.MapInput
-	// String. Secret for the client; keep this private.
-	ClientSecret pulumi.StringPtrInput
+	ClientSecret   pulumi.StringPtrInput
 	// Map.
 	ClientSecretRotationTrigger pulumi.MapInput
 	// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
