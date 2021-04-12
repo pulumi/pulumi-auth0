@@ -21,41 +21,42 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "auth0:index/client:Client":
-		r, err = NewClient(ctx, name, nil, pulumi.URN_(urn))
+		r = &Client{}
 	case "auth0:index/clientGrant:ClientGrant":
-		r, err = NewClientGrant(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClientGrant{}
 	case "auth0:index/connection:Connection":
-		r, err = NewConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &Connection{}
 	case "auth0:index/customDomain:CustomDomain":
-		r, err = NewCustomDomain(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomDomain{}
 	case "auth0:index/email:Email":
-		r, err = NewEmail(ctx, name, nil, pulumi.URN_(urn))
+		r = &Email{}
 	case "auth0:index/emailTemplate:EmailTemplate":
-		r, err = NewEmailTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &EmailTemplate{}
 	case "auth0:index/globalClient:GlobalClient":
-		r, err = NewGlobalClient(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalClient{}
 	case "auth0:index/hook:Hook":
-		r, err = NewHook(ctx, name, nil, pulumi.URN_(urn))
+		r = &Hook{}
 	case "auth0:index/logStream:LogStream":
-		r, err = NewLogStream(ctx, name, nil, pulumi.URN_(urn))
+		r = &LogStream{}
 	case "auth0:index/prompt:Prompt":
-		r, err = NewPrompt(ctx, name, nil, pulumi.URN_(urn))
+		r = &Prompt{}
 	case "auth0:index/resourceServer:ResourceServer":
-		r, err = NewResourceServer(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResourceServer{}
 	case "auth0:index/role:Role":
-		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &Role{}
 	case "auth0:index/rule:Rule":
-		r, err = NewRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &Rule{}
 	case "auth0:index/ruleConfig:RuleConfig":
-		r, err = NewRuleConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &RuleConfig{}
 	case "auth0:index/tenant:Tenant":
-		r, err = NewTenant(ctx, name, nil, pulumi.URN_(urn))
+		r = &Tenant{}
 	case "auth0:index/user:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -72,7 +73,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {

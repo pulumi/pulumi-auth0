@@ -5,13 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ClientGrant']
+__all__ = ['ClientGrantArgs', 'ClientGrant']
+
+@pulumi.input_type
+class ClientGrantArgs:
+    def __init__(__self__, *,
+                 audience: pulumi.Input[str],
+                 client_id: pulumi.Input[str],
+                 scopes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        The set of arguments for constructing a ClientGrant resource.
+        :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
+        :param pulumi.Input[str] client_id: String. ID of the client for this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
+        """
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> pulumi.Input[str]:
+        """
+        String. Audience or API Identifier for this grant.
+        """
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audience", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        """
+        String. ID of the client for this grant.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List(String). Permissions (scopes) included in this grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "scopes", value)
 
 
 class ClientGrant(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +108,61 @@ class ClientGrant(pulumi.CustomResource):
         :param pulumi.Input[str] client_id: String. ID of the client for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ClientGrantArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_client = auth0.Client("myClient")
+        my_resource_server = auth0.ResourceServer("myResourceServer",
+            identifier="https://api.example.com/client-grant",
+            scopes=[
+                auth0.ResourceServerScopeArgs(
+                    description="Create foos",
+                    value="create:foo",
+                ),
+                auth0.ResourceServerScopeArgs(
+                    description="Create bars",
+                    value="create:bar",
+                ),
+            ])
+        my_client_grant = auth0.ClientGrant("myClientGrant",
+            audience=my_resource_server.identifier,
+            client_id=my_client.id,
+            scopes=["create:foo"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ClientGrantArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ClientGrantArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audience: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

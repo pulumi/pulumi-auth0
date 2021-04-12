@@ -5,15 +5,295 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Tenant']
+__all__ = ['TenantArgs', 'Tenant']
+
+@pulumi.input_type
+class TenantArgs:
+    def __init__(__self__, *,
+                 allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 change_password: Optional[pulumi.Input['TenantChangePasswordArgs']] = None,
+                 default_audience: Optional[pulumi.Input[str]] = None,
+                 default_directory: Optional[pulumi.Input[str]] = None,
+                 default_redirection_uri: Optional[pulumi.Input[str]] = None,
+                 enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 error_page: Optional[pulumi.Input['TenantErrorPageArgs']] = None,
+                 flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 guardian_mfa_page: Optional[pulumi.Input['TenantGuardianMfaPageArgs']] = None,
+                 idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+                 picture_url: Optional[pulumi.Input[str]] = None,
+                 sandbox_version: Optional[pulumi.Input[str]] = None,
+                 session_lifetime: Optional[pulumi.Input[float]] = None,
+                 support_email: Optional[pulumi.Input[str]] = None,
+                 support_url: Optional[pulumi.Input[str]] = None,
+                 universal_login: Optional[pulumi.Input['TenantUniversalLoginArgs']] = None):
+        """
+        The set of arguments for constructing a Tenant resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input['TenantChangePasswordArgs'] change_password: List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+        :param pulumi.Input[str] default_audience: String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+        :param pulumi.Input[str] default_directory: String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        :param pulumi.Input[str] default_redirection_uri: String. The default absolute redirection uri, must be https and cannot contain a fragment.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input['TenantErrorPageArgs'] error_page: List(Resource). Configuration settings for error pages. For details, see Error Page.
+        :param pulumi.Input['TenantFlagsArgs'] flags: List(Resource). Configuration settings for tenant flags. For details, see Flags.
+        :param pulumi.Input[str] friendly_name: String. Friendly name for the tenant.
+        :param pulumi.Input['TenantGuardianMfaPageArgs'] guardian_mfa_page: List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+        :param pulumi.Input[float] idle_session_lifetime: Integer. Number of hours during which a session can be inactive before the user must log in again.
+        :param pulumi.Input[str] picture_url: . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        :param pulumi.Input[str] sandbox_version: String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
+        :param pulumi.Input[float] session_lifetime: Integer. Number of hours during which a session will stay valid.
+        :param pulumi.Input[str] support_email: String. Support email address for authenticating users.
+        :param pulumi.Input[str] support_url: String. Support URL for authenticating users.
+        :param pulumi.Input['TenantUniversalLoginArgs'] universal_login: List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+        """
+        if allowed_logout_urls is not None:
+            pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if change_password is not None:
+            pulumi.set(__self__, "change_password", change_password)
+        if default_audience is not None:
+            pulumi.set(__self__, "default_audience", default_audience)
+        if default_directory is not None:
+            pulumi.set(__self__, "default_directory", default_directory)
+        if default_redirection_uri is not None:
+            pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+        if enabled_locales is not None:
+            pulumi.set(__self__, "enabled_locales", enabled_locales)
+        if error_page is not None:
+            pulumi.set(__self__, "error_page", error_page)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if guardian_mfa_page is not None:
+            pulumi.set(__self__, "guardian_mfa_page", guardian_mfa_page)
+        if idle_session_lifetime is not None:
+            pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
+        if picture_url is not None:
+            pulumi.set(__self__, "picture_url", picture_url)
+        if sandbox_version is not None:
+            pulumi.set(__self__, "sandbox_version", sandbox_version)
+        if session_lifetime is not None:
+            pulumi.set(__self__, "session_lifetime", session_lifetime)
+        if support_email is not None:
+            pulumi.set(__self__, "support_email", support_email)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+        if universal_login is not None:
+            pulumi.set(__self__, "universal_login", universal_login)
+
+    @property
+    @pulumi.getter(name="allowedLogoutUrls")
+    def allowed_logout_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List(String). URLs that Auth0 may redirect to after logout.
+        """
+        return pulumi.get(self, "allowed_logout_urls")
+
+    @allowed_logout_urls.setter
+    def allowed_logout_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_logout_urls", value)
+
+    @property
+    @pulumi.getter(name="changePassword")
+    def change_password(self) -> Optional[pulumi.Input['TenantChangePasswordArgs']]:
+        """
+        List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+        """
+        return pulumi.get(self, "change_password")
+
+    @change_password.setter
+    def change_password(self, value: Optional[pulumi.Input['TenantChangePasswordArgs']]):
+        pulumi.set(self, "change_password", value)
+
+    @property
+    @pulumi.getter(name="defaultAudience")
+    def default_audience(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+        """
+        return pulumi.get(self, "default_audience")
+
+    @default_audience.setter
+    def default_audience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_audience", value)
+
+    @property
+    @pulumi.getter(name="defaultDirectory")
+    def default_directory(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        """
+        return pulumi.get(self, "default_directory")
+
+    @default_directory.setter
+    def default_directory(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_directory", value)
+
+    @property
+    @pulumi.getter(name="defaultRedirectionUri")
+    def default_redirection_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. The default absolute redirection uri, must be https and cannot contain a fragment.
+        """
+        return pulumi.get(self, "default_redirection_uri")
+
+    @default_redirection_uri.setter
+    def default_redirection_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_redirection_uri", value)
+
+    @property
+    @pulumi.getter(name="enabledLocales")
+    def enabled_locales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        """
+        return pulumi.get(self, "enabled_locales")
+
+    @enabled_locales.setter
+    def enabled_locales(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enabled_locales", value)
+
+    @property
+    @pulumi.getter(name="errorPage")
+    def error_page(self) -> Optional[pulumi.Input['TenantErrorPageArgs']]:
+        """
+        List(Resource). Configuration settings for error pages. For details, see Error Page.
+        """
+        return pulumi.get(self, "error_page")
+
+    @error_page.setter
+    def error_page(self, value: Optional[pulumi.Input['TenantErrorPageArgs']]):
+        pulumi.set(self, "error_page", value)
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[pulumi.Input['TenantFlagsArgs']]:
+        """
+        List(Resource). Configuration settings for tenant flags. For details, see Flags.
+        """
+        return pulumi.get(self, "flags")
+
+    @flags.setter
+    def flags(self, value: Optional[pulumi.Input['TenantFlagsArgs']]):
+        pulumi.set(self, "flags", value)
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Friendly name for the tenant.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @friendly_name.setter
+    def friendly_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter(name="guardianMfaPage")
+    def guardian_mfa_page(self) -> Optional[pulumi.Input['TenantGuardianMfaPageArgs']]:
+        """
+        List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+        """
+        return pulumi.get(self, "guardian_mfa_page")
+
+    @guardian_mfa_page.setter
+    def guardian_mfa_page(self, value: Optional[pulumi.Input['TenantGuardianMfaPageArgs']]):
+        pulumi.set(self, "guardian_mfa_page", value)
+
+    @property
+    @pulumi.getter(name="idleSessionLifetime")
+    def idle_session_lifetime(self) -> Optional[pulumi.Input[float]]:
+        """
+        Integer. Number of hours during which a session can be inactive before the user must log in again.
+        """
+        return pulumi.get(self, "idle_session_lifetime")
+
+    @idle_session_lifetime.setter
+    def idle_session_lifetime(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "idle_session_lifetime", value)
+
+    @property
+    @pulumi.getter(name="pictureUrl")
+    def picture_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        """
+        return pulumi.get(self, "picture_url")
+
+    @picture_url.setter
+    def picture_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "picture_url", value)
+
+    @property
+    @pulumi.getter(name="sandboxVersion")
+    def sandbox_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
+        """
+        return pulumi.get(self, "sandbox_version")
+
+    @sandbox_version.setter
+    def sandbox_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sandbox_version", value)
+
+    @property
+    @pulumi.getter(name="sessionLifetime")
+    def session_lifetime(self) -> Optional[pulumi.Input[float]]:
+        """
+        Integer. Number of hours during which a session will stay valid.
+        """
+        return pulumi.get(self, "session_lifetime")
+
+    @session_lifetime.setter
+    def session_lifetime(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "session_lifetime", value)
+
+    @property
+    @pulumi.getter(name="supportEmail")
+    def support_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Support email address for authenticating users.
+        """
+        return pulumi.get(self, "support_email")
+
+    @support_email.setter
+    def support_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "support_email", value)
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Support URL for authenticating users.
+        """
+        return pulumi.get(self, "support_url")
+
+    @support_url.setter
+    def support_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "support_url", value)
+
+    @property
+    @pulumi.getter(name="universalLogin")
+    def universal_login(self) -> Optional[pulumi.Input['TenantUniversalLoginArgs']]:
+        """
+        List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+        """
+        return pulumi.get(self, "universal_login")
+
+    @universal_login.setter
+    def universal_login(self, value: Optional[pulumi.Input['TenantUniversalLoginArgs']]):
+        pulumi.set(self, "universal_login", value)
 
 
 class Tenant(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -95,6 +375,85 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] support_url: String. Support URL for authenticating users.
         :param pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']] universal_login: List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[TenantArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
+
+        > Auth0 does not currently support creating tenants through the Management API. Therefore this resource can only manage an existing tenant created through the Auth0 dashboard.
+
+        Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be used to add/remove extensions.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        tenant = auth0.Tenant("tenant",
+            allowed_logout_urls=["http://mysite/logout"],
+            change_password=auth0.TenantChangePasswordArgs(
+                enabled=True,
+                html=(lambda path: open(path).read())("./password_reset.html"),
+            ),
+            default_audience="<client_id>",
+            default_directory="Connection-Name",
+            error_page=auth0.TenantErrorPageArgs(
+                html=(lambda path: open(path).read())("./error.html"),
+                show_log_link=True,
+                url="http://mysite/errors",
+            ),
+            friendly_name="Tenant Name",
+            guardian_mfa_page=auth0.TenantGuardianMfaPageArgs(
+                enabled=True,
+                html=(lambda path: open(path).read())("./guardian_multifactor.html"),
+            ),
+            picture_url="http://mysite/logo.png",
+            sandbox_version="8",
+            session_lifetime=46000,
+            support_email="support@mysite",
+            support_url="http://mysite/support")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TenantArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TenantArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 change_password: Optional[pulumi.Input[pulumi.InputType['TenantChangePasswordArgs']]] = None,
+                 default_audience: Optional[pulumi.Input[str]] = None,
+                 default_directory: Optional[pulumi.Input[str]] = None,
+                 default_redirection_uri: Optional[pulumi.Input[str]] = None,
+                 enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 error_page: Optional[pulumi.Input[pulumi.InputType['TenantErrorPageArgs']]] = None,
+                 flags: Optional[pulumi.Input[pulumi.InputType['TenantFlagsArgs']]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 guardian_mfa_page: Optional[pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']]] = None,
+                 idle_session_lifetime: Optional[pulumi.Input[float]] = None,
+                 picture_url: Optional[pulumi.Input[str]] = None,
+                 sandbox_version: Optional[pulumi.Input[str]] = None,
+                 session_lifetime: Optional[pulumi.Input[float]] = None,
+                 support_email: Optional[pulumi.Input[str]] = None,
+                 support_url: Optional[pulumi.Input[str]] = None,
+                 universal_login: Optional[pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

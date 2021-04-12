@@ -5,13 +5,84 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Rule']
+__all__ = ['RuleArgs', 'Rule']
+
+@pulumi.input_type
+class RuleArgs:
+    def __init__(__self__, *,
+                 script: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 order: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a Rule resource.
+        :param pulumi.Input[str] script: String. Code to be executed when the rule runs.
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the rule is enabled.
+        :param pulumi.Input[str] name: String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        :param pulumi.Input[int] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        """
+        pulumi.set(__self__, "script", script)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def script(self) -> pulumi.Input[str]:
+        """
+        String. Code to be executed when the rule runs.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: pulumi.Input[str]):
+        pulumi.set(self, "script", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Indicates whether the rule is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[int]]:
+        """
+        Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "order", value)
 
 
 class Rule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -50,6 +121,55 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[int] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         :param pulumi.Input[str] script: String. Code to be executed when the rule runs.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the RuleConfig resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_rule = auth0.Rule("myRule",
+            enabled=True,
+            script=\"\"\"function (user, context, callback) {
+          callback(null, user, context);
+        }
+
+        \"\"\")
+        my_rule_config = auth0.RuleConfig("myRuleConfig",
+            key="foo",
+            value="bar")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 order: Optional[pulumi.Input[int]] = None,
+                 script: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

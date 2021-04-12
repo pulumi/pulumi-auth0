@@ -5,15 +5,77 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LogStream']
+__all__ = ['LogStreamArgs', 'LogStream']
+
+@pulumi.input_type
+class LogStreamArgs:
+    def __init__(__self__, *,
+                 sink: pulumi.Input['LogStreamSinkArgs'],
+                 type: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LogStream resource.
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider
+        :param pulumi.Input[str] status: Status of the LogStream
+        """
+        pulumi.set(__self__, "sink", sink)
+        pulumi.set(__self__, "type", type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def sink(self) -> pulumi.Input['LogStreamSinkArgs']:
+        return pulumi.get(self, "sink")
+
+    @sink.setter
+    def sink(self, value: pulumi.Input['LogStreamSinkArgs']):
+        pulumi.set(self, "sink", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the log stream, which indicates the sink provider
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the LogStream
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class LogStream(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -31,6 +93,36 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.Input[str] status: Status of the LogStream
         :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LogStreamArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a LogStream resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param LogStreamArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LogStreamArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 sink: Optional[pulumi.Input[pulumi.InputType['LogStreamSinkArgs']]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

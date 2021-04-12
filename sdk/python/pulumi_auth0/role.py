@@ -5,15 +5,73 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Role']
+__all__ = ['RoleArgs', 'Role']
+
+@pulumi.input_type
+class RoleArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]] = None):
+        """
+        The set of arguments for constructing a Role resource.
+        :param pulumi.Input[str] description: String. Description of the role.
+        :param pulumi.Input[str] name: String. Name for this role.
+        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        """
+        if description is None:
+            description = 'Managed by Pulumi'
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Description of the role.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Name for this role.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]]:
+        """
+        Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]]):
+        pulumi.set(self, "permissions", value)
 
 
 class Role(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +122,68 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] name: String. Name for this role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[RoleArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        With this resource, you can created and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_resource_server = auth0.ResourceServer("myResourceServer",
+            enforce_policies=True,
+            identifier="my-resource-server-identifier",
+            scopes=[auth0.ResourceServerScopeArgs(
+                description="read something",
+                value="read:something",
+            )],
+            signing_alg="RS256",
+            skip_consent_for_verifiable_first_party_clients=True,
+            token_lifetime=86400)
+        my_role = auth0.Role("myRole",
+            description="Role Description...",
+            permissions=[auth0.RolePermissionArgs(
+                name="read:something",
+                resource_server_identifier=my_resource_server.identifier,
+            )])
+        my_user = auth0.User("myUser",
+            connection_name="Username-Password-Authentication",
+            email="test@test.com",
+            nickname="testnick",
+            password="passpass$12$12",
+            roles=[my_role.id],
+            user_id="auth0|1234567890",
+            username="testnick")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RoleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
