@@ -5,15 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CustomDomain']
+__all__ = ['CustomDomainArgs', 'CustomDomain']
+
+@pulumi.input_type
+class CustomDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 verification_method: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a CustomDomain resource.
+        :param pulumi.Input[str] domain: String. Name of the custom domain.
+        :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        :param pulumi.Input[str] verification_method: String. Domain verification method. Options include `txt`.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "verification_method", verification_method)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        String. Name of the custom domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="verificationMethod")
+    def verification_method(self) -> pulumi.Input[str]:
+        """
+        String. Domain verification method. Options include `txt`.
+        """
+        return pulumi.get(self, "verification_method")
+
+    @verification_method.setter
+    def verification_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "verification_method", value)
 
 
 class CustomDomain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +97,48 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input[str] verification_method: String. Domain verification method. Options include `txt`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CustomDomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        my_custom_domain = auth0.CustomDomain("myCustomDomain",
+            domain="auth.example.com",
+            type="auth0_managed_certs",
+            verification_method="txt")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param CustomDomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CustomDomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 verification_method: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

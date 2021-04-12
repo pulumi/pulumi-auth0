@@ -5,15 +5,395 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GlobalClient']
+__all__ = ['GlobalClientArgs', 'GlobalClient']
+
+@pulumi.input_type
+class GlobalClientArgs:
+    def __init__(__self__, *,
+                 addons: Optional[pulumi.Input['GlobalClientAddonsArgs']] = None,
+                 allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_type: Optional[pulumi.Input[str]] = None,
+                 callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cross_origin_auth: Optional[pulumi.Input[bool]] = None,
+                 cross_origin_loc: Optional[pulumi.Input[str]] = None,
+                 custom_login_page: Optional[pulumi.Input[str]] = None,
+                 custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+                 custom_login_page_preview: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 form_template: Optional[pulumi.Input[str]] = None,
+                 grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 initiate_login_uri: Optional[pulumi.Input[str]] = None,
+                 is_first_party: Optional[pulumi.Input[bool]] = None,
+                 is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
+                 jwt_configuration: Optional[pulumi.Input['GlobalClientJwtConfigurationArgs']] = None,
+                 logo_uri: Optional[pulumi.Input[str]] = None,
+                 mobile: Optional[pulumi.Input['GlobalClientMobileArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 refresh_token: Optional[pulumi.Input['GlobalClientRefreshTokenArgs']] = None,
+                 sso: Optional[pulumi.Input[bool]] = None,
+                 sso_disabled: Optional[pulumi.Input[bool]] = None,
+                 token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
+                 web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a GlobalClient resource.
+        """
+        if addons is not None:
+            pulumi.set(__self__, "addons", addons)
+        if allowed_logout_urls is not None:
+            pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if app_type is not None:
+            pulumi.set(__self__, "app_type", app_type)
+        if callbacks is not None:
+            pulumi.set(__self__, "callbacks", callbacks)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_metadata is not None:
+            pulumi.set(__self__, "client_metadata", client_metadata)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if client_secret_rotation_trigger is not None:
+            pulumi.set(__self__, "client_secret_rotation_trigger", client_secret_rotation_trigger)
+        if cross_origin_auth is not None:
+            pulumi.set(__self__, "cross_origin_auth", cross_origin_auth)
+        if cross_origin_loc is not None:
+            pulumi.set(__self__, "cross_origin_loc", cross_origin_loc)
+        if custom_login_page is not None:
+            pulumi.set(__self__, "custom_login_page", custom_login_page)
+        if custom_login_page_on is not None:
+            pulumi.set(__self__, "custom_login_page_on", custom_login_page_on)
+        if custom_login_page_preview is not None:
+            pulumi.set(__self__, "custom_login_page_preview", custom_login_page_preview)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if form_template is not None:
+            pulumi.set(__self__, "form_template", form_template)
+        if grant_types is not None:
+            pulumi.set(__self__, "grant_types", grant_types)
+        if initiate_login_uri is not None:
+            pulumi.set(__self__, "initiate_login_uri", initiate_login_uri)
+        if is_first_party is not None:
+            pulumi.set(__self__, "is_first_party", is_first_party)
+        if is_token_endpoint_ip_header_trusted is not None:
+            pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
+        if jwt_configuration is not None:
+            pulumi.set(__self__, "jwt_configuration", jwt_configuration)
+        if logo_uri is not None:
+            pulumi.set(__self__, "logo_uri", logo_uri)
+        if mobile is not None:
+            pulumi.set(__self__, "mobile", mobile)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if oidc_conformant is not None:
+            pulumi.set(__self__, "oidc_conformant", oidc_conformant)
+        if refresh_token is not None:
+            pulumi.set(__self__, "refresh_token", refresh_token)
+        if sso is not None:
+            pulumi.set(__self__, "sso", sso)
+        if sso_disabled is not None:
+            pulumi.set(__self__, "sso_disabled", sso_disabled)
+        if token_endpoint_auth_method is not None:
+            pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+        if web_origins is not None:
+            pulumi.set(__self__, "web_origins", web_origins)
+
+    @property
+    @pulumi.getter
+    def addons(self) -> Optional[pulumi.Input['GlobalClientAddonsArgs']]:
+        return pulumi.get(self, "addons")
+
+    @addons.setter
+    def addons(self, value: Optional[pulumi.Input['GlobalClientAddonsArgs']]):
+        pulumi.set(self, "addons", value)
+
+    @property
+    @pulumi.getter(name="allowedLogoutUrls")
+    def allowed_logout_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "allowed_logout_urls")
+
+    @allowed_logout_urls.setter
+    def allowed_logout_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_logout_urls", value)
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "allowed_origins")
+
+    @allowed_origins.setter
+    def allowed_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_origins", value)
+
+    @property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "app_type")
+
+    @app_type.setter
+    def app_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_type", value)
+
+    @property
+    @pulumi.getter
+    def callbacks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "callbacks")
+
+    @callbacks.setter
+    def callbacks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "callbacks", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientMetadata")
+    def client_metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "client_metadata")
+
+    @client_metadata.setter
+    def client_metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "client_metadata", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="clientSecretRotationTrigger")
+    def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "client_secret_rotation_trigger")
+
+    @client_secret_rotation_trigger.setter
+    def client_secret_rotation_trigger(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "client_secret_rotation_trigger", value)
+
+    @property
+    @pulumi.getter(name="crossOriginAuth")
+    def cross_origin_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "cross_origin_auth")
+
+    @cross_origin_auth.setter
+    def cross_origin_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cross_origin_auth", value)
+
+    @property
+    @pulumi.getter(name="crossOriginLoc")
+    def cross_origin_loc(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cross_origin_loc")
+
+    @cross_origin_loc.setter
+    def cross_origin_loc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_origin_loc", value)
+
+    @property
+    @pulumi.getter(name="customLoginPage")
+    def custom_login_page(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "custom_login_page")
+
+    @custom_login_page.setter
+    def custom_login_page(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_login_page", value)
+
+    @property
+    @pulumi.getter(name="customLoginPageOn")
+    def custom_login_page_on(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "custom_login_page_on")
+
+    @custom_login_page_on.setter
+    def custom_login_page_on(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "custom_login_page_on", value)
+
+    @property
+    @pulumi.getter(name="customLoginPagePreview")
+    def custom_login_page_preview(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "custom_login_page_preview")
+
+    @custom_login_page_preview.setter
+    def custom_login_page_preview(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_login_page_preview", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="formTemplate")
+    def form_template(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "form_template")
+
+    @form_template.setter
+    def form_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "form_template", value)
+
+    @property
+    @pulumi.getter(name="grantTypes")
+    def grant_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "grant_types")
+
+    @grant_types.setter
+    def grant_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "grant_types", value)
+
+    @property
+    @pulumi.getter(name="initiateLoginUri")
+    def initiate_login_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "initiate_login_uri")
+
+    @initiate_login_uri.setter
+    def initiate_login_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initiate_login_uri", value)
+
+    @property
+    @pulumi.getter(name="isFirstParty")
+    def is_first_party(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_first_party")
+
+    @is_first_party.setter
+    def is_first_party(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_first_party", value)
+
+    @property
+    @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
+    def is_token_endpoint_ip_header_trusted(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
+
+    @is_token_endpoint_ip_header_trusted.setter
+    def is_token_endpoint_ip_header_trusted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_token_endpoint_ip_header_trusted", value)
+
+    @property
+    @pulumi.getter(name="jwtConfiguration")
+    def jwt_configuration(self) -> Optional[pulumi.Input['GlobalClientJwtConfigurationArgs']]:
+        return pulumi.get(self, "jwt_configuration")
+
+    @jwt_configuration.setter
+    def jwt_configuration(self, value: Optional[pulumi.Input['GlobalClientJwtConfigurationArgs']]):
+        pulumi.set(self, "jwt_configuration", value)
+
+    @property
+    @pulumi.getter(name="logoUri")
+    def logo_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "logo_uri")
+
+    @logo_uri.setter
+    def logo_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_uri", value)
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> Optional[pulumi.Input['GlobalClientMobileArgs']]:
+        return pulumi.get(self, "mobile")
+
+    @mobile.setter
+    def mobile(self, value: Optional[pulumi.Input['GlobalClientMobileArgs']]):
+        pulumi.set(self, "mobile", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="oidcConformant")
+    def oidc_conformant(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "oidc_conformant")
+
+    @oidc_conformant.setter
+    def oidc_conformant(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "oidc_conformant", value)
+
+    @property
+    @pulumi.getter(name="refreshToken")
+    def refresh_token(self) -> Optional[pulumi.Input['GlobalClientRefreshTokenArgs']]:
+        return pulumi.get(self, "refresh_token")
+
+    @refresh_token.setter
+    def refresh_token(self, value: Optional[pulumi.Input['GlobalClientRefreshTokenArgs']]):
+        pulumi.set(self, "refresh_token", value)
+
+    @property
+    @pulumi.getter
+    def sso(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "sso")
+
+    @sso.setter
+    def sso(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sso", value)
+
+    @property
+    @pulumi.getter(name="ssoDisabled")
+    def sso_disabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "sso_disabled")
+
+    @sso_disabled.setter
+    def sso_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sso_disabled", value)
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token_endpoint_auth_method")
+
+    @token_endpoint_auth_method.setter
+    def token_endpoint_auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_endpoint_auth_method", value)
+
+    @property
+    @pulumi.getter(name="webOrigins")
+    def web_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "web_origins")
+
+    @web_origins.setter
+    def web_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "web_origins", value)
 
 
 class GlobalClient(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -56,6 +436,63 @@ class GlobalClient(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[GlobalClientArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a GlobalClient resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param GlobalClientArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GlobalClientArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
+                 allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_type: Optional[pulumi.Input[str]] = None,
+                 callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 client_secret_rotation_trigger: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 cross_origin_auth: Optional[pulumi.Input[bool]] = None,
+                 cross_origin_loc: Optional[pulumi.Input[str]] = None,
+                 custom_login_page: Optional[pulumi.Input[str]] = None,
+                 custom_login_page_on: Optional[pulumi.Input[bool]] = None,
+                 custom_login_page_preview: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 form_template: Optional[pulumi.Input[str]] = None,
+                 grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 initiate_login_uri: Optional[pulumi.Input[str]] = None,
+                 is_first_party: Optional[pulumi.Input[bool]] = None,
+                 is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[bool]] = None,
+                 jwt_configuration: Optional[pulumi.Input[pulumi.InputType['GlobalClientJwtConfigurationArgs']]] = None,
+                 logo_uri: Optional[pulumi.Input[str]] = None,
+                 mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
+                 sso: Optional[pulumi.Input[bool]] = None,
+                 sso_disabled: Optional[pulumi.Input[bool]] = None,
+                 token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
+                 web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Prompt']
+__all__ = ['PromptArgs', 'Prompt']
+
+@pulumi.input_type
+class PromptArgs:
+    def __init__(__self__, *,
+                 identifier_first: Optional[pulumi.Input[bool]] = None,
+                 universal_login_experience: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Prompt resource.
+        :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
+        """
+        if identifier_first is not None:
+            pulumi.set(__self__, "identifier_first", identifier_first)
+        if universal_login_experience is not None:
+            pulumi.set(__self__, "universal_login_experience", universal_login_experience)
+
+    @property
+    @pulumi.getter(name="identifierFirst")
+    def identifier_first(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "identifier_first")
+
+    @identifier_first.setter
+    def identifier_first(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "identifier_first", value)
+
+    @property
+    @pulumi.getter(name="universalLoginExperience")
+    def universal_login_experience(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which login experience to use. Options include `classic` and `new`.
+        """
+        return pulumi.get(self, "universal_login_experience")
+
+    @universal_login_experience.setter
+    def universal_login_experience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "universal_login_experience", value)
 
 
 class Prompt(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +72,44 @@ class Prompt(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[PromptArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        example = auth0.Prompt("example", universal_login_experience="classic")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param PromptArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(PromptArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 identifier_first: Optional[pulumi.Input[bool]] = None,
+                 universal_login_experience: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

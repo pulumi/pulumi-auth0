@@ -5,13 +5,288 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['User']
+__all__ = ['UserArgs', 'User']
+
+@pulumi.input_type
+class UserArgs:
+    def __init__(__self__, *,
+                 connection_name: pulumi.Input[str],
+                 app_metadata: Optional[pulumi.Input[str]] = None,
+                 blocked: Optional[pulumi.Input[bool]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 email_verified: Optional[pulumi.Input[bool]] = None,
+                 family_name: Optional[pulumi.Input[str]] = None,
+                 given_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nickname: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 phone_number: Optional[pulumi.Input[str]] = None,
+                 phone_verified: Optional[pulumi.Input[bool]] = None,
+                 picture: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 user_metadata: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 verify_email: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] connection_name: String. Name of the connection from which the user information was sourced.
+        :param pulumi.Input[str] app_metadata: String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+        :param pulumi.Input[str] email: String. Email address of the user.
+        :param pulumi.Input[bool] email_verified: Boolean. Indicates whether or not the email address has been verified.
+        :param pulumi.Input[str] nickname: String. Preferred nickname or alias of the user.
+        :param pulumi.Input[str] password: String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+        :param pulumi.Input[str] phone_number: String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+        :param pulumi.Input[bool] phone_verified: Boolean. Indicates whether or not the phone number has been verified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set(String). Set of IDs of roles assigned to the user.
+        :param pulumi.Input[str] user_id: String. ID of the user.
+        :param pulumi.Input[str] user_metadata: String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+        :param pulumi.Input[str] username: String. Username of the user. Only valid if the connection requires a username.
+        :param pulumi.Input[bool] verify_email: Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        """
+        pulumi.set(__self__, "connection_name", connection_name)
+        if app_metadata is not None:
+            pulumi.set(__self__, "app_metadata", app_metadata)
+        if blocked is not None:
+            pulumi.set(__self__, "blocked", blocked)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_verified is not None:
+            pulumi.set(__self__, "email_verified", email_verified)
+        if family_name is not None:
+            pulumi.set(__self__, "family_name", family_name)
+        if given_name is not None:
+            pulumi.set(__self__, "given_name", given_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nickname is not None:
+            pulumi.set(__self__, "nickname", nickname)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+        if phone_verified is not None:
+            pulumi.set(__self__, "phone_verified", phone_verified)
+        if picture is not None:
+            pulumi.set(__self__, "picture", picture)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if user_metadata is not None:
+            pulumi.set(__self__, "user_metadata", user_metadata)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if verify_email is not None:
+            pulumi.set(__self__, "verify_email", verify_email)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[str]:
+        """
+        String. Name of the connection from which the user information was sourced.
+        """
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection_name", value)
+
+    @property
+    @pulumi.getter(name="appMetadata")
+    def app_metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+        """
+        return pulumi.get(self, "app_metadata")
+
+    @app_metadata.setter
+    def app_metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_metadata", value)
+
+    @property
+    @pulumi.getter
+    def blocked(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "blocked")
+
+    @blocked.setter
+    def blocked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "blocked", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Email address of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="emailVerified")
+    def email_verified(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Indicates whether or not the email address has been verified.
+        """
+        return pulumi.get(self, "email_verified")
+
+    @email_verified.setter
+    def email_verified(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "email_verified", value)
+
+    @property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "family_name")
+
+    @family_name.setter
+    def family_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family_name", value)
+
+    @property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "given_name")
+
+    @given_name.setter
+    def given_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "given_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def nickname(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Preferred nickname or alias of the user.
+        """
+        return pulumi.get(self, "nickname")
+
+    @nickname.setter
+    def nickname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nickname", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "phone_number", value)
+
+    @property
+    @pulumi.getter(name="phoneVerified")
+    def phone_verified(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Indicates whether or not the phone number has been verified.
+        """
+        return pulumi.get(self, "phone_verified")
+
+    @phone_verified.setter
+    def phone_verified(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "phone_verified", value)
+
+    @property
+    @pulumi.getter
+    def picture(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "picture")
+
+    @picture.setter
+    def picture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "picture", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set(String). Set of IDs of roles assigned to the user.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. ID of the user.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
+
+    @property
+    @pulumi.getter(name="userMetadata")
+    def user_metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+        """
+        return pulumi.get(self, "user_metadata")
+
+    @user_metadata.setter
+    def user_metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_metadata", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Username of the user. Only valid if the connection requires a username.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="verifyEmail")
+    def verify_email(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        """
+        return pulumi.get(self, "verify_email")
+
+    @verify_email.setter
+    def verify_email(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verify_email", value)
 
 
 class User(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -75,6 +350,71 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] username: String. Username of the user. Only valid if the connection requires a username.
         :param pulumi.Input[bool] verify_email: Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: UserArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        admin = auth0.Role("admin", description="Administrator")
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            user_id="12345",
+            username="unique_username",
+            given_name="Firstname",
+            family_name="Lastname",
+            nickname="some.nickname",
+            email="test@test.com",
+            email_verified=True,
+            password="passpass$12$12",
+            roles=[admin.id])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param UserArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(UserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_metadata: Optional[pulumi.Input[str]] = None,
+                 blocked: Optional[pulumi.Input[bool]] = None,
+                 connection_name: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 email_verified: Optional[pulumi.Input[bool]] = None,
+                 family_name: Optional[pulumi.Input[str]] = None,
+                 given_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nickname: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 phone_number: Optional[pulumi.Input[str]] = None,
+                 phone_verified: Optional[pulumi.Input[bool]] = None,
+                 picture: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
+                 user_metadata: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 verify_email: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
