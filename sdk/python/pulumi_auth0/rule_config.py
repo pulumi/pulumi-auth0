@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['RuleConfigArgs', 'RuleConfig']
 
@@ -45,6 +45,46 @@ class RuleConfigArgs:
 
     @value.setter
     def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class _RuleConfigState:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RuleConfig resources.
+        :param pulumi.Input[str] key: String. Key for a rules configuration variable.
+        :param pulumi.Input[str] value: String, Case-sensitive. Value for a rules configuration variable.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Key for a rules configuration variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, Case-sensitive. Value for a rules configuration variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 
@@ -146,14 +186,14 @@ class RuleConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RuleConfigArgs.__new__(RuleConfigArgs)
 
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
+            __props__.__dict__["key"] = key
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__['value'] = value
+            __props__.__dict__["value"] = value
         super(RuleConfig, __self__).__init__(
             'auth0:index/ruleConfig:RuleConfig',
             resource_name,
@@ -178,10 +218,10 @@ class RuleConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RuleConfigState.__new__(_RuleConfigState)
 
-        __props__["key"] = key
-        __props__["value"] = value
+        __props__.__dict__["key"] = key
+        __props__.__dict__["value"] = value
         return RuleConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -199,10 +239,4 @@ class RuleConfig(pulumi.CustomResource):
         String, Case-sensitive. Value for a rules configuration variable.
         """
         return pulumi.get(self, "value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

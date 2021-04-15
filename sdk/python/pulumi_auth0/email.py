@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -55,6 +55,78 @@ class EmailArgs:
 
     @default_from_address.setter
     def default_from_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_from_address", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Indicates whether or not the email provider is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _EmailState:
+    def __init__(__self__, *,
+                 credentials: Optional[pulumi.Input['EmailCredentialsArgs']] = None,
+                 default_from_address: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Email resources.
+        :param pulumi.Input['EmailCredentialsArgs'] credentials: List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+        :param pulumi.Input[str] default_from_address: String. Email address to use as the sender when no other "from" address is specified.
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the email provider is enabled.
+        :param pulumi.Input[str] name: String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        """
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
+        if default_from_address is not None:
+            pulumi.set(__self__, "default_from_address", default_from_address)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[pulumi.Input['EmailCredentialsArgs']]:
+        """
+        List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: Optional[pulumi.Input['EmailCredentialsArgs']]):
+        pulumi.set(self, "credentials", value)
+
+    @property
+    @pulumi.getter(name="defaultFromAddress")
+    def default_from_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Email address to use as the sender when no other "from" address is specified.
+        """
+        return pulumi.get(self, "default_from_address")
+
+    @default_from_address.setter
+    def default_from_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_from_address", value)
 
     @property
@@ -182,16 +254,16 @@ class Email(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EmailArgs.__new__(EmailArgs)
 
             if credentials is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials'")
-            __props__['credentials'] = credentials
+            __props__.__dict__["credentials"] = credentials
             if default_from_address is None and not opts.urn:
                 raise TypeError("Missing required property 'default_from_address'")
-            __props__['default_from_address'] = default_from_address
-            __props__['enabled'] = enabled
-            __props__['name'] = name
+            __props__.__dict__["default_from_address"] = default_from_address
+            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["name"] = name
         super(Email, __self__).__init__(
             'auth0:index/email:Email',
             resource_name,
@@ -220,12 +292,12 @@ class Email(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EmailState.__new__(_EmailState)
 
-        __props__["credentials"] = credentials
-        __props__["default_from_address"] = default_from_address
-        __props__["enabled"] = enabled
-        __props__["name"] = name
+        __props__.__dict__["credentials"] = credentials
+        __props__.__dict__["default_from_address"] = default_from_address
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["name"] = name
         return Email(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -259,10 +331,4 @@ class Email(pulumi.CustomResource):
         String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

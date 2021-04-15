@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ClientGrantArgs', 'ClientGrant']
 
@@ -60,6 +60,62 @@ class ClientGrantArgs:
 
     @scopes.setter
     def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "scopes", value)
+
+
+@pulumi.input_type
+class _ClientGrantState:
+    def __init__(__self__, *,
+                 audience: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering ClientGrant resources.
+        :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
+        :param pulumi.Input[str] client_id: String. ID of the client for this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
+        """
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Audience or API Identifier for this grant.
+        """
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audience", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. ID of the client for this grant.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List(String). Permissions (scopes) included in this grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scopes", value)
 
 
@@ -178,17 +234,17 @@ class ClientGrant(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ClientGrantArgs.__new__(ClientGrantArgs)
 
             if audience is None and not opts.urn:
                 raise TypeError("Missing required property 'audience'")
-            __props__['audience'] = audience
+            __props__.__dict__["audience"] = audience
             if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")
-            __props__['client_id'] = client_id
+            __props__.__dict__["client_id"] = client_id
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
-            __props__['scopes'] = scopes
+            __props__.__dict__["scopes"] = scopes
         super(ClientGrant, __self__).__init__(
             'auth0:index/clientGrant:ClientGrant',
             resource_name,
@@ -215,11 +271,11 @@ class ClientGrant(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ClientGrantState.__new__(_ClientGrantState)
 
-        __props__["audience"] = audience
-        __props__["client_id"] = client_id
-        __props__["scopes"] = scopes
+        __props__.__dict__["audience"] = audience
+        __props__.__dict__["client_id"] = client_id
+        __props__.__dict__["scopes"] = scopes
         return ClientGrant(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -245,10 +301,4 @@ class ClientGrant(pulumi.CustomResource):
         List(String). Permissions (scopes) included in this grant.
         """
         return pulumi.get(self, "scopes")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

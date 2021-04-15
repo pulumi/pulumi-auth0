@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -137,6 +137,158 @@ class ConnectionArgs:
     @realms.setter
     def realms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "realms", value)
+
+    @property
+    @pulumi.getter(name="strategyVersion")
+    def strategy_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version 1 is deprecated, use version 2.
+        """
+        return pulumi.get(self, "strategy_version")
+
+    @strategy_version.setter
+    def strategy_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strategy_version", value)
+
+    @property
+    @pulumi.getter
+    def validation(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        """
+        return pulumi.get(self, "validation")
+
+    @validation.setter
+    def validation(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "validation", value)
+
+
+@pulumi.input_type
+class _ConnectionState:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 is_domain_connection: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
+                 realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 strategy: Optional[pulumi.Input[str]] = None,
+                 strategy_version: Optional[pulumi.Input[str]] = None,
+                 validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[str] display_name: Name used in login screen
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        :param pulumi.Input[bool] is_domain_connection: Indicates whether or not the connection is domain level.
+        :param pulumi.Input[str] name: Name of the connection.
+        :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enabled_clients is not None:
+            pulumi.set(__self__, "enabled_clients", enabled_clients)
+        if is_domain_connection is not None:
+            pulumi.set(__self__, "is_domain_connection", is_domain_connection)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if realms is not None:
+            pulumi.set(__self__, "realms", realms)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+        if strategy_version is not None:
+            pulumi.set(__self__, "strategy_version", strategy_version)
+        if validation is not None:
+            pulumi.set(__self__, "validation", validation)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name used in login screen
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="enabledClients")
+    def enabled_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        """
+        return pulumi.get(self, "enabled_clients")
+
+    @enabled_clients.setter
+    def enabled_clients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enabled_clients", value)
+
+    @property
+    @pulumi.getter(name="isDomainConnection")
+    def is_domain_connection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not the connection is domain level.
+        """
+        return pulumi.get(self, "is_domain_connection")
+
+    @is_domain_connection.setter
+    def is_domain_connection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_domain_connection", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the connection.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input['ConnectionOptionsArgs']]:
+        """
+        Configuration settings for connection options. For details, see Options.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input['ConnectionOptionsArgs']]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
+    def realms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        """
+        return pulumi.get(self, "realms")
+
+    @realms.setter
+    def realms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "realms", value)
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        """
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "strategy", value)
 
     @property
     @pulumi.getter(name="strategyVersion")
@@ -310,19 +462,19 @@ class Connection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
-            __props__['display_name'] = display_name
-            __props__['enabled_clients'] = enabled_clients
-            __props__['is_domain_connection'] = is_domain_connection
-            __props__['name'] = name
-            __props__['options'] = options
-            __props__['realms'] = realms
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enabled_clients"] = enabled_clients
+            __props__.__dict__["is_domain_connection"] = is_domain_connection
+            __props__.__dict__["name"] = name
+            __props__.__dict__["options"] = options
+            __props__.__dict__["realms"] = realms
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
-            __props__['strategy'] = strategy
-            __props__['strategy_version'] = strategy_version
-            __props__['validation'] = validation
+            __props__.__dict__["strategy"] = strategy
+            __props__.__dict__["strategy_version"] = strategy_version
+            __props__.__dict__["validation"] = validation
         super(Connection, __self__).__init__(
             'auth0:index/connection:Connection',
             resource_name,
@@ -361,17 +513,17 @@ class Connection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConnectionState.__new__(_ConnectionState)
 
-        __props__["display_name"] = display_name
-        __props__["enabled_clients"] = enabled_clients
-        __props__["is_domain_connection"] = is_domain_connection
-        __props__["name"] = name
-        __props__["options"] = options
-        __props__["realms"] = realms
-        __props__["strategy"] = strategy
-        __props__["strategy_version"] = strategy_version
-        __props__["validation"] = validation
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["enabled_clients"] = enabled_clients
+        __props__.__dict__["is_domain_connection"] = is_domain_connection
+        __props__.__dict__["name"] = name
+        __props__.__dict__["options"] = options
+        __props__.__dict__["realms"] = realms
+        __props__.__dict__["strategy"] = strategy
+        __props__.__dict__["strategy_version"] = strategy_version
+        __props__.__dict__["validation"] = validation
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -445,10 +597,4 @@ class Connection(pulumi.CustomResource):
         Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         """
         return pulumi.get(self, "validation")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
