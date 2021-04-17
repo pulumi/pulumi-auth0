@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -74,6 +74,70 @@ class LogStreamArgs:
         pulumi.set(self, "status", value)
 
 
+@pulumi.input_type
+class _LogStreamState:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LogStream resources.
+        :param pulumi.Input[str] status: Status of the LogStream
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if sink is not None:
+            pulumi.set(__self__, "sink", sink)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def sink(self) -> Optional[pulumi.Input['LogStreamSinkArgs']]:
+        return pulumi.get(self, "sink")
+
+    @sink.setter
+    def sink(self, value: Optional[pulumi.Input['LogStreamSinkArgs']]):
+        pulumi.set(self, "sink", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the LogStream
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the log stream, which indicates the sink provider
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
 class LogStream(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -138,16 +202,16 @@ class LogStream(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LogStreamArgs.__new__(LogStreamArgs)
 
-            __props__['name'] = name
+            __props__.__dict__["name"] = name
             if sink is None and not opts.urn:
                 raise TypeError("Missing required property 'sink'")
-            __props__['sink'] = sink
-            __props__['status'] = status
+            __props__.__dict__["sink"] = sink
+            __props__.__dict__["status"] = status
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
+            __props__.__dict__["type"] = type
         super(LogStream, __self__).__init__(
             'auth0:index/logStream:LogStream',
             resource_name,
@@ -174,12 +238,12 @@ class LogStream(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LogStreamState.__new__(_LogStreamState)
 
-        __props__["name"] = name
-        __props__["sink"] = sink
-        __props__["status"] = status
-        __props__["type"] = type
+        __props__.__dict__["name"] = name
+        __props__.__dict__["sink"] = sink
+        __props__.__dict__["status"] = status
+        __props__.__dict__["type"] = type
         return LogStream(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -207,10 +271,4 @@ class LogStream(pulumi.CustomResource):
         Type of the log stream, which indicates the sink provider
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

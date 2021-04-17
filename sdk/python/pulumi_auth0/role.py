@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -20,6 +20,64 @@ class RoleArgs:
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]] = None):
         """
         The set of arguments for constructing a Role resource.
+        :param pulumi.Input[str] description: String. Description of the role.
+        :param pulumi.Input[str] name: String. Name for this role.
+        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        """
+        if description is None:
+            description = 'Managed by Pulumi'
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Description of the role.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Name for this role.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]]:
+        """
+        Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class _RoleState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[str] description: String. Description of the role.
         :param pulumi.Input[str] name: String. Name for this role.
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
@@ -199,13 +257,13 @@ class Role(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RoleArgs.__new__(RoleArgs)
 
             if description is None:
                 description = 'Managed by Pulumi'
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['permissions'] = permissions
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["permissions"] = permissions
         super(Role, __self__).__init__(
             'auth0:index/role:Role',
             resource_name,
@@ -232,11 +290,11 @@ class Role(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RoleState.__new__(_RoleState)
 
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["permissions"] = permissions
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["permissions"] = permissions
         return Role(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -262,10 +320,4 @@ class Role(pulumi.CustomResource):
         Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
         """
         return pulumi.get(self, "permissions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

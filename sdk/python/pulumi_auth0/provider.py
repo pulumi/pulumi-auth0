@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -135,29 +135,23 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
             if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")
-            __props__['client_id'] = client_id
+            __props__.__dict__["client_id"] = client_id
             if client_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'client_secret'")
-            __props__['client_secret'] = client_secret
+            __props__.__dict__["client_secret"] = client_secret
             if debug is None:
                 debug = _utilities.get_env_bool('AUTH0_DEBUG')
-            __props__['debug'] = pulumi.Output.from_input(debug).apply(pulumi.runtime.to_json) if debug is not None else None
+            __props__.__dict__["debug"] = pulumi.Output.from_input(debug).apply(pulumi.runtime.to_json) if debug is not None else None
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
-            __props__['domain'] = domain
+            __props__.__dict__["domain"] = domain
         super(Provider, __self__).__init__(
             'auth0',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

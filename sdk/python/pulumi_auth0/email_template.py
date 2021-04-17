@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['EmailTemplateArgs', 'EmailTemplate']
 
@@ -126,6 +126,142 @@ class EmailTemplateArgs:
     @result_url.setter
     def result_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "result_url", value)
+
+    @property
+    @pulumi.getter(name="urlLifetimeInSeconds")
+    def url_lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Integer. Number of seconds during which the link within the email will be valid.
+        """
+        return pulumi.get(self, "url_lifetime_in_seconds")
+
+    @url_lifetime_in_seconds.setter
+    def url_lifetime_in_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "url_lifetime_in_seconds", value)
+
+
+@pulumi.input_type
+class _EmailTemplateState:
+    def __init__(__self__, *,
+                 body: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 from_: Optional[pulumi.Input[str]] = None,
+                 result_url: Optional[pulumi.Input[str]] = None,
+                 subject: Optional[pulumi.Input[str]] = None,
+                 syntax: Optional[pulumi.Input[str]] = None,
+                 template: Optional[pulumi.Input[str]] = None,
+                 url_lifetime_in_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering EmailTemplate resources.
+        :param pulumi.Input[str] body: String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the template is enabled.
+        :param pulumi.Input[str] from_: String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        :param pulumi.Input[str] result_url: String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+        :param pulumi.Input[str] subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        :param pulumi.Input[str] syntax: String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+        :param pulumi.Input[str] template: String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).
+        :param pulumi.Input[int] url_lifetime_in_seconds: Integer. Number of seconds during which the link within the email will be valid.
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if result_url is not None:
+            pulumi.set(__self__, "result_url", result_url)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if syntax is not None:
+            pulumi.set(__self__, "syntax", syntax)
+        if template is not None:
+            pulumi.set(__self__, "template", template)
+        if url_lifetime_in_seconds is not None:
+            pulumi.set(__self__, "url_lifetime_in_seconds", url_lifetime_in_seconds)
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "body", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Indicates whether or not the template is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter(name="resultUrl")
+    def result_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+        """
+        return pulumi.get(self, "result_url")
+
+    @result_url.setter
+    def result_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "result_url", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter
+    def syntax(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+        """
+        return pulumi.get(self, "syntax")
+
+    @syntax.setter
+    def syntax(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "syntax", value)
+
+    @property
+    @pulumi.getter
+    def template(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).
+        """
+        return pulumi.get(self, "template")
+
+    @template.setter
+    def template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template", value)
 
     @property
     @pulumi.getter(name="urlLifetimeInSeconds")
@@ -272,28 +408,28 @@ class EmailTemplate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EmailTemplateArgs.__new__(EmailTemplateArgs)
 
             if body is None and not opts.urn:
                 raise TypeError("Missing required property 'body'")
-            __props__['body'] = body
+            __props__.__dict__["body"] = body
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
-            __props__['enabled'] = enabled
+            __props__.__dict__["enabled"] = enabled
             if from_ is None and not opts.urn:
                 raise TypeError("Missing required property 'from_'")
-            __props__['from_'] = from_
-            __props__['result_url'] = result_url
+            __props__.__dict__["from_"] = from_
+            __props__.__dict__["result_url"] = result_url
             if subject is None and not opts.urn:
                 raise TypeError("Missing required property 'subject'")
-            __props__['subject'] = subject
+            __props__.__dict__["subject"] = subject
             if syntax is None and not opts.urn:
                 raise TypeError("Missing required property 'syntax'")
-            __props__['syntax'] = syntax
+            __props__.__dict__["syntax"] = syntax
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
-            __props__['template'] = template
-            __props__['url_lifetime_in_seconds'] = url_lifetime_in_seconds
+            __props__.__dict__["template"] = template
+            __props__.__dict__["url_lifetime_in_seconds"] = url_lifetime_in_seconds
         super(EmailTemplate, __self__).__init__(
             'auth0:index/emailTemplate:EmailTemplate',
             resource_name,
@@ -330,16 +466,16 @@ class EmailTemplate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EmailTemplateState.__new__(_EmailTemplateState)
 
-        __props__["body"] = body
-        __props__["enabled"] = enabled
-        __props__["from_"] = from_
-        __props__["result_url"] = result_url
-        __props__["subject"] = subject
-        __props__["syntax"] = syntax
-        __props__["template"] = template
-        __props__["url_lifetime_in_seconds"] = url_lifetime_in_seconds
+        __props__.__dict__["body"] = body
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["from_"] = from_
+        __props__.__dict__["result_url"] = result_url
+        __props__.__dict__["subject"] = subject
+        __props__.__dict__["syntax"] = syntax
+        __props__.__dict__["template"] = template
+        __props__.__dict__["url_lifetime_in_seconds"] = url_lifetime_in_seconds
         return EmailTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -405,10 +541,4 @@ class EmailTemplate(pulumi.CustomResource):
         Integer. Number of seconds during which the link within the email will be valid.
         """
         return pulumi.get(self, "url_lifetime_in_seconds")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

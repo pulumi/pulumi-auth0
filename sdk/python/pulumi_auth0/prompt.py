@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['PromptArgs', 'Prompt']
 
@@ -17,6 +17,42 @@ class PromptArgs:
                  universal_login_experience: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Prompt resource.
+        :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
+        """
+        if identifier_first is not None:
+            pulumi.set(__self__, "identifier_first", identifier_first)
+        if universal_login_experience is not None:
+            pulumi.set(__self__, "universal_login_experience", universal_login_experience)
+
+    @property
+    @pulumi.getter(name="identifierFirst")
+    def identifier_first(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "identifier_first")
+
+    @identifier_first.setter
+    def identifier_first(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "identifier_first", value)
+
+    @property
+    @pulumi.getter(name="universalLoginExperience")
+    def universal_login_experience(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which login experience to use. Options include `classic` and `new`.
+        """
+        return pulumi.get(self, "universal_login_experience")
+
+    @universal_login_experience.setter
+    def universal_login_experience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "universal_login_experience", value)
+
+
+@pulumi.input_type
+class _PromptState:
+    def __init__(__self__, *,
+                 identifier_first: Optional[pulumi.Input[bool]] = None,
+                 universal_login_experience: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Prompt resources.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         """
         if identifier_first is not None:
@@ -125,10 +161,10 @@ class Prompt(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = PromptArgs.__new__(PromptArgs)
 
-            __props__['identifier_first'] = identifier_first
-            __props__['universal_login_experience'] = universal_login_experience
+            __props__.__dict__["identifier_first"] = identifier_first
+            __props__.__dict__["universal_login_experience"] = universal_login_experience
         super(Prompt, __self__).__init__(
             'auth0:index/prompt:Prompt',
             resource_name,
@@ -152,10 +188,10 @@ class Prompt(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _PromptState.__new__(_PromptState)
 
-        __props__["identifier_first"] = identifier_first
-        __props__["universal_login_experience"] = universal_login_experience
+        __props__.__dict__["identifier_first"] = identifier_first
+        __props__.__dict__["universal_login_experience"] = universal_login_experience
         return Prompt(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -170,10 +206,4 @@ class Prompt(pulumi.CustomResource):
         Which login experience to use. Options include `classic` and `new`.
         """
         return pulumi.get(self, "universal_login_experience")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -17,10 +17,10 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 
-	auth0 "github.com/pulumi/pulumi-auth0/provider"
-	"github.com/pulumi/pulumi-auth0/provider/pkg/version"
+	auth0 "github.com/pulumi/pulumi-auth0/provider/v2"
+	"github.com/pulumi/pulumi-auth0/provider/v2/pkg/version"
 )
 
 func main() {
