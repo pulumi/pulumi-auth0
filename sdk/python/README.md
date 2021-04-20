@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fauth0.svg)](https://www.npmjs.com/package/@pulumi/auth0)
 [![Python version](https://badge.fury.io/py/pulumi-auth0.svg)](https://pypi.org/project/pulumi-auth0)
 [![NuGet version](https://badge.fury.io/nu/pulumi.auth0.svg)](https://badge.fury.io/nu/pulumi.auth0)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-auth0/sdk/go)](https://pkg.go.dev/github.com/pulumi/pulumi-auth0/sdk/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-auth0/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-auth0/sdk/v2/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-auth0/blob/master/LICENSE)
 
 # Auth0 Resource Provider
