@@ -34,6 +34,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmailTemplate{}
 	case "auth0:index/globalClient:GlobalClient":
 		r = &GlobalClient{}
+	case "auth0:index/guardian:Guardian":
+		r = &Guardian{}
 	case "auth0:index/hook:Hook":
 		r = &Hook{}
 	case "auth0:index/logStream:LogStream":
@@ -116,6 +118,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/globalClient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/guardian",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

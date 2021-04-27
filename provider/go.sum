@@ -134,6 +134,8 @@ github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf h1:qet1QNfXsQxTZq
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
 github.com/alexkappa/terraform-provider-auth0 v0.20.0 h1:ZgTzdOYhInydGwpM1JuoFUSo70NQLoe9n/ta1UjDyKA=
 github.com/alexkappa/terraform-provider-auth0 v0.20.0/go.mod h1:JFTZCZP0P5fXe2u38Q1QJYZnmEp3rpCcoG5MrSVd87g=
+github.com/alexkappa/terraform-provider-auth0 v0.21.0 h1:n61VnVXaigqDKty3wLxpxAreuZk3Ny4vKK6lZtPKKH8=
+github.com/alexkappa/terraform-provider-auth0 v0.21.0/go.mod h1:e2lJ1ByGP05zR2VPOoyVaa0+MJkn+Ks5Hep5UzqAyl4=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239 h1:kFOfPq6dUM1hTo4JG6LR5AXSUEsOjtdm0kw0FtQtMJA=
 github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239/go.mod h1:2FmKhYUyUczH0OGQWaF5ceTx0UBShxjsH6f8oGKYe2c=
 github.com/apparentlymart/go-cidr v1.0.1/go.mod h1:EBcsNrHc3zQeuaeCeCtQruQm+n9/YjEn/vI25Lg7Gwc=
@@ -1222,6 +1224,8 @@ gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d h1:TxyelI5cVkbREznMhfzyc
 gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d/go.mod h1:cuepJuh7vyXfUyUwEgHQXw849cJrilpS5NeIjOWESAw=
 gopkg.in/auth0.v5 v5.13.0 h1:tTr6P0s0KhKYCr8Uci28uL+pSXjtRw68z8MblUg5lFA=
 gopkg.in/auth0.v5 v5.13.0/go.mod h1:jVm6ZyPgF3Y1XpY4SPMPQM9NtRl8o3o/e2OuezsX97E=
+gopkg.in/auth0.v5 v5.15.0 h1:kHBw8OdNPPnlqKhOBMDcYoNWlLMsFFrpagmhcMo+bHs=
+gopkg.in/auth0.v5 v5.15.0/go.mod h1:ZUc29HB1p9iYkA1ti2uz/kVL3I9vg+Hs+qFjHKub9SM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=

@@ -28,7 +28,6 @@ class GlobalClientArgs:
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
                  custom_login_page_on: Optional[pulumi.Input[bool]] = None,
-                 custom_login_page_preview: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
@@ -75,8 +74,6 @@ class GlobalClientArgs:
             pulumi.set(__self__, "custom_login_page", custom_login_page)
         if custom_login_page_on is not None:
             pulumi.set(__self__, "custom_login_page_on", custom_login_page_on)
-        if custom_login_page_preview is not None:
-            pulumi.set(__self__, "custom_login_page_preview", custom_login_page_preview)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encryption_key is not None:
@@ -228,15 +225,6 @@ class GlobalClientArgs:
     @custom_login_page_on.setter
     def custom_login_page_on(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "custom_login_page_on", value)
-
-    @property
-    @pulumi.getter(name="customLoginPagePreview")
-    def custom_login_page_preview(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "custom_login_page_preview")
-
-    @custom_login_page_preview.setter
-    def custom_login_page_preview(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "custom_login_page_preview", value)
 
     @property
     @pulumi.getter
@@ -408,7 +396,6 @@ class _GlobalClientState:
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
                  custom_login_page_on: Optional[pulumi.Input[bool]] = None,
-                 custom_login_page_preview: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
@@ -455,8 +442,6 @@ class _GlobalClientState:
             pulumi.set(__self__, "custom_login_page", custom_login_page)
         if custom_login_page_on is not None:
             pulumi.set(__self__, "custom_login_page_on", custom_login_page_on)
-        if custom_login_page_preview is not None:
-            pulumi.set(__self__, "custom_login_page_preview", custom_login_page_preview)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encryption_key is not None:
@@ -608,15 +593,6 @@ class _GlobalClientState:
     @custom_login_page_on.setter
     def custom_login_page_on(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "custom_login_page_on", value)
-
-    @property
-    @pulumi.getter(name="customLoginPagePreview")
-    def custom_login_page_preview(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "custom_login_page_preview")
-
-    @custom_login_page_preview.setter
-    def custom_login_page_preview(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "custom_login_page_preview", value)
 
     @property
     @pulumi.getter
@@ -790,7 +766,6 @@ class GlobalClient(pulumi.CustomResource):
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
                  custom_login_page_on: Optional[pulumi.Input[bool]] = None,
-                 custom_login_page_preview: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
@@ -850,7 +825,6 @@ class GlobalClient(pulumi.CustomResource):
                  cross_origin_loc: Optional[pulumi.Input[str]] = None,
                  custom_login_page: Optional[pulumi.Input[str]] = None,
                  custom_login_page_on: Optional[pulumi.Input[bool]] = None,
-                 custom_login_page_preview: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  form_template: Optional[pulumi.Input[str]] = None,
@@ -893,7 +867,6 @@ class GlobalClient(pulumi.CustomResource):
             __props__.__dict__["cross_origin_loc"] = cross_origin_loc
             __props__.__dict__["custom_login_page"] = custom_login_page
             __props__.__dict__["custom_login_page_on"] = custom_login_page_on
-            __props__.__dict__["custom_login_page_preview"] = custom_login_page_preview
             __props__.__dict__["description"] = description
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["form_template"] = form_template
@@ -934,7 +907,6 @@ class GlobalClient(pulumi.CustomResource):
             cross_origin_loc: Optional[pulumi.Input[str]] = None,
             custom_login_page: Optional[pulumi.Input[str]] = None,
             custom_login_page_on: Optional[pulumi.Input[bool]] = None,
-            custom_login_page_preview: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             form_template: Optional[pulumi.Input[str]] = None,
@@ -977,7 +949,6 @@ class GlobalClient(pulumi.CustomResource):
         __props__.__dict__["cross_origin_loc"] = cross_origin_loc
         __props__.__dict__["custom_login_page"] = custom_login_page
         __props__.__dict__["custom_login_page_on"] = custom_login_page_on
-        __props__.__dict__["custom_login_page_preview"] = custom_login_page_preview
         __props__.__dict__["description"] = description
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["form_template"] = form_template
@@ -1061,11 +1032,6 @@ class GlobalClient(pulumi.CustomResource):
     @pulumi.getter(name="customLoginPageOn")
     def custom_login_page_on(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "custom_login_page_on")
-
-    @property
-    @pulumi.getter(name="customLoginPagePreview")
-    def custom_login_page_preview(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "custom_login_page_preview")
 
     @property
     @pulumi.getter

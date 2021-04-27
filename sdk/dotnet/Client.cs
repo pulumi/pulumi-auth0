@@ -201,12 +201,6 @@ namespace Pulumi.Auth0
         public Output<bool> CustomLoginPageOn { get; private set; } = null!;
 
         /// <summary>
-        /// String.
-        /// </summary>
-        [Output("customLoginPagePreview")]
-        public Output<string?> CustomLoginPagePreview { get; private set; } = null!;
-
-        /// <summary>
         /// String, (Max length = 140 characters). Description of the purpose of the client.
         /// </summary>
         [Output("description")]
@@ -448,12 +442,6 @@ namespace Pulumi.Auth0
         public Input<bool>? CustomLoginPageOn { get; set; }
 
         /// <summary>
-        /// String.
-        /// </summary>
-        [Input("customLoginPagePreview")]
-        public Input<string>? CustomLoginPagePreview { get; set; }
-
-        /// <summary>
         /// String, (Max length = 140 characters). Description of the purpose of the client.
         /// </summary>
         [Input("description")]
@@ -683,12 +671,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("customLoginPageOn")]
         public Input<bool>? CustomLoginPageOn { get; set; }
-
-        /// <summary>
-        /// String.
-        /// </summary>
-        [Input("customLoginPagePreview")]
-        public Input<string>? CustomLoginPagePreview { get; set; }
 
         /// <summary>
         /// String, (Max length = 140 characters). Description of the purpose of the client.

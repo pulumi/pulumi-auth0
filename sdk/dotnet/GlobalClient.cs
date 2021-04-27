@@ -51,9 +51,6 @@ namespace Pulumi.Auth0
         [Output("customLoginPageOn")]
         public Output<bool> CustomLoginPageOn { get; private set; } = null!;
 
-        [Output("customLoginPagePreview")]
-        public Output<string> CustomLoginPagePreview { get; private set; } = null!;
-
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
@@ -215,9 +212,6 @@ namespace Pulumi.Auth0
         [Input("customLoginPageOn")]
         public Input<bool>? CustomLoginPageOn { get; set; }
 
-        [Input("customLoginPagePreview")]
-        public Input<string>? CustomLoginPagePreview { get; set; }
-
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -354,9 +348,6 @@ namespace Pulumi.Auth0
 
         [Input("customLoginPageOn")]
         public Input<bool>? CustomLoginPageOn { get; set; }
-
-        [Input("customLoginPagePreview")]
-        public Input<string>? CustomLoginPagePreview { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }

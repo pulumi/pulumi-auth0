@@ -2221,6 +2221,8 @@ type ConnectionOptions struct {
 	Mfa *ConnectionOptionsMfa `pulumi:"mfa"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
+	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+	NonPersistentAttrs []string `pulumi:"nonPersistentAttrs"`
 	// Configuration settings for password complexity. For details, see Password Complexity Options.
 	PasswordComplexityOptions *ConnectionOptionsPasswordComplexityOptions `pulumi:"passwordComplexityOptions"`
 	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
@@ -2242,6 +2244,8 @@ type ConnectionOptions struct {
 	Scripts map[string]string `pulumi:"scripts"`
 	// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
 	SetUserRootAttributes *string `pulumi:"setUserRootAttributes"`
+	// Determines how Auth0 sets the emailVerified field in the user profile. Can either be set to `neverSetEmailsAsVerified` or `alwaysSetEmailsAsVerified`.
+	ShouldTrustEmailVerifiedConnection *string `pulumi:"shouldTrustEmailVerifiedConnection"`
 	// SAML single login URL for the connection.
 	SignInEndpoint *string `pulumi:"signInEndpoint"`
 	// SAML single logout URL for the connection.
@@ -2356,6 +2360,8 @@ type ConnectionOptionsArgs struct {
 	Mfa ConnectionOptionsMfaPtrInput `pulumi:"mfa"`
 	// Name of the connection.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+	NonPersistentAttrs pulumi.StringArrayInput `pulumi:"nonPersistentAttrs"`
 	// Configuration settings for password complexity. For details, see Password Complexity Options.
 	PasswordComplexityOptions ConnectionOptionsPasswordComplexityOptionsPtrInput `pulumi:"passwordComplexityOptions"`
 	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
@@ -2377,6 +2383,8 @@ type ConnectionOptionsArgs struct {
 	Scripts pulumi.StringMapInput   `pulumi:"scripts"`
 	// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
 	SetUserRootAttributes pulumi.StringPtrInput `pulumi:"setUserRootAttributes"`
+	// Determines how Auth0 sets the emailVerified field in the user profile. Can either be set to `neverSetEmailsAsVerified` or `alwaysSetEmailsAsVerified`.
+	ShouldTrustEmailVerifiedConnection pulumi.StringPtrInput `pulumi:"shouldTrustEmailVerifiedConnection"`
 	// SAML single login URL for the connection.
 	SignInEndpoint pulumi.StringPtrInput `pulumi:"signInEndpoint"`
 	// SAML single logout URL for the connection.
@@ -2658,6 +2666,11 @@ func (o ConnectionOptionsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+func (o ConnectionOptionsOutput) NonPersistentAttrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionOptions) []string { return v.NonPersistentAttrs }).(pulumi.StringArrayOutput)
+}
+
 // Configuration settings for password complexity. For details, see Password Complexity Options.
 func (o ConnectionOptionsOutput) PasswordComplexityOptions() ConnectionOptionsPasswordComplexityOptionsPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsPasswordComplexityOptions {
@@ -2712,6 +2725,11 @@ func (o ConnectionOptionsOutput) Scripts() pulumi.StringMapOutput {
 // Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
 func (o ConnectionOptionsOutput) SetUserRootAttributes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.SetUserRootAttributes }).(pulumi.StringPtrOutput)
+}
+
+// Determines how Auth0 sets the emailVerified field in the user profile. Can either be set to `neverSetEmailsAsVerified` or `alwaysSetEmailsAsVerified`.
+func (o ConnectionOptionsOutput) ShouldTrustEmailVerifiedConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.ShouldTrustEmailVerifiedConnection }).(pulumi.StringPtrOutput)
 }
 
 // SAML single login URL for the connection.
@@ -3176,6 +3194,16 @@ func (o ConnectionOptionsPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+func (o ConnectionOptionsPtrOutput) NonPersistentAttrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NonPersistentAttrs
+	}).(pulumi.StringArrayOutput)
+}
+
 // Configuration settings for password complexity. For details, see Password Complexity Options.
 func (o ConnectionOptionsPtrOutput) PasswordComplexityOptions() ConnectionOptionsPasswordComplexityOptionsPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsPasswordComplexityOptions {
@@ -3282,6 +3310,16 @@ func (o ConnectionOptionsPtrOutput) SetUserRootAttributes() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.SetUserRootAttributes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines how Auth0 sets the emailVerified field in the user profile. Can either be set to `neverSetEmailsAsVerified` or `alwaysSetEmailsAsVerified`.
+func (o ConnectionOptionsPtrOutput) ShouldTrustEmailVerifiedConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldTrustEmailVerifiedConnection
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7076,6 +7114,401 @@ func (o GlobalClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GuardianPhone struct {
+	// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+	MessageTypes []string `pulumi:"messageTypes"`
+	// List(Resource). Options for the various providers. See Options.
+	Options *GuardianPhoneOptions `pulumi:"options"`
+	// String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+	Provider string `pulumi:"provider"`
+}
+
+// GuardianPhoneInput is an input type that accepts GuardianPhoneArgs and GuardianPhoneOutput values.
+// You can construct a concrete instance of `GuardianPhoneInput` via:
+//
+//          GuardianPhoneArgs{...}
+type GuardianPhoneInput interface {
+	pulumi.Input
+
+	ToGuardianPhoneOutput() GuardianPhoneOutput
+	ToGuardianPhoneOutputWithContext(context.Context) GuardianPhoneOutput
+}
+
+type GuardianPhoneArgs struct {
+	// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+	MessageTypes pulumi.StringArrayInput `pulumi:"messageTypes"`
+	// List(Resource). Options for the various providers. See Options.
+	Options GuardianPhoneOptionsPtrInput `pulumi:"options"`
+	// String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+	Provider pulumi.StringInput `pulumi:"provider"`
+}
+
+func (GuardianPhoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPhone)(nil)).Elem()
+}
+
+func (i GuardianPhoneArgs) ToGuardianPhoneOutput() GuardianPhoneOutput {
+	return i.ToGuardianPhoneOutputWithContext(context.Background())
+}
+
+func (i GuardianPhoneArgs) ToGuardianPhoneOutputWithContext(ctx context.Context) GuardianPhoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPhoneOutput)
+}
+
+func (i GuardianPhoneArgs) ToGuardianPhonePtrOutput() GuardianPhonePtrOutput {
+	return i.ToGuardianPhonePtrOutputWithContext(context.Background())
+}
+
+func (i GuardianPhoneArgs) ToGuardianPhonePtrOutputWithContext(ctx context.Context) GuardianPhonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPhoneOutput).ToGuardianPhonePtrOutputWithContext(ctx)
+}
+
+// GuardianPhonePtrInput is an input type that accepts GuardianPhoneArgs, GuardianPhonePtr and GuardianPhonePtrOutput values.
+// You can construct a concrete instance of `GuardianPhonePtrInput` via:
+//
+//          GuardianPhoneArgs{...}
+//
+//  or:
+//
+//          nil
+type GuardianPhonePtrInput interface {
+	pulumi.Input
+
+	ToGuardianPhonePtrOutput() GuardianPhonePtrOutput
+	ToGuardianPhonePtrOutputWithContext(context.Context) GuardianPhonePtrOutput
+}
+
+type guardianPhonePtrType GuardianPhoneArgs
+
+func GuardianPhonePtr(v *GuardianPhoneArgs) GuardianPhonePtrInput {
+	return (*guardianPhonePtrType)(v)
+}
+
+func (*guardianPhonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPhone)(nil)).Elem()
+}
+
+func (i *guardianPhonePtrType) ToGuardianPhonePtrOutput() GuardianPhonePtrOutput {
+	return i.ToGuardianPhonePtrOutputWithContext(context.Background())
+}
+
+func (i *guardianPhonePtrType) ToGuardianPhonePtrOutputWithContext(ctx context.Context) GuardianPhonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPhonePtrOutput)
+}
+
+type GuardianPhoneOutput struct{ *pulumi.OutputState }
+
+func (GuardianPhoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPhone)(nil)).Elem()
+}
+
+func (o GuardianPhoneOutput) ToGuardianPhoneOutput() GuardianPhoneOutput {
+	return o
+}
+
+func (o GuardianPhoneOutput) ToGuardianPhoneOutputWithContext(ctx context.Context) GuardianPhoneOutput {
+	return o
+}
+
+func (o GuardianPhoneOutput) ToGuardianPhonePtrOutput() GuardianPhonePtrOutput {
+	return o.ToGuardianPhonePtrOutputWithContext(context.Background())
+}
+
+func (o GuardianPhoneOutput) ToGuardianPhonePtrOutputWithContext(ctx context.Context) GuardianPhonePtrOutput {
+	return o.ApplyT(func(v GuardianPhone) *GuardianPhone {
+		return &v
+	}).(GuardianPhonePtrOutput)
+}
+
+// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+func (o GuardianPhoneOutput) MessageTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuardianPhone) []string { return v.MessageTypes }).(pulumi.StringArrayOutput)
+}
+
+// List(Resource). Options for the various providers. See Options.
+func (o GuardianPhoneOutput) Options() GuardianPhoneOptionsPtrOutput {
+	return o.ApplyT(func(v GuardianPhone) *GuardianPhoneOptions { return v.Options }).(GuardianPhoneOptionsPtrOutput)
+}
+
+// String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+func (o GuardianPhoneOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPhone) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+type GuardianPhonePtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianPhonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPhone)(nil)).Elem()
+}
+
+func (o GuardianPhonePtrOutput) ToGuardianPhonePtrOutput() GuardianPhonePtrOutput {
+	return o
+}
+
+func (o GuardianPhonePtrOutput) ToGuardianPhonePtrOutputWithContext(ctx context.Context) GuardianPhonePtrOutput {
+	return o
+}
+
+func (o GuardianPhonePtrOutput) Elem() GuardianPhoneOutput {
+	return o.ApplyT(func(v *GuardianPhone) GuardianPhone { return *v }).(GuardianPhoneOutput)
+}
+
+// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+func (o GuardianPhonePtrOutput) MessageTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuardianPhone) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List(Resource). Options for the various providers. See Options.
+func (o GuardianPhonePtrOutput) Options() GuardianPhoneOptionsPtrOutput {
+	return o.ApplyT(func(v *GuardianPhone) *GuardianPhoneOptions {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(GuardianPhoneOptionsPtrOutput)
+}
+
+// String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+func (o GuardianPhonePtrOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPhone) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Provider
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardianPhoneOptions struct {
+	// String.
+	AuthToken *string `pulumi:"authToken"`
+	// String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+	EnrollmentMessage *string `pulumi:"enrollmentMessage"`
+	// String.
+	From *string `pulumi:"from"`
+	// String.
+	MessagingServiceSid *string `pulumi:"messagingServiceSid"`
+	// String.
+	Sid *string `pulumi:"sid"`
+	// String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+	VerificationMessage *string `pulumi:"verificationMessage"`
+}
+
+// GuardianPhoneOptionsInput is an input type that accepts GuardianPhoneOptionsArgs and GuardianPhoneOptionsOutput values.
+// You can construct a concrete instance of `GuardianPhoneOptionsInput` via:
+//
+//          GuardianPhoneOptionsArgs{...}
+type GuardianPhoneOptionsInput interface {
+	pulumi.Input
+
+	ToGuardianPhoneOptionsOutput() GuardianPhoneOptionsOutput
+	ToGuardianPhoneOptionsOutputWithContext(context.Context) GuardianPhoneOptionsOutput
+}
+
+type GuardianPhoneOptionsArgs struct {
+	// String.
+	AuthToken pulumi.StringPtrInput `pulumi:"authToken"`
+	// String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+	EnrollmentMessage pulumi.StringPtrInput `pulumi:"enrollmentMessage"`
+	// String.
+	From pulumi.StringPtrInput `pulumi:"from"`
+	// String.
+	MessagingServiceSid pulumi.StringPtrInput `pulumi:"messagingServiceSid"`
+	// String.
+	Sid pulumi.StringPtrInput `pulumi:"sid"`
+	// String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+	VerificationMessage pulumi.StringPtrInput `pulumi:"verificationMessage"`
+}
+
+func (GuardianPhoneOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPhoneOptions)(nil)).Elem()
+}
+
+func (i GuardianPhoneOptionsArgs) ToGuardianPhoneOptionsOutput() GuardianPhoneOptionsOutput {
+	return i.ToGuardianPhoneOptionsOutputWithContext(context.Background())
+}
+
+func (i GuardianPhoneOptionsArgs) ToGuardianPhoneOptionsOutputWithContext(ctx context.Context) GuardianPhoneOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPhoneOptionsOutput)
+}
+
+func (i GuardianPhoneOptionsArgs) ToGuardianPhoneOptionsPtrOutput() GuardianPhoneOptionsPtrOutput {
+	return i.ToGuardianPhoneOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianPhoneOptionsArgs) ToGuardianPhoneOptionsPtrOutputWithContext(ctx context.Context) GuardianPhoneOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPhoneOptionsOutput).ToGuardianPhoneOptionsPtrOutputWithContext(ctx)
+}
+
+// GuardianPhoneOptionsPtrInput is an input type that accepts GuardianPhoneOptionsArgs, GuardianPhoneOptionsPtr and GuardianPhoneOptionsPtrOutput values.
+// You can construct a concrete instance of `GuardianPhoneOptionsPtrInput` via:
+//
+//          GuardianPhoneOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type GuardianPhoneOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGuardianPhoneOptionsPtrOutput() GuardianPhoneOptionsPtrOutput
+	ToGuardianPhoneOptionsPtrOutputWithContext(context.Context) GuardianPhoneOptionsPtrOutput
+}
+
+type guardianPhoneOptionsPtrType GuardianPhoneOptionsArgs
+
+func GuardianPhoneOptionsPtr(v *GuardianPhoneOptionsArgs) GuardianPhoneOptionsPtrInput {
+	return (*guardianPhoneOptionsPtrType)(v)
+}
+
+func (*guardianPhoneOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPhoneOptions)(nil)).Elem()
+}
+
+func (i *guardianPhoneOptionsPtrType) ToGuardianPhoneOptionsPtrOutput() GuardianPhoneOptionsPtrOutput {
+	return i.ToGuardianPhoneOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianPhoneOptionsPtrType) ToGuardianPhoneOptionsPtrOutputWithContext(ctx context.Context) GuardianPhoneOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPhoneOptionsPtrOutput)
+}
+
+type GuardianPhoneOptionsOutput struct{ *pulumi.OutputState }
+
+func (GuardianPhoneOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPhoneOptions)(nil)).Elem()
+}
+
+func (o GuardianPhoneOptionsOutput) ToGuardianPhoneOptionsOutput() GuardianPhoneOptionsOutput {
+	return o
+}
+
+func (o GuardianPhoneOptionsOutput) ToGuardianPhoneOptionsOutputWithContext(ctx context.Context) GuardianPhoneOptionsOutput {
+	return o
+}
+
+func (o GuardianPhoneOptionsOutput) ToGuardianPhoneOptionsPtrOutput() GuardianPhoneOptionsPtrOutput {
+	return o.ToGuardianPhoneOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianPhoneOptionsOutput) ToGuardianPhoneOptionsPtrOutputWithContext(ctx context.Context) GuardianPhoneOptionsPtrOutput {
+	return o.ApplyT(func(v GuardianPhoneOptions) *GuardianPhoneOptions {
+		return &v
+	}).(GuardianPhoneOptionsPtrOutput)
+}
+
+// String.
+func (o GuardianPhoneOptionsOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
+}
+
+// String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+func (o GuardianPhoneOptionsOutput) EnrollmentMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.EnrollmentMessage }).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o GuardianPhoneOptionsOutput) From() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.From }).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o GuardianPhoneOptionsOutput) MessagingServiceSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.MessagingServiceSid }).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o GuardianPhoneOptionsOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.Sid }).(pulumi.StringPtrOutput)
+}
+
+// String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+func (o GuardianPhoneOptionsOutput) VerificationMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPhoneOptions) *string { return v.VerificationMessage }).(pulumi.StringPtrOutput)
+}
+
+type GuardianPhoneOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianPhoneOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPhoneOptions)(nil)).Elem()
+}
+
+func (o GuardianPhoneOptionsPtrOutput) ToGuardianPhoneOptionsPtrOutput() GuardianPhoneOptionsPtrOutput {
+	return o
+}
+
+func (o GuardianPhoneOptionsPtrOutput) ToGuardianPhoneOptionsPtrOutputWithContext(ctx context.Context) GuardianPhoneOptionsPtrOutput {
+	return o
+}
+
+func (o GuardianPhoneOptionsPtrOutput) Elem() GuardianPhoneOptionsOutput {
+	return o.ApplyT(func(v *GuardianPhoneOptions) GuardianPhoneOptions { return *v }).(GuardianPhoneOptionsOutput)
+}
+
+// String.
+func (o GuardianPhoneOptionsPtrOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+func (o GuardianPhoneOptionsPtrOutput) EnrollmentMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnrollmentMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o GuardianPhoneOptionsPtrOutput) From() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.From
+	}).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o GuardianPhoneOptionsPtrOutput) MessagingServiceSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessagingServiceSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// String.
+func (o GuardianPhoneOptionsPtrOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sid
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+func (o GuardianPhoneOptionsPtrOutput) VerificationMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPhoneOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VerificationMessage
+	}).(pulumi.StringPtrOutput)
+}
+
 type LogStreamSink struct {
 	AwsAccountId          *string  `pulumi:"awsAccountId"`
 	AwsPartnerEventSource *string  `pulumi:"awsPartnerEventSource"`
@@ -8808,6 +9241,10 @@ func init() {
 	pulumi.RegisterOutputType(GlobalClientMobileIosPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GlobalClientRefreshTokenPtrOutput{})
+	pulumi.RegisterOutputType(GuardianPhoneOutput{})
+	pulumi.RegisterOutputType(GuardianPhonePtrOutput{})
+	pulumi.RegisterOutputType(GuardianPhoneOptionsOutput{})
+	pulumi.RegisterOutputType(GuardianPhoneOptionsPtrOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeOutput{})
