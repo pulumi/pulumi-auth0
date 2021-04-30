@@ -38,6 +38,8 @@ __all__ = [
     'GlobalClientMobileAndroid',
     'GlobalClientMobileIos',
     'GlobalClientRefreshToken',
+    'GuardianPhone',
+    'GuardianPhoneOptions',
     'LogStreamSink',
     'ResourceServerScope',
     'RolePermission',
@@ -1121,6 +1123,8 @@ class ConnectionOptions(dict):
             suggest = "max_groups_to_retrieve"
         elif key == "messagingServiceSid":
             suggest = "messaging_service_sid"
+        elif key == "nonPersistentAttrs":
+            suggest = "non_persistent_attrs"
         elif key == "passwordComplexityOptions":
             suggest = "password_complexity_options"
         elif key == "passwordDictionary":
@@ -1139,6 +1143,8 @@ class ConnectionOptions(dict):
             suggest = "requires_username"
         elif key == "setUserRootAttributes":
             suggest = "set_user_root_attributes"
+        elif key == "shouldTrustEmailVerifiedConnection":
+            suggest = "should_trust_email_verified_connection"
         elif key == "signInEndpoint":
             suggest = "sign_in_endpoint"
         elif key == "signOutEndpoint":
@@ -1222,6 +1228,7 @@ class ConnectionOptions(dict):
                  messaging_service_sid: Optional[str] = None,
                  mfa: Optional['outputs.ConnectionOptionsMfa'] = None,
                  name: Optional[str] = None,
+                 non_persistent_attrs: Optional[Sequence[str]] = None,
                  password_complexity_options: Optional['outputs.ConnectionOptionsPasswordComplexityOptions'] = None,
                  password_dictionary: Optional['outputs.ConnectionOptionsPasswordDictionary'] = None,
                  password_histories: Optional[Sequence['outputs.ConnectionOptionsPasswordHistory']] = None,
@@ -1233,6 +1240,7 @@ class ConnectionOptions(dict):
                  scopes: Optional[Sequence[str]] = None,
                  scripts: Optional[Mapping[str, str]] = None,
                  set_user_root_attributes: Optional[str] = None,
+                 should_trust_email_verified_connection: Optional[str] = None,
                  sign_in_endpoint: Optional[str] = None,
                  sign_out_endpoint: Optional[str] = None,
                  sign_saml_request: Optional[bool] = None,
@@ -1282,6 +1290,7 @@ class ConnectionOptions(dict):
         :param str messaging_service_sid: SID for Copilot. Used when SMS Source is Copilot.
         :param 'ConnectionOptionsMfaArgs' mfa: Configuration settings Options for multifactor authentication. For details, see MFA Options.
         :param str name: Name of the connection.
+        :param Sequence[str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
         :param 'ConnectionOptionsPasswordComplexityOptionsArgs' password_complexity_options: Configuration settings for password complexity. For details, see Password Complexity Options.
         :param 'ConnectionOptionsPasswordDictionaryArgs' password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
         :param Sequence['ConnectionOptionsPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
@@ -1292,6 +1301,7 @@ class ConnectionOptions(dict):
         :param bool requires_username: Indicates whether or not the user is required to provide a username in addition to an email address.
         :param Sequence[str] scopes: Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
         :param str set_user_root_attributes: Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+        :param str should_trust_email_verified_connection: Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
         :param str sign_in_endpoint: SAML single login URL for the connection.
         :param str sign_out_endpoint: SAML single logout URL for the connection.
         :param bool sign_saml_request: (Boolean) When enabled, the SAML authentication request will be signed.
@@ -1377,6 +1387,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "mfa", mfa)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if non_persistent_attrs is not None:
+            pulumi.set(__self__, "non_persistent_attrs", non_persistent_attrs)
         if password_complexity_options is not None:
             pulumi.set(__self__, "password_complexity_options", password_complexity_options)
         if password_dictionary is not None:
@@ -1399,6 +1411,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "scripts", scripts)
         if set_user_root_attributes is not None:
             pulumi.set(__self__, "set_user_root_attributes", set_user_root_attributes)
+        if should_trust_email_verified_connection is not None:
+            pulumi.set(__self__, "should_trust_email_verified_connection", should_trust_email_verified_connection)
         if sign_in_endpoint is not None:
             pulumi.set(__self__, "sign_in_endpoint", sign_in_endpoint)
         if sign_out_endpoint is not None:
@@ -1691,6 +1705,14 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="nonPersistentAttrs")
+    def non_persistent_attrs(self) -> Optional[Sequence[str]]:
+        """
+        If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+        """
+        return pulumi.get(self, "non_persistent_attrs")
+
+    @property
     @pulumi.getter(name="passwordComplexityOptions")
     def password_complexity_options(self) -> Optional['outputs.ConnectionOptionsPasswordComplexityOptions']:
         """
@@ -1774,6 +1796,14 @@ class ConnectionOptions(dict):
         Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
         """
         return pulumi.get(self, "set_user_root_attributes")
+
+    @property
+    @pulumi.getter(name="shouldTrustEmailVerifiedConnection")
+    def should_trust_email_verified_connection(self) -> Optional[str]:
+        """
+        Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+        """
+        return pulumi.get(self, "should_trust_email_verified_connection")
 
     @property
     @pulumi.getter(name="signInEndpoint")
@@ -3157,6 +3187,168 @@ class GlobalClientRefreshToken(dict):
     @pulumi.getter(name="tokenLifetime")
     def token_lifetime(self) -> Optional[int]:
         return pulumi.get(self, "token_lifetime")
+
+
+@pulumi.output_type
+class GuardianPhone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageTypes":
+            suggest = "message_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardianPhone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardianPhone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardianPhone.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 message_types: Sequence[str],
+                 provider: str,
+                 options: Optional['outputs.GuardianPhoneOptions'] = None):
+        """
+        :param Sequence[str] message_types: List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+        :param str provider: String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        :param 'GuardianPhoneOptionsArgs' options: List(Resource). Options for the various providers. See Options.
+        """
+        pulumi.set(__self__, "message_types", message_types)
+        pulumi.set(__self__, "provider", provider)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+
+    @property
+    @pulumi.getter(name="messageTypes")
+    def message_types(self) -> Sequence[str]:
+        """
+        List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+        """
+        return pulumi.get(self, "message_types")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> str:
+        """
+        String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        """
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional['outputs.GuardianPhoneOptions']:
+        """
+        List(Resource). Options for the various providers. See Options.
+        """
+        return pulumi.get(self, "options")
+
+
+@pulumi.output_type
+class GuardianPhoneOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authToken":
+            suggest = "auth_token"
+        elif key == "enrollmentMessage":
+            suggest = "enrollment_message"
+        elif key == "from":
+            suggest = "from_"
+        elif key == "messagingServiceSid":
+            suggest = "messaging_service_sid"
+        elif key == "verificationMessage":
+            suggest = "verification_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardianPhoneOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardianPhoneOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardianPhoneOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_token: Optional[str] = None,
+                 enrollment_message: Optional[str] = None,
+                 from_: Optional[str] = None,
+                 messaging_service_sid: Optional[str] = None,
+                 sid: Optional[str] = None,
+                 verification_message: Optional[str] = None):
+        """
+        :param str auth_token: String.
+        :param str enrollment_message: String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+        :param str from_: String.
+        :param str messaging_service_sid: String.
+        :param str sid: String.
+        :param str verification_message: String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+        """
+        if auth_token is not None:
+            pulumi.set(__self__, "auth_token", auth_token)
+        if enrollment_message is not None:
+            pulumi.set(__self__, "enrollment_message", enrollment_message)
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if messaging_service_sid is not None:
+            pulumi.set(__self__, "messaging_service_sid", messaging_service_sid)
+        if sid is not None:
+            pulumi.set(__self__, "sid", sid)
+        if verification_message is not None:
+            pulumi.set(__self__, "verification_message", verification_message)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> Optional[str]:
+        """
+        String.
+        """
+        return pulumi.get(self, "auth_token")
+
+    @property
+    @pulumi.getter(name="enrollmentMessage")
+    def enrollment_message(self) -> Optional[str]:
+        """
+        String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+        """
+        return pulumi.get(self, "enrollment_message")
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[str]:
+        """
+        String.
+        """
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter(name="messagingServiceSid")
+    def messaging_service_sid(self) -> Optional[str]:
+        """
+        String.
+        """
+        return pulumi.get(self, "messaging_service_sid")
+
+    @property
+    @pulumi.getter
+    def sid(self) -> Optional[str]:
+        """
+        String.
+        """
+        return pulumi.get(self, "sid")
+
+    @property
+    @pulumi.getter(name="verificationMessage")
+    def verification_message(self) -> Optional[str]:
+        """
+        String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+        """
+        return pulumi.get(self, "verification_message")
 
 
 @pulumi.output_type

@@ -12,6 +12,7 @@ export * from "./customDomain";
 export * from "./email";
 export * from "./emailTemplate";
 export * from "./globalClient";
+export * from "./guardian";
 export * from "./hook";
 export * from "./logStream";
 export * from "./prompt";
@@ -40,6 +41,7 @@ import { CustomDomain } from "./customDomain";
 import { Email } from "./email";
 import { EmailTemplate } from "./emailTemplate";
 import { GlobalClient } from "./globalClient";
+import { Guardian } from "./guardian";
 import { Hook } from "./hook";
 import { LogStream } from "./logStream";
 import { Prompt } from "./prompt";
@@ -68,6 +70,8 @@ const _module = {
                 return new EmailTemplate(name, <any>undefined, { urn })
             case "auth0:index/globalClient:GlobalClient":
                 return new GlobalClient(name, <any>undefined, { urn })
+            case "auth0:index/guardian:Guardian":
+                return new Guardian(name, <any>undefined, { urn })
             case "auth0:index/hook:Hook":
                 return new Hook(name, <any>undefined, { urn })
             case "auth0:index/logStream:LogStream":
@@ -98,6 +102,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/customDomain", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/email", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/emailTemplate", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/globalClient", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/guardian", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)

@@ -1095,6 +1095,18 @@
                         }
                     }
                 },
+                "nonPersistentAttrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "passwordComplexityOptions": {
                     "$ref": "#/types/auth0:index/ConnectionOptionsPasswordComplexityOptions:ConnectionOptionsPasswordComplexityOptions",
                     "description": "Configuration settings for password complexity. For details, see Password Complexity Options.\n",
@@ -1196,6 +1208,15 @@
                 "setUserRootAttributes": {
                     "type": "string",
                     "description": "Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldTrustEmailVerifiedConnection": {
+                    "type": "string",
+                    "description": "Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1415,6 +1436,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "nonPersistentAttrs",
                         "passwordHistories",
                         "passwordPolicy",
                         "setUserRootAttributes",
@@ -2402,6 +2424,104 @@
                 "rotationType"
             ]
         },
+        "auth0:index/GuardianPhone:GuardianPhone": {
+            "properties": {
+                "messageTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "options": {
+                    "$ref": "#/types/auth0:index/GuardianPhoneOptions:GuardianPhoneOptions",
+                    "description": "List(Resource). Options for the various providers. See Options.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "provider": {
+                    "type": "string",
+                    "description": "String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "messageTypes",
+                "provider"
+            ]
+        },
+        "auth0:index/GuardianPhoneOptions:GuardianPhoneOptions": {
+            "properties": {
+                "authToken": {
+                    "type": "string",
+                    "description": "String.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enrollmentMessage": {
+                    "type": "string",
+                    "description": "String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "from": {
+                    "type": "string",
+                    "description": "String.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messagingServiceSid": {
+                    "type": "string",
+                    "description": "String.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sid": {
+                    "type": "string",
+                    "description": "String.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "verificationMessage": {
+                    "type": "string",
+                    "description": "String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/LogStreamSink:LogStreamSink": {
             "properties": {
                 "awsAccountId": {
@@ -2977,10 +3097,6 @@
                     "type": "boolean",
                     "description": "Boolean. Indicates whether or not a custom login page is to be used.\n"
                 },
-                "customLoginPagePreview": {
-                    "type": "string",
-                    "description": "String.\n"
-                },
                 "description": {
                     "type": "string",
                     "description": "String, (Max length = 140 characters). Description of the purpose of the client.\n",
@@ -3133,10 +3249,6 @@
                     "type": "boolean",
                     "description": "Boolean. Indicates whether or not a custom login page is to be used.\n"
                 },
-                "customLoginPagePreview": {
-                    "type": "string",
-                    "description": "String.\n"
-                },
                 "description": {
                     "type": "string",
                     "description": "String, (Max length = 140 characters). Description of the purpose of the client.\n",
@@ -3283,10 +3395,6 @@
                     "customLoginPageOn": {
                         "type": "boolean",
                         "description": "Boolean. Indicates whether or not a custom login page is to be used.\n"
-                    },
-                    "customLoginPagePreview": {
-                        "type": "string",
-                        "description": "String.\n"
                     },
                     "description": {
                         "type": "string",
@@ -3933,9 +4041,6 @@
                 "customLoginPageOn": {
                     "type": "boolean"
                 },
-                "customLoginPagePreview": {
-                    "type": "string"
-                },
                 "description": {
                     "type": "string"
                 },
@@ -4010,7 +4115,6 @@
                 "crossOriginLoc",
                 "customLoginPage",
                 "customLoginPageOn",
-                "customLoginPagePreview",
                 "description",
                 "encryptionKey",
                 "formTemplate",
@@ -4083,9 +4187,6 @@
                 },
                 "customLoginPageOn": {
                     "type": "boolean"
-                },
-                "customLoginPagePreview": {
-                    "type": "string"
                 },
                 "description": {
                     "type": "string"
@@ -4205,9 +4306,6 @@
                     "customLoginPageOn": {
                         "type": "boolean"
                     },
-                    "customLoginPagePreview": {
-                        "type": "string"
-                    },
                     "description": {
                         "type": "string"
                     },
@@ -4267,6 +4365,49 @@
                         "items": {
                             "type": "string"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/guardian:Guardian": {
+            "description": "Multi-factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some of\nthe options available for MFA.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst defaultGuardian = new auth0.Guardian(\"default\", {\n    phone: {\n        messageTypes: [\"sms\"],\n        options: {\n            enrollmentMessage: \"{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment\",\n            verificationMessage: \"{{code}} is your verification code for {{tenant.friendly_name}}\",\n        },\n        provider: \"auth0\",\n    },\n    policy: \"all-applications\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\ndefault = auth0.Guardian(\"default\",\n    phone=auth0.GuardianPhoneArgs(\n        message_types=[\"sms\"],\n        options=auth0.GuardianPhoneOptionsArgs(\n            enrollment_message=\"{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment\",\n            verification_message=\"{{code}} is your verification code for {{tenant.friendly_name}}\",\n        ),\n        provider=\"auth0\",\n    ),\n    policy=\"all-applications\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new Auth0.Guardian(\"default\", new Auth0.GuardianArgs\n        {\n            Phone = new Auth0.Inputs.GuardianPhoneArgs\n            {\n                MessageTypes = \n                {\n                    \"sms\",\n                },\n                Options = new Auth0.Inputs.GuardianPhoneOptionsArgs\n                {\n                    EnrollmentMessage = \"{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment\",\n                    VerificationMessage = \"{{code}} is your verification code for {{tenant.friendly_name}}\",\n                },\n                Provider = \"auth0\",\n            },\n            Policy = \"all-applications\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewGuardian(ctx, \"_default\", \u0026auth0.GuardianArgs{\n\t\t\tPhone: \u0026auth0.GuardianPhoneArgs{\n\t\t\t\tMessageTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"sms\"),\n\t\t\t\t},\n\t\t\t\tOptions: \u0026auth0.GuardianPhoneOptionsArgs{\n\t\t\t\t\tEnrollmentMessage:   pulumi.String(\"{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment\"),\n\t\t\t\t\tVerificationMessage: pulumi.String(\"{{code}} is your verification code for {{tenant.friendly_name}}\"),\n\t\t\t\t},\n\t\t\t\tProvider: pulumi.String(\"auth0\"),\n\t\t\t},\n\t\t\tPolicy: pulumi.String(\"all-applications\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "phone": {
+                    "$ref": "#/types/auth0:index/GuardianPhone:GuardianPhone",
+                    "description": "List(Resource). Configuration settings for the phone MFA. For details, see Phone.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
+                }
+            },
+            "required": [
+                "policy"
+            ],
+            "inputProperties": {
+                "phone": {
+                    "$ref": "#/types/auth0:index/GuardianPhone:GuardianPhone",
+                    "description": "List(Resource). Configuration settings for the phone MFA. For details, see Phone.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
+                }
+            },
+            "requiredInputs": [
+                "policy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Guardian resources.\n",
+                "properties": {
+                    "phone": {
+                        "$ref": "#/types/auth0:index/GuardianPhone:GuardianPhone",
+                        "description": "List(Resource). Configuration settings for the phone MFA. For details, see Phone.\n"
+                    },
+                    "policy": {
+                        "type": "string",
+                        "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
                     }
                 },
                 "type": "object"
@@ -5349,7 +5490,7 @@
             "compatibility": "tfbridge20",
             "namespaces": null,
             "packageReferences": {
-                "Pulumi": "3.*-*",
+                "Pulumi": "3.*",
                 "System.Collections.Immutable": "1.6.0"
             }
         },
@@ -5360,7 +5501,7 @@
         "nodejs": {
             "compatibility": "tfbridge20",
             "dependencies": {
-                "@pulumi/pulumi": "^3.0.0-alpha.0"
+                "@pulumi/pulumi": "^3.0.0"
             },
             "devDependencies": {
                 "@types/mime": "^2.0.0",
@@ -5376,7 +5517,7 @@
             "compatibility": "tfbridge20",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/alexkappa/terraform-provider-auth0)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-auth0` repo](https://github.com/pulumi/pulumi-auth0/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`alexkappa/terraform-provider-auth0` repo](https://github.com/alexkappa/terraform-provider-auth0/issues).",
             "requires": {
-                "pulumi": "\u003e=3.0.0a1,\u003c4.0.0"
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }

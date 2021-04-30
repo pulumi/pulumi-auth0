@@ -82,33 +82,15 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"auth0_client_grant": {
-				Tok: makeResource(mainMod, "ClientGrant"),
-			},
-			"auth0_global_client": {
-				Tok: makeResource(mainMod, "GlobalClient"),
-			},
-			"auth0_connection": {
-				Tok: makeResource(mainMod, "Connection"),
-			},
-			"auth0_custom_domain": {
-				Tok: makeResource(mainMod, "CustomDomain"),
-			},
-			"auth0_email": {
-				Tok: makeResource(mainMod, "Email"),
-			},
-			"auth0_email_template": {
-				Tok: makeResource(mainMod, "EmailTemplate"),
-			},
-			"auth0_hook": {
-				Tok: makeResource(mainMod, "Hook"),
-			},
-			"auth0_prompt": {
-				Tok: makeResource(mainMod, "Prompt"),
-			},
-			"auth0_resource_server": {
-				Tok: makeResource(mainMod, "ResourceServer"),
-			},
+			"auth0_client_grant":    {Tok: makeResource(mainMod, "ClientGrant")},
+			"auth0_global_client":   {Tok: makeResource(mainMod, "GlobalClient")},
+			"auth0_connection":      {Tok: makeResource(mainMod, "Connection")},
+			"auth0_custom_domain":   {Tok: makeResource(mainMod, "CustomDomain")},
+			"auth0_email":           {Tok: makeResource(mainMod, "Email")},
+			"auth0_email_template":  {Tok: makeResource(mainMod, "EmailTemplate")},
+			"auth0_hook":            {Tok: makeResource(mainMod, "Hook")},
+			"auth0_prompt":          {Tok: makeResource(mainMod, "Prompt")},
+			"auth0_resource_server": {Tok: makeResource(mainMod, "ResourceServer")},
 			"auth0_role": {
 				Tok: makeResource(mainMod, "Role"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -117,24 +99,17 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"auth0_rule": {
-				Tok: makeResource(mainMod, "Rule"),
-			},
-			"auth0_rule_config": {
-				Tok: makeResource(mainMod, "RuleConfig"),
-			},
-			"auth0_tenant": {
-				Tok: makeResource(mainMod, "Tenant"),
-			},
-			"auth0_user": {
-				Tok: makeResource(mainMod, "User"),
-			},
-			"auth0_log_stream": {Tok: makeResource(mainMod, "LogStream")},
+			"auth0_rule":        {Tok: makeResource(mainMod, "Rule")},
+			"auth0_rule_config": {Tok: makeResource(mainMod, "RuleConfig")},
+			"auth0_tenant":      {Tok: makeResource(mainMod, "Tenant")},
+			"auth0_user":        {Tok: makeResource(mainMod, "User")},
+			"auth0_log_stream":  {Tok: makeResource(mainMod, "LogStream")},
+			"auth0_guardian":    {Tok: makeResource(mainMod, "Guardian")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0-alpha.0",
+				"@pulumi/pulumi": "^3.0.0",
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0",
@@ -143,7 +118,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0a1,<4.0.0",
+				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -158,7 +133,7 @@ func Provider() tfbridge.ProviderInfo {
 
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*-*",
+				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "1.6.0",
 			},
 		},

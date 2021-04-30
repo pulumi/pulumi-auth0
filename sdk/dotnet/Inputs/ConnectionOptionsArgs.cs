@@ -221,6 +221,18 @@ namespace Pulumi.Auth0.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("nonPersistentAttrs")]
+        private InputList<string>? _nonPersistentAttrs;
+
+        /// <summary>
+        /// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+        /// </summary>
+        public InputList<string> NonPersistentAttrs
+        {
+            get => _nonPersistentAttrs ?? (_nonPersistentAttrs = new InputList<string>());
+            set => _nonPersistentAttrs = value;
+        }
+
         /// <summary>
         /// Configuration settings for password complexity. For details, see Password Complexity Options.
         /// </summary>
@@ -300,6 +312,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("setUserRootAttributes")]
         public Input<string>? SetUserRootAttributes { get; set; }
+
+        /// <summary>
+        /// Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+        /// </summary>
+        [Input("shouldTrustEmailVerifiedConnection")]
+        public Input<string>? ShouldTrustEmailVerifiedConnection { get; set; }
 
         /// <summary>
         /// SAML single login URL for the connection.

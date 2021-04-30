@@ -26,7 +26,6 @@ type GlobalClient struct {
 	CrossOriginLoc                 pulumi.StringOutput                `pulumi:"crossOriginLoc"`
 	CustomLoginPage                pulumi.StringOutput                `pulumi:"customLoginPage"`
 	CustomLoginPageOn              pulumi.BoolOutput                  `pulumi:"customLoginPageOn"`
-	CustomLoginPagePreview         pulumi.StringOutput                `pulumi:"customLoginPagePreview"`
 	Description                    pulumi.StringOutput                `pulumi:"description"`
 	EncryptionKey                  pulumi.StringMapOutput             `pulumi:"encryptionKey"`
 	FormTemplate                   pulumi.StringOutput                `pulumi:"formTemplate"`
@@ -88,7 +87,6 @@ type globalClientState struct {
 	CrossOriginLoc                 *string                       `pulumi:"crossOriginLoc"`
 	CustomLoginPage                *string                       `pulumi:"customLoginPage"`
 	CustomLoginPageOn              *bool                         `pulumi:"customLoginPageOn"`
-	CustomLoginPagePreview         *string                       `pulumi:"customLoginPagePreview"`
 	Description                    *string                       `pulumi:"description"`
 	EncryptionKey                  map[string]string             `pulumi:"encryptionKey"`
 	FormTemplate                   *string                       `pulumi:"formTemplate"`
@@ -122,7 +120,6 @@ type GlobalClientState struct {
 	CrossOriginLoc                 pulumi.StringPtrInput
 	CustomLoginPage                pulumi.StringPtrInput
 	CustomLoginPageOn              pulumi.BoolPtrInput
-	CustomLoginPagePreview         pulumi.StringPtrInput
 	Description                    pulumi.StringPtrInput
 	EncryptionKey                  pulumi.StringMapInput
 	FormTemplate                   pulumi.StringPtrInput
@@ -160,7 +157,6 @@ type globalClientArgs struct {
 	CrossOriginLoc                 *string                       `pulumi:"crossOriginLoc"`
 	CustomLoginPage                *string                       `pulumi:"customLoginPage"`
 	CustomLoginPageOn              *bool                         `pulumi:"customLoginPageOn"`
-	CustomLoginPagePreview         *string                       `pulumi:"customLoginPagePreview"`
 	Description                    *string                       `pulumi:"description"`
 	EncryptionKey                  map[string]string             `pulumi:"encryptionKey"`
 	FormTemplate                   *string                       `pulumi:"formTemplate"`
@@ -195,7 +191,6 @@ type GlobalClientArgs struct {
 	CrossOriginLoc                 pulumi.StringPtrInput
 	CustomLoginPage                pulumi.StringPtrInput
 	CustomLoginPageOn              pulumi.BoolPtrInput
-	CustomLoginPagePreview         pulumi.StringPtrInput
 	Description                    pulumi.StringPtrInput
 	EncryptionKey                  pulumi.StringMapInput
 	FormTemplate                   pulumi.StringPtrInput

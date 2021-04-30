@@ -137,8 +137,6 @@ type Client struct {
 	CustomLoginPage pulumi.StringPtrOutput `pulumi:"customLoginPage"`
 	// Boolean. Indicates whether or not a custom login page is to be used.
 	CustomLoginPageOn pulumi.BoolOutput `pulumi:"customLoginPageOn"`
-	// String.
-	CustomLoginPagePreview pulumi.StringPtrOutput `pulumi:"customLoginPagePreview"`
 	// String, (Max length = 140 characters). Description of the purpose of the client.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Map(String).
@@ -232,8 +230,6 @@ type clientState struct {
 	CustomLoginPage *string `pulumi:"customLoginPage"`
 	// Boolean. Indicates whether or not a custom login page is to be used.
 	CustomLoginPageOn *bool `pulumi:"customLoginPageOn"`
-	// String.
-	CustomLoginPagePreview *string `pulumi:"customLoginPagePreview"`
 	// String, (Max length = 140 characters). Description of the purpose of the client.
 	Description *string `pulumi:"description"`
 	// Map(String).
@@ -296,8 +292,6 @@ type ClientState struct {
 	CustomLoginPage pulumi.StringPtrInput
 	// Boolean. Indicates whether or not a custom login page is to be used.
 	CustomLoginPageOn pulumi.BoolPtrInput
-	// String.
-	CustomLoginPagePreview pulumi.StringPtrInput
 	// String, (Max length = 140 characters). Description of the purpose of the client.
 	Description pulumi.StringPtrInput
 	// Map(String).
@@ -360,8 +354,6 @@ type clientArgs struct {
 	CustomLoginPage *string `pulumi:"customLoginPage"`
 	// Boolean. Indicates whether or not a custom login page is to be used.
 	CustomLoginPageOn *bool `pulumi:"customLoginPageOn"`
-	// String.
-	CustomLoginPagePreview *string `pulumi:"customLoginPagePreview"`
 	// String, (Max length = 140 characters). Description of the purpose of the client.
 	Description *string `pulumi:"description"`
 	// Map(String).
@@ -421,8 +413,6 @@ type ClientArgs struct {
 	CustomLoginPage pulumi.StringPtrInput
 	// Boolean. Indicates whether or not a custom login page is to be used.
 	CustomLoginPageOn pulumi.BoolPtrInput
-	// String.
-	CustomLoginPagePreview pulumi.StringPtrInput
 	// String, (Max length = 140 characters). Description of the purpose of the client.
 	Description pulumi.StringPtrInput
 	// Map(String).

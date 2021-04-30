@@ -10,6 +10,7 @@ from .custom_domain import *
 from .email import *
 from .email_template import *
 from .global_client import *
+from .guardian import *
 from .hook import *
 from .log_stream import *
 from .prompt import *
@@ -54,6 +55,8 @@ def _register_module():
                 return EmailTemplate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "auth0:index/globalClient:GlobalClient":
                 return GlobalClient(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "auth0:index/guardian:Guardian":
+                return Guardian(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "auth0:index/hook:Hook":
                 return Hook(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "auth0:index/logStream:LogStream":
@@ -84,6 +87,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("auth0", "index/email", _module_instance)
     pulumi.runtime.register_resource_module("auth0", "index/emailTemplate", _module_instance)
     pulumi.runtime.register_resource_module("auth0", "index/globalClient", _module_instance)
+    pulumi.runtime.register_resource_module("auth0", "index/guardian", _module_instance)
     pulumi.runtime.register_resource_module("auth0", "index/hook", _module_instance)
     pulumi.runtime.register_resource_module("auth0", "index/logStream", _module_instance)
     pulumi.runtime.register_resource_module("auth0", "index/prompt", _module_instance)

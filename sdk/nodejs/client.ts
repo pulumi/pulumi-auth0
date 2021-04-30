@@ -162,10 +162,6 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly customLoginPageOn!: pulumi.Output<boolean>;
     /**
-     * String.
-     */
-    public readonly customLoginPagePreview!: pulumi.Output<string | undefined>;
-    /**
      * String, (Max length = 140 characters). Description of the purpose of the client.
      */
     public readonly description!: pulumi.Output<string>;
@@ -257,7 +253,6 @@ export class Client extends pulumi.CustomResource {
             inputs["crossOriginLoc"] = state ? state.crossOriginLoc : undefined;
             inputs["customLoginPage"] = state ? state.customLoginPage : undefined;
             inputs["customLoginPageOn"] = state ? state.customLoginPageOn : undefined;
-            inputs["customLoginPagePreview"] = state ? state.customLoginPagePreview : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             inputs["formTemplate"] = state ? state.formTemplate : undefined;
@@ -288,7 +283,6 @@ export class Client extends pulumi.CustomResource {
             inputs["crossOriginLoc"] = args ? args.crossOriginLoc : undefined;
             inputs["customLoginPage"] = args ? args.customLoginPage : undefined;
             inputs["customLoginPageOn"] = args ? args.customLoginPageOn : undefined;
-            inputs["customLoginPagePreview"] = args ? args.customLoginPagePreview : undefined;
             inputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
             inputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             inputs["formTemplate"] = args ? args.formTemplate : undefined;
@@ -370,10 +364,6 @@ export interface ClientState {
      * Boolean. Indicates whether or not a custom login page is to be used.
      */
     readonly customLoginPageOn?: pulumi.Input<boolean>;
-    /**
-     * String.
-     */
-    readonly customLoginPagePreview?: pulumi.Input<string>;
     /**
      * String, (Max length = 140 characters). Description of the purpose of the client.
      */
@@ -489,10 +479,6 @@ export interface ClientArgs {
      * Boolean. Indicates whether or not a custom login page is to be used.
      */
     readonly customLoginPageOn?: pulumi.Input<boolean>;
-    /**
-     * String.
-     */
-    readonly customLoginPagePreview?: pulumi.Input<string>;
     /**
      * String, (Max length = 140 characters). Description of the purpose of the client.
      */

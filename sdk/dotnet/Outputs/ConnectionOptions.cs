@@ -120,6 +120,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
+        /// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+        /// </summary>
+        public readonly ImmutableArray<string> NonPersistentAttrs;
+        /// <summary>
         /// Configuration settings for password complexity. For details, see Password Complexity Options.
         /// </summary>
         public readonly Outputs.ConnectionOptionsPasswordComplexityOptions? PasswordComplexityOptions;
@@ -160,6 +164,10 @@ namespace Pulumi.Auth0.Outputs
         /// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
         /// </summary>
         public readonly string? SetUserRootAttributes;
+        /// <summary>
+        /// Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+        /// </summary>
+        public readonly string? ShouldTrustEmailVerifiedConnection;
         /// <summary>
         /// SAML single login URL for the connection.
         /// </summary>
@@ -303,6 +311,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? name,
 
+            ImmutableArray<string> nonPersistentAttrs,
+
             Outputs.ConnectionOptionsPasswordComplexityOptions? passwordComplexityOptions,
 
             Outputs.ConnectionOptionsPasswordDictionary? passwordDictionary,
@@ -324,6 +334,8 @@ namespace Pulumi.Auth0.Outputs
             ImmutableDictionary<string, string>? scripts,
 
             string? setUserRootAttributes,
+
+            string? shouldTrustEmailVerifiedConnection,
 
             string? signInEndpoint,
 
@@ -407,6 +419,7 @@ namespace Pulumi.Auth0.Outputs
             MessagingServiceSid = messagingServiceSid;
             Mfa = mfa;
             Name = name;
+            NonPersistentAttrs = nonPersistentAttrs;
             PasswordComplexityOptions = passwordComplexityOptions;
             PasswordDictionary = passwordDictionary;
             PasswordHistories = passwordHistories;
@@ -418,6 +431,7 @@ namespace Pulumi.Auth0.Outputs
             Scopes = scopes;
             Scripts = scripts;
             SetUserRootAttributes = setUserRootAttributes;
+            ShouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
             SignInEndpoint = signInEndpoint;
             SignOutEndpoint = signOutEndpoint;
             SignSamlRequest = signSamlRequest;

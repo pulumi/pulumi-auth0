@@ -402,6 +402,10 @@ export interface ConnectionOptions {
      */
     name?: string;
     /**
+     * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+     */
+    nonPersistentAttrs: string[];
+    /**
      * Configuration settings for password complexity. For details, see Password Complexity Options.
      */
     passwordComplexityOptions?: outputs.ConnectionOptionsPasswordComplexityOptions;
@@ -442,6 +446,10 @@ export interface ConnectionOptions {
      * Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
      */
     setUserRootAttributes: string;
+    /**
+     * Determines how Auth0 sets the emailVerified field in the user profile. Can either be set to `neverSetEmailsAsVerified` or `alwaysSetEmailsAsVerified`.
+     */
+    shouldTrustEmailVerifiedConnection?: string;
     /**
      * SAML single login URL for the connection.
      */
@@ -730,6 +738,48 @@ export interface GlobalClientRefreshToken {
     leeway?: number;
     rotationType: string;
     tokenLifetime?: number;
+}
+
+export interface GuardianPhone {
+    /**
+     * List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+     */
+    messageTypes: string[];
+    /**
+     * List(Resource). Options for the various providers. See Options.
+     */
+    options?: outputs.GuardianPhoneOptions;
+    /**
+     * String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     */
+    provider: string;
+}
+
+export interface GuardianPhoneOptions {
+    /**
+     * String.
+     */
+    authToken?: string;
+    /**
+     * String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+     */
+    enrollmentMessage?: string;
+    /**
+     * String.
+     */
+    from?: string;
+    /**
+     * String.
+     */
+    messagingServiceSid?: string;
+    /**
+     * String.
+     */
+    sid?: string;
+    /**
+     * String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
+     */
+    verificationMessage?: string;
 }
 
 export interface LogStreamSink {

@@ -22,6 +22,7 @@
         "email.ts",
         "emailTemplate.ts",
         "globalClient.ts",
+        "guardian.ts",
         "hook.ts",
         "index.ts",
         "logStream.ts",

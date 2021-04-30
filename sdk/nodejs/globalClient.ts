@@ -46,7 +46,6 @@ export class GlobalClient extends pulumi.CustomResource {
     public readonly crossOriginLoc!: pulumi.Output<string>;
     public readonly customLoginPage!: pulumi.Output<string>;
     public readonly customLoginPageOn!: pulumi.Output<boolean>;
-    public readonly customLoginPagePreview!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string>;
     public readonly encryptionKey!: pulumi.Output<{[key: string]: string}>;
     public readonly formTemplate!: pulumi.Output<string>;
@@ -91,7 +90,6 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["crossOriginLoc"] = state ? state.crossOriginLoc : undefined;
             inputs["customLoginPage"] = state ? state.customLoginPage : undefined;
             inputs["customLoginPageOn"] = state ? state.customLoginPageOn : undefined;
-            inputs["customLoginPagePreview"] = state ? state.customLoginPagePreview : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             inputs["formTemplate"] = state ? state.formTemplate : undefined;
@@ -124,7 +122,6 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["crossOriginLoc"] = args ? args.crossOriginLoc : undefined;
             inputs["customLoginPage"] = args ? args.customLoginPage : undefined;
             inputs["customLoginPageOn"] = args ? args.customLoginPageOn : undefined;
-            inputs["customLoginPagePreview"] = args ? args.customLoginPagePreview : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             inputs["formTemplate"] = args ? args.formTemplate : undefined;
@@ -167,7 +164,6 @@ export interface GlobalClientState {
     readonly crossOriginLoc?: pulumi.Input<string>;
     readonly customLoginPage?: pulumi.Input<string>;
     readonly customLoginPageOn?: pulumi.Input<boolean>;
-    readonly customLoginPagePreview?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly formTemplate?: pulumi.Input<string>;
@@ -204,7 +200,6 @@ export interface GlobalClientArgs {
     readonly crossOriginLoc?: pulumi.Input<string>;
     readonly customLoginPage?: pulumi.Input<string>;
     readonly customLoginPageOn?: pulumi.Input<boolean>;
-    readonly customLoginPagePreview?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly formTemplate?: pulumi.Input<string>;
