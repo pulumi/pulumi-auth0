@@ -114,19 +114,19 @@ export interface EmailState {
     /**
      * List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
      */
-    readonly credentials?: pulumi.Input<inputs.EmailCredentials>;
+    credentials?: pulumi.Input<inputs.EmailCredentials>;
     /**
      * String. Email address to use as the sender when no other "from" address is specified.
      */
-    readonly defaultFromAddress?: pulumi.Input<string>;
+    defaultFromAddress?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not the email provider is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -136,17 +136,17 @@ export interface EmailArgs {
     /**
      * List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
      */
-    readonly credentials: pulumi.Input<inputs.EmailCredentials>;
+    credentials: pulumi.Input<inputs.EmailCredentials>;
     /**
      * String. Email address to use as the sender when no other "from" address is specified.
      */
-    readonly defaultFromAddress: pulumi.Input<string>;
+    defaultFromAddress: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not the email provider is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

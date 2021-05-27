@@ -85,30 +85,30 @@ export class LogStream extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogStream resources.
  */
 export interface LogStreamState {
-    readonly name?: pulumi.Input<string>;
-    readonly sink?: pulumi.Input<inputs.LogStreamSink>;
+    name?: pulumi.Input<string>;
+    sink?: pulumi.Input<inputs.LogStreamSink>;
     /**
      * Status of the LogStream
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Type of the log stream, which indicates the sink provider
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a LogStream resource.
  */
 export interface LogStreamArgs {
-    readonly name?: pulumi.Input<string>;
-    readonly sink: pulumi.Input<inputs.LogStreamSink>;
+    name?: pulumi.Input<string>;
+    sink: pulumi.Input<inputs.LogStreamSink>;
     /**
      * Status of the LogStream
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Type of the log stream, which indicates the sink provider
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

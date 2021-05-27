@@ -120,15 +120,15 @@ export interface RoleState {
     /**
      * String. Description of the role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * String. Name for this role.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
      */
-    readonly permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }
 
 /**
@@ -138,13 +138,13 @@ export interface RoleArgs {
     /**
      * String. Description of the role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * String. Name for this role.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
      */
-    readonly permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }

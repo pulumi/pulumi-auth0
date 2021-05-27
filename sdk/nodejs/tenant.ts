@@ -206,71 +206,71 @@ export interface TenantState {
     /**
      * List(String). URLs that Auth0 may redirect to after logout.
      */
-    readonly allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
      */
-    readonly changePassword?: pulumi.Input<inputs.TenantChangePassword>;
+    changePassword?: pulumi.Input<inputs.TenantChangePassword>;
     /**
      * String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
-    readonly defaultAudience?: pulumi.Input<string>;
+    defaultAudience?: pulumi.Input<string>;
     /**
      * String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      */
-    readonly defaultDirectory?: pulumi.Input<string>;
+    defaultDirectory?: pulumi.Input<string>;
     /**
      * String. The default absolute redirection uri, must be https and cannot contain a fragment.
      */
-    readonly defaultRedirectionUri?: pulumi.Input<string>;
+    defaultRedirectionUri?: pulumi.Input<string>;
     /**
      * List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
-    readonly enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(Resource). Configuration settings for error pages. For details, see Error Page.
      */
-    readonly errorPage?: pulumi.Input<inputs.TenantErrorPage>;
+    errorPage?: pulumi.Input<inputs.TenantErrorPage>;
     /**
      * List(Resource). Configuration settings for tenant flags. For details, see Flags.
      */
-    readonly flags?: pulumi.Input<inputs.TenantFlags>;
+    flags?: pulumi.Input<inputs.TenantFlags>;
     /**
      * String. Friendly name for the tenant.
      */
-    readonly friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string>;
     /**
      * List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
      */
-    readonly guardianMfaPage?: pulumi.Input<inputs.TenantGuardianMfaPage>;
+    guardianMfaPage?: pulumi.Input<inputs.TenantGuardianMfaPage>;
     /**
      * Integer. Number of hours during which a session can be inactive before the user must log in again.
      */
-    readonly idleSessionLifetime?: pulumi.Input<number>;
+    idleSessionLifetime?: pulumi.Input<number>;
     /**
      * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
-    readonly pictureUrl?: pulumi.Input<string>;
+    pictureUrl?: pulumi.Input<string>;
     /**
      * String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
-    readonly sandboxVersion?: pulumi.Input<string>;
+    sandboxVersion?: pulumi.Input<string>;
     /**
      * Integer. Number of hours during which a session will stay valid.
      */
-    readonly sessionLifetime?: pulumi.Input<number>;
+    sessionLifetime?: pulumi.Input<number>;
     /**
      * String. Support email address for authenticating users.
      */
-    readonly supportEmail?: pulumi.Input<string>;
+    supportEmail?: pulumi.Input<string>;
     /**
      * String. Support URL for authenticating users.
      */
-    readonly supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string>;
     /**
      * List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
      */
-    readonly universalLogin?: pulumi.Input<inputs.TenantUniversalLogin>;
+    universalLogin?: pulumi.Input<inputs.TenantUniversalLogin>;
 }
 
 /**
@@ -280,69 +280,69 @@ export interface TenantArgs {
     /**
      * List(String). URLs that Auth0 may redirect to after logout.
      */
-    readonly allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
      */
-    readonly changePassword?: pulumi.Input<inputs.TenantChangePassword>;
+    changePassword?: pulumi.Input<inputs.TenantChangePassword>;
     /**
      * String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
-    readonly defaultAudience?: pulumi.Input<string>;
+    defaultAudience?: pulumi.Input<string>;
     /**
      * String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      */
-    readonly defaultDirectory?: pulumi.Input<string>;
+    defaultDirectory?: pulumi.Input<string>;
     /**
      * String. The default absolute redirection uri, must be https and cannot contain a fragment.
      */
-    readonly defaultRedirectionUri?: pulumi.Input<string>;
+    defaultRedirectionUri?: pulumi.Input<string>;
     /**
      * List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
-    readonly enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(Resource). Configuration settings for error pages. For details, see Error Page.
      */
-    readonly errorPage?: pulumi.Input<inputs.TenantErrorPage>;
+    errorPage?: pulumi.Input<inputs.TenantErrorPage>;
     /**
      * List(Resource). Configuration settings for tenant flags. For details, see Flags.
      */
-    readonly flags?: pulumi.Input<inputs.TenantFlags>;
+    flags?: pulumi.Input<inputs.TenantFlags>;
     /**
      * String. Friendly name for the tenant.
      */
-    readonly friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string>;
     /**
      * List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
      */
-    readonly guardianMfaPage?: pulumi.Input<inputs.TenantGuardianMfaPage>;
+    guardianMfaPage?: pulumi.Input<inputs.TenantGuardianMfaPage>;
     /**
      * Integer. Number of hours during which a session can be inactive before the user must log in again.
      */
-    readonly idleSessionLifetime?: pulumi.Input<number>;
+    idleSessionLifetime?: pulumi.Input<number>;
     /**
      * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
-    readonly pictureUrl?: pulumi.Input<string>;
+    pictureUrl?: pulumi.Input<string>;
     /**
      * String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
-    readonly sandboxVersion?: pulumi.Input<string>;
+    sandboxVersion?: pulumi.Input<string>;
     /**
      * Integer. Number of hours during which a session will stay valid.
      */
-    readonly sessionLifetime?: pulumi.Input<number>;
+    sessionLifetime?: pulumi.Input<number>;
     /**
      * String. Support email address for authenticating users.
      */
-    readonly supportEmail?: pulumi.Input<string>;
+    supportEmail?: pulumi.Input<string>;
     /**
      * String. Support URL for authenticating users.
      */
-    readonly supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string>;
     /**
      * List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
      */
-    readonly universalLogin?: pulumi.Input<inputs.TenantUniversalLogin>;
+    universalLogin?: pulumi.Input<inputs.TenantUniversalLogin>;
 }

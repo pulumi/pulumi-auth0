@@ -145,3 +145,18 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "domain")
+

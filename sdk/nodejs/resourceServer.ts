@@ -170,55 +170,55 @@ export interface ResourceServerState {
     /**
      * Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
      */
-    readonly allowOfflineAccess?: pulumi.Input<boolean>;
+    allowOfflineAccess?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether or not authorization polices are enforced.
      */
-    readonly enforcePolicies?: pulumi.Input<boolean>;
+    enforcePolicies?: pulumi.Input<boolean>;
     /**
      * String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
      */
-    readonly identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string>;
     /**
      * String. Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Map(String). Used to store additional metadata
      */
-    readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
      */
-    readonly scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScope>[]>;
+    scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScope>[]>;
     /**
      * String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      */
-    readonly signingAlg?: pulumi.Input<string>;
+    signingAlg?: pulumi.Input<string>;
     /**
      * String. Secret used to sign tokens when using symmetric algorithms (HS256).
      */
-    readonly signingSecret?: pulumi.Input<string>;
+    signingSecret?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
      */
-    readonly skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
+    skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
     /**
      * String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
      */
-    readonly tokenDialect?: pulumi.Input<string>;
+    tokenDialect?: pulumi.Input<string>;
     /**
      * Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
-    readonly tokenLifetime?: pulumi.Input<number>;
+    tokenLifetime?: pulumi.Input<number>;
     /**
      * Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
-    readonly tokenLifetimeForWeb?: pulumi.Input<number>;
+    tokenLifetimeForWeb?: pulumi.Input<number>;
     /**
      * String
      */
-    readonly verificationLocation?: pulumi.Input<string>;
+    verificationLocation?: pulumi.Input<string>;
 }
 
 /**
@@ -228,53 +228,53 @@ export interface ResourceServerArgs {
     /**
      * Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
      */
-    readonly allowOfflineAccess?: pulumi.Input<boolean>;
+    allowOfflineAccess?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether or not authorization polices are enforced.
      */
-    readonly enforcePolicies?: pulumi.Input<boolean>;
+    enforcePolicies?: pulumi.Input<boolean>;
     /**
      * String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
      */
-    readonly identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string>;
     /**
      * String. Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Map(String). Used to store additional metadata
      */
-    readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
      */
-    readonly scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScope>[]>;
+    scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScope>[]>;
     /**
      * String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      */
-    readonly signingAlg?: pulumi.Input<string>;
+    signingAlg?: pulumi.Input<string>;
     /**
      * String. Secret used to sign tokens when using symmetric algorithms (HS256).
      */
-    readonly signingSecret?: pulumi.Input<string>;
+    signingSecret?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
      */
-    readonly skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
+    skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
     /**
      * String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
      */
-    readonly tokenDialect?: pulumi.Input<string>;
+    tokenDialect?: pulumi.Input<string>;
     /**
      * Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
-    readonly tokenLifetime?: pulumi.Input<number>;
+    tokenLifetime?: pulumi.Input<number>;
     /**
      * Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
-    readonly tokenLifetimeForWeb?: pulumi.Input<number>;
+    tokenLifetimeForWeb?: pulumi.Input<number>;
     /**
      * String
      */
-    readonly verificationLocation?: pulumi.Input<string>;
+    verificationLocation?: pulumi.Input<string>;
 }

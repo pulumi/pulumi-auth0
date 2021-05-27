@@ -102,11 +102,11 @@ export interface GuardianState {
     /**
      * List(Resource). Configuration settings for the phone MFA. For details, see Phone.
      */
-    readonly phone?: pulumi.Input<inputs.GuardianPhone>;
+    phone?: pulumi.Input<inputs.GuardianPhone>;
     /**
      * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
      */
-    readonly policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
 }
 
 /**
@@ -116,9 +116,9 @@ export interface GuardianArgs {
     /**
      * List(Resource). Configuration settings for the phone MFA. For details, see Phone.
      */
-    readonly phone?: pulumi.Input<inputs.GuardianPhone>;
+    phone?: pulumi.Input<inputs.GuardianPhone>;
     /**
      * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
      */
-    readonly policy: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
 }

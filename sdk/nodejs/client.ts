@@ -317,118 +317,118 @@ export interface ClientState {
     /**
      * List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
      */
-    readonly addons?: pulumi.Input<inputs.ClientAddons>;
+    addons?: pulumi.Input<inputs.ClientAddons>;
     /**
      * List(String). URLs that Auth0 may redirect to after logout.
      */
-    readonly allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
-    readonly allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
-    readonly appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string>;
     /**
      * List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
-    readonly callbacks?: pulumi.Input<pulumi.Input<string>[]>;
+    callbacks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * String. ID of the client.
      * * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * Map(String)
      */
-    readonly clientMetadata?: pulumi.Input<{[key: string]: any}>;
-    readonly clientSecret?: pulumi.Input<string>;
+    clientMetadata?: pulumi.Input<{[key: string]: any}>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * Map.
      */
-    readonly clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
+    clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
     /**
      * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
      */
-    readonly crossOriginAuth?: pulumi.Input<boolean>;
+    crossOriginAuth?: pulumi.Input<boolean>;
     /**
      * String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
      */
-    readonly crossOriginLoc?: pulumi.Input<string>;
+    crossOriginLoc?: pulumi.Input<string>;
     /**
      * String. Content of the custom login page.
      */
-    readonly customLoginPage?: pulumi.Input<string>;
+    customLoginPage?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not a custom login page is to be used.
      */
-    readonly customLoginPageOn?: pulumi.Input<boolean>;
+    customLoginPageOn?: pulumi.Input<boolean>;
     /**
      * String, (Max length = 140 characters). Description of the purpose of the client.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Map(String).
      */
-    readonly encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * String. Form template for WS-Federation protocol.
      */
-    readonly formTemplate?: pulumi.Input<string>;
+    formTemplate?: pulumi.Input<string>;
     /**
      * List(String). Types of grants that this client is authorized to use.
      */
-    readonly grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly initiateLoginUri?: pulumi.Input<string>;
+    grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    initiateLoginUri?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not this client is a first-party client.
      */
-    readonly isFirstParty?: pulumi.Input<boolean>;
+    isFirstParty?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether or not the token endpoint IP header is trusted.
      */
-    readonly isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean>;
+    isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean>;
     /**
      * List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
      */
-    readonly jwtConfiguration?: pulumi.Input<inputs.ClientJwtConfiguration>;
+    jwtConfiguration?: pulumi.Input<inputs.ClientJwtConfiguration>;
     /**
      * String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      */
-    readonly logoUri?: pulumi.Input<string>;
+    logoUri?: pulumi.Input<string>;
     /**
      * List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
      */
-    readonly mobile?: pulumi.Input<inputs.ClientMobile>;
+    mobile?: pulumi.Input<inputs.ClientMobile>;
     /**
      * String. Name of the client.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
-    readonly oidcConformant?: pulumi.Input<boolean>;
+    oidcConformant?: pulumi.Input<boolean>;
     /**
      * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
      */
-    readonly refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
+    refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
      */
-    readonly sso?: pulumi.Input<boolean>;
+    sso?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether or not SSO is disabled.
      */
-    readonly ssoDisabled?: pulumi.Input<boolean>;
+    ssoDisabled?: pulumi.Input<boolean>;
     /**
      * String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
      */
-    readonly tokenEndpointAuthMethod?: pulumi.Input<string>;
+    tokenEndpointAuthMethod?: pulumi.Input<string>;
     /**
      * List(String). URLs that represent valid web origins for use with web message response mode.
      */
-    readonly webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -438,110 +438,110 @@ export interface ClientArgs {
     /**
      * List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
      */
-    readonly addons?: pulumi.Input<inputs.ClientAddons>;
+    addons?: pulumi.Input<inputs.ClientAddons>;
     /**
      * List(String). URLs that Auth0 may redirect to after logout.
      */
-    readonly allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
-    readonly allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
-    readonly appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string>;
     /**
      * List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
-    readonly callbacks?: pulumi.Input<pulumi.Input<string>[]>;
+    callbacks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Map(String)
      */
-    readonly clientMetadata?: pulumi.Input<{[key: string]: any}>;
+    clientMetadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * Map.
      */
-    readonly clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
+    clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
     /**
      * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
      */
-    readonly crossOriginAuth?: pulumi.Input<boolean>;
+    crossOriginAuth?: pulumi.Input<boolean>;
     /**
      * String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
      */
-    readonly crossOriginLoc?: pulumi.Input<string>;
+    crossOriginLoc?: pulumi.Input<string>;
     /**
      * String. Content of the custom login page.
      */
-    readonly customLoginPage?: pulumi.Input<string>;
+    customLoginPage?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not a custom login page is to be used.
      */
-    readonly customLoginPageOn?: pulumi.Input<boolean>;
+    customLoginPageOn?: pulumi.Input<boolean>;
     /**
      * String, (Max length = 140 characters). Description of the purpose of the client.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Map(String).
      */
-    readonly encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * String. Form template for WS-Federation protocol.
      */
-    readonly formTemplate?: pulumi.Input<string>;
+    formTemplate?: pulumi.Input<string>;
     /**
      * List(String). Types of grants that this client is authorized to use.
      */
-    readonly grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly initiateLoginUri?: pulumi.Input<string>;
+    grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    initiateLoginUri?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not this client is a first-party client.
      */
-    readonly isFirstParty?: pulumi.Input<boolean>;
+    isFirstParty?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether or not the token endpoint IP header is trusted.
      */
-    readonly isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean>;
+    isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean>;
     /**
      * List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
      */
-    readonly jwtConfiguration?: pulumi.Input<inputs.ClientJwtConfiguration>;
+    jwtConfiguration?: pulumi.Input<inputs.ClientJwtConfiguration>;
     /**
      * String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      */
-    readonly logoUri?: pulumi.Input<string>;
+    logoUri?: pulumi.Input<string>;
     /**
      * List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
      */
-    readonly mobile?: pulumi.Input<inputs.ClientMobile>;
+    mobile?: pulumi.Input<inputs.ClientMobile>;
     /**
      * String. Name of the client.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
-    readonly oidcConformant?: pulumi.Input<boolean>;
+    oidcConformant?: pulumi.Input<boolean>;
     /**
      * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
      */
-    readonly refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
+    refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
      */
-    readonly sso?: pulumi.Input<boolean>;
+    sso?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether or not SSO is disabled.
      */
-    readonly ssoDisabled?: pulumi.Input<boolean>;
+    ssoDisabled?: pulumi.Input<boolean>;
     /**
      * String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
      */
-    readonly tokenEndpointAuthMethod?: pulumi.Input<string>;
+    tokenEndpointAuthMethod?: pulumi.Input<string>;
     /**
      * List(String). URLs that represent valid web origins for use with web message response mode.
      */
-    readonly webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
 }
