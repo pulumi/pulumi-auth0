@@ -17,6 +17,10 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	ClientId     pulumi.StringOutput `pulumi:"clientId"`
+	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	Domain       pulumi.StringOutput `pulumi:"domain"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

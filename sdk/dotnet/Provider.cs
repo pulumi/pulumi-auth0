@@ -18,6 +18,16 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("pulumi:providers:auth0")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("clientId")]
+        public Output<string> ClientId { get; private set; } = null!;
+
+        [Output("clientSecret")]
+        public Output<string> ClientSecret { get; private set; } = null!;
+
+        [Output("domain")]
+        public Output<string> Domain { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>

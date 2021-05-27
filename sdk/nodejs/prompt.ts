@@ -83,20 +83,20 @@ export class Prompt extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Prompt resources.
  */
 export interface PromptState {
-    readonly identifierFirst?: pulumi.Input<boolean>;
+    identifierFirst?: pulumi.Input<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
-    readonly universalLoginExperience?: pulumi.Input<string>;
+    universalLoginExperience?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Prompt resource.
  */
 export interface PromptArgs {
-    readonly identifierFirst?: pulumi.Input<boolean>;
+    identifierFirst?: pulumi.Input<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
-    readonly universalLoginExperience?: pulumi.Input<string>;
+    universalLoginExperience?: pulumi.Input<string>;
 }

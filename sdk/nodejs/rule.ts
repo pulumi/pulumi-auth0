@@ -112,19 +112,19 @@ export interface RuleState {
     /**
      * Boolean. Indicates whether the rule is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      */
-    readonly order?: pulumi.Input<number>;
+    order?: pulumi.Input<number>;
     /**
      * String. Code to be executed when the rule runs.
      */
-    readonly script?: pulumi.Input<string>;
+    script?: pulumi.Input<string>;
 }
 
 /**
@@ -134,17 +134,17 @@ export interface RuleArgs {
     /**
      * Boolean. Indicates whether the rule is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      */
-    readonly order?: pulumi.Input<number>;
+    order?: pulumi.Input<number>;
     /**
      * String. Code to be executed when the rule runs.
      */
-    readonly script: pulumi.Input<string>;
+    script: pulumi.Input<string>;
 }

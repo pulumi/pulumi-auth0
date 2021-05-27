@@ -125,27 +125,27 @@ export interface CustomDomainState {
     /**
      * String. Name of the custom domain.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not this is a primary domain.
      */
-    readonly primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean>;
     /**
      * String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * List(Resource). Configuration settings for verification. For details, see Verification.
      */
-    readonly verification?: pulumi.Input<inputs.CustomDomainVerification>;
+    verification?: pulumi.Input<inputs.CustomDomainVerification>;
     /**
      * String. Domain verification method. Options include `txt`.
      */
-    readonly verificationMethod?: pulumi.Input<string>;
+    verificationMethod?: pulumi.Input<string>;
 }
 
 /**
@@ -155,13 +155,13 @@ export interface CustomDomainArgs {
     /**
      * String. Name of the custom domain.
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * String. Domain verification method. Options include `txt`.
      */
-    readonly verificationMethod: pulumi.Input<string>;
+    verificationMethod: pulumi.Input<string>;
 }

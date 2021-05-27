@@ -120,15 +120,15 @@ export interface ClientGrantState {
     /**
      * String. Audience or API Identifier for this grant.
      */
-    readonly audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string>;
     /**
      * String. ID of the client for this grant.
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * List(String). Permissions (scopes) included in this grant.
      */
-    readonly scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -138,13 +138,13 @@ export interface ClientGrantArgs {
     /**
      * String. Audience or API Identifier for this grant.
      */
-    readonly audience: pulumi.Input<string>;
+    audience: pulumi.Input<string>;
     /**
      * String. ID of the client for this grant.
      */
-    readonly clientId: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
     /**
      * List(String). Permissions (scopes) included in this grant.
      */
-    readonly scopes: pulumi.Input<pulumi.Input<string>[]>;
+    scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

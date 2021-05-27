@@ -129,27 +129,27 @@ export interface HookState {
     /**
      * Dependencies of this hook used by webtask server
      */
-    readonly dependencies?: pulumi.Input<{[key: string]: any}>;
+    dependencies?: pulumi.Input<{[key: string]: any}>;
     /**
      * Whether the hook is enabled, or disabled
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of this hook
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Code to be executed when this hook runs
      */
-    readonly script?: pulumi.Input<string>;
+    script?: pulumi.Input<string>;
     /**
      * The secrets associated with the hook
      */
-    readonly secrets?: pulumi.Input<{[key: string]: any}>;
+    secrets?: pulumi.Input<{[key: string]: any}>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
      */
-    readonly triggerId?: pulumi.Input<string>;
+    triggerId?: pulumi.Input<string>;
 }
 
 /**
@@ -159,25 +159,25 @@ export interface HookArgs {
     /**
      * Dependencies of this hook used by webtask server
      */
-    readonly dependencies?: pulumi.Input<{[key: string]: any}>;
+    dependencies?: pulumi.Input<{[key: string]: any}>;
     /**
      * Whether the hook is enabled, or disabled
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of this hook
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Code to be executed when this hook runs
      */
-    readonly script: pulumi.Input<string>;
+    script: pulumi.Input<string>;
     /**
      * The secrets associated with the hook
      */
-    readonly secrets?: pulumi.Input<{[key: string]: any}>;
+    secrets?: pulumi.Input<{[key: string]: any}>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
      */
-    readonly triggerId: pulumi.Input<string>;
+    triggerId: pulumi.Input<string>;
 }

@@ -103,11 +103,11 @@ export interface RuleConfigState {
     /**
      * String. Key for a rules configuration variable.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * String, Case-sensitive. Value for a rules configuration variable.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -117,9 +117,9 @@ export interface RuleConfigArgs {
     /**
      * String. Key for a rules configuration variable.
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * String, Case-sensitive. Value for a rules configuration variable.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
