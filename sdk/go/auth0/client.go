@@ -25,21 +25,21 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewClient(ctx, "myClient", &auth0.ClientArgs{
-// 			Addons: &auth0.ClientAddonsArgs{
-// 				Firebase: pulumi.Map{
-// 					"clientEmail":       pulumi.String("john.doe@example.com"),
-// 					"lifetimeInSeconds": pulumi.Float64(1),
-// 					"privateKey":        pulumi.String("wer"),
-// 					"privateKeyId":      pulumi.String("qwreerwerwe"),
+// 			Addons: &ClientAddonsArgs{
+// 				Firebase: pulumi.AnyMap{
+// 					"clientEmail":       pulumi.Any("john.doe@example.com"),
+// 					"lifetimeInSeconds": pulumi.Any(1),
+// 					"privateKey":        pulumi.Any("wer"),
+// 					"privateKeyId":      pulumi.Any("qwreerwerwe"),
 // 				},
-// 				Samlp: &auth0.ClientAddonsSamlpArgs{
+// 				Samlp: &ClientAddonsSamlpArgs{
 // 					Audience:             pulumi.String("https://example.com/saml"),
 // 					CreateUpnClaim:       pulumi.Bool(false),
 // 					MapIdentities:        pulumi.Bool(false),
 // 					MapUnknownClaimsAsIs: pulumi.Bool(false),
-// 					Mappings: pulumi.StringMap{
-// 						"email": pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
-// 						"name":  pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
+// 					Mappings: pulumi.AnyMap{
+// 						"email": pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+// 						"name":  pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
 // 					},
 // 					NameIdentifierFormat: pulumi.String("urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"),
 // 					NameIdentifierProbes: pulumi.StringArray{
@@ -58,8 +58,8 @@ import (
 // 			Callbacks: pulumi.StringArray{
 // 				pulumi.String("https://example.com/callback"),
 // 			},
-// 			ClientMetadata: pulumi.StringMap{
-// 				"foo": pulumi.String("zoo"),
+// 			ClientMetadata: pulumi.AnyMap{
+// 				"foo": pulumi.Any("zoo"),
 // 			},
 // 			CustomLoginPageOn: pulumi.Bool(true),
 // 			Description:       pulumi.String("Test Applications Long Description"),
@@ -72,7 +72,7 @@ import (
 // 			},
 // 			IsFirstParty:                   pulumi.Bool(true),
 // 			IsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),
-// 			JwtConfiguration: &auth0.ClientJwtConfigurationArgs{
+// 			JwtConfiguration: &ClientJwtConfigurationArgs{
 // 				Alg:               pulumi.String("RS256"),
 // 				LifetimeInSeconds: pulumi.Int(300),
 // 				Scopes: pulumi.StringMap{
@@ -80,14 +80,14 @@ import (
 // 				},
 // 				SecretEncoded: pulumi.Bool(true),
 // 			},
-// 			Mobile: &auth0.ClientMobileArgs{
-// 				Ios: &auth0.ClientMobileIosArgs{
+// 			Mobile: &ClientMobileArgs{
+// 				Ios: &ClientMobileIosArgs{
 // 					AppBundleIdentifier: pulumi.String("com.my.bundle.id"),
 // 					TeamId:              pulumi.String("9JA89QQLNQ"),
 // 				},
 // 			},
 // 			OidcConformant: pulumi.Bool(false),
-// 			RefreshToken: &auth0.ClientRefreshTokenArgs{
+// 			RefreshToken: &ClientRefreshTokenArgs{
 // 				ExpirationType:            pulumi.String("expiring"),
 // 				IdleTokenLifetime:         pulumi.Int(1296000),
 // 				InfiniteIdleTokenLifetime: pulumi.Bool(true),
@@ -514,7 +514,7 @@ type ClientArrayInput interface {
 type ClientArray []ClientInput
 
 func (ClientArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Client)(nil))
+	return reflect.TypeOf((*[]*Client)(nil)).Elem()
 }
 
 func (i ClientArray) ToClientArrayOutput() ClientArrayOutput {
@@ -539,7 +539,7 @@ type ClientMapInput interface {
 type ClientMap map[string]ClientInput
 
 func (ClientMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Client)(nil))
+	return reflect.TypeOf((*map[string]*Client)(nil)).Elem()
 }
 
 func (i ClientMap) ToClientMapOutput() ClientMapOutput {
@@ -550,9 +550,7 @@ func (i ClientMap) ToClientMapOutputWithContext(ctx context.Context) ClientMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ClientMapOutput)
 }
 
-type ClientOutput struct {
-	*pulumi.OutputState
-}
+type ClientOutput struct{ *pulumi.OutputState }
 
 func (ClientOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Client)(nil))
@@ -571,14 +569,12 @@ func (o ClientOutput) ToClientPtrOutput() ClientPtrOutput {
 }
 
 func (o ClientOutput) ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput {
-	return o.ApplyT(func(v Client) *Client {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Client) *Client {
 		return &v
 	}).(ClientPtrOutput)
 }
 
-type ClientPtrOutput struct {
-	*pulumi.OutputState
-}
+type ClientPtrOutput struct{ *pulumi.OutputState }
 
 func (ClientPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Client)(nil))
@@ -590,6 +586,16 @@ func (o ClientPtrOutput) ToClientPtrOutput() ClientPtrOutput {
 
 func (o ClientPtrOutput) ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput {
 	return o
+}
+
+func (o ClientPtrOutput) Elem() ClientOutput {
+	return o.ApplyT(func(v *Client) Client {
+		if v != nil {
+			return *v
+		}
+		var ret Client
+		return ret
+	}).(ClientOutput)
 }
 
 type ClientArrayOutput struct{ *pulumi.OutputState }
@@ -633,6 +639,10 @@ func (o ClientMapOutput) MapIndex(k pulumi.StringInput) ClientOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientInput)(nil)).Elem(), &Client{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientPtrInput)(nil)).Elem(), &Client{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientArrayInput)(nil)).Elem(), ClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMapInput)(nil)).Elem(), ClientMap{})
 	pulumi.RegisterOutputType(ClientOutput{})
 	pulumi.RegisterOutputType(ClientPtrOutput{})
 	pulumi.RegisterOutputType(ClientArrayOutput{})

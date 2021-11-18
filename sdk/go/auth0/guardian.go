@@ -27,11 +27,11 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewGuardian(ctx, "_default", &auth0.GuardianArgs{
-// 			Phone: &auth0.GuardianPhoneArgs{
+// 			Phone: &GuardianPhoneArgs{
 // 				MessageTypes: pulumi.StringArray{
 // 					pulumi.String("sms"),
 // 				},
-// 				Options: &auth0.GuardianPhoneOptionsArgs{
+// 				Options: &GuardianPhoneOptionsArgs{
 // 					EnrollmentMessage:   pulumi.String("{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment"),
 // 					VerificationMessage: pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}"),
 // 				},
@@ -185,7 +185,7 @@ type GuardianArrayInput interface {
 type GuardianArray []GuardianInput
 
 func (GuardianArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Guardian)(nil))
+	return reflect.TypeOf((*[]*Guardian)(nil)).Elem()
 }
 
 func (i GuardianArray) ToGuardianArrayOutput() GuardianArrayOutput {
@@ -210,7 +210,7 @@ type GuardianMapInput interface {
 type GuardianMap map[string]GuardianInput
 
 func (GuardianMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Guardian)(nil))
+	return reflect.TypeOf((*map[string]*Guardian)(nil)).Elem()
 }
 
 func (i GuardianMap) ToGuardianMapOutput() GuardianMapOutput {
@@ -221,9 +221,7 @@ func (i GuardianMap) ToGuardianMapOutputWithContext(ctx context.Context) Guardia
 	return pulumi.ToOutputWithContext(ctx, i).(GuardianMapOutput)
 }
 
-type GuardianOutput struct {
-	*pulumi.OutputState
-}
+type GuardianOutput struct{ *pulumi.OutputState }
 
 func (GuardianOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Guardian)(nil))
@@ -242,14 +240,12 @@ func (o GuardianOutput) ToGuardianPtrOutput() GuardianPtrOutput {
 }
 
 func (o GuardianOutput) ToGuardianPtrOutputWithContext(ctx context.Context) GuardianPtrOutput {
-	return o.ApplyT(func(v Guardian) *Guardian {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Guardian) *Guardian {
 		return &v
 	}).(GuardianPtrOutput)
 }
 
-type GuardianPtrOutput struct {
-	*pulumi.OutputState
-}
+type GuardianPtrOutput struct{ *pulumi.OutputState }
 
 func (GuardianPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Guardian)(nil))
@@ -261,6 +257,16 @@ func (o GuardianPtrOutput) ToGuardianPtrOutput() GuardianPtrOutput {
 
 func (o GuardianPtrOutput) ToGuardianPtrOutputWithContext(ctx context.Context) GuardianPtrOutput {
 	return o
+}
+
+func (o GuardianPtrOutput) Elem() GuardianOutput {
+	return o.ApplyT(func(v *Guardian) Guardian {
+		if v != nil {
+			return *v
+		}
+		var ret Guardian
+		return ret
+	}).(GuardianOutput)
 }
 
 type GuardianArrayOutput struct{ *pulumi.OutputState }
@@ -304,6 +310,10 @@ func (o GuardianMapOutput) MapIndex(k pulumi.StringInput) GuardianOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianInput)(nil)).Elem(), &Guardian{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPtrInput)(nil)).Elem(), &Guardian{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianArrayInput)(nil)).Elem(), GuardianArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianMapInput)(nil)).Elem(), GuardianMap{})
 	pulumi.RegisterOutputType(GuardianOutput{})
 	pulumi.RegisterOutputType(GuardianPtrOutput{})
 	pulumi.RegisterOutputType(GuardianArrayOutput{})

@@ -165,7 +165,7 @@ type PromptArrayInput interface {
 type PromptArray []PromptInput
 
 func (PromptArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Prompt)(nil))
+	return reflect.TypeOf((*[]*Prompt)(nil)).Elem()
 }
 
 func (i PromptArray) ToPromptArrayOutput() PromptArrayOutput {
@@ -190,7 +190,7 @@ type PromptMapInput interface {
 type PromptMap map[string]PromptInput
 
 func (PromptMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Prompt)(nil))
+	return reflect.TypeOf((*map[string]*Prompt)(nil)).Elem()
 }
 
 func (i PromptMap) ToPromptMapOutput() PromptMapOutput {
@@ -201,9 +201,7 @@ func (i PromptMap) ToPromptMapOutputWithContext(ctx context.Context) PromptMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(PromptMapOutput)
 }
 
-type PromptOutput struct {
-	*pulumi.OutputState
-}
+type PromptOutput struct{ *pulumi.OutputState }
 
 func (PromptOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Prompt)(nil))
@@ -222,14 +220,12 @@ func (o PromptOutput) ToPromptPtrOutput() PromptPtrOutput {
 }
 
 func (o PromptOutput) ToPromptPtrOutputWithContext(ctx context.Context) PromptPtrOutput {
-	return o.ApplyT(func(v Prompt) *Prompt {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Prompt) *Prompt {
 		return &v
 	}).(PromptPtrOutput)
 }
 
-type PromptPtrOutput struct {
-	*pulumi.OutputState
-}
+type PromptPtrOutput struct{ *pulumi.OutputState }
 
 func (PromptPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Prompt)(nil))
@@ -241,6 +237,16 @@ func (o PromptPtrOutput) ToPromptPtrOutput() PromptPtrOutput {
 
 func (o PromptPtrOutput) ToPromptPtrOutputWithContext(ctx context.Context) PromptPtrOutput {
 	return o
+}
+
+func (o PromptPtrOutput) Elem() PromptOutput {
+	return o.ApplyT(func(v *Prompt) Prompt {
+		if v != nil {
+			return *v
+		}
+		var ret Prompt
+		return ret
+	}).(PromptOutput)
 }
 
 type PromptArrayOutput struct{ *pulumi.OutputState }
@@ -284,6 +290,10 @@ func (o PromptMapOutput) MapIndex(k pulumi.StringInput) PromptOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptInput)(nil)).Elem(), &Prompt{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptPtrInput)(nil)).Elem(), &Prompt{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptArrayInput)(nil)).Elem(), PromptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptMapInput)(nil)).Elem(), PromptMap{})
 	pulumi.RegisterOutputType(PromptOutput{})
 	pulumi.RegisterOutputType(PromptPtrOutput{})
 	pulumi.RegisterOutputType(PromptArrayOutput{})

@@ -924,3 +924,4 @@ export interface TenantUniversalLoginColors {
      */
     primary: string;
 }
+

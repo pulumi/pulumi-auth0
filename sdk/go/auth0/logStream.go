@@ -163,7 +163,7 @@ type LogStreamArrayInput interface {
 type LogStreamArray []LogStreamInput
 
 func (LogStreamArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LogStream)(nil))
+	return reflect.TypeOf((*[]*LogStream)(nil)).Elem()
 }
 
 func (i LogStreamArray) ToLogStreamArrayOutput() LogStreamArrayOutput {
@@ -188,7 +188,7 @@ type LogStreamMapInput interface {
 type LogStreamMap map[string]LogStreamInput
 
 func (LogStreamMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LogStream)(nil))
+	return reflect.TypeOf((*map[string]*LogStream)(nil)).Elem()
 }
 
 func (i LogStreamMap) ToLogStreamMapOutput() LogStreamMapOutput {
@@ -199,9 +199,7 @@ func (i LogStreamMap) ToLogStreamMapOutputWithContext(ctx context.Context) LogSt
 	return pulumi.ToOutputWithContext(ctx, i).(LogStreamMapOutput)
 }
 
-type LogStreamOutput struct {
-	*pulumi.OutputState
-}
+type LogStreamOutput struct{ *pulumi.OutputState }
 
 func (LogStreamOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogStream)(nil))
@@ -220,14 +218,12 @@ func (o LogStreamOutput) ToLogStreamPtrOutput() LogStreamPtrOutput {
 }
 
 func (o LogStreamOutput) ToLogStreamPtrOutputWithContext(ctx context.Context) LogStreamPtrOutput {
-	return o.ApplyT(func(v LogStream) *LogStream {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogStream) *LogStream {
 		return &v
 	}).(LogStreamPtrOutput)
 }
 
-type LogStreamPtrOutput struct {
-	*pulumi.OutputState
-}
+type LogStreamPtrOutput struct{ *pulumi.OutputState }
 
 func (LogStreamPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LogStream)(nil))
@@ -239,6 +235,16 @@ func (o LogStreamPtrOutput) ToLogStreamPtrOutput() LogStreamPtrOutput {
 
 func (o LogStreamPtrOutput) ToLogStreamPtrOutputWithContext(ctx context.Context) LogStreamPtrOutput {
 	return o
+}
+
+func (o LogStreamPtrOutput) Elem() LogStreamOutput {
+	return o.ApplyT(func(v *LogStream) LogStream {
+		if v != nil {
+			return *v
+		}
+		var ret LogStream
+		return ret
+	}).(LogStreamOutput)
 }
 
 type LogStreamArrayOutput struct{ *pulumi.OutputState }
@@ -282,6 +288,10 @@ func (o LogStreamMapOutput) MapIndex(k pulumi.StringInput) LogStreamOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamInput)(nil)).Elem(), &LogStream{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamPtrInput)(nil)).Elem(), &LogStream{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamArrayInput)(nil)).Elem(), LogStreamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamMapInput)(nil)).Elem(), LogStreamMap{})
 	pulumi.RegisterOutputType(LogStreamOutput{})
 	pulumi.RegisterOutputType(LogStreamPtrOutput{})
 	pulumi.RegisterOutputType(LogStreamArrayOutput{})

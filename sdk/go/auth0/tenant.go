@@ -15,6 +15,62 @@ import (
 // > Auth0 does not currently support creating tenants through the Management API. Therefore this resource can only manage an existing tenant created through the Auth0 dashboard.
 //
 // Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be used to add/remove extensions.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewTenant(ctx, "tenant", &auth0.TenantArgs{
+// 			AllowedLogoutUrls: pulumi.StringArray{
+// 				pulumi.String("http://mysite/logout"),
+// 			},
+// 			ChangePassword: &TenantChangePasswordArgs{
+// 				Enabled: pulumi.Bool(true),
+// 				Html:    readFileOrPanic("./password_reset.html"),
+// 			},
+// 			DefaultAudience:  pulumi.String("<client_id>"),
+// 			DefaultDirectory: pulumi.String("Connection-Name"),
+// 			ErrorPage: &TenantErrorPageArgs{
+// 				Html:        readFileOrPanic("./error.html"),
+// 				ShowLogLink: pulumi.Bool(true),
+// 				Url:         pulumi.String("http://mysite/errors"),
+// 			},
+// 			FriendlyName: pulumi.String("Tenant Name"),
+// 			GuardianMfaPage: &TenantGuardianMfaPageArgs{
+// 				Enabled: pulumi.Bool(true),
+// 				Html:    readFileOrPanic("./guardian_multifactor.html"),
+// 			},
+// 			PictureUrl:      pulumi.String("http://mysite/logo.png"),
+// 			SandboxVersion:  pulumi.String("8"),
+// 			SessionLifetime: pulumi.Float64(46000),
+// 			SupportEmail:    pulumi.String("support@mysite"),
+// 			SupportUrl:      pulumi.String("http://mysite/support"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Tenant struct {
 	pulumi.CustomResourceState
 
@@ -301,7 +357,7 @@ type TenantArrayInput interface {
 type TenantArray []TenantInput
 
 func (TenantArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Tenant)(nil))
+	return reflect.TypeOf((*[]*Tenant)(nil)).Elem()
 }
 
 func (i TenantArray) ToTenantArrayOutput() TenantArrayOutput {
@@ -326,7 +382,7 @@ type TenantMapInput interface {
 type TenantMap map[string]TenantInput
 
 func (TenantMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Tenant)(nil))
+	return reflect.TypeOf((*map[string]*Tenant)(nil)).Elem()
 }
 
 func (i TenantMap) ToTenantMapOutput() TenantMapOutput {
@@ -337,9 +393,7 @@ func (i TenantMap) ToTenantMapOutputWithContext(ctx context.Context) TenantMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(TenantMapOutput)
 }
 
-type TenantOutput struct {
-	*pulumi.OutputState
-}
+type TenantOutput struct{ *pulumi.OutputState }
 
 func (TenantOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Tenant)(nil))
@@ -358,14 +412,12 @@ func (o TenantOutput) ToTenantPtrOutput() TenantPtrOutput {
 }
 
 func (o TenantOutput) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
-	return o.ApplyT(func(v Tenant) *Tenant {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Tenant) *Tenant {
 		return &v
 	}).(TenantPtrOutput)
 }
 
-type TenantPtrOutput struct {
-	*pulumi.OutputState
-}
+type TenantPtrOutput struct{ *pulumi.OutputState }
 
 func (TenantPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Tenant)(nil))
@@ -377,6 +429,16 @@ func (o TenantPtrOutput) ToTenantPtrOutput() TenantPtrOutput {
 
 func (o TenantPtrOutput) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
 	return o
+}
+
+func (o TenantPtrOutput) Elem() TenantOutput {
+	return o.ApplyT(func(v *Tenant) Tenant {
+		if v != nil {
+			return *v
+		}
+		var ret Tenant
+		return ret
+	}).(TenantOutput)
 }
 
 type TenantArrayOutput struct{ *pulumi.OutputState }
@@ -420,6 +482,10 @@ func (o TenantMapOutput) MapIndex(k pulumi.StringInput) TenantOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantInput)(nil)).Elem(), &Tenant{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantPtrInput)(nil)).Elem(), &Tenant{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantArrayInput)(nil)).Elem(), TenantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantMapInput)(nil)).Elem(), TenantMap{})
 	pulumi.RegisterOutputType(TenantOutput{})
 	pulumi.RegisterOutputType(TenantPtrOutput{})
 	pulumi.RegisterOutputType(TenantArrayOutput{})
