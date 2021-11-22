@@ -8,20 +8,25 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'client_id',
-    'client_secret',
-    'debug',
-    'domain',
-]
+import types
 
 __config__ = pulumi.Config('auth0')
 
-client_id = __config__.get('clientId')
 
-client_secret = __config__.get('clientSecret')
+class _ExportableConfig(types.ModuleType):
+    @property
+    def client_id(self) -> Optional[str]:
+        return __config__.get('clientId')
 
-debug = __config__.get('debug') or _utilities.get_env_bool('AUTH0_DEBUG')
+    @property
+    def client_secret(self) -> Optional[str]:
+        return __config__.get('clientSecret')
 
-domain = __config__.get('domain')
+    @property
+    def debug(self) -> Optional[bool]:
+        return __config__.get_bool('debug') or _utilities.get_env_bool('AUTH0_DEBUG')
+
+    @property
+    def domain(self) -> Optional[str]:
+        return __config__.get('domain')
 

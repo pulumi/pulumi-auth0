@@ -31,12 +31,12 @@ import (
 // 		}
 // 		myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
 // 			Identifier: pulumi.String("https://api.example.com/client-grant"),
-// 			Scopes: auth0.ResourceServerScopeArray{
-// 				&auth0.ResourceServerScopeArgs{
+// 			Scopes: ResourceServerScopeArray{
+// 				&ResourceServerScopeArgs{
 // 					Description: pulumi.String("Create foos"),
 // 					Value:       pulumi.String("create:foo"),
 // 				},
-// 				&auth0.ResourceServerScopeArgs{
+// 				&ResourceServerScopeArgs{
 // 					Description: pulumi.String("Create bars"),
 // 					Value:       pulumi.String("create:bar"),
 // 				},
@@ -214,7 +214,7 @@ type ClientGrantArrayInput interface {
 type ClientGrantArray []ClientGrantInput
 
 func (ClientGrantArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ClientGrant)(nil))
+	return reflect.TypeOf((*[]*ClientGrant)(nil)).Elem()
 }
 
 func (i ClientGrantArray) ToClientGrantArrayOutput() ClientGrantArrayOutput {
@@ -239,7 +239,7 @@ type ClientGrantMapInput interface {
 type ClientGrantMap map[string]ClientGrantInput
 
 func (ClientGrantMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ClientGrant)(nil))
+	return reflect.TypeOf((*map[string]*ClientGrant)(nil)).Elem()
 }
 
 func (i ClientGrantMap) ToClientGrantMapOutput() ClientGrantMapOutput {
@@ -250,9 +250,7 @@ func (i ClientGrantMap) ToClientGrantMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ClientGrantMapOutput)
 }
 
-type ClientGrantOutput struct {
-	*pulumi.OutputState
-}
+type ClientGrantOutput struct{ *pulumi.OutputState }
 
 func (ClientGrantOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClientGrant)(nil))
@@ -271,14 +269,12 @@ func (o ClientGrantOutput) ToClientGrantPtrOutput() ClientGrantPtrOutput {
 }
 
 func (o ClientGrantOutput) ToClientGrantPtrOutputWithContext(ctx context.Context) ClientGrantPtrOutput {
-	return o.ApplyT(func(v ClientGrant) *ClientGrant {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientGrant) *ClientGrant {
 		return &v
 	}).(ClientGrantPtrOutput)
 }
 
-type ClientGrantPtrOutput struct {
-	*pulumi.OutputState
-}
+type ClientGrantPtrOutput struct{ *pulumi.OutputState }
 
 func (ClientGrantPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClientGrant)(nil))
@@ -290,6 +286,16 @@ func (o ClientGrantPtrOutput) ToClientGrantPtrOutput() ClientGrantPtrOutput {
 
 func (o ClientGrantPtrOutput) ToClientGrantPtrOutputWithContext(ctx context.Context) ClientGrantPtrOutput {
 	return o
+}
+
+func (o ClientGrantPtrOutput) Elem() ClientGrantOutput {
+	return o.ApplyT(func(v *ClientGrant) ClientGrant {
+		if v != nil {
+			return *v
+		}
+		var ret ClientGrant
+		return ret
+	}).(ClientGrantOutput)
 }
 
 type ClientGrantArrayOutput struct{ *pulumi.OutputState }
@@ -333,6 +339,10 @@ func (o ClientGrantMapOutput) MapIndex(k pulumi.StringInput) ClientGrantOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientGrantInput)(nil)).Elem(), &ClientGrant{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientGrantPtrInput)(nil)).Elem(), &ClientGrant{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientGrantArrayInput)(nil)).Elem(), ClientGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientGrantMapInput)(nil)).Elem(), ClientGrantMap{})
 	pulumi.RegisterOutputType(ClientGrantOutput{})
 	pulumi.RegisterOutputType(ClientGrantPtrOutput{})
 	pulumi.RegisterOutputType(ClientGrantArrayOutput{})

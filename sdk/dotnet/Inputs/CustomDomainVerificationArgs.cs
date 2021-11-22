@@ -9,4 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Auth0.Inputs
 {
+
+    public sealed class CustomDomainVerificationArgs : Pulumi.ResourceArgs
+    {
+        [Input("methods")]
+        private InputList<object>? _methods;
+
+        /// <summary>
+        /// List(Map). Verification methods for the domain.
+        /// </summary>
+        public InputList<object> Methods
+        {
+            get => _methods ?? (_methods = new InputList<object>());
+            set => _methods = value;
+        }
+
+        public CustomDomainVerificationArgs()
+        {
+        }
+    }
 }

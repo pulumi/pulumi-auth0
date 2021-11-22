@@ -27,12 +27,12 @@ import (
 // 		_, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
 // 			AllowOfflineAccess: pulumi.Bool(true),
 // 			Identifier:         pulumi.String("https://api.example.com"),
-// 			Scopes: auth0.ResourceServerScopeArray{
-// 				&auth0.ResourceServerScopeArgs{
+// 			Scopes: ResourceServerScopeArray{
+// 				&ResourceServerScopeArgs{
 // 					Description: pulumi.String("Create foos"),
 // 					Value:       pulumi.String("create:foo"),
 // 				},
-// 				&auth0.ResourceServerScopeArgs{
+// 				&ResourceServerScopeArgs{
 // 					Description: pulumi.String("Create bars"),
 // 					Value:       pulumi.String("create:bar"),
 // 				},
@@ -294,7 +294,7 @@ type ResourceServerArrayInput interface {
 type ResourceServerArray []ResourceServerInput
 
 func (ResourceServerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ResourceServer)(nil))
+	return reflect.TypeOf((*[]*ResourceServer)(nil)).Elem()
 }
 
 func (i ResourceServerArray) ToResourceServerArrayOutput() ResourceServerArrayOutput {
@@ -319,7 +319,7 @@ type ResourceServerMapInput interface {
 type ResourceServerMap map[string]ResourceServerInput
 
 func (ResourceServerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ResourceServer)(nil))
+	return reflect.TypeOf((*map[string]*ResourceServer)(nil)).Elem()
 }
 
 func (i ResourceServerMap) ToResourceServerMapOutput() ResourceServerMapOutput {
@@ -330,9 +330,7 @@ func (i ResourceServerMap) ToResourceServerMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerMapOutput)
 }
 
-type ResourceServerOutput struct {
-	*pulumi.OutputState
-}
+type ResourceServerOutput struct{ *pulumi.OutputState }
 
 func (ResourceServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceServer)(nil))
@@ -351,14 +349,12 @@ func (o ResourceServerOutput) ToResourceServerPtrOutput() ResourceServerPtrOutpu
 }
 
 func (o ResourceServerOutput) ToResourceServerPtrOutputWithContext(ctx context.Context) ResourceServerPtrOutput {
-	return o.ApplyT(func(v ResourceServer) *ResourceServer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceServer) *ResourceServer {
 		return &v
 	}).(ResourceServerPtrOutput)
 }
 
-type ResourceServerPtrOutput struct {
-	*pulumi.OutputState
-}
+type ResourceServerPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourceServerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ResourceServer)(nil))
@@ -370,6 +366,16 @@ func (o ResourceServerPtrOutput) ToResourceServerPtrOutput() ResourceServerPtrOu
 
 func (o ResourceServerPtrOutput) ToResourceServerPtrOutputWithContext(ctx context.Context) ResourceServerPtrOutput {
 	return o
+}
+
+func (o ResourceServerPtrOutput) Elem() ResourceServerOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServer {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceServer
+		return ret
+	}).(ResourceServerOutput)
 }
 
 type ResourceServerArrayOutput struct{ *pulumi.OutputState }
@@ -413,6 +419,10 @@ func (o ResourceServerMapOutput) MapIndex(k pulumi.StringInput) ResourceServerOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerInput)(nil)).Elem(), &ResourceServer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerPtrInput)(nil)).Elem(), &ResourceServer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerArrayInput)(nil)).Elem(), ResourceServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerMapInput)(nil)).Elem(), ResourceServerMap{})
 	pulumi.RegisterOutputType(ResourceServerOutput{})
 	pulumi.RegisterOutputType(ResourceServerPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerArrayOutput{})

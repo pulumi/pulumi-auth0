@@ -30,8 +30,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewHook(ctx, "myHook", &auth0.HookArgs{
-// 			Dependencies: pulumi.StringMap{
-// 				"auth0": pulumi.String("2.30.0"),
+// 			Dependencies: pulumi.AnyMap{
+// 				"auth0": pulumi.Any("2.30.0"),
 // 			},
 // 			Enabled:   pulumi.Bool(true),
 // 			Script:    pulumi.String(fmt.Sprintf("%v%v%v%v", "function (user, context, callback) {\n", "  callback(null, { user });\n", "}\n", "\n")),
@@ -226,7 +226,7 @@ type HookArrayInput interface {
 type HookArray []HookInput
 
 func (HookArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Hook)(nil))
+	return reflect.TypeOf((*[]*Hook)(nil)).Elem()
 }
 
 func (i HookArray) ToHookArrayOutput() HookArrayOutput {
@@ -251,7 +251,7 @@ type HookMapInput interface {
 type HookMap map[string]HookInput
 
 func (HookMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Hook)(nil))
+	return reflect.TypeOf((*map[string]*Hook)(nil)).Elem()
 }
 
 func (i HookMap) ToHookMapOutput() HookMapOutput {
@@ -262,9 +262,7 @@ func (i HookMap) ToHookMapOutputWithContext(ctx context.Context) HookMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HookMapOutput)
 }
 
-type HookOutput struct {
-	*pulumi.OutputState
-}
+type HookOutput struct{ *pulumi.OutputState }
 
 func (HookOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hook)(nil))
@@ -283,14 +281,12 @@ func (o HookOutput) ToHookPtrOutput() HookPtrOutput {
 }
 
 func (o HookOutput) ToHookPtrOutputWithContext(ctx context.Context) HookPtrOutput {
-	return o.ApplyT(func(v Hook) *Hook {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hook) *Hook {
 		return &v
 	}).(HookPtrOutput)
 }
 
-type HookPtrOutput struct {
-	*pulumi.OutputState
-}
+type HookPtrOutput struct{ *pulumi.OutputState }
 
 func (HookPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hook)(nil))
@@ -302,6 +298,16 @@ func (o HookPtrOutput) ToHookPtrOutput() HookPtrOutput {
 
 func (o HookPtrOutput) ToHookPtrOutputWithContext(ctx context.Context) HookPtrOutput {
 	return o
+}
+
+func (o HookPtrOutput) Elem() HookOutput {
+	return o.ApplyT(func(v *Hook) Hook {
+		if v != nil {
+			return *v
+		}
+		var ret Hook
+		return ret
+	}).(HookOutput)
 }
 
 type HookArrayOutput struct{ *pulumi.OutputState }
@@ -345,6 +351,10 @@ func (o HookMapOutput) MapIndex(k pulumi.StringInput) HookOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HookInput)(nil)).Elem(), &Hook{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HookPtrInput)(nil)).Elem(), &Hook{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HookArrayInput)(nil)).Elem(), HookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HookMapInput)(nil)).Elem(), HookMap{})
 	pulumi.RegisterOutputType(HookOutput{})
 	pulumi.RegisterOutputType(HookPtrOutput{})
 	pulumi.RegisterOutputType(HookArrayOutput{})

@@ -211,7 +211,7 @@ func (o ClientAddonsOutput) ToClientAddonsPtrOutput() ClientAddonsPtrOutput {
 }
 
 func (o ClientAddonsOutput) ToClientAddonsPtrOutputWithContext(ctx context.Context) ClientAddonsPtrOutput {
-	return o.ApplyT(func(v ClientAddons) *ClientAddons {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddons) *ClientAddons {
 		return &v
 	}).(ClientAddonsPtrOutput)
 }
@@ -371,7 +371,13 @@ func (o ClientAddonsPtrOutput) ToClientAddonsPtrOutputWithContext(ctx context.Co
 }
 
 func (o ClientAddonsPtrOutput) Elem() ClientAddonsOutput {
-	return o.ApplyT(func(v *ClientAddons) ClientAddons { return *v }).(ClientAddonsOutput)
+	return o.ApplyT(func(v *ClientAddons) ClientAddons {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddons
+		return ret
+	}).(ClientAddonsOutput)
 }
 
 // String
@@ -819,7 +825,7 @@ func (o ClientAddonsSamlpOutput) ToClientAddonsSamlpPtrOutput() ClientAddonsSaml
 }
 
 func (o ClientAddonsSamlpOutput) ToClientAddonsSamlpPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *ClientAddonsSamlp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSamlp) *ClientAddonsSamlp {
 		return &v
 	}).(ClientAddonsSamlpPtrOutput)
 }
@@ -934,7 +940,13 @@ func (o ClientAddonsSamlpPtrOutput) ToClientAddonsSamlpPtrOutputWithContext(ctx 
 }
 
 func (o ClientAddonsSamlpPtrOutput) Elem() ClientAddonsSamlpOutput {
-	return o.ApplyT(func(v *ClientAddonsSamlp) ClientAddonsSamlp { return *v }).(ClientAddonsSamlpOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlp) ClientAddonsSamlp {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSamlp
+		return ret
+	}).(ClientAddonsSamlpOutput)
 }
 
 // String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
@@ -1224,7 +1236,7 @@ func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutPtrOutput() Clie
 }
 
 func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlpLogout) *ClientAddonsSamlpLogout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSamlpLogout) *ClientAddonsSamlpLogout {
 		return &v
 	}).(ClientAddonsSamlpLogoutPtrOutput)
 }
@@ -1254,7 +1266,13 @@ func (o ClientAddonsSamlpLogoutPtrOutput) ToClientAddonsSamlpLogoutPtrOutputWith
 }
 
 func (o ClientAddonsSamlpLogoutPtrOutput) Elem() ClientAddonsSamlpLogoutOutput {
-	return o.ApplyT(func(v *ClientAddonsSamlpLogout) ClientAddonsSamlpLogout { return *v }).(ClientAddonsSamlpLogoutOutput)
+	return o.ApplyT(func(v *ClientAddonsSamlpLogout) ClientAddonsSamlpLogout {
+		if v != nil {
+			return *v
+		}
+		var ret ClientAddonsSamlpLogout
+		return ret
+	}).(ClientAddonsSamlpLogoutOutput)
 }
 
 // String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
@@ -1382,7 +1400,7 @@ func (o ClientJwtConfigurationOutput) ToClientJwtConfigurationPtrOutput() Client
 }
 
 func (o ClientJwtConfigurationOutput) ToClientJwtConfigurationPtrOutputWithContext(ctx context.Context) ClientJwtConfigurationPtrOutput {
-	return o.ApplyT(func(v ClientJwtConfiguration) *ClientJwtConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientJwtConfiguration) *ClientJwtConfiguration {
 		return &v
 	}).(ClientJwtConfigurationPtrOutput)
 }
@@ -1422,7 +1440,13 @@ func (o ClientJwtConfigurationPtrOutput) ToClientJwtConfigurationPtrOutputWithCo
 }
 
 func (o ClientJwtConfigurationPtrOutput) Elem() ClientJwtConfigurationOutput {
-	return o.ApplyT(func(v *ClientJwtConfiguration) ClientJwtConfiguration { return *v }).(ClientJwtConfigurationOutput)
+	return o.ApplyT(func(v *ClientJwtConfiguration) ClientJwtConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ClientJwtConfiguration
+		return ret
+	}).(ClientJwtConfigurationOutput)
 }
 
 // String. Algorithm used to sign JWTs.
@@ -1562,7 +1586,7 @@ func (o ClientMobileOutput) ToClientMobilePtrOutput() ClientMobilePtrOutput {
 }
 
 func (o ClientMobileOutput) ToClientMobilePtrOutputWithContext(ctx context.Context) ClientMobilePtrOutput {
-	return o.ApplyT(func(v ClientMobile) *ClientMobile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientMobile) *ClientMobile {
 		return &v
 	}).(ClientMobilePtrOutput)
 }
@@ -1592,7 +1616,13 @@ func (o ClientMobilePtrOutput) ToClientMobilePtrOutputWithContext(ctx context.Co
 }
 
 func (o ClientMobilePtrOutput) Elem() ClientMobileOutput {
-	return o.ApplyT(func(v *ClientMobile) ClientMobile { return *v }).(ClientMobileOutput)
+	return o.ApplyT(func(v *ClientMobile) ClientMobile {
+		if v != nil {
+			return *v
+		}
+		var ret ClientMobile
+		return ret
+	}).(ClientMobileOutput)
 }
 
 // List(Resource). Configuration settings for Android native apps. For details, see Android.
@@ -1712,7 +1742,7 @@ func (o ClientMobileAndroidOutput) ToClientMobileAndroidPtrOutput() ClientMobile
 }
 
 func (o ClientMobileAndroidOutput) ToClientMobileAndroidPtrOutputWithContext(ctx context.Context) ClientMobileAndroidPtrOutput {
-	return o.ApplyT(func(v ClientMobileAndroid) *ClientMobileAndroid {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientMobileAndroid) *ClientMobileAndroid {
 		return &v
 	}).(ClientMobileAndroidPtrOutput)
 }
@@ -1742,7 +1772,13 @@ func (o ClientMobileAndroidPtrOutput) ToClientMobileAndroidPtrOutputWithContext(
 }
 
 func (o ClientMobileAndroidPtrOutput) Elem() ClientMobileAndroidOutput {
-	return o.ApplyT(func(v *ClientMobileAndroid) ClientMobileAndroid { return *v }).(ClientMobileAndroidOutput)
+	return o.ApplyT(func(v *ClientMobileAndroid) ClientMobileAndroid {
+		if v != nil {
+			return *v
+		}
+		var ret ClientMobileAndroid
+		return ret
+	}).(ClientMobileAndroidOutput)
 }
 
 // String
@@ -1862,7 +1898,7 @@ func (o ClientMobileIosOutput) ToClientMobileIosPtrOutput() ClientMobileIosPtrOu
 }
 
 func (o ClientMobileIosOutput) ToClientMobileIosPtrOutputWithContext(ctx context.Context) ClientMobileIosPtrOutput {
-	return o.ApplyT(func(v ClientMobileIos) *ClientMobileIos {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientMobileIos) *ClientMobileIos {
 		return &v
 	}).(ClientMobileIosPtrOutput)
 }
@@ -1892,7 +1928,13 @@ func (o ClientMobileIosPtrOutput) ToClientMobileIosPtrOutputWithContext(ctx cont
 }
 
 func (o ClientMobileIosPtrOutput) Elem() ClientMobileIosOutput {
-	return o.ApplyT(func(v *ClientMobileIos) ClientMobileIos { return *v }).(ClientMobileIosOutput)
+	return o.ApplyT(func(v *ClientMobileIos) ClientMobileIos {
+		if v != nil {
+			return *v
+		}
+		var ret ClientMobileIos
+		return ret
+	}).(ClientMobileIosOutput)
 }
 
 // String
@@ -2032,7 +2074,7 @@ func (o ClientRefreshTokenOutput) ToClientRefreshTokenPtrOutput() ClientRefreshT
 }
 
 func (o ClientRefreshTokenOutput) ToClientRefreshTokenPtrOutputWithContext(ctx context.Context) ClientRefreshTokenPtrOutput {
-	return o.ApplyT(func(v ClientRefreshToken) *ClientRefreshToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientRefreshToken) *ClientRefreshToken {
 		return &v
 	}).(ClientRefreshTokenPtrOutput)
 }
@@ -2087,7 +2129,13 @@ func (o ClientRefreshTokenPtrOutput) ToClientRefreshTokenPtrOutputWithContext(ct
 }
 
 func (o ClientRefreshTokenPtrOutput) Elem() ClientRefreshTokenOutput {
-	return o.ApplyT(func(v *ClientRefreshToken) ClientRefreshToken { return *v }).(ClientRefreshTokenOutput)
+	return o.ApplyT(func(v *ClientRefreshToken) ClientRefreshToken {
+		if v != nil {
+			return *v
+		}
+		var ret ClientRefreshToken
+		return ret
+	}).(ClientRefreshTokenOutput)
 }
 
 // String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
@@ -2499,7 +2547,7 @@ func (o ConnectionOptionsOutput) ToConnectionOptionsPtrOutput() ConnectionOption
 }
 
 func (o ConnectionOptionsOutput) ToConnectionOptionsPtrOutputWithContext(ctx context.Context) ConnectionOptionsPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptions) *ConnectionOptions {
 		return &v
 	}).(ConnectionOptionsPtrOutput)
 }
@@ -2859,7 +2907,13 @@ func (o ConnectionOptionsPtrOutput) ToConnectionOptionsPtrOutputWithContext(ctx 
 }
 
 func (o ConnectionOptionsPtrOutput) Elem() ConnectionOptionsOutput {
-	return o.ApplyT(func(v *ConnectionOptions) ConnectionOptions { return *v }).(ConnectionOptionsOutput)
+	return o.ApplyT(func(v *ConnectionOptions) ConnectionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptions
+		return ret
+	}).(ConnectionOptionsOutput)
 }
 
 // ADFS Metadata source.
@@ -3652,10 +3706,11 @@ func (o ConnectionOptionsIdpInitiatedOutput) ToConnectionOptionsIdpInitiatedPtrO
 }
 
 func (o ConnectionOptionsIdpInitiatedOutput) ToConnectionOptionsIdpInitiatedPtrOutputWithContext(ctx context.Context) ConnectionOptionsIdpInitiatedPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *ConnectionOptionsIdpInitiated {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsIdpInitiated) *ConnectionOptionsIdpInitiated {
 		return &v
 	}).(ConnectionOptionsIdpInitiatedPtrOutput)
 }
+
 func (o ConnectionOptionsIdpInitiatedOutput) ClientAuthorizeQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsIdpInitiated) *string { return v.ClientAuthorizeQuery }).(pulumi.StringPtrOutput)
 }
@@ -3684,7 +3739,13 @@ func (o ConnectionOptionsIdpInitiatedPtrOutput) ToConnectionOptionsIdpInitiatedP
 }
 
 func (o ConnectionOptionsIdpInitiatedPtrOutput) Elem() ConnectionOptionsIdpInitiatedOutput {
-	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) ConnectionOptionsIdpInitiated { return *v }).(ConnectionOptionsIdpInitiatedOutput)
+	return o.ApplyT(func(v *ConnectionOptionsIdpInitiated) ConnectionOptionsIdpInitiated {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsIdpInitiated
+		return ret
+	}).(ConnectionOptionsIdpInitiatedOutput)
 }
 
 func (o ConnectionOptionsIdpInitiatedPtrOutput) ClientAuthorizeQuery() pulumi.StringPtrOutput {
@@ -3812,7 +3873,7 @@ func (o ConnectionOptionsMfaOutput) ToConnectionOptionsMfaPtrOutput() Connection
 }
 
 func (o ConnectionOptionsMfaOutput) ToConnectionOptionsMfaPtrOutputWithContext(ctx context.Context) ConnectionOptionsMfaPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsMfa) *ConnectionOptionsMfa {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsMfa) *ConnectionOptionsMfa {
 		return &v
 	}).(ConnectionOptionsMfaPtrOutput)
 }
@@ -3842,7 +3903,13 @@ func (o ConnectionOptionsMfaPtrOutput) ToConnectionOptionsMfaPtrOutputWithContex
 }
 
 func (o ConnectionOptionsMfaPtrOutput) Elem() ConnectionOptionsMfaOutput {
-	return o.ApplyT(func(v *ConnectionOptionsMfa) ConnectionOptionsMfa { return *v }).(ConnectionOptionsMfaOutput)
+	return o.ApplyT(func(v *ConnectionOptionsMfa) ConnectionOptionsMfa {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsMfa
+		return ret
+	}).(ConnectionOptionsMfaOutput)
 }
 
 // Indicates whether multifactor authentication is enabled for this connection.
@@ -3958,7 +4025,7 @@ func (o ConnectionOptionsPasswordComplexityOptionsOutput) ToConnectionOptionsPas
 }
 
 func (o ConnectionOptionsPasswordComplexityOptionsOutput) ToConnectionOptionsPasswordComplexityOptionsPtrOutputWithContext(ctx context.Context) ConnectionOptionsPasswordComplexityOptionsPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsPasswordComplexityOptions) *ConnectionOptionsPasswordComplexityOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsPasswordComplexityOptions) *ConnectionOptionsPasswordComplexityOptions {
 		return &v
 	}).(ConnectionOptionsPasswordComplexityOptionsPtrOutput)
 }
@@ -3984,7 +4051,11 @@ func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) ToConnectionOptions
 
 func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) Elem() ConnectionOptionsPasswordComplexityOptionsOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordComplexityOptions) ConnectionOptionsPasswordComplexityOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsPasswordComplexityOptions
+		return ret
 	}).(ConnectionOptionsPasswordComplexityOptionsOutput)
 }
 
@@ -4095,7 +4166,7 @@ func (o ConnectionOptionsPasswordDictionaryOutput) ToConnectionOptionsPasswordDi
 }
 
 func (o ConnectionOptionsPasswordDictionaryOutput) ToConnectionOptionsPasswordDictionaryPtrOutputWithContext(ctx context.Context) ConnectionOptionsPasswordDictionaryPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) *ConnectionOptionsPasswordDictionary {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsPasswordDictionary) *ConnectionOptionsPasswordDictionary {
 		return &v
 	}).(ConnectionOptionsPasswordDictionaryPtrOutput)
 }
@@ -4125,7 +4196,13 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) ToConnectionOptionsPasswor
 }
 
 func (o ConnectionOptionsPasswordDictionaryPtrOutput) Elem() ConnectionOptionsPasswordDictionaryOutput {
-	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) ConnectionOptionsPasswordDictionary { return *v }).(ConnectionOptionsPasswordDictionaryOutput)
+	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) ConnectionOptionsPasswordDictionary {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsPasswordDictionary
+		return ret
+	}).(ConnectionOptionsPasswordDictionaryOutput)
 }
 
 // Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
@@ -4347,7 +4424,7 @@ func (o ConnectionOptionsPasswordNoPersonalInfoOutput) ToConnectionOptionsPasswo
 }
 
 func (o ConnectionOptionsPasswordNoPersonalInfoOutput) ToConnectionOptionsPasswordNoPersonalInfoPtrOutputWithContext(ctx context.Context) ConnectionOptionsPasswordNoPersonalInfoPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsPasswordNoPersonalInfo) *ConnectionOptionsPasswordNoPersonalInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsPasswordNoPersonalInfo) *ConnectionOptionsPasswordNoPersonalInfo {
 		return &v
 	}).(ConnectionOptionsPasswordNoPersonalInfoPtrOutput)
 }
@@ -4372,7 +4449,13 @@ func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) ToConnectionOptionsPas
 }
 
 func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) Elem() ConnectionOptionsPasswordNoPersonalInfoOutput {
-	return o.ApplyT(func(v *ConnectionOptionsPasswordNoPersonalInfo) ConnectionOptionsPasswordNoPersonalInfo { return *v }).(ConnectionOptionsPasswordNoPersonalInfoOutput)
+	return o.ApplyT(func(v *ConnectionOptionsPasswordNoPersonalInfo) ConnectionOptionsPasswordNoPersonalInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsPasswordNoPersonalInfo
+		return ret
+	}).(ConnectionOptionsPasswordNoPersonalInfoOutput)
 }
 
 // Indicates whether the password personal info check is enabled for this connection.
@@ -4482,7 +4565,7 @@ func (o ConnectionOptionsTotpOutput) ToConnectionOptionsTotpPtrOutput() Connecti
 }
 
 func (o ConnectionOptionsTotpOutput) ToConnectionOptionsTotpPtrOutputWithContext(ctx context.Context) ConnectionOptionsTotpPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsTotp) *ConnectionOptionsTotp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsTotp) *ConnectionOptionsTotp {
 		return &v
 	}).(ConnectionOptionsTotpPtrOutput)
 }
@@ -4512,7 +4595,13 @@ func (o ConnectionOptionsTotpPtrOutput) ToConnectionOptionsTotpPtrOutputWithCont
 }
 
 func (o ConnectionOptionsTotpPtrOutput) Elem() ConnectionOptionsTotpOutput {
-	return o.ApplyT(func(v *ConnectionOptionsTotp) ConnectionOptionsTotp { return *v }).(ConnectionOptionsTotpOutput)
+	return o.ApplyT(func(v *ConnectionOptionsTotp) ConnectionOptionsTotp {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsTotp
+		return ret
+	}).(ConnectionOptionsTotpOutput)
 }
 
 // Integer. Length of the one-time password.
@@ -4628,7 +4717,7 @@ func (o ConnectionOptionsValidationOutput) ToConnectionOptionsValidationPtrOutpu
 }
 
 func (o ConnectionOptionsValidationOutput) ToConnectionOptionsValidationPtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationPtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsValidation) *ConnectionOptionsValidation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsValidation) *ConnectionOptionsValidation {
 		return &v
 	}).(ConnectionOptionsValidationPtrOutput)
 }
@@ -4653,7 +4742,13 @@ func (o ConnectionOptionsValidationPtrOutput) ToConnectionOptionsValidationPtrOu
 }
 
 func (o ConnectionOptionsValidationPtrOutput) Elem() ConnectionOptionsValidationOutput {
-	return o.ApplyT(func(v *ConnectionOptionsValidation) ConnectionOptionsValidation { return *v }).(ConnectionOptionsValidationOutput)
+	return o.ApplyT(func(v *ConnectionOptionsValidation) ConnectionOptionsValidation {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsValidation
+		return ret
+	}).(ConnectionOptionsValidationOutput)
 }
 
 // Specifies the `min` and `max` values of username length. `min` and `max` are integers.
@@ -4759,10 +4854,11 @@ func (o ConnectionOptionsValidationUsernameOutput) ToConnectionOptionsValidation
 }
 
 func (o ConnectionOptionsValidationUsernameOutput) ToConnectionOptionsValidationUsernamePtrOutputWithContext(ctx context.Context) ConnectionOptionsValidationUsernamePtrOutput {
-	return o.ApplyT(func(v ConnectionOptionsValidationUsername) *ConnectionOptionsValidationUsername {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsValidationUsername) *ConnectionOptionsValidationUsername {
 		return &v
 	}).(ConnectionOptionsValidationUsernamePtrOutput)
 }
+
 func (o ConnectionOptionsValidationUsernameOutput) Max() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsValidationUsername) *int { return v.Max }).(pulumi.IntPtrOutput)
 }
@@ -4786,7 +4882,13 @@ func (o ConnectionOptionsValidationUsernamePtrOutput) ToConnectionOptionsValidat
 }
 
 func (o ConnectionOptionsValidationUsernamePtrOutput) Elem() ConnectionOptionsValidationUsernameOutput {
-	return o.ApplyT(func(v *ConnectionOptionsValidationUsername) ConnectionOptionsValidationUsername { return *v }).(ConnectionOptionsValidationUsernameOutput)
+	return o.ApplyT(func(v *ConnectionOptionsValidationUsername) ConnectionOptionsValidationUsername {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsValidationUsername
+		return ret
+	}).(ConnectionOptionsValidationUsernameOutput)
 }
 
 func (o ConnectionOptionsValidationUsernamePtrOutput) Max() pulumi.IntPtrOutput {
@@ -4900,7 +5002,7 @@ func (o CustomDomainVerificationOutput) ToCustomDomainVerificationPtrOutput() Cu
 }
 
 func (o CustomDomainVerificationOutput) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
-	return o.ApplyT(func(v CustomDomainVerification) *CustomDomainVerification {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainVerification) *CustomDomainVerification {
 		return &v
 	}).(CustomDomainVerificationPtrOutput)
 }
@@ -4925,7 +5027,13 @@ func (o CustomDomainVerificationPtrOutput) ToCustomDomainVerificationPtrOutputWi
 }
 
 func (o CustomDomainVerificationPtrOutput) Elem() CustomDomainVerificationOutput {
-	return o.ApplyT(func(v *CustomDomainVerification) CustomDomainVerification { return *v }).(CustomDomainVerificationOutput)
+	return o.ApplyT(func(v *CustomDomainVerification) CustomDomainVerification {
+		if v != nil {
+			return *v
+		}
+		var ret CustomDomainVerification
+		return ret
+	}).(CustomDomainVerificationOutput)
 }
 
 // List(Map). Verification methods for the domain.
@@ -5065,7 +5173,7 @@ func (o EmailCredentialsOutput) ToEmailCredentialsPtrOutput() EmailCredentialsPt
 }
 
 func (o EmailCredentialsOutput) ToEmailCredentialsPtrOutputWithContext(ctx context.Context) EmailCredentialsPtrOutput {
-	return o.ApplyT(func(v EmailCredentials) *EmailCredentials {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailCredentials) *EmailCredentials {
 		return &v
 	}).(EmailCredentialsPtrOutput)
 }
@@ -5134,7 +5242,13 @@ func (o EmailCredentialsPtrOutput) ToEmailCredentialsPtrOutputWithContext(ctx co
 }
 
 func (o EmailCredentialsPtrOutput) Elem() EmailCredentialsOutput {
-	return o.ApplyT(func(v *EmailCredentials) EmailCredentials { return *v }).(EmailCredentialsOutput)
+	return o.ApplyT(func(v *EmailCredentials) EmailCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret EmailCredentials
+		return ret
+	}).(EmailCredentialsOutput)
 }
 
 // String, Case-sensitive. AWS Access Key ID. Used only for AWS.
@@ -5381,10 +5495,11 @@ func (o GlobalClientAddonsOutput) ToGlobalClientAddonsPtrOutput() GlobalClientAd
 }
 
 func (o GlobalClientAddonsOutput) ToGlobalClientAddonsPtrOutputWithContext(ctx context.Context) GlobalClientAddonsPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddons) *GlobalClientAddons {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientAddons) *GlobalClientAddons {
 		return &v
 	}).(GlobalClientAddonsPtrOutput)
 }
+
 func (o GlobalClientAddonsOutput) Aws() pulumi.MapOutput {
 	return o.ApplyT(func(v GlobalClientAddons) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
 }
@@ -5512,7 +5627,13 @@ func (o GlobalClientAddonsPtrOutput) ToGlobalClientAddonsPtrOutputWithContext(ct
 }
 
 func (o GlobalClientAddonsPtrOutput) Elem() GlobalClientAddonsOutput {
-	return o.ApplyT(func(v *GlobalClientAddons) GlobalClientAddons { return *v }).(GlobalClientAddonsOutput)
+	return o.ApplyT(func(v *GlobalClientAddons) GlobalClientAddons {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientAddons
+		return ret
+	}).(GlobalClientAddonsOutput)
 }
 
 func (o GlobalClientAddonsPtrOutput) Aws() pulumi.MapOutput {
@@ -5894,10 +6015,11 @@ func (o GlobalClientAddonsSamlpOutput) ToGlobalClientAddonsSamlpPtrOutput() Glob
 }
 
 func (o GlobalClientAddonsSamlpOutput) ToGlobalClientAddonsSamlpPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *GlobalClientAddonsSamlp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientAddonsSamlp) *GlobalClientAddonsSamlp {
 		return &v
 	}).(GlobalClientAddonsSamlpPtrOutput)
 }
+
 func (o GlobalClientAddonsSamlpOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
@@ -5989,7 +6111,13 @@ func (o GlobalClientAddonsSamlpPtrOutput) ToGlobalClientAddonsSamlpPtrOutputWith
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) Elem() GlobalClientAddonsSamlpOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) GlobalClientAddonsSamlp { return *v }).(GlobalClientAddonsSamlpOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) GlobalClientAddonsSamlp {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientAddonsSamlp
+		return ret
+	}).(GlobalClientAddonsSamlpOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) Audience() pulumi.StringPtrOutput {
@@ -6256,10 +6384,11 @@ func (o GlobalClientAddonsSamlpLogoutOutput) ToGlobalClientAddonsSamlpLogoutPtrO
 }
 
 func (o GlobalClientAddonsSamlpLogoutOutput) ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlpLogout) *GlobalClientAddonsSamlpLogout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientAddonsSamlpLogout) *GlobalClientAddonsSamlpLogout {
 		return &v
 	}).(GlobalClientAddonsSamlpLogoutPtrOutput)
 }
+
 func (o GlobalClientAddonsSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GlobalClientAddonsSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
 }
@@ -6283,7 +6412,13 @@ func (o GlobalClientAddonsSamlpLogoutPtrOutput) ToGlobalClientAddonsSamlpLogoutP
 }
 
 func (o GlobalClientAddonsSamlpLogoutPtrOutput) Elem() GlobalClientAddonsSamlpLogoutOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlpLogout) GlobalClientAddonsSamlpLogout { return *v }).(GlobalClientAddonsSamlpLogoutOutput)
+	return o.ApplyT(func(v *GlobalClientAddonsSamlpLogout) GlobalClientAddonsSamlpLogout {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientAddonsSamlpLogout
+		return ret
+	}).(GlobalClientAddonsSamlpLogoutOutput)
 }
 
 func (o GlobalClientAddonsSamlpLogoutPtrOutput) Callback() pulumi.StringPtrOutput {
@@ -6401,10 +6536,11 @@ func (o GlobalClientJwtConfigurationOutput) ToGlobalClientJwtConfigurationPtrOut
 }
 
 func (o GlobalClientJwtConfigurationOutput) ToGlobalClientJwtConfigurationPtrOutputWithContext(ctx context.Context) GlobalClientJwtConfigurationPtrOutput {
-	return o.ApplyT(func(v GlobalClientJwtConfiguration) *GlobalClientJwtConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientJwtConfiguration) *GlobalClientJwtConfiguration {
 		return &v
 	}).(GlobalClientJwtConfigurationPtrOutput)
 }
+
 func (o GlobalClientJwtConfigurationOutput) Alg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GlobalClientJwtConfiguration) *string { return v.Alg }).(pulumi.StringPtrOutput)
 }
@@ -6436,7 +6572,13 @@ func (o GlobalClientJwtConfigurationPtrOutput) ToGlobalClientJwtConfigurationPtr
 }
 
 func (o GlobalClientJwtConfigurationPtrOutput) Elem() GlobalClientJwtConfigurationOutput {
-	return o.ApplyT(func(v *GlobalClientJwtConfiguration) GlobalClientJwtConfiguration { return *v }).(GlobalClientJwtConfigurationOutput)
+	return o.ApplyT(func(v *GlobalClientJwtConfiguration) GlobalClientJwtConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientJwtConfiguration
+		return ret
+	}).(GlobalClientJwtConfigurationOutput)
 }
 
 func (o GlobalClientJwtConfigurationPtrOutput) Alg() pulumi.StringPtrOutput {
@@ -6568,10 +6710,11 @@ func (o GlobalClientMobileOutput) ToGlobalClientMobilePtrOutput() GlobalClientMo
 }
 
 func (o GlobalClientMobileOutput) ToGlobalClientMobilePtrOutputWithContext(ctx context.Context) GlobalClientMobilePtrOutput {
-	return o.ApplyT(func(v GlobalClientMobile) *GlobalClientMobile {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientMobile) *GlobalClientMobile {
 		return &v
 	}).(GlobalClientMobilePtrOutput)
 }
+
 func (o GlobalClientMobileOutput) Android() GlobalClientMobileAndroidPtrOutput {
 	return o.ApplyT(func(v GlobalClientMobile) *GlobalClientMobileAndroid { return v.Android }).(GlobalClientMobileAndroidPtrOutput)
 }
@@ -6595,7 +6738,13 @@ func (o GlobalClientMobilePtrOutput) ToGlobalClientMobilePtrOutputWithContext(ct
 }
 
 func (o GlobalClientMobilePtrOutput) Elem() GlobalClientMobileOutput {
-	return o.ApplyT(func(v *GlobalClientMobile) GlobalClientMobile { return *v }).(GlobalClientMobileOutput)
+	return o.ApplyT(func(v *GlobalClientMobile) GlobalClientMobile {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientMobile
+		return ret
+	}).(GlobalClientMobileOutput)
 }
 
 func (o GlobalClientMobilePtrOutput) Android() GlobalClientMobileAndroidPtrOutput {
@@ -6709,10 +6858,11 @@ func (o GlobalClientMobileAndroidOutput) ToGlobalClientMobileAndroidPtrOutput() 
 }
 
 func (o GlobalClientMobileAndroidOutput) ToGlobalClientMobileAndroidPtrOutputWithContext(ctx context.Context) GlobalClientMobileAndroidPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobileAndroid) *GlobalClientMobileAndroid {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientMobileAndroid) *GlobalClientMobileAndroid {
 		return &v
 	}).(GlobalClientMobileAndroidPtrOutput)
 }
+
 func (o GlobalClientMobileAndroidOutput) AppPackageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GlobalClientMobileAndroid) *string { return v.AppPackageName }).(pulumi.StringPtrOutput)
 }
@@ -6736,7 +6886,13 @@ func (o GlobalClientMobileAndroidPtrOutput) ToGlobalClientMobileAndroidPtrOutput
 }
 
 func (o GlobalClientMobileAndroidPtrOutput) Elem() GlobalClientMobileAndroidOutput {
-	return o.ApplyT(func(v *GlobalClientMobileAndroid) GlobalClientMobileAndroid { return *v }).(GlobalClientMobileAndroidOutput)
+	return o.ApplyT(func(v *GlobalClientMobileAndroid) GlobalClientMobileAndroid {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientMobileAndroid
+		return ret
+	}).(GlobalClientMobileAndroidOutput)
 }
 
 func (o GlobalClientMobileAndroidPtrOutput) AppPackageName() pulumi.StringPtrOutput {
@@ -6850,10 +7006,11 @@ func (o GlobalClientMobileIosOutput) ToGlobalClientMobileIosPtrOutput() GlobalCl
 }
 
 func (o GlobalClientMobileIosOutput) ToGlobalClientMobileIosPtrOutputWithContext(ctx context.Context) GlobalClientMobileIosPtrOutput {
-	return o.ApplyT(func(v GlobalClientMobileIos) *GlobalClientMobileIos {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientMobileIos) *GlobalClientMobileIos {
 		return &v
 	}).(GlobalClientMobileIosPtrOutput)
 }
+
 func (o GlobalClientMobileIosOutput) AppBundleIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GlobalClientMobileIos) *string { return v.AppBundleIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -6877,7 +7034,13 @@ func (o GlobalClientMobileIosPtrOutput) ToGlobalClientMobileIosPtrOutputWithCont
 }
 
 func (o GlobalClientMobileIosPtrOutput) Elem() GlobalClientMobileIosOutput {
-	return o.ApplyT(func(v *GlobalClientMobileIos) GlobalClientMobileIos { return *v }).(GlobalClientMobileIosOutput)
+	return o.ApplyT(func(v *GlobalClientMobileIos) GlobalClientMobileIos {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientMobileIos
+		return ret
+	}).(GlobalClientMobileIosOutput)
 }
 
 func (o GlobalClientMobileIosPtrOutput) AppBundleIdentifier() pulumi.StringPtrOutput {
@@ -7001,10 +7164,11 @@ func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenPtrOutput() Gl
 }
 
 func (o GlobalClientRefreshTokenOutput) ToGlobalClientRefreshTokenPtrOutputWithContext(ctx context.Context) GlobalClientRefreshTokenPtrOutput {
-	return o.ApplyT(func(v GlobalClientRefreshToken) *GlobalClientRefreshToken {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientRefreshToken) *GlobalClientRefreshToken {
 		return &v
 	}).(GlobalClientRefreshTokenPtrOutput)
 }
+
 func (o GlobalClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GlobalClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
 }
@@ -7048,7 +7212,13 @@ func (o GlobalClientRefreshTokenPtrOutput) ToGlobalClientRefreshTokenPtrOutputWi
 }
 
 func (o GlobalClientRefreshTokenPtrOutput) Elem() GlobalClientRefreshTokenOutput {
-	return o.ApplyT(func(v *GlobalClientRefreshToken) GlobalClientRefreshToken { return *v }).(GlobalClientRefreshTokenOutput)
+	return o.ApplyT(func(v *GlobalClientRefreshToken) GlobalClientRefreshToken {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientRefreshToken
+		return ret
+	}).(GlobalClientRefreshTokenOutput)
 }
 
 func (o GlobalClientRefreshTokenPtrOutput) ExpirationType() pulumi.StringPtrOutput {
@@ -7215,7 +7385,7 @@ func (o GuardianPhoneOutput) ToGuardianPhonePtrOutput() GuardianPhonePtrOutput {
 }
 
 func (o GuardianPhoneOutput) ToGuardianPhonePtrOutputWithContext(ctx context.Context) GuardianPhonePtrOutput {
-	return o.ApplyT(func(v GuardianPhone) *GuardianPhone {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianPhone) *GuardianPhone {
 		return &v
 	}).(GuardianPhonePtrOutput)
 }
@@ -7250,7 +7420,13 @@ func (o GuardianPhonePtrOutput) ToGuardianPhonePtrOutputWithContext(ctx context.
 }
 
 func (o GuardianPhonePtrOutput) Elem() GuardianPhoneOutput {
-	return o.ApplyT(func(v *GuardianPhone) GuardianPhone { return *v }).(GuardianPhoneOutput)
+	return o.ApplyT(func(v *GuardianPhone) GuardianPhone {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianPhone
+		return ret
+	}).(GuardianPhoneOutput)
 }
 
 // List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
@@ -7396,7 +7572,7 @@ func (o GuardianPhoneOptionsOutput) ToGuardianPhoneOptionsPtrOutput() GuardianPh
 }
 
 func (o GuardianPhoneOptionsOutput) ToGuardianPhoneOptionsPtrOutputWithContext(ctx context.Context) GuardianPhoneOptionsPtrOutput {
-	return o.ApplyT(func(v GuardianPhoneOptions) *GuardianPhoneOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianPhoneOptions) *GuardianPhoneOptions {
 		return &v
 	}).(GuardianPhoneOptionsPtrOutput)
 }
@@ -7446,7 +7622,13 @@ func (o GuardianPhoneOptionsPtrOutput) ToGuardianPhoneOptionsPtrOutputWithContex
 }
 
 func (o GuardianPhoneOptionsPtrOutput) Elem() GuardianPhoneOptionsOutput {
-	return o.ApplyT(func(v *GuardianPhoneOptions) GuardianPhoneOptions { return *v }).(GuardianPhoneOptionsOutput)
+	return o.ApplyT(func(v *GuardianPhoneOptions) GuardianPhoneOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianPhoneOptions
+		return ret
+	}).(GuardianPhoneOptionsOutput)
 }
 
 // String.
@@ -7636,10 +7818,11 @@ func (o LogStreamSinkOutput) ToLogStreamSinkPtrOutput() LogStreamSinkPtrOutput {
 }
 
 func (o LogStreamSinkOutput) ToLogStreamSinkPtrOutputWithContext(ctx context.Context) LogStreamSinkPtrOutput {
-	return o.ApplyT(func(v LogStreamSink) *LogStreamSink {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogStreamSink) *LogStreamSink {
 		return &v
 	}).(LogStreamSinkPtrOutput)
 }
+
 func (o LogStreamSinkOutput) AwsAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
 }
@@ -7731,7 +7914,13 @@ func (o LogStreamSinkPtrOutput) ToLogStreamSinkPtrOutputWithContext(ctx context.
 }
 
 func (o LogStreamSinkPtrOutput) Elem() LogStreamSinkOutput {
-	return o.ApplyT(func(v *LogStreamSink) LogStreamSink { return *v }).(LogStreamSinkOutput)
+	return o.ApplyT(func(v *LogStreamSink) LogStreamSink {
+		if v != nil {
+			return *v
+		}
+		var ret LogStreamSink
+		return ret
+	}).(LogStreamSinkOutput)
 }
 
 func (o LogStreamSinkPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
@@ -8214,7 +8403,7 @@ func (o TenantChangePasswordOutput) ToTenantChangePasswordPtrOutput() TenantChan
 }
 
 func (o TenantChangePasswordOutput) ToTenantChangePasswordPtrOutputWithContext(ctx context.Context) TenantChangePasswordPtrOutput {
-	return o.ApplyT(func(v TenantChangePassword) *TenantChangePassword {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantChangePassword) *TenantChangePassword {
 		return &v
 	}).(TenantChangePasswordPtrOutput)
 }
@@ -8244,7 +8433,13 @@ func (o TenantChangePasswordPtrOutput) ToTenantChangePasswordPtrOutputWithContex
 }
 
 func (o TenantChangePasswordPtrOutput) Elem() TenantChangePasswordOutput {
-	return o.ApplyT(func(v *TenantChangePassword) TenantChangePassword { return *v }).(TenantChangePasswordOutput)
+	return o.ApplyT(func(v *TenantChangePassword) TenantChangePassword {
+		if v != nil {
+			return *v
+		}
+		var ret TenantChangePassword
+		return ret
+	}).(TenantChangePasswordOutput)
 }
 
 // Boolean. Indicates whether or not to use the custom change password page.
@@ -8368,7 +8563,7 @@ func (o TenantErrorPageOutput) ToTenantErrorPagePtrOutput() TenantErrorPagePtrOu
 }
 
 func (o TenantErrorPageOutput) ToTenantErrorPagePtrOutputWithContext(ctx context.Context) TenantErrorPagePtrOutput {
-	return o.ApplyT(func(v TenantErrorPage) *TenantErrorPage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantErrorPage) *TenantErrorPage {
 		return &v
 	}).(TenantErrorPagePtrOutput)
 }
@@ -8403,7 +8598,13 @@ func (o TenantErrorPagePtrOutput) ToTenantErrorPagePtrOutputWithContext(ctx cont
 }
 
 func (o TenantErrorPagePtrOutput) Elem() TenantErrorPageOutput {
-	return o.ApplyT(func(v *TenantErrorPage) TenantErrorPage { return *v }).(TenantErrorPageOutput)
+	return o.ApplyT(func(v *TenantErrorPage) TenantErrorPage {
+		if v != nil {
+			return *v
+		}
+		var ret TenantErrorPage
+		return ret
+	}).(TenantErrorPageOutput)
 }
 
 // String, HTML format with supported Liquid syntax. Customized content of the error page.
@@ -8567,7 +8768,7 @@ func (o TenantFlagsOutput) ToTenantFlagsPtrOutput() TenantFlagsPtrOutput {
 }
 
 func (o TenantFlagsOutput) ToTenantFlagsPtrOutputWithContext(ctx context.Context) TenantFlagsPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *TenantFlags {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantFlags) *TenantFlags {
 		return &v
 	}).(TenantFlagsPtrOutput)
 }
@@ -8641,7 +8842,13 @@ func (o TenantFlagsPtrOutput) ToTenantFlagsPtrOutputWithContext(ctx context.Cont
 }
 
 func (o TenantFlagsPtrOutput) Elem() TenantFlagsOutput {
-	return o.ApplyT(func(v *TenantFlags) TenantFlags { return *v }).(TenantFlagsOutput)
+	return o.ApplyT(func(v *TenantFlags) TenantFlags {
+		if v != nil {
+			return *v
+		}
+		var ret TenantFlags
+		return ret
+	}).(TenantFlagsOutput)
 }
 
 // Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
@@ -8850,7 +9057,7 @@ func (o TenantGuardianMfaPageOutput) ToTenantGuardianMfaPagePtrOutput() TenantGu
 }
 
 func (o TenantGuardianMfaPageOutput) ToTenantGuardianMfaPagePtrOutputWithContext(ctx context.Context) TenantGuardianMfaPagePtrOutput {
-	return o.ApplyT(func(v TenantGuardianMfaPage) *TenantGuardianMfaPage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantGuardianMfaPage) *TenantGuardianMfaPage {
 		return &v
 	}).(TenantGuardianMfaPagePtrOutput)
 }
@@ -8880,7 +9087,13 @@ func (o TenantGuardianMfaPagePtrOutput) ToTenantGuardianMfaPagePtrOutputWithCont
 }
 
 func (o TenantGuardianMfaPagePtrOutput) Elem() TenantGuardianMfaPageOutput {
-	return o.ApplyT(func(v *TenantGuardianMfaPage) TenantGuardianMfaPage { return *v }).(TenantGuardianMfaPageOutput)
+	return o.ApplyT(func(v *TenantGuardianMfaPage) TenantGuardianMfaPage {
+		if v != nil {
+			return *v
+		}
+		var ret TenantGuardianMfaPage
+		return ret
+	}).(TenantGuardianMfaPageOutput)
 }
 
 // Boolean. Indicates whether or not to use the custom Guardian page.
@@ -8996,7 +9209,7 @@ func (o TenantUniversalLoginOutput) ToTenantUniversalLoginPtrOutput() TenantUniv
 }
 
 func (o TenantUniversalLoginOutput) ToTenantUniversalLoginPtrOutputWithContext(ctx context.Context) TenantUniversalLoginPtrOutput {
-	return o.ApplyT(func(v TenantUniversalLogin) *TenantUniversalLogin {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantUniversalLogin) *TenantUniversalLogin {
 		return &v
 	}).(TenantUniversalLoginPtrOutput)
 }
@@ -9021,7 +9234,13 @@ func (o TenantUniversalLoginPtrOutput) ToTenantUniversalLoginPtrOutputWithContex
 }
 
 func (o TenantUniversalLoginPtrOutput) Elem() TenantUniversalLoginOutput {
-	return o.ApplyT(func(v *TenantUniversalLogin) TenantUniversalLogin { return *v }).(TenantUniversalLoginOutput)
+	return o.ApplyT(func(v *TenantUniversalLogin) TenantUniversalLogin {
+		if v != nil {
+			return *v
+		}
+		var ret TenantUniversalLogin
+		return ret
+	}).(TenantUniversalLoginOutput)
 }
 
 // List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
@@ -9131,7 +9350,7 @@ func (o TenantUniversalLoginColorsOutput) ToTenantUniversalLoginColorsPtrOutput(
 }
 
 func (o TenantUniversalLoginColorsOutput) ToTenantUniversalLoginColorsPtrOutputWithContext(ctx context.Context) TenantUniversalLoginColorsPtrOutput {
-	return o.ApplyT(func(v TenantUniversalLoginColors) *TenantUniversalLoginColors {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantUniversalLoginColors) *TenantUniversalLoginColors {
 		return &v
 	}).(TenantUniversalLoginColorsPtrOutput)
 }
@@ -9161,7 +9380,13 @@ func (o TenantUniversalLoginColorsPtrOutput) ToTenantUniversalLoginColorsPtrOutp
 }
 
 func (o TenantUniversalLoginColorsPtrOutput) Elem() TenantUniversalLoginColorsOutput {
-	return o.ApplyT(func(v *TenantUniversalLoginColors) TenantUniversalLoginColors { return *v }).(TenantUniversalLoginColorsOutput)
+	return o.ApplyT(func(v *TenantUniversalLoginColors) TenantUniversalLoginColors {
+		if v != nil {
+			return *v
+		}
+		var ret TenantUniversalLoginColors
+		return ret
+	}).(TenantUniversalLoginColorsOutput)
 }
 
 // String, Hexadecimal. Background color of login pages.
@@ -9185,6 +9410,84 @@ func (o TenantUniversalLoginColorsPtrOutput) Primary() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsInput)(nil)).Elem(), ClientAddonsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsPtrInput)(nil)).Elem(), ClientAddonsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpPtrInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpLogoutInput)(nil)).Elem(), ClientAddonsSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpLogoutPtrInput)(nil)).Elem(), ClientAddonsSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationPtrInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileInput)(nil)).Elem(), ClientMobileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobilePtrInput)(nil)).Elem(), ClientMobileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileAndroidInput)(nil)).Elem(), ClientMobileAndroidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileAndroidPtrInput)(nil)).Elem(), ClientMobileAndroidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileIosInput)(nil)).Elem(), ClientMobileIosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileIosPtrInput)(nil)).Elem(), ClientMobileIosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenInput)(nil)).Elem(), ClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPtrInput)(nil)).Elem(), ClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPtrInput)(nil)).Elem(), ConnectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsIdpInitiatedInput)(nil)).Elem(), ConnectionOptionsIdpInitiatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsIdpInitiatedPtrInput)(nil)).Elem(), ConnectionOptionsIdpInitiatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsMfaInput)(nil)).Elem(), ConnectionOptionsMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsMfaPtrInput)(nil)).Elem(), ConnectionOptionsMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordComplexityOptionsInput)(nil)).Elem(), ConnectionOptionsPasswordComplexityOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordComplexityOptionsPtrInput)(nil)).Elem(), ConnectionOptionsPasswordComplexityOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordDictionaryInput)(nil)).Elem(), ConnectionOptionsPasswordDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordDictionaryPtrInput)(nil)).Elem(), ConnectionOptionsPasswordDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordHistoryInput)(nil)).Elem(), ConnectionOptionsPasswordHistoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordHistoryArrayInput)(nil)).Elem(), ConnectionOptionsPasswordHistoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordNoPersonalInfoInput)(nil)).Elem(), ConnectionOptionsPasswordNoPersonalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordNoPersonalInfoPtrInput)(nil)).Elem(), ConnectionOptionsPasswordNoPersonalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsTotpInput)(nil)).Elem(), ConnectionOptionsTotpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsTotpPtrInput)(nil)).Elem(), ConnectionOptionsTotpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationInput)(nil)).Elem(), ConnectionOptionsValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationPtrInput)(nil)).Elem(), ConnectionOptionsValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernameInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernamePtrInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationInput)(nil)).Elem(), CustomDomainVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationPtrInput)(nil)).Elem(), CustomDomainVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsInput)(nil)).Elem(), EmailCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsPtrInput)(nil)).Elem(), EmailCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsInput)(nil)).Elem(), GlobalClientAddonsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsPtrInput)(nil)).Elem(), GlobalClientAddonsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpInput)(nil)).Elem(), GlobalClientAddonsSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpPtrInput)(nil)).Elem(), GlobalClientAddonsSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpLogoutInput)(nil)).Elem(), GlobalClientAddonsSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpLogoutPtrInput)(nil)).Elem(), GlobalClientAddonsSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientJwtConfigurationInput)(nil)).Elem(), GlobalClientJwtConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientJwtConfigurationPtrInput)(nil)).Elem(), GlobalClientJwtConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileInput)(nil)).Elem(), GlobalClientMobileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobilePtrInput)(nil)).Elem(), GlobalClientMobileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileAndroidInput)(nil)).Elem(), GlobalClientMobileAndroidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileAndroidPtrInput)(nil)).Elem(), GlobalClientMobileAndroidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileIosInput)(nil)).Elem(), GlobalClientMobileIosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileIosPtrInput)(nil)).Elem(), GlobalClientMobileIosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientRefreshTokenInput)(nil)).Elem(), GlobalClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientRefreshTokenPtrInput)(nil)).Elem(), GlobalClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneInput)(nil)).Elem(), GuardianPhoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhonePtrInput)(nil)).Elem(), GuardianPhoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneOptionsInput)(nil)).Elem(), GuardianPhoneOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneOptionsPtrInput)(nil)).Elem(), GuardianPhoneOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkInput)(nil)).Elem(), LogStreamSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkPtrInput)(nil)).Elem(), LogStreamSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeInput)(nil)).Elem(), ResourceServerScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeArrayInput)(nil)).Elem(), ResourceServerScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionInput)(nil)).Elem(), RolePermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionArrayInput)(nil)).Elem(), RolePermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantChangePasswordInput)(nil)).Elem(), TenantChangePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantChangePasswordPtrInput)(nil)).Elem(), TenantChangePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPageInput)(nil)).Elem(), TenantErrorPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPagePtrInput)(nil)).Elem(), TenantErrorPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsInput)(nil)).Elem(), TenantFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsPtrInput)(nil)).Elem(), TenantFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantGuardianMfaPageInput)(nil)).Elem(), TenantGuardianMfaPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantGuardianMfaPagePtrInput)(nil)).Elem(), TenantGuardianMfaPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginInput)(nil)).Elem(), TenantUniversalLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginPtrInput)(nil)).Elem(), TenantUniversalLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsPtrInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
 	pulumi.RegisterOutputType(ClientAddonsOutput{})
 	pulumi.RegisterOutputType(ClientAddonsPtrOutput{})
 	pulumi.RegisterOutputType(ClientAddonsSamlpOutput{})

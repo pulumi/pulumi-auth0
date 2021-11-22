@@ -4,9 +4,38 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("auth0");
+declare var exports: any;
+const __config = new pulumi.Config("auth0");
 
-export let clientId: string | undefined = __config.get("clientId");
-export let clientSecret: string | undefined = __config.get("clientSecret");
-export let debug: boolean | undefined = __config.getObject<boolean>("debug") || <any>utilities.getEnvBoolean("AUTH0_DEBUG");
-export let domain: string | undefined = __config.get("domain");
+export declare const clientId: string | undefined;
+Object.defineProperty(exports, "clientId", {
+    get() {
+        return __config.get("clientId");
+    },
+    enumerable: true,
+});
+
+export declare const clientSecret: string | undefined;
+Object.defineProperty(exports, "clientSecret", {
+    get() {
+        return __config.get("clientSecret");
+    },
+    enumerable: true,
+});
+
+export declare const debug: boolean | undefined;
+Object.defineProperty(exports, "debug", {
+    get() {
+        return __config.getObject<boolean>("debug") ?? <any>utilities.getEnvBoolean("AUTH0_DEBUG");
+    },
+    enumerable: true,
+});
+
+export declare const domain: string | undefined;
+Object.defineProperty(exports, "domain", {
+    get() {
+        return __config.get("domain");
+    },
+    enumerable: true,
+});
+

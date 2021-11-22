@@ -187,7 +187,7 @@ type RuleConfigArrayInput interface {
 type RuleConfigArray []RuleConfigInput
 
 func (RuleConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RuleConfig)(nil))
+	return reflect.TypeOf((*[]*RuleConfig)(nil)).Elem()
 }
 
 func (i RuleConfigArray) ToRuleConfigArrayOutput() RuleConfigArrayOutput {
@@ -212,7 +212,7 @@ type RuleConfigMapInput interface {
 type RuleConfigMap map[string]RuleConfigInput
 
 func (RuleConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RuleConfig)(nil))
+	return reflect.TypeOf((*map[string]*RuleConfig)(nil)).Elem()
 }
 
 func (i RuleConfigMap) ToRuleConfigMapOutput() RuleConfigMapOutput {
@@ -223,9 +223,7 @@ func (i RuleConfigMap) ToRuleConfigMapOutputWithContext(ctx context.Context) Rul
 	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigMapOutput)
 }
 
-type RuleConfigOutput struct {
-	*pulumi.OutputState
-}
+type RuleConfigOutput struct{ *pulumi.OutputState }
 
 func (RuleConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RuleConfig)(nil))
@@ -244,14 +242,12 @@ func (o RuleConfigOutput) ToRuleConfigPtrOutput() RuleConfigPtrOutput {
 }
 
 func (o RuleConfigOutput) ToRuleConfigPtrOutputWithContext(ctx context.Context) RuleConfigPtrOutput {
-	return o.ApplyT(func(v RuleConfig) *RuleConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleConfig) *RuleConfig {
 		return &v
 	}).(RuleConfigPtrOutput)
 }
 
-type RuleConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type RuleConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RuleConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RuleConfig)(nil))
@@ -263,6 +259,16 @@ func (o RuleConfigPtrOutput) ToRuleConfigPtrOutput() RuleConfigPtrOutput {
 
 func (o RuleConfigPtrOutput) ToRuleConfigPtrOutputWithContext(ctx context.Context) RuleConfigPtrOutput {
 	return o
+}
+
+func (o RuleConfigPtrOutput) Elem() RuleConfigOutput {
+	return o.ApplyT(func(v *RuleConfig) RuleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleConfig
+		return ret
+	}).(RuleConfigOutput)
 }
 
 type RuleConfigArrayOutput struct{ *pulumi.OutputState }
@@ -306,6 +312,10 @@ func (o RuleConfigMapOutput) MapIndex(k pulumi.StringInput) RuleConfigOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleConfigInput)(nil)).Elem(), &RuleConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleConfigPtrInput)(nil)).Elem(), &RuleConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleConfigArrayInput)(nil)).Elem(), RuleConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleConfigMapInput)(nil)).Elem(), RuleConfigMap{})
 	pulumi.RegisterOutputType(RuleConfigOutput{})
 	pulumi.RegisterOutputType(RuleConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleConfigArrayOutput{})
