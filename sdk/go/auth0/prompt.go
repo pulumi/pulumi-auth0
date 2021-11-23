@@ -25,6 +25,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewPrompt(ctx, "example", &auth0.PromptArgs{
+// 			IdentifierFirst:          pulumi.Bool(false),
 // 			UniversalLoginExperience: pulumi.String("classic"),
 // 		})
 // 		if err != nil {
@@ -37,6 +38,7 @@ import (
 type Prompt struct {
 	pulumi.CustomResourceState
 
+	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
 	IdentifierFirst pulumi.BoolPtrOutput `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrOutput `pulumi:"universalLoginExperience"`
@@ -71,12 +73,14 @@ func GetPrompt(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Prompt resources.
 type promptState struct {
+	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
 	IdentifierFirst *bool `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience *string `pulumi:"universalLoginExperience"`
 }
 
 type PromptState struct {
+	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
 	IdentifierFirst pulumi.BoolPtrInput
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrInput
@@ -87,6 +91,7 @@ func (PromptState) ElementType() reflect.Type {
 }
 
 type promptArgs struct {
+	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
 	IdentifierFirst *bool `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience *string `pulumi:"universalLoginExperience"`
@@ -94,6 +99,7 @@ type promptArgs struct {
 
 // The set of arguments for constructing a Prompt resource.
 type PromptArgs struct {
+	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
 	IdentifierFirst pulumi.BoolPtrInput
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrInput

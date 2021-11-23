@@ -14,6 +14,7 @@ type GlobalClient struct {
 	pulumi.CustomResourceState
 
 	Addons                         GlobalClientAddonsOutput           `pulumi:"addons"`
+	AllowedClients                 pulumi.StringArrayOutput           `pulumi:"allowedClients"`
 	AllowedLogoutUrls              pulumi.StringArrayOutput           `pulumi:"allowedLogoutUrls"`
 	AllowedOrigins                 pulumi.StringArrayOutput           `pulumi:"allowedOrigins"`
 	AppType                        pulumi.StringOutput                `pulumi:"appType"`
@@ -38,6 +39,8 @@ type GlobalClient struct {
 	Mobile                         GlobalClientMobileOutput           `pulumi:"mobile"`
 	Name                           pulumi.StringOutput                `pulumi:"name"`
 	OidcConformant                 pulumi.BoolOutput                  `pulumi:"oidcConformant"`
+	OrganizationRequireBehavior    pulumi.StringOutput                `pulumi:"organizationRequireBehavior"`
+	OrganizationUsage              pulumi.StringOutput                `pulumi:"organizationUsage"`
 	RefreshToken                   GlobalClientRefreshTokenOutput     `pulumi:"refreshToken"`
 	Sso                            pulumi.BoolOutput                  `pulumi:"sso"`
 	SsoDisabled                    pulumi.BoolOutput                  `pulumi:"ssoDisabled"`
@@ -75,6 +78,7 @@ func GetGlobalClient(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GlobalClient resources.
 type globalClientState struct {
 	Addons                         *GlobalClientAddons           `pulumi:"addons"`
+	AllowedClients                 []string                      `pulumi:"allowedClients"`
 	AllowedLogoutUrls              []string                      `pulumi:"allowedLogoutUrls"`
 	AllowedOrigins                 []string                      `pulumi:"allowedOrigins"`
 	AppType                        *string                       `pulumi:"appType"`
@@ -99,6 +103,8 @@ type globalClientState struct {
 	Mobile                         *GlobalClientMobile           `pulumi:"mobile"`
 	Name                           *string                       `pulumi:"name"`
 	OidcConformant                 *bool                         `pulumi:"oidcConformant"`
+	OrganizationRequireBehavior    *string                       `pulumi:"organizationRequireBehavior"`
+	OrganizationUsage              *string                       `pulumi:"organizationUsage"`
 	RefreshToken                   *GlobalClientRefreshToken     `pulumi:"refreshToken"`
 	Sso                            *bool                         `pulumi:"sso"`
 	SsoDisabled                    *bool                         `pulumi:"ssoDisabled"`
@@ -108,6 +114,7 @@ type globalClientState struct {
 
 type GlobalClientState struct {
 	Addons                         GlobalClientAddonsPtrInput
+	AllowedClients                 pulumi.StringArrayInput
 	AllowedLogoutUrls              pulumi.StringArrayInput
 	AllowedOrigins                 pulumi.StringArrayInput
 	AppType                        pulumi.StringPtrInput
@@ -132,6 +139,8 @@ type GlobalClientState struct {
 	Mobile                         GlobalClientMobilePtrInput
 	Name                           pulumi.StringPtrInput
 	OidcConformant                 pulumi.BoolPtrInput
+	OrganizationRequireBehavior    pulumi.StringPtrInput
+	OrganizationUsage              pulumi.StringPtrInput
 	RefreshToken                   GlobalClientRefreshTokenPtrInput
 	Sso                            pulumi.BoolPtrInput
 	SsoDisabled                    pulumi.BoolPtrInput
@@ -145,6 +154,7 @@ func (GlobalClientState) ElementType() reflect.Type {
 
 type globalClientArgs struct {
 	Addons                         *GlobalClientAddons           `pulumi:"addons"`
+	AllowedClients                 []string                      `pulumi:"allowedClients"`
 	AllowedLogoutUrls              []string                      `pulumi:"allowedLogoutUrls"`
 	AllowedOrigins                 []string                      `pulumi:"allowedOrigins"`
 	AppType                        *string                       `pulumi:"appType"`
@@ -169,6 +179,8 @@ type globalClientArgs struct {
 	Mobile                         *GlobalClientMobile           `pulumi:"mobile"`
 	Name                           *string                       `pulumi:"name"`
 	OidcConformant                 *bool                         `pulumi:"oidcConformant"`
+	OrganizationRequireBehavior    *string                       `pulumi:"organizationRequireBehavior"`
+	OrganizationUsage              *string                       `pulumi:"organizationUsage"`
 	RefreshToken                   *GlobalClientRefreshToken     `pulumi:"refreshToken"`
 	Sso                            *bool                         `pulumi:"sso"`
 	SsoDisabled                    *bool                         `pulumi:"ssoDisabled"`
@@ -179,6 +191,7 @@ type globalClientArgs struct {
 // The set of arguments for constructing a GlobalClient resource.
 type GlobalClientArgs struct {
 	Addons                         GlobalClientAddonsPtrInput
+	AllowedClients                 pulumi.StringArrayInput
 	AllowedLogoutUrls              pulumi.StringArrayInput
 	AllowedOrigins                 pulumi.StringArrayInput
 	AppType                        pulumi.StringPtrInput
@@ -203,6 +216,8 @@ type GlobalClientArgs struct {
 	Mobile                         GlobalClientMobilePtrInput
 	Name                           pulumi.StringPtrInput
 	OidcConformant                 pulumi.BoolPtrInput
+	OrganizationRequireBehavior    pulumi.StringPtrInput
+	OrganizationUsage              pulumi.StringPtrInput
 	RefreshToken                   GlobalClientRefreshTokenPtrInput
 	Sso                            pulumi.BoolPtrInput
 	SsoDisabled                    pulumi.BoolPtrInput

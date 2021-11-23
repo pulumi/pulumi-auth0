@@ -15,6 +15,9 @@ namespace Pulumi.Auth0
         [Output("addons")]
         public Output<Outputs.GlobalClientAddons> Addons { get; private set; } = null!;
 
+        [Output("allowedClients")]
+        public Output<ImmutableArray<string>> AllowedClients { get; private set; } = null!;
+
         [Output("allowedLogoutUrls")]
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
 
@@ -87,6 +90,12 @@ namespace Pulumi.Auth0
         [Output("oidcConformant")]
         public Output<bool> OidcConformant { get; private set; } = null!;
 
+        [Output("organizationRequireBehavior")]
+        public Output<string> OrganizationRequireBehavior { get; private set; } = null!;
+
+        [Output("organizationUsage")]
+        public Output<string> OrganizationUsage { get; private set; } = null!;
+
         [Output("refreshToken")]
         public Output<Outputs.GlobalClientRefreshToken> RefreshToken { get; private set; } = null!;
 
@@ -150,6 +159,14 @@ namespace Pulumi.Auth0
     {
         [Input("addons")]
         public Input<Inputs.GlobalClientAddonsArgs>? Addons { get; set; }
+
+        [Input("allowedClients")]
+        private InputList<string>? _allowedClients;
+        public InputList<string> AllowedClients
+        {
+            get => _allowedClients ?? (_allowedClients = new InputList<string>());
+            set => _allowedClients = value;
+        }
 
         [Input("allowedLogoutUrls")]
         private InputList<string>? _allowedLogoutUrls;
@@ -258,6 +275,12 @@ namespace Pulumi.Auth0
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
 
+        [Input("organizationRequireBehavior")]
+        public Input<string>? OrganizationRequireBehavior { get; set; }
+
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
+
         [Input("refreshToken")]
         public Input<Inputs.GlobalClientRefreshTokenArgs>? RefreshToken { get; set; }
 
@@ -287,6 +310,14 @@ namespace Pulumi.Auth0
     {
         [Input("addons")]
         public Input<Inputs.GlobalClientAddonsGetArgs>? Addons { get; set; }
+
+        [Input("allowedClients")]
+        private InputList<string>? _allowedClients;
+        public InputList<string> AllowedClients
+        {
+            get => _allowedClients ?? (_allowedClients = new InputList<string>());
+            set => _allowedClients = value;
+        }
 
         [Input("allowedLogoutUrls")]
         private InputList<string>? _allowedLogoutUrls;
@@ -394,6 +425,12 @@ namespace Pulumi.Auth0
 
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
+
+        [Input("organizationRequireBehavior")]
+        public Input<string>? OrganizationRequireBehavior { get; set; }
+
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
 
         [Input("refreshToken")]
         public Input<Inputs.GlobalClientRefreshTokenGetArgs>? RefreshToken { get; set; }

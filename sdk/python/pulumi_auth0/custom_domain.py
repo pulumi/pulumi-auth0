@@ -17,7 +17,7 @@ class CustomDomainArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str],
                  type: pulumi.Input[str],
-                 verification_method: pulumi.Input[str]):
+                 verification_method: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CustomDomain resource.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
@@ -26,7 +26,11 @@ class CustomDomainArgs:
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "verification_method", verification_method)
+        if verification_method is not None:
+            warnings.warn("""The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""", DeprecationWarning)
+            pulumi.log.warn("""verification_method is deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""")
+        if verification_method is not None:
+            pulumi.set(__self__, "verification_method", verification_method)
 
     @property
     @pulumi.getter
@@ -54,14 +58,14 @@ class CustomDomainArgs:
 
     @property
     @pulumi.getter(name="verificationMethod")
-    def verification_method(self) -> pulumi.Input[str]:
+    def verification_method(self) -> Optional[pulumi.Input[str]]:
         """
         String. Domain verification method. Options include `txt`.
         """
         return pulumi.get(self, "verification_method")
 
     @verification_method.setter
-    def verification_method(self, value: pulumi.Input[str]):
+    def verification_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "verification_method", value)
 
 
@@ -93,6 +97,9 @@ class _CustomDomainState:
             pulumi.set(__self__, "type", type)
         if verification is not None:
             pulumi.set(__self__, "verification", verification)
+        if verification_method is not None:
+            warnings.warn("""The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""", DeprecationWarning)
+            pulumi.log.warn("""verification_method is deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""")
         if verification_method is not None:
             pulumi.set(__self__, "verification_method", verification_method)
 
@@ -256,8 +263,9 @@ class CustomDomain(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if verification_method is None and not opts.urn:
-                raise TypeError("Missing required property 'verification_method'")
+            if verification_method is not None and not opts.urn:
+                warnings.warn("""The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""", DeprecationWarning)
+                pulumi.log.warn("""verification_method is deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""")
             __props__.__dict__["verification_method"] = verification_method
             __props__.__dict__["primary"] = None
             __props__.__dict__["status"] = None
@@ -346,7 +354,7 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="verificationMethod")
-    def verification_method(self) -> pulumi.Output[str]:
+    def verification_method(self) -> pulumi.Output[Optional[str]]:
         """
         String. Domain verification method. Options include `txt`.
         """

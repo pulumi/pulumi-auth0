@@ -89,7 +89,7 @@ export class EmailTemplate extends pulumi.CustomResource {
      */
     public readonly syntax!: pulumi.Output<string>;
     /**
-     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `changePassword` (legacy), and `passwordReset` (legacy).
+     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
      */
     public readonly template!: pulumi.Output<string>;
     /**
@@ -183,7 +183,7 @@ export interface EmailTemplateState {
      */
     syntax?: pulumi.Input<string>;
     /**
-     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `changePassword` (legacy), and `passwordReset` (legacy).
+     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
      */
     template?: pulumi.Input<string>;
     /**
@@ -221,7 +221,7 @@ export interface EmailTemplateArgs {
      */
     syntax: pulumi.Input<string>;
     /**
-     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `changePassword` (legacy), and `passwordReset` (legacy).
+     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
      */
     template: pulumi.Input<string>;
     /**

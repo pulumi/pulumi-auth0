@@ -71,8 +71,10 @@ export class CustomDomain extends pulumi.CustomResource {
     public /*out*/ readonly verification!: pulumi.Output<outputs.CustomDomainVerification>;
     /**
      * String. Domain verification method. Options include `txt`.
+     *
+     * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
      */
-    public readonly verificationMethod!: pulumi.Output<string>;
+    public readonly verificationMethod!: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomDomain resource with the given unique name, arguments, and options.
@@ -100,9 +102,6 @@ export class CustomDomain extends pulumi.CustomResource {
             }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
-            }
-            if ((!args || args.verificationMethod === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'verificationMethod'");
             }
             inputs["domain"] = args ? args.domain : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -144,6 +143,8 @@ export interface CustomDomainState {
     verification?: pulumi.Input<inputs.CustomDomainVerification>;
     /**
      * String. Domain verification method. Options include `txt`.
+     *
+     * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
      */
     verificationMethod?: pulumi.Input<string>;
 }
@@ -162,6 +163,8 @@ export interface CustomDomainArgs {
     type: pulumi.Input<string>;
     /**
      * String. Domain verification method. Options include `txt`.
+     *
+     * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
      */
-    verificationMethod: pulumi.Input<string>;
+    verificationMethod?: pulumi.Input<string>;
 }

@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * With this resource, you can manage your Auth0 log streams.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const example = new auth0.LogStream("example", {
+ *     sink: {
+ *         awsAccountId: "my_account_id",
+ *         awsRegion: "us-east-2",
+ *     },
+ *     status: "active",
+ *     type: "eventbridge",
+ * });
+ * ```
+ */
 export class LogStream extends pulumi.CustomResource {
     /**
      * Get an existing LogStream resource's state with the given name, ID, and optional extra
@@ -33,14 +52,20 @@ export class LogStream extends pulumi.CustomResource {
         return obj['__pulumiType'] === LogStream.__pulumiType;
     }
 
+    /**
+     * Name of the log stream
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     */
     public readonly sink!: pulumi.Output<outputs.LogStreamSink>;
     /**
-     * Status of the LogStream
+     * The current status of the log stream. Options are "active", "paused", "suspended"
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * Type of the log stream, which indicates the sink provider
+     * The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -85,14 +110,20 @@ export class LogStream extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogStream resources.
  */
 export interface LogStreamState {
+    /**
+     * Name of the log stream
+     */
     name?: pulumi.Input<string>;
+    /**
+     * List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     */
     sink?: pulumi.Input<inputs.LogStreamSink>;
     /**
-     * Status of the LogStream
+     * The current status of the log stream. Options are "active", "paused", "suspended"
      */
     status?: pulumi.Input<string>;
     /**
-     * Type of the log stream, which indicates the sink provider
+     * The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
      */
     type?: pulumi.Input<string>;
 }
@@ -101,14 +132,20 @@ export interface LogStreamState {
  * The set of arguments for constructing a LogStream resource.
  */
 export interface LogStreamArgs {
+    /**
+     * Name of the log stream
+     */
     name?: pulumi.Input<string>;
+    /**
+     * List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     */
     sink: pulumi.Input<inputs.LogStreamSink>;
     /**
-     * Status of the LogStream
+     * The current status of the log stream. Options are "active", "paused", "suspended"
      */
     status?: pulumi.Input<string>;
     /**
-     * Type of the log stream, which indicates the sink provider
+     * The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
      */
     type: pulumi.Input<string>;
 }

@@ -5,16 +5,20 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .action import *
+from .branding import *
 from .client import *
 from .client_grant import *
 from .connection import *
 from .custom_domain import *
+from .custom_domain_verification import *
 from .email import *
 from .email_template import *
 from .global_client import *
 from .guardian import *
 from .hook import *
 from .log_stream import *
+from .organization import *
 from .prompt import *
 from .provider import *
 from .resource_server import *
@@ -36,6 +40,22 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "auth0",
+  "mod": "index/action",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/action:Action": "Action"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/branding",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/branding:Branding": "Branding"
+  }
+ },
  {
   "pkg": "auth0",
   "mod": "index/client",
@@ -66,6 +86,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/customDomain:CustomDomain": "CustomDomain"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/customDomainVerification",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/customDomainVerification:CustomDomainVerification": "CustomDomainVerification"
   }
  },
  {
@@ -114,6 +142,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/logStream:LogStream": "LogStream"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organization",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organization:Organization": "Organization"
   }
  },
  {

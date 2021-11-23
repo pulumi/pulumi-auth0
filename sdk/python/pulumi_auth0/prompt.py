@@ -17,6 +17,7 @@ class PromptArgs:
                  universal_login_experience: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Prompt resource.
+        :param pulumi.Input[bool] identifier_first: Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         """
         if identifier_first is not None:
@@ -27,6 +28,9 @@ class PromptArgs:
     @property
     @pulumi.getter(name="identifierFirst")
     def identifier_first(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        """
         return pulumi.get(self, "identifier_first")
 
     @identifier_first.setter
@@ -53,6 +57,7 @@ class _PromptState:
                  universal_login_experience: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Prompt resources.
+        :param pulumi.Input[bool] identifier_first: Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         """
         if identifier_first is not None:
@@ -63,6 +68,9 @@ class _PromptState:
     @property
     @pulumi.getter(name="identifierFirst")
     def identifier_first(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        """
         return pulumi.get(self, "identifier_first")
 
     @identifier_first.setter
@@ -99,11 +107,14 @@ class Prompt(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        example = auth0.Prompt("example", universal_login_experience="classic")
+        example = auth0.Prompt("example",
+            identifier_first=False,
+            universal_login_experience="classic")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] identifier_first: Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         """
         ...
@@ -121,7 +132,9 @@ class Prompt(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        example = auth0.Prompt("example", universal_login_experience="classic")
+        example = auth0.Prompt("example",
+            identifier_first=False,
+            universal_login_experience="classic")
         ```
 
         :param str resource_name: The name of the resource.
@@ -174,6 +187,7 @@ class Prompt(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] identifier_first: Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -187,6 +201,9 @@ class Prompt(pulumi.CustomResource):
     @property
     @pulumi.getter(name="identifierFirst")
     def identifier_first(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        """
         return pulumi.get(self, "identifier_first")
 
     @property

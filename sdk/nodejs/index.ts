@@ -5,16 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./action";
+export * from "./branding";
 export * from "./client";
 export * from "./clientGrant";
 export * from "./connection";
 export * from "./customDomain";
+export * from "./customDomainVerification";
 export * from "./email";
 export * from "./emailTemplate";
 export * from "./globalClient";
 export * from "./guardian";
 export * from "./hook";
 export * from "./logStream";
+export * from "./organization";
 export * from "./prompt";
 export * from "./provider";
 export * from "./resourceServer";
@@ -34,16 +38,20 @@ export {
 };
 
 // Import resources to register:
+import { Action } from "./action";
+import { Branding } from "./branding";
 import { Client } from "./client";
 import { ClientGrant } from "./clientGrant";
 import { Connection } from "./connection";
 import { CustomDomain } from "./customDomain";
+import { CustomDomainVerification } from "./customDomainVerification";
 import { Email } from "./email";
 import { EmailTemplate } from "./emailTemplate";
 import { GlobalClient } from "./globalClient";
 import { Guardian } from "./guardian";
 import { Hook } from "./hook";
 import { LogStream } from "./logStream";
+import { Organization } from "./organization";
 import { Prompt } from "./prompt";
 import { ResourceServer } from "./resourceServer";
 import { Role } from "./role";
@@ -56,6 +64,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "auth0:index/action:Action":
+                return new Action(name, <any>undefined, { urn })
+            case "auth0:index/branding:Branding":
+                return new Branding(name, <any>undefined, { urn })
             case "auth0:index/client:Client":
                 return new Client(name, <any>undefined, { urn })
             case "auth0:index/clientGrant:ClientGrant":
@@ -64,6 +76,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "auth0:index/customDomain:CustomDomain":
                 return new CustomDomain(name, <any>undefined, { urn })
+            case "auth0:index/customDomainVerification:CustomDomainVerification":
+                return new CustomDomainVerification(name, <any>undefined, { urn })
             case "auth0:index/email:Email":
                 return new Email(name, <any>undefined, { urn })
             case "auth0:index/emailTemplate:EmailTemplate":
@@ -76,6 +90,8 @@ const _module = {
                 return new Hook(name, <any>undefined, { urn })
             case "auth0:index/logStream:LogStream":
                 return new LogStream(name, <any>undefined, { urn })
+            case "auth0:index/organization:Organization":
+                return new Organization(name, <any>undefined, { urn })
             case "auth0:index/prompt:Prompt":
                 return new Prompt(name, <any>undefined, { urn })
             case "auth0:index/resourceServer:ResourceServer":
@@ -95,16 +111,20 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("auth0", "index/action", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/branding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomain", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/customDomainVerification", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/email", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/emailTemplate", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/globalClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/guardian", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/role", _module)

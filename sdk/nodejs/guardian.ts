@@ -61,7 +61,7 @@ export class Guardian extends pulumi.CustomResource {
      */
     public readonly phone!: pulumi.Output<outputs.GuardianPhone | undefined>;
     /**
-     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
      */
     public readonly policy!: pulumi.Output<string>;
 
@@ -104,7 +104,7 @@ export interface GuardianState {
      */
     phone?: pulumi.Input<inputs.GuardianPhone>;
     /**
-     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
      */
     policy?: pulumi.Input<string>;
 }
@@ -118,7 +118,7 @@ export interface GuardianArgs {
      */
     phone?: pulumi.Input<inputs.GuardianPhone>;
     /**
-     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
      */
     policy: pulumi.Input<string>;
 }

@@ -20,6 +20,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "auth0:index/action:Action":
+		r = &Action{}
+	case "auth0:index/branding:Branding":
+		r = &Branding{}
 	case "auth0:index/client:Client":
 		r = &Client{}
 	case "auth0:index/clientGrant:ClientGrant":
@@ -28,6 +32,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "auth0:index/customDomain:CustomDomain":
 		r = &CustomDomain{}
+	case "auth0:index/customDomainVerification:CustomDomainVerification":
+		r = &CustomDomainVerification{}
 	case "auth0:index/email:Email":
 		r = &Email{}
 	case "auth0:index/emailTemplate:EmailTemplate":
@@ -40,6 +46,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Hook{}
 	case "auth0:index/logStream:LogStream":
 		r = &LogStream{}
+	case "auth0:index/organization:Organization":
+		r = &Organization{}
 	case "auth0:index/prompt:Prompt":
 		r = &Prompt{}
 	case "auth0:index/resourceServer:ResourceServer":
@@ -87,6 +95,16 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"auth0",
+		"index/action",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/branding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
 		"index/client",
 		&module{version},
 	)
@@ -103,6 +121,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/customDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/customDomainVerification",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -133,6 +156,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/logStream",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/organization",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

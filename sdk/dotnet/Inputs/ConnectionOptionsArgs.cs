@@ -165,6 +165,9 @@ namespace Pulumi.Auth0.Inputs
         [Input("identityApi")]
         public Input<string>? IdentityApi { get; set; }
 
+        /// <summary>
+        /// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+        /// </summary>
         [Input("idpInitiated")]
         public Input<Inputs.ConnectionOptionsIdpInitiatedArgs>? IdpInitiated { get; set; }
 

@@ -9,23 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Auth0
 {
+    /// <summary>
+    /// With this resource, you can manage your Auth0 log streams.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Auth0.LogStream("example", new Auth0.LogStreamArgs
+    ///         {
+    ///             Sink = new Auth0.Inputs.LogStreamSinkArgs
+    ///             {
+    ///                 AwsAccountId = "my_account_id",
+    ///                 AwsRegion = "us-east-2",
+    ///             },
+    ///             Status = "active",
+    ///             Type = "eventbridge",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [Auth0ResourceType("auth0:index/logStream:LogStream")]
     public partial class LogStream : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Name of the log stream
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        /// </summary>
         [Output("sink")]
         public Output<Outputs.LogStreamSink> Sink { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the LogStream
+        /// The current status of the log stream. Options are "active", "paused", "suspended"
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider
+        /// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -76,20 +110,26 @@ namespace Pulumi.Auth0
 
     public sealed class LogStreamArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the log stream
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        /// </summary>
         [Input("sink", required: true)]
         public Input<Inputs.LogStreamSinkArgs> Sink { get; set; } = null!;
 
         /// <summary>
-        /// Status of the LogStream
+        /// The current status of the log stream. Options are "active", "paused", "suspended"
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider
+        /// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -101,20 +141,26 @@ namespace Pulumi.Auth0
 
     public sealed class LogStreamState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the log stream
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        /// </summary>
         [Input("sink")]
         public Input<Inputs.LogStreamSinkGetArgs>? Sink { get; set; }
 
         /// <summary>
-        /// Status of the LogStream
+        /// The current status of the log stream. Options are "active", "paused", "suspended"
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider
+        /// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

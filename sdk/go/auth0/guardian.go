@@ -51,7 +51,7 @@ type Guardian struct {
 
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone GuardianPhonePtrOutput `pulumi:"phone"`
-	// String. Policy to use. Available options are `never`, `all-applications` and ` confidence-score. The option  `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
 	Policy pulumi.StringOutput `pulumi:"policy"`
 }
 
@@ -89,14 +89,14 @@ func GetGuardian(ctx *pulumi.Context,
 type guardianState struct {
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone *GuardianPhone `pulumi:"phone"`
-	// String. Policy to use. Available options are `never`, `all-applications` and ` confidence-score. The option  `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
 	Policy *string `pulumi:"policy"`
 }
 
 type GuardianState struct {
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone GuardianPhonePtrInput
-	// String. Policy to use. Available options are `never`, `all-applications` and ` confidence-score. The option  `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
 	Policy pulumi.StringPtrInput
 }
 
@@ -107,7 +107,7 @@ func (GuardianState) ElementType() reflect.Type {
 type guardianArgs struct {
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone *GuardianPhone `pulumi:"phone"`
-	// String. Policy to use. Available options are `never`, `all-applications` and ` confidence-score. The option  `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
 	Policy string `pulumi:"policy"`
 }
 
@@ -115,7 +115,7 @@ type guardianArgs struct {
 type GuardianArgs struct {
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone GuardianPhonePtrInput
-	// String. Policy to use. Available options are `never`, `all-applications` and ` confidence-score. The option  `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
 	Policy pulumi.StringInput
 }
 

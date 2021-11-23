@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _messageTypes;
 
         /// <summary>
-        /// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+        /// List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
         /// </summary>
         public InputList<string> MessageTypes
         {
