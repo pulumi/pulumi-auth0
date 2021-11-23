@@ -16,6 +16,7 @@ __all__ = ['ClientArgs', 'Client']
 class ClientArgs:
     def __init__(__self__, *,
                  addons: Optional[pulumi.Input['ClientAddonsArgs']] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,8 @@ class ClientArgs:
                  mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 organization_require_behavior: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -46,6 +49,7 @@ class ClientArgs:
         """
         The set of arguments for constructing a Client resource.
         :param pulumi.Input['ClientAddonsArgs'] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
@@ -67,6 +71,8 @@ class ClientArgs:
         :param pulumi.Input['ClientMobileArgs'] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
@@ -75,6 +81,8 @@ class ClientArgs:
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
+        if allowed_clients is not None:
+            pulumi.set(__self__, "allowed_clients", allowed_clients)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if allowed_origins is not None:
@@ -121,6 +129,10 @@ class ClientArgs:
             pulumi.set(__self__, "name", name)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
         if sso is not None:
@@ -143,6 +155,18 @@ class ClientArgs:
     @addons.setter
     def addons(self, value: Optional[pulumi.Input['ClientAddonsArgs']]):
         pulumi.set(self, "addons", value)
+
+    @property
+    @pulumi.getter(name="allowedClients")
+    def allowed_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        """
+        return pulumi.get(self, "allowed_clients")
+
+    @allowed_clients.setter
+    def allowed_clients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_clients", value)
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
@@ -406,6 +430,30 @@ class ClientArgs:
         pulumi.set(self, "oidc_conformant", value)
 
     @property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @organization_require_behavior.setter
+    def organization_require_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_require_behavior", value)
+
+    @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_usage", value)
+
+    @property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> Optional[pulumi.Input['ClientRefreshTokenArgs']]:
         """
@@ -470,6 +518,7 @@ class ClientArgs:
 class _ClientState:
     def __init__(__self__, *,
                  addons: Optional[pulumi.Input['ClientAddonsArgs']] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
@@ -494,6 +543,8 @@ class _ClientState:
                  mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 organization_require_behavior: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -502,6 +553,7 @@ class _ClientState:
         """
         Input properties used for looking up and filtering Client resources.
         :param pulumi.Input['ClientAddonsArgs'] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
@@ -525,6 +577,8 @@ class _ClientState:
         :param pulumi.Input['ClientMobileArgs'] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
@@ -533,6 +587,8 @@ class _ClientState:
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
+        if allowed_clients is not None:
+            pulumi.set(__self__, "allowed_clients", allowed_clients)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if allowed_origins is not None:
@@ -583,6 +639,10 @@ class _ClientState:
             pulumi.set(__self__, "name", name)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
         if sso is not None:
@@ -605,6 +665,18 @@ class _ClientState:
     @addons.setter
     def addons(self, value: Optional[pulumi.Input['ClientAddonsArgs']]):
         pulumi.set(self, "addons", value)
+
+    @property
+    @pulumi.getter(name="allowedClients")
+    def allowed_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        """
+        return pulumi.get(self, "allowed_clients")
+
+    @allowed_clients.setter
+    def allowed_clients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_clients", value)
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
@@ -890,6 +962,30 @@ class _ClientState:
         pulumi.set(self, "oidc_conformant", value)
 
     @property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @organization_require_behavior.setter
+    def organization_require_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_require_behavior", value)
+
+    @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_usage", value)
+
+    @property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> Optional[pulumi.Input['ClientRefreshTokenArgs']]:
         """
@@ -956,6 +1052,7 @@ class Client(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
@@ -978,6 +1075,8 @@ class Client(pulumi.CustomResource):
                  mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 organization_require_behavior: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -1015,6 +1114,7 @@ class Client(pulumi.CustomResource):
                     passthrough_claims_with_no_mapping=False,
                 ),
             ),
+            allowed_clients=["https://allowed.example.com"],
             allowed_logout_urls=["https://example.com"],
             allowed_origins=["https://example.com"],
             app_type="non_interactive",
@@ -1048,6 +1148,8 @@ class Client(pulumi.CustomResource):
                 ),
             ),
             oidc_conformant=False,
+            organization_require_behavior="no_prompt",
+            organization_usage="deny",
             refresh_token=auth0.ClientRefreshTokenArgs(
                 expiration_type="expiring",
                 idle_token_lifetime=1296000,
@@ -1064,6 +1166,7 @@ class Client(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
@@ -1085,6 +1188,8 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
@@ -1128,6 +1233,7 @@ class Client(pulumi.CustomResource):
                     passthrough_claims_with_no_mapping=False,
                 ),
             ),
+            allowed_clients=["https://allowed.example.com"],
             allowed_logout_urls=["https://example.com"],
             allowed_origins=["https://example.com"],
             app_type="non_interactive",
@@ -1161,6 +1267,8 @@ class Client(pulumi.CustomResource):
                 ),
             ),
             oidc_conformant=False,
+            organization_require_behavior="no_prompt",
+            organization_usage="deny",
             refresh_token=auth0.ClientRefreshTokenArgs(
                 expiration_type="expiring",
                 idle_token_lifetime=1296000,
@@ -1190,6 +1298,7 @@ class Client(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
@@ -1212,6 +1321,8 @@ class Client(pulumi.CustomResource):
                  mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 organization_require_behavior: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -1230,6 +1341,7 @@ class Client(pulumi.CustomResource):
             __props__ = ClientArgs.__new__(ClientArgs)
 
             __props__.__dict__["addons"] = addons
+            __props__.__dict__["allowed_clients"] = allowed_clients
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
             __props__.__dict__["allowed_origins"] = allowed_origins
             __props__.__dict__["app_type"] = app_type
@@ -1254,6 +1366,8 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["mobile"] = mobile
             __props__.__dict__["name"] = name
             __props__.__dict__["oidc_conformant"] = oidc_conformant
+            __props__.__dict__["organization_require_behavior"] = organization_require_behavior
+            __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
@@ -1272,6 +1386,7 @@ class Client(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: Optional[pulumi.Input[pulumi.InputType['ClientAddonsArgs']]] = None,
+            allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             app_type: Optional[pulumi.Input[str]] = None,
@@ -1296,6 +1411,8 @@ class Client(pulumi.CustomResource):
             mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
+            organization_require_behavior: Optional[pulumi.Input[str]] = None,
+            organization_usage: Optional[pulumi.Input[str]] = None,
             refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -1309,6 +1426,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: List(String). URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
@@ -1332,6 +1450,8 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
@@ -1343,6 +1463,7 @@ class Client(pulumi.CustomResource):
         __props__ = _ClientState.__new__(_ClientState)
 
         __props__.__dict__["addons"] = addons
+        __props__.__dict__["allowed_clients"] = allowed_clients
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
         __props__.__dict__["allowed_origins"] = allowed_origins
         __props__.__dict__["app_type"] = app_type
@@ -1367,6 +1488,8 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["mobile"] = mobile
         __props__.__dict__["name"] = name
         __props__.__dict__["oidc_conformant"] = oidc_conformant
+        __props__.__dict__["organization_require_behavior"] = organization_require_behavior
+        __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["refresh_token"] = refresh_token
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
@@ -1381,6 +1504,14 @@ class Client(pulumi.CustomResource):
         List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
         """
         return pulumi.get(self, "addons")
+
+    @property
+    @pulumi.getter(name="allowedClients")
+    def allowed_clients(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        """
+        return pulumi.get(self, "allowed_clients")
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
@@ -1568,6 +1699,22 @@ class Client(pulumi.CustomResource):
         Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         """
         return pulumi.get(self, "oidc_conformant")
+
+    @property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> pulumi.Output[Optional[str]]:
+        """
+        String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Output[Optional[str]]:
+        """
+        String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
 
     @property
     @pulumi.getter(name="refreshToken")

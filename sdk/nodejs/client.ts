@@ -36,6 +36,7 @@ import * as utilities from "./utilities";
  *             passthroughClaimsWithNoMapping: false,
  *         },
  *     },
+ *     allowedClients: ["https://allowed.example.com"],
  *     allowedLogoutUrls: ["https://example.com"],
  *     allowedOrigins: ["https://example.com"],
  *     appType: "non_interactive",
@@ -69,6 +70,8 @@ import * as utilities from "./utilities";
  *         },
  *     },
  *     oidcConformant: false,
+ *     organizationRequireBehavior: "no_prompt",
+ *     organizationUsage: "deny",
  *     refreshToken: {
  *         expirationType: "expiring",
  *         idleTokenLifetime: 1296000,
@@ -115,6 +118,10 @@ export class Client extends pulumi.CustomResource {
      * List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
      */
     public readonly addons!: pulumi.Output<outputs.ClientAddons | undefined>;
+    /**
+     * List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+     */
+    public readonly allowedClients!: pulumi.Output<string[] | undefined>;
     /**
      * List(String). URLs that Auth0 may redirect to after logout.
      */
@@ -207,6 +214,14 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly oidcConformant!: pulumi.Output<boolean>;
     /**
+     * String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+     */
+    public readonly organizationRequireBehavior!: pulumi.Output<string | undefined>;
+    /**
+     * String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+     */
+    public readonly organizationUsage!: pulumi.Output<string | undefined>;
+    /**
      * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
      */
     public readonly refreshToken!: pulumi.Output<outputs.ClientRefreshToken>;
@@ -241,6 +256,7 @@ export class Client extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClientState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
+            inputs["allowedClients"] = state ? state.allowedClients : undefined;
             inputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
             inputs["allowedOrigins"] = state ? state.allowedOrigins : undefined;
             inputs["appType"] = state ? state.appType : undefined;
@@ -265,6 +281,8 @@ export class Client extends pulumi.CustomResource {
             inputs["mobile"] = state ? state.mobile : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oidcConformant"] = state ? state.oidcConformant : undefined;
+            inputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
+            inputs["organizationUsage"] = state ? state.organizationUsage : undefined;
             inputs["refreshToken"] = state ? state.refreshToken : undefined;
             inputs["sso"] = state ? state.sso : undefined;
             inputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
@@ -273,6 +291,7 @@ export class Client extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ClientArgs | undefined;
             inputs["addons"] = args ? args.addons : undefined;
+            inputs["allowedClients"] = args ? args.allowedClients : undefined;
             inputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
             inputs["allowedOrigins"] = args ? args.allowedOrigins : undefined;
             inputs["appType"] = args ? args.appType : undefined;
@@ -295,6 +314,8 @@ export class Client extends pulumi.CustomResource {
             inputs["mobile"] = args ? args.mobile : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oidcConformant"] = args ? args.oidcConformant : undefined;
+            inputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
+            inputs["organizationUsage"] = args ? args.organizationUsage : undefined;
             inputs["refreshToken"] = args ? args.refreshToken : undefined;
             inputs["sso"] = args ? args.sso : undefined;
             inputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
@@ -318,6 +339,10 @@ export interface ClientState {
      * List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
      */
     addons?: pulumi.Input<inputs.ClientAddons>;
+    /**
+     * List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+     */
+    allowedClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(String). URLs that Auth0 may redirect to after logout.
      */
@@ -410,6 +435,14 @@ export interface ClientState {
      */
     oidcConformant?: pulumi.Input<boolean>;
     /**
+     * String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+     */
+    organizationRequireBehavior?: pulumi.Input<string>;
+    /**
+     * String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+     */
+    organizationUsage?: pulumi.Input<string>;
+    /**
      * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
      */
     refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
@@ -439,6 +472,10 @@ export interface ClientArgs {
      * List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
      */
     addons?: pulumi.Input<inputs.ClientAddons>;
+    /**
+     * List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+     */
+    allowedClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List(String). URLs that Auth0 may redirect to after logout.
      */
@@ -524,6 +561,14 @@ export interface ClientArgs {
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
     oidcConformant?: pulumi.Input<boolean>;
+    /**
+     * String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+     */
+    organizationRequireBehavior?: pulumi.Input<string>;
+    /**
+     * String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+     */
+    organizationUsage?: pulumi.Input<string>;
     /**
      * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
      */

@@ -24,6 +24,7 @@ namespace Pulumi.Auth0
     ///     {
     ///         var example = new Auth0.Prompt("example", new Auth0.PromptArgs
     ///         {
+    ///             IdentifierFirst = false,
     ///             UniversalLoginExperience = "classic",
     ///         });
     ///     }
@@ -34,6 +35,9 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/prompt:Prompt")]
     public partial class Prompt : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        /// </summary>
         [Output("identifierFirst")]
         public Output<bool?> IdentifierFirst { get; private set; } = null!;
 
@@ -89,6 +93,9 @@ namespace Pulumi.Auth0
 
     public sealed class PromptArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        /// </summary>
         [Input("identifierFirst")]
         public Input<bool>? IdentifierFirst { get; set; }
 
@@ -105,6 +112,9 @@ namespace Pulumi.Auth0
 
     public sealed class PromptState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        /// </summary>
         [Input("identifierFirst")]
         public Input<bool>? IdentifierFirst { get; set; }
 

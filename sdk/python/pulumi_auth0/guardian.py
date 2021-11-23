@@ -19,7 +19,7 @@ class GuardianArgs:
                  phone: Optional[pulumi.Input['GuardianPhoneArgs']] = None):
         """
         The set of arguments for constructing a Guardian resource.
-        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         :param pulumi.Input['GuardianPhoneArgs'] phone: List(Resource). Configuration settings for the phone MFA. For details, see Phone.
         """
         pulumi.set(__self__, "policy", policy)
@@ -30,7 +30,7 @@ class GuardianArgs:
     @pulumi.getter
     def policy(self) -> pulumi.Input[str]:
         """
-        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         """
         return pulumi.get(self, "policy")
 
@@ -59,7 +59,7 @@ class _GuardianState:
         """
         Input properties used for looking up and filtering Guardian resources.
         :param pulumi.Input['GuardianPhoneArgs'] phone: List(Resource). Configuration settings for the phone MFA. For details, see Phone.
-        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         """
         if phone is not None:
             pulumi.set(__self__, "phone", phone)
@@ -82,7 +82,7 @@ class _GuardianState:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         """
         return pulumi.get(self, "policy")
 
@@ -124,7 +124,7 @@ class Guardian(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GuardianPhoneArgs']] phone: List(Resource). Configuration settings for the phone MFA. For details, see Phone.
-        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         """
         ...
     @overload
@@ -207,7 +207,7 @@ class Guardian(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GuardianPhoneArgs']] phone: List(Resource). Configuration settings for the phone MFA. For details, see Phone.
-        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -229,7 +229,7 @@ class Guardian(pulumi.CustomResource):
     @pulumi.getter
     def policy(self) -> pulumi.Output[str]:
         """
-        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         """
         return pulumi.get(self, "policy")
 

@@ -13,12 +13,15 @@
         "strict": true
     },
     "files": [
+        "action.ts",
+        "branding.ts",
         "client.ts",
         "clientGrant.ts",
         "config/index.ts",
         "config/vars.ts",
         "connection.ts",
         "customDomain.ts",
+        "customDomainVerification.ts",
         "email.ts",
         "emailTemplate.ts",
         "globalClient.ts",
@@ -26,6 +29,7 @@
         "hook.ts",
         "index.ts",
         "logStream.ts",
+        "organization.ts",
         "prompt.ts",
         "provider.ts",
         "resourceServer.ts",

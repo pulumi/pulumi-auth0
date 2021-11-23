@@ -11,14 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// With this resource, you can manage your Auth0 log streams.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewLogStream(ctx, "example", &auth0.LogStreamArgs{
+// 			Sink: &LogStreamSinkArgs{
+// 				AwsAccountId: pulumi.String("my_account_id"),
+// 				AwsRegion:    pulumi.String("us-east-2"),
+// 			},
+// 			Status: pulumi.String("active"),
+// 			Type:   pulumi.String("eventbridge"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LogStream struct {
 	pulumi.CustomResourceState
 
+	// Name of the log stream
 	Name pulumi.StringOutput `pulumi:"name"`
+	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
 	Sink LogStreamSinkOutput `pulumi:"sink"`
-	// Status of the LogStream
+	// The current status of the log stream. Options are "active", "paused", "suspended"
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Type of the log stream, which indicates the sink provider
+	// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -57,20 +88,24 @@ func GetLogStream(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogStream resources.
 type logStreamState struct {
-	Name *string        `pulumi:"name"`
+	// Name of the log stream
+	Name *string `pulumi:"name"`
+	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
 	Sink *LogStreamSink `pulumi:"sink"`
-	// Status of the LogStream
+	// The current status of the log stream. Options are "active", "paused", "suspended"
 	Status *string `pulumi:"status"`
-	// Type of the log stream, which indicates the sink provider
+	// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
 	Type *string `pulumi:"type"`
 }
 
 type LogStreamState struct {
+	// Name of the log stream
 	Name pulumi.StringPtrInput
+	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
 	Sink LogStreamSinkPtrInput
-	// Status of the LogStream
+	// The current status of the log stream. Options are "active", "paused", "suspended"
 	Status pulumi.StringPtrInput
-	// Type of the log stream, which indicates the sink provider
+	// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
 	Type pulumi.StringPtrInput
 }
 
@@ -79,21 +114,25 @@ func (LogStreamState) ElementType() reflect.Type {
 }
 
 type logStreamArgs struct {
-	Name *string       `pulumi:"name"`
+	// Name of the log stream
+	Name *string `pulumi:"name"`
+	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
 	Sink LogStreamSink `pulumi:"sink"`
-	// Status of the LogStream
+	// The current status of the log stream. Options are "active", "paused", "suspended"
 	Status *string `pulumi:"status"`
-	// Type of the log stream, which indicates the sink provider
+	// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a LogStream resource.
 type LogStreamArgs struct {
+	// Name of the log stream
 	Name pulumi.StringPtrInput
+	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
 	Sink LogStreamSinkInput
-	// Status of the LogStream
+	// The current status of the log stream. Options are "active", "paused", "suspended"
 	Status pulumi.StringPtrInput
-	// Type of the log stream, which indicates the sink provider
+	// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
 	Type pulumi.StringInput
 }
 

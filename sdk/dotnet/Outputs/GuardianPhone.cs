@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GuardianPhone
     {
         /// <summary>
-        /// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+        /// List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
         /// </summary>
         public readonly ImmutableArray<string> MessageTypes;
         /// <summary>

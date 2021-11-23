@@ -16,6 +16,7 @@ __all__ = ['GlobalClientArgs', 'GlobalClient']
 class GlobalClientArgs:
     def __init__(__self__, *,
                  addons: Optional[pulumi.Input['GlobalClientAddonsArgs']] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,8 @@ class GlobalClientArgs:
                  mobile: Optional[pulumi.Input['GlobalClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 organization_require_behavior: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['GlobalClientRefreshTokenArgs']] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -50,6 +53,8 @@ class GlobalClientArgs:
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
+        if allowed_clients is not None:
+            pulumi.set(__self__, "allowed_clients", allowed_clients)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if allowed_origins is not None:
@@ -98,6 +103,10 @@ class GlobalClientArgs:
             pulumi.set(__self__, "name", name)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
         if sso is not None:
@@ -117,6 +126,15 @@ class GlobalClientArgs:
     @addons.setter
     def addons(self, value: Optional[pulumi.Input['GlobalClientAddonsArgs']]):
         pulumi.set(self, "addons", value)
+
+    @property
+    @pulumi.getter(name="allowedClients")
+    def allowed_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "allowed_clients")
+
+    @allowed_clients.setter
+    def allowed_clients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_clients", value)
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
@@ -333,6 +351,24 @@ class GlobalClientArgs:
     @oidc_conformant.setter
     def oidc_conformant(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "oidc_conformant", value)
+
+    @property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "organization_require_behavior")
+
+    @organization_require_behavior.setter
+    def organization_require_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_require_behavior", value)
+
+    @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_usage", value)
 
     @property
     @pulumi.getter(name="refreshToken")
@@ -384,6 +420,7 @@ class GlobalClientArgs:
 class _GlobalClientState:
     def __init__(__self__, *,
                  addons: Optional[pulumi.Input['GlobalClientAddonsArgs']] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
@@ -408,6 +445,8 @@ class _GlobalClientState:
                  mobile: Optional[pulumi.Input['GlobalClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 organization_require_behavior: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['GlobalClientRefreshTokenArgs']] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -418,6 +457,8 @@ class _GlobalClientState:
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
+        if allowed_clients is not None:
+            pulumi.set(__self__, "allowed_clients", allowed_clients)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if allowed_origins is not None:
@@ -466,6 +507,10 @@ class _GlobalClientState:
             pulumi.set(__self__, "name", name)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
         if sso is not None:
@@ -485,6 +530,15 @@ class _GlobalClientState:
     @addons.setter
     def addons(self, value: Optional[pulumi.Input['GlobalClientAddonsArgs']]):
         pulumi.set(self, "addons", value)
+
+    @property
+    @pulumi.getter(name="allowedClients")
+    def allowed_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "allowed_clients")
+
+    @allowed_clients.setter
+    def allowed_clients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_clients", value)
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
@@ -701,6 +755,24 @@ class _GlobalClientState:
     @oidc_conformant.setter
     def oidc_conformant(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "oidc_conformant", value)
+
+    @property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "organization_require_behavior")
+
+    @organization_require_behavior.setter
+    def organization_require_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_require_behavior", value)
+
+    @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization_usage", value)
 
     @property
     @pulumi.getter(name="refreshToken")
@@ -754,6 +826,7 @@ class GlobalClient(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
@@ -778,6 +851,8 @@ class GlobalClient(pulumi.CustomResource):
                  mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 organization_require_behavior: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -813,6 +888,7 @@ class GlobalClient(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
@@ -837,6 +913,8 @@ class GlobalClient(pulumi.CustomResource):
                  mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
+                 organization_require_behavior: Optional[pulumi.Input[str]] = None,
+                 organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -855,6 +933,7 @@ class GlobalClient(pulumi.CustomResource):
             __props__ = GlobalClientArgs.__new__(GlobalClientArgs)
 
             __props__.__dict__["addons"] = addons
+            __props__.__dict__["allowed_clients"] = allowed_clients
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
             __props__.__dict__["allowed_origins"] = allowed_origins
             __props__.__dict__["app_type"] = app_type
@@ -879,6 +958,8 @@ class GlobalClient(pulumi.CustomResource):
             __props__.__dict__["mobile"] = mobile
             __props__.__dict__["name"] = name
             __props__.__dict__["oidc_conformant"] = oidc_conformant
+            __props__.__dict__["organization_require_behavior"] = organization_require_behavior
+            __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
@@ -895,6 +976,7 @@ class GlobalClient(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: Optional[pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']]] = None,
+            allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             app_type: Optional[pulumi.Input[str]] = None,
@@ -919,6 +1001,8 @@ class GlobalClient(pulumi.CustomResource):
             mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
+            organization_require_behavior: Optional[pulumi.Input[str]] = None,
+            organization_usage: Optional[pulumi.Input[str]] = None,
             refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
@@ -937,6 +1021,7 @@ class GlobalClient(pulumi.CustomResource):
         __props__ = _GlobalClientState.__new__(_GlobalClientState)
 
         __props__.__dict__["addons"] = addons
+        __props__.__dict__["allowed_clients"] = allowed_clients
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
         __props__.__dict__["allowed_origins"] = allowed_origins
         __props__.__dict__["app_type"] = app_type
@@ -961,6 +1046,8 @@ class GlobalClient(pulumi.CustomResource):
         __props__.__dict__["mobile"] = mobile
         __props__.__dict__["name"] = name
         __props__.__dict__["oidc_conformant"] = oidc_conformant
+        __props__.__dict__["organization_require_behavior"] = organization_require_behavior
+        __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["refresh_token"] = refresh_token
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
@@ -972,6 +1059,11 @@ class GlobalClient(pulumi.CustomResource):
     @pulumi.getter
     def addons(self) -> pulumi.Output['outputs.GlobalClientAddons']:
         return pulumi.get(self, "addons")
+
+    @property
+    @pulumi.getter(name="allowedClients")
+    def allowed_clients(self) -> pulumi.Output[Sequence[str]]:
+        return pulumi.get(self, "allowed_clients")
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
@@ -1092,6 +1184,16 @@ class GlobalClient(pulumi.CustomResource):
     @pulumi.getter(name="oidcConformant")
     def oidc_conformant(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "oidc_conformant")
+
+    @property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_require_behavior")
+
+    @property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "organization_usage")
 
     @property
     @pulumi.getter(name="refreshToken")

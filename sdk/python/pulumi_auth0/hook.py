@@ -26,7 +26,7 @@ class HookArgs:
         :param pulumi.Input[Mapping[str, Any]] dependencies: Dependencies of this hook used by webtask server
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled
         :param pulumi.Input[str] name: Name of this hook
-        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook
+        :param pulumi.Input[Mapping[str, Any]] secrets: Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         """
         pulumi.set(__self__, "script", script)
         pulumi.set(__self__, "trigger_id", trigger_id)
@@ -103,7 +103,7 @@ class HookArgs:
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        The secrets associated with the hook
+        Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         """
         return pulumi.get(self, "secrets")
 
@@ -127,7 +127,7 @@ class _HookState:
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled
         :param pulumi.Input[str] name: Name of this hook
         :param pulumi.Input[str] script: Code to be executed when this hook runs
-        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook
+        :param pulumi.Input[Mapping[str, Any]] secrets: Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
         """
         if dependencies is not None:
@@ -195,7 +195,7 @@ class _HookState:
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        The secrets associated with the hook
+        Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         """
         return pulumi.get(self, "secrets")
 
@@ -249,6 +249,9 @@ class Hook(pulumi.CustomResource):
         }
 
         \"\"\",
+            secrets={
+                "foo": "bar",
+            },
             trigger_id="pre-user-registration")
         ```
 
@@ -258,7 +261,7 @@ class Hook(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled
         :param pulumi.Input[str] name: Name of this hook
         :param pulumi.Input[str] script: Code to be executed when this hook runs
-        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook
+        :param pulumi.Input[Mapping[str, Any]] secrets: Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
         """
         ...
@@ -288,6 +291,9 @@ class Hook(pulumi.CustomResource):
         }
 
         \"\"\",
+            secrets={
+                "foo": "bar",
+            },
             trigger_id="pre-user-registration")
         ```
 
@@ -361,7 +367,7 @@ class Hook(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled
         :param pulumi.Input[str] name: Name of this hook
         :param pulumi.Input[str] script: Code to be executed when this hook runs
-        :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook
+        :param pulumi.Input[Mapping[str, Any]] secrets: Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -412,7 +418,7 @@ class Hook(pulumi.CustomResource):
     @pulumi.getter
     def secrets(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        The secrets associated with the hook
+        Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         """
         return pulumi.get(self, "secrets")
 

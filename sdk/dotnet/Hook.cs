@@ -36,6 +36,10 @@ namespace Pulumi.Auth0
     /// }
     /// 
     /// ",
+    ///             Secrets = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
     ///             TriggerId = "pre-user-registration",
     ///         });
     ///     }
@@ -71,7 +75,7 @@ namespace Pulumi.Auth0
         public Output<string> Script { get; private set; } = null!;
 
         /// <summary>
-        /// The secrets associated with the hook
+        /// Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         /// </summary>
         [Output("secrets")]
         public Output<ImmutableDictionary<string, object>?> Secrets { get; private set; } = null!;
@@ -162,7 +166,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _secrets;
 
         /// <summary>
-        /// The secrets associated with the hook
+        /// Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         /// </summary>
         public InputMap<object> Secrets
         {
@@ -217,7 +221,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _secrets;
 
         /// <summary>
-        /// The secrets associated with the hook
+        /// Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
         /// </summary>
         public InputMap<object> Secrets
         {

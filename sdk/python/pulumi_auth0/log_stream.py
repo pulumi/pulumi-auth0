@@ -21,8 +21,10 @@ class LogStreamArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogStream resource.
-        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider
-        :param pulumi.Input[str] status: Status of the LogStream
+        :param pulumi.Input['LogStreamSinkArgs'] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        :param pulumi.Input[str] name: Name of the log stream
+        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
         """
         pulumi.set(__self__, "sink", sink)
         pulumi.set(__self__, "type", type)
@@ -34,6 +36,9 @@ class LogStreamArgs:
     @property
     @pulumi.getter
     def sink(self) -> pulumi.Input['LogStreamSinkArgs']:
+        """
+        List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        """
         return pulumi.get(self, "sink")
 
     @sink.setter
@@ -44,7 +49,7 @@ class LogStreamArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type of the log stream, which indicates the sink provider
+        The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         """
         return pulumi.get(self, "type")
 
@@ -55,6 +60,9 @@ class LogStreamArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the log stream
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -65,7 +73,7 @@ class LogStreamArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the LogStream
+        The current status of the log stream. Options are "active", "paused", "suspended"
         """
         return pulumi.get(self, "status")
 
@@ -83,8 +91,10 @@ class _LogStreamState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogStream resources.
-        :param pulumi.Input[str] status: Status of the LogStream
-        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider
+        :param pulumi.Input[str] name: Name of the log stream
+        :param pulumi.Input['LogStreamSinkArgs'] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
+        :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -98,6 +108,9 @@ class _LogStreamState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the log stream
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -107,6 +120,9 @@ class _LogStreamState:
     @property
     @pulumi.getter
     def sink(self) -> Optional[pulumi.Input['LogStreamSinkArgs']]:
+        """
+        List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        """
         return pulumi.get(self, "sink")
 
     @sink.setter
@@ -117,7 +133,7 @@ class _LogStreamState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the LogStream
+        The current status of the log stream. Options are "active", "paused", "suspended"
         """
         return pulumi.get(self, "status")
 
@@ -129,7 +145,7 @@ class _LogStreamState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the log stream, which indicates the sink provider
+        The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         """
         return pulumi.get(self, "type")
 
@@ -149,11 +165,29 @@ class LogStream(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LogStream resource with the given unique name, props, and options.
+        With this resource, you can manage your Auth0 log streams.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        example = auth0.LogStream("example",
+            sink=auth0.LogStreamSinkArgs(
+                aws_account_id="my_account_id",
+                aws_region="us-east-2",
+            ),
+            status="active",
+            type="eventbridge")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] status: Status of the LogStream
-        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider
+        :param pulumi.Input[str] name: Name of the log stream
+        :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
+        :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         """
         ...
     @overload
@@ -162,7 +196,23 @@ class LogStream(pulumi.CustomResource):
                  args: LogStreamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LogStream resource with the given unique name, props, and options.
+        With this resource, you can manage your Auth0 log streams.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        example = auth0.LogStream("example",
+            sink=auth0.LogStreamSinkArgs(
+                aws_account_id="my_account_id",
+                aws_region="us-east-2",
+            ),
+            status="active",
+            type="eventbridge")
+        ```
+
         :param str resource_name: The name of the resource.
         :param LogStreamArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -223,8 +273,10 @@ class LogStream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] status: Status of the LogStream
-        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider
+        :param pulumi.Input[str] name: Name of the log stream
+        :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
+        :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -239,18 +291,24 @@ class LogStream(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of the log stream
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def sink(self) -> pulumi.Output['outputs.LogStreamSink']:
+        """
+        List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        """
         return pulumi.get(self, "sink")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of the LogStream
+        The current status of the log stream. Options are "active", "paused", "suspended"
         """
         return pulumi.get(self, "status")
 
@@ -258,7 +316,7 @@ class LogStream(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of the log stream, which indicates the sink provider
+        The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         """
         return pulumi.get(self, "type")
 

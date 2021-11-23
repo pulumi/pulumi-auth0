@@ -39,6 +39,160 @@
         ]
     },
     "types": {
+        "auth0:index/ActionDependency:ActionDependency": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Secret name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Trigger version.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "version"
+            ]
+        },
+        "auth0:index/ActionSecret:ActionSecret": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Secret name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Secret value.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ]
+        },
+        "auth0:index/ActionSupportedTriggers:ActionSupportedTriggers": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Trigger ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Trigger version.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "version"
+            ]
+        },
+        "auth0:index/BrandingColors:BrandingColors": {
+            "properties": {
+                "pageBackground": {
+                    "type": "string",
+                    "description": "String, Hexadecimal. Background color of login pages.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "primary": {
+                    "type": "string",
+                    "description": "String, Hexadecimal. Primary button background color.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "pageBackground",
+                        "primary"
+                    ]
+                }
+            }
+        },
+        "auth0:index/BrandingFont:BrandingFont": {
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "String. URL for the custom font.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "url"
+                    ]
+                }
+            }
+        },
+        "auth0:index/BrandingUniversalLogin:BrandingUniversalLogin": {
+            "properties": {
+                "body": {
+                    "type": "string",
+                    "description": "String, body of login pages.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "body"
+                    ]
+                }
+            }
+        },
         "auth0:index/ClientAddons:ClientAddons": {
             "properties": {
                 "aws": {
@@ -812,7 +966,7 @@
                 "appDomain": {
                     "type": "string",
                     "description": "Azure AD domain name.\n",
-                    "deprecationMessage": "use domain instead",
+                    "deprecationMessage": "Use domain instead",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1007,6 +1161,7 @@
                 },
                 "idpInitiated": {
                     "$ref": "#/types/auth0:index/ConnectionOptionsIdpInitiated:ConnectionOptionsIdpInitiated",
+                    "description": "Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2431,7 +2586,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.\n",
+                    "description": "List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2526,6 +2681,7 @@
             "properties": {
                 "awsAccountId": {
                     "type": "string",
+                    "description": "The AWS Account ID\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2534,6 +2690,7 @@
                 },
                 "awsPartnerEventSource": {
                     "type": "string",
+                    "description": "Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2542,6 +2699,7 @@
                 },
                 "awsRegion": {
                     "type": "string",
+                    "description": "The AWS Region (i.e \"us-east-2\")\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2550,6 +2708,7 @@
                 },
                 "azurePartnerTopic": {
                     "type": "string",
+                    "description": "Name of the Partner Topic to be used with Azure.  Generally should not be specified.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2558,6 +2717,7 @@
                 },
                 "azureRegion": {
                     "type": "string",
+                    "description": "The Azure region code (i.e. \"ne\")\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2566,6 +2726,7 @@
                 },
                 "azureResourceGroup": {
                     "type": "string",
+                    "description": "The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2574,6 +2735,7 @@
                 },
                 "azureSubscriptionId": {
                     "type": "string",
+                    "description": "The unique alphanumeric string that identifies your Azure subscription\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2582,6 +2744,7 @@
                 },
                 "datadogApiKey": {
                     "type": "string",
+                    "description": "The Datadog API key\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2590,6 +2753,7 @@
                 },
                 "datadogRegion": {
                     "type": "string",
+                    "description": "The Datadog region\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2598,6 +2762,7 @@
                 },
                 "httpAuthorization": {
                     "type": "string",
+                    "description": "Sent in the HTTP \"Authorization\" header with each request\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2606,6 +2771,7 @@
                 },
                 "httpContentFormat": {
                     "type": "string",
+                    "description": "The format of data sent over HTTP. Options are \"JSONLINES\" or \"JSONARRAY\"\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2614,6 +2780,7 @@
                 },
                 "httpContentType": {
                     "type": "string",
+                    "description": "The ContentType header to send over HTTP.  Common value is \"application/json\"\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2625,6 +2792,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "Additional HTTP headers to be included as part of the HTTP request\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2633,6 +2801,7 @@
                 },
                 "httpEndpoint": {
                     "type": "string",
+                    "description": "The HTTP endpoint to send streaming logs\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2641,6 +2810,7 @@
                 },
                 "splunkDomain": {
                     "type": "string",
+                    "description": "The Splunk domain name\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2657,6 +2827,7 @@
                 },
                 "splunkSecure": {
                     "type": "boolean",
+                    "description": "This toggle should be turned off when using self-signed certificates\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2665,6 +2836,7 @@
                 },
                 "splunkToken": {
                     "type": "string",
+                    "description": "The Splunk access token\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2673,6 +2845,7 @@
                 },
                 "sumoSourceAddress": {
                     "type": "string",
+                    "description": "Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2689,6 +2862,58 @@
                     ]
                 }
             }
+        },
+        "auth0:index/OrganizationBranding:OrganizationBranding": {
+            "properties": {
+                "colors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Color scheme used to customize the login pages\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logoUrl": {
+                    "type": "string",
+                    "description": "URL of logo to display on login page\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/OrganizationConnection:OrganizationConnection": {
+            "properties": {
+                "assignMembershipOnLogin": {
+                    "type": "boolean",
+                    "description": "When true, all users that log in\nwith this connection will be automatically granted membership in the\norganization. When false, users must be granted membership in the organization\nbefore logging in with this connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "connectionId": {
+                    "type": "string",
+                    "description": "The connection ID of the connection to add to the\norganization\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionId"
+            ]
         },
         "auth0:index/ResourceServerScope:ResourceServerScope": {
             "properties": {
@@ -3047,12 +3272,230 @@
         ]
     },
     "resources": {
+        "auth0:index/action:Action": {
+            "description": "Actions are secure, tenant-specific, versioned functions written in Node.js that\nexecute at certain points during the Auth0 runtime. Actions are used to\ncustomize and extend Auth0's capabilities with custom logic.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myAction = new auth0.Action(\"my_action\", {\n    code: `/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n\t console.log(event)\n };\n`,\n    deploy: true,\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v2\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_action = auth0.Action(\"myAction\",\n    code=\"\"\"/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n\t console.log(event)\n };\n\n\"\"\",\n    deploy=True,\n    supported_triggers=auth0.ActionSupportedTriggersArgs(\n        id=\"post-login\",\n        version=\"v2\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myAction = new Auth0.Action(\"myAction\", new Auth0.ActionArgs\n        {\n            Code = @\"/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n\t console.log(event)\n };\n\n\",\n            Deploy = true,\n            SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n            {\n                Id = \"post-login\",\n                Version = \"v2\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewAction(ctx, \"myAction\", \u0026auth0.ActionArgs{\n\t\t\tCode: pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v\", \"/**\\n\", \" * Handler that will be called during the execution of a PostLogin flow.\\n\", \" *\\n\", \" * @param {Event} event - Details about the user and the context in which they are logging in.\\n\", \" * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\\n\", \" */\\n\", \" exports.onExecutePostLogin = async (event, api) =\u003e {\\n\", \"\t console.log(event)\\n\", \" };\\n\", \"\\n\")),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t\tSupportedTriggers: \u0026ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn action can be imported using the , e.g.\n\n```sh\n $ pulumi import auth0:index/action:Action example ...\n```\n\n ",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "The source code of the action.\n"
+                },
+                "dependencies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ActionDependency:ActionDependency"
+                    },
+                    "description": "List of third party npm modules, and their versions, that this action depends on\n"
+                },
+                "deploy": {
+                    "type": "boolean",
+                    "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Secret name.\n"
+                },
+                "runtime": {
+                    "type": "string",
+                    "description": "The Node runtime. For example `node16`, defaults to `node12`\n"
+                },
+                "secrets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
+                    },
+                    "description": "List of secrets that are included in an action or a version of an action\n"
+                },
+                "supportedTriggers": {
+                    "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
+                    "description": "List of triggers that this action supports. At this time, an action can only target a single trigger at a time\n"
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "Version ID of the action. This value is available if `deploy` is set to true\n"
+                }
+            },
+            "required": [
+                "code",
+                "name",
+                "runtime",
+                "supportedTriggers",
+                "versionId"
+            ],
+            "inputProperties": {
+                "code": {
+                    "type": "string",
+                    "description": "The source code of the action.\n"
+                },
+                "dependencies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ActionDependency:ActionDependency"
+                    },
+                    "description": "List of third party npm modules, and their versions, that this action depends on\n"
+                },
+                "deploy": {
+                    "type": "boolean",
+                    "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Secret name.\n"
+                },
+                "runtime": {
+                    "type": "string",
+                    "description": "The Node runtime. For example `node16`, defaults to `node12`\n"
+                },
+                "secrets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
+                    },
+                    "description": "List of secrets that are included in an action or a version of an action\n"
+                },
+                "supportedTriggers": {
+                    "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
+                    "description": "List of triggers that this action supports. At this time, an action can only target a single trigger at a time\n"
+                }
+            },
+            "requiredInputs": [
+                "code",
+                "supportedTriggers"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Action resources.\n",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "The source code of the action.\n"
+                    },
+                    "dependencies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/ActionDependency:ActionDependency"
+                        },
+                        "description": "List of third party npm modules, and their versions, that this action depends on\n"
+                    },
+                    "deploy": {
+                        "type": "boolean",
+                        "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Secret name.\n"
+                    },
+                    "runtime": {
+                        "type": "string",
+                        "description": "The Node runtime. For example `node16`, defaults to `node12`\n"
+                    },
+                    "secrets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
+                        },
+                        "description": "List of secrets that are included in an action or a version of an action\n"
+                    },
+                    "supportedTriggers": {
+                        "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
+                        "description": "List of triggers that this action supports. At this time, an action can only target a single trigger at a time\n"
+                    },
+                    "versionId": {
+                        "type": "string",
+                        "description": "Version ID of the action. This value is available if `deploy` is set to true\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/branding:Branding": {
+            "description": "With Auth0, you can setting logo, color to maintain a consistent service brand. This resource allows you to manage a branding within your Auth0 tenant.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myBrand = new auth0.Branding(\"my_brand\", {\n    colors: {\n        pageBackground: \"#000000\",\n        primary: \"#0059d6\",\n    },\n    logoUrl: \"https://mycompany.org/logo.png\",\n    universalLogin: {\n        body: \"\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e{%- auth0:head -%}\u003c/head\u003e\u003cbody\u003e{%- auth0:widget -%}\u003c/body\u003e\u003c/html\u003e\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_brand = auth0.Branding(\"myBrand\",\n    colors=auth0.BrandingColorsArgs(\n        page_background=\"#000000\",\n        primary=\"#0059d6\",\n    ),\n    logo_url=\"https://mycompany.org/logo.png\",\n    universal_login=auth0.BrandingUniversalLoginArgs(\n        body=\"\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e{%- auth0:head -%}\u003c/head\u003e\u003cbody\u003e{%- auth0:widget -%}\u003c/body\u003e\u003c/html\u003e\",\n    ))\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myBrand = new Auth0.Branding(\"myBrand\", new Auth0.BrandingArgs\n        {\n            Colors = new Auth0.Inputs.BrandingColorsArgs\n            {\n                PageBackground = \"#000000\",\n                Primary = \"#0059d6\",\n            },\n            LogoUrl = \"https://mycompany.org/logo.png\",\n            UniversalLogin = new Auth0.Inputs.BrandingUniversalLoginArgs\n            {\n                Body = \"\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e{%- auth0:head -%}\u003c/head\u003e\u003cbody\u003e{%- auth0:widget -%}\u003c/body\u003e\u003c/html\u003e\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewBranding(ctx, \"myBrand\", \u0026auth0.BrandingArgs{\n\t\t\tColors: \u0026BrandingColorsArgs{\n\t\t\t\tPageBackground: pulumi.String(\"#000000\"),\n\t\t\t\tPrimary:        pulumi.String(\"#0059d6\"),\n\t\t\t},\n\t\t\tLogoUrl: pulumi.String(\"https://mycompany.org/logo.png\"),\n\t\t\tUniversalLogin: \u0026BrandingUniversalLoginArgs{\n\t\t\t\tBody: pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v\", \"\u003c!DOCTYPE html\u003e\u003chtml\u003e\u003chead\u003e{\", \"%\", \"- auth0:head -\", \"%\", \"}\u003c/head\u003e\u003cbody\u003e{\", \"%\", \"- auth0:widget -\", \"%\", \"}\u003c/body\u003e\u003c/html\u003e\")),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "colors": {
+                    "$ref": "#/types/auth0:index/BrandingColors:BrandingColors",
+                    "description": "List(Resource). Configuration settings for colors for branding. See Colors.\n"
+                },
+                "faviconUrl": {
+                    "type": "string",
+                    "description": "String. URL for the favicon.\n"
+                },
+                "font": {
+                    "$ref": "#/types/auth0:index/BrandingFont:BrandingFont",
+                    "description": "List(Resource). Configuration settings to customize the font. See Font.\n"
+                },
+                "logoUrl": {
+                    "type": "string",
+                    "description": "String. URL of logo for branding.\n"
+                },
+                "universalLogin": {
+                    "$ref": "#/types/auth0:index/BrandingUniversalLogin:BrandingUniversalLogin",
+                    "description": "List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.\n"
+                }
+            },
+            "required": [
+                "faviconUrl",
+                "logoUrl"
+            ],
+            "inputProperties": {
+                "colors": {
+                    "$ref": "#/types/auth0:index/BrandingColors:BrandingColors",
+                    "description": "List(Resource). Configuration settings for colors for branding. See Colors.\n"
+                },
+                "faviconUrl": {
+                    "type": "string",
+                    "description": "String. URL for the favicon.\n"
+                },
+                "font": {
+                    "$ref": "#/types/auth0:index/BrandingFont:BrandingFont",
+                    "description": "List(Resource). Configuration settings to customize the font. See Font.\n"
+                },
+                "logoUrl": {
+                    "type": "string",
+                    "description": "String. URL of logo for branding.\n"
+                },
+                "universalLogin": {
+                    "$ref": "#/types/auth0:index/BrandingUniversalLogin:BrandingUniversalLogin",
+                    "description": "List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Branding resources.\n",
+                "properties": {
+                    "colors": {
+                        "$ref": "#/types/auth0:index/BrandingColors:BrandingColors",
+                        "description": "List(Resource). Configuration settings for colors for branding. See Colors.\n"
+                    },
+                    "faviconUrl": {
+                        "type": "string",
+                        "description": "String. URL for the favicon.\n"
+                    },
+                    "font": {
+                        "$ref": "#/types/auth0:index/BrandingFont:BrandingFont",
+                        "description": "List(Resource). Configuration settings to customize the font. See Font.\n"
+                    },
+                    "logoUrl": {
+                        "type": "string",
+                        "description": "String. URL of logo for branding.\n"
+                    },
+                    "universalLogin": {
+                        "$ref": "#/types/auth0:index/BrandingUniversalLogin:BrandingUniversalLogin",
+                        "description": "List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/client:Client": {
-            "description": "With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {\n    addons: {\n        firebase: {\n            client_email: \"john.doe@example.com\",\n            lifetime_in_seconds: 1,\n            private_key: \"wer\",\n            private_key_id: \"qwreerwerwe\",\n        },\n        samlp: {\n            audience: \"https://example.com/saml\",\n            createUpnClaim: false,\n            mapIdentities: false,\n            mapUnknownClaimsAsIs: false,\n            mappings: {\n                email: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                name: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            nameIdentifierFormat: \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            nameIdentifierProbes: [\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthroughClaimsWithNoMapping: false,\n        },\n    },\n    allowedLogoutUrls: [\"https://example.com\"],\n    allowedOrigins: [\"https://example.com\"],\n    appType: \"non_interactive\",\n    callbacks: [\"https://example.com/callback\"],\n    clientMetadata: {\n        foo: \"zoo\",\n    },\n    customLoginPageOn: true,\n    description: \"Test Applications Long Description\",\n    grantTypes: [\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    isFirstParty: true,\n    isTokenEndpointIpHeaderTrusted: true,\n    jwtConfiguration: {\n        alg: \"RS256\",\n        lifetimeInSeconds: 300,\n        scopes: {\n            foo: \"bar\",\n        },\n        secretEncoded: true,\n    },\n    mobile: {\n        ios: {\n            appBundleIdentifier: \"com.my.bundle.id\",\n            teamId: \"9JA89QQLNQ\",\n        },\n    },\n    oidcConformant: false,\n    refreshToken: {\n        expirationType: \"expiring\",\n        idleTokenLifetime: 1296000,\n        infiniteIdleTokenLifetime: true,\n        infiniteTokenLifetime: false,\n        leeway: 15,\n        rotationType: \"rotating\",\n        tokenLifetime: 84600,\n    },\n    tokenEndpointAuthMethod: \"client_secret_post\",\n    webOrigins: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"myClient\",\n    addons=auth0.ClientAddonsArgs(\n        firebase={\n            \"clientEmail\": \"john.doe@example.com\",\n            \"lifetimeInSeconds\": 1,\n            \"privateKey\": \"wer\",\n            \"privateKeyId\": \"qwreerwerwe\",\n        },\n        samlp=auth0.ClientAddonsSamlpArgs(\n            audience=\"https://example.com/saml\",\n            create_upn_claim=False,\n            map_identities=False,\n            map_unknown_claims_as_is=False,\n            mappings={\n                \"email\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                \"name\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            name_identifier_format=\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            name_identifier_probes=[\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthrough_claims_with_no_mapping=False,\n        ),\n    ),\n    allowed_logout_urls=[\"https://example.com\"],\n    allowed_origins=[\"https://example.com\"],\n    app_type=\"non_interactive\",\n    callbacks=[\"https://example.com/callback\"],\n    client_metadata={\n        \"foo\": \"zoo\",\n    },\n    custom_login_page_on=True,\n    description=\"Test Applications Long Description\",\n    grant_types=[\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    is_first_party=True,\n    is_token_endpoint_ip_header_trusted=True,\n    jwt_configuration=auth0.ClientJwtConfigurationArgs(\n        alg=\"RS256\",\n        lifetime_in_seconds=300,\n        scopes={\n            \"foo\": \"bar\",\n        },\n        secret_encoded=True,\n    ),\n    mobile=auth0.ClientMobileArgs(\n        ios=auth0.ClientMobileIosArgs(\n            app_bundle_identifier=\"com.my.bundle.id\",\n            team_id=\"9JA89QQLNQ\",\n        ),\n    ),\n    oidc_conformant=False,\n    refresh_token=auth0.ClientRefreshTokenArgs(\n        expiration_type=\"expiring\",\n        idle_token_lifetime=1296000,\n        infinite_idle_token_lifetime=True,\n        infinite_token_lifetime=False,\n        leeway=15,\n        rotation_type=\"rotating\",\n        token_lifetime=84600,\n    ),\n    token_endpoint_auth_method=\"client_secret_post\",\n    web_origins=[\"https://example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myClient = new Auth0.Client(\"myClient\", new Auth0.ClientArgs\n        {\n            Addons = new Auth0.Inputs.ClientAddonsArgs\n            {\n                Firebase = \n                {\n                    { \"clientEmail\", \"john.doe@example.com\" },\n                    { \"lifetimeInSeconds\", 1 },\n                    { \"privateKey\", \"wer\" },\n                    { \"privateKeyId\", \"qwreerwerwe\" },\n                },\n                Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs\n                {\n                    Audience = \"https://example.com/saml\",\n                    CreateUpnClaim = false,\n                    MapIdentities = false,\n                    MapUnknownClaimsAsIs = false,\n                    Mappings = \n                    {\n                        { \"email\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\" },\n                        { \"name\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\" },\n                    },\n                    NameIdentifierFormat = \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n                    NameIdentifierProbes = \n                    {\n                        \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                    },\n                    PassthroughClaimsWithNoMapping = false,\n                },\n            },\n            AllowedLogoutUrls = \n            {\n                \"https://example.com\",\n            },\n            AllowedOrigins = \n            {\n                \"https://example.com\",\n            },\n            AppType = \"non_interactive\",\n            Callbacks = \n            {\n                \"https://example.com/callback\",\n            },\n            ClientMetadata = \n            {\n                { \"foo\", \"zoo\" },\n            },\n            CustomLoginPageOn = true,\n            Description = \"Test Applications Long Description\",\n            GrantTypes = \n            {\n                \"authorization_code\",\n                \"http://auth0.com/oauth/grant-type/password-realm\",\n                \"implicit\",\n                \"password\",\n                \"refresh_token\",\n            },\n            IsFirstParty = true,\n            IsTokenEndpointIpHeaderTrusted = true,\n            JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs\n            {\n                Alg = \"RS256\",\n                LifetimeInSeconds = 300,\n                Scopes = \n                {\n                    { \"foo\", \"bar\" },\n                },\n                SecretEncoded = true,\n            },\n            Mobile = new Auth0.Inputs.ClientMobileArgs\n            {\n                Ios = new Auth0.Inputs.ClientMobileIosArgs\n                {\n                    AppBundleIdentifier = \"com.my.bundle.id\",\n                    TeamId = \"9JA89QQLNQ\",\n                },\n            },\n            OidcConformant = false,\n            RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs\n            {\n                ExpirationType = \"expiring\",\n                IdleTokenLifetime = 1296000,\n                InfiniteIdleTokenLifetime = true,\n                InfiniteTokenLifetime = false,\n                Leeway = 15,\n                RotationType = \"rotating\",\n                TokenLifetime = 84600,\n            },\n            TokenEndpointAuthMethod = \"client_secret_post\",\n            WebOrigins = \n            {\n                \"https://example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewClient(ctx, \"myClient\", \u0026auth0.ClientArgs{\n\t\t\tAddons: \u0026ClientAddonsArgs{\n\t\t\t\tFirebase: pulumi.AnyMap{\n\t\t\t\t\t\"clientEmail\":       pulumi.Any(\"john.doe@example.com\"),\n\t\t\t\t\t\"lifetimeInSeconds\": pulumi.Any(1),\n\t\t\t\t\t\"privateKey\":        pulumi.Any(\"wer\"),\n\t\t\t\t\t\"privateKeyId\":      pulumi.Any(\"qwreerwerwe\"),\n\t\t\t\t},\n\t\t\t\tSamlp: \u0026ClientAddonsSamlpArgs{\n\t\t\t\t\tAudience:             pulumi.String(\"https://example.com/saml\"),\n\t\t\t\t\tCreateUpnClaim:       pulumi.Bool(false),\n\t\t\t\t\tMapIdentities:        pulumi.Bool(false),\n\t\t\t\t\tMapUnknownClaimsAsIs: pulumi.Bool(false),\n\t\t\t\t\tMappings: pulumi.AnyMap{\n\t\t\t\t\t\t\"email\": pulumi.Any(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t\t\"name\":  pulumi.Any(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\"),\n\t\t\t\t\t},\n\t\t\t\t\tNameIdentifierFormat: pulumi.String(\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\"),\n\t\t\t\t\tNameIdentifierProbes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t},\n\t\t\t\t\tPassthroughClaimsWithNoMapping: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAppType: pulumi.String(\"non_interactive\"),\n\t\t\tCallbacks: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com/callback\"),\n\t\t\t},\n\t\t\tClientMetadata: pulumi.AnyMap{\n\t\t\t\t\"foo\": pulumi.Any(\"zoo\"),\n\t\t\t},\n\t\t\tCustomLoginPageOn: pulumi.Bool(true),\n\t\t\tDescription:       pulumi.String(\"Test Applications Long Description\"),\n\t\t\tGrantTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"authorization_code\"),\n\t\t\t\tpulumi.String(\"http://auth0.com/oauth/grant-type/password-realm\"),\n\t\t\t\tpulumi.String(\"implicit\"),\n\t\t\t\tpulumi.String(\"password\"),\n\t\t\t\tpulumi.String(\"refresh_token\"),\n\t\t\t},\n\t\t\tIsFirstParty:                   pulumi.Bool(true),\n\t\t\tIsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),\n\t\t\tJwtConfiguration: \u0026ClientJwtConfigurationArgs{\n\t\t\t\tAlg:               pulumi.String(\"RS256\"),\n\t\t\t\tLifetimeInSeconds: pulumi.Int(300),\n\t\t\t\tScopes: pulumi.StringMap{\n\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t},\n\t\t\t\tSecretEncoded: pulumi.Bool(true),\n\t\t\t},\n\t\t\tMobile: \u0026ClientMobileArgs{\n\t\t\t\tIos: \u0026ClientMobileIosArgs{\n\t\t\t\t\tAppBundleIdentifier: pulumi.String(\"com.my.bundle.id\"),\n\t\t\t\t\tTeamId:              pulumi.String(\"9JA89QQLNQ\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOidcConformant: pulumi.Bool(false),\n\t\t\tRefreshToken: \u0026ClientRefreshTokenArgs{\n\t\t\t\tExpirationType:            pulumi.String(\"expiring\"),\n\t\t\t\tIdleTokenLifetime:         pulumi.Int(1296000),\n\t\t\t\tInfiniteIdleTokenLifetime: pulumi.Bool(true),\n\t\t\t\tInfiniteTokenLifetime:     pulumi.Bool(false),\n\t\t\t\tLeeway:                    pulumi.Int(15),\n\t\t\t\tRotationType:              pulumi.String(\"rotating\"),\n\t\t\t\tTokenLifetime:             pulumi.Int(84600),\n\t\t\t},\n\t\t\tTokenEndpointAuthMethod: pulumi.String(\"client_secret_post\"),\n\t\t\tWebOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {\n    addons: {\n        firebase: {\n            client_email: \"john.doe@example.com\",\n            lifetime_in_seconds: 1,\n            private_key: \"wer\",\n            private_key_id: \"qwreerwerwe\",\n        },\n        samlp: {\n            audience: \"https://example.com/saml\",\n            createUpnClaim: false,\n            mapIdentities: false,\n            mapUnknownClaimsAsIs: false,\n            mappings: {\n                email: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                name: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            nameIdentifierFormat: \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            nameIdentifierProbes: [\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthroughClaimsWithNoMapping: false,\n        },\n    },\n    allowedClients: [\"https://allowed.example.com\"],\n    allowedLogoutUrls: [\"https://example.com\"],\n    allowedOrigins: [\"https://example.com\"],\n    appType: \"non_interactive\",\n    callbacks: [\"https://example.com/callback\"],\n    clientMetadata: {\n        foo: \"zoo\",\n    },\n    customLoginPageOn: true,\n    description: \"Test Applications Long Description\",\n    grantTypes: [\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    isFirstParty: true,\n    isTokenEndpointIpHeaderTrusted: true,\n    jwtConfiguration: {\n        alg: \"RS256\",\n        lifetimeInSeconds: 300,\n        scopes: {\n            foo: \"bar\",\n        },\n        secretEncoded: true,\n    },\n    mobile: {\n        ios: {\n            appBundleIdentifier: \"com.my.bundle.id\",\n            teamId: \"9JA89QQLNQ\",\n        },\n    },\n    oidcConformant: false,\n    organizationRequireBehavior: \"no_prompt\",\n    organizationUsage: \"deny\",\n    refreshToken: {\n        expirationType: \"expiring\",\n        idleTokenLifetime: 1296000,\n        infiniteIdleTokenLifetime: true,\n        infiniteTokenLifetime: false,\n        leeway: 15,\n        rotationType: \"rotating\",\n        tokenLifetime: 84600,\n    },\n    tokenEndpointAuthMethod: \"client_secret_post\",\n    webOrigins: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"myClient\",\n    addons=auth0.ClientAddonsArgs(\n        firebase={\n            \"clientEmail\": \"john.doe@example.com\",\n            \"lifetimeInSeconds\": 1,\n            \"privateKey\": \"wer\",\n            \"privateKeyId\": \"qwreerwerwe\",\n        },\n        samlp=auth0.ClientAddonsSamlpArgs(\n            audience=\"https://example.com/saml\",\n            create_upn_claim=False,\n            map_identities=False,\n            map_unknown_claims_as_is=False,\n            mappings={\n                \"email\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                \"name\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            name_identifier_format=\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            name_identifier_probes=[\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthrough_claims_with_no_mapping=False,\n        ),\n    ),\n    allowed_clients=[\"https://allowed.example.com\"],\n    allowed_logout_urls=[\"https://example.com\"],\n    allowed_origins=[\"https://example.com\"],\n    app_type=\"non_interactive\",\n    callbacks=[\"https://example.com/callback\"],\n    client_metadata={\n        \"foo\": \"zoo\",\n    },\n    custom_login_page_on=True,\n    description=\"Test Applications Long Description\",\n    grant_types=[\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    is_first_party=True,\n    is_token_endpoint_ip_header_trusted=True,\n    jwt_configuration=auth0.ClientJwtConfigurationArgs(\n        alg=\"RS256\",\n        lifetime_in_seconds=300,\n        scopes={\n            \"foo\": \"bar\",\n        },\n        secret_encoded=True,\n    ),\n    mobile=auth0.ClientMobileArgs(\n        ios=auth0.ClientMobileIosArgs(\n            app_bundle_identifier=\"com.my.bundle.id\",\n            team_id=\"9JA89QQLNQ\",\n        ),\n    ),\n    oidc_conformant=False,\n    organization_require_behavior=\"no_prompt\",\n    organization_usage=\"deny\",\n    refresh_token=auth0.ClientRefreshTokenArgs(\n        expiration_type=\"expiring\",\n        idle_token_lifetime=1296000,\n        infinite_idle_token_lifetime=True,\n        infinite_token_lifetime=False,\n        leeway=15,\n        rotation_type=\"rotating\",\n        token_lifetime=84600,\n    ),\n    token_endpoint_auth_method=\"client_secret_post\",\n    web_origins=[\"https://example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myClient = new Auth0.Client(\"myClient\", new Auth0.ClientArgs\n        {\n            Addons = new Auth0.Inputs.ClientAddonsArgs\n            {\n                Firebase = \n                {\n                    { \"clientEmail\", \"john.doe@example.com\" },\n                    { \"lifetimeInSeconds\", 1 },\n                    { \"privateKey\", \"wer\" },\n                    { \"privateKeyId\", \"qwreerwerwe\" },\n                },\n                Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs\n                {\n                    Audience = \"https://example.com/saml\",\n                    CreateUpnClaim = false,\n                    MapIdentities = false,\n                    MapUnknownClaimsAsIs = false,\n                    Mappings = \n                    {\n                        { \"email\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\" },\n                        { \"name\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\" },\n                    },\n                    NameIdentifierFormat = \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n                    NameIdentifierProbes = \n                    {\n                        \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                    },\n                    PassthroughClaimsWithNoMapping = false,\n                },\n            },\n            AllowedClients = \n            {\n                \"https://allowed.example.com\",\n            },\n            AllowedLogoutUrls = \n            {\n                \"https://example.com\",\n            },\n            AllowedOrigins = \n            {\n                \"https://example.com\",\n            },\n            AppType = \"non_interactive\",\n            Callbacks = \n            {\n                \"https://example.com/callback\",\n            },\n            ClientMetadata = \n            {\n                { \"foo\", \"zoo\" },\n            },\n            CustomLoginPageOn = true,\n            Description = \"Test Applications Long Description\",\n            GrantTypes = \n            {\n                \"authorization_code\",\n                \"http://auth0.com/oauth/grant-type/password-realm\",\n                \"implicit\",\n                \"password\",\n                \"refresh_token\",\n            },\n            IsFirstParty = true,\n            IsTokenEndpointIpHeaderTrusted = true,\n            JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs\n            {\n                Alg = \"RS256\",\n                LifetimeInSeconds = 300,\n                Scopes = \n                {\n                    { \"foo\", \"bar\" },\n                },\n                SecretEncoded = true,\n            },\n            Mobile = new Auth0.Inputs.ClientMobileArgs\n            {\n                Ios = new Auth0.Inputs.ClientMobileIosArgs\n                {\n                    AppBundleIdentifier = \"com.my.bundle.id\",\n                    TeamId = \"9JA89QQLNQ\",\n                },\n            },\n            OidcConformant = false,\n            OrganizationRequireBehavior = \"no_prompt\",\n            OrganizationUsage = \"deny\",\n            RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs\n            {\n                ExpirationType = \"expiring\",\n                IdleTokenLifetime = 1296000,\n                InfiniteIdleTokenLifetime = true,\n                InfiniteTokenLifetime = false,\n                Leeway = 15,\n                RotationType = \"rotating\",\n                TokenLifetime = 84600,\n            },\n            TokenEndpointAuthMethod = \"client_secret_post\",\n            WebOrigins = \n            {\n                \"https://example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewClient(ctx, \"myClient\", \u0026auth0.ClientArgs{\n\t\t\tAddons: \u0026ClientAddonsArgs{\n\t\t\t\tFirebase: pulumi.AnyMap{\n\t\t\t\t\t\"clientEmail\":       pulumi.Any(\"john.doe@example.com\"),\n\t\t\t\t\t\"lifetimeInSeconds\": pulumi.Any(1),\n\t\t\t\t\t\"privateKey\":        pulumi.Any(\"wer\"),\n\t\t\t\t\t\"privateKeyId\":      pulumi.Any(\"qwreerwerwe\"),\n\t\t\t\t},\n\t\t\t\tSamlp: \u0026ClientAddonsSamlpArgs{\n\t\t\t\t\tAudience:             pulumi.String(\"https://example.com/saml\"),\n\t\t\t\t\tCreateUpnClaim:       pulumi.Bool(false),\n\t\t\t\t\tMapIdentities:        pulumi.Bool(false),\n\t\t\t\t\tMapUnknownClaimsAsIs: pulumi.Bool(false),\n\t\t\t\t\tMappings: pulumi.AnyMap{\n\t\t\t\t\t\t\"email\": pulumi.Any(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t\t\"name\":  pulumi.Any(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\"),\n\t\t\t\t\t},\n\t\t\t\t\tNameIdentifierFormat: pulumi.String(\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\"),\n\t\t\t\t\tNameIdentifierProbes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t},\n\t\t\t\t\tPassthroughClaimsWithNoMapping: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAllowedClients: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://allowed.example.com\"),\n\t\t\t},\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAppType: pulumi.String(\"non_interactive\"),\n\t\t\tCallbacks: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com/callback\"),\n\t\t\t},\n\t\t\tClientMetadata: pulumi.AnyMap{\n\t\t\t\t\"foo\": pulumi.Any(\"zoo\"),\n\t\t\t},\n\t\t\tCustomLoginPageOn: pulumi.Bool(true),\n\t\t\tDescription:       pulumi.String(\"Test Applications Long Description\"),\n\t\t\tGrantTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"authorization_code\"),\n\t\t\t\tpulumi.String(\"http://auth0.com/oauth/grant-type/password-realm\"),\n\t\t\t\tpulumi.String(\"implicit\"),\n\t\t\t\tpulumi.String(\"password\"),\n\t\t\t\tpulumi.String(\"refresh_token\"),\n\t\t\t},\n\t\t\tIsFirstParty:                   pulumi.Bool(true),\n\t\t\tIsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),\n\t\t\tJwtConfiguration: \u0026ClientJwtConfigurationArgs{\n\t\t\t\tAlg:               pulumi.String(\"RS256\"),\n\t\t\t\tLifetimeInSeconds: pulumi.Int(300),\n\t\t\t\tScopes: pulumi.StringMap{\n\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t},\n\t\t\t\tSecretEncoded: pulumi.Bool(true),\n\t\t\t},\n\t\t\tMobile: \u0026ClientMobileArgs{\n\t\t\t\tIos: \u0026ClientMobileIosArgs{\n\t\t\t\t\tAppBundleIdentifier: pulumi.String(\"com.my.bundle.id\"),\n\t\t\t\t\tTeamId:              pulumi.String(\"9JA89QQLNQ\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOidcConformant:              pulumi.Bool(false),\n\t\t\tOrganizationRequireBehavior: pulumi.String(\"no_prompt\"),\n\t\t\tOrganizationUsage:           pulumi.String(\"deny\"),\n\t\t\tRefreshToken: \u0026ClientRefreshTokenArgs{\n\t\t\t\tExpirationType:            pulumi.String(\"expiring\"),\n\t\t\t\tIdleTokenLifetime:         pulumi.Int(1296000),\n\t\t\t\tInfiniteIdleTokenLifetime: pulumi.Bool(true),\n\t\t\t\tInfiniteTokenLifetime:     pulumi.Bool(false),\n\t\t\t\tLeeway:                    pulumi.Int(15),\n\t\t\t\tRotationType:              pulumi.String(\"rotating\"),\n\t\t\t\tTokenLifetime:             pulumi.Int(84600),\n\t\t\t},\n\t\t\tTokenEndpointAuthMethod: pulumi.String(\"client_secret_post\"),\n\t\t\tWebOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "addons": {
                     "$ref": "#/types/auth0:index/ClientAddons:ClientAddons",
                     "description": "List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.\n"
+                },
+                "allowedClients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.\n"
                 },
                 "allowedLogoutUrls": {
                     "type": "array",
@@ -3170,6 +3613,14 @@
                     "type": "boolean",
                     "description": "Boolean. Indicates whether or not this client will conform to strict OIDC specifications.\n"
                 },
+                "organizationRequireBehavior": {
+                    "type": "string",
+                    "description": "String. Defines how to proceed during an authentication transaction when `organization_usage = \"require\"`. Can be `no_prompt` (default) or `pre_login_prompt`.\n"
+                },
+                "organizationUsage": {
+                    "type": "string",
+                    "description": "String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.\n"
+                },
                 "refreshToken": {
                     "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken",
                     "description": "List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.\n"
@@ -3212,6 +3663,13 @@
                 "addons": {
                     "$ref": "#/types/auth0:index/ClientAddons:ClientAddons",
                     "description": "List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.\n"
+                },
+                "allowedClients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.\n"
                 },
                 "allowedLogoutUrls": {
                     "type": "array",
@@ -3322,6 +3780,14 @@
                     "type": "boolean",
                     "description": "Boolean. Indicates whether or not this client will conform to strict OIDC specifications.\n"
                 },
+                "organizationRequireBehavior": {
+                    "type": "string",
+                    "description": "String. Defines how to proceed during an authentication transaction when `organization_usage = \"require\"`. Can be `no_prompt` (default) or `pre_login_prompt`.\n"
+                },
+                "organizationUsage": {
+                    "type": "string",
+                    "description": "String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.\n"
+                },
                 "refreshToken": {
                     "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken",
                     "description": "List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.\n"
@@ -3352,6 +3818,13 @@
                     "addons": {
                         "$ref": "#/types/auth0:index/ClientAddons:ClientAddons",
                         "description": "List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.\n"
+                    },
+                    "allowedClients": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.\n"
                     },
                     "allowedLogoutUrls": {
                         "type": "array",
@@ -3468,6 +3941,14 @@
                     "oidcConformant": {
                         "type": "boolean",
                         "description": "Boolean. Indicates whether or not this client will conform to strict OIDC specifications.\n"
+                    },
+                    "organizationRequireBehavior": {
+                        "type": "string",
+                        "description": "String. Defines how to proceed during an authentication transaction when `organization_usage = \"require\"`. Can be `no_prompt` (default) or `pre_login_prompt`.\n"
+                    },
+                    "organizationUsage": {
+                        "type": "string",
+                        "description": "String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.\n"
                     },
                     "refreshToken": {
                         "$ref": "#/types/auth0:index/ClientRefreshToken:ClientRefreshToken",
@@ -3748,7 +4229,8 @@
                 },
                 "verificationMethod": {
                     "type": "string",
-                    "description": "String. Domain verification method. Options include `txt`.\n"
+                    "description": "String. Domain verification method. Options include `txt`.\n",
+                    "deprecationMessage": "The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs"
                 }
             },
             "required": [
@@ -3756,8 +4238,7 @@
                 "primary",
                 "status",
                 "type",
-                "verification",
-                "verificationMethod"
+                "verification"
             ],
             "inputProperties": {
                 "domain": {
@@ -3770,13 +4251,13 @@
                 },
                 "verificationMethod": {
                     "type": "string",
-                    "description": "String. Domain verification method. Options include `txt`.\n"
+                    "description": "String. Domain verification method. Options include `txt`.\n",
+                    "deprecationMessage": "The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs"
                 }
             },
             "requiredInputs": [
                 "domain",
-                "type",
-                "verificationMethod"
+                "type"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CustomDomain resources.\n",
@@ -3803,7 +4284,38 @@
                     },
                     "verificationMethod": {
                         "type": "string",
-                        "description": "String. Domain verification method. Options include `txt`.\n"
+                        "description": "String. Domain verification method. Options include `txt`.\n",
+                        "deprecationMessage": "The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/customDomainVerification:CustomDomainVerification": {
+            "properties": {
+                "customDomainId": {
+                    "type": "string",
+                    "description": "String. ID of the custom domain resource.\n"
+                }
+            },
+            "required": [
+                "customDomainId"
+            ],
+            "inputProperties": {
+                "customDomainId": {
+                    "type": "string",
+                    "description": "String. ID of the custom domain resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "customDomainId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CustomDomainVerification resources.\n",
+                "properties": {
+                    "customDomainId": {
+                        "type": "string",
+                        "description": "String. ID of the custom domain resource.\n"
                     }
                 },
                 "type": "object"
@@ -3908,7 +4420,7 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
+                    "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).\n"
                 },
                 "urlLifetimeInSeconds": {
                     "type": "integer",
@@ -3950,7 +4462,7 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
+                    "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).\n"
                 },
                 "urlLifetimeInSeconds": {
                     "type": "integer",
@@ -3994,7 +4506,7 @@
                     },
                     "template": {
                         "type": "string",
-                        "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `change_password` (legacy), and `password_reset` (legacy).\n"
+                        "description": "String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).\n"
                     },
                     "urlLifetimeInSeconds": {
                         "type": "integer",
@@ -4008,6 +4520,12 @@
             "properties": {
                 "addons": {
                     "$ref": "#/types/auth0:index/GlobalClientAddons:GlobalClientAddons"
+                },
+                "allowedClients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "allowedLogoutUrls": {
                     "type": "array",
@@ -4102,6 +4620,12 @@
                 "oidcConformant": {
                     "type": "boolean"
                 },
+                "organizationRequireBehavior": {
+                    "type": "string"
+                },
+                "organizationUsage": {
+                    "type": "string"
+                },
                 "refreshToken": {
                     "$ref": "#/types/auth0:index/GlobalClientRefreshToken:GlobalClientRefreshToken"
                 },
@@ -4123,6 +4647,7 @@
             },
             "required": [
                 "addons",
+                "allowedClients",
                 "allowedLogoutUrls",
                 "allowedOrigins",
                 "appType",
@@ -4146,6 +4671,8 @@
                 "mobile",
                 "name",
                 "oidcConformant",
+                "organizationRequireBehavior",
+                "organizationUsage",
                 "refreshToken",
                 "sso",
                 "ssoDisabled",
@@ -4155,6 +4682,12 @@
             "inputProperties": {
                 "addons": {
                     "$ref": "#/types/auth0:index/GlobalClientAddons:GlobalClientAddons"
+                },
+                "allowedClients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "allowedLogoutUrls": {
                     "type": "array",
@@ -4248,6 +4781,12 @@
                 },
                 "oidcConformant": {
                     "type": "boolean"
+                },
+                "organizationRequireBehavior": {
+                    "type": "string"
+                },
+                "organizationUsage": {
+                    "type": "string"
                 },
                 "refreshToken": {
                     "$ref": "#/types/auth0:index/GlobalClientRefreshToken:GlobalClientRefreshToken"
@@ -4273,6 +4812,12 @@
                 "properties": {
                     "addons": {
                         "$ref": "#/types/auth0:index/GlobalClientAddons:GlobalClientAddons"
+                    },
+                    "allowedClients": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "allowedLogoutUrls": {
                         "type": "array",
@@ -4367,6 +4912,12 @@
                     "oidcConformant": {
                         "type": "boolean"
                     },
+                    "organizationRequireBehavior": {
+                        "type": "string"
+                    },
+                    "organizationUsage": {
+                        "type": "string"
+                    },
                     "refreshToken": {
                         "$ref": "#/types/auth0:index/GlobalClientRefreshToken:GlobalClientRefreshToken"
                     },
@@ -4398,7 +4949,7 @@
                 },
                 "policy": {
                     "type": "string",
-                    "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
+                    "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
                 }
             },
             "required": [
@@ -4411,7 +4962,7 @@
                 },
                 "policy": {
                     "type": "string",
-                    "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
+                    "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
                 }
             },
             "requiredInputs": [
@@ -4426,14 +4977,14 @@
                     },
                     "policy": {
                         "type": "string",
-                        "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
+                        "description": "String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)\n"
                     }
                 },
                 "type": "object"
             }
         },
         "auth0:index/hook:Hook": {
-            "description": "Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.\n\nDepending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myHook = new auth0.Hook(\"my_hook\", {\n    dependencies: {\n        auth0: \"2.30.0\",\n    },\n    enabled: true,\n    script: `function (user, context, callback) {\n  callback(null, { user });\n}\n`,\n    triggerId: \"pre-user-registration\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_hook = auth0.Hook(\"myHook\",\n    dependencies={\n        \"auth0\": \"2.30.0\",\n    },\n    enabled=True,\n    script=\"\"\"function (user, context, callback) {\n  callback(null, { user });\n}\n\n\"\"\",\n    trigger_id=\"pre-user-registration\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myHook = new Auth0.Hook(\"myHook\", new Auth0.HookArgs\n        {\n            Dependencies = \n            {\n                { \"auth0\", \"2.30.0\" },\n            },\n            Enabled = true,\n            Script = @\"function (user, context, callback) {\n  callback(null, { user });\n}\n\n\",\n            TriggerId = \"pre-user-registration\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewHook(ctx, \"myHook\", \u0026auth0.HookArgs{\n\t\t\tDependencies: pulumi.AnyMap{\n\t\t\t\t\"auth0\": pulumi.Any(\"2.30.0\"),\n\t\t\t},\n\t\t\tEnabled:   pulumi.Bool(true),\n\t\t\tScript:    pulumi.String(fmt.Sprintf(\"%v%v%v%v\", \"function (user, context, callback) {\\n\", \"  callback(null, { user });\\n\", \"}\\n\", \"\\n\")),\n\t\t\tTriggerId: pulumi.String(\"pre-user-registration\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.\n\nDepending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myHook = new auth0.Hook(\"my_hook\", {\n    dependencies: {\n        auth0: \"2.30.0\",\n    },\n    enabled: true,\n    script: `function (user, context, callback) {\n  callback(null, { user });\n}\n`,\n    secrets: {\n        foo: \"bar\",\n    },\n    triggerId: \"pre-user-registration\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_hook = auth0.Hook(\"myHook\",\n    dependencies={\n        \"auth0\": \"2.30.0\",\n    },\n    enabled=True,\n    script=\"\"\"function (user, context, callback) {\n  callback(null, { user });\n}\n\n\"\"\",\n    secrets={\n        \"foo\": \"bar\",\n    },\n    trigger_id=\"pre-user-registration\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myHook = new Auth0.Hook(\"myHook\", new Auth0.HookArgs\n        {\n            Dependencies = \n            {\n                { \"auth0\", \"2.30.0\" },\n            },\n            Enabled = true,\n            Script = @\"function (user, context, callback) {\n  callback(null, { user });\n}\n\n\",\n            Secrets = \n            {\n                { \"foo\", \"bar\" },\n            },\n            TriggerId = \"pre-user-registration\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewHook(ctx, \"myHook\", \u0026auth0.HookArgs{\n\t\t\tDependencies: pulumi.AnyMap{\n\t\t\t\t\"auth0\": pulumi.Any(\"2.30.0\"),\n\t\t\t},\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t\tScript:  pulumi.String(fmt.Sprintf(\"%v%v%v%v\", \"function (user, context, callback) {\\n\", \"  callback(null, { user });\\n\", \"}\\n\", \"\\n\")),\n\t\t\tSecrets: pulumi.AnyMap{\n\t\t\t\t\"foo\": pulumi.Any(\"bar\"),\n\t\t\t},\n\t\t\tTriggerId: pulumi.String(\"pre-user-registration\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "dependencies": {
                     "type": "object",
@@ -4459,7 +5010,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "The secrets associated with the hook\n"
+                    "description": "Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.\n"
                 },
                 "triggerId": {
                     "type": "string",
@@ -4497,7 +5048,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "The secrets associated with the hook\n"
+                    "description": "Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.\n"
                 },
                 "triggerId": {
                     "type": "string",
@@ -4535,7 +5086,7 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "The secrets associated with the hook\n"
+                        "description": "Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.\n"
                     },
                     "triggerId": {
                         "type": "string",
@@ -4546,20 +5097,23 @@
             }
         },
         "auth0:index/logStream:LogStream": {
+            "description": "With this resource, you can manage your Auth0 log streams.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst example = new auth0.LogStream(\"example\", {\n    sink: {\n        awsAccountId: \"my_account_id\",\n        awsRegion: \"us-east-2\",\n    },\n    status: \"active\",\n    type: \"eventbridge\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nexample = auth0.LogStream(\"example\",\n    sink=auth0.LogStreamSinkArgs(\n        aws_account_id=\"my_account_id\",\n        aws_region=\"us-east-2\",\n    ),\n    status=\"active\",\n    type=\"eventbridge\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Auth0.LogStream(\"example\", new Auth0.LogStreamArgs\n        {\n            Sink = new Auth0.Inputs.LogStreamSinkArgs\n            {\n                AwsAccountId = \"my_account_id\",\n                AwsRegion = \"us-east-2\",\n            },\n            Status = \"active\",\n            Type = \"eventbridge\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewLogStream(ctx, \"example\", \u0026auth0.LogStreamArgs{\n\t\t\tSink: \u0026LogStreamSinkArgs{\n\t\t\t\tAwsAccountId: pulumi.String(\"my_account_id\"),\n\t\t\t\tAwsRegion:    pulumi.String(\"us-east-2\"),\n\t\t\t},\n\t\t\tStatus: pulumi.String(\"active\"),\n\t\t\tType:   pulumi.String(\"eventbridge\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the log stream\n"
                 },
                 "sink": {
-                    "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink"
+                    "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
+                    "description": "List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of the LogStream\n"
+                    "description": "The current status of the log stream. Options are \"active\", \"paused\", \"suspended\"\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the log stream, which indicates the sink provider\n"
+                    "description": "The type of log stream. Options are \"eventbridge\", \"eventgrid\", \"http\", \"datadog\", \"splunk\", \"sumo\"\n"
                 }
             },
             "required": [
@@ -4570,18 +5124,20 @@
             ],
             "inputProperties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the log stream\n"
                 },
                 "sink": {
-                    "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink"
+                    "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
+                    "description": "List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of the LogStream\n"
+                    "description": "The current status of the log stream. Options are \"active\", \"paused\", \"suspended\"\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the log stream, which indicates the sink provider\n"
+                    "description": "The type of log stream. Options are \"eventbridge\", \"eventgrid\", \"http\", \"datadog\", \"splunk\", \"sumo\"\n"
                 }
             },
             "requiredInputs": [
@@ -4592,28 +5148,127 @@
                 "description": "Input properties used for looking up and filtering LogStream resources.\n",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name of the log stream\n"
                     },
                     "sink": {
-                        "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink"
+                        "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
+                        "description": "List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.\n"
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the LogStream\n"
+                        "description": "The current status of the log stream. Options are \"active\", \"paused\", \"suspended\"\n"
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of the log stream, which indicates the sink provider\n"
+                        "description": "The type of log stream. Options are \"eventbridge\", \"eventgrid\", \"http\", \"datadog\", \"splunk\", \"sumo\"\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/organization:Organization": {
+            "description": "The Organizations feature represents a broad update to the Auth0 platform that\nallows our business-to-business (B2B) customers to better manage their partners\nand customers, and to customize the ways that end-users access their\napplications. Auth0 customers can use Organizations to:\n\n  - Represent their business customers and partners in Auth0 and manage their\n    membership.\n  - Configure branded, federated login flows for each business.\n  - Build administration capabilities into their products, using Organizations\n    APIs, so that those businesses can manage their own organizations.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst acme = new auth0.Organization(\"acme\", {\n    displayName: \"Acme Inc.\",\n    branding: {\n        logoUrl: \"https://acme.com/logo.svg\",\n        colors: {\n            primary: \"#e3e2f0\",\n            page_background: \"#e3e2ff\",\n        },\n    },\n    connections: [{\n        connectionId: auth0_connection.acme.id,\n        assignMembershipOnLogin: true,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nacme = auth0.Organization(\"acme\",\n    display_name=\"Acme Inc.\",\n    branding=auth0.OrganizationBrandingArgs(\n        logo_url=\"https://acme.com/logo.svg\",\n        colors={\n            \"primary\": \"#e3e2f0\",\n            \"page_background\": \"#e3e2ff\",\n        },\n    ),\n    connections=[auth0.OrganizationConnectionArgs(\n        connection_id=auth0_connection[\"acme\"][\"id\"],\n        assign_membership_on_login=True,\n    )])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var acme = new Auth0.Organization(\"acme\", new Auth0.OrganizationArgs\n        {\n            DisplayName = \"Acme Inc.\",\n            Branding = new Auth0.Inputs.OrganizationBrandingArgs\n            {\n                LogoUrl = \"https://acme.com/logo.svg\",\n                Colors = \n                {\n                    { \"primary\", \"#e3e2f0\" },\n                    { \"page_background\", \"#e3e2ff\" },\n                },\n            },\n            Connections = \n            {\n                new Auth0.Inputs.OrganizationConnectionArgs\n                {\n                    ConnectionId = auth0_connection.Acme.Id,\n                    AssignMembershipOnLogin = true,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewOrganization(ctx, \"acme\", \u0026auth0.OrganizationArgs{\n\t\t\tDisplayName: pulumi.String(\"Acme Inc.\"),\n\t\t\tBranding: \u0026OrganizationBrandingArgs{\n\t\t\t\tLogoUrl: pulumi.String(\"https://acme.com/logo.svg\"),\n\t\t\t\tColors: pulumi.StringMap{\n\t\t\t\t\t\"primary\":         pulumi.String(\"#e3e2f0\"),\n\t\t\t\t\t\"page_background\": pulumi.String(\"#e3e2ff\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tConnections: OrganizationConnectionArray{\n\t\t\t\t\u0026OrganizationConnectionArgs{\n\t\t\t\t\tConnectionId:            pulumi.Any(auth0_connection.Acme.Id),\n\t\t\t\t\tAssignMembershipOnLogin: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "branding": {
+                    "$ref": "#/types/auth0:index/OrganizationBranding:OrganizationBranding",
+                    "description": "Defines how to style the login pages. For details, see\nBranding\n"
+                },
+                "connections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/OrganizationConnection:OrganizationConnection"
+                    },
+                    "description": "Connections assigned to the organization. For\ndetails, see Connections\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Friendly name of this organization\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata associated with the organization, Maximum of\n10 metadata properties allowed\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of this organization\n"
+                }
+            },
+            "required": [
+                "branding",
+                "connections",
+                "name"
+            ],
+            "inputProperties": {
+                "branding": {
+                    "$ref": "#/types/auth0:index/OrganizationBranding:OrganizationBranding",
+                    "description": "Defines how to style the login pages. For details, see\nBranding\n"
+                },
+                "connections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/OrganizationConnection:OrganizationConnection"
+                    },
+                    "description": "Connections assigned to the organization. For\ndetails, see Connections\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Friendly name of this organization\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata associated with the organization, Maximum of\n10 metadata properties allowed\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of this organization\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Organization resources.\n",
+                "properties": {
+                    "branding": {
+                        "$ref": "#/types/auth0:index/OrganizationBranding:OrganizationBranding",
+                        "description": "Defines how to style the login pages. For details, see\nBranding\n"
+                    },
+                    "connections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/OrganizationConnection:OrganizationConnection"
+                        },
+                        "description": "Connections assigned to the organization. For\ndetails, see Connections\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Friendly name of this organization\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Metadata associated with the organization, Maximum of\n10 metadata properties allowed\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this organization\n"
                     }
                 },
                 "type": "object"
             }
         },
         "auth0:index/prompt:Prompt": {
-            "description": "With this resource, you can manage your Auth0 prompts, including choosing the login experience version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst example = new auth0.Prompt(\"example\", {\n    universalLoginExperience: \"classic\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nexample = auth0.Prompt(\"example\", universal_login_experience=\"classic\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Auth0.Prompt(\"example\", new Auth0.PromptArgs\n        {\n            UniversalLoginExperience = \"classic\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPrompt(ctx, \"example\", \u0026auth0.PromptArgs{\n\t\t\tUniversalLoginExperience: pulumi.String(\"classic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "With this resource, you can manage your Auth0 prompts, including choosing the login experience version.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst example = new auth0.Prompt(\"example\", {\n    identifierFirst: false,\n    universalLoginExperience: \"classic\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nexample = auth0.Prompt(\"example\",\n    identifier_first=False,\n    universal_login_experience=\"classic\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Auth0.Prompt(\"example\", new Auth0.PromptArgs\n        {\n            IdentifierFirst = false,\n            UniversalLoginExperience = \"classic\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewPrompt(ctx, \"example\", \u0026auth0.PromptArgs{\n\t\t\tIdentifierFirst:          pulumi.Bool(false),\n\t\t\tUniversalLoginExperience: pulumi.String(\"classic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "identifierFirst": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Boolean. Indicates whether or not identifier first is used when using the new universal login experience.\n"
                 },
                 "universalLoginExperience": {
                     "type": "string",
@@ -4622,7 +5277,8 @@
             },
             "inputProperties": {
                 "identifierFirst": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Boolean. Indicates whether or not identifier first is used when using the new universal login experience.\n"
                 },
                 "universalLoginExperience": {
                     "type": "string",
@@ -4633,7 +5289,8 @@
                 "description": "Input properties used for looking up and filtering Prompt resources.\n",
                 "properties": {
                     "identifierFirst": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Boolean. Indicates whether or not identifier first is used when using the new universal login experience.\n"
                     },
                     "universalLoginExperience": {
                         "type": "string",

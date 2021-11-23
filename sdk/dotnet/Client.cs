@@ -52,6 +52,10 @@ namespace Pulumi.Auth0
     ///                     PassthroughClaimsWithNoMapping = false,
     ///                 },
     ///             },
+    ///             AllowedClients = 
+    ///             {
+    ///                 "https://allowed.example.com",
+    ///             },
     ///             AllowedLogoutUrls = 
     ///             {
     ///                 "https://example.com",
@@ -100,6 +104,8 @@ namespace Pulumi.Auth0
     ///                 },
     ///             },
     ///             OidcConformant = false,
+    ///             OrganizationRequireBehavior = "no_prompt",
+    ///             OrganizationUsage = "deny",
     ///             RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs
     ///             {
     ///                 ExpirationType = "expiring",
@@ -129,6 +135,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("addons")]
         public Output<Outputs.ClientAddons?> Addons { get; private set; } = null!;
+
+        /// <summary>
+        /// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        /// </summary>
+        [Output("allowedClients")]
+        public Output<ImmutableArray<string>> AllowedClients { get; private set; } = null!;
 
         /// <summary>
         /// List(String). URLs that Auth0 may redirect to after logout.
@@ -270,6 +282,18 @@ namespace Pulumi.Auth0
         public Output<bool> OidcConformant { get; private set; } = null!;
 
         /// <summary>
+        /// String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// </summary>
+        [Output("organizationRequireBehavior")]
+        public Output<string?> OrganizationRequireBehavior { get; private set; } = null!;
+
+        /// <summary>
+        /// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        /// </summary>
+        [Output("organizationUsage")]
+        public Output<string?> OrganizationUsage { get; private set; } = null!;
+
+        /// <summary>
         /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         /// </summary>
         [Output("refreshToken")]
@@ -350,6 +374,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("addons")]
         public Input<Inputs.ClientAddonsArgs>? Addons { get; set; }
+
+        [Input("allowedClients")]
+        private InputList<string>? _allowedClients;
+
+        /// <summary>
+        /// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        /// </summary>
+        public InputList<string> AllowedClients
+        {
+            get => _allowedClients ?? (_allowedClients = new InputList<string>());
+            set => _allowedClients = value;
+        }
 
         [Input("allowedLogoutUrls")]
         private InputList<string>? _allowedLogoutUrls;
@@ -523,6 +559,18 @@ namespace Pulumi.Auth0
         public Input<bool>? OidcConformant { get; set; }
 
         /// <summary>
+        /// String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// </summary>
+        [Input("organizationRequireBehavior")]
+        public Input<string>? OrganizationRequireBehavior { get; set; }
+
+        /// <summary>
+        /// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        /// </summary>
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
+
+        /// <summary>
         /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         /// </summary>
         [Input("refreshToken")]
@@ -571,6 +619,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("addons")]
         public Input<Inputs.ClientAddonsGetArgs>? Addons { get; set; }
+
+        [Input("allowedClients")]
+        private InputList<string>? _allowedClients;
+
+        /// <summary>
+        /// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        /// </summary>
+        public InputList<string> AllowedClients
+        {
+            get => _allowedClients ?? (_allowedClients = new InputList<string>());
+            set => _allowedClients = value;
+        }
 
         [Input("allowedLogoutUrls")]
         private InputList<string>? _allowedLogoutUrls;
@@ -752,6 +812,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
+
+        /// <summary>
+        /// String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// </summary>
+        [Input("organizationRequireBehavior")]
+        public Input<string>? OrganizationRequireBehavior { get; set; }
+
+        /// <summary>
+        /// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        /// </summary>
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
 
         /// <summary>
         /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.

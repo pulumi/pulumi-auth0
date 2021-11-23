@@ -24,6 +24,9 @@ import * as utilities from "./utilities";
  *   callback(null, { user });
  * }
  * `,
+ *     secrets: {
+ *         foo: "bar",
+ *     },
  *     triggerId: "pre-user-registration",
  * });
  * ```
@@ -73,7 +76,7 @@ export class Hook extends pulumi.CustomResource {
      */
     public readonly script!: pulumi.Output<string>;
     /**
-     * The secrets associated with the hook
+     * Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
      */
     public readonly secrets!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -143,7 +146,7 @@ export interface HookState {
      */
     script?: pulumi.Input<string>;
     /**
-     * The secrets associated with the hook
+     * Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
      */
     secrets?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -173,7 +176,7 @@ export interface HookArgs {
      */
     script: pulumi.Input<string>;
     /**
-     * The secrets associated with the hook
+     * Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
      */
     secrets?: pulumi.Input<{[key: string]: any}>;
     /**

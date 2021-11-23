@@ -9,6 +9,12 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'ActionDependencyArgs',
+    'ActionSecretArgs',
+    'ActionSupportedTriggersArgs',
+    'BrandingColorsArgs',
+    'BrandingFontArgs',
+    'BrandingUniversalLoginArgs',
     'ClientAddonsArgs',
     'ClientAddonsSamlpArgs',
     'ClientAddonsSamlpLogoutArgs',
@@ -40,6 +46,8 @@ __all__ = [
     'GuardianPhoneArgs',
     'GuardianPhoneOptionsArgs',
     'LogStreamSinkArgs',
+    'OrganizationBrandingArgs',
+    'OrganizationConnectionArgs',
     'ResourceServerScopeArgs',
     'RolePermissionArgs',
     'TenantChangePasswordArgs',
@@ -49,6 +57,202 @@ __all__ = [
     'TenantUniversalLoginArgs',
     'TenantUniversalLoginColorsArgs',
 ]
+
+@pulumi.input_type
+class ActionDependencyArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Secret name.
+        :param pulumi.Input[str] version: Trigger version.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Secret name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        Trigger version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class ActionSecretArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Secret name.
+        :param pulumi.Input[str] value: Secret value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Secret name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Secret value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ActionSupportedTriggersArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: Trigger ID.
+        :param pulumi.Input[str] version: Trigger version.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Trigger ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        Trigger version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class BrandingColorsArgs:
+    def __init__(__self__, *,
+                 page_background: Optional[pulumi.Input[str]] = None,
+                 primary: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] page_background: String, Hexadecimal. Background color of login pages.
+        :param pulumi.Input[str] primary: String, Hexadecimal. Primary button background color.
+        """
+        if page_background is not None:
+            pulumi.set(__self__, "page_background", page_background)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @property
+    @pulumi.getter(name="pageBackground")
+    def page_background(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, Hexadecimal. Background color of login pages.
+        """
+        return pulumi.get(self, "page_background")
+
+    @page_background.setter
+    def page_background(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "page_background", value)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, Hexadecimal. Primary button background color.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary", value)
+
+
+@pulumi.input_type
+class BrandingFontArgs:
+    def __init__(__self__, *,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] url: String. URL for the custom font.
+        """
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. URL for the custom font.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class BrandingUniversalLoginArgs:
+    def __init__(__self__, *,
+                 body: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] body: String, body of login pages.
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        String, body of login pages.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "body", value)
+
 
 @pulumi.input_type
 class ClientAddonsArgs:
@@ -1252,6 +1456,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_aliases: List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields_map: SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         :param pulumi.Input[str] from_: SMS number for the sender. Used when SMS Source is From.
+        :param pulumi.Input['ConnectionOptionsIdpInitiatedArgs'] idp_initiated: Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
         :param pulumi.Input[bool] import_mode: Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
         :param pulumi.Input[str] issuer: Issuer URL. E.g. `https://auth.example.com`
         :param pulumi.Input[str] key_id: Key ID.
@@ -1295,8 +1500,8 @@ class ConnectionOptionsArgs:
         if api_enable_users is not None:
             pulumi.set(__self__, "api_enable_users", api_enable_users)
         if app_domain is not None:
-            warnings.warn("""use domain instead""", DeprecationWarning)
-            pulumi.log.warn("""app_domain is deprecated: use domain instead""")
+            warnings.warn("""Use domain instead""", DeprecationWarning)
+            pulumi.log.warn("""app_domain is deprecated: Use domain instead""")
         if app_domain is not None:
             pulumi.set(__self__, "app_domain", app_domain)
         if app_id is not None:
@@ -1704,6 +1909,9 @@ class ConnectionOptionsArgs:
     @property
     @pulumi.getter(name="idpInitiated")
     def idp_initiated(self) -> Optional[pulumi.Input['ConnectionOptionsIdpInitiatedArgs']]:
+        """
+        Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+        """
         return pulumi.get(self, "idp_initiated")
 
     @idp_initiated.setter
@@ -3554,7 +3762,7 @@ class GuardianPhoneArgs:
                  provider: pulumi.Input[str],
                  options: Optional[pulumi.Input['GuardianPhoneOptionsArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] message_types: List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] message_types: List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
         :param pulumi.Input[str] provider: String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
         :param pulumi.Input['GuardianPhoneOptionsArgs'] options: List(Resource). Options for the various providers. See Options.
         """
@@ -3567,7 +3775,7 @@ class GuardianPhoneArgs:
     @pulumi.getter(name="messageTypes")
     def message_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+        List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
         """
         return pulumi.get(self, "message_types")
 
@@ -3725,6 +3933,26 @@ class LogStreamSinkArgs:
                  splunk_secure: Optional[pulumi.Input[bool]] = None,
                  splunk_token: Optional[pulumi.Input[str]] = None,
                  sumo_source_address: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] aws_account_id: The AWS Account ID
+        :param pulumi.Input[str] aws_partner_event_source: Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
+        :param pulumi.Input[str] aws_region: The AWS Region (i.e "us-east-2")
+        :param pulumi.Input[str] azure_partner_topic: Name of the Partner Topic to be used with Azure.  Generally should not be specified.
+        :param pulumi.Input[str] azure_region: The Azure region code (i.e. "ne")
+        :param pulumi.Input[str] azure_resource_group: The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
+        :param pulumi.Input[str] azure_subscription_id: The unique alphanumeric string that identifies your Azure subscription
+        :param pulumi.Input[str] datadog_api_key: The Datadog API key
+        :param pulumi.Input[str] datadog_region: The Datadog region
+        :param pulumi.Input[str] http_authorization: Sent in the HTTP "Authorization" header with each request
+        :param pulumi.Input[str] http_content_format: The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+        :param pulumi.Input[str] http_content_type: The ContentType header to send over HTTP.  Common value is "application/json"
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request
+        :param pulumi.Input[str] http_endpoint: The HTTP endpoint to send streaming logs
+        :param pulumi.Input[str] splunk_domain: The Splunk domain name
+        :param pulumi.Input[bool] splunk_secure: This toggle should be turned off when using self-signed certificates
+        :param pulumi.Input[str] splunk_token: The Splunk access token
+        :param pulumi.Input[str] sumo_source_address: Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
+        """
         if aws_account_id is not None:
             pulumi.set(__self__, "aws_account_id", aws_account_id)
         if aws_partner_event_source is not None:
@@ -3767,6 +3995,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Account ID
+        """
         return pulumi.get(self, "aws_account_id")
 
     @aws_account_id.setter
@@ -3776,6 +4007,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="awsPartnerEventSource")
     def aws_partner_event_source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
+        """
         return pulumi.get(self, "aws_partner_event_source")
 
     @aws_partner_event_source.setter
@@ -3785,6 +4019,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Region (i.e "us-east-2")
+        """
         return pulumi.get(self, "aws_region")
 
     @aws_region.setter
@@ -3794,6 +4031,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="azurePartnerTopic")
     def azure_partner_topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Partner Topic to be used with Azure.  Generally should not be specified.
+        """
         return pulumi.get(self, "azure_partner_topic")
 
     @azure_partner_topic.setter
@@ -3803,6 +4043,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="azureRegion")
     def azure_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure region code (i.e. "ne")
+        """
         return pulumi.get(self, "azure_region")
 
     @azure_region.setter
@@ -3812,6 +4055,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="azureResourceGroup")
     def azure_resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
+        """
         return pulumi.get(self, "azure_resource_group")
 
     @azure_resource_group.setter
@@ -3821,6 +4067,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="azureSubscriptionId")
     def azure_subscription_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique alphanumeric string that identifies your Azure subscription
+        """
         return pulumi.get(self, "azure_subscription_id")
 
     @azure_subscription_id.setter
@@ -3830,6 +4079,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="datadogApiKey")
     def datadog_api_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Datadog API key
+        """
         return pulumi.get(self, "datadog_api_key")
 
     @datadog_api_key.setter
@@ -3839,6 +4091,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="datadogRegion")
     def datadog_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Datadog region
+        """
         return pulumi.get(self, "datadog_region")
 
     @datadog_region.setter
@@ -3848,6 +4103,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="httpAuthorization")
     def http_authorization(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sent in the HTTP "Authorization" header with each request
+        """
         return pulumi.get(self, "http_authorization")
 
     @http_authorization.setter
@@ -3857,6 +4115,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="httpContentFormat")
     def http_content_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+        """
         return pulumi.get(self, "http_content_format")
 
     @http_content_format.setter
@@ -3866,6 +4127,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="httpContentType")
     def http_content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ContentType header to send over HTTP.  Common value is "application/json"
+        """
         return pulumi.get(self, "http_content_type")
 
     @http_content_type.setter
@@ -3875,6 +4139,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="httpCustomHeaders")
     def http_custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Additional HTTP headers to be included as part of the HTTP request
+        """
         return pulumi.get(self, "http_custom_headers")
 
     @http_custom_headers.setter
@@ -3884,6 +4151,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP endpoint to send streaming logs
+        """
         return pulumi.get(self, "http_endpoint")
 
     @http_endpoint.setter
@@ -3893,6 +4163,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="splunkDomain")
     def splunk_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Splunk domain name
+        """
         return pulumi.get(self, "splunk_domain")
 
     @splunk_domain.setter
@@ -3911,6 +4184,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="splunkSecure")
     def splunk_secure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This toggle should be turned off when using self-signed certificates
+        """
         return pulumi.get(self, "splunk_secure")
 
     @splunk_secure.setter
@@ -3920,6 +4196,9 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Splunk access token
+        """
         return pulumi.get(self, "splunk_token")
 
     @splunk_token.setter
@@ -3929,11 +4208,99 @@ class LogStreamSinkArgs:
     @property
     @pulumi.getter(name="sumoSourceAddress")
     def sumo_source_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
+        """
         return pulumi.get(self, "sumo_source_address")
 
     @sumo_source_address.setter
     def sumo_source_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sumo_source_address", value)
+
+
+@pulumi.input_type
+class OrganizationBrandingArgs:
+    def __init__(__self__, *,
+                 colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 logo_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] colors: Color scheme used to customize the login pages
+        :param pulumi.Input[str] logo_url: URL of logo to display on login page
+        """
+        if colors is not None:
+            pulumi.set(__self__, "colors", colors)
+        if logo_url is not None:
+            pulumi.set(__self__, "logo_url", logo_url)
+
+    @property
+    @pulumi.getter
+    def colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Color scheme used to customize the login pages
+        """
+        return pulumi.get(self, "colors")
+
+    @colors.setter
+    def colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "colors", value)
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of logo to display on login page
+        """
+        return pulumi.get(self, "logo_url")
+
+    @logo_url.setter
+    def logo_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_url", value)
+
+
+@pulumi.input_type
+class OrganizationConnectionArgs:
+    def __init__(__self__, *,
+                 connection_id: pulumi.Input[str],
+                 assign_membership_on_login: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] connection_id: The connection ID of the connection to add to the
+               organization
+        :param pulumi.Input[bool] assign_membership_on_login: When true, all users that log in
+               with this connection will be automatically granted membership in the
+               organization. When false, users must be granted membership in the organization
+               before logging in with this connection.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        if assign_membership_on_login is not None:
+            pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> pulumi.Input[str]:
+        """
+        The connection ID of the connection to add to the
+        organization
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter(name="assignMembershipOnLogin")
+    def assign_membership_on_login(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, all users that log in
+        with this connection will be automatically granted membership in the
+        organization. When false, users must be granted membership in the organization
+        before logging in with this connection.
+        """
+        return pulumi.get(self, "assign_membership_on_login")
+
+    @assign_membership_on_login.setter
+    def assign_membership_on_login(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "assign_membership_on_login", value)
 
 
 @pulumi.input_type

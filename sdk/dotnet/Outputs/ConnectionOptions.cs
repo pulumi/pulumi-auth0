@@ -88,6 +88,9 @@ namespace Pulumi.Auth0.Outputs
         public readonly string? From;
         public readonly string? IconUrl;
         public readonly string? IdentityApi;
+        /// <summary>
+        /// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+        /// </summary>
         public readonly Outputs.ConnectionOptionsIdpInitiated? IdpInitiated;
         /// <summary>
         /// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).

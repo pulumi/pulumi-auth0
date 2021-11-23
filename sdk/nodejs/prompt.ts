@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const example = new auth0.Prompt("example", {
+ *     identifierFirst: false,
  *     universalLoginExperience: "classic",
  * });
  * ```
@@ -46,6 +47,9 @@ export class Prompt extends pulumi.CustomResource {
         return obj['__pulumiType'] === Prompt.__pulumiType;
     }
 
+    /**
+     * Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+     */
     public readonly identifierFirst!: pulumi.Output<boolean | undefined>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
@@ -83,6 +87,9 @@ export class Prompt extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Prompt resources.
  */
 export interface PromptState {
+    /**
+     * Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+     */
     identifierFirst?: pulumi.Input<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
@@ -94,6 +101,9 @@ export interface PromptState {
  * The set of arguments for constructing a Prompt resource.
  */
 export interface PromptArgs {
+    /**
+     * Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+     */
     identifierFirst?: pulumi.Input<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.

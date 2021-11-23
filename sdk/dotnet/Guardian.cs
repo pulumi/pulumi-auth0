@@ -55,7 +55,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.GuardianPhone?> Phone { get; private set; } = null!;
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.GuardianPhoneArgs>? Phone { get; set; }
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.GuardianPhoneGetArgs>? Phone { get; set; }
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

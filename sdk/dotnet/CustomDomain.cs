@@ -70,7 +70,7 @@ namespace Pulumi.Auth0
         /// String. Domain verification method. Options include `txt`.
         /// </summary>
         [Output("verificationMethod")]
-        public Output<string> VerificationMethod { get; private set; } = null!;
+        public Output<string?> VerificationMethod { get; private set; } = null!;
 
 
         /// <summary>
@@ -133,8 +133,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// String. Domain verification method. Options include `txt`.
         /// </summary>
-        [Input("verificationMethod", required: true)]
-        public Input<string> VerificationMethod { get; set; } = null!;
+        [Input("verificationMethod")]
+        public Input<string>? VerificationMethod { get; set; }
 
         public CustomDomainArgs()
         {

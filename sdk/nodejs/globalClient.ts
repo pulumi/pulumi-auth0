@@ -34,6 +34,7 @@ export class GlobalClient extends pulumi.CustomResource {
     }
 
     public readonly addons!: pulumi.Output<outputs.GlobalClientAddons>;
+    public readonly allowedClients!: pulumi.Output<string[]>;
     public readonly allowedLogoutUrls!: pulumi.Output<string[]>;
     public readonly allowedOrigins!: pulumi.Output<string[]>;
     public readonly appType!: pulumi.Output<string>;
@@ -58,6 +59,8 @@ export class GlobalClient extends pulumi.CustomResource {
     public readonly mobile!: pulumi.Output<outputs.GlobalClientMobile>;
     public readonly name!: pulumi.Output<string>;
     public readonly oidcConformant!: pulumi.Output<boolean>;
+    public readonly organizationRequireBehavior!: pulumi.Output<string>;
+    public readonly organizationUsage!: pulumi.Output<string>;
     public readonly refreshToken!: pulumi.Output<outputs.GlobalClientRefreshToken>;
     public readonly sso!: pulumi.Output<boolean>;
     public readonly ssoDisabled!: pulumi.Output<boolean>;
@@ -78,6 +81,7 @@ export class GlobalClient extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GlobalClientState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
+            inputs["allowedClients"] = state ? state.allowedClients : undefined;
             inputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
             inputs["allowedOrigins"] = state ? state.allowedOrigins : undefined;
             inputs["appType"] = state ? state.appType : undefined;
@@ -102,6 +106,8 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["mobile"] = state ? state.mobile : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oidcConformant"] = state ? state.oidcConformant : undefined;
+            inputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
+            inputs["organizationUsage"] = state ? state.organizationUsage : undefined;
             inputs["refreshToken"] = state ? state.refreshToken : undefined;
             inputs["sso"] = state ? state.sso : undefined;
             inputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
@@ -110,6 +116,7 @@ export class GlobalClient extends pulumi.CustomResource {
         } else {
             const args = argsOrState as GlobalClientArgs | undefined;
             inputs["addons"] = args ? args.addons : undefined;
+            inputs["allowedClients"] = args ? args.allowedClients : undefined;
             inputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
             inputs["allowedOrigins"] = args ? args.allowedOrigins : undefined;
             inputs["appType"] = args ? args.appType : undefined;
@@ -134,6 +141,8 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["mobile"] = args ? args.mobile : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oidcConformant"] = args ? args.oidcConformant : undefined;
+            inputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
+            inputs["organizationUsage"] = args ? args.organizationUsage : undefined;
             inputs["refreshToken"] = args ? args.refreshToken : undefined;
             inputs["sso"] = args ? args.sso : undefined;
             inputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
@@ -152,6 +161,7 @@ export class GlobalClient extends pulumi.CustomResource {
  */
 export interface GlobalClientState {
     addons?: pulumi.Input<inputs.GlobalClientAddons>;
+    allowedClients?: pulumi.Input<pulumi.Input<string>[]>;
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     appType?: pulumi.Input<string>;
@@ -176,6 +186,8 @@ export interface GlobalClientState {
     mobile?: pulumi.Input<inputs.GlobalClientMobile>;
     name?: pulumi.Input<string>;
     oidcConformant?: pulumi.Input<boolean>;
+    organizationRequireBehavior?: pulumi.Input<string>;
+    organizationUsage?: pulumi.Input<string>;
     refreshToken?: pulumi.Input<inputs.GlobalClientRefreshToken>;
     sso?: pulumi.Input<boolean>;
     ssoDisabled?: pulumi.Input<boolean>;
@@ -188,6 +200,7 @@ export interface GlobalClientState {
  */
 export interface GlobalClientArgs {
     addons?: pulumi.Input<inputs.GlobalClientAddons>;
+    allowedClients?: pulumi.Input<pulumi.Input<string>[]>;
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     appType?: pulumi.Input<string>;
@@ -212,6 +225,8 @@ export interface GlobalClientArgs {
     mobile?: pulumi.Input<inputs.GlobalClientMobile>;
     name?: pulumi.Input<string>;
     oidcConformant?: pulumi.Input<boolean>;
+    organizationRequireBehavior?: pulumi.Input<string>;
+    organizationUsage?: pulumi.Input<string>;
     refreshToken?: pulumi.Input<inputs.GlobalClientRefreshToken>;
     sso?: pulumi.Input<boolean>;
     ssoDisabled?: pulumi.Input<boolean>;

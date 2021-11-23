@@ -10,6 +10,804 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ActionDependency struct {
+	// Secret name.
+	Name string `pulumi:"name"`
+	// Trigger version.
+	Version string `pulumi:"version"`
+}
+
+// ActionDependencyInput is an input type that accepts ActionDependencyArgs and ActionDependencyOutput values.
+// You can construct a concrete instance of `ActionDependencyInput` via:
+//
+//          ActionDependencyArgs{...}
+type ActionDependencyInput interface {
+	pulumi.Input
+
+	ToActionDependencyOutput() ActionDependencyOutput
+	ToActionDependencyOutputWithContext(context.Context) ActionDependencyOutput
+}
+
+type ActionDependencyArgs struct {
+	// Secret name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Trigger version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ActionDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionDependency)(nil)).Elem()
+}
+
+func (i ActionDependencyArgs) ToActionDependencyOutput() ActionDependencyOutput {
+	return i.ToActionDependencyOutputWithContext(context.Background())
+}
+
+func (i ActionDependencyArgs) ToActionDependencyOutputWithContext(ctx context.Context) ActionDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionDependencyOutput)
+}
+
+// ActionDependencyArrayInput is an input type that accepts ActionDependencyArray and ActionDependencyArrayOutput values.
+// You can construct a concrete instance of `ActionDependencyArrayInput` via:
+//
+//          ActionDependencyArray{ ActionDependencyArgs{...} }
+type ActionDependencyArrayInput interface {
+	pulumi.Input
+
+	ToActionDependencyArrayOutput() ActionDependencyArrayOutput
+	ToActionDependencyArrayOutputWithContext(context.Context) ActionDependencyArrayOutput
+}
+
+type ActionDependencyArray []ActionDependencyInput
+
+func (ActionDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionDependency)(nil)).Elem()
+}
+
+func (i ActionDependencyArray) ToActionDependencyArrayOutput() ActionDependencyArrayOutput {
+	return i.ToActionDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i ActionDependencyArray) ToActionDependencyArrayOutputWithContext(ctx context.Context) ActionDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionDependencyArrayOutput)
+}
+
+type ActionDependencyOutput struct{ *pulumi.OutputState }
+
+func (ActionDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionDependency)(nil)).Elem()
+}
+
+func (o ActionDependencyOutput) ToActionDependencyOutput() ActionDependencyOutput {
+	return o
+}
+
+func (o ActionDependencyOutput) ToActionDependencyOutputWithContext(ctx context.Context) ActionDependencyOutput {
+	return o
+}
+
+// Secret name.
+func (o ActionDependencyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionDependency) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Trigger version.
+func (o ActionDependencyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionDependency) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ActionDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionDependency)(nil)).Elem()
+}
+
+func (o ActionDependencyArrayOutput) ToActionDependencyArrayOutput() ActionDependencyArrayOutput {
+	return o
+}
+
+func (o ActionDependencyArrayOutput) ToActionDependencyArrayOutputWithContext(ctx context.Context) ActionDependencyArrayOutput {
+	return o
+}
+
+func (o ActionDependencyArrayOutput) Index(i pulumi.IntInput) ActionDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionDependency {
+		return vs[0].([]ActionDependency)[vs[1].(int)]
+	}).(ActionDependencyOutput)
+}
+
+type ActionSecret struct {
+	// Secret name.
+	Name string `pulumi:"name"`
+	// Secret value.
+	Value string `pulumi:"value"`
+}
+
+// ActionSecretInput is an input type that accepts ActionSecretArgs and ActionSecretOutput values.
+// You can construct a concrete instance of `ActionSecretInput` via:
+//
+//          ActionSecretArgs{...}
+type ActionSecretInput interface {
+	pulumi.Input
+
+	ToActionSecretOutput() ActionSecretOutput
+	ToActionSecretOutputWithContext(context.Context) ActionSecretOutput
+}
+
+type ActionSecretArgs struct {
+	// Secret name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Secret value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ActionSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSecret)(nil)).Elem()
+}
+
+func (i ActionSecretArgs) ToActionSecretOutput() ActionSecretOutput {
+	return i.ToActionSecretOutputWithContext(context.Background())
+}
+
+func (i ActionSecretArgs) ToActionSecretOutputWithContext(ctx context.Context) ActionSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSecretOutput)
+}
+
+// ActionSecretArrayInput is an input type that accepts ActionSecretArray and ActionSecretArrayOutput values.
+// You can construct a concrete instance of `ActionSecretArrayInput` via:
+//
+//          ActionSecretArray{ ActionSecretArgs{...} }
+type ActionSecretArrayInput interface {
+	pulumi.Input
+
+	ToActionSecretArrayOutput() ActionSecretArrayOutput
+	ToActionSecretArrayOutputWithContext(context.Context) ActionSecretArrayOutput
+}
+
+type ActionSecretArray []ActionSecretInput
+
+func (ActionSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSecret)(nil)).Elem()
+}
+
+func (i ActionSecretArray) ToActionSecretArrayOutput() ActionSecretArrayOutput {
+	return i.ToActionSecretArrayOutputWithContext(context.Background())
+}
+
+func (i ActionSecretArray) ToActionSecretArrayOutputWithContext(ctx context.Context) ActionSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSecretArrayOutput)
+}
+
+type ActionSecretOutput struct{ *pulumi.OutputState }
+
+func (ActionSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSecret)(nil)).Elem()
+}
+
+func (o ActionSecretOutput) ToActionSecretOutput() ActionSecretOutput {
+	return o
+}
+
+func (o ActionSecretOutput) ToActionSecretOutputWithContext(ctx context.Context) ActionSecretOutput {
+	return o
+}
+
+// Secret name.
+func (o ActionSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Secret value.
+func (o ActionSecretOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSecret) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ActionSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSecret)(nil)).Elem()
+}
+
+func (o ActionSecretArrayOutput) ToActionSecretArrayOutput() ActionSecretArrayOutput {
+	return o
+}
+
+func (o ActionSecretArrayOutput) ToActionSecretArrayOutputWithContext(ctx context.Context) ActionSecretArrayOutput {
+	return o
+}
+
+func (o ActionSecretArrayOutput) Index(i pulumi.IntInput) ActionSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSecret {
+		return vs[0].([]ActionSecret)[vs[1].(int)]
+	}).(ActionSecretOutput)
+}
+
+type ActionSupportedTriggers struct {
+	// Trigger ID.
+	Id string `pulumi:"id"`
+	// Trigger version.
+	Version string `pulumi:"version"`
+}
+
+// ActionSupportedTriggersInput is an input type that accepts ActionSupportedTriggersArgs and ActionSupportedTriggersOutput values.
+// You can construct a concrete instance of `ActionSupportedTriggersInput` via:
+//
+//          ActionSupportedTriggersArgs{...}
+type ActionSupportedTriggersInput interface {
+	pulumi.Input
+
+	ToActionSupportedTriggersOutput() ActionSupportedTriggersOutput
+	ToActionSupportedTriggersOutputWithContext(context.Context) ActionSupportedTriggersOutput
+}
+
+type ActionSupportedTriggersArgs struct {
+	// Trigger ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Trigger version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ActionSupportedTriggersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSupportedTriggers)(nil)).Elem()
+}
+
+func (i ActionSupportedTriggersArgs) ToActionSupportedTriggersOutput() ActionSupportedTriggersOutput {
+	return i.ToActionSupportedTriggersOutputWithContext(context.Background())
+}
+
+func (i ActionSupportedTriggersArgs) ToActionSupportedTriggersOutputWithContext(ctx context.Context) ActionSupportedTriggersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSupportedTriggersOutput)
+}
+
+func (i ActionSupportedTriggersArgs) ToActionSupportedTriggersPtrOutput() ActionSupportedTriggersPtrOutput {
+	return i.ToActionSupportedTriggersPtrOutputWithContext(context.Background())
+}
+
+func (i ActionSupportedTriggersArgs) ToActionSupportedTriggersPtrOutputWithContext(ctx context.Context) ActionSupportedTriggersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSupportedTriggersOutput).ToActionSupportedTriggersPtrOutputWithContext(ctx)
+}
+
+// ActionSupportedTriggersPtrInput is an input type that accepts ActionSupportedTriggersArgs, ActionSupportedTriggersPtr and ActionSupportedTriggersPtrOutput values.
+// You can construct a concrete instance of `ActionSupportedTriggersPtrInput` via:
+//
+//          ActionSupportedTriggersArgs{...}
+//
+//  or:
+//
+//          nil
+type ActionSupportedTriggersPtrInput interface {
+	pulumi.Input
+
+	ToActionSupportedTriggersPtrOutput() ActionSupportedTriggersPtrOutput
+	ToActionSupportedTriggersPtrOutputWithContext(context.Context) ActionSupportedTriggersPtrOutput
+}
+
+type actionSupportedTriggersPtrType ActionSupportedTriggersArgs
+
+func ActionSupportedTriggersPtr(v *ActionSupportedTriggersArgs) ActionSupportedTriggersPtrInput {
+	return (*actionSupportedTriggersPtrType)(v)
+}
+
+func (*actionSupportedTriggersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSupportedTriggers)(nil)).Elem()
+}
+
+func (i *actionSupportedTriggersPtrType) ToActionSupportedTriggersPtrOutput() ActionSupportedTriggersPtrOutput {
+	return i.ToActionSupportedTriggersPtrOutputWithContext(context.Background())
+}
+
+func (i *actionSupportedTriggersPtrType) ToActionSupportedTriggersPtrOutputWithContext(ctx context.Context) ActionSupportedTriggersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSupportedTriggersPtrOutput)
+}
+
+type ActionSupportedTriggersOutput struct{ *pulumi.OutputState }
+
+func (ActionSupportedTriggersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSupportedTriggers)(nil)).Elem()
+}
+
+func (o ActionSupportedTriggersOutput) ToActionSupportedTriggersOutput() ActionSupportedTriggersOutput {
+	return o
+}
+
+func (o ActionSupportedTriggersOutput) ToActionSupportedTriggersOutputWithContext(ctx context.Context) ActionSupportedTriggersOutput {
+	return o
+}
+
+func (o ActionSupportedTriggersOutput) ToActionSupportedTriggersPtrOutput() ActionSupportedTriggersPtrOutput {
+	return o.ToActionSupportedTriggersPtrOutputWithContext(context.Background())
+}
+
+func (o ActionSupportedTriggersOutput) ToActionSupportedTriggersPtrOutputWithContext(ctx context.Context) ActionSupportedTriggersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSupportedTriggers) *ActionSupportedTriggers {
+		return &v
+	}).(ActionSupportedTriggersPtrOutput)
+}
+
+// Trigger ID.
+func (o ActionSupportedTriggersOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSupportedTriggers) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Trigger version.
+func (o ActionSupportedTriggersOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSupportedTriggers) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ActionSupportedTriggersPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionSupportedTriggersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSupportedTriggers)(nil)).Elem()
+}
+
+func (o ActionSupportedTriggersPtrOutput) ToActionSupportedTriggersPtrOutput() ActionSupportedTriggersPtrOutput {
+	return o
+}
+
+func (o ActionSupportedTriggersPtrOutput) ToActionSupportedTriggersPtrOutputWithContext(ctx context.Context) ActionSupportedTriggersPtrOutput {
+	return o
+}
+
+func (o ActionSupportedTriggersPtrOutput) Elem() ActionSupportedTriggersOutput {
+	return o.ApplyT(func(v *ActionSupportedTriggers) ActionSupportedTriggers {
+		if v != nil {
+			return *v
+		}
+		var ret ActionSupportedTriggers
+		return ret
+	}).(ActionSupportedTriggersOutput)
+}
+
+// Trigger ID.
+func (o ActionSupportedTriggersPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSupportedTriggers) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Trigger version.
+func (o ActionSupportedTriggersPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSupportedTriggers) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type BrandingColors struct {
+	// String, Hexadecimal. Background color of login pages.
+	PageBackground *string `pulumi:"pageBackground"`
+	// String, Hexadecimal. Primary button background color.
+	Primary *string `pulumi:"primary"`
+}
+
+// BrandingColorsInput is an input type that accepts BrandingColorsArgs and BrandingColorsOutput values.
+// You can construct a concrete instance of `BrandingColorsInput` via:
+//
+//          BrandingColorsArgs{...}
+type BrandingColorsInput interface {
+	pulumi.Input
+
+	ToBrandingColorsOutput() BrandingColorsOutput
+	ToBrandingColorsOutputWithContext(context.Context) BrandingColorsOutput
+}
+
+type BrandingColorsArgs struct {
+	// String, Hexadecimal. Background color of login pages.
+	PageBackground pulumi.StringPtrInput `pulumi:"pageBackground"`
+	// String, Hexadecimal. Primary button background color.
+	Primary pulumi.StringPtrInput `pulumi:"primary"`
+}
+
+func (BrandingColorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingColors)(nil)).Elem()
+}
+
+func (i BrandingColorsArgs) ToBrandingColorsOutput() BrandingColorsOutput {
+	return i.ToBrandingColorsOutputWithContext(context.Background())
+}
+
+func (i BrandingColorsArgs) ToBrandingColorsOutputWithContext(ctx context.Context) BrandingColorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingColorsOutput)
+}
+
+func (i BrandingColorsArgs) ToBrandingColorsPtrOutput() BrandingColorsPtrOutput {
+	return i.ToBrandingColorsPtrOutputWithContext(context.Background())
+}
+
+func (i BrandingColorsArgs) ToBrandingColorsPtrOutputWithContext(ctx context.Context) BrandingColorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingColorsOutput).ToBrandingColorsPtrOutputWithContext(ctx)
+}
+
+// BrandingColorsPtrInput is an input type that accepts BrandingColorsArgs, BrandingColorsPtr and BrandingColorsPtrOutput values.
+// You can construct a concrete instance of `BrandingColorsPtrInput` via:
+//
+//          BrandingColorsArgs{...}
+//
+//  or:
+//
+//          nil
+type BrandingColorsPtrInput interface {
+	pulumi.Input
+
+	ToBrandingColorsPtrOutput() BrandingColorsPtrOutput
+	ToBrandingColorsPtrOutputWithContext(context.Context) BrandingColorsPtrOutput
+}
+
+type brandingColorsPtrType BrandingColorsArgs
+
+func BrandingColorsPtr(v *BrandingColorsArgs) BrandingColorsPtrInput {
+	return (*brandingColorsPtrType)(v)
+}
+
+func (*brandingColorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingColors)(nil)).Elem()
+}
+
+func (i *brandingColorsPtrType) ToBrandingColorsPtrOutput() BrandingColorsPtrOutput {
+	return i.ToBrandingColorsPtrOutputWithContext(context.Background())
+}
+
+func (i *brandingColorsPtrType) ToBrandingColorsPtrOutputWithContext(ctx context.Context) BrandingColorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingColorsPtrOutput)
+}
+
+type BrandingColorsOutput struct{ *pulumi.OutputState }
+
+func (BrandingColorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingColors)(nil)).Elem()
+}
+
+func (o BrandingColorsOutput) ToBrandingColorsOutput() BrandingColorsOutput {
+	return o
+}
+
+func (o BrandingColorsOutput) ToBrandingColorsOutputWithContext(ctx context.Context) BrandingColorsOutput {
+	return o
+}
+
+func (o BrandingColorsOutput) ToBrandingColorsPtrOutput() BrandingColorsPtrOutput {
+	return o.ToBrandingColorsPtrOutputWithContext(context.Background())
+}
+
+func (o BrandingColorsOutput) ToBrandingColorsPtrOutputWithContext(ctx context.Context) BrandingColorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrandingColors) *BrandingColors {
+		return &v
+	}).(BrandingColorsPtrOutput)
+}
+
+// String, Hexadecimal. Background color of login pages.
+func (o BrandingColorsOutput) PageBackground() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingColors) *string { return v.PageBackground }).(pulumi.StringPtrOutput)
+}
+
+// String, Hexadecimal. Primary button background color.
+func (o BrandingColorsOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingColors) *string { return v.Primary }).(pulumi.StringPtrOutput)
+}
+
+type BrandingColorsPtrOutput struct{ *pulumi.OutputState }
+
+func (BrandingColorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingColors)(nil)).Elem()
+}
+
+func (o BrandingColorsPtrOutput) ToBrandingColorsPtrOutput() BrandingColorsPtrOutput {
+	return o
+}
+
+func (o BrandingColorsPtrOutput) ToBrandingColorsPtrOutputWithContext(ctx context.Context) BrandingColorsPtrOutput {
+	return o
+}
+
+func (o BrandingColorsPtrOutput) Elem() BrandingColorsOutput {
+	return o.ApplyT(func(v *BrandingColors) BrandingColors {
+		if v != nil {
+			return *v
+		}
+		var ret BrandingColors
+		return ret
+	}).(BrandingColorsOutput)
+}
+
+// String, Hexadecimal. Background color of login pages.
+func (o BrandingColorsPtrOutput) PageBackground() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingColors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PageBackground
+	}).(pulumi.StringPtrOutput)
+}
+
+// String, Hexadecimal. Primary button background color.
+func (o BrandingColorsPtrOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingColors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.StringPtrOutput)
+}
+
+type BrandingFont struct {
+	// String. URL for the custom font.
+	Url *string `pulumi:"url"`
+}
+
+// BrandingFontInput is an input type that accepts BrandingFontArgs and BrandingFontOutput values.
+// You can construct a concrete instance of `BrandingFontInput` via:
+//
+//          BrandingFontArgs{...}
+type BrandingFontInput interface {
+	pulumi.Input
+
+	ToBrandingFontOutput() BrandingFontOutput
+	ToBrandingFontOutputWithContext(context.Context) BrandingFontOutput
+}
+
+type BrandingFontArgs struct {
+	// String. URL for the custom font.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (BrandingFontArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingFont)(nil)).Elem()
+}
+
+func (i BrandingFontArgs) ToBrandingFontOutput() BrandingFontOutput {
+	return i.ToBrandingFontOutputWithContext(context.Background())
+}
+
+func (i BrandingFontArgs) ToBrandingFontOutputWithContext(ctx context.Context) BrandingFontOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingFontOutput)
+}
+
+func (i BrandingFontArgs) ToBrandingFontPtrOutput() BrandingFontPtrOutput {
+	return i.ToBrandingFontPtrOutputWithContext(context.Background())
+}
+
+func (i BrandingFontArgs) ToBrandingFontPtrOutputWithContext(ctx context.Context) BrandingFontPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingFontOutput).ToBrandingFontPtrOutputWithContext(ctx)
+}
+
+// BrandingFontPtrInput is an input type that accepts BrandingFontArgs, BrandingFontPtr and BrandingFontPtrOutput values.
+// You can construct a concrete instance of `BrandingFontPtrInput` via:
+//
+//          BrandingFontArgs{...}
+//
+//  or:
+//
+//          nil
+type BrandingFontPtrInput interface {
+	pulumi.Input
+
+	ToBrandingFontPtrOutput() BrandingFontPtrOutput
+	ToBrandingFontPtrOutputWithContext(context.Context) BrandingFontPtrOutput
+}
+
+type brandingFontPtrType BrandingFontArgs
+
+func BrandingFontPtr(v *BrandingFontArgs) BrandingFontPtrInput {
+	return (*brandingFontPtrType)(v)
+}
+
+func (*brandingFontPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingFont)(nil)).Elem()
+}
+
+func (i *brandingFontPtrType) ToBrandingFontPtrOutput() BrandingFontPtrOutput {
+	return i.ToBrandingFontPtrOutputWithContext(context.Background())
+}
+
+func (i *brandingFontPtrType) ToBrandingFontPtrOutputWithContext(ctx context.Context) BrandingFontPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingFontPtrOutput)
+}
+
+type BrandingFontOutput struct{ *pulumi.OutputState }
+
+func (BrandingFontOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingFont)(nil)).Elem()
+}
+
+func (o BrandingFontOutput) ToBrandingFontOutput() BrandingFontOutput {
+	return o
+}
+
+func (o BrandingFontOutput) ToBrandingFontOutputWithContext(ctx context.Context) BrandingFontOutput {
+	return o
+}
+
+func (o BrandingFontOutput) ToBrandingFontPtrOutput() BrandingFontPtrOutput {
+	return o.ToBrandingFontPtrOutputWithContext(context.Background())
+}
+
+func (o BrandingFontOutput) ToBrandingFontPtrOutputWithContext(ctx context.Context) BrandingFontPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrandingFont) *BrandingFont {
+		return &v
+	}).(BrandingFontPtrOutput)
+}
+
+// String. URL for the custom font.
+func (o BrandingFontOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingFont) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type BrandingFontPtrOutput struct{ *pulumi.OutputState }
+
+func (BrandingFontPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingFont)(nil)).Elem()
+}
+
+func (o BrandingFontPtrOutput) ToBrandingFontPtrOutput() BrandingFontPtrOutput {
+	return o
+}
+
+func (o BrandingFontPtrOutput) ToBrandingFontPtrOutputWithContext(ctx context.Context) BrandingFontPtrOutput {
+	return o
+}
+
+func (o BrandingFontPtrOutput) Elem() BrandingFontOutput {
+	return o.ApplyT(func(v *BrandingFont) BrandingFont {
+		if v != nil {
+			return *v
+		}
+		var ret BrandingFont
+		return ret
+	}).(BrandingFontOutput)
+}
+
+// String. URL for the custom font.
+func (o BrandingFontPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingFont) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type BrandingUniversalLogin struct {
+	// String, body of login pages.
+	Body *string `pulumi:"body"`
+}
+
+// BrandingUniversalLoginInput is an input type that accepts BrandingUniversalLoginArgs and BrandingUniversalLoginOutput values.
+// You can construct a concrete instance of `BrandingUniversalLoginInput` via:
+//
+//          BrandingUniversalLoginArgs{...}
+type BrandingUniversalLoginInput interface {
+	pulumi.Input
+
+	ToBrandingUniversalLoginOutput() BrandingUniversalLoginOutput
+	ToBrandingUniversalLoginOutputWithContext(context.Context) BrandingUniversalLoginOutput
+}
+
+type BrandingUniversalLoginArgs struct {
+	// String, body of login pages.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+}
+
+func (BrandingUniversalLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingUniversalLogin)(nil)).Elem()
+}
+
+func (i BrandingUniversalLoginArgs) ToBrandingUniversalLoginOutput() BrandingUniversalLoginOutput {
+	return i.ToBrandingUniversalLoginOutputWithContext(context.Background())
+}
+
+func (i BrandingUniversalLoginArgs) ToBrandingUniversalLoginOutputWithContext(ctx context.Context) BrandingUniversalLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingUniversalLoginOutput)
+}
+
+func (i BrandingUniversalLoginArgs) ToBrandingUniversalLoginPtrOutput() BrandingUniversalLoginPtrOutput {
+	return i.ToBrandingUniversalLoginPtrOutputWithContext(context.Background())
+}
+
+func (i BrandingUniversalLoginArgs) ToBrandingUniversalLoginPtrOutputWithContext(ctx context.Context) BrandingUniversalLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingUniversalLoginOutput).ToBrandingUniversalLoginPtrOutputWithContext(ctx)
+}
+
+// BrandingUniversalLoginPtrInput is an input type that accepts BrandingUniversalLoginArgs, BrandingUniversalLoginPtr and BrandingUniversalLoginPtrOutput values.
+// You can construct a concrete instance of `BrandingUniversalLoginPtrInput` via:
+//
+//          BrandingUniversalLoginArgs{...}
+//
+//  or:
+//
+//          nil
+type BrandingUniversalLoginPtrInput interface {
+	pulumi.Input
+
+	ToBrandingUniversalLoginPtrOutput() BrandingUniversalLoginPtrOutput
+	ToBrandingUniversalLoginPtrOutputWithContext(context.Context) BrandingUniversalLoginPtrOutput
+}
+
+type brandingUniversalLoginPtrType BrandingUniversalLoginArgs
+
+func BrandingUniversalLoginPtr(v *BrandingUniversalLoginArgs) BrandingUniversalLoginPtrInput {
+	return (*brandingUniversalLoginPtrType)(v)
+}
+
+func (*brandingUniversalLoginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingUniversalLogin)(nil)).Elem()
+}
+
+func (i *brandingUniversalLoginPtrType) ToBrandingUniversalLoginPtrOutput() BrandingUniversalLoginPtrOutput {
+	return i.ToBrandingUniversalLoginPtrOutputWithContext(context.Background())
+}
+
+func (i *brandingUniversalLoginPtrType) ToBrandingUniversalLoginPtrOutputWithContext(ctx context.Context) BrandingUniversalLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingUniversalLoginPtrOutput)
+}
+
+type BrandingUniversalLoginOutput struct{ *pulumi.OutputState }
+
+func (BrandingUniversalLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingUniversalLogin)(nil)).Elem()
+}
+
+func (o BrandingUniversalLoginOutput) ToBrandingUniversalLoginOutput() BrandingUniversalLoginOutput {
+	return o
+}
+
+func (o BrandingUniversalLoginOutput) ToBrandingUniversalLoginOutputWithContext(ctx context.Context) BrandingUniversalLoginOutput {
+	return o
+}
+
+func (o BrandingUniversalLoginOutput) ToBrandingUniversalLoginPtrOutput() BrandingUniversalLoginPtrOutput {
+	return o.ToBrandingUniversalLoginPtrOutputWithContext(context.Background())
+}
+
+func (o BrandingUniversalLoginOutput) ToBrandingUniversalLoginPtrOutputWithContext(ctx context.Context) BrandingUniversalLoginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrandingUniversalLogin) *BrandingUniversalLogin {
+		return &v
+	}).(BrandingUniversalLoginPtrOutput)
+}
+
+// String, body of login pages.
+func (o BrandingUniversalLoginOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingUniversalLogin) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+type BrandingUniversalLoginPtrOutput struct{ *pulumi.OutputState }
+
+func (BrandingUniversalLoginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingUniversalLogin)(nil)).Elem()
+}
+
+func (o BrandingUniversalLoginPtrOutput) ToBrandingUniversalLoginPtrOutput() BrandingUniversalLoginPtrOutput {
+	return o
+}
+
+func (o BrandingUniversalLoginPtrOutput) ToBrandingUniversalLoginPtrOutputWithContext(ctx context.Context) BrandingUniversalLoginPtrOutput {
+	return o
+}
+
+func (o BrandingUniversalLoginPtrOutput) Elem() BrandingUniversalLoginOutput {
+	return o.ApplyT(func(v *BrandingUniversalLogin) BrandingUniversalLogin {
+		if v != nil {
+			return *v
+		}
+		var ret BrandingUniversalLogin
+		return ret
+	}).(BrandingUniversalLoginOutput)
+}
+
+// String, body of login pages.
+func (o BrandingUniversalLoginPtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingUniversalLogin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClientAddons struct {
 	// String
 	Aws map[string]interface{} `pulumi:"aws"`
@@ -2216,7 +3014,7 @@ type ConnectionOptions struct {
 	ApiEnableUsers   *bool    `pulumi:"apiEnableUsers"`
 	// Azure AD domain name.
 	//
-	// Deprecated: use domain instead
+	// Deprecated: Use domain instead
 	AppDomain *string `pulumi:"appDomain"`
 	// Azure AD app ID.
 	AppId                 *string `pulumi:"appId"`
@@ -2249,9 +3047,10 @@ type ConnectionOptions struct {
 	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap map[string]string `pulumi:"fieldsMap"`
 	// SMS number for the sender. Used when SMS Source is From.
-	From         *string                        `pulumi:"from"`
-	IconUrl      *string                        `pulumi:"iconUrl"`
-	IdentityApi  *string                        `pulumi:"identityApi"`
+	From        *string `pulumi:"from"`
+	IconUrl     *string `pulumi:"iconUrl"`
+	IdentityApi *string `pulumi:"identityApi"`
+	// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`
 	IdpInitiated *ConnectionOptionsIdpInitiated `pulumi:"idpInitiated"`
 	// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 	ImportMode *bool    `pulumi:"importMode"`
@@ -2355,7 +3154,7 @@ type ConnectionOptionsArgs struct {
 	ApiEnableUsers   pulumi.BoolPtrInput     `pulumi:"apiEnableUsers"`
 	// Azure AD domain name.
 	//
-	// Deprecated: use domain instead
+	// Deprecated: Use domain instead
 	AppDomain pulumi.StringPtrInput `pulumi:"appDomain"`
 	// Azure AD app ID.
 	AppId                 pulumi.StringPtrInput `pulumi:"appId"`
@@ -2388,9 +3187,10 @@ type ConnectionOptionsArgs struct {
 	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap pulumi.StringMapInput `pulumi:"fieldsMap"`
 	// SMS number for the sender. Used when SMS Source is From.
-	From         pulumi.StringPtrInput                 `pulumi:"from"`
-	IconUrl      pulumi.StringPtrInput                 `pulumi:"iconUrl"`
-	IdentityApi  pulumi.StringPtrInput                 `pulumi:"identityApi"`
+	From        pulumi.StringPtrInput `pulumi:"from"`
+	IconUrl     pulumi.StringPtrInput `pulumi:"iconUrl"`
+	IdentityApi pulumi.StringPtrInput `pulumi:"identityApi"`
+	// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`
 	IdpInitiated ConnectionOptionsIdpInitiatedPtrInput `pulumi:"idpInitiated"`
 	// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
 	ImportMode pulumi.BoolPtrInput     `pulumi:"importMode"`
@@ -2568,7 +3368,7 @@ func (o ConnectionOptionsOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 
 // Azure AD domain name.
 //
-// Deprecated: use domain instead
+// Deprecated: Use domain instead
 func (o ConnectionOptionsOutput) AppDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppDomain }).(pulumi.StringPtrOutput)
 }
@@ -2667,6 +3467,7 @@ func (o ConnectionOptionsOutput) IdentityApi() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.IdentityApi }).(pulumi.StringPtrOutput)
 }
 
+// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`
 func (o ConnectionOptionsOutput) IdpInitiated() ConnectionOptionsIdpInitiatedPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsIdpInitiated { return v.IdpInitiated }).(ConnectionOptionsIdpInitiatedPtrOutput)
 }
@@ -2947,7 +3748,7 @@ func (o ConnectionOptionsPtrOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 
 // Azure AD domain name.
 //
-// Deprecated: use domain instead
+// Deprecated: Use domain instead
 func (o ConnectionOptionsPtrOutput) AppDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -3151,6 +3952,7 @@ func (o ConnectionOptionsPtrOutput) IdentityApi() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`
 func (o ConnectionOptionsPtrOutput) IdpInitiated() ConnectionOptionsIdpInitiatedPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsIdpInitiated {
 		if v == nil {
@@ -4909,136 +5711,136 @@ func (o ConnectionOptionsValidationUsernamePtrOutput) Min() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-type CustomDomainVerification struct {
+type CustomDomainVerificationType struct {
 	// List(Map). Verification methods for the domain.
 	Methods []interface{} `pulumi:"methods"`
 }
 
-// CustomDomainVerificationInput is an input type that accepts CustomDomainVerificationArgs and CustomDomainVerificationOutput values.
-// You can construct a concrete instance of `CustomDomainVerificationInput` via:
+// CustomDomainVerificationTypeInput is an input type that accepts CustomDomainVerificationTypeArgs and CustomDomainVerificationTypeOutput values.
+// You can construct a concrete instance of `CustomDomainVerificationTypeInput` via:
 //
-//          CustomDomainVerificationArgs{...}
-type CustomDomainVerificationInput interface {
+//          CustomDomainVerificationTypeArgs{...}
+type CustomDomainVerificationTypeInput interface {
 	pulumi.Input
 
-	ToCustomDomainVerificationOutput() CustomDomainVerificationOutput
-	ToCustomDomainVerificationOutputWithContext(context.Context) CustomDomainVerificationOutput
+	ToCustomDomainVerificationTypeOutput() CustomDomainVerificationTypeOutput
+	ToCustomDomainVerificationTypeOutputWithContext(context.Context) CustomDomainVerificationTypeOutput
 }
 
-type CustomDomainVerificationArgs struct {
+type CustomDomainVerificationTypeArgs struct {
 	// List(Map). Verification methods for the domain.
 	Methods pulumi.ArrayInput `pulumi:"methods"`
 }
 
-func (CustomDomainVerificationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomDomainVerification)(nil)).Elem()
+func (CustomDomainVerificationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainVerificationType)(nil)).Elem()
 }
 
-func (i CustomDomainVerificationArgs) ToCustomDomainVerificationOutput() CustomDomainVerificationOutput {
-	return i.ToCustomDomainVerificationOutputWithContext(context.Background())
+func (i CustomDomainVerificationTypeArgs) ToCustomDomainVerificationTypeOutput() CustomDomainVerificationTypeOutput {
+	return i.ToCustomDomainVerificationTypeOutputWithContext(context.Background())
 }
 
-func (i CustomDomainVerificationArgs) ToCustomDomainVerificationOutputWithContext(ctx context.Context) CustomDomainVerificationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationOutput)
+func (i CustomDomainVerificationTypeArgs) ToCustomDomainVerificationTypeOutputWithContext(ctx context.Context) CustomDomainVerificationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationTypeOutput)
 }
 
-func (i CustomDomainVerificationArgs) ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput {
-	return i.ToCustomDomainVerificationPtrOutputWithContext(context.Background())
+func (i CustomDomainVerificationTypeArgs) ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput {
+	return i.ToCustomDomainVerificationTypePtrOutputWithContext(context.Background())
 }
 
-func (i CustomDomainVerificationArgs) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationOutput).ToCustomDomainVerificationPtrOutputWithContext(ctx)
+func (i CustomDomainVerificationTypeArgs) ToCustomDomainVerificationTypePtrOutputWithContext(ctx context.Context) CustomDomainVerificationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationTypeOutput).ToCustomDomainVerificationTypePtrOutputWithContext(ctx)
 }
 
-// CustomDomainVerificationPtrInput is an input type that accepts CustomDomainVerificationArgs, CustomDomainVerificationPtr and CustomDomainVerificationPtrOutput values.
-// You can construct a concrete instance of `CustomDomainVerificationPtrInput` via:
+// CustomDomainVerificationTypePtrInput is an input type that accepts CustomDomainVerificationTypeArgs, CustomDomainVerificationTypePtr and CustomDomainVerificationTypePtrOutput values.
+// You can construct a concrete instance of `CustomDomainVerificationTypePtrInput` via:
 //
-//          CustomDomainVerificationArgs{...}
+//          CustomDomainVerificationTypeArgs{...}
 //
 //  or:
 //
 //          nil
-type CustomDomainVerificationPtrInput interface {
+type CustomDomainVerificationTypePtrInput interface {
 	pulumi.Input
 
-	ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput
-	ToCustomDomainVerificationPtrOutputWithContext(context.Context) CustomDomainVerificationPtrOutput
+	ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput
+	ToCustomDomainVerificationTypePtrOutputWithContext(context.Context) CustomDomainVerificationTypePtrOutput
 }
 
-type customDomainVerificationPtrType CustomDomainVerificationArgs
+type customDomainVerificationTypePtrType CustomDomainVerificationTypeArgs
 
-func CustomDomainVerificationPtr(v *CustomDomainVerificationArgs) CustomDomainVerificationPtrInput {
-	return (*customDomainVerificationPtrType)(v)
+func CustomDomainVerificationTypePtr(v *CustomDomainVerificationTypeArgs) CustomDomainVerificationTypePtrInput {
+	return (*customDomainVerificationTypePtrType)(v)
 }
 
-func (*customDomainVerificationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomDomainVerification)(nil)).Elem()
+func (*customDomainVerificationTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainVerificationType)(nil)).Elem()
 }
 
-func (i *customDomainVerificationPtrType) ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput {
-	return i.ToCustomDomainVerificationPtrOutputWithContext(context.Background())
+func (i *customDomainVerificationTypePtrType) ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput {
+	return i.ToCustomDomainVerificationTypePtrOutputWithContext(context.Background())
 }
 
-func (i *customDomainVerificationPtrType) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationPtrOutput)
+func (i *customDomainVerificationTypePtrType) ToCustomDomainVerificationTypePtrOutputWithContext(ctx context.Context) CustomDomainVerificationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationTypePtrOutput)
 }
 
-type CustomDomainVerificationOutput struct{ *pulumi.OutputState }
+type CustomDomainVerificationTypeOutput struct{ *pulumi.OutputState }
 
-func (CustomDomainVerificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomDomainVerification)(nil)).Elem()
+func (CustomDomainVerificationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainVerificationType)(nil)).Elem()
 }
 
-func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutput() CustomDomainVerificationOutput {
+func (o CustomDomainVerificationTypeOutput) ToCustomDomainVerificationTypeOutput() CustomDomainVerificationTypeOutput {
 	return o
 }
 
-func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutputWithContext(ctx context.Context) CustomDomainVerificationOutput {
+func (o CustomDomainVerificationTypeOutput) ToCustomDomainVerificationTypeOutputWithContext(ctx context.Context) CustomDomainVerificationTypeOutput {
 	return o
 }
 
-func (o CustomDomainVerificationOutput) ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput {
-	return o.ToCustomDomainVerificationPtrOutputWithContext(context.Background())
+func (o CustomDomainVerificationTypeOutput) ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput {
+	return o.ToCustomDomainVerificationTypePtrOutputWithContext(context.Background())
 }
 
-func (o CustomDomainVerificationOutput) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainVerification) *CustomDomainVerification {
+func (o CustomDomainVerificationTypeOutput) ToCustomDomainVerificationTypePtrOutputWithContext(ctx context.Context) CustomDomainVerificationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainVerificationType) *CustomDomainVerificationType {
 		return &v
-	}).(CustomDomainVerificationPtrOutput)
+	}).(CustomDomainVerificationTypePtrOutput)
 }
 
 // List(Map). Verification methods for the domain.
-func (o CustomDomainVerificationOutput) Methods() pulumi.ArrayOutput {
-	return o.ApplyT(func(v CustomDomainVerification) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
+func (o CustomDomainVerificationTypeOutput) Methods() pulumi.ArrayOutput {
+	return o.ApplyT(func(v CustomDomainVerificationType) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
 }
 
-type CustomDomainVerificationPtrOutput struct{ *pulumi.OutputState }
+type CustomDomainVerificationTypePtrOutput struct{ *pulumi.OutputState }
 
-func (CustomDomainVerificationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomDomainVerification)(nil)).Elem()
+func (CustomDomainVerificationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDomainVerificationType)(nil)).Elem()
 }
 
-func (o CustomDomainVerificationPtrOutput) ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput {
+func (o CustomDomainVerificationTypePtrOutput) ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput {
 	return o
 }
 
-func (o CustomDomainVerificationPtrOutput) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
+func (o CustomDomainVerificationTypePtrOutput) ToCustomDomainVerificationTypePtrOutputWithContext(ctx context.Context) CustomDomainVerificationTypePtrOutput {
 	return o
 }
 
-func (o CustomDomainVerificationPtrOutput) Elem() CustomDomainVerificationOutput {
-	return o.ApplyT(func(v *CustomDomainVerification) CustomDomainVerification {
+func (o CustomDomainVerificationTypePtrOutput) Elem() CustomDomainVerificationTypeOutput {
+	return o.ApplyT(func(v *CustomDomainVerificationType) CustomDomainVerificationType {
 		if v != nil {
 			return *v
 		}
-		var ret CustomDomainVerification
+		var ret CustomDomainVerificationType
 		return ret
-	}).(CustomDomainVerificationOutput)
+	}).(CustomDomainVerificationTypeOutput)
 }
 
 // List(Map). Verification methods for the domain.
-func (o CustomDomainVerificationPtrOutput) Methods() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *CustomDomainVerification) []interface{} {
+func (o CustomDomainVerificationTypePtrOutput) Methods() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *CustomDomainVerificationType) []interface{} {
 		if v == nil {
 			return nil
 		}
@@ -7285,7 +8087,7 @@ func (o GlobalClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 }
 
 type GuardianPhone struct {
-	// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+	// List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
 	MessageTypes []string `pulumi:"messageTypes"`
 	// List(Resource). Options for the various providers. See Options.
 	Options *GuardianPhoneOptions `pulumi:"options"`
@@ -7305,7 +8107,7 @@ type GuardianPhoneInput interface {
 }
 
 type GuardianPhoneArgs struct {
-	// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+	// List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
 	MessageTypes pulumi.StringArrayInput `pulumi:"messageTypes"`
 	// List(Resource). Options for the various providers. See Options.
 	Options GuardianPhoneOptionsPtrInput `pulumi:"options"`
@@ -7390,7 +8192,7 @@ func (o GuardianPhoneOutput) ToGuardianPhonePtrOutputWithContext(ctx context.Con
 	}).(GuardianPhonePtrOutput)
 }
 
-// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+// List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
 func (o GuardianPhoneOutput) MessageTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuardianPhone) []string { return v.MessageTypes }).(pulumi.StringArrayOutput)
 }
@@ -7429,7 +8231,7 @@ func (o GuardianPhonePtrOutput) Elem() GuardianPhoneOutput {
 	}).(GuardianPhoneOutput)
 }
 
-// List(String). Message types to use, array of `phone` and or `voice`. Adding both to array should enable the user to choose.
+// List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
 func (o GuardianPhonePtrOutput) MessageTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GuardianPhone) []string {
 		if v == nil {
@@ -7692,25 +8494,43 @@ func (o GuardianPhoneOptionsPtrOutput) VerificationMessage() pulumi.StringPtrOut
 }
 
 type LogStreamSink struct {
-	AwsAccountId          *string  `pulumi:"awsAccountId"`
-	AwsPartnerEventSource *string  `pulumi:"awsPartnerEventSource"`
-	AwsRegion             *string  `pulumi:"awsRegion"`
-	AzurePartnerTopic     *string  `pulumi:"azurePartnerTopic"`
-	AzureRegion           *string  `pulumi:"azureRegion"`
-	AzureResourceGroup    *string  `pulumi:"azureResourceGroup"`
-	AzureSubscriptionId   *string  `pulumi:"azureSubscriptionId"`
-	DatadogApiKey         *string  `pulumi:"datadogApiKey"`
-	DatadogRegion         *string  `pulumi:"datadogRegion"`
-	HttpAuthorization     *string  `pulumi:"httpAuthorization"`
-	HttpContentFormat     *string  `pulumi:"httpContentFormat"`
-	HttpContentType       *string  `pulumi:"httpContentType"`
-	HttpCustomHeaders     []string `pulumi:"httpCustomHeaders"`
-	HttpEndpoint          *string  `pulumi:"httpEndpoint"`
-	SplunkDomain          *string  `pulumi:"splunkDomain"`
-	SplunkPort            *string  `pulumi:"splunkPort"`
-	SplunkSecure          *bool    `pulumi:"splunkSecure"`
-	SplunkToken           *string  `pulumi:"splunkToken"`
-	SumoSourceAddress     *string  `pulumi:"sumoSourceAddress"`
+	// The AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
+	AwsPartnerEventSource *string `pulumi:"awsPartnerEventSource"`
+	// The AWS Region (i.e "us-east-2")
+	AwsRegion *string `pulumi:"awsRegion"`
+	// Name of the Partner Topic to be used with Azure.  Generally should not be specified.
+	AzurePartnerTopic *string `pulumi:"azurePartnerTopic"`
+	// The Azure region code (i.e. "ne")
+	AzureRegion *string `pulumi:"azureRegion"`
+	// The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
+	AzureResourceGroup *string `pulumi:"azureResourceGroup"`
+	// The unique alphanumeric string that identifies your Azure subscription
+	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
+	// The Datadog API key
+	DatadogApiKey *string `pulumi:"datadogApiKey"`
+	// The Datadog region
+	DatadogRegion *string `pulumi:"datadogRegion"`
+	// Sent in the HTTP "Authorization" header with each request
+	HttpAuthorization *string `pulumi:"httpAuthorization"`
+	// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+	HttpContentFormat *string `pulumi:"httpContentFormat"`
+	// The ContentType header to send over HTTP.  Common value is "application/json"
+	HttpContentType *string `pulumi:"httpContentType"`
+	// Additional HTTP headers to be included as part of the HTTP request
+	HttpCustomHeaders []string `pulumi:"httpCustomHeaders"`
+	// The HTTP endpoint to send streaming logs
+	HttpEndpoint *string `pulumi:"httpEndpoint"`
+	// The Splunk domain name
+	SplunkDomain *string `pulumi:"splunkDomain"`
+	SplunkPort   *string `pulumi:"splunkPort"`
+	// This toggle should be turned off when using self-signed certificates
+	SplunkSecure *bool `pulumi:"splunkSecure"`
+	// The Splunk access token
+	SplunkToken *string `pulumi:"splunkToken"`
+	// Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
+	SumoSourceAddress *string `pulumi:"sumoSourceAddress"`
 }
 
 // LogStreamSinkInput is an input type that accepts LogStreamSinkArgs and LogStreamSinkOutput values.
@@ -7725,25 +8545,43 @@ type LogStreamSinkInput interface {
 }
 
 type LogStreamSinkArgs struct {
-	AwsAccountId          pulumi.StringPtrInput   `pulumi:"awsAccountId"`
-	AwsPartnerEventSource pulumi.StringPtrInput   `pulumi:"awsPartnerEventSource"`
-	AwsRegion             pulumi.StringPtrInput   `pulumi:"awsRegion"`
-	AzurePartnerTopic     pulumi.StringPtrInput   `pulumi:"azurePartnerTopic"`
-	AzureRegion           pulumi.StringPtrInput   `pulumi:"azureRegion"`
-	AzureResourceGroup    pulumi.StringPtrInput   `pulumi:"azureResourceGroup"`
-	AzureSubscriptionId   pulumi.StringPtrInput   `pulumi:"azureSubscriptionId"`
-	DatadogApiKey         pulumi.StringPtrInput   `pulumi:"datadogApiKey"`
-	DatadogRegion         pulumi.StringPtrInput   `pulumi:"datadogRegion"`
-	HttpAuthorization     pulumi.StringPtrInput   `pulumi:"httpAuthorization"`
-	HttpContentFormat     pulumi.StringPtrInput   `pulumi:"httpContentFormat"`
-	HttpContentType       pulumi.StringPtrInput   `pulumi:"httpContentType"`
-	HttpCustomHeaders     pulumi.StringArrayInput `pulumi:"httpCustomHeaders"`
-	HttpEndpoint          pulumi.StringPtrInput   `pulumi:"httpEndpoint"`
-	SplunkDomain          pulumi.StringPtrInput   `pulumi:"splunkDomain"`
-	SplunkPort            pulumi.StringPtrInput   `pulumi:"splunkPort"`
-	SplunkSecure          pulumi.BoolPtrInput     `pulumi:"splunkSecure"`
-	SplunkToken           pulumi.StringPtrInput   `pulumi:"splunkToken"`
-	SumoSourceAddress     pulumi.StringPtrInput   `pulumi:"sumoSourceAddress"`
+	// The AWS Account ID
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
+	AwsPartnerEventSource pulumi.StringPtrInput `pulumi:"awsPartnerEventSource"`
+	// The AWS Region (i.e "us-east-2")
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// Name of the Partner Topic to be used with Azure.  Generally should not be specified.
+	AzurePartnerTopic pulumi.StringPtrInput `pulumi:"azurePartnerTopic"`
+	// The Azure region code (i.e. "ne")
+	AzureRegion pulumi.StringPtrInput `pulumi:"azureRegion"`
+	// The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
+	AzureResourceGroup pulumi.StringPtrInput `pulumi:"azureResourceGroup"`
+	// The unique alphanumeric string that identifies your Azure subscription
+	AzureSubscriptionId pulumi.StringPtrInput `pulumi:"azureSubscriptionId"`
+	// The Datadog API key
+	DatadogApiKey pulumi.StringPtrInput `pulumi:"datadogApiKey"`
+	// The Datadog region
+	DatadogRegion pulumi.StringPtrInput `pulumi:"datadogRegion"`
+	// Sent in the HTTP "Authorization" header with each request
+	HttpAuthorization pulumi.StringPtrInput `pulumi:"httpAuthorization"`
+	// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+	HttpContentFormat pulumi.StringPtrInput `pulumi:"httpContentFormat"`
+	// The ContentType header to send over HTTP.  Common value is "application/json"
+	HttpContentType pulumi.StringPtrInput `pulumi:"httpContentType"`
+	// Additional HTTP headers to be included as part of the HTTP request
+	HttpCustomHeaders pulumi.StringArrayInput `pulumi:"httpCustomHeaders"`
+	// The HTTP endpoint to send streaming logs
+	HttpEndpoint pulumi.StringPtrInput `pulumi:"httpEndpoint"`
+	// The Splunk domain name
+	SplunkDomain pulumi.StringPtrInput `pulumi:"splunkDomain"`
+	SplunkPort   pulumi.StringPtrInput `pulumi:"splunkPort"`
+	// This toggle should be turned off when using self-signed certificates
+	SplunkSecure pulumi.BoolPtrInput `pulumi:"splunkSecure"`
+	// The Splunk access token
+	SplunkToken pulumi.StringPtrInput `pulumi:"splunkToken"`
+	// Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
+	SumoSourceAddress pulumi.StringPtrInput `pulumi:"sumoSourceAddress"`
 }
 
 func (LogStreamSinkArgs) ElementType() reflect.Type {
@@ -7823,62 +8661,77 @@ func (o LogStreamSinkOutput) ToLogStreamSinkPtrOutputWithContext(ctx context.Con
 	}).(LogStreamSinkPtrOutput)
 }
 
+// The AWS Account ID
 func (o LogStreamSinkOutput) AwsAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
 }
 
+// Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
 func (o LogStreamSinkOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsPartnerEventSource }).(pulumi.StringPtrOutput)
 }
 
+// The AWS Region (i.e "us-east-2")
 func (o LogStreamSinkOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
 }
 
+// Name of the Partner Topic to be used with Azure.  Generally should not be specified.
 func (o LogStreamSinkOutput) AzurePartnerTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AzurePartnerTopic }).(pulumi.StringPtrOutput)
 }
 
+// The Azure region code (i.e. "ne")
 func (o LogStreamSinkOutput) AzureRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AzureRegion }).(pulumi.StringPtrOutput)
 }
 
+// The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
 func (o LogStreamSinkOutput) AzureResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AzureResourceGroup }).(pulumi.StringPtrOutput)
 }
 
+// The unique alphanumeric string that identifies your Azure subscription
 func (o LogStreamSinkOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
 }
 
+// The Datadog API key
 func (o LogStreamSinkOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
 }
 
+// The Datadog region
 func (o LogStreamSinkOutput) DatadogRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogRegion }).(pulumi.StringPtrOutput)
 }
 
+// Sent in the HTTP "Authorization" header with each request
 func (o LogStreamSinkOutput) HttpAuthorization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpAuthorization }).(pulumi.StringPtrOutput)
 }
 
+// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
 func (o LogStreamSinkOutput) HttpContentFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpContentFormat }).(pulumi.StringPtrOutput)
 }
 
+// The ContentType header to send over HTTP.  Common value is "application/json"
 func (o LogStreamSinkOutput) HttpContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpContentType }).(pulumi.StringPtrOutput)
 }
 
+// Additional HTTP headers to be included as part of the HTTP request
 func (o LogStreamSinkOutput) HttpCustomHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogStreamSink) []string { return v.HttpCustomHeaders }).(pulumi.StringArrayOutput)
 }
 
+// The HTTP endpoint to send streaming logs
 func (o LogStreamSinkOutput) HttpEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// The Splunk domain name
 func (o LogStreamSinkOutput) SplunkDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.SplunkDomain }).(pulumi.StringPtrOutput)
 }
@@ -7887,14 +8740,17 @@ func (o LogStreamSinkOutput) SplunkPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.SplunkPort }).(pulumi.StringPtrOutput)
 }
 
+// This toggle should be turned off when using self-signed certificates
 func (o LogStreamSinkOutput) SplunkSecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *bool { return v.SplunkSecure }).(pulumi.BoolPtrOutput)
 }
 
+// The Splunk access token
 func (o LogStreamSinkOutput) SplunkToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.SplunkToken }).(pulumi.StringPtrOutput)
 }
 
+// Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
 func (o LogStreamSinkOutput) SumoSourceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.SumoSourceAddress }).(pulumi.StringPtrOutput)
 }
@@ -7923,6 +8779,7 @@ func (o LogStreamSinkPtrOutput) Elem() LogStreamSinkOutput {
 	}).(LogStreamSinkOutput)
 }
 
+// The AWS Account ID
 func (o LogStreamSinkPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -7932,6 +8789,7 @@ func (o LogStreamSinkPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
 func (o LogStreamSinkPtrOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -7941,6 +8799,7 @@ func (o LogStreamSinkPtrOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The AWS Region (i.e "us-east-2")
 func (o LogStreamSinkPtrOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -7950,6 +8809,7 @@ func (o LogStreamSinkPtrOutput) AwsRegion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the Partner Topic to be used with Azure.  Generally should not be specified.
 func (o LogStreamSinkPtrOutput) AzurePartnerTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -7959,6 +8819,7 @@ func (o LogStreamSinkPtrOutput) AzurePartnerTopic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure region code (i.e. "ne")
 func (o LogStreamSinkPtrOutput) AzureRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -7968,6 +8829,7 @@ func (o LogStreamSinkPtrOutput) AzureRegion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
 func (o LogStreamSinkPtrOutput) AzureResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -7977,6 +8839,7 @@ func (o LogStreamSinkPtrOutput) AzureResourceGroup() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The unique alphanumeric string that identifies your Azure subscription
 func (o LogStreamSinkPtrOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -7986,6 +8849,7 @@ func (o LogStreamSinkPtrOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Datadog API key
 func (o LogStreamSinkPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -7995,6 +8859,7 @@ func (o LogStreamSinkPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Datadog region
 func (o LogStreamSinkPtrOutput) DatadogRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -8004,6 +8869,7 @@ func (o LogStreamSinkPtrOutput) DatadogRegion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sent in the HTTP "Authorization" header with each request
 func (o LogStreamSinkPtrOutput) HttpAuthorization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -8013,6 +8879,7 @@ func (o LogStreamSinkPtrOutput) HttpAuthorization() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
 func (o LogStreamSinkPtrOutput) HttpContentFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -8022,6 +8889,7 @@ func (o LogStreamSinkPtrOutput) HttpContentFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ContentType header to send over HTTP.  Common value is "application/json"
 func (o LogStreamSinkPtrOutput) HttpContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -8031,6 +8899,7 @@ func (o LogStreamSinkPtrOutput) HttpContentType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Additional HTTP headers to be included as part of the HTTP request
 func (o LogStreamSinkPtrOutput) HttpCustomHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LogStreamSink) []string {
 		if v == nil {
@@ -8040,6 +8909,7 @@ func (o LogStreamSinkPtrOutput) HttpCustomHeaders() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The HTTP endpoint to send streaming logs
 func (o LogStreamSinkPtrOutput) HttpEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -8049,6 +8919,7 @@ func (o LogStreamSinkPtrOutput) HttpEndpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Splunk domain name
 func (o LogStreamSinkPtrOutput) SplunkDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -8067,6 +8938,7 @@ func (o LogStreamSinkPtrOutput) SplunkPort() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This toggle should be turned off when using self-signed certificates
 func (o LogStreamSinkPtrOutput) SplunkSecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *bool {
 		if v == nil {
@@ -8076,6 +8948,7 @@ func (o LogStreamSinkPtrOutput) SplunkSecure() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The Splunk access token
 func (o LogStreamSinkPtrOutput) SplunkToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -8085,6 +8958,7 @@ func (o LogStreamSinkPtrOutput) SplunkToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
 func (o LogStreamSinkPtrOutput) SumoSourceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -8092,6 +8966,280 @@ func (o LogStreamSinkPtrOutput) SumoSourceAddress() pulumi.StringPtrOutput {
 		}
 		return v.SumoSourceAddress
 	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationBranding struct {
+	// Color scheme used to customize the login pages
+	Colors map[string]string `pulumi:"colors"`
+	// URL of logo to display on login page
+	LogoUrl *string `pulumi:"logoUrl"`
+}
+
+// OrganizationBrandingInput is an input type that accepts OrganizationBrandingArgs and OrganizationBrandingOutput values.
+// You can construct a concrete instance of `OrganizationBrandingInput` via:
+//
+//          OrganizationBrandingArgs{...}
+type OrganizationBrandingInput interface {
+	pulumi.Input
+
+	ToOrganizationBrandingOutput() OrganizationBrandingOutput
+	ToOrganizationBrandingOutputWithContext(context.Context) OrganizationBrandingOutput
+}
+
+type OrganizationBrandingArgs struct {
+	// Color scheme used to customize the login pages
+	Colors pulumi.StringMapInput `pulumi:"colors"`
+	// URL of logo to display on login page
+	LogoUrl pulumi.StringPtrInput `pulumi:"logoUrl"`
+}
+
+func (OrganizationBrandingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationBranding)(nil)).Elem()
+}
+
+func (i OrganizationBrandingArgs) ToOrganizationBrandingOutput() OrganizationBrandingOutput {
+	return i.ToOrganizationBrandingOutputWithContext(context.Background())
+}
+
+func (i OrganizationBrandingArgs) ToOrganizationBrandingOutputWithContext(ctx context.Context) OrganizationBrandingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBrandingOutput)
+}
+
+func (i OrganizationBrandingArgs) ToOrganizationBrandingPtrOutput() OrganizationBrandingPtrOutput {
+	return i.ToOrganizationBrandingPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationBrandingArgs) ToOrganizationBrandingPtrOutputWithContext(ctx context.Context) OrganizationBrandingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBrandingOutput).ToOrganizationBrandingPtrOutputWithContext(ctx)
+}
+
+// OrganizationBrandingPtrInput is an input type that accepts OrganizationBrandingArgs, OrganizationBrandingPtr and OrganizationBrandingPtrOutput values.
+// You can construct a concrete instance of `OrganizationBrandingPtrInput` via:
+//
+//          OrganizationBrandingArgs{...}
+//
+//  or:
+//
+//          nil
+type OrganizationBrandingPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationBrandingPtrOutput() OrganizationBrandingPtrOutput
+	ToOrganizationBrandingPtrOutputWithContext(context.Context) OrganizationBrandingPtrOutput
+}
+
+type organizationBrandingPtrType OrganizationBrandingArgs
+
+func OrganizationBrandingPtr(v *OrganizationBrandingArgs) OrganizationBrandingPtrInput {
+	return (*organizationBrandingPtrType)(v)
+}
+
+func (*organizationBrandingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationBranding)(nil)).Elem()
+}
+
+func (i *organizationBrandingPtrType) ToOrganizationBrandingPtrOutput() OrganizationBrandingPtrOutput {
+	return i.ToOrganizationBrandingPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationBrandingPtrType) ToOrganizationBrandingPtrOutputWithContext(ctx context.Context) OrganizationBrandingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBrandingPtrOutput)
+}
+
+type OrganizationBrandingOutput struct{ *pulumi.OutputState }
+
+func (OrganizationBrandingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationBranding)(nil)).Elem()
+}
+
+func (o OrganizationBrandingOutput) ToOrganizationBrandingOutput() OrganizationBrandingOutput {
+	return o
+}
+
+func (o OrganizationBrandingOutput) ToOrganizationBrandingOutputWithContext(ctx context.Context) OrganizationBrandingOutput {
+	return o
+}
+
+func (o OrganizationBrandingOutput) ToOrganizationBrandingPtrOutput() OrganizationBrandingPtrOutput {
+	return o.ToOrganizationBrandingPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationBrandingOutput) ToOrganizationBrandingPtrOutputWithContext(ctx context.Context) OrganizationBrandingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationBranding) *OrganizationBranding {
+		return &v
+	}).(OrganizationBrandingPtrOutput)
+}
+
+// Color scheme used to customize the login pages
+func (o OrganizationBrandingOutput) Colors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OrganizationBranding) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
+}
+
+// URL of logo to display on login page
+func (o OrganizationBrandingOutput) LogoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationBranding) *string { return v.LogoUrl }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationBrandingPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationBrandingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationBranding)(nil)).Elem()
+}
+
+func (o OrganizationBrandingPtrOutput) ToOrganizationBrandingPtrOutput() OrganizationBrandingPtrOutput {
+	return o
+}
+
+func (o OrganizationBrandingPtrOutput) ToOrganizationBrandingPtrOutputWithContext(ctx context.Context) OrganizationBrandingPtrOutput {
+	return o
+}
+
+func (o OrganizationBrandingPtrOutput) Elem() OrganizationBrandingOutput {
+	return o.ApplyT(func(v *OrganizationBranding) OrganizationBranding {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationBranding
+		return ret
+	}).(OrganizationBrandingOutput)
+}
+
+// Color scheme used to customize the login pages
+func (o OrganizationBrandingPtrOutput) Colors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OrganizationBranding) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Colors
+	}).(pulumi.StringMapOutput)
+}
+
+// URL of logo to display on login page
+func (o OrganizationBrandingPtrOutput) LogoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationBranding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogoUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationConnection struct {
+	// When true, all users that log in
+	// with this connection will be automatically granted membership in the
+	// organization. When false, users must be granted membership in the organization
+	// before logging in with this connection.
+	AssignMembershipOnLogin *bool `pulumi:"assignMembershipOnLogin"`
+	// The connection ID of the connection to add to the
+	// organization
+	ConnectionId string `pulumi:"connectionId"`
+}
+
+// OrganizationConnectionInput is an input type that accepts OrganizationConnectionArgs and OrganizationConnectionOutput values.
+// You can construct a concrete instance of `OrganizationConnectionInput` via:
+//
+//          OrganizationConnectionArgs{...}
+type OrganizationConnectionInput interface {
+	pulumi.Input
+
+	ToOrganizationConnectionOutput() OrganizationConnectionOutput
+	ToOrganizationConnectionOutputWithContext(context.Context) OrganizationConnectionOutput
+}
+
+type OrganizationConnectionArgs struct {
+	// When true, all users that log in
+	// with this connection will be automatically granted membership in the
+	// organization. When false, users must be granted membership in the organization
+	// before logging in with this connection.
+	AssignMembershipOnLogin pulumi.BoolPtrInput `pulumi:"assignMembershipOnLogin"`
+	// The connection ID of the connection to add to the
+	// organization
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+}
+
+func (OrganizationConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConnection)(nil)).Elem()
+}
+
+func (i OrganizationConnectionArgs) ToOrganizationConnectionOutput() OrganizationConnectionOutput {
+	return i.ToOrganizationConnectionOutputWithContext(context.Background())
+}
+
+func (i OrganizationConnectionArgs) ToOrganizationConnectionOutputWithContext(ctx context.Context) OrganizationConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionOutput)
+}
+
+// OrganizationConnectionArrayInput is an input type that accepts OrganizationConnectionArray and OrganizationConnectionArrayOutput values.
+// You can construct a concrete instance of `OrganizationConnectionArrayInput` via:
+//
+//          OrganizationConnectionArray{ OrganizationConnectionArgs{...} }
+type OrganizationConnectionArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationConnectionArrayOutput() OrganizationConnectionArrayOutput
+	ToOrganizationConnectionArrayOutputWithContext(context.Context) OrganizationConnectionArrayOutput
+}
+
+type OrganizationConnectionArray []OrganizationConnectionInput
+
+func (OrganizationConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationConnection)(nil)).Elem()
+}
+
+func (i OrganizationConnectionArray) ToOrganizationConnectionArrayOutput() OrganizationConnectionArrayOutput {
+	return i.ToOrganizationConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationConnectionArray) ToOrganizationConnectionArrayOutputWithContext(ctx context.Context) OrganizationConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionArrayOutput)
+}
+
+type OrganizationConnectionOutput struct{ *pulumi.OutputState }
+
+func (OrganizationConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConnection)(nil)).Elem()
+}
+
+func (o OrganizationConnectionOutput) ToOrganizationConnectionOutput() OrganizationConnectionOutput {
+	return o
+}
+
+func (o OrganizationConnectionOutput) ToOrganizationConnectionOutputWithContext(ctx context.Context) OrganizationConnectionOutput {
+	return o
+}
+
+// When true, all users that log in
+// with this connection will be automatically granted membership in the
+// organization. When false, users must be granted membership in the organization
+// before logging in with this connection.
+func (o OrganizationConnectionOutput) AssignMembershipOnLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationConnection) *bool { return v.AssignMembershipOnLogin }).(pulumi.BoolPtrOutput)
+}
+
+// The connection ID of the connection to add to the
+// organization
+func (o OrganizationConnectionOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationConnection) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+type OrganizationConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationConnection)(nil)).Elem()
+}
+
+func (o OrganizationConnectionArrayOutput) ToOrganizationConnectionArrayOutput() OrganizationConnectionArrayOutput {
+	return o
+}
+
+func (o OrganizationConnectionArrayOutput) ToOrganizationConnectionArrayOutputWithContext(ctx context.Context) OrganizationConnectionArrayOutput {
+	return o
+}
+
+func (o OrganizationConnectionArrayOutput) Index(i pulumi.IntInput) OrganizationConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationConnection {
+		return vs[0].([]OrganizationConnection)[vs[1].(int)]
+	}).(OrganizationConnectionOutput)
 }
 
 type ResourceServerScope struct {
@@ -9410,6 +10558,18 @@ func (o TenantUniversalLoginColorsPtrOutput) Primary() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretInput)(nil)).Elem(), ActionSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretArrayInput)(nil)).Elem(), ActionSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersPtrInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingColorsInput)(nil)).Elem(), BrandingColorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingColorsPtrInput)(nil)).Elem(), BrandingColorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingFontInput)(nil)).Elem(), BrandingFontArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingFontPtrInput)(nil)).Elem(), BrandingFontArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingUniversalLoginInput)(nil)).Elem(), BrandingUniversalLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingUniversalLoginPtrInput)(nil)).Elem(), BrandingUniversalLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsInput)(nil)).Elem(), ClientAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsPtrInput)(nil)).Elem(), ClientAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
@@ -9446,8 +10606,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationPtrInput)(nil)).Elem(), ConnectionOptionsValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernameInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernamePtrInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationInput)(nil)).Elem(), CustomDomainVerificationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationPtrInput)(nil)).Elem(), CustomDomainVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeInput)(nil)).Elem(), CustomDomainVerificationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypePtrInput)(nil)).Elem(), CustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsInput)(nil)).Elem(), EmailCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsPtrInput)(nil)).Elem(), EmailCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsInput)(nil)).Elem(), GlobalClientAddonsArgs{})
@@ -9472,6 +10632,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneOptionsPtrInput)(nil)).Elem(), GuardianPhoneOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkInput)(nil)).Elem(), LogStreamSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkPtrInput)(nil)).Elem(), LogStreamSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingInput)(nil)).Elem(), OrganizationBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionInput)(nil)).Elem(), OrganizationConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionArrayInput)(nil)).Elem(), OrganizationConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeInput)(nil)).Elem(), ResourceServerScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeArrayInput)(nil)).Elem(), ResourceServerScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionInput)(nil)).Elem(), RolePermissionArgs{})
@@ -9488,6 +10652,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginPtrInput)(nil)).Elem(), TenantUniversalLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsPtrInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
+	pulumi.RegisterOutputType(ActionDependencyOutput{})
+	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(ActionSecretOutput{})
+	pulumi.RegisterOutputType(ActionSecretArrayOutput{})
+	pulumi.RegisterOutputType(ActionSupportedTriggersOutput{})
+	pulumi.RegisterOutputType(ActionSupportedTriggersPtrOutput{})
+	pulumi.RegisterOutputType(BrandingColorsOutput{})
+	pulumi.RegisterOutputType(BrandingColorsPtrOutput{})
+	pulumi.RegisterOutputType(BrandingFontOutput{})
+	pulumi.RegisterOutputType(BrandingFontPtrOutput{})
+	pulumi.RegisterOutputType(BrandingUniversalLoginOutput{})
+	pulumi.RegisterOutputType(BrandingUniversalLoginPtrOutput{})
 	pulumi.RegisterOutputType(ClientAddonsOutput{})
 	pulumi.RegisterOutputType(ClientAddonsPtrOutput{})
 	pulumi.RegisterOutputType(ClientAddonsSamlpOutput{})
@@ -9524,8 +10700,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsValidationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernameOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernamePtrOutput{})
-	pulumi.RegisterOutputType(CustomDomainVerificationOutput{})
-	pulumi.RegisterOutputType(CustomDomainVerificationPtrOutput{})
+	pulumi.RegisterOutputType(CustomDomainVerificationTypeOutput{})
+	pulumi.RegisterOutputType(CustomDomainVerificationTypePtrOutput{})
 	pulumi.RegisterOutputType(EmailCredentialsOutput{})
 	pulumi.RegisterOutputType(EmailCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientAddonsOutput{})
@@ -9550,6 +10726,10 @@ func init() {
 	pulumi.RegisterOutputType(GuardianPhoneOptionsPtrOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationBrandingOutput{})
+	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationConnectionOutput{})
+	pulumi.RegisterOutputType(OrganizationConnectionArrayOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionOutput{})

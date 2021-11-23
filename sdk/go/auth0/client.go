@@ -48,6 +48,9 @@ import (
 // 					PassthroughClaimsWithNoMapping: pulumi.Bool(false),
 // 				},
 // 			},
+// 			AllowedClients: pulumi.StringArray{
+// 				pulumi.String("https://allowed.example.com"),
+// 			},
 // 			AllowedLogoutUrls: pulumi.StringArray{
 // 				pulumi.String("https://example.com"),
 // 			},
@@ -86,7 +89,9 @@ import (
 // 					TeamId:              pulumi.String("9JA89QQLNQ"),
 // 				},
 // 			},
-// 			OidcConformant: pulumi.Bool(false),
+// 			OidcConformant:              pulumi.Bool(false),
+// 			OrganizationRequireBehavior: pulumi.String("no_prompt"),
+// 			OrganizationUsage:           pulumi.String("deny"),
 // 			RefreshToken: &ClientRefreshTokenArgs{
 // 				ExpirationType:            pulumi.String("expiring"),
 // 				IdleTokenLifetime:         pulumi.Int(1296000),
@@ -113,6 +118,8 @@ type Client struct {
 
 	// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
 	Addons ClientAddonsPtrOutput `pulumi:"addons"`
+	// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients pulumi.StringArrayOutput `pulumi:"allowedClients"`
 	// List(String). URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls pulumi.StringArrayOutput `pulumi:"allowedLogoutUrls"`
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -160,6 +167,10 @@ type Client struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
+	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrOutput `pulumi:"organizationRequireBehavior"`
+	// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
 	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
 	RefreshToken ClientRefreshTokenOutput `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
@@ -206,6 +217,8 @@ func GetClient(ctx *pulumi.Context,
 type clientState struct {
 	// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
 	Addons *ClientAddons `pulumi:"addons"`
+	// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients []string `pulumi:"allowedClients"`
 	// List(String). URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -253,6 +266,10 @@ type clientState struct {
 	Name *string `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant *bool `pulumi:"oidcConformant"`
+	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
+	// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
@@ -268,6 +285,8 @@ type clientState struct {
 type ClientState struct {
 	// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
 	Addons ClientAddonsPtrInput
+	// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients pulumi.StringArrayInput
 	// List(String). URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -315,6 +334,10 @@ type ClientState struct {
 	Name pulumi.StringPtrInput
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolPtrInput
+	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrInput
+	// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrInput
 	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
 	RefreshToken ClientRefreshTokenPtrInput
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
@@ -334,6 +357,8 @@ func (ClientState) ElementType() reflect.Type {
 type clientArgs struct {
 	// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
 	Addons *ClientAddons `pulumi:"addons"`
+	// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients []string `pulumi:"allowedClients"`
 	// List(String). URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -377,6 +402,10 @@ type clientArgs struct {
 	Name *string `pulumi:"name"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant *bool `pulumi:"oidcConformant"`
+	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
+	// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
@@ -393,6 +422,8 @@ type clientArgs struct {
 type ClientArgs struct {
 	// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
 	Addons ClientAddonsPtrInput
+	// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients pulumi.StringArrayInput
 	// List(String). URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -436,6 +467,10 @@ type ClientArgs struct {
 	Name pulumi.StringPtrInput
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolPtrInput
+	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrInput
+	// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrInput
 	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
 	RefreshToken ClientRefreshTokenPtrInput
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.

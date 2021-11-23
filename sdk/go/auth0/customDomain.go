@@ -49,9 +49,11 @@ type CustomDomain struct {
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// List(Resource). Configuration settings for verification. For details, see Verification.
-	Verification CustomDomainVerificationOutput `pulumi:"verification"`
+	Verification CustomDomainVerificationTypeOutput `pulumi:"verification"`
 	// String. Domain verification method. Options include `txt`.
-	VerificationMethod pulumi.StringOutput `pulumi:"verificationMethod"`
+	//
+	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
+	VerificationMethod pulumi.StringPtrOutput `pulumi:"verificationMethod"`
 }
 
 // NewCustomDomain registers a new resource with the given unique name, arguments, and options.
@@ -66,9 +68,6 @@ func NewCustomDomain(ctx *pulumi.Context,
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
-	}
-	if args.VerificationMethod == nil {
-		return nil, errors.New("invalid value for required argument 'VerificationMethod'")
 	}
 	var resource CustomDomain
 	err := ctx.RegisterResource("auth0:index/customDomain:CustomDomain", name, args, &resource, opts...)
@@ -101,8 +100,10 @@ type customDomainState struct {
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type *string `pulumi:"type"`
 	// List(Resource). Configuration settings for verification. For details, see Verification.
-	Verification *CustomDomainVerification `pulumi:"verification"`
+	Verification *CustomDomainVerificationType `pulumi:"verification"`
 	// String. Domain verification method. Options include `txt`.
+	//
+	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
 	VerificationMethod *string `pulumi:"verificationMethod"`
 }
 
@@ -116,8 +117,10 @@ type CustomDomainState struct {
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type pulumi.StringPtrInput
 	// List(Resource). Configuration settings for verification. For details, see Verification.
-	Verification CustomDomainVerificationPtrInput
+	Verification CustomDomainVerificationTypePtrInput
 	// String. Domain verification method. Options include `txt`.
+	//
+	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
 	VerificationMethod pulumi.StringPtrInput
 }
 
@@ -131,7 +134,9 @@ type customDomainArgs struct {
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type string `pulumi:"type"`
 	// String. Domain verification method. Options include `txt`.
-	VerificationMethod string `pulumi:"verificationMethod"`
+	//
+	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
+	VerificationMethod *string `pulumi:"verificationMethod"`
 }
 
 // The set of arguments for constructing a CustomDomain resource.
@@ -141,7 +146,9 @@ type CustomDomainArgs struct {
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type pulumi.StringInput
 	// String. Domain verification method. Options include `txt`.
-	VerificationMethod pulumi.StringInput
+	//
+	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
+	VerificationMethod pulumi.StringPtrInput
 }
 
 func (CustomDomainArgs) ElementType() reflect.Type {
