@@ -311,11 +311,15 @@ class Action(pulumi.CustomResource):
 
         ## Import
 
-        An action can be imported using the , e.g.
+        An action can be imported using the action's ID, e.g.
 
         ```sh
          $ pulumi import auth0:index/action:Action example ...
         ```
+
+         ~> For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
+
+        action has been imported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -365,11 +369,15 @@ class Action(pulumi.CustomResource):
 
         ## Import
 
-        An action can be imported using the , e.g.
+        An action can be imported using the action's ID, e.g.
 
         ```sh
          $ pulumi import auth0:index/action:Action example ...
         ```
+
+         ~> For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
+
+        action has been imported.
 
         :param str resource_name: The name of the resource.
         :param ActionArgs args: The arguments to use to populate this resource's properties.

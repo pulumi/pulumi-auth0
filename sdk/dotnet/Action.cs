@@ -51,11 +51,15 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// An action can be imported using the , e.g.
+    /// An action can be imported using the action's ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/action:Action example ...
     /// ```
+    /// 
+    ///  ~&gt; For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
+    /// 
+    /// action has been imported.
     /// </summary>
     [Auth0ResourceType("auth0:index/action:Action")]
     public partial class Action : Pulumi.CustomResource
