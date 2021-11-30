@@ -47,11 +47,15 @@ import (
 //
 // ## Import
 //
-// An action can be imported using the , e.g.
+// An action can be imported using the action's ID, e.g.
 //
 // ```sh
 //  $ pulumi import auth0:index/action:Action example ...
 // ```
+//
+//  ~> For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
+//
+// action has been imported.
 type Action struct {
 	pulumi.CustomResourceState
 
