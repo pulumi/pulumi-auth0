@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.24.3 of the Auth0 Terraform Provider
+_(none)_
 
 ---
+
+## 2.3.2 (2021-12-10)
+* Upgrade to v0.24.3 of the Auth0 Terraform Provider
 
 ## 2.3.1 (2021-11-30)
 * Upgrade to v0.24.1 of the Auth0 Terraform Provider
