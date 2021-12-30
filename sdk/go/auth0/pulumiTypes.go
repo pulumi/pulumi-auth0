@@ -3044,6 +3044,8 @@ type ConnectionOptions struct {
 	// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 	DomainAliases                []string `pulumi:"domainAliases"`
 	EnabledDatabaseCustomization *bool    `pulumi:"enabledDatabaseCustomization"`
+	// Custom Entity ID for the connection.
+	EntityId *string `pulumi:"entityId"`
 	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap map[string]string `pulumi:"fieldsMap"`
 	// SMS number for the sender. Used when SMS Source is From.
@@ -3184,6 +3186,8 @@ type ConnectionOptionsArgs struct {
 	// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 	DomainAliases                pulumi.StringArrayInput `pulumi:"domainAliases"`
 	EnabledDatabaseCustomization pulumi.BoolPtrInput     `pulumi:"enabledDatabaseCustomization"`
+	// Custom Entity ID for the connection.
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
 	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap pulumi.StringMapInput `pulumi:"fieldsMap"`
 	// SMS number for the sender. Used when SMS Source is From.
@@ -3447,6 +3451,11 @@ func (o ConnectionOptionsOutput) DomainAliases() pulumi.StringArrayOutput {
 
 func (o ConnectionOptionsOutput) EnabledDatabaseCustomization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.EnabledDatabaseCustomization }).(pulumi.BoolPtrOutput)
+}
+
+// Custom Entity ID for the connection.
+func (o ConnectionOptionsOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.EntityId }).(pulumi.StringPtrOutput)
 }
 
 // SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
@@ -3912,6 +3921,16 @@ func (o ConnectionOptionsPtrOutput) EnabledDatabaseCustomization() pulumi.BoolPt
 		}
 		return v.EnabledDatabaseCustomization
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Custom Entity ID for the connection.
+func (o ConnectionOptionsPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityId
+	}).(pulumi.StringPtrOutput)
 }
 
 // SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
@@ -10557,6 +10576,112 @@ func (o TenantUniversalLoginColorsPtrOutput) Primary() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TriggerBindingAction struct {
+	// The name of an action.
+	DisplayName string `pulumi:"displayName"`
+	// Trigger ID.
+	Id string `pulumi:"id"`
+}
+
+// TriggerBindingActionInput is an input type that accepts TriggerBindingActionArgs and TriggerBindingActionOutput values.
+// You can construct a concrete instance of `TriggerBindingActionInput` via:
+//
+//          TriggerBindingActionArgs{...}
+type TriggerBindingActionInput interface {
+	pulumi.Input
+
+	ToTriggerBindingActionOutput() TriggerBindingActionOutput
+	ToTriggerBindingActionOutputWithContext(context.Context) TriggerBindingActionOutput
+}
+
+type TriggerBindingActionArgs struct {
+	// The name of an action.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Trigger ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (TriggerBindingActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBindingAction)(nil)).Elem()
+}
+
+func (i TriggerBindingActionArgs) ToTriggerBindingActionOutput() TriggerBindingActionOutput {
+	return i.ToTriggerBindingActionOutputWithContext(context.Background())
+}
+
+func (i TriggerBindingActionArgs) ToTriggerBindingActionOutputWithContext(ctx context.Context) TriggerBindingActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingActionOutput)
+}
+
+// TriggerBindingActionArrayInput is an input type that accepts TriggerBindingActionArray and TriggerBindingActionArrayOutput values.
+// You can construct a concrete instance of `TriggerBindingActionArrayInput` via:
+//
+//          TriggerBindingActionArray{ TriggerBindingActionArgs{...} }
+type TriggerBindingActionArrayInput interface {
+	pulumi.Input
+
+	ToTriggerBindingActionArrayOutput() TriggerBindingActionArrayOutput
+	ToTriggerBindingActionArrayOutputWithContext(context.Context) TriggerBindingActionArrayOutput
+}
+
+type TriggerBindingActionArray []TriggerBindingActionInput
+
+func (TriggerBindingActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBindingAction)(nil)).Elem()
+}
+
+func (i TriggerBindingActionArray) ToTriggerBindingActionArrayOutput() TriggerBindingActionArrayOutput {
+	return i.ToTriggerBindingActionArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerBindingActionArray) ToTriggerBindingActionArrayOutputWithContext(ctx context.Context) TriggerBindingActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingActionArrayOutput)
+}
+
+type TriggerBindingActionOutput struct{ *pulumi.OutputState }
+
+func (TriggerBindingActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBindingAction)(nil)).Elem()
+}
+
+func (o TriggerBindingActionOutput) ToTriggerBindingActionOutput() TriggerBindingActionOutput {
+	return o
+}
+
+func (o TriggerBindingActionOutput) ToTriggerBindingActionOutputWithContext(ctx context.Context) TriggerBindingActionOutput {
+	return o
+}
+
+// The name of an action.
+func (o TriggerBindingActionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBindingAction) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Trigger ID.
+func (o TriggerBindingActionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerBindingAction) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type TriggerBindingActionArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerBindingActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBindingAction)(nil)).Elem()
+}
+
+func (o TriggerBindingActionArrayOutput) ToTriggerBindingActionArrayOutput() TriggerBindingActionArrayOutput {
+	return o
+}
+
+func (o TriggerBindingActionArrayOutput) ToTriggerBindingActionArrayOutputWithContext(ctx context.Context) TriggerBindingActionArrayOutput {
+	return o
+}
+
+func (o TriggerBindingActionArrayOutput) Index(i pulumi.IntInput) TriggerBindingActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBindingAction {
+		return vs[0].([]TriggerBindingAction)[vs[1].(int)]
+	}).(TriggerBindingActionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -10652,6 +10777,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginPtrInput)(nil)).Elem(), TenantUniversalLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsPtrInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionInput)(nil)).Elem(), TriggerBindingActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionArrayInput)(nil)).Elem(), TriggerBindingActionArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionSecretOutput{})
@@ -10746,4 +10873,6 @@ func init() {
 	pulumi.RegisterOutputType(TenantUniversalLoginPtrOutput{})
 	pulumi.RegisterOutputType(TenantUniversalLoginColorsOutput{})
 	pulumi.RegisterOutputType(TenantUniversalLoginColorsPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBindingActionOutput{})
+	pulumi.RegisterOutputType(TriggerBindingActionArrayOutput{})
 }

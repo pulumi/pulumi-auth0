@@ -26,6 +26,7 @@ from .role import *
 from .rule import *
 from .rule_config import *
 from .tenant import *
+from .trigger_binding import *
 from .user import *
 from ._inputs import *
 from . import outputs
@@ -198,6 +199,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/tenant:Tenant": "Tenant"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/triggerBinding",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/triggerBinding:TriggerBinding": "TriggerBinding"
   }
  },
  {

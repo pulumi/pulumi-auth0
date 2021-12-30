@@ -156,6 +156,14 @@ class ClientGrant(pulumi.CustomResource):
             scopes=["create:foo"])
         ```
 
+        ## Import
+
+        Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
+
+        ```sh
+         $ pulumi import auth0:index/clientGrant:ClientGrant example cgr_XXXXXXXXXXXXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
@@ -194,6 +202,14 @@ class ClientGrant(pulumi.CustomResource):
             audience=my_resource_server.identifier,
             client_id=my_client.id,
             scopes=["create:foo"])
+        ```
+
+        ## Import
+
+        Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
+
+        ```sh
+         $ pulumi import auth0:index/clientGrant:ClientGrant example cgr_XXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.

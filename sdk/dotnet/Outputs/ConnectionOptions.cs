@@ -79,6 +79,10 @@ namespace Pulumi.Auth0.Outputs
         public readonly ImmutableArray<string> DomainAliases;
         public readonly bool? EnabledDatabaseCustomization;
         /// <summary>
+        /// Custom Entity ID for the connection.
+        /// </summary>
+        public readonly string? EntityId;
+        /// <summary>
         /// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? FieldsMap;
@@ -286,6 +290,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool? enabledDatabaseCustomization,
 
+            string? entityId,
+
             ImmutableDictionary<string, string>? fieldsMap,
 
             string? from,
@@ -408,6 +414,7 @@ namespace Pulumi.Auth0.Outputs
             Domain = domain;
             DomainAliases = domainAliases;
             EnabledDatabaseCustomization = enabledDatabaseCustomization;
+            EntityId = entityId;
             FieldsMap = fieldsMap;
             From = from;
             IconUrl = iconUrl;

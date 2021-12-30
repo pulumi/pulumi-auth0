@@ -26,6 +26,7 @@ export * from "./role";
 export * from "./rule";
 export * from "./ruleConfig";
 export * from "./tenant";
+export * from "./triggerBinding";
 export * from "./user";
 
 // Export sub-modules:
@@ -58,6 +59,7 @@ import { Role } from "./role";
 import { Rule } from "./rule";
 import { RuleConfig } from "./ruleConfig";
 import { Tenant } from "./tenant";
+import { TriggerBinding } from "./triggerBinding";
 import { User } from "./user";
 
 const _module = {
@@ -104,6 +106,8 @@ const _module = {
                 return new RuleConfig(name, <any>undefined, { urn })
             case "auth0:index/tenant:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
+            case "auth0:index/triggerBinding:TriggerBinding":
+                return new TriggerBinding(name, <any>undefined, { urn })
             case "auth0:index/user:User":
                 return new User(name, <any>undefined, { urn })
             default:
@@ -131,6 +135,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/role", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rule", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/triggerBinding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/user", _module)
 
 import { Provider } from "./provider";

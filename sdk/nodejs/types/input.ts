@@ -419,6 +419,10 @@ export interface ConnectionOptions {
     domainAliases?: pulumi.Input<pulumi.Input<string>[]>;
     enabledDatabaseCustomization?: pulumi.Input<boolean>;
     /**
+     * Custom Entity ID for the connection.
+     */
+    entityId?: pulumi.Input<string>;
+    /**
      * SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
     fieldsMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1064,5 +1068,16 @@ export interface TenantUniversalLoginColors {
      * String, Hexadecimal. Primary button background color.
      */
     primary?: pulumi.Input<string>;
+}
+
+export interface TriggerBindingAction {
+    /**
+     * The name of an action.
+     */
+    displayName: pulumi.Input<string>;
+    /**
+     * Trigger ID.
+     */
+    id: pulumi.Input<string>;
 }
 

@@ -141,6 +141,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("enabledDatabaseCustomization")]
         public Input<bool>? EnabledDatabaseCustomization { get; set; }
 
+        /// <summary>
+        /// Custom Entity ID for the connection.
+        /// </summary>
+        [Input("entityId")]
+        public Input<string>? EntityId { get; set; }
+
         [Input("fieldsMap")]
         private InputMap<string>? _fieldsMap;
 

@@ -419,6 +419,10 @@ export interface ConnectionOptions {
     domainAliases?: string[];
     enabledDatabaseCustomization?: boolean;
     /**
+     * Custom Entity ID for the connection.
+     */
+    entityId?: string;
+    /**
      * SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
     fieldsMap?: {[key: string]: string};
@@ -1064,5 +1068,16 @@ export interface TenantUniversalLoginColors {
      * String, Hexadecimal. Primary button background color.
      */
     primary: string;
+}
+
+export interface TriggerBindingAction {
+    /**
+     * The name of an action.
+     */
+    displayName: string;
+    /**
+     * Trigger ID.
+     */
+    id: string;
 }
 
