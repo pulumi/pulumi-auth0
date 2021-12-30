@@ -59,6 +59,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
+//
+// ```sh
+//  $ pulumi import auth0:index/clientGrant:ClientGrant example cgr_XXXXXXXXXXXXXXXX
+// ```
 type ClientGrant struct {
 	pulumi.CustomResourceState
 

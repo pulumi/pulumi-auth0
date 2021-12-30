@@ -56,6 +56,7 @@ __all__ = [
     'TenantGuardianMfaPageArgs',
     'TenantUniversalLoginArgs',
     'TenantUniversalLoginColorsArgs',
+    'TriggerBindingActionArgs',
 ]
 
 @pulumi.input_type
@@ -1387,6 +1388,7 @@ class ConnectionOptionsArgs:
                  domain: Optional[pulumi.Input[str]] = None,
                  domain_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled_database_customization: Optional[pulumi.Input[bool]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
                  fields_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  from_: Optional[pulumi.Input[str]] = None,
                  icon_url: Optional[pulumi.Input[str]] = None,
@@ -1454,6 +1456,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[bool] disable_signup: Boolean. Indicates whether or not to allow user sign-ups to your application.
         :param pulumi.Input[str] discovery_url: OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_aliases: List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+        :param pulumi.Input[str] entity_id: Custom Entity ID for the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields_map: SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         :param pulumi.Input[str] from_: SMS number for the sender. Used when SMS Source is From.
         :param pulumi.Input['ConnectionOptionsIdpInitiatedArgs'] idp_initiated: Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
@@ -1536,6 +1539,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "domain_aliases", domain_aliases)
         if enabled_database_customization is not None:
             pulumi.set(__self__, "enabled_database_customization", enabled_database_customization)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
         if fields_map is not None:
             pulumi.set(__self__, "fields_map", fields_map)
         if from_ is not None:
@@ -1863,6 +1868,18 @@ class ConnectionOptionsArgs:
     @enabled_database_customization.setter
     def enabled_database_customization(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled_database_customization", value)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom Entity ID for the connection.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id", value)
 
     @property
     @pulumi.getter(name="fieldsMap")
@@ -4743,5 +4760,42 @@ class TenantUniversalLoginColorsArgs:
     @primary.setter
     def primary(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "primary", value)
+
+
+@pulumi.input_type
+class TriggerBindingActionArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] display_name: The name of an action.
+        :param pulumi.Input[str] id: Trigger ID.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The name of an action.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Trigger ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
 

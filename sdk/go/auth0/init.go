@@ -60,6 +60,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RuleConfig{}
 	case "auth0:index/tenant:Tenant":
 		r = &Tenant{}
+	case "auth0:index/triggerBinding:TriggerBinding":
+		r = &TriggerBinding{}
 	case "auth0:index/user:User":
 		r = &User{}
 	default:
@@ -191,6 +193,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/tenant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/triggerBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

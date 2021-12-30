@@ -1122,6 +1122,15 @@
                         }
                     }
                 },
+                "entityId": {
+                    "type": "string",
+                    "description": "Custom Entity ID for the connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "fieldsMap": {
                     "type": "object",
                     "additionalProperties": {
@@ -3223,6 +3232,33 @@
                     ]
                 }
             }
+        },
+        "auth0:index/TriggerBindingAction:TriggerBindingAction": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "The name of an action.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Trigger ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "id"
+            ]
         }
     },
     "provider": {
@@ -3978,7 +4014,7 @@
             }
         },
         "auth0:index/clientGrant:ClientGrant": {
-            "description": "Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {});\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    identifier: \"https://api.example.com/client-grant\",\n    scopes: [\n        {\n            description: \"Create foos\",\n            value: \"create:foo\",\n        },\n        {\n            description: \"Create bars\",\n            value: \"create:bar\",\n        },\n    ],\n});\nconst myClientGrant = new auth0.ClientGrant(\"my_client_grant\", {\n    audience: myResourceServer.identifier,\n    clientId: myClient.id,\n    scopes: [\"create:foo\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"myClient\")\nmy_resource_server = auth0.ResourceServer(\"myResourceServer\",\n    identifier=\"https://api.example.com/client-grant\",\n    scopes=[\n        auth0.ResourceServerScopeArgs(\n            description=\"Create foos\",\n            value=\"create:foo\",\n        ),\n        auth0.ResourceServerScopeArgs(\n            description=\"Create bars\",\n            value=\"create:bar\",\n        ),\n    ])\nmy_client_grant = auth0.ClientGrant(\"myClientGrant\",\n    audience=my_resource_server.identifier,\n    client_id=my_client.id,\n    scopes=[\"create:foo\"])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myClient = new Auth0.Client(\"myClient\", new Auth0.ClientArgs\n        {\n        });\n        var myResourceServer = new Auth0.ResourceServer(\"myResourceServer\", new Auth0.ResourceServerArgs\n        {\n            Identifier = \"https://api.example.com/client-grant\",\n            Scopes = \n            {\n                new Auth0.Inputs.ResourceServerScopeArgs\n                {\n                    Description = \"Create foos\",\n                    Value = \"create:foo\",\n                },\n                new Auth0.Inputs.ResourceServerScopeArgs\n                {\n                    Description = \"Create bars\",\n                    Value = \"create:bar\",\n                },\n            },\n        });\n        var myClientGrant = new Auth0.ClientGrant(\"myClientGrant\", new Auth0.ClientGrantArgs\n        {\n            Audience = myResourceServer.Identifier,\n            ClientId = myClient.Id,\n            Scopes = \n            {\n                \"create:foo\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyClient, err := auth0.NewClient(ctx, \"myClient\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyResourceServer, err := auth0.NewResourceServer(ctx, \"myResourceServer\", \u0026auth0.ResourceServerArgs{\n\t\t\tIdentifier: pulumi.String(\"https://api.example.com/client-grant\"),\n\t\t\tScopes: ResourceServerScopeArray{\n\t\t\t\t\u0026ResourceServerScopeArgs{\n\t\t\t\t\tDescription: pulumi.String(\"Create foos\"),\n\t\t\t\t\tValue:       pulumi.String(\"create:foo\"),\n\t\t\t\t},\n\t\t\t\t\u0026ResourceServerScopeArgs{\n\t\t\t\t\tDescription: pulumi.String(\"Create bars\"),\n\t\t\t\t\tValue:       pulumi.String(\"create:bar\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewClientGrant(ctx, \"myClientGrant\", \u0026auth0.ClientGrantArgs{\n\t\t\tAudience: myResourceServer.Identifier,\n\t\t\tClientId: myClient.ID(),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"create:foo\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {});\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    identifier: \"https://api.example.com/client-grant\",\n    scopes: [\n        {\n            description: \"Create foos\",\n            value: \"create:foo\",\n        },\n        {\n            description: \"Create bars\",\n            value: \"create:bar\",\n        },\n    ],\n});\nconst myClientGrant = new auth0.ClientGrant(\"my_client_grant\", {\n    audience: myResourceServer.identifier,\n    clientId: myClient.id,\n    scopes: [\"create:foo\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"myClient\")\nmy_resource_server = auth0.ResourceServer(\"myResourceServer\",\n    identifier=\"https://api.example.com/client-grant\",\n    scopes=[\n        auth0.ResourceServerScopeArgs(\n            description=\"Create foos\",\n            value=\"create:foo\",\n        ),\n        auth0.ResourceServerScopeArgs(\n            description=\"Create bars\",\n            value=\"create:bar\",\n        ),\n    ])\nmy_client_grant = auth0.ClientGrant(\"myClientGrant\",\n    audience=my_resource_server.identifier,\n    client_id=my_client.id,\n    scopes=[\"create:foo\"])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myClient = new Auth0.Client(\"myClient\", new Auth0.ClientArgs\n        {\n        });\n        var myResourceServer = new Auth0.ResourceServer(\"myResourceServer\", new Auth0.ResourceServerArgs\n        {\n            Identifier = \"https://api.example.com/client-grant\",\n            Scopes = \n            {\n                new Auth0.Inputs.ResourceServerScopeArgs\n                {\n                    Description = \"Create foos\",\n                    Value = \"create:foo\",\n                },\n                new Auth0.Inputs.ResourceServerScopeArgs\n                {\n                    Description = \"Create bars\",\n                    Value = \"create:bar\",\n                },\n            },\n        });\n        var myClientGrant = new Auth0.ClientGrant(\"myClientGrant\", new Auth0.ClientGrantArgs\n        {\n            Audience = myResourceServer.Identifier,\n            ClientId = myClient.Id,\n            Scopes = \n            {\n                \"create:foo\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyClient, err := auth0.NewClient(ctx, \"myClient\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyResourceServer, err := auth0.NewResourceServer(ctx, \"myResourceServer\", \u0026auth0.ResourceServerArgs{\n\t\t\tIdentifier: pulumi.String(\"https://api.example.com/client-grant\"),\n\t\t\tScopes: ResourceServerScopeArray{\n\t\t\t\t\u0026ResourceServerScopeArgs{\n\t\t\t\t\tDescription: pulumi.String(\"Create foos\"),\n\t\t\t\t\tValue:       pulumi.String(\"create:foo\"),\n\t\t\t\t},\n\t\t\t\t\u0026ResourceServerScopeArgs{\n\t\t\t\t\tDescription: pulumi.String(\"Create bars\"),\n\t\t\t\t\tValue:       pulumi.String(\"create:bar\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewClientGrant(ctx, \"myClientGrant\", \u0026auth0.ClientGrantArgs{\n\t\t\tAudience: myResourceServer.Identifier,\n\t\t\tClientId: myClient.ID(),\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"create:foo\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nClient grants can be imported using the grant ID (Application -\u003e APIs -\u003e Expand the required API)\n\n```sh\n $ pulumi import auth0:index/clientGrant:ClientGrant example cgr_XXXXXXXXXXXXXXXX\n```\n\n ",
             "properties": {
                 "audience": {
                     "type": "string",
@@ -5922,6 +5958,60 @@
                     "universalLogin": {
                         "$ref": "#/types/auth0:index/TenantUniversalLogin:TenantUniversalLogin",
                         "description": "List(Resource). Configuration settings for Universal Login. For details, see Universal Login.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/triggerBinding:TriggerBinding": {
+            "description": "With this resource, you can bind an action to a trigger. Once an action is\ncreated and deployed, it can be attached (i.e. bound) to a trigger so that it\nwill be executed as part of a flow. \n\nThe list of actions reflects the order in which they will be executed during the\nappropriate flow.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst actionFoo = new auth0.Action(\"actionFoo\", {\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v2\",\n    },\n    code: `exports.onContinuePostLogin = async (event, api) =\u003e { \n\tconsole.log(\"foo\") \n};\"\n`,\n    deploy: true,\n});\nconst actionBar = new auth0.Action(\"actionBar\", {\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v2\",\n    },\n    code: `exports.onContinuePostLogin = async (event, api) =\u003e { \n\tconsole.log(\"bar\") \n};\"\n`,\n    deploy: true,\n});\nconst loginFlow = new auth0.TriggerBinding(\"loginFlow\", {\n    trigger: \"post-login\",\n    actions: [\n        {\n            id: actionFoo.id,\n            displayName: actionFoo.name,\n        },\n        {\n            id: actionBar.id,\n            displayName: actionBar.name,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\naction_foo = auth0.Action(\"actionFoo\",\n    supported_triggers=auth0.ActionSupportedTriggersArgs(\n        id=\"post-login\",\n        version=\"v2\",\n    ),\n    code=\"\"\"exports.onContinuePostLogin = async (event, api) =\u003e { \n\tconsole.log(\"foo\") \n};\"\n\"\"\",\n    deploy=True)\naction_bar = auth0.Action(\"actionBar\",\n    supported_triggers=auth0.ActionSupportedTriggersArgs(\n        id=\"post-login\",\n        version=\"v2\",\n    ),\n    code=\"\"\"exports.onContinuePostLogin = async (event, api) =\u003e { \n\tconsole.log(\"bar\") \n};\"\n\"\"\",\n    deploy=True)\nlogin_flow = auth0.TriggerBinding(\"loginFlow\",\n    trigger=\"post-login\",\n    actions=[\n        auth0.TriggerBindingActionArgs(\n            id=action_foo.id,\n            display_name=action_foo.name,\n        ),\n        auth0.TriggerBindingActionArgs(\n            id=action_bar.id,\n            display_name=action_bar.name,\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var actionFoo = new Auth0.Action(\"actionFoo\", new Auth0.ActionArgs\n        {\n            SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n            {\n                Id = \"post-login\",\n                Version = \"v2\",\n            },\n            Code = @\"exports.onContinuePostLogin = async (event, api) =\u003e { \n\tconsole.log(\"\"foo\"\") \n};\"\"\n\",\n            Deploy = true,\n        });\n        var actionBar = new Auth0.Action(\"actionBar\", new Auth0.ActionArgs\n        {\n            SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n            {\n                Id = \"post-login\",\n                Version = \"v2\",\n            },\n            Code = @\"exports.onContinuePostLogin = async (event, api) =\u003e { \n\tconsole.log(\"\"bar\"\") \n};\"\"\n\",\n            Deploy = true,\n        });\n        var loginFlow = new Auth0.TriggerBinding(\"loginFlow\", new Auth0.TriggerBindingArgs\n        {\n            Trigger = \"post-login\",\n            Actions = \n            {\n                new Auth0.Inputs.TriggerBindingActionArgs\n                {\n                    Id = actionFoo.Id,\n                    DisplayName = actionFoo.Name,\n                },\n                new Auth0.Inputs.TriggerBindingActionArgs\n                {\n                    Id = actionBar.Id,\n                    DisplayName = actionBar.Name,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tactionFoo, err := auth0.NewAction(ctx, \"actionFoo\", \u0026auth0.ActionArgs{\n\t\t\tSupportedTriggers: \u0026ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v2\"),\n\t\t\t},\n\t\t\tCode: pulumi.String(fmt.Sprintf(\"%v%v%v\", \"exports.onContinuePostLogin = async (event, api) =\u003e { \\n\", \"\tconsole.log(\\\"foo\\\") \\n\", \"};\\\"\\n\")),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tactionBar, err := auth0.NewAction(ctx, \"actionBar\", \u0026auth0.ActionArgs{\n\t\t\tSupportedTriggers: \u0026ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v2\"),\n\t\t\t},\n\t\t\tCode: pulumi.String(fmt.Sprintf(\"%v%v%v\", \"exports.onContinuePostLogin = async (event, api) =\u003e { \\n\", \"\tconsole.log(\\\"bar\\\") \\n\", \"};\\\"\\n\")),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewTriggerBinding(ctx, \"loginFlow\", \u0026auth0.TriggerBindingArgs{\n\t\t\tTrigger: pulumi.String(\"post-login\"),\n\t\t\tActions: TriggerBindingActionArray{\n\t\t\t\t\u0026TriggerBindingActionArgs{\n\t\t\t\t\tId:          actionFoo.ID(),\n\t\t\t\t\tDisplayName: actionFoo.Name,\n\t\t\t\t},\n\t\t\t\t\u0026TriggerBindingActionArgs{\n\t\t\t\t\tId:          actionBar.ID(),\n\t\t\t\t\tDisplayName: actionBar.Name,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nauth0_trigger_binding can be imported using the bindings trigger ID, e.g.\n\n```sh\n $ pulumi import auth0:index/triggerBinding:TriggerBinding example \"post-login\"\n```\n\n ",
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/TriggerBindingAction:TriggerBindingAction"
+                    },
+                    "description": "The actions bound to this trigger. For details, see\nActions.\n"
+                },
+                "trigger": {
+                    "type": "string",
+                    "description": "The id of the trigger to bind with\n"
+                }
+            },
+            "required": [
+                "actions",
+                "trigger"
+            ],
+            "inputProperties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/TriggerBindingAction:TriggerBindingAction"
+                    },
+                    "description": "The actions bound to this trigger. For details, see\nActions.\n"
+                },
+                "trigger": {
+                    "type": "string",
+                    "description": "The id of the trigger to bind with\n"
+                }
+            },
+            "requiredInputs": [
+                "actions",
+                "trigger"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TriggerBinding resources.\n",
+                "properties": {
+                    "actions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/TriggerBindingAction:TriggerBindingAction"
+                        },
+                        "description": "The actions bound to this trigger. For details, see\nActions.\n"
+                    },
+                    "trigger": {
+                        "type": "string",
+                        "description": "The id of the trigger to bind with\n"
                     }
                 },
                 "type": "object"

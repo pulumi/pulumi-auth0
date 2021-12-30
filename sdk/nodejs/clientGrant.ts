@@ -33,6 +33,14 @@ import * as utilities from "./utilities";
  *     scopes: ["create:foo"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/clientGrant:ClientGrant example cgr_XXXXXXXXXXXXXXXX
+ * ```
  */
 export class ClientGrant extends pulumi.CustomResource {
     /**
