@@ -28,7 +28,8 @@ builds:
   - -X github.com/pulumi/pulumi-auth0/provider/v2/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-auth0/
 changelog:
-  skip: true
+  use: git
+  sort: asc
 release:
   disable: false
 snapshot:
