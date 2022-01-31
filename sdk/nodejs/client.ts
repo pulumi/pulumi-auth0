@@ -34,6 +34,7 @@ import * as utilities from "./utilities";
  *             nameIdentifierFormat: "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
  *             nameIdentifierProbes: ["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
  *             passthroughClaimsWithNoMapping: false,
+ *             signingCert: "pemcertificate",
  *         },
  *     },
  *     allowedClients: ["https://allowed.example.com"],
@@ -210,6 +211,10 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+     */
+    public readonly nativeSocialLogin!: pulumi.Output<outputs.ClientNativeSocialLogin>;
+    /**
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
     public readonly oidcConformant!: pulumi.Output<boolean>;
@@ -280,6 +285,7 @@ export class Client extends pulumi.CustomResource {
             inputs["logoUri"] = state ? state.logoUri : undefined;
             inputs["mobile"] = state ? state.mobile : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["nativeSocialLogin"] = state ? state.nativeSocialLogin : undefined;
             inputs["oidcConformant"] = state ? state.oidcConformant : undefined;
             inputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
             inputs["organizationUsage"] = state ? state.organizationUsage : undefined;
@@ -313,6 +319,7 @@ export class Client extends pulumi.CustomResource {
             inputs["logoUri"] = args ? args.logoUri : undefined;
             inputs["mobile"] = args ? args.mobile : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["nativeSocialLogin"] = args ? args.nativeSocialLogin : undefined;
             inputs["oidcConformant"] = args ? args.oidcConformant : undefined;
             inputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
             inputs["organizationUsage"] = args ? args.organizationUsage : undefined;
@@ -430,6 +437,10 @@ export interface ClientState {
      * String. Name of the client.
      */
     name?: pulumi.Input<string>;
+    /**
+     * List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+     */
+    nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin>;
     /**
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */
@@ -557,6 +568,10 @@ export interface ClientArgs {
      * String. Name of the client.
      */
     name?: pulumi.Input<string>;
+    /**
+     * List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+     */
+    nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin>;
     /**
      * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
      */

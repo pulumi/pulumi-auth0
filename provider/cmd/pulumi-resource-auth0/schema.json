@@ -701,6 +701,15 @@
                         }
                     }
                 },
+                "signingCert": {
+                    "type": "string",
+                    "description": "String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\\nMIGf...bpP/t3\\n+JGNGIRMj1hF1rnb6QIDAQAB\\n-----END PUBLIC KEY-----\\n`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "typedAttributes": {
                     "type": "boolean",
                     "description": "Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.\n",
@@ -851,6 +860,57 @@
                 "teamId": {
                     "type": "string",
                     "description": "String\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin": {
+            "properties": {
+                "apple": {
+                    "$ref": "#/types/auth0:index/ClientNativeSocialLoginApple:ClientNativeSocialLoginApple",
+                    "description": "Resource:\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "facebook": {
+                    "$ref": "#/types/auth0:index/ClientNativeSocialLoginFacebook:ClientNativeSocialLoginFacebook",
+                    "description": "Resources:\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ClientNativeSocialLoginApple:ClientNativeSocialLoginApple": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ClientNativeSocialLoginFacebook:ClientNativeSocialLoginFacebook": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1143,9 +1203,33 @@
                         }
                     }
                 },
+                "forwardRequestInfo": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "from": {
                     "type": "string",
                     "description": "SMS number for the sender. Used when SMS Source is From.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatewayAuthentication": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsGatewayAuthentication:ConnectionOptionsGatewayAuthentication",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gatewayUrl": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1322,6 +1406,14 @@
                 "protocolBinding": {
                     "type": "string",
                     "description": "The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "provider": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1609,6 +1701,51 @@
                 }
             }
         },
+        "auth0:index/ConnectionOptionsGatewayAuthentication:ConnectionOptionsGatewayAuthentication": {
+            "properties": {
+                "audience": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "method": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secret": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretBase64Encoded": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subject": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/ConnectionOptionsIdpInitiated:ConnectionOptionsIdpInitiated": {
             "properties": {
                 "clientAuthorizeQuery": {
@@ -1692,7 +1829,7 @@
                 },
                 "enable": {
                     "type": "boolean",
-                    "description": "Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.\n",
+                    "description": "Indicates whether the password dictionary check is enabled for this connection.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2377,6 +2514,14 @@
                         }
                     }
                 },
+                "signingCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "typedAttributes": {
                     "type": "boolean",
                     "language": {
@@ -2514,6 +2659,53 @@
                 },
                 "teamId": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/GlobalClientNativeSocialLogin:GlobalClientNativeSocialLogin": {
+            "properties": {
+                "apple": {
+                    "$ref": "#/types/auth0:index/GlobalClientNativeSocialLoginApple:GlobalClientNativeSocialLoginApple",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "facebook": {
+                    "$ref": "#/types/auth0:index/GlobalClientNativeSocialLoginFacebook:GlobalClientNativeSocialLoginFacebook",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/GlobalClientNativeSocialLoginApple:GlobalClientNativeSocialLoginApple": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/GlobalClientNativeSocialLoginFacebook:GlobalClientNativeSocialLoginFacebook": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2780,7 +2972,7 @@
                 },
                 "httpContentFormat": {
                     "type": "string",
-                    "description": "The format of data sent over HTTP. Options are \"JSONLINES\" or \"JSONARRAY\"\n",
+                    "description": "The format of data sent over HTTP. Options are \"JSONLINES\", \"JSONARRAY\" or \"JSONOBJECT\"\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3520,7 +3712,7 @@
             }
         },
         "auth0:index/client:Client": {
-            "description": "With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {\n    addons: {\n        firebase: {\n            client_email: \"john.doe@example.com\",\n            lifetime_in_seconds: 1,\n            private_key: \"wer\",\n            private_key_id: \"qwreerwerwe\",\n        },\n        samlp: {\n            audience: \"https://example.com/saml\",\n            createUpnClaim: false,\n            mapIdentities: false,\n            mapUnknownClaimsAsIs: false,\n            mappings: {\n                email: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                name: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            nameIdentifierFormat: \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            nameIdentifierProbes: [\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthroughClaimsWithNoMapping: false,\n        },\n    },\n    allowedClients: [\"https://allowed.example.com\"],\n    allowedLogoutUrls: [\"https://example.com\"],\n    allowedOrigins: [\"https://example.com\"],\n    appType: \"non_interactive\",\n    callbacks: [\"https://example.com/callback\"],\n    clientMetadata: {\n        foo: \"zoo\",\n    },\n    customLoginPageOn: true,\n    description: \"Test Applications Long Description\",\n    grantTypes: [\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    isFirstParty: true,\n    isTokenEndpointIpHeaderTrusted: true,\n    jwtConfiguration: {\n        alg: \"RS256\",\n        lifetimeInSeconds: 300,\n        scopes: {\n            foo: \"bar\",\n        },\n        secretEncoded: true,\n    },\n    mobile: {\n        ios: {\n            appBundleIdentifier: \"com.my.bundle.id\",\n            teamId: \"9JA89QQLNQ\",\n        },\n    },\n    oidcConformant: false,\n    organizationRequireBehavior: \"no_prompt\",\n    organizationUsage: \"deny\",\n    refreshToken: {\n        expirationType: \"expiring\",\n        idleTokenLifetime: 1296000,\n        infiniteIdleTokenLifetime: true,\n        infiniteTokenLifetime: false,\n        leeway: 15,\n        rotationType: \"rotating\",\n        tokenLifetime: 84600,\n    },\n    tokenEndpointAuthMethod: \"client_secret_post\",\n    webOrigins: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"myClient\",\n    addons=auth0.ClientAddonsArgs(\n        firebase={\n            \"clientEmail\": \"john.doe@example.com\",\n            \"lifetimeInSeconds\": 1,\n            \"privateKey\": \"wer\",\n            \"privateKeyId\": \"qwreerwerwe\",\n        },\n        samlp=auth0.ClientAddonsSamlpArgs(\n            audience=\"https://example.com/saml\",\n            create_upn_claim=False,\n            map_identities=False,\n            map_unknown_claims_as_is=False,\n            mappings={\n                \"email\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                \"name\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            name_identifier_format=\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            name_identifier_probes=[\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthrough_claims_with_no_mapping=False,\n        ),\n    ),\n    allowed_clients=[\"https://allowed.example.com\"],\n    allowed_logout_urls=[\"https://example.com\"],\n    allowed_origins=[\"https://example.com\"],\n    app_type=\"non_interactive\",\n    callbacks=[\"https://example.com/callback\"],\n    client_metadata={\n        \"foo\": \"zoo\",\n    },\n    custom_login_page_on=True,\n    description=\"Test Applications Long Description\",\n    grant_types=[\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    is_first_party=True,\n    is_token_endpoint_ip_header_trusted=True,\n    jwt_configuration=auth0.ClientJwtConfigurationArgs(\n        alg=\"RS256\",\n        lifetime_in_seconds=300,\n        scopes={\n            \"foo\": \"bar\",\n        },\n        secret_encoded=True,\n    ),\n    mobile=auth0.ClientMobileArgs(\n        ios=auth0.ClientMobileIosArgs(\n            app_bundle_identifier=\"com.my.bundle.id\",\n            team_id=\"9JA89QQLNQ\",\n        ),\n    ),\n    oidc_conformant=False,\n    organization_require_behavior=\"no_prompt\",\n    organization_usage=\"deny\",\n    refresh_token=auth0.ClientRefreshTokenArgs(\n        expiration_type=\"expiring\",\n        idle_token_lifetime=1296000,\n        infinite_idle_token_lifetime=True,\n        infinite_token_lifetime=False,\n        leeway=15,\n        rotation_type=\"rotating\",\n        token_lifetime=84600,\n    ),\n    token_endpoint_auth_method=\"client_secret_post\",\n    web_origins=[\"https://example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myClient = new Auth0.Client(\"myClient\", new Auth0.ClientArgs\n        {\n            Addons = new Auth0.Inputs.ClientAddonsArgs\n            {\n                Firebase = \n                {\n                    { \"clientEmail\", \"john.doe@example.com\" },\n                    { \"lifetimeInSeconds\", 1 },\n                    { \"privateKey\", \"wer\" },\n                    { \"privateKeyId\", \"qwreerwerwe\" },\n                },\n                Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs\n                {\n                    Audience = \"https://example.com/saml\",\n                    CreateUpnClaim = false,\n                    MapIdentities = false,\n                    MapUnknownClaimsAsIs = false,\n                    Mappings = \n                    {\n                        { \"email\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\" },\n                        { \"name\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\" },\n                    },\n                    NameIdentifierFormat = \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n                    NameIdentifierProbes = \n                    {\n                        \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                    },\n                    PassthroughClaimsWithNoMapping = false,\n                },\n            },\n            AllowedClients = \n            {\n                \"https://allowed.example.com\",\n            },\n            AllowedLogoutUrls = \n            {\n                \"https://example.com\",\n            },\n            AllowedOrigins = \n            {\n                \"https://example.com\",\n            },\n            AppType = \"non_interactive\",\n            Callbacks = \n            {\n                \"https://example.com/callback\",\n            },\n            ClientMetadata = \n            {\n                { \"foo\", \"zoo\" },\n            },\n            CustomLoginPageOn = true,\n            Description = \"Test Applications Long Description\",\n            GrantTypes = \n            {\n                \"authorization_code\",\n                \"http://auth0.com/oauth/grant-type/password-realm\",\n                \"implicit\",\n                \"password\",\n                \"refresh_token\",\n            },\n            IsFirstParty = true,\n            IsTokenEndpointIpHeaderTrusted = true,\n            JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs\n            {\n                Alg = \"RS256\",\n                LifetimeInSeconds = 300,\n                Scopes = \n                {\n                    { \"foo\", \"bar\" },\n                },\n                SecretEncoded = true,\n            },\n            Mobile = new Auth0.Inputs.ClientMobileArgs\n            {\n                Ios = new Auth0.Inputs.ClientMobileIosArgs\n                {\n                    AppBundleIdentifier = \"com.my.bundle.id\",\n                    TeamId = \"9JA89QQLNQ\",\n                },\n            },\n            OidcConformant = false,\n            OrganizationRequireBehavior = \"no_prompt\",\n            OrganizationUsage = \"deny\",\n            RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs\n            {\n                ExpirationType = \"expiring\",\n                IdleTokenLifetime = 1296000,\n                InfiniteIdleTokenLifetime = true,\n                InfiniteTokenLifetime = false,\n                Leeway = 15,\n                RotationType = \"rotating\",\n                TokenLifetime = 84600,\n            },\n            TokenEndpointAuthMethod = \"client_secret_post\",\n            WebOrigins = \n            {\n                \"https://example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewClient(ctx, \"myClient\", \u0026auth0.ClientArgs{\n\t\t\tAddons: \u0026ClientAddonsArgs{\n\t\t\t\tFirebase: pulumi.AnyMap{\n\t\t\t\t\t\"clientEmail\":       pulumi.Any(\"john.doe@example.com\"),\n\t\t\t\t\t\"lifetimeInSeconds\": pulumi.Any(1),\n\t\t\t\t\t\"privateKey\":        pulumi.Any(\"wer\"),\n\t\t\t\t\t\"privateKeyId\":      pulumi.Any(\"qwreerwerwe\"),\n\t\t\t\t},\n\t\t\t\tSamlp: \u0026ClientAddonsSamlpArgs{\n\t\t\t\t\tAudience:             pulumi.String(\"https://example.com/saml\"),\n\t\t\t\t\tCreateUpnClaim:       pulumi.Bool(false),\n\t\t\t\t\tMapIdentities:        pulumi.Bool(false),\n\t\t\t\t\tMapUnknownClaimsAsIs: pulumi.Bool(false),\n\t\t\t\t\tMappings: pulumi.AnyMap{\n\t\t\t\t\t\t\"email\": pulumi.Any(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t\t\"name\":  pulumi.Any(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\"),\n\t\t\t\t\t},\n\t\t\t\t\tNameIdentifierFormat: pulumi.String(\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\"),\n\t\t\t\t\tNameIdentifierProbes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t},\n\t\t\t\t\tPassthroughClaimsWithNoMapping: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAllowedClients: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://allowed.example.com\"),\n\t\t\t},\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAppType: pulumi.String(\"non_interactive\"),\n\t\t\tCallbacks: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com/callback\"),\n\t\t\t},\n\t\t\tClientMetadata: pulumi.AnyMap{\n\t\t\t\t\"foo\": pulumi.Any(\"zoo\"),\n\t\t\t},\n\t\t\tCustomLoginPageOn: pulumi.Bool(true),\n\t\t\tDescription:       pulumi.String(\"Test Applications Long Description\"),\n\t\t\tGrantTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"authorization_code\"),\n\t\t\t\tpulumi.String(\"http://auth0.com/oauth/grant-type/password-realm\"),\n\t\t\t\tpulumi.String(\"implicit\"),\n\t\t\t\tpulumi.String(\"password\"),\n\t\t\t\tpulumi.String(\"refresh_token\"),\n\t\t\t},\n\t\t\tIsFirstParty:                   pulumi.Bool(true),\n\t\t\tIsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),\n\t\t\tJwtConfiguration: \u0026ClientJwtConfigurationArgs{\n\t\t\t\tAlg:               pulumi.String(\"RS256\"),\n\t\t\t\tLifetimeInSeconds: pulumi.Int(300),\n\t\t\t\tScopes: pulumi.StringMap{\n\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t},\n\t\t\t\tSecretEncoded: pulumi.Bool(true),\n\t\t\t},\n\t\t\tMobile: \u0026ClientMobileArgs{\n\t\t\t\tIos: \u0026ClientMobileIosArgs{\n\t\t\t\t\tAppBundleIdentifier: pulumi.String(\"com.my.bundle.id\"),\n\t\t\t\t\tTeamId:              pulumi.String(\"9JA89QQLNQ\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOidcConformant:              pulumi.Bool(false),\n\t\t\tOrganizationRequireBehavior: pulumi.String(\"no_prompt\"),\n\t\t\tOrganizationUsage:           pulumi.String(\"deny\"),\n\t\t\tRefreshToken: \u0026ClientRefreshTokenArgs{\n\t\t\t\tExpirationType:            pulumi.String(\"expiring\"),\n\t\t\t\tIdleTokenLifetime:         pulumi.Int(1296000),\n\t\t\t\tInfiniteIdleTokenLifetime: pulumi.Bool(true),\n\t\t\t\tInfiniteTokenLifetime:     pulumi.Bool(false),\n\t\t\t\tLeeway:                    pulumi.Int(15),\n\t\t\t\tRotationType:              pulumi.String(\"rotating\"),\n\t\t\t\tTokenLifetime:             pulumi.Int(84600),\n\t\t\t},\n\t\t\tTokenEndpointAuthMethod: pulumi.String(\"client_secret_post\"),\n\t\t\tWebOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {\n    addons: {\n        firebase: {\n            client_email: \"john.doe@example.com\",\n            lifetime_in_seconds: 1,\n            private_key: \"wer\",\n            private_key_id: \"qwreerwerwe\",\n        },\n        samlp: {\n            audience: \"https://example.com/saml\",\n            createUpnClaim: false,\n            mapIdentities: false,\n            mapUnknownClaimsAsIs: false,\n            mappings: {\n                email: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                name: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            nameIdentifierFormat: \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            nameIdentifierProbes: [\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthroughClaimsWithNoMapping: false,\n            signingCert: \"pemcertificate\",\n        },\n    },\n    allowedClients: [\"https://allowed.example.com\"],\n    allowedLogoutUrls: [\"https://example.com\"],\n    allowedOrigins: [\"https://example.com\"],\n    appType: \"non_interactive\",\n    callbacks: [\"https://example.com/callback\"],\n    clientMetadata: {\n        foo: \"zoo\",\n    },\n    customLoginPageOn: true,\n    description: \"Test Applications Long Description\",\n    grantTypes: [\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    isFirstParty: true,\n    isTokenEndpointIpHeaderTrusted: true,\n    jwtConfiguration: {\n        alg: \"RS256\",\n        lifetimeInSeconds: 300,\n        scopes: {\n            foo: \"bar\",\n        },\n        secretEncoded: true,\n    },\n    mobile: {\n        ios: {\n            appBundleIdentifier: \"com.my.bundle.id\",\n            teamId: \"9JA89QQLNQ\",\n        },\n    },\n    oidcConformant: false,\n    organizationRequireBehavior: \"no_prompt\",\n    organizationUsage: \"deny\",\n    refreshToken: {\n        expirationType: \"expiring\",\n        idleTokenLifetime: 1296000,\n        infiniteIdleTokenLifetime: true,\n        infiniteTokenLifetime: false,\n        leeway: 15,\n        rotationType: \"rotating\",\n        tokenLifetime: 84600,\n    },\n    tokenEndpointAuthMethod: \"client_secret_post\",\n    webOrigins: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"myClient\",\n    addons=auth0.ClientAddonsArgs(\n        firebase={\n            \"clientEmail\": \"john.doe@example.com\",\n            \"lifetimeInSeconds\": 1,\n            \"privateKey\": \"wer\",\n            \"privateKeyId\": \"qwreerwerwe\",\n        },\n        samlp=auth0.ClientAddonsSamlpArgs(\n            audience=\"https://example.com/saml\",\n            create_upn_claim=False,\n            map_identities=False,\n            map_unknown_claims_as_is=False,\n            mappings={\n                \"email\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                \"name\": \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n            },\n            name_identifier_format=\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n            name_identifier_probes=[\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"],\n            passthrough_claims_with_no_mapping=False,\n            signing_cert=\"pemcertificate\",\n        ),\n    ),\n    allowed_clients=[\"https://allowed.example.com\"],\n    allowed_logout_urls=[\"https://example.com\"],\n    allowed_origins=[\"https://example.com\"],\n    app_type=\"non_interactive\",\n    callbacks=[\"https://example.com/callback\"],\n    client_metadata={\n        \"foo\": \"zoo\",\n    },\n    custom_login_page_on=True,\n    description=\"Test Applications Long Description\",\n    grant_types=[\n        \"authorization_code\",\n        \"http://auth0.com/oauth/grant-type/password-realm\",\n        \"implicit\",\n        \"password\",\n        \"refresh_token\",\n    ],\n    is_first_party=True,\n    is_token_endpoint_ip_header_trusted=True,\n    jwt_configuration=auth0.ClientJwtConfigurationArgs(\n        alg=\"RS256\",\n        lifetime_in_seconds=300,\n        scopes={\n            \"foo\": \"bar\",\n        },\n        secret_encoded=True,\n    ),\n    mobile=auth0.ClientMobileArgs(\n        ios=auth0.ClientMobileIosArgs(\n            app_bundle_identifier=\"com.my.bundle.id\",\n            team_id=\"9JA89QQLNQ\",\n        ),\n    ),\n    oidc_conformant=False,\n    organization_require_behavior=\"no_prompt\",\n    organization_usage=\"deny\",\n    refresh_token=auth0.ClientRefreshTokenArgs(\n        expiration_type=\"expiring\",\n        idle_token_lifetime=1296000,\n        infinite_idle_token_lifetime=True,\n        infinite_token_lifetime=False,\n        leeway=15,\n        rotation_type=\"rotating\",\n        token_lifetime=84600,\n    ),\n    token_endpoint_auth_method=\"client_secret_post\",\n    web_origins=[\"https://example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myClient = new Auth0.Client(\"myClient\", new Auth0.ClientArgs\n        {\n            Addons = new Auth0.Inputs.ClientAddonsArgs\n            {\n                Firebase = \n                {\n                    { \"clientEmail\", \"john.doe@example.com\" },\n                    { \"lifetimeInSeconds\", 1 },\n                    { \"privateKey\", \"wer\" },\n                    { \"privateKeyId\", \"qwreerwerwe\" },\n                },\n                Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs\n                {\n                    Audience = \"https://example.com/saml\",\n                    CreateUpnClaim = false,\n                    MapIdentities = false,\n                    MapUnknownClaimsAsIs = false,\n                    Mappings = \n                    {\n                        { \"email\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\" },\n                        { \"name\", \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\" },\n                    },\n                    NameIdentifierFormat = \"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\",\n                    NameIdentifierProbes = \n                    {\n                        \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\",\n                    },\n                    PassthroughClaimsWithNoMapping = false,\n                    SigningCert = \"pemcertificate\",\n                },\n            },\n            AllowedClients = \n            {\n                \"https://allowed.example.com\",\n            },\n            AllowedLogoutUrls = \n            {\n                \"https://example.com\",\n            },\n            AllowedOrigins = \n            {\n                \"https://example.com\",\n            },\n            AppType = \"non_interactive\",\n            Callbacks = \n            {\n                \"https://example.com/callback\",\n            },\n            ClientMetadata = \n            {\n                { \"foo\", \"zoo\" },\n            },\n            CustomLoginPageOn = true,\n            Description = \"Test Applications Long Description\",\n            GrantTypes = \n            {\n                \"authorization_code\",\n                \"http://auth0.com/oauth/grant-type/password-realm\",\n                \"implicit\",\n                \"password\",\n                \"refresh_token\",\n            },\n            IsFirstParty = true,\n            IsTokenEndpointIpHeaderTrusted = true,\n            JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs\n            {\n                Alg = \"RS256\",\n                LifetimeInSeconds = 300,\n                Scopes = \n                {\n                    { \"foo\", \"bar\" },\n                },\n                SecretEncoded = true,\n            },\n            Mobile = new Auth0.Inputs.ClientMobileArgs\n            {\n                Ios = new Auth0.Inputs.ClientMobileIosArgs\n                {\n                    AppBundleIdentifier = \"com.my.bundle.id\",\n                    TeamId = \"9JA89QQLNQ\",\n                },\n            },\n            OidcConformant = false,\n            OrganizationRequireBehavior = \"no_prompt\",\n            OrganizationUsage = \"deny\",\n            RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs\n            {\n                ExpirationType = \"expiring\",\n                IdleTokenLifetime = 1296000,\n                InfiniteIdleTokenLifetime = true,\n                InfiniteTokenLifetime = false,\n                Leeway = 15,\n                RotationType = \"rotating\",\n                TokenLifetime = 84600,\n            },\n            TokenEndpointAuthMethod = \"client_secret_post\",\n            WebOrigins = \n            {\n                \"https://example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewClient(ctx, \"myClient\", \u0026auth0.ClientArgs{\n\t\t\tAddons: \u0026ClientAddonsArgs{\n\t\t\t\tFirebase: pulumi.AnyMap{\n\t\t\t\t\t\"clientEmail\":       pulumi.Any(\"john.doe@example.com\"),\n\t\t\t\t\t\"lifetimeInSeconds\": pulumi.Any(1),\n\t\t\t\t\t\"privateKey\":        pulumi.Any(\"wer\"),\n\t\t\t\t\t\"privateKeyId\":      pulumi.Any(\"qwreerwerwe\"),\n\t\t\t\t},\n\t\t\t\tSamlp: \u0026ClientAddonsSamlpArgs{\n\t\t\t\t\tAudience:             pulumi.String(\"https://example.com/saml\"),\n\t\t\t\t\tCreateUpnClaim:       pulumi.Bool(false),\n\t\t\t\t\tMapIdentities:        pulumi.Bool(false),\n\t\t\t\t\tMapUnknownClaimsAsIs: pulumi.Bool(false),\n\t\t\t\t\tMappings: pulumi.AnyMap{\n\t\t\t\t\t\t\"email\": pulumi.Any(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t\t\"name\":  pulumi.Any(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\"),\n\t\t\t\t\t},\n\t\t\t\t\tNameIdentifierFormat: pulumi.String(\"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent\"),\n\t\t\t\t\tNameIdentifierProbes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\"),\n\t\t\t\t\t},\n\t\t\t\t\tPassthroughClaimsWithNoMapping: pulumi.Bool(false),\n\t\t\t\t\tSigningCert:                    pulumi.String(\"pemcertificate\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAllowedClients: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://allowed.example.com\"),\n\t\t\t},\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tAppType: pulumi.String(\"non_interactive\"),\n\t\t\tCallbacks: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com/callback\"),\n\t\t\t},\n\t\t\tClientMetadata: pulumi.AnyMap{\n\t\t\t\t\"foo\": pulumi.Any(\"zoo\"),\n\t\t\t},\n\t\t\tCustomLoginPageOn: pulumi.Bool(true),\n\t\t\tDescription:       pulumi.String(\"Test Applications Long Description\"),\n\t\t\tGrantTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"authorization_code\"),\n\t\t\t\tpulumi.String(\"http://auth0.com/oauth/grant-type/password-realm\"),\n\t\t\t\tpulumi.String(\"implicit\"),\n\t\t\t\tpulumi.String(\"password\"),\n\t\t\t\tpulumi.String(\"refresh_token\"),\n\t\t\t},\n\t\t\tIsFirstParty:                   pulumi.Bool(true),\n\t\t\tIsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),\n\t\t\tJwtConfiguration: \u0026ClientJwtConfigurationArgs{\n\t\t\t\tAlg:               pulumi.String(\"RS256\"),\n\t\t\t\tLifetimeInSeconds: pulumi.Int(300),\n\t\t\t\tScopes: pulumi.StringMap{\n\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t},\n\t\t\t\tSecretEncoded: pulumi.Bool(true),\n\t\t\t},\n\t\t\tMobile: \u0026ClientMobileArgs{\n\t\t\t\tIos: \u0026ClientMobileIosArgs{\n\t\t\t\t\tAppBundleIdentifier: pulumi.String(\"com.my.bundle.id\"),\n\t\t\t\t\tTeamId:              pulumi.String(\"9JA89QQLNQ\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOidcConformant:              pulumi.Bool(false),\n\t\t\tOrganizationRequireBehavior: pulumi.String(\"no_prompt\"),\n\t\t\tOrganizationUsage:           pulumi.String(\"deny\"),\n\t\t\tRefreshToken: \u0026ClientRefreshTokenArgs{\n\t\t\t\tExpirationType:            pulumi.String(\"expiring\"),\n\t\t\t\tIdleTokenLifetime:         pulumi.Int(1296000),\n\t\t\t\tInfiniteIdleTokenLifetime: pulumi.Bool(true),\n\t\t\t\tInfiniteTokenLifetime:     pulumi.Bool(false),\n\t\t\t\tLeeway:                    pulumi.Int(15),\n\t\t\t\tRotationType:              pulumi.String(\"rotating\"),\n\t\t\t\tTokenLifetime:             pulumi.Int(84600),\n\t\t\t},\n\t\t\tTokenEndpointAuthMethod: pulumi.String(\"client_secret_post\"),\n\t\t\tWebOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "addons": {
                     "$ref": "#/types/auth0:index/ClientAddons:ClientAddons",
@@ -3645,6 +3837,10 @@
                     "type": "string",
                     "description": "String. Name of the client.\n"
                 },
+                "nativeSocialLogin": {
+                    "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
+                    "description": "List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login\n"
+                },
                 "oidcConformant": {
                     "type": "boolean",
                     "description": "Boolean. Indicates whether or not this client will conform to strict OIDC specifications.\n"
@@ -3691,6 +3887,7 @@
                 "isTokenEndpointIpHeaderTrusted",
                 "jwtConfiguration",
                 "name",
+                "nativeSocialLogin",
                 "oidcConformant",
                 "refreshToken",
                 "tokenEndpointAuthMethod"
@@ -3811,6 +4008,10 @@
                 "name": {
                     "type": "string",
                     "description": "String. Name of the client.\n"
+                },
+                "nativeSocialLogin": {
+                    "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
+                    "description": "List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login\n"
                 },
                 "oidcConformant": {
                     "type": "boolean",
@@ -3973,6 +4174,10 @@
                     "name": {
                         "type": "string",
                         "description": "String. Name of the client.\n"
+                    },
+                    "nativeSocialLogin": {
+                        "$ref": "#/types/auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin",
+                        "description": "List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login\n"
                     },
                     "oidcConformant": {
                         "type": "boolean",
@@ -4653,6 +4858,9 @@
                 "name": {
                     "type": "string"
                 },
+                "nativeSocialLogin": {
+                    "$ref": "#/types/auth0:index/GlobalClientNativeSocialLogin:GlobalClientNativeSocialLogin"
+                },
                 "oidcConformant": {
                     "type": "boolean"
                 },
@@ -4706,6 +4914,7 @@
                 "logoUri",
                 "mobile",
                 "name",
+                "nativeSocialLogin",
                 "oidcConformant",
                 "organizationRequireBehavior",
                 "organizationUsage",
@@ -4814,6 +5023,9 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "nativeSocialLogin": {
+                    "$ref": "#/types/auth0:index/GlobalClientNativeSocialLogin:GlobalClientNativeSocialLogin"
                 },
                 "oidcConformant": {
                     "type": "boolean"
@@ -4945,6 +5157,9 @@
                     "name": {
                         "type": "string"
                     },
+                    "nativeSocialLogin": {
+                        "$ref": "#/types/auth0:index/GlobalClientNativeSocialLogin:GlobalClientNativeSocialLogin"
+                    },
                     "oidcConformant": {
                         "type": "boolean"
                     },
@@ -4977,8 +5192,12 @@
             }
         },
         "auth0:index/guardian:Guardian": {
-            "description": "Multi-factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some of\nthe options available for MFA.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst defaultGuardian = new auth0.Guardian(\"default\", {\n    phone: {\n        messageTypes: [\"sms\"],\n        options: {\n            enrollmentMessage: \"{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment\",\n            verificationMessage: \"{{code}} is your verification code for {{tenant.friendly_name}}\",\n        },\n        provider: \"auth0\",\n    },\n    policy: \"all-applications\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\ndefault = auth0.Guardian(\"default\",\n    phone=auth0.GuardianPhoneArgs(\n        message_types=[\"sms\"],\n        options=auth0.GuardianPhoneOptionsArgs(\n            enrollment_message=\"{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment\",\n            verification_message=\"{{code}} is your verification code for {{tenant.friendly_name}}\",\n        ),\n        provider=\"auth0\",\n    ),\n    policy=\"all-applications\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new Auth0.Guardian(\"default\", new Auth0.GuardianArgs\n        {\n            Phone = new Auth0.Inputs.GuardianPhoneArgs\n            {\n                MessageTypes = \n                {\n                    \"sms\",\n                },\n                Options = new Auth0.Inputs.GuardianPhoneOptionsArgs\n                {\n                    EnrollmentMessage = \"{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment\",\n                    VerificationMessage = \"{{code}} is your verification code for {{tenant.friendly_name}}\",\n                },\n                Provider = \"auth0\",\n            },\n            Policy = \"all-applications\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewGuardian(ctx, \"_default\", \u0026auth0.GuardianArgs{\n\t\t\tPhone: \u0026GuardianPhoneArgs{\n\t\t\t\tMessageTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"sms\"),\n\t\t\t\t},\n\t\t\t\tOptions: \u0026GuardianPhoneOptionsArgs{\n\t\t\t\t\tEnrollmentMessage:   pulumi.String(\"{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment\"),\n\t\t\t\t\tVerificationMessage: pulumi.String(\"{{code}} is your verification code for {{tenant.friendly_name}}\"),\n\t\t\t\t},\n\t\t\t\tProvider: pulumi.String(\"auth0\"),\n\t\t\t},\n\t\t\tPolicy: pulumi.String(\"all-applications\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Multi-factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some of\nthe options available for MFA.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst defaultGuardian = new auth0.Guardian(\"default\", {\n    email: true,\n    phone: {\n        messageTypes: [\"sms\"],\n        options: {\n            enrollmentMessage: \"{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.\",\n            verificationMessage: \"{{code}} is your verification code for {{tenant.friendly_name}}.\",\n        },\n        provider: \"auth0\",\n    },\n    policy: \"all-applications\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\ndefault = auth0.Guardian(\"default\",\n    email=True,\n    phone=auth0.GuardianPhoneArgs(\n        message_types=[\"sms\"],\n        options=auth0.GuardianPhoneOptionsArgs(\n            enrollment_message=\"{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.\",\n            verification_message=\"{{code}} is your verification code for {{tenant.friendly_name}}.\",\n        ),\n        provider=\"auth0\",\n    ),\n    policy=\"all-applications\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new Auth0.Guardian(\"default\", new Auth0.GuardianArgs\n        {\n            Email = true,\n            Phone = new Auth0.Inputs.GuardianPhoneArgs\n            {\n                MessageTypes = \n                {\n                    \"sms\",\n                },\n                Options = new Auth0.Inputs.GuardianPhoneOptionsArgs\n                {\n                    EnrollmentMessage = \"{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.\",\n                    VerificationMessage = \"{{code}} is your verification code for {{tenant.friendly_name}}.\",\n                },\n                Provider = \"auth0\",\n            },\n            Policy = \"all-applications\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewGuardian(ctx, \"_default\", \u0026auth0.GuardianArgs{\n\t\t\tEmail: pulumi.Bool(true),\n\t\t\tPhone: \u0026GuardianPhoneArgs{\n\t\t\t\tMessageTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"sms\"),\n\t\t\t\t},\n\t\t\t\tOptions: \u0026GuardianPhoneOptionsArgs{\n\t\t\t\t\tEnrollmentMessage:   pulumi.String(\"{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.\"),\n\t\t\t\t\tVerificationMessage: pulumi.String(\"{{code}} is your verification code for {{tenant.friendly_name}}.\"),\n\t\t\t\t},\n\t\t\t\tProvider: pulumi.String(\"auth0\"),\n\t\t\t},\n\t\t\tPolicy: pulumi.String(\"all-applications\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "email": {
+                    "type": "boolean",
+                    "description": "Boolean. Indicates whether or not email MFA is enabled.\n"
+                },
                 "phone": {
                     "$ref": "#/types/auth0:index/GuardianPhone:GuardianPhone",
                     "description": "List(Resource). Configuration settings for the phone MFA. For details, see Phone.\n"
@@ -4992,6 +5211,10 @@
                 "policy"
             ],
             "inputProperties": {
+                "email": {
+                    "type": "boolean",
+                    "description": "Boolean. Indicates whether or not email MFA is enabled.\n"
+                },
                 "phone": {
                     "$ref": "#/types/auth0:index/GuardianPhone:GuardianPhone",
                     "description": "List(Resource). Configuration settings for the phone MFA. For details, see Phone.\n"
@@ -5007,6 +5230,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Guardian resources.\n",
                 "properties": {
+                    "email": {
+                        "type": "boolean",
+                        "description": "Boolean. Indicates whether or not email MFA is enabled.\n"
+                    },
                     "phone": {
                         "$ref": "#/types/auth0:index/GuardianPhone:GuardianPhone",
                         "description": "List(Resource). Configuration settings for the phone MFA. For details, see Phone.\n"
@@ -5133,7 +5360,7 @@
             }
         },
         "auth0:index/logStream:LogStream": {
-            "description": "With this resource, you can manage your Auth0 log streams.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst example = new auth0.LogStream(\"example\", {\n    sink: {\n        awsAccountId: \"my_account_id\",\n        awsRegion: \"us-east-2\",\n    },\n    status: \"active\",\n    type: \"eventbridge\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nexample = auth0.LogStream(\"example\",\n    sink=auth0.LogStreamSinkArgs(\n        aws_account_id=\"my_account_id\",\n        aws_region=\"us-east-2\",\n    ),\n    status=\"active\",\n    type=\"eventbridge\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Auth0.LogStream(\"example\", new Auth0.LogStreamArgs\n        {\n            Sink = new Auth0.Inputs.LogStreamSinkArgs\n            {\n                AwsAccountId = \"my_account_id\",\n                AwsRegion = \"us-east-2\",\n            },\n            Status = \"active\",\n            Type = \"eventbridge\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewLogStream(ctx, \"example\", \u0026auth0.LogStreamArgs{\n\t\t\tSink: \u0026LogStreamSinkArgs{\n\t\t\t\tAwsAccountId: pulumi.String(\"my_account_id\"),\n\t\t\t\tAwsRegion:    pulumi.String(\"us-east-2\"),\n\t\t\t},\n\t\t\tStatus: pulumi.String(\"active\"),\n\t\t\tType:   pulumi.String(\"eventbridge\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "With this resource, you can manage your Auth0 log streams.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst example = new auth0.LogStream(\"example\", {\n    sink: {\n        awsAccountId: \"my_account_id\",\n        awsRegion: \"us-east-2\",\n    },\n    status: \"active\",\n    type: \"eventbridge\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nexample = auth0.LogStream(\"example\",\n    sink=auth0.LogStreamSinkArgs(\n        aws_account_id=\"my_account_id\",\n        aws_region=\"us-east-2\",\n    ),\n    status=\"active\",\n    type=\"eventbridge\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Auth0.LogStream(\"example\", new Auth0.LogStreamArgs\n        {\n            Sink = new Auth0.Inputs.LogStreamSinkArgs\n            {\n                AwsAccountId = \"my_account_id\",\n                AwsRegion = \"us-east-2\",\n            },\n            Status = \"active\",\n            Type = \"eventbridge\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewLogStream(ctx, \"example\", \u0026auth0.LogStreamArgs{\n\t\t\tSink: \u0026LogStreamSinkArgs{\n\t\t\t\tAwsAccountId: pulumi.String(\"my_account_id\"),\n\t\t\t\tAwsRegion:    pulumi.String(\"us-east-2\"),\n\t\t\t},\n\t\t\tStatus: pulumi.String(\"active\"),\n\t\t\tType:   pulumi.String(\"eventbridge\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nExisting log stream can be imported using log stream id hcl\n\n```sh\n $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX\n```\n\n ",
             "properties": {
                 "name": {
                     "type": "string",
@@ -5531,7 +5758,7 @@
             }
         },
         "auth0:index/role:Role": {
-            "description": "With this resource, you can created and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    enforcePolicies: true,\n    identifier: \"my-resource-server-identifier\",\n    scopes: [{\n        description: \"read something\",\n        value: \"read:something\",\n    }],\n    signingAlg: \"RS256\",\n    skipConsentForVerifiableFirstPartyClients: true,\n    tokenLifetime: 86400,\n});\nconst myRole = new auth0.Role(\"my_role\", {\n    description: \"Role Description...\",\n    permissions: [{\n        name: \"read:something\",\n        resourceServerIdentifier: myResourceServer.identifier,\n    }],\n});\nconst myUser = new auth0.User(\"my_user\", {\n    connectionName: \"Username-Password-Authentication\",\n    email: \"test@test.com\",\n    nickname: \"testnick\",\n    password: \"passpass$12$12\",\n    roles: [myRole.id],\n    userId: \"auth0|1234567890\",\n    username: \"testnick\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"myResourceServer\",\n    enforce_policies=True,\n    identifier=\"my-resource-server-identifier\",\n    scopes=[auth0.ResourceServerScopeArgs(\n        description=\"read something\",\n        value=\"read:something\",\n    )],\n    signing_alg=\"RS256\",\n    skip_consent_for_verifiable_first_party_clients=True,\n    token_lifetime=86400)\nmy_role = auth0.Role(\"myRole\",\n    description=\"Role Description...\",\n    permissions=[auth0.RolePermissionArgs(\n        name=\"read:something\",\n        resource_server_identifier=my_resource_server.identifier,\n    )])\nmy_user = auth0.User(\"myUser\",\n    connection_name=\"Username-Password-Authentication\",\n    email=\"test@test.com\",\n    nickname=\"testnick\",\n    password=\"passpass$12$12\",\n    roles=[my_role.id],\n    user_id=\"auth0|1234567890\",\n    username=\"testnick\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myResourceServer = new Auth0.ResourceServer(\"myResourceServer\", new Auth0.ResourceServerArgs\n        {\n            EnforcePolicies = true,\n            Identifier = \"my-resource-server-identifier\",\n            Scopes = \n            {\n                new Auth0.Inputs.ResourceServerScopeArgs\n                {\n                    Description = \"read something\",\n                    Value = \"read:something\",\n                },\n            },\n            SigningAlg = \"RS256\",\n            SkipConsentForVerifiableFirstPartyClients = true,\n            TokenLifetime = 86400,\n        });\n        var myRole = new Auth0.Role(\"myRole\", new Auth0.RoleArgs\n        {\n            Description = \"Role Description...\",\n            Permissions = \n            {\n                new Auth0.Inputs.RolePermissionArgs\n                {\n                    Name = \"read:something\",\n                    ResourceServerIdentifier = myResourceServer.Identifier,\n                },\n            },\n        });\n        var myUser = new Auth0.User(\"myUser\", new Auth0.UserArgs\n        {\n            ConnectionName = \"Username-Password-Authentication\",\n            Email = \"test@test.com\",\n            Nickname = \"testnick\",\n            Password = \"passpass$12$12\",\n            Roles = \n            {\n                myRole.Id,\n            },\n            UserId = \"auth0|1234567890\",\n            Username = \"testnick\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyResourceServer, err := auth0.NewResourceServer(ctx, \"myResourceServer\", \u0026auth0.ResourceServerArgs{\n\t\t\tEnforcePolicies: pulumi.Bool(true),\n\t\t\tIdentifier:      pulumi.String(\"my-resource-server-identifier\"),\n\t\t\tScopes: ResourceServerScopeArray{\n\t\t\t\t\u0026ResourceServerScopeArgs{\n\t\t\t\t\tDescription: pulumi.String(\"read something\"),\n\t\t\t\t\tValue:       pulumi.String(\"read:something\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSigningAlg: pulumi.String(\"RS256\"),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tTokenLifetime: pulumi.Int(86400),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyRole, err := auth0.NewRole(ctx, \"myRole\", \u0026auth0.RoleArgs{\n\t\t\tDescription: pulumi.String(\"Role Description...\"),\n\t\t\tPermissions: RolePermissionArray{\n\t\t\t\t\u0026RolePermissionArgs{\n\t\t\t\t\tName:                     pulumi.String(\"read:something\"),\n\t\t\t\t\tResourceServerIdentifier: myResourceServer.Identifier,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewUser(ctx, \"myUser\", \u0026auth0.UserArgs{\n\t\t\tConnectionName: pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tEmail:          pulumi.String(\"test@test.com\"),\n\t\t\tNickname:       pulumi.String(\"testnick\"),\n\t\t\tPassword:       pulumi.String(fmt.Sprintf(\"%v%v%v%v%v\", \"passpass\", \"$\", \"12\", \"$\", \"12\")),\n\t\t\tRoles: pulumi.StringArray{\n\t\t\t\tmyRole.ID(),\n\t\t\t},\n\t\t\tUserId:   pulumi.String(\"auth0|1234567890\"),\n\t\t\tUsername: pulumi.String(\"testnick\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    enforcePolicies: true,\n    identifier: \"my-resource-server-identifier\",\n    scopes: [{\n        description: \"read something\",\n        value: \"read:something\",\n    }],\n    signingAlg: \"RS256\",\n    skipConsentForVerifiableFirstPartyClients: true,\n    tokenLifetime: 86400,\n});\nconst myRole = new auth0.Role(\"my_role\", {\n    description: \"Role Description...\",\n    permissions: [{\n        name: \"read:something\",\n        resourceServerIdentifier: myResourceServer.identifier,\n    }],\n});\nconst myUser = new auth0.User(\"my_user\", {\n    connectionName: \"Username-Password-Authentication\",\n    email: \"test@test.com\",\n    nickname: \"testnick\",\n    password: \"passpass$12$12\",\n    roles: [myRole.id],\n    userId: \"auth0|1234567890\",\n    username: \"testnick\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"myResourceServer\",\n    enforce_policies=True,\n    identifier=\"my-resource-server-identifier\",\n    scopes=[auth0.ResourceServerScopeArgs(\n        description=\"read something\",\n        value=\"read:something\",\n    )],\n    signing_alg=\"RS256\",\n    skip_consent_for_verifiable_first_party_clients=True,\n    token_lifetime=86400)\nmy_role = auth0.Role(\"myRole\",\n    description=\"Role Description...\",\n    permissions=[auth0.RolePermissionArgs(\n        name=\"read:something\",\n        resource_server_identifier=my_resource_server.identifier,\n    )])\nmy_user = auth0.User(\"myUser\",\n    connection_name=\"Username-Password-Authentication\",\n    email=\"test@test.com\",\n    nickname=\"testnick\",\n    password=\"passpass$12$12\",\n    roles=[my_role.id],\n    user_id=\"auth0|1234567890\",\n    username=\"testnick\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myResourceServer = new Auth0.ResourceServer(\"myResourceServer\", new Auth0.ResourceServerArgs\n        {\n            EnforcePolicies = true,\n            Identifier = \"my-resource-server-identifier\",\n            Scopes = \n            {\n                new Auth0.Inputs.ResourceServerScopeArgs\n                {\n                    Description = \"read something\",\n                    Value = \"read:something\",\n                },\n            },\n            SigningAlg = \"RS256\",\n            SkipConsentForVerifiableFirstPartyClients = true,\n            TokenLifetime = 86400,\n        });\n        var myRole = new Auth0.Role(\"myRole\", new Auth0.RoleArgs\n        {\n            Description = \"Role Description...\",\n            Permissions = \n            {\n                new Auth0.Inputs.RolePermissionArgs\n                {\n                    Name = \"read:something\",\n                    ResourceServerIdentifier = myResourceServer.Identifier,\n                },\n            },\n        });\n        var myUser = new Auth0.User(\"myUser\", new Auth0.UserArgs\n        {\n            ConnectionName = \"Username-Password-Authentication\",\n            Email = \"test@test.com\",\n            Nickname = \"testnick\",\n            Password = \"passpass$12$12\",\n            Roles = \n            {\n                myRole.Id,\n            },\n            UserId = \"auth0|1234567890\",\n            Username = \"testnick\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyResourceServer, err := auth0.NewResourceServer(ctx, \"myResourceServer\", \u0026auth0.ResourceServerArgs{\n\t\t\tEnforcePolicies: pulumi.Bool(true),\n\t\t\tIdentifier:      pulumi.String(\"my-resource-server-identifier\"),\n\t\t\tScopes: ResourceServerScopeArray{\n\t\t\t\t\u0026ResourceServerScopeArgs{\n\t\t\t\t\tDescription: pulumi.String(\"read something\"),\n\t\t\t\t\tValue:       pulumi.String(\"read:something\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSigningAlg: pulumi.String(\"RS256\"),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tTokenLifetime: pulumi.Int(86400),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyRole, err := auth0.NewRole(ctx, \"myRole\", \u0026auth0.RoleArgs{\n\t\t\tDescription: pulumi.String(\"Role Description...\"),\n\t\t\tPermissions: RolePermissionArray{\n\t\t\t\t\u0026RolePermissionArgs{\n\t\t\t\t\tName:                     pulumi.String(\"read:something\"),\n\t\t\t\t\tResourceServerIdentifier: myResourceServer.Identifier,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewUser(ctx, \"myUser\", \u0026auth0.UserArgs{\n\t\t\tConnectionName: pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tEmail:          pulumi.String(\"test@test.com\"),\n\t\t\tNickname:       pulumi.String(\"testnick\"),\n\t\t\tPassword:       pulumi.String(fmt.Sprintf(\"%v%v%v%v%v\", \"passpass\", \"$\", \"12\", \"$\", \"12\")),\n\t\t\tRoles: pulumi.StringArray{\n\t\t\t\tmyRole.ID(),\n\t\t\t},\n\t\t\tUserId:   pulumi.String(\"auth0|1234567890\"),\n\t\t\tUsername: pulumi.String(\"testnick\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "description": {
                     "type": "string",

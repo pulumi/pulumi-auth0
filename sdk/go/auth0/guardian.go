@@ -27,13 +27,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewGuardian(ctx, "_default", &auth0.GuardianArgs{
+// 			Email: pulumi.Bool(true),
 // 			Phone: &GuardianPhoneArgs{
 // 				MessageTypes: pulumi.StringArray{
 // 					pulumi.String("sms"),
 // 				},
 // 				Options: &GuardianPhoneOptionsArgs{
-// 					EnrollmentMessage:   pulumi.String("{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment"),
-// 					VerificationMessage: pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}"),
+// 					EnrollmentMessage:   pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment."),
+// 					VerificationMessage: pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}."),
 // 				},
 // 				Provider: pulumi.String("auth0"),
 // 			},
@@ -49,6 +50,8 @@ import (
 type Guardian struct {
 	pulumi.CustomResourceState
 
+	// Boolean. Indicates whether or not email MFA is enabled.
+	Email pulumi.BoolPtrOutput `pulumi:"email"`
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone GuardianPhonePtrOutput `pulumi:"phone"`
 	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
@@ -87,6 +90,8 @@ func GetGuardian(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Guardian resources.
 type guardianState struct {
+	// Boolean. Indicates whether or not email MFA is enabled.
+	Email *bool `pulumi:"email"`
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone *GuardianPhone `pulumi:"phone"`
 	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
@@ -94,6 +99,8 @@ type guardianState struct {
 }
 
 type GuardianState struct {
+	// Boolean. Indicates whether or not email MFA is enabled.
+	Email pulumi.BoolPtrInput
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone GuardianPhonePtrInput
 	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
@@ -105,6 +112,8 @@ func (GuardianState) ElementType() reflect.Type {
 }
 
 type guardianArgs struct {
+	// Boolean. Indicates whether or not email MFA is enabled.
+	Email *bool `pulumi:"email"`
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone *GuardianPhone `pulumi:"phone"`
 	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
@@ -113,6 +122,8 @@ type guardianArgs struct {
 
 // The set of arguments for constructing a Guardian resource.
 type GuardianArgs struct {
+	// Boolean. Indicates whether or not email MFA is enabled.
+	Email pulumi.BoolPtrInput
 	// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
 	Phone GuardianPhonePtrInput
 	// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)

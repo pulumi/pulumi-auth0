@@ -86,6 +86,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? SignatureAlgorithm;
         /// <summary>
+        /// String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+        /// </summary>
+        public readonly string? SigningCert;
+        /// <summary>
         /// Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
         /// </summary>
         public readonly bool? TypedAttributes;
@@ -128,6 +132,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? signatureAlgorithm,
 
+            string? signingCert,
+
             bool? typedAttributes)
         {
             Audience = audience;
@@ -148,6 +154,7 @@ namespace Pulumi.Auth0.Outputs
             Recipient = recipient;
             SignResponse = signResponse;
             SignatureAlgorithm = signatureAlgorithm;
+            SigningCert = signingCert;
             TypedAttributes = typedAttributes;
         }
     }

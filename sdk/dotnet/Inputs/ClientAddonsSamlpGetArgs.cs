@@ -133,6 +133,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? SignatureAlgorithm { get; set; }
 
         /// <summary>
+        /// String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+        /// </summary>
+        [Input("signingCert")]
+        public Input<string>? SigningCert { get; set; }
+
+        /// <summary>
         /// Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
         /// </summary>
         [Input("typedAttributes")]

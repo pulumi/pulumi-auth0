@@ -40,6 +40,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Existing log stream can be imported using log stream id hcl
+//
+// ```sh
+//  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
+// ```
 type LogStream struct {
 	pulumi.CustomResourceState
 

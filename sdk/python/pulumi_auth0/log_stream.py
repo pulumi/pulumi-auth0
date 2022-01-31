@@ -182,6 +182,14 @@ class LogStream(pulumi.CustomResource):
             type="eventbridge")
         ```
 
+        ## Import
+
+        Existing log stream can be imported using log stream id hcl
+
+        ```sh
+         $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the log stream
@@ -211,6 +219,14 @@ class LogStream(pulumi.CustomResource):
             ),
             status="active",
             type="eventbridge")
+        ```
+
+        ## Import
+
+        Existing log stream can be imported using log stream id hcl
+
+        ```sh
+         $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.

@@ -23,6 +23,14 @@ import * as utilities from "./utilities";
  *     type: "eventbridge",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Existing log stream can be imported using log stream id hcl
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
+ * ```
  */
 export class LogStream extends pulumi.CustomResource {
     /**

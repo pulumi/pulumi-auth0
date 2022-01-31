@@ -87,6 +87,9 @@ namespace Pulumi.Auth0
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("nativeSocialLogin")]
+        public Output<Outputs.GlobalClientNativeSocialLogin> NativeSocialLogin { get; private set; } = null!;
+
         [Output("oidcConformant")]
         public Output<bool> OidcConformant { get; private set; } = null!;
 
@@ -272,6 +275,9 @@ namespace Pulumi.Auth0
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("nativeSocialLogin")]
+        public Input<Inputs.GlobalClientNativeSocialLoginArgs>? NativeSocialLogin { get; set; }
+
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
 
@@ -422,6 +428,9 @@ namespace Pulumi.Auth0
 
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("nativeSocialLogin")]
+        public Input<Inputs.GlobalClientNativeSocialLoginGetArgs>? NativeSocialLogin { get; set; }
 
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }

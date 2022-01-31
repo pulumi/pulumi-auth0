@@ -58,6 +58,7 @@ export class GlobalClient extends pulumi.CustomResource {
     public readonly logoUri!: pulumi.Output<string>;
     public readonly mobile!: pulumi.Output<outputs.GlobalClientMobile>;
     public readonly name!: pulumi.Output<string>;
+    public readonly nativeSocialLogin!: pulumi.Output<outputs.GlobalClientNativeSocialLogin>;
     public readonly oidcConformant!: pulumi.Output<boolean>;
     public readonly organizationRequireBehavior!: pulumi.Output<string>;
     public readonly organizationUsage!: pulumi.Output<string>;
@@ -105,6 +106,7 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["logoUri"] = state ? state.logoUri : undefined;
             inputs["mobile"] = state ? state.mobile : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["nativeSocialLogin"] = state ? state.nativeSocialLogin : undefined;
             inputs["oidcConformant"] = state ? state.oidcConformant : undefined;
             inputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
             inputs["organizationUsage"] = state ? state.organizationUsage : undefined;
@@ -140,6 +142,7 @@ export class GlobalClient extends pulumi.CustomResource {
             inputs["logoUri"] = args ? args.logoUri : undefined;
             inputs["mobile"] = args ? args.mobile : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["nativeSocialLogin"] = args ? args.nativeSocialLogin : undefined;
             inputs["oidcConformant"] = args ? args.oidcConformant : undefined;
             inputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
             inputs["organizationUsage"] = args ? args.organizationUsage : undefined;
@@ -185,6 +188,7 @@ export interface GlobalClientState {
     logoUri?: pulumi.Input<string>;
     mobile?: pulumi.Input<inputs.GlobalClientMobile>;
     name?: pulumi.Input<string>;
+    nativeSocialLogin?: pulumi.Input<inputs.GlobalClientNativeSocialLogin>;
     oidcConformant?: pulumi.Input<boolean>;
     organizationRequireBehavior?: pulumi.Input<string>;
     organizationUsage?: pulumi.Input<string>;
@@ -224,6 +228,7 @@ export interface GlobalClientArgs {
     logoUri?: pulumi.Input<string>;
     mobile?: pulumi.Input<inputs.GlobalClientMobile>;
     name?: pulumi.Input<string>;
+    nativeSocialLogin?: pulumi.Input<inputs.GlobalClientNativeSocialLogin>;
     oidcConformant?: pulumi.Input<boolean>;
     organizationRequireBehavior?: pulumi.Input<string>;
     organizationUsage?: pulumi.Input<string>;

@@ -13,39 +13,40 @@ import (
 type GlobalClient struct {
 	pulumi.CustomResourceState
 
-	Addons                         GlobalClientAddonsOutput           `pulumi:"addons"`
-	AllowedClients                 pulumi.StringArrayOutput           `pulumi:"allowedClients"`
-	AllowedLogoutUrls              pulumi.StringArrayOutput           `pulumi:"allowedLogoutUrls"`
-	AllowedOrigins                 pulumi.StringArrayOutput           `pulumi:"allowedOrigins"`
-	AppType                        pulumi.StringOutput                `pulumi:"appType"`
-	Callbacks                      pulumi.StringArrayOutput           `pulumi:"callbacks"`
-	ClientId                       pulumi.StringOutput                `pulumi:"clientId"`
-	ClientMetadata                 pulumi.MapOutput                   `pulumi:"clientMetadata"`
-	ClientSecret                   pulumi.StringOutput                `pulumi:"clientSecret"`
-	ClientSecretRotationTrigger    pulumi.MapOutput                   `pulumi:"clientSecretRotationTrigger"`
-	CrossOriginAuth                pulumi.BoolOutput                  `pulumi:"crossOriginAuth"`
-	CrossOriginLoc                 pulumi.StringOutput                `pulumi:"crossOriginLoc"`
-	CustomLoginPage                pulumi.StringOutput                `pulumi:"customLoginPage"`
-	CustomLoginPageOn              pulumi.BoolOutput                  `pulumi:"customLoginPageOn"`
-	Description                    pulumi.StringOutput                `pulumi:"description"`
-	EncryptionKey                  pulumi.StringMapOutput             `pulumi:"encryptionKey"`
-	FormTemplate                   pulumi.StringOutput                `pulumi:"formTemplate"`
-	GrantTypes                     pulumi.StringArrayOutput           `pulumi:"grantTypes"`
-	InitiateLoginUri               pulumi.StringOutput                `pulumi:"initiateLoginUri"`
-	IsFirstParty                   pulumi.BoolOutput                  `pulumi:"isFirstParty"`
-	IsTokenEndpointIpHeaderTrusted pulumi.BoolOutput                  `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	JwtConfiguration               GlobalClientJwtConfigurationOutput `pulumi:"jwtConfiguration"`
-	LogoUri                        pulumi.StringOutput                `pulumi:"logoUri"`
-	Mobile                         GlobalClientMobileOutput           `pulumi:"mobile"`
-	Name                           pulumi.StringOutput                `pulumi:"name"`
-	OidcConformant                 pulumi.BoolOutput                  `pulumi:"oidcConformant"`
-	OrganizationRequireBehavior    pulumi.StringOutput                `pulumi:"organizationRequireBehavior"`
-	OrganizationUsage              pulumi.StringOutput                `pulumi:"organizationUsage"`
-	RefreshToken                   GlobalClientRefreshTokenOutput     `pulumi:"refreshToken"`
-	Sso                            pulumi.BoolOutput                  `pulumi:"sso"`
-	SsoDisabled                    pulumi.BoolOutput                  `pulumi:"ssoDisabled"`
-	TokenEndpointAuthMethod        pulumi.StringOutput                `pulumi:"tokenEndpointAuthMethod"`
-	WebOrigins                     pulumi.StringArrayOutput           `pulumi:"webOrigins"`
+	Addons                         GlobalClientAddonsOutput            `pulumi:"addons"`
+	AllowedClients                 pulumi.StringArrayOutput            `pulumi:"allowedClients"`
+	AllowedLogoutUrls              pulumi.StringArrayOutput            `pulumi:"allowedLogoutUrls"`
+	AllowedOrigins                 pulumi.StringArrayOutput            `pulumi:"allowedOrigins"`
+	AppType                        pulumi.StringOutput                 `pulumi:"appType"`
+	Callbacks                      pulumi.StringArrayOutput            `pulumi:"callbacks"`
+	ClientId                       pulumi.StringOutput                 `pulumi:"clientId"`
+	ClientMetadata                 pulumi.MapOutput                    `pulumi:"clientMetadata"`
+	ClientSecret                   pulumi.StringOutput                 `pulumi:"clientSecret"`
+	ClientSecretRotationTrigger    pulumi.MapOutput                    `pulumi:"clientSecretRotationTrigger"`
+	CrossOriginAuth                pulumi.BoolOutput                   `pulumi:"crossOriginAuth"`
+	CrossOriginLoc                 pulumi.StringOutput                 `pulumi:"crossOriginLoc"`
+	CustomLoginPage                pulumi.StringOutput                 `pulumi:"customLoginPage"`
+	CustomLoginPageOn              pulumi.BoolOutput                   `pulumi:"customLoginPageOn"`
+	Description                    pulumi.StringOutput                 `pulumi:"description"`
+	EncryptionKey                  pulumi.StringMapOutput              `pulumi:"encryptionKey"`
+	FormTemplate                   pulumi.StringOutput                 `pulumi:"formTemplate"`
+	GrantTypes                     pulumi.StringArrayOutput            `pulumi:"grantTypes"`
+	InitiateLoginUri               pulumi.StringOutput                 `pulumi:"initiateLoginUri"`
+	IsFirstParty                   pulumi.BoolOutput                   `pulumi:"isFirstParty"`
+	IsTokenEndpointIpHeaderTrusted pulumi.BoolOutput                   `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	JwtConfiguration               GlobalClientJwtConfigurationOutput  `pulumi:"jwtConfiguration"`
+	LogoUri                        pulumi.StringOutput                 `pulumi:"logoUri"`
+	Mobile                         GlobalClientMobileOutput            `pulumi:"mobile"`
+	Name                           pulumi.StringOutput                 `pulumi:"name"`
+	NativeSocialLogin              GlobalClientNativeSocialLoginOutput `pulumi:"nativeSocialLogin"`
+	OidcConformant                 pulumi.BoolOutput                   `pulumi:"oidcConformant"`
+	OrganizationRequireBehavior    pulumi.StringOutput                 `pulumi:"organizationRequireBehavior"`
+	OrganizationUsage              pulumi.StringOutput                 `pulumi:"organizationUsage"`
+	RefreshToken                   GlobalClientRefreshTokenOutput      `pulumi:"refreshToken"`
+	Sso                            pulumi.BoolOutput                   `pulumi:"sso"`
+	SsoDisabled                    pulumi.BoolOutput                   `pulumi:"ssoDisabled"`
+	TokenEndpointAuthMethod        pulumi.StringOutput                 `pulumi:"tokenEndpointAuthMethod"`
+	WebOrigins                     pulumi.StringArrayOutput            `pulumi:"webOrigins"`
 }
 
 // NewGlobalClient registers a new resource with the given unique name, arguments, and options.
@@ -77,39 +78,40 @@ func GetGlobalClient(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalClient resources.
 type globalClientState struct {
-	Addons                         *GlobalClientAddons           `pulumi:"addons"`
-	AllowedClients                 []string                      `pulumi:"allowedClients"`
-	AllowedLogoutUrls              []string                      `pulumi:"allowedLogoutUrls"`
-	AllowedOrigins                 []string                      `pulumi:"allowedOrigins"`
-	AppType                        *string                       `pulumi:"appType"`
-	Callbacks                      []string                      `pulumi:"callbacks"`
-	ClientId                       *string                       `pulumi:"clientId"`
-	ClientMetadata                 map[string]interface{}        `pulumi:"clientMetadata"`
-	ClientSecret                   *string                       `pulumi:"clientSecret"`
-	ClientSecretRotationTrigger    map[string]interface{}        `pulumi:"clientSecretRotationTrigger"`
-	CrossOriginAuth                *bool                         `pulumi:"crossOriginAuth"`
-	CrossOriginLoc                 *string                       `pulumi:"crossOriginLoc"`
-	CustomLoginPage                *string                       `pulumi:"customLoginPage"`
-	CustomLoginPageOn              *bool                         `pulumi:"customLoginPageOn"`
-	Description                    *string                       `pulumi:"description"`
-	EncryptionKey                  map[string]string             `pulumi:"encryptionKey"`
-	FormTemplate                   *string                       `pulumi:"formTemplate"`
-	GrantTypes                     []string                      `pulumi:"grantTypes"`
-	InitiateLoginUri               *string                       `pulumi:"initiateLoginUri"`
-	IsFirstParty                   *bool                         `pulumi:"isFirstParty"`
-	IsTokenEndpointIpHeaderTrusted *bool                         `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	JwtConfiguration               *GlobalClientJwtConfiguration `pulumi:"jwtConfiguration"`
-	LogoUri                        *string                       `pulumi:"logoUri"`
-	Mobile                         *GlobalClientMobile           `pulumi:"mobile"`
-	Name                           *string                       `pulumi:"name"`
-	OidcConformant                 *bool                         `pulumi:"oidcConformant"`
-	OrganizationRequireBehavior    *string                       `pulumi:"organizationRequireBehavior"`
-	OrganizationUsage              *string                       `pulumi:"organizationUsage"`
-	RefreshToken                   *GlobalClientRefreshToken     `pulumi:"refreshToken"`
-	Sso                            *bool                         `pulumi:"sso"`
-	SsoDisabled                    *bool                         `pulumi:"ssoDisabled"`
-	TokenEndpointAuthMethod        *string                       `pulumi:"tokenEndpointAuthMethod"`
-	WebOrigins                     []string                      `pulumi:"webOrigins"`
+	Addons                         *GlobalClientAddons            `pulumi:"addons"`
+	AllowedClients                 []string                       `pulumi:"allowedClients"`
+	AllowedLogoutUrls              []string                       `pulumi:"allowedLogoutUrls"`
+	AllowedOrigins                 []string                       `pulumi:"allowedOrigins"`
+	AppType                        *string                        `pulumi:"appType"`
+	Callbacks                      []string                       `pulumi:"callbacks"`
+	ClientId                       *string                        `pulumi:"clientId"`
+	ClientMetadata                 map[string]interface{}         `pulumi:"clientMetadata"`
+	ClientSecret                   *string                        `pulumi:"clientSecret"`
+	ClientSecretRotationTrigger    map[string]interface{}         `pulumi:"clientSecretRotationTrigger"`
+	CrossOriginAuth                *bool                          `pulumi:"crossOriginAuth"`
+	CrossOriginLoc                 *string                        `pulumi:"crossOriginLoc"`
+	CustomLoginPage                *string                        `pulumi:"customLoginPage"`
+	CustomLoginPageOn              *bool                          `pulumi:"customLoginPageOn"`
+	Description                    *string                        `pulumi:"description"`
+	EncryptionKey                  map[string]string              `pulumi:"encryptionKey"`
+	FormTemplate                   *string                        `pulumi:"formTemplate"`
+	GrantTypes                     []string                       `pulumi:"grantTypes"`
+	InitiateLoginUri               *string                        `pulumi:"initiateLoginUri"`
+	IsFirstParty                   *bool                          `pulumi:"isFirstParty"`
+	IsTokenEndpointIpHeaderTrusted *bool                          `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	JwtConfiguration               *GlobalClientJwtConfiguration  `pulumi:"jwtConfiguration"`
+	LogoUri                        *string                        `pulumi:"logoUri"`
+	Mobile                         *GlobalClientMobile            `pulumi:"mobile"`
+	Name                           *string                        `pulumi:"name"`
+	NativeSocialLogin              *GlobalClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
+	OidcConformant                 *bool                          `pulumi:"oidcConformant"`
+	OrganizationRequireBehavior    *string                        `pulumi:"organizationRequireBehavior"`
+	OrganizationUsage              *string                        `pulumi:"organizationUsage"`
+	RefreshToken                   *GlobalClientRefreshToken      `pulumi:"refreshToken"`
+	Sso                            *bool                          `pulumi:"sso"`
+	SsoDisabled                    *bool                          `pulumi:"ssoDisabled"`
+	TokenEndpointAuthMethod        *string                        `pulumi:"tokenEndpointAuthMethod"`
+	WebOrigins                     []string                       `pulumi:"webOrigins"`
 }
 
 type GlobalClientState struct {
@@ -138,6 +140,7 @@ type GlobalClientState struct {
 	LogoUri                        pulumi.StringPtrInput
 	Mobile                         GlobalClientMobilePtrInput
 	Name                           pulumi.StringPtrInput
+	NativeSocialLogin              GlobalClientNativeSocialLoginPtrInput
 	OidcConformant                 pulumi.BoolPtrInput
 	OrganizationRequireBehavior    pulumi.StringPtrInput
 	OrganizationUsage              pulumi.StringPtrInput
@@ -153,39 +156,40 @@ func (GlobalClientState) ElementType() reflect.Type {
 }
 
 type globalClientArgs struct {
-	Addons                         *GlobalClientAddons           `pulumi:"addons"`
-	AllowedClients                 []string                      `pulumi:"allowedClients"`
-	AllowedLogoutUrls              []string                      `pulumi:"allowedLogoutUrls"`
-	AllowedOrigins                 []string                      `pulumi:"allowedOrigins"`
-	AppType                        *string                       `pulumi:"appType"`
-	Callbacks                      []string                      `pulumi:"callbacks"`
-	ClientId                       *string                       `pulumi:"clientId"`
-	ClientMetadata                 map[string]interface{}        `pulumi:"clientMetadata"`
-	ClientSecret                   *string                       `pulumi:"clientSecret"`
-	ClientSecretRotationTrigger    map[string]interface{}        `pulumi:"clientSecretRotationTrigger"`
-	CrossOriginAuth                *bool                         `pulumi:"crossOriginAuth"`
-	CrossOriginLoc                 *string                       `pulumi:"crossOriginLoc"`
-	CustomLoginPage                *string                       `pulumi:"customLoginPage"`
-	CustomLoginPageOn              *bool                         `pulumi:"customLoginPageOn"`
-	Description                    *string                       `pulumi:"description"`
-	EncryptionKey                  map[string]string             `pulumi:"encryptionKey"`
-	FormTemplate                   *string                       `pulumi:"formTemplate"`
-	GrantTypes                     []string                      `pulumi:"grantTypes"`
-	InitiateLoginUri               *string                       `pulumi:"initiateLoginUri"`
-	IsFirstParty                   *bool                         `pulumi:"isFirstParty"`
-	IsTokenEndpointIpHeaderTrusted *bool                         `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	JwtConfiguration               *GlobalClientJwtConfiguration `pulumi:"jwtConfiguration"`
-	LogoUri                        *string                       `pulumi:"logoUri"`
-	Mobile                         *GlobalClientMobile           `pulumi:"mobile"`
-	Name                           *string                       `pulumi:"name"`
-	OidcConformant                 *bool                         `pulumi:"oidcConformant"`
-	OrganizationRequireBehavior    *string                       `pulumi:"organizationRequireBehavior"`
-	OrganizationUsage              *string                       `pulumi:"organizationUsage"`
-	RefreshToken                   *GlobalClientRefreshToken     `pulumi:"refreshToken"`
-	Sso                            *bool                         `pulumi:"sso"`
-	SsoDisabled                    *bool                         `pulumi:"ssoDisabled"`
-	TokenEndpointAuthMethod        *string                       `pulumi:"tokenEndpointAuthMethod"`
-	WebOrigins                     []string                      `pulumi:"webOrigins"`
+	Addons                         *GlobalClientAddons            `pulumi:"addons"`
+	AllowedClients                 []string                       `pulumi:"allowedClients"`
+	AllowedLogoutUrls              []string                       `pulumi:"allowedLogoutUrls"`
+	AllowedOrigins                 []string                       `pulumi:"allowedOrigins"`
+	AppType                        *string                        `pulumi:"appType"`
+	Callbacks                      []string                       `pulumi:"callbacks"`
+	ClientId                       *string                        `pulumi:"clientId"`
+	ClientMetadata                 map[string]interface{}         `pulumi:"clientMetadata"`
+	ClientSecret                   *string                        `pulumi:"clientSecret"`
+	ClientSecretRotationTrigger    map[string]interface{}         `pulumi:"clientSecretRotationTrigger"`
+	CrossOriginAuth                *bool                          `pulumi:"crossOriginAuth"`
+	CrossOriginLoc                 *string                        `pulumi:"crossOriginLoc"`
+	CustomLoginPage                *string                        `pulumi:"customLoginPage"`
+	CustomLoginPageOn              *bool                          `pulumi:"customLoginPageOn"`
+	Description                    *string                        `pulumi:"description"`
+	EncryptionKey                  map[string]string              `pulumi:"encryptionKey"`
+	FormTemplate                   *string                        `pulumi:"formTemplate"`
+	GrantTypes                     []string                       `pulumi:"grantTypes"`
+	InitiateLoginUri               *string                        `pulumi:"initiateLoginUri"`
+	IsFirstParty                   *bool                          `pulumi:"isFirstParty"`
+	IsTokenEndpointIpHeaderTrusted *bool                          `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	JwtConfiguration               *GlobalClientJwtConfiguration  `pulumi:"jwtConfiguration"`
+	LogoUri                        *string                        `pulumi:"logoUri"`
+	Mobile                         *GlobalClientMobile            `pulumi:"mobile"`
+	Name                           *string                        `pulumi:"name"`
+	NativeSocialLogin              *GlobalClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
+	OidcConformant                 *bool                          `pulumi:"oidcConformant"`
+	OrganizationRequireBehavior    *string                        `pulumi:"organizationRequireBehavior"`
+	OrganizationUsage              *string                        `pulumi:"organizationUsage"`
+	RefreshToken                   *GlobalClientRefreshToken      `pulumi:"refreshToken"`
+	Sso                            *bool                          `pulumi:"sso"`
+	SsoDisabled                    *bool                          `pulumi:"ssoDisabled"`
+	TokenEndpointAuthMethod        *string                        `pulumi:"tokenEndpointAuthMethod"`
+	WebOrigins                     []string                       `pulumi:"webOrigins"`
 }
 
 // The set of arguments for constructing a GlobalClient resource.
@@ -215,6 +219,7 @@ type GlobalClientArgs struct {
 	LogoUri                        pulumi.StringPtrInput
 	Mobile                         GlobalClientMobilePtrInput
 	Name                           pulumi.StringPtrInput
+	NativeSocialLogin              GlobalClientNativeSocialLoginPtrInput
 	OidcConformant                 pulumi.BoolPtrInput
 	OrganizationRequireBehavior    pulumi.StringPtrInput
 	OrganizationUsage              pulumi.StringPtrInput

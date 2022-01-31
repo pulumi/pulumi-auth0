@@ -54,7 +54,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? HttpAuthorization;
         /// <summary>
-        /// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+        /// The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
         /// </summary>
         public readonly string? HttpContentFormat;
         /// <summary>

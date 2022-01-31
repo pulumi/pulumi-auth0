@@ -50,6 +50,7 @@ namespace Pulumi.Auth0
     ///                         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
     ///                     },
     ///                     PassthroughClaimsWithNoMapping = false,
+    ///                     SigningCert = "pemcertificate",
     ///                 },
     ///             },
     ///             AllowedClients = 
@@ -274,6 +275,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        /// </summary>
+        [Output("nativeSocialLogin")]
+        public Output<Outputs.ClientNativeSocialLogin> NativeSocialLogin { get; private set; } = null!;
 
         /// <summary>
         /// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
@@ -553,6 +560,12 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        /// </summary>
+        [Input("nativeSocialLogin")]
+        public Input<Inputs.ClientNativeSocialLoginArgs>? NativeSocialLogin { get; set; }
+
+        /// <summary>
         /// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         /// </summary>
         [Input("oidcConformant")]
@@ -806,6 +819,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        /// </summary>
+        [Input("nativeSocialLogin")]
+        public Input<Inputs.ClientNativeSocialLoginGetArgs>? NativeSocialLogin { get; set; }
 
         /// <summary>
         /// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
