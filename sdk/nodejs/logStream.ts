@@ -78,14 +78,14 @@ export class LogStream extends pulumi.CustomResource {
      */
     constructor(name: string, args: LogStreamArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LogStreamArgs | LogStreamState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogStreamState | undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["sink"] = state ? state.sink : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sink"] = state ? state.sink : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LogStreamArgs | undefined;
             if ((!args || args.sink === undefined) && !opts.urn) {
@@ -94,15 +94,13 @@ export class LogStream extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["sink"] = args ? args.sink : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sink"] = args ? args.sink : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LogStream.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LogStream.__pulumiType, name, resourceInputs, opts);
     }
 }
 

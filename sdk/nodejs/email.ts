@@ -79,14 +79,14 @@ export class Email extends pulumi.CustomResource {
      */
     constructor(name: string, args: EmailArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EmailArgs | EmailState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailState | undefined;
-            inputs["credentials"] = state ? state.credentials : undefined;
-            inputs["defaultFromAddress"] = state ? state.defaultFromAddress : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["credentials"] = state ? state.credentials : undefined;
+            resourceInputs["defaultFromAddress"] = state ? state.defaultFromAddress : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as EmailArgs | undefined;
             if ((!args || args.credentials === undefined) && !opts.urn) {
@@ -95,15 +95,13 @@ export class Email extends pulumi.CustomResource {
             if ((!args || args.defaultFromAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultFromAddress'");
             }
-            inputs["credentials"] = args ? args.credentials : undefined;
-            inputs["defaultFromAddress"] = args ? args.defaultFromAddress : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["credentials"] = args ? args.credentials : undefined;
+            resourceInputs["defaultFromAddress"] = args ? args.defaultFromAddress : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Email.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Email.__pulumiType, name, resourceInputs, opts);
     }
 }
 

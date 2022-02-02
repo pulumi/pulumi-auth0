@@ -200,7 +200,7 @@ type ActionInput interface {
 }
 
 func (*Action) ElementType() reflect.Type {
-	return reflect.TypeOf((*Action)(nil))
+	return reflect.TypeOf((**Action)(nil)).Elem()
 }
 
 func (i *Action) ToActionOutput() ActionOutput {
@@ -209,35 +209,6 @@ func (i *Action) ToActionOutput() ActionOutput {
 
 func (i *Action) ToActionOutputWithContext(ctx context.Context) ActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionOutput)
-}
-
-func (i *Action) ToActionPtrOutput() ActionPtrOutput {
-	return i.ToActionPtrOutputWithContext(context.Background())
-}
-
-func (i *Action) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionPtrOutput)
-}
-
-type ActionPtrInput interface {
-	pulumi.Input
-
-	ToActionPtrOutput() ActionPtrOutput
-	ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput
-}
-
-type actionPtrType ActionArgs
-
-func (*actionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Action)(nil))
-}
-
-func (i *actionPtrType) ToActionPtrOutput() ActionPtrOutput {
-	return i.ToActionPtrOutputWithContext(context.Background())
-}
-
-func (i *actionPtrType) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionPtrOutput)
 }
 
 // ActionArrayInput is an input type that accepts ActionArray and ActionArrayOutput values.
@@ -293,7 +264,7 @@ func (i ActionMap) ToActionMapOutputWithContext(ctx context.Context) ActionMapOu
 type ActionOutput struct{ *pulumi.OutputState }
 
 func (ActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Action)(nil))
+	return reflect.TypeOf((**Action)(nil)).Elem()
 }
 
 func (o ActionOutput) ToActionOutput() ActionOutput {
@@ -304,44 +275,10 @@ func (o ActionOutput) ToActionOutputWithContext(ctx context.Context) ActionOutpu
 	return o
 }
 
-func (o ActionOutput) ToActionPtrOutput() ActionPtrOutput {
-	return o.ToActionPtrOutputWithContext(context.Background())
-}
-
-func (o ActionOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Action) *Action {
-		return &v
-	}).(ActionPtrOutput)
-}
-
-type ActionPtrOutput struct{ *pulumi.OutputState }
-
-func (ActionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Action)(nil))
-}
-
-func (o ActionPtrOutput) ToActionPtrOutput() ActionPtrOutput {
-	return o
-}
-
-func (o ActionPtrOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
-	return o
-}
-
-func (o ActionPtrOutput) Elem() ActionOutput {
-	return o.ApplyT(func(v *Action) Action {
-		if v != nil {
-			return *v
-		}
-		var ret Action
-		return ret
-	}).(ActionOutput)
-}
-
 type ActionArrayOutput struct{ *pulumi.OutputState }
 
 func (ActionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Action)(nil))
+	return reflect.TypeOf((*[]*Action)(nil)).Elem()
 }
 
 func (o ActionArrayOutput) ToActionArrayOutput() ActionArrayOutput {
@@ -353,15 +290,15 @@ func (o ActionArrayOutput) ToActionArrayOutputWithContext(ctx context.Context) A
 }
 
 func (o ActionArrayOutput) Index(i pulumi.IntInput) ActionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Action {
-		return vs[0].([]Action)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Action {
+		return vs[0].([]*Action)[vs[1].(int)]
 	}).(ActionOutput)
 }
 
 type ActionMapOutput struct{ *pulumi.OutputState }
 
 func (ActionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Action)(nil))
+	return reflect.TypeOf((*map[string]*Action)(nil)).Elem()
 }
 
 func (o ActionMapOutput) ToActionMapOutput() ActionMapOutput {
@@ -373,18 +310,16 @@ func (o ActionMapOutput) ToActionMapOutputWithContext(ctx context.Context) Actio
 }
 
 func (o ActionMapOutput) MapIndex(k pulumi.StringInput) ActionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Action {
-		return vs[0].(map[string]Action)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Action {
+		return vs[0].(map[string]*Action)[vs[1].(string)]
 	}).(ActionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionInput)(nil)).Elem(), &Action{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionPtrInput)(nil)).Elem(), &Action{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionArrayInput)(nil)).Elem(), ActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionMapInput)(nil)).Elem(), ActionMap{})
 	pulumi.RegisterOutputType(ActionOutput{})
-	pulumi.RegisterOutputType(ActionPtrOutput{})
 	pulumi.RegisterOutputType(ActionArrayOutput{})
 	pulumi.RegisterOutputType(ActionMapOutput{})
 }

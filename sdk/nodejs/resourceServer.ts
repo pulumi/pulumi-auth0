@@ -123,43 +123,41 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ResourceServerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourceServerArgs | ResourceServerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceServerState | undefined;
-            inputs["allowOfflineAccess"] = state ? state.allowOfflineAccess : undefined;
-            inputs["enforcePolicies"] = state ? state.enforcePolicies : undefined;
-            inputs["identifier"] = state ? state.identifier : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["options"] = state ? state.options : undefined;
-            inputs["scopes"] = state ? state.scopes : undefined;
-            inputs["signingAlg"] = state ? state.signingAlg : undefined;
-            inputs["signingSecret"] = state ? state.signingSecret : undefined;
-            inputs["skipConsentForVerifiableFirstPartyClients"] = state ? state.skipConsentForVerifiableFirstPartyClients : undefined;
-            inputs["tokenDialect"] = state ? state.tokenDialect : undefined;
-            inputs["tokenLifetime"] = state ? state.tokenLifetime : undefined;
-            inputs["tokenLifetimeForWeb"] = state ? state.tokenLifetimeForWeb : undefined;
-            inputs["verificationLocation"] = state ? state.verificationLocation : undefined;
+            resourceInputs["allowOfflineAccess"] = state ? state.allowOfflineAccess : undefined;
+            resourceInputs["enforcePolicies"] = state ? state.enforcePolicies : undefined;
+            resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["scopes"] = state ? state.scopes : undefined;
+            resourceInputs["signingAlg"] = state ? state.signingAlg : undefined;
+            resourceInputs["signingSecret"] = state ? state.signingSecret : undefined;
+            resourceInputs["skipConsentForVerifiableFirstPartyClients"] = state ? state.skipConsentForVerifiableFirstPartyClients : undefined;
+            resourceInputs["tokenDialect"] = state ? state.tokenDialect : undefined;
+            resourceInputs["tokenLifetime"] = state ? state.tokenLifetime : undefined;
+            resourceInputs["tokenLifetimeForWeb"] = state ? state.tokenLifetimeForWeb : undefined;
+            resourceInputs["verificationLocation"] = state ? state.verificationLocation : undefined;
         } else {
             const args = argsOrState as ResourceServerArgs | undefined;
-            inputs["allowOfflineAccess"] = args ? args.allowOfflineAccess : undefined;
-            inputs["enforcePolicies"] = args ? args.enforcePolicies : undefined;
-            inputs["identifier"] = args ? args.identifier : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["scopes"] = args ? args.scopes : undefined;
-            inputs["signingAlg"] = args ? args.signingAlg : undefined;
-            inputs["signingSecret"] = args ? args.signingSecret : undefined;
-            inputs["skipConsentForVerifiableFirstPartyClients"] = args ? args.skipConsentForVerifiableFirstPartyClients : undefined;
-            inputs["tokenDialect"] = args ? args.tokenDialect : undefined;
-            inputs["tokenLifetime"] = args ? args.tokenLifetime : undefined;
-            inputs["tokenLifetimeForWeb"] = args ? args.tokenLifetimeForWeb : undefined;
-            inputs["verificationLocation"] = args ? args.verificationLocation : undefined;
+            resourceInputs["allowOfflineAccess"] = args ? args.allowOfflineAccess : undefined;
+            resourceInputs["enforcePolicies"] = args ? args.enforcePolicies : undefined;
+            resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["signingAlg"] = args ? args.signingAlg : undefined;
+            resourceInputs["signingSecret"] = args ? args.signingSecret : undefined;
+            resourceInputs["skipConsentForVerifiableFirstPartyClients"] = args ? args.skipConsentForVerifiableFirstPartyClients : undefined;
+            resourceInputs["tokenDialect"] = args ? args.tokenDialect : undefined;
+            resourceInputs["tokenLifetime"] = args ? args.tokenLifetime : undefined;
+            resourceInputs["tokenLifetimeForWeb"] = args ? args.tokenLifetimeForWeb : undefined;
+            resourceInputs["verificationLocation"] = args ? args.verificationLocation : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ResourceServer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ResourceServer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

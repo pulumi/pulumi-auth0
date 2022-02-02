@@ -93,16 +93,16 @@ export class Hook extends pulumi.CustomResource {
      */
     constructor(name: string, args: HookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HookArgs | HookState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HookState | undefined;
-            inputs["dependencies"] = state ? state.dependencies : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["script"] = state ? state.script : undefined;
-            inputs["secrets"] = state ? state.secrets : undefined;
-            inputs["triggerId"] = state ? state.triggerId : undefined;
+            resourceInputs["dependencies"] = state ? state.dependencies : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["script"] = state ? state.script : undefined;
+            resourceInputs["secrets"] = state ? state.secrets : undefined;
+            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
         } else {
             const args = argsOrState as HookArgs | undefined;
             if ((!args || args.script === undefined) && !opts.urn) {
@@ -111,17 +111,15 @@ export class Hook extends pulumi.CustomResource {
             if ((!args || args.triggerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggerId'");
             }
-            inputs["dependencies"] = args ? args.dependencies : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["script"] = args ? args.script : undefined;
-            inputs["secrets"] = args ? args.secrets : undefined;
-            inputs["triggerId"] = args ? args.triggerId : undefined;
+            resourceInputs["dependencies"] = args ? args.dependencies : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["script"] = args ? args.script : undefined;
+            resourceInputs["secrets"] = args ? args.secrets : undefined;
+            resourceInputs["triggerId"] = args ? args.triggerId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Hook.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Hook.__pulumiType, name, resourceInputs, opts);
     }
 }
 

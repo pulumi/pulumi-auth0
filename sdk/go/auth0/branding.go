@@ -155,7 +155,7 @@ type BrandingInput interface {
 }
 
 func (*Branding) ElementType() reflect.Type {
-	return reflect.TypeOf((*Branding)(nil))
+	return reflect.TypeOf((**Branding)(nil)).Elem()
 }
 
 func (i *Branding) ToBrandingOutput() BrandingOutput {
@@ -164,35 +164,6 @@ func (i *Branding) ToBrandingOutput() BrandingOutput {
 
 func (i *Branding) ToBrandingOutputWithContext(ctx context.Context) BrandingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrandingOutput)
-}
-
-func (i *Branding) ToBrandingPtrOutput() BrandingPtrOutput {
-	return i.ToBrandingPtrOutputWithContext(context.Background())
-}
-
-func (i *Branding) ToBrandingPtrOutputWithContext(ctx context.Context) BrandingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrandingPtrOutput)
-}
-
-type BrandingPtrInput interface {
-	pulumi.Input
-
-	ToBrandingPtrOutput() BrandingPtrOutput
-	ToBrandingPtrOutputWithContext(ctx context.Context) BrandingPtrOutput
-}
-
-type brandingPtrType BrandingArgs
-
-func (*brandingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Branding)(nil))
-}
-
-func (i *brandingPtrType) ToBrandingPtrOutput() BrandingPtrOutput {
-	return i.ToBrandingPtrOutputWithContext(context.Background())
-}
-
-func (i *brandingPtrType) ToBrandingPtrOutputWithContext(ctx context.Context) BrandingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrandingPtrOutput)
 }
 
 // BrandingArrayInput is an input type that accepts BrandingArray and BrandingArrayOutput values.
@@ -248,7 +219,7 @@ func (i BrandingMap) ToBrandingMapOutputWithContext(ctx context.Context) Brandin
 type BrandingOutput struct{ *pulumi.OutputState }
 
 func (BrandingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Branding)(nil))
+	return reflect.TypeOf((**Branding)(nil)).Elem()
 }
 
 func (o BrandingOutput) ToBrandingOutput() BrandingOutput {
@@ -259,44 +230,10 @@ func (o BrandingOutput) ToBrandingOutputWithContext(ctx context.Context) Brandin
 	return o
 }
 
-func (o BrandingOutput) ToBrandingPtrOutput() BrandingPtrOutput {
-	return o.ToBrandingPtrOutputWithContext(context.Background())
-}
-
-func (o BrandingOutput) ToBrandingPtrOutputWithContext(ctx context.Context) BrandingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Branding) *Branding {
-		return &v
-	}).(BrandingPtrOutput)
-}
-
-type BrandingPtrOutput struct{ *pulumi.OutputState }
-
-func (BrandingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Branding)(nil))
-}
-
-func (o BrandingPtrOutput) ToBrandingPtrOutput() BrandingPtrOutput {
-	return o
-}
-
-func (o BrandingPtrOutput) ToBrandingPtrOutputWithContext(ctx context.Context) BrandingPtrOutput {
-	return o
-}
-
-func (o BrandingPtrOutput) Elem() BrandingOutput {
-	return o.ApplyT(func(v *Branding) Branding {
-		if v != nil {
-			return *v
-		}
-		var ret Branding
-		return ret
-	}).(BrandingOutput)
-}
-
 type BrandingArrayOutput struct{ *pulumi.OutputState }
 
 func (BrandingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Branding)(nil))
+	return reflect.TypeOf((*[]*Branding)(nil)).Elem()
 }
 
 func (o BrandingArrayOutput) ToBrandingArrayOutput() BrandingArrayOutput {
@@ -308,15 +245,15 @@ func (o BrandingArrayOutput) ToBrandingArrayOutputWithContext(ctx context.Contex
 }
 
 func (o BrandingArrayOutput) Index(i pulumi.IntInput) BrandingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Branding {
-		return vs[0].([]Branding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Branding {
+		return vs[0].([]*Branding)[vs[1].(int)]
 	}).(BrandingOutput)
 }
 
 type BrandingMapOutput struct{ *pulumi.OutputState }
 
 func (BrandingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Branding)(nil))
+	return reflect.TypeOf((*map[string]*Branding)(nil)).Elem()
 }
 
 func (o BrandingMapOutput) ToBrandingMapOutput() BrandingMapOutput {
@@ -328,18 +265,16 @@ func (o BrandingMapOutput) ToBrandingMapOutputWithContext(ctx context.Context) B
 }
 
 func (o BrandingMapOutput) MapIndex(k pulumi.StringInput) BrandingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Branding {
-		return vs[0].(map[string]Branding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Branding {
+		return vs[0].(map[string]*Branding)[vs[1].(string)]
 	}).(BrandingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingInput)(nil)).Elem(), &Branding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BrandingPtrInput)(nil)).Elem(), &Branding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingArrayInput)(nil)).Elem(), BrandingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingMapInput)(nil)).Elem(), BrandingMap{})
 	pulumi.RegisterOutputType(BrandingOutput{})
-	pulumi.RegisterOutputType(BrandingPtrOutput{})
 	pulumi.RegisterOutputType(BrandingArrayOutput{})
 	pulumi.RegisterOutputType(BrandingMapOutput{})
 }

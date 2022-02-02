@@ -74,24 +74,22 @@ export class Guardian extends pulumi.CustomResource {
      */
     constructor(name: string, args: GuardianArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GuardianArgs | GuardianState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GuardianState | undefined;
-            inputs["phone"] = state ? state.phone : undefined;
-            inputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["phone"] = state ? state.phone : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
         } else {
             const args = argsOrState as GuardianArgs | undefined;
             if ((!args || args.policy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            inputs["phone"] = args ? args.phone : undefined;
-            inputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["phone"] = args ? args.phone : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Guardian.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Guardian.__pulumiType, name, resourceInputs, opts);
     }
 }
 

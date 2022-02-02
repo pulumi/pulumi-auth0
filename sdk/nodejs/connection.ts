@@ -114,38 +114,36 @@ export class Connection extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["enabledClients"] = state ? state.enabledClients : undefined;
-            inputs["isDomainConnection"] = state ? state.isDomainConnection : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["options"] = state ? state.options : undefined;
-            inputs["realms"] = state ? state.realms : undefined;
-            inputs["strategy"] = state ? state.strategy : undefined;
-            inputs["strategyVersion"] = state ? state.strategyVersion : undefined;
-            inputs["validation"] = state ? state.validation : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enabledClients"] = state ? state.enabledClients : undefined;
+            resourceInputs["isDomainConnection"] = state ? state.isDomainConnection : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["realms"] = state ? state.realms : undefined;
+            resourceInputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["strategyVersion"] = state ? state.strategyVersion : undefined;
+            resourceInputs["validation"] = state ? state.validation : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if ((!args || args.strategy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["enabledClients"] = args ? args.enabledClients : undefined;
-            inputs["isDomainConnection"] = args ? args.isDomainConnection : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["realms"] = args ? args.realms : undefined;
-            inputs["strategy"] = args ? args.strategy : undefined;
-            inputs["strategyVersion"] = args ? args.strategyVersion : undefined;
-            inputs["validation"] = args ? args.validation : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enabledClients"] = args ? args.enabledClients : undefined;
+            resourceInputs["isDomainConnection"] = args ? args.isDomainConnection : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["realms"] = args ? args.realms : undefined;
+            resourceInputs["strategy"] = args ? args.strategy : undefined;
+            resourceInputs["strategyVersion"] = args ? args.strategyVersion : undefined;
+            resourceInputs["validation"] = args ? args.validation : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Connection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

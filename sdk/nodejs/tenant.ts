@@ -151,51 +151,49 @@ export class Tenant extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TenantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TenantArgs | TenantState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TenantState | undefined;
-            inputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
-            inputs["changePassword"] = state ? state.changePassword : undefined;
-            inputs["defaultAudience"] = state ? state.defaultAudience : undefined;
-            inputs["defaultDirectory"] = state ? state.defaultDirectory : undefined;
-            inputs["defaultRedirectionUri"] = state ? state.defaultRedirectionUri : undefined;
-            inputs["enabledLocales"] = state ? state.enabledLocales : undefined;
-            inputs["errorPage"] = state ? state.errorPage : undefined;
-            inputs["flags"] = state ? state.flags : undefined;
-            inputs["friendlyName"] = state ? state.friendlyName : undefined;
-            inputs["guardianMfaPage"] = state ? state.guardianMfaPage : undefined;
-            inputs["idleSessionLifetime"] = state ? state.idleSessionLifetime : undefined;
-            inputs["pictureUrl"] = state ? state.pictureUrl : undefined;
-            inputs["sandboxVersion"] = state ? state.sandboxVersion : undefined;
-            inputs["sessionLifetime"] = state ? state.sessionLifetime : undefined;
-            inputs["supportEmail"] = state ? state.supportEmail : undefined;
-            inputs["supportUrl"] = state ? state.supportUrl : undefined;
-            inputs["universalLogin"] = state ? state.universalLogin : undefined;
+            resourceInputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
+            resourceInputs["changePassword"] = state ? state.changePassword : undefined;
+            resourceInputs["defaultAudience"] = state ? state.defaultAudience : undefined;
+            resourceInputs["defaultDirectory"] = state ? state.defaultDirectory : undefined;
+            resourceInputs["defaultRedirectionUri"] = state ? state.defaultRedirectionUri : undefined;
+            resourceInputs["enabledLocales"] = state ? state.enabledLocales : undefined;
+            resourceInputs["errorPage"] = state ? state.errorPage : undefined;
+            resourceInputs["flags"] = state ? state.flags : undefined;
+            resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
+            resourceInputs["guardianMfaPage"] = state ? state.guardianMfaPage : undefined;
+            resourceInputs["idleSessionLifetime"] = state ? state.idleSessionLifetime : undefined;
+            resourceInputs["pictureUrl"] = state ? state.pictureUrl : undefined;
+            resourceInputs["sandboxVersion"] = state ? state.sandboxVersion : undefined;
+            resourceInputs["sessionLifetime"] = state ? state.sessionLifetime : undefined;
+            resourceInputs["supportEmail"] = state ? state.supportEmail : undefined;
+            resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
+            resourceInputs["universalLogin"] = state ? state.universalLogin : undefined;
         } else {
             const args = argsOrState as TenantArgs | undefined;
-            inputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
-            inputs["changePassword"] = args ? args.changePassword : undefined;
-            inputs["defaultAudience"] = args ? args.defaultAudience : undefined;
-            inputs["defaultDirectory"] = args ? args.defaultDirectory : undefined;
-            inputs["defaultRedirectionUri"] = args ? args.defaultRedirectionUri : undefined;
-            inputs["enabledLocales"] = args ? args.enabledLocales : undefined;
-            inputs["errorPage"] = args ? args.errorPage : undefined;
-            inputs["flags"] = args ? args.flags : undefined;
-            inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["guardianMfaPage"] = args ? args.guardianMfaPage : undefined;
-            inputs["idleSessionLifetime"] = args ? args.idleSessionLifetime : undefined;
-            inputs["pictureUrl"] = args ? args.pictureUrl : undefined;
-            inputs["sandboxVersion"] = args ? args.sandboxVersion : undefined;
-            inputs["sessionLifetime"] = args ? args.sessionLifetime : undefined;
-            inputs["supportEmail"] = args ? args.supportEmail : undefined;
-            inputs["supportUrl"] = args ? args.supportUrl : undefined;
-            inputs["universalLogin"] = args ? args.universalLogin : undefined;
+            resourceInputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
+            resourceInputs["changePassword"] = args ? args.changePassword : undefined;
+            resourceInputs["defaultAudience"] = args ? args.defaultAudience : undefined;
+            resourceInputs["defaultDirectory"] = args ? args.defaultDirectory : undefined;
+            resourceInputs["defaultRedirectionUri"] = args ? args.defaultRedirectionUri : undefined;
+            resourceInputs["enabledLocales"] = args ? args.enabledLocales : undefined;
+            resourceInputs["errorPage"] = args ? args.errorPage : undefined;
+            resourceInputs["flags"] = args ? args.flags : undefined;
+            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["guardianMfaPage"] = args ? args.guardianMfaPage : undefined;
+            resourceInputs["idleSessionLifetime"] = args ? args.idleSessionLifetime : undefined;
+            resourceInputs["pictureUrl"] = args ? args.pictureUrl : undefined;
+            resourceInputs["sandboxVersion"] = args ? args.sandboxVersion : undefined;
+            resourceInputs["sessionLifetime"] = args ? args.sessionLifetime : undefined;
+            resourceInputs["supportEmail"] = args ? args.supportEmail : undefined;
+            resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
+            resourceInputs["universalLogin"] = args ? args.universalLogin : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Tenant.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Tenant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

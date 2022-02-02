@@ -37,7 +37,7 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
             if ((!args || args.clientId === undefined) && !opts.urn) {
@@ -49,15 +49,13 @@ export class Provider extends pulumi.ProviderResource {
             if ((!args || args.domain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            inputs["clientId"] = args ? args.clientId : undefined;
-            inputs["clientSecret"] = args ? args.clientSecret : undefined;
-            inputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? <any>utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
-            inputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
+            resourceInputs["domain"] = args ? args.domain : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

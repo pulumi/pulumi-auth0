@@ -92,13 +92,13 @@ export class ClientGrant extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClientGrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientGrantArgs | ClientGrantState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientGrantState | undefined;
-            inputs["audience"] = state ? state.audience : undefined;
-            inputs["clientId"] = state ? state.clientId : undefined;
-            inputs["scopes"] = state ? state.scopes : undefined;
+            resourceInputs["audience"] = state ? state.audience : undefined;
+            resourceInputs["clientId"] = state ? state.clientId : undefined;
+            resourceInputs["scopes"] = state ? state.scopes : undefined;
         } else {
             const args = argsOrState as ClientGrantArgs | undefined;
             if ((!args || args.audience === undefined) && !opts.urn) {
@@ -110,14 +110,12 @@ export class ClientGrant extends pulumi.CustomResource {
             if ((!args || args.scopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            inputs["audience"] = args ? args.audience : undefined;
-            inputs["clientId"] = args ? args.clientId : undefined;
-            inputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["audience"] = args ? args.audience : undefined;
+            resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ClientGrant.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ClientGrant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

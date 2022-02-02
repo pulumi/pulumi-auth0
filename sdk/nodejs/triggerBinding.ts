@@ -111,12 +111,12 @@ export class TriggerBinding extends pulumi.CustomResource {
      */
     constructor(name: string, args: TriggerBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TriggerBindingArgs | TriggerBindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerBindingState | undefined;
-            inputs["actions"] = state ? state.actions : undefined;
-            inputs["trigger"] = state ? state.trigger : undefined;
+            resourceInputs["actions"] = state ? state.actions : undefined;
+            resourceInputs["trigger"] = state ? state.trigger : undefined;
         } else {
             const args = argsOrState as TriggerBindingArgs | undefined;
             if ((!args || args.actions === undefined) && !opts.urn) {
@@ -125,13 +125,11 @@ export class TriggerBinding extends pulumi.CustomResource {
             if ((!args || args.trigger === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trigger'");
             }
-            inputs["actions"] = args ? args.actions : undefined;
-            inputs["trigger"] = args ? args.trigger : undefined;
+            resourceInputs["actions"] = args ? args.actions : undefined;
+            resourceInputs["trigger"] = args ? args.trigger : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TriggerBinding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TriggerBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

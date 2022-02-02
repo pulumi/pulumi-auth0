@@ -65,21 +65,19 @@ export class Prompt extends pulumi.CustomResource {
      */
     constructor(name: string, args?: PromptArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PromptArgs | PromptState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PromptState | undefined;
-            inputs["identifierFirst"] = state ? state.identifierFirst : undefined;
-            inputs["universalLoginExperience"] = state ? state.universalLoginExperience : undefined;
+            resourceInputs["identifierFirst"] = state ? state.identifierFirst : undefined;
+            resourceInputs["universalLoginExperience"] = state ? state.universalLoginExperience : undefined;
         } else {
             const args = argsOrState as PromptArgs | undefined;
-            inputs["identifierFirst"] = args ? args.identifierFirst : undefined;
-            inputs["universalLoginExperience"] = args ? args.universalLoginExperience : undefined;
+            resourceInputs["identifierFirst"] = args ? args.identifierFirst : undefined;
+            resourceInputs["universalLoginExperience"] = args ? args.universalLoginExperience : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Prompt.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Prompt.__pulumiType, name, resourceInputs, opts);
     }
 }
 

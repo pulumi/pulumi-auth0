@@ -86,7 +86,7 @@ type CustomDomainVerificationInput interface {
 }
 
 func (*CustomDomainVerification) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomDomainVerification)(nil))
+	return reflect.TypeOf((**CustomDomainVerification)(nil)).Elem()
 }
 
 func (i *CustomDomainVerification) ToCustomDomainVerificationOutput() CustomDomainVerificationOutput {
@@ -95,35 +95,6 @@ func (i *CustomDomainVerification) ToCustomDomainVerificationOutput() CustomDoma
 
 func (i *CustomDomainVerification) ToCustomDomainVerificationOutputWithContext(ctx context.Context) CustomDomainVerificationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationOutput)
-}
-
-func (i *CustomDomainVerification) ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput {
-	return i.ToCustomDomainVerificationPtrOutputWithContext(context.Background())
-}
-
-func (i *CustomDomainVerification) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationPtrOutput)
-}
-
-type CustomDomainVerificationPtrInput interface {
-	pulumi.Input
-
-	ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput
-	ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput
-}
-
-type customDomainVerificationPtrType CustomDomainVerificationArgs
-
-func (*customDomainVerificationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomDomainVerification)(nil))
-}
-
-func (i *customDomainVerificationPtrType) ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput {
-	return i.ToCustomDomainVerificationPtrOutputWithContext(context.Background())
-}
-
-func (i *customDomainVerificationPtrType) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationPtrOutput)
 }
 
 // CustomDomainVerificationArrayInput is an input type that accepts CustomDomainVerificationArray and CustomDomainVerificationArrayOutput values.
@@ -179,7 +150,7 @@ func (i CustomDomainVerificationMap) ToCustomDomainVerificationMapOutputWithCont
 type CustomDomainVerificationOutput struct{ *pulumi.OutputState }
 
 func (CustomDomainVerificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomDomainVerification)(nil))
+	return reflect.TypeOf((**CustomDomainVerification)(nil)).Elem()
 }
 
 func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutput() CustomDomainVerificationOutput {
@@ -190,44 +161,10 @@ func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutputWithCont
 	return o
 }
 
-func (o CustomDomainVerificationOutput) ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput {
-	return o.ToCustomDomainVerificationPtrOutputWithContext(context.Background())
-}
-
-func (o CustomDomainVerificationOutput) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainVerification) *CustomDomainVerification {
-		return &v
-	}).(CustomDomainVerificationPtrOutput)
-}
-
-type CustomDomainVerificationPtrOutput struct{ *pulumi.OutputState }
-
-func (CustomDomainVerificationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomDomainVerification)(nil))
-}
-
-func (o CustomDomainVerificationPtrOutput) ToCustomDomainVerificationPtrOutput() CustomDomainVerificationPtrOutput {
-	return o
-}
-
-func (o CustomDomainVerificationPtrOutput) ToCustomDomainVerificationPtrOutputWithContext(ctx context.Context) CustomDomainVerificationPtrOutput {
-	return o
-}
-
-func (o CustomDomainVerificationPtrOutput) Elem() CustomDomainVerificationOutput {
-	return o.ApplyT(func(v *CustomDomainVerification) CustomDomainVerification {
-		if v != nil {
-			return *v
-		}
-		var ret CustomDomainVerification
-		return ret
-	}).(CustomDomainVerificationOutput)
-}
-
 type CustomDomainVerificationArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomDomainVerificationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomDomainVerification)(nil))
+	return reflect.TypeOf((*[]*CustomDomainVerification)(nil)).Elem()
 }
 
 func (o CustomDomainVerificationArrayOutput) ToCustomDomainVerificationArrayOutput() CustomDomainVerificationArrayOutput {
@@ -239,15 +176,15 @@ func (o CustomDomainVerificationArrayOutput) ToCustomDomainVerificationArrayOutp
 }
 
 func (o CustomDomainVerificationArrayOutput) Index(i pulumi.IntInput) CustomDomainVerificationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDomainVerification {
-		return vs[0].([]CustomDomainVerification)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomDomainVerification {
+		return vs[0].([]*CustomDomainVerification)[vs[1].(int)]
 	}).(CustomDomainVerificationOutput)
 }
 
 type CustomDomainVerificationMapOutput struct{ *pulumi.OutputState }
 
 func (CustomDomainVerificationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CustomDomainVerification)(nil))
+	return reflect.TypeOf((*map[string]*CustomDomainVerification)(nil)).Elem()
 }
 
 func (o CustomDomainVerificationMapOutput) ToCustomDomainVerificationMapOutput() CustomDomainVerificationMapOutput {
@@ -259,18 +196,16 @@ func (o CustomDomainVerificationMapOutput) ToCustomDomainVerificationMapOutputWi
 }
 
 func (o CustomDomainVerificationMapOutput) MapIndex(k pulumi.StringInput) CustomDomainVerificationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomDomainVerification {
-		return vs[0].(map[string]CustomDomainVerification)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CustomDomainVerification {
+		return vs[0].(map[string]*CustomDomainVerification)[vs[1].(string)]
 	}).(CustomDomainVerificationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationInput)(nil)).Elem(), &CustomDomainVerification{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationPtrInput)(nil)).Elem(), &CustomDomainVerification{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationArrayInput)(nil)).Elem(), CustomDomainVerificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationMapInput)(nil)).Elem(), CustomDomainVerificationMap{})
 	pulumi.RegisterOutputType(CustomDomainVerificationOutput{})
-	pulumi.RegisterOutputType(CustomDomainVerificationPtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationArrayOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationMapOutput{})
 }
