@@ -26,7 +26,7 @@ Object.defineProperty(exports, "clientSecret", {
 export declare const debug: boolean | undefined;
 Object.defineProperty(exports, "debug", {
     get() {
-        return __config.getObject<boolean>("debug") ?? <any>utilities.getEnvBoolean("AUTH0_DEBUG");
+        return __config.getObject<boolean>("debug") ?? utilities.getEnvBoolean("AUTH0_DEBUG");
     },
     enumerable: true,
 });

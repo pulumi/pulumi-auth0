@@ -123,56 +123,54 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["appMetadata"] = state ? state.appMetadata : undefined;
-            inputs["blocked"] = state ? state.blocked : undefined;
-            inputs["connectionName"] = state ? state.connectionName : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["emailVerified"] = state ? state.emailVerified : undefined;
-            inputs["familyName"] = state ? state.familyName : undefined;
-            inputs["givenName"] = state ? state.givenName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nickname"] = state ? state.nickname : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["phoneNumber"] = state ? state.phoneNumber : undefined;
-            inputs["phoneVerified"] = state ? state.phoneVerified : undefined;
-            inputs["picture"] = state ? state.picture : undefined;
-            inputs["roles"] = state ? state.roles : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
-            inputs["userMetadata"] = state ? state.userMetadata : undefined;
-            inputs["username"] = state ? state.username : undefined;
-            inputs["verifyEmail"] = state ? state.verifyEmail : undefined;
+            resourceInputs["appMetadata"] = state ? state.appMetadata : undefined;
+            resourceInputs["blocked"] = state ? state.blocked : undefined;
+            resourceInputs["connectionName"] = state ? state.connectionName : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["emailVerified"] = state ? state.emailVerified : undefined;
+            resourceInputs["familyName"] = state ? state.familyName : undefined;
+            resourceInputs["givenName"] = state ? state.givenName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nickname"] = state ? state.nickname : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["phoneNumber"] = state ? state.phoneNumber : undefined;
+            resourceInputs["phoneVerified"] = state ? state.phoneVerified : undefined;
+            resourceInputs["picture"] = state ? state.picture : undefined;
+            resourceInputs["roles"] = state ? state.roles : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["userMetadata"] = state ? state.userMetadata : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["verifyEmail"] = state ? state.verifyEmail : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.connectionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionName'");
             }
-            inputs["appMetadata"] = args ? args.appMetadata : undefined;
-            inputs["blocked"] = args ? args.blocked : undefined;
-            inputs["connectionName"] = args ? args.connectionName : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["emailVerified"] = args ? args.emailVerified : undefined;
-            inputs["familyName"] = args ? args.familyName : undefined;
-            inputs["givenName"] = args ? args.givenName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nickname"] = args ? args.nickname : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["phoneNumber"] = args ? args.phoneNumber : undefined;
-            inputs["phoneVerified"] = args ? args.phoneVerified : undefined;
-            inputs["picture"] = args ? args.picture : undefined;
-            inputs["roles"] = args ? args.roles : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
-            inputs["userMetadata"] = args ? args.userMetadata : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["verifyEmail"] = args ? args.verifyEmail : undefined;
+            resourceInputs["appMetadata"] = args ? args.appMetadata : undefined;
+            resourceInputs["blocked"] = args ? args.blocked : undefined;
+            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["emailVerified"] = args ? args.emailVerified : undefined;
+            resourceInputs["familyName"] = args ? args.familyName : undefined;
+            resourceInputs["givenName"] = args ? args.givenName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nickname"] = args ? args.nickname : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["phoneNumber"] = args ? args.phoneNumber : undefined;
+            resourceInputs["phoneVerified"] = args ? args.phoneVerified : undefined;
+            resourceInputs["picture"] = args ? args.picture : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["userMetadata"] = args ? args.userMetadata : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["verifyEmail"] = args ? args.verifyEmail : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

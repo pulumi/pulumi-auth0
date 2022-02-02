@@ -175,7 +175,7 @@ type TriggerBindingInput interface {
 }
 
 func (*TriggerBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerBinding)(nil))
+	return reflect.TypeOf((**TriggerBinding)(nil)).Elem()
 }
 
 func (i *TriggerBinding) ToTriggerBindingOutput() TriggerBindingOutput {
@@ -184,35 +184,6 @@ func (i *TriggerBinding) ToTriggerBindingOutput() TriggerBindingOutput {
 
 func (i *TriggerBinding) ToTriggerBindingOutputWithContext(ctx context.Context) TriggerBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingOutput)
-}
-
-func (i *TriggerBinding) ToTriggerBindingPtrOutput() TriggerBindingPtrOutput {
-	return i.ToTriggerBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *TriggerBinding) ToTriggerBindingPtrOutputWithContext(ctx context.Context) TriggerBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingPtrOutput)
-}
-
-type TriggerBindingPtrInput interface {
-	pulumi.Input
-
-	ToTriggerBindingPtrOutput() TriggerBindingPtrOutput
-	ToTriggerBindingPtrOutputWithContext(ctx context.Context) TriggerBindingPtrOutput
-}
-
-type triggerBindingPtrType TriggerBindingArgs
-
-func (*triggerBindingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerBinding)(nil))
-}
-
-func (i *triggerBindingPtrType) ToTriggerBindingPtrOutput() TriggerBindingPtrOutput {
-	return i.ToTriggerBindingPtrOutputWithContext(context.Background())
-}
-
-func (i *triggerBindingPtrType) ToTriggerBindingPtrOutputWithContext(ctx context.Context) TriggerBindingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingPtrOutput)
 }
 
 // TriggerBindingArrayInput is an input type that accepts TriggerBindingArray and TriggerBindingArrayOutput values.
@@ -268,7 +239,7 @@ func (i TriggerBindingMap) ToTriggerBindingMapOutputWithContext(ctx context.Cont
 type TriggerBindingOutput struct{ *pulumi.OutputState }
 
 func (TriggerBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TriggerBinding)(nil))
+	return reflect.TypeOf((**TriggerBinding)(nil)).Elem()
 }
 
 func (o TriggerBindingOutput) ToTriggerBindingOutput() TriggerBindingOutput {
@@ -279,44 +250,10 @@ func (o TriggerBindingOutput) ToTriggerBindingOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TriggerBindingOutput) ToTriggerBindingPtrOutput() TriggerBindingPtrOutput {
-	return o.ToTriggerBindingPtrOutputWithContext(context.Background())
-}
-
-func (o TriggerBindingOutput) ToTriggerBindingPtrOutputWithContext(ctx context.Context) TriggerBindingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBinding) *TriggerBinding {
-		return &v
-	}).(TriggerBindingPtrOutput)
-}
-
-type TriggerBindingPtrOutput struct{ *pulumi.OutputState }
-
-func (TriggerBindingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TriggerBinding)(nil))
-}
-
-func (o TriggerBindingPtrOutput) ToTriggerBindingPtrOutput() TriggerBindingPtrOutput {
-	return o
-}
-
-func (o TriggerBindingPtrOutput) ToTriggerBindingPtrOutputWithContext(ctx context.Context) TriggerBindingPtrOutput {
-	return o
-}
-
-func (o TriggerBindingPtrOutput) Elem() TriggerBindingOutput {
-	return o.ApplyT(func(v *TriggerBinding) TriggerBinding {
-		if v != nil {
-			return *v
-		}
-		var ret TriggerBinding
-		return ret
-	}).(TriggerBindingOutput)
-}
-
 type TriggerBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (TriggerBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerBinding)(nil))
+	return reflect.TypeOf((*[]*TriggerBinding)(nil)).Elem()
 }
 
 func (o TriggerBindingArrayOutput) ToTriggerBindingArrayOutput() TriggerBindingArrayOutput {
@@ -328,15 +265,15 @@ func (o TriggerBindingArrayOutput) ToTriggerBindingArrayOutputWithContext(ctx co
 }
 
 func (o TriggerBindingArrayOutput) Index(i pulumi.IntInput) TriggerBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBinding {
-		return vs[0].([]TriggerBinding)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TriggerBinding {
+		return vs[0].([]*TriggerBinding)[vs[1].(int)]
 	}).(TriggerBindingOutput)
 }
 
 type TriggerBindingMapOutput struct{ *pulumi.OutputState }
 
 func (TriggerBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TriggerBinding)(nil))
+	return reflect.TypeOf((*map[string]*TriggerBinding)(nil)).Elem()
 }
 
 func (o TriggerBindingMapOutput) ToTriggerBindingMapOutput() TriggerBindingMapOutput {
@@ -348,18 +285,16 @@ func (o TriggerBindingMapOutput) ToTriggerBindingMapOutputWithContext(ctx contex
 }
 
 func (o TriggerBindingMapOutput) MapIndex(k pulumi.StringInput) TriggerBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TriggerBinding {
-		return vs[0].(map[string]TriggerBinding)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TriggerBinding {
+		return vs[0].(map[string]*TriggerBinding)[vs[1].(string)]
 	}).(TriggerBindingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingInput)(nil)).Elem(), &TriggerBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingPtrInput)(nil)).Elem(), &TriggerBinding{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingArrayInput)(nil)).Elem(), TriggerBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingMapInput)(nil)).Elem(), TriggerBindingMap{})
 	pulumi.RegisterOutputType(TriggerBindingOutput{})
-	pulumi.RegisterOutputType(TriggerBindingPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBindingArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBindingMapOutput{})
 }

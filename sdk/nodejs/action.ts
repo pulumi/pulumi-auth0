@@ -117,18 +117,18 @@ export class Action extends pulumi.CustomResource {
      */
     constructor(name: string, args: ActionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ActionArgs | ActionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ActionState | undefined;
-            inputs["code"] = state ? state.code : undefined;
-            inputs["dependencies"] = state ? state.dependencies : undefined;
-            inputs["deploy"] = state ? state.deploy : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["runtime"] = state ? state.runtime : undefined;
-            inputs["secrets"] = state ? state.secrets : undefined;
-            inputs["supportedTriggers"] = state ? state.supportedTriggers : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["code"] = state ? state.code : undefined;
+            resourceInputs["dependencies"] = state ? state.dependencies : undefined;
+            resourceInputs["deploy"] = state ? state.deploy : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["secrets"] = state ? state.secrets : undefined;
+            resourceInputs["supportedTriggers"] = state ? state.supportedTriggers : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as ActionArgs | undefined;
             if ((!args || args.code === undefined) && !opts.urn) {
@@ -137,19 +137,17 @@ export class Action extends pulumi.CustomResource {
             if ((!args || args.supportedTriggers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'supportedTriggers'");
             }
-            inputs["code"] = args ? args.code : undefined;
-            inputs["dependencies"] = args ? args.dependencies : undefined;
-            inputs["deploy"] = args ? args.deploy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["runtime"] = args ? args.runtime : undefined;
-            inputs["secrets"] = args ? args.secrets : undefined;
-            inputs["supportedTriggers"] = args ? args.supportedTriggers : undefined;
-            inputs["versionId"] = undefined /*out*/;
+            resourceInputs["code"] = args ? args.code : undefined;
+            resourceInputs["dependencies"] = args ? args.dependencies : undefined;
+            resourceInputs["deploy"] = args ? args.deploy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["secrets"] = args ? args.secrets : undefined;
+            resourceInputs["supportedTriggers"] = args ? args.supportedTriggers : undefined;
+            resourceInputs["versionId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Action.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Action.__pulumiType, name, resourceInputs, opts);
     }
 }
 

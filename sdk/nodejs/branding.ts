@@ -84,27 +84,25 @@ export class Branding extends pulumi.CustomResource {
      */
     constructor(name: string, args?: BrandingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BrandingArgs | BrandingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BrandingState | undefined;
-            inputs["colors"] = state ? state.colors : undefined;
-            inputs["faviconUrl"] = state ? state.faviconUrl : undefined;
-            inputs["font"] = state ? state.font : undefined;
-            inputs["logoUrl"] = state ? state.logoUrl : undefined;
-            inputs["universalLogin"] = state ? state.universalLogin : undefined;
+            resourceInputs["colors"] = state ? state.colors : undefined;
+            resourceInputs["faviconUrl"] = state ? state.faviconUrl : undefined;
+            resourceInputs["font"] = state ? state.font : undefined;
+            resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
+            resourceInputs["universalLogin"] = state ? state.universalLogin : undefined;
         } else {
             const args = argsOrState as BrandingArgs | undefined;
-            inputs["colors"] = args ? args.colors : undefined;
-            inputs["faviconUrl"] = args ? args.faviconUrl : undefined;
-            inputs["font"] = args ? args.font : undefined;
-            inputs["logoUrl"] = args ? args.logoUrl : undefined;
-            inputs["universalLogin"] = args ? args.universalLogin : undefined;
+            resourceInputs["colors"] = args ? args.colors : undefined;
+            resourceInputs["faviconUrl"] = args ? args.faviconUrl : undefined;
+            resourceInputs["font"] = args ? args.font : undefined;
+            resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
+            resourceInputs["universalLogin"] = args ? args.universalLogin : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Branding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Branding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

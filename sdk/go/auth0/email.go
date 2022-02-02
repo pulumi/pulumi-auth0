@@ -149,7 +149,7 @@ type EmailInput interface {
 }
 
 func (*Email) ElementType() reflect.Type {
-	return reflect.TypeOf((*Email)(nil))
+	return reflect.TypeOf((**Email)(nil)).Elem()
 }
 
 func (i *Email) ToEmailOutput() EmailOutput {
@@ -158,35 +158,6 @@ func (i *Email) ToEmailOutput() EmailOutput {
 
 func (i *Email) ToEmailOutputWithContext(ctx context.Context) EmailOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailOutput)
-}
-
-func (i *Email) ToEmailPtrOutput() EmailPtrOutput {
-	return i.ToEmailPtrOutputWithContext(context.Background())
-}
-
-func (i *Email) ToEmailPtrOutputWithContext(ctx context.Context) EmailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailPtrOutput)
-}
-
-type EmailPtrInput interface {
-	pulumi.Input
-
-	ToEmailPtrOutput() EmailPtrOutput
-	ToEmailPtrOutputWithContext(ctx context.Context) EmailPtrOutput
-}
-
-type emailPtrType EmailArgs
-
-func (*emailPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Email)(nil))
-}
-
-func (i *emailPtrType) ToEmailPtrOutput() EmailPtrOutput {
-	return i.ToEmailPtrOutputWithContext(context.Background())
-}
-
-func (i *emailPtrType) ToEmailPtrOutputWithContext(ctx context.Context) EmailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailPtrOutput)
 }
 
 // EmailArrayInput is an input type that accepts EmailArray and EmailArrayOutput values.
@@ -242,7 +213,7 @@ func (i EmailMap) ToEmailMapOutputWithContext(ctx context.Context) EmailMapOutpu
 type EmailOutput struct{ *pulumi.OutputState }
 
 func (EmailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Email)(nil))
+	return reflect.TypeOf((**Email)(nil)).Elem()
 }
 
 func (o EmailOutput) ToEmailOutput() EmailOutput {
@@ -253,44 +224,10 @@ func (o EmailOutput) ToEmailOutputWithContext(ctx context.Context) EmailOutput {
 	return o
 }
 
-func (o EmailOutput) ToEmailPtrOutput() EmailPtrOutput {
-	return o.ToEmailPtrOutputWithContext(context.Background())
-}
-
-func (o EmailOutput) ToEmailPtrOutputWithContext(ctx context.Context) EmailPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Email) *Email {
-		return &v
-	}).(EmailPtrOutput)
-}
-
-type EmailPtrOutput struct{ *pulumi.OutputState }
-
-func (EmailPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Email)(nil))
-}
-
-func (o EmailPtrOutput) ToEmailPtrOutput() EmailPtrOutput {
-	return o
-}
-
-func (o EmailPtrOutput) ToEmailPtrOutputWithContext(ctx context.Context) EmailPtrOutput {
-	return o
-}
-
-func (o EmailPtrOutput) Elem() EmailOutput {
-	return o.ApplyT(func(v *Email) Email {
-		if v != nil {
-			return *v
-		}
-		var ret Email
-		return ret
-	}).(EmailOutput)
-}
-
 type EmailArrayOutput struct{ *pulumi.OutputState }
 
 func (EmailArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Email)(nil))
+	return reflect.TypeOf((*[]*Email)(nil)).Elem()
 }
 
 func (o EmailArrayOutput) ToEmailArrayOutput() EmailArrayOutput {
@@ -302,15 +239,15 @@ func (o EmailArrayOutput) ToEmailArrayOutputWithContext(ctx context.Context) Ema
 }
 
 func (o EmailArrayOutput) Index(i pulumi.IntInput) EmailOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Email {
-		return vs[0].([]Email)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Email {
+		return vs[0].([]*Email)[vs[1].(int)]
 	}).(EmailOutput)
 }
 
 type EmailMapOutput struct{ *pulumi.OutputState }
 
 func (EmailMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Email)(nil))
+	return reflect.TypeOf((*map[string]*Email)(nil)).Elem()
 }
 
 func (o EmailMapOutput) ToEmailMapOutput() EmailMapOutput {
@@ -322,18 +259,16 @@ func (o EmailMapOutput) ToEmailMapOutputWithContext(ctx context.Context) EmailMa
 }
 
 func (o EmailMapOutput) MapIndex(k pulumi.StringInput) EmailOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Email {
-		return vs[0].(map[string]Email)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Email {
+		return vs[0].(map[string]*Email)[vs[1].(string)]
 	}).(EmailOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailInput)(nil)).Elem(), &Email{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailPtrInput)(nil)).Elem(), &Email{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailArrayInput)(nil)).Elem(), EmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailMapInput)(nil)).Elem(), EmailMap{})
 	pulumi.RegisterOutputType(EmailOutput{})
-	pulumi.RegisterOutputType(EmailPtrOutput{})
 	pulumi.RegisterOutputType(EmailArrayOutput{})
 	pulumi.RegisterOutputType(EmailMapOutput{})
 }

@@ -85,16 +85,16 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomDomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomDomainArgs | CustomDomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDomainState | undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["primary"] = state ? state.primary : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["verification"] = state ? state.verification : undefined;
-            inputs["verificationMethod"] = state ? state.verificationMethod : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["primary"] = state ? state.primary : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["verification"] = state ? state.verification : undefined;
+            resourceInputs["verificationMethod"] = state ? state.verificationMethod : undefined;
         } else {
             const args = argsOrState as CustomDomainArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -103,17 +103,15 @@ export class CustomDomain extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["verificationMethod"] = args ? args.verificationMethod : undefined;
-            inputs["primary"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["verification"] = undefined /*out*/;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["verificationMethod"] = args ? args.verificationMethod : undefined;
+            resourceInputs["primary"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["verification"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomDomain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomDomain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

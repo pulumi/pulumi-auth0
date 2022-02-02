@@ -237,7 +237,7 @@ type GlobalClientInput interface {
 }
 
 func (*GlobalClient) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClient)(nil))
+	return reflect.TypeOf((**GlobalClient)(nil)).Elem()
 }
 
 func (i *GlobalClient) ToGlobalClientOutput() GlobalClientOutput {
@@ -246,35 +246,6 @@ func (i *GlobalClient) ToGlobalClientOutput() GlobalClientOutput {
 
 func (i *GlobalClient) ToGlobalClientOutputWithContext(ctx context.Context) GlobalClientOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientOutput)
-}
-
-func (i *GlobalClient) ToGlobalClientPtrOutput() GlobalClientPtrOutput {
-	return i.ToGlobalClientPtrOutputWithContext(context.Background())
-}
-
-func (i *GlobalClient) ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientPtrOutput)
-}
-
-type GlobalClientPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientPtrOutput() GlobalClientPtrOutput
-	ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput
-}
-
-type globalClientPtrType GlobalClientArgs
-
-func (*globalClientPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClient)(nil))
-}
-
-func (i *globalClientPtrType) ToGlobalClientPtrOutput() GlobalClientPtrOutput {
-	return i.ToGlobalClientPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientPtrType) ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientPtrOutput)
 }
 
 // GlobalClientArrayInput is an input type that accepts GlobalClientArray and GlobalClientArrayOutput values.
@@ -330,7 +301,7 @@ func (i GlobalClientMap) ToGlobalClientMapOutputWithContext(ctx context.Context)
 type GlobalClientOutput struct{ *pulumi.OutputState }
 
 func (GlobalClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClient)(nil))
+	return reflect.TypeOf((**GlobalClient)(nil)).Elem()
 }
 
 func (o GlobalClientOutput) ToGlobalClientOutput() GlobalClientOutput {
@@ -341,44 +312,10 @@ func (o GlobalClientOutput) ToGlobalClientOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o GlobalClientOutput) ToGlobalClientPtrOutput() GlobalClientPtrOutput {
-	return o.ToGlobalClientPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientOutput) ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClient) *GlobalClient {
-		return &v
-	}).(GlobalClientPtrOutput)
-}
-
-type GlobalClientPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClient)(nil))
-}
-
-func (o GlobalClientPtrOutput) ToGlobalClientPtrOutput() GlobalClientPtrOutput {
-	return o
-}
-
-func (o GlobalClientPtrOutput) ToGlobalClientPtrOutputWithContext(ctx context.Context) GlobalClientPtrOutput {
-	return o
-}
-
-func (o GlobalClientPtrOutput) Elem() GlobalClientOutput {
-	return o.ApplyT(func(v *GlobalClient) GlobalClient {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClient
-		return ret
-	}).(GlobalClientOutput)
-}
-
 type GlobalClientArrayOutput struct{ *pulumi.OutputState }
 
 func (GlobalClientArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GlobalClient)(nil))
+	return reflect.TypeOf((*[]*GlobalClient)(nil)).Elem()
 }
 
 func (o GlobalClientArrayOutput) ToGlobalClientArrayOutput() GlobalClientArrayOutput {
@@ -390,15 +327,15 @@ func (o GlobalClientArrayOutput) ToGlobalClientArrayOutputWithContext(ctx contex
 }
 
 func (o GlobalClientArrayOutput) Index(i pulumi.IntInput) GlobalClientOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalClient {
-		return vs[0].([]GlobalClient)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalClient {
+		return vs[0].([]*GlobalClient)[vs[1].(int)]
 	}).(GlobalClientOutput)
 }
 
 type GlobalClientMapOutput struct{ *pulumi.OutputState }
 
 func (GlobalClientMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GlobalClient)(nil))
+	return reflect.TypeOf((*map[string]*GlobalClient)(nil)).Elem()
 }
 
 func (o GlobalClientMapOutput) ToGlobalClientMapOutput() GlobalClientMapOutput {
@@ -410,18 +347,16 @@ func (o GlobalClientMapOutput) ToGlobalClientMapOutputWithContext(ctx context.Co
 }
 
 func (o GlobalClientMapOutput) MapIndex(k pulumi.StringInput) GlobalClientOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GlobalClient {
-		return vs[0].(map[string]GlobalClient)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GlobalClient {
+		return vs[0].(map[string]*GlobalClient)[vs[1].(string)]
 	}).(GlobalClientOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientInput)(nil)).Elem(), &GlobalClient{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientPtrInput)(nil)).Elem(), &GlobalClient{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientArrayInput)(nil)).Elem(), GlobalClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMapInput)(nil)).Elem(), GlobalClientMap{})
 	pulumi.RegisterOutputType(GlobalClientOutput{})
-	pulumi.RegisterOutputType(GlobalClientPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientArrayOutput{})
 	pulumi.RegisterOutputType(GlobalClientMapOutput{})
 }

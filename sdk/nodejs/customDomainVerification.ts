@@ -46,22 +46,20 @@ export class CustomDomainVerification extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomDomainVerificationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomDomainVerificationArgs | CustomDomainVerificationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDomainVerificationState | undefined;
-            inputs["customDomainId"] = state ? state.customDomainId : undefined;
+            resourceInputs["customDomainId"] = state ? state.customDomainId : undefined;
         } else {
             const args = argsOrState as CustomDomainVerificationArgs | undefined;
             if ((!args || args.customDomainId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customDomainId'");
             }
-            inputs["customDomainId"] = args ? args.customDomainId : undefined;
+            resourceInputs["customDomainId"] = args ? args.customDomainId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomDomainVerification.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomDomainVerification.__pulumiType, name, resourceInputs, opts);
     }
 }
 

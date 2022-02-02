@@ -55,6 +55,7 @@ setup(name='pulumi_auth0',
       package_data={
           'pulumi_auth0': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

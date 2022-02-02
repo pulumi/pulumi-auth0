@@ -100,27 +100,25 @@ export class Organization extends pulumi.CustomResource {
      */
     constructor(name: string, args?: OrganizationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationArgs | OrganizationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
-            inputs["branding"] = state ? state.branding : undefined;
-            inputs["connections"] = state ? state.connections : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["branding"] = state ? state.branding : undefined;
+            resourceInputs["connections"] = state ? state.connections : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
-            inputs["branding"] = args ? args.branding : undefined;
-            inputs["connections"] = args ? args.connections : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["branding"] = args ? args.branding : undefined;
+            resourceInputs["connections"] = args ? args.connections : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Organization.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Organization.__pulumiType, name, resourceInputs, opts);
     }
 }
 

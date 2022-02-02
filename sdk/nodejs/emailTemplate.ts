@@ -106,18 +106,18 @@ export class EmailTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: EmailTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EmailTemplateArgs | EmailTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailTemplateState | undefined;
-            inputs["body"] = state ? state.body : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["from"] = state ? state.from : undefined;
-            inputs["resultUrl"] = state ? state.resultUrl : undefined;
-            inputs["subject"] = state ? state.subject : undefined;
-            inputs["syntax"] = state ? state.syntax : undefined;
-            inputs["template"] = state ? state.template : undefined;
-            inputs["urlLifetimeInSeconds"] = state ? state.urlLifetimeInSeconds : undefined;
+            resourceInputs["body"] = state ? state.body : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["from"] = state ? state.from : undefined;
+            resourceInputs["resultUrl"] = state ? state.resultUrl : undefined;
+            resourceInputs["subject"] = state ? state.subject : undefined;
+            resourceInputs["syntax"] = state ? state.syntax : undefined;
+            resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["urlLifetimeInSeconds"] = state ? state.urlLifetimeInSeconds : undefined;
         } else {
             const args = argsOrState as EmailTemplateArgs | undefined;
             if ((!args || args.body === undefined) && !opts.urn) {
@@ -138,19 +138,17 @@ export class EmailTemplate extends pulumi.CustomResource {
             if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
-            inputs["body"] = args ? args.body : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["from"] = args ? args.from : undefined;
-            inputs["resultUrl"] = args ? args.resultUrl : undefined;
-            inputs["subject"] = args ? args.subject : undefined;
-            inputs["syntax"] = args ? args.syntax : undefined;
-            inputs["template"] = args ? args.template : undefined;
-            inputs["urlLifetimeInSeconds"] = args ? args.urlLifetimeInSeconds : undefined;
+            resourceInputs["body"] = args ? args.body : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["from"] = args ? args.from : undefined;
+            resourceInputs["resultUrl"] = args ? args.resultUrl : undefined;
+            resourceInputs["subject"] = args ? args.subject : undefined;
+            resourceInputs["syntax"] = args ? args.syntax : undefined;
+            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["urlLifetimeInSeconds"] = args ? args.urlLifetimeInSeconds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EmailTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EmailTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 
