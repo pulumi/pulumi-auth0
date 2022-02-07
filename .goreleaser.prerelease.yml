@@ -24,6 +24,7 @@ builds:
   - darwin
   - windows
   - linux
+  ignore: []
   ldflags:
   - -X github.com/pulumi/pulumi-auth0/provider/v2/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-auth0/
