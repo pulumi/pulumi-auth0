@@ -31,6 +31,7 @@
         "logStream.ts",
         "organization.ts",
         "prompt.ts",
+        "promptCustomText.ts",
         "provider.ts",
         "resourceServer.ts",
         "role.ts",

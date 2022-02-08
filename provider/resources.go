@@ -110,6 +110,7 @@ func Provider() tfbridge.ProviderInfo {
 			"auth0_custom_domain_verification": {Tok: makeResource(mainMod, "CustomDomainVerification")},
 			"auth0_organization":               {Tok: makeResource(mainMod, "Organization")},
 			"auth0_trigger_binding":            {Tok: makeResource(mainMod, "TriggerBinding")},
+			"auth0_prompt_custom_text":         {Tok: makeResource(mainMod, "PromptCustomText")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

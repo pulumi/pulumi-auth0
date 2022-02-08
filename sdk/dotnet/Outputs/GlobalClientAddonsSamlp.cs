@@ -31,6 +31,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly string? Recipient;
         public readonly bool? SignResponse;
         public readonly string? SignatureAlgorithm;
+        public readonly string? SigningCert;
         public readonly bool? TypedAttributes;
 
         [OutputConstructor]
@@ -71,6 +72,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? signatureAlgorithm,
 
+            string? signingCert,
+
             bool? typedAttributes)
         {
             Audience = audience;
@@ -91,6 +94,7 @@ namespace Pulumi.Auth0.Outputs
             Recipient = recipient;
             SignResponse = signResponse;
             SignatureAlgorithm = signatureAlgorithm;
+            SigningCert = signingCert;
             TypedAttributes = typedAttributes;
         }
     }

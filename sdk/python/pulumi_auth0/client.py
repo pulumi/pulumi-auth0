@@ -38,6 +38,7 @@ class ClientArgs:
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -70,6 +71,7 @@ class ClientArgs:
         :param pulumi.Input[str] logo_uri: String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
+        :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
@@ -127,6 +129,8 @@ class ClientArgs:
             pulumi.set(__self__, "mobile", mobile)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if native_social_login is not None:
+            pulumi.set(__self__, "native_social_login", native_social_login)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_require_behavior is not None:
@@ -418,6 +422,18 @@ class ClientArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="nativeSocialLogin")
+    def native_social_login(self) -> Optional[pulumi.Input['ClientNativeSocialLoginArgs']]:
+        """
+        List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        """
+        return pulumi.get(self, "native_social_login")
+
+    @native_social_login.setter
+    def native_social_login(self, value: Optional[pulumi.Input['ClientNativeSocialLoginArgs']]):
+        pulumi.set(self, "native_social_login", value)
+
+    @property
     @pulumi.getter(name="oidcConformant")
     def oidc_conformant(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -542,6 +558,7 @@ class _ClientState:
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -576,6 +593,7 @@ class _ClientState:
         :param pulumi.Input[str] logo_uri: String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
+        :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
@@ -637,6 +655,8 @@ class _ClientState:
             pulumi.set(__self__, "mobile", mobile)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if native_social_login is not None:
+            pulumi.set(__self__, "native_social_login", native_social_login)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_require_behavior is not None:
@@ -950,6 +970,18 @@ class _ClientState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="nativeSocialLogin")
+    def native_social_login(self) -> Optional[pulumi.Input['ClientNativeSocialLoginArgs']]:
+        """
+        List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        """
+        return pulumi.get(self, "native_social_login")
+
+    @native_social_login.setter
+    def native_social_login(self, value: Optional[pulumi.Input['ClientNativeSocialLoginArgs']]):
+        pulumi.set(self, "native_social_login", value)
+
+    @property
     @pulumi.getter(name="oidcConformant")
     def oidc_conformant(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1074,6 +1106,7 @@ class Client(pulumi.CustomResource):
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -1112,6 +1145,7 @@ class Client(pulumi.CustomResource):
                     name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
                     name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
                     passthrough_claims_with_no_mapping=False,
+                    signing_cert="pemcertificate",
                 ),
             ),
             allowed_clients=["https://allowed.example.com"],
@@ -1187,6 +1221,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] logo_uri: String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
+        :param pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']] native_social_login: List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
@@ -1231,6 +1266,7 @@ class Client(pulumi.CustomResource):
                     name_identifier_format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
                     name_identifier_probes=["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
                     passthrough_claims_with_no_mapping=False,
+                    signing_cert="pemcertificate",
                 ),
             ),
             allowed_clients=["https://allowed.example.com"],
@@ -1320,6 +1356,7 @@ class Client(pulumi.CustomResource):
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -1365,6 +1402,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["logo_uri"] = logo_uri
             __props__.__dict__["mobile"] = mobile
             __props__.__dict__["name"] = name
+            __props__.__dict__["native_social_login"] = native_social_login
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
@@ -1410,6 +1448,7 @@ class Client(pulumi.CustomResource):
             logo_uri: Optional[pulumi.Input[str]] = None,
             mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
@@ -1449,6 +1488,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] logo_uri: String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         :param pulumi.Input[str] name: String. Name of the client.
+        :param pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']] native_social_login: List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
         :param pulumi.Input[bool] oidc_conformant: Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
@@ -1487,6 +1527,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["logo_uri"] = logo_uri
         __props__.__dict__["mobile"] = mobile
         __props__.__dict__["name"] = name
+        __props__.__dict__["native_social_login"] = native_social_login
         __props__.__dict__["oidc_conformant"] = oidc_conformant
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
@@ -1691,6 +1732,14 @@ class Client(pulumi.CustomResource):
         String. Name of the client.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nativeSocialLogin")
+    def native_social_login(self) -> pulumi.Output['outputs.ClientNativeSocialLogin']:
+        """
+        List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        """
+        return pulumi.get(self, "native_social_login")
 
     @property
     @pulumi.getter(name="oidcConformant")

@@ -73,7 +73,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? HttpAuthorization { get; set; }
 
         /// <summary>
-        /// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+        /// The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
         /// </summary>
         [Input("httpContentFormat")]
         public Input<string>? HttpContentFormat { get; set; }

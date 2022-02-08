@@ -20,6 +20,7 @@ from .hook import *
 from .log_stream import *
 from .organization import *
 from .prompt import *
+from .prompt_custom_text import *
 from .provider import *
 from .resource_server import *
 from .role import *
@@ -159,6 +160,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/prompt:Prompt": "Prompt"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/promptCustomText",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/promptCustomText:PromptCustomText": "PromptCustomText"
   }
  },
  {

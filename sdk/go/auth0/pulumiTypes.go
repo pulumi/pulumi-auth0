@@ -1495,6 +1495,8 @@ type ClientAddonsSamlp struct {
 	SignResponse *bool `pulumi:"signResponse"`
 	// String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
+	// String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+	SigningCert *string `pulumi:"signingCert"`
 	// Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
 	TypedAttributes *bool `pulumi:"typedAttributes"`
 }
@@ -1547,6 +1549,8 @@ type ClientAddonsSamlpArgs struct {
 	SignResponse pulumi.BoolPtrInput `pulumi:"signResponse"`
 	// String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
+	// String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+	SigningCert pulumi.StringPtrInput `pulumi:"signingCert"`
 	// Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
 	TypedAttributes pulumi.BoolPtrInput `pulumi:"typedAttributes"`
 }
@@ -1716,6 +1720,11 @@ func (o ClientAddonsSamlpOutput) SignResponse() pulumi.BoolPtrOutput {
 // String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 func (o ClientAddonsSamlpOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+func (o ClientAddonsSamlpOutput) SigningCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.SigningCert }).(pulumi.StringPtrOutput)
 }
 
 // Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
@@ -1924,6 +1933,16 @@ func (o ClientAddonsSamlpPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.SignatureAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+func (o ClientAddonsSamlpPtrOutput) SigningCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SigningCert
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2755,6 +2774,436 @@ func (o ClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClientNativeSocialLogin struct {
+	// Resource:
+	Apple *ClientNativeSocialLoginApple `pulumi:"apple"`
+	// Resources:
+	Facebook *ClientNativeSocialLoginFacebook `pulumi:"facebook"`
+}
+
+// ClientNativeSocialLoginInput is an input type that accepts ClientNativeSocialLoginArgs and ClientNativeSocialLoginOutput values.
+// You can construct a concrete instance of `ClientNativeSocialLoginInput` via:
+//
+//          ClientNativeSocialLoginArgs{...}
+type ClientNativeSocialLoginInput interface {
+	pulumi.Input
+
+	ToClientNativeSocialLoginOutput() ClientNativeSocialLoginOutput
+	ToClientNativeSocialLoginOutputWithContext(context.Context) ClientNativeSocialLoginOutput
+}
+
+type ClientNativeSocialLoginArgs struct {
+	// Resource:
+	Apple ClientNativeSocialLoginApplePtrInput `pulumi:"apple"`
+	// Resources:
+	Facebook ClientNativeSocialLoginFacebookPtrInput `pulumi:"facebook"`
+}
+
+func (ClientNativeSocialLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (i ClientNativeSocialLoginArgs) ToClientNativeSocialLoginOutput() ClientNativeSocialLoginOutput {
+	return i.ToClientNativeSocialLoginOutputWithContext(context.Background())
+}
+
+func (i ClientNativeSocialLoginArgs) ToClientNativeSocialLoginOutputWithContext(ctx context.Context) ClientNativeSocialLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginOutput)
+}
+
+func (i ClientNativeSocialLoginArgs) ToClientNativeSocialLoginPtrOutput() ClientNativeSocialLoginPtrOutput {
+	return i.ToClientNativeSocialLoginPtrOutputWithContext(context.Background())
+}
+
+func (i ClientNativeSocialLoginArgs) ToClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginOutput).ToClientNativeSocialLoginPtrOutputWithContext(ctx)
+}
+
+// ClientNativeSocialLoginPtrInput is an input type that accepts ClientNativeSocialLoginArgs, ClientNativeSocialLoginPtr and ClientNativeSocialLoginPtrOutput values.
+// You can construct a concrete instance of `ClientNativeSocialLoginPtrInput` via:
+//
+//          ClientNativeSocialLoginArgs{...}
+//
+//  or:
+//
+//          nil
+type ClientNativeSocialLoginPtrInput interface {
+	pulumi.Input
+
+	ToClientNativeSocialLoginPtrOutput() ClientNativeSocialLoginPtrOutput
+	ToClientNativeSocialLoginPtrOutputWithContext(context.Context) ClientNativeSocialLoginPtrOutput
+}
+
+type clientNativeSocialLoginPtrType ClientNativeSocialLoginArgs
+
+func ClientNativeSocialLoginPtr(v *ClientNativeSocialLoginArgs) ClientNativeSocialLoginPtrInput {
+	return (*clientNativeSocialLoginPtrType)(v)
+}
+
+func (*clientNativeSocialLoginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (i *clientNativeSocialLoginPtrType) ToClientNativeSocialLoginPtrOutput() ClientNativeSocialLoginPtrOutput {
+	return i.ToClientNativeSocialLoginPtrOutputWithContext(context.Background())
+}
+
+func (i *clientNativeSocialLoginPtrType) ToClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginPtrOutput)
+}
+
+type ClientNativeSocialLoginOutput struct{ *pulumi.OutputState }
+
+func (ClientNativeSocialLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (o ClientNativeSocialLoginOutput) ToClientNativeSocialLoginOutput() ClientNativeSocialLoginOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginOutput) ToClientNativeSocialLoginOutputWithContext(ctx context.Context) ClientNativeSocialLoginOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginOutput) ToClientNativeSocialLoginPtrOutput() ClientNativeSocialLoginPtrOutput {
+	return o.ToClientNativeSocialLoginPtrOutputWithContext(context.Background())
+}
+
+func (o ClientNativeSocialLoginOutput) ToClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientNativeSocialLogin) *ClientNativeSocialLogin {
+		return &v
+	}).(ClientNativeSocialLoginPtrOutput)
+}
+
+// Resource:
+func (o ClientNativeSocialLoginOutput) Apple() ClientNativeSocialLoginApplePtrOutput {
+	return o.ApplyT(func(v ClientNativeSocialLogin) *ClientNativeSocialLoginApple { return v.Apple }).(ClientNativeSocialLoginApplePtrOutput)
+}
+
+// Resources:
+func (o ClientNativeSocialLoginOutput) Facebook() ClientNativeSocialLoginFacebookPtrOutput {
+	return o.ApplyT(func(v ClientNativeSocialLogin) *ClientNativeSocialLoginFacebook { return v.Facebook }).(ClientNativeSocialLoginFacebookPtrOutput)
+}
+
+type ClientNativeSocialLoginPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientNativeSocialLoginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (o ClientNativeSocialLoginPtrOutput) ToClientNativeSocialLoginPtrOutput() ClientNativeSocialLoginPtrOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginPtrOutput) ToClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginPtrOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginPtrOutput) Elem() ClientNativeSocialLoginOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLogin) ClientNativeSocialLogin {
+		if v != nil {
+			return *v
+		}
+		var ret ClientNativeSocialLogin
+		return ret
+	}).(ClientNativeSocialLoginOutput)
+}
+
+// Resource:
+func (o ClientNativeSocialLoginPtrOutput) Apple() ClientNativeSocialLoginApplePtrOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLogin) *ClientNativeSocialLoginApple {
+		if v == nil {
+			return nil
+		}
+		return v.Apple
+	}).(ClientNativeSocialLoginApplePtrOutput)
+}
+
+// Resources:
+func (o ClientNativeSocialLoginPtrOutput) Facebook() ClientNativeSocialLoginFacebookPtrOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLogin) *ClientNativeSocialLoginFacebook {
+		if v == nil {
+			return nil
+		}
+		return v.Facebook
+	}).(ClientNativeSocialLoginFacebookPtrOutput)
+}
+
+type ClientNativeSocialLoginApple struct {
+	// Boolean
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ClientNativeSocialLoginAppleInput is an input type that accepts ClientNativeSocialLoginAppleArgs and ClientNativeSocialLoginAppleOutput values.
+// You can construct a concrete instance of `ClientNativeSocialLoginAppleInput` via:
+//
+//          ClientNativeSocialLoginAppleArgs{...}
+type ClientNativeSocialLoginAppleInput interface {
+	pulumi.Input
+
+	ToClientNativeSocialLoginAppleOutput() ClientNativeSocialLoginAppleOutput
+	ToClientNativeSocialLoginAppleOutputWithContext(context.Context) ClientNativeSocialLoginAppleOutput
+}
+
+type ClientNativeSocialLoginAppleArgs struct {
+	// Boolean
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClientNativeSocialLoginAppleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (i ClientNativeSocialLoginAppleArgs) ToClientNativeSocialLoginAppleOutput() ClientNativeSocialLoginAppleOutput {
+	return i.ToClientNativeSocialLoginAppleOutputWithContext(context.Background())
+}
+
+func (i ClientNativeSocialLoginAppleArgs) ToClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) ClientNativeSocialLoginAppleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginAppleOutput)
+}
+
+func (i ClientNativeSocialLoginAppleArgs) ToClientNativeSocialLoginApplePtrOutput() ClientNativeSocialLoginApplePtrOutput {
+	return i.ToClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
+}
+
+func (i ClientNativeSocialLoginAppleArgs) ToClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginApplePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginAppleOutput).ToClientNativeSocialLoginApplePtrOutputWithContext(ctx)
+}
+
+// ClientNativeSocialLoginApplePtrInput is an input type that accepts ClientNativeSocialLoginAppleArgs, ClientNativeSocialLoginApplePtr and ClientNativeSocialLoginApplePtrOutput values.
+// You can construct a concrete instance of `ClientNativeSocialLoginApplePtrInput` via:
+//
+//          ClientNativeSocialLoginAppleArgs{...}
+//
+//  or:
+//
+//          nil
+type ClientNativeSocialLoginApplePtrInput interface {
+	pulumi.Input
+
+	ToClientNativeSocialLoginApplePtrOutput() ClientNativeSocialLoginApplePtrOutput
+	ToClientNativeSocialLoginApplePtrOutputWithContext(context.Context) ClientNativeSocialLoginApplePtrOutput
+}
+
+type clientNativeSocialLoginApplePtrType ClientNativeSocialLoginAppleArgs
+
+func ClientNativeSocialLoginApplePtr(v *ClientNativeSocialLoginAppleArgs) ClientNativeSocialLoginApplePtrInput {
+	return (*clientNativeSocialLoginApplePtrType)(v)
+}
+
+func (*clientNativeSocialLoginApplePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (i *clientNativeSocialLoginApplePtrType) ToClientNativeSocialLoginApplePtrOutput() ClientNativeSocialLoginApplePtrOutput {
+	return i.ToClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
+}
+
+func (i *clientNativeSocialLoginApplePtrType) ToClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginApplePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginApplePtrOutput)
+}
+
+type ClientNativeSocialLoginAppleOutput struct{ *pulumi.OutputState }
+
+func (ClientNativeSocialLoginAppleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (o ClientNativeSocialLoginAppleOutput) ToClientNativeSocialLoginAppleOutput() ClientNativeSocialLoginAppleOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginAppleOutput) ToClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) ClientNativeSocialLoginAppleOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginAppleOutput) ToClientNativeSocialLoginApplePtrOutput() ClientNativeSocialLoginApplePtrOutput {
+	return o.ToClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
+}
+
+func (o ClientNativeSocialLoginAppleOutput) ToClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginApplePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientNativeSocialLoginApple) *ClientNativeSocialLoginApple {
+		return &v
+	}).(ClientNativeSocialLoginApplePtrOutput)
+}
+
+// Boolean
+func (o ClientNativeSocialLoginAppleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientNativeSocialLoginApple) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClientNativeSocialLoginApplePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientNativeSocialLoginApplePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (o ClientNativeSocialLoginApplePtrOutput) ToClientNativeSocialLoginApplePtrOutput() ClientNativeSocialLoginApplePtrOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginApplePtrOutput) ToClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginApplePtrOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginApplePtrOutput) Elem() ClientNativeSocialLoginAppleOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLoginApple) ClientNativeSocialLoginApple {
+		if v != nil {
+			return *v
+		}
+		var ret ClientNativeSocialLoginApple
+		return ret
+	}).(ClientNativeSocialLoginAppleOutput)
+}
+
+// Boolean
+func (o ClientNativeSocialLoginApplePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLoginApple) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClientNativeSocialLoginFacebook struct {
+	// Boolean
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ClientNativeSocialLoginFacebookInput is an input type that accepts ClientNativeSocialLoginFacebookArgs and ClientNativeSocialLoginFacebookOutput values.
+// You can construct a concrete instance of `ClientNativeSocialLoginFacebookInput` via:
+//
+//          ClientNativeSocialLoginFacebookArgs{...}
+type ClientNativeSocialLoginFacebookInput interface {
+	pulumi.Input
+
+	ToClientNativeSocialLoginFacebookOutput() ClientNativeSocialLoginFacebookOutput
+	ToClientNativeSocialLoginFacebookOutputWithContext(context.Context) ClientNativeSocialLoginFacebookOutput
+}
+
+type ClientNativeSocialLoginFacebookArgs struct {
+	// Boolean
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClientNativeSocialLoginFacebookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (i ClientNativeSocialLoginFacebookArgs) ToClientNativeSocialLoginFacebookOutput() ClientNativeSocialLoginFacebookOutput {
+	return i.ToClientNativeSocialLoginFacebookOutputWithContext(context.Background())
+}
+
+func (i ClientNativeSocialLoginFacebookArgs) ToClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) ClientNativeSocialLoginFacebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginFacebookOutput)
+}
+
+func (i ClientNativeSocialLoginFacebookArgs) ToClientNativeSocialLoginFacebookPtrOutput() ClientNativeSocialLoginFacebookPtrOutput {
+	return i.ToClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
+}
+
+func (i ClientNativeSocialLoginFacebookArgs) ToClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginFacebookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginFacebookOutput).ToClientNativeSocialLoginFacebookPtrOutputWithContext(ctx)
+}
+
+// ClientNativeSocialLoginFacebookPtrInput is an input type that accepts ClientNativeSocialLoginFacebookArgs, ClientNativeSocialLoginFacebookPtr and ClientNativeSocialLoginFacebookPtrOutput values.
+// You can construct a concrete instance of `ClientNativeSocialLoginFacebookPtrInput` via:
+//
+//          ClientNativeSocialLoginFacebookArgs{...}
+//
+//  or:
+//
+//          nil
+type ClientNativeSocialLoginFacebookPtrInput interface {
+	pulumi.Input
+
+	ToClientNativeSocialLoginFacebookPtrOutput() ClientNativeSocialLoginFacebookPtrOutput
+	ToClientNativeSocialLoginFacebookPtrOutputWithContext(context.Context) ClientNativeSocialLoginFacebookPtrOutput
+}
+
+type clientNativeSocialLoginFacebookPtrType ClientNativeSocialLoginFacebookArgs
+
+func ClientNativeSocialLoginFacebookPtr(v *ClientNativeSocialLoginFacebookArgs) ClientNativeSocialLoginFacebookPtrInput {
+	return (*clientNativeSocialLoginFacebookPtrType)(v)
+}
+
+func (*clientNativeSocialLoginFacebookPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (i *clientNativeSocialLoginFacebookPtrType) ToClientNativeSocialLoginFacebookPtrOutput() ClientNativeSocialLoginFacebookPtrOutput {
+	return i.ToClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
+}
+
+func (i *clientNativeSocialLoginFacebookPtrType) ToClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginFacebookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientNativeSocialLoginFacebookPtrOutput)
+}
+
+type ClientNativeSocialLoginFacebookOutput struct{ *pulumi.OutputState }
+
+func (ClientNativeSocialLoginFacebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (o ClientNativeSocialLoginFacebookOutput) ToClientNativeSocialLoginFacebookOutput() ClientNativeSocialLoginFacebookOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginFacebookOutput) ToClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) ClientNativeSocialLoginFacebookOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginFacebookOutput) ToClientNativeSocialLoginFacebookPtrOutput() ClientNativeSocialLoginFacebookPtrOutput {
+	return o.ToClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
+}
+
+func (o ClientNativeSocialLoginFacebookOutput) ToClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginFacebookPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientNativeSocialLoginFacebook) *ClientNativeSocialLoginFacebook {
+		return &v
+	}).(ClientNativeSocialLoginFacebookPtrOutput)
+}
+
+// Boolean
+func (o ClientNativeSocialLoginFacebookOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientNativeSocialLoginFacebook) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClientNativeSocialLoginFacebookPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientNativeSocialLoginFacebookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (o ClientNativeSocialLoginFacebookPtrOutput) ToClientNativeSocialLoginFacebookPtrOutput() ClientNativeSocialLoginFacebookPtrOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginFacebookPtrOutput) ToClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) ClientNativeSocialLoginFacebookPtrOutput {
+	return o
+}
+
+func (o ClientNativeSocialLoginFacebookPtrOutput) Elem() ClientNativeSocialLoginFacebookOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLoginFacebook) ClientNativeSocialLoginFacebook {
+		if v != nil {
+			return *v
+		}
+		var ret ClientNativeSocialLoginFacebook
+		return ret
+	}).(ClientNativeSocialLoginFacebookOutput)
+}
+
+// Boolean
+func (o ClientNativeSocialLoginFacebookPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientNativeSocialLoginFacebook) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClientRefreshToken struct {
 	// String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
 	ExpirationType string `pulumi:"expirationType"`
@@ -3047,11 +3496,14 @@ type ConnectionOptions struct {
 	// Custom Entity ID for the connection.
 	EntityId *string `pulumi:"entityId"`
 	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
-	FieldsMap map[string]string `pulumi:"fieldsMap"`
+	FieldsMap          map[string]string `pulumi:"fieldsMap"`
+	ForwardRequestInfo *bool             `pulumi:"forwardRequestInfo"`
 	// SMS number for the sender. Used when SMS Source is From.
-	From        *string `pulumi:"from"`
-	IconUrl     *string `pulumi:"iconUrl"`
-	IdentityApi *string `pulumi:"identityApi"`
+	From                  *string                                 `pulumi:"from"`
+	GatewayAuthentication *ConnectionOptionsGatewayAuthentication `pulumi:"gatewayAuthentication"`
+	GatewayUrl            *string                                 `pulumi:"gatewayUrl"`
+	IconUrl               *string                                 `pulumi:"iconUrl"`
+	IdentityApi           *string                                 `pulumi:"identityApi"`
 	// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`
 	IdpInitiated *ConnectionOptionsIdpInitiated `pulumi:"idpInitiated"`
 	// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
@@ -3084,6 +3536,7 @@ type ConnectionOptions struct {
 	PasswordPolicy *string `pulumi:"passwordPolicy"`
 	// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
 	ProtocolBinding *string `pulumi:"protocolBinding"`
+	Provider        *string `pulumi:"provider"`
 	// Template that formats the SAML request
 	RequestTemplate *string `pulumi:"requestTemplate"`
 	// Indicates whether or not the user is required to provide a username in addition to an email address.
@@ -3189,11 +3642,14 @@ type ConnectionOptionsArgs struct {
 	// Custom Entity ID for the connection.
 	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
 	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
-	FieldsMap pulumi.StringMapInput `pulumi:"fieldsMap"`
+	FieldsMap          pulumi.StringMapInput `pulumi:"fieldsMap"`
+	ForwardRequestInfo pulumi.BoolPtrInput   `pulumi:"forwardRequestInfo"`
 	// SMS number for the sender. Used when SMS Source is From.
-	From        pulumi.StringPtrInput `pulumi:"from"`
-	IconUrl     pulumi.StringPtrInput `pulumi:"iconUrl"`
-	IdentityApi pulumi.StringPtrInput `pulumi:"identityApi"`
+	From                  pulumi.StringPtrInput                          `pulumi:"from"`
+	GatewayAuthentication ConnectionOptionsGatewayAuthenticationPtrInput `pulumi:"gatewayAuthentication"`
+	GatewayUrl            pulumi.StringPtrInput                          `pulumi:"gatewayUrl"`
+	IconUrl               pulumi.StringPtrInput                          `pulumi:"iconUrl"`
+	IdentityApi           pulumi.StringPtrInput                          `pulumi:"identityApi"`
 	// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`
 	IdpInitiated ConnectionOptionsIdpInitiatedPtrInput `pulumi:"idpInitiated"`
 	// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
@@ -3226,6 +3682,7 @@ type ConnectionOptionsArgs struct {
 	PasswordPolicy pulumi.StringPtrInput `pulumi:"passwordPolicy"`
 	// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
 	ProtocolBinding pulumi.StringPtrInput `pulumi:"protocolBinding"`
+	Provider        pulumi.StringPtrInput `pulumi:"provider"`
 	// Template that formats the SAML request
 	RequestTemplate pulumi.StringPtrInput `pulumi:"requestTemplate"`
 	// Indicates whether or not the user is required to provide a username in addition to an email address.
@@ -3463,9 +3920,21 @@ func (o ConnectionOptionsOutput) FieldsMap() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.FieldsMap }).(pulumi.StringMapOutput)
 }
 
+func (o ConnectionOptionsOutput) ForwardRequestInfo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.ForwardRequestInfo }).(pulumi.BoolPtrOutput)
+}
+
 // SMS number for the sender. Used when SMS Source is From.
 func (o ConnectionOptionsOutput) From() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.From }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsOutput) GatewayAuthentication() ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsGatewayAuthentication { return v.GatewayAuthentication }).(ConnectionOptionsGatewayAuthenticationPtrOutput)
+}
+
+func (o ConnectionOptionsOutput) GatewayUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.GatewayUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsOutput) IconUrl() pulumi.StringPtrOutput {
@@ -3559,6 +4028,10 @@ func (o ConnectionOptionsOutput) PasswordPolicy() pulumi.StringPtrOutput {
 // The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
 func (o ConnectionOptionsOutput) ProtocolBinding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.ProtocolBinding }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
 // Template that formats the SAML request
@@ -3943,6 +4416,15 @@ func (o ConnectionOptionsPtrOutput) FieldsMap() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+func (o ConnectionOptionsPtrOutput) ForwardRequestInfo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardRequestInfo
+	}).(pulumi.BoolPtrOutput)
+}
+
 // SMS number for the sender. Used when SMS Source is From.
 func (o ConnectionOptionsPtrOutput) From() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
@@ -3950,6 +4432,24 @@ func (o ConnectionOptionsPtrOutput) From() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.From
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsPtrOutput) GatewayAuthentication() ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsGatewayAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayAuthentication
+	}).(ConnectionOptionsGatewayAuthenticationPtrOutput)
+}
+
+func (o ConnectionOptionsPtrOutput) GatewayUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4136,6 +4636,15 @@ func (o ConnectionOptionsPtrOutput) ProtocolBinding() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ProtocolBinding
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsPtrOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Provider
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4427,6 +4936,199 @@ func (o ConnectionOptionsPtrOutput) WaadProtocol() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.WaadProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsGatewayAuthentication struct {
+	Audience            *string `pulumi:"audience"`
+	Method              *string `pulumi:"method"`
+	Secret              *string `pulumi:"secret"`
+	SecretBase64Encoded *bool   `pulumi:"secretBase64Encoded"`
+	Subject             *string `pulumi:"subject"`
+}
+
+// ConnectionOptionsGatewayAuthenticationInput is an input type that accepts ConnectionOptionsGatewayAuthenticationArgs and ConnectionOptionsGatewayAuthenticationOutput values.
+// You can construct a concrete instance of `ConnectionOptionsGatewayAuthenticationInput` via:
+//
+//          ConnectionOptionsGatewayAuthenticationArgs{...}
+type ConnectionOptionsGatewayAuthenticationInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsGatewayAuthenticationOutput() ConnectionOptionsGatewayAuthenticationOutput
+	ToConnectionOptionsGatewayAuthenticationOutputWithContext(context.Context) ConnectionOptionsGatewayAuthenticationOutput
+}
+
+type ConnectionOptionsGatewayAuthenticationArgs struct {
+	Audience            pulumi.StringPtrInput `pulumi:"audience"`
+	Method              pulumi.StringPtrInput `pulumi:"method"`
+	Secret              pulumi.StringPtrInput `pulumi:"secret"`
+	SecretBase64Encoded pulumi.BoolPtrInput   `pulumi:"secretBase64Encoded"`
+	Subject             pulumi.StringPtrInput `pulumi:"subject"`
+}
+
+func (ConnectionOptionsGatewayAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsGatewayAuthentication)(nil)).Elem()
+}
+
+func (i ConnectionOptionsGatewayAuthenticationArgs) ToConnectionOptionsGatewayAuthenticationOutput() ConnectionOptionsGatewayAuthenticationOutput {
+	return i.ToConnectionOptionsGatewayAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsGatewayAuthenticationArgs) ToConnectionOptionsGatewayAuthenticationOutputWithContext(ctx context.Context) ConnectionOptionsGatewayAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsGatewayAuthenticationOutput)
+}
+
+func (i ConnectionOptionsGatewayAuthenticationArgs) ToConnectionOptionsGatewayAuthenticationPtrOutput() ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return i.ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsGatewayAuthenticationArgs) ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsGatewayAuthenticationOutput).ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsGatewayAuthenticationPtrInput is an input type that accepts ConnectionOptionsGatewayAuthenticationArgs, ConnectionOptionsGatewayAuthenticationPtr and ConnectionOptionsGatewayAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsGatewayAuthenticationPtrInput` via:
+//
+//          ConnectionOptionsGatewayAuthenticationArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionOptionsGatewayAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsGatewayAuthenticationPtrOutput() ConnectionOptionsGatewayAuthenticationPtrOutput
+	ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(context.Context) ConnectionOptionsGatewayAuthenticationPtrOutput
+}
+
+type connectionOptionsGatewayAuthenticationPtrType ConnectionOptionsGatewayAuthenticationArgs
+
+func ConnectionOptionsGatewayAuthenticationPtr(v *ConnectionOptionsGatewayAuthenticationArgs) ConnectionOptionsGatewayAuthenticationPtrInput {
+	return (*connectionOptionsGatewayAuthenticationPtrType)(v)
+}
+
+func (*connectionOptionsGatewayAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsGatewayAuthentication)(nil)).Elem()
+}
+
+func (i *connectionOptionsGatewayAuthenticationPtrType) ToConnectionOptionsGatewayAuthenticationPtrOutput() ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return i.ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsGatewayAuthenticationPtrType) ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsGatewayAuthenticationPtrOutput)
+}
+
+type ConnectionOptionsGatewayAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsGatewayAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsGatewayAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) ToConnectionOptionsGatewayAuthenticationOutput() ConnectionOptionsGatewayAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) ToConnectionOptionsGatewayAuthenticationOutputWithContext(ctx context.Context) ConnectionOptionsGatewayAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) ToConnectionOptionsGatewayAuthenticationPtrOutput() ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return o.ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsGatewayAuthentication) *ConnectionOptionsGatewayAuthentication {
+		return &v
+	}).(ConnectionOptionsGatewayAuthenticationPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) SecretBase64Encoded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *bool { return v.SecretBase64Encoded }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsGatewayAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsGatewayAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsGatewayAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionOptionsGatewayAuthenticationPtrOutput) ToConnectionOptionsGatewayAuthenticationPtrOutput() ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsGatewayAuthenticationPtrOutput) ToConnectionOptionsGatewayAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionOptionsGatewayAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Elem() ConnectionOptionsGatewayAuthenticationOutput {
+	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) ConnectionOptionsGatewayAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsGatewayAuthentication
+		return ret
+	}).(ConnectionOptionsGatewayAuthenticationOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationPtrOutput) SecretBase64Encoded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecretBase64Encoded
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subject
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4893,7 +5595,7 @@ func (o ConnectionOptionsPasswordComplexityOptionsPtrOutput) MinLength() pulumi.
 type ConnectionOptionsPasswordDictionary struct {
 	// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 	Dictionaries []string `pulumi:"dictionaries"`
-	// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+	// Indicates whether the password dictionary check is enabled for this connection.
 	Enable *bool `pulumi:"enable"`
 }
 
@@ -4911,7 +5613,7 @@ type ConnectionOptionsPasswordDictionaryInput interface {
 type ConnectionOptionsPasswordDictionaryArgs struct {
 	// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
 	Dictionaries pulumi.StringArrayInput `pulumi:"dictionaries"`
-	// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+	// Indicates whether the password dictionary check is enabled for this connection.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 }
 
@@ -4997,7 +5699,7 @@ func (o ConnectionOptionsPasswordDictionaryOutput) Dictionaries() pulumi.StringA
 	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) []string { return v.Dictionaries }).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+// Indicates whether the password dictionary check is enabled for this connection.
 func (o ConnectionOptionsPasswordDictionaryOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsPasswordDictionary) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -5036,7 +5738,7 @@ func (o ConnectionOptionsPasswordDictionaryPtrOutput) Dictionaries() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+// Indicates whether the password dictionary check is enabled for this connection.
 func (o ConnectionOptionsPasswordDictionaryPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsPasswordDictionary) *bool {
 		if v == nil {
@@ -6728,6 +7430,7 @@ type GlobalClientAddonsSamlp struct {
 	Recipient                      *string                        `pulumi:"recipient"`
 	SignResponse                   *bool                          `pulumi:"signResponse"`
 	SignatureAlgorithm             *string                        `pulumi:"signatureAlgorithm"`
+	SigningCert                    *string                        `pulumi:"signingCert"`
 	TypedAttributes                *bool                          `pulumi:"typedAttributes"`
 }
 
@@ -6761,6 +7464,7 @@ type GlobalClientAddonsSamlpArgs struct {
 	Recipient                      pulumi.StringPtrInput                 `pulumi:"recipient"`
 	SignResponse                   pulumi.BoolPtrInput                   `pulumi:"signResponse"`
 	SignatureAlgorithm             pulumi.StringPtrInput                 `pulumi:"signatureAlgorithm"`
+	SigningCert                    pulumi.StringPtrInput                 `pulumi:"signingCert"`
 	TypedAttributes                pulumi.BoolPtrInput                   `pulumi:"typedAttributes"`
 }
 
@@ -6911,6 +7615,10 @@ func (o GlobalClientAddonsSamlpOutput) SignResponse() pulumi.BoolPtrOutput {
 
 func (o GlobalClientAddonsSamlpOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+func (o GlobalClientAddonsSamlpOutput) SigningCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlobalClientAddonsSamlp) *string { return v.SigningCert }).(pulumi.StringPtrOutput)
 }
 
 func (o GlobalClientAddonsSamlpOutput) TypedAttributes() pulumi.BoolPtrOutput {
@@ -7100,6 +7808,15 @@ func (o GlobalClientAddonsSamlpPtrOutput) SignatureAlgorithm() pulumi.StringPtrO
 			return nil
 		}
 		return v.SignatureAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GlobalClientAddonsSamlpPtrOutput) SigningCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SigningCert
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7882,6 +8599,420 @@ func (o GlobalClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GlobalClientNativeSocialLogin struct {
+	Apple    *GlobalClientNativeSocialLoginApple    `pulumi:"apple"`
+	Facebook *GlobalClientNativeSocialLoginFacebook `pulumi:"facebook"`
+}
+
+// GlobalClientNativeSocialLoginInput is an input type that accepts GlobalClientNativeSocialLoginArgs and GlobalClientNativeSocialLoginOutput values.
+// You can construct a concrete instance of `GlobalClientNativeSocialLoginInput` via:
+//
+//          GlobalClientNativeSocialLoginArgs{...}
+type GlobalClientNativeSocialLoginInput interface {
+	pulumi.Input
+
+	ToGlobalClientNativeSocialLoginOutput() GlobalClientNativeSocialLoginOutput
+	ToGlobalClientNativeSocialLoginOutputWithContext(context.Context) GlobalClientNativeSocialLoginOutput
+}
+
+type GlobalClientNativeSocialLoginArgs struct {
+	Apple    GlobalClientNativeSocialLoginApplePtrInput    `pulumi:"apple"`
+	Facebook GlobalClientNativeSocialLoginFacebookPtrInput `pulumi:"facebook"`
+}
+
+func (GlobalClientNativeSocialLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (i GlobalClientNativeSocialLoginArgs) ToGlobalClientNativeSocialLoginOutput() GlobalClientNativeSocialLoginOutput {
+	return i.ToGlobalClientNativeSocialLoginOutputWithContext(context.Background())
+}
+
+func (i GlobalClientNativeSocialLoginArgs) ToGlobalClientNativeSocialLoginOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginOutput)
+}
+
+func (i GlobalClientNativeSocialLoginArgs) ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput {
+	return i.ToGlobalClientNativeSocialLoginPtrOutputWithContext(context.Background())
+}
+
+func (i GlobalClientNativeSocialLoginArgs) ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginOutput).ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx)
+}
+
+// GlobalClientNativeSocialLoginPtrInput is an input type that accepts GlobalClientNativeSocialLoginArgs, GlobalClientNativeSocialLoginPtr and GlobalClientNativeSocialLoginPtrOutput values.
+// You can construct a concrete instance of `GlobalClientNativeSocialLoginPtrInput` via:
+//
+//          GlobalClientNativeSocialLoginArgs{...}
+//
+//  or:
+//
+//          nil
+type GlobalClientNativeSocialLoginPtrInput interface {
+	pulumi.Input
+
+	ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput
+	ToGlobalClientNativeSocialLoginPtrOutputWithContext(context.Context) GlobalClientNativeSocialLoginPtrOutput
+}
+
+type globalClientNativeSocialLoginPtrType GlobalClientNativeSocialLoginArgs
+
+func GlobalClientNativeSocialLoginPtr(v *GlobalClientNativeSocialLoginArgs) GlobalClientNativeSocialLoginPtrInput {
+	return (*globalClientNativeSocialLoginPtrType)(v)
+}
+
+func (*globalClientNativeSocialLoginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (i *globalClientNativeSocialLoginPtrType) ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput {
+	return i.ToGlobalClientNativeSocialLoginPtrOutputWithContext(context.Background())
+}
+
+func (i *globalClientNativeSocialLoginPtrType) ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginPtrOutput)
+}
+
+type GlobalClientNativeSocialLoginOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientNativeSocialLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (o GlobalClientNativeSocialLoginOutput) ToGlobalClientNativeSocialLoginOutput() GlobalClientNativeSocialLoginOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginOutput) ToGlobalClientNativeSocialLoginOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginOutput) ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput {
+	return o.ToGlobalClientNativeSocialLoginPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalClientNativeSocialLoginOutput) ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLogin {
+		return &v
+	}).(GlobalClientNativeSocialLoginPtrOutput)
+}
+
+func (o GlobalClientNativeSocialLoginOutput) Apple() GlobalClientNativeSocialLoginApplePtrOutput {
+	return o.ApplyT(func(v GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLoginApple { return v.Apple }).(GlobalClientNativeSocialLoginApplePtrOutput)
+}
+
+func (o GlobalClientNativeSocialLoginOutput) Facebook() GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return o.ApplyT(func(v GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLoginFacebook { return v.Facebook }).(GlobalClientNativeSocialLoginFacebookPtrOutput)
+}
+
+type GlobalClientNativeSocialLoginPtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientNativeSocialLoginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (o GlobalClientNativeSocialLoginPtrOutput) ToGlobalClientNativeSocialLoginPtrOutput() GlobalClientNativeSocialLoginPtrOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginPtrOutput) ToGlobalClientNativeSocialLoginPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginPtrOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginPtrOutput) Elem() GlobalClientNativeSocialLoginOutput {
+	return o.ApplyT(func(v *GlobalClientNativeSocialLogin) GlobalClientNativeSocialLogin {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientNativeSocialLogin
+		return ret
+	}).(GlobalClientNativeSocialLoginOutput)
+}
+
+func (o GlobalClientNativeSocialLoginPtrOutput) Apple() GlobalClientNativeSocialLoginApplePtrOutput {
+	return o.ApplyT(func(v *GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLoginApple {
+		if v == nil {
+			return nil
+		}
+		return v.Apple
+	}).(GlobalClientNativeSocialLoginApplePtrOutput)
+}
+
+func (o GlobalClientNativeSocialLoginPtrOutput) Facebook() GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return o.ApplyT(func(v *GlobalClientNativeSocialLogin) *GlobalClientNativeSocialLoginFacebook {
+		if v == nil {
+			return nil
+		}
+		return v.Facebook
+	}).(GlobalClientNativeSocialLoginFacebookPtrOutput)
+}
+
+type GlobalClientNativeSocialLoginApple struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GlobalClientNativeSocialLoginAppleInput is an input type that accepts GlobalClientNativeSocialLoginAppleArgs and GlobalClientNativeSocialLoginAppleOutput values.
+// You can construct a concrete instance of `GlobalClientNativeSocialLoginAppleInput` via:
+//
+//          GlobalClientNativeSocialLoginAppleArgs{...}
+type GlobalClientNativeSocialLoginAppleInput interface {
+	pulumi.Input
+
+	ToGlobalClientNativeSocialLoginAppleOutput() GlobalClientNativeSocialLoginAppleOutput
+	ToGlobalClientNativeSocialLoginAppleOutputWithContext(context.Context) GlobalClientNativeSocialLoginAppleOutput
+}
+
+type GlobalClientNativeSocialLoginAppleArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GlobalClientNativeSocialLoginAppleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (i GlobalClientNativeSocialLoginAppleArgs) ToGlobalClientNativeSocialLoginAppleOutput() GlobalClientNativeSocialLoginAppleOutput {
+	return i.ToGlobalClientNativeSocialLoginAppleOutputWithContext(context.Background())
+}
+
+func (i GlobalClientNativeSocialLoginAppleArgs) ToGlobalClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginAppleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginAppleOutput)
+}
+
+func (i GlobalClientNativeSocialLoginAppleArgs) ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput {
+	return i.ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
+}
+
+func (i GlobalClientNativeSocialLoginAppleArgs) ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginApplePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginAppleOutput).ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx)
+}
+
+// GlobalClientNativeSocialLoginApplePtrInput is an input type that accepts GlobalClientNativeSocialLoginAppleArgs, GlobalClientNativeSocialLoginApplePtr and GlobalClientNativeSocialLoginApplePtrOutput values.
+// You can construct a concrete instance of `GlobalClientNativeSocialLoginApplePtrInput` via:
+//
+//          GlobalClientNativeSocialLoginAppleArgs{...}
+//
+//  or:
+//
+//          nil
+type GlobalClientNativeSocialLoginApplePtrInput interface {
+	pulumi.Input
+
+	ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput
+	ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(context.Context) GlobalClientNativeSocialLoginApplePtrOutput
+}
+
+type globalClientNativeSocialLoginApplePtrType GlobalClientNativeSocialLoginAppleArgs
+
+func GlobalClientNativeSocialLoginApplePtr(v *GlobalClientNativeSocialLoginAppleArgs) GlobalClientNativeSocialLoginApplePtrInput {
+	return (*globalClientNativeSocialLoginApplePtrType)(v)
+}
+
+func (*globalClientNativeSocialLoginApplePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (i *globalClientNativeSocialLoginApplePtrType) ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput {
+	return i.ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
+}
+
+func (i *globalClientNativeSocialLoginApplePtrType) ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginApplePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginApplePtrOutput)
+}
+
+type GlobalClientNativeSocialLoginAppleOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientNativeSocialLoginAppleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (o GlobalClientNativeSocialLoginAppleOutput) ToGlobalClientNativeSocialLoginAppleOutput() GlobalClientNativeSocialLoginAppleOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginAppleOutput) ToGlobalClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginAppleOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginAppleOutput) ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput {
+	return o.ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(context.Background())
+}
+
+func (o GlobalClientNativeSocialLoginAppleOutput) ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginApplePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientNativeSocialLoginApple) *GlobalClientNativeSocialLoginApple {
+		return &v
+	}).(GlobalClientNativeSocialLoginApplePtrOutput)
+}
+
+func (o GlobalClientNativeSocialLoginAppleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GlobalClientNativeSocialLoginApple) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GlobalClientNativeSocialLoginApplePtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientNativeSocialLoginApplePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (o GlobalClientNativeSocialLoginApplePtrOutput) ToGlobalClientNativeSocialLoginApplePtrOutput() GlobalClientNativeSocialLoginApplePtrOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginApplePtrOutput) ToGlobalClientNativeSocialLoginApplePtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginApplePtrOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginApplePtrOutput) Elem() GlobalClientNativeSocialLoginAppleOutput {
+	return o.ApplyT(func(v *GlobalClientNativeSocialLoginApple) GlobalClientNativeSocialLoginApple {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientNativeSocialLoginApple
+		return ret
+	}).(GlobalClientNativeSocialLoginAppleOutput)
+}
+
+func (o GlobalClientNativeSocialLoginApplePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GlobalClientNativeSocialLoginApple) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GlobalClientNativeSocialLoginFacebook struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GlobalClientNativeSocialLoginFacebookInput is an input type that accepts GlobalClientNativeSocialLoginFacebookArgs and GlobalClientNativeSocialLoginFacebookOutput values.
+// You can construct a concrete instance of `GlobalClientNativeSocialLoginFacebookInput` via:
+//
+//          GlobalClientNativeSocialLoginFacebookArgs{...}
+type GlobalClientNativeSocialLoginFacebookInput interface {
+	pulumi.Input
+
+	ToGlobalClientNativeSocialLoginFacebookOutput() GlobalClientNativeSocialLoginFacebookOutput
+	ToGlobalClientNativeSocialLoginFacebookOutputWithContext(context.Context) GlobalClientNativeSocialLoginFacebookOutput
+}
+
+type GlobalClientNativeSocialLoginFacebookArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GlobalClientNativeSocialLoginFacebookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (i GlobalClientNativeSocialLoginFacebookArgs) ToGlobalClientNativeSocialLoginFacebookOutput() GlobalClientNativeSocialLoginFacebookOutput {
+	return i.ToGlobalClientNativeSocialLoginFacebookOutputWithContext(context.Background())
+}
+
+func (i GlobalClientNativeSocialLoginFacebookArgs) ToGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginFacebookOutput)
+}
+
+func (i GlobalClientNativeSocialLoginFacebookArgs) ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return i.ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
+}
+
+func (i GlobalClientNativeSocialLoginFacebookArgs) ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginFacebookOutput).ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx)
+}
+
+// GlobalClientNativeSocialLoginFacebookPtrInput is an input type that accepts GlobalClientNativeSocialLoginFacebookArgs, GlobalClientNativeSocialLoginFacebookPtr and GlobalClientNativeSocialLoginFacebookPtrOutput values.
+// You can construct a concrete instance of `GlobalClientNativeSocialLoginFacebookPtrInput` via:
+//
+//          GlobalClientNativeSocialLoginFacebookArgs{...}
+//
+//  or:
+//
+//          nil
+type GlobalClientNativeSocialLoginFacebookPtrInput interface {
+	pulumi.Input
+
+	ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput
+	ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput
+}
+
+type globalClientNativeSocialLoginFacebookPtrType GlobalClientNativeSocialLoginFacebookArgs
+
+func GlobalClientNativeSocialLoginFacebookPtr(v *GlobalClientNativeSocialLoginFacebookArgs) GlobalClientNativeSocialLoginFacebookPtrInput {
+	return (*globalClientNativeSocialLoginFacebookPtrType)(v)
+}
+
+func (*globalClientNativeSocialLoginFacebookPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (i *globalClientNativeSocialLoginFacebookPtrType) ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return i.ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
+}
+
+func (i *globalClientNativeSocialLoginFacebookPtrType) ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientNativeSocialLoginFacebookPtrOutput)
+}
+
+type GlobalClientNativeSocialLoginFacebookOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientNativeSocialLoginFacebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (o GlobalClientNativeSocialLoginFacebookOutput) ToGlobalClientNativeSocialLoginFacebookOutput() GlobalClientNativeSocialLoginFacebookOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginFacebookOutput) ToGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginFacebookOutput) ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return o.ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalClientNativeSocialLoginFacebookOutput) ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientNativeSocialLoginFacebook) *GlobalClientNativeSocialLoginFacebook {
+		return &v
+	}).(GlobalClientNativeSocialLoginFacebookPtrOutput)
+}
+
+func (o GlobalClientNativeSocialLoginFacebookOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GlobalClientNativeSocialLoginFacebook) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GlobalClientNativeSocialLoginFacebookPtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalClientNativeSocialLoginFacebookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (o GlobalClientNativeSocialLoginFacebookPtrOutput) ToGlobalClientNativeSocialLoginFacebookPtrOutput() GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginFacebookPtrOutput) ToGlobalClientNativeSocialLoginFacebookPtrOutputWithContext(ctx context.Context) GlobalClientNativeSocialLoginFacebookPtrOutput {
+	return o
+}
+
+func (o GlobalClientNativeSocialLoginFacebookPtrOutput) Elem() GlobalClientNativeSocialLoginFacebookOutput {
+	return o.ApplyT(func(v *GlobalClientNativeSocialLoginFacebook) GlobalClientNativeSocialLoginFacebook {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalClientNativeSocialLoginFacebook
+		return ret
+	}).(GlobalClientNativeSocialLoginFacebookOutput)
+}
+
+func (o GlobalClientNativeSocialLoginFacebookPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GlobalClientNativeSocialLoginFacebook) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GlobalClientRefreshToken struct {
 	ExpirationType            string `pulumi:"expirationType"`
 	IdleTokenLifetime         *int   `pulumi:"idleTokenLifetime"`
@@ -8533,7 +9664,7 @@ type LogStreamSink struct {
 	DatadogRegion *string `pulumi:"datadogRegion"`
 	// Sent in the HTTP "Authorization" header with each request
 	HttpAuthorization *string `pulumi:"httpAuthorization"`
-	// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+	// The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
 	HttpContentFormat *string `pulumi:"httpContentFormat"`
 	// The ContentType header to send over HTTP.  Common value is "application/json"
 	HttpContentType *string `pulumi:"httpContentType"`
@@ -8584,7 +9715,7 @@ type LogStreamSinkArgs struct {
 	DatadogRegion pulumi.StringPtrInput `pulumi:"datadogRegion"`
 	// Sent in the HTTP "Authorization" header with each request
 	HttpAuthorization pulumi.StringPtrInput `pulumi:"httpAuthorization"`
-	// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+	// The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
 	HttpContentFormat pulumi.StringPtrInput `pulumi:"httpContentFormat"`
 	// The ContentType header to send over HTTP.  Common value is "application/json"
 	HttpContentType pulumi.StringPtrInput `pulumi:"httpContentType"`
@@ -8730,7 +9861,7 @@ func (o LogStreamSinkOutput) HttpAuthorization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpAuthorization }).(pulumi.StringPtrOutput)
 }
 
-// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+// The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
 func (o LogStreamSinkOutput) HttpContentFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpContentFormat }).(pulumi.StringPtrOutput)
 }
@@ -8898,7 +10029,7 @@ func (o LogStreamSinkPtrOutput) HttpAuthorization() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+// The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
 func (o LogStreamSinkPtrOutput) HttpContentFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -10709,10 +11840,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileAndroidPtrInput)(nil)).Elem(), ClientMobileAndroidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileIosInput)(nil)).Elem(), ClientMobileIosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileIosPtrInput)(nil)).Elem(), ClientMobileIosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginInput)(nil)).Elem(), ClientNativeSocialLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginPtrInput)(nil)).Elem(), ClientNativeSocialLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginAppleInput)(nil)).Elem(), ClientNativeSocialLoginAppleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginApplePtrInput)(nil)).Elem(), ClientNativeSocialLoginAppleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginFacebookInput)(nil)).Elem(), ClientNativeSocialLoginFacebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginFacebookPtrInput)(nil)).Elem(), ClientNativeSocialLoginFacebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPtrInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPtrInput)(nil)).Elem(), ConnectionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsGatewayAuthenticationInput)(nil)).Elem(), ConnectionOptionsGatewayAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsGatewayAuthenticationPtrInput)(nil)).Elem(), ConnectionOptionsGatewayAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsIdpInitiatedInput)(nil)).Elem(), ConnectionOptionsIdpInitiatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsIdpInitiatedPtrInput)(nil)).Elem(), ConnectionOptionsIdpInitiatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsMfaInput)(nil)).Elem(), ConnectionOptionsMfaArgs{})
@@ -10749,6 +11888,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileAndroidPtrInput)(nil)).Elem(), GlobalClientMobileAndroidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileIosInput)(nil)).Elem(), GlobalClientMobileIosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileIosPtrInput)(nil)).Elem(), GlobalClientMobileIosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginInput)(nil)).Elem(), GlobalClientNativeSocialLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginPtrInput)(nil)).Elem(), GlobalClientNativeSocialLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginAppleInput)(nil)).Elem(), GlobalClientNativeSocialLoginAppleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginApplePtrInput)(nil)).Elem(), GlobalClientNativeSocialLoginAppleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginFacebookInput)(nil)).Elem(), GlobalClientNativeSocialLoginFacebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginFacebookPtrInput)(nil)).Elem(), GlobalClientNativeSocialLoginFacebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientRefreshTokenInput)(nil)).Elem(), GlobalClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientRefreshTokenPtrInput)(nil)).Elem(), GlobalClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneInput)(nil)).Elem(), GuardianPhoneArgs{})
@@ -10805,10 +11950,18 @@ func init() {
 	pulumi.RegisterOutputType(ClientMobileAndroidPtrOutput{})
 	pulumi.RegisterOutputType(ClientMobileIosOutput{})
 	pulumi.RegisterOutputType(ClientMobileIosPtrOutput{})
+	pulumi.RegisterOutputType(ClientNativeSocialLoginOutput{})
+	pulumi.RegisterOutputType(ClientNativeSocialLoginPtrOutput{})
+	pulumi.RegisterOutputType(ClientNativeSocialLoginAppleOutput{})
+	pulumi.RegisterOutputType(ClientNativeSocialLoginApplePtrOutput{})
+	pulumi.RegisterOutputType(ClientNativeSocialLoginFacebookOutput{})
+	pulumi.RegisterOutputType(ClientNativeSocialLoginFacebookPtrOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsGatewayAuthenticationOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsGatewayAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsMfaOutput{})
@@ -10845,6 +11998,12 @@ func init() {
 	pulumi.RegisterOutputType(GlobalClientMobileAndroidPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientMobileIosOutput{})
 	pulumi.RegisterOutputType(GlobalClientMobileIosPtrOutput{})
+	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginOutput{})
+	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginPtrOutput{})
+	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginAppleOutput{})
+	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginApplePtrOutput{})
+	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginFacebookOutput{})
+	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginFacebookPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GlobalClientRefreshTokenPtrOutput{})
 	pulumi.RegisterOutputType(GuardianPhoneOutput{})
