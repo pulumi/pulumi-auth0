@@ -76,6 +76,9 @@ namespace Pulumi.Auth0.Inputs
         [Input("signatureAlgorithm")]
         public Input<string>? SignatureAlgorithm { get; set; }
 
+        [Input("signingCert")]
+        public Input<string>? SigningCert { get; set; }
+
         [Input("typedAttributes")]
         public Input<bool>? TypedAttributes { get; set; }
 

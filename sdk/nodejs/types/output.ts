@@ -251,6 +251,10 @@ export interface ClientAddonsSamlp {
      */
     signatureAlgorithm?: string;
     /**
+     * String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     */
+    signingCert?: string;
+    /**
      * Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
      */
     typedAttributes?: boolean;
@@ -317,6 +321,31 @@ export interface ClientMobileIos {
      * String
      */
     teamId?: string;
+}
+
+export interface ClientNativeSocialLogin {
+    /**
+     * Resource:
+     */
+    apple?: outputs.ClientNativeSocialLoginApple;
+    /**
+     * Resources:
+     */
+    facebook?: outputs.ClientNativeSocialLoginFacebook;
+}
+
+export interface ClientNativeSocialLoginApple {
+    /**
+     * Boolean
+     */
+    enabled?: boolean;
+}
+
+export interface ClientNativeSocialLoginFacebook {
+    /**
+     * Boolean
+     */
+    enabled?: boolean;
 }
 
 export interface ClientRefreshToken {
@@ -426,10 +455,13 @@ export interface ConnectionOptions {
      * SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
     fieldsMap?: {[key: string]: string};
+    forwardRequestInfo?: boolean;
     /**
      * SMS number for the sender. Used when SMS Source is From.
      */
     from?: string;
+    gatewayAuthentication?: outputs.ConnectionOptionsGatewayAuthentication;
+    gatewayUrl?: string;
     iconUrl?: string;
     identityApi?: string;
     /**
@@ -494,6 +526,7 @@ export interface ConnectionOptions {
      * The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
      */
     protocolBinding?: string;
+    provider?: string;
     /**
      * Template that formats the SAML request
      */
@@ -589,6 +622,14 @@ export interface ConnectionOptions {
     waadProtocol?: string;
 }
 
+export interface ConnectionOptionsGatewayAuthentication {
+    audience?: string;
+    method?: string;
+    secret?: string;
+    secretBase64Encoded?: boolean;
+    subject?: string;
+}
+
 export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: string;
     /**
@@ -622,7 +663,7 @@ export interface ConnectionOptionsPasswordDictionary {
      */
     dictionaries?: string[];
     /**
-     * Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+     * Indicates whether the password dictionary check is enabled for this connection.
      */
     enable?: boolean;
 }
@@ -765,6 +806,7 @@ export interface GlobalClientAddonsSamlp {
     recipient?: string;
     signResponse?: boolean;
     signatureAlgorithm?: string;
+    signingCert?: string;
     typedAttributes?: boolean;
 }
 
@@ -793,6 +835,19 @@ export interface GlobalClientMobileAndroid {
 export interface GlobalClientMobileIos {
     appBundleIdentifier?: string;
     teamId?: string;
+}
+
+export interface GlobalClientNativeSocialLogin {
+    apple?: outputs.GlobalClientNativeSocialLoginApple;
+    facebook?: outputs.GlobalClientNativeSocialLoginFacebook;
+}
+
+export interface GlobalClientNativeSocialLoginApple {
+    enabled?: boolean;
+}
+
+export interface GlobalClientNativeSocialLoginFacebook {
+    enabled?: boolean;
 }
 
 export interface GlobalClientRefreshToken {
@@ -889,7 +944,7 @@ export interface LogStreamSink {
      */
     httpAuthorization?: string;
     /**
-     * The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+     * The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
      */
     httpContentFormat?: string;
     /**

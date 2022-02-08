@@ -40,6 +40,7 @@ class GlobalClientArgs:
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input['GlobalClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 native_social_login: Optional[pulumi.Input['GlobalClientNativeSocialLoginArgs']] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -101,6 +102,8 @@ class GlobalClientArgs:
             pulumi.set(__self__, "mobile", mobile)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if native_social_login is not None:
+            pulumi.set(__self__, "native_social_login", native_social_login)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_require_behavior is not None:
@@ -342,6 +345,15 @@ class GlobalClientArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nativeSocialLogin")
+    def native_social_login(self) -> Optional[pulumi.Input['GlobalClientNativeSocialLoginArgs']]:
+        return pulumi.get(self, "native_social_login")
+
+    @native_social_login.setter
+    def native_social_login(self, value: Optional[pulumi.Input['GlobalClientNativeSocialLoginArgs']]):
+        pulumi.set(self, "native_social_login", value)
 
     @property
     @pulumi.getter(name="oidcConformant")
@@ -444,6 +456,7 @@ class _GlobalClientState:
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input['GlobalClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 native_social_login: Optional[pulumi.Input['GlobalClientNativeSocialLoginArgs']] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -505,6 +518,8 @@ class _GlobalClientState:
             pulumi.set(__self__, "mobile", mobile)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if native_social_login is not None:
+            pulumi.set(__self__, "native_social_login", native_social_login)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_require_behavior is not None:
@@ -746,6 +761,15 @@ class _GlobalClientState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nativeSocialLogin")
+    def native_social_login(self) -> Optional[pulumi.Input['GlobalClientNativeSocialLoginArgs']]:
+        return pulumi.get(self, "native_social_login")
+
+    @native_social_login.setter
+    def native_social_login(self, value: Optional[pulumi.Input['GlobalClientNativeSocialLoginArgs']]):
+        pulumi.set(self, "native_social_login", value)
 
     @property
     @pulumi.getter(name="oidcConformant")
@@ -850,6 +874,7 @@ class GlobalClient(pulumi.CustomResource):
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 native_social_login: Optional[pulumi.Input[pulumi.InputType['GlobalClientNativeSocialLoginArgs']]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -912,6 +937,7 @@ class GlobalClient(pulumi.CustomResource):
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 native_social_login: Optional[pulumi.Input[pulumi.InputType['GlobalClientNativeSocialLoginArgs']]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -957,6 +983,7 @@ class GlobalClient(pulumi.CustomResource):
             __props__.__dict__["logo_uri"] = logo_uri
             __props__.__dict__["mobile"] = mobile
             __props__.__dict__["name"] = name
+            __props__.__dict__["native_social_login"] = native_social_login
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
@@ -1000,6 +1027,7 @@ class GlobalClient(pulumi.CustomResource):
             logo_uri: Optional[pulumi.Input[str]] = None,
             mobile: Optional[pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            native_social_login: Optional[pulumi.Input[pulumi.InputType['GlobalClientNativeSocialLoginArgs']]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
@@ -1045,6 +1073,7 @@ class GlobalClient(pulumi.CustomResource):
         __props__.__dict__["logo_uri"] = logo_uri
         __props__.__dict__["mobile"] = mobile
         __props__.__dict__["name"] = name
+        __props__.__dict__["native_social_login"] = native_social_login
         __props__.__dict__["oidc_conformant"] = oidc_conformant
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
@@ -1179,6 +1208,11 @@ class GlobalClient(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nativeSocialLogin")
+    def native_social_login(self) -> pulumi.Output['outputs.GlobalClientNativeSocialLogin']:
+        return pulumi.get(self, "native_social_login")
 
     @property
     @pulumi.getter(name="oidcConformant")

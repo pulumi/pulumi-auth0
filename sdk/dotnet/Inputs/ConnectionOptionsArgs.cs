@@ -159,11 +159,20 @@ namespace Pulumi.Auth0.Inputs
             set => _fieldsMap = value;
         }
 
+        [Input("forwardRequestInfo")]
+        public Input<bool>? ForwardRequestInfo { get; set; }
+
         /// <summary>
         /// SMS number for the sender. Used when SMS Source is From.
         /// </summary>
         [Input("from")]
         public Input<string>? From { get; set; }
+
+        [Input("gatewayAuthentication")]
+        public Input<Inputs.ConnectionOptionsGatewayAuthenticationArgs>? GatewayAuthentication { get; set; }
+
+        [Input("gatewayUrl")]
+        public Input<string>? GatewayUrl { get; set; }
 
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
@@ -283,6 +292,9 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("protocolBinding")]
         public Input<string>? ProtocolBinding { get; set; }
+
+        [Input("provider")]
+        public Input<string>? Provider { get; set; }
 
         /// <summary>
         /// Template that formats the SAML request

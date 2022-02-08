@@ -86,10 +86,13 @@ namespace Pulumi.Auth0.Outputs
         /// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? FieldsMap;
+        public readonly bool? ForwardRequestInfo;
         /// <summary>
         /// SMS number for the sender. Used when SMS Source is From.
         /// </summary>
         public readonly string? From;
+        public readonly Outputs.ConnectionOptionsGatewayAuthentication? GatewayAuthentication;
+        public readonly string? GatewayUrl;
         public readonly string? IconUrl;
         public readonly string? IdentityApi;
         /// <summary>
@@ -154,6 +157,7 @@ namespace Pulumi.Auth0.Outputs
         /// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
         /// </summary>
         public readonly string? ProtocolBinding;
+        public readonly string? Provider;
         /// <summary>
         /// Template that formats the SAML request
         /// </summary>
@@ -294,7 +298,13 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableDictionary<string, string>? fieldsMap,
 
+            bool? forwardRequestInfo,
+
             string? from,
+
+            Outputs.ConnectionOptionsGatewayAuthentication? gatewayAuthentication,
+
+            string? gatewayUrl,
 
             string? iconUrl,
 
@@ -333,6 +343,8 @@ namespace Pulumi.Auth0.Outputs
             string? passwordPolicy,
 
             string? protocolBinding,
+
+            string? provider,
 
             string? requestTemplate,
 
@@ -416,7 +428,10 @@ namespace Pulumi.Auth0.Outputs
             EnabledDatabaseCustomization = enabledDatabaseCustomization;
             EntityId = entityId;
             FieldsMap = fieldsMap;
+            ForwardRequestInfo = forwardRequestInfo;
             From = from;
+            GatewayAuthentication = gatewayAuthentication;
+            GatewayUrl = gatewayUrl;
             IconUrl = iconUrl;
             IdentityApi = identityApi;
             IdpInitiated = idpInitiated;
@@ -436,6 +451,7 @@ namespace Pulumi.Auth0.Outputs
             PasswordNoPersonalInfo = passwordNoPersonalInfo;
             PasswordPolicy = passwordPolicy;
             ProtocolBinding = protocolBinding;
+            Provider = provider;
             RequestTemplate = requestTemplate;
             RequiresUsername = requiresUsername;
             Scopes = scopes;

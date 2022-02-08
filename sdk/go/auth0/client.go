@@ -46,6 +46,7 @@ import (
 // 						pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
 // 					},
 // 					PassthroughClaimsWithNoMapping: pulumi.Bool(false),
+// 					SigningCert:                    pulumi.String("pemcertificate"),
 // 				},
 // 			},
 // 			AllowedClients: pulumi.StringArray{
@@ -165,6 +166,8 @@ type Client struct {
 	Mobile ClientMobilePtrOutput `pulumi:"mobile"`
 	// String. Name of the client.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+	NativeSocialLogin ClientNativeSocialLoginOutput `pulumi:"nativeSocialLogin"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
 	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
@@ -264,6 +267,8 @@ type clientState struct {
 	Mobile *ClientMobile `pulumi:"mobile"`
 	// String. Name of the client.
 	Name *string `pulumi:"name"`
+	// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+	NativeSocialLogin *ClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
@@ -332,6 +337,8 @@ type ClientState struct {
 	Mobile ClientMobilePtrInput
 	// String. Name of the client.
 	Name pulumi.StringPtrInput
+	// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+	NativeSocialLogin ClientNativeSocialLoginPtrInput
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolPtrInput
 	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
@@ -400,6 +407,8 @@ type clientArgs struct {
 	Mobile *ClientMobile `pulumi:"mobile"`
 	// String. Name of the client.
 	Name *string `pulumi:"name"`
+	// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+	NativeSocialLogin *ClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
@@ -465,6 +474,8 @@ type ClientArgs struct {
 	Mobile ClientMobilePtrInput
 	// String. Name of the client.
 	Name pulumi.StringPtrInput
+	// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+	NativeSocialLogin ClientNativeSocialLoginPtrInput
 	// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolPtrInput
 	// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.

@@ -251,6 +251,10 @@ export interface ClientAddonsSamlp {
      */
     signatureAlgorithm?: pulumi.Input<string>;
     /**
+     * String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     */
+    signingCert?: pulumi.Input<string>;
+    /**
      * Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
      */
     typedAttributes?: pulumi.Input<boolean>;
@@ -317,6 +321,31 @@ export interface ClientMobileIos {
      * String
      */
     teamId?: pulumi.Input<string>;
+}
+
+export interface ClientNativeSocialLogin {
+    /**
+     * Resource:
+     */
+    apple?: pulumi.Input<inputs.ClientNativeSocialLoginApple>;
+    /**
+     * Resources:
+     */
+    facebook?: pulumi.Input<inputs.ClientNativeSocialLoginFacebook>;
+}
+
+export interface ClientNativeSocialLoginApple {
+    /**
+     * Boolean
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ClientNativeSocialLoginFacebook {
+    /**
+     * Boolean
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ClientRefreshToken {
@@ -426,10 +455,13 @@ export interface ConnectionOptions {
      * SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
     fieldsMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    forwardRequestInfo?: pulumi.Input<boolean>;
     /**
      * SMS number for the sender. Used when SMS Source is From.
      */
     from?: pulumi.Input<string>;
+    gatewayAuthentication?: pulumi.Input<inputs.ConnectionOptionsGatewayAuthentication>;
+    gatewayUrl?: pulumi.Input<string>;
     iconUrl?: pulumi.Input<string>;
     identityApi?: pulumi.Input<string>;
     /**
@@ -494,6 +526,7 @@ export interface ConnectionOptions {
      * The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
      */
     protocolBinding?: pulumi.Input<string>;
+    provider?: pulumi.Input<string>;
     /**
      * Template that formats the SAML request
      */
@@ -589,6 +622,14 @@ export interface ConnectionOptions {
     waadProtocol?: pulumi.Input<string>;
 }
 
+export interface ConnectionOptionsGatewayAuthentication {
+    audience?: pulumi.Input<string>;
+    method?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
+    secretBase64Encoded?: pulumi.Input<boolean>;
+    subject?: pulumi.Input<string>;
+}
+
 export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: pulumi.Input<string>;
     /**
@@ -622,7 +663,7 @@ export interface ConnectionOptionsPasswordDictionary {
      */
     dictionaries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+     * Indicates whether the password dictionary check is enabled for this connection.
      */
     enable?: pulumi.Input<boolean>;
 }
@@ -765,6 +806,7 @@ export interface GlobalClientAddonsSamlp {
     recipient?: pulumi.Input<string>;
     signResponse?: pulumi.Input<boolean>;
     signatureAlgorithm?: pulumi.Input<string>;
+    signingCert?: pulumi.Input<string>;
     typedAttributes?: pulumi.Input<boolean>;
 }
 
@@ -793,6 +835,19 @@ export interface GlobalClientMobileAndroid {
 export interface GlobalClientMobileIos {
     appBundleIdentifier?: pulumi.Input<string>;
     teamId?: pulumi.Input<string>;
+}
+
+export interface GlobalClientNativeSocialLogin {
+    apple?: pulumi.Input<inputs.GlobalClientNativeSocialLoginApple>;
+    facebook?: pulumi.Input<inputs.GlobalClientNativeSocialLoginFacebook>;
+}
+
+export interface GlobalClientNativeSocialLoginApple {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GlobalClientNativeSocialLoginFacebook {
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface GlobalClientRefreshToken {
@@ -889,7 +944,7 @@ export interface LogStreamSink {
      */
     httpAuthorization?: pulumi.Input<string>;
     /**
-     * The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+     * The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
      */
     httpContentFormat?: pulumi.Input<string>;
     /**
@@ -1080,4 +1135,3 @@ export interface TriggerBindingAction {
      */
     id: pulumi.Input<string>;
 }
-

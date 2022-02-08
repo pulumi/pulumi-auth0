@@ -23,8 +23,12 @@ __all__ = [
     'ClientMobile',
     'ClientMobileAndroid',
     'ClientMobileIos',
+    'ClientNativeSocialLogin',
+    'ClientNativeSocialLoginApple',
+    'ClientNativeSocialLoginFacebook',
     'ClientRefreshToken',
     'ConnectionOptions',
+    'ConnectionOptionsGatewayAuthentication',
     'ConnectionOptionsIdpInitiated',
     'ConnectionOptionsMfa',
     'ConnectionOptionsPasswordComplexityOptions',
@@ -43,6 +47,9 @@ __all__ = [
     'GlobalClientMobile',
     'GlobalClientMobileAndroid',
     'GlobalClientMobileIos',
+    'GlobalClientNativeSocialLogin',
+    'GlobalClientNativeSocialLoginApple',
+    'GlobalClientNativeSocialLoginFacebook',
     'GlobalClientRefreshToken',
     'GuardianPhone',
     'GuardianPhoneOptions',
@@ -630,6 +637,8 @@ class ClientAddonsSamlp(dict):
             suggest = "sign_response"
         elif key == "signatureAlgorithm":
             suggest = "signature_algorithm"
+        elif key == "signingCert":
+            suggest = "signing_cert"
         elif key == "typedAttributes":
             suggest = "typed_attributes"
 
@@ -663,6 +672,7 @@ class ClientAddonsSamlp(dict):
                  recipient: Optional[str] = None,
                  sign_response: Optional[bool] = None,
                  signature_algorithm: Optional[str] = None,
+                 signing_cert: Optional[str] = None,
                  typed_attributes: Optional[bool] = None):
         """
         :param str audience: String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
@@ -683,6 +693,7 @@ class ClientAddonsSamlp(dict):
         :param str recipient: String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
         :param bool sign_response: Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
         :param str signature_algorithm: String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
+        :param str signing_cert: String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
         :param bool typed_attributes: Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
         """
         if audience is not None:
@@ -721,6 +732,8 @@ class ClientAddonsSamlp(dict):
             pulumi.set(__self__, "sign_response", sign_response)
         if signature_algorithm is not None:
             pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        if signing_cert is not None:
+            pulumi.set(__self__, "signing_cert", signing_cert)
         if typed_attributes is not None:
             pulumi.set(__self__, "typed_attributes", typed_attributes)
 
@@ -867,6 +880,14 @@ class ClientAddonsSamlp(dict):
         String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
         """
         return pulumi.get(self, "signature_algorithm")
+
+    @property
+    @pulumi.getter(name="signingCert")
+    def signing_cert(self) -> Optional[str]:
+        """
+        String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+        """
+        return pulumi.get(self, "signing_cert")
 
     @property
     @pulumi.getter(name="typedAttributes")
@@ -1131,6 +1152,75 @@ class ClientMobileIos(dict):
 
 
 @pulumi.output_type
+class ClientNativeSocialLogin(dict):
+    def __init__(__self__, *,
+                 apple: Optional['outputs.ClientNativeSocialLoginApple'] = None,
+                 facebook: Optional['outputs.ClientNativeSocialLoginFacebook'] = None):
+        """
+        :param 'ClientNativeSocialLoginAppleArgs' apple: Resource:
+        :param 'ClientNativeSocialLoginFacebookArgs' facebook: Resources:
+        """
+        if apple is not None:
+            pulumi.set(__self__, "apple", apple)
+        if facebook is not None:
+            pulumi.set(__self__, "facebook", facebook)
+
+    @property
+    @pulumi.getter
+    def apple(self) -> Optional['outputs.ClientNativeSocialLoginApple']:
+        """
+        Resource:
+        """
+        return pulumi.get(self, "apple")
+
+    @property
+    @pulumi.getter
+    def facebook(self) -> Optional['outputs.ClientNativeSocialLoginFacebook']:
+        """
+        Resources:
+        """
+        return pulumi.get(self, "facebook")
+
+
+@pulumi.output_type
+class ClientNativeSocialLoginApple(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Boolean
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Boolean
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClientNativeSocialLoginFacebook(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Boolean
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Boolean
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ClientRefreshToken(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1289,8 +1379,14 @@ class ConnectionOptions(dict):
             suggest = "entity_id"
         elif key == "fieldsMap":
             suggest = "fields_map"
+        elif key == "forwardRequestInfo":
+            suggest = "forward_request_info"
         elif key == "from":
             suggest = "from_"
+        elif key == "gatewayAuthentication":
+            suggest = "gateway_authentication"
+        elif key == "gatewayUrl":
+            suggest = "gateway_url"
         elif key == "iconUrl":
             suggest = "icon_url"
         elif key == "identityApi":
@@ -1400,7 +1496,10 @@ class ConnectionOptions(dict):
                  enabled_database_customization: Optional[bool] = None,
                  entity_id: Optional[str] = None,
                  fields_map: Optional[Mapping[str, str]] = None,
+                 forward_request_info: Optional[bool] = None,
                  from_: Optional[str] = None,
+                 gateway_authentication: Optional['outputs.ConnectionOptionsGatewayAuthentication'] = None,
+                 gateway_url: Optional[str] = None,
                  icon_url: Optional[str] = None,
                  identity_api: Optional[str] = None,
                  idp_initiated: Optional['outputs.ConnectionOptionsIdpInitiated'] = None,
@@ -1420,6 +1519,7 @@ class ConnectionOptions(dict):
                  password_no_personal_info: Optional['outputs.ConnectionOptionsPasswordNoPersonalInfo'] = None,
                  password_policy: Optional[str] = None,
                  protocol_binding: Optional[str] = None,
+                 provider: Optional[str] = None,
                  request_template: Optional[str] = None,
                  requires_username: Optional[bool] = None,
                  scopes: Optional[Sequence[str]] = None,
@@ -1550,8 +1650,14 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "entity_id", entity_id)
         if fields_map is not None:
             pulumi.set(__self__, "fields_map", fields_map)
+        if forward_request_info is not None:
+            pulumi.set(__self__, "forward_request_info", forward_request_info)
         if from_ is not None:
             pulumi.set(__self__, "from_", from_)
+        if gateway_authentication is not None:
+            pulumi.set(__self__, "gateway_authentication", gateway_authentication)
+        if gateway_url is not None:
+            pulumi.set(__self__, "gateway_url", gateway_url)
         if icon_url is not None:
             pulumi.set(__self__, "icon_url", icon_url)
         if identity_api is not None:
@@ -1590,6 +1696,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "password_policy", password_policy)
         if protocol_binding is not None:
             pulumi.set(__self__, "protocol_binding", protocol_binding)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
         if request_template is not None:
             pulumi.set(__self__, "request_template", request_template)
         if requires_username is not None:
@@ -1813,12 +1921,27 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "fields_map")
 
     @property
+    @pulumi.getter(name="forwardRequestInfo")
+    def forward_request_info(self) -> Optional[bool]:
+        return pulumi.get(self, "forward_request_info")
+
+    @property
     @pulumi.getter(name="from")
     def from_(self) -> Optional[str]:
         """
         SMS number for the sender. Used when SMS Source is From.
         """
         return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter(name="gatewayAuthentication")
+    def gateway_authentication(self) -> Optional['outputs.ConnectionOptionsGatewayAuthentication']:
+        return pulumi.get(self, "gateway_authentication")
+
+    @property
+    @pulumi.getter(name="gatewayUrl")
+    def gateway_url(self) -> Optional[str]:
+        return pulumi.get(self, "gateway_url")
 
     @property
     @pulumi.getter(name="iconUrl")
@@ -1959,6 +2082,11 @@ class ConnectionOptions(dict):
         The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
         """
         return pulumi.get(self, "protocol_binding")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[str]:
+        return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter(name="requestTemplate")
@@ -2175,6 +2303,68 @@ class ConnectionOptions(dict):
 
 
 @pulumi.output_type
+class ConnectionOptionsGatewayAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretBase64Encoded":
+            suggest = "secret_base64_encoded"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsGatewayAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsGatewayAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsGatewayAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audience: Optional[str] = None,
+                 method: Optional[str] = None,
+                 secret: Optional[str] = None,
+                 secret_base64_encoded: Optional[bool] = None,
+                 subject: Optional[str] = None):
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if secret_base64_encoded is not None:
+            pulumi.set(__self__, "secret_base64_encoded", secret_base64_encoded)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> Optional[str]:
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[str]:
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[str]:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="secretBase64Encoded")
+    def secret_base64_encoded(self) -> Optional[bool]:
+        return pulumi.get(self, "secret_base64_encoded")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[str]:
+        return pulumi.get(self, "subject")
+
+
+@pulumi.output_type
 class ConnectionOptionsIdpInitiated(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2321,7 +2511,7 @@ class ConnectionOptionsPasswordDictionary(dict):
                  enable: Optional[bool] = None):
         """
         :param Sequence[str] dictionaries: Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
-        :param bool enable: Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+        :param bool enable: Indicates whether the password dictionary check is enabled for this connection.
         """
         if dictionaries is not None:
             pulumi.set(__self__, "dictionaries", dictionaries)
@@ -2340,7 +2530,7 @@ class ConnectionOptionsPasswordDictionary(dict):
     @pulumi.getter
     def enable(self) -> Optional[bool]:
         """
-        Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+        Indicates whether the password dictionary check is enabled for this connection.
         """
         return pulumi.get(self, "enable")
 
@@ -2939,6 +3129,8 @@ class GlobalClientAddonsSamlp(dict):
             suggest = "sign_response"
         elif key == "signatureAlgorithm":
             suggest = "signature_algorithm"
+        elif key == "signingCert":
+            suggest = "signing_cert"
         elif key == "typedAttributes":
             suggest = "typed_attributes"
 
@@ -2972,6 +3164,7 @@ class GlobalClientAddonsSamlp(dict):
                  recipient: Optional[str] = None,
                  sign_response: Optional[bool] = None,
                  signature_algorithm: Optional[str] = None,
+                 signing_cert: Optional[str] = None,
                  typed_attributes: Optional[bool] = None):
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
@@ -3009,6 +3202,8 @@ class GlobalClientAddonsSamlp(dict):
             pulumi.set(__self__, "sign_response", sign_response)
         if signature_algorithm is not None:
             pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        if signing_cert is not None:
+            pulumi.set(__self__, "signing_cert", signing_cert)
         if typed_attributes is not None:
             pulumi.set(__self__, "typed_attributes", typed_attributes)
 
@@ -3101,6 +3296,11 @@ class GlobalClientAddonsSamlp(dict):
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[str]:
         return pulumi.get(self, "signature_algorithm")
+
+    @property
+    @pulumi.getter(name="signingCert")
+    def signing_cert(self) -> Optional[str]:
+        return pulumi.get(self, "signing_cert")
 
     @property
     @pulumi.getter(name="typedAttributes")
@@ -3301,6 +3501,53 @@ class GlobalClientMobileIos(dict):
     @pulumi.getter(name="teamId")
     def team_id(self) -> Optional[str]:
         return pulumi.get(self, "team_id")
+
+
+@pulumi.output_type
+class GlobalClientNativeSocialLogin(dict):
+    def __init__(__self__, *,
+                 apple: Optional['outputs.GlobalClientNativeSocialLoginApple'] = None,
+                 facebook: Optional['outputs.GlobalClientNativeSocialLoginFacebook'] = None):
+        if apple is not None:
+            pulumi.set(__self__, "apple", apple)
+        if facebook is not None:
+            pulumi.set(__self__, "facebook", facebook)
+
+    @property
+    @pulumi.getter
+    def apple(self) -> Optional['outputs.GlobalClientNativeSocialLoginApple']:
+        return pulumi.get(self, "apple")
+
+    @property
+    @pulumi.getter
+    def facebook(self) -> Optional['outputs.GlobalClientNativeSocialLoginFacebook']:
+        return pulumi.get(self, "facebook")
+
+
+@pulumi.output_type
+class GlobalClientNativeSocialLoginApple(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GlobalClientNativeSocialLoginFacebook(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -3637,7 +3884,7 @@ class LogStreamSink(dict):
         :param str datadog_api_key: The Datadog API key
         :param str datadog_region: The Datadog region
         :param str http_authorization: Sent in the HTTP "Authorization" header with each request
-        :param str http_content_format: The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+        :param str http_content_format: The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
         :param str http_content_type: The ContentType header to send over HTTP.  Common value is "application/json"
         :param Sequence[str] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request
         :param str http_endpoint: The HTTP endpoint to send streaming logs
@@ -3769,7 +4016,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="httpContentFormat")
     def http_content_format(self) -> Optional[str]:
         """
-        The format of data sent over HTTP. Options are "JSONLINES" or "JSONARRAY"
+        The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
         """
         return pulumi.get(self, "http_content_format")
 

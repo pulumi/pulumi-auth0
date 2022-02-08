@@ -20,6 +20,7 @@ export * from "./hook";
 export * from "./logStream";
 export * from "./organization";
 export * from "./prompt";
+export * from "./promptCustomText";
 export * from "./provider";
 export * from "./resourceServer";
 export * from "./role";
@@ -54,6 +55,7 @@ import { Hook } from "./hook";
 import { LogStream } from "./logStream";
 import { Organization } from "./organization";
 import { Prompt } from "./prompt";
+import { PromptCustomText } from "./promptCustomText";
 import { ResourceServer } from "./resourceServer";
 import { Role } from "./role";
 import { Rule } from "./rule";
@@ -96,6 +98,8 @@ const _module = {
                 return new Organization(name, <any>undefined, { urn })
             case "auth0:index/prompt:Prompt":
                 return new Prompt(name, <any>undefined, { urn })
+            case "auth0:index/promptCustomText:PromptCustomText":
+                return new PromptCustomText(name, <any>undefined, { urn })
             case "auth0:index/resourceServer:ResourceServer":
                 return new ResourceServer(name, <any>undefined, { urn })
             case "auth0:index/role:Role":
@@ -130,6 +134,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/role", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rule", _module)

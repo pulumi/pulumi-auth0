@@ -16,11 +16,12 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const defaultGuardian = new auth0.Guardian("default", {
+ *     email: true,
  *     phone: {
  *         messageTypes: ["sms"],
  *         options: {
- *             enrollmentMessage: "{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment",
- *             verificationMessage: "{{code}} is your verification code for {{tenant.friendly_name}}",
+ *             enrollmentMessage: "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
+ *             verificationMessage: "{{code}} is your verification code for {{tenant.friendly_name}}.",
  *         },
  *         provider: "auth0",
  *     },
@@ -57,6 +58,10 @@ export class Guardian extends pulumi.CustomResource {
     }
 
     /**
+     * Boolean. Indicates whether or not email MFA is enabled.
+     */
+    public readonly email!: pulumi.Output<boolean | undefined>;
+    /**
      * List(Resource). Configuration settings for the phone MFA. For details, see Phone.
      */
     public readonly phone!: pulumi.Output<outputs.GuardianPhone | undefined>;
@@ -78,6 +83,7 @@ export class Guardian extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GuardianState | undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
             resourceInputs["phone"] = state ? state.phone : undefined;
             resourceInputs["policy"] = state ? state.policy : undefined;
         } else {
@@ -85,6 +91,7 @@ export class Guardian extends pulumi.CustomResource {
             if ((!args || args.policy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
+            resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["phone"] = args ? args.phone : undefined;
             resourceInputs["policy"] = args ? args.policy : undefined;
         }
@@ -97,6 +104,10 @@ export class Guardian extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Guardian resources.
  */
 export interface GuardianState {
+    /**
+     * Boolean. Indicates whether or not email MFA is enabled.
+     */
+    email?: pulumi.Input<boolean>;
     /**
      * List(Resource). Configuration settings for the phone MFA. For details, see Phone.
      */
@@ -111,6 +122,10 @@ export interface GuardianState {
  * The set of arguments for constructing a Guardian resource.
  */
 export interface GuardianArgs {
+    /**
+     * Boolean. Indicates whether or not email MFA is enabled.
+     */
+    email?: pulumi.Input<boolean>;
     /**
      * List(Resource). Configuration settings for the phone MFA. For details, see Phone.
      */

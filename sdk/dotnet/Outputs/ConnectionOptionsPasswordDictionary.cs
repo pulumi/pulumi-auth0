@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Dictionaries;
         /// <summary>
-        /// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
+        /// Indicates whether the password dictionary check is enabled for this connection.
         /// </summary>
         public readonly bool? Enable;
 

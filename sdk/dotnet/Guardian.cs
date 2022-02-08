@@ -25,6 +25,7 @@ namespace Pulumi.Auth0
     ///     {
     ///         var @default = new Auth0.Guardian("default", new Auth0.GuardianArgs
     ///         {
+    ///             Email = true,
     ///             Phone = new Auth0.Inputs.GuardianPhoneArgs
     ///             {
     ///                 MessageTypes = 
@@ -33,8 +34,8 @@ namespace Pulumi.Auth0
     ///                 },
     ///                 Options = new Auth0.Inputs.GuardianPhoneOptionsArgs
     ///                 {
-    ///                     EnrollmentMessage = "{{code}}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment",
-    ///                     VerificationMessage = "{{code}} is your verification code for {{tenant.friendly_name}}",
+    ///                     EnrollmentMessage = "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
+    ///                     VerificationMessage = "{{code}} is your verification code for {{tenant.friendly_name}}.",
     ///                 },
     ///                 Provider = "auth0",
     ///             },
@@ -48,6 +49,12 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/guardian:Guardian")]
     public partial class Guardian : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Boolean. Indicates whether or not email MFA is enabled.
+        /// </summary>
+        [Output("email")]
+        public Output<bool?> Email { get; private set; } = null!;
+
         /// <summary>
         /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
         /// </summary>
@@ -107,6 +114,12 @@ namespace Pulumi.Auth0
     public sealed class GuardianArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Boolean. Indicates whether or not email MFA is enabled.
+        /// </summary>
+        [Input("email")]
+        public Input<bool>? Email { get; set; }
+
+        /// <summary>
         /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
         /// </summary>
         [Input("phone")]
@@ -125,6 +138,12 @@ namespace Pulumi.Auth0
 
     public sealed class GuardianState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean. Indicates whether or not email MFA is enabled.
+        /// </summary>
+        [Input("email")]
+        public Input<bool>? Email { get; set; }
+
         /// <summary>
         /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
         /// </summary>
