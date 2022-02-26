@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/alexkappa/terraform-provider-auth0/auth0"
+	"github.com/auth0/terraform-provider-auth0/auth0"
 	"github.com/pulumi/pulumi-auth0/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
@@ -64,7 +64,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "auth0"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
-		GitHubOrg:   "alexkappa",
+		GitHubOrg:   "auth0",
 		Repository:  "https://github.com/pulumi/pulumi-auth0",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"debug": {
