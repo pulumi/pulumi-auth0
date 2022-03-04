@@ -6,7 +6,10 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can setting logo, color to maintain a consistent service brand. This resource allows you to manage a branding within your Auth0 tenant.
+ * This resource allows you to manage branding within your Auth0 tenant.
+ *
+ * Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user
+ * expectations.
  *
  * ## Example Usage
  *
@@ -71,7 +74,9 @@ export class Branding extends pulumi.CustomResource {
      */
     public readonly logoUrl!: pulumi.Output<string>;
     /**
-     * List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * List(Resource). Configuration settings for Universal Login.
+     * See Universal Login. This capability can only be used if the tenant has
+     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
      */
     public readonly universalLogin!: pulumi.Output<outputs.BrandingUniversalLogin | undefined>;
 
@@ -127,7 +132,9 @@ export interface BrandingState {
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * List(Resource). Configuration settings for Universal Login.
+     * See Universal Login. This capability can only be used if the tenant has
+     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
      */
     universalLogin?: pulumi.Input<inputs.BrandingUniversalLogin>;
 }
@@ -153,7 +160,9 @@ export interface BrandingArgs {
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * List(Resource). Configuration settings for Universal Login.
+     * See Universal Login. This capability can only be used if the tenant has
+     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
      */
     universalLogin?: pulumi.Input<inputs.BrandingUniversalLogin>;
 }

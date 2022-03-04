@@ -13,61 +13,55 @@ namespace Pulumi.Auth0.Inputs
     public sealed class TenantFlagsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-        /// </summary>
-        [Input("changePwdFlowV1")]
-        public Input<bool>? ChangePwdFlowV1 { get; set; }
-
-        /// <summary>
-        /// Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+        /// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
         /// </summary>
         [Input("disableClickjackProtectionHeaders")]
         public Input<bool>? DisableClickjackProtectionHeaders { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+        /// Boolean. Indicates whether the APIs section is enabled for the tenant.
         /// </summary>
         [Input("enableApisSection")]
         public Input<bool>? EnableApisSection { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+        /// Boolean. Indicates whether all current connections should be enabled when a new client is created.
         /// </summary>
         [Input("enableClientConnections")]
         public Input<bool>? EnableClientConnections { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the tenant allows custom domains in emails.
+        /// Boolean. Indicates whether the tenant allows custom domains in emails.
         /// </summary>
         [Input("enableCustomDomainInEmails")]
         public Input<bool>? EnableCustomDomainInEmails { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the tenant allows dynamic client registration.
+        /// Boolean. Indicates whether the tenant allows dynamic client registration.
         /// </summary>
         [Input("enableDynamicClientRegistration")]
         public Input<bool>? EnableDynamicClientRegistration { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not to use the older v2 legacy logs search.
+        /// Boolean. Indicates whether to use the older v2 legacy logs search.
         /// </summary>
         [Input("enableLegacyLogsSearchV2")]
         public Input<bool>? EnableLegacyLogsSearchV2 { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+        /// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
         /// </summary>
         [Input("enablePipeline2")]
         public Input<bool>? EnablePipeline2 { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the public sign up process shows a user_exists error if the user already exists.
+        /// Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
         /// </summary>
         [Input("enablePublicSignupUserExistsError")]
         public Input<bool>? EnablePublicSignupUserExistsError { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the tenant uses universal login.
+        /// Boolean. Indicates whether the tenant uses universal login.
         /// </summary>
         [Input("universalLogin")]
         public Input<bool>? UniversalLogin { get; set; }

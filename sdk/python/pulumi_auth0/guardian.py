@@ -17,16 +17,20 @@ class GuardianArgs:
     def __init__(__self__, *,
                  policy: pulumi.Input[str],
                  email: Optional[pulumi.Input[bool]] = None,
+                 otp: Optional[pulumi.Input[bool]] = None,
                  phone: Optional[pulumi.Input['GuardianPhoneArgs']] = None):
         """
         The set of arguments for constructing a Guardian resource.
-        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
-        :param pulumi.Input[bool] email: Boolean. Indicates whether or not email MFA is enabled.
+        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+               The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+        :param pulumi.Input[bool] email: Boolean. Indicates whether email MFA is enabled.
         :param pulumi.Input['GuardianPhoneArgs'] phone: List(Resource). Configuration settings for the phone MFA. For details, see Phone.
         """
         pulumi.set(__self__, "policy", policy)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if otp is not None:
+            pulumi.set(__self__, "otp", otp)
         if phone is not None:
             pulumi.set(__self__, "phone", phone)
 
@@ -34,7 +38,8 @@ class GuardianArgs:
     @pulumi.getter
     def policy(self) -> pulumi.Input[str]:
         """
-        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         """
         return pulumi.get(self, "policy")
 
@@ -46,13 +51,22 @@ class GuardianArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not email MFA is enabled.
+        Boolean. Indicates whether email MFA is enabled.
         """
         return pulumi.get(self, "email")
 
     @email.setter
     def email(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def otp(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "otp")
+
+    @otp.setter
+    def otp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "otp", value)
 
     @property
     @pulumi.getter
@@ -71,16 +85,20 @@ class GuardianArgs:
 class _GuardianState:
     def __init__(__self__, *,
                  email: Optional[pulumi.Input[bool]] = None,
+                 otp: Optional[pulumi.Input[bool]] = None,
                  phone: Optional[pulumi.Input['GuardianPhoneArgs']] = None,
                  policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Guardian resources.
-        :param pulumi.Input[bool] email: Boolean. Indicates whether or not email MFA is enabled.
+        :param pulumi.Input[bool] email: Boolean. Indicates whether email MFA is enabled.
         :param pulumi.Input['GuardianPhoneArgs'] phone: List(Resource). Configuration settings for the phone MFA. For details, see Phone.
-        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+               The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if otp is not None:
+            pulumi.set(__self__, "otp", otp)
         if phone is not None:
             pulumi.set(__self__, "phone", phone)
         if policy is not None:
@@ -90,13 +108,22 @@ class _GuardianState:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not email MFA is enabled.
+        Boolean. Indicates whether email MFA is enabled.
         """
         return pulumi.get(self, "email")
 
     @email.setter
     def email(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def otp(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "otp")
+
+    @otp.setter
+    def otp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "otp", value)
 
     @property
     @pulumi.getter
@@ -114,7 +141,8 @@ class _GuardianState:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         """
         return pulumi.get(self, "policy")
 
@@ -129,12 +157,13 @@ class Guardian(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  email: Optional[pulumi.Input[bool]] = None,
+                 otp: Optional[pulumi.Input[bool]] = None,
                  phone: Optional[pulumi.Input[pulumi.InputType['GuardianPhoneArgs']]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Multi-factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some of
-        the options available for MFA.
+        Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized
+        access. With this resource you can configure some options available for MFA.
 
         ## Example Usage
 
@@ -144,6 +173,7 @@ class Guardian(pulumi.CustomResource):
 
         default = auth0.Guardian("default",
             email=True,
+            otp=True,
             phone=auth0.GuardianPhoneArgs(
                 message_types=["sms"],
                 options=auth0.GuardianPhoneOptionsArgs(
@@ -155,11 +185,20 @@ class Guardian(pulumi.CustomResource):
             policy="all-applications")
         ```
 
+        ## Import
+
+        As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+
+        ```sh
+         $ pulumi import auth0:index/guardian:Guardian default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] email: Boolean. Indicates whether or not email MFA is enabled.
+        :param pulumi.Input[bool] email: Boolean. Indicates whether email MFA is enabled.
         :param pulumi.Input[pulumi.InputType['GuardianPhoneArgs']] phone: List(Resource). Configuration settings for the phone MFA. For details, see Phone.
-        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+               The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         """
         ...
     @overload
@@ -168,8 +207,8 @@ class Guardian(pulumi.CustomResource):
                  args: GuardianArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Multi-factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some of
-        the options available for MFA.
+        Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized
+        access. With this resource you can configure some options available for MFA.
 
         ## Example Usage
 
@@ -179,6 +218,7 @@ class Guardian(pulumi.CustomResource):
 
         default = auth0.Guardian("default",
             email=True,
+            otp=True,
             phone=auth0.GuardianPhoneArgs(
                 message_types=["sms"],
                 options=auth0.GuardianPhoneOptionsArgs(
@@ -188,6 +228,14 @@ class Guardian(pulumi.CustomResource):
                 provider="auth0",
             ),
             policy="all-applications")
+        ```
+
+        ## Import
+
+        As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+
+        ```sh
+         $ pulumi import auth0:index/guardian:Guardian default 24940d4b-4bd4-44e7-894e-f92e4de36a40
         ```
 
         :param str resource_name: The name of the resource.
@@ -206,6 +254,7 @@ class Guardian(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  email: Optional[pulumi.Input[bool]] = None,
+                 otp: Optional[pulumi.Input[bool]] = None,
                  phone: Optional[pulumi.Input[pulumi.InputType['GuardianPhoneArgs']]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -221,6 +270,7 @@ class Guardian(pulumi.CustomResource):
             __props__ = GuardianArgs.__new__(GuardianArgs)
 
             __props__.__dict__["email"] = email
+            __props__.__dict__["otp"] = otp
             __props__.__dict__["phone"] = phone
             if policy is None and not opts.urn:
                 raise TypeError("Missing required property 'policy'")
@@ -236,6 +286,7 @@ class Guardian(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             email: Optional[pulumi.Input[bool]] = None,
+            otp: Optional[pulumi.Input[bool]] = None,
             phone: Optional[pulumi.Input[pulumi.InputType['GuardianPhoneArgs']]] = None,
             policy: Optional[pulumi.Input[str]] = None) -> 'Guardian':
         """
@@ -245,15 +296,17 @@ class Guardian(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] email: Boolean. Indicates whether or not email MFA is enabled.
+        :param pulumi.Input[bool] email: Boolean. Indicates whether email MFA is enabled.
         :param pulumi.Input[pulumi.InputType['GuardianPhoneArgs']] phone: List(Resource). Configuration settings for the phone MFA. For details, see Phone.
-        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        :param pulumi.Input[str] policy: String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+               The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GuardianState.__new__(_GuardianState)
 
         __props__.__dict__["email"] = email
+        __props__.__dict__["otp"] = otp
         __props__.__dict__["phone"] = phone
         __props__.__dict__["policy"] = policy
         return Guardian(resource_name, opts=opts, __props__=__props__)
@@ -262,9 +315,14 @@ class Guardian(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean. Indicates whether or not email MFA is enabled.
+        Boolean. Indicates whether email MFA is enabled.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def otp(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "otp")
 
     @property
     @pulumi.getter
@@ -278,7 +336,8 @@ class Guardian(pulumi.CustomResource):
     @pulumi.getter
     def policy(self) -> pulumi.Output[str]:
         """
-        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         """
         return pulumi.get(self, "policy")
 

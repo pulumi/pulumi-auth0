@@ -10,7 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With Auth0, you can setting logo, color to maintain a consistent service brand. This resource allows you to manage a branding within your Auth0 tenant.
+// This resource allows you to manage branding within your Auth0 tenant.
+//
+// Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user
+// expectations.
 //
 // ## Example Usage
 //
@@ -54,7 +57,9 @@ type Branding struct {
 	Font BrandingFontPtrOutput `pulumi:"font"`
 	// String. URL of logo for branding.
 	LogoUrl pulumi.StringOutput `pulumi:"logoUrl"`
-	// List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// List(Resource). Configuration settings for Universal Login.
+	// See Universal Login. This capability can only be used if the tenant has
+	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
 	UniversalLogin BrandingUniversalLoginPtrOutput `pulumi:"universalLogin"`
 }
 
@@ -95,7 +100,9 @@ type brandingState struct {
 	Font *BrandingFont `pulumi:"font"`
 	// String. URL of logo for branding.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// List(Resource). Configuration settings for Universal Login.
+	// See Universal Login. This capability can only be used if the tenant has
+	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
 	UniversalLogin *BrandingUniversalLogin `pulumi:"universalLogin"`
 }
 
@@ -108,7 +115,9 @@ type BrandingState struct {
 	Font BrandingFontPtrInput
 	// String. URL of logo for branding.
 	LogoUrl pulumi.StringPtrInput
-	// List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// List(Resource). Configuration settings for Universal Login.
+	// See Universal Login. This capability can only be used if the tenant has
+	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
 	UniversalLogin BrandingUniversalLoginPtrInput
 }
 
@@ -125,7 +134,9 @@ type brandingArgs struct {
 	Font *BrandingFont `pulumi:"font"`
 	// String. URL of logo for branding.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// List(Resource). Configuration settings for Universal Login.
+	// See Universal Login. This capability can only be used if the tenant has
+	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
 	UniversalLogin *BrandingUniversalLogin `pulumi:"universalLogin"`
 }
 
@@ -139,7 +150,9 @@ type BrandingArgs struct {
 	Font BrandingFontPtrInput
 	// String. URL of logo for branding.
 	LogoUrl pulumi.StringPtrInput
-	// List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// List(Resource). Configuration settings for Universal Login.
+	// See Universal Login. This capability can only be used if the tenant has
+	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
 	UniversalLogin BrandingUniversalLoginPtrInput
 }
 

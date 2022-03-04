@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
+    /// With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking,
+    /// and deleting users.
     /// 
     /// ## Example Usage
     /// 
@@ -46,6 +47,14 @@ namespace Pulumi.Auth0
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// auth0_user can be imported using the user ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/user:User")]
     public partial class User : Pulumi.CustomResource
@@ -72,7 +81,7 @@ namespace Pulumi.Auth0
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the email address has been verified.
+        /// Boolean. Indicates whether the email address has been verified.
         /// </summary>
         [Output("emailVerified")]
         public Output<bool?> EmailVerified { get; private set; } = null!;
@@ -93,7 +102,7 @@ namespace Pulumi.Auth0
         public Output<string> Nickname { get; private set; } = null!;
 
         /// <summary>
-        /// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+        /// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -105,7 +114,7 @@ namespace Pulumi.Auth0
         public Output<string?> PhoneNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the phone number has been verified.
+        /// Boolean. Indicates whether the phone number has been verified.
         /// </summary>
         [Output("phoneVerified")]
         public Output<bool?> PhoneVerified { get; private set; } = null!;
@@ -138,7 +147,7 @@ namespace Pulumi.Auth0
         public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        /// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         /// </summary>
         [Output("verifyEmail")]
         public Output<bool?> VerifyEmail { get; private set; } = null!;
@@ -211,7 +220,7 @@ namespace Pulumi.Auth0
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the email address has been verified.
+        /// Boolean. Indicates whether the email address has been verified.
         /// </summary>
         [Input("emailVerified")]
         public Input<bool>? EmailVerified { get; set; }
@@ -232,7 +241,7 @@ namespace Pulumi.Auth0
         public Input<string>? Nickname { get; set; }
 
         /// <summary>
-        /// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+        /// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -244,7 +253,7 @@ namespace Pulumi.Auth0
         public Input<string>? PhoneNumber { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the phone number has been verified.
+        /// Boolean. Indicates whether the phone number has been verified.
         /// </summary>
         [Input("phoneVerified")]
         public Input<bool>? PhoneVerified { get; set; }
@@ -283,7 +292,7 @@ namespace Pulumi.Auth0
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        /// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         /// </summary>
         [Input("verifyEmail")]
         public Input<bool>? VerifyEmail { get; set; }
@@ -317,7 +326,7 @@ namespace Pulumi.Auth0
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the email address has been verified.
+        /// Boolean. Indicates whether the email address has been verified.
         /// </summary>
         [Input("emailVerified")]
         public Input<bool>? EmailVerified { get; set; }
@@ -338,7 +347,7 @@ namespace Pulumi.Auth0
         public Input<string>? Nickname { get; set; }
 
         /// <summary>
-        /// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+        /// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -350,7 +359,7 @@ namespace Pulumi.Auth0
         public Input<string>? PhoneNumber { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the phone number has been verified.
+        /// Boolean. Indicates whether the phone number has been verified.
         /// </summary>
         [Input("phoneVerified")]
         public Input<bool>? PhoneVerified { get; set; }
@@ -389,7 +398,7 @@ namespace Pulumi.Auth0
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        /// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         /// </summary>
         [Input("verifyEmail")]
         public Input<bool>? VerifyEmail { get; set; }

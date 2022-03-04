@@ -244,6 +244,14 @@ class Organization(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        Existing organizations can be imported using organization id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']] branding: Defines how to style the login pages. For details, see
@@ -292,6 +300,14 @@ class Organization(pulumi.CustomResource):
                 connection_id=auth0_connection["acme"]["id"],
                 assign_membership_on_login=True,
             )])
+        ```
+
+        ## Import
+
+        Existing organizations can be imported using organization id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.

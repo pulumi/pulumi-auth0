@@ -47,18 +47,26 @@ namespace Pulumi.Auth0
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Existing resource servers can be imported using their id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/resourceServer:ResourceServer")]
     public partial class ResourceServer : Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+        /// Boolean. Indicates whether refresh tokens can be issued for this resource server.
         /// </summary>
         [Output("allowOfflineAccess")]
         public Output<bool?> AllowOfflineAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not authorization polices are enforced.
+        /// Boolean. Indicates whether authorization polices are enforced.
         /// </summary>
         [Output("enforcePolicies")]
         public Output<bool?> EnforcePolicies { get; private set; } = null!;
@@ -100,7 +108,7 @@ namespace Pulumi.Auth0
         public Output<string> SigningSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        /// Boolean. Indicates whether to skip user consent for applications flagged as first party.
         /// </summary>
         [Output("skipConsentForVerifiableFirstPartyClients")]
         public Output<bool?> SkipConsentForVerifiableFirstPartyClients { get; private set; } = null!;
@@ -176,13 +184,13 @@ namespace Pulumi.Auth0
     public sealed class ResourceServerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+        /// Boolean. Indicates whether refresh tokens can be issued for this resource server.
         /// </summary>
         [Input("allowOfflineAccess")]
         public Input<bool>? AllowOfflineAccess { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not authorization polices are enforced.
+        /// Boolean. Indicates whether authorization polices are enforced.
         /// </summary>
         [Input("enforcePolicies")]
         public Input<bool>? EnforcePolicies { get; set; }
@@ -236,7 +244,7 @@ namespace Pulumi.Auth0
         public Input<string>? SigningSecret { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        /// Boolean. Indicates whether to skip user consent for applications flagged as first party.
         /// </summary>
         [Input("skipConsentForVerifiableFirstPartyClients")]
         public Input<bool>? SkipConsentForVerifiableFirstPartyClients { get; set; }
@@ -273,13 +281,13 @@ namespace Pulumi.Auth0
     public sealed class ResourceServerState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+        /// Boolean. Indicates whether refresh tokens can be issued for this resource server.
         /// </summary>
         [Input("allowOfflineAccess")]
         public Input<bool>? AllowOfflineAccess { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not authorization polices are enforced.
+        /// Boolean. Indicates whether authorization polices are enforced.
         /// </summary>
         [Input("enforcePolicies")]
         public Input<bool>? EnforcePolicies { get; set; }
@@ -333,7 +341,7 @@ namespace Pulumi.Auth0
         public Input<string>? SigningSecret { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        /// Boolean. Indicates whether to skip user consent for applications flagged as first party.
         /// </summary>
         [Input("skipConsentForVerifiableFirstPartyClients")]
         public Input<bool>? SkipConsentForVerifiableFirstPartyClients { get; set; }

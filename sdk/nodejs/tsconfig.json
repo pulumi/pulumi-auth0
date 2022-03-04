@@ -24,6 +24,8 @@
         "customDomainVerification.ts",
         "email.ts",
         "emailTemplate.ts",
+        "getClient.ts",
+        "getGlobalClient.ts",
         "globalClient.ts",
         "guardian.ts",
         "hook.ts",

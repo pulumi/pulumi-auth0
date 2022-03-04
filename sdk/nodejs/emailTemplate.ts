@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
+ * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
+ * into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
+ * emails sent by Auth0. Used in conjunction with configured email providers.
  *
  * ## Example Usage
  *
@@ -34,6 +36,14 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [myEmailProvider],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported using the template name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
  * ```
  */
 export class EmailTemplate extends pulumi.CustomResource {
@@ -69,7 +79,7 @@ export class EmailTemplate extends pulumi.CustomResource {
      */
     public readonly body!: pulumi.Output<string>;
     /**
-     * Boolean. Indicates whether or not the template is enabled.
+     * Boolean. Indicates whether the template is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
@@ -161,7 +171,7 @@ export interface EmailTemplateState {
      */
     body?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not the template is enabled.
+     * Boolean. Indicates whether the template is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -199,7 +209,7 @@ export interface EmailTemplateArgs {
      */
     body: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not the template is enabled.
+     * Boolean. Indicates whether the template is enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**

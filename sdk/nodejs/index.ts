@@ -14,6 +14,8 @@ export * from "./customDomain";
 export * from "./customDomainVerification";
 export * from "./email";
 export * from "./emailTemplate";
+export * from "./getClient";
+export * from "./getGlobalClient";
 export * from "./globalClient";
 export * from "./guardian";
 export * from "./hook";

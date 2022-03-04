@@ -6,7 +6,8 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
+ * With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
+ * manage a custom domain within your Auth0 tenant.
  *
  * ## Example Usage
  *
@@ -17,8 +18,15 @@ import * as utilities from "./utilities";
  * const myCustomDomain = new auth0.CustomDomain("my_custom_domain", {
  *     domain: "auth.example.com",
  *     type: "auth0_managed_certs",
- *     verificationMethod: "txt",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Custom Domains can be imported using the id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
  * ```
  */
 export class CustomDomain extends pulumi.CustomResource {
@@ -54,7 +62,7 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * Boolean. Indicates whether or not this is a primary domain.
+     * Boolean. Indicates whether this is a primary domain.
      */
     public /*out*/ readonly primary!: pulumi.Output<boolean>;
     /**
@@ -70,7 +78,8 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     public /*out*/ readonly verification!: pulumi.Output<outputs.CustomDomainVerification>;
     /**
-     * String. Domain verification method. Options include `txt`.
+     * String. Domain verification method. The method is chosen according to the type of
+     * the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
      *
      * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
      */
@@ -124,7 +133,7 @@ export interface CustomDomainState {
      */
     domain?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not this is a primary domain.
+     * Boolean. Indicates whether this is a primary domain.
      */
     primary?: pulumi.Input<boolean>;
     /**
@@ -140,7 +149,8 @@ export interface CustomDomainState {
      */
     verification?: pulumi.Input<inputs.CustomDomainVerification>;
     /**
-     * String. Domain verification method. Options include `txt`.
+     * String. Domain verification method. The method is chosen according to the type of
+     * the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
      *
      * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
      */
@@ -160,7 +170,8 @@ export interface CustomDomainArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * String. Domain verification method. Options include `txt`.
+     * String. Domain verification method. The method is chosen according to the type of
+     * the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
      *
      * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
      */

@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
+func GetApiToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "auth0:apiToken")
+}
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:clientId")
 }

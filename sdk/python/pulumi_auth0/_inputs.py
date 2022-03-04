@@ -4697,7 +4697,7 @@ class TenantChangePasswordArgs:
                  enabled: pulumi.Input[bool],
                  html: pulumi.Input[str]):
         """
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not to use the custom change password page.
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether to use the custom change password page.
         :param pulumi.Input[str] html: String, HTML format with supported Liquid syntax. Customized content of the change password page.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -4707,7 +4707,7 @@ class TenantChangePasswordArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Boolean. Indicates whether or not to use the custom change password page.
+        Boolean. Indicates whether to use the custom change password page.
         """
         return pulumi.get(self, "enabled")
 
@@ -4736,7 +4736,7 @@ class TenantErrorPageArgs:
                  url: pulumi.Input[str]):
         """
         :param pulumi.Input[str] html: String, HTML format with supported Liquid syntax. Customized content of the error page.
-        :param pulumi.Input[bool] show_log_link: Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+        :param pulumi.Input[bool] show_log_link: Boolean. Indicates whether to show the link to logs as part of the default error page.
         :param pulumi.Input[str] url: String. URL to redirect to when an error occurs rather than showing the default error page.
         """
         pulumi.set(__self__, "html", html)
@@ -4759,7 +4759,7 @@ class TenantErrorPageArgs:
     @pulumi.getter(name="showLogLink")
     def show_log_link(self) -> pulumi.Input[bool]:
         """
-        Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+        Boolean. Indicates whether to show the link to logs as part of the default error page.
         """
         return pulumi.get(self, "show_log_link")
 
@@ -4783,7 +4783,6 @@ class TenantErrorPageArgs:
 @pulumi.input_type
 class TenantFlagsArgs:
     def __init__(__self__, *,
-                 change_pwd_flow_v1: Optional[pulumi.Input[bool]] = None,
                  disable_clickjack_protection_headers: Optional[pulumi.Input[bool]] = None,
                  enable_apis_section: Optional[pulumi.Input[bool]] = None,
                  enable_client_connections: Optional[pulumi.Input[bool]] = None,
@@ -4795,19 +4794,16 @@ class TenantFlagsArgs:
                  universal_login: Optional[pulumi.Input[bool]] = None,
                  use_scope_descriptions_for_consent: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] change_pwd_flow_v1: Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-        :param pulumi.Input[bool] disable_clickjack_protection_headers: Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
-        :param pulumi.Input[bool] enable_apis_section: Boolean. Indicates whether or not the APIs section is enabled for the tenant.
-        :param pulumi.Input[bool] enable_client_connections: Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
-        :param pulumi.Input[bool] enable_custom_domain_in_emails: Boolean. Indicates whether or not the tenant allows custom domains in emails.
-        :param pulumi.Input[bool] enable_dynamic_client_registration: Boolean. Indicates whether or not the tenant allows dynamic client registration.
-        :param pulumi.Input[bool] enable_legacy_logs_search_v2: Boolean. Indicates whether or not to use the older v2 legacy logs search.
-        :param pulumi.Input[bool] enable_pipeline2: Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
-        :param pulumi.Input[bool] enable_public_signup_user_exists_error: Boolean. Indicates whether or not the public sign up process shows a user_exists error if the user already exists.
-        :param pulumi.Input[bool] universal_login: Boolean. Indicates whether or not the tenant uses universal login.
+        :param pulumi.Input[bool] disable_clickjack_protection_headers: Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+        :param pulumi.Input[bool] enable_apis_section: Boolean. Indicates whether the APIs section is enabled for the tenant.
+        :param pulumi.Input[bool] enable_client_connections: Boolean. Indicates whether all current connections should be enabled when a new client is created.
+        :param pulumi.Input[bool] enable_custom_domain_in_emails: Boolean. Indicates whether the tenant allows custom domains in emails.
+        :param pulumi.Input[bool] enable_dynamic_client_registration: Boolean. Indicates whether the tenant allows dynamic client registration.
+        :param pulumi.Input[bool] enable_legacy_logs_search_v2: Boolean. Indicates whether to use the older v2 legacy logs search.
+        :param pulumi.Input[bool] enable_pipeline2: Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+        :param pulumi.Input[bool] enable_public_signup_user_exists_error: Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+        :param pulumi.Input[bool] universal_login: Boolean. Indicates whether the tenant uses universal login.
         """
-        if change_pwd_flow_v1 is not None:
-            pulumi.set(__self__, "change_pwd_flow_v1", change_pwd_flow_v1)
         if disable_clickjack_protection_headers is not None:
             pulumi.set(__self__, "disable_clickjack_protection_headers", disable_clickjack_protection_headers)
         if enable_apis_section is not None:
@@ -4830,22 +4826,10 @@ class TenantFlagsArgs:
             pulumi.set(__self__, "use_scope_descriptions_for_consent", use_scope_descriptions_for_consent)
 
     @property
-    @pulumi.getter(name="changePwdFlowV1")
-    def change_pwd_flow_v1(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-        """
-        return pulumi.get(self, "change_pwd_flow_v1")
-
-    @change_pwd_flow_v1.setter
-    def change_pwd_flow_v1(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "change_pwd_flow_v1", value)
-
-    @property
     @pulumi.getter(name="disableClickjackProtectionHeaders")
     def disable_clickjack_protection_headers(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+        Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
         """
         return pulumi.get(self, "disable_clickjack_protection_headers")
 
@@ -4857,7 +4841,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enableApisSection")
     def enable_apis_section(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+        Boolean. Indicates whether the APIs section is enabled for the tenant.
         """
         return pulumi.get(self, "enable_apis_section")
 
@@ -4869,7 +4853,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enableClientConnections")
     def enable_client_connections(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+        Boolean. Indicates whether all current connections should be enabled when a new client is created.
         """
         return pulumi.get(self, "enable_client_connections")
 
@@ -4881,7 +4865,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enableCustomDomainInEmails")
     def enable_custom_domain_in_emails(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not the tenant allows custom domains in emails.
+        Boolean. Indicates whether the tenant allows custom domains in emails.
         """
         return pulumi.get(self, "enable_custom_domain_in_emails")
 
@@ -4893,7 +4877,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enableDynamicClientRegistration")
     def enable_dynamic_client_registration(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not the tenant allows dynamic client registration.
+        Boolean. Indicates whether the tenant allows dynamic client registration.
         """
         return pulumi.get(self, "enable_dynamic_client_registration")
 
@@ -4905,7 +4889,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enableLegacyLogsSearchV2")
     def enable_legacy_logs_search_v2(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not to use the older v2 legacy logs search.
+        Boolean. Indicates whether to use the older v2 legacy logs search.
         """
         return pulumi.get(self, "enable_legacy_logs_search_v2")
 
@@ -4917,7 +4901,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enablePipeline2")
     def enable_pipeline2(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+        Boolean. Indicates whether advanced API Authorization scenarios are enabled.
         """
         return pulumi.get(self, "enable_pipeline2")
 
@@ -4929,7 +4913,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enablePublicSignupUserExistsError")
     def enable_public_signup_user_exists_error(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not the public sign up process shows a user_exists error if the user already exists.
+        Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
         """
         return pulumi.get(self, "enable_public_signup_user_exists_error")
 
@@ -4941,7 +4925,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not the tenant uses universal login.
+        Boolean. Indicates whether the tenant uses universal login.
         """
         return pulumi.get(self, "universal_login")
 
@@ -4965,7 +4949,7 @@ class TenantGuardianMfaPageArgs:
                  enabled: pulumi.Input[bool],
                  html: pulumi.Input[str]):
         """
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not to use the custom Guardian page.
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether to use the custom Guardian page.
         :param pulumi.Input[str] html: String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -4975,7 +4959,7 @@ class TenantGuardianMfaPageArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Boolean. Indicates whether or not to use the custom Guardian page.
+        Boolean. Indicates whether to use the custom Guardian page.
         """
         return pulumi.get(self, "enabled")
 

@@ -84,6 +84,7 @@ namespace Pulumi.Auth0
     ///                 "password",
     ///                 "refresh_token",
     ///             },
+    ///             InitiateLoginUri = "https://example.com/login",
     ///             IsFirstParty = true,
     ///             IsTokenEndpointIpHeaderTrusted = true,
     ///             JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs
@@ -126,6 +127,14 @@ namespace Pulumi.Auth0
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A client can be imported using the client's ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/client:Client")]
@@ -237,6 +246,9 @@ namespace Pulumi.Auth0
         [Output("grantTypes")]
         public Output<ImmutableArray<string>> GrantTypes { get; private set; } = null!;
 
+        /// <summary>
+        /// String. Initiate login uri, must be https.
+        /// </summary>
         [Output("initiateLoginUri")]
         public Output<string?> InitiateLoginUri { get; private set; } = null!;
 
@@ -305,6 +317,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("refreshToken")]
         public Output<Outputs.ClientRefreshToken> RefreshToken { get; private set; } = null!;
+
+        /// <summary>
+        /// List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+        /// </summary>
+        [Output("signingKeys")]
+        public Output<ImmutableArray<ImmutableDictionary<string, object>>> SigningKeys { get; private set; } = null!;
 
         /// <summary>
         /// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
@@ -520,6 +538,9 @@ namespace Pulumi.Auth0
             set => _grantTypes = value;
         }
 
+        /// <summary>
+        /// String. Initiate login uri, must be https.
+        /// </summary>
         [Input("initiateLoginUri")]
         public Input<string>? InitiateLoginUri { get; set; }
 
@@ -781,6 +802,9 @@ namespace Pulumi.Auth0
             set => _grantTypes = value;
         }
 
+        /// <summary>
+        /// String. Initiate login uri, must be https.
+        /// </summary>
         [Input("initiateLoginUri")]
         public Input<string>? InitiateLoginUri { get; set; }
 
@@ -849,6 +873,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("refreshToken")]
         public Input<Inputs.ClientRefreshTokenGetArgs>? RefreshToken { get; set; }
+
+        [Input("signingKeys")]
+        private InputList<ImmutableDictionary<string, object>>? _signingKeys;
+
+        /// <summary>
+        /// List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+        /// </summary>
+        public InputList<ImmutableDictionary<string, object>> SigningKeys
+        {
+            get => _signingKeys ?? (_signingKeys = new InputList<ImmutableDictionary<string, object>>());
+            set => _signingKeys = value;
+        }
 
         /// <summary>
         /// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.

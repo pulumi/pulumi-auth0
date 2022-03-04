@@ -22,7 +22,8 @@ class RoleArgs:
         The set of arguments for constructing a Role resource.
         :param pulumi.Input[str] description: String. Description of the role.
         :param pulumi.Input[str] name: String. Name for this role.
-        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+               For details, see Permissions.
         """
         if description is None:
             description = 'Managed by Pulumi'
@@ -61,7 +62,8 @@ class RoleArgs:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]]:
         """
-        Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+        For details, see Permissions.
         """
         return pulumi.get(self, "permissions")
 
@@ -80,7 +82,8 @@ class _RoleState:
         Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[str] description: String. Description of the role.
         :param pulumi.Input[str] name: String. Name for this role.
-        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+               For details, see Permissions.
         """
         if description is None:
             description = 'Managed by Pulumi'
@@ -119,7 +122,8 @@ class _RoleState:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]]:
         """
-        Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+        For details, see Permissions.
         """
         return pulumi.get(self, "permissions")
 
@@ -138,7 +142,9 @@ class Role(pulumi.CustomResource):
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]]] = None,
                  __props__=None):
         """
-        With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
+        With this resource, you can create and manage collections of permissions that can be assigned to users, which are
+        otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
+        optionally, users using this resource.
 
         ## Example Usage
 
@@ -147,36 +153,45 @@ class Role(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_resource_server = auth0.ResourceServer("myResourceServer",
-            enforce_policies=True,
             identifier="my-resource-server-identifier",
-            scopes=[auth0.ResourceServerScopeArgs(
-                description="read something",
-                value="read:something",
-            )],
             signing_alg="RS256",
+            token_lifetime=86400,
             skip_consent_for_verifiable_first_party_clients=True,
-            token_lifetime=86400)
+            enforce_policies=True,
+            scopes=[auth0.ResourceServerScopeArgs(
+                value="read:something",
+                description="read something",
+            )])
         my_role = auth0.Role("myRole",
             description="Role Description...",
             permissions=[auth0.RolePermissionArgs(
-                name="read:something",
                 resource_server_identifier=my_resource_server.identifier,
+                name="read:something",
             )])
         my_user = auth0.User("myUser",
             connection_name="Username-Password-Authentication",
-            email="test@test.com",
-            nickname="testnick",
-            password="passpass$12$12",
-            roles=[my_role.id],
             user_id="auth0|1234567890",
-            username="testnick")
+            email="test@test.com",
+            password="passpass$12$12",
+            nickname="testnick",
+            username="testnick",
+            roles=[my_role.id])
+        ```
+
+        ## Import
+
+        Existing roles can be imported using their id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: String. Description of the role.
         :param pulumi.Input[str] name: String. Name for this role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+               For details, see Permissions.
         """
         ...
     @overload
@@ -185,7 +200,9 @@ class Role(pulumi.CustomResource):
                  args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
+        With this resource, you can create and manage collections of permissions that can be assigned to users, which are
+        otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
+        optionally, users using this resource.
 
         ## Example Usage
 
@@ -194,29 +211,37 @@ class Role(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_resource_server = auth0.ResourceServer("myResourceServer",
-            enforce_policies=True,
             identifier="my-resource-server-identifier",
-            scopes=[auth0.ResourceServerScopeArgs(
-                description="read something",
-                value="read:something",
-            )],
             signing_alg="RS256",
+            token_lifetime=86400,
             skip_consent_for_verifiable_first_party_clients=True,
-            token_lifetime=86400)
+            enforce_policies=True,
+            scopes=[auth0.ResourceServerScopeArgs(
+                value="read:something",
+                description="read something",
+            )])
         my_role = auth0.Role("myRole",
             description="Role Description...",
             permissions=[auth0.RolePermissionArgs(
-                name="read:something",
                 resource_server_identifier=my_resource_server.identifier,
+                name="read:something",
             )])
         my_user = auth0.User("myUser",
             connection_name="Username-Password-Authentication",
-            email="test@test.com",
-            nickname="testnick",
-            password="passpass$12$12",
-            roles=[my_role.id],
             user_id="auth0|1234567890",
-            username="testnick")
+            email="test@test.com",
+            password="passpass$12$12",
+            nickname="testnick",
+            username="testnick",
+            roles=[my_role.id])
+        ```
+
+        ## Import
+
+        Existing roles can be imported using their id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,7 +301,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: String. Description of the role.
         :param pulumi.Input[str] name: String. Name for this role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+               For details, see Permissions.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -307,7 +333,8 @@ class Role(pulumi.CustomResource):
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Optional[Sequence['outputs.RolePermission']]]:
         """
-        Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+        For details, see Permissions.
         """
         return pulumi.get(self, "permissions")
 

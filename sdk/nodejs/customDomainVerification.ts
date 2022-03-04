@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must
+ * configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0.
+ * This resource allows for automating the verification part of the process.
+ *
+ * ## Import
+ *
+ * You can import this resource using the custom domain id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
+ * ```
+ */
 export class CustomDomainVerification extends pulumi.CustomResource {
     /**
      * Get an existing CustomDomainVerification resource's state with the given name, ID, and optional extra

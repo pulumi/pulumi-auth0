@@ -31,12 +31,21 @@ namespace Pulumi.Auth0
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// As this is not a resource identifiable by an ID within the Auth0 Management API, prompt can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/prompt:Prompt example 22f4f21b-017a-319d-92e7-2291c1ca36c4
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/prompt:Prompt")]
     public partial class Prompt : Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        /// Boolean. Indicates whether the identifier first is used when using the new universal 
+        /// login experience.
         /// </summary>
         [Output("identifierFirst")]
         public Output<bool?> IdentifierFirst { get; private set; } = null!;
@@ -94,7 +103,8 @@ namespace Pulumi.Auth0
     public sealed class PromptArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        /// Boolean. Indicates whether the identifier first is used when using the new universal 
+        /// login experience.
         /// </summary>
         [Input("identifierFirst")]
         public Input<bool>? IdentifierFirst { get; set; }
@@ -113,7 +123,8 @@ namespace Pulumi.Auth0
     public sealed class PromptState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+        /// Boolean. Indicates whether the identifier first is used when using the new universal 
+        /// login experience.
         /// </summary>
         [Input("identifierFirst")]
         public Input<bool>? IdentifierFirst { get; set; }

@@ -65,6 +65,7 @@ class ClientArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Map(String).
         :param pulumi.Input[str] form_template: String. Form template for WS-Federation protocol.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
+        :param pulumi.Input[str] initiate_login_uri: String. Initiate login uri, must be https.
         :param pulumi.Input[bool] is_first_party: Boolean. Indicates whether or not this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Boolean. Indicates whether or not the token endpoint IP header is trusted.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
@@ -343,6 +344,9 @@ class ClientArgs:
     @property
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Initiate login uri, must be https.
+        """
         return pulumi.get(self, "initiate_login_uri")
 
     @initiate_login_uri.setter
@@ -563,6 +567,7 @@ class _ClientState:
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
+                 signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -587,6 +592,7 @@ class _ClientState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Map(String).
         :param pulumi.Input[str] form_template: String. Form template for WS-Federation protocol.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
+        :param pulumi.Input[str] initiate_login_uri: String. Initiate login uri, must be https.
         :param pulumi.Input[bool] is_first_party: Boolean. Indicates whether or not this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Boolean. Indicates whether or not the token endpoint IP header is trusted.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
@@ -598,6 +604,7 @@ class _ClientState:
         :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
         :param pulumi.Input[str] token_endpoint_auth_method: String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
@@ -665,6 +672,8 @@ class _ClientState:
             pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if signing_keys is not None:
+            pulumi.set(__self__, "signing_keys", signing_keys)
         if sso is not None:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
@@ -891,6 +900,9 @@ class _ClientState:
     @property
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Initiate login uri, must be https.
+        """
         return pulumi.get(self, "initiate_login_uri")
 
     @initiate_login_uri.setter
@@ -1030,6 +1042,18 @@ class _ClientState:
         pulumi.set(self, "refresh_token", value)
 
     @property
+    @pulumi.getter(name="signingKeys")
+    def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+        """
+        return pulumi.get(self, "signing_keys")
+
+    @signing_keys.setter
+    def signing_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+        pulumi.set(self, "signing_keys", value)
+
+    @property
     @pulumi.getter
     def sso(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1165,6 +1189,7 @@ class Client(pulumi.CustomResource):
                 "password",
                 "refresh_token",
             ],
+            initiate_login_uri="https://example.com/login",
             is_first_party=True,
             is_token_endpoint_ip_header_trusted=True,
             jwt_configuration=auth0.ClientJwtConfigurationArgs(
@@ -1197,6 +1222,14 @@ class Client(pulumi.CustomResource):
             web_origins=["https://example.com"])
         ```
 
+        ## Import
+
+        A client can be imported using the client's ID, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientAddonsArgs']] addons: List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
@@ -1215,6 +1248,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Map(String).
         :param pulumi.Input[str] form_template: String. Form template for WS-Federation protocol.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
+        :param pulumi.Input[str] initiate_login_uri: String. Initiate login uri, must be https.
         :param pulumi.Input[bool] is_first_party: Boolean. Indicates whether or not this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Boolean. Indicates whether or not the token endpoint IP header is trusted.
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
@@ -1286,6 +1320,7 @@ class Client(pulumi.CustomResource):
                 "password",
                 "refresh_token",
             ],
+            initiate_login_uri="https://example.com/login",
             is_first_party=True,
             is_token_endpoint_ip_header_trusted=True,
             jwt_configuration=auth0.ClientJwtConfigurationArgs(
@@ -1316,6 +1351,14 @@ class Client(pulumi.CustomResource):
             ),
             token_endpoint_auth_method="client_secret_post",
             web_origins=["https://example.com"])
+        ```
+
+        ## Import
+
+        A client can be imported using the client's ID, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
         ```
 
         :param str resource_name: The name of the resource.
@@ -1413,6 +1456,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["web_origins"] = web_origins
             __props__.__dict__["client_id"] = None
             __props__.__dict__["client_secret"] = None
+            __props__.__dict__["signing_keys"] = None
         super(Client, __self__).__init__(
             'auth0:index/client:Client',
             resource_name,
@@ -1453,6 +1497,7 @@ class Client(pulumi.CustomResource):
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
             refresh_token: Optional[pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']]] = None,
+            signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
             token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -1482,6 +1527,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Map(String).
         :param pulumi.Input[str] form_template: String. Form template for WS-Federation protocol.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: List(String). Types of grants that this client is authorized to use.
+        :param pulumi.Input[str] initiate_login_uri: String. Initiate login uri, must be https.
         :param pulumi.Input[bool] is_first_party: Boolean. Indicates whether or not this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Boolean. Indicates whether or not the token endpoint IP header is trusted.
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
@@ -1493,6 +1539,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] organization_require_behavior: String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[pulumi.InputType['ClientRefreshTokenArgs']] refresh_token: List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
         :param pulumi.Input[bool] sso: Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
         :param pulumi.Input[bool] sso_disabled: Boolean. Indicates whether or not SSO is disabled.
         :param pulumi.Input[str] token_endpoint_auth_method: String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
@@ -1532,6 +1579,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["refresh_token"] = refresh_token
+        __props__.__dict__["signing_keys"] = signing_keys
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
         __props__.__dict__["token_endpoint_auth_method"] = token_endpoint_auth_method
@@ -1683,6 +1731,9 @@ class Client(pulumi.CustomResource):
     @property
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> pulumi.Output[Optional[str]]:
+        """
+        String. Initiate login uri, must be https.
+        """
         return pulumi.get(self, "initiate_login_uri")
 
     @property
@@ -1772,6 +1823,14 @@ class Client(pulumi.CustomResource):
         List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
         """
         return pulumi.get(self, "refresh_token")
+
+    @property
+    @pulumi.getter(name="signingKeys")
+    def signing_keys(self) -> pulumi.Output[Sequence[Mapping[str, Any]]]:
+        """
+        List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+        """
+        return pulumi.get(self, "signing_keys")
 
     @property
     @pulumi.getter

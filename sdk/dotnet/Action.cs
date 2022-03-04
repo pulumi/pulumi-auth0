@@ -37,7 +37,34 @@ namespace Pulumi.Auth0
     ///  };
     /// 
     /// ",
+    ///             Dependencies = 
+    ///             {
+    ///                 new Auth0.Inputs.ActionDependencyArgs
+    ///                 {
+    ///                     Name = "lodash",
+    ///                     Version = "latest",
+    ///                 },
+    ///                 new Auth0.Inputs.ActionDependencyArgs
+    ///                 {
+    ///                     Name = "request",
+    ///                     Version = "latest",
+    ///                 },
+    ///             },
     ///             Deploy = true,
+    ///             Runtime = "node16",
+    ///             Secrets = 
+    ///             {
+    ///                 new Auth0.Inputs.ActionSecretArgs
+    ///                 {
+    ///                     Name = "FOO",
+    ///                     Value = "Foo",
+    ///                 },
+    ///                 new Auth0.Inputs.ActionSecretArgs
+    ///                 {
+    ///                     Name = "BAR",
+    ///                     Value = "Bar",
+    ///                 },
+    ///             },
     ///             SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
     ///             {
     ///                 Id = "post-login",
@@ -54,12 +81,10 @@ namespace Pulumi.Auth0
     /// An action can be imported using the action's ID, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/action:Action example ...
+    ///  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
     /// ```
     /// 
-    ///  ~&gt; For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
-    /// 
-    /// action has been imported.
+    ///  ~&gt; For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
     /// </summary>
     [Auth0ResourceType("auth0:index/action:Action")]
     public partial class Action : Pulumi.CustomResource
@@ -71,13 +96,15 @@ namespace Pulumi.Auth0
         public Output<string> Code { get; private set; } = null!;
 
         /// <summary>
-        /// List of third party npm modules, and their versions, that this action depends on
+        /// List of third party npm modules, and their versions, that this action depends on.
         /// </summary>
         [Output("dependencies")]
         public Output<ImmutableArray<Outputs.ActionDependency>> Dependencies { get; private set; } = null!;
 
         /// <summary>
-        /// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        /// Deploying an action will create a new immutable version of the action.
+        /// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+        /// action immediately. Default is `false`.
         /// </summary>
         [Output("deploy")]
         public Output<bool?> Deploy { get; private set; } = null!;
@@ -89,25 +116,26 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Node runtime. For example `node16`, defaults to `node12`
+        /// The Node runtime. For example `node16`, defaults to `node12`.
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action
+        /// List of secrets that are included in an action or a version of an action.
         /// </summary>
         [Output("secrets")]
         public Output<ImmutableArray<Outputs.ActionSecret>> Secrets { get; private set; } = null!;
 
         /// <summary>
-        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+        /// List of triggers that this action supports. At this time, an action can only target
+        /// a single trigger at a time.
         /// </summary>
         [Output("supportedTriggers")]
         public Output<Outputs.ActionSupportedTriggers> SupportedTriggers { get; private set; } = null!;
 
         /// <summary>
-        /// Version ID of the action. This value is available if `deploy` is set to true
+        /// Version ID of the action. This value is available if `deploy` is set to true.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -168,7 +196,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionDependencyArgs>? _dependencies;
 
         /// <summary>
-        /// List of third party npm modules, and their versions, that this action depends on
+        /// List of third party npm modules, and their versions, that this action depends on.
         /// </summary>
         public InputList<Inputs.ActionDependencyArgs> Dependencies
         {
@@ -177,7 +205,9 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        /// Deploying an action will create a new immutable version of the action.
+        /// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+        /// action immediately. Default is `false`.
         /// </summary>
         [Input("deploy")]
         public Input<bool>? Deploy { get; set; }
@@ -189,7 +219,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node runtime. For example `node16`, defaults to `node12`
+        /// The Node runtime. For example `node16`, defaults to `node12`.
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
@@ -198,7 +228,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionSecretArgs>? _secrets;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action
+        /// List of secrets that are included in an action or a version of an action.
         /// </summary>
         public InputList<Inputs.ActionSecretArgs> Secrets
         {
@@ -207,7 +237,8 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+        /// List of triggers that this action supports. At this time, an action can only target
+        /// a single trigger at a time.
         /// </summary>
         [Input("supportedTriggers", required: true)]
         public Input<Inputs.ActionSupportedTriggersArgs> SupportedTriggers { get; set; } = null!;
@@ -229,7 +260,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionDependencyGetArgs>? _dependencies;
 
         /// <summary>
-        /// List of third party npm modules, and their versions, that this action depends on
+        /// List of third party npm modules, and their versions, that this action depends on.
         /// </summary>
         public InputList<Inputs.ActionDependencyGetArgs> Dependencies
         {
@@ -238,7 +269,9 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        /// Deploying an action will create a new immutable version of the action.
+        /// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+        /// action immediately. Default is `false`.
         /// </summary>
         [Input("deploy")]
         public Input<bool>? Deploy { get; set; }
@@ -250,7 +283,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node runtime. For example `node16`, defaults to `node12`
+        /// The Node runtime. For example `node16`, defaults to `node12`.
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
@@ -259,7 +292,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionSecretGetArgs>? _secrets;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action
+        /// List of secrets that are included in an action or a version of an action.
         /// </summary>
         public InputList<Inputs.ActionSecretGetArgs> Secrets
         {
@@ -268,13 +301,14 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+        /// List of triggers that this action supports. At this time, an action can only target
+        /// a single trigger at a time.
         /// </summary>
         [Input("supportedTriggers")]
         public Input<Inputs.ActionSupportedTriggersGetArgs>? SupportedTriggers { get; set; }
 
         /// <summary>
-        /// Version ID of the action. This value is available if `deploy` is set to true
+        /// Version ID of the action. This value is available if `deploy` is set to true.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

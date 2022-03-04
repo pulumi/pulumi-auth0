@@ -32,6 +32,13 @@ namespace Pulumi.Auth0
 
         private static readonly Pulumi.Config __config = new Pulumi.Config("auth0");
 
+        private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
+        public static string? ApiToken
+        {
+            get => _apiToken.Get();
+            set => _apiToken.Set(value);
+        }
+
         private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
         public static string? ClientId
         {

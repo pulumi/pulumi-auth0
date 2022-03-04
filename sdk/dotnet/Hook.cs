@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
+    /// Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected
+    /// extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
     /// 
     /// Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
     /// 
@@ -46,42 +47,51 @@ namespace Pulumi.Auth0
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A hook can be imported using the hook's ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/hook:Hook my_hook 00001
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/hook:Hook")]
     public partial class Hook : Pulumi.CustomResource
     {
         /// <summary>
-        /// Dependencies of this hook used by webtask server
+        /// Dependencies of this hook used by the WebTask server.
         /// </summary>
         [Output("dependencies")]
         public Output<ImmutableDictionary<string, object>?> Dependencies { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the hook is enabled, or disabled
+        /// Whether the hook is enabled, or disabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of this hook
+        /// Name of this hook.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Code to be executed when this hook runs
+        /// Code to be executed when this hook runs.
         /// </summary>
         [Output("script")]
         public Output<string> Script { get; private set; } = null!;
 
         /// <summary>
-        /// Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
+        /// Map(String), sets the hook secrets associated with this hook. 
+        /// If specified, any secrets not listed here will be removed from the hook.
         /// </summary>
         [Output("secrets")]
         public Output<ImmutableDictionary<string, object>?> Secrets { get; private set; } = null!;
 
         /// <summary>
-        /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
+        /// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
         /// </summary>
         [Output("triggerId")]
         public Output<string> TriggerId { get; private set; } = null!;
@@ -136,7 +146,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _dependencies;
 
         /// <summary>
-        /// Dependencies of this hook used by webtask server
+        /// Dependencies of this hook used by the WebTask server.
         /// </summary>
         public InputMap<object> Dependencies
         {
@@ -145,19 +155,19 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Whether the hook is enabled, or disabled
+        /// Whether the hook is enabled, or disabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of this hook
+        /// Name of this hook.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Code to be executed when this hook runs
+        /// Code to be executed when this hook runs.
         /// </summary>
         [Input("script", required: true)]
         public Input<string> Script { get; set; } = null!;
@@ -166,7 +176,8 @@ namespace Pulumi.Auth0
         private InputMap<object>? _secrets;
 
         /// <summary>
-        /// Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
+        /// Map(String), sets the hook secrets associated with this hook. 
+        /// If specified, any secrets not listed here will be removed from the hook.
         /// </summary>
         public InputMap<object> Secrets
         {
@@ -175,7 +186,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
+        /// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
         /// </summary>
         [Input("triggerId", required: true)]
         public Input<string> TriggerId { get; set; } = null!;
@@ -191,7 +202,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _dependencies;
 
         /// <summary>
-        /// Dependencies of this hook used by webtask server
+        /// Dependencies of this hook used by the WebTask server.
         /// </summary>
         public InputMap<object> Dependencies
         {
@@ -200,19 +211,19 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Whether the hook is enabled, or disabled
+        /// Whether the hook is enabled, or disabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of this hook
+        /// Name of this hook.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Code to be executed when this hook runs
+        /// Code to be executed when this hook runs.
         /// </summary>
         [Input("script")]
         public Input<string>? Script { get; set; }
@@ -221,7 +232,8 @@ namespace Pulumi.Auth0
         private InputMap<object>? _secrets;
 
         /// <summary>
-        /// Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
+        /// Map(String), sets the hook secrets associated with this hook. 
+        /// If specified, any secrets not listed here will be removed from the hook.
         /// </summary>
         public InputMap<object> Secrets
         {
@@ -230,7 +242,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
+        /// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
         /// </summary>
         [Input("triggerId")]
         public Input<string>? TriggerId { get; set; }

@@ -6,7 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
+ * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
+ * into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's
+ * authentication workflows through the supported high-volume email service of your choice.
  *
  * ## Example Usage
  *
@@ -23,6 +25,14 @@ import * as utilities from "./utilities";
  *     defaultFromAddress: "accounts@example.com",
  *     enabled: true,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/email:Email my_email_provider b4213dc2-2eed-42c3-9516-c6131a9ce0b0
  * ```
  */
 export class Email extends pulumi.CustomResource {

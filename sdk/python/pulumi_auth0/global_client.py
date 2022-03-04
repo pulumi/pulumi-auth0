@@ -45,6 +45,7 @@ class GlobalClientArgs:
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['GlobalClientRefreshTokenArgs']] = None,
+                 signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -112,6 +113,8 @@ class GlobalClientArgs:
             pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if signing_keys is not None:
+            pulumi.set(__self__, "signing_keys", signing_keys)
         if sso is not None:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
@@ -390,6 +393,15 @@ class GlobalClientArgs:
     @refresh_token.setter
     def refresh_token(self, value: Optional[pulumi.Input['GlobalClientRefreshTokenArgs']]):
         pulumi.set(self, "refresh_token", value)
+
+    @property
+    @pulumi.getter(name="signingKeys")
+    def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        return pulumi.get(self, "signing_keys")
+
+    @signing_keys.setter
+    def signing_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+        pulumi.set(self, "signing_keys", value)
 
     @property
     @pulumi.getter
@@ -461,6 +473,7 @@ class _GlobalClientState:
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input['GlobalClientRefreshTokenArgs']] = None,
+                 signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -528,6 +541,8 @@ class _GlobalClientState:
             pulumi.set(__self__, "organization_usage", organization_usage)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
+        if signing_keys is not None:
+            pulumi.set(__self__, "signing_keys", signing_keys)
         if sso is not None:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
@@ -806,6 +821,15 @@ class _GlobalClientState:
     @refresh_token.setter
     def refresh_token(self, value: Optional[pulumi.Input['GlobalClientRefreshTokenArgs']]):
         pulumi.set(self, "refresh_token", value)
+
+    @property
+    @pulumi.getter(name="signingKeys")
+    def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        return pulumi.get(self, "signing_keys")
+
+    @signing_keys.setter
+    def signing_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+        pulumi.set(self, "signing_keys", value)
 
     @property
     @pulumi.getter
@@ -879,13 +903,42 @@ class GlobalClient(pulumi.CustomResource):
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
+                 signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a GlobalClient resource with the given unique name, props, and options.
+        Use a tenant's global Auth0 Application client.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        global_ = auth0.GlobalClient("global",
+            callbacks=["http://somehostname.com/a/callback"],
+            custom_login_page=\"\"\"<html>
+            <head><title>My Custom Login Page</title></head>
+            <body>
+                I should probably have a login form here
+            </body>
+        </html>
+
+        \"\"\",
+            custom_login_page_on=True)
+        ```
+
+        ## Import
+
+        The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
+
+        ```sh
+         $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -896,7 +949,35 @@ class GlobalClient(pulumi.CustomResource):
                  args: Optional[GlobalClientArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GlobalClient resource with the given unique name, props, and options.
+        Use a tenant's global Auth0 Application client.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        global_ = auth0.GlobalClient("global",
+            callbacks=["http://somehostname.com/a/callback"],
+            custom_login_page=\"\"\"<html>
+            <head><title>My Custom Login Page</title></head>
+            <body>
+                I should probably have a login form here
+            </body>
+        </html>
+
+        \"\"\",
+            custom_login_page_on=True)
+        ```
+
+        ## Import
+
+        The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
+
+        ```sh
+         $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
+        ```
+
         :param str resource_name: The name of the resource.
         :param GlobalClientArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -942,6 +1023,7 @@ class GlobalClient(pulumi.CustomResource):
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
+                 signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  sso: Optional[pulumi.Input[bool]] = None,
                  sso_disabled: Optional[pulumi.Input[bool]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -988,6 +1070,7 @@ class GlobalClient(pulumi.CustomResource):
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
+            __props__.__dict__["signing_keys"] = signing_keys
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
             __props__.__dict__["token_endpoint_auth_method"] = token_endpoint_auth_method
@@ -1032,6 +1115,7 @@ class GlobalClient(pulumi.CustomResource):
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
             refresh_token: Optional[pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']]] = None,
+            signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
             sso: Optional[pulumi.Input[bool]] = None,
             sso_disabled: Optional[pulumi.Input[bool]] = None,
             token_endpoint_auth_method: Optional[pulumi.Input[str]] = None,
@@ -1078,6 +1162,7 @@ class GlobalClient(pulumi.CustomResource):
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["refresh_token"] = refresh_token
+        __props__.__dict__["signing_keys"] = signing_keys
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
         __props__.__dict__["token_endpoint_auth_method"] = token_endpoint_auth_method
@@ -1233,6 +1318,11 @@ class GlobalClient(pulumi.CustomResource):
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> pulumi.Output['outputs.GlobalClientRefreshToken']:
         return pulumi.get(self, "refresh_token")
+
+    @property
+    @pulumi.getter(name="signingKeys")
+    def signing_keys(self) -> pulumi.Output[Sequence[Mapping[str, Any]]]:
+        return pulumi.get(self, "signing_keys")
 
     @property
     @pulumi.getter

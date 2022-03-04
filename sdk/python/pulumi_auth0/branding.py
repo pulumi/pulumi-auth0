@@ -26,7 +26,9 @@ class BrandingArgs:
         :param pulumi.Input[str] favicon_url: String. URL for the favicon.
         :param pulumi.Input['BrandingFontArgs'] font: List(Resource). Configuration settings to customize the font. See Font.
         :param pulumi.Input[str] logo_url: String. URL of logo for branding.
-        :param pulumi.Input['BrandingUniversalLoginArgs'] universal_login: List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        :param pulumi.Input['BrandingUniversalLoginArgs'] universal_login: List(Resource). Configuration settings for Universal Login.
+               See Universal Login. This capability can only be used if the tenant has
+               [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         """
         if colors is not None:
             pulumi.set(__self__, "colors", colors)
@@ -91,7 +93,9 @@ class BrandingArgs:
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[pulumi.Input['BrandingUniversalLoginArgs']]:
         """
-        List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        List(Resource). Configuration settings for Universal Login.
+        See Universal Login. This capability can only be used if the tenant has
+        [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         """
         return pulumi.get(self, "universal_login")
 
@@ -114,7 +118,9 @@ class _BrandingState:
         :param pulumi.Input[str] favicon_url: String. URL for the favicon.
         :param pulumi.Input['BrandingFontArgs'] font: List(Resource). Configuration settings to customize the font. See Font.
         :param pulumi.Input[str] logo_url: String. URL of logo for branding.
-        :param pulumi.Input['BrandingUniversalLoginArgs'] universal_login: List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        :param pulumi.Input['BrandingUniversalLoginArgs'] universal_login: List(Resource). Configuration settings for Universal Login.
+               See Universal Login. This capability can only be used if the tenant has
+               [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         """
         if colors is not None:
             pulumi.set(__self__, "colors", colors)
@@ -179,7 +185,9 @@ class _BrandingState:
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[pulumi.Input['BrandingUniversalLoginArgs']]:
         """
-        List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        List(Resource). Configuration settings for Universal Login.
+        See Universal Login. This capability can only be used if the tenant has
+        [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         """
         return pulumi.get(self, "universal_login")
 
@@ -200,7 +208,10 @@ class Branding(pulumi.CustomResource):
                  universal_login: Optional[pulumi.Input[pulumi.InputType['BrandingUniversalLoginArgs']]] = None,
                  __props__=None):
         """
-        With Auth0, you can setting logo, color to maintain a consistent service brand. This resource allows you to manage a branding within your Auth0 tenant.
+        This resource allows you to manage branding within your Auth0 tenant.
+
+        Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user
+        expectations.
 
         ## Example Usage
 
@@ -225,7 +236,9 @@ class Branding(pulumi.CustomResource):
         :param pulumi.Input[str] favicon_url: String. URL for the favicon.
         :param pulumi.Input[pulumi.InputType['BrandingFontArgs']] font: List(Resource). Configuration settings to customize the font. See Font.
         :param pulumi.Input[str] logo_url: String. URL of logo for branding.
-        :param pulumi.Input[pulumi.InputType['BrandingUniversalLoginArgs']] universal_login: List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        :param pulumi.Input[pulumi.InputType['BrandingUniversalLoginArgs']] universal_login: List(Resource). Configuration settings for Universal Login.
+               See Universal Login. This capability can only be used if the tenant has
+               [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         """
         ...
     @overload
@@ -234,7 +247,10 @@ class Branding(pulumi.CustomResource):
                  args: Optional[BrandingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With Auth0, you can setting logo, color to maintain a consistent service brand. This resource allows you to manage a branding within your Auth0 tenant.
+        This resource allows you to manage branding within your Auth0 tenant.
+
+        Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user
+        expectations.
 
         ## Example Usage
 
@@ -316,7 +332,9 @@ class Branding(pulumi.CustomResource):
         :param pulumi.Input[str] favicon_url: String. URL for the favicon.
         :param pulumi.Input[pulumi.InputType['BrandingFontArgs']] font: List(Resource). Configuration settings to customize the font. See Font.
         :param pulumi.Input[str] logo_url: String. URL of logo for branding.
-        :param pulumi.Input[pulumi.InputType['BrandingUniversalLoginArgs']] universal_login: List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        :param pulumi.Input[pulumi.InputType['BrandingUniversalLoginArgs']] universal_login: List(Resource). Configuration settings for Universal Login.
+               See Universal Login. This capability can only be used if the tenant has
+               [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -365,7 +383,9 @@ class Branding(pulumi.CustomResource):
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> pulumi.Output[Optional['outputs.BrandingUniversalLogin']]:
         """
-        List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        List(Resource). Configuration settings for Universal Login.
+        See Universal Login. This capability can only be used if the tenant has
+        [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         """
         return pulumi.get(self, "universal_login")
 

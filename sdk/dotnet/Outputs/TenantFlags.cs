@@ -14,51 +14,45 @@ namespace Pulumi.Auth0.Outputs
     public sealed class TenantFlags
     {
         /// <summary>
-        /// Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-        /// </summary>
-        public readonly bool? ChangePwdFlowV1;
-        /// <summary>
-        /// Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+        /// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
         /// </summary>
         public readonly bool? DisableClickjackProtectionHeaders;
         /// <summary>
-        /// Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+        /// Boolean. Indicates whether the APIs section is enabled for the tenant.
         /// </summary>
         public readonly bool? EnableApisSection;
         /// <summary>
-        /// Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+        /// Boolean. Indicates whether all current connections should be enabled when a new client is created.
         /// </summary>
         public readonly bool? EnableClientConnections;
         /// <summary>
-        /// Boolean. Indicates whether or not the tenant allows custom domains in emails.
+        /// Boolean. Indicates whether the tenant allows custom domains in emails.
         /// </summary>
         public readonly bool? EnableCustomDomainInEmails;
         /// <summary>
-        /// Boolean. Indicates whether or not the tenant allows dynamic client registration.
+        /// Boolean. Indicates whether the tenant allows dynamic client registration.
         /// </summary>
         public readonly bool? EnableDynamicClientRegistration;
         /// <summary>
-        /// Boolean. Indicates whether or not to use the older v2 legacy logs search.
+        /// Boolean. Indicates whether to use the older v2 legacy logs search.
         /// </summary>
         public readonly bool? EnableLegacyLogsSearchV2;
         /// <summary>
-        /// Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+        /// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
         /// </summary>
         public readonly bool? EnablePipeline2;
         /// <summary>
-        /// Boolean. Indicates whether or not the public sign up process shows a user_exists error if the user already exists.
+        /// Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
         /// </summary>
         public readonly bool? EnablePublicSignupUserExistsError;
         /// <summary>
-        /// Boolean. Indicates whether or not the tenant uses universal login.
+        /// Boolean. Indicates whether the tenant uses universal login.
         /// </summary>
         public readonly bool? UniversalLogin;
         public readonly bool? UseScopeDescriptionsForConsent;
 
         [OutputConstructor]
         private TenantFlags(
-            bool? changePwdFlowV1,
-
             bool? disableClickjackProtectionHeaders,
 
             bool? enableApisSection,
@@ -79,7 +73,6 @@ namespace Pulumi.Auth0.Outputs
 
             bool? useScopeDescriptionsForConsent)
         {
-            ChangePwdFlowV1 = changePwdFlowV1;
             DisableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
             EnableApisSection = enableApisSection;
             EnableClientConnections = enableClientConnections;

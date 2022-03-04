@@ -6,7 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
+ * With this resource, you can create and manage collections of permissions that can be assigned to users, which are
+ * otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
+ * optionally, users using this resource.
  *
  * ## Example Usage
  *
@@ -14,33 +16,41 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
- *     enforcePolicies: true,
+ * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
  *     identifier: "my-resource-server-identifier",
- *     scopes: [{
- *         description: "read something",
- *         value: "read:something",
- *     }],
  *     signingAlg: "RS256",
- *     skipConsentForVerifiableFirstPartyClients: true,
  *     tokenLifetime: 86400,
+ *     skipConsentForVerifiableFirstPartyClients: true,
+ *     enforcePolicies: true,
+ *     scopes: [{
+ *         value: "read:something",
+ *         description: "read something",
+ *     }],
  * });
- * const myRole = new auth0.Role("my_role", {
+ * const myRole = new auth0.Role("myRole", {
  *     description: "Role Description...",
  *     permissions: [{
- *         name: "read:something",
  *         resourceServerIdentifier: myResourceServer.identifier,
+ *         name: "read:something",
  *     }],
  * });
- * const myUser = new auth0.User("my_user", {
+ * const myUser = new auth0.User("myUser", {
  *     connectionName: "Username-Password-Authentication",
- *     email: "test@test.com",
- *     nickname: "testnick",
- *     password: "passpass$12$12",
- *     roles: [myRole.id],
  *     userId: "auth0|1234567890",
+ *     email: "test@test.com",
+ *     password: `passpass$12$12`,
+ *     nickname: "testnick",
  *     username: "testnick",
+ *     roles: [myRole.id],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Existing roles can be imported using their id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
  * ```
  */
 export class Role extends pulumi.CustomResource {
@@ -80,7 +90,8 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+     * Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+     * For details, see Permissions.
      */
     public readonly permissions!: pulumi.Output<outputs.RolePermission[] | undefined>;
 
@@ -124,7 +135,8 @@ export interface RoleState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+     * Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+     * For details, see Permissions.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }
@@ -142,7 +154,8 @@ export interface RoleArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+     * Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+     * For details, see Permissions.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }

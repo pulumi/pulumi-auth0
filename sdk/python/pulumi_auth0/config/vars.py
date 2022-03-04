@@ -15,6 +15,10 @@ __config__ = pulumi.Config('auth0')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def api_token(self) -> Optional[str]:
+        return __config__.get('apiToken')
+
+    @property
     def client_id(self) -> Optional[str]:
         return __config__.get('clientId')
 

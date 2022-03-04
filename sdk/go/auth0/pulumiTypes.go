@@ -10605,7 +10605,7 @@ func (o RolePermissionArrayOutput) Index(i pulumi.IntInput) RolePermissionOutput
 }
 
 type TenantChangePassword struct {
-	// Boolean. Indicates whether or not to use the custom change password page.
+	// Boolean. Indicates whether to use the custom change password page.
 	Enabled bool `pulumi:"enabled"`
 	// String, HTML format with supported Liquid syntax. Customized content of the change password page.
 	Html string `pulumi:"html"`
@@ -10623,7 +10623,7 @@ type TenantChangePasswordInput interface {
 }
 
 type TenantChangePasswordArgs struct {
-	// Boolean. Indicates whether or not to use the custom change password page.
+	// Boolean. Indicates whether to use the custom change password page.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// String, HTML format with supported Liquid syntax. Customized content of the change password page.
 	Html pulumi.StringInput `pulumi:"html"`
@@ -10706,7 +10706,7 @@ func (o TenantChangePasswordOutput) ToTenantChangePasswordPtrOutputWithContext(c
 	}).(TenantChangePasswordPtrOutput)
 }
 
-// Boolean. Indicates whether or not to use the custom change password page.
+// Boolean. Indicates whether to use the custom change password page.
 func (o TenantChangePasswordOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TenantChangePassword) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -10740,7 +10740,7 @@ func (o TenantChangePasswordPtrOutput) Elem() TenantChangePasswordOutput {
 	}).(TenantChangePasswordOutput)
 }
 
-// Boolean. Indicates whether or not to use the custom change password page.
+// Boolean. Indicates whether to use the custom change password page.
 func (o TenantChangePasswordPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantChangePassword) *bool {
 		if v == nil {
@@ -10763,7 +10763,7 @@ func (o TenantChangePasswordPtrOutput) Html() pulumi.StringPtrOutput {
 type TenantErrorPage struct {
 	// String, HTML format with supported Liquid syntax. Customized content of the error page.
 	Html string `pulumi:"html"`
-	// Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+	// Boolean. Indicates whether to show the link to logs as part of the default error page.
 	ShowLogLink bool `pulumi:"showLogLink"`
 	// String. URL to redirect to when an error occurs rather than showing the default error page.
 	Url string `pulumi:"url"`
@@ -10783,7 +10783,7 @@ type TenantErrorPageInput interface {
 type TenantErrorPageArgs struct {
 	// String, HTML format with supported Liquid syntax. Customized content of the error page.
 	Html pulumi.StringInput `pulumi:"html"`
-	// Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+	// Boolean. Indicates whether to show the link to logs as part of the default error page.
 	ShowLogLink pulumi.BoolInput `pulumi:"showLogLink"`
 	// String. URL to redirect to when an error occurs rather than showing the default error page.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -10871,7 +10871,7 @@ func (o TenantErrorPageOutput) Html() pulumi.StringOutput {
 	return o.ApplyT(func(v TenantErrorPage) string { return v.Html }).(pulumi.StringOutput)
 }
 
-// Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+// Boolean. Indicates whether to show the link to logs as part of the default error page.
 func (o TenantErrorPageOutput) ShowLogLink() pulumi.BoolOutput {
 	return o.ApplyT(func(v TenantErrorPage) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
 }
@@ -10915,7 +10915,7 @@ func (o TenantErrorPagePtrOutput) Html() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+// Boolean. Indicates whether to show the link to logs as part of the default error page.
 func (o TenantErrorPagePtrOutput) ShowLogLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantErrorPage) *bool {
 		if v == nil {
@@ -10936,25 +10936,23 @@ func (o TenantErrorPagePtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type TenantFlags struct {
-	// Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-	ChangePwdFlowV1 *bool `pulumi:"changePwdFlowV1"`
-	// Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+	// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
 	DisableClickjackProtectionHeaders *bool `pulumi:"disableClickjackProtectionHeaders"`
-	// Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+	// Boolean. Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection *bool `pulumi:"enableApisSection"`
-	// Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+	// Boolean. Indicates whether all current connections should be enabled when a new client is created.
 	EnableClientConnections *bool `pulumi:"enableClientConnections"`
-	// Boolean. Indicates whether or not the tenant allows custom domains in emails.
+	// Boolean. Indicates whether the tenant allows custom domains in emails.
 	EnableCustomDomainInEmails *bool `pulumi:"enableCustomDomainInEmails"`
-	// Boolean. Indicates whether or not the tenant allows dynamic client registration.
+	// Boolean. Indicates whether the tenant allows dynamic client registration.
 	EnableDynamicClientRegistration *bool `pulumi:"enableDynamicClientRegistration"`
-	// Boolean. Indicates whether or not to use the older v2 legacy logs search.
+	// Boolean. Indicates whether to use the older v2 legacy logs search.
 	EnableLegacyLogsSearchV2 *bool `pulumi:"enableLegacyLogsSearchV2"`
-	// Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+	// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
 	EnablePipeline2 *bool `pulumi:"enablePipeline2"`
-	// Boolean. Indicates whether or not the public sign up process shows a userExists error if the user already exists.
+	// Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
 	EnablePublicSignupUserExistsError *bool `pulumi:"enablePublicSignupUserExistsError"`
-	// Boolean. Indicates whether or not the tenant uses universal login.
+	// Boolean. Indicates whether the tenant uses universal login.
 	UniversalLogin                 *bool `pulumi:"universalLogin"`
 	UseScopeDescriptionsForConsent *bool `pulumi:"useScopeDescriptionsForConsent"`
 }
@@ -10971,25 +10969,23 @@ type TenantFlagsInput interface {
 }
 
 type TenantFlagsArgs struct {
-	// Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-	ChangePwdFlowV1 pulumi.BoolPtrInput `pulumi:"changePwdFlowV1"`
-	// Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+	// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
 	DisableClickjackProtectionHeaders pulumi.BoolPtrInput `pulumi:"disableClickjackProtectionHeaders"`
-	// Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+	// Boolean. Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection pulumi.BoolPtrInput `pulumi:"enableApisSection"`
-	// Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+	// Boolean. Indicates whether all current connections should be enabled when a new client is created.
 	EnableClientConnections pulumi.BoolPtrInput `pulumi:"enableClientConnections"`
-	// Boolean. Indicates whether or not the tenant allows custom domains in emails.
+	// Boolean. Indicates whether the tenant allows custom domains in emails.
 	EnableCustomDomainInEmails pulumi.BoolPtrInput `pulumi:"enableCustomDomainInEmails"`
-	// Boolean. Indicates whether or not the tenant allows dynamic client registration.
+	// Boolean. Indicates whether the tenant allows dynamic client registration.
 	EnableDynamicClientRegistration pulumi.BoolPtrInput `pulumi:"enableDynamicClientRegistration"`
-	// Boolean. Indicates whether or not to use the older v2 legacy logs search.
+	// Boolean. Indicates whether to use the older v2 legacy logs search.
 	EnableLegacyLogsSearchV2 pulumi.BoolPtrInput `pulumi:"enableLegacyLogsSearchV2"`
-	// Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+	// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
 	EnablePipeline2 pulumi.BoolPtrInput `pulumi:"enablePipeline2"`
-	// Boolean. Indicates whether or not the public sign up process shows a userExists error if the user already exists.
+	// Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
 	EnablePublicSignupUserExistsError pulumi.BoolPtrInput `pulumi:"enablePublicSignupUserExistsError"`
-	// Boolean. Indicates whether or not the tenant uses universal login.
+	// Boolean. Indicates whether the tenant uses universal login.
 	UniversalLogin                 pulumi.BoolPtrInput `pulumi:"universalLogin"`
 	UseScopeDescriptionsForConsent pulumi.BoolPtrInput `pulumi:"useScopeDescriptionsForConsent"`
 }
@@ -11071,52 +11067,47 @@ func (o TenantFlagsOutput) ToTenantFlagsPtrOutputWithContext(ctx context.Context
 	}).(TenantFlagsPtrOutput)
 }
 
-// Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-func (o TenantFlagsOutput) ChangePwdFlowV1() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantFlags) *bool { return v.ChangePwdFlowV1 }).(pulumi.BoolPtrOutput)
-}
-
-// Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
 func (o TenantFlagsOutput) DisableClickjackProtectionHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.DisableClickjackProtectionHeaders }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+// Boolean. Indicates whether the APIs section is enabled for the tenant.
 func (o TenantFlagsOutput) EnableApisSection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableApisSection }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+// Boolean. Indicates whether all current connections should be enabled when a new client is created.
 func (o TenantFlagsOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableClientConnections }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the tenant allows custom domains in emails.
+// Boolean. Indicates whether the tenant allows custom domains in emails.
 func (o TenantFlagsOutput) EnableCustomDomainInEmails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableCustomDomainInEmails }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the tenant allows dynamic client registration.
+// Boolean. Indicates whether the tenant allows dynamic client registration.
 func (o TenantFlagsOutput) EnableDynamicClientRegistration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableDynamicClientRegistration }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not to use the older v2 legacy logs search.
+// Boolean. Indicates whether to use the older v2 legacy logs search.
 func (o TenantFlagsOutput) EnableLegacyLogsSearchV2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableLegacyLogsSearchV2 }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
 func (o TenantFlagsOutput) EnablePipeline2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnablePipeline2 }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the public sign up process shows a userExists error if the user already exists.
+// Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
 func (o TenantFlagsOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the tenant uses universal login.
+// Boolean. Indicates whether the tenant uses universal login.
 func (o TenantFlagsOutput) UniversalLogin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.UniversalLogin }).(pulumi.BoolPtrOutput)
 }
@@ -11149,17 +11140,7 @@ func (o TenantFlagsPtrOutput) Elem() TenantFlagsOutput {
 	}).(TenantFlagsOutput)
 }
 
-// Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-func (o TenantFlagsPtrOutput) ChangePwdFlowV1() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TenantFlags) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ChangePwdFlowV1
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
 func (o TenantFlagsPtrOutput) DisableClickjackProtectionHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11169,7 +11150,7 @@ func (o TenantFlagsPtrOutput) DisableClickjackProtectionHeaders() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+// Boolean. Indicates whether the APIs section is enabled for the tenant.
 func (o TenantFlagsPtrOutput) EnableApisSection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11179,7 +11160,7 @@ func (o TenantFlagsPtrOutput) EnableApisSection() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+// Boolean. Indicates whether all current connections should be enabled when a new client is created.
 func (o TenantFlagsPtrOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11189,7 +11170,7 @@ func (o TenantFlagsPtrOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the tenant allows custom domains in emails.
+// Boolean. Indicates whether the tenant allows custom domains in emails.
 func (o TenantFlagsPtrOutput) EnableCustomDomainInEmails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11199,7 +11180,7 @@ func (o TenantFlagsPtrOutput) EnableCustomDomainInEmails() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the tenant allows dynamic client registration.
+// Boolean. Indicates whether the tenant allows dynamic client registration.
 func (o TenantFlagsPtrOutput) EnableDynamicClientRegistration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11209,7 +11190,7 @@ func (o TenantFlagsPtrOutput) EnableDynamicClientRegistration() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not to use the older v2 legacy logs search.
+// Boolean. Indicates whether to use the older v2 legacy logs search.
 func (o TenantFlagsPtrOutput) EnableLegacyLogsSearchV2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11219,7 +11200,7 @@ func (o TenantFlagsPtrOutput) EnableLegacyLogsSearchV2() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
 func (o TenantFlagsPtrOutput) EnablePipeline2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11229,7 +11210,7 @@ func (o TenantFlagsPtrOutput) EnablePipeline2() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the public sign up process shows a userExists error if the user already exists.
+// Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
 func (o TenantFlagsPtrOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11239,7 +11220,7 @@ func (o TenantFlagsPtrOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether or not the tenant uses universal login.
+// Boolean. Indicates whether the tenant uses universal login.
 func (o TenantFlagsPtrOutput) UniversalLogin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -11259,7 +11240,7 @@ func (o TenantFlagsPtrOutput) UseScopeDescriptionsForConsent() pulumi.BoolPtrOut
 }
 
 type TenantGuardianMfaPage struct {
-	// Boolean. Indicates whether or not to use the custom Guardian page.
+	// Boolean. Indicates whether to use the custom Guardian page.
 	Enabled bool `pulumi:"enabled"`
 	// String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
 	Html string `pulumi:"html"`
@@ -11277,7 +11258,7 @@ type TenantGuardianMfaPageInput interface {
 }
 
 type TenantGuardianMfaPageArgs struct {
-	// Boolean. Indicates whether or not to use the custom Guardian page.
+	// Boolean. Indicates whether to use the custom Guardian page.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
 	Html pulumi.StringInput `pulumi:"html"`
@@ -11360,7 +11341,7 @@ func (o TenantGuardianMfaPageOutput) ToTenantGuardianMfaPagePtrOutputWithContext
 	}).(TenantGuardianMfaPagePtrOutput)
 }
 
-// Boolean. Indicates whether or not to use the custom Guardian page.
+// Boolean. Indicates whether to use the custom Guardian page.
 func (o TenantGuardianMfaPageOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TenantGuardianMfaPage) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -11394,7 +11375,7 @@ func (o TenantGuardianMfaPagePtrOutput) Elem() TenantGuardianMfaPageOutput {
 	}).(TenantGuardianMfaPageOutput)
 }
 
-// Boolean. Indicates whether or not to use the custom Guardian page.
+// Boolean. Indicates whether to use the custom Guardian page.
 func (o TenantGuardianMfaPagePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantGuardianMfaPage) *bool {
 		if v == nil {
@@ -11813,6 +11794,2706 @@ func (o TriggerBindingActionArrayOutput) Index(i pulumi.IntInput) TriggerBinding
 	}).(TriggerBindingActionOutput)
 }
 
+type GetClientAddon struct {
+	Aws                  map[string]interface{} `pulumi:"aws"`
+	AzureBlob            map[string]interface{} `pulumi:"azureBlob"`
+	AzureSb              map[string]interface{} `pulumi:"azureSb"`
+	Box                  map[string]interface{} `pulumi:"box"`
+	Cloudbees            map[string]interface{} `pulumi:"cloudbees"`
+	Concur               map[string]interface{} `pulumi:"concur"`
+	Dropbox              map[string]interface{} `pulumi:"dropbox"`
+	Echosign             map[string]interface{} `pulumi:"echosign"`
+	Egnyte               map[string]interface{} `pulumi:"egnyte"`
+	Firebase             map[string]interface{} `pulumi:"firebase"`
+	Layer                map[string]interface{} `pulumi:"layer"`
+	Mscrm                map[string]interface{} `pulumi:"mscrm"`
+	Newrelic             map[string]interface{} `pulumi:"newrelic"`
+	Office365            map[string]interface{} `pulumi:"office365"`
+	Rms                  map[string]interface{} `pulumi:"rms"`
+	Salesforce           map[string]interface{} `pulumi:"salesforce"`
+	SalesforceApi        map[string]interface{} `pulumi:"salesforceApi"`
+	SalesforceSandboxApi map[string]interface{} `pulumi:"salesforceSandboxApi"`
+	Samlps               []GetClientAddonSamlp  `pulumi:"samlps"`
+	SapApi               map[string]interface{} `pulumi:"sapApi"`
+	Sentry               map[string]interface{} `pulumi:"sentry"`
+	Sharepoint           map[string]interface{} `pulumi:"sharepoint"`
+	Slack                map[string]interface{} `pulumi:"slack"`
+	Springcm             map[string]interface{} `pulumi:"springcm"`
+	Wams                 map[string]interface{} `pulumi:"wams"`
+	Wsfed                map[string]interface{} `pulumi:"wsfed"`
+	Zendesk              map[string]interface{} `pulumi:"zendesk"`
+	Zoom                 map[string]interface{} `pulumi:"zoom"`
+}
+
+// GetClientAddonInput is an input type that accepts GetClientAddonArgs and GetClientAddonOutput values.
+// You can construct a concrete instance of `GetClientAddonInput` via:
+//
+//          GetClientAddonArgs{...}
+type GetClientAddonInput interface {
+	pulumi.Input
+
+	ToGetClientAddonOutput() GetClientAddonOutput
+	ToGetClientAddonOutputWithContext(context.Context) GetClientAddonOutput
+}
+
+type GetClientAddonArgs struct {
+	Aws                  pulumi.MapInput               `pulumi:"aws"`
+	AzureBlob            pulumi.MapInput               `pulumi:"azureBlob"`
+	AzureSb              pulumi.MapInput               `pulumi:"azureSb"`
+	Box                  pulumi.MapInput               `pulumi:"box"`
+	Cloudbees            pulumi.MapInput               `pulumi:"cloudbees"`
+	Concur               pulumi.MapInput               `pulumi:"concur"`
+	Dropbox              pulumi.MapInput               `pulumi:"dropbox"`
+	Echosign             pulumi.MapInput               `pulumi:"echosign"`
+	Egnyte               pulumi.MapInput               `pulumi:"egnyte"`
+	Firebase             pulumi.MapInput               `pulumi:"firebase"`
+	Layer                pulumi.MapInput               `pulumi:"layer"`
+	Mscrm                pulumi.MapInput               `pulumi:"mscrm"`
+	Newrelic             pulumi.MapInput               `pulumi:"newrelic"`
+	Office365            pulumi.MapInput               `pulumi:"office365"`
+	Rms                  pulumi.MapInput               `pulumi:"rms"`
+	Salesforce           pulumi.MapInput               `pulumi:"salesforce"`
+	SalesforceApi        pulumi.MapInput               `pulumi:"salesforceApi"`
+	SalesforceSandboxApi pulumi.MapInput               `pulumi:"salesforceSandboxApi"`
+	Samlps               GetClientAddonSamlpArrayInput `pulumi:"samlps"`
+	SapApi               pulumi.MapInput               `pulumi:"sapApi"`
+	Sentry               pulumi.MapInput               `pulumi:"sentry"`
+	Sharepoint           pulumi.MapInput               `pulumi:"sharepoint"`
+	Slack                pulumi.MapInput               `pulumi:"slack"`
+	Springcm             pulumi.MapInput               `pulumi:"springcm"`
+	Wams                 pulumi.MapInput               `pulumi:"wams"`
+	Wsfed                pulumi.MapInput               `pulumi:"wsfed"`
+	Zendesk              pulumi.MapInput               `pulumi:"zendesk"`
+	Zoom                 pulumi.MapInput               `pulumi:"zoom"`
+}
+
+func (GetClientAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddon)(nil)).Elem()
+}
+
+func (i GetClientAddonArgs) ToGetClientAddonOutput() GetClientAddonOutput {
+	return i.ToGetClientAddonOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonArgs) ToGetClientAddonOutputWithContext(ctx context.Context) GetClientAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonOutput)
+}
+
+// GetClientAddonArrayInput is an input type that accepts GetClientAddonArray and GetClientAddonArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonArrayInput` via:
+//
+//          GetClientAddonArray{ GetClientAddonArgs{...} }
+type GetClientAddonArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonArrayOutput() GetClientAddonArrayOutput
+	ToGetClientAddonArrayOutputWithContext(context.Context) GetClientAddonArrayOutput
+}
+
+type GetClientAddonArray []GetClientAddonInput
+
+func (GetClientAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddon)(nil)).Elem()
+}
+
+func (i GetClientAddonArray) ToGetClientAddonArrayOutput() GetClientAddonArrayOutput {
+	return i.ToGetClientAddonArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonArray) ToGetClientAddonArrayOutputWithContext(ctx context.Context) GetClientAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonArrayOutput)
+}
+
+type GetClientAddonOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddon)(nil)).Elem()
+}
+
+func (o GetClientAddonOutput) ToGetClientAddonOutput() GetClientAddonOutput {
+	return o
+}
+
+func (o GetClientAddonOutput) ToGetClientAddonOutputWithContext(ctx context.Context) GetClientAddonOutput {
+	return o
+}
+
+func (o GetClientAddonOutput) Aws() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) AzureBlob() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.AzureBlob }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) AzureSb() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.AzureSb }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Box() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Box }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Cloudbees() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Cloudbees }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Concur() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Dropbox() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Echosign() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Egnyte() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Firebase() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Layer() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Mscrm() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Newrelic() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Office365() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Rms() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Salesforce() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) SalesforceApi() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) SalesforceSandboxApi() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Samlps() GetClientAddonSamlpArrayOutput {
+	return o.ApplyT(func(v GetClientAddon) []GetClientAddonSamlp { return v.Samlps }).(GetClientAddonSamlpArrayOutput)
+}
+
+func (o GetClientAddonOutput) SapApi() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Sentry() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Sharepoint() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Slack() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Springcm() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Wams() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Wsfed() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Zendesk() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonOutput) Zoom() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddon) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
+}
+
+type GetClientAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddon)(nil)).Elem()
+}
+
+func (o GetClientAddonArrayOutput) ToGetClientAddonArrayOutput() GetClientAddonArrayOutput {
+	return o
+}
+
+func (o GetClientAddonArrayOutput) ToGetClientAddonArrayOutputWithContext(ctx context.Context) GetClientAddonArrayOutput {
+	return o
+}
+
+func (o GetClientAddonArrayOutput) Index(i pulumi.IntInput) GetClientAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddon {
+		return vs[0].([]GetClientAddon)[vs[1].(int)]
+	}).(GetClientAddonOutput)
+}
+
+type GetClientAddonSamlp struct {
+	Audience                       string                    `pulumi:"audience"`
+	AuthnContextClassRef           string                    `pulumi:"authnContextClassRef"`
+	Binding                        string                    `pulumi:"binding"`
+	CreateUpnClaim                 bool                      `pulumi:"createUpnClaim"`
+	Destination                    string                    `pulumi:"destination"`
+	DigestAlgorithm                string                    `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     bool                      `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              int                       `pulumi:"lifetimeInSeconds"`
+	Logout                         GetClientAddonSamlpLogout `pulumi:"logout"`
+	MapIdentities                  bool                      `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           bool                      `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       map[string]interface{}    `pulumi:"mappings"`
+	NameIdentifierFormat           string                    `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           []string                  `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping bool                      `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      string                    `pulumi:"recipient"`
+	SignResponse                   bool                      `pulumi:"signResponse"`
+	SignatureAlgorithm             string                    `pulumi:"signatureAlgorithm"`
+	SigningCert                    string                    `pulumi:"signingCert"`
+	TypedAttributes                bool                      `pulumi:"typedAttributes"`
+}
+
+// GetClientAddonSamlpInput is an input type that accepts GetClientAddonSamlpArgs and GetClientAddonSamlpOutput values.
+// You can construct a concrete instance of `GetClientAddonSamlpInput` via:
+//
+//          GetClientAddonSamlpArgs{...}
+type GetClientAddonSamlpInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSamlpOutput() GetClientAddonSamlpOutput
+	ToGetClientAddonSamlpOutputWithContext(context.Context) GetClientAddonSamlpOutput
+}
+
+type GetClientAddonSamlpArgs struct {
+	Audience                       pulumi.StringInput             `pulumi:"audience"`
+	AuthnContextClassRef           pulumi.StringInput             `pulumi:"authnContextClassRef"`
+	Binding                        pulumi.StringInput             `pulumi:"binding"`
+	CreateUpnClaim                 pulumi.BoolInput               `pulumi:"createUpnClaim"`
+	Destination                    pulumi.StringInput             `pulumi:"destination"`
+	DigestAlgorithm                pulumi.StringInput             `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     pulumi.BoolInput               `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              pulumi.IntInput                `pulumi:"lifetimeInSeconds"`
+	Logout                         GetClientAddonSamlpLogoutInput `pulumi:"logout"`
+	MapIdentities                  pulumi.BoolInput               `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           pulumi.BoolInput               `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       pulumi.MapInput                `pulumi:"mappings"`
+	NameIdentifierFormat           pulumi.StringInput             `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           pulumi.StringArrayInput        `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping pulumi.BoolInput               `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      pulumi.StringInput             `pulumi:"recipient"`
+	SignResponse                   pulumi.BoolInput               `pulumi:"signResponse"`
+	SignatureAlgorithm             pulumi.StringInput             `pulumi:"signatureAlgorithm"`
+	SigningCert                    pulumi.StringInput             `pulumi:"signingCert"`
+	TypedAttributes                pulumi.BoolInput               `pulumi:"typedAttributes"`
+}
+
+func (GetClientAddonSamlpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSamlp)(nil)).Elem()
+}
+
+func (i GetClientAddonSamlpArgs) ToGetClientAddonSamlpOutput() GetClientAddonSamlpOutput {
+	return i.ToGetClientAddonSamlpOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSamlpArgs) ToGetClientAddonSamlpOutputWithContext(ctx context.Context) GetClientAddonSamlpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSamlpOutput)
+}
+
+// GetClientAddonSamlpArrayInput is an input type that accepts GetClientAddonSamlpArray and GetClientAddonSamlpArrayOutput values.
+// You can construct a concrete instance of `GetClientAddonSamlpArrayInput` via:
+//
+//          GetClientAddonSamlpArray{ GetClientAddonSamlpArgs{...} }
+type GetClientAddonSamlpArrayInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSamlpArrayOutput() GetClientAddonSamlpArrayOutput
+	ToGetClientAddonSamlpArrayOutputWithContext(context.Context) GetClientAddonSamlpArrayOutput
+}
+
+type GetClientAddonSamlpArray []GetClientAddonSamlpInput
+
+func (GetClientAddonSamlpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSamlp)(nil)).Elem()
+}
+
+func (i GetClientAddonSamlpArray) ToGetClientAddonSamlpArrayOutput() GetClientAddonSamlpArrayOutput {
+	return i.ToGetClientAddonSamlpArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSamlpArray) ToGetClientAddonSamlpArrayOutputWithContext(ctx context.Context) GetClientAddonSamlpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSamlpArrayOutput)
+}
+
+type GetClientAddonSamlpOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSamlpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSamlp)(nil)).Elem()
+}
+
+func (o GetClientAddonSamlpOutput) ToGetClientAddonSamlpOutput() GetClientAddonSamlpOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpOutput) ToGetClientAddonSamlpOutputWithContext(ctx context.Context) GetClientAddonSamlpOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) AuthnContextClassRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.AuthnContextClassRef }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) Binding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.Binding }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) CreateUpnClaim() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.CreateUpnClaim }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonSamlpOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) DigestAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) IncludeAttributeNameFormat() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonSamlpOutput) LifetimeInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetClientAddonSamlpOutput) Logout() GetClientAddonSamlpLogoutOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) GetClientAddonSamlpLogout { return v.Logout }).(GetClientAddonSamlpLogoutOutput)
+}
+
+func (o GetClientAddonSamlpOutput) MapIdentities() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.MapIdentities }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonSamlpOutput) Mappings() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
+}
+
+func (o GetClientAddonSamlpOutput) NameIdentifierFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.NameIdentifierFormat }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClientAddonSamlpOutput) PassthroughClaimsWithNoMapping() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonSamlpOutput) Recipient() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.Recipient }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) SignResponse() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.SignResponse }).(pulumi.BoolOutput)
+}
+
+func (o GetClientAddonSamlpOutput) SignatureAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) SigningCert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.SigningCert }).(pulumi.StringOutput)
+}
+
+func (o GetClientAddonSamlpOutput) TypedAttributes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.TypedAttributes }).(pulumi.BoolOutput)
+}
+
+type GetClientAddonSamlpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSamlpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientAddonSamlp)(nil)).Elem()
+}
+
+func (o GetClientAddonSamlpArrayOutput) ToGetClientAddonSamlpArrayOutput() GetClientAddonSamlpArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpArrayOutput) ToGetClientAddonSamlpArrayOutputWithContext(ctx context.Context) GetClientAddonSamlpArrayOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpArrayOutput) Index(i pulumi.IntInput) GetClientAddonSamlpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSamlp {
+		return vs[0].([]GetClientAddonSamlp)[vs[1].(int)]
+	}).(GetClientAddonSamlpOutput)
+}
+
+type GetClientAddonSamlpLogout struct {
+	Callback   *string `pulumi:"callback"`
+	SloEnabled *bool   `pulumi:"sloEnabled"`
+}
+
+// GetClientAddonSamlpLogoutInput is an input type that accepts GetClientAddonSamlpLogoutArgs and GetClientAddonSamlpLogoutOutput values.
+// You can construct a concrete instance of `GetClientAddonSamlpLogoutInput` via:
+//
+//          GetClientAddonSamlpLogoutArgs{...}
+type GetClientAddonSamlpLogoutInput interface {
+	pulumi.Input
+
+	ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput
+	ToGetClientAddonSamlpLogoutOutputWithContext(context.Context) GetClientAddonSamlpLogoutOutput
+}
+
+type GetClientAddonSamlpLogoutArgs struct {
+	Callback   pulumi.StringPtrInput `pulumi:"callback"`
+	SloEnabled pulumi.BoolPtrInput   `pulumi:"sloEnabled"`
+}
+
+func (GetClientAddonSamlpLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSamlpLogout)(nil)).Elem()
+}
+
+func (i GetClientAddonSamlpLogoutArgs) ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput {
+	return i.ToGetClientAddonSamlpLogoutOutputWithContext(context.Background())
+}
+
+func (i GetClientAddonSamlpLogoutArgs) ToGetClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetClientAddonSamlpLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSamlpLogoutOutput)
+}
+
+type GetClientAddonSamlpLogoutOutput struct{ *pulumi.OutputState }
+
+func (GetClientAddonSamlpLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientAddonSamlpLogout)(nil)).Elem()
+}
+
+func (o GetClientAddonSamlpLogoutOutput) ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpLogoutOutput) ToGetClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetClientAddonSamlpLogoutOutput {
+	return o
+}
+
+func (o GetClientAddonSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientAddonSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClientAddonSamlpLogoutOutput) SloEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClientAddonSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetClientJwtConfiguration struct {
+	Alg               string            `pulumi:"alg"`
+	LifetimeInSeconds int               `pulumi:"lifetimeInSeconds"`
+	Scopes            map[string]string `pulumi:"scopes"`
+	SecretEncoded     bool              `pulumi:"secretEncoded"`
+}
+
+// GetClientJwtConfigurationInput is an input type that accepts GetClientJwtConfigurationArgs and GetClientJwtConfigurationOutput values.
+// You can construct a concrete instance of `GetClientJwtConfigurationInput` via:
+//
+//          GetClientJwtConfigurationArgs{...}
+type GetClientJwtConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClientJwtConfigurationOutput() GetClientJwtConfigurationOutput
+	ToGetClientJwtConfigurationOutputWithContext(context.Context) GetClientJwtConfigurationOutput
+}
+
+type GetClientJwtConfigurationArgs struct {
+	Alg               pulumi.StringInput    `pulumi:"alg"`
+	LifetimeInSeconds pulumi.IntInput       `pulumi:"lifetimeInSeconds"`
+	Scopes            pulumi.StringMapInput `pulumi:"scopes"`
+	SecretEncoded     pulumi.BoolInput      `pulumi:"secretEncoded"`
+}
+
+func (GetClientJwtConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientJwtConfiguration)(nil)).Elem()
+}
+
+func (i GetClientJwtConfigurationArgs) ToGetClientJwtConfigurationOutput() GetClientJwtConfigurationOutput {
+	return i.ToGetClientJwtConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClientJwtConfigurationArgs) ToGetClientJwtConfigurationOutputWithContext(ctx context.Context) GetClientJwtConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientJwtConfigurationOutput)
+}
+
+// GetClientJwtConfigurationArrayInput is an input type that accepts GetClientJwtConfigurationArray and GetClientJwtConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetClientJwtConfigurationArrayInput` via:
+//
+//          GetClientJwtConfigurationArray{ GetClientJwtConfigurationArgs{...} }
+type GetClientJwtConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientJwtConfigurationArrayOutput() GetClientJwtConfigurationArrayOutput
+	ToGetClientJwtConfigurationArrayOutputWithContext(context.Context) GetClientJwtConfigurationArrayOutput
+}
+
+type GetClientJwtConfigurationArray []GetClientJwtConfigurationInput
+
+func (GetClientJwtConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientJwtConfiguration)(nil)).Elem()
+}
+
+func (i GetClientJwtConfigurationArray) ToGetClientJwtConfigurationArrayOutput() GetClientJwtConfigurationArrayOutput {
+	return i.ToGetClientJwtConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientJwtConfigurationArray) ToGetClientJwtConfigurationArrayOutputWithContext(ctx context.Context) GetClientJwtConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientJwtConfigurationArrayOutput)
+}
+
+type GetClientJwtConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetClientJwtConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientJwtConfiguration)(nil)).Elem()
+}
+
+func (o GetClientJwtConfigurationOutput) ToGetClientJwtConfigurationOutput() GetClientJwtConfigurationOutput {
+	return o
+}
+
+func (o GetClientJwtConfigurationOutput) ToGetClientJwtConfigurationOutputWithContext(ctx context.Context) GetClientJwtConfigurationOutput {
+	return o
+}
+
+func (o GetClientJwtConfigurationOutput) Alg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientJwtConfiguration) string { return v.Alg }).(pulumi.StringOutput)
+}
+
+func (o GetClientJwtConfigurationOutput) LifetimeInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientJwtConfiguration) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetClientJwtConfigurationOutput) Scopes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClientJwtConfiguration) map[string]string { return v.Scopes }).(pulumi.StringMapOutput)
+}
+
+func (o GetClientJwtConfigurationOutput) SecretEncoded() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientJwtConfiguration) bool { return v.SecretEncoded }).(pulumi.BoolOutput)
+}
+
+type GetClientJwtConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientJwtConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientJwtConfiguration)(nil)).Elem()
+}
+
+func (o GetClientJwtConfigurationArrayOutput) ToGetClientJwtConfigurationArrayOutput() GetClientJwtConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientJwtConfigurationArrayOutput) ToGetClientJwtConfigurationArrayOutputWithContext(ctx context.Context) GetClientJwtConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientJwtConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientJwtConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientJwtConfiguration {
+		return vs[0].([]GetClientJwtConfiguration)[vs[1].(int)]
+	}).(GetClientJwtConfigurationOutput)
+}
+
+type GetClientMobile struct {
+	Androids []GetClientMobileAndroid `pulumi:"androids"`
+	Ios      []GetClientMobileIo      `pulumi:"ios"`
+}
+
+// GetClientMobileInput is an input type that accepts GetClientMobileArgs and GetClientMobileOutput values.
+// You can construct a concrete instance of `GetClientMobileInput` via:
+//
+//          GetClientMobileArgs{...}
+type GetClientMobileInput interface {
+	pulumi.Input
+
+	ToGetClientMobileOutput() GetClientMobileOutput
+	ToGetClientMobileOutputWithContext(context.Context) GetClientMobileOutput
+}
+
+type GetClientMobileArgs struct {
+	Androids GetClientMobileAndroidArrayInput `pulumi:"androids"`
+	Ios      GetClientMobileIoArrayInput      `pulumi:"ios"`
+}
+
+func (GetClientMobileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientMobile)(nil)).Elem()
+}
+
+func (i GetClientMobileArgs) ToGetClientMobileOutput() GetClientMobileOutput {
+	return i.ToGetClientMobileOutputWithContext(context.Background())
+}
+
+func (i GetClientMobileArgs) ToGetClientMobileOutputWithContext(ctx context.Context) GetClientMobileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientMobileOutput)
+}
+
+// GetClientMobileArrayInput is an input type that accepts GetClientMobileArray and GetClientMobileArrayOutput values.
+// You can construct a concrete instance of `GetClientMobileArrayInput` via:
+//
+//          GetClientMobileArray{ GetClientMobileArgs{...} }
+type GetClientMobileArrayInput interface {
+	pulumi.Input
+
+	ToGetClientMobileArrayOutput() GetClientMobileArrayOutput
+	ToGetClientMobileArrayOutputWithContext(context.Context) GetClientMobileArrayOutput
+}
+
+type GetClientMobileArray []GetClientMobileInput
+
+func (GetClientMobileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientMobile)(nil)).Elem()
+}
+
+func (i GetClientMobileArray) ToGetClientMobileArrayOutput() GetClientMobileArrayOutput {
+	return i.ToGetClientMobileArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientMobileArray) ToGetClientMobileArrayOutputWithContext(ctx context.Context) GetClientMobileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientMobileArrayOutput)
+}
+
+type GetClientMobileOutput struct{ *pulumi.OutputState }
+
+func (GetClientMobileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientMobile)(nil)).Elem()
+}
+
+func (o GetClientMobileOutput) ToGetClientMobileOutput() GetClientMobileOutput {
+	return o
+}
+
+func (o GetClientMobileOutput) ToGetClientMobileOutputWithContext(ctx context.Context) GetClientMobileOutput {
+	return o
+}
+
+func (o GetClientMobileOutput) Androids() GetClientMobileAndroidArrayOutput {
+	return o.ApplyT(func(v GetClientMobile) []GetClientMobileAndroid { return v.Androids }).(GetClientMobileAndroidArrayOutput)
+}
+
+func (o GetClientMobileOutput) Ios() GetClientMobileIoArrayOutput {
+	return o.ApplyT(func(v GetClientMobile) []GetClientMobileIo { return v.Ios }).(GetClientMobileIoArrayOutput)
+}
+
+type GetClientMobileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientMobileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientMobile)(nil)).Elem()
+}
+
+func (o GetClientMobileArrayOutput) ToGetClientMobileArrayOutput() GetClientMobileArrayOutput {
+	return o
+}
+
+func (o GetClientMobileArrayOutput) ToGetClientMobileArrayOutputWithContext(ctx context.Context) GetClientMobileArrayOutput {
+	return o
+}
+
+func (o GetClientMobileArrayOutput) Index(i pulumi.IntInput) GetClientMobileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientMobile {
+		return vs[0].([]GetClientMobile)[vs[1].(int)]
+	}).(GetClientMobileOutput)
+}
+
+type GetClientMobileAndroid struct {
+	AppPackageName         string   `pulumi:"appPackageName"`
+	Sha256CertFingerprints []string `pulumi:"sha256CertFingerprints"`
+}
+
+// GetClientMobileAndroidInput is an input type that accepts GetClientMobileAndroidArgs and GetClientMobileAndroidOutput values.
+// You can construct a concrete instance of `GetClientMobileAndroidInput` via:
+//
+//          GetClientMobileAndroidArgs{...}
+type GetClientMobileAndroidInput interface {
+	pulumi.Input
+
+	ToGetClientMobileAndroidOutput() GetClientMobileAndroidOutput
+	ToGetClientMobileAndroidOutputWithContext(context.Context) GetClientMobileAndroidOutput
+}
+
+type GetClientMobileAndroidArgs struct {
+	AppPackageName         pulumi.StringInput      `pulumi:"appPackageName"`
+	Sha256CertFingerprints pulumi.StringArrayInput `pulumi:"sha256CertFingerprints"`
+}
+
+func (GetClientMobileAndroidArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientMobileAndroid)(nil)).Elem()
+}
+
+func (i GetClientMobileAndroidArgs) ToGetClientMobileAndroidOutput() GetClientMobileAndroidOutput {
+	return i.ToGetClientMobileAndroidOutputWithContext(context.Background())
+}
+
+func (i GetClientMobileAndroidArgs) ToGetClientMobileAndroidOutputWithContext(ctx context.Context) GetClientMobileAndroidOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientMobileAndroidOutput)
+}
+
+// GetClientMobileAndroidArrayInput is an input type that accepts GetClientMobileAndroidArray and GetClientMobileAndroidArrayOutput values.
+// You can construct a concrete instance of `GetClientMobileAndroidArrayInput` via:
+//
+//          GetClientMobileAndroidArray{ GetClientMobileAndroidArgs{...} }
+type GetClientMobileAndroidArrayInput interface {
+	pulumi.Input
+
+	ToGetClientMobileAndroidArrayOutput() GetClientMobileAndroidArrayOutput
+	ToGetClientMobileAndroidArrayOutputWithContext(context.Context) GetClientMobileAndroidArrayOutput
+}
+
+type GetClientMobileAndroidArray []GetClientMobileAndroidInput
+
+func (GetClientMobileAndroidArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientMobileAndroid)(nil)).Elem()
+}
+
+func (i GetClientMobileAndroidArray) ToGetClientMobileAndroidArrayOutput() GetClientMobileAndroidArrayOutput {
+	return i.ToGetClientMobileAndroidArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientMobileAndroidArray) ToGetClientMobileAndroidArrayOutputWithContext(ctx context.Context) GetClientMobileAndroidArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientMobileAndroidArrayOutput)
+}
+
+type GetClientMobileAndroidOutput struct{ *pulumi.OutputState }
+
+func (GetClientMobileAndroidOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientMobileAndroid)(nil)).Elem()
+}
+
+func (o GetClientMobileAndroidOutput) ToGetClientMobileAndroidOutput() GetClientMobileAndroidOutput {
+	return o
+}
+
+func (o GetClientMobileAndroidOutput) ToGetClientMobileAndroidOutputWithContext(ctx context.Context) GetClientMobileAndroidOutput {
+	return o
+}
+
+func (o GetClientMobileAndroidOutput) AppPackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientMobileAndroid) string { return v.AppPackageName }).(pulumi.StringOutput)
+}
+
+func (o GetClientMobileAndroidOutput) Sha256CertFingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientMobileAndroid) []string { return v.Sha256CertFingerprints }).(pulumi.StringArrayOutput)
+}
+
+type GetClientMobileAndroidArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientMobileAndroidArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientMobileAndroid)(nil)).Elem()
+}
+
+func (o GetClientMobileAndroidArrayOutput) ToGetClientMobileAndroidArrayOutput() GetClientMobileAndroidArrayOutput {
+	return o
+}
+
+func (o GetClientMobileAndroidArrayOutput) ToGetClientMobileAndroidArrayOutputWithContext(ctx context.Context) GetClientMobileAndroidArrayOutput {
+	return o
+}
+
+func (o GetClientMobileAndroidArrayOutput) Index(i pulumi.IntInput) GetClientMobileAndroidOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientMobileAndroid {
+		return vs[0].([]GetClientMobileAndroid)[vs[1].(int)]
+	}).(GetClientMobileAndroidOutput)
+}
+
+type GetClientMobileIo struct {
+	AppBundleIdentifier string `pulumi:"appBundleIdentifier"`
+	TeamId              string `pulumi:"teamId"`
+}
+
+// GetClientMobileIoInput is an input type that accepts GetClientMobileIoArgs and GetClientMobileIoOutput values.
+// You can construct a concrete instance of `GetClientMobileIoInput` via:
+//
+//          GetClientMobileIoArgs{...}
+type GetClientMobileIoInput interface {
+	pulumi.Input
+
+	ToGetClientMobileIoOutput() GetClientMobileIoOutput
+	ToGetClientMobileIoOutputWithContext(context.Context) GetClientMobileIoOutput
+}
+
+type GetClientMobileIoArgs struct {
+	AppBundleIdentifier pulumi.StringInput `pulumi:"appBundleIdentifier"`
+	TeamId              pulumi.StringInput `pulumi:"teamId"`
+}
+
+func (GetClientMobileIoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientMobileIo)(nil)).Elem()
+}
+
+func (i GetClientMobileIoArgs) ToGetClientMobileIoOutput() GetClientMobileIoOutput {
+	return i.ToGetClientMobileIoOutputWithContext(context.Background())
+}
+
+func (i GetClientMobileIoArgs) ToGetClientMobileIoOutputWithContext(ctx context.Context) GetClientMobileIoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientMobileIoOutput)
+}
+
+// GetClientMobileIoArrayInput is an input type that accepts GetClientMobileIoArray and GetClientMobileIoArrayOutput values.
+// You can construct a concrete instance of `GetClientMobileIoArrayInput` via:
+//
+//          GetClientMobileIoArray{ GetClientMobileIoArgs{...} }
+type GetClientMobileIoArrayInput interface {
+	pulumi.Input
+
+	ToGetClientMobileIoArrayOutput() GetClientMobileIoArrayOutput
+	ToGetClientMobileIoArrayOutputWithContext(context.Context) GetClientMobileIoArrayOutput
+}
+
+type GetClientMobileIoArray []GetClientMobileIoInput
+
+func (GetClientMobileIoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientMobileIo)(nil)).Elem()
+}
+
+func (i GetClientMobileIoArray) ToGetClientMobileIoArrayOutput() GetClientMobileIoArrayOutput {
+	return i.ToGetClientMobileIoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientMobileIoArray) ToGetClientMobileIoArrayOutputWithContext(ctx context.Context) GetClientMobileIoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientMobileIoArrayOutput)
+}
+
+type GetClientMobileIoOutput struct{ *pulumi.OutputState }
+
+func (GetClientMobileIoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientMobileIo)(nil)).Elem()
+}
+
+func (o GetClientMobileIoOutput) ToGetClientMobileIoOutput() GetClientMobileIoOutput {
+	return o
+}
+
+func (o GetClientMobileIoOutput) ToGetClientMobileIoOutputWithContext(ctx context.Context) GetClientMobileIoOutput {
+	return o
+}
+
+func (o GetClientMobileIoOutput) AppBundleIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientMobileIo) string { return v.AppBundleIdentifier }).(pulumi.StringOutput)
+}
+
+func (o GetClientMobileIoOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientMobileIo) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
+type GetClientMobileIoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientMobileIoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientMobileIo)(nil)).Elem()
+}
+
+func (o GetClientMobileIoArrayOutput) ToGetClientMobileIoArrayOutput() GetClientMobileIoArrayOutput {
+	return o
+}
+
+func (o GetClientMobileIoArrayOutput) ToGetClientMobileIoArrayOutputWithContext(ctx context.Context) GetClientMobileIoArrayOutput {
+	return o
+}
+
+func (o GetClientMobileIoArrayOutput) Index(i pulumi.IntInput) GetClientMobileIoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientMobileIo {
+		return vs[0].([]GetClientMobileIo)[vs[1].(int)]
+	}).(GetClientMobileIoOutput)
+}
+
+type GetClientNativeSocialLogin struct {
+	Apples    []GetClientNativeSocialLoginApple    `pulumi:"apples"`
+	Facebooks []GetClientNativeSocialLoginFacebook `pulumi:"facebooks"`
+}
+
+// GetClientNativeSocialLoginInput is an input type that accepts GetClientNativeSocialLoginArgs and GetClientNativeSocialLoginOutput values.
+// You can construct a concrete instance of `GetClientNativeSocialLoginInput` via:
+//
+//          GetClientNativeSocialLoginArgs{...}
+type GetClientNativeSocialLoginInput interface {
+	pulumi.Input
+
+	ToGetClientNativeSocialLoginOutput() GetClientNativeSocialLoginOutput
+	ToGetClientNativeSocialLoginOutputWithContext(context.Context) GetClientNativeSocialLoginOutput
+}
+
+type GetClientNativeSocialLoginArgs struct {
+	Apples    GetClientNativeSocialLoginAppleArrayInput    `pulumi:"apples"`
+	Facebooks GetClientNativeSocialLoginFacebookArrayInput `pulumi:"facebooks"`
+}
+
+func (GetClientNativeSocialLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (i GetClientNativeSocialLoginArgs) ToGetClientNativeSocialLoginOutput() GetClientNativeSocialLoginOutput {
+	return i.ToGetClientNativeSocialLoginOutputWithContext(context.Background())
+}
+
+func (i GetClientNativeSocialLoginArgs) ToGetClientNativeSocialLoginOutputWithContext(ctx context.Context) GetClientNativeSocialLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientNativeSocialLoginOutput)
+}
+
+// GetClientNativeSocialLoginArrayInput is an input type that accepts GetClientNativeSocialLoginArray and GetClientNativeSocialLoginArrayOutput values.
+// You can construct a concrete instance of `GetClientNativeSocialLoginArrayInput` via:
+//
+//          GetClientNativeSocialLoginArray{ GetClientNativeSocialLoginArgs{...} }
+type GetClientNativeSocialLoginArrayInput interface {
+	pulumi.Input
+
+	ToGetClientNativeSocialLoginArrayOutput() GetClientNativeSocialLoginArrayOutput
+	ToGetClientNativeSocialLoginArrayOutputWithContext(context.Context) GetClientNativeSocialLoginArrayOutput
+}
+
+type GetClientNativeSocialLoginArray []GetClientNativeSocialLoginInput
+
+func (GetClientNativeSocialLoginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (i GetClientNativeSocialLoginArray) ToGetClientNativeSocialLoginArrayOutput() GetClientNativeSocialLoginArrayOutput {
+	return i.ToGetClientNativeSocialLoginArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientNativeSocialLoginArray) ToGetClientNativeSocialLoginArrayOutputWithContext(ctx context.Context) GetClientNativeSocialLoginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientNativeSocialLoginArrayOutput)
+}
+
+type GetClientNativeSocialLoginOutput struct{ *pulumi.OutputState }
+
+func (GetClientNativeSocialLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (o GetClientNativeSocialLoginOutput) ToGetClientNativeSocialLoginOutput() GetClientNativeSocialLoginOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginOutput) ToGetClientNativeSocialLoginOutputWithContext(ctx context.Context) GetClientNativeSocialLoginOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginOutput) Apples() GetClientNativeSocialLoginAppleArrayOutput {
+	return o.ApplyT(func(v GetClientNativeSocialLogin) []GetClientNativeSocialLoginApple { return v.Apples }).(GetClientNativeSocialLoginAppleArrayOutput)
+}
+
+func (o GetClientNativeSocialLoginOutput) Facebooks() GetClientNativeSocialLoginFacebookArrayOutput {
+	return o.ApplyT(func(v GetClientNativeSocialLogin) []GetClientNativeSocialLoginFacebook { return v.Facebooks }).(GetClientNativeSocialLoginFacebookArrayOutput)
+}
+
+type GetClientNativeSocialLoginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientNativeSocialLoginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (o GetClientNativeSocialLoginArrayOutput) ToGetClientNativeSocialLoginArrayOutput() GetClientNativeSocialLoginArrayOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginArrayOutput) ToGetClientNativeSocialLoginArrayOutputWithContext(ctx context.Context) GetClientNativeSocialLoginArrayOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginArrayOutput) Index(i pulumi.IntInput) GetClientNativeSocialLoginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientNativeSocialLogin {
+		return vs[0].([]GetClientNativeSocialLogin)[vs[1].(int)]
+	}).(GetClientNativeSocialLoginOutput)
+}
+
+type GetClientNativeSocialLoginApple struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClientNativeSocialLoginAppleInput is an input type that accepts GetClientNativeSocialLoginAppleArgs and GetClientNativeSocialLoginAppleOutput values.
+// You can construct a concrete instance of `GetClientNativeSocialLoginAppleInput` via:
+//
+//          GetClientNativeSocialLoginAppleArgs{...}
+type GetClientNativeSocialLoginAppleInput interface {
+	pulumi.Input
+
+	ToGetClientNativeSocialLoginAppleOutput() GetClientNativeSocialLoginAppleOutput
+	ToGetClientNativeSocialLoginAppleOutputWithContext(context.Context) GetClientNativeSocialLoginAppleOutput
+}
+
+type GetClientNativeSocialLoginAppleArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClientNativeSocialLoginAppleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (i GetClientNativeSocialLoginAppleArgs) ToGetClientNativeSocialLoginAppleOutput() GetClientNativeSocialLoginAppleOutput {
+	return i.ToGetClientNativeSocialLoginAppleOutputWithContext(context.Background())
+}
+
+func (i GetClientNativeSocialLoginAppleArgs) ToGetClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GetClientNativeSocialLoginAppleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientNativeSocialLoginAppleOutput)
+}
+
+// GetClientNativeSocialLoginAppleArrayInput is an input type that accepts GetClientNativeSocialLoginAppleArray and GetClientNativeSocialLoginAppleArrayOutput values.
+// You can construct a concrete instance of `GetClientNativeSocialLoginAppleArrayInput` via:
+//
+//          GetClientNativeSocialLoginAppleArray{ GetClientNativeSocialLoginAppleArgs{...} }
+type GetClientNativeSocialLoginAppleArrayInput interface {
+	pulumi.Input
+
+	ToGetClientNativeSocialLoginAppleArrayOutput() GetClientNativeSocialLoginAppleArrayOutput
+	ToGetClientNativeSocialLoginAppleArrayOutputWithContext(context.Context) GetClientNativeSocialLoginAppleArrayOutput
+}
+
+type GetClientNativeSocialLoginAppleArray []GetClientNativeSocialLoginAppleInput
+
+func (GetClientNativeSocialLoginAppleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (i GetClientNativeSocialLoginAppleArray) ToGetClientNativeSocialLoginAppleArrayOutput() GetClientNativeSocialLoginAppleArrayOutput {
+	return i.ToGetClientNativeSocialLoginAppleArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientNativeSocialLoginAppleArray) ToGetClientNativeSocialLoginAppleArrayOutputWithContext(ctx context.Context) GetClientNativeSocialLoginAppleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientNativeSocialLoginAppleArrayOutput)
+}
+
+type GetClientNativeSocialLoginAppleOutput struct{ *pulumi.OutputState }
+
+func (GetClientNativeSocialLoginAppleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (o GetClientNativeSocialLoginAppleOutput) ToGetClientNativeSocialLoginAppleOutput() GetClientNativeSocialLoginAppleOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginAppleOutput) ToGetClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GetClientNativeSocialLoginAppleOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginAppleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientNativeSocialLoginApple) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClientNativeSocialLoginAppleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientNativeSocialLoginAppleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (o GetClientNativeSocialLoginAppleArrayOutput) ToGetClientNativeSocialLoginAppleArrayOutput() GetClientNativeSocialLoginAppleArrayOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginAppleArrayOutput) ToGetClientNativeSocialLoginAppleArrayOutputWithContext(ctx context.Context) GetClientNativeSocialLoginAppleArrayOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginAppleArrayOutput) Index(i pulumi.IntInput) GetClientNativeSocialLoginAppleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientNativeSocialLoginApple {
+		return vs[0].([]GetClientNativeSocialLoginApple)[vs[1].(int)]
+	}).(GetClientNativeSocialLoginAppleOutput)
+}
+
+type GetClientNativeSocialLoginFacebook struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClientNativeSocialLoginFacebookInput is an input type that accepts GetClientNativeSocialLoginFacebookArgs and GetClientNativeSocialLoginFacebookOutput values.
+// You can construct a concrete instance of `GetClientNativeSocialLoginFacebookInput` via:
+//
+//          GetClientNativeSocialLoginFacebookArgs{...}
+type GetClientNativeSocialLoginFacebookInput interface {
+	pulumi.Input
+
+	ToGetClientNativeSocialLoginFacebookOutput() GetClientNativeSocialLoginFacebookOutput
+	ToGetClientNativeSocialLoginFacebookOutputWithContext(context.Context) GetClientNativeSocialLoginFacebookOutput
+}
+
+type GetClientNativeSocialLoginFacebookArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClientNativeSocialLoginFacebookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (i GetClientNativeSocialLoginFacebookArgs) ToGetClientNativeSocialLoginFacebookOutput() GetClientNativeSocialLoginFacebookOutput {
+	return i.ToGetClientNativeSocialLoginFacebookOutputWithContext(context.Background())
+}
+
+func (i GetClientNativeSocialLoginFacebookArgs) ToGetClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GetClientNativeSocialLoginFacebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientNativeSocialLoginFacebookOutput)
+}
+
+// GetClientNativeSocialLoginFacebookArrayInput is an input type that accepts GetClientNativeSocialLoginFacebookArray and GetClientNativeSocialLoginFacebookArrayOutput values.
+// You can construct a concrete instance of `GetClientNativeSocialLoginFacebookArrayInput` via:
+//
+//          GetClientNativeSocialLoginFacebookArray{ GetClientNativeSocialLoginFacebookArgs{...} }
+type GetClientNativeSocialLoginFacebookArrayInput interface {
+	pulumi.Input
+
+	ToGetClientNativeSocialLoginFacebookArrayOutput() GetClientNativeSocialLoginFacebookArrayOutput
+	ToGetClientNativeSocialLoginFacebookArrayOutputWithContext(context.Context) GetClientNativeSocialLoginFacebookArrayOutput
+}
+
+type GetClientNativeSocialLoginFacebookArray []GetClientNativeSocialLoginFacebookInput
+
+func (GetClientNativeSocialLoginFacebookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (i GetClientNativeSocialLoginFacebookArray) ToGetClientNativeSocialLoginFacebookArrayOutput() GetClientNativeSocialLoginFacebookArrayOutput {
+	return i.ToGetClientNativeSocialLoginFacebookArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientNativeSocialLoginFacebookArray) ToGetClientNativeSocialLoginFacebookArrayOutputWithContext(ctx context.Context) GetClientNativeSocialLoginFacebookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientNativeSocialLoginFacebookArrayOutput)
+}
+
+type GetClientNativeSocialLoginFacebookOutput struct{ *pulumi.OutputState }
+
+func (GetClientNativeSocialLoginFacebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (o GetClientNativeSocialLoginFacebookOutput) ToGetClientNativeSocialLoginFacebookOutput() GetClientNativeSocialLoginFacebookOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginFacebookOutput) ToGetClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GetClientNativeSocialLoginFacebookOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginFacebookOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientNativeSocialLoginFacebook) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClientNativeSocialLoginFacebookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientNativeSocialLoginFacebookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (o GetClientNativeSocialLoginFacebookArrayOutput) ToGetClientNativeSocialLoginFacebookArrayOutput() GetClientNativeSocialLoginFacebookArrayOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginFacebookArrayOutput) ToGetClientNativeSocialLoginFacebookArrayOutputWithContext(ctx context.Context) GetClientNativeSocialLoginFacebookArrayOutput {
+	return o
+}
+
+func (o GetClientNativeSocialLoginFacebookArrayOutput) Index(i pulumi.IntInput) GetClientNativeSocialLoginFacebookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientNativeSocialLoginFacebook {
+		return vs[0].([]GetClientNativeSocialLoginFacebook)[vs[1].(int)]
+	}).(GetClientNativeSocialLoginFacebookOutput)
+}
+
+type GetClientRefreshToken struct {
+	ExpirationType            string `pulumi:"expirationType"`
+	IdleTokenLifetime         int    `pulumi:"idleTokenLifetime"`
+	InfiniteIdleTokenLifetime bool   `pulumi:"infiniteIdleTokenLifetime"`
+	InfiniteTokenLifetime     bool   `pulumi:"infiniteTokenLifetime"`
+	Leeway                    int    `pulumi:"leeway"`
+	RotationType              string `pulumi:"rotationType"`
+	TokenLifetime             int    `pulumi:"tokenLifetime"`
+}
+
+// GetClientRefreshTokenInput is an input type that accepts GetClientRefreshTokenArgs and GetClientRefreshTokenOutput values.
+// You can construct a concrete instance of `GetClientRefreshTokenInput` via:
+//
+//          GetClientRefreshTokenArgs{...}
+type GetClientRefreshTokenInput interface {
+	pulumi.Input
+
+	ToGetClientRefreshTokenOutput() GetClientRefreshTokenOutput
+	ToGetClientRefreshTokenOutputWithContext(context.Context) GetClientRefreshTokenOutput
+}
+
+type GetClientRefreshTokenArgs struct {
+	ExpirationType            pulumi.StringInput `pulumi:"expirationType"`
+	IdleTokenLifetime         pulumi.IntInput    `pulumi:"idleTokenLifetime"`
+	InfiniteIdleTokenLifetime pulumi.BoolInput   `pulumi:"infiniteIdleTokenLifetime"`
+	InfiniteTokenLifetime     pulumi.BoolInput   `pulumi:"infiniteTokenLifetime"`
+	Leeway                    pulumi.IntInput    `pulumi:"leeway"`
+	RotationType              pulumi.StringInput `pulumi:"rotationType"`
+	TokenLifetime             pulumi.IntInput    `pulumi:"tokenLifetime"`
+}
+
+func (GetClientRefreshTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientRefreshToken)(nil)).Elem()
+}
+
+func (i GetClientRefreshTokenArgs) ToGetClientRefreshTokenOutput() GetClientRefreshTokenOutput {
+	return i.ToGetClientRefreshTokenOutputWithContext(context.Background())
+}
+
+func (i GetClientRefreshTokenArgs) ToGetClientRefreshTokenOutputWithContext(ctx context.Context) GetClientRefreshTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientRefreshTokenOutput)
+}
+
+// GetClientRefreshTokenArrayInput is an input type that accepts GetClientRefreshTokenArray and GetClientRefreshTokenArrayOutput values.
+// You can construct a concrete instance of `GetClientRefreshTokenArrayInput` via:
+//
+//          GetClientRefreshTokenArray{ GetClientRefreshTokenArgs{...} }
+type GetClientRefreshTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetClientRefreshTokenArrayOutput() GetClientRefreshTokenArrayOutput
+	ToGetClientRefreshTokenArrayOutputWithContext(context.Context) GetClientRefreshTokenArrayOutput
+}
+
+type GetClientRefreshTokenArray []GetClientRefreshTokenInput
+
+func (GetClientRefreshTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientRefreshToken)(nil)).Elem()
+}
+
+func (i GetClientRefreshTokenArray) ToGetClientRefreshTokenArrayOutput() GetClientRefreshTokenArrayOutput {
+	return i.ToGetClientRefreshTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientRefreshTokenArray) ToGetClientRefreshTokenArrayOutputWithContext(ctx context.Context) GetClientRefreshTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientRefreshTokenArrayOutput)
+}
+
+type GetClientRefreshTokenOutput struct{ *pulumi.OutputState }
+
+func (GetClientRefreshTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientRefreshToken)(nil)).Elem()
+}
+
+func (o GetClientRefreshTokenOutput) ToGetClientRefreshTokenOutput() GetClientRefreshTokenOutput {
+	return o
+}
+
+func (o GetClientRefreshTokenOutput) ToGetClientRefreshTokenOutputWithContext(ctx context.Context) GetClientRefreshTokenOutput {
+	return o
+}
+
+func (o GetClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
+}
+
+func (o GetClientRefreshTokenOutput) IdleTokenLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientRefreshToken) int { return v.IdleTokenLifetime }).(pulumi.IntOutput)
+}
+
+func (o GetClientRefreshTokenOutput) InfiniteIdleTokenLifetime() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientRefreshToken) bool { return v.InfiniteIdleTokenLifetime }).(pulumi.BoolOutput)
+}
+
+func (o GetClientRefreshTokenOutput) InfiniteTokenLifetime() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientRefreshToken) bool { return v.InfiniteTokenLifetime }).(pulumi.BoolOutput)
+}
+
+func (o GetClientRefreshTokenOutput) Leeway() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientRefreshToken) int { return v.Leeway }).(pulumi.IntOutput)
+}
+
+func (o GetClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
+}
+
+func (o GetClientRefreshTokenOutput) TokenLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientRefreshToken) int { return v.TokenLifetime }).(pulumi.IntOutput)
+}
+
+type GetClientRefreshTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientRefreshTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientRefreshToken)(nil)).Elem()
+}
+
+func (o GetClientRefreshTokenArrayOutput) ToGetClientRefreshTokenArrayOutput() GetClientRefreshTokenArrayOutput {
+	return o
+}
+
+func (o GetClientRefreshTokenArrayOutput) ToGetClientRefreshTokenArrayOutputWithContext(ctx context.Context) GetClientRefreshTokenArrayOutput {
+	return o
+}
+
+func (o GetClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetClientRefreshTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientRefreshToken {
+		return vs[0].([]GetClientRefreshToken)[vs[1].(int)]
+	}).(GetClientRefreshTokenOutput)
+}
+
+type GetGlobalClientAddon struct {
+	Aws                  map[string]interface{}      `pulumi:"aws"`
+	AzureBlob            map[string]interface{}      `pulumi:"azureBlob"`
+	AzureSb              map[string]interface{}      `pulumi:"azureSb"`
+	Box                  map[string]interface{}      `pulumi:"box"`
+	Cloudbees            map[string]interface{}      `pulumi:"cloudbees"`
+	Concur               map[string]interface{}      `pulumi:"concur"`
+	Dropbox              map[string]interface{}      `pulumi:"dropbox"`
+	Echosign             map[string]interface{}      `pulumi:"echosign"`
+	Egnyte               map[string]interface{}      `pulumi:"egnyte"`
+	Firebase             map[string]interface{}      `pulumi:"firebase"`
+	Layer                map[string]interface{}      `pulumi:"layer"`
+	Mscrm                map[string]interface{}      `pulumi:"mscrm"`
+	Newrelic             map[string]interface{}      `pulumi:"newrelic"`
+	Office365            map[string]interface{}      `pulumi:"office365"`
+	Rms                  map[string]interface{}      `pulumi:"rms"`
+	Salesforce           map[string]interface{}      `pulumi:"salesforce"`
+	SalesforceApi        map[string]interface{}      `pulumi:"salesforceApi"`
+	SalesforceSandboxApi map[string]interface{}      `pulumi:"salesforceSandboxApi"`
+	Samlps               []GetGlobalClientAddonSamlp `pulumi:"samlps"`
+	SapApi               map[string]interface{}      `pulumi:"sapApi"`
+	Sentry               map[string]interface{}      `pulumi:"sentry"`
+	Sharepoint           map[string]interface{}      `pulumi:"sharepoint"`
+	Slack                map[string]interface{}      `pulumi:"slack"`
+	Springcm             map[string]interface{}      `pulumi:"springcm"`
+	Wams                 map[string]interface{}      `pulumi:"wams"`
+	Wsfed                map[string]interface{}      `pulumi:"wsfed"`
+	Zendesk              map[string]interface{}      `pulumi:"zendesk"`
+	Zoom                 map[string]interface{}      `pulumi:"zoom"`
+}
+
+// GetGlobalClientAddonInput is an input type that accepts GetGlobalClientAddonArgs and GetGlobalClientAddonOutput values.
+// You can construct a concrete instance of `GetGlobalClientAddonInput` via:
+//
+//          GetGlobalClientAddonArgs{...}
+type GetGlobalClientAddonInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientAddonOutput() GetGlobalClientAddonOutput
+	ToGetGlobalClientAddonOutputWithContext(context.Context) GetGlobalClientAddonOutput
+}
+
+type GetGlobalClientAddonArgs struct {
+	Aws                  pulumi.MapInput                     `pulumi:"aws"`
+	AzureBlob            pulumi.MapInput                     `pulumi:"azureBlob"`
+	AzureSb              pulumi.MapInput                     `pulumi:"azureSb"`
+	Box                  pulumi.MapInput                     `pulumi:"box"`
+	Cloudbees            pulumi.MapInput                     `pulumi:"cloudbees"`
+	Concur               pulumi.MapInput                     `pulumi:"concur"`
+	Dropbox              pulumi.MapInput                     `pulumi:"dropbox"`
+	Echosign             pulumi.MapInput                     `pulumi:"echosign"`
+	Egnyte               pulumi.MapInput                     `pulumi:"egnyte"`
+	Firebase             pulumi.MapInput                     `pulumi:"firebase"`
+	Layer                pulumi.MapInput                     `pulumi:"layer"`
+	Mscrm                pulumi.MapInput                     `pulumi:"mscrm"`
+	Newrelic             pulumi.MapInput                     `pulumi:"newrelic"`
+	Office365            pulumi.MapInput                     `pulumi:"office365"`
+	Rms                  pulumi.MapInput                     `pulumi:"rms"`
+	Salesforce           pulumi.MapInput                     `pulumi:"salesforce"`
+	SalesforceApi        pulumi.MapInput                     `pulumi:"salesforceApi"`
+	SalesforceSandboxApi pulumi.MapInput                     `pulumi:"salesforceSandboxApi"`
+	Samlps               GetGlobalClientAddonSamlpArrayInput `pulumi:"samlps"`
+	SapApi               pulumi.MapInput                     `pulumi:"sapApi"`
+	Sentry               pulumi.MapInput                     `pulumi:"sentry"`
+	Sharepoint           pulumi.MapInput                     `pulumi:"sharepoint"`
+	Slack                pulumi.MapInput                     `pulumi:"slack"`
+	Springcm             pulumi.MapInput                     `pulumi:"springcm"`
+	Wams                 pulumi.MapInput                     `pulumi:"wams"`
+	Wsfed                pulumi.MapInput                     `pulumi:"wsfed"`
+	Zendesk              pulumi.MapInput                     `pulumi:"zendesk"`
+	Zoom                 pulumi.MapInput                     `pulumi:"zoom"`
+}
+
+func (GetGlobalClientAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientAddon)(nil)).Elem()
+}
+
+func (i GetGlobalClientAddonArgs) ToGetGlobalClientAddonOutput() GetGlobalClientAddonOutput {
+	return i.ToGetGlobalClientAddonOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientAddonArgs) ToGetGlobalClientAddonOutputWithContext(ctx context.Context) GetGlobalClientAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonOutput)
+}
+
+// GetGlobalClientAddonArrayInput is an input type that accepts GetGlobalClientAddonArray and GetGlobalClientAddonArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientAddonArrayInput` via:
+//
+//          GetGlobalClientAddonArray{ GetGlobalClientAddonArgs{...} }
+type GetGlobalClientAddonArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientAddonArrayOutput() GetGlobalClientAddonArrayOutput
+	ToGetGlobalClientAddonArrayOutputWithContext(context.Context) GetGlobalClientAddonArrayOutput
+}
+
+type GetGlobalClientAddonArray []GetGlobalClientAddonInput
+
+func (GetGlobalClientAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientAddon)(nil)).Elem()
+}
+
+func (i GetGlobalClientAddonArray) ToGetGlobalClientAddonArrayOutput() GetGlobalClientAddonArrayOutput {
+	return i.ToGetGlobalClientAddonArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientAddonArray) ToGetGlobalClientAddonArrayOutputWithContext(ctx context.Context) GetGlobalClientAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonArrayOutput)
+}
+
+type GetGlobalClientAddonOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientAddon)(nil)).Elem()
+}
+
+func (o GetGlobalClientAddonOutput) ToGetGlobalClientAddonOutput() GetGlobalClientAddonOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonOutput) ToGetGlobalClientAddonOutputWithContext(ctx context.Context) GetGlobalClientAddonOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonOutput) Aws() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Aws }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) AzureBlob() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.AzureBlob }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) AzureSb() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.AzureSb }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Box() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Box }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Cloudbees() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Cloudbees }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Concur() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Concur }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Dropbox() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Dropbox }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Echosign() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Echosign }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Egnyte() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Egnyte }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Firebase() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Firebase }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Layer() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Layer }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Mscrm() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Mscrm }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Newrelic() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Newrelic }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Office365() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Office365 }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Rms() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Rms }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Salesforce() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Salesforce }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) SalesforceApi() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.SalesforceApi }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) SalesforceSandboxApi() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.SalesforceSandboxApi }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Samlps() GetGlobalClientAddonSamlpArrayOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) []GetGlobalClientAddonSamlp { return v.Samlps }).(GetGlobalClientAddonSamlpArrayOutput)
+}
+
+func (o GetGlobalClientAddonOutput) SapApi() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.SapApi }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Sentry() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Sentry }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Sharepoint() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Sharepoint }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Slack() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Slack }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Springcm() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Springcm }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Wams() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Wams }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Wsfed() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Wsfed }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Zendesk() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Zendesk }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonOutput) Zoom() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddon) map[string]interface{} { return v.Zoom }).(pulumi.MapOutput)
+}
+
+type GetGlobalClientAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientAddon)(nil)).Elem()
+}
+
+func (o GetGlobalClientAddonArrayOutput) ToGetGlobalClientAddonArrayOutput() GetGlobalClientAddonArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonArrayOutput) ToGetGlobalClientAddonArrayOutputWithContext(ctx context.Context) GetGlobalClientAddonArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonArrayOutput) Index(i pulumi.IntInput) GetGlobalClientAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientAddon {
+		return vs[0].([]GetGlobalClientAddon)[vs[1].(int)]
+	}).(GetGlobalClientAddonOutput)
+}
+
+type GetGlobalClientAddonSamlp struct {
+	Audience                       string                          `pulumi:"audience"`
+	AuthnContextClassRef           string                          `pulumi:"authnContextClassRef"`
+	Binding                        string                          `pulumi:"binding"`
+	CreateUpnClaim                 bool                            `pulumi:"createUpnClaim"`
+	Destination                    string                          `pulumi:"destination"`
+	DigestAlgorithm                string                          `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     bool                            `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              int                             `pulumi:"lifetimeInSeconds"`
+	Logout                         GetGlobalClientAddonSamlpLogout `pulumi:"logout"`
+	MapIdentities                  bool                            `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           bool                            `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       map[string]interface{}          `pulumi:"mappings"`
+	NameIdentifierFormat           string                          `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           []string                        `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping bool                            `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      string                          `pulumi:"recipient"`
+	SignResponse                   bool                            `pulumi:"signResponse"`
+	SignatureAlgorithm             string                          `pulumi:"signatureAlgorithm"`
+	SigningCert                    string                          `pulumi:"signingCert"`
+	TypedAttributes                bool                            `pulumi:"typedAttributes"`
+}
+
+// GetGlobalClientAddonSamlpInput is an input type that accepts GetGlobalClientAddonSamlpArgs and GetGlobalClientAddonSamlpOutput values.
+// You can construct a concrete instance of `GetGlobalClientAddonSamlpInput` via:
+//
+//          GetGlobalClientAddonSamlpArgs{...}
+type GetGlobalClientAddonSamlpInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientAddonSamlpOutput() GetGlobalClientAddonSamlpOutput
+	ToGetGlobalClientAddonSamlpOutputWithContext(context.Context) GetGlobalClientAddonSamlpOutput
+}
+
+type GetGlobalClientAddonSamlpArgs struct {
+	Audience                       pulumi.StringInput                   `pulumi:"audience"`
+	AuthnContextClassRef           pulumi.StringInput                   `pulumi:"authnContextClassRef"`
+	Binding                        pulumi.StringInput                   `pulumi:"binding"`
+	CreateUpnClaim                 pulumi.BoolInput                     `pulumi:"createUpnClaim"`
+	Destination                    pulumi.StringInput                   `pulumi:"destination"`
+	DigestAlgorithm                pulumi.StringInput                   `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     pulumi.BoolInput                     `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              pulumi.IntInput                      `pulumi:"lifetimeInSeconds"`
+	Logout                         GetGlobalClientAddonSamlpLogoutInput `pulumi:"logout"`
+	MapIdentities                  pulumi.BoolInput                     `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           pulumi.BoolInput                     `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       pulumi.MapInput                      `pulumi:"mappings"`
+	NameIdentifierFormat           pulumi.StringInput                   `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           pulumi.StringArrayInput              `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping pulumi.BoolInput                     `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      pulumi.StringInput                   `pulumi:"recipient"`
+	SignResponse                   pulumi.BoolInput                     `pulumi:"signResponse"`
+	SignatureAlgorithm             pulumi.StringInput                   `pulumi:"signatureAlgorithm"`
+	SigningCert                    pulumi.StringInput                   `pulumi:"signingCert"`
+	TypedAttributes                pulumi.BoolInput                     `pulumi:"typedAttributes"`
+}
+
+func (GetGlobalClientAddonSamlpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientAddonSamlp)(nil)).Elem()
+}
+
+func (i GetGlobalClientAddonSamlpArgs) ToGetGlobalClientAddonSamlpOutput() GetGlobalClientAddonSamlpOutput {
+	return i.ToGetGlobalClientAddonSamlpOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientAddonSamlpArgs) ToGetGlobalClientAddonSamlpOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonSamlpOutput)
+}
+
+// GetGlobalClientAddonSamlpArrayInput is an input type that accepts GetGlobalClientAddonSamlpArray and GetGlobalClientAddonSamlpArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientAddonSamlpArrayInput` via:
+//
+//          GetGlobalClientAddonSamlpArray{ GetGlobalClientAddonSamlpArgs{...} }
+type GetGlobalClientAddonSamlpArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientAddonSamlpArrayOutput() GetGlobalClientAddonSamlpArrayOutput
+	ToGetGlobalClientAddonSamlpArrayOutputWithContext(context.Context) GetGlobalClientAddonSamlpArrayOutput
+}
+
+type GetGlobalClientAddonSamlpArray []GetGlobalClientAddonSamlpInput
+
+func (GetGlobalClientAddonSamlpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientAddonSamlp)(nil)).Elem()
+}
+
+func (i GetGlobalClientAddonSamlpArray) ToGetGlobalClientAddonSamlpArrayOutput() GetGlobalClientAddonSamlpArrayOutput {
+	return i.ToGetGlobalClientAddonSamlpArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientAddonSamlpArray) ToGetGlobalClientAddonSamlpArrayOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonSamlpArrayOutput)
+}
+
+type GetGlobalClientAddonSamlpOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientAddonSamlpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientAddonSamlp)(nil)).Elem()
+}
+
+func (o GetGlobalClientAddonSamlpOutput) ToGetGlobalClientAddonSamlpOutput() GetGlobalClientAddonSamlpOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonSamlpOutput) ToGetGlobalClientAddonSamlpOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonSamlpOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) AuthnContextClassRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.AuthnContextClassRef }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) Binding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Binding }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) CreateUpnClaim() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.CreateUpnClaim }).(pulumi.BoolOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) DigestAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) IncludeAttributeNameFormat() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) LifetimeInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) Logout() GetGlobalClientAddonSamlpLogoutOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) GetGlobalClientAddonSamlpLogout { return v.Logout }).(GetGlobalClientAddonSamlpLogoutOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) MapIdentities() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.MapIdentities }).(pulumi.BoolOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) Mappings() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) map[string]interface{} { return v.Mappings }).(pulumi.MapOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) NameIdentifierFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.NameIdentifierFormat }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) NameIdentifierProbes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) PassthroughClaimsWithNoMapping() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) Recipient() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.Recipient }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) SignResponse() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.SignResponse }).(pulumi.BoolOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) SignatureAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) SigningCert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) string { return v.SigningCert }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientAddonSamlpOutput) TypedAttributes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) bool { return v.TypedAttributes }).(pulumi.BoolOutput)
+}
+
+type GetGlobalClientAddonSamlpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientAddonSamlpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientAddonSamlp)(nil)).Elem()
+}
+
+func (o GetGlobalClientAddonSamlpArrayOutput) ToGetGlobalClientAddonSamlpArrayOutput() GetGlobalClientAddonSamlpArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonSamlpArrayOutput) ToGetGlobalClientAddonSamlpArrayOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonSamlpArrayOutput) Index(i pulumi.IntInput) GetGlobalClientAddonSamlpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientAddonSamlp {
+		return vs[0].([]GetGlobalClientAddonSamlp)[vs[1].(int)]
+	}).(GetGlobalClientAddonSamlpOutput)
+}
+
+type GetGlobalClientAddonSamlpLogout struct {
+	Callback   *string `pulumi:"callback"`
+	SloEnabled *bool   `pulumi:"sloEnabled"`
+}
+
+// GetGlobalClientAddonSamlpLogoutInput is an input type that accepts GetGlobalClientAddonSamlpLogoutArgs and GetGlobalClientAddonSamlpLogoutOutput values.
+// You can construct a concrete instance of `GetGlobalClientAddonSamlpLogoutInput` via:
+//
+//          GetGlobalClientAddonSamlpLogoutArgs{...}
+type GetGlobalClientAddonSamlpLogoutInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientAddonSamlpLogoutOutput() GetGlobalClientAddonSamlpLogoutOutput
+	ToGetGlobalClientAddonSamlpLogoutOutputWithContext(context.Context) GetGlobalClientAddonSamlpLogoutOutput
+}
+
+type GetGlobalClientAddonSamlpLogoutArgs struct {
+	Callback   pulumi.StringPtrInput `pulumi:"callback"`
+	SloEnabled pulumi.BoolPtrInput   `pulumi:"sloEnabled"`
+}
+
+func (GetGlobalClientAddonSamlpLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientAddonSamlpLogout)(nil)).Elem()
+}
+
+func (i GetGlobalClientAddonSamlpLogoutArgs) ToGetGlobalClientAddonSamlpLogoutOutput() GetGlobalClientAddonSamlpLogoutOutput {
+	return i.ToGetGlobalClientAddonSamlpLogoutOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientAddonSamlpLogoutArgs) ToGetGlobalClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonSamlpLogoutOutput)
+}
+
+type GetGlobalClientAddonSamlpLogoutOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientAddonSamlpLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientAddonSamlpLogout)(nil)).Elem()
+}
+
+func (o GetGlobalClientAddonSamlpLogoutOutput) ToGetGlobalClientAddonSamlpLogoutOutput() GetGlobalClientAddonSamlpLogoutOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonSamlpLogoutOutput) ToGetGlobalClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpLogoutOutput {
+	return o
+}
+
+func (o GetGlobalClientAddonSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGlobalClientAddonSamlpLogoutOutput) SloEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetGlobalClientJwtConfiguration struct {
+	Alg               string            `pulumi:"alg"`
+	LifetimeInSeconds int               `pulumi:"lifetimeInSeconds"`
+	Scopes            map[string]string `pulumi:"scopes"`
+	SecretEncoded     bool              `pulumi:"secretEncoded"`
+}
+
+// GetGlobalClientJwtConfigurationInput is an input type that accepts GetGlobalClientJwtConfigurationArgs and GetGlobalClientJwtConfigurationOutput values.
+// You can construct a concrete instance of `GetGlobalClientJwtConfigurationInput` via:
+//
+//          GetGlobalClientJwtConfigurationArgs{...}
+type GetGlobalClientJwtConfigurationInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientJwtConfigurationOutput() GetGlobalClientJwtConfigurationOutput
+	ToGetGlobalClientJwtConfigurationOutputWithContext(context.Context) GetGlobalClientJwtConfigurationOutput
+}
+
+type GetGlobalClientJwtConfigurationArgs struct {
+	Alg               pulumi.StringInput    `pulumi:"alg"`
+	LifetimeInSeconds pulumi.IntInput       `pulumi:"lifetimeInSeconds"`
+	Scopes            pulumi.StringMapInput `pulumi:"scopes"`
+	SecretEncoded     pulumi.BoolInput      `pulumi:"secretEncoded"`
+}
+
+func (GetGlobalClientJwtConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientJwtConfiguration)(nil)).Elem()
+}
+
+func (i GetGlobalClientJwtConfigurationArgs) ToGetGlobalClientJwtConfigurationOutput() GetGlobalClientJwtConfigurationOutput {
+	return i.ToGetGlobalClientJwtConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientJwtConfigurationArgs) ToGetGlobalClientJwtConfigurationOutputWithContext(ctx context.Context) GetGlobalClientJwtConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientJwtConfigurationOutput)
+}
+
+// GetGlobalClientJwtConfigurationArrayInput is an input type that accepts GetGlobalClientJwtConfigurationArray and GetGlobalClientJwtConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientJwtConfigurationArrayInput` via:
+//
+//          GetGlobalClientJwtConfigurationArray{ GetGlobalClientJwtConfigurationArgs{...} }
+type GetGlobalClientJwtConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientJwtConfigurationArrayOutput() GetGlobalClientJwtConfigurationArrayOutput
+	ToGetGlobalClientJwtConfigurationArrayOutputWithContext(context.Context) GetGlobalClientJwtConfigurationArrayOutput
+}
+
+type GetGlobalClientJwtConfigurationArray []GetGlobalClientJwtConfigurationInput
+
+func (GetGlobalClientJwtConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientJwtConfiguration)(nil)).Elem()
+}
+
+func (i GetGlobalClientJwtConfigurationArray) ToGetGlobalClientJwtConfigurationArrayOutput() GetGlobalClientJwtConfigurationArrayOutput {
+	return i.ToGetGlobalClientJwtConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientJwtConfigurationArray) ToGetGlobalClientJwtConfigurationArrayOutputWithContext(ctx context.Context) GetGlobalClientJwtConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientJwtConfigurationArrayOutput)
+}
+
+type GetGlobalClientJwtConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientJwtConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientJwtConfiguration)(nil)).Elem()
+}
+
+func (o GetGlobalClientJwtConfigurationOutput) ToGetGlobalClientJwtConfigurationOutput() GetGlobalClientJwtConfigurationOutput {
+	return o
+}
+
+func (o GetGlobalClientJwtConfigurationOutput) ToGetGlobalClientJwtConfigurationOutputWithContext(ctx context.Context) GetGlobalClientJwtConfigurationOutput {
+	return o
+}
+
+func (o GetGlobalClientJwtConfigurationOutput) Alg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientJwtConfiguration) string { return v.Alg }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientJwtConfigurationOutput) LifetimeInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGlobalClientJwtConfiguration) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetGlobalClientJwtConfigurationOutput) Scopes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGlobalClientJwtConfiguration) map[string]string { return v.Scopes }).(pulumi.StringMapOutput)
+}
+
+func (o GetGlobalClientJwtConfigurationOutput) SecretEncoded() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientJwtConfiguration) bool { return v.SecretEncoded }).(pulumi.BoolOutput)
+}
+
+type GetGlobalClientJwtConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientJwtConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientJwtConfiguration)(nil)).Elem()
+}
+
+func (o GetGlobalClientJwtConfigurationArrayOutput) ToGetGlobalClientJwtConfigurationArrayOutput() GetGlobalClientJwtConfigurationArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientJwtConfigurationArrayOutput) ToGetGlobalClientJwtConfigurationArrayOutputWithContext(ctx context.Context) GetGlobalClientJwtConfigurationArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientJwtConfigurationArrayOutput) Index(i pulumi.IntInput) GetGlobalClientJwtConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientJwtConfiguration {
+		return vs[0].([]GetGlobalClientJwtConfiguration)[vs[1].(int)]
+	}).(GetGlobalClientJwtConfigurationOutput)
+}
+
+type GetGlobalClientMobile struct {
+	Androids []GetGlobalClientMobileAndroid `pulumi:"androids"`
+	Ios      []GetGlobalClientMobileIo      `pulumi:"ios"`
+}
+
+// GetGlobalClientMobileInput is an input type that accepts GetGlobalClientMobileArgs and GetGlobalClientMobileOutput values.
+// You can construct a concrete instance of `GetGlobalClientMobileInput` via:
+//
+//          GetGlobalClientMobileArgs{...}
+type GetGlobalClientMobileInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientMobileOutput() GetGlobalClientMobileOutput
+	ToGetGlobalClientMobileOutputWithContext(context.Context) GetGlobalClientMobileOutput
+}
+
+type GetGlobalClientMobileArgs struct {
+	Androids GetGlobalClientMobileAndroidArrayInput `pulumi:"androids"`
+	Ios      GetGlobalClientMobileIoArrayInput      `pulumi:"ios"`
+}
+
+func (GetGlobalClientMobileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientMobile)(nil)).Elem()
+}
+
+func (i GetGlobalClientMobileArgs) ToGetGlobalClientMobileOutput() GetGlobalClientMobileOutput {
+	return i.ToGetGlobalClientMobileOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientMobileArgs) ToGetGlobalClientMobileOutputWithContext(ctx context.Context) GetGlobalClientMobileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileOutput)
+}
+
+// GetGlobalClientMobileArrayInput is an input type that accepts GetGlobalClientMobileArray and GetGlobalClientMobileArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientMobileArrayInput` via:
+//
+//          GetGlobalClientMobileArray{ GetGlobalClientMobileArgs{...} }
+type GetGlobalClientMobileArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientMobileArrayOutput() GetGlobalClientMobileArrayOutput
+	ToGetGlobalClientMobileArrayOutputWithContext(context.Context) GetGlobalClientMobileArrayOutput
+}
+
+type GetGlobalClientMobileArray []GetGlobalClientMobileInput
+
+func (GetGlobalClientMobileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientMobile)(nil)).Elem()
+}
+
+func (i GetGlobalClientMobileArray) ToGetGlobalClientMobileArrayOutput() GetGlobalClientMobileArrayOutput {
+	return i.ToGetGlobalClientMobileArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientMobileArray) ToGetGlobalClientMobileArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileArrayOutput)
+}
+
+type GetGlobalClientMobileOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientMobileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientMobile)(nil)).Elem()
+}
+
+func (o GetGlobalClientMobileOutput) ToGetGlobalClientMobileOutput() GetGlobalClientMobileOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileOutput) ToGetGlobalClientMobileOutputWithContext(ctx context.Context) GetGlobalClientMobileOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileOutput) Androids() GetGlobalClientMobileAndroidArrayOutput {
+	return o.ApplyT(func(v GetGlobalClientMobile) []GetGlobalClientMobileAndroid { return v.Androids }).(GetGlobalClientMobileAndroidArrayOutput)
+}
+
+func (o GetGlobalClientMobileOutput) Ios() GetGlobalClientMobileIoArrayOutput {
+	return o.ApplyT(func(v GetGlobalClientMobile) []GetGlobalClientMobileIo { return v.Ios }).(GetGlobalClientMobileIoArrayOutput)
+}
+
+type GetGlobalClientMobileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientMobileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientMobile)(nil)).Elem()
+}
+
+func (o GetGlobalClientMobileArrayOutput) ToGetGlobalClientMobileArrayOutput() GetGlobalClientMobileArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileArrayOutput) ToGetGlobalClientMobileArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileArrayOutput) Index(i pulumi.IntInput) GetGlobalClientMobileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientMobile {
+		return vs[0].([]GetGlobalClientMobile)[vs[1].(int)]
+	}).(GetGlobalClientMobileOutput)
+}
+
+type GetGlobalClientMobileAndroid struct {
+	AppPackageName         string   `pulumi:"appPackageName"`
+	Sha256CertFingerprints []string `pulumi:"sha256CertFingerprints"`
+}
+
+// GetGlobalClientMobileAndroidInput is an input type that accepts GetGlobalClientMobileAndroidArgs and GetGlobalClientMobileAndroidOutput values.
+// You can construct a concrete instance of `GetGlobalClientMobileAndroidInput` via:
+//
+//          GetGlobalClientMobileAndroidArgs{...}
+type GetGlobalClientMobileAndroidInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientMobileAndroidOutput() GetGlobalClientMobileAndroidOutput
+	ToGetGlobalClientMobileAndroidOutputWithContext(context.Context) GetGlobalClientMobileAndroidOutput
+}
+
+type GetGlobalClientMobileAndroidArgs struct {
+	AppPackageName         pulumi.StringInput      `pulumi:"appPackageName"`
+	Sha256CertFingerprints pulumi.StringArrayInput `pulumi:"sha256CertFingerprints"`
+}
+
+func (GetGlobalClientMobileAndroidArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientMobileAndroid)(nil)).Elem()
+}
+
+func (i GetGlobalClientMobileAndroidArgs) ToGetGlobalClientMobileAndroidOutput() GetGlobalClientMobileAndroidOutput {
+	return i.ToGetGlobalClientMobileAndroidOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientMobileAndroidArgs) ToGetGlobalClientMobileAndroidOutputWithContext(ctx context.Context) GetGlobalClientMobileAndroidOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileAndroidOutput)
+}
+
+// GetGlobalClientMobileAndroidArrayInput is an input type that accepts GetGlobalClientMobileAndroidArray and GetGlobalClientMobileAndroidArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientMobileAndroidArrayInput` via:
+//
+//          GetGlobalClientMobileAndroidArray{ GetGlobalClientMobileAndroidArgs{...} }
+type GetGlobalClientMobileAndroidArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientMobileAndroidArrayOutput() GetGlobalClientMobileAndroidArrayOutput
+	ToGetGlobalClientMobileAndroidArrayOutputWithContext(context.Context) GetGlobalClientMobileAndroidArrayOutput
+}
+
+type GetGlobalClientMobileAndroidArray []GetGlobalClientMobileAndroidInput
+
+func (GetGlobalClientMobileAndroidArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientMobileAndroid)(nil)).Elem()
+}
+
+func (i GetGlobalClientMobileAndroidArray) ToGetGlobalClientMobileAndroidArrayOutput() GetGlobalClientMobileAndroidArrayOutput {
+	return i.ToGetGlobalClientMobileAndroidArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientMobileAndroidArray) ToGetGlobalClientMobileAndroidArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileAndroidArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileAndroidArrayOutput)
+}
+
+type GetGlobalClientMobileAndroidOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientMobileAndroidOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientMobileAndroid)(nil)).Elem()
+}
+
+func (o GetGlobalClientMobileAndroidOutput) ToGetGlobalClientMobileAndroidOutput() GetGlobalClientMobileAndroidOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileAndroidOutput) ToGetGlobalClientMobileAndroidOutputWithContext(ctx context.Context) GetGlobalClientMobileAndroidOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileAndroidOutput) AppPackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientMobileAndroid) string { return v.AppPackageName }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientMobileAndroidOutput) Sha256CertFingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGlobalClientMobileAndroid) []string { return v.Sha256CertFingerprints }).(pulumi.StringArrayOutput)
+}
+
+type GetGlobalClientMobileAndroidArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientMobileAndroidArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientMobileAndroid)(nil)).Elem()
+}
+
+func (o GetGlobalClientMobileAndroidArrayOutput) ToGetGlobalClientMobileAndroidArrayOutput() GetGlobalClientMobileAndroidArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileAndroidArrayOutput) ToGetGlobalClientMobileAndroidArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileAndroidArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileAndroidArrayOutput) Index(i pulumi.IntInput) GetGlobalClientMobileAndroidOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientMobileAndroid {
+		return vs[0].([]GetGlobalClientMobileAndroid)[vs[1].(int)]
+	}).(GetGlobalClientMobileAndroidOutput)
+}
+
+type GetGlobalClientMobileIo struct {
+	AppBundleIdentifier string `pulumi:"appBundleIdentifier"`
+	TeamId              string `pulumi:"teamId"`
+}
+
+// GetGlobalClientMobileIoInput is an input type that accepts GetGlobalClientMobileIoArgs and GetGlobalClientMobileIoOutput values.
+// You can construct a concrete instance of `GetGlobalClientMobileIoInput` via:
+//
+//          GetGlobalClientMobileIoArgs{...}
+type GetGlobalClientMobileIoInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientMobileIoOutput() GetGlobalClientMobileIoOutput
+	ToGetGlobalClientMobileIoOutputWithContext(context.Context) GetGlobalClientMobileIoOutput
+}
+
+type GetGlobalClientMobileIoArgs struct {
+	AppBundleIdentifier pulumi.StringInput `pulumi:"appBundleIdentifier"`
+	TeamId              pulumi.StringInput `pulumi:"teamId"`
+}
+
+func (GetGlobalClientMobileIoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientMobileIo)(nil)).Elem()
+}
+
+func (i GetGlobalClientMobileIoArgs) ToGetGlobalClientMobileIoOutput() GetGlobalClientMobileIoOutput {
+	return i.ToGetGlobalClientMobileIoOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientMobileIoArgs) ToGetGlobalClientMobileIoOutputWithContext(ctx context.Context) GetGlobalClientMobileIoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileIoOutput)
+}
+
+// GetGlobalClientMobileIoArrayInput is an input type that accepts GetGlobalClientMobileIoArray and GetGlobalClientMobileIoArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientMobileIoArrayInput` via:
+//
+//          GetGlobalClientMobileIoArray{ GetGlobalClientMobileIoArgs{...} }
+type GetGlobalClientMobileIoArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientMobileIoArrayOutput() GetGlobalClientMobileIoArrayOutput
+	ToGetGlobalClientMobileIoArrayOutputWithContext(context.Context) GetGlobalClientMobileIoArrayOutput
+}
+
+type GetGlobalClientMobileIoArray []GetGlobalClientMobileIoInput
+
+func (GetGlobalClientMobileIoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientMobileIo)(nil)).Elem()
+}
+
+func (i GetGlobalClientMobileIoArray) ToGetGlobalClientMobileIoArrayOutput() GetGlobalClientMobileIoArrayOutput {
+	return i.ToGetGlobalClientMobileIoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientMobileIoArray) ToGetGlobalClientMobileIoArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileIoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientMobileIoArrayOutput)
+}
+
+type GetGlobalClientMobileIoOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientMobileIoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientMobileIo)(nil)).Elem()
+}
+
+func (o GetGlobalClientMobileIoOutput) ToGetGlobalClientMobileIoOutput() GetGlobalClientMobileIoOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileIoOutput) ToGetGlobalClientMobileIoOutputWithContext(ctx context.Context) GetGlobalClientMobileIoOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileIoOutput) AppBundleIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientMobileIo) string { return v.AppBundleIdentifier }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientMobileIoOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientMobileIo) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
+type GetGlobalClientMobileIoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientMobileIoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientMobileIo)(nil)).Elem()
+}
+
+func (o GetGlobalClientMobileIoArrayOutput) ToGetGlobalClientMobileIoArrayOutput() GetGlobalClientMobileIoArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileIoArrayOutput) ToGetGlobalClientMobileIoArrayOutputWithContext(ctx context.Context) GetGlobalClientMobileIoArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientMobileIoArrayOutput) Index(i pulumi.IntInput) GetGlobalClientMobileIoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientMobileIo {
+		return vs[0].([]GetGlobalClientMobileIo)[vs[1].(int)]
+	}).(GetGlobalClientMobileIoOutput)
+}
+
+type GetGlobalClientNativeSocialLogin struct {
+	Apples    []GetGlobalClientNativeSocialLoginApple    `pulumi:"apples"`
+	Facebooks []GetGlobalClientNativeSocialLoginFacebook `pulumi:"facebooks"`
+}
+
+// GetGlobalClientNativeSocialLoginInput is an input type that accepts GetGlobalClientNativeSocialLoginArgs and GetGlobalClientNativeSocialLoginOutput values.
+// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginInput` via:
+//
+//          GetGlobalClientNativeSocialLoginArgs{...}
+type GetGlobalClientNativeSocialLoginInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientNativeSocialLoginOutput() GetGlobalClientNativeSocialLoginOutput
+	ToGetGlobalClientNativeSocialLoginOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginOutput
+}
+
+type GetGlobalClientNativeSocialLoginArgs struct {
+	Apples    GetGlobalClientNativeSocialLoginAppleArrayInput    `pulumi:"apples"`
+	Facebooks GetGlobalClientNativeSocialLoginFacebookArrayInput `pulumi:"facebooks"`
+}
+
+func (GetGlobalClientNativeSocialLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (i GetGlobalClientNativeSocialLoginArgs) ToGetGlobalClientNativeSocialLoginOutput() GetGlobalClientNativeSocialLoginOutput {
+	return i.ToGetGlobalClientNativeSocialLoginOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientNativeSocialLoginArgs) ToGetGlobalClientNativeSocialLoginOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginOutput)
+}
+
+// GetGlobalClientNativeSocialLoginArrayInput is an input type that accepts GetGlobalClientNativeSocialLoginArray and GetGlobalClientNativeSocialLoginArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginArrayInput` via:
+//
+//          GetGlobalClientNativeSocialLoginArray{ GetGlobalClientNativeSocialLoginArgs{...} }
+type GetGlobalClientNativeSocialLoginArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientNativeSocialLoginArrayOutput() GetGlobalClientNativeSocialLoginArrayOutput
+	ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginArrayOutput
+}
+
+type GetGlobalClientNativeSocialLoginArray []GetGlobalClientNativeSocialLoginInput
+
+func (GetGlobalClientNativeSocialLoginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (i GetGlobalClientNativeSocialLoginArray) ToGetGlobalClientNativeSocialLoginArrayOutput() GetGlobalClientNativeSocialLoginArrayOutput {
+	return i.ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientNativeSocialLoginArray) ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginArrayOutput)
+}
+
+type GetGlobalClientNativeSocialLoginOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientNativeSocialLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (o GetGlobalClientNativeSocialLoginOutput) ToGetGlobalClientNativeSocialLoginOutput() GetGlobalClientNativeSocialLoginOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginOutput) ToGetGlobalClientNativeSocialLoginOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginOutput) Apples() GetGlobalClientNativeSocialLoginAppleArrayOutput {
+	return o.ApplyT(func(v GetGlobalClientNativeSocialLogin) []GetGlobalClientNativeSocialLoginApple { return v.Apples }).(GetGlobalClientNativeSocialLoginAppleArrayOutput)
+}
+
+func (o GetGlobalClientNativeSocialLoginOutput) Facebooks() GetGlobalClientNativeSocialLoginFacebookArrayOutput {
+	return o.ApplyT(func(v GetGlobalClientNativeSocialLogin) []GetGlobalClientNativeSocialLoginFacebook {
+		return v.Facebooks
+	}).(GetGlobalClientNativeSocialLoginFacebookArrayOutput)
+}
+
+type GetGlobalClientNativeSocialLoginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientNativeSocialLoginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLogin)(nil)).Elem()
+}
+
+func (o GetGlobalClientNativeSocialLoginArrayOutput) ToGetGlobalClientNativeSocialLoginArrayOutput() GetGlobalClientNativeSocialLoginArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginArrayOutput) ToGetGlobalClientNativeSocialLoginArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginArrayOutput) Index(i pulumi.IntInput) GetGlobalClientNativeSocialLoginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientNativeSocialLogin {
+		return vs[0].([]GetGlobalClientNativeSocialLogin)[vs[1].(int)]
+	}).(GetGlobalClientNativeSocialLoginOutput)
+}
+
+type GetGlobalClientNativeSocialLoginApple struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetGlobalClientNativeSocialLoginAppleInput is an input type that accepts GetGlobalClientNativeSocialLoginAppleArgs and GetGlobalClientNativeSocialLoginAppleOutput values.
+// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginAppleInput` via:
+//
+//          GetGlobalClientNativeSocialLoginAppleArgs{...}
+type GetGlobalClientNativeSocialLoginAppleInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientNativeSocialLoginAppleOutput() GetGlobalClientNativeSocialLoginAppleOutput
+	ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginAppleOutput
+}
+
+type GetGlobalClientNativeSocialLoginAppleArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetGlobalClientNativeSocialLoginAppleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (i GetGlobalClientNativeSocialLoginAppleArgs) ToGetGlobalClientNativeSocialLoginAppleOutput() GetGlobalClientNativeSocialLoginAppleOutput {
+	return i.ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientNativeSocialLoginAppleArgs) ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginAppleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginAppleOutput)
+}
+
+// GetGlobalClientNativeSocialLoginAppleArrayInput is an input type that accepts GetGlobalClientNativeSocialLoginAppleArray and GetGlobalClientNativeSocialLoginAppleArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginAppleArrayInput` via:
+//
+//          GetGlobalClientNativeSocialLoginAppleArray{ GetGlobalClientNativeSocialLoginAppleArgs{...} }
+type GetGlobalClientNativeSocialLoginAppleArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientNativeSocialLoginAppleArrayOutput() GetGlobalClientNativeSocialLoginAppleArrayOutput
+	ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginAppleArrayOutput
+}
+
+type GetGlobalClientNativeSocialLoginAppleArray []GetGlobalClientNativeSocialLoginAppleInput
+
+func (GetGlobalClientNativeSocialLoginAppleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (i GetGlobalClientNativeSocialLoginAppleArray) ToGetGlobalClientNativeSocialLoginAppleArrayOutput() GetGlobalClientNativeSocialLoginAppleArrayOutput {
+	return i.ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientNativeSocialLoginAppleArray) ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginAppleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginAppleArrayOutput)
+}
+
+type GetGlobalClientNativeSocialLoginAppleOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientNativeSocialLoginAppleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (o GetGlobalClientNativeSocialLoginAppleOutput) ToGetGlobalClientNativeSocialLoginAppleOutput() GetGlobalClientNativeSocialLoginAppleOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginAppleOutput) ToGetGlobalClientNativeSocialLoginAppleOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginAppleOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginAppleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientNativeSocialLoginApple) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetGlobalClientNativeSocialLoginAppleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientNativeSocialLoginAppleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLoginApple)(nil)).Elem()
+}
+
+func (o GetGlobalClientNativeSocialLoginAppleArrayOutput) ToGetGlobalClientNativeSocialLoginAppleArrayOutput() GetGlobalClientNativeSocialLoginAppleArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginAppleArrayOutput) ToGetGlobalClientNativeSocialLoginAppleArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginAppleArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginAppleArrayOutput) Index(i pulumi.IntInput) GetGlobalClientNativeSocialLoginAppleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientNativeSocialLoginApple {
+		return vs[0].([]GetGlobalClientNativeSocialLoginApple)[vs[1].(int)]
+	}).(GetGlobalClientNativeSocialLoginAppleOutput)
+}
+
+type GetGlobalClientNativeSocialLoginFacebook struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetGlobalClientNativeSocialLoginFacebookInput is an input type that accepts GetGlobalClientNativeSocialLoginFacebookArgs and GetGlobalClientNativeSocialLoginFacebookOutput values.
+// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginFacebookInput` via:
+//
+//          GetGlobalClientNativeSocialLoginFacebookArgs{...}
+type GetGlobalClientNativeSocialLoginFacebookInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientNativeSocialLoginFacebookOutput() GetGlobalClientNativeSocialLoginFacebookOutput
+	ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginFacebookOutput
+}
+
+type GetGlobalClientNativeSocialLoginFacebookArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetGlobalClientNativeSocialLoginFacebookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (i GetGlobalClientNativeSocialLoginFacebookArgs) ToGetGlobalClientNativeSocialLoginFacebookOutput() GetGlobalClientNativeSocialLoginFacebookOutput {
+	return i.ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientNativeSocialLoginFacebookArgs) ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginFacebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginFacebookOutput)
+}
+
+// GetGlobalClientNativeSocialLoginFacebookArrayInput is an input type that accepts GetGlobalClientNativeSocialLoginFacebookArray and GetGlobalClientNativeSocialLoginFacebookArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientNativeSocialLoginFacebookArrayInput` via:
+//
+//          GetGlobalClientNativeSocialLoginFacebookArray{ GetGlobalClientNativeSocialLoginFacebookArgs{...} }
+type GetGlobalClientNativeSocialLoginFacebookArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientNativeSocialLoginFacebookArrayOutput() GetGlobalClientNativeSocialLoginFacebookArrayOutput
+	ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(context.Context) GetGlobalClientNativeSocialLoginFacebookArrayOutput
+}
+
+type GetGlobalClientNativeSocialLoginFacebookArray []GetGlobalClientNativeSocialLoginFacebookInput
+
+func (GetGlobalClientNativeSocialLoginFacebookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (i GetGlobalClientNativeSocialLoginFacebookArray) ToGetGlobalClientNativeSocialLoginFacebookArrayOutput() GetGlobalClientNativeSocialLoginFacebookArrayOutput {
+	return i.ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientNativeSocialLoginFacebookArray) ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginFacebookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientNativeSocialLoginFacebookArrayOutput)
+}
+
+type GetGlobalClientNativeSocialLoginFacebookOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientNativeSocialLoginFacebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (o GetGlobalClientNativeSocialLoginFacebookOutput) ToGetGlobalClientNativeSocialLoginFacebookOutput() GetGlobalClientNativeSocialLoginFacebookOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginFacebookOutput) ToGetGlobalClientNativeSocialLoginFacebookOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginFacebookOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginFacebookOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientNativeSocialLoginFacebook) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetGlobalClientNativeSocialLoginFacebookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientNativeSocialLoginFacebookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientNativeSocialLoginFacebook)(nil)).Elem()
+}
+
+func (o GetGlobalClientNativeSocialLoginFacebookArrayOutput) ToGetGlobalClientNativeSocialLoginFacebookArrayOutput() GetGlobalClientNativeSocialLoginFacebookArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginFacebookArrayOutput) ToGetGlobalClientNativeSocialLoginFacebookArrayOutputWithContext(ctx context.Context) GetGlobalClientNativeSocialLoginFacebookArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientNativeSocialLoginFacebookArrayOutput) Index(i pulumi.IntInput) GetGlobalClientNativeSocialLoginFacebookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientNativeSocialLoginFacebook {
+		return vs[0].([]GetGlobalClientNativeSocialLoginFacebook)[vs[1].(int)]
+	}).(GetGlobalClientNativeSocialLoginFacebookOutput)
+}
+
+type GetGlobalClientRefreshToken struct {
+	ExpirationType            string `pulumi:"expirationType"`
+	IdleTokenLifetime         int    `pulumi:"idleTokenLifetime"`
+	InfiniteIdleTokenLifetime bool   `pulumi:"infiniteIdleTokenLifetime"`
+	InfiniteTokenLifetime     bool   `pulumi:"infiniteTokenLifetime"`
+	Leeway                    int    `pulumi:"leeway"`
+	RotationType              string `pulumi:"rotationType"`
+	TokenLifetime             int    `pulumi:"tokenLifetime"`
+}
+
+// GetGlobalClientRefreshTokenInput is an input type that accepts GetGlobalClientRefreshTokenArgs and GetGlobalClientRefreshTokenOutput values.
+// You can construct a concrete instance of `GetGlobalClientRefreshTokenInput` via:
+//
+//          GetGlobalClientRefreshTokenArgs{...}
+type GetGlobalClientRefreshTokenInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientRefreshTokenOutput() GetGlobalClientRefreshTokenOutput
+	ToGetGlobalClientRefreshTokenOutputWithContext(context.Context) GetGlobalClientRefreshTokenOutput
+}
+
+type GetGlobalClientRefreshTokenArgs struct {
+	ExpirationType            pulumi.StringInput `pulumi:"expirationType"`
+	IdleTokenLifetime         pulumi.IntInput    `pulumi:"idleTokenLifetime"`
+	InfiniteIdleTokenLifetime pulumi.BoolInput   `pulumi:"infiniteIdleTokenLifetime"`
+	InfiniteTokenLifetime     pulumi.BoolInput   `pulumi:"infiniteTokenLifetime"`
+	Leeway                    pulumi.IntInput    `pulumi:"leeway"`
+	RotationType              pulumi.StringInput `pulumi:"rotationType"`
+	TokenLifetime             pulumi.IntInput    `pulumi:"tokenLifetime"`
+}
+
+func (GetGlobalClientRefreshTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientRefreshToken)(nil)).Elem()
+}
+
+func (i GetGlobalClientRefreshTokenArgs) ToGetGlobalClientRefreshTokenOutput() GetGlobalClientRefreshTokenOutput {
+	return i.ToGetGlobalClientRefreshTokenOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientRefreshTokenArgs) ToGetGlobalClientRefreshTokenOutputWithContext(ctx context.Context) GetGlobalClientRefreshTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientRefreshTokenOutput)
+}
+
+// GetGlobalClientRefreshTokenArrayInput is an input type that accepts GetGlobalClientRefreshTokenArray and GetGlobalClientRefreshTokenArrayOutput values.
+// You can construct a concrete instance of `GetGlobalClientRefreshTokenArrayInput` via:
+//
+//          GetGlobalClientRefreshTokenArray{ GetGlobalClientRefreshTokenArgs{...} }
+type GetGlobalClientRefreshTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalClientRefreshTokenArrayOutput() GetGlobalClientRefreshTokenArrayOutput
+	ToGetGlobalClientRefreshTokenArrayOutputWithContext(context.Context) GetGlobalClientRefreshTokenArrayOutput
+}
+
+type GetGlobalClientRefreshTokenArray []GetGlobalClientRefreshTokenInput
+
+func (GetGlobalClientRefreshTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientRefreshToken)(nil)).Elem()
+}
+
+func (i GetGlobalClientRefreshTokenArray) ToGetGlobalClientRefreshTokenArrayOutput() GetGlobalClientRefreshTokenArrayOutput {
+	return i.ToGetGlobalClientRefreshTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalClientRefreshTokenArray) ToGetGlobalClientRefreshTokenArrayOutputWithContext(ctx context.Context) GetGlobalClientRefreshTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientRefreshTokenArrayOutput)
+}
+
+type GetGlobalClientRefreshTokenOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientRefreshTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalClientRefreshToken)(nil)).Elem()
+}
+
+func (o GetGlobalClientRefreshTokenOutput) ToGetGlobalClientRefreshTokenOutput() GetGlobalClientRefreshTokenOutput {
+	return o
+}
+
+func (o GetGlobalClientRefreshTokenOutput) ToGetGlobalClientRefreshTokenOutputWithContext(ctx context.Context) GetGlobalClientRefreshTokenOutput {
+	return o
+}
+
+func (o GetGlobalClientRefreshTokenOutput) ExpirationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientRefreshToken) string { return v.ExpirationType }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientRefreshTokenOutput) IdleTokenLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGlobalClientRefreshToken) int { return v.IdleTokenLifetime }).(pulumi.IntOutput)
+}
+
+func (o GetGlobalClientRefreshTokenOutput) InfiniteIdleTokenLifetime() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientRefreshToken) bool { return v.InfiniteIdleTokenLifetime }).(pulumi.BoolOutput)
+}
+
+func (o GetGlobalClientRefreshTokenOutput) InfiniteTokenLifetime() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGlobalClientRefreshToken) bool { return v.InfiniteTokenLifetime }).(pulumi.BoolOutput)
+}
+
+func (o GetGlobalClientRefreshTokenOutput) Leeway() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGlobalClientRefreshToken) int { return v.Leeway }).(pulumi.IntOutput)
+}
+
+func (o GetGlobalClientRefreshTokenOutput) RotationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalClientRefreshToken) string { return v.RotationType }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalClientRefreshTokenOutput) TokenLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGlobalClientRefreshToken) int { return v.TokenLifetime }).(pulumi.IntOutput)
+}
+
+type GetGlobalClientRefreshTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalClientRefreshTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalClientRefreshToken)(nil)).Elem()
+}
+
+func (o GetGlobalClientRefreshTokenArrayOutput) ToGetGlobalClientRefreshTokenArrayOutput() GetGlobalClientRefreshTokenArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientRefreshTokenArrayOutput) ToGetGlobalClientRefreshTokenArrayOutputWithContext(ctx context.Context) GetGlobalClientRefreshTokenArrayOutput {
+	return o
+}
+
+func (o GetGlobalClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetGlobalClientRefreshTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientRefreshToken {
+		return vs[0].([]GetGlobalClientRefreshToken)[vs[1].(int)]
+	}).(GetGlobalClientRefreshTokenOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -11924,6 +14605,48 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsPtrInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionInput)(nil)).Elem(), TriggerBindingActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionArrayInput)(nil)).Elem(), TriggerBindingActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonInput)(nil)).Elem(), GetClientAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonArrayInput)(nil)).Elem(), GetClientAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpInput)(nil)).Elem(), GetClientAddonSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpArrayInput)(nil)).Elem(), GetClientAddonSamlpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpLogoutInput)(nil)).Elem(), GetClientAddonSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationInput)(nil)).Elem(), GetClientJwtConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationArrayInput)(nil)).Elem(), GetClientJwtConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileInput)(nil)).Elem(), GetClientMobileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileArrayInput)(nil)).Elem(), GetClientMobileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileAndroidInput)(nil)).Elem(), GetClientMobileAndroidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileAndroidArrayInput)(nil)).Elem(), GetClientMobileAndroidArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileIoInput)(nil)).Elem(), GetClientMobileIoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileIoArrayInput)(nil)).Elem(), GetClientMobileIoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginInput)(nil)).Elem(), GetClientNativeSocialLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginArrayInput)(nil)).Elem(), GetClientNativeSocialLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginAppleInput)(nil)).Elem(), GetClientNativeSocialLoginAppleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginAppleArrayInput)(nil)).Elem(), GetClientNativeSocialLoginAppleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginFacebookInput)(nil)).Elem(), GetClientNativeSocialLoginFacebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginFacebookArrayInput)(nil)).Elem(), GetClientNativeSocialLoginFacebookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenInput)(nil)).Elem(), GetClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenArrayInput)(nil)).Elem(), GetClientRefreshTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonInput)(nil)).Elem(), GetGlobalClientAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonArrayInput)(nil)).Elem(), GetGlobalClientAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpInput)(nil)).Elem(), GetGlobalClientAddonSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpArrayInput)(nil)).Elem(), GetGlobalClientAddonSamlpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpLogoutInput)(nil)).Elem(), GetGlobalClientAddonSamlpLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientJwtConfigurationInput)(nil)).Elem(), GetGlobalClientJwtConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientJwtConfigurationArrayInput)(nil)).Elem(), GetGlobalClientJwtConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileInput)(nil)).Elem(), GetGlobalClientMobileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileArrayInput)(nil)).Elem(), GetGlobalClientMobileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileAndroidInput)(nil)).Elem(), GetGlobalClientMobileAndroidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileAndroidArrayInput)(nil)).Elem(), GetGlobalClientMobileAndroidArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileIoInput)(nil)).Elem(), GetGlobalClientMobileIoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileIoArrayInput)(nil)).Elem(), GetGlobalClientMobileIoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginArrayInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginAppleInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginAppleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginAppleArrayInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginAppleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebookInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginFacebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebookArrayInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginFacebookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientRefreshTokenInput)(nil)).Elem(), GetGlobalClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientRefreshTokenArrayInput)(nil)).Elem(), GetGlobalClientRefreshTokenArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionSecretOutput{})
@@ -12034,4 +14757,46 @@ func init() {
 	pulumi.RegisterOutputType(TenantUniversalLoginColorsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBindingActionOutput{})
 	pulumi.RegisterOutputType(TriggerBindingActionArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonOutput{})
+	pulumi.RegisterOutputType(GetClientAddonArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSamlpOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSamlpArrayOutput{})
+	pulumi.RegisterOutputType(GetClientAddonSamlpLogoutOutput{})
+	pulumi.RegisterOutputType(GetClientJwtConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClientJwtConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientMobileOutput{})
+	pulumi.RegisterOutputType(GetClientMobileArrayOutput{})
+	pulumi.RegisterOutputType(GetClientMobileAndroidOutput{})
+	pulumi.RegisterOutputType(GetClientMobileAndroidArrayOutput{})
+	pulumi.RegisterOutputType(GetClientMobileIoOutput{})
+	pulumi.RegisterOutputType(GetClientMobileIoArrayOutput{})
+	pulumi.RegisterOutputType(GetClientNativeSocialLoginOutput{})
+	pulumi.RegisterOutputType(GetClientNativeSocialLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetClientNativeSocialLoginAppleOutput{})
+	pulumi.RegisterOutputType(GetClientNativeSocialLoginAppleArrayOutput{})
+	pulumi.RegisterOutputType(GetClientNativeSocialLoginFacebookOutput{})
+	pulumi.RegisterOutputType(GetClientNativeSocialLoginFacebookArrayOutput{})
+	pulumi.RegisterOutputType(GetClientRefreshTokenOutput{})
+	pulumi.RegisterOutputType(GetClientRefreshTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientAddonOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientAddonArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpLogoutOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientJwtConfigurationOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientJwtConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientMobileOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientMobileArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientMobileAndroidOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientMobileAndroidArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientMobileIoOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientMobileIoArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginAppleOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginAppleArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginFacebookOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginFacebookArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientRefreshTokenOutput{})
+	pulumi.RegisterOutputType(GetGlobalClientRefreshTokenArrayOutput{})
 }

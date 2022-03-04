@@ -29,7 +29,7 @@ class ConnectionArgs:
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         :param pulumi.Input[str] display_name: Name used in login screen
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
-        :param pulumi.Input[bool] is_domain_connection: Indicates whether or not the connection is domain level.
+        :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
@@ -94,7 +94,7 @@ class ConnectionArgs:
     @pulumi.getter(name="isDomainConnection")
     def is_domain_connection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether or not the connection is domain level.
+        Indicates whether the connection is domain level.
         """
         return pulumi.get(self, "is_domain_connection")
 
@@ -179,7 +179,7 @@ class _ConnectionState:
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[str] display_name: Name used in login screen
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
-        :param pulumi.Input[bool] is_domain_connection: Indicates whether or not the connection is domain level.
+        :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
@@ -234,7 +234,7 @@ class _ConnectionState:
     @pulumi.getter(name="isDomainConnection")
     def is_domain_connection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether or not the connection is domain level.
+        Indicates whether the connection is domain level.
         """
         return pulumi.get(self, "is_domain_connection")
 
@@ -331,7 +331,9 @@ class Connection(pulumi.CustomResource):
                  validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+        With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
+        (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
+        and manage connections to be used with your clients and users.
 
         ## Example Usage
 
@@ -363,13 +365,22 @@ class Connection(pulumi.CustomResource):
             strategy="auth0")
         ```
 
-        > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allowes the creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+        > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+        creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+
+        ## Import
+
+        Connections can be imported using their id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used in login screen
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
-        :param pulumi.Input[bool] is_domain_connection: Indicates whether or not the connection is domain level.
+        :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
@@ -384,7 +395,9 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+        With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
+        (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
+        and manage connections to be used with your clients and users.
 
         ## Example Usage
 
@@ -416,7 +429,16 @@ class Connection(pulumi.CustomResource):
             strategy="auth0")
         ```
 
-        > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allowes the creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+        > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+        creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+
+        ## Import
+
+        Connections can be imported using their id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+        ```
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.
@@ -493,7 +515,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used in login screen
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
-        :param pulumi.Input[bool] is_domain_connection: Indicates whether or not the connection is domain level.
+        :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
@@ -536,7 +558,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="isDomainConnection")
     def is_domain_connection(self) -> pulumi.Output[bool]:
         """
-        Indicates whether or not the connection is domain level.
+        Indicates whether the connection is domain level.
         """
         return pulumi.get(self, "is_domain_connection")
 

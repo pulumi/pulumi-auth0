@@ -5,6 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Use a tenant's global Auth0 Application client.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const global = new auth0.GlobalClient("global", {
+ *     callbacks: ["http://somehostname.com/a/callback"],
+ *     customLoginPage: `<html>
+ *     <head><title>My Custom Login Page</title></head>
+ *     <body>
+ *         I should probably have a login form here
+ *     </body>
+ * </html>
+ * `,
+ *     // Auth0 Universal Login - Custom Login Page
+ *     customLoginPageOn: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
+ * ```
+ */
 export class GlobalClient extends pulumi.CustomResource {
     /**
      * Get an existing GlobalClient resource's state with the given name, ID, and optional extra
@@ -63,6 +94,7 @@ export class GlobalClient extends pulumi.CustomResource {
     public readonly organizationRequireBehavior!: pulumi.Output<string>;
     public readonly organizationUsage!: pulumi.Output<string>;
     public readonly refreshToken!: pulumi.Output<outputs.GlobalClientRefreshToken>;
+    public readonly signingKeys!: pulumi.Output<{[key: string]: any}[]>;
     public readonly sso!: pulumi.Output<boolean>;
     public readonly ssoDisabled!: pulumi.Output<boolean>;
     public readonly tokenEndpointAuthMethod!: pulumi.Output<string>;
@@ -111,6 +143,7 @@ export class GlobalClient extends pulumi.CustomResource {
             resourceInputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = state ? state.organizationUsage : undefined;
             resourceInputs["refreshToken"] = state ? state.refreshToken : undefined;
+            resourceInputs["signingKeys"] = state ? state.signingKeys : undefined;
             resourceInputs["sso"] = state ? state.sso : undefined;
             resourceInputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
             resourceInputs["tokenEndpointAuthMethod"] = state ? state.tokenEndpointAuthMethod : undefined;
@@ -147,6 +180,7 @@ export class GlobalClient extends pulumi.CustomResource {
             resourceInputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = args ? args.organizationUsage : undefined;
             resourceInputs["refreshToken"] = args ? args.refreshToken : undefined;
+            resourceInputs["signingKeys"] = args ? args.signingKeys : undefined;
             resourceInputs["sso"] = args ? args.sso : undefined;
             resourceInputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
             resourceInputs["tokenEndpointAuthMethod"] = args ? args.tokenEndpointAuthMethod : undefined;
@@ -191,6 +225,7 @@ export interface GlobalClientState {
     organizationRequireBehavior?: pulumi.Input<string>;
     organizationUsage?: pulumi.Input<string>;
     refreshToken?: pulumi.Input<inputs.GlobalClientRefreshToken>;
+    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     sso?: pulumi.Input<boolean>;
     ssoDisabled?: pulumi.Input<boolean>;
     tokenEndpointAuthMethod?: pulumi.Input<string>;
@@ -231,6 +266,7 @@ export interface GlobalClientArgs {
     organizationRequireBehavior?: pulumi.Input<string>;
     organizationUsage?: pulumi.Input<string>;
     refreshToken?: pulumi.Input<inputs.GlobalClientRefreshToken>;
+    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     sso?: pulumi.Input<boolean>;
     ssoDisabled?: pulumi.Input<boolean>;
     tokenEndpointAuthMethod?: pulumi.Input<string>;

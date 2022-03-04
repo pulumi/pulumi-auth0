@@ -22,7 +22,8 @@ class CustomDomainArgs:
         The set of arguments for constructing a CustomDomain resource.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[str] verification_method: String. Domain verification method. Options include `txt`.
+        :param pulumi.Input[str] verification_method: String. Domain verification method. The method is chosen according to the type of
+               the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "type", type)
@@ -60,7 +61,8 @@ class CustomDomainArgs:
     @pulumi.getter(name="verificationMethod")
     def verification_method(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Domain verification method. Options include `txt`.
+        String. Domain verification method. The method is chosen according to the type of
+        the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         return pulumi.get(self, "verification_method")
 
@@ -81,11 +83,12 @@ class _CustomDomainState:
         """
         Input properties used for looking up and filtering CustomDomain resources.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
-        :param pulumi.Input[bool] primary: Boolean. Indicates whether or not this is a primary domain.
+        :param pulumi.Input[bool] primary: Boolean. Indicates whether this is a primary domain.
         :param pulumi.Input[str] status: String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input['CustomDomainVerificationArgs'] verification: List(Resource). Configuration settings for verification. For details, see Verification.
-        :param pulumi.Input[str] verification_method: String. Domain verification method. Options include `txt`.
+        :param pulumi.Input[str] verification_method: String. Domain verification method. The method is chosen according to the type of
+               the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -119,7 +122,7 @@ class _CustomDomainState:
     @pulumi.getter
     def primary(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not this is a primary domain.
+        Boolean. Indicates whether this is a primary domain.
         """
         return pulumi.get(self, "primary")
 
@@ -167,7 +170,8 @@ class _CustomDomainState:
     @pulumi.getter(name="verificationMethod")
     def verification_method(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Domain verification method. Options include `txt`.
+        String. Domain verification method. The method is chosen according to the type of
+        the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         return pulumi.get(self, "verification_method")
 
@@ -186,7 +190,8 @@ class CustomDomain(pulumi.CustomResource):
                  verification_method: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
+        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
+        manage a custom domain within your Auth0 tenant.
 
         ## Example Usage
 
@@ -196,15 +201,23 @@ class CustomDomain(pulumi.CustomResource):
 
         my_custom_domain = auth0.CustomDomain("myCustomDomain",
             domain="auth.example.com",
-            type="auth0_managed_certs",
-            verification_method="txt")
+            type="auth0_managed_certs")
+        ```
+
+        ## Import
+
+        Custom Domains can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[str] verification_method: String. Domain verification method. Options include `txt`.
+        :param pulumi.Input[str] verification_method: String. Domain verification method. The method is chosen according to the type of
+               the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         ...
     @overload
@@ -213,7 +226,8 @@ class CustomDomain(pulumi.CustomResource):
                  args: CustomDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
+        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
+        manage a custom domain within your Auth0 tenant.
 
         ## Example Usage
 
@@ -223,8 +237,15 @@ class CustomDomain(pulumi.CustomResource):
 
         my_custom_domain = auth0.CustomDomain("myCustomDomain",
             domain="auth.example.com",
-            type="auth0_managed_certs",
-            verification_method="txt")
+            type="auth0_managed_certs")
+        ```
+
+        ## Import
+
+        Custom Domains can be imported using the id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.
@@ -294,11 +315,12 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
-        :param pulumi.Input[bool] primary: Boolean. Indicates whether or not this is a primary domain.
+        :param pulumi.Input[bool] primary: Boolean. Indicates whether this is a primary domain.
         :param pulumi.Input[str] status: String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']] verification: List(Resource). Configuration settings for verification. For details, see Verification.
-        :param pulumi.Input[str] verification_method: String. Domain verification method. Options include `txt`.
+        :param pulumi.Input[str] verification_method: String. Domain verification method. The method is chosen according to the type of
+               the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -324,7 +346,7 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter
     def primary(self) -> pulumi.Output[bool]:
         """
-        Boolean. Indicates whether or not this is a primary domain.
+        Boolean. Indicates whether this is a primary domain.
         """
         return pulumi.get(self, "primary")
 
@@ -356,7 +378,8 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="verificationMethod")
     def verification_method(self) -> pulumi.Output[Optional[str]]:
         """
-        String. Domain verification method. Options include `txt`.
+        String. Domain verification method. The method is chosen according to the type of
+        the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         return pulumi.get(self, "verification_method")
 

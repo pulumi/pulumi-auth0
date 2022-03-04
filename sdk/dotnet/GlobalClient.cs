@@ -9,6 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Auth0
 {
+    /// <summary>
+    /// Use a tenant's global Auth0 Application client.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @global = new Auth0.GlobalClient("global", new Auth0.GlobalClientArgs
+    ///         {
+    ///             Callbacks = 
+    ///             {
+    ///                 "http://somehostname.com/a/callback",
+    ///             },
+    ///             CustomLoginPage = @"&lt;html&gt;
+    ///     &lt;head&gt;&lt;title&gt;My Custom Login Page&lt;/title&gt;&lt;/head&gt;
+    ///     &lt;body&gt;
+    ///         I should probably have a login form here
+    ///     &lt;/body&gt;
+    /// &lt;/html&gt;
+    /// 
+    /// ",
+    ///             CustomLoginPageOn = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
+    /// ```
+    /// </summary>
     [Auth0ResourceType("auth0:index/globalClient:GlobalClient")]
     public partial class GlobalClient : Pulumi.CustomResource
     {
@@ -101,6 +143,9 @@ namespace Pulumi.Auth0
 
         [Output("refreshToken")]
         public Output<Outputs.GlobalClientRefreshToken> RefreshToken { get; private set; } = null!;
+
+        [Output("signingKeys")]
+        public Output<ImmutableArray<ImmutableDictionary<string, object>>> SigningKeys { get; private set; } = null!;
 
         [Output("sso")]
         public Output<bool> Sso { get; private set; } = null!;
@@ -290,6 +335,14 @@ namespace Pulumi.Auth0
         [Input("refreshToken")]
         public Input<Inputs.GlobalClientRefreshTokenArgs>? RefreshToken { get; set; }
 
+        [Input("signingKeys")]
+        private InputList<ImmutableDictionary<string, object>>? _signingKeys;
+        public InputList<ImmutableDictionary<string, object>> SigningKeys
+        {
+            get => _signingKeys ?? (_signingKeys = new InputList<ImmutableDictionary<string, object>>());
+            set => _signingKeys = value;
+        }
+
         [Input("sso")]
         public Input<bool>? Sso { get; set; }
 
@@ -443,6 +496,14 @@ namespace Pulumi.Auth0
 
         [Input("refreshToken")]
         public Input<Inputs.GlobalClientRefreshTokenGetArgs>? RefreshToken { get; set; }
+
+        [Input("signingKeys")]
+        private InputList<ImmutableDictionary<string, object>>? _signingKeys;
+        public InputList<ImmutableDictionary<string, object>> SigningKeys
+        {
+            get => _signingKeys ?? (_signingKeys = new InputList<ImmutableDictionary<string, object>>());
+            set => _signingKeys = value;
+        }
 
         [Input("sso")]
         public Input<bool>? Sso { get; set; }

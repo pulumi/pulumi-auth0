@@ -54,6 +54,7 @@ import * as utilities from "./utilities";
  *         "password",
  *         "refresh_token",
  *     ],
+ *     initiateLoginUri: "https://example.com/login",
  *     isFirstParty: true,
  *     isTokenEndpointIpHeaderTrusted: true,
  *     jwtConfiguration: {
@@ -85,6 +86,14 @@ import * as utilities from "./utilities";
  *     tokenEndpointAuthMethod: "client_secret_post",
  *     webOrigins: ["https://example.com"],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * A client can be imported using the client's ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
  * ```
  */
 export class Client extends pulumi.CustomResource {
@@ -185,6 +194,9 @@ export class Client extends pulumi.CustomResource {
      * List(String). Types of grants that this client is authorized to use.
      */
     public readonly grantTypes!: pulumi.Output<string[]>;
+    /**
+     * String. Initiate login uri, must be https.
+     */
     public readonly initiateLoginUri!: pulumi.Output<string | undefined>;
     /**
      * Boolean. Indicates whether or not this client is a first-party client.
@@ -230,6 +242,10 @@ export class Client extends pulumi.CustomResource {
      * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
      */
     public readonly refreshToken!: pulumi.Output<outputs.ClientRefreshToken>;
+    /**
+     * List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+     */
+    public /*out*/ readonly signingKeys!: pulumi.Output<{[key: string]: any}[]>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
      */
@@ -290,6 +306,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = state ? state.organizationUsage : undefined;
             resourceInputs["refreshToken"] = state ? state.refreshToken : undefined;
+            resourceInputs["signingKeys"] = state ? state.signingKeys : undefined;
             resourceInputs["sso"] = state ? state.sso : undefined;
             resourceInputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
             resourceInputs["tokenEndpointAuthMethod"] = state ? state.tokenEndpointAuthMethod : undefined;
@@ -330,6 +347,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["webOrigins"] = args ? args.webOrigins : undefined;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clientSecret"] = undefined /*out*/;
+            resourceInputs["signingKeys"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Client.__pulumiType, name, resourceInputs, opts);
@@ -410,6 +428,9 @@ export interface ClientState {
      * List(String). Types of grants that this client is authorized to use.
      */
     grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * String. Initiate login uri, must be https.
+     */
     initiateLoginUri?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not this client is a first-party client.
@@ -455,6 +476,10 @@ export interface ClientState {
      * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
      */
     refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
+    /**
+     * List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+     */
+    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
      * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
      */
@@ -541,6 +566,9 @@ export interface ClientArgs {
      * List(String). Types of grants that this client is authorized to use.
      */
     grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * String. Initiate login uri, must be https.
+     */
     initiateLoginUri?: pulumi.Input<string>;
     /**
      * Boolean. Indicates whether or not this client is a first-party client.

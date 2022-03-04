@@ -1028,7 +1028,7 @@ export interface RolePermission {
 
 export interface TenantChangePassword {
     /**
-     * Boolean. Indicates whether or not to use the custom change password page.
+     * Boolean. Indicates whether to use the custom change password page.
      */
     enabled: pulumi.Input<boolean>;
     /**
@@ -1043,7 +1043,7 @@ export interface TenantErrorPage {
      */
     html: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+     * Boolean. Indicates whether to show the link to logs as part of the default error page.
      */
     showLogLink: pulumi.Input<boolean>;
     /**
@@ -1054,43 +1054,39 @@ export interface TenantErrorPage {
 
 export interface TenantFlags {
     /**
-     * Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-     */
-    changePwdFlowV1?: pulumi.Input<boolean>;
-    /**
-     * Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      */
     disableClickjackProtectionHeaders?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+     * Boolean. Indicates whether the APIs section is enabled for the tenant.
      */
     enableApisSection?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+     * Boolean. Indicates whether all current connections should be enabled when a new client is created.
      */
     enableClientConnections?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not the tenant allows custom domains in emails.
+     * Boolean. Indicates whether the tenant allows custom domains in emails.
      */
     enableCustomDomainInEmails?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not the tenant allows dynamic client registration.
+     * Boolean. Indicates whether the tenant allows dynamic client registration.
      */
     enableDynamicClientRegistration?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not to use the older v2 legacy logs search.
+     * Boolean. Indicates whether to use the older v2 legacy logs search.
      */
     enableLegacyLogsSearchV2?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+     * Boolean. Indicates whether advanced API Authorization scenarios are enabled.
      */
     enablePipeline2?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not the public sign up process shows a userExists error if the user already exists.
+     * Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
      */
     enablePublicSignupUserExistsError?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not the tenant uses universal login.
+     * Boolean. Indicates whether the tenant uses universal login.
      */
     universalLogin?: pulumi.Input<boolean>;
     useScopeDescriptionsForConsent?: pulumi.Input<boolean>;
@@ -1098,7 +1094,7 @@ export interface TenantFlags {
 
 export interface TenantGuardianMfaPage {
     /**
-     * Boolean. Indicates whether or not to use the custom Guardian page.
+     * Boolean. Indicates whether to use the custom Guardian page.
      */
     enabled: pulumi.Input<boolean>;
     /**

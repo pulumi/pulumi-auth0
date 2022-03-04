@@ -48,12 +48,20 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Existing resource servers can be imported using their id, e.g.
+//
+// ```sh
+//  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
+// ```
 type ResourceServer struct {
 	pulumi.CustomResourceState
 
-	// Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrOutput `pulumi:"allowOfflineAccess"`
-	// Boolean. Indicates whether or not authorization polices are enforced.
+	// Boolean. Indicates whether authorization polices are enforced.
 	EnforcePolicies pulumi.BoolPtrOutput `pulumi:"enforcePolicies"`
 	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
 	Identifier pulumi.StringPtrOutput `pulumi:"identifier"`
@@ -67,7 +75,7 @@ type ResourceServer struct {
 	SigningAlg pulumi.StringOutput `pulumi:"signingAlg"`
 	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringOutput `pulumi:"signingSecret"`
-	// Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrOutput `pulumi:"skipConsentForVerifiableFirstPartyClients"`
 	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
 	TokenDialect pulumi.StringPtrOutput `pulumi:"tokenDialect"`
@@ -108,9 +116,9 @@ func GetResourceServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceServer resources.
 type resourceServerState struct {
-	// Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
-	// Boolean. Indicates whether or not authorization polices are enforced.
+	// Boolean. Indicates whether authorization polices are enforced.
 	EnforcePolicies *bool `pulumi:"enforcePolicies"`
 	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
 	Identifier *string `pulumi:"identifier"`
@@ -124,7 +132,7 @@ type resourceServerState struct {
 	SigningAlg *string `pulumi:"signingAlg"`
 	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret *string `pulumi:"signingSecret"`
-	// Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients *bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
 	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
 	TokenDialect *string `pulumi:"tokenDialect"`
@@ -137,9 +145,9 @@ type resourceServerState struct {
 }
 
 type ResourceServerState struct {
-	// Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrInput
-	// Boolean. Indicates whether or not authorization polices are enforced.
+	// Boolean. Indicates whether authorization polices are enforced.
 	EnforcePolicies pulumi.BoolPtrInput
 	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
 	Identifier pulumi.StringPtrInput
@@ -153,7 +161,7 @@ type ResourceServerState struct {
 	SigningAlg pulumi.StringPtrInput
 	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringPtrInput
-	// Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrInput
 	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
 	TokenDialect pulumi.StringPtrInput
@@ -170,9 +178,9 @@ func (ResourceServerState) ElementType() reflect.Type {
 }
 
 type resourceServerArgs struct {
-	// Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
-	// Boolean. Indicates whether or not authorization polices are enforced.
+	// Boolean. Indicates whether authorization polices are enforced.
 	EnforcePolicies *bool `pulumi:"enforcePolicies"`
 	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
 	Identifier *string `pulumi:"identifier"`
@@ -186,7 +194,7 @@ type resourceServerArgs struct {
 	SigningAlg *string `pulumi:"signingAlg"`
 	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret *string `pulumi:"signingSecret"`
-	// Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients *bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
 	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
 	TokenDialect *string `pulumi:"tokenDialect"`
@@ -200,9 +208,9 @@ type resourceServerArgs struct {
 
 // The set of arguments for constructing a ResourceServer resource.
 type ResourceServerArgs struct {
-	// Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrInput
-	// Boolean. Indicates whether or not authorization polices are enforced.
+	// Boolean. Indicates whether authorization polices are enforced.
 	EnforcePolicies pulumi.BoolPtrInput
 	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
 	Identifier pulumi.StringPtrInput
@@ -216,7 +224,7 @@ type ResourceServerArgs struct {
 	SigningAlg pulumi.StringPtrInput
 	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringPtrInput
-	// Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrInput
 	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
 	TokenDialect pulumi.StringPtrInput

@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
+// (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
+// and manage connections to be used with your clients and users.
 //
 // ## Example Usage
 //
@@ -56,7 +58,16 @@ import (
 // }
 // ```
 //
-// > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allowes the creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+// > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+// creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+//
+// ## Import
+//
+// Connections can be imported using their id, e.g.
+//
+// ```sh
+//  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 
@@ -64,7 +75,7 @@ type Connection struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
 	EnabledClients pulumi.StringArrayOutput `pulumi:"enabledClients"`
-	// Indicates whether or not the connection is domain level.
+	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
 	// Name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -116,7 +127,7 @@ type connectionState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
 	EnabledClients []string `pulumi:"enabledClients"`
-	// Indicates whether or not the connection is domain level.
+	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
@@ -137,7 +148,7 @@ type ConnectionState struct {
 	DisplayName pulumi.StringPtrInput
 	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
 	EnabledClients pulumi.StringArrayInput
-	// Indicates whether or not the connection is domain level.
+	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
 	// Name of the connection.
 	Name pulumi.StringPtrInput
@@ -162,7 +173,7 @@ type connectionArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
 	EnabledClients []string `pulumi:"enabledClients"`
-	// Indicates whether or not the connection is domain level.
+	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
@@ -184,7 +195,7 @@ type ConnectionArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
 	EnabledClients pulumi.StringArrayInput
-	// Indicates whether or not the connection is domain level.
+	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
 	// Name of the connection.
 	Name pulumi.StringPtrInput

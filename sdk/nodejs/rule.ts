@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the auth0.RuleConfig resource.
+ * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
+ * authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules.
+ * You can create global variable for use with rules by using the auth0.RuleConfig resource.
  *
  * ## Example Usage
  *
@@ -24,6 +26,14 @@ import * as utilities from "./utilities";
  *     key: "foo",
  *     value: "bar",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Existing rules can be imported using their id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
  * ```
  */
 export class Rule extends pulumi.CustomResource {

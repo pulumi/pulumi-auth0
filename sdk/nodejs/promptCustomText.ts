@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * auth0_prompt_custom_text can be imported using the import command and specifying the prompt and language separated by *:* , e.g. terminal
+ * This resource can be imported using the import command and specifying the prompt and language separated by *:* , e.g.
  *
  * ```sh
  *  $ pulumi import auth0:index/promptCustomText:PromptCustomText example login:en

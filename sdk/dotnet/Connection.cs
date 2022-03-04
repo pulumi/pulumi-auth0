@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+    /// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
+    /// (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
+    /// and manage connections to be used with your clients and users.
     /// 
     /// ## Example Usage
     /// 
@@ -58,7 +60,16 @@ namespace Pulumi.Auth0
     /// }
     /// ```
     /// 
-    /// &gt; The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allowes the creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+    /// &gt; The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+    /// creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+    /// 
+    /// ## Import
+    /// 
+    /// Connections can be imported using their id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
@@ -76,7 +87,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> EnabledClients { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether or not the connection is domain level.
+        /// Indicates whether the connection is domain level.
         /// </summary>
         [Output("isDomainConnection")]
         public Output<bool> IsDomainConnection { get; private set; } = null!;
@@ -182,7 +193,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Indicates whether or not the connection is domain level.
+        /// Indicates whether the connection is domain level.
         /// </summary>
         [Input("isDomainConnection")]
         public Input<bool>? IsDomainConnection { get; set; }
@@ -261,7 +272,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Indicates whether or not the connection is domain level.
+        /// Indicates whether the connection is domain level.
         /// </summary>
         [Input("isDomainConnection")]
         public Input<bool>? IsDomainConnection { get; set; }

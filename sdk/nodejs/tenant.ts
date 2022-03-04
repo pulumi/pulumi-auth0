@@ -6,43 +6,54 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
+ * With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error
+ * pages, and configuring default tenant behaviors.
  *
- * > Auth0 does not currently support creating tenants through the Management API. Therefore this resource can only manage an existing tenant created through the Auth0 dashboard.
+ * > Auth0 does not currently support creating tenants through the Management API. Therefore, this resource can only
+ * manage an existing tenant created through the Auth0 dashboard.
  *
- * Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be used to add/remove extensions.
+ * Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be
+ * used to add/remove extensions.
  *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * import * as fs from "fs";
+ * import * from "fs";
  *
  * const tenant = new auth0.Tenant("tenant", {
- *     allowedLogoutUrls: ["http://mysite/logout"],
  *     changePassword: {
  *         enabled: true,
- *         html: fs.readFileSync("./password_reset.html", "utf-8"),
+ *         html: fs.readFileSync("./password_reset.html"),
+ *     },
+ *     guardianMfaPage: {
+ *         enabled: true,
+ *         html: fs.readFileSync("./guardian_multifactor.html"),
  *     },
  *     defaultAudience: "<client_id>",
  *     defaultDirectory: "Connection-Name",
  *     errorPage: {
- *         html: fs.readFileSync("./error.html", "utf-8"),
+ *         html: fs.readFileSync("./error.html"),
  *         showLogLink: true,
  *         url: "http://mysite/errors",
  *     },
  *     friendlyName: "Tenant Name",
- *     guardianMfaPage: {
- *         enabled: true,
- *         html: fs.readFileSync("./guardian_multifactor.html", "utf-8"),
- *     },
  *     pictureUrl: "http://mysite/logo.png",
- *     sandboxVersion: "8",
- *     sessionLifetime: 46000,
  *     supportEmail: "support@mysite",
  *     supportUrl: "http://mysite/support",
+ *     allowedLogoutUrls: ["http://mysite/logout"],
+ *     sessionLifetime: 46000,
+ *     sandboxVersion: "8",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/tenant:Tenant tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
  * ```
  */
 export class Tenant extends pulumi.CustomResource {
