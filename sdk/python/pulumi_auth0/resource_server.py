@@ -30,15 +30,15 @@ class ResourceServerArgs:
                  verification_location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ResourceServer resource.
-        :param pulumi.Input[bool] allow_offline_access: Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
-        :param pulumi.Input[bool] enforce_policies: Boolean. Indicates whether or not authorization polices are enforced.
+        :param pulumi.Input[bool] allow_offline_access: Boolean. Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[bool] enforce_policies: Boolean. Indicates whether authorization polices are enforced.
         :param pulumi.Input[str] identifier: String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
         :param pulumi.Input[str] name: String. Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map(String). Used to store additional metadata
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]] scopes: Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
         :param pulumi.Input[str] signing_alg: String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: String. Secret used to sign tokens when using symmetric algorithms (HS256).
-        :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
         :param pulumi.Input[int] token_lifetime: Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
@@ -75,7 +75,7 @@ class ResourceServerArgs:
     @pulumi.getter(name="allowOfflineAccess")
     def allow_offline_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+        Boolean. Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
 
@@ -87,7 +87,7 @@ class ResourceServerArgs:
     @pulumi.getter(name="enforcePolicies")
     def enforce_policies(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not authorization polices are enforced.
+        Boolean. Indicates whether authorization polices are enforced.
         """
         return pulumi.get(self, "enforce_policies")
 
@@ -171,7 +171,7 @@ class ResourceServerArgs:
     @pulumi.getter(name="skipConsentForVerifiableFirstPartyClients")
     def skip_consent_for_verifiable_first_party_clients(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        Boolean. Indicates whether to skip user consent for applications flagged as first party.
         """
         return pulumi.get(self, "skip_consent_for_verifiable_first_party_clients")
 
@@ -246,15 +246,15 @@ class _ResourceServerState:
                  verification_location: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ResourceServer resources.
-        :param pulumi.Input[bool] allow_offline_access: Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
-        :param pulumi.Input[bool] enforce_policies: Boolean. Indicates whether or not authorization polices are enforced.
+        :param pulumi.Input[bool] allow_offline_access: Boolean. Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[bool] enforce_policies: Boolean. Indicates whether authorization polices are enforced.
         :param pulumi.Input[str] identifier: String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
         :param pulumi.Input[str] name: String. Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map(String). Used to store additional metadata
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]] scopes: Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
         :param pulumi.Input[str] signing_alg: String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: String. Secret used to sign tokens when using symmetric algorithms (HS256).
-        :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
         :param pulumi.Input[int] token_lifetime: Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
@@ -291,7 +291,7 @@ class _ResourceServerState:
     @pulumi.getter(name="allowOfflineAccess")
     def allow_offline_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+        Boolean. Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
 
@@ -303,7 +303,7 @@ class _ResourceServerState:
     @pulumi.getter(name="enforcePolicies")
     def enforce_policies(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not authorization polices are enforced.
+        Boolean. Indicates whether authorization polices are enforced.
         """
         return pulumi.get(self, "enforce_policies")
 
@@ -387,7 +387,7 @@ class _ResourceServerState:
     @pulumi.getter(name="skipConsentForVerifiableFirstPartyClients")
     def skip_consent_for_verifiable_first_party_clients(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        Boolean. Indicates whether to skip user consent for applications flagged as first party.
         """
         return pulumi.get(self, "skip_consent_for_verifiable_first_party_clients")
 
@@ -490,17 +490,25 @@ class ResourceServer(pulumi.CustomResource):
             token_lifetime=8600)
         ```
 
+        ## Import
+
+        Existing resource servers can be imported using their id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_offline_access: Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
-        :param pulumi.Input[bool] enforce_policies: Boolean. Indicates whether or not authorization polices are enforced.
+        :param pulumi.Input[bool] allow_offline_access: Boolean. Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[bool] enforce_policies: Boolean. Indicates whether authorization polices are enforced.
         :param pulumi.Input[str] identifier: String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
         :param pulumi.Input[str] name: String. Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map(String). Used to store additional metadata
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
         :param pulumi.Input[str] signing_alg: String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: String. Secret used to sign tokens when using symmetric algorithms (HS256).
-        :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
         :param pulumi.Input[int] token_lifetime: Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
@@ -537,6 +545,14 @@ class ResourceServer(pulumi.CustomResource):
             signing_alg="RS256",
             skip_consent_for_verifiable_first_party_clients=True,
             token_lifetime=8600)
+        ```
+
+        ## Import
+
+        Existing resource servers can be imported using their id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.
@@ -622,15 +638,15 @@ class ResourceServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_offline_access: Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
-        :param pulumi.Input[bool] enforce_policies: Boolean. Indicates whether or not authorization polices are enforced.
+        :param pulumi.Input[bool] allow_offline_access: Boolean. Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[bool] enforce_policies: Boolean. Indicates whether authorization polices are enforced.
         :param pulumi.Input[str] identifier: String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
         :param pulumi.Input[str] name: String. Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map(String). Used to store additional metadata
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
         :param pulumi.Input[str] signing_alg: String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: String. Secret used to sign tokens when using symmetric algorithms (HS256).
-        :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Boolean. Indicates whether to skip user consent for applications flagged as first party.
         :param pulumi.Input[str] token_dialect: String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
         :param pulumi.Input[int] token_lifetime: Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[int] token_lifetime_for_web: Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
@@ -659,7 +675,7 @@ class ResourceServer(pulumi.CustomResource):
     @pulumi.getter(name="allowOfflineAccess")
     def allow_offline_access(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+        Boolean. Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
 
@@ -667,7 +683,7 @@ class ResourceServer(pulumi.CustomResource):
     @pulumi.getter(name="enforcePolicies")
     def enforce_policies(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean. Indicates whether or not authorization polices are enforced.
+        Boolean. Indicates whether authorization polices are enforced.
         """
         return pulumi.get(self, "enforce_policies")
 
@@ -723,7 +739,7 @@ class ResourceServer(pulumi.CustomResource):
     @pulumi.getter(name="skipConsentForVerifiableFirstPartyClients")
     def skip_consent_for_verifiable_first_party_clients(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+        Boolean. Indicates whether to skip user consent for applications flagged as first party.
         """
         return pulumi.get(self, "skip_consent_for_verifiable_first_party_clients")
 

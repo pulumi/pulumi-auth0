@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
+    /// With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
+    /// manage a custom domain within your Auth0 tenant.
     /// 
     /// ## Example Usage
     /// 
@@ -26,11 +27,18 @@ namespace Pulumi.Auth0
     ///         {
     ///             Domain = "auth.example.com",
     ///             Type = "auth0_managed_certs",
-    ///             VerificationMethod = "txt",
     ///         });
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Custom Domains can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/customDomain:CustomDomain")]
@@ -43,7 +51,7 @@ namespace Pulumi.Auth0
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not this is a primary domain.
+        /// Boolean. Indicates whether this is a primary domain.
         /// </summary>
         [Output("primary")]
         public Output<bool> Primary { get; private set; } = null!;
@@ -67,7 +75,8 @@ namespace Pulumi.Auth0
         public Output<Outputs.CustomDomainVerification> Verification { get; private set; } = null!;
 
         /// <summary>
-        /// String. Domain verification method. Options include `txt`.
+        /// String. Domain verification method. The method is chosen according to the type of
+        /// the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         /// </summary>
         [Output("verificationMethod")]
         public Output<string?> VerificationMethod { get; private set; } = null!;
@@ -131,7 +140,8 @@ namespace Pulumi.Auth0
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// String. Domain verification method. Options include `txt`.
+        /// String. Domain verification method. The method is chosen according to the type of
+        /// the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         /// </summary>
         [Input("verificationMethod")]
         public Input<string>? VerificationMethod { get; set; }
@@ -150,7 +160,7 @@ namespace Pulumi.Auth0
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not this is a primary domain.
+        /// Boolean. Indicates whether this is a primary domain.
         /// </summary>
         [Input("primary")]
         public Input<bool>? Primary { get; set; }
@@ -174,7 +184,8 @@ namespace Pulumi.Auth0
         public Input<Inputs.CustomDomainVerificationGetArgs>? Verification { get; set; }
 
         /// <summary>
-        /// String. Domain verification method. Options include `txt`.
+        /// String. Domain verification method. The method is chosen according to the type of
+        /// the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         /// </summary>
         [Input("verificationMethod")]
         public Input<string>? VerificationMethod { get; set; }

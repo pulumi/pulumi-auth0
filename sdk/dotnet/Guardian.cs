@@ -10,8 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// Multi-factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some of
-    /// the options available for MFA.
+    /// Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized
+    /// access. With this resource you can configure some options available for MFA.
     /// 
     /// ## Example Usage
     /// 
@@ -26,6 +26,7 @@ namespace Pulumi.Auth0
     ///         var @default = new Auth0.Guardian("default", new Auth0.GuardianArgs
     ///         {
     ///             Email = true,
+    ///             Otp = true,
     ///             Phone = new Auth0.Inputs.GuardianPhoneArgs
     ///             {
     ///                 MessageTypes = 
@@ -45,15 +46,26 @@ namespace Pulumi.Auth0
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/guardian:Guardian default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/guardian:Guardian")]
     public partial class Guardian : Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean. Indicates whether or not email MFA is enabled.
+        /// Boolean. Indicates whether email MFA is enabled.
         /// </summary>
         [Output("email")]
         public Output<bool?> Email { get; private set; } = null!;
+
+        [Output("otp")]
+        public Output<bool?> Otp { get; private set; } = null!;
 
         /// <summary>
         /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
@@ -62,7 +74,8 @@ namespace Pulumi.Auth0
         public Output<Outputs.GuardianPhone?> Phone { get; private set; } = null!;
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        /// The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
@@ -114,10 +127,13 @@ namespace Pulumi.Auth0
     public sealed class GuardianArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether or not email MFA is enabled.
+        /// Boolean. Indicates whether email MFA is enabled.
         /// </summary>
         [Input("email")]
         public Input<bool>? Email { get; set; }
+
+        [Input("otp")]
+        public Input<bool>? Otp { get; set; }
 
         /// <summary>
         /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
@@ -126,7 +142,8 @@ namespace Pulumi.Auth0
         public Input<Inputs.GuardianPhoneArgs>? Phone { get; set; }
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        /// The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
@@ -139,10 +156,13 @@ namespace Pulumi.Auth0
     public sealed class GuardianState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether or not email MFA is enabled.
+        /// Boolean. Indicates whether email MFA is enabled.
         /// </summary>
         [Input("email")]
         public Input<bool>? Email { get; set; }
+
+        [Input("otp")]
+        public Input<bool>? Otp { get; set; }
 
         /// <summary>
         /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
@@ -151,7 +171,8 @@ namespace Pulumi.Auth0
         public Input<Inputs.GuardianPhoneGetArgs>? Phone { get; set; }
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`. The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa)
+        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        /// The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

@@ -27,7 +27,28 @@ import * as utilities from "./utilities";
  * 	 console.log(event)
  *  };
  * `,
+ *     dependencies: [
+ *         {
+ *             name: "lodash",
+ *             version: "latest",
+ *         },
+ *         {
+ *             name: "request",
+ *             version: "latest",
+ *         },
+ *     ],
  *     deploy: true,
+ *     runtime: "node16",
+ *     secrets: [
+ *         {
+ *             name: "FOO",
+ *             value: "Foo",
+ *         },
+ *         {
+ *             name: "BAR",
+ *             value: "Bar",
+ *         },
+ *     ],
  *     supportedTriggers: {
  *         id: "post-login",
  *         version: "v2",
@@ -40,12 +61,10 @@ import * as utilities from "./utilities";
  * An action can be imported using the action's ID, e.g.
  *
  * ```sh
- *  $ pulumi import auth0:index/action:Action example ...
+ *  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
  * ```
  *
- *  ~> For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
- *
- * action has been imported.
+ *  ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
  */
 export class Action extends pulumi.CustomResource {
     /**
@@ -80,11 +99,13 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly code!: pulumi.Output<string>;
     /**
-     * List of third party npm modules, and their versions, that this action depends on
+     * List of third party npm modules, and their versions, that this action depends on.
      */
     public readonly dependencies!: pulumi.Output<outputs.ActionDependency[] | undefined>;
     /**
-     * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+     * Deploying an action will create a new immutable version of the action.
+     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+     * action immediately. Default is `false`.
      */
     public readonly deploy!: pulumi.Output<boolean | undefined>;
     /**
@@ -92,19 +113,20 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The Node runtime. For example `node16`, defaults to `node12`
+     * The Node runtime. For example `node16`, defaults to `node12`.
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
-     * List of secrets that are included in an action or a version of an action
+     * List of secrets that are included in an action or a version of an action.
      */
     public readonly secrets!: pulumi.Output<outputs.ActionSecret[] | undefined>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+     * List of triggers that this action supports. At this time, an action can only target
+     * a single trigger at a time.
      */
     public readonly supportedTriggers!: pulumi.Output<outputs.ActionSupportedTriggers>;
     /**
-     * Version ID of the action. This value is available if `deploy` is set to true
+     * Version ID of the action. This value is available if `deploy` is set to true.
      */
     public /*out*/ readonly versionId!: pulumi.Output<string>;
 
@@ -160,11 +182,13 @@ export interface ActionState {
      */
     code?: pulumi.Input<string>;
     /**
-     * List of third party npm modules, and their versions, that this action depends on
+     * List of third party npm modules, and their versions, that this action depends on.
      */
     dependencies?: pulumi.Input<pulumi.Input<inputs.ActionDependency>[]>;
     /**
-     * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+     * Deploying an action will create a new immutable version of the action.
+     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+     * action immediately. Default is `false`.
      */
     deploy?: pulumi.Input<boolean>;
     /**
@@ -172,19 +196,20 @@ export interface ActionState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Node runtime. For example `node16`, defaults to `node12`
+     * The Node runtime. For example `node16`, defaults to `node12`.
      */
     runtime?: pulumi.Input<string>;
     /**
-     * List of secrets that are included in an action or a version of an action
+     * List of secrets that are included in an action or a version of an action.
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+     * List of triggers that this action supports. At this time, an action can only target
+     * a single trigger at a time.
      */
     supportedTriggers?: pulumi.Input<inputs.ActionSupportedTriggers>;
     /**
-     * Version ID of the action. This value is available if `deploy` is set to true
+     * Version ID of the action. This value is available if `deploy` is set to true.
      */
     versionId?: pulumi.Input<string>;
 }
@@ -198,11 +223,13 @@ export interface ActionArgs {
      */
     code: pulumi.Input<string>;
     /**
-     * List of third party npm modules, and their versions, that this action depends on
+     * List of third party npm modules, and their versions, that this action depends on.
      */
     dependencies?: pulumi.Input<pulumi.Input<inputs.ActionDependency>[]>;
     /**
-     * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+     * Deploying an action will create a new immutable version of the action.
+     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+     * action immediately. Default is `false`.
      */
     deploy?: pulumi.Input<boolean>;
     /**
@@ -210,15 +237,16 @@ export interface ActionArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Node runtime. For example `node16`, defaults to `node12`
+     * The Node runtime. For example `node16`, defaults to `node12`.
      */
     runtime?: pulumi.Input<string>;
     /**
-     * List of secrets that are included in an action or a version of an action
+     * List of secrets that are included in an action or a version of an action.
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+     * List of triggers that this action supports. At this time, an action can only target
+     * a single trigger at a time.
      */
     supportedTriggers: pulumi.Input<inputs.ActionSupportedTriggers>;
 }

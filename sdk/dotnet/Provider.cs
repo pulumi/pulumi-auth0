@@ -18,11 +18,14 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("pulumi:providers:auth0")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("apiToken")]
+        public Output<string?> ApiToken { get; private set; } = null!;
+
         [Output("clientId")]
-        public Output<string> ClientId { get; private set; } = null!;
+        public Output<string?> ClientId { get; private set; } = null!;
 
         [Output("clientSecret")]
-        public Output<string> ClientSecret { get; private set; } = null!;
+        public Output<string?> ClientSecret { get; private set; } = null!;
 
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -55,11 +58,14 @@ namespace Pulumi.Auth0
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
-        [Input("clientId", required: true)]
-        public Input<string> ClientId { get; set; } = null!;
+        [Input("apiToken")]
+        public Input<string>? ApiToken { get; set; }
 
-        [Input("clientSecret", required: true)]
-        public Input<string> ClientSecret { get; set; } = null!;
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
 
         [Input("debug", json: true)]
         public Input<bool>? Debug { get; set; }

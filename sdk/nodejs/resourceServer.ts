@@ -32,6 +32,14 @@ import * as utilities from "./utilities";
  *     tokenLifetime: 8600,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Existing resource servers can be imported using their id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
+ * ```
  */
 export class ResourceServer extends pulumi.CustomResource {
     /**
@@ -62,11 +70,11 @@ export class ResourceServer extends pulumi.CustomResource {
     }
 
     /**
-     * Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+     * Boolean. Indicates whether refresh tokens can be issued for this resource server.
      */
     public readonly allowOfflineAccess!: pulumi.Output<boolean | undefined>;
     /**
-     * Boolean. Indicates whether or not authorization polices are enforced.
+     * Boolean. Indicates whether authorization polices are enforced.
      */
     public readonly enforcePolicies!: pulumi.Output<boolean | undefined>;
     /**
@@ -94,7 +102,7 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     public readonly signingSecret!: pulumi.Output<string>;
     /**
-     * Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+     * Boolean. Indicates whether to skip user consent for applications flagged as first party.
      */
     public readonly skipConsentForVerifiableFirstPartyClients!: pulumi.Output<boolean | undefined>;
     /**
@@ -166,11 +174,11 @@ export class ResourceServer extends pulumi.CustomResource {
  */
 export interface ResourceServerState {
     /**
-     * Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+     * Boolean. Indicates whether refresh tokens can be issued for this resource server.
      */
     allowOfflineAccess?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not authorization polices are enforced.
+     * Boolean. Indicates whether authorization polices are enforced.
      */
     enforcePolicies?: pulumi.Input<boolean>;
     /**
@@ -198,7 +206,7 @@ export interface ResourceServerState {
      */
     signingSecret?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+     * Boolean. Indicates whether to skip user consent for applications flagged as first party.
      */
     skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
     /**
@@ -224,11 +232,11 @@ export interface ResourceServerState {
  */
 export interface ResourceServerArgs {
     /**
-     * Boolean. Indicates whether or not refresh tokens can be issued for this resource server.
+     * Boolean. Indicates whether refresh tokens can be issued for this resource server.
      */
     allowOfflineAccess?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not authorization polices are enforced.
+     * Boolean. Indicates whether authorization polices are enforced.
      */
     enforcePolicies?: pulumi.Input<boolean>;
     /**
@@ -256,7 +264,7 @@ export interface ResourceServerArgs {
      */
     signingSecret?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not to skip user consent for applications flagged as first party.
+     * Boolean. Indicates whether to skip user consent for applications flagged as first party.
      */
     skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
     /**

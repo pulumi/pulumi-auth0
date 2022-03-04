@@ -97,7 +97,9 @@ class RuleConfig(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
+        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
+        authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables
+        that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
 
         ## Example Usage
 
@@ -117,6 +119,14 @@ class RuleConfig(pulumi.CustomResource):
             value="bar")
         ```
 
+        ## Import
+
+        Existing rule configs can be imported using their key name, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: String. Key for a rules configuration variable.
@@ -129,7 +139,9 @@ class RuleConfig(pulumi.CustomResource):
                  args: RuleConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
+        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
+        authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables
+        that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
 
         ## Example Usage
 
@@ -147,6 +159,14 @@ class RuleConfig(pulumi.CustomResource):
         my_rule_config = auth0.RuleConfig("myRuleConfig",
             key="foo",
             value="bar")
+        ```
+
+        ## Import
+
+        Existing rule configs can be imported using their key name, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
         ```
 
         :param str resource_name: The name of the resource.

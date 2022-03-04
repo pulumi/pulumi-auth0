@@ -129,7 +129,9 @@ class ClientGrant(pulumi.CustomResource):
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
+        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
+        exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
+        This resource allows you to create and manage client grants used with configured Auth0 clients.
 
         ## Example Usage
 
@@ -142,17 +144,17 @@ class ClientGrant(pulumi.CustomResource):
             identifier="https://api.example.com/client-grant",
             scopes=[
                 auth0.ResourceServerScopeArgs(
-                    description="Create foos",
                     value="create:foo",
+                    description="Create foos",
                 ),
                 auth0.ResourceServerScopeArgs(
-                    description="Create bars",
                     value="create:bar",
+                    description="Create bars",
                 ),
             ])
         my_client_grant = auth0.ClientGrant("myClientGrant",
-            audience=my_resource_server.identifier,
             client_id=my_client.id,
+            audience=my_resource_server.identifier,
             scopes=["create:foo"])
         ```
 
@@ -161,7 +163,7 @@ class ClientGrant(pulumi.CustomResource):
         Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
 
         ```sh
-         $ pulumi import auth0:index/clientGrant:ClientGrant example cgr_XXXXXXXXXXXXXXXX
+         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.
@@ -177,7 +179,9 @@ class ClientGrant(pulumi.CustomResource):
                  args: ClientGrantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
+        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
+        exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
+        This resource allows you to create and manage client grants used with configured Auth0 clients.
 
         ## Example Usage
 
@@ -190,17 +194,17 @@ class ClientGrant(pulumi.CustomResource):
             identifier="https://api.example.com/client-grant",
             scopes=[
                 auth0.ResourceServerScopeArgs(
-                    description="Create foos",
                     value="create:foo",
+                    description="Create foos",
                 ),
                 auth0.ResourceServerScopeArgs(
-                    description="Create bars",
                     value="create:bar",
+                    description="Create bars",
                 ),
             ])
         my_client_grant = auth0.ClientGrant("myClientGrant",
-            audience=my_resource_server.identifier,
             client_id=my_client.id,
+            audience=my_resource_server.identifier,
             scopes=["create:foo"])
         ```
 
@@ -209,7 +213,7 @@ class ClientGrant(pulumi.CustomResource):
         Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
 
         ```sh
-         $ pulumi import auth0:index/clientGrant:ClientGrant example cgr_XXXXXXXXXXXXXXXX
+         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.

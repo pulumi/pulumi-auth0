@@ -18,9 +18,10 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	ClientId     pulumi.StringOutput `pulumi:"clientId"`
-	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
-	Domain       pulumi.StringOutput `pulumi:"domain"`
+	ApiToken     pulumi.StringPtrOutput `pulumi:"apiToken"`
+	ClientId     pulumi.StringPtrOutput `pulumi:"clientId"`
+	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	Domain       pulumi.StringOutput    `pulumi:"domain"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -30,12 +31,6 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ClientId == nil {
-		return nil, errors.New("invalid value for required argument 'ClientId'")
-	}
-	if args.ClientSecret == nil {
-		return nil, errors.New("invalid value for required argument 'ClientSecret'")
-	}
 	if args.Domain == nil {
 		return nil, errors.New("invalid value for required argument 'Domain'")
 	}
@@ -51,16 +46,18 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	ClientId     string `pulumi:"clientId"`
-	ClientSecret string `pulumi:"clientSecret"`
-	Debug        *bool  `pulumi:"debug"`
-	Domain       string `pulumi:"domain"`
+	ApiToken     *string `pulumi:"apiToken"`
+	ClientId     *string `pulumi:"clientId"`
+	ClientSecret *string `pulumi:"clientSecret"`
+	Debug        *bool   `pulumi:"debug"`
+	Domain       string  `pulumi:"domain"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	ClientId     pulumi.StringInput
-	ClientSecret pulumi.StringInput
+	ApiToken     pulumi.StringPtrInput
+	ClientId     pulumi.StringPtrInput
+	ClientSecret pulumi.StringPtrInput
 	Debug        pulumi.BoolPtrInput
 	Domain       pulumi.StringInput
 }

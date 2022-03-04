@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
+    /// With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error
+    /// pages, and configuring default tenant behaviors.
     /// 
-    /// &gt; Auth0 does not currently support creating tenants through the Management API. Therefore this resource can only manage an existing tenant created through the Auth0 dashboard.
+    /// &gt; Auth0 does not currently support creating tenants through the Management API. Therefore, this resource can only
+    /// manage an existing tenant created through the Auth0 dashboard.
     /// 
-    /// Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be used to add/remove extensions.
+    /// Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be
+    /// used to add/remove extensions.
     /// 
     /// ## Example Usage
     /// 
@@ -29,14 +32,15 @@ namespace Pulumi.Auth0
     ///     {
     ///         var tenant = new Auth0.Tenant("tenant", new Auth0.TenantArgs
     ///         {
-    ///             AllowedLogoutUrls = 
-    ///             {
-    ///                 "http://mysite/logout",
-    ///             },
     ///             ChangePassword = new Auth0.Inputs.TenantChangePasswordArgs
     ///             {
     ///                 Enabled = true,
     ///                 Html = File.ReadAllText("./password_reset.html"),
+    ///             },
+    ///             GuardianMfaPage = new Auth0.Inputs.TenantGuardianMfaPageArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Html = File.ReadAllText("./guardian_multifactor.html"),
     ///             },
     ///             DefaultAudience = "&lt;client_id&gt;",
     ///             DefaultDirectory = "Connection-Name",
@@ -47,20 +51,27 @@ namespace Pulumi.Auth0
     ///                 Url = "http://mysite/errors",
     ///             },
     ///             FriendlyName = "Tenant Name",
-    ///             GuardianMfaPage = new Auth0.Inputs.TenantGuardianMfaPageArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Html = File.ReadAllText("./guardian_multifactor.html"),
-    ///             },
     ///             PictureUrl = "http://mysite/logo.png",
-    ///             SandboxVersion = "8",
-    ///             SessionLifetime = 46000,
     ///             SupportEmail = "support@mysite",
     ///             SupportUrl = "http://mysite/support",
+    ///             AllowedLogoutUrls = 
+    ///             {
+    ///                 "http://mysite/logout",
+    ///             },
+    ///             SessionLifetime = 46000,
+    ///             SandboxVersion = "8",
     ///         });
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/tenant:Tenant tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/tenant:Tenant")]

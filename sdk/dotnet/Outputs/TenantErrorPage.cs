@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Html;
         /// <summary>
-        /// Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+        /// Boolean. Indicates whether to show the link to logs as part of the default error page.
         /// </summary>
         public readonly bool ShowLogLink;
         /// <summary>

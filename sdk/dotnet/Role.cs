@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
+    /// With this resource, you can create and manage collections of permissions that can be assigned to users, which are
+    /// otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
+    /// optionally, users using this resource.
     /// 
     /// ## Example Usage
     /// 
@@ -24,19 +26,19 @@ namespace Pulumi.Auth0
     ///     {
     ///         var myResourceServer = new Auth0.ResourceServer("myResourceServer", new Auth0.ResourceServerArgs
     ///         {
-    ///             EnforcePolicies = true,
     ///             Identifier = "my-resource-server-identifier",
+    ///             SigningAlg = "RS256",
+    ///             TokenLifetime = 86400,
+    ///             SkipConsentForVerifiableFirstPartyClients = true,
+    ///             EnforcePolicies = true,
     ///             Scopes = 
     ///             {
     ///                 new Auth0.Inputs.ResourceServerScopeArgs
     ///                 {
-    ///                     Description = "read something",
     ///                     Value = "read:something",
+    ///                     Description = "read something",
     ///                 },
     ///             },
-    ///             SigningAlg = "RS256",
-    ///             SkipConsentForVerifiableFirstPartyClients = true,
-    ///             TokenLifetime = 86400,
     ///         });
     ///         var myRole = new Auth0.Role("myRole", new Auth0.RoleArgs
     ///         {
@@ -45,27 +47,35 @@ namespace Pulumi.Auth0
     ///             {
     ///                 new Auth0.Inputs.RolePermissionArgs
     ///                 {
-    ///                     Name = "read:something",
     ///                     ResourceServerIdentifier = myResourceServer.Identifier,
+    ///                     Name = "read:something",
     ///                 },
     ///             },
     ///         });
     ///         var myUser = new Auth0.User("myUser", new Auth0.UserArgs
     ///         {
     ///             ConnectionName = "Username-Password-Authentication",
+    ///             UserId = "auth0|1234567890",
     ///             Email = "test@test.com",
-    ///             Nickname = "testnick",
     ///             Password = "passpass$12$12",
+    ///             Nickname = "testnick",
+    ///             Username = "testnick",
     ///             Roles = 
     ///             {
     ///                 myRole.Id,
     ///             },
-    ///             UserId = "auth0|1234567890",
-    ///             Username = "testnick",
     ///         });
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Existing roles can be imported using their id, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/role:Role")]
@@ -84,7 +94,8 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+        /// For details, see Permissions.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.RolePermission>> Permissions { get; private set; } = null!;
@@ -151,7 +162,8 @@ namespace Pulumi.Auth0
         private InputList<Inputs.RolePermissionArgs>? _permissions;
 
         /// <summary>
-        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+        /// For details, see Permissions.
         /// </summary>
         public InputList<Inputs.RolePermissionArgs> Permissions
         {
@@ -183,7 +195,8 @@ namespace Pulumi.Auth0
         private InputList<Inputs.RolePermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+        /// For details, see Permissions.
         /// </summary>
         public InputList<Inputs.RolePermissionGetArgs> Permissions
         {

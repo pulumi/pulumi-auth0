@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
+    /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
+    /// into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
+    /// emails sent by Auth0. Used in conjunction with configured email providers.
     /// 
     /// ## Example Usage
     /// 
@@ -54,6 +56,14 @@ namespace Pulumi.Auth0
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported using the template name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
+    /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/emailTemplate:EmailTemplate")]
     public partial class EmailTemplate : Pulumi.CustomResource
@@ -65,7 +75,7 @@ namespace Pulumi.Auth0
         public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the template is enabled.
+        /// Boolean. Indicates whether the template is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -159,7 +169,7 @@ namespace Pulumi.Auth0
         public Input<string> Body { get; set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the template is enabled.
+        /// Boolean. Indicates whether the template is enabled.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -214,7 +224,7 @@ namespace Pulumi.Auth0
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the template is enabled.
+        /// Boolean. Indicates whether the template is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

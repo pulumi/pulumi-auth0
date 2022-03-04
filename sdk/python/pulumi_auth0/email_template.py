@@ -24,7 +24,7 @@ class EmailTemplateArgs:
         """
         The set of arguments for constructing a EmailTemplate resource.
         :param pulumi.Input[str] body: String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the template is enabled.
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the template is enabled.
         :param pulumi.Input[str] from_: String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param pulumi.Input[str] subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param pulumi.Input[str] syntax: String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
@@ -59,7 +59,7 @@ class EmailTemplateArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Boolean. Indicates whether or not the template is enabled.
+        Boolean. Indicates whether the template is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -154,7 +154,7 @@ class _EmailTemplateState:
         """
         Input properties used for looking up and filtering EmailTemplate resources.
         :param pulumi.Input[str] body: String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the template is enabled.
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the template is enabled.
         :param pulumi.Input[str] from_: String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param pulumi.Input[str] result_url: String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
         :param pulumi.Input[str] subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -195,7 +195,7 @@ class _EmailTemplateState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether or not the template is enabled.
+        Boolean. Indicates whether the template is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -291,7 +291,9 @@ class EmailTemplate(pulumi.CustomResource):
                  url_lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
+        With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
+        into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
+        emails sent by Auth0. Used in conjunction with configured email providers.
 
         ## Example Usage
 
@@ -319,10 +321,18 @@ class EmailTemplate(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
         ```
 
+        ## Import
+
+        This resource can be imported using the template name, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the template is enabled.
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the template is enabled.
         :param pulumi.Input[str] from_: String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param pulumi.Input[str] result_url: String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
         :param pulumi.Input[str] subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -337,7 +347,9 @@ class EmailTemplate(pulumi.CustomResource):
                  args: EmailTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
+        With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
+        into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
+        emails sent by Auth0. Used in conjunction with configured email providers.
 
         ## Example Usage
 
@@ -363,6 +375,14 @@ class EmailTemplate(pulumi.CustomResource):
             url_lifetime_in_seconds=3600,
             enabled=True,
             opts=pulumi.ResourceOptions(depends_on=[my_email_provider]))
+        ```
+
+        ## Import
+
+        This resource can be imported using the template name, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
         ```
 
         :param str resource_name: The name of the resource.
@@ -446,7 +466,7 @@ class EmailTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] body: String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether or not the template is enabled.
+        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the template is enabled.
         :param pulumi.Input[str] from_: String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param pulumi.Input[str] result_url: String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
         :param pulumi.Input[str] subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -480,7 +500,7 @@ class EmailTemplate(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Boolean. Indicates whether or not the template is enabled.
+        Boolean. Indicates whether the template is enabled.
         """
         return pulumi.get(self, "enabled")
 

@@ -596,11 +596,14 @@ class Tenant(pulumi.CustomResource):
                  universal_login: Optional[pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']]] = None,
                  __props__=None):
         """
-        With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
+        With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error
+        pages, and configuring default tenant behaviors.
 
-        > Auth0 does not currently support creating tenants through the Management API. Therefore this resource can only manage an existing tenant created through the Auth0 dashboard.
+        > Auth0 does not currently support creating tenants through the Management API. Therefore, this resource can only
+        manage an existing tenant created through the Auth0 dashboard.
 
-        Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be used to add/remove extensions.
+        Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be
+        used to add/remove extensions.
 
         ## Example Usage
 
@@ -609,10 +612,13 @@ class Tenant(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         tenant = auth0.Tenant("tenant",
-            allowed_logout_urls=["http://mysite/logout"],
             change_password=auth0.TenantChangePasswordArgs(
                 enabled=True,
                 html=(lambda path: open(path).read())("./password_reset.html"),
+            ),
+            guardian_mfa_page=auth0.TenantGuardianMfaPageArgs(
+                enabled=True,
+                html=(lambda path: open(path).read())("./guardian_multifactor.html"),
             ),
             default_audience="<client_id>",
             default_directory="Connection-Name",
@@ -622,15 +628,20 @@ class Tenant(pulumi.CustomResource):
                 url="http://mysite/errors",
             ),
             friendly_name="Tenant Name",
-            guardian_mfa_page=auth0.TenantGuardianMfaPageArgs(
-                enabled=True,
-                html=(lambda path: open(path).read())("./guardian_multifactor.html"),
-            ),
             picture_url="http://mysite/logo.png",
-            sandbox_version="8",
-            session_lifetime=46000,
             support_email="support@mysite",
-            support_url="http://mysite/support")
+            support_url="http://mysite/support",
+            allowed_logout_urls=["http://mysite/logout"],
+            session_lifetime=46000,
+            sandbox_version="8")
+        ```
+
+        ## Import
+
+        As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+
+        ```sh
+         $ pulumi import auth0:index/tenant:Tenant tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
         ```
 
         :param str resource_name: The name of the resource.
@@ -660,11 +671,14 @@ class Tenant(pulumi.CustomResource):
                  args: Optional[TenantArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
+        With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error
+        pages, and configuring default tenant behaviors.
 
-        > Auth0 does not currently support creating tenants through the Management API. Therefore this resource can only manage an existing tenant created through the Auth0 dashboard.
+        > Auth0 does not currently support creating tenants through the Management API. Therefore, this resource can only
+        manage an existing tenant created through the Auth0 dashboard.
 
-        Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be used to add/remove extensions.
+        Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be
+        used to add/remove extensions.
 
         ## Example Usage
 
@@ -673,10 +687,13 @@ class Tenant(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         tenant = auth0.Tenant("tenant",
-            allowed_logout_urls=["http://mysite/logout"],
             change_password=auth0.TenantChangePasswordArgs(
                 enabled=True,
                 html=(lambda path: open(path).read())("./password_reset.html"),
+            ),
+            guardian_mfa_page=auth0.TenantGuardianMfaPageArgs(
+                enabled=True,
+                html=(lambda path: open(path).read())("./guardian_multifactor.html"),
             ),
             default_audience="<client_id>",
             default_directory="Connection-Name",
@@ -686,15 +703,20 @@ class Tenant(pulumi.CustomResource):
                 url="http://mysite/errors",
             ),
             friendly_name="Tenant Name",
-            guardian_mfa_page=auth0.TenantGuardianMfaPageArgs(
-                enabled=True,
-                html=(lambda path: open(path).read())("./guardian_multifactor.html"),
-            ),
             picture_url="http://mysite/logo.png",
-            sandbox_version="8",
-            session_lifetime=46000,
             support_email="support@mysite",
-            support_url="http://mysite/support")
+            support_url="http://mysite/support",
+            allowed_logout_urls=["http://mysite/logout"],
+            session_lifetime=46000,
+            sandbox_version="8")
+        ```
+
+        ## Import
+
+        As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+
+        ```sh
+         $ pulumi import auth0:index/tenant:Tenant tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
         ```
 
         :param str resource_name: The name of the resource.

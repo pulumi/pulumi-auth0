@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
+    /// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
+    /// authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables
+    /// that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
     /// 
     /// ## Example Usage
     /// 
@@ -39,6 +41,14 @@ namespace Pulumi.Auth0
     ///     }
     /// 
     /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Existing rule configs can be imported using their key name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/ruleConfig:RuleConfig")]

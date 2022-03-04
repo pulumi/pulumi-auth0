@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
+ * Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected
+ * extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
  *
  * Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
  *
@@ -29,6 +30,14 @@ import * as utilities from "./utilities";
  *     },
  *     triggerId: "pre-user-registration",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * A hook can be imported using the hook's ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/hook:Hook my_hook 00001
  * ```
  */
 export class Hook extends pulumi.CustomResource {
@@ -60,27 +69,28 @@ export class Hook extends pulumi.CustomResource {
     }
 
     /**
-     * Dependencies of this hook used by webtask server
+     * Dependencies of this hook used by the WebTask server.
      */
     public readonly dependencies!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Whether the hook is enabled, or disabled
+     * Whether the hook is enabled, or disabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Name of this hook
+     * Name of this hook.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Code to be executed when this hook runs
+     * Code to be executed when this hook runs.
      */
     public readonly script!: pulumi.Output<string>;
     /**
-     * Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
+     * Map(String), sets the hook secrets associated with this hook. 
+     * If specified, any secrets not listed here will be removed from the hook.
      */
     public readonly secrets!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
+     * Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
      */
     public readonly triggerId!: pulumi.Output<string>;
 
@@ -128,27 +138,28 @@ export class Hook extends pulumi.CustomResource {
  */
 export interface HookState {
     /**
-     * Dependencies of this hook used by webtask server
+     * Dependencies of this hook used by the WebTask server.
      */
     dependencies?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Whether the hook is enabled, or disabled
+     * Whether the hook is enabled, or disabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Name of this hook
+     * Name of this hook.
      */
     name?: pulumi.Input<string>;
     /**
-     * Code to be executed when this hook runs
+     * Code to be executed when this hook runs.
      */
     script?: pulumi.Input<string>;
     /**
-     * Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
+     * Map(String), sets the hook secrets associated with this hook. 
+     * If specified, any secrets not listed here will be removed from the hook.
      */
     secrets?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
+     * Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
      */
     triggerId?: pulumi.Input<string>;
 }
@@ -158,27 +169,28 @@ export interface HookState {
  */
 export interface HookArgs {
     /**
-     * Dependencies of this hook used by webtask server
+     * Dependencies of this hook used by the WebTask server.
      */
     dependencies?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Whether the hook is enabled, or disabled
+     * Whether the hook is enabled, or disabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Name of this hook
+     * Name of this hook.
      */
     name?: pulumi.Input<string>;
     /**
-     * Code to be executed when this hook runs
+     * Code to be executed when this hook runs.
      */
     script: pulumi.Input<string>;
     /**
-     * Map(String), sets the hook secrets associated with this hook. If specified, any secrets not listed here will be removed from the hook.
+     * Map(String), sets the hook secrets associated with this hook. 
+     * If specified, any secrets not listed here will be removed from the hook.
      */
     secrets?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message
+     * Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
      */
     triggerId: pulumi.Input<string>;
 }

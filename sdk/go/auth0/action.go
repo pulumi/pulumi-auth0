@@ -31,7 +31,28 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewAction(ctx, "myAction", &auth0.ActionArgs{
 // 			Code: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v", "/**\n", " * Handler that will be called during the execution of a PostLogin flow.\n", " *\n", " * @param {Event} event - Details about the user and the context in which they are logging in.\n", " * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n", " */\n", " exports.onExecutePostLogin = async (event, api) => {\n", "	 console.log(event)\n", " };\n", "\n")),
-// 			Deploy: pulumi.Bool(true),
+// 			Dependencies: ActionDependencyArray{
+// 				&ActionDependencyArgs{
+// 					Name:    pulumi.String("lodash"),
+// 					Version: pulumi.String("latest"),
+// 				},
+// 				&ActionDependencyArgs{
+// 					Name:    pulumi.String("request"),
+// 					Version: pulumi.String("latest"),
+// 				},
+// 			},
+// 			Deploy:  pulumi.Bool(true),
+// 			Runtime: pulumi.String("node16"),
+// 			Secrets: ActionSecretArray{
+// 				&ActionSecretArgs{
+// 					Name:  pulumi.String("FOO"),
+// 					Value: pulumi.String("Foo"),
+// 				},
+// 				&ActionSecretArgs{
+// 					Name:  pulumi.String("BAR"),
+// 					Value: pulumi.String("Bar"),
+// 				},
+// 			},
 // 			SupportedTriggers: &ActionSupportedTriggersArgs{
 // 				Id:      pulumi.String("post-login"),
 // 				Version: pulumi.String("v2"),
@@ -50,30 +71,31 @@ import (
 // An action can be imported using the action's ID, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/action:Action example ...
+//  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
 // ```
 //
-//  ~> For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
-//
-// action has been imported.
+//  ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
 type Action struct {
 	pulumi.CustomResourceState
 
 	// The source code of the action.
 	Code pulumi.StringOutput `pulumi:"code"`
-	// List of third party npm modules, and their versions, that this action depends on
+	// List of third party npm modules, and their versions, that this action depends on.
 	Dependencies ActionDependencyArrayOutput `pulumi:"dependencies"`
-	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+	// Deploying an action will create a new immutable version of the action.
+	// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+	// action immediately. Default is `false`.
 	Deploy pulumi.BoolPtrOutput `pulumi:"deploy"`
 	// Secret name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Node runtime. For example `node16`, defaults to `node12`
+	// The Node runtime. For example `node16`, defaults to `node12`.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action
+	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayOutput `pulumi:"secrets"`
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+	// List of triggers that this action supports. At this time, an action can only target
+	// a single trigger at a time.
 	SupportedTriggers ActionSupportedTriggersOutput `pulumi:"supportedTriggers"`
-	// Version ID of the action. This value is available if `deploy` is set to true
+	// Version ID of the action. This value is available if `deploy` is set to true.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
 
@@ -114,38 +136,44 @@ func GetAction(ctx *pulumi.Context,
 type actionState struct {
 	// The source code of the action.
 	Code *string `pulumi:"code"`
-	// List of third party npm modules, and their versions, that this action depends on
+	// List of third party npm modules, and their versions, that this action depends on.
 	Dependencies []ActionDependency `pulumi:"dependencies"`
-	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+	// Deploying an action will create a new immutable version of the action.
+	// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+	// action immediately. Default is `false`.
 	Deploy *bool `pulumi:"deploy"`
 	// Secret name.
 	Name *string `pulumi:"name"`
-	// The Node runtime. For example `node16`, defaults to `node12`
+	// The Node runtime. For example `node16`, defaults to `node12`.
 	Runtime *string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action
+	// List of secrets that are included in an action or a version of an action.
 	Secrets []ActionSecret `pulumi:"secrets"`
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+	// List of triggers that this action supports. At this time, an action can only target
+	// a single trigger at a time.
 	SupportedTriggers *ActionSupportedTriggers `pulumi:"supportedTriggers"`
-	// Version ID of the action. This value is available if `deploy` is set to true
+	// Version ID of the action. This value is available if `deploy` is set to true.
 	VersionId *string `pulumi:"versionId"`
 }
 
 type ActionState struct {
 	// The source code of the action.
 	Code pulumi.StringPtrInput
-	// List of third party npm modules, and their versions, that this action depends on
+	// List of third party npm modules, and their versions, that this action depends on.
 	Dependencies ActionDependencyArrayInput
-	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+	// Deploying an action will create a new immutable version of the action.
+	// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+	// action immediately. Default is `false`.
 	Deploy pulumi.BoolPtrInput
 	// Secret name.
 	Name pulumi.StringPtrInput
-	// The Node runtime. For example `node16`, defaults to `node12`
+	// The Node runtime. For example `node16`, defaults to `node12`.
 	Runtime pulumi.StringPtrInput
-	// List of secrets that are included in an action or a version of an action
+	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayInput
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+	// List of triggers that this action supports. At this time, an action can only target
+	// a single trigger at a time.
 	SupportedTriggers ActionSupportedTriggersPtrInput
-	// Version ID of the action. This value is available if `deploy` is set to true
+	// Version ID of the action. This value is available if `deploy` is set to true.
 	VersionId pulumi.StringPtrInput
 }
 
@@ -156,17 +184,20 @@ func (ActionState) ElementType() reflect.Type {
 type actionArgs struct {
 	// The source code of the action.
 	Code string `pulumi:"code"`
-	// List of third party npm modules, and their versions, that this action depends on
+	// List of third party npm modules, and their versions, that this action depends on.
 	Dependencies []ActionDependency `pulumi:"dependencies"`
-	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+	// Deploying an action will create a new immutable version of the action.
+	// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+	// action immediately. Default is `false`.
 	Deploy *bool `pulumi:"deploy"`
 	// Secret name.
 	Name *string `pulumi:"name"`
-	// The Node runtime. For example `node16`, defaults to `node12`
+	// The Node runtime. For example `node16`, defaults to `node12`.
 	Runtime *string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action
+	// List of secrets that are included in an action or a version of an action.
 	Secrets []ActionSecret `pulumi:"secrets"`
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+	// List of triggers that this action supports. At this time, an action can only target
+	// a single trigger at a time.
 	SupportedTriggers ActionSupportedTriggers `pulumi:"supportedTriggers"`
 }
 
@@ -174,17 +205,20 @@ type actionArgs struct {
 type ActionArgs struct {
 	// The source code of the action.
 	Code pulumi.StringInput
-	// List of third party npm modules, and their versions, that this action depends on
+	// List of third party npm modules, and their versions, that this action depends on.
 	Dependencies ActionDependencyArrayInput
-	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+	// Deploying an action will create a new immutable version of the action.
+	// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+	// action immediately. Default is `false`.
 	Deploy pulumi.BoolPtrInput
 	// Secret name.
 	Name pulumi.StringPtrInput
-	// The Node runtime. For example `node16`, defaults to `node12`
+	// The Node runtime. For example `node16`, defaults to `node12`.
 	Runtime pulumi.StringPtrInput
-	// List of secrets that are included in an action or a version of an action
+	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayInput
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+	// List of triggers that this action supports. At this time, an action can only target
+	// a single trigger at a time.
 	SupportedTriggers ActionSupportedTriggersInput
 }
 

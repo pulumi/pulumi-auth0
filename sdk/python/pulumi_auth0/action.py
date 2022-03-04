@@ -25,12 +25,15 @@ class ActionArgs:
         """
         The set of arguments for constructing a Action resource.
         :param pulumi.Input[str] code: The source code of the action.
-        :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time
-        :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on
-        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target
+               a single trigger at a time.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
+        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action.
+               If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+               action immediately. Default is `false`.
         :param pulumi.Input[str] name: Secret name.
-        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action
+        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "supported_triggers", supported_triggers)
@@ -61,7 +64,8 @@ class ActionArgs:
     @pulumi.getter(name="supportedTriggers")
     def supported_triggers(self) -> pulumi.Input['ActionSupportedTriggersArgs']:
         """
-        List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+        List of triggers that this action supports. At this time, an action can only target
+        a single trigger at a time.
         """
         return pulumi.get(self, "supported_triggers")
 
@@ -73,7 +77,7 @@ class ActionArgs:
     @pulumi.getter
     def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]]:
         """
-        List of third party npm modules, and their versions, that this action depends on
+        List of third party npm modules, and their versions, that this action depends on.
         """
         return pulumi.get(self, "dependencies")
 
@@ -85,7 +89,9 @@ class ActionArgs:
     @pulumi.getter
     def deploy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        Deploying an action will create a new immutable version of the action.
+        If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+        action immediately. Default is `false`.
         """
         return pulumi.get(self, "deploy")
 
@@ -109,7 +115,7 @@ class ActionArgs:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[str]]:
         """
-        The Node runtime. For example `node16`, defaults to `node12`
+        The Node runtime. For example `node16`, defaults to `node12`.
         """
         return pulumi.get(self, "runtime")
 
@@ -121,7 +127,7 @@ class ActionArgs:
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
-        List of secrets that are included in an action or a version of an action
+        List of secrets that are included in an action or a version of an action.
         """
         return pulumi.get(self, "secrets")
 
@@ -144,13 +150,16 @@ class _ActionState:
         """
         Input properties used for looking up and filtering Action resources.
         :param pulumi.Input[str] code: The source code of the action.
-        :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on
-        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
+        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action.
+               If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+               action immediately. Default is `false`.
         :param pulumi.Input[str] name: Secret name.
-        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action
-        :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time
-        :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true
+        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action.
+        :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target
+               a single trigger at a time.
+        :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -185,7 +194,7 @@ class _ActionState:
     @pulumi.getter
     def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]]:
         """
-        List of third party npm modules, and their versions, that this action depends on
+        List of third party npm modules, and their versions, that this action depends on.
         """
         return pulumi.get(self, "dependencies")
 
@@ -197,7 +206,9 @@ class _ActionState:
     @pulumi.getter
     def deploy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        Deploying an action will create a new immutable version of the action.
+        If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+        action immediately. Default is `false`.
         """
         return pulumi.get(self, "deploy")
 
@@ -221,7 +232,7 @@ class _ActionState:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[str]]:
         """
-        The Node runtime. For example `node16`, defaults to `node12`
+        The Node runtime. For example `node16`, defaults to `node12`.
         """
         return pulumi.get(self, "runtime")
 
@@ -233,7 +244,7 @@ class _ActionState:
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
-        List of secrets that are included in an action or a version of an action
+        List of secrets that are included in an action or a version of an action.
         """
         return pulumi.get(self, "secrets")
 
@@ -245,7 +256,8 @@ class _ActionState:
     @pulumi.getter(name="supportedTriggers")
     def supported_triggers(self) -> Optional[pulumi.Input['ActionSupportedTriggersArgs']]:
         """
-        List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+        List of triggers that this action supports. At this time, an action can only target
+        a single trigger at a time.
         """
         return pulumi.get(self, "supported_triggers")
 
@@ -257,7 +269,7 @@ class _ActionState:
     @pulumi.getter(name="versionId")
     def version_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Version ID of the action. This value is available if `deploy` is set to true
+        Version ID of the action. This value is available if `deploy` is set to true.
         """
         return pulumi.get(self, "version_id")
 
@@ -302,7 +314,28 @@ class Action(pulumi.CustomResource):
          };
 
         \"\"\",
+            dependencies=[
+                auth0.ActionDependencyArgs(
+                    name="lodash",
+                    version="latest",
+                ),
+                auth0.ActionDependencyArgs(
+                    name="request",
+                    version="latest",
+                ),
+            ],
             deploy=True,
+            runtime="node16",
+            secrets=[
+                auth0.ActionSecretArgs(
+                    name="FOO",
+                    value="Foo",
+                ),
+                auth0.ActionSecretArgs(
+                    name="BAR",
+                    value="Bar",
+                ),
+            ],
             supported_triggers=auth0.ActionSupportedTriggersArgs(
                 id="post-login",
                 version="v2",
@@ -314,22 +347,23 @@ class Action(pulumi.CustomResource):
         An action can be imported using the action's ID, e.g.
 
         ```sh
-         $ pulumi import auth0:index/action:Action example ...
+         $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
         ```
 
-         ~> For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
-
-        action has been imported.
+         ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code: The source code of the action.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]] dependencies: List of third party npm modules, and their versions, that this action depends on
-        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
+        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action.
+               If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+               action immediately. Default is `false`.
         :param pulumi.Input[str] name: Secret name.
-        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action
-        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action.
+        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target
+               a single trigger at a time.
         """
         ...
     @overload
@@ -360,7 +394,28 @@ class Action(pulumi.CustomResource):
          };
 
         \"\"\",
+            dependencies=[
+                auth0.ActionDependencyArgs(
+                    name="lodash",
+                    version="latest",
+                ),
+                auth0.ActionDependencyArgs(
+                    name="request",
+                    version="latest",
+                ),
+            ],
             deploy=True,
+            runtime="node16",
+            secrets=[
+                auth0.ActionSecretArgs(
+                    name="FOO",
+                    value="Foo",
+                ),
+                auth0.ActionSecretArgs(
+                    name="BAR",
+                    value="Bar",
+                ),
+            ],
             supported_triggers=auth0.ActionSupportedTriggersArgs(
                 id="post-login",
                 version="v2",
@@ -372,12 +427,10 @@ class Action(pulumi.CustomResource):
         An action can be imported using the action's ID, e.g.
 
         ```sh
-         $ pulumi import auth0:index/action:Action example ...
+         $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
         ```
 
-         ~> For security reasons importing `secrets` is not allowed. Therefore it is advised to import the action without secrets and adding them back after the
-
-        action has been imported.
+         ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
 
         :param str resource_name: The name of the resource.
         :param ActionArgs args: The arguments to use to populate this resource's properties.
@@ -451,13 +504,16 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code: The source code of the action.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]] dependencies: List of third party npm modules, and their versions, that this action depends on
-        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
+        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action.
+               If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+               action immediately. Default is `false`.
         :param pulumi.Input[str] name: Secret name.
-        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action
-        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time
-        :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true
+        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action.
+        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target
+               a single trigger at a time.
+        :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -485,7 +541,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def dependencies(self) -> pulumi.Output[Optional[Sequence['outputs.ActionDependency']]]:
         """
-        List of third party npm modules, and their versions, that this action depends on
+        List of third party npm modules, and their versions, that this action depends on.
         """
         return pulumi.get(self, "dependencies")
 
@@ -493,7 +549,9 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def deploy(self) -> pulumi.Output[Optional[bool]]:
         """
-        Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately. Default is `false`.
+        Deploying an action will create a new immutable version of the action.
+        If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+        action immediately. Default is `false`.
         """
         return pulumi.get(self, "deploy")
 
@@ -509,7 +567,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[str]:
         """
-        The Node runtime. For example `node16`, defaults to `node12`
+        The Node runtime. For example `node16`, defaults to `node12`.
         """
         return pulumi.get(self, "runtime")
 
@@ -517,7 +575,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def secrets(self) -> pulumi.Output[Optional[Sequence['outputs.ActionSecret']]]:
         """
-        List of secrets that are included in an action or a version of an action
+        List of secrets that are included in an action or a version of an action.
         """
         return pulumi.get(self, "secrets")
 
@@ -525,7 +583,8 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="supportedTriggers")
     def supported_triggers(self) -> pulumi.Output['outputs.ActionSupportedTriggers']:
         """
-        List of triggers that this action supports. At this time, an action can only target a single trigger at a time
+        List of triggers that this action supports. At this time, an action can only target
+        a single trigger at a time.
         """
         return pulumi.get(self, "supported_triggers")
 
@@ -533,7 +592,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Output[str]:
         """
-        Version ID of the action. This value is available if `deploy` is set to true
+        Version ID of the action. This value is available if `deploy` is set to true.
         """
         return pulumi.get(self, "version_id")
 

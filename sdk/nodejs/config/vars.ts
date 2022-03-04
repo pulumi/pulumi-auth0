@@ -7,6 +7,14 @@ import * as utilities from "../utilities";
 declare var exports: any;
 const __config = new pulumi.Config("auth0");
 
+export declare const apiToken: string | undefined;
+Object.defineProperty(exports, "apiToken", {
+    get() {
+        return __config.get("apiToken");
+    },
+    enumerable: true,
+});
+
 export declare const clientId: string | undefined;
 Object.defineProperty(exports, "clientId", {
     get() {

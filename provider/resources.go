@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/alexkappa/terraform-provider-auth0/auth0"
+	"github.com/auth0/terraform-provider-auth0/auth0"
 	"github.com/pulumi/pulumi-auth0/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
@@ -64,7 +64,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "auth0"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
-		GitHubOrg:   "alexkappa",
+		GitHubOrg:   "auth0",
 		Repository:  "https://github.com/pulumi/pulumi-auth0",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"debug": {
@@ -112,7 +112,10 @@ func Provider() tfbridge.ProviderInfo {
 			"auth0_trigger_binding":            {Tok: makeResource(mainMod, "TriggerBinding")},
 			"auth0_prompt_custom_text":         {Tok: makeResource(mainMod, "PromptCustomText")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"auth0_client":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getClient")},
+			"auth0_global_client": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGlobalClient")},
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",

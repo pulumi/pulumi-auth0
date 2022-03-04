@@ -35,10 +35,19 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// As this is not a resource identifiable by an ID within the Auth0 Management API, prompt can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+//
+// ```sh
+//  $ pulumi import auth0:index/prompt:Prompt example 22f4f21b-017a-319d-92e7-2291c1ca36c4
+// ```
 type Prompt struct {
 	pulumi.CustomResourceState
 
-	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal
+	// login experience.
 	IdentifierFirst pulumi.BoolPtrOutput `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrOutput `pulumi:"universalLoginExperience"`
@@ -73,14 +82,16 @@ func GetPrompt(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Prompt resources.
 type promptState struct {
-	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal
+	// login experience.
 	IdentifierFirst *bool `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience *string `pulumi:"universalLoginExperience"`
 }
 
 type PromptState struct {
-	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal
+	// login experience.
 	IdentifierFirst pulumi.BoolPtrInput
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrInput
@@ -91,7 +102,8 @@ func (PromptState) ElementType() reflect.Type {
 }
 
 type promptArgs struct {
-	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal
+	// login experience.
 	IdentifierFirst *bool `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience *string `pulumi:"universalLoginExperience"`
@@ -99,7 +111,8 @@ type promptArgs struct {
 
 // The set of arguments for constructing a Prompt resource.
 type PromptArgs struct {
-	// Boolean. Indicates whether or not identifier first is used when using the new universal login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal
+	// login experience.
 	IdentifierFirst pulumi.BoolPtrInput
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrInput

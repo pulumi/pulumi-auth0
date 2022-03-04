@@ -10,6 +10,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use a tenant's global Auth0 Application client.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := auth0.NewGlobalClient(ctx, "global", &auth0.GlobalClientArgs{
+// 			Callbacks: pulumi.StringArray{
+// 				pulumi.String("http://somehostname.com/a/callback"),
+// 			},
+// 			CustomLoginPage:   pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "<html>\n", "    <head><title>My Custom Login Page</title></head>\n", "    <body>\n", "        I should probably have a login form here\n", "    </body>\n", "</html>\n", "\n")),
+// 			CustomLoginPageOn: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
+//
+// ```sh
+//  $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
+// ```
 type GlobalClient struct {
 	pulumi.CustomResourceState
 
@@ -43,6 +81,7 @@ type GlobalClient struct {
 	OrganizationRequireBehavior    pulumi.StringOutput                 `pulumi:"organizationRequireBehavior"`
 	OrganizationUsage              pulumi.StringOutput                 `pulumi:"organizationUsage"`
 	RefreshToken                   GlobalClientRefreshTokenOutput      `pulumi:"refreshToken"`
+	SigningKeys                    pulumi.MapArrayOutput               `pulumi:"signingKeys"`
 	Sso                            pulumi.BoolOutput                   `pulumi:"sso"`
 	SsoDisabled                    pulumi.BoolOutput                   `pulumi:"ssoDisabled"`
 	TokenEndpointAuthMethod        pulumi.StringOutput                 `pulumi:"tokenEndpointAuthMethod"`
@@ -108,6 +147,7 @@ type globalClientState struct {
 	OrganizationRequireBehavior    *string                        `pulumi:"organizationRequireBehavior"`
 	OrganizationUsage              *string                        `pulumi:"organizationUsage"`
 	RefreshToken                   *GlobalClientRefreshToken      `pulumi:"refreshToken"`
+	SigningKeys                    []map[string]interface{}       `pulumi:"signingKeys"`
 	Sso                            *bool                          `pulumi:"sso"`
 	SsoDisabled                    *bool                          `pulumi:"ssoDisabled"`
 	TokenEndpointAuthMethod        *string                        `pulumi:"tokenEndpointAuthMethod"`
@@ -145,6 +185,7 @@ type GlobalClientState struct {
 	OrganizationRequireBehavior    pulumi.StringPtrInput
 	OrganizationUsage              pulumi.StringPtrInput
 	RefreshToken                   GlobalClientRefreshTokenPtrInput
+	SigningKeys                    pulumi.MapArrayInput
 	Sso                            pulumi.BoolPtrInput
 	SsoDisabled                    pulumi.BoolPtrInput
 	TokenEndpointAuthMethod        pulumi.StringPtrInput
@@ -186,6 +227,7 @@ type globalClientArgs struct {
 	OrganizationRequireBehavior    *string                        `pulumi:"organizationRequireBehavior"`
 	OrganizationUsage              *string                        `pulumi:"organizationUsage"`
 	RefreshToken                   *GlobalClientRefreshToken      `pulumi:"refreshToken"`
+	SigningKeys                    []map[string]interface{}       `pulumi:"signingKeys"`
 	Sso                            *bool                          `pulumi:"sso"`
 	SsoDisabled                    *bool                          `pulumi:"ssoDisabled"`
 	TokenEndpointAuthMethod        *string                        `pulumi:"tokenEndpointAuthMethod"`
@@ -224,6 +266,7 @@ type GlobalClientArgs struct {
 	OrganizationRequireBehavior    pulumi.StringPtrInput
 	OrganizationUsage              pulumi.StringPtrInput
 	RefreshToken                   GlobalClientRefreshTokenPtrInput
+	SigningKeys                    pulumi.MapArrayInput
 	Sso                            pulumi.BoolPtrInput
 	SsoDisabled                    pulumi.BoolPtrInput
 	TokenEndpointAuthMethod        pulumi.StringPtrInput

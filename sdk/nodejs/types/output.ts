@@ -756,6 +756,214 @@ export interface EmailCredentials {
     smtpUser?: string;
 }
 
+export interface GetClientAddon {
+    aws: {[key: string]: any};
+    azureBlob: {[key: string]: any};
+    azureSb: {[key: string]: any};
+    box: {[key: string]: any};
+    cloudbees: {[key: string]: any};
+    concur: {[key: string]: any};
+    dropbox: {[key: string]: any};
+    echosign: {[key: string]: any};
+    egnyte: {[key: string]: any};
+    firebase: {[key: string]: any};
+    layer: {[key: string]: any};
+    mscrm: {[key: string]: any};
+    newrelic: {[key: string]: any};
+    office365: {[key: string]: any};
+    rms: {[key: string]: any};
+    salesforce: {[key: string]: any};
+    salesforceApi: {[key: string]: any};
+    salesforceSandboxApi: {[key: string]: any};
+    samlps: outputs.GetClientAddonSamlp[];
+    sapApi: {[key: string]: any};
+    sentry: {[key: string]: any};
+    sharepoint: {[key: string]: any};
+    slack: {[key: string]: any};
+    springcm: {[key: string]: any};
+    wams: {[key: string]: any};
+    wsfed: {[key: string]: any};
+    zendesk: {[key: string]: any};
+    zoom: {[key: string]: any};
+}
+
+export interface GetClientAddonSamlp {
+    audience: string;
+    authnContextClassRef: string;
+    binding: string;
+    createUpnClaim: boolean;
+    destination: string;
+    digestAlgorithm: string;
+    includeAttributeNameFormat: boolean;
+    lifetimeInSeconds: number;
+    logout: outputs.GetClientAddonSamlpLogout;
+    mapIdentities: boolean;
+    mapUnknownClaimsAsIs: boolean;
+    mappings: {[key: string]: any};
+    nameIdentifierFormat: string;
+    nameIdentifierProbes: string[];
+    passthroughClaimsWithNoMapping: boolean;
+    recipient: string;
+    signResponse: boolean;
+    signatureAlgorithm: string;
+    signingCert: string;
+    typedAttributes: boolean;
+}
+
+export interface GetClientAddonSamlpLogout {
+    callback?: string;
+    sloEnabled?: boolean;
+}
+
+export interface GetClientJwtConfiguration {
+    alg: string;
+    lifetimeInSeconds: number;
+    scopes: {[key: string]: string};
+    secretEncoded: boolean;
+}
+
+export interface GetClientMobile {
+    androids: outputs.GetClientMobileAndroid[];
+    ios: outputs.GetClientMobileIo[];
+}
+
+export interface GetClientMobileAndroid {
+    appPackageName: string;
+    sha256CertFingerprints: string[];
+}
+
+export interface GetClientMobileIo {
+    appBundleIdentifier: string;
+    teamId: string;
+}
+
+export interface GetClientNativeSocialLogin {
+    apples: outputs.GetClientNativeSocialLoginApple[];
+    facebooks: outputs.GetClientNativeSocialLoginFacebook[];
+}
+
+export interface GetClientNativeSocialLoginApple {
+    enabled: boolean;
+}
+
+export interface GetClientNativeSocialLoginFacebook {
+    enabled: boolean;
+}
+
+export interface GetClientRefreshToken {
+    expirationType: string;
+    idleTokenLifetime: number;
+    infiniteIdleTokenLifetime: boolean;
+    infiniteTokenLifetime: boolean;
+    leeway: number;
+    rotationType: string;
+    tokenLifetime: number;
+}
+
+export interface GetGlobalClientAddon {
+    aws: {[key: string]: any};
+    azureBlob: {[key: string]: any};
+    azureSb: {[key: string]: any};
+    box: {[key: string]: any};
+    cloudbees: {[key: string]: any};
+    concur: {[key: string]: any};
+    dropbox: {[key: string]: any};
+    echosign: {[key: string]: any};
+    egnyte: {[key: string]: any};
+    firebase: {[key: string]: any};
+    layer: {[key: string]: any};
+    mscrm: {[key: string]: any};
+    newrelic: {[key: string]: any};
+    office365: {[key: string]: any};
+    rms: {[key: string]: any};
+    salesforce: {[key: string]: any};
+    salesforceApi: {[key: string]: any};
+    salesforceSandboxApi: {[key: string]: any};
+    samlps: outputs.GetGlobalClientAddonSamlp[];
+    sapApi: {[key: string]: any};
+    sentry: {[key: string]: any};
+    sharepoint: {[key: string]: any};
+    slack: {[key: string]: any};
+    springcm: {[key: string]: any};
+    wams: {[key: string]: any};
+    wsfed: {[key: string]: any};
+    zendesk: {[key: string]: any};
+    zoom: {[key: string]: any};
+}
+
+export interface GetGlobalClientAddonSamlp {
+    audience: string;
+    authnContextClassRef: string;
+    binding: string;
+    createUpnClaim: boolean;
+    destination: string;
+    digestAlgorithm: string;
+    includeAttributeNameFormat: boolean;
+    lifetimeInSeconds: number;
+    logout: outputs.GetGlobalClientAddonSamlpLogout;
+    mapIdentities: boolean;
+    mapUnknownClaimsAsIs: boolean;
+    mappings: {[key: string]: any};
+    nameIdentifierFormat: string;
+    nameIdentifierProbes: string[];
+    passthroughClaimsWithNoMapping: boolean;
+    recipient: string;
+    signResponse: boolean;
+    signatureAlgorithm: string;
+    signingCert: string;
+    typedAttributes: boolean;
+}
+
+export interface GetGlobalClientAddonSamlpLogout {
+    callback?: string;
+    sloEnabled?: boolean;
+}
+
+export interface GetGlobalClientJwtConfiguration {
+    alg: string;
+    lifetimeInSeconds: number;
+    scopes: {[key: string]: string};
+    secretEncoded: boolean;
+}
+
+export interface GetGlobalClientMobile {
+    androids: outputs.GetGlobalClientMobileAndroid[];
+    ios: outputs.GetGlobalClientMobileIo[];
+}
+
+export interface GetGlobalClientMobileAndroid {
+    appPackageName: string;
+    sha256CertFingerprints: string[];
+}
+
+export interface GetGlobalClientMobileIo {
+    appBundleIdentifier: string;
+    teamId: string;
+}
+
+export interface GetGlobalClientNativeSocialLogin {
+    apples: outputs.GetGlobalClientNativeSocialLoginApple[];
+    facebooks: outputs.GetGlobalClientNativeSocialLoginFacebook[];
+}
+
+export interface GetGlobalClientNativeSocialLoginApple {
+    enabled: boolean;
+}
+
+export interface GetGlobalClientNativeSocialLoginFacebook {
+    enabled: boolean;
+}
+
+export interface GetGlobalClientRefreshToken {
+    expirationType: string;
+    idleTokenLifetime: number;
+    infiniteIdleTokenLifetime: boolean;
+    infiniteTokenLifetime: boolean;
+    leeway: number;
+    rotationType: string;
+    tokenLifetime: number;
+}
+
 export interface GlobalClientAddons {
     aws?: {[key: string]: any};
     azureBlob?: {[key: string]: any};
@@ -1028,7 +1236,7 @@ export interface RolePermission {
 
 export interface TenantChangePassword {
     /**
-     * Boolean. Indicates whether or not to use the custom change password page.
+     * Boolean. Indicates whether to use the custom change password page.
      */
     enabled: boolean;
     /**
@@ -1043,7 +1251,7 @@ export interface TenantErrorPage {
      */
     html: string;
     /**
-     * Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+     * Boolean. Indicates whether to show the link to logs as part of the default error page.
      */
     showLogLink: boolean;
     /**
@@ -1054,43 +1262,39 @@ export interface TenantErrorPage {
 
 export interface TenantFlags {
     /**
-     * Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-     */
-    changePwdFlowV1: boolean;
-    /**
-     * Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      */
     disableClickjackProtectionHeaders: boolean;
     /**
-     * Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+     * Boolean. Indicates whether the APIs section is enabled for the tenant.
      */
     enableApisSection: boolean;
     /**
-     * Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+     * Boolean. Indicates whether all current connections should be enabled when a new client is created.
      */
     enableClientConnections: boolean;
     /**
-     * Boolean. Indicates whether or not the tenant allows custom domains in emails.
+     * Boolean. Indicates whether the tenant allows custom domains in emails.
      */
     enableCustomDomainInEmails: boolean;
     /**
-     * Boolean. Indicates whether or not the tenant allows dynamic client registration.
+     * Boolean. Indicates whether the tenant allows dynamic client registration.
      */
     enableDynamicClientRegistration: boolean;
     /**
-     * Boolean. Indicates whether or not to use the older v2 legacy logs search.
+     * Boolean. Indicates whether to use the older v2 legacy logs search.
      */
     enableLegacyLogsSearchV2: boolean;
     /**
-     * Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+     * Boolean. Indicates whether advanced API Authorization scenarios are enabled.
      */
     enablePipeline2: boolean;
     /**
-     * Boolean. Indicates whether or not the public sign up process shows a userExists error if the user already exists.
+     * Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
      */
     enablePublicSignupUserExistsError: boolean;
     /**
-     * Boolean. Indicates whether or not the tenant uses universal login.
+     * Boolean. Indicates whether the tenant uses universal login.
      */
     universalLogin: boolean;
     useScopeDescriptionsForConsent: boolean;
@@ -1098,7 +1302,7 @@ export interface TenantFlags {
 
 export interface TenantGuardianMfaPage {
     /**
-     * Boolean. Indicates whether or not to use the custom Guardian page.
+     * Boolean. Indicates whether to use the custom Guardian page.
      */
     enabled: boolean;
     /**
@@ -1135,4 +1339,3 @@ export interface TriggerBindingAction {
      */
     id: string;
 }
-

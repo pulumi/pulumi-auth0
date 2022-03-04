@@ -38,6 +38,14 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Existing organizations can be imported using organization id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+ * ```
  */
 export class Organization extends pulumi.CustomResource {
     /**

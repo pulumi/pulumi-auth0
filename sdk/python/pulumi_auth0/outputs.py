@@ -65,6 +65,28 @@ __all__ = [
     'TenantUniversalLogin',
     'TenantUniversalLoginColors',
     'TriggerBindingAction',
+    'GetClientAddonResult',
+    'GetClientAddonSamlpResult',
+    'GetClientAddonSamlpLogoutResult',
+    'GetClientJwtConfigurationResult',
+    'GetClientMobileResult',
+    'GetClientMobileAndroidResult',
+    'GetClientMobileIoResult',
+    'GetClientNativeSocialLoginResult',
+    'GetClientNativeSocialLoginAppleResult',
+    'GetClientNativeSocialLoginFacebookResult',
+    'GetClientRefreshTokenResult',
+    'GetGlobalClientAddonResult',
+    'GetGlobalClientAddonSamlpResult',
+    'GetGlobalClientAddonSamlpLogoutResult',
+    'GetGlobalClientJwtConfigurationResult',
+    'GetGlobalClientMobileResult',
+    'GetGlobalClientMobileAndroidResult',
+    'GetGlobalClientMobileIoResult',
+    'GetGlobalClientNativeSocialLoginResult',
+    'GetGlobalClientNativeSocialLoginAppleResult',
+    'GetGlobalClientNativeSocialLoginFacebookResult',
+    'GetGlobalClientRefreshTokenResult',
 ]
 
 @pulumi.output_type
@@ -4269,7 +4291,7 @@ class TenantChangePassword(dict):
                  enabled: bool,
                  html: str):
         """
-        :param bool enabled: Boolean. Indicates whether or not to use the custom change password page.
+        :param bool enabled: Boolean. Indicates whether to use the custom change password page.
         :param str html: String, HTML format with supported Liquid syntax. Customized content of the change password page.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -4279,7 +4301,7 @@ class TenantChangePassword(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Boolean. Indicates whether or not to use the custom change password page.
+        Boolean. Indicates whether to use the custom change password page.
         """
         return pulumi.get(self, "enabled")
 
@@ -4317,7 +4339,7 @@ class TenantErrorPage(dict):
                  url: str):
         """
         :param str html: String, HTML format with supported Liquid syntax. Customized content of the error page.
-        :param bool show_log_link: Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+        :param bool show_log_link: Boolean. Indicates whether to show the link to logs as part of the default error page.
         :param str url: String. URL to redirect to when an error occurs rather than showing the default error page.
         """
         pulumi.set(__self__, "html", html)
@@ -4336,7 +4358,7 @@ class TenantErrorPage(dict):
     @pulumi.getter(name="showLogLink")
     def show_log_link(self) -> bool:
         """
-        Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+        Boolean. Indicates whether to show the link to logs as part of the default error page.
         """
         return pulumi.get(self, "show_log_link")
 
@@ -4354,9 +4376,7 @@ class TenantFlags(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "changePwdFlowV1":
-            suggest = "change_pwd_flow_v1"
-        elif key == "disableClickjackProtectionHeaders":
+        if key == "disableClickjackProtectionHeaders":
             suggest = "disable_clickjack_protection_headers"
         elif key == "enableApisSection":
             suggest = "enable_apis_section"
@@ -4389,7 +4409,6 @@ class TenantFlags(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 change_pwd_flow_v1: Optional[bool] = None,
                  disable_clickjack_protection_headers: Optional[bool] = None,
                  enable_apis_section: Optional[bool] = None,
                  enable_client_connections: Optional[bool] = None,
@@ -4401,19 +4420,16 @@ class TenantFlags(dict):
                  universal_login: Optional[bool] = None,
                  use_scope_descriptions_for_consent: Optional[bool] = None):
         """
-        :param bool change_pwd_flow_v1: Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-        :param bool disable_clickjack_protection_headers: Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
-        :param bool enable_apis_section: Boolean. Indicates whether or not the APIs section is enabled for the tenant.
-        :param bool enable_client_connections: Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
-        :param bool enable_custom_domain_in_emails: Boolean. Indicates whether or not the tenant allows custom domains in emails.
-        :param bool enable_dynamic_client_registration: Boolean. Indicates whether or not the tenant allows dynamic client registration.
-        :param bool enable_legacy_logs_search_v2: Boolean. Indicates whether or not to use the older v2 legacy logs search.
-        :param bool enable_pipeline2: Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
-        :param bool enable_public_signup_user_exists_error: Boolean. Indicates whether or not the public sign up process shows a user_exists error if the user already exists.
-        :param bool universal_login: Boolean. Indicates whether or not the tenant uses universal login.
+        :param bool disable_clickjack_protection_headers: Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+        :param bool enable_apis_section: Boolean. Indicates whether the APIs section is enabled for the tenant.
+        :param bool enable_client_connections: Boolean. Indicates whether all current connections should be enabled when a new client is created.
+        :param bool enable_custom_domain_in_emails: Boolean. Indicates whether the tenant allows custom domains in emails.
+        :param bool enable_dynamic_client_registration: Boolean. Indicates whether the tenant allows dynamic client registration.
+        :param bool enable_legacy_logs_search_v2: Boolean. Indicates whether to use the older v2 legacy logs search.
+        :param bool enable_pipeline2: Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+        :param bool enable_public_signup_user_exists_error: Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+        :param bool universal_login: Boolean. Indicates whether the tenant uses universal login.
         """
-        if change_pwd_flow_v1 is not None:
-            pulumi.set(__self__, "change_pwd_flow_v1", change_pwd_flow_v1)
         if disable_clickjack_protection_headers is not None:
             pulumi.set(__self__, "disable_clickjack_protection_headers", disable_clickjack_protection_headers)
         if enable_apis_section is not None:
@@ -4436,18 +4452,10 @@ class TenantFlags(dict):
             pulumi.set(__self__, "use_scope_descriptions_for_consent", use_scope_descriptions_for_consent)
 
     @property
-    @pulumi.getter(name="changePwdFlowV1")
-    def change_pwd_flow_v1(self) -> Optional[bool]:
-        """
-        Boolean. Indicates whether or not to use the older v1 change password flow. Not recommended except for backward compatibility.
-        """
-        return pulumi.get(self, "change_pwd_flow_v1")
-
-    @property
     @pulumi.getter(name="disableClickjackProtectionHeaders")
     def disable_clickjack_protection_headers(self) -> Optional[bool]:
         """
-        Boolean. Indicated whether or not classic Universal Login prompts include additional security headers to prevent clickjacking.
+        Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
         """
         return pulumi.get(self, "disable_clickjack_protection_headers")
 
@@ -4455,7 +4463,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableApisSection")
     def enable_apis_section(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not the APIs section is enabled for the tenant.
+        Boolean. Indicates whether the APIs section is enabled for the tenant.
         """
         return pulumi.get(self, "enable_apis_section")
 
@@ -4463,7 +4471,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableClientConnections")
     def enable_client_connections(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not all current connections should be enabled when a new client is created.
+        Boolean. Indicates whether all current connections should be enabled when a new client is created.
         """
         return pulumi.get(self, "enable_client_connections")
 
@@ -4471,7 +4479,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableCustomDomainInEmails")
     def enable_custom_domain_in_emails(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not the tenant allows custom domains in emails.
+        Boolean. Indicates whether the tenant allows custom domains in emails.
         """
         return pulumi.get(self, "enable_custom_domain_in_emails")
 
@@ -4479,7 +4487,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableDynamicClientRegistration")
     def enable_dynamic_client_registration(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not the tenant allows dynamic client registration.
+        Boolean. Indicates whether the tenant allows dynamic client registration.
         """
         return pulumi.get(self, "enable_dynamic_client_registration")
 
@@ -4487,7 +4495,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableLegacyLogsSearchV2")
     def enable_legacy_logs_search_v2(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not to use the older v2 legacy logs search.
+        Boolean. Indicates whether to use the older v2 legacy logs search.
         """
         return pulumi.get(self, "enable_legacy_logs_search_v2")
 
@@ -4495,7 +4503,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enablePipeline2")
     def enable_pipeline2(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not advanced API Authorization scenarios are enabled.
+        Boolean. Indicates whether advanced API Authorization scenarios are enabled.
         """
         return pulumi.get(self, "enable_pipeline2")
 
@@ -4503,7 +4511,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enablePublicSignupUserExistsError")
     def enable_public_signup_user_exists_error(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not the public sign up process shows a user_exists error if the user already exists.
+        Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
         """
         return pulumi.get(self, "enable_public_signup_user_exists_error")
 
@@ -4511,7 +4519,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not the tenant uses universal login.
+        Boolean. Indicates whether the tenant uses universal login.
         """
         return pulumi.get(self, "universal_login")
 
@@ -4527,7 +4535,7 @@ class TenantGuardianMfaPage(dict):
                  enabled: bool,
                  html: str):
         """
-        :param bool enabled: Boolean. Indicates whether or not to use the custom Guardian page.
+        :param bool enabled: Boolean. Indicates whether to use the custom Guardian page.
         :param str html: String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -4537,7 +4545,7 @@ class TenantGuardianMfaPage(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Boolean. Indicates whether or not to use the custom Guardian page.
+        Boolean. Indicates whether to use the custom Guardian page.
         """
         return pulumi.get(self, "enabled")
 
@@ -4661,5 +4669,1113 @@ class TriggerBindingAction(dict):
         Trigger ID.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetClientAddonResult(dict):
+    def __init__(__self__, *,
+                 aws: Mapping[str, Any],
+                 azure_blob: Mapping[str, Any],
+                 azure_sb: Mapping[str, Any],
+                 box: Mapping[str, Any],
+                 cloudbees: Mapping[str, Any],
+                 concur: Mapping[str, Any],
+                 dropbox: Mapping[str, Any],
+                 echosign: Mapping[str, Any],
+                 egnyte: Mapping[str, Any],
+                 firebase: Mapping[str, Any],
+                 layer: Mapping[str, Any],
+                 mscrm: Mapping[str, Any],
+                 newrelic: Mapping[str, Any],
+                 office365: Mapping[str, Any],
+                 rms: Mapping[str, Any],
+                 salesforce: Mapping[str, Any],
+                 salesforce_api: Mapping[str, Any],
+                 salesforce_sandbox_api: Mapping[str, Any],
+                 samlps: Sequence['outputs.GetClientAddonSamlpResult'],
+                 sap_api: Mapping[str, Any],
+                 sentry: Mapping[str, Any],
+                 sharepoint: Mapping[str, Any],
+                 slack: Mapping[str, Any],
+                 springcm: Mapping[str, Any],
+                 wams: Mapping[str, Any],
+                 wsfed: Mapping[str, Any],
+                 zendesk: Mapping[str, Any],
+                 zoom: Mapping[str, Any]):
+        pulumi.set(__self__, "aws", aws)
+        pulumi.set(__self__, "azure_blob", azure_blob)
+        pulumi.set(__self__, "azure_sb", azure_sb)
+        pulumi.set(__self__, "box", box)
+        pulumi.set(__self__, "cloudbees", cloudbees)
+        pulumi.set(__self__, "concur", concur)
+        pulumi.set(__self__, "dropbox", dropbox)
+        pulumi.set(__self__, "echosign", echosign)
+        pulumi.set(__self__, "egnyte", egnyte)
+        pulumi.set(__self__, "firebase", firebase)
+        pulumi.set(__self__, "layer", layer)
+        pulumi.set(__self__, "mscrm", mscrm)
+        pulumi.set(__self__, "newrelic", newrelic)
+        pulumi.set(__self__, "office365", office365)
+        pulumi.set(__self__, "rms", rms)
+        pulumi.set(__self__, "salesforce", salesforce)
+        pulumi.set(__self__, "salesforce_api", salesforce_api)
+        pulumi.set(__self__, "salesforce_sandbox_api", salesforce_sandbox_api)
+        pulumi.set(__self__, "samlps", samlps)
+        pulumi.set(__self__, "sap_api", sap_api)
+        pulumi.set(__self__, "sentry", sentry)
+        pulumi.set(__self__, "sharepoint", sharepoint)
+        pulumi.set(__self__, "slack", slack)
+        pulumi.set(__self__, "springcm", springcm)
+        pulumi.set(__self__, "wams", wams)
+        pulumi.set(__self__, "wsfed", wsfed)
+        pulumi.set(__self__, "zendesk", zendesk)
+        pulumi.set(__self__, "zoom", zoom)
+
+    @property
+    @pulumi.getter
+    def aws(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "aws")
+
+    @property
+    @pulumi.getter(name="azureBlob")
+    def azure_blob(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "azure_blob")
+
+    @property
+    @pulumi.getter(name="azureSb")
+    def azure_sb(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "azure_sb")
+
+    @property
+    @pulumi.getter
+    def box(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "box")
+
+    @property
+    @pulumi.getter
+    def cloudbees(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "cloudbees")
+
+    @property
+    @pulumi.getter
+    def concur(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "concur")
+
+    @property
+    @pulumi.getter
+    def dropbox(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "dropbox")
+
+    @property
+    @pulumi.getter
+    def echosign(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "echosign")
+
+    @property
+    @pulumi.getter
+    def egnyte(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "egnyte")
+
+    @property
+    @pulumi.getter
+    def firebase(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "firebase")
+
+    @property
+    @pulumi.getter
+    def layer(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "layer")
+
+    @property
+    @pulumi.getter
+    def mscrm(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "mscrm")
+
+    @property
+    @pulumi.getter
+    def newrelic(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "newrelic")
+
+    @property
+    @pulumi.getter
+    def office365(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "office365")
+
+    @property
+    @pulumi.getter
+    def rms(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "rms")
+
+    @property
+    @pulumi.getter
+    def salesforce(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "salesforce")
+
+    @property
+    @pulumi.getter(name="salesforceApi")
+    def salesforce_api(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "salesforce_api")
+
+    @property
+    @pulumi.getter(name="salesforceSandboxApi")
+    def salesforce_sandbox_api(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "salesforce_sandbox_api")
+
+    @property
+    @pulumi.getter
+    def samlps(self) -> Sequence['outputs.GetClientAddonSamlpResult']:
+        return pulumi.get(self, "samlps")
+
+    @property
+    @pulumi.getter(name="sapApi")
+    def sap_api(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "sap_api")
+
+    @property
+    @pulumi.getter
+    def sentry(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "sentry")
+
+    @property
+    @pulumi.getter
+    def sharepoint(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "sharepoint")
+
+    @property
+    @pulumi.getter
+    def slack(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "slack")
+
+    @property
+    @pulumi.getter
+    def springcm(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "springcm")
+
+    @property
+    @pulumi.getter
+    def wams(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "wams")
+
+    @property
+    @pulumi.getter
+    def wsfed(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "wsfed")
+
+    @property
+    @pulumi.getter
+    def zendesk(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "zendesk")
+
+    @property
+    @pulumi.getter
+    def zoom(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "zoom")
+
+
+@pulumi.output_type
+class GetClientAddonSamlpResult(dict):
+    def __init__(__self__, *,
+                 audience: str,
+                 authn_context_class_ref: str,
+                 binding: str,
+                 create_upn_claim: bool,
+                 destination: str,
+                 digest_algorithm: str,
+                 include_attribute_name_format: bool,
+                 lifetime_in_seconds: int,
+                 logout: 'outputs.GetClientAddonSamlpLogoutResult',
+                 map_identities: bool,
+                 map_unknown_claims_as_is: bool,
+                 mappings: Mapping[str, Any],
+                 name_identifier_format: str,
+                 name_identifier_probes: Sequence[str],
+                 passthrough_claims_with_no_mapping: bool,
+                 recipient: str,
+                 sign_response: bool,
+                 signature_algorithm: str,
+                 signing_cert: str,
+                 typed_attributes: bool):
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "authn_context_class_ref", authn_context_class_ref)
+        pulumi.set(__self__, "binding", binding)
+        pulumi.set(__self__, "create_upn_claim", create_upn_claim)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "digest_algorithm", digest_algorithm)
+        pulumi.set(__self__, "include_attribute_name_format", include_attribute_name_format)
+        pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
+        pulumi.set(__self__, "logout", logout)
+        pulumi.set(__self__, "map_identities", map_identities)
+        pulumi.set(__self__, "map_unknown_claims_as_is", map_unknown_claims_as_is)
+        pulumi.set(__self__, "mappings", mappings)
+        pulumi.set(__self__, "name_identifier_format", name_identifier_format)
+        pulumi.set(__self__, "name_identifier_probes", name_identifier_probes)
+        pulumi.set(__self__, "passthrough_claims_with_no_mapping", passthrough_claims_with_no_mapping)
+        pulumi.set(__self__, "recipient", recipient)
+        pulumi.set(__self__, "sign_response", sign_response)
+        pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        pulumi.set(__self__, "signing_cert", signing_cert)
+        pulumi.set(__self__, "typed_attributes", typed_attributes)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> str:
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter(name="authnContextClassRef")
+    def authn_context_class_ref(self) -> str:
+        return pulumi.get(self, "authn_context_class_ref")
+
+    @property
+    @pulumi.getter
+    def binding(self) -> str:
+        return pulumi.get(self, "binding")
+
+    @property
+    @pulumi.getter(name="createUpnClaim")
+    def create_upn_claim(self) -> bool:
+        return pulumi.get(self, "create_upn_claim")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter(name="digestAlgorithm")
+    def digest_algorithm(self) -> str:
+        return pulumi.get(self, "digest_algorithm")
+
+    @property
+    @pulumi.getter(name="includeAttributeNameFormat")
+    def include_attribute_name_format(self) -> bool:
+        return pulumi.get(self, "include_attribute_name_format")
+
+    @property
+    @pulumi.getter(name="lifetimeInSeconds")
+    def lifetime_in_seconds(self) -> int:
+        return pulumi.get(self, "lifetime_in_seconds")
+
+    @property
+    @pulumi.getter
+    def logout(self) -> 'outputs.GetClientAddonSamlpLogoutResult':
+        return pulumi.get(self, "logout")
+
+    @property
+    @pulumi.getter(name="mapIdentities")
+    def map_identities(self) -> bool:
+        return pulumi.get(self, "map_identities")
+
+    @property
+    @pulumi.getter(name="mapUnknownClaimsAsIs")
+    def map_unknown_claims_as_is(self) -> bool:
+        return pulumi.get(self, "map_unknown_claims_as_is")
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "mappings")
+
+    @property
+    @pulumi.getter(name="nameIdentifierFormat")
+    def name_identifier_format(self) -> str:
+        return pulumi.get(self, "name_identifier_format")
+
+    @property
+    @pulumi.getter(name="nameIdentifierProbes")
+    def name_identifier_probes(self) -> Sequence[str]:
+        return pulumi.get(self, "name_identifier_probes")
+
+    @property
+    @pulumi.getter(name="passthroughClaimsWithNoMapping")
+    def passthrough_claims_with_no_mapping(self) -> bool:
+        return pulumi.get(self, "passthrough_claims_with_no_mapping")
+
+    @property
+    @pulumi.getter
+    def recipient(self) -> str:
+        return pulumi.get(self, "recipient")
+
+    @property
+    @pulumi.getter(name="signResponse")
+    def sign_response(self) -> bool:
+        return pulumi.get(self, "sign_response")
+
+    @property
+    @pulumi.getter(name="signatureAlgorithm")
+    def signature_algorithm(self) -> str:
+        return pulumi.get(self, "signature_algorithm")
+
+    @property
+    @pulumi.getter(name="signingCert")
+    def signing_cert(self) -> str:
+        return pulumi.get(self, "signing_cert")
+
+    @property
+    @pulumi.getter(name="typedAttributes")
+    def typed_attributes(self) -> bool:
+        return pulumi.get(self, "typed_attributes")
+
+
+@pulumi.output_type
+class GetClientAddonSamlpLogoutResult(dict):
+    def __init__(__self__, *,
+                 callback: Optional[str] = None,
+                 slo_enabled: Optional[bool] = None):
+        if callback is not None:
+            pulumi.set(__self__, "callback", callback)
+        if slo_enabled is not None:
+            pulumi.set(__self__, "slo_enabled", slo_enabled)
+
+    @property
+    @pulumi.getter
+    def callback(self) -> Optional[str]:
+        return pulumi.get(self, "callback")
+
+    @property
+    @pulumi.getter(name="sloEnabled")
+    def slo_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "slo_enabled")
+
+
+@pulumi.output_type
+class GetClientJwtConfigurationResult(dict):
+    def __init__(__self__, *,
+                 alg: str,
+                 lifetime_in_seconds: int,
+                 scopes: Mapping[str, str],
+                 secret_encoded: bool):
+        pulumi.set(__self__, "alg", alg)
+        pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "secret_encoded", secret_encoded)
+
+    @property
+    @pulumi.getter
+    def alg(self) -> str:
+        return pulumi.get(self, "alg")
+
+    @property
+    @pulumi.getter(name="lifetimeInSeconds")
+    def lifetime_in_seconds(self) -> int:
+        return pulumi.get(self, "lifetime_in_seconds")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Mapping[str, str]:
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="secretEncoded")
+    def secret_encoded(self) -> bool:
+        return pulumi.get(self, "secret_encoded")
+
+
+@pulumi.output_type
+class GetClientMobileResult(dict):
+    def __init__(__self__, *,
+                 androids: Sequence['outputs.GetClientMobileAndroidResult'],
+                 ios: Sequence['outputs.GetClientMobileIoResult']):
+        pulumi.set(__self__, "androids", androids)
+        pulumi.set(__self__, "ios", ios)
+
+    @property
+    @pulumi.getter
+    def androids(self) -> Sequence['outputs.GetClientMobileAndroidResult']:
+        return pulumi.get(self, "androids")
+
+    @property
+    @pulumi.getter
+    def ios(self) -> Sequence['outputs.GetClientMobileIoResult']:
+        return pulumi.get(self, "ios")
+
+
+@pulumi.output_type
+class GetClientMobileAndroidResult(dict):
+    def __init__(__self__, *,
+                 app_package_name: str,
+                 sha256_cert_fingerprints: Sequence[str]):
+        pulumi.set(__self__, "app_package_name", app_package_name)
+        pulumi.set(__self__, "sha256_cert_fingerprints", sha256_cert_fingerprints)
+
+    @property
+    @pulumi.getter(name="appPackageName")
+    def app_package_name(self) -> str:
+        return pulumi.get(self, "app_package_name")
+
+    @property
+    @pulumi.getter(name="sha256CertFingerprints")
+    def sha256_cert_fingerprints(self) -> Sequence[str]:
+        return pulumi.get(self, "sha256_cert_fingerprints")
+
+
+@pulumi.output_type
+class GetClientMobileIoResult(dict):
+    def __init__(__self__, *,
+                 app_bundle_identifier: str,
+                 team_id: str):
+        pulumi.set(__self__, "app_bundle_identifier", app_bundle_identifier)
+        pulumi.set(__self__, "team_id", team_id)
+
+    @property
+    @pulumi.getter(name="appBundleIdentifier")
+    def app_bundle_identifier(self) -> str:
+        return pulumi.get(self, "app_bundle_identifier")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        return pulumi.get(self, "team_id")
+
+
+@pulumi.output_type
+class GetClientNativeSocialLoginResult(dict):
+    def __init__(__self__, *,
+                 apples: Sequence['outputs.GetClientNativeSocialLoginAppleResult'],
+                 facebooks: Sequence['outputs.GetClientNativeSocialLoginFacebookResult']):
+        pulumi.set(__self__, "apples", apples)
+        pulumi.set(__self__, "facebooks", facebooks)
+
+    @property
+    @pulumi.getter
+    def apples(self) -> Sequence['outputs.GetClientNativeSocialLoginAppleResult']:
+        return pulumi.get(self, "apples")
+
+    @property
+    @pulumi.getter
+    def facebooks(self) -> Sequence['outputs.GetClientNativeSocialLoginFacebookResult']:
+        return pulumi.get(self, "facebooks")
+
+
+@pulumi.output_type
+class GetClientNativeSocialLoginAppleResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClientNativeSocialLoginFacebookResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClientRefreshTokenResult(dict):
+    def __init__(__self__, *,
+                 expiration_type: str,
+                 idle_token_lifetime: int,
+                 infinite_idle_token_lifetime: bool,
+                 infinite_token_lifetime: bool,
+                 leeway: int,
+                 rotation_type: str,
+                 token_lifetime: int):
+        pulumi.set(__self__, "expiration_type", expiration_type)
+        pulumi.set(__self__, "idle_token_lifetime", idle_token_lifetime)
+        pulumi.set(__self__, "infinite_idle_token_lifetime", infinite_idle_token_lifetime)
+        pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
+        pulumi.set(__self__, "leeway", leeway)
+        pulumi.set(__self__, "rotation_type", rotation_type)
+        pulumi.set(__self__, "token_lifetime", token_lifetime)
+
+    @property
+    @pulumi.getter(name="expirationType")
+    def expiration_type(self) -> str:
+        return pulumi.get(self, "expiration_type")
+
+    @property
+    @pulumi.getter(name="idleTokenLifetime")
+    def idle_token_lifetime(self) -> int:
+        return pulumi.get(self, "idle_token_lifetime")
+
+    @property
+    @pulumi.getter(name="infiniteIdleTokenLifetime")
+    def infinite_idle_token_lifetime(self) -> bool:
+        return pulumi.get(self, "infinite_idle_token_lifetime")
+
+    @property
+    @pulumi.getter(name="infiniteTokenLifetime")
+    def infinite_token_lifetime(self) -> bool:
+        return pulumi.get(self, "infinite_token_lifetime")
+
+    @property
+    @pulumi.getter
+    def leeway(self) -> int:
+        return pulumi.get(self, "leeway")
+
+    @property
+    @pulumi.getter(name="rotationType")
+    def rotation_type(self) -> str:
+        return pulumi.get(self, "rotation_type")
+
+    @property
+    @pulumi.getter(name="tokenLifetime")
+    def token_lifetime(self) -> int:
+        return pulumi.get(self, "token_lifetime")
+
+
+@pulumi.output_type
+class GetGlobalClientAddonResult(dict):
+    def __init__(__self__, *,
+                 aws: Mapping[str, Any],
+                 azure_blob: Mapping[str, Any],
+                 azure_sb: Mapping[str, Any],
+                 box: Mapping[str, Any],
+                 cloudbees: Mapping[str, Any],
+                 concur: Mapping[str, Any],
+                 dropbox: Mapping[str, Any],
+                 echosign: Mapping[str, Any],
+                 egnyte: Mapping[str, Any],
+                 firebase: Mapping[str, Any],
+                 layer: Mapping[str, Any],
+                 mscrm: Mapping[str, Any],
+                 newrelic: Mapping[str, Any],
+                 office365: Mapping[str, Any],
+                 rms: Mapping[str, Any],
+                 salesforce: Mapping[str, Any],
+                 salesforce_api: Mapping[str, Any],
+                 salesforce_sandbox_api: Mapping[str, Any],
+                 samlps: Sequence['outputs.GetGlobalClientAddonSamlpResult'],
+                 sap_api: Mapping[str, Any],
+                 sentry: Mapping[str, Any],
+                 sharepoint: Mapping[str, Any],
+                 slack: Mapping[str, Any],
+                 springcm: Mapping[str, Any],
+                 wams: Mapping[str, Any],
+                 wsfed: Mapping[str, Any],
+                 zendesk: Mapping[str, Any],
+                 zoom: Mapping[str, Any]):
+        pulumi.set(__self__, "aws", aws)
+        pulumi.set(__self__, "azure_blob", azure_blob)
+        pulumi.set(__self__, "azure_sb", azure_sb)
+        pulumi.set(__self__, "box", box)
+        pulumi.set(__self__, "cloudbees", cloudbees)
+        pulumi.set(__self__, "concur", concur)
+        pulumi.set(__self__, "dropbox", dropbox)
+        pulumi.set(__self__, "echosign", echosign)
+        pulumi.set(__self__, "egnyte", egnyte)
+        pulumi.set(__self__, "firebase", firebase)
+        pulumi.set(__self__, "layer", layer)
+        pulumi.set(__self__, "mscrm", mscrm)
+        pulumi.set(__self__, "newrelic", newrelic)
+        pulumi.set(__self__, "office365", office365)
+        pulumi.set(__self__, "rms", rms)
+        pulumi.set(__self__, "salesforce", salesforce)
+        pulumi.set(__self__, "salesforce_api", salesforce_api)
+        pulumi.set(__self__, "salesforce_sandbox_api", salesforce_sandbox_api)
+        pulumi.set(__self__, "samlps", samlps)
+        pulumi.set(__self__, "sap_api", sap_api)
+        pulumi.set(__self__, "sentry", sentry)
+        pulumi.set(__self__, "sharepoint", sharepoint)
+        pulumi.set(__self__, "slack", slack)
+        pulumi.set(__self__, "springcm", springcm)
+        pulumi.set(__self__, "wams", wams)
+        pulumi.set(__self__, "wsfed", wsfed)
+        pulumi.set(__self__, "zendesk", zendesk)
+        pulumi.set(__self__, "zoom", zoom)
+
+    @property
+    @pulumi.getter
+    def aws(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "aws")
+
+    @property
+    @pulumi.getter(name="azureBlob")
+    def azure_blob(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "azure_blob")
+
+    @property
+    @pulumi.getter(name="azureSb")
+    def azure_sb(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "azure_sb")
+
+    @property
+    @pulumi.getter
+    def box(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "box")
+
+    @property
+    @pulumi.getter
+    def cloudbees(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "cloudbees")
+
+    @property
+    @pulumi.getter
+    def concur(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "concur")
+
+    @property
+    @pulumi.getter
+    def dropbox(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "dropbox")
+
+    @property
+    @pulumi.getter
+    def echosign(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "echosign")
+
+    @property
+    @pulumi.getter
+    def egnyte(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "egnyte")
+
+    @property
+    @pulumi.getter
+    def firebase(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "firebase")
+
+    @property
+    @pulumi.getter
+    def layer(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "layer")
+
+    @property
+    @pulumi.getter
+    def mscrm(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "mscrm")
+
+    @property
+    @pulumi.getter
+    def newrelic(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "newrelic")
+
+    @property
+    @pulumi.getter
+    def office365(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "office365")
+
+    @property
+    @pulumi.getter
+    def rms(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "rms")
+
+    @property
+    @pulumi.getter
+    def salesforce(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "salesforce")
+
+    @property
+    @pulumi.getter(name="salesforceApi")
+    def salesforce_api(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "salesforce_api")
+
+    @property
+    @pulumi.getter(name="salesforceSandboxApi")
+    def salesforce_sandbox_api(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "salesforce_sandbox_api")
+
+    @property
+    @pulumi.getter
+    def samlps(self) -> Sequence['outputs.GetGlobalClientAddonSamlpResult']:
+        return pulumi.get(self, "samlps")
+
+    @property
+    @pulumi.getter(name="sapApi")
+    def sap_api(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "sap_api")
+
+    @property
+    @pulumi.getter
+    def sentry(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "sentry")
+
+    @property
+    @pulumi.getter
+    def sharepoint(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "sharepoint")
+
+    @property
+    @pulumi.getter
+    def slack(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "slack")
+
+    @property
+    @pulumi.getter
+    def springcm(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "springcm")
+
+    @property
+    @pulumi.getter
+    def wams(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "wams")
+
+    @property
+    @pulumi.getter
+    def wsfed(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "wsfed")
+
+    @property
+    @pulumi.getter
+    def zendesk(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "zendesk")
+
+    @property
+    @pulumi.getter
+    def zoom(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "zoom")
+
+
+@pulumi.output_type
+class GetGlobalClientAddonSamlpResult(dict):
+    def __init__(__self__, *,
+                 audience: str,
+                 authn_context_class_ref: str,
+                 binding: str,
+                 create_upn_claim: bool,
+                 destination: str,
+                 digest_algorithm: str,
+                 include_attribute_name_format: bool,
+                 lifetime_in_seconds: int,
+                 logout: 'outputs.GetGlobalClientAddonSamlpLogoutResult',
+                 map_identities: bool,
+                 map_unknown_claims_as_is: bool,
+                 mappings: Mapping[str, Any],
+                 name_identifier_format: str,
+                 name_identifier_probes: Sequence[str],
+                 passthrough_claims_with_no_mapping: bool,
+                 recipient: str,
+                 sign_response: bool,
+                 signature_algorithm: str,
+                 signing_cert: str,
+                 typed_attributes: bool):
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "authn_context_class_ref", authn_context_class_ref)
+        pulumi.set(__self__, "binding", binding)
+        pulumi.set(__self__, "create_upn_claim", create_upn_claim)
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "digest_algorithm", digest_algorithm)
+        pulumi.set(__self__, "include_attribute_name_format", include_attribute_name_format)
+        pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
+        pulumi.set(__self__, "logout", logout)
+        pulumi.set(__self__, "map_identities", map_identities)
+        pulumi.set(__self__, "map_unknown_claims_as_is", map_unknown_claims_as_is)
+        pulumi.set(__self__, "mappings", mappings)
+        pulumi.set(__self__, "name_identifier_format", name_identifier_format)
+        pulumi.set(__self__, "name_identifier_probes", name_identifier_probes)
+        pulumi.set(__self__, "passthrough_claims_with_no_mapping", passthrough_claims_with_no_mapping)
+        pulumi.set(__self__, "recipient", recipient)
+        pulumi.set(__self__, "sign_response", sign_response)
+        pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        pulumi.set(__self__, "signing_cert", signing_cert)
+        pulumi.set(__self__, "typed_attributes", typed_attributes)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> str:
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter(name="authnContextClassRef")
+    def authn_context_class_ref(self) -> str:
+        return pulumi.get(self, "authn_context_class_ref")
+
+    @property
+    @pulumi.getter
+    def binding(self) -> str:
+        return pulumi.get(self, "binding")
+
+    @property
+    @pulumi.getter(name="createUpnClaim")
+    def create_upn_claim(self) -> bool:
+        return pulumi.get(self, "create_upn_claim")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter(name="digestAlgorithm")
+    def digest_algorithm(self) -> str:
+        return pulumi.get(self, "digest_algorithm")
+
+    @property
+    @pulumi.getter(name="includeAttributeNameFormat")
+    def include_attribute_name_format(self) -> bool:
+        return pulumi.get(self, "include_attribute_name_format")
+
+    @property
+    @pulumi.getter(name="lifetimeInSeconds")
+    def lifetime_in_seconds(self) -> int:
+        return pulumi.get(self, "lifetime_in_seconds")
+
+    @property
+    @pulumi.getter
+    def logout(self) -> 'outputs.GetGlobalClientAddonSamlpLogoutResult':
+        return pulumi.get(self, "logout")
+
+    @property
+    @pulumi.getter(name="mapIdentities")
+    def map_identities(self) -> bool:
+        return pulumi.get(self, "map_identities")
+
+    @property
+    @pulumi.getter(name="mapUnknownClaimsAsIs")
+    def map_unknown_claims_as_is(self) -> bool:
+        return pulumi.get(self, "map_unknown_claims_as_is")
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "mappings")
+
+    @property
+    @pulumi.getter(name="nameIdentifierFormat")
+    def name_identifier_format(self) -> str:
+        return pulumi.get(self, "name_identifier_format")
+
+    @property
+    @pulumi.getter(name="nameIdentifierProbes")
+    def name_identifier_probes(self) -> Sequence[str]:
+        return pulumi.get(self, "name_identifier_probes")
+
+    @property
+    @pulumi.getter(name="passthroughClaimsWithNoMapping")
+    def passthrough_claims_with_no_mapping(self) -> bool:
+        return pulumi.get(self, "passthrough_claims_with_no_mapping")
+
+    @property
+    @pulumi.getter
+    def recipient(self) -> str:
+        return pulumi.get(self, "recipient")
+
+    @property
+    @pulumi.getter(name="signResponse")
+    def sign_response(self) -> bool:
+        return pulumi.get(self, "sign_response")
+
+    @property
+    @pulumi.getter(name="signatureAlgorithm")
+    def signature_algorithm(self) -> str:
+        return pulumi.get(self, "signature_algorithm")
+
+    @property
+    @pulumi.getter(name="signingCert")
+    def signing_cert(self) -> str:
+        return pulumi.get(self, "signing_cert")
+
+    @property
+    @pulumi.getter(name="typedAttributes")
+    def typed_attributes(self) -> bool:
+        return pulumi.get(self, "typed_attributes")
+
+
+@pulumi.output_type
+class GetGlobalClientAddonSamlpLogoutResult(dict):
+    def __init__(__self__, *,
+                 callback: Optional[str] = None,
+                 slo_enabled: Optional[bool] = None):
+        if callback is not None:
+            pulumi.set(__self__, "callback", callback)
+        if slo_enabled is not None:
+            pulumi.set(__self__, "slo_enabled", slo_enabled)
+
+    @property
+    @pulumi.getter
+    def callback(self) -> Optional[str]:
+        return pulumi.get(self, "callback")
+
+    @property
+    @pulumi.getter(name="sloEnabled")
+    def slo_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "slo_enabled")
+
+
+@pulumi.output_type
+class GetGlobalClientJwtConfigurationResult(dict):
+    def __init__(__self__, *,
+                 alg: str,
+                 lifetime_in_seconds: int,
+                 scopes: Mapping[str, str],
+                 secret_encoded: bool):
+        pulumi.set(__self__, "alg", alg)
+        pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "secret_encoded", secret_encoded)
+
+    @property
+    @pulumi.getter
+    def alg(self) -> str:
+        return pulumi.get(self, "alg")
+
+    @property
+    @pulumi.getter(name="lifetimeInSeconds")
+    def lifetime_in_seconds(self) -> int:
+        return pulumi.get(self, "lifetime_in_seconds")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Mapping[str, str]:
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="secretEncoded")
+    def secret_encoded(self) -> bool:
+        return pulumi.get(self, "secret_encoded")
+
+
+@pulumi.output_type
+class GetGlobalClientMobileResult(dict):
+    def __init__(__self__, *,
+                 androids: Sequence['outputs.GetGlobalClientMobileAndroidResult'],
+                 ios: Sequence['outputs.GetGlobalClientMobileIoResult']):
+        pulumi.set(__self__, "androids", androids)
+        pulumi.set(__self__, "ios", ios)
+
+    @property
+    @pulumi.getter
+    def androids(self) -> Sequence['outputs.GetGlobalClientMobileAndroidResult']:
+        return pulumi.get(self, "androids")
+
+    @property
+    @pulumi.getter
+    def ios(self) -> Sequence['outputs.GetGlobalClientMobileIoResult']:
+        return pulumi.get(self, "ios")
+
+
+@pulumi.output_type
+class GetGlobalClientMobileAndroidResult(dict):
+    def __init__(__self__, *,
+                 app_package_name: str,
+                 sha256_cert_fingerprints: Sequence[str]):
+        pulumi.set(__self__, "app_package_name", app_package_name)
+        pulumi.set(__self__, "sha256_cert_fingerprints", sha256_cert_fingerprints)
+
+    @property
+    @pulumi.getter(name="appPackageName")
+    def app_package_name(self) -> str:
+        return pulumi.get(self, "app_package_name")
+
+    @property
+    @pulumi.getter(name="sha256CertFingerprints")
+    def sha256_cert_fingerprints(self) -> Sequence[str]:
+        return pulumi.get(self, "sha256_cert_fingerprints")
+
+
+@pulumi.output_type
+class GetGlobalClientMobileIoResult(dict):
+    def __init__(__self__, *,
+                 app_bundle_identifier: str,
+                 team_id: str):
+        pulumi.set(__self__, "app_bundle_identifier", app_bundle_identifier)
+        pulumi.set(__self__, "team_id", team_id)
+
+    @property
+    @pulumi.getter(name="appBundleIdentifier")
+    def app_bundle_identifier(self) -> str:
+        return pulumi.get(self, "app_bundle_identifier")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        return pulumi.get(self, "team_id")
+
+
+@pulumi.output_type
+class GetGlobalClientNativeSocialLoginResult(dict):
+    def __init__(__self__, *,
+                 apples: Sequence['outputs.GetGlobalClientNativeSocialLoginAppleResult'],
+                 facebooks: Sequence['outputs.GetGlobalClientNativeSocialLoginFacebookResult']):
+        pulumi.set(__self__, "apples", apples)
+        pulumi.set(__self__, "facebooks", facebooks)
+
+    @property
+    @pulumi.getter
+    def apples(self) -> Sequence['outputs.GetGlobalClientNativeSocialLoginAppleResult']:
+        return pulumi.get(self, "apples")
+
+    @property
+    @pulumi.getter
+    def facebooks(self) -> Sequence['outputs.GetGlobalClientNativeSocialLoginFacebookResult']:
+        return pulumi.get(self, "facebooks")
+
+
+@pulumi.output_type
+class GetGlobalClientNativeSocialLoginAppleResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetGlobalClientNativeSocialLoginFacebookResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetGlobalClientRefreshTokenResult(dict):
+    def __init__(__self__, *,
+                 expiration_type: str,
+                 idle_token_lifetime: int,
+                 infinite_idle_token_lifetime: bool,
+                 infinite_token_lifetime: bool,
+                 leeway: int,
+                 rotation_type: str,
+                 token_lifetime: int):
+        pulumi.set(__self__, "expiration_type", expiration_type)
+        pulumi.set(__self__, "idle_token_lifetime", idle_token_lifetime)
+        pulumi.set(__self__, "infinite_idle_token_lifetime", infinite_idle_token_lifetime)
+        pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
+        pulumi.set(__self__, "leeway", leeway)
+        pulumi.set(__self__, "rotation_type", rotation_type)
+        pulumi.set(__self__, "token_lifetime", token_lifetime)
+
+    @property
+    @pulumi.getter(name="expirationType")
+    def expiration_type(self) -> str:
+        return pulumi.get(self, "expiration_type")
+
+    @property
+    @pulumi.getter(name="idleTokenLifetime")
+    def idle_token_lifetime(self) -> int:
+        return pulumi.get(self, "idle_token_lifetime")
+
+    @property
+    @pulumi.getter(name="infiniteIdleTokenLifetime")
+    def infinite_idle_token_lifetime(self) -> bool:
+        return pulumi.get(self, "infinite_idle_token_lifetime")
+
+    @property
+    @pulumi.getter(name="infiniteTokenLifetime")
+    def infinite_token_lifetime(self) -> bool:
+        return pulumi.get(self, "infinite_token_lifetime")
+
+    @property
+    @pulumi.getter
+    def leeway(self) -> int:
+        return pulumi.get(self, "leeway")
+
+    @property
+    @pulumi.getter(name="rotationType")
+    def rotation_type(self) -> str:
+        return pulumi.get(self, "rotation_type")
+
+    @property
+    @pulumi.getter(name="tokenLifetime")
+    def token_lifetime(self) -> int:
+        return pulumi.get(self, "token_lifetime")
 
 

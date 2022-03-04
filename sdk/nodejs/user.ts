@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
+ * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking,
+ * and deleting users.
  *
  * ## Example Usage
  *
@@ -26,6 +27,14 @@ import * as utilities from "./utilities";
  *     password: `passpass$12$12`,
  *     roles: [admin.id],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * auth0_user can be imported using the user ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
  * ```
  */
 export class User extends pulumi.CustomResource {
@@ -70,7 +79,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly email!: pulumi.Output<string | undefined>;
     /**
-     * Boolean. Indicates whether or not the email address has been verified.
+     * Boolean. Indicates whether the email address has been verified.
      */
     public readonly emailVerified!: pulumi.Output<boolean | undefined>;
     public readonly familyName!: pulumi.Output<string | undefined>;
@@ -81,7 +90,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly nickname!: pulumi.Output<string>;
     /**
-     * String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+     * String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -89,7 +98,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly phoneNumber!: pulumi.Output<string | undefined>;
     /**
-     * Boolean. Indicates whether or not the phone number has been verified.
+     * Boolean. Indicates whether the phone number has been verified.
      */
     public readonly phoneVerified!: pulumi.Output<boolean | undefined>;
     public readonly picture!: pulumi.Output<string>;
@@ -110,7 +119,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+     * Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
     public readonly verifyEmail!: pulumi.Output<boolean | undefined>;
 
@@ -192,7 +201,7 @@ export interface UserState {
      */
     email?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not the email address has been verified.
+     * Boolean. Indicates whether the email address has been verified.
      */
     emailVerified?: pulumi.Input<boolean>;
     familyName?: pulumi.Input<string>;
@@ -203,7 +212,7 @@ export interface UserState {
      */
     nickname?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+     * String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
     password?: pulumi.Input<string>;
     /**
@@ -211,7 +220,7 @@ export interface UserState {
      */
     phoneNumber?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not the phone number has been verified.
+     * Boolean. Indicates whether the phone number has been verified.
      */
     phoneVerified?: pulumi.Input<boolean>;
     picture?: pulumi.Input<string>;
@@ -232,7 +241,7 @@ export interface UserState {
      */
     username?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+     * Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
     verifyEmail?: pulumi.Input<boolean>;
 }
@@ -255,7 +264,7 @@ export interface UserArgs {
      */
     email?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not the email address has been verified.
+     * Boolean. Indicates whether the email address has been verified.
      */
     emailVerified?: pulumi.Input<boolean>;
     familyName?: pulumi.Input<string>;
@@ -266,7 +275,7 @@ export interface UserArgs {
      */
     nickname?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+     * String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
     password?: pulumi.Input<string>;
     /**
@@ -274,7 +283,7 @@ export interface UserArgs {
      */
     phoneNumber?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not the phone number has been verified.
+     * Boolean. Indicates whether the phone number has been verified.
      */
     phoneVerified?: pulumi.Input<boolean>;
     picture?: pulumi.Input<string>;
@@ -295,7 +304,7 @@ export interface UserArgs {
      */
     username?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+     * Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
     verifyEmail?: pulumi.Input<boolean>;
 }

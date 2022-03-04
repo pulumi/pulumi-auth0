@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
+// With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking,
+// and deleting users.
 //
 // ## Example Usage
 //
@@ -54,6 +55,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// auth0_user can be imported using the user ID, e.g.
+//
+// ```sh
+//  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
@@ -64,18 +73,18 @@ type User struct {
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
 	// String. Email address of the user.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
-	// Boolean. Indicates whether or not the email address has been verified.
+	// Boolean. Indicates whether the email address has been verified.
 	EmailVerified pulumi.BoolPtrOutput   `pulumi:"emailVerified"`
 	FamilyName    pulumi.StringPtrOutput `pulumi:"familyName"`
 	GivenName     pulumi.StringPtrOutput `pulumi:"givenName"`
 	Name          pulumi.StringOutput    `pulumi:"name"`
 	// String. Preferred nickname or alias of the user.
 	Nickname pulumi.StringOutput `pulumi:"nickname"`
-	// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrOutput `pulumi:"phoneNumber"`
-	// Boolean. Indicates whether or not the phone number has been verified.
+	// Boolean. Indicates whether the phone number has been verified.
 	PhoneVerified pulumi.BoolPtrOutput `pulumi:"phoneVerified"`
 	Picture       pulumi.StringOutput  `pulumi:"picture"`
 	// Set(String). Set of IDs of roles assigned to the user.
@@ -86,7 +95,7 @@ type User struct {
 	UserMetadata pulumi.StringPtrOutput `pulumi:"userMetadata"`
 	// String. Username of the user. Only valid if the connection requires a username.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail pulumi.BoolPtrOutput `pulumi:"verifyEmail"`
 }
 
@@ -129,18 +138,18 @@ type userState struct {
 	ConnectionName *string `pulumi:"connectionName"`
 	// String. Email address of the user.
 	Email *string `pulumi:"email"`
-	// Boolean. Indicates whether or not the email address has been verified.
+	// Boolean. Indicates whether the email address has been verified.
 	EmailVerified *bool   `pulumi:"emailVerified"`
 	FamilyName    *string `pulumi:"familyName"`
 	GivenName     *string `pulumi:"givenName"`
 	Name          *string `pulumi:"name"`
 	// String. Preferred nickname or alias of the user.
 	Nickname *string `pulumi:"nickname"`
-	// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password *string `pulumi:"password"`
 	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber *string `pulumi:"phoneNumber"`
-	// Boolean. Indicates whether or not the phone number has been verified.
+	// Boolean. Indicates whether the phone number has been verified.
 	PhoneVerified *bool   `pulumi:"phoneVerified"`
 	Picture       *string `pulumi:"picture"`
 	// Set(String). Set of IDs of roles assigned to the user.
@@ -151,7 +160,7 @@ type userState struct {
 	UserMetadata *string `pulumi:"userMetadata"`
 	// String. Username of the user. Only valid if the connection requires a username.
 	Username *string `pulumi:"username"`
-	// Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail *bool `pulumi:"verifyEmail"`
 }
 
@@ -163,18 +172,18 @@ type UserState struct {
 	ConnectionName pulumi.StringPtrInput
 	// String. Email address of the user.
 	Email pulumi.StringPtrInput
-	// Boolean. Indicates whether or not the email address has been verified.
+	// Boolean. Indicates whether the email address has been verified.
 	EmailVerified pulumi.BoolPtrInput
 	FamilyName    pulumi.StringPtrInput
 	GivenName     pulumi.StringPtrInput
 	Name          pulumi.StringPtrInput
 	// String. Preferred nickname or alias of the user.
 	Nickname pulumi.StringPtrInput
-	// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password pulumi.StringPtrInput
 	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrInput
-	// Boolean. Indicates whether or not the phone number has been verified.
+	// Boolean. Indicates whether the phone number has been verified.
 	PhoneVerified pulumi.BoolPtrInput
 	Picture       pulumi.StringPtrInput
 	// Set(String). Set of IDs of roles assigned to the user.
@@ -185,7 +194,7 @@ type UserState struct {
 	UserMetadata pulumi.StringPtrInput
 	// String. Username of the user. Only valid if the connection requires a username.
 	Username pulumi.StringPtrInput
-	// Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail pulumi.BoolPtrInput
 }
 
@@ -201,18 +210,18 @@ type userArgs struct {
 	ConnectionName string `pulumi:"connectionName"`
 	// String. Email address of the user.
 	Email *string `pulumi:"email"`
-	// Boolean. Indicates whether or not the email address has been verified.
+	// Boolean. Indicates whether the email address has been verified.
 	EmailVerified *bool   `pulumi:"emailVerified"`
 	FamilyName    *string `pulumi:"familyName"`
 	GivenName     *string `pulumi:"givenName"`
 	Name          *string `pulumi:"name"`
 	// String. Preferred nickname or alias of the user.
 	Nickname *string `pulumi:"nickname"`
-	// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password *string `pulumi:"password"`
 	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber *string `pulumi:"phoneNumber"`
-	// Boolean. Indicates whether or not the phone number has been verified.
+	// Boolean. Indicates whether the phone number has been verified.
 	PhoneVerified *bool   `pulumi:"phoneVerified"`
 	Picture       *string `pulumi:"picture"`
 	// Set(String). Set of IDs of roles assigned to the user.
@@ -223,7 +232,7 @@ type userArgs struct {
 	UserMetadata *string `pulumi:"userMetadata"`
 	// String. Username of the user. Only valid if the connection requires a username.
 	Username *string `pulumi:"username"`
-	// Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail *bool `pulumi:"verifyEmail"`
 }
 
@@ -236,18 +245,18 @@ type UserArgs struct {
 	ConnectionName pulumi.StringInput
 	// String. Email address of the user.
 	Email pulumi.StringPtrInput
-	// Boolean. Indicates whether or not the email address has been verified.
+	// Boolean. Indicates whether the email address has been verified.
 	EmailVerified pulumi.BoolPtrInput
 	FamilyName    pulumi.StringPtrInput
 	GivenName     pulumi.StringPtrInput
 	Name          pulumi.StringPtrInput
 	// String. Preferred nickname or alias of the user.
 	Nickname pulumi.StringPtrInput
-	// String, Case-sensitive. Initial password for this user. Used for non-SMS connections.
+	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password pulumi.StringPtrInput
 	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrInput
-	// Boolean. Indicates whether or not the phone number has been verified.
+	// Boolean. Indicates whether the phone number has been verified.
 	PhoneVerified pulumi.BoolPtrInput
 	Picture       pulumi.StringPtrInput
 	// Set(String). Set of IDs of roles assigned to the user.
@@ -258,7 +267,7 @@ type UserArgs struct {
 	UserMetadata pulumi.StringPtrInput
 	// String. Username of the user. Only valid if the connection requires a username.
 	Username pulumi.StringPtrInput
-	// Boolean. Indicates whether or not the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail pulumi.BoolPtrInput
 }
 

@@ -65,7 +65,18 @@ class CustomDomainVerification(pulumi.CustomResource):
                  custom_domain_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a CustomDomainVerification resource with the given unique name, props, and options.
+        With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must
+        configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0.
+        This resource allows for automating the verification part of the process.
+
+        ## Import
+
+        You can import this resource using the custom domain id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_domain_id: String. ID of the custom domain resource.
@@ -77,7 +88,18 @@ class CustomDomainVerification(pulumi.CustomResource):
                  args: CustomDomainVerificationInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a CustomDomainVerification resource with the given unique name, props, and options.
+        With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must
+        configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0.
+        This resource allows for automating the verification part of the process.
+
+        ## Import
+
+        You can import this resource using the custom domain id, e.g.
+
+        ```sh
+         $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
+        ```
+
         :param str resource_name: The name of the resource.
         :param CustomDomainVerificationInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

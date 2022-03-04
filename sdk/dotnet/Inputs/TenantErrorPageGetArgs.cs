@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string> Html { get; set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not to show the link to logs as part of the default error page.
+        /// Boolean. Indicates whether to show the link to logs as part of the default error page.
         /// </summary>
         [Input("showLogLink", required: true)]
         public Input<bool> ShowLogLink { get; set; } = null!;

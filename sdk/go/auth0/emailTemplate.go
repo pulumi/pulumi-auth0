@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
+// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
+// into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
+// emails sent by Auth0. Used in conjunction with configured email providers.
 //
 // ## Example Usage
 //
@@ -56,12 +58,20 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// This resource can be imported using the template name, e.g.
+//
+// ```sh
+//  $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
+// ```
 type EmailTemplate struct {
 	pulumi.CustomResourceState
 
 	// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	Body pulumi.StringOutput `pulumi:"body"`
-	// Boolean. Indicates whether or not the template is enabled.
+	// Boolean. Indicates whether the template is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From pulumi.StringOutput `pulumi:"from"`
@@ -126,7 +136,7 @@ func GetEmailTemplate(ctx *pulumi.Context,
 type emailTemplateState struct {
 	// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	Body *string `pulumi:"body"`
-	// Boolean. Indicates whether or not the template is enabled.
+	// Boolean. Indicates whether the template is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From *string `pulumi:"from"`
@@ -145,7 +155,7 @@ type emailTemplateState struct {
 type EmailTemplateState struct {
 	// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	Body pulumi.StringPtrInput
-	// Boolean. Indicates whether or not the template is enabled.
+	// Boolean. Indicates whether the template is enabled.
 	Enabled pulumi.BoolPtrInput
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From pulumi.StringPtrInput
@@ -168,7 +178,7 @@ func (EmailTemplateState) ElementType() reflect.Type {
 type emailTemplateArgs struct {
 	// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	Body string `pulumi:"body"`
-	// Boolean. Indicates whether or not the template is enabled.
+	// Boolean. Indicates whether the template is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From string `pulumi:"from"`
@@ -188,7 +198,7 @@ type emailTemplateArgs struct {
 type EmailTemplateArgs struct {
 	// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	Body pulumi.StringInput
-	// Boolean. Indicates whether or not the template is enabled.
+	// Boolean. Indicates whether the template is enabled.
 	Enabled pulumi.BoolInput
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From pulumi.StringInput

@@ -10,7 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and optionally, users using this resource.
+// With this resource, you can create and manage collections of permissions that can be assigned to users, which are
+// otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
+// optionally, users using this resource.
 //
 // ## Example Usage
 //
@@ -27,17 +29,17 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
+// 			Identifier:    pulumi.String("my-resource-server-identifier"),
+// 			SigningAlg:    pulumi.String("RS256"),
+// 			TokenLifetime: pulumi.Int(86400),
+// 			SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
 // 			EnforcePolicies: pulumi.Bool(true),
-// 			Identifier:      pulumi.String("my-resource-server-identifier"),
 // 			Scopes: ResourceServerScopeArray{
 // 				&ResourceServerScopeArgs{
-// 					Description: pulumi.String("read something"),
 // 					Value:       pulumi.String("read:something"),
+// 					Description: pulumi.String("read something"),
 // 				},
 // 			},
-// 			SigningAlg: pulumi.String("RS256"),
-// 			SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
-// 			TokenLifetime: pulumi.Int(86400),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -46,8 +48,8 @@ import (
 // 			Description: pulumi.String("Role Description..."),
 // 			Permissions: RolePermissionArray{
 // 				&RolePermissionArgs{
-// 					Name:                     pulumi.String("read:something"),
 // 					ResourceServerIdentifier: myResourceServer.Identifier,
+// 					Name:                     pulumi.String("read:something"),
 // 				},
 // 			},
 // 		})
@@ -56,14 +58,14 @@ import (
 // 		}
 // 		_, err = auth0.NewUser(ctx, "myUser", &auth0.UserArgs{
 // 			ConnectionName: pulumi.String("Username-Password-Authentication"),
+// 			UserId:         pulumi.String("auth0|1234567890"),
 // 			Email:          pulumi.String("test@test.com"),
-// 			Nickname:       pulumi.String("testnick"),
 // 			Password:       pulumi.String(fmt.Sprintf("%v%v%v%v%v", "passpass", "$", "12", "$", "12")),
+// 			Nickname:       pulumi.String("testnick"),
+// 			Username:       pulumi.String("testnick"),
 // 			Roles: pulumi.StringArray{
 // 				myRole.ID(),
 // 			},
-// 			UserId:   pulumi.String("auth0|1234567890"),
-// 			Username: pulumi.String("testnick"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -72,6 +74,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Existing roles can be imported using their id, e.g.
+//
+// ```sh
+//  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
+// ```
 type Role struct {
 	pulumi.CustomResourceState
 
@@ -79,7 +89,8 @@ type Role struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// String. Name for this role.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+	// For details, see Permissions.
 	Permissions RolePermissionArrayOutput `pulumi:"permissions"`
 }
 
@@ -119,7 +130,8 @@ type roleState struct {
 	Description *string `pulumi:"description"`
 	// String. Name for this role.
 	Name *string `pulumi:"name"`
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+	// For details, see Permissions.
 	Permissions []RolePermission `pulumi:"permissions"`
 }
 
@@ -128,7 +140,8 @@ type RoleState struct {
 	Description pulumi.StringPtrInput
 	// String. Name for this role.
 	Name pulumi.StringPtrInput
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+	// For details, see Permissions.
 	Permissions RolePermissionArrayInput
 }
 
@@ -141,7 +154,8 @@ type roleArgs struct {
 	Description *string `pulumi:"description"`
 	// String. Name for this role.
 	Name *string `pulumi:"name"`
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+	// For details, see Permissions.
 	Permissions []RolePermission `pulumi:"permissions"`
 }
 
@@ -151,7 +165,8 @@ type RoleArgs struct {
 	Description pulumi.StringPtrInput
 	// String. Name for this role.
 	Name pulumi.StringPtrInput
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role. For details, see Permissions.
+	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
+	// For details, see Permissions.
 	Permissions RolePermissionArrayInput
 }
 

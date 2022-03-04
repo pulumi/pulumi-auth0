@@ -13,38 +13,25 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 client_id: pulumi.Input[str],
-                 client_secret: pulumi.Input[str],
                  domain: pulumi.Input[str],
+                 api_token: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  debug: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "domain", domain)
+        if api_token is not None:
+            pulumi.set(__self__, "api_token", api_token)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if debug is None:
             debug = _utilities.get_env_bool('AUTH0_DEBUG')
         if debug is not None:
             pulumi.set(__self__, "debug", debug)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "client_id", value)
-
-    @property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "client_secret")
-
-    @client_secret.setter
-    def client_secret(self, value: pulumi.Input[str]):
-        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter
@@ -54,6 +41,33 @@ class ProviderArgs:
     @domain.setter
     def domain(self, value: pulumi.Input[str]):
         pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_token")
+
+    @api_token.setter
+    def api_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_token", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter
@@ -70,6 +84,7 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_token: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  debug: Optional[pulumi.Input[bool]] = None,
@@ -111,6 +126,7 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_token: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  debug: Optional[pulumi.Input[bool]] = None,
@@ -127,11 +143,8 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            if client_id is None and not opts.urn:
-                raise TypeError("Missing required property 'client_id'")
+            __props__.__dict__["api_token"] = api_token
             __props__.__dict__["client_id"] = client_id
-            if client_secret is None and not opts.urn:
-                raise TypeError("Missing required property 'client_secret'")
             __props__.__dict__["client_secret"] = client_secret
             if debug is None:
                 debug = _utilities.get_env_bool('AUTH0_DEBUG')
@@ -146,13 +159,18 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "api_token")
+
+    @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> pulumi.Output[str]:
+    def client_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> pulumi.Output[str]:
+    def client_secret(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "client_secret")
 
     @property

@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
+    /// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
+    /// exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
+    /// This resource allows you to create and manage client grants used with configured Auth0 clients.
     /// 
     /// ## Example Usage
     /// 
@@ -32,20 +34,20 @@ namespace Pulumi.Auth0
     ///             {
     ///                 new Auth0.Inputs.ResourceServerScopeArgs
     ///                 {
-    ///                     Description = "Create foos",
     ///                     Value = "create:foo",
+    ///                     Description = "Create foos",
     ///                 },
     ///                 new Auth0.Inputs.ResourceServerScopeArgs
     ///                 {
-    ///                     Description = "Create bars",
     ///                     Value = "create:bar",
+    ///                     Description = "Create bars",
     ///                 },
     ///             },
     ///         });
     ///         var myClientGrant = new Auth0.ClientGrant("myClientGrant", new Auth0.ClientGrantArgs
     ///         {
-    ///             Audience = myResourceServer.Identifier,
     ///             ClientId = myClient.Id,
+    ///             Audience = myResourceServer.Identifier,
     ///             Scopes = 
     ///             {
     ///                 "create:foo",
@@ -61,7 +63,7 @@ namespace Pulumi.Auth0
     /// Client grants can be imported using the grant ID (Application -&gt; APIs -&gt; Expand the required API)
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/clientGrant:ClientGrant example cgr_XXXXXXXXXXXXXXXX
+    ///  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/clientGrant:ClientGrant")]

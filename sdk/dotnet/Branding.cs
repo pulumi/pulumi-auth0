@@ -10,7 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can setting logo, color to maintain a consistent service brand. This resource allows you to manage a branding within your Auth0 tenant.
+    /// This resource allows you to manage branding within your Auth0 tenant.
+    /// 
+    /// Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user
+    /// expectations.
     /// 
     /// ## Example Usage
     /// 
@@ -68,7 +71,9 @@ namespace Pulumi.Auth0
         public Output<string> LogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        /// List(Resource). Configuration settings for Universal Login.
+        /// See Universal Login. This capability can only be used if the tenant has
+        /// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         /// </summary>
         [Output("universalLogin")]
         public Output<Outputs.BrandingUniversalLogin?> UniversalLogin { get; private set; } = null!;
@@ -144,7 +149,9 @@ namespace Pulumi.Auth0
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        /// List(Resource). Configuration settings for Universal Login.
+        /// See Universal Login. This capability can only be used if the tenant has
+        /// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         /// </summary>
         [Input("universalLogin")]
         public Input<Inputs.BrandingUniversalLoginArgs>? UniversalLogin { get; set; }
@@ -181,7 +188,9 @@ namespace Pulumi.Auth0
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login. See Universal Login. This capability can only be used if the tenant has [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        /// List(Resource). Configuration settings for Universal Login.
+        /// See Universal Login. This capability can only be used if the tenant has
+        /// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
         /// </summary>
         [Input("universalLogin")]
         public Input<Inputs.BrandingUniversalLoginGetArgs>? UniversalLogin { get; set; }

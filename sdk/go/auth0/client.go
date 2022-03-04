@@ -74,6 +74,7 @@ import (
 // 				pulumi.String("password"),
 // 				pulumi.String("refresh_token"),
 // 			},
+// 			InitiateLoginUri:               pulumi.String("https://example.com/login"),
 // 			IsFirstParty:                   pulumi.Bool(true),
 // 			IsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),
 // 			JwtConfiguration: &ClientJwtConfigurationArgs{
@@ -114,6 +115,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// A client can be imported using the client's ID, e.g.
+//
+// ```sh
+//  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
+// ```
 type Client struct {
 	pulumi.CustomResourceState
 
@@ -152,8 +161,9 @@ type Client struct {
 	// String. Form template for WS-Federation protocol.
 	FormTemplate pulumi.StringPtrOutput `pulumi:"formTemplate"`
 	// List(String). Types of grants that this client is authorized to use.
-	GrantTypes       pulumi.StringArrayOutput `pulumi:"grantTypes"`
-	InitiateLoginUri pulumi.StringPtrOutput   `pulumi:"initiateLoginUri"`
+	GrantTypes pulumi.StringArrayOutput `pulumi:"grantTypes"`
+	// String. Initiate login uri, must be https.
+	InitiateLoginUri pulumi.StringPtrOutput `pulumi:"initiateLoginUri"`
 	// Boolean. Indicates whether or not this client is a first-party client.
 	IsFirstParty pulumi.BoolOutput `pulumi:"isFirstParty"`
 	// Boolean. Indicates whether or not the token endpoint IP header is trusted.
@@ -176,6 +186,8 @@ type Client struct {
 	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
 	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
 	RefreshToken ClientRefreshTokenOutput `pulumi:"refreshToken"`
+	// List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+	SigningKeys pulumi.MapArrayOutput `pulumi:"signingKeys"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso pulumi.BoolPtrOutput `pulumi:"sso"`
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -253,8 +265,9 @@ type clientState struct {
 	// String. Form template for WS-Federation protocol.
 	FormTemplate *string `pulumi:"formTemplate"`
 	// List(String). Types of grants that this client is authorized to use.
-	GrantTypes       []string `pulumi:"grantTypes"`
-	InitiateLoginUri *string  `pulumi:"initiateLoginUri"`
+	GrantTypes []string `pulumi:"grantTypes"`
+	// String. Initiate login uri, must be https.
+	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
 	// Boolean. Indicates whether or not this client is a first-party client.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
 	// Boolean. Indicates whether or not the token endpoint IP header is trusted.
@@ -277,6 +290,8 @@ type clientState struct {
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
+	// List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+	SigningKeys []map[string]interface{} `pulumi:"signingKeys"`
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso *bool `pulumi:"sso"`
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -323,7 +338,8 @@ type ClientState struct {
 	// String. Form template for WS-Federation protocol.
 	FormTemplate pulumi.StringPtrInput
 	// List(String). Types of grants that this client is authorized to use.
-	GrantTypes       pulumi.StringArrayInput
+	GrantTypes pulumi.StringArrayInput
+	// String. Initiate login uri, must be https.
 	InitiateLoginUri pulumi.StringPtrInput
 	// Boolean. Indicates whether or not this client is a first-party client.
 	IsFirstParty pulumi.BoolPtrInput
@@ -347,6 +363,8 @@ type ClientState struct {
 	OrganizationUsage pulumi.StringPtrInput
 	// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
 	RefreshToken ClientRefreshTokenPtrInput
+	// List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+	SigningKeys pulumi.MapArrayInput
 	// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
 	Sso pulumi.BoolPtrInput
 	// Boolean. Indicates whether or not SSO is disabled.
@@ -393,8 +411,9 @@ type clientArgs struct {
 	// String. Form template for WS-Federation protocol.
 	FormTemplate *string `pulumi:"formTemplate"`
 	// List(String). Types of grants that this client is authorized to use.
-	GrantTypes       []string `pulumi:"grantTypes"`
-	InitiateLoginUri *string  `pulumi:"initiateLoginUri"`
+	GrantTypes []string `pulumi:"grantTypes"`
+	// String. Initiate login uri, must be https.
+	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
 	// Boolean. Indicates whether or not this client is a first-party client.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
 	// Boolean. Indicates whether or not the token endpoint IP header is trusted.
@@ -460,7 +479,8 @@ type ClientArgs struct {
 	// String. Form template for WS-Federation protocol.
 	FormTemplate pulumi.StringPtrInput
 	// List(String). Types of grants that this client is authorized to use.
-	GrantTypes       pulumi.StringArrayInput
+	GrantTypes pulumi.StringArrayInput
+	// String. Initiate login uri, must be https.
 	InitiateLoginUri pulumi.StringPtrInput
 	// Boolean. Indicates whether or not this client is a first-party client.
 	IsFirstParty pulumi.BoolPtrInput

@@ -6,7 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+ * With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
+ * (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
+ * and manage connections to be used with your clients and users.
  *
  * ## Example Usage
  *
@@ -38,7 +40,16 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allowes the creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+ * > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+ * creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+ *
+ * ## Import
+ *
+ * Connections can be imported using their id, e.g.
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+ * ```
  */
 export class Connection extends pulumi.CustomResource {
     /**
@@ -77,7 +88,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly enabledClients!: pulumi.Output<string[]>;
     /**
-     * Indicates whether or not the connection is domain level.
+     * Indicates whether the connection is domain level.
      */
     public readonly isDomainConnection!: pulumi.Output<boolean>;
     /**
@@ -160,7 +171,7 @@ export interface ConnectionState {
      */
     enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Indicates whether or not the connection is domain level.
+     * Indicates whether the connection is domain level.
      */
     isDomainConnection?: pulumi.Input<boolean>;
     /**
@@ -202,7 +213,7 @@ export interface ConnectionArgs {
      */
     enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Indicates whether or not the connection is domain level.
+     * Indicates whether the connection is domain level.
      */
     isDomainConnection?: pulumi.Input<boolean>;
     /**

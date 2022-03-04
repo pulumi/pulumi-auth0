@@ -25,8 +25,9 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
-    public readonly clientId!: pulumi.Output<string>;
-    public readonly clientSecret!: pulumi.Output<string>;
+    public readonly apiToken!: pulumi.Output<string | undefined>;
+    public readonly clientId!: pulumi.Output<string | undefined>;
+    public readonly clientSecret!: pulumi.Output<string | undefined>;
     public readonly domain!: pulumi.Output<string>;
 
     /**
@@ -40,15 +41,10 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.clientId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clientId'");
-            }
-            if ((!args || args.clientSecret === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clientSecret'");
-            }
             if ((!args || args.domain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
+            resourceInputs["apiToken"] = args ? args.apiToken : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
@@ -63,8 +59,9 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    clientId: pulumi.Input<string>;
-    clientSecret: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     debug?: pulumi.Input<boolean>;
     domain: pulumi.Input<string>;
 }

@@ -14,6 +14,8 @@ from .custom_domain import *
 from .custom_domain_verification import *
 from .email import *
 from .email_template import *
+from .get_client import *
+from .get_global_client import *
 from .global_client import *
 from .guardian import *
 from .hook import *

@@ -56,6 +56,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Existing organizations can be imported using organization id, e.g.
+//
+// ```sh
+//  $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+// ```
 type Organization struct {
 	pulumi.CustomResourceState
 
