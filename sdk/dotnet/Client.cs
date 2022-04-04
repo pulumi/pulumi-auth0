@@ -74,6 +74,11 @@ namespace Pulumi.Auth0
     ///             {
     ///                 { "foo", "zoo" },
     ///             },
+    ///             ClientSecretRotationTrigger = 
+    ///             {
+    ///                 { "triggered_at", "2018-01-02T23:12:01Z" },
+    ///                 { "triggered_by", "auth0" },
+    ///             },
     ///             CustomLoginPageOn = true,
     ///             Description = "Test Applications Long Description",
     ///             GrantTypes = 
@@ -193,7 +198,7 @@ namespace Pulumi.Auth0
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Map.
+        /// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         [Output("clientSecretRotationTrigger")]
         public Output<ImmutableDictionary<string, object>?> ClientSecretRotationTrigger { get; private set; } = null!;
@@ -280,7 +285,7 @@ namespace Pulumi.Auth0
         /// List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         /// </summary>
         [Output("mobile")]
-        public Output<Outputs.ClientMobile?> Mobile { get; private set; } = null!;
+        public Output<Outputs.ClientMobile> Mobile { get; private set; } = null!;
 
         /// <summary>
         /// String. Name of the client.
@@ -470,7 +475,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _clientSecretRotationTrigger;
 
         /// <summary>
-        /// Map.
+        /// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         public InputMap<object> ClientSecretRotationTrigger
         {
@@ -734,7 +739,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _clientSecretRotationTrigger;
 
         /// <summary>
-        /// Map.
+        /// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         public InputMap<object> ClientSecretRotationTrigger
         {

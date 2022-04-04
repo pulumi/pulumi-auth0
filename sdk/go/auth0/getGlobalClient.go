@@ -62,6 +62,7 @@ type LookupGlobalClientResult struct {
 	ClientId *string `pulumi:"clientId"`
 	// (Optional) Map(String)
 	ClientMetadata  map[string]interface{} `pulumi:"clientMetadata"`
+	ClientSecret    string                 `pulumi:"clientSecret"`
 	CrossOriginAuth bool                   `pulumi:"crossOriginAuth"`
 	CrossOriginLoc  string                 `pulumi:"crossOriginLoc"`
 	// String. Content of the custom login page.
@@ -162,6 +163,10 @@ func (o LookupGlobalClientResultOutput) ClientId() pulumi.StringPtrOutput {
 // (Optional) Map(String)
 func (o LookupGlobalClientResultOutput) ClientMetadata() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupGlobalClientResult) map[string]interface{} { return v.ClientMetadata }).(pulumi.MapOutput)
+}
+
+func (o LookupGlobalClientResultOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
 func (o LookupGlobalClientResultOutput) CrossOriginAuth() pulumi.BoolOutput {

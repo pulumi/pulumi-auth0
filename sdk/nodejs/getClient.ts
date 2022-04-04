@@ -61,6 +61,7 @@ export interface GetClientResult {
     readonly callbacks: string[];
     readonly clientId?: string;
     readonly clientMetadata: {[key: string]: any};
+    readonly clientSecret: string;
     readonly crossOriginAuth: boolean;
     readonly crossOriginLoc: string;
     readonly customLoginPage: string;

@@ -12,12 +12,16 @@ __all__ = [
     'ActionDependencyArgs',
     'ActionSecretArgs',
     'ActionSupportedTriggersArgs',
+    'AttackProtectionBreachedPasswordDetectionArgs',
+    'AttackProtectionBruteForceProtectionArgs',
+    'AttackProtectionSuspiciousIpThrottlingArgs',
+    'AttackProtectionSuspiciousIpThrottlingPreLoginArgs',
+    'AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs',
     'BrandingColorsArgs',
     'BrandingFontArgs',
     'BrandingUniversalLoginArgs',
     'ClientAddonsArgs',
     'ClientAddonsSamlpArgs',
-    'ClientAddonsSamlpLogoutArgs',
     'ClientJwtConfigurationArgs',
     'ClientMobileArgs',
     'ClientMobileAndroidArgs',
@@ -41,7 +45,6 @@ __all__ = [
     'EmailCredentialsArgs',
     'GlobalClientAddonsArgs',
     'GlobalClientAddonsSamlpArgs',
-    'GlobalClientAddonsSamlpLogoutArgs',
     'GlobalClientJwtConfigurationArgs',
     'GlobalClientMobileArgs',
     'GlobalClientMobileAndroidArgs',
@@ -175,6 +178,321 @@ class ActionSupportedTriggersArgs:
     @version.setter
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class AttackProtectionBreachedPasswordDetectionArgs:
+    def __init__(__self__, *,
+                 admin_notification_frequencies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 shields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] admin_notification_frequencies: When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        :param pulumi.Input[bool] enabled: Whether or not breached password detection is active.
+        :param pulumi.Input[str] method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        if admin_notification_frequencies is not None:
+            pulumi.set(__self__, "admin_notification_frequencies", admin_notification_frequencies)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter(name="adminNotificationFrequencies")
+    def admin_notification_frequencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        """
+        return pulumi.get(self, "admin_notification_frequencies")
+
+    @admin_notification_frequencies.setter
+    def admin_notification_frequencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "admin_notification_frequencies", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not breached password detection is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        return pulumi.get(self, "shields")
+
+    @shields.setter
+    def shields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "shields", value)
+
+
+@pulumi.input_type
+class AttackProtectionBruteForceProtectionArgs:
+    def __init__(__self__, *,
+                 allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 max_attempts: Optional[pulumi.Input[int]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 shields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowlists: List of trusted IP addresses that will not have attack protection enforced against them.
+        :param pulumi.Input[bool] enabled: Whether or not breached password detection is active.
+        :param pulumi.Input[int] max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
+        :param pulumi.Input[str] mode: Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        if allowlists is not None:
+            pulumi.set(__self__, "allowlists", allowlists)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of trusted IP addresses that will not have attack protection enforced against them.
+        """
+        return pulumi.get(self, "allowlists")
+
+    @allowlists.setter
+    def allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowlists", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not breached password detection is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @max_attempts.setter
+    def max_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_attempts", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        return pulumi.get(self, "shields")
+
+    @shields.setter
+    def shields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "shields", value)
+
+
+@pulumi.input_type
+class AttackProtectionSuspiciousIpThrottlingArgs:
+    def __init__(__self__, *,
+                 allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 pre_login: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreLoginArgs']] = None,
+                 pre_user_registration: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs']] = None,
+                 shields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowlists: List of trusted IP addresses that will not have attack protection enforced against them.
+        :param pulumi.Input[bool] enabled: Whether or not breached password detection is active.
+        :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreLoginArgs'] pre_login: Configuration options that apply before every login attempt. Only available on public tenants.
+        :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs'] pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        if allowlists is not None:
+            pulumi.set(__self__, "allowlists", allowlists)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if pre_login is not None:
+            pulumi.set(__self__, "pre_login", pre_login)
+        if pre_user_registration is not None:
+            pulumi.set(__self__, "pre_user_registration", pre_user_registration)
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of trusted IP addresses that will not have attack protection enforced against them.
+        """
+        return pulumi.get(self, "allowlists")
+
+    @allowlists.setter
+    def allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowlists", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not breached password detection is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="preLogin")
+    def pre_login(self) -> Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreLoginArgs']]:
+        """
+        Configuration options that apply before every login attempt. Only available on public tenants.
+        """
+        return pulumi.get(self, "pre_login")
+
+    @pre_login.setter
+    def pre_login(self, value: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreLoginArgs']]):
+        pulumi.set(self, "pre_login", value)
+
+    @property
+    @pulumi.getter(name="preUserRegistration")
+    def pre_user_registration(self) -> Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs']]:
+        """
+        Configuration options that apply before every user registration attempt. Only available on public tenants.
+        """
+        return pulumi.get(self, "pre_user_registration")
+
+    @pre_user_registration.setter
+    def pre_user_registration(self, value: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs']]):
+        pulumi.set(self, "pre_user_registration", value)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        return pulumi.get(self, "shields")
+
+    @shields.setter
+    def shields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "shields", value)
+
+
+@pulumi.input_type
+class AttackProtectionSuspiciousIpThrottlingPreLoginArgs:
+    def __init__(__self__, *,
+                 max_attempts: Optional[pulumi.Input[int]] = None,
+                 rate: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if rate is not None:
+            pulumi.set(__self__, "rate", rate)
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @max_attempts.setter
+    def max_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_attempts", value)
+
+    @property
+    @pulumi.getter
+    def rate(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "rate")
+
+    @rate.setter
+    def rate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rate", value)
+
+
+@pulumi.input_type
+class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs:
+    def __init__(__self__, *,
+                 max_attempts: Optional[pulumi.Input[int]] = None,
+                 rate: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if rate is not None:
+            pulumi.set(__self__, "rate", rate)
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @max_attempts.setter
+    def max_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_attempts", value)
+
+    @property
+    @pulumi.getter
+    def rate(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "rate")
+
+    @rate.setter
+    def rate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rate", value)
 
 
 @pulumi.input_type
@@ -728,7 +1046,7 @@ class ClientAddonsSamlpArgs:
                  digest_algorithm: Optional[pulumi.Input[str]] = None,
                  include_attribute_name_format: Optional[pulumi.Input[bool]] = None,
                  lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-                 logout: Optional[pulumi.Input['ClientAddonsSamlpLogoutArgs']] = None,
+                 logout: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  map_identities: Optional[pulumi.Input[bool]] = None,
                  map_unknown_claims_as_is: Optional[pulumi.Input[bool]] = None,
                  mappings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -749,7 +1067,7 @@ class ClientAddonsSamlpArgs:
         :param pulumi.Input[str] digest_algorithm: String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
         :param pulumi.Input[bool] include_attribute_name_format: Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
         :param pulumi.Input[int] lifetime_in_seconds: Integer, (Default=3600). Number of seconds during which the token is valid.
-        :param pulumi.Input['ClientAddonsSamlpLogoutArgs'] logout: Map(Resource). Configuration settings for logout. For details, see Logout.
+        :param pulumi.Input[Mapping[str, Any]] logout: Map(Resource). Configuration settings for logout. For details, see Logout.
         :param pulumi.Input[bool] map_identities: Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
         :param pulumi.Input[bool] map_unknown_claims_as_is: Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
         :param pulumi.Input[Mapping[str, Any]] mappings: Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
@@ -901,14 +1219,14 @@ class ClientAddonsSamlpArgs:
 
     @property
     @pulumi.getter
-    def logout(self) -> Optional[pulumi.Input['ClientAddonsSamlpLogoutArgs']]:
+    def logout(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Map(Resource). Configuration settings for logout. For details, see Logout.
         """
         return pulumi.get(self, "logout")
 
     @logout.setter
-    def logout(self, value: Optional[pulumi.Input['ClientAddonsSamlpLogoutArgs']]):
+    def logout(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "logout", value)
 
     @property
@@ -1042,45 +1360,6 @@ class ClientAddonsSamlpArgs:
     @typed_attributes.setter
     def typed_attributes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "typed_attributes", value)
-
-
-@pulumi.input_type
-class ClientAddonsSamlpLogoutArgs:
-    def __init__(__self__, *,
-                 callback: Optional[pulumi.Input[str]] = None,
-                 slo_enabled: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] callback: String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-        :param pulumi.Input[bool] slo_enabled: Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-        """
-        if callback is not None:
-            pulumi.set(__self__, "callback", callback)
-        if slo_enabled is not None:
-            pulumi.set(__self__, "slo_enabled", slo_enabled)
-
-    @property
-    @pulumi.getter
-    def callback(self) -> Optional[pulumi.Input[str]]:
-        """
-        String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-        """
-        return pulumi.get(self, "callback")
-
-    @callback.setter
-    def callback(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "callback", value)
-
-    @property
-    @pulumi.getter(name="sloEnabled")
-    def slo_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-        """
-        return pulumi.get(self, "slo_enabled")
-
-    @slo_enabled.setter
-    def slo_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "slo_enabled", value)
 
 
 @pulumi.input_type
@@ -3515,7 +3794,7 @@ class GlobalClientAddonsSamlpArgs:
                  digest_algorithm: Optional[pulumi.Input[str]] = None,
                  include_attribute_name_format: Optional[pulumi.Input[bool]] = None,
                  lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-                 logout: Optional[pulumi.Input['GlobalClientAddonsSamlpLogoutArgs']] = None,
+                 logout: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  map_identities: Optional[pulumi.Input[bool]] = None,
                  map_unknown_claims_as_is: Optional[pulumi.Input[bool]] = None,
                  mappings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -3642,11 +3921,11 @@ class GlobalClientAddonsSamlpArgs:
 
     @property
     @pulumi.getter
-    def logout(self) -> Optional[pulumi.Input['GlobalClientAddonsSamlpLogoutArgs']]:
+    def logout(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "logout")
 
     @logout.setter
-    def logout(self, value: Optional[pulumi.Input['GlobalClientAddonsSamlpLogoutArgs']]):
+    def logout(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "logout", value)
 
     @property
@@ -3747,35 +4026,6 @@ class GlobalClientAddonsSamlpArgs:
     @typed_attributes.setter
     def typed_attributes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "typed_attributes", value)
-
-
-@pulumi.input_type
-class GlobalClientAddonsSamlpLogoutArgs:
-    def __init__(__self__, *,
-                 callback: Optional[pulumi.Input[str]] = None,
-                 slo_enabled: Optional[pulumi.Input[bool]] = None):
-        if callback is not None:
-            pulumi.set(__self__, "callback", callback)
-        if slo_enabled is not None:
-            pulumi.set(__self__, "slo_enabled", slo_enabled)
-
-    @property
-    @pulumi.getter
-    def callback(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "callback")
-
-    @callback.setter
-    def callback(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "callback", value)
-
-    @property
-    @pulumi.getter(name="sloEnabled")
-    def slo_enabled(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "slo_enabled")
-
-    @slo_enabled.setter
-    def slo_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "slo_enabled", value)
 
 
 @pulumi.input_type

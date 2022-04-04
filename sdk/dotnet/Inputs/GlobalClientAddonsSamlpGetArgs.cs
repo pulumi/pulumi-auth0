@@ -37,7 +37,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<int>? LifetimeInSeconds { get; set; }
 
         [Input("logout")]
-        public Input<Inputs.GlobalClientAddonsSamlpLogoutGetArgs>? Logout { get; set; }
+        private InputMap<object>? _logout;
+        public InputMap<object> Logout
+        {
+            get => _logout ?? (_logout = new InputMap<object>());
+            set => _logout = value;
+        }
 
         [Input("mapIdentities")]
         public Input<bool>? MapIdentities { get; set; }

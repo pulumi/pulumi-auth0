@@ -61,6 +61,7 @@ export interface GetGlobalClientResult {
      * (Optional) Map(String)
      */
     readonly clientMetadata: {[key: string]: any};
+    readonly clientSecret: string;
     readonly crossOriginAuth: boolean;
     readonly crossOriginLoc: string;
     /**

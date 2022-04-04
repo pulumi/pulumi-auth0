@@ -65,6 +65,10 @@ import (
 // 			ClientMetadata: pulumi.AnyMap{
 // 				"foo": pulumi.Any("zoo"),
 // 			},
+// 			ClientSecretRotationTrigger: pulumi.AnyMap{
+// 				"triggered_at": pulumi.Any("2018-01-02T23:12:01Z"),
+// 				"triggered_by": pulumi.Any("auth0"),
+// 			},
 // 			CustomLoginPageOn: pulumi.Bool(true),
 // 			Description:       pulumi.String("Test Applications Long Description"),
 // 			GrantTypes: pulumi.StringArray{
@@ -144,7 +148,7 @@ type Client struct {
 	// Map(String)
 	ClientMetadata pulumi.MapOutput    `pulumi:"clientMetadata"`
 	ClientSecret   pulumi.StringOutput `pulumi:"clientSecret"`
-	// Map.
+	// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger pulumi.MapOutput `pulumi:"clientSecretRotationTrigger"`
 	// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
 	CrossOriginAuth pulumi.BoolPtrOutput `pulumi:"crossOriginAuth"`
@@ -173,7 +177,7 @@ type Client struct {
 	// String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
 	LogoUri pulumi.StringPtrOutput `pulumi:"logoUri"`
 	// List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
-	Mobile ClientMobilePtrOutput `pulumi:"mobile"`
+	Mobile ClientMobileOutput `pulumi:"mobile"`
 	// String. Name of the client.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
@@ -248,7 +252,7 @@ type clientState struct {
 	// Map(String)
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
 	ClientSecret   *string                `pulumi:"clientSecret"`
-	// Map.
+	// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
 	// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
 	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
@@ -321,7 +325,7 @@ type ClientState struct {
 	// Map(String)
 	ClientMetadata pulumi.MapInput
 	ClientSecret   pulumi.StringPtrInput
-	// Map.
+	// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger pulumi.MapInput
 	// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
 	CrossOriginAuth pulumi.BoolPtrInput
@@ -394,7 +398,7 @@ type clientArgs struct {
 	Callbacks []string `pulumi:"callbacks"`
 	// Map(String)
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
-	// Map.
+	// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
 	// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
 	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
@@ -462,7 +466,7 @@ type ClientArgs struct {
 	Callbacks pulumi.StringArrayInput
 	// Map(String)
 	ClientMetadata pulumi.MapInput
-	// Map.
+	// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger pulumi.MapInput
 	// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
 	CrossOriginAuth pulumi.BoolPtrInput

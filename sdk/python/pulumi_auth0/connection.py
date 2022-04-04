@@ -22,6 +22,7 @@ class ConnectionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 show_as_button: Optional[pulumi.Input[bool]] = None,
                  strategy_version: Optional[pulumi.Input[str]] = None,
                  validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -33,6 +34,7 @@ class ConnectionArgs:
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available for enterprise connections.
         :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
         """
@@ -49,6 +51,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "options", options)
         if realms is not None:
             pulumi.set(__self__, "realms", realms)
+        if show_as_button is not None:
+            pulumi.set(__self__, "show_as_button", show_as_button)
         if strategy_version is not None:
             pulumi.set(__self__, "strategy_version", strategy_version)
         if validation is not None:
@@ -139,6 +143,18 @@ class ConnectionArgs:
         pulumi.set(self, "realms", value)
 
     @property
+    @pulumi.getter(name="showAsButton")
+    def show_as_button(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Display connection as a button. Only available for enterprise connections.
+        """
+        return pulumi.get(self, "show_as_button")
+
+    @show_as_button.setter
+    def show_as_button(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_as_button", value)
+
+    @property
     @pulumi.getter(name="strategyVersion")
     def strategy_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -172,6 +188,7 @@ class _ConnectionState:
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 show_as_button: Optional[pulumi.Input[bool]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
                  strategy_version: Optional[pulumi.Input[str]] = None,
                  validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -183,6 +200,7 @@ class _ConnectionState:
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available for enterprise connections.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
@@ -199,6 +217,8 @@ class _ConnectionState:
             pulumi.set(__self__, "options", options)
         if realms is not None:
             pulumi.set(__self__, "realms", realms)
+        if show_as_button is not None:
+            pulumi.set(__self__, "show_as_button", show_as_button)
         if strategy is not None:
             pulumi.set(__self__, "strategy", strategy)
         if strategy_version is not None:
@@ -279,6 +299,18 @@ class _ConnectionState:
         pulumi.set(self, "realms", value)
 
     @property
+    @pulumi.getter(name="showAsButton")
+    def show_as_button(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Display connection as a button. Only available for enterprise connections.
+        """
+        return pulumi.get(self, "show_as_button")
+
+    @show_as_button.setter
+    def show_as_button(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_as_button", value)
+
+    @property
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -326,6 +358,7 @@ class Connection(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 show_as_button: Optional[pulumi.Input[bool]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
                  strategy_version: Optional[pulumi.Input[str]] = None,
                  validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -384,6 +417,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available for enterprise connections.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
@@ -461,6 +495,7 @@ class Connection(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 show_as_button: Optional[pulumi.Input[bool]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
                  strategy_version: Optional[pulumi.Input[str]] = None,
                  validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -482,6 +517,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = options
             __props__.__dict__["realms"] = realms
+            __props__.__dict__["show_as_button"] = show_as_button
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy
@@ -503,6 +539,7 @@ class Connection(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            show_as_button: Optional[pulumi.Input[bool]] = None,
             strategy: Optional[pulumi.Input[str]] = None,
             strategy_version: Optional[pulumi.Input[str]] = None,
             validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Connection':
@@ -519,6 +556,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available for enterprise connections.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
         :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
@@ -533,6 +571,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
         __props__.__dict__["realms"] = realms
+        __props__.__dict__["show_as_button"] = show_as_button
         __props__.__dict__["strategy"] = strategy
         __props__.__dict__["strategy_version"] = strategy_version
         __props__.__dict__["validation"] = validation
@@ -585,6 +624,14 @@ class Connection(pulumi.CustomResource):
         Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
         """
         return pulumi.get(self, "realms")
+
+    @property
+    @pulumi.getter(name="showAsButton")
+    def show_as_button(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Display connection as a button. Only available for enterprise connections.
+        """
+        return pulumi.get(self, "show_as_button")
 
     @property
     @pulumi.getter

@@ -60,11 +60,17 @@ namespace Pulumi.Auth0.Inputs
         [Input("lifetimeInSeconds")]
         public Input<int>? LifetimeInSeconds { get; set; }
 
+        [Input("logout")]
+        private InputMap<object>? _logout;
+
         /// <summary>
         /// Map(Resource). Configuration settings for logout. For details, see Logout.
         /// </summary>
-        [Input("logout")]
-        public Input<Inputs.ClientAddonsSamlpLogoutGetArgs>? Logout { get; set; }
+        public InputMap<object> Logout
+        {
+            get => _logout ?? (_logout = new InputMap<object>());
+            set => _logout = value;
+        }
 
         /// <summary>
         /// Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.

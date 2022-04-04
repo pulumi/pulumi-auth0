@@ -21,7 +21,7 @@ class GetGlobalClientResult:
     """
     A collection of values returned by getGlobalClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_id=None, client_metadata=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_conformant=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_id=None, client_metadata=None, client_secret=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_conformant=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -46,6 +46,9 @@ class GetGlobalClientResult:
         if client_metadata and not isinstance(client_metadata, dict):
             raise TypeError("Expected argument 'client_metadata' to be a dict")
         pulumi.set(__self__, "client_metadata", client_metadata)
+        if client_secret and not isinstance(client_secret, str):
+            raise TypeError("Expected argument 'client_secret' to be a str")
+        pulumi.set(__self__, "client_secret", client_secret)
         if cross_origin_auth and not isinstance(cross_origin_auth, bool):
             raise TypeError("Expected argument 'cross_origin_auth' to be a bool")
         pulumi.set(__self__, "cross_origin_auth", cross_origin_auth)
@@ -171,6 +174,11 @@ class GetGlobalClientResult:
         (Optional) Map(String)
         """
         return pulumi.get(self, "client_metadata")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="crossOriginAuth")
@@ -326,6 +334,7 @@ class AwaitableGetGlobalClientResult(GetGlobalClientResult):
             callbacks=self.callbacks,
             client_id=self.client_id,
             client_metadata=self.client_metadata,
+            client_secret=self.client_secret,
             cross_origin_auth=self.cross_origin_auth,
             cross_origin_loc=self.cross_origin_loc,
             custom_login_page=self.custom_login_page,
@@ -391,6 +400,7 @@ def get_global_client(client_id: Optional[str] = None,
         callbacks=__ret__.callbacks,
         client_id=__ret__.client_id,
         client_metadata=__ret__.client_metadata,
+        client_secret=__ret__.client_secret,
         cross_origin_auth=__ret__.cross_origin_auth,
         cross_origin_loc=__ret__.cross_origin_loc,
         custom_login_page=__ret__.custom_login_page,

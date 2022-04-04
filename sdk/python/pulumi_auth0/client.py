@@ -56,7 +56,7 @@ class ClientArgs:
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         :param pulumi.Input[bool] cross_origin_auth: Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         :param pulumi.Input[str] cross_origin_loc: String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
         :param pulumi.Input[str] custom_login_page: String. Content of the custom login page.
@@ -237,7 +237,7 @@ class ClientArgs:
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Map.
+        Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
@@ -583,7 +583,7 @@ class _ClientState:
         :param pulumi.Input[str] client_id: String. ID of the client.
                * `client_secret`<sup>1</sup> - String. Secret for the client; keep this private.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         :param pulumi.Input[bool] cross_origin_auth: Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         :param pulumi.Input[str] cross_origin_loc: String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
         :param pulumi.Input[str] custom_login_page: String. Content of the custom login page.
@@ -793,7 +793,7 @@ class _ClientState:
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Map.
+        Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
@@ -1180,6 +1180,10 @@ class Client(pulumi.CustomResource):
             client_metadata={
                 "foo": "zoo",
             },
+            client_secret_rotation_trigger={
+                "triggered_at": "2018-01-02T23:12:01Z",
+                "triggered_by": "auth0",
+            },
             custom_login_page_on=True,
             description="Test Applications Long Description",
             grant_types=[
@@ -1239,7 +1243,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] app_type: String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         :param pulumi.Input[bool] cross_origin_auth: Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         :param pulumi.Input[str] cross_origin_loc: String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
         :param pulumi.Input[str] custom_login_page: String. Content of the custom login page.
@@ -1310,6 +1314,10 @@ class Client(pulumi.CustomResource):
             callbacks=["https://example.com/callback"],
             client_metadata={
                 "foo": "zoo",
+            },
+            client_secret_rotation_trigger={
+                "triggered_at": "2018-01-02T23:12:01Z",
+                "triggered_by": "auth0",
             },
             custom_login_page_on=True,
             description="Test Applications Long Description",
@@ -1518,7 +1526,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] client_id: String. ID of the client.
                * `client_secret`<sup>1</sup> - String. Secret for the client; keep this private.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Map(String)
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         :param pulumi.Input[bool] cross_origin_auth: Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
         :param pulumi.Input[str] cross_origin_loc: String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
         :param pulumi.Input[str] custom_login_page: String. Content of the custom login page.
@@ -1660,7 +1668,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        Map.
+        Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
@@ -1770,7 +1778,7 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mobile(self) -> pulumi.Output[Optional['outputs.ClientMobile']]:
+    def mobile(self) -> pulumi.Output['outputs.ClientMobile']:
         """
         List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
         """
