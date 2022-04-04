@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./action";
+export * from "./attackProtection";
 export * from "./branding";
 export * from "./client";
 export * from "./clientGrant";
@@ -16,6 +17,7 @@ export * from "./email";
 export * from "./emailTemplate";
 export * from "./getClient";
 export * from "./getGlobalClient";
+export * from "./getTenant";
 export * from "./globalClient";
 export * from "./guardian";
 export * from "./hook";
@@ -43,6 +45,7 @@ export {
 
 // Import resources to register:
 import { Action } from "./action";
+import { AttackProtection } from "./attackProtection";
 import { Branding } from "./branding";
 import { Client } from "./client";
 import { ClientGrant } from "./clientGrant";
@@ -72,6 +75,8 @@ const _module = {
         switch (type) {
             case "auth0:index/action:Action":
                 return new Action(name, <any>undefined, { urn })
+            case "auth0:index/attackProtection:AttackProtection":
+                return new AttackProtection(name, <any>undefined, { urn })
             case "auth0:index/branding:Branding":
                 return new Branding(name, <any>undefined, { urn })
             case "auth0:index/client:Client":
@@ -122,6 +127,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("auth0", "index/action", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/attackProtection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/branding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)

@@ -13,12 +13,16 @@ __all__ = [
     'ActionDependency',
     'ActionSecret',
     'ActionSupportedTriggers',
+    'AttackProtectionBreachedPasswordDetection',
+    'AttackProtectionBruteForceProtection',
+    'AttackProtectionSuspiciousIpThrottling',
+    'AttackProtectionSuspiciousIpThrottlingPreLogin',
+    'AttackProtectionSuspiciousIpThrottlingPreUserRegistration',
     'BrandingColors',
     'BrandingFont',
     'BrandingUniversalLogin',
     'ClientAddons',
     'ClientAddonsSamlp',
-    'ClientAddonsSamlpLogout',
     'ClientJwtConfiguration',
     'ClientMobile',
     'ClientMobileAndroid',
@@ -42,7 +46,6 @@ __all__ = [
     'EmailCredentials',
     'GlobalClientAddons',
     'GlobalClientAddonsSamlp',
-    'GlobalClientAddonsSamlpLogout',
     'GlobalClientJwtConfiguration',
     'GlobalClientMobile',
     'GlobalClientMobileAndroid',
@@ -67,7 +70,6 @@ __all__ = [
     'TriggerBindingAction',
     'GetClientAddonResult',
     'GetClientAddonSamlpResult',
-    'GetClientAddonSamlpLogoutResult',
     'GetClientJwtConfigurationResult',
     'GetClientMobileResult',
     'GetClientMobileAndroidResult',
@@ -78,7 +80,6 @@ __all__ = [
     'GetClientRefreshTokenResult',
     'GetGlobalClientAddonResult',
     'GetGlobalClientAddonSamlpResult',
-    'GetGlobalClientAddonSamlpLogoutResult',
     'GetGlobalClientJwtConfigurationResult',
     'GetGlobalClientMobileResult',
     'GetGlobalClientMobileAndroidResult',
@@ -174,6 +175,336 @@ class ActionSupportedTriggers(dict):
         Trigger version.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class AttackProtectionBreachedPasswordDetection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminNotificationFrequencies":
+            suggest = "admin_notification_frequencies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionBreachedPasswordDetection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionBreachedPasswordDetection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionBreachedPasswordDetection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_notification_frequencies: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 method: Optional[str] = None,
+                 shields: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] admin_notification_frequencies: When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        :param bool enabled: Whether or not breached password detection is active.
+        :param str method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        :param Sequence[str] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        if admin_notification_frequencies is not None:
+            pulumi.set(__self__, "admin_notification_frequencies", admin_notification_frequencies)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter(name="adminNotificationFrequencies")
+    def admin_notification_frequencies(self) -> Optional[Sequence[str]]:
+        """
+        When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        """
+        return pulumi.get(self, "admin_notification_frequencies")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether or not breached password detection is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[str]:
+        """
+        The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        """
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[Sequence[str]]:
+        """
+        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class AttackProtectionBruteForceProtection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAttempts":
+            suggest = "max_attempts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionBruteForceProtection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionBruteForceProtection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionBruteForceProtection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowlists: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 max_attempts: Optional[int] = None,
+                 mode: Optional[str] = None,
+                 shields: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allowlists: List of trusted IP addresses that will not have attack protection enforced against them.
+        :param bool enabled: Whether or not breached password detection is active.
+        :param int max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
+        :param str mode: Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        :param Sequence[str] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        if allowlists is not None:
+            pulumi.set(__self__, "allowlists", allowlists)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def allowlists(self) -> Optional[Sequence[str]]:
+        """
+        List of trusted IP addresses that will not have attack protection enforced against them.
+        """
+        return pulumi.get(self, "allowlists")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether or not breached password detection is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[int]:
+        """
+        Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[Sequence[str]]:
+        """
+        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class AttackProtectionSuspiciousIpThrottling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preLogin":
+            suggest = "pre_login"
+        elif key == "preUserRegistration":
+            suggest = "pre_user_registration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionSuspiciousIpThrottling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionSuspiciousIpThrottling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionSuspiciousIpThrottling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowlists: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 pre_login: Optional['outputs.AttackProtectionSuspiciousIpThrottlingPreLogin'] = None,
+                 pre_user_registration: Optional['outputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration'] = None,
+                 shields: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allowlists: List of trusted IP addresses that will not have attack protection enforced against them.
+        :param bool enabled: Whether or not breached password detection is active.
+        :param 'AttackProtectionSuspiciousIpThrottlingPreLoginArgs' pre_login: Configuration options that apply before every login attempt. Only available on public tenants.
+        :param 'AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs' pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
+        :param Sequence[str] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        if allowlists is not None:
+            pulumi.set(__self__, "allowlists", allowlists)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if pre_login is not None:
+            pulumi.set(__self__, "pre_login", pre_login)
+        if pre_user_registration is not None:
+            pulumi.set(__self__, "pre_user_registration", pre_user_registration)
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def allowlists(self) -> Optional[Sequence[str]]:
+        """
+        List of trusted IP addresses that will not have attack protection enforced against them.
+        """
+        return pulumi.get(self, "allowlists")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether or not breached password detection is active.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="preLogin")
+    def pre_login(self) -> Optional['outputs.AttackProtectionSuspiciousIpThrottlingPreLogin']:
+        """
+        Configuration options that apply before every login attempt. Only available on public tenants.
+        """
+        return pulumi.get(self, "pre_login")
+
+    @property
+    @pulumi.getter(name="preUserRegistration")
+    def pre_user_registration(self) -> Optional['outputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration']:
+        """
+        Configuration options that apply before every user registration attempt. Only available on public tenants.
+        """
+        return pulumi.get(self, "pre_user_registration")
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[Sequence[str]]:
+        """
+        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        """
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class AttackProtectionSuspiciousIpThrottlingPreLogin(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAttempts":
+            suggest = "max_attempts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionSuspiciousIpThrottlingPreLogin. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionSuspiciousIpThrottlingPreLogin.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionSuspiciousIpThrottlingPreLogin.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_attempts: Optional[int] = None,
+                 rate: Optional[int] = None):
+        """
+        :param int max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if rate is not None:
+            pulumi.set(__self__, "rate", rate)
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[int]:
+        """
+        Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @property
+    @pulumi.getter
+    def rate(self) -> Optional[int]:
+        return pulumi.get(self, "rate")
+
+
+@pulumi.output_type
+class AttackProtectionSuspiciousIpThrottlingPreUserRegistration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAttempts":
+            suggest = "max_attempts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionSuspiciousIpThrottlingPreUserRegistration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionSuspiciousIpThrottlingPreUserRegistration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionSuspiciousIpThrottlingPreUserRegistration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_attempts: Optional[int] = None,
+                 rate: Optional[int] = None):
+        """
+        :param int max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if rate is not None:
+            pulumi.set(__self__, "rate", rate)
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[int]:
+        """
+        Maximum number of unsuccessful attempts. Only available on public tenants.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @property
+    @pulumi.getter
+    def rate(self) -> Optional[int]:
+        return pulumi.get(self, "rate")
 
 
 @pulumi.output_type
@@ -684,7 +1015,7 @@ class ClientAddonsSamlp(dict):
                  digest_algorithm: Optional[str] = None,
                  include_attribute_name_format: Optional[bool] = None,
                  lifetime_in_seconds: Optional[int] = None,
-                 logout: Optional['outputs.ClientAddonsSamlpLogout'] = None,
+                 logout: Optional[Mapping[str, Any]] = None,
                  map_identities: Optional[bool] = None,
                  map_unknown_claims_as_is: Optional[bool] = None,
                  mappings: Optional[Mapping[str, Any]] = None,
@@ -705,7 +1036,7 @@ class ClientAddonsSamlp(dict):
         :param str digest_algorithm: String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
         :param bool include_attribute_name_format: Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
         :param int lifetime_in_seconds: Integer, (Default=3600). Number of seconds during which the token is valid.
-        :param 'ClientAddonsSamlpLogoutArgs' logout: Map(Resource). Configuration settings for logout. For details, see Logout.
+        :param Mapping[str, Any] logout: Map(Resource). Configuration settings for logout. For details, see Logout.
         :param bool map_identities: Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
         :param bool map_unknown_claims_as_is: Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
         :param Mapping[str, Any] mappings: Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
@@ -825,7 +1156,7 @@ class ClientAddonsSamlp(dict):
 
     @property
     @pulumi.getter
-    def logout(self) -> Optional['outputs.ClientAddonsSamlpLogout']:
+    def logout(self) -> Optional[Mapping[str, Any]]:
         """
         Map(Resource). Configuration settings for logout. For details, see Logout.
         """
@@ -918,54 +1249,6 @@ class ClientAddonsSamlp(dict):
         Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
         """
         return pulumi.get(self, "typed_attributes")
-
-
-@pulumi.output_type
-class ClientAddonsSamlpLogout(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sloEnabled":
-            suggest = "slo_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ClientAddonsSamlpLogout. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ClientAddonsSamlpLogout.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ClientAddonsSamlpLogout.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 callback: Optional[str] = None,
-                 slo_enabled: Optional[bool] = None):
-        """
-        :param str callback: String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-        :param bool slo_enabled: Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-        """
-        if callback is not None:
-            pulumi.set(__self__, "callback", callback)
-        if slo_enabled is not None:
-            pulumi.set(__self__, "slo_enabled", slo_enabled)
-
-    @property
-    @pulumi.getter
-    def callback(self) -> Optional[str]:
-        """
-        String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-        """
-        return pulumi.get(self, "callback")
-
-    @property
-    @pulumi.getter(name="sloEnabled")
-    def slo_enabled(self) -> Optional[bool]:
-        """
-        Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-        """
-        return pulumi.get(self, "slo_enabled")
 
 
 @pulumi.output_type
@@ -3176,7 +3459,7 @@ class GlobalClientAddonsSamlp(dict):
                  digest_algorithm: Optional[str] = None,
                  include_attribute_name_format: Optional[bool] = None,
                  lifetime_in_seconds: Optional[int] = None,
-                 logout: Optional['outputs.GlobalClientAddonsSamlpLogout'] = None,
+                 logout: Optional[Mapping[str, Any]] = None,
                  map_identities: Optional[bool] = None,
                  map_unknown_claims_as_is: Optional[bool] = None,
                  mappings: Optional[Mapping[str, Any]] = None,
@@ -3271,7 +3554,7 @@ class GlobalClientAddonsSamlp(dict):
 
     @property
     @pulumi.getter
-    def logout(self) -> Optional['outputs.GlobalClientAddonsSamlpLogout']:
+    def logout(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "logout")
 
     @property
@@ -3328,44 +3611,6 @@ class GlobalClientAddonsSamlp(dict):
     @pulumi.getter(name="typedAttributes")
     def typed_attributes(self) -> Optional[bool]:
         return pulumi.get(self, "typed_attributes")
-
-
-@pulumi.output_type
-class GlobalClientAddonsSamlpLogout(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "sloEnabled":
-            suggest = "slo_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GlobalClientAddonsSamlpLogout. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GlobalClientAddonsSamlpLogout.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GlobalClientAddonsSamlpLogout.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 callback: Optional[str] = None,
-                 slo_enabled: Optional[bool] = None):
-        if callback is not None:
-            pulumi.set(__self__, "callback", callback)
-        if slo_enabled is not None:
-            pulumi.set(__self__, "slo_enabled", slo_enabled)
-
-    @property
-    @pulumi.getter
-    def callback(self) -> Optional[str]:
-        return pulumi.get(self, "callback")
-
-    @property
-    @pulumi.getter(name="sloEnabled")
-    def slo_enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "slo_enabled")
 
 
 @pulumi.output_type
@@ -4883,7 +5128,7 @@ class GetClientAddonSamlpResult(dict):
                  digest_algorithm: str,
                  include_attribute_name_format: bool,
                  lifetime_in_seconds: int,
-                 logout: 'outputs.GetClientAddonSamlpLogoutResult',
+                 logout: Mapping[str, Any],
                  map_identities: bool,
                  map_unknown_claims_as_is: bool,
                  mappings: Mapping[str, Any],
@@ -4958,7 +5203,7 @@ class GetClientAddonSamlpResult(dict):
 
     @property
     @pulumi.getter
-    def logout(self) -> 'outputs.GetClientAddonSamlpLogoutResult':
+    def logout(self) -> Mapping[str, Any]:
         return pulumi.get(self, "logout")
 
     @property
@@ -5015,27 +5260,6 @@ class GetClientAddonSamlpResult(dict):
     @pulumi.getter(name="typedAttributes")
     def typed_attributes(self) -> bool:
         return pulumi.get(self, "typed_attributes")
-
-
-@pulumi.output_type
-class GetClientAddonSamlpLogoutResult(dict):
-    def __init__(__self__, *,
-                 callback: Optional[str] = None,
-                 slo_enabled: Optional[bool] = None):
-        if callback is not None:
-            pulumi.set(__self__, "callback", callback)
-        if slo_enabled is not None:
-            pulumi.set(__self__, "slo_enabled", slo_enabled)
-
-    @property
-    @pulumi.getter
-    def callback(self) -> Optional[str]:
-        return pulumi.get(self, "callback")
-
-    @property
-    @pulumi.getter(name="sloEnabled")
-    def slo_enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "slo_enabled")
 
 
 @pulumi.output_type
@@ -5437,7 +5661,7 @@ class GetGlobalClientAddonSamlpResult(dict):
                  digest_algorithm: str,
                  include_attribute_name_format: bool,
                  lifetime_in_seconds: int,
-                 logout: 'outputs.GetGlobalClientAddonSamlpLogoutResult',
+                 logout: Mapping[str, Any],
                  map_identities: bool,
                  map_unknown_claims_as_is: bool,
                  mappings: Mapping[str, Any],
@@ -5512,7 +5736,7 @@ class GetGlobalClientAddonSamlpResult(dict):
 
     @property
     @pulumi.getter
-    def logout(self) -> 'outputs.GetGlobalClientAddonSamlpLogoutResult':
+    def logout(self) -> Mapping[str, Any]:
         return pulumi.get(self, "logout")
 
     @property
@@ -5569,27 +5793,6 @@ class GetGlobalClientAddonSamlpResult(dict):
     @pulumi.getter(name="typedAttributes")
     def typed_attributes(self) -> bool:
         return pulumi.get(self, "typed_attributes")
-
-
-@pulumi.output_type
-class GetGlobalClientAddonSamlpLogoutResult(dict):
-    def __init__(__self__, *,
-                 callback: Optional[str] = None,
-                 slo_enabled: Optional[bool] = None):
-        if callback is not None:
-            pulumi.set(__self__, "callback", callback)
-        if slo_enabled is not None:
-            pulumi.set(__self__, "slo_enabled", slo_enabled)
-
-    @property
-    @pulumi.getter
-    def callback(self) -> Optional[str]:
-        return pulumi.get(self, "callback")
-
-    @property
-    @pulumi.getter(name="sloEnabled")
-    def slo_enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "slo_enabled")
 
 
 @pulumi.output_type

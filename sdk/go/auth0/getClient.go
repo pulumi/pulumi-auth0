@@ -67,6 +67,7 @@ type LookupClientResult struct {
 	Callbacks         []string               `pulumi:"callbacks"`
 	ClientId          *string                `pulumi:"clientId"`
 	ClientMetadata    map[string]interface{} `pulumi:"clientMetadata"`
+	ClientSecret      string                 `pulumi:"clientSecret"`
 	CrossOriginAuth   bool                   `pulumi:"crossOriginAuth"`
 	CrossOriginLoc    string                 `pulumi:"crossOriginLoc"`
 	CustomLoginPage   string                 `pulumi:"customLoginPage"`
@@ -162,6 +163,10 @@ func (o LookupClientResultOutput) ClientId() pulumi.StringPtrOutput {
 
 func (o LookupClientResultOutput) ClientMetadata() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupClientResult) map[string]interface{} { return v.ClientMetadata }).(pulumi.MapOutput)
+}
+
+func (o LookupClientResultOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
 func (o LookupClientResultOutput) CrossOriginAuth() pulumi.BoolOutput {

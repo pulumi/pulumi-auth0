@@ -45,6 +45,10 @@ import * as utilities from "./utilities";
  *     clientMetadata: {
  *         foo: "zoo",
  *     },
+ *     clientSecretRotationTrigger: {
+ *         triggered_at: "2018-01-02T23:12:01Z",
+ *         triggered_by: "auth0",
+ *     },
  *     customLoginPageOn: true,
  *     description: "Test Applications Long Description",
  *     grantTypes: [
@@ -159,7 +163,7 @@ export class Client extends pulumi.CustomResource {
     public readonly clientMetadata!: pulumi.Output<{[key: string]: any} | undefined>;
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
     /**
-     * Map.
+     * Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      */
     public readonly clientSecretRotationTrigger!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -217,7 +221,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
      */
-    public readonly mobile!: pulumi.Output<outputs.ClientMobile | undefined>;
+    public readonly mobile!: pulumi.Output<outputs.ClientMobile>;
     /**
      * String. Name of the client.
      */
@@ -393,7 +397,7 @@ export interface ClientState {
     clientMetadata?: pulumi.Input<{[key: string]: any}>;
     clientSecret?: pulumi.Input<string>;
     /**
-     * Map.
+     * Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      */
     clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -531,7 +535,7 @@ export interface ClientArgs {
      */
     clientMetadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Map.
+     * Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      */
     clientSecretRotationTrigger?: pulumi.Input<{[key: string]: any}>;
     /**

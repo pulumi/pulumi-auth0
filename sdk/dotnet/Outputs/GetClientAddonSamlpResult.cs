@@ -21,7 +21,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly string DigestAlgorithm;
         public readonly bool IncludeAttributeNameFormat;
         public readonly int LifetimeInSeconds;
-        public readonly Outputs.GetClientAddonSamlpLogoutResult Logout;
+        public readonly ImmutableDictionary<string, object> Logout;
         public readonly bool MapIdentities;
         public readonly bool MapUnknownClaimsAsIs;
         public readonly ImmutableDictionary<string, object> Mappings;
@@ -52,7 +52,7 @@ namespace Pulumi.Auth0.Outputs
 
             int lifetimeInSeconds,
 
-            Outputs.GetClientAddonSamlpLogoutResult logout,
+            ImmutableDictionary<string, object> logout,
 
             bool mapIdentities,
 

@@ -83,6 +83,8 @@ type Connection struct {
 	Options ConnectionOptionsPtrOutput `pulumi:"options"`
 	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayOutput `pulumi:"realms"`
+	// Display connection as a button. Only available for enterprise connections.
+	ShowAsButton pulumi.BoolPtrOutput `pulumi:"showAsButton"`
 	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
 	Strategy pulumi.StringOutput `pulumi:"strategy"`
 	// Version 1 is deprecated, use version 2.
@@ -135,6 +137,8 @@ type connectionState struct {
 	Options *ConnectionOptions `pulumi:"options"`
 	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
 	Realms []string `pulumi:"realms"`
+	// Display connection as a button. Only available for enterprise connections.
+	ShowAsButton *bool `pulumi:"showAsButton"`
 	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
 	Strategy *string `pulumi:"strategy"`
 	// Version 1 is deprecated, use version 2.
@@ -156,6 +160,8 @@ type ConnectionState struct {
 	Options ConnectionOptionsPtrInput
 	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayInput
+	// Display connection as a button. Only available for enterprise connections.
+	ShowAsButton pulumi.BoolPtrInput
 	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
 	Strategy pulumi.StringPtrInput
 	// Version 1 is deprecated, use version 2.
@@ -181,6 +187,8 @@ type connectionArgs struct {
 	Options *ConnectionOptions `pulumi:"options"`
 	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
 	Realms []string `pulumi:"realms"`
+	// Display connection as a button. Only available for enterprise connections.
+	ShowAsButton *bool `pulumi:"showAsButton"`
 	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
 	Strategy string `pulumi:"strategy"`
 	// Version 1 is deprecated, use version 2.
@@ -203,6 +211,8 @@ type ConnectionArgs struct {
 	Options ConnectionOptionsPtrInput
 	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayInput
+	// Display connection as a button. Only available for enterprise connections.
+	ShowAsButton pulumi.BoolPtrInput
 	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
 	Strategy pulumi.StringInput
 	// Version 1 is deprecated, use version 2.

@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .action import *
+from .attack_protection import *
 from .branding import *
 from .client import *
 from .client_grant import *
@@ -16,6 +17,7 @@ from .email import *
 from .email_template import *
 from .get_client import *
 from .get_global_client import *
+from .get_tenant import *
 from .global_client import *
 from .guardian import *
 from .hook import *
@@ -50,6 +52,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/action:Action": "Action"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/attackProtection",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/attackProtection:AttackProtection": "AttackProtection"
   }
  },
  {

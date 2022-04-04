@@ -48,7 +48,7 @@ namespace Pulumi.Auth0.Outputs
         /// <summary>
         /// Map(Resource). Configuration settings for logout. For details, see Logout.
         /// </summary>
-        public readonly Outputs.ClientAddonsSamlpLogout? Logout;
+        public readonly ImmutableDictionary<string, object>? Logout;
         /// <summary>
         /// Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Pulumi.Auth0.Outputs
 
             int? lifetimeInSeconds,
 
-            Outputs.ClientAddonsSamlpLogout? logout,
+            ImmutableDictionary<string, object>? logout,
 
             bool? mapIdentities,
 

@@ -104,6 +104,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly realms!: pulumi.Output<string[]>;
     /**
+     * Display connection as a button. Only available for enterprise connections.
+     */
+    public readonly showAsButton!: pulumi.Output<boolean | undefined>;
+    /**
      * Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
      */
     public readonly strategy!: pulumi.Output<string>;
@@ -135,6 +139,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["realms"] = state ? state.realms : undefined;
+            resourceInputs["showAsButton"] = state ? state.showAsButton : undefined;
             resourceInputs["strategy"] = state ? state.strategy : undefined;
             resourceInputs["strategyVersion"] = state ? state.strategyVersion : undefined;
             resourceInputs["validation"] = state ? state.validation : undefined;
@@ -149,6 +154,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["realms"] = args ? args.realms : undefined;
+            resourceInputs["showAsButton"] = args ? args.showAsButton : undefined;
             resourceInputs["strategy"] = args ? args.strategy : undefined;
             resourceInputs["strategyVersion"] = args ? args.strategyVersion : undefined;
             resourceInputs["validation"] = args ? args.validation : undefined;
@@ -186,6 +192,10 @@ export interface ConnectionState {
      * Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
      */
     realms?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Display connection as a button. Only available for enterprise connections.
+     */
+    showAsButton?: pulumi.Input<boolean>;
     /**
      * Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
      */
@@ -228,6 +238,10 @@ export interface ConnectionArgs {
      * Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
      */
     realms?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Display connection as a button. Only available for enterprise connections.
+     */
+    showAsButton?: pulumi.Input<boolean>;
     /**
      * Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
      */

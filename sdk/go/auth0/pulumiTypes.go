@@ -378,6 +378,934 @@ func (o ActionSupportedTriggersPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AttackProtectionBreachedPasswordDetection struct {
+	// When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+	AdminNotificationFrequencies []string `pulumi:"adminNotificationFrequencies"`
+	// Whether or not breached password detection is active.
+	Enabled *bool `pulumi:"enabled"`
+	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+	Method *string `pulumi:"method"`
+	// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+	Shields []string `pulumi:"shields"`
+}
+
+// AttackProtectionBreachedPasswordDetectionInput is an input type that accepts AttackProtectionBreachedPasswordDetectionArgs and AttackProtectionBreachedPasswordDetectionOutput values.
+// You can construct a concrete instance of `AttackProtectionBreachedPasswordDetectionInput` via:
+//
+//          AttackProtectionBreachedPasswordDetectionArgs{...}
+type AttackProtectionBreachedPasswordDetectionInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBreachedPasswordDetectionOutput() AttackProtectionBreachedPasswordDetectionOutput
+	ToAttackProtectionBreachedPasswordDetectionOutputWithContext(context.Context) AttackProtectionBreachedPasswordDetectionOutput
+}
+
+type AttackProtectionBreachedPasswordDetectionArgs struct {
+	// When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+	AdminNotificationFrequencies pulumi.StringArrayInput `pulumi:"adminNotificationFrequencies"`
+	// Whether or not breached password detection is active.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+	Shields pulumi.StringArrayInput `pulumi:"shields"`
+}
+
+func (AttackProtectionBreachedPasswordDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBreachedPasswordDetection)(nil)).Elem()
+}
+
+func (i AttackProtectionBreachedPasswordDetectionArgs) ToAttackProtectionBreachedPasswordDetectionOutput() AttackProtectionBreachedPasswordDetectionOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBreachedPasswordDetectionArgs) ToAttackProtectionBreachedPasswordDetectionOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionOutput)
+}
+
+func (i AttackProtectionBreachedPasswordDetectionArgs) ToAttackProtectionBreachedPasswordDetectionPtrOutput() AttackProtectionBreachedPasswordDetectionPtrOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBreachedPasswordDetectionArgs) ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionOutput).ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionBreachedPasswordDetectionPtrInput is an input type that accepts AttackProtectionBreachedPasswordDetectionArgs, AttackProtectionBreachedPasswordDetectionPtr and AttackProtectionBreachedPasswordDetectionPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionBreachedPasswordDetectionPtrInput` via:
+//
+//          AttackProtectionBreachedPasswordDetectionArgs{...}
+//
+//  or:
+//
+//          nil
+type AttackProtectionBreachedPasswordDetectionPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBreachedPasswordDetectionPtrOutput() AttackProtectionBreachedPasswordDetectionPtrOutput
+	ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(context.Context) AttackProtectionBreachedPasswordDetectionPtrOutput
+}
+
+type attackProtectionBreachedPasswordDetectionPtrType AttackProtectionBreachedPasswordDetectionArgs
+
+func AttackProtectionBreachedPasswordDetectionPtr(v *AttackProtectionBreachedPasswordDetectionArgs) AttackProtectionBreachedPasswordDetectionPtrInput {
+	return (*attackProtectionBreachedPasswordDetectionPtrType)(v)
+}
+
+func (*attackProtectionBreachedPasswordDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBreachedPasswordDetection)(nil)).Elem()
+}
+
+func (i *attackProtectionBreachedPasswordDetectionPtrType) ToAttackProtectionBreachedPasswordDetectionPtrOutput() AttackProtectionBreachedPasswordDetectionPtrOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionBreachedPasswordDetectionPtrType) ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionPtrOutput)
+}
+
+type AttackProtectionBreachedPasswordDetectionOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBreachedPasswordDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBreachedPasswordDetection)(nil)).Elem()
+}
+
+func (o AttackProtectionBreachedPasswordDetectionOutput) ToAttackProtectionBreachedPasswordDetectionOutput() AttackProtectionBreachedPasswordDetectionOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionOutput) ToAttackProtectionBreachedPasswordDetectionOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionOutput) ToAttackProtectionBreachedPasswordDetectionPtrOutput() AttackProtectionBreachedPasswordDetectionPtrOutput {
+	return o.ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionBreachedPasswordDetectionOutput) ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionBreachedPasswordDetection) *AttackProtectionBreachedPasswordDetection {
+		return &v
+	}).(AttackProtectionBreachedPasswordDetectionPtrOutput)
+}
+
+// When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+func (o AttackProtectionBreachedPasswordDetectionOutput) AdminNotificationFrequencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) []string { return v.AdminNotificationFrequencies }).(pulumi.StringArrayOutput)
+}
+
+// Whether or not breached password detection is active.
+func (o AttackProtectionBreachedPasswordDetectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+func (o AttackProtectionBreachedPasswordDetectionOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+func (o AttackProtectionBreachedPasswordDetectionOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionBreachedPasswordDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBreachedPasswordDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBreachedPasswordDetection)(nil)).Elem()
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) ToAttackProtectionBreachedPasswordDetectionPtrOutput() AttackProtectionBreachedPasswordDetectionPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) ToAttackProtectionBreachedPasswordDetectionPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Elem() AttackProtectionBreachedPasswordDetectionOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) AttackProtectionBreachedPasswordDetection {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionBreachedPasswordDetection
+		return ret
+	}).(AttackProtectionBreachedPasswordDetectionOutput)
+}
+
+// When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) AdminNotificationFrequencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminNotificationFrequencies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether or not breached password detection is active.
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Shields
+	}).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionBruteForceProtection struct {
+	// List of trusted IP addresses that will not have attack protection enforced against them.
+	Allowlists []string `pulumi:"allowlists"`
+	// Whether or not breached password detection is active.
+	Enabled *bool `pulumi:"enabled"`
+	// Maximum number of unsuccessful attempts. Only available on public tenants.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+	// Determines whether or not IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+	Mode *string `pulumi:"mode"`
+	// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+	Shields []string `pulumi:"shields"`
+}
+
+// AttackProtectionBruteForceProtectionInput is an input type that accepts AttackProtectionBruteForceProtectionArgs and AttackProtectionBruteForceProtectionOutput values.
+// You can construct a concrete instance of `AttackProtectionBruteForceProtectionInput` via:
+//
+//          AttackProtectionBruteForceProtectionArgs{...}
+type AttackProtectionBruteForceProtectionInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBruteForceProtectionOutput() AttackProtectionBruteForceProtectionOutput
+	ToAttackProtectionBruteForceProtectionOutputWithContext(context.Context) AttackProtectionBruteForceProtectionOutput
+}
+
+type AttackProtectionBruteForceProtectionArgs struct {
+	// List of trusted IP addresses that will not have attack protection enforced against them.
+	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
+	// Whether or not breached password detection is active.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Maximum number of unsuccessful attempts. Only available on public tenants.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+	// Determines whether or not IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+	Shields pulumi.StringArrayInput `pulumi:"shields"`
+}
+
+func (AttackProtectionBruteForceProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBruteForceProtection)(nil)).Elem()
+}
+
+func (i AttackProtectionBruteForceProtectionArgs) ToAttackProtectionBruteForceProtectionOutput() AttackProtectionBruteForceProtectionOutput {
+	return i.ToAttackProtectionBruteForceProtectionOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBruteForceProtectionArgs) ToAttackProtectionBruteForceProtectionOutputWithContext(ctx context.Context) AttackProtectionBruteForceProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBruteForceProtectionOutput)
+}
+
+func (i AttackProtectionBruteForceProtectionArgs) ToAttackProtectionBruteForceProtectionPtrOutput() AttackProtectionBruteForceProtectionPtrOutput {
+	return i.ToAttackProtectionBruteForceProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBruteForceProtectionArgs) ToAttackProtectionBruteForceProtectionPtrOutputWithContext(ctx context.Context) AttackProtectionBruteForceProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBruteForceProtectionOutput).ToAttackProtectionBruteForceProtectionPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionBruteForceProtectionPtrInput is an input type that accepts AttackProtectionBruteForceProtectionArgs, AttackProtectionBruteForceProtectionPtr and AttackProtectionBruteForceProtectionPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionBruteForceProtectionPtrInput` via:
+//
+//          AttackProtectionBruteForceProtectionArgs{...}
+//
+//  or:
+//
+//          nil
+type AttackProtectionBruteForceProtectionPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBruteForceProtectionPtrOutput() AttackProtectionBruteForceProtectionPtrOutput
+	ToAttackProtectionBruteForceProtectionPtrOutputWithContext(context.Context) AttackProtectionBruteForceProtectionPtrOutput
+}
+
+type attackProtectionBruteForceProtectionPtrType AttackProtectionBruteForceProtectionArgs
+
+func AttackProtectionBruteForceProtectionPtr(v *AttackProtectionBruteForceProtectionArgs) AttackProtectionBruteForceProtectionPtrInput {
+	return (*attackProtectionBruteForceProtectionPtrType)(v)
+}
+
+func (*attackProtectionBruteForceProtectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBruteForceProtection)(nil)).Elem()
+}
+
+func (i *attackProtectionBruteForceProtectionPtrType) ToAttackProtectionBruteForceProtectionPtrOutput() AttackProtectionBruteForceProtectionPtrOutput {
+	return i.ToAttackProtectionBruteForceProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionBruteForceProtectionPtrType) ToAttackProtectionBruteForceProtectionPtrOutputWithContext(ctx context.Context) AttackProtectionBruteForceProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBruteForceProtectionPtrOutput)
+}
+
+type AttackProtectionBruteForceProtectionOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBruteForceProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBruteForceProtection)(nil)).Elem()
+}
+
+func (o AttackProtectionBruteForceProtectionOutput) ToAttackProtectionBruteForceProtectionOutput() AttackProtectionBruteForceProtectionOutput {
+	return o
+}
+
+func (o AttackProtectionBruteForceProtectionOutput) ToAttackProtectionBruteForceProtectionOutputWithContext(ctx context.Context) AttackProtectionBruteForceProtectionOutput {
+	return o
+}
+
+func (o AttackProtectionBruteForceProtectionOutput) ToAttackProtectionBruteForceProtectionPtrOutput() AttackProtectionBruteForceProtectionPtrOutput {
+	return o.ToAttackProtectionBruteForceProtectionPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionBruteForceProtectionOutput) ToAttackProtectionBruteForceProtectionPtrOutputWithContext(ctx context.Context) AttackProtectionBruteForceProtectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionBruteForceProtection) *AttackProtectionBruteForceProtection {
+		return &v
+	}).(AttackProtectionBruteForceProtectionPtrOutput)
+}
+
+// List of trusted IP addresses that will not have attack protection enforced against them.
+func (o AttackProtectionBruteForceProtectionOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionBruteForceProtection) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
+}
+
+// Whether or not breached password detection is active.
+func (o AttackProtectionBruteForceProtectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBruteForceProtection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of unsuccessful attempts. Only available on public tenants.
+func (o AttackProtectionBruteForceProtectionOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBruteForceProtection) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+}
+
+// Determines whether or not IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+func (o AttackProtectionBruteForceProtectionOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBruteForceProtection) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+func (o AttackProtectionBruteForceProtectionOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionBruteForceProtection) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionBruteForceProtectionPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBruteForceProtectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBruteForceProtection)(nil)).Elem()
+}
+
+func (o AttackProtectionBruteForceProtectionPtrOutput) ToAttackProtectionBruteForceProtectionPtrOutput() AttackProtectionBruteForceProtectionPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBruteForceProtectionPtrOutput) ToAttackProtectionBruteForceProtectionPtrOutputWithContext(ctx context.Context) AttackProtectionBruteForceProtectionPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBruteForceProtectionPtrOutput) Elem() AttackProtectionBruteForceProtectionOutput {
+	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) AttackProtectionBruteForceProtection {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionBruteForceProtection
+		return ret
+	}).(AttackProtectionBruteForceProtectionOutput)
+}
+
+// List of trusted IP addresses that will not have attack protection enforced against them.
+func (o AttackProtectionBruteForceProtectionPtrOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Allowlists
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether or not breached password detection is active.
+func (o AttackProtectionBruteForceProtectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of unsuccessful attempts. Only available on public tenants.
+func (o AttackProtectionBruteForceProtectionPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// Determines whether or not IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+func (o AttackProtectionBruteForceProtectionPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+func (o AttackProtectionBruteForceProtectionPtrOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Shields
+	}).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottling struct {
+	// List of trusted IP addresses that will not have attack protection enforced against them.
+	Allowlists []string `pulumi:"allowlists"`
+	// Whether or not breached password detection is active.
+	Enabled *bool `pulumi:"enabled"`
+	// Configuration options that apply before every login attempt. Only available on public tenants.
+	PreLogin *AttackProtectionSuspiciousIpThrottlingPreLogin `pulumi:"preLogin"`
+	// Configuration options that apply before every user registration attempt. Only available on public tenants.
+	PreUserRegistration *AttackProtectionSuspiciousIpThrottlingPreUserRegistration `pulumi:"preUserRegistration"`
+	// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+	Shields []string `pulumi:"shields"`
+}
+
+// AttackProtectionSuspiciousIpThrottlingInput is an input type that accepts AttackProtectionSuspiciousIpThrottlingArgs and AttackProtectionSuspiciousIpThrottlingOutput values.
+// You can construct a concrete instance of `AttackProtectionSuspiciousIpThrottlingInput` via:
+//
+//          AttackProtectionSuspiciousIpThrottlingArgs{...}
+type AttackProtectionSuspiciousIpThrottlingInput interface {
+	pulumi.Input
+
+	ToAttackProtectionSuspiciousIpThrottlingOutput() AttackProtectionSuspiciousIpThrottlingOutput
+	ToAttackProtectionSuspiciousIpThrottlingOutputWithContext(context.Context) AttackProtectionSuspiciousIpThrottlingOutput
+}
+
+type AttackProtectionSuspiciousIpThrottlingArgs struct {
+	// List of trusted IP addresses that will not have attack protection enforced against them.
+	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
+	// Whether or not breached password detection is active.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Configuration options that apply before every login attempt. Only available on public tenants.
+	PreLogin AttackProtectionSuspiciousIpThrottlingPreLoginPtrInput `pulumi:"preLogin"`
+	// Configuration options that apply before every user registration attempt. Only available on public tenants.
+	PreUserRegistration AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrInput `pulumi:"preUserRegistration"`
+	// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+	Shields pulumi.StringArrayInput `pulumi:"shields"`
+}
+
+func (AttackProtectionSuspiciousIpThrottlingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionSuspiciousIpThrottling)(nil)).Elem()
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingArgs) ToAttackProtectionSuspiciousIpThrottlingOutput() AttackProtectionSuspiciousIpThrottlingOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingArgs) ToAttackProtectionSuspiciousIpThrottlingOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingOutput)
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingArgs) ToAttackProtectionSuspiciousIpThrottlingPtrOutput() AttackProtectionSuspiciousIpThrottlingPtrOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingArgs) ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingOutput).ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionSuspiciousIpThrottlingPtrInput is an input type that accepts AttackProtectionSuspiciousIpThrottlingArgs, AttackProtectionSuspiciousIpThrottlingPtr and AttackProtectionSuspiciousIpThrottlingPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionSuspiciousIpThrottlingPtrInput` via:
+//
+//          AttackProtectionSuspiciousIpThrottlingArgs{...}
+//
+//  or:
+//
+//          nil
+type AttackProtectionSuspiciousIpThrottlingPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionSuspiciousIpThrottlingPtrOutput() AttackProtectionSuspiciousIpThrottlingPtrOutput
+	ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(context.Context) AttackProtectionSuspiciousIpThrottlingPtrOutput
+}
+
+type attackProtectionSuspiciousIpThrottlingPtrType AttackProtectionSuspiciousIpThrottlingArgs
+
+func AttackProtectionSuspiciousIpThrottlingPtr(v *AttackProtectionSuspiciousIpThrottlingArgs) AttackProtectionSuspiciousIpThrottlingPtrInput {
+	return (*attackProtectionSuspiciousIpThrottlingPtrType)(v)
+}
+
+func (*attackProtectionSuspiciousIpThrottlingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionSuspiciousIpThrottling)(nil)).Elem()
+}
+
+func (i *attackProtectionSuspiciousIpThrottlingPtrType) ToAttackProtectionSuspiciousIpThrottlingPtrOutput() AttackProtectionSuspiciousIpThrottlingPtrOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionSuspiciousIpThrottlingPtrType) ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingPtrOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottlingOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionSuspiciousIpThrottlingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionSuspiciousIpThrottling)(nil)).Elem()
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingOutput) ToAttackProtectionSuspiciousIpThrottlingOutput() AttackProtectionSuspiciousIpThrottlingOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingOutput) ToAttackProtectionSuspiciousIpThrottlingOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingOutput) ToAttackProtectionSuspiciousIpThrottlingPtrOutput() AttackProtectionSuspiciousIpThrottlingPtrOutput {
+	return o.ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingOutput) ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionSuspiciousIpThrottling) *AttackProtectionSuspiciousIpThrottling {
+		return &v
+	}).(AttackProtectionSuspiciousIpThrottlingPtrOutput)
+}
+
+// List of trusted IP addresses that will not have attack protection enforced against them.
+func (o AttackProtectionSuspiciousIpThrottlingOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
+}
+
+// Whether or not breached password detection is active.
+func (o AttackProtectionSuspiciousIpThrottlingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration options that apply before every login attempt. Only available on public tenants.
+func (o AttackProtectionSuspiciousIpThrottlingOutput) PreLogin() AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) *AttackProtectionSuspiciousIpThrottlingPreLogin {
+		return v.PreLogin
+	}).(AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput)
+}
+
+// Configuration options that apply before every user registration attempt. Only available on public tenants.
+func (o AttackProtectionSuspiciousIpThrottlingOutput) PreUserRegistration() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) *AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+		return v.PreUserRegistration
+	}).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput)
+}
+
+// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+func (o AttackProtectionSuspiciousIpThrottlingOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottling) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottlingPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionSuspiciousIpThrottlingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionSuspiciousIpThrottling)(nil)).Elem()
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) ToAttackProtectionSuspiciousIpThrottlingPtrOutput() AttackProtectionSuspiciousIpThrottlingPtrOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) ToAttackProtectionSuspiciousIpThrottlingPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPtrOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Elem() AttackProtectionSuspiciousIpThrottlingOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottling) AttackProtectionSuspiciousIpThrottling {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionSuspiciousIpThrottling
+		return ret
+	}).(AttackProtectionSuspiciousIpThrottlingOutput)
+}
+
+// List of trusted IP addresses that will not have attack protection enforced against them.
+func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottling) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Allowlists
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether or not breached password detection is active.
+func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration options that apply before every login attempt. Only available on public tenants.
+func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) PreLogin() AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottling) *AttackProtectionSuspiciousIpThrottlingPreLogin {
+		if v == nil {
+			return nil
+		}
+		return v.PreLogin
+	}).(AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput)
+}
+
+// Configuration options that apply before every user registration attempt. Only available on public tenants.
+func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) PreUserRegistration() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottling) *AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+		if v == nil {
+			return nil
+		}
+		return v.PreUserRegistration
+	}).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput)
+}
+
+// Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+func (o AttackProtectionSuspiciousIpThrottlingPtrOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottling) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Shields
+	}).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottlingPreLogin struct {
+	// Maximum number of unsuccessful attempts. Only available on public tenants.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+	Rate        *int `pulumi:"rate"`
+}
+
+// AttackProtectionSuspiciousIpThrottlingPreLoginInput is an input type that accepts AttackProtectionSuspiciousIpThrottlingPreLoginArgs and AttackProtectionSuspiciousIpThrottlingPreLoginOutput values.
+// You can construct a concrete instance of `AttackProtectionSuspiciousIpThrottlingPreLoginInput` via:
+//
+//          AttackProtectionSuspiciousIpThrottlingPreLoginArgs{...}
+type AttackProtectionSuspiciousIpThrottlingPreLoginInput interface {
+	pulumi.Input
+
+	ToAttackProtectionSuspiciousIpThrottlingPreLoginOutput() AttackProtectionSuspiciousIpThrottlingPreLoginOutput
+	ToAttackProtectionSuspiciousIpThrottlingPreLoginOutputWithContext(context.Context) AttackProtectionSuspiciousIpThrottlingPreLoginOutput
+}
+
+type AttackProtectionSuspiciousIpThrottlingPreLoginArgs struct {
+	// Maximum number of unsuccessful attempts. Only available on public tenants.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+	Rate        pulumi.IntPtrInput `pulumi:"rate"`
+}
+
+func (AttackProtectionSuspiciousIpThrottlingPreLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreLogin)(nil)).Elem()
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingPreLoginArgs) ToAttackProtectionSuspiciousIpThrottlingPreLoginOutput() AttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingPreLoginOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingPreLoginArgs) ToAttackProtectionSuspiciousIpThrottlingPreLoginOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingPreLoginOutput)
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingPreLoginArgs) ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput() AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingPreLoginArgs) ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingPreLoginOutput).ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionSuspiciousIpThrottlingPreLoginPtrInput is an input type that accepts AttackProtectionSuspiciousIpThrottlingPreLoginArgs, AttackProtectionSuspiciousIpThrottlingPreLoginPtr and AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionSuspiciousIpThrottlingPreLoginPtrInput` via:
+//
+//          AttackProtectionSuspiciousIpThrottlingPreLoginArgs{...}
+//
+//  or:
+//
+//          nil
+type AttackProtectionSuspiciousIpThrottlingPreLoginPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput() AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput
+	ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(context.Context) AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput
+}
+
+type attackProtectionSuspiciousIpThrottlingPreLoginPtrType AttackProtectionSuspiciousIpThrottlingPreLoginArgs
+
+func AttackProtectionSuspiciousIpThrottlingPreLoginPtr(v *AttackProtectionSuspiciousIpThrottlingPreLoginArgs) AttackProtectionSuspiciousIpThrottlingPreLoginPtrInput {
+	return (*attackProtectionSuspiciousIpThrottlingPreLoginPtrType)(v)
+}
+
+func (*attackProtectionSuspiciousIpThrottlingPreLoginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionSuspiciousIpThrottlingPreLogin)(nil)).Elem()
+}
+
+func (i *attackProtectionSuspiciousIpThrottlingPreLoginPtrType) ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput() AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionSuspiciousIpThrottlingPreLoginPtrType) ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottlingPreLoginOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionSuspiciousIpThrottlingPreLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreLogin)(nil)).Elem()
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) ToAttackProtectionSuspiciousIpThrottlingPreLoginOutput() AttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) ToAttackProtectionSuspiciousIpThrottlingPreLoginOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput() AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return o.ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionSuspiciousIpThrottlingPreLogin) *AttackProtectionSuspiciousIpThrottlingPreLogin {
+		return &v
+	}).(AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput)
+}
+
+// Maximum number of unsuccessful attempts. Only available on public tenants.
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottlingPreLogin) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginOutput) Rate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottlingPreLogin) *int { return v.Rate }).(pulumi.IntPtrOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionSuspiciousIpThrottlingPreLogin)(nil)).Elem()
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput() AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) ToAttackProtectionSuspiciousIpThrottlingPreLoginPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) Elem() AttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreLogin) AttackProtectionSuspiciousIpThrottlingPreLogin {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionSuspiciousIpThrottlingPreLogin
+		return ret
+	}).(AttackProtectionSuspiciousIpThrottlingPreLoginOutput)
+}
+
+// Maximum number of unsuccessful attempts. Only available on public tenants.
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreLogin) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput) Rate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreLogin) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Rate
+	}).(pulumi.IntPtrOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottlingPreUserRegistration struct {
+	// Maximum number of unsuccessful attempts. Only available on public tenants.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+	Rate        *int `pulumi:"rate"`
+}
+
+// AttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput is an input type that accepts AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs and AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput values.
+// You can construct a concrete instance of `AttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput` via:
+//
+//          AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{...}
+type AttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput interface {
+	pulumi.Input
+
+	ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput
+	ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutputWithContext(context.Context) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput
+}
+
+type AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs struct {
+	// Maximum number of unsuccessful attempts. Only available on public tenants.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+	Rate        pulumi.IntPtrInput `pulumi:"rate"`
+}
+
+func (AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreUserRegistration)(nil)).Elem()
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput)
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput).ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrInput is an input type that accepts AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs, AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtr and AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrInput` via:
+//
+//          AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{...}
+//
+//  or:
+//
+//          nil
+type AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput
+	ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(context.Context) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput
+}
+
+type attackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrType AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
+
+func AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtr(v *AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrInput {
+	return (*attackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrType)(v)
+}
+
+func (*attackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionSuspiciousIpThrottlingPreUserRegistration)(nil)).Elem()
+}
+
+func (i *attackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrType) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return i.ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrType) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreUserRegistration)(nil)).Elem()
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return o.ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+		return &v
+	}).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput)
+}
+
+// Maximum number of unsuccessful attempts. Only available on public tenants.
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) Rate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *int { return v.Rate }).(pulumi.IntPtrOutput)
+}
+
+type AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionSuspiciousIpThrottlingPreUserRegistration)(nil)).Elem()
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) ToAttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutputWithContext(ctx context.Context) AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput {
+	return o
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) Elem() AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreUserRegistration) AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionSuspiciousIpThrottlingPreUserRegistration
+		return ret
+	}).(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput)
+}
+
+// Maximum number of unsuccessful attempts. Only available on public tenants.
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput) Rate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionSuspiciousIpThrottlingPreUserRegistration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Rate
+	}).(pulumi.IntPtrOutput)
+}
+
 type BrandingColors struct {
 	// String, Hexadecimal. Background color of login pages.
 	PageBackground *string `pulumi:"pageBackground"`
@@ -1476,7 +2404,7 @@ type ClientAddonsSamlp struct {
 	// Integer, (Default=3600). Number of seconds during which the token is valid.
 	LifetimeInSeconds *int `pulumi:"lifetimeInSeconds"`
 	// Map(Resource). Configuration settings for logout. For details, see Logout.
-	Logout *ClientAddonsSamlpLogout `pulumi:"logout"`
+	Logout map[string]interface{} `pulumi:"logout"`
 	// Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
 	MapIdentities *bool `pulumi:"mapIdentities"`
 	// Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
@@ -1530,7 +2458,7 @@ type ClientAddonsSamlpArgs struct {
 	// Integer, (Default=3600). Number of seconds during which the token is valid.
 	LifetimeInSeconds pulumi.IntPtrInput `pulumi:"lifetimeInSeconds"`
 	// Map(Resource). Configuration settings for logout. For details, see Logout.
-	Logout ClientAddonsSamlpLogoutPtrInput `pulumi:"logout"`
+	Logout pulumi.MapInput `pulumi:"logout"`
 	// Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
 	MapIdentities pulumi.BoolPtrInput `pulumi:"mapIdentities"`
 	// Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
@@ -1673,8 +2601,8 @@ func (o ClientAddonsSamlpOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 }
 
 // Map(Resource). Configuration settings for logout. For details, see Logout.
-func (o ClientAddonsSamlpOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlp) *ClientAddonsSamlpLogout { return v.Logout }).(ClientAddonsSamlpLogoutPtrOutput)
+func (o ClientAddonsSamlpOutput) Logout() pulumi.MapOutput {
+	return o.ApplyT(func(v ClientAddonsSamlp) map[string]interface{} { return v.Logout }).(pulumi.MapOutput)
 }
 
 // Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
@@ -1837,13 +2765,13 @@ func (o ClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 }
 
 // Map(Resource). Configuration settings for logout. For details, see Logout.
-func (o ClientAddonsSamlpPtrOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyT(func(v *ClientAddonsSamlp) *ClientAddonsSamlpLogout {
+func (o ClientAddonsSamlpPtrOutput) Logout() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClientAddonsSamlp) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Logout
-	}).(ClientAddonsSamlpLogoutPtrOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
@@ -1953,162 +2881,6 @@ func (o ClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.TypedAttributes
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ClientAddonsSamlpLogout struct {
-	// String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-	Callback *string `pulumi:"callback"`
-	// Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-	SloEnabled *bool `pulumi:"sloEnabled"`
-}
-
-// ClientAddonsSamlpLogoutInput is an input type that accepts ClientAddonsSamlpLogoutArgs and ClientAddonsSamlpLogoutOutput values.
-// You can construct a concrete instance of `ClientAddonsSamlpLogoutInput` via:
-//
-//          ClientAddonsSamlpLogoutArgs{...}
-type ClientAddonsSamlpLogoutInput interface {
-	pulumi.Input
-
-	ToClientAddonsSamlpLogoutOutput() ClientAddonsSamlpLogoutOutput
-	ToClientAddonsSamlpLogoutOutputWithContext(context.Context) ClientAddonsSamlpLogoutOutput
-}
-
-type ClientAddonsSamlpLogoutArgs struct {
-	// String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-	Callback pulumi.StringPtrInput `pulumi:"callback"`
-	// Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-	SloEnabled pulumi.BoolPtrInput `pulumi:"sloEnabled"`
-}
-
-func (ClientAddonsSamlpLogoutArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientAddonsSamlpLogout)(nil)).Elem()
-}
-
-func (i ClientAddonsSamlpLogoutArgs) ToClientAddonsSamlpLogoutOutput() ClientAddonsSamlpLogoutOutput {
-	return i.ToClientAddonsSamlpLogoutOutputWithContext(context.Background())
-}
-
-func (i ClientAddonsSamlpLogoutArgs) ToClientAddonsSamlpLogoutOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSamlpLogoutOutput)
-}
-
-func (i ClientAddonsSamlpLogoutArgs) ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput {
-	return i.ToClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
-}
-
-func (i ClientAddonsSamlpLogoutArgs) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSamlpLogoutOutput).ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx)
-}
-
-// ClientAddonsSamlpLogoutPtrInput is an input type that accepts ClientAddonsSamlpLogoutArgs, ClientAddonsSamlpLogoutPtr and ClientAddonsSamlpLogoutPtrOutput values.
-// You can construct a concrete instance of `ClientAddonsSamlpLogoutPtrInput` via:
-//
-//          ClientAddonsSamlpLogoutArgs{...}
-//
-//  or:
-//
-//          nil
-type ClientAddonsSamlpLogoutPtrInput interface {
-	pulumi.Input
-
-	ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput
-	ToClientAddonsSamlpLogoutPtrOutputWithContext(context.Context) ClientAddonsSamlpLogoutPtrOutput
-}
-
-type clientAddonsSamlpLogoutPtrType ClientAddonsSamlpLogoutArgs
-
-func ClientAddonsSamlpLogoutPtr(v *ClientAddonsSamlpLogoutArgs) ClientAddonsSamlpLogoutPtrInput {
-	return (*clientAddonsSamlpLogoutPtrType)(v)
-}
-
-func (*clientAddonsSamlpLogoutPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientAddonsSamlpLogout)(nil)).Elem()
-}
-
-func (i *clientAddonsSamlpLogoutPtrType) ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput {
-	return i.ToClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
-}
-
-func (i *clientAddonsSamlpLogoutPtrType) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientAddonsSamlpLogoutPtrOutput)
-}
-
-type ClientAddonsSamlpLogoutOutput struct{ *pulumi.OutputState }
-
-func (ClientAddonsSamlpLogoutOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientAddonsSamlpLogout)(nil)).Elem()
-}
-
-func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutOutput() ClientAddonsSamlpLogoutOutput {
-	return o
-}
-
-func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutOutput {
-	return o
-}
-
-func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput {
-	return o.ToClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
-}
-
-func (o ClientAddonsSamlpLogoutOutput) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientAddonsSamlpLogout) *ClientAddonsSamlpLogout {
-		return &v
-	}).(ClientAddonsSamlpLogoutPtrOutput)
-}
-
-// String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-func (o ClientAddonsSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
-}
-
-// Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-func (o ClientAddonsSamlpLogoutOutput) SloEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClientAddonsSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
-}
-
-type ClientAddonsSamlpLogoutPtrOutput struct{ *pulumi.OutputState }
-
-func (ClientAddonsSamlpLogoutPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientAddonsSamlpLogout)(nil)).Elem()
-}
-
-func (o ClientAddonsSamlpLogoutPtrOutput) ToClientAddonsSamlpLogoutPtrOutput() ClientAddonsSamlpLogoutPtrOutput {
-	return o
-}
-
-func (o ClientAddonsSamlpLogoutPtrOutput) ToClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) ClientAddonsSamlpLogoutPtrOutput {
-	return o
-}
-
-func (o ClientAddonsSamlpLogoutPtrOutput) Elem() ClientAddonsSamlpLogoutOutput {
-	return o.ApplyT(func(v *ClientAddonsSamlpLogout) ClientAddonsSamlpLogout {
-		if v != nil {
-			return *v
-		}
-		var ret ClientAddonsSamlpLogout
-		return ret
-	}).(ClientAddonsSamlpLogoutOutput)
-}
-
-// String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-func (o ClientAddonsSamlpLogoutPtrOutput) Callback() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientAddonsSamlpLogout) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Callback
-	}).(pulumi.StringPtrOutput)
-}
-
-// Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-func (o ClientAddonsSamlpLogoutPtrOutput) SloEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ClientAddonsSamlpLogout) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SloEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -7412,26 +8184,26 @@ func (o GlobalClientAddonsPtrOutput) Zoom() pulumi.MapOutput {
 }
 
 type GlobalClientAddonsSamlp struct {
-	Audience                       *string                        `pulumi:"audience"`
-	AuthnContextClassRef           *string                        `pulumi:"authnContextClassRef"`
-	Binding                        *string                        `pulumi:"binding"`
-	CreateUpnClaim                 *bool                          `pulumi:"createUpnClaim"`
-	Destination                    *string                        `pulumi:"destination"`
-	DigestAlgorithm                *string                        `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     *bool                          `pulumi:"includeAttributeNameFormat"`
-	LifetimeInSeconds              *int                           `pulumi:"lifetimeInSeconds"`
-	Logout                         *GlobalClientAddonsSamlpLogout `pulumi:"logout"`
-	MapIdentities                  *bool                          `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           *bool                          `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       map[string]interface{}         `pulumi:"mappings"`
-	NameIdentifierFormat           *string                        `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           []string                       `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping *bool                          `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      *string                        `pulumi:"recipient"`
-	SignResponse                   *bool                          `pulumi:"signResponse"`
-	SignatureAlgorithm             *string                        `pulumi:"signatureAlgorithm"`
-	SigningCert                    *string                        `pulumi:"signingCert"`
-	TypedAttributes                *bool                          `pulumi:"typedAttributes"`
+	Audience                       *string                `pulumi:"audience"`
+	AuthnContextClassRef           *string                `pulumi:"authnContextClassRef"`
+	Binding                        *string                `pulumi:"binding"`
+	CreateUpnClaim                 *bool                  `pulumi:"createUpnClaim"`
+	Destination                    *string                `pulumi:"destination"`
+	DigestAlgorithm                *string                `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     *bool                  `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              *int                   `pulumi:"lifetimeInSeconds"`
+	Logout                         map[string]interface{} `pulumi:"logout"`
+	MapIdentities                  *bool                  `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           *bool                  `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       map[string]interface{} `pulumi:"mappings"`
+	NameIdentifierFormat           *string                `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           []string               `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping *bool                  `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      *string                `pulumi:"recipient"`
+	SignResponse                   *bool                  `pulumi:"signResponse"`
+	SignatureAlgorithm             *string                `pulumi:"signatureAlgorithm"`
+	SigningCert                    *string                `pulumi:"signingCert"`
+	TypedAttributes                *bool                  `pulumi:"typedAttributes"`
 }
 
 // GlobalClientAddonsSamlpInput is an input type that accepts GlobalClientAddonsSamlpArgs and GlobalClientAddonsSamlpOutput values.
@@ -7446,26 +8218,26 @@ type GlobalClientAddonsSamlpInput interface {
 }
 
 type GlobalClientAddonsSamlpArgs struct {
-	Audience                       pulumi.StringPtrInput                 `pulumi:"audience"`
-	AuthnContextClassRef           pulumi.StringPtrInput                 `pulumi:"authnContextClassRef"`
-	Binding                        pulumi.StringPtrInput                 `pulumi:"binding"`
-	CreateUpnClaim                 pulumi.BoolPtrInput                   `pulumi:"createUpnClaim"`
-	Destination                    pulumi.StringPtrInput                 `pulumi:"destination"`
-	DigestAlgorithm                pulumi.StringPtrInput                 `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     pulumi.BoolPtrInput                   `pulumi:"includeAttributeNameFormat"`
-	LifetimeInSeconds              pulumi.IntPtrInput                    `pulumi:"lifetimeInSeconds"`
-	Logout                         GlobalClientAddonsSamlpLogoutPtrInput `pulumi:"logout"`
-	MapIdentities                  pulumi.BoolPtrInput                   `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           pulumi.BoolPtrInput                   `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       pulumi.MapInput                       `pulumi:"mappings"`
-	NameIdentifierFormat           pulumi.StringPtrInput                 `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           pulumi.StringArrayInput               `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping pulumi.BoolPtrInput                   `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      pulumi.StringPtrInput                 `pulumi:"recipient"`
-	SignResponse                   pulumi.BoolPtrInput                   `pulumi:"signResponse"`
-	SignatureAlgorithm             pulumi.StringPtrInput                 `pulumi:"signatureAlgorithm"`
-	SigningCert                    pulumi.StringPtrInput                 `pulumi:"signingCert"`
-	TypedAttributes                pulumi.BoolPtrInput                   `pulumi:"typedAttributes"`
+	Audience                       pulumi.StringPtrInput   `pulumi:"audience"`
+	AuthnContextClassRef           pulumi.StringPtrInput   `pulumi:"authnContextClassRef"`
+	Binding                        pulumi.StringPtrInput   `pulumi:"binding"`
+	CreateUpnClaim                 pulumi.BoolPtrInput     `pulumi:"createUpnClaim"`
+	Destination                    pulumi.StringPtrInput   `pulumi:"destination"`
+	DigestAlgorithm                pulumi.StringPtrInput   `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     pulumi.BoolPtrInput     `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              pulumi.IntPtrInput      `pulumi:"lifetimeInSeconds"`
+	Logout                         pulumi.MapInput         `pulumi:"logout"`
+	MapIdentities                  pulumi.BoolPtrInput     `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           pulumi.BoolPtrInput     `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       pulumi.MapInput         `pulumi:"mappings"`
+	NameIdentifierFormat           pulumi.StringPtrInput   `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping pulumi.BoolPtrInput     `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      pulumi.StringPtrInput   `pulumi:"recipient"`
+	SignResponse                   pulumi.BoolPtrInput     `pulumi:"signResponse"`
+	SignatureAlgorithm             pulumi.StringPtrInput   `pulumi:"signatureAlgorithm"`
+	SigningCert                    pulumi.StringPtrInput   `pulumi:"signingCert"`
+	TypedAttributes                pulumi.BoolPtrInput     `pulumi:"typedAttributes"`
 }
 
 func (GlobalClientAddonsSamlpArgs) ElementType() reflect.Type {
@@ -7577,8 +8349,8 @@ func (o GlobalClientAddonsSamlpOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GlobalClientAddonsSamlp) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
-func (o GlobalClientAddonsSamlpOutput) Logout() GlobalClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlp) *GlobalClientAddonsSamlpLogout { return v.Logout }).(GlobalClientAddonsSamlpLogoutPtrOutput)
+func (o GlobalClientAddonsSamlpOutput) Logout() pulumi.MapOutput {
+	return o.ApplyT(func(v GlobalClientAddonsSamlp) map[string]interface{} { return v.Logout }).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsSamlpOutput) MapIdentities() pulumi.BoolPtrOutput {
@@ -7721,13 +8493,13 @@ func (o GlobalClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o GlobalClientAddonsSamlpPtrOutput) Logout() GlobalClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlp) *GlobalClientAddonsSamlpLogout {
+func (o GlobalClientAddonsSamlpPtrOutput) Logout() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalClientAddonsSamlp) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Logout
-	}).(GlobalClientAddonsSamlpLogoutPtrOutput)
+	}).(pulumi.MapOutput)
 }
 
 func (o GlobalClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
@@ -7826,154 +8598,6 @@ func (o GlobalClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput
 			return nil
 		}
 		return v.TypedAttributes
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientAddonsSamlpLogout struct {
-	Callback   *string `pulumi:"callback"`
-	SloEnabled *bool   `pulumi:"sloEnabled"`
-}
-
-// GlobalClientAddonsSamlpLogoutInput is an input type that accepts GlobalClientAddonsSamlpLogoutArgs and GlobalClientAddonsSamlpLogoutOutput values.
-// You can construct a concrete instance of `GlobalClientAddonsSamlpLogoutInput` via:
-//
-//          GlobalClientAddonsSamlpLogoutArgs{...}
-type GlobalClientAddonsSamlpLogoutInput interface {
-	pulumi.Input
-
-	ToGlobalClientAddonsSamlpLogoutOutput() GlobalClientAddonsSamlpLogoutOutput
-	ToGlobalClientAddonsSamlpLogoutOutputWithContext(context.Context) GlobalClientAddonsSamlpLogoutOutput
-}
-
-type GlobalClientAddonsSamlpLogoutArgs struct {
-	Callback   pulumi.StringPtrInput `pulumi:"callback"`
-	SloEnabled pulumi.BoolPtrInput   `pulumi:"sloEnabled"`
-}
-
-func (GlobalClientAddonsSamlpLogoutArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientAddonsSamlpLogout)(nil)).Elem()
-}
-
-func (i GlobalClientAddonsSamlpLogoutArgs) ToGlobalClientAddonsSamlpLogoutOutput() GlobalClientAddonsSamlpLogoutOutput {
-	return i.ToGlobalClientAddonsSamlpLogoutOutputWithContext(context.Background())
-}
-
-func (i GlobalClientAddonsSamlpLogoutArgs) ToGlobalClientAddonsSamlpLogoutOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpLogoutOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsSamlpLogoutOutput)
-}
-
-func (i GlobalClientAddonsSamlpLogoutArgs) ToGlobalClientAddonsSamlpLogoutPtrOutput() GlobalClientAddonsSamlpLogoutPtrOutput {
-	return i.ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
-}
-
-func (i GlobalClientAddonsSamlpLogoutArgs) ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpLogoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsSamlpLogoutOutput).ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(ctx)
-}
-
-// GlobalClientAddonsSamlpLogoutPtrInput is an input type that accepts GlobalClientAddonsSamlpLogoutArgs, GlobalClientAddonsSamlpLogoutPtr and GlobalClientAddonsSamlpLogoutPtrOutput values.
-// You can construct a concrete instance of `GlobalClientAddonsSamlpLogoutPtrInput` via:
-//
-//          GlobalClientAddonsSamlpLogoutArgs{...}
-//
-//  or:
-//
-//          nil
-type GlobalClientAddonsSamlpLogoutPtrInput interface {
-	pulumi.Input
-
-	ToGlobalClientAddonsSamlpLogoutPtrOutput() GlobalClientAddonsSamlpLogoutPtrOutput
-	ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(context.Context) GlobalClientAddonsSamlpLogoutPtrOutput
-}
-
-type globalClientAddonsSamlpLogoutPtrType GlobalClientAddonsSamlpLogoutArgs
-
-func GlobalClientAddonsSamlpLogoutPtr(v *GlobalClientAddonsSamlpLogoutArgs) GlobalClientAddonsSamlpLogoutPtrInput {
-	return (*globalClientAddonsSamlpLogoutPtrType)(v)
-}
-
-func (*globalClientAddonsSamlpLogoutPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientAddonsSamlpLogout)(nil)).Elem()
-}
-
-func (i *globalClientAddonsSamlpLogoutPtrType) ToGlobalClientAddonsSamlpLogoutPtrOutput() GlobalClientAddonsSamlpLogoutPtrOutput {
-	return i.ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
-}
-
-func (i *globalClientAddonsSamlpLogoutPtrType) ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpLogoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientAddonsSamlpLogoutPtrOutput)
-}
-
-type GlobalClientAddonsSamlpLogoutOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientAddonsSamlpLogoutOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClientAddonsSamlpLogout)(nil)).Elem()
-}
-
-func (o GlobalClientAddonsSamlpLogoutOutput) ToGlobalClientAddonsSamlpLogoutOutput() GlobalClientAddonsSamlpLogoutOutput {
-	return o
-}
-
-func (o GlobalClientAddonsSamlpLogoutOutput) ToGlobalClientAddonsSamlpLogoutOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpLogoutOutput {
-	return o
-}
-
-func (o GlobalClientAddonsSamlpLogoutOutput) ToGlobalClientAddonsSamlpLogoutPtrOutput() GlobalClientAddonsSamlpLogoutPtrOutput {
-	return o.ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(context.Background())
-}
-
-func (o GlobalClientAddonsSamlpLogoutOutput) ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpLogoutPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalClientAddonsSamlpLogout) *GlobalClientAddonsSamlpLogout {
-		return &v
-	}).(GlobalClientAddonsSamlpLogoutPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpLogoutOutput) SloEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GlobalClientAddonsSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
-}
-
-type GlobalClientAddonsSamlpLogoutPtrOutput struct{ *pulumi.OutputState }
-
-func (GlobalClientAddonsSamlpLogoutPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GlobalClientAddonsSamlpLogout)(nil)).Elem()
-}
-
-func (o GlobalClientAddonsSamlpLogoutPtrOutput) ToGlobalClientAddonsSamlpLogoutPtrOutput() GlobalClientAddonsSamlpLogoutPtrOutput {
-	return o
-}
-
-func (o GlobalClientAddonsSamlpLogoutPtrOutput) ToGlobalClientAddonsSamlpLogoutPtrOutputWithContext(ctx context.Context) GlobalClientAddonsSamlpLogoutPtrOutput {
-	return o
-}
-
-func (o GlobalClientAddonsSamlpLogoutPtrOutput) Elem() GlobalClientAddonsSamlpLogoutOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlpLogout) GlobalClientAddonsSamlpLogout {
-		if v != nil {
-			return *v
-		}
-		var ret GlobalClientAddonsSamlpLogout
-		return ret
-	}).(GlobalClientAddonsSamlpLogoutOutput)
-}
-
-func (o GlobalClientAddonsSamlpLogoutPtrOutput) Callback() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlpLogout) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Callback
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GlobalClientAddonsSamlpLogoutPtrOutput) SloEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GlobalClientAddonsSamlpLogout) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SloEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -12051,26 +12675,26 @@ func (o GetClientAddonArrayOutput) Index(i pulumi.IntInput) GetClientAddonOutput
 }
 
 type GetClientAddonSamlp struct {
-	Audience                       string                    `pulumi:"audience"`
-	AuthnContextClassRef           string                    `pulumi:"authnContextClassRef"`
-	Binding                        string                    `pulumi:"binding"`
-	CreateUpnClaim                 bool                      `pulumi:"createUpnClaim"`
-	Destination                    string                    `pulumi:"destination"`
-	DigestAlgorithm                string                    `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     bool                      `pulumi:"includeAttributeNameFormat"`
-	LifetimeInSeconds              int                       `pulumi:"lifetimeInSeconds"`
-	Logout                         GetClientAddonSamlpLogout `pulumi:"logout"`
-	MapIdentities                  bool                      `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           bool                      `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       map[string]interface{}    `pulumi:"mappings"`
-	NameIdentifierFormat           string                    `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           []string                  `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping bool                      `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      string                    `pulumi:"recipient"`
-	SignResponse                   bool                      `pulumi:"signResponse"`
-	SignatureAlgorithm             string                    `pulumi:"signatureAlgorithm"`
-	SigningCert                    string                    `pulumi:"signingCert"`
-	TypedAttributes                bool                      `pulumi:"typedAttributes"`
+	Audience                       string                 `pulumi:"audience"`
+	AuthnContextClassRef           string                 `pulumi:"authnContextClassRef"`
+	Binding                        string                 `pulumi:"binding"`
+	CreateUpnClaim                 bool                   `pulumi:"createUpnClaim"`
+	Destination                    string                 `pulumi:"destination"`
+	DigestAlgorithm                string                 `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     bool                   `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              int                    `pulumi:"lifetimeInSeconds"`
+	Logout                         map[string]interface{} `pulumi:"logout"`
+	MapIdentities                  bool                   `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           bool                   `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       map[string]interface{} `pulumi:"mappings"`
+	NameIdentifierFormat           string                 `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           []string               `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping bool                   `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      string                 `pulumi:"recipient"`
+	SignResponse                   bool                   `pulumi:"signResponse"`
+	SignatureAlgorithm             string                 `pulumi:"signatureAlgorithm"`
+	SigningCert                    string                 `pulumi:"signingCert"`
+	TypedAttributes                bool                   `pulumi:"typedAttributes"`
 }
 
 // GetClientAddonSamlpInput is an input type that accepts GetClientAddonSamlpArgs and GetClientAddonSamlpOutput values.
@@ -12085,26 +12709,26 @@ type GetClientAddonSamlpInput interface {
 }
 
 type GetClientAddonSamlpArgs struct {
-	Audience                       pulumi.StringInput             `pulumi:"audience"`
-	AuthnContextClassRef           pulumi.StringInput             `pulumi:"authnContextClassRef"`
-	Binding                        pulumi.StringInput             `pulumi:"binding"`
-	CreateUpnClaim                 pulumi.BoolInput               `pulumi:"createUpnClaim"`
-	Destination                    pulumi.StringInput             `pulumi:"destination"`
-	DigestAlgorithm                pulumi.StringInput             `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     pulumi.BoolInput               `pulumi:"includeAttributeNameFormat"`
-	LifetimeInSeconds              pulumi.IntInput                `pulumi:"lifetimeInSeconds"`
-	Logout                         GetClientAddonSamlpLogoutInput `pulumi:"logout"`
-	MapIdentities                  pulumi.BoolInput               `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           pulumi.BoolInput               `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       pulumi.MapInput                `pulumi:"mappings"`
-	NameIdentifierFormat           pulumi.StringInput             `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           pulumi.StringArrayInput        `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping pulumi.BoolInput               `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      pulumi.StringInput             `pulumi:"recipient"`
-	SignResponse                   pulumi.BoolInput               `pulumi:"signResponse"`
-	SignatureAlgorithm             pulumi.StringInput             `pulumi:"signatureAlgorithm"`
-	SigningCert                    pulumi.StringInput             `pulumi:"signingCert"`
-	TypedAttributes                pulumi.BoolInput               `pulumi:"typedAttributes"`
+	Audience                       pulumi.StringInput      `pulumi:"audience"`
+	AuthnContextClassRef           pulumi.StringInput      `pulumi:"authnContextClassRef"`
+	Binding                        pulumi.StringInput      `pulumi:"binding"`
+	CreateUpnClaim                 pulumi.BoolInput        `pulumi:"createUpnClaim"`
+	Destination                    pulumi.StringInput      `pulumi:"destination"`
+	DigestAlgorithm                pulumi.StringInput      `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     pulumi.BoolInput        `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              pulumi.IntInput         `pulumi:"lifetimeInSeconds"`
+	Logout                         pulumi.MapInput         `pulumi:"logout"`
+	MapIdentities                  pulumi.BoolInput        `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           pulumi.BoolInput        `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       pulumi.MapInput         `pulumi:"mappings"`
+	NameIdentifierFormat           pulumi.StringInput      `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping pulumi.BoolInput        `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      pulumi.StringInput      `pulumi:"recipient"`
+	SignResponse                   pulumi.BoolInput        `pulumi:"signResponse"`
+	SignatureAlgorithm             pulumi.StringInput      `pulumi:"signatureAlgorithm"`
+	SigningCert                    pulumi.StringInput      `pulumi:"signingCert"`
+	TypedAttributes                pulumi.BoolInput        `pulumi:"typedAttributes"`
 }
 
 func (GetClientAddonSamlpArgs) ElementType() reflect.Type {
@@ -12190,8 +12814,8 @@ func (o GetClientAddonSamlpOutput) LifetimeInSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
 }
 
-func (o GetClientAddonSamlpOutput) Logout() GetClientAddonSamlpLogoutOutput {
-	return o.ApplyT(func(v GetClientAddonSamlp) GetClientAddonSamlpLogout { return v.Logout }).(GetClientAddonSamlpLogoutOutput)
+func (o GetClientAddonSamlpOutput) Logout() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) map[string]interface{} { return v.Logout }).(pulumi.MapOutput)
 }
 
 func (o GetClientAddonSamlpOutput) MapIdentities() pulumi.BoolOutput {
@@ -12256,61 +12880,6 @@ func (o GetClientAddonSamlpArrayOutput) Index(i pulumi.IntInput) GetClientAddonS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientAddonSamlp {
 		return vs[0].([]GetClientAddonSamlp)[vs[1].(int)]
 	}).(GetClientAddonSamlpOutput)
-}
-
-type GetClientAddonSamlpLogout struct {
-	Callback   *string `pulumi:"callback"`
-	SloEnabled *bool   `pulumi:"sloEnabled"`
-}
-
-// GetClientAddonSamlpLogoutInput is an input type that accepts GetClientAddonSamlpLogoutArgs and GetClientAddonSamlpLogoutOutput values.
-// You can construct a concrete instance of `GetClientAddonSamlpLogoutInput` via:
-//
-//          GetClientAddonSamlpLogoutArgs{...}
-type GetClientAddonSamlpLogoutInput interface {
-	pulumi.Input
-
-	ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput
-	ToGetClientAddonSamlpLogoutOutputWithContext(context.Context) GetClientAddonSamlpLogoutOutput
-}
-
-type GetClientAddonSamlpLogoutArgs struct {
-	Callback   pulumi.StringPtrInput `pulumi:"callback"`
-	SloEnabled pulumi.BoolPtrInput   `pulumi:"sloEnabled"`
-}
-
-func (GetClientAddonSamlpLogoutArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientAddonSamlpLogout)(nil)).Elem()
-}
-
-func (i GetClientAddonSamlpLogoutArgs) ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput {
-	return i.ToGetClientAddonSamlpLogoutOutputWithContext(context.Background())
-}
-
-func (i GetClientAddonSamlpLogoutArgs) ToGetClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetClientAddonSamlpLogoutOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientAddonSamlpLogoutOutput)
-}
-
-type GetClientAddonSamlpLogoutOutput struct{ *pulumi.OutputState }
-
-func (GetClientAddonSamlpLogoutOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientAddonSamlpLogout)(nil)).Elem()
-}
-
-func (o GetClientAddonSamlpLogoutOutput) ToGetClientAddonSamlpLogoutOutput() GetClientAddonSamlpLogoutOutput {
-	return o
-}
-
-func (o GetClientAddonSamlpLogoutOutput) ToGetClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetClientAddonSamlpLogoutOutput {
-	return o
-}
-
-func (o GetClientAddonSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClientAddonSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
-}
-
-func (o GetClientAddonSamlpLogoutOutput) SloEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetClientAddonSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type GetClientJwtConfiguration struct {
@@ -13400,26 +13969,26 @@ func (o GetGlobalClientAddonArrayOutput) Index(i pulumi.IntInput) GetGlobalClien
 }
 
 type GetGlobalClientAddonSamlp struct {
-	Audience                       string                          `pulumi:"audience"`
-	AuthnContextClassRef           string                          `pulumi:"authnContextClassRef"`
-	Binding                        string                          `pulumi:"binding"`
-	CreateUpnClaim                 bool                            `pulumi:"createUpnClaim"`
-	Destination                    string                          `pulumi:"destination"`
-	DigestAlgorithm                string                          `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     bool                            `pulumi:"includeAttributeNameFormat"`
-	LifetimeInSeconds              int                             `pulumi:"lifetimeInSeconds"`
-	Logout                         GetGlobalClientAddonSamlpLogout `pulumi:"logout"`
-	MapIdentities                  bool                            `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           bool                            `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       map[string]interface{}          `pulumi:"mappings"`
-	NameIdentifierFormat           string                          `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           []string                        `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping bool                            `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      string                          `pulumi:"recipient"`
-	SignResponse                   bool                            `pulumi:"signResponse"`
-	SignatureAlgorithm             string                          `pulumi:"signatureAlgorithm"`
-	SigningCert                    string                          `pulumi:"signingCert"`
-	TypedAttributes                bool                            `pulumi:"typedAttributes"`
+	Audience                       string                 `pulumi:"audience"`
+	AuthnContextClassRef           string                 `pulumi:"authnContextClassRef"`
+	Binding                        string                 `pulumi:"binding"`
+	CreateUpnClaim                 bool                   `pulumi:"createUpnClaim"`
+	Destination                    string                 `pulumi:"destination"`
+	DigestAlgorithm                string                 `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     bool                   `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              int                    `pulumi:"lifetimeInSeconds"`
+	Logout                         map[string]interface{} `pulumi:"logout"`
+	MapIdentities                  bool                   `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           bool                   `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       map[string]interface{} `pulumi:"mappings"`
+	NameIdentifierFormat           string                 `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           []string               `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping bool                   `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      string                 `pulumi:"recipient"`
+	SignResponse                   bool                   `pulumi:"signResponse"`
+	SignatureAlgorithm             string                 `pulumi:"signatureAlgorithm"`
+	SigningCert                    string                 `pulumi:"signingCert"`
+	TypedAttributes                bool                   `pulumi:"typedAttributes"`
 }
 
 // GetGlobalClientAddonSamlpInput is an input type that accepts GetGlobalClientAddonSamlpArgs and GetGlobalClientAddonSamlpOutput values.
@@ -13434,26 +14003,26 @@ type GetGlobalClientAddonSamlpInput interface {
 }
 
 type GetGlobalClientAddonSamlpArgs struct {
-	Audience                       pulumi.StringInput                   `pulumi:"audience"`
-	AuthnContextClassRef           pulumi.StringInput                   `pulumi:"authnContextClassRef"`
-	Binding                        pulumi.StringInput                   `pulumi:"binding"`
-	CreateUpnClaim                 pulumi.BoolInput                     `pulumi:"createUpnClaim"`
-	Destination                    pulumi.StringInput                   `pulumi:"destination"`
-	DigestAlgorithm                pulumi.StringInput                   `pulumi:"digestAlgorithm"`
-	IncludeAttributeNameFormat     pulumi.BoolInput                     `pulumi:"includeAttributeNameFormat"`
-	LifetimeInSeconds              pulumi.IntInput                      `pulumi:"lifetimeInSeconds"`
-	Logout                         GetGlobalClientAddonSamlpLogoutInput `pulumi:"logout"`
-	MapIdentities                  pulumi.BoolInput                     `pulumi:"mapIdentities"`
-	MapUnknownClaimsAsIs           pulumi.BoolInput                     `pulumi:"mapUnknownClaimsAsIs"`
-	Mappings                       pulumi.MapInput                      `pulumi:"mappings"`
-	NameIdentifierFormat           pulumi.StringInput                   `pulumi:"nameIdentifierFormat"`
-	NameIdentifierProbes           pulumi.StringArrayInput              `pulumi:"nameIdentifierProbes"`
-	PassthroughClaimsWithNoMapping pulumi.BoolInput                     `pulumi:"passthroughClaimsWithNoMapping"`
-	Recipient                      pulumi.StringInput                   `pulumi:"recipient"`
-	SignResponse                   pulumi.BoolInput                     `pulumi:"signResponse"`
-	SignatureAlgorithm             pulumi.StringInput                   `pulumi:"signatureAlgorithm"`
-	SigningCert                    pulumi.StringInput                   `pulumi:"signingCert"`
-	TypedAttributes                pulumi.BoolInput                     `pulumi:"typedAttributes"`
+	Audience                       pulumi.StringInput      `pulumi:"audience"`
+	AuthnContextClassRef           pulumi.StringInput      `pulumi:"authnContextClassRef"`
+	Binding                        pulumi.StringInput      `pulumi:"binding"`
+	CreateUpnClaim                 pulumi.BoolInput        `pulumi:"createUpnClaim"`
+	Destination                    pulumi.StringInput      `pulumi:"destination"`
+	DigestAlgorithm                pulumi.StringInput      `pulumi:"digestAlgorithm"`
+	IncludeAttributeNameFormat     pulumi.BoolInput        `pulumi:"includeAttributeNameFormat"`
+	LifetimeInSeconds              pulumi.IntInput         `pulumi:"lifetimeInSeconds"`
+	Logout                         pulumi.MapInput         `pulumi:"logout"`
+	MapIdentities                  pulumi.BoolInput        `pulumi:"mapIdentities"`
+	MapUnknownClaimsAsIs           pulumi.BoolInput        `pulumi:"mapUnknownClaimsAsIs"`
+	Mappings                       pulumi.MapInput         `pulumi:"mappings"`
+	NameIdentifierFormat           pulumi.StringInput      `pulumi:"nameIdentifierFormat"`
+	NameIdentifierProbes           pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
+	PassthroughClaimsWithNoMapping pulumi.BoolInput        `pulumi:"passthroughClaimsWithNoMapping"`
+	Recipient                      pulumi.StringInput      `pulumi:"recipient"`
+	SignResponse                   pulumi.BoolInput        `pulumi:"signResponse"`
+	SignatureAlgorithm             pulumi.StringInput      `pulumi:"signatureAlgorithm"`
+	SigningCert                    pulumi.StringInput      `pulumi:"signingCert"`
+	TypedAttributes                pulumi.BoolInput        `pulumi:"typedAttributes"`
 }
 
 func (GetGlobalClientAddonSamlpArgs) ElementType() reflect.Type {
@@ -13539,8 +14108,8 @@ func (o GetGlobalClientAddonSamlpOutput) LifetimeInSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGlobalClientAddonSamlp) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
 }
 
-func (o GetGlobalClientAddonSamlpOutput) Logout() GetGlobalClientAddonSamlpLogoutOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlp) GetGlobalClientAddonSamlpLogout { return v.Logout }).(GetGlobalClientAddonSamlpLogoutOutput)
+func (o GetGlobalClientAddonSamlpOutput) Logout() pulumi.MapOutput {
+	return o.ApplyT(func(v GetGlobalClientAddonSamlp) map[string]interface{} { return v.Logout }).(pulumi.MapOutput)
 }
 
 func (o GetGlobalClientAddonSamlpOutput) MapIdentities() pulumi.BoolOutput {
@@ -13605,61 +14174,6 @@ func (o GetGlobalClientAddonSamlpArrayOutput) Index(i pulumi.IntInput) GetGlobal
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalClientAddonSamlp {
 		return vs[0].([]GetGlobalClientAddonSamlp)[vs[1].(int)]
 	}).(GetGlobalClientAddonSamlpOutput)
-}
-
-type GetGlobalClientAddonSamlpLogout struct {
-	Callback   *string `pulumi:"callback"`
-	SloEnabled *bool   `pulumi:"sloEnabled"`
-}
-
-// GetGlobalClientAddonSamlpLogoutInput is an input type that accepts GetGlobalClientAddonSamlpLogoutArgs and GetGlobalClientAddonSamlpLogoutOutput values.
-// You can construct a concrete instance of `GetGlobalClientAddonSamlpLogoutInput` via:
-//
-//          GetGlobalClientAddonSamlpLogoutArgs{...}
-type GetGlobalClientAddonSamlpLogoutInput interface {
-	pulumi.Input
-
-	ToGetGlobalClientAddonSamlpLogoutOutput() GetGlobalClientAddonSamlpLogoutOutput
-	ToGetGlobalClientAddonSamlpLogoutOutputWithContext(context.Context) GetGlobalClientAddonSamlpLogoutOutput
-}
-
-type GetGlobalClientAddonSamlpLogoutArgs struct {
-	Callback   pulumi.StringPtrInput `pulumi:"callback"`
-	SloEnabled pulumi.BoolPtrInput   `pulumi:"sloEnabled"`
-}
-
-func (GetGlobalClientAddonSamlpLogoutArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientAddonSamlpLogout)(nil)).Elem()
-}
-
-func (i GetGlobalClientAddonSamlpLogoutArgs) ToGetGlobalClientAddonSamlpLogoutOutput() GetGlobalClientAddonSamlpLogoutOutput {
-	return i.ToGetGlobalClientAddonSamlpLogoutOutputWithContext(context.Background())
-}
-
-func (i GetGlobalClientAddonSamlpLogoutArgs) ToGetGlobalClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpLogoutOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalClientAddonSamlpLogoutOutput)
-}
-
-type GetGlobalClientAddonSamlpLogoutOutput struct{ *pulumi.OutputState }
-
-func (GetGlobalClientAddonSamlpLogoutOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGlobalClientAddonSamlpLogout)(nil)).Elem()
-}
-
-func (o GetGlobalClientAddonSamlpLogoutOutput) ToGetGlobalClientAddonSamlpLogoutOutput() GetGlobalClientAddonSamlpLogoutOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonSamlpLogoutOutput) ToGetGlobalClientAddonSamlpLogoutOutputWithContext(ctx context.Context) GetGlobalClientAddonSamlpLogoutOutput {
-	return o
-}
-
-func (o GetGlobalClientAddonSamlpLogoutOutput) Callback() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlpLogout) *string { return v.Callback }).(pulumi.StringPtrOutput)
-}
-
-func (o GetGlobalClientAddonSamlpLogoutOutput) SloEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGlobalClientAddonSamlpLogout) *bool { return v.SloEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type GetGlobalClientJwtConfiguration struct {
@@ -14501,6 +15015,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretArrayInput)(nil)).Elem(), ActionSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersPtrInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPtrInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBruteForceProtectionInput)(nil)).Elem(), AttackProtectionBruteForceProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBruteForceProtectionPtrInput)(nil)).Elem(), AttackProtectionBruteForceProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPtrInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreLoginInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingPreLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreLoginPtrInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingPreLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingColorsInput)(nil)).Elem(), BrandingColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingColorsPtrInput)(nil)).Elem(), BrandingColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingFontInput)(nil)).Elem(), BrandingFontArgs{})
@@ -14511,8 +15035,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsPtrInput)(nil)).Elem(), ClientAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpPtrInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpLogoutInput)(nil)).Elem(), ClientAddonsSamlpLogoutArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpLogoutPtrInput)(nil)).Elem(), ClientAddonsSamlpLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationPtrInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileInput)(nil)).Elem(), ClientMobileArgs{})
@@ -14559,8 +15081,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsPtrInput)(nil)).Elem(), GlobalClientAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpInput)(nil)).Elem(), GlobalClientAddonsSamlpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpPtrInput)(nil)).Elem(), GlobalClientAddonsSamlpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpLogoutInput)(nil)).Elem(), GlobalClientAddonsSamlpLogoutArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpLogoutPtrInput)(nil)).Elem(), GlobalClientAddonsSamlpLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientJwtConfigurationInput)(nil)).Elem(), GlobalClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientJwtConfigurationPtrInput)(nil)).Elem(), GlobalClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientMobileInput)(nil)).Elem(), GlobalClientMobileArgs{})
@@ -14609,7 +15129,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonArrayInput)(nil)).Elem(), GetClientAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpInput)(nil)).Elem(), GetClientAddonSamlpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpArrayInput)(nil)).Elem(), GetClientAddonSamlpArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpLogoutInput)(nil)).Elem(), GetClientAddonSamlpLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationInput)(nil)).Elem(), GetClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationArrayInput)(nil)).Elem(), GetClientJwtConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileInput)(nil)).Elem(), GetClientMobileArgs{})
@@ -14630,7 +15149,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonArrayInput)(nil)).Elem(), GetGlobalClientAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpInput)(nil)).Elem(), GetGlobalClientAddonSamlpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpArrayInput)(nil)).Elem(), GetGlobalClientAddonSamlpArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpLogoutInput)(nil)).Elem(), GetGlobalClientAddonSamlpLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientJwtConfigurationInput)(nil)).Elem(), GetGlobalClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientJwtConfigurationArrayInput)(nil)).Elem(), GetGlobalClientJwtConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientMobileInput)(nil)).Elem(), GetGlobalClientMobileArgs{})
@@ -14653,6 +15171,16 @@ func init() {
 	pulumi.RegisterOutputType(ActionSecretArrayOutput{})
 	pulumi.RegisterOutputType(ActionSupportedTriggersOutput{})
 	pulumi.RegisterOutputType(ActionSupportedTriggersPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBruteForceProtectionOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBruteForceProtectionPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingOutput{})
+	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPreLoginOutput{})
+	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPreLoginPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput{})
+	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationPtrOutput{})
 	pulumi.RegisterOutputType(BrandingColorsOutput{})
 	pulumi.RegisterOutputType(BrandingColorsPtrOutput{})
 	pulumi.RegisterOutputType(BrandingFontOutput{})
@@ -14663,8 +15191,6 @@ func init() {
 	pulumi.RegisterOutputType(ClientAddonsPtrOutput{})
 	pulumi.RegisterOutputType(ClientAddonsSamlpOutput{})
 	pulumi.RegisterOutputType(ClientAddonsSamlpPtrOutput{})
-	pulumi.RegisterOutputType(ClientAddonsSamlpLogoutOutput{})
-	pulumi.RegisterOutputType(ClientAddonsSamlpLogoutPtrOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ClientMobileOutput{})
@@ -14711,8 +15237,6 @@ func init() {
 	pulumi.RegisterOutputType(GlobalClientAddonsPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientAddonsSamlpOutput{})
 	pulumi.RegisterOutputType(GlobalClientAddonsSamlpPtrOutput{})
-	pulumi.RegisterOutputType(GlobalClientAddonsSamlpLogoutOutput{})
-	pulumi.RegisterOutputType(GlobalClientAddonsSamlpLogoutPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(GlobalClientJwtConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientMobileOutput{})
@@ -14761,7 +15285,6 @@ func init() {
 	pulumi.RegisterOutputType(GetClientAddonArrayOutput{})
 	pulumi.RegisterOutputType(GetClientAddonSamlpOutput{})
 	pulumi.RegisterOutputType(GetClientAddonSamlpArrayOutput{})
-	pulumi.RegisterOutputType(GetClientAddonSamlpLogoutOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientMobileOutput{})
@@ -14782,7 +15305,6 @@ func init() {
 	pulumi.RegisterOutputType(GetGlobalClientAddonArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpArrayOutput{})
-	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpLogoutOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientJwtConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientMobileOutput{})

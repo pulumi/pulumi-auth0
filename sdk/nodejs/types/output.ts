@@ -37,6 +37,87 @@ export interface ActionSupportedTriggers {
     version: string;
 }
 
+export interface AttackProtectionBreachedPasswordDetection {
+    /**
+     * When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     */
+    adminNotificationFrequencies?: string[];
+    /**
+     * Whether or not breached password detection is active.
+     */
+    enabled?: boolean;
+    /**
+     * The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+     */
+    method?: string;
+    /**
+     * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+     */
+    shields?: string[];
+}
+
+export interface AttackProtectionBruteForceProtection {
+    /**
+     * List of trusted IP addresses that will not have attack protection enforced against them.
+     */
+    allowlists?: string[];
+    /**
+     * Whether or not breached password detection is active.
+     */
+    enabled?: boolean;
+    /**
+     * Maximum number of unsuccessful attempts. Only available on public tenants.
+     */
+    maxAttempts?: number;
+    /**
+     * Determines whether or not IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+     */
+    mode?: string;
+    /**
+     * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+     */
+    shields?: string[];
+}
+
+export interface AttackProtectionSuspiciousIpThrottling {
+    /**
+     * List of trusted IP addresses that will not have attack protection enforced against them.
+     */
+    allowlists?: string[];
+    /**
+     * Whether or not breached password detection is active.
+     */
+    enabled?: boolean;
+    /**
+     * Configuration options that apply before every login attempt. Only available on public tenants.
+     */
+    preLogin?: outputs.AttackProtectionSuspiciousIpThrottlingPreLogin;
+    /**
+     * Configuration options that apply before every user registration attempt. Only available on public tenants.
+     */
+    preUserRegistration?: outputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration;
+    /**
+     * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+     */
+    shields?: string[];
+}
+
+export interface AttackProtectionSuspiciousIpThrottlingPreLogin {
+    /**
+     * Maximum number of unsuccessful attempts. Only available on public tenants.
+     */
+    maxAttempts?: number;
+    rate?: number;
+}
+
+export interface AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+    /**
+     * Maximum number of unsuccessful attempts. Only available on public tenants.
+     */
+    maxAttempts?: number;
+    rate?: number;
+}
+
 export interface BrandingColors {
     /**
      * String, Hexadecimal. Background color of login pages.
@@ -138,7 +219,7 @@ export interface ClientAddons {
     /**
      * List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
      */
-    samlp?: outputs.ClientAddonsSamlp;
+    samlp: outputs.ClientAddonsSamlp;
     /**
      * String
      */
@@ -213,7 +294,7 @@ export interface ClientAddonsSamlp {
     /**
      * Map(Resource). Configuration settings for logout. For details, see Logout.
      */
-    logout?: outputs.ClientAddonsSamlpLogout;
+    logout?: {[key: string]: any};
     /**
      * Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
      */
@@ -258,17 +339,6 @@ export interface ClientAddonsSamlp {
      * Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
      */
     typedAttributes?: boolean;
-}
-
-export interface ClientAddonsSamlpLogout {
-    /**
-     * String. Service provider's Single Logout Service URL, to which Auth0 will send logout requests and responses.
-     */
-    callback?: string;
-    /**
-     * Boolean. Indicates whether or not Auth0 should notify service providers of session termination.
-     */
-    sloEnabled?: boolean;
 }
 
 export interface ClientJwtConfiguration {
@@ -387,7 +457,7 @@ export interface ConnectionOptions {
     /**
      * List of allowed audiences.
      */
-    allowedAudiences?: string[];
+    allowedAudiences: string[];
     apiEnableUsers?: boolean;
     /**
      * Azure AD domain name.
@@ -445,7 +515,7 @@ export interface ConnectionOptions {
     /**
      * List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
      */
-    domainAliases?: string[];
+    domainAliases: string[];
     enabledDatabaseCustomization?: boolean;
     /**
      * Custom Entity ID for the connection.
@@ -472,7 +542,7 @@ export interface ConnectionOptions {
      * Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
      */
     importMode?: boolean;
-    ips?: string[];
+    ips: string[];
     /**
      * Issuer URL. E.g. `https://auth.example.com`
      */
@@ -493,7 +563,7 @@ export interface ConnectionOptions {
     /**
      * Configuration settings Options for multifactor authentication. For details, see MFA Options.
      */
-    mfa?: outputs.ConnectionOptionsMfa;
+    mfa: outputs.ConnectionOptionsMfa;
     /**
      * Name of the connection.
      */
@@ -538,7 +608,7 @@ export interface ConnectionOptions {
     /**
      * Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
      */
-    scopes?: string[];
+    scopes: string[];
     scripts?: {[key: string]: string};
     /**
      * Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
@@ -796,7 +866,7 @@ export interface GetClientAddonSamlp {
     digestAlgorithm: string;
     includeAttributeNameFormat: boolean;
     lifetimeInSeconds: number;
-    logout: outputs.GetClientAddonSamlpLogout;
+    logout: {[key: string]: any};
     mapIdentities: boolean;
     mapUnknownClaimsAsIs: boolean;
     mappings: {[key: string]: any};
@@ -808,11 +878,6 @@ export interface GetClientAddonSamlp {
     signatureAlgorithm: string;
     signingCert: string;
     typedAttributes: boolean;
-}
-
-export interface GetClientAddonSamlpLogout {
-    callback?: string;
-    sloEnabled?: boolean;
 }
 
 export interface GetClientJwtConfiguration {
@@ -900,7 +965,7 @@ export interface GetGlobalClientAddonSamlp {
     digestAlgorithm: string;
     includeAttributeNameFormat: boolean;
     lifetimeInSeconds: number;
-    logout: outputs.GetGlobalClientAddonSamlpLogout;
+    logout: {[key: string]: any};
     mapIdentities: boolean;
     mapUnknownClaimsAsIs: boolean;
     mappings: {[key: string]: any};
@@ -912,11 +977,6 @@ export interface GetGlobalClientAddonSamlp {
     signatureAlgorithm: string;
     signingCert: string;
     typedAttributes: boolean;
-}
-
-export interface GetGlobalClientAddonSamlpLogout {
-    callback?: string;
-    sloEnabled?: boolean;
 }
 
 export interface GetGlobalClientJwtConfiguration {
@@ -983,7 +1043,7 @@ export interface GlobalClientAddons {
     salesforce?: {[key: string]: any};
     salesforceApi?: {[key: string]: any};
     salesforceSandboxApi?: {[key: string]: any};
-    samlp?: outputs.GlobalClientAddonsSamlp;
+    samlp: outputs.GlobalClientAddonsSamlp;
     sapApi?: {[key: string]: any};
     sentry?: {[key: string]: any};
     sharepoint?: {[key: string]: any};
@@ -1004,7 +1064,7 @@ export interface GlobalClientAddonsSamlp {
     digestAlgorithm?: string;
     includeAttributeNameFormat?: boolean;
     lifetimeInSeconds?: number;
-    logout?: outputs.GlobalClientAddonsSamlpLogout;
+    logout?: {[key: string]: any};
     mapIdentities?: boolean;
     mapUnknownClaimsAsIs?: boolean;
     mappings?: {[key: string]: any};
@@ -1016,11 +1076,6 @@ export interface GlobalClientAddonsSamlp {
     signatureAlgorithm?: string;
     signingCert?: string;
     typedAttributes?: boolean;
-}
-
-export interface GlobalClientAddonsSamlpLogout {
-    callback?: string;
-    sloEnabled?: boolean;
 }
 
 export interface GlobalClientJwtConfiguration {
@@ -1339,3 +1394,4 @@ export interface TriggerBindingAction {
      */
     id: string;
 }
+

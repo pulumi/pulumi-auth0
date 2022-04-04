@@ -129,6 +129,7 @@ namespace Pulumi.Auth0
         public readonly ImmutableArray<string> Callbacks;
         public readonly string? ClientId;
         public readonly ImmutableDictionary<string, object> ClientMetadata;
+        public readonly string ClientSecret;
         public readonly bool CrossOriginAuth;
         public readonly string CrossOriginLoc;
         public readonly string CustomLoginPage;
@@ -176,6 +177,8 @@ namespace Pulumi.Auth0
             string? clientId,
 
             ImmutableDictionary<string, object> clientMetadata,
+
+            string clientSecret,
 
             bool crossOriginAuth,
 
@@ -237,6 +240,7 @@ namespace Pulumi.Auth0
             Callbacks = callbacks;
             ClientId = clientId;
             ClientMetadata = clientMetadata;
+            ClientSecret = clientSecret;
             CrossOriginAuth = crossOriginAuth;
             CrossOriginLoc = crossOriginLoc;
             CustomLoginPage = customLoginPage;

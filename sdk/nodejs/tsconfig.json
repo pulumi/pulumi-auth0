@@ -14,6 +14,7 @@
     },
     "files": [
         "action.ts",
+        "attackProtection.ts",
         "branding.ts",
         "client.ts",
         "clientGrant.ts",
@@ -26,6 +27,7 @@
         "emailTemplate.ts",
         "getClient.ts",
         "getGlobalClient.ts",
+        "getTenant.ts",
         "globalClient.ts",
         "guardian.ts",
         "hook.ts",
