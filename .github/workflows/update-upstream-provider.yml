@@ -17,7 +17,7 @@ env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TRAVIS_OS_NAME: linux
   UPSTREAM_PROVIDER_MAJOR_VERSION: ""
-  UPSTREAM_PROVIDER_ORG: alexkappa
+  UPSTREAM_PROVIDER_ORG: auth0
   UPSTREAM_PROVIDER_REPO: terraform-provider-auth0
 jobs:
   update_upstream_provider:
