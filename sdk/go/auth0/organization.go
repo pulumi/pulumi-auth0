@@ -266,6 +266,34 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Defines how to style the login pages. For details, see
+// Branding
+func (o OrganizationOutput) Branding() OrganizationBrandingOutput {
+	return o.ApplyT(func(v *Organization) OrganizationBrandingOutput { return v.Branding }).(OrganizationBrandingOutput)
+}
+
+// Connections assigned to the organization. For
+// details, see Connections
+func (o OrganizationOutput) Connections() OrganizationConnectionArrayOutput {
+	return o.ApplyT(func(v *Organization) OrganizationConnectionArrayOutput { return v.Connections }).(OrganizationConnectionArrayOutput)
+}
+
+// Friendly name of this organization
+func (o OrganizationOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Metadata associated with the organization, Maximum of
+// 10 metadata properties allowed
+func (o OrganizationOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The name of this organization
+func (o OrganizationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type OrganizationArrayOutput struct{ *pulumi.OutputState }
 
 func (OrganizationArrayOutput) ElementType() reflect.Type {

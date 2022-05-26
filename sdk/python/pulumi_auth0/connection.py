@@ -611,7 +611,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> pulumi.Output[Optional['outputs.ConnectionOptions']]:
+    def options(self) -> pulumi.Output['outputs.ConnectionOptions']:
         """
         Configuration settings for connection options. For details, see Options.
         """

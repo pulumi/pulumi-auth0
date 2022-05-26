@@ -62,6 +62,10 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
+     * String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     */
+    public /*out*/ readonly originDomainName!: pulumi.Output<string>;
+    /**
      * Boolean. Indicates whether this is a primary domain.
      */
     public /*out*/ readonly primary!: pulumi.Output<boolean>;
@@ -76,14 +80,7 @@ export class CustomDomain extends pulumi.CustomResource {
     /**
      * List(Resource). Configuration settings for verification. For details, see Verification.
      */
-    public /*out*/ readonly verification!: pulumi.Output<outputs.CustomDomainVerification>;
-    /**
-     * String. Domain verification method. The method is chosen according to the type of
-     * the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
-     *
-     * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
-     */
-    public readonly verificationMethod!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly verifications!: pulumi.Output<outputs.CustomDomainVerification[]>;
 
     /**
      * Create a CustomDomain resource with the given unique name, arguments, and options.
@@ -99,11 +96,11 @@ export class CustomDomain extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CustomDomainState | undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["originDomainName"] = state ? state.originDomainName : undefined;
             resourceInputs["primary"] = state ? state.primary : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["verification"] = state ? state.verification : undefined;
-            resourceInputs["verificationMethod"] = state ? state.verificationMethod : undefined;
+            resourceInputs["verifications"] = state ? state.verifications : undefined;
         } else {
             const args = argsOrState as CustomDomainArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -114,10 +111,10 @@ export class CustomDomain extends pulumi.CustomResource {
             }
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["verificationMethod"] = args ? args.verificationMethod : undefined;
+            resourceInputs["originDomainName"] = undefined /*out*/;
             resourceInputs["primary"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["verification"] = undefined /*out*/;
+            resourceInputs["verifications"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomDomain.__pulumiType, name, resourceInputs, opts);
@@ -133,6 +130,10 @@ export interface CustomDomainState {
      */
     domain?: pulumi.Input<string>;
     /**
+     * String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     */
+    originDomainName?: pulumi.Input<string>;
+    /**
      * Boolean. Indicates whether this is a primary domain.
      */
     primary?: pulumi.Input<boolean>;
@@ -147,14 +148,7 @@ export interface CustomDomainState {
     /**
      * List(Resource). Configuration settings for verification. For details, see Verification.
      */
-    verification?: pulumi.Input<inputs.CustomDomainVerification>;
-    /**
-     * String. Domain verification method. The method is chosen according to the type of
-     * the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
-     *
-     * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
-     */
-    verificationMethod?: pulumi.Input<string>;
+    verifications?: pulumi.Input<pulumi.Input<inputs.CustomDomainVerification>[]>;
 }
 
 /**
@@ -169,11 +163,4 @@ export interface CustomDomainArgs {
      * String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      */
     type: pulumi.Input<string>;
-    /**
-     * String. Domain verification method. The method is chosen according to the type of
-     * the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
-     *
-     * @deprecated The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
-     */
-    verificationMethod?: pulumi.Input<string>;
 }

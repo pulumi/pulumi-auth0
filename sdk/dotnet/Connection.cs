@@ -102,7 +102,7 @@ namespace Pulumi.Auth0
         /// Configuration settings for connection options. For details, see Options.
         /// </summary>
         [Output("options")]
-        public Output<Outputs.ConnectionOptions?> Options { get; private set; } = null!;
+        public Output<Outputs.ConnectionOptions> Options { get; private set; } = null!;
 
         /// <summary>
         /// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.

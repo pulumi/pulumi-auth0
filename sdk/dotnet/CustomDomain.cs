@@ -51,6 +51,12 @@ namespace Pulumi.Auth0
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
+        /// String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// </summary>
+        [Output("originDomainName")]
+        public Output<string> OriginDomainName { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean. Indicates whether this is a primary domain.
         /// </summary>
         [Output("primary")]
@@ -71,15 +77,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// List(Resource). Configuration settings for verification. For details, see Verification.
         /// </summary>
-        [Output("verification")]
-        public Output<Outputs.CustomDomainVerification> Verification { get; private set; } = null!;
-
-        /// <summary>
-        /// String. Domain verification method. The method is chosen according to the type of
-        /// the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
-        /// </summary>
-        [Output("verificationMethod")]
-        public Output<string?> VerificationMethod { get; private set; } = null!;
+        [Output("verifications")]
+        public Output<ImmutableArray<Outputs.CustomDomainVerification>> Verifications { get; private set; } = null!;
 
 
         /// <summary>
@@ -139,13 +138,6 @@ namespace Pulumi.Auth0
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        /// <summary>
-        /// String. Domain verification method. The method is chosen according to the type of
-        /// the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
-        /// </summary>
-        [Input("verificationMethod")]
-        public Input<string>? VerificationMethod { get; set; }
-
         public CustomDomainArgs()
         {
         }
@@ -158,6 +150,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
+
+        /// <summary>
+        /// String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// </summary>
+        [Input("originDomainName")]
+        public Input<string>? OriginDomainName { get; set; }
 
         /// <summary>
         /// Boolean. Indicates whether this is a primary domain.
@@ -177,18 +175,17 @@ namespace Pulumi.Auth0
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("verifications")]
+        private InputList<Inputs.CustomDomainVerificationGetArgs>? _verifications;
+
         /// <summary>
         /// List(Resource). Configuration settings for verification. For details, see Verification.
         /// </summary>
-        [Input("verification")]
-        public Input<Inputs.CustomDomainVerificationGetArgs>? Verification { get; set; }
-
-        /// <summary>
-        /// String. Domain verification method. The method is chosen according to the type of
-        /// the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
-        /// </summary>
-        [Input("verificationMethod")]
-        public Input<string>? VerificationMethod { get; set; }
+        public InputList<Inputs.CustomDomainVerificationGetArgs> Verifications
+        {
+            get => _verifications ?? (_verifications = new InputList<Inputs.CustomDomainVerificationGetArgs>());
+            set => _verifications = value;
+        }
 
         public CustomDomainState()
         {

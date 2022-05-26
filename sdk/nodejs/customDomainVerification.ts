@@ -45,10 +45,15 @@ export class CustomDomainVerification extends pulumi.CustomResource {
         return obj['__pulumiType'] === CustomDomainVerification.__pulumiType;
     }
 
+    public /*out*/ readonly cnameApiKey!: pulumi.Output<string>;
     /**
      * String. ID of the custom domain resource.
      */
     public readonly customDomainId!: pulumi.Output<string>;
+    /**
+     * String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     */
+    public /*out*/ readonly originDomainName!: pulumi.Output<string>;
 
     /**
      * Create a CustomDomainVerification resource with the given unique name, arguments, and options.
@@ -63,13 +68,17 @@ export class CustomDomainVerification extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDomainVerificationState | undefined;
+            resourceInputs["cnameApiKey"] = state ? state.cnameApiKey : undefined;
             resourceInputs["customDomainId"] = state ? state.customDomainId : undefined;
+            resourceInputs["originDomainName"] = state ? state.originDomainName : undefined;
         } else {
             const args = argsOrState as CustomDomainVerificationArgs | undefined;
             if ((!args || args.customDomainId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customDomainId'");
             }
             resourceInputs["customDomainId"] = args ? args.customDomainId : undefined;
+            resourceInputs["cnameApiKey"] = undefined /*out*/;
+            resourceInputs["originDomainName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomDomainVerification.__pulumiType, name, resourceInputs, opts);
@@ -80,10 +89,15 @@ export class CustomDomainVerification extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CustomDomainVerification resources.
  */
 export interface CustomDomainVerificationState {
+    cnameApiKey?: pulumi.Input<string>;
     /**
      * String. ID of the custom domain resource.
      */
     customDomainId?: pulumi.Input<string>;
+    /**
+     * String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     */
+    originDomainName?: pulumi.Input<string>;
 }
 
 /**

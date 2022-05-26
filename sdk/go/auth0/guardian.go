@@ -236,6 +236,26 @@ func (o GuardianOutput) ToGuardianOutputWithContext(ctx context.Context) Guardia
 	return o
 }
 
+// Boolean. Indicates whether email MFA is enabled.
+func (o GuardianOutput) Email() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Guardian) pulumi.BoolPtrOutput { return v.Email }).(pulumi.BoolPtrOutput)
+}
+
+func (o GuardianOutput) Otp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Guardian) pulumi.BoolPtrOutput { return v.Otp }).(pulumi.BoolPtrOutput)
+}
+
+// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
+func (o GuardianOutput) Phone() GuardianPhonePtrOutput {
+	return o.ApplyT(func(v *Guardian) GuardianPhonePtrOutput { return v.Phone }).(GuardianPhonePtrOutput)
+}
+
+// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+// The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+func (o GuardianOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Guardian) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
+}
+
 type GuardianArrayOutput struct{ *pulumi.OutputState }
 
 func (GuardianArrayOutput) ElementType() reflect.Type {

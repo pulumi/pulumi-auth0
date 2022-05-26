@@ -22,7 +22,7 @@ import (
 	"github.com/auth0/terraform-provider-auth0/auth0"
 	"github.com/pulumi/pulumi-auth0/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -55,7 +55,7 @@ func makeResource(mod string, res string) tokens.Type {
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(auth0.Provider())
+	p := shimv2.NewProvider(auth0.Provider())
 
 	prov := tfbridge.ProviderInfo{
 		P:           p,

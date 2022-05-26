@@ -235,6 +235,26 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
+// Boolean. Indicates whether the rule is enabled.
+func (o RuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+func (o RuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+func (o RuleOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
+}
+
+// String. Code to be executed when the rule runs.
+func (o RuleOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
+}
+
 type RuleArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleArrayOutput) ElementType() reflect.Type {

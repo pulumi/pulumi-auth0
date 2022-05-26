@@ -234,6 +234,26 @@ func (o EmailOutput) ToEmailOutputWithContext(ctx context.Context) EmailOutput {
 	return o
 }
 
+// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+func (o EmailOutput) Credentials() EmailCredentialsOutput {
+	return o.ApplyT(func(v *Email) EmailCredentialsOutput { return v.Credentials }).(EmailCredentialsOutput)
+}
+
+// String. Email address to use as the sender when no other "from" address is specified.
+func (o EmailOutput) DefaultFromAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Email) pulumi.StringOutput { return v.DefaultFromAddress }).(pulumi.StringOutput)
+}
+
+// Boolean. Indicates whether or not the email provider is enabled.
+func (o EmailOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Email) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+func (o EmailOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Email) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type EmailArrayOutput struct{ *pulumi.OutputState }
 
 func (EmailArrayOutput) ElementType() reflect.Type {

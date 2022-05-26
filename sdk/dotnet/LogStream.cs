@@ -24,6 +24,19 @@ namespace Pulumi.Auth0
     ///     {
     ///         var example = new Auth0.LogStream("example", new Auth0.LogStreamArgs
     ///         {
+    ///             Filters = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "name", "auth.login.fail" },
+    ///                     { "type", "category" },
+    ///                 },
+    ///                 
+    ///                 {
+    ///                     { "name", "auth.signup.fail" },
+    ///                     { "type", "category" },
+    ///                 },
+    ///             },
     ///             Sink = new Auth0.Inputs.LogStreamSinkArgs
     ///             {
     ///                 AwsAccountId = "my_account_id",
@@ -48,6 +61,12 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/logStream:LogStream")]
     public partial class LogStream : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Only logs events matching these filters will be delivered by the stream.
+        /// </summary>
+        [Output("filters")]
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Filters { get; private set; } = null!;
+
         /// <summary>
         /// Name of the log stream
         /// </summary>
@@ -118,6 +137,18 @@ namespace Pulumi.Auth0
 
     public sealed class LogStreamArgs : Pulumi.ResourceArgs
     {
+        [Input("filters")]
+        private InputList<ImmutableDictionary<string, string>>? _filters;
+
+        /// <summary>
+        /// Only logs events matching these filters will be delivered by the stream.
+        /// </summary>
+        public InputList<ImmutableDictionary<string, string>> Filters
+        {
+            get => _filters ?? (_filters = new InputList<ImmutableDictionary<string, string>>());
+            set => _filters = value;
+        }
+
         /// <summary>
         /// Name of the log stream
         /// </summary>
@@ -149,6 +180,18 @@ namespace Pulumi.Auth0
 
     public sealed class LogStreamState : Pulumi.ResourceArgs
     {
+        [Input("filters")]
+        private InputList<ImmutableDictionary<string, string>>? _filters;
+
+        /// <summary>
+        /// Only logs events matching these filters will be delivered by the stream.
+        /// </summary>
+        public InputList<ImmutableDictionary<string, string>> Filters
+        {
+            get => _filters ?? (_filters = new InputList<ImmutableDictionary<string, string>>());
+            set => _filters = value;
+        }
+
         /// <summary>
         /// Name of the log stream
         /// </summary>

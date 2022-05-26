@@ -26,6 +26,16 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewLogStream(ctx, "example", &auth0.LogStreamArgs{
+// 			Filters: pulumi.StringMapArray{
+// 				pulumi.StringMap{
+// 					"name": pulumi.String("auth.login.fail"),
+// 					"type": pulumi.String("category"),
+// 				},
+// 				pulumi.StringMap{
+// 					"name": pulumi.String("auth.signup.fail"),
+// 					"type": pulumi.String("category"),
+// 				},
+// 			},
 // 			Sink: &LogStreamSinkArgs{
 // 				AwsAccountId: pulumi.String("my_account_id"),
 // 				AwsRegion:    pulumi.String("us-east-2"),
@@ -51,6 +61,8 @@ import (
 type LogStream struct {
 	pulumi.CustomResourceState
 
+	// Only logs events matching these filters will be delivered by the stream.
+	Filters pulumi.StringMapArrayOutput `pulumi:"filters"`
 	// Name of the log stream
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
@@ -96,6 +108,8 @@ func GetLogStream(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogStream resources.
 type logStreamState struct {
+	// Only logs events matching these filters will be delivered by the stream.
+	Filters []map[string]string `pulumi:"filters"`
 	// Name of the log stream
 	Name *string `pulumi:"name"`
 	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
@@ -107,6 +121,8 @@ type logStreamState struct {
 }
 
 type LogStreamState struct {
+	// Only logs events matching these filters will be delivered by the stream.
+	Filters pulumi.StringMapArrayInput
 	// Name of the log stream
 	Name pulumi.StringPtrInput
 	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
@@ -122,6 +138,8 @@ func (LogStreamState) ElementType() reflect.Type {
 }
 
 type logStreamArgs struct {
+	// Only logs events matching these filters will be delivered by the stream.
+	Filters []map[string]string `pulumi:"filters"`
 	// Name of the log stream
 	Name *string `pulumi:"name"`
 	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
@@ -134,6 +152,8 @@ type logStreamArgs struct {
 
 // The set of arguments for constructing a LogStream resource.
 type LogStreamArgs struct {
+	// Only logs events matching these filters will be delivered by the stream.
+	Filters pulumi.StringMapArrayInput
 	// Name of the log stream
 	Name pulumi.StringPtrInput
 	// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
@@ -229,6 +249,31 @@ func (o LogStreamOutput) ToLogStreamOutput() LogStreamOutput {
 
 func (o LogStreamOutput) ToLogStreamOutputWithContext(ctx context.Context) LogStreamOutput {
 	return o
+}
+
+// Only logs events matching these filters will be delivered by the stream.
+func (o LogStreamOutput) Filters() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *LogStream) pulumi.StringMapArrayOutput { return v.Filters }).(pulumi.StringMapArrayOutput)
+}
+
+// Name of the log stream
+func (o LogStreamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogStream) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+func (o LogStreamOutput) Sink() LogStreamSinkOutput {
+	return o.ApplyT(func(v *LogStream) LogStreamSinkOutput { return v.Sink }).(LogStreamSinkOutput)
+}
+
+// The current status of the log stream. Options are "active", "paused", "suspended"
+func (o LogStreamOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogStream) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+func (o LogStreamOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogStream) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type LogStreamArrayOutput struct{ *pulumi.OutputState }

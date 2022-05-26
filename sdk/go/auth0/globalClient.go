@@ -360,6 +360,146 @@ func (o GlobalClientOutput) ToGlobalClientOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o GlobalClientOutput) Addons() GlobalClientAddonsOutput {
+	return o.ApplyT(func(v *GlobalClient) GlobalClientAddonsOutput { return v.Addons }).(GlobalClientAddonsOutput)
+}
+
+func (o GlobalClientOutput) AllowedClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.AllowedClients }).(pulumi.StringArrayOutput)
+}
+
+func (o GlobalClientOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o GlobalClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+func (o GlobalClientOutput) AppType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.AppType }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) Callbacks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.Callbacks }).(pulumi.StringArrayOutput)
+}
+
+func (o GlobalClientOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) ClientMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.MapOutput { return v.ClientMetadata }).(pulumi.MapOutput)
+}
+
+func (o GlobalClientOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) ClientSecretRotationTrigger() pulumi.MapOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.MapOutput { return v.ClientSecretRotationTrigger }).(pulumi.MapOutput)
+}
+
+func (o GlobalClientOutput) CrossOriginAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.CrossOriginAuth }).(pulumi.BoolOutput)
+}
+
+func (o GlobalClientOutput) CrossOriginLoc() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.CrossOriginLoc }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) CustomLoginPage() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.CustomLoginPage }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) CustomLoginPageOn() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.CustomLoginPageOn }).(pulumi.BoolOutput)
+}
+
+func (o GlobalClientOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) EncryptionKey() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringMapOutput { return v.EncryptionKey }).(pulumi.StringMapOutput)
+}
+
+func (o GlobalClientOutput) FormTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.FormTemplate }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) GrantTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.GrantTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o GlobalClientOutput) InitiateLoginUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.InitiateLoginUri }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) IsFirstParty() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.IsFirstParty }).(pulumi.BoolOutput)
+}
+
+func (o GlobalClientOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
+}
+
+func (o GlobalClientOutput) JwtConfiguration() GlobalClientJwtConfigurationOutput {
+	return o.ApplyT(func(v *GlobalClient) GlobalClientJwtConfigurationOutput { return v.JwtConfiguration }).(GlobalClientJwtConfigurationOutput)
+}
+
+func (o GlobalClientOutput) LogoUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.LogoUri }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) Mobile() GlobalClientMobileOutput {
+	return o.ApplyT(func(v *GlobalClient) GlobalClientMobileOutput { return v.Mobile }).(GlobalClientMobileOutput)
+}
+
+func (o GlobalClientOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) NativeSocialLogin() GlobalClientNativeSocialLoginOutput {
+	return o.ApplyT(func(v *GlobalClient) GlobalClientNativeSocialLoginOutput { return v.NativeSocialLogin }).(GlobalClientNativeSocialLoginOutput)
+}
+
+func (o GlobalClientOutput) OidcConformant() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.OidcConformant }).(pulumi.BoolOutput)
+}
+
+func (o GlobalClientOutput) OrganizationRequireBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.OrganizationRequireBehavior }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) OrganizationUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.OrganizationUsage }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) RefreshToken() GlobalClientRefreshTokenOutput {
+	return o.ApplyT(func(v *GlobalClient) GlobalClientRefreshTokenOutput { return v.RefreshToken }).(GlobalClientRefreshTokenOutput)
+}
+
+func (o GlobalClientOutput) SigningKeys() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.MapArrayOutput { return v.SigningKeys }).(pulumi.MapArrayOutput)
+}
+
+func (o GlobalClientOutput) Sso() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.Sso }).(pulumi.BoolOutput)
+}
+
+func (o GlobalClientOutput) SsoDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.SsoDisabled }).(pulumi.BoolOutput)
+}
+
+func (o GlobalClientOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
+}
+
+func (o GlobalClientOutput) WebOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.WebOrigins }).(pulumi.StringArrayOutput)
+}
+
 type GlobalClientArrayOutput struct{ *pulumi.OutputState }
 
 func (GlobalClientArrayOutput) ElementType() reflect.Type {

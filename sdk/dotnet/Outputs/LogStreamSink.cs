@@ -64,7 +64,7 @@ namespace Pulumi.Auth0.Outputs
         /// <summary>
         /// Additional HTTP headers to be included as part of the HTTP request
         /// </summary>
-        public readonly ImmutableArray<string> HttpCustomHeaders;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> HttpCustomHeaders;
         /// <summary>
         /// The HTTP endpoint to send streaming logs
         /// </summary>
@@ -113,7 +113,7 @@ namespace Pulumi.Auth0.Outputs
 
             string? httpContentType,
 
-            ImmutableArray<string> httpCustomHeaders,
+            ImmutableArray<ImmutableDictionary<string, string>> httpCustomHeaders,
 
             string? httpEndpoint,
 

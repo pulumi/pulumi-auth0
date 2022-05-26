@@ -7237,45 +7237,29 @@ func (i CustomDomainVerificationTypeArgs) ToCustomDomainVerificationTypeOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationTypeOutput)
 }
 
-func (i CustomDomainVerificationTypeArgs) ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput {
-	return i.ToCustomDomainVerificationTypePtrOutputWithContext(context.Background())
-}
-
-func (i CustomDomainVerificationTypeArgs) ToCustomDomainVerificationTypePtrOutputWithContext(ctx context.Context) CustomDomainVerificationTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationTypeOutput).ToCustomDomainVerificationTypePtrOutputWithContext(ctx)
-}
-
-// CustomDomainVerificationTypePtrInput is an input type that accepts CustomDomainVerificationTypeArgs, CustomDomainVerificationTypePtr and CustomDomainVerificationTypePtrOutput values.
-// You can construct a concrete instance of `CustomDomainVerificationTypePtrInput` via:
+// CustomDomainVerificationTypeArrayInput is an input type that accepts CustomDomainVerificationTypeArray and CustomDomainVerificationTypeArrayOutput values.
+// You can construct a concrete instance of `CustomDomainVerificationTypeArrayInput` via:
 //
-//          CustomDomainVerificationTypeArgs{...}
-//
-//  or:
-//
-//          nil
-type CustomDomainVerificationTypePtrInput interface {
+//          CustomDomainVerificationTypeArray{ CustomDomainVerificationTypeArgs{...} }
+type CustomDomainVerificationTypeArrayInput interface {
 	pulumi.Input
 
-	ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput
-	ToCustomDomainVerificationTypePtrOutputWithContext(context.Context) CustomDomainVerificationTypePtrOutput
+	ToCustomDomainVerificationTypeArrayOutput() CustomDomainVerificationTypeArrayOutput
+	ToCustomDomainVerificationTypeArrayOutputWithContext(context.Context) CustomDomainVerificationTypeArrayOutput
 }
 
-type customDomainVerificationTypePtrType CustomDomainVerificationTypeArgs
+type CustomDomainVerificationTypeArray []CustomDomainVerificationTypeInput
 
-func CustomDomainVerificationTypePtr(v *CustomDomainVerificationTypeArgs) CustomDomainVerificationTypePtrInput {
-	return (*customDomainVerificationTypePtrType)(v)
+func (CustomDomainVerificationTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainVerificationType)(nil)).Elem()
 }
 
-func (*customDomainVerificationTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomDomainVerificationType)(nil)).Elem()
+func (i CustomDomainVerificationTypeArray) ToCustomDomainVerificationTypeArrayOutput() CustomDomainVerificationTypeArrayOutput {
+	return i.ToCustomDomainVerificationTypeArrayOutputWithContext(context.Background())
 }
 
-func (i *customDomainVerificationTypePtrType) ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput {
-	return i.ToCustomDomainVerificationTypePtrOutputWithContext(context.Background())
-}
-
-func (i *customDomainVerificationTypePtrType) ToCustomDomainVerificationTypePtrOutputWithContext(ctx context.Context) CustomDomainVerificationTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationTypePtrOutput)
+func (i CustomDomainVerificationTypeArray) ToCustomDomainVerificationTypeArrayOutputWithContext(ctx context.Context) CustomDomainVerificationTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationTypeArrayOutput)
 }
 
 type CustomDomainVerificationTypeOutput struct{ *pulumi.OutputState }
@@ -7292,53 +7276,29 @@ func (o CustomDomainVerificationTypeOutput) ToCustomDomainVerificationTypeOutput
 	return o
 }
 
-func (o CustomDomainVerificationTypeOutput) ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput {
-	return o.ToCustomDomainVerificationTypePtrOutputWithContext(context.Background())
-}
-
-func (o CustomDomainVerificationTypeOutput) ToCustomDomainVerificationTypePtrOutputWithContext(ctx context.Context) CustomDomainVerificationTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomDomainVerificationType) *CustomDomainVerificationType {
-		return &v
-	}).(CustomDomainVerificationTypePtrOutput)
-}
-
 // List(Map). Verification methods for the domain.
 func (o CustomDomainVerificationTypeOutput) Methods() pulumi.ArrayOutput {
 	return o.ApplyT(func(v CustomDomainVerificationType) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
 }
 
-type CustomDomainVerificationTypePtrOutput struct{ *pulumi.OutputState }
+type CustomDomainVerificationTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (CustomDomainVerificationTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomDomainVerificationType)(nil)).Elem()
+func (CustomDomainVerificationTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainVerificationType)(nil)).Elem()
 }
 
-func (o CustomDomainVerificationTypePtrOutput) ToCustomDomainVerificationTypePtrOutput() CustomDomainVerificationTypePtrOutput {
+func (o CustomDomainVerificationTypeArrayOutput) ToCustomDomainVerificationTypeArrayOutput() CustomDomainVerificationTypeArrayOutput {
 	return o
 }
 
-func (o CustomDomainVerificationTypePtrOutput) ToCustomDomainVerificationTypePtrOutputWithContext(ctx context.Context) CustomDomainVerificationTypePtrOutput {
+func (o CustomDomainVerificationTypeArrayOutput) ToCustomDomainVerificationTypeArrayOutputWithContext(ctx context.Context) CustomDomainVerificationTypeArrayOutput {
 	return o
 }
 
-func (o CustomDomainVerificationTypePtrOutput) Elem() CustomDomainVerificationTypeOutput {
-	return o.ApplyT(func(v *CustomDomainVerificationType) CustomDomainVerificationType {
-		if v != nil {
-			return *v
-		}
-		var ret CustomDomainVerificationType
-		return ret
+func (o CustomDomainVerificationTypeArrayOutput) Index(i pulumi.IntInput) CustomDomainVerificationTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDomainVerificationType {
+		return vs[0].([]CustomDomainVerificationType)[vs[1].(int)]
 	}).(CustomDomainVerificationTypeOutput)
-}
-
-// List(Map). Verification methods for the domain.
-func (o CustomDomainVerificationTypePtrOutput) Methods() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *CustomDomainVerificationType) []interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Methods
-	}).(pulumi.ArrayOutput)
 }
 
 type EmailCredentials struct {
@@ -10293,7 +10253,7 @@ type LogStreamSink struct {
 	// The ContentType header to send over HTTP.  Common value is "application/json"
 	HttpContentType *string `pulumi:"httpContentType"`
 	// Additional HTTP headers to be included as part of the HTTP request
-	HttpCustomHeaders []string `pulumi:"httpCustomHeaders"`
+	HttpCustomHeaders []map[string]string `pulumi:"httpCustomHeaders"`
 	// The HTTP endpoint to send streaming logs
 	HttpEndpoint *string `pulumi:"httpEndpoint"`
 	// The Splunk domain name
@@ -10344,7 +10304,7 @@ type LogStreamSinkArgs struct {
 	// The ContentType header to send over HTTP.  Common value is "application/json"
 	HttpContentType pulumi.StringPtrInput `pulumi:"httpContentType"`
 	// Additional HTTP headers to be included as part of the HTTP request
-	HttpCustomHeaders pulumi.StringArrayInput `pulumi:"httpCustomHeaders"`
+	HttpCustomHeaders pulumi.StringMapArrayInput `pulumi:"httpCustomHeaders"`
 	// The HTTP endpoint to send streaming logs
 	HttpEndpoint pulumi.StringPtrInput `pulumi:"httpEndpoint"`
 	// The Splunk domain name
@@ -10496,8 +10456,8 @@ func (o LogStreamSinkOutput) HttpContentType() pulumi.StringPtrOutput {
 }
 
 // Additional HTTP headers to be included as part of the HTTP request
-func (o LogStreamSinkOutput) HttpCustomHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LogStreamSink) []string { return v.HttpCustomHeaders }).(pulumi.StringArrayOutput)
+func (o LogStreamSinkOutput) HttpCustomHeaders() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v LogStreamSink) []map[string]string { return v.HttpCustomHeaders }).(pulumi.StringMapArrayOutput)
 }
 
 // The HTTP endpoint to send streaming logs
@@ -10674,13 +10634,13 @@ func (o LogStreamSinkPtrOutput) HttpContentType() pulumi.StringPtrOutput {
 }
 
 // Additional HTTP headers to be included as part of the HTTP request
-func (o LogStreamSinkPtrOutput) HttpCustomHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LogStreamSink) []string {
+func (o LogStreamSinkPtrOutput) HttpCustomHeaders() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *LogStreamSink) []map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.HttpCustomHeaders
-	}).(pulumi.StringArrayOutput)
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // The HTTP endpoint to send streaming logs
@@ -15074,7 +15034,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernameInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernamePtrInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeInput)(nil)).Elem(), CustomDomainVerificationTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypePtrInput)(nil)).Elem(), CustomDomainVerificationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeArrayInput)(nil)).Elem(), CustomDomainVerificationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsInput)(nil)).Elem(), EmailCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsPtrInput)(nil)).Elem(), EmailCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsInput)(nil)).Elem(), GlobalClientAddonsArgs{})
@@ -15230,7 +15190,7 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernameOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernamePtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationTypeOutput{})
-	pulumi.RegisterOutputType(CustomDomainVerificationTypePtrOutput{})
+	pulumi.RegisterOutputType(CustomDomainVerificationTypeArrayOutput{})
 	pulumi.RegisterOutputType(EmailCredentialsOutput{})
 	pulumi.RegisterOutputType(EmailCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientAddonsOutput{})

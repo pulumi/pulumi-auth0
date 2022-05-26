@@ -358,6 +358,91 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+func (o UserOutput) AppMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.AppMetadata }).(pulumi.StringPtrOutput)
+}
+
+func (o UserOutput) Blocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Blocked }).(pulumi.BoolPtrOutput)
+}
+
+// String. Name of the connection from which the user information was sourced.
+func (o UserOutput) ConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// String. Email address of the user.
+func (o UserOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Boolean. Indicates whether the email address has been verified.
+func (o UserOutput) EmailVerified() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.EmailVerified }).(pulumi.BoolPtrOutput)
+}
+
+func (o UserOutput) FamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.FamilyName }).(pulumi.StringPtrOutput)
+}
+
+func (o UserOutput) GivenName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.GivenName }).(pulumi.StringPtrOutput)
+}
+
+func (o UserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// String. Preferred nickname or alias of the user.
+func (o UserOutput) Nickname() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Nickname }).(pulumi.StringOutput)
+}
+
+// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+func (o UserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+func (o UserOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Boolean. Indicates whether the phone number has been verified.
+func (o UserOutput) PhoneVerified() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.PhoneVerified }).(pulumi.BoolPtrOutput)
+}
+
+func (o UserOutput) Picture() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Picture }).(pulumi.StringOutput)
+}
+
+// Set(String). Set of IDs of roles assigned to the user.
+func (o UserOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// String. ID of the user.
+func (o UserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+func (o UserOutput) UserMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.UserMetadata }).(pulumi.StringPtrOutput)
+}
+
+// String. Username of the user. Only valid if the connection requires a username.
+func (o UserOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+func (o UserOutput) VerifyEmail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.VerifyEmail }).(pulumi.BoolPtrOutput)
+}
+
 type UserArrayOutput struct{ *pulumi.OutputState }
 
 func (UserArrayOutput) ElementType() reflect.Type {

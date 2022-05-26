@@ -25,8 +25,11 @@ import (
 type CustomDomainVerification struct {
 	pulumi.CustomResourceState
 
+	CnameApiKey pulumi.StringOutput `pulumi:"cnameApiKey"`
 	// String. ID of the custom domain resource.
 	CustomDomainId pulumi.StringOutput `pulumi:"customDomainId"`
+	// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName pulumi.StringOutput `pulumi:"originDomainName"`
 }
 
 // NewCustomDomainVerification registers a new resource with the given unique name, arguments, and options.
@@ -61,13 +64,19 @@ func GetCustomDomainVerification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomDomainVerification resources.
 type customDomainVerificationState struct {
+	CnameApiKey *string `pulumi:"cnameApiKey"`
 	// String. ID of the custom domain resource.
 	CustomDomainId *string `pulumi:"customDomainId"`
+	// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName *string `pulumi:"originDomainName"`
 }
 
 type CustomDomainVerificationState struct {
+	CnameApiKey pulumi.StringPtrInput
 	// String. ID of the custom domain resource.
 	CustomDomainId pulumi.StringPtrInput
+	// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName pulumi.StringPtrInput
 }
 
 func (CustomDomainVerificationState) ElementType() reflect.Type {
@@ -170,6 +179,20 @@ func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutput() Custo
 
 func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutputWithContext(ctx context.Context) CustomDomainVerificationOutput {
 	return o
+}
+
+func (o CustomDomainVerificationOutput) CnameApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomainVerification) pulumi.StringOutput { return v.CnameApiKey }).(pulumi.StringOutput)
+}
+
+// String. ID of the custom domain resource.
+func (o CustomDomainVerificationOutput) CustomDomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomainVerification) pulumi.StringOutput { return v.CustomDomainId }).(pulumi.StringOutput)
+}
+
+// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+func (o CustomDomainVerificationOutput) OriginDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomainVerification) pulumi.StringOutput { return v.OriginDomainName }).(pulumi.StringOutput)
 }
 
 type CustomDomainVerificationArrayOutput struct{ *pulumi.OutputState }

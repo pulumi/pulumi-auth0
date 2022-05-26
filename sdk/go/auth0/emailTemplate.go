@@ -301,6 +301,46 @@ func (o EmailTemplateOutput) ToEmailTemplateOutputWithContext(ctx context.Contex
 	return o
 }
 
+// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+func (o EmailTemplateOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
+}
+
+// Boolean. Indicates whether the template is enabled.
+func (o EmailTemplateOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+func (o EmailTemplateOutput) From() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.From }).(pulumi.StringOutput)
+}
+
+// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+func (o EmailTemplateOutput) ResultUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.StringPtrOutput { return v.ResultUrl }).(pulumi.StringPtrOutput)
+}
+
+// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+func (o EmailTemplateOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.Subject }).(pulumi.StringOutput)
+}
+
+// String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+func (o EmailTemplateOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.Syntax }).(pulumi.StringOutput)
+}
+
+// String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+func (o EmailTemplateOutput) Template() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.Template }).(pulumi.StringOutput)
+}
+
+// Integer. Number of seconds during which the link within the email will be valid.
+func (o EmailTemplateOutput) UrlLifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.IntPtrOutput { return v.UrlLifetimeInSeconds }).(pulumi.IntPtrOutput)
+}
+
 type EmailTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (EmailTemplateArrayOutput) ElementType() reflect.Type {

@@ -250,6 +250,17 @@ func (o TriggerBindingOutput) ToTriggerBindingOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The actions bound to this trigger. For details, see
+// Actions.
+func (o TriggerBindingOutput) Actions() TriggerBindingActionArrayOutput {
+	return o.ApplyT(func(v *TriggerBinding) TriggerBindingActionArrayOutput { return v.Actions }).(TriggerBindingActionArrayOutput)
+}
+
+// The id of the trigger to bind with
+func (o TriggerBindingOutput) Trigger() pulumi.StringOutput {
+	return o.ApplyT(func(v *TriggerBinding) pulumi.StringOutput { return v.Trigger }).(pulumi.StringOutput)
+}
+
 type TriggerBindingArrayOutput struct{ *pulumi.OutputState }
 
 func (TriggerBindingArrayOutput) ElementType() reflect.Type {

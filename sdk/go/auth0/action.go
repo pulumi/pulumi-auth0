@@ -309,6 +309,49 @@ func (o ActionOutput) ToActionOutputWithContext(ctx context.Context) ActionOutpu
 	return o
 }
 
+// The source code of the action.
+func (o ActionOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Code }).(pulumi.StringOutput)
+}
+
+// List of third party npm modules, and their versions, that this action depends on.
+func (o ActionOutput) Dependencies() ActionDependencyArrayOutput {
+	return o.ApplyT(func(v *Action) ActionDependencyArrayOutput { return v.Dependencies }).(ActionDependencyArrayOutput)
+}
+
+// Deploying an action will create a new immutable version of the action.
+// If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
+// action immediately. Default is `false`.
+func (o ActionOutput) Deploy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.Deploy }).(pulumi.BoolPtrOutput)
+}
+
+// Secret name.
+func (o ActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Node runtime. For example `node16`, defaults to `node12`.
+func (o ActionOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// List of secrets that are included in an action or a version of an action.
+func (o ActionOutput) Secrets() ActionSecretArrayOutput {
+	return o.ApplyT(func(v *Action) ActionSecretArrayOutput { return v.Secrets }).(ActionSecretArrayOutput)
+}
+
+// List of triggers that this action supports. At this time, an action can only target
+// a single trigger at a time.
+func (o ActionOutput) SupportedTriggers() ActionSupportedTriggersOutput {
+	return o.ApplyT(func(v *Action) ActionSupportedTriggersOutput { return v.SupportedTriggers }).(ActionSupportedTriggersOutput)
+}
+
+// Version ID of the action. This value is available if `deploy` is set to true.
+func (o ActionOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
+}
+
 type ActionArrayOutput struct{ *pulumi.OutputState }
 
 func (ActionArrayOutput) ElementType() reflect.Type {
