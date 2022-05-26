@@ -605,6 +605,181 @@ func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutpu
 	return o
 }
 
+// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+func (o ClientOutput) Addons() ClientAddonsPtrOutput {
+	return o.ApplyT(func(v *Client) ClientAddonsPtrOutput { return v.Addons }).(ClientAddonsPtrOutput)
+}
+
+// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+func (o ClientOutput) AllowedClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AllowedClients }).(pulumi.StringArrayOutput)
+}
+
+// List(String). URLs that Auth0 may redirect to after logout.
+func (o ClientOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+func (o ClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+func (o ClientOutput) AppType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.AppType }).(pulumi.StringPtrOutput)
+}
+
+// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+func (o ClientOutput) Callbacks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.Callbacks }).(pulumi.StringArrayOutput)
+}
+
+// String. ID of the client.
+// * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
+func (o ClientOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Map(String)
+func (o ClientOutput) ClientMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Client) pulumi.MapOutput { return v.ClientMetadata }).(pulumi.MapOutput)
+}
+
+func (o ClientOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+func (o ClientOutput) ClientSecretRotationTrigger() pulumi.MapOutput {
+	return o.ApplyT(func(v *Client) pulumi.MapOutput { return v.ClientSecretRotationTrigger }).(pulumi.MapOutput)
+}
+
+// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+func (o ClientOutput) CrossOriginAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.CrossOriginAuth }).(pulumi.BoolPtrOutput)
+}
+
+// String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+func (o ClientOutput) CrossOriginLoc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.CrossOriginLoc }).(pulumi.StringPtrOutput)
+}
+
+// String. Content of the custom login page.
+func (o ClientOutput) CustomLoginPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.CustomLoginPage }).(pulumi.StringPtrOutput)
+}
+
+// Boolean. Indicates whether or not a custom login page is to be used.
+func (o ClientOutput) CustomLoginPageOn() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolOutput { return v.CustomLoginPageOn }).(pulumi.BoolOutput)
+}
+
+// String, (Max length = 140 characters). Description of the purpose of the client.
+func (o ClientOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Map(String).
+func (o ClientOutput) EncryptionKey() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringMapOutput { return v.EncryptionKey }).(pulumi.StringMapOutput)
+}
+
+// String. Form template for WS-Federation protocol.
+func (o ClientOutput) FormTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.FormTemplate }).(pulumi.StringPtrOutput)
+}
+
+// List(String). Types of grants that this client is authorized to use.
+func (o ClientOutput) GrantTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.GrantTypes }).(pulumi.StringArrayOutput)
+}
+
+// String. Initiate login uri, must be https.
+func (o ClientOutput) InitiateLoginUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.InitiateLoginUri }).(pulumi.StringPtrOutput)
+}
+
+// Boolean. Indicates whether or not this client is a first-party client.
+func (o ClientOutput) IsFirstParty() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolOutput { return v.IsFirstParty }).(pulumi.BoolOutput)
+}
+
+// Boolean. Indicates whether or not the token endpoint IP header is trusted.
+func (o ClientOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolOutput { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
+}
+
+// List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+func (o ClientOutput) JwtConfiguration() ClientJwtConfigurationOutput {
+	return o.ApplyT(func(v *Client) ClientJwtConfigurationOutput { return v.JwtConfiguration }).(ClientJwtConfigurationOutput)
+}
+
+// String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+func (o ClientOutput) LogoUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.LogoUri }).(pulumi.StringPtrOutput)
+}
+
+// List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+func (o ClientOutput) Mobile() ClientMobileOutput {
+	return o.ApplyT(func(v *Client) ClientMobileOutput { return v.Mobile }).(ClientMobileOutput)
+}
+
+// String. Name of the client.
+func (o ClientOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+func (o ClientOutput) NativeSocialLogin() ClientNativeSocialLoginOutput {
+	return o.ApplyT(func(v *Client) ClientNativeSocialLoginOutput { return v.NativeSocialLogin }).(ClientNativeSocialLoginOutput)
+}
+
+// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+func (o ClientOutput) OidcConformant() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolOutput { return v.OidcConformant }).(pulumi.BoolOutput)
+}
+
+// String. Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+func (o ClientOutput) OrganizationRequireBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.OrganizationRequireBehavior }).(pulumi.StringPtrOutput)
+}
+
+// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+func (o ClientOutput) OrganizationUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.OrganizationUsage }).(pulumi.StringPtrOutput)
+}
+
+// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+func (o ClientOutput) RefreshToken() ClientRefreshTokenOutput {
+	return o.ApplyT(func(v *Client) ClientRefreshTokenOutput { return v.RefreshToken }).(ClientRefreshTokenOutput)
+}
+
+// List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+func (o ClientOutput) SigningKeys() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *Client) pulumi.MapArrayOutput { return v.SigningKeys }).(pulumi.MapArrayOutput)
+}
+
+// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+func (o ClientOutput) Sso() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.Sso }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Indicates whether or not SSO is disabled.
+func (o ClientOutput) SsoDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.SsoDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+func (o ClientOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
+}
+
+// List(String). URLs that represent valid web origins for use with web message response mode.
+func (o ClientOutput) WebOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.WebOrigins }).(pulumi.StringArrayOutput)
+}
+
 type ClientArrayOutput struct{ *pulumi.OutputState }
 
 func (ClientArrayOutput) ElementType() reflect.Type {

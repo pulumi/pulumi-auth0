@@ -80,7 +80,7 @@ type Connection struct {
 	// Name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings for connection options. For details, see Options.
-	Options ConnectionOptionsPtrOutput `pulumi:"options"`
+	Options ConnectionOptionsOutput `pulumi:"options"`
 	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayOutput `pulumi:"realms"`
 	// Display connection as a button. Only available for enterprise connections.
@@ -306,6 +306,56 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
+}
+
+// Name used in login screen
+func (o ConnectionOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+func (o ConnectionOutput) EnabledClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.EnabledClients }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the connection is domain level.
+func (o ConnectionOutput) IsDomainConnection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.IsDomainConnection }).(pulumi.BoolOutput)
+}
+
+// Name of the connection.
+func (o ConnectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration settings for connection options. For details, see Options.
+func (o ConnectionOutput) Options() ConnectionOptionsOutput {
+	return o.ApplyT(func(v *Connection) ConnectionOptionsOutput { return v.Options }).(ConnectionOptionsOutput)
+}
+
+// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+func (o ConnectionOutput) Realms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.Realms }).(pulumi.StringArrayOutput)
+}
+
+// Display connection as a button. Only available for enterprise connections.
+func (o ConnectionOutput) ShowAsButton() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.ShowAsButton }).(pulumi.BoolPtrOutput)
+}
+
+// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+func (o ConnectionOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Strategy }).(pulumi.StringOutput)
+}
+
+// Version 1 is deprecated, use version 2.
+func (o ConnectionOutput) StrategyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.StrategyVersion }).(pulumi.StringOutput)
+}
+
+// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+func (o ConnectionOutput) Validation() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Validation }).(pulumi.StringMapOutput)
 }
 
 type ConnectionArrayOutput struct{ *pulumi.OutputState }

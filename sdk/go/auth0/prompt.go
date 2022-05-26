@@ -205,6 +205,17 @@ func (o PromptOutput) ToPromptOutputWithContext(ctx context.Context) PromptOutpu
 	return o
 }
 
+// Boolean. Indicates whether the identifier first is used when using the new universal
+// login experience.
+func (o PromptOutput) IdentifierFirst() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Prompt) pulumi.BoolPtrOutput { return v.IdentifierFirst }).(pulumi.BoolPtrOutput)
+}
+
+// Which login experience to use. Options include `classic` and `new`.
+func (o PromptOutput) UniversalLoginExperience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Prompt) pulumi.StringPtrOutput { return v.UniversalLoginExperience }).(pulumi.StringPtrOutput)
+}
+
 type PromptArrayOutput struct{ *pulumi.OutputState }
 
 func (PromptArrayOutput) ElementType() reflect.Type {

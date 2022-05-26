@@ -4133,7 +4133,7 @@ class LogStreamSink(dict):
                  http_authorization: Optional[str] = None,
                  http_content_format: Optional[str] = None,
                  http_content_type: Optional[str] = None,
-                 http_custom_headers: Optional[Sequence[str]] = None,
+                 http_custom_headers: Optional[Sequence[Mapping[str, str]]] = None,
                  http_endpoint: Optional[str] = None,
                  splunk_domain: Optional[str] = None,
                  splunk_port: Optional[str] = None,
@@ -4153,7 +4153,7 @@ class LogStreamSink(dict):
         :param str http_authorization: Sent in the HTTP "Authorization" header with each request
         :param str http_content_format: The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
         :param str http_content_type: The ContentType header to send over HTTP.  Common value is "application/json"
-        :param Sequence[str] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request
+        :param Sequence[Mapping[str, str]] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request
         :param str http_endpoint: The HTTP endpoint to send streaming logs
         :param str splunk_domain: The Splunk domain name
         :param bool splunk_secure: This toggle should be turned off when using self-signed certificates
@@ -4297,7 +4297,7 @@ class LogStreamSink(dict):
 
     @property
     @pulumi.getter(name="httpCustomHeaders")
-    def http_custom_headers(self) -> Optional[Sequence[str]]:
+    def http_custom_headers(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
         Additional HTTP headers to be included as part of the HTTP request
         """

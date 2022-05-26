@@ -17,17 +17,21 @@ class LogStreamArgs:
     def __init__(__self__, *,
                  sink: pulumi.Input['LogStreamSinkArgs'],
                  type: pulumi.Input[str],
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogStream resource.
         :param pulumi.Input['LogStreamSinkArgs'] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
         :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream.
         :param pulumi.Input[str] name: Name of the log stream
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
         """
         pulumi.set(__self__, "sink", sink)
         pulumi.set(__self__, "type", type)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if status is not None:
@@ -59,6 +63,18 @@ class LogStreamArgs:
 
     @property
     @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        Only logs events matching these filters will be delivered by the stream.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "filters", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the log stream
@@ -85,17 +101,21 @@ class LogStreamArgs:
 @pulumi.input_type
 class _LogStreamState:
     def __init__(__self__, *,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogStream resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream.
         :param pulumi.Input[str] name: Name of the log stream
         :param pulumi.Input['LogStreamSinkArgs'] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
         :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
         """
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if sink is not None:
@@ -104,6 +124,18 @@ class _LogStreamState:
             pulumi.set(__self__, "status", status)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        Only logs events matching these filters will be delivered by the stream.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter
@@ -159,6 +191,7 @@ class LogStream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sink: Optional[pulumi.Input[pulumi.InputType['LogStreamSinkArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -174,6 +207,16 @@ class LogStream(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         example = auth0.LogStream("example",
+            filters=[
+                {
+                    "name": "auth.login.fail",
+                    "type": "category",
+                },
+                {
+                    "name": "auth.signup.fail",
+                    "type": "category",
+                },
+            ],
             sink=auth0.LogStreamSinkArgs(
                 aws_account_id="my_account_id",
                 aws_region="us-east-2",
@@ -192,6 +235,7 @@ class LogStream(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream.
         :param pulumi.Input[str] name: Name of the log stream
         :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
@@ -213,6 +257,16 @@ class LogStream(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         example = auth0.LogStream("example",
+            filters=[
+                {
+                    "name": "auth.login.fail",
+                    "type": "category",
+                },
+                {
+                    "name": "auth.signup.fail",
+                    "type": "category",
+                },
+            ],
             sink=auth0.LogStreamSinkArgs(
                 aws_account_id="my_account_id",
                 aws_region="us-east-2",
@@ -244,6 +298,7 @@ class LogStream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sink: Optional[pulumi.Input[pulumi.InputType['LogStreamSinkArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -260,6 +315,7 @@ class LogStream(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LogStreamArgs.__new__(LogStreamArgs)
 
+            __props__.__dict__["filters"] = filters
             __props__.__dict__["name"] = name
             if sink is None and not opts.urn:
                 raise TypeError("Missing required property 'sink'")
@@ -278,6 +334,7 @@ class LogStream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             sink: Optional[pulumi.Input[pulumi.InputType['LogStreamSinkArgs']]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -289,6 +346,7 @@ class LogStream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream.
         :param pulumi.Input[str] name: Name of the log stream
         :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
@@ -298,11 +356,20 @@ class LogStream(pulumi.CustomResource):
 
         __props__ = _LogStreamState.__new__(_LogStreamState)
 
+        __props__.__dict__["filters"] = filters
         __props__.__dict__["name"] = name
         __props__.__dict__["sink"] = sink
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         return LogStream(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> pulumi.Output[Optional[Sequence[Mapping[str, str]]]]:
+        """
+        Only logs events matching these filters will be delivered by the stream.
+        """
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter

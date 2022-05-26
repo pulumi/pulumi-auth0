@@ -252,6 +252,21 @@ func (o PromptCustomTextOutput) ToPromptCustomTextOutputWithContext(ctx context.
 	return o
 }
 
+// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
+func (o PromptCustomTextOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v *PromptCustomText) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
+}
+
+// Language of the custom text. Options include `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`
+func (o PromptCustomTextOutput) Language() pulumi.StringOutput {
+	return o.ApplyT(func(v *PromptCustomText) pulumi.StringOutput { return v.Language }).(pulumi.StringOutput)
+}
+
+// The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`
+func (o PromptCustomTextOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v *PromptCustomText) pulumi.StringOutput { return v.Prompt }).(pulumi.StringOutput)
+}
+
 type PromptCustomTextArrayOutput struct{ *pulumi.OutputState }
 
 func (PromptCustomTextArrayOutput) ElementType() reflect.Type {

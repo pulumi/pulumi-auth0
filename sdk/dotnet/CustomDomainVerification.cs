@@ -25,11 +25,20 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/customDomainVerification:CustomDomainVerification")]
     public partial class CustomDomainVerification : Pulumi.CustomResource
     {
+        [Output("cnameApiKey")]
+        public Output<string> CnameApiKey { get; private set; } = null!;
+
         /// <summary>
         /// String. ID of the custom domain resource.
         /// </summary>
         [Output("customDomainId")]
         public Output<string> CustomDomainId { get; private set; } = null!;
+
+        /// <summary>
+        /// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// </summary>
+        [Output("originDomainName")]
+        public Output<string> OriginDomainName { get; private set; } = null!;
 
 
         /// <summary>
@@ -90,11 +99,20 @@ namespace Pulumi.Auth0
 
     public sealed class CustomDomainVerificationState : Pulumi.ResourceArgs
     {
+        [Input("cnameApiKey")]
+        public Input<string>? CnameApiKey { get; set; }
+
         /// <summary>
         /// String. ID of the custom domain resource.
         /// </summary>
         [Input("customDomainId")]
         public Input<string>? CustomDomainId { get; set; }
+
+        /// <summary>
+        /// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// </summary>
+        [Input("originDomainName")]
+        public Input<string>? OriginDomainName { get; set; }
 
         public CustomDomainVerificationState()
         {

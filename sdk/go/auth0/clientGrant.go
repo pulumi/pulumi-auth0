@@ -245,6 +245,21 @@ func (o ClientGrantOutput) ToClientGrantOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// String. Audience or API Identifier for this grant.
+func (o ClientGrantOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.Audience }).(pulumi.StringOutput)
+}
+
+// String. ID of the client for this grant.
+func (o ClientGrantOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// List(String). Permissions (scopes) included in this grant.
+func (o ClientGrantOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
 type ClientGrantArrayOutput struct{ *pulumi.OutputState }
 
 func (ClientGrantArrayOutput) ElementType() reflect.Type {

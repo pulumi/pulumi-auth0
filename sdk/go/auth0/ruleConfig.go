@@ -218,6 +218,16 @@ func (o RuleConfigOutput) ToRuleConfigOutputWithContext(ctx context.Context) Rul
 	return o
 }
 
+// String. Key for a rules configuration variable.
+func (o RuleConfigOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleConfig) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// String, Case-sensitive. Value for a rules configuration variable.
+func (o RuleConfigOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleConfig) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type RuleConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleConfigArrayOutput) ElementType() reflect.Type {

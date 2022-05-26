@@ -85,14 +85,14 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? HttpContentType { get; set; }
 
         [Input("httpCustomHeaders")]
-        private InputList<string>? _httpCustomHeaders;
+        private InputList<ImmutableDictionary<string, string>>? _httpCustomHeaders;
 
         /// <summary>
         /// Additional HTTP headers to be included as part of the HTTP request
         /// </summary>
-        public InputList<string> HttpCustomHeaders
+        public InputList<ImmutableDictionary<string, string>> HttpCustomHeaders
         {
-            get => _httpCustomHeaders ?? (_httpCustomHeaders = new InputList<string>());
+            get => _httpCustomHeaders ?? (_httpCustomHeaders = new InputList<ImmutableDictionary<string, string>>());
             set => _httpCustomHeaders = value;
         }
 

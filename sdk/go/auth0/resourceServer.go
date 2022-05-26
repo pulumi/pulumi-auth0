@@ -323,6 +323,71 @@ func (o ResourceServerOutput) ToResourceServerOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Boolean. Indicates whether refresh tokens can be issued for this resource server.
+func (o ResourceServerOutput) AllowOfflineAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.BoolPtrOutput { return v.AllowOfflineAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Indicates whether authorization polices are enforced.
+func (o ResourceServerOutput) EnforcePolicies() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.BoolPtrOutput { return v.EnforcePolicies }).(pulumi.BoolPtrOutput)
+}
+
+// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+func (o ResourceServerOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringPtrOutput { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+func (o ResourceServerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Map(String). Used to store additional metadata
+func (o ResourceServerOutput) Options() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
+}
+
+// Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+func (o ResourceServerOutput) Scopes() ResourceServerScopeArrayOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServerScopeArrayOutput { return v.Scopes }).(ResourceServerScopeArrayOutput)
+}
+
+// String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+func (o ResourceServerOutput) SigningAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.SigningAlg }).(pulumi.StringOutput)
+}
+
+// String. Secret used to sign tokens when using symmetric algorithms (HS256).
+func (o ResourceServerOutput) SigningSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.SigningSecret }).(pulumi.StringOutput)
+}
+
+// Boolean. Indicates whether to skip user consent for applications flagged as first party.
+func (o ResourceServerOutput) SkipConsentForVerifiableFirstPartyClients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.BoolPtrOutput { return v.SkipConsentForVerifiableFirstPartyClients }).(pulumi.BoolPtrOutput)
+}
+
+// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+func (o ResourceServerOutput) TokenDialect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringPtrOutput { return v.TokenDialect }).(pulumi.StringPtrOutput)
+}
+
+// Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+func (o ResourceServerOutput) TokenLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.IntOutput { return v.TokenLifetime }).(pulumi.IntOutput)
+}
+
+// Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+func (o ResourceServerOutput) TokenLifetimeForWeb() pulumi.IntOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.IntOutput { return v.TokenLifetimeForWeb }).(pulumi.IntOutput)
+}
+
+// String
+func (o ResourceServerOutput) VerificationLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringPtrOutput { return v.VerificationLocation }).(pulumi.StringPtrOutput)
+}
+
 type ResourceServerArrayOutput struct{ *pulumi.OutputState }
 
 func (ResourceServerArrayOutput) ElementType() reflect.Type {

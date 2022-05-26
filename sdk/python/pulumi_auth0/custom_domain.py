@@ -16,22 +16,14 @@ __all__ = ['CustomDomainArgs', 'CustomDomain']
 class CustomDomainArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str],
-                 type: pulumi.Input[str],
-                 verification_method: Optional[pulumi.Input[str]] = None):
+                 type: pulumi.Input[str]):
         """
         The set of arguments for constructing a CustomDomain resource.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[str] verification_method: String. Domain verification method. The method is chosen according to the type of
-               the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "type", type)
-        if verification_method is not None:
-            warnings.warn("""The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""", DeprecationWarning)
-            pulumi.log.warn("""verification_method is deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""")
-        if verification_method is not None:
-            pulumi.set(__self__, "verification_method", verification_method)
 
     @property
     @pulumi.getter
@@ -57,54 +49,37 @@ class CustomDomainArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
-    @property
-    @pulumi.getter(name="verificationMethod")
-    def verification_method(self) -> Optional[pulumi.Input[str]]:
-        """
-        String. Domain verification method. The method is chosen according to the type of
-        the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
-        """
-        return pulumi.get(self, "verification_method")
-
-    @verification_method.setter
-    def verification_method(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "verification_method", value)
-
 
 @pulumi.input_type
 class _CustomDomainState:
     def __init__(__self__, *,
                  domain: Optional[pulumi.Input[str]] = None,
+                 origin_domain_name: Optional[pulumi.Input[str]] = None,
                  primary: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 verification: Optional[pulumi.Input['CustomDomainVerificationArgs']] = None,
-                 verification_method: Optional[pulumi.Input[str]] = None):
+                 verifications: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomDomain resources.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
+        :param pulumi.Input[str] origin_domain_name: String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param pulumi.Input[bool] primary: Boolean. Indicates whether this is a primary domain.
         :param pulumi.Input[str] status: String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input['CustomDomainVerificationArgs'] verification: List(Resource). Configuration settings for verification. For details, see Verification.
-        :param pulumi.Input[str] verification_method: String. Domain verification method. The method is chosen according to the type of
-               the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]] verifications: List(Resource). Configuration settings for verification. For details, see Verification.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if origin_domain_name is not None:
+            pulumi.set(__self__, "origin_domain_name", origin_domain_name)
         if primary is not None:
             pulumi.set(__self__, "primary", primary)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if verification is not None:
-            pulumi.set(__self__, "verification", verification)
-        if verification_method is not None:
-            warnings.warn("""The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""", DeprecationWarning)
-            pulumi.log.warn("""verification_method is deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""")
-        if verification_method is not None:
-            pulumi.set(__self__, "verification_method", verification_method)
+        if verifications is not None:
+            pulumi.set(__self__, "verifications", verifications)
 
     @property
     @pulumi.getter
@@ -117,6 +92,18 @@ class _CustomDomainState:
     @domain.setter
     def domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="originDomainName")
+    def origin_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        """
+        return pulumi.get(self, "origin_domain_name")
+
+    @origin_domain_name.setter
+    def origin_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_domain_name", value)
 
     @property
     @pulumi.getter
@@ -156,28 +143,15 @@ class _CustomDomainState:
 
     @property
     @pulumi.getter
-    def verification(self) -> Optional[pulumi.Input['CustomDomainVerificationArgs']]:
+    def verifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]]:
         """
         List(Resource). Configuration settings for verification. For details, see Verification.
         """
-        return pulumi.get(self, "verification")
+        return pulumi.get(self, "verifications")
 
-    @verification.setter
-    def verification(self, value: Optional[pulumi.Input['CustomDomainVerificationArgs']]):
-        pulumi.set(self, "verification", value)
-
-    @property
-    @pulumi.getter(name="verificationMethod")
-    def verification_method(self) -> Optional[pulumi.Input[str]]:
-        """
-        String. Domain verification method. The method is chosen according to the type of
-        the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
-        """
-        return pulumi.get(self, "verification_method")
-
-    @verification_method.setter
-    def verification_method(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "verification_method", value)
+    @verifications.setter
+    def verifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]]):
+        pulumi.set(self, "verifications", value)
 
 
 class CustomDomain(pulumi.CustomResource):
@@ -187,7 +161,6 @@ class CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 verification_method: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
@@ -216,8 +189,6 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[str] verification_method: String. Domain verification method. The method is chosen according to the type of
-               the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
         """
         ...
     @overload
@@ -265,7 +236,6 @@ class CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 verification_method: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -284,13 +254,10 @@ class CustomDomain(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if verification_method is not None and not opts.urn:
-                warnings.warn("""The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""", DeprecationWarning)
-                pulumi.log.warn("""verification_method is deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs""")
-            __props__.__dict__["verification_method"] = verification_method
+            __props__.__dict__["origin_domain_name"] = None
             __props__.__dict__["primary"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["verification"] = None
+            __props__.__dict__["verifications"] = None
         super(CustomDomain, __self__).__init__(
             'auth0:index/customDomain:CustomDomain',
             resource_name,
@@ -302,11 +269,11 @@ class CustomDomain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             domain: Optional[pulumi.Input[str]] = None,
+            origin_domain_name: Optional[pulumi.Input[str]] = None,
             primary: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            verification: Optional[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]] = None,
-            verification_method: Optional[pulumi.Input[str]] = None) -> 'CustomDomain':
+            verifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]]]] = None) -> 'CustomDomain':
         """
         Get an existing CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -315,23 +282,22 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: String. Name of the custom domain.
+        :param pulumi.Input[str] origin_domain_name: String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param pulumi.Input[bool] primary: Boolean. Indicates whether this is a primary domain.
         :param pulumi.Input[str] status: String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']] verification: List(Resource). Configuration settings for verification. For details, see Verification.
-        :param pulumi.Input[str] verification_method: String. Domain verification method. The method is chosen according to the type of
-               the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]]] verifications: List(Resource). Configuration settings for verification. For details, see Verification.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CustomDomainState.__new__(_CustomDomainState)
 
         __props__.__dict__["domain"] = domain
+        __props__.__dict__["origin_domain_name"] = origin_domain_name
         __props__.__dict__["primary"] = primary
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
-        __props__.__dict__["verification"] = verification
-        __props__.__dict__["verification_method"] = verification_method
+        __props__.__dict__["verifications"] = verifications
         return CustomDomain(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -341,6 +307,14 @@ class CustomDomain(pulumi.CustomResource):
         String. Name of the custom domain.
         """
         return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="originDomainName")
+    def origin_domain_name(self) -> pulumi.Output[str]:
+        """
+        String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        """
+        return pulumi.get(self, "origin_domain_name")
 
     @property
     @pulumi.getter
@@ -368,18 +342,9 @@ class CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def verification(self) -> pulumi.Output['outputs.CustomDomainVerification']:
+    def verifications(self) -> pulumi.Output[Sequence['outputs.CustomDomainVerification']]:
         """
         List(Resource). Configuration settings for verification. For details, see Verification.
         """
-        return pulumi.get(self, "verification")
-
-    @property
-    @pulumi.getter(name="verificationMethod")
-    def verification_method(self) -> pulumi.Output[Optional[str]]:
-        """
-        String. Domain verification method. The method is chosen according to the type of
-        the custom domain. `CNAME` for `auth0_managed_certs`, `TXT` for `self_managed_certs`.
-        """
-        return pulumi.get(self, "verification_method")
+        return pulumi.get(self, "verifications")
 

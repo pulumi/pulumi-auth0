@@ -264,6 +264,37 @@ func (o HookOutput) ToHookOutputWithContext(ctx context.Context) HookOutput {
 	return o
 }
 
+// Dependencies of this hook used by the WebTask server.
+func (o HookOutput) Dependencies() pulumi.MapOutput {
+	return o.ApplyT(func(v *Hook) pulumi.MapOutput { return v.Dependencies }).(pulumi.MapOutput)
+}
+
+// Whether the hook is enabled, or disabled.
+func (o HookOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Hook) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of this hook.
+func (o HookOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Code to be executed when this hook runs.
+func (o HookOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hook) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
+}
+
+// Map(String), sets the hook secrets associated with this hook.
+// If specified, any secrets not listed here will be removed from the hook.
+func (o HookOutput) Secrets() pulumi.MapOutput {
+	return o.ApplyT(func(v *Hook) pulumi.MapOutput { return v.Secrets }).(pulumi.MapOutput)
+}
+
+// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+func (o HookOutput) TriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hook) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
+}
+
 type HookArrayOutput struct{ *pulumi.OutputState }
 
 func (HookArrayOutput) ElementType() reflect.Type {

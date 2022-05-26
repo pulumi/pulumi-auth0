@@ -249,6 +249,25 @@ func (o AttackProtectionOutput) ToAttackProtectionOutputWithContext(ctx context.
 	return o
 }
 
+// Breached password detection protects your applications from bad actors logging in with stolen credentials.
+func (o AttackProtectionOutput) BreachedPasswordDetection() AttackProtectionBreachedPasswordDetectionOutput {
+	return o.ApplyT(func(v *AttackProtection) AttackProtectionBreachedPasswordDetectionOutput {
+		return v.BreachedPasswordDetection
+	}).(AttackProtectionBreachedPasswordDetectionOutput)
+}
+
+// Safeguards against a single IP address attacking a single user account.
+func (o AttackProtectionOutput) BruteForceProtection() AttackProtectionBruteForceProtectionOutput {
+	return o.ApplyT(func(v *AttackProtection) AttackProtectionBruteForceProtectionOutput { return v.BruteForceProtection }).(AttackProtectionBruteForceProtectionOutput)
+}
+
+// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
+func (o AttackProtectionOutput) SuspiciousIpThrottling() AttackProtectionSuspiciousIpThrottlingOutput {
+	return o.ApplyT(func(v *AttackProtection) AttackProtectionSuspiciousIpThrottlingOutput {
+		return v.SuspiciousIpThrottling
+	}).(AttackProtectionSuspiciousIpThrottlingOutput)
+}
+
 type AttackProtectionArrayOutput struct{ *pulumi.OutputState }
 
 func (AttackProtectionArrayOutput) ElementType() reflect.Type {

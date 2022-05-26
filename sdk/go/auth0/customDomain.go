@@ -50,6 +50,8 @@ type CustomDomain struct {
 
 	// String. Name of the custom domain.
 	Domain pulumi.StringOutput `pulumi:"domain"`
+	// String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName pulumi.StringOutput `pulumi:"originDomainName"`
 	// Boolean. Indicates whether this is a primary domain.
 	Primary pulumi.BoolOutput `pulumi:"primary"`
 	// String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
@@ -57,12 +59,7 @@ type CustomDomain struct {
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// List(Resource). Configuration settings for verification. For details, see Verification.
-	Verification CustomDomainVerificationTypeOutput `pulumi:"verification"`
-	// String. Domain verification method. The method is chosen according to the type of
-	// the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
-	//
-	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
-	VerificationMethod pulumi.StringPtrOutput `pulumi:"verificationMethod"`
+	Verifications CustomDomainVerificationTypeArrayOutput `pulumi:"verifications"`
 }
 
 // NewCustomDomain registers a new resource with the given unique name, arguments, and options.
@@ -102,6 +99,8 @@ func GetCustomDomain(ctx *pulumi.Context,
 type customDomainState struct {
 	// String. Name of the custom domain.
 	Domain *string `pulumi:"domain"`
+	// String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName *string `pulumi:"originDomainName"`
 	// Boolean. Indicates whether this is a primary domain.
 	Primary *bool `pulumi:"primary"`
 	// String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
@@ -109,17 +108,14 @@ type customDomainState struct {
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type *string `pulumi:"type"`
 	// List(Resource). Configuration settings for verification. For details, see Verification.
-	Verification *CustomDomainVerificationType `pulumi:"verification"`
-	// String. Domain verification method. The method is chosen according to the type of
-	// the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
-	//
-	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
-	VerificationMethod *string `pulumi:"verificationMethod"`
+	Verifications []CustomDomainVerificationType `pulumi:"verifications"`
 }
 
 type CustomDomainState struct {
 	// String. Name of the custom domain.
 	Domain pulumi.StringPtrInput
+	// String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName pulumi.StringPtrInput
 	// Boolean. Indicates whether this is a primary domain.
 	Primary pulumi.BoolPtrInput
 	// String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
@@ -127,12 +123,7 @@ type CustomDomainState struct {
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type pulumi.StringPtrInput
 	// List(Resource). Configuration settings for verification. For details, see Verification.
-	Verification CustomDomainVerificationTypePtrInput
-	// String. Domain verification method. The method is chosen according to the type of
-	// the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
-	//
-	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
-	VerificationMethod pulumi.StringPtrInput
+	Verifications CustomDomainVerificationTypeArrayInput
 }
 
 func (CustomDomainState) ElementType() reflect.Type {
@@ -144,11 +135,6 @@ type customDomainArgs struct {
 	Domain string `pulumi:"domain"`
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type string `pulumi:"type"`
-	// String. Domain verification method. The method is chosen according to the type of
-	// the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
-	//
-	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
-	VerificationMethod *string `pulumi:"verificationMethod"`
 }
 
 // The set of arguments for constructing a CustomDomain resource.
@@ -157,11 +143,6 @@ type CustomDomainArgs struct {
 	Domain pulumi.StringInput
 	// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
 	Type pulumi.StringInput
-	// String. Domain verification method. The method is chosen according to the type of
-	// the custom domain. `CNAME` for `auth0ManagedCerts`, `TXT` for `selfManagedCerts`.
-	//
-	// Deprecated: The method is chosen according to the type of the custom domain. CNAME for auth0_managed_certs, TXT for self_managed_certs
-	VerificationMethod pulumi.StringPtrInput
 }
 
 func (CustomDomainArgs) ElementType() reflect.Type {
@@ -249,6 +230,36 @@ func (o CustomDomainOutput) ToCustomDomainOutput() CustomDomainOutput {
 
 func (o CustomDomainOutput) ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput {
 	return o
+}
+
+// String. Name of the custom domain.
+func (o CustomDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+func (o CustomDomainOutput) OriginDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.OriginDomainName }).(pulumi.StringOutput)
+}
+
+// Boolean. Indicates whether this is a primary domain.
+func (o CustomDomainOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.BoolOutput { return v.Primary }).(pulumi.BoolOutput)
+}
+
+// String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+func (o CustomDomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+func (o CustomDomainOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// List(Resource). Configuration settings for verification. For details, see Verification.
+func (o CustomDomainOutput) Verifications() CustomDomainVerificationTypeArrayOutput {
+	return o.ApplyT(func(v *CustomDomain) CustomDomainVerificationTypeArrayOutput { return v.Verifications }).(CustomDomainVerificationTypeArrayOutput)
 }
 
 type CustomDomainArrayOutput struct{ *pulumi.OutputState }

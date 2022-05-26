@@ -243,6 +243,33 @@ func (o BrandingOutput) ToBrandingOutputWithContext(ctx context.Context) Brandin
 	return o
 }
 
+// List(Resource). Configuration settings for colors for branding. See Colors.
+func (o BrandingOutput) Colors() BrandingColorsPtrOutput {
+	return o.ApplyT(func(v *Branding) BrandingColorsPtrOutput { return v.Colors }).(BrandingColorsPtrOutput)
+}
+
+// String. URL for the favicon.
+func (o BrandingOutput) FaviconUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Branding) pulumi.StringOutput { return v.FaviconUrl }).(pulumi.StringOutput)
+}
+
+// List(Resource). Configuration settings to customize the font. See Font.
+func (o BrandingOutput) Font() BrandingFontPtrOutput {
+	return o.ApplyT(func(v *Branding) BrandingFontPtrOutput { return v.Font }).(BrandingFontPtrOutput)
+}
+
+// String. URL of logo for branding.
+func (o BrandingOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Branding) pulumi.StringOutput { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+// List(Resource). Configuration settings for Universal Login.
+// See Universal Login. This capability can only be used if the tenant has
+// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+func (o BrandingOutput) UniversalLogin() BrandingUniversalLoginPtrOutput {
+	return o.ApplyT(func(v *Branding) BrandingUniversalLoginPtrOutput { return v.UniversalLogin }).(BrandingUniversalLoginPtrOutput)
+}
+
 type BrandingArrayOutput struct{ *pulumi.OutputState }
 
 func (BrandingArrayOutput) ElementType() reflect.Type {

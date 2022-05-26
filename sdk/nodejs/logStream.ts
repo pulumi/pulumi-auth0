@@ -15,6 +15,16 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const example = new auth0.LogStream("example", {
+ *     filters: [
+ *         {
+ *             name: "auth.login.fail",
+ *             type: "category",
+ *         },
+ *         {
+ *             name: "auth.signup.fail",
+ *             type: "category",
+ *         },
+ *     ],
  *     sink: {
  *         awsAccountId: "my_account_id",
  *         awsRegion: "us-east-2",
@@ -61,6 +71,10 @@ export class LogStream extends pulumi.CustomResource {
     }
 
     /**
+     * Only logs events matching these filters will be delivered by the stream.
+     */
+    public readonly filters!: pulumi.Output<{[key: string]: string}[] | undefined>;
+    /**
      * Name of the log stream
      */
     public readonly name!: pulumi.Output<string>;
@@ -90,6 +104,7 @@ export class LogStream extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogStreamState | undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["sink"] = state ? state.sink : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -102,6 +117,7 @@ export class LogStream extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["sink"] = args ? args.sink : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
@@ -116,6 +132,10 @@ export class LogStream extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogStream resources.
  */
 export interface LogStreamState {
+    /**
+     * Only logs events matching these filters will be delivered by the stream.
+     */
+    filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * Name of the log stream
      */
@@ -138,6 +158,10 @@ export interface LogStreamState {
  * The set of arguments for constructing a LogStream resource.
  */
 export interface LogStreamArgs {
+    /**
+     * Only logs events matching these filters will be delivered by the stream.
+     */
+    filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * Name of the log stream
      */

@@ -98,7 +98,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Configuration settings for connection options. For details, see Options.
      */
-    public readonly options!: pulumi.Output<outputs.ConnectionOptions | undefined>;
+    public readonly options!: pulumi.Output<outputs.ConnectionOptions>;
     /**
      * Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
      */

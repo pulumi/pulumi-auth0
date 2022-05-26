@@ -1019,7 +1019,7 @@ export interface LogStreamSink {
     /**
      * Additional HTTP headers to be included as part of the HTTP request
      */
-    httpCustomHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    httpCustomHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * The HTTP endpoint to send streaming logs
      */

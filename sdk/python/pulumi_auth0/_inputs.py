@@ -4489,7 +4489,7 @@ class LogStreamSinkArgs:
                  http_authorization: Optional[pulumi.Input[str]] = None,
                  http_content_format: Optional[pulumi.Input[str]] = None,
                  http_content_type: Optional[pulumi.Input[str]] = None,
-                 http_custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 http_custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  http_endpoint: Optional[pulumi.Input[str]] = None,
                  splunk_domain: Optional[pulumi.Input[str]] = None,
                  splunk_port: Optional[pulumi.Input[str]] = None,
@@ -4509,7 +4509,7 @@ class LogStreamSinkArgs:
         :param pulumi.Input[str] http_authorization: Sent in the HTTP "Authorization" header with each request
         :param pulumi.Input[str] http_content_format: The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
         :param pulumi.Input[str] http_content_type: The ContentType header to send over HTTP.  Common value is "application/json"
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request
         :param pulumi.Input[str] http_endpoint: The HTTP endpoint to send streaming logs
         :param pulumi.Input[str] splunk_domain: The Splunk domain name
         :param pulumi.Input[bool] splunk_secure: This toggle should be turned off when using self-signed certificates
@@ -4701,14 +4701,14 @@ class LogStreamSinkArgs:
 
     @property
     @pulumi.getter(name="httpCustomHeaders")
-    def http_custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def http_custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         Additional HTTP headers to be included as part of the HTTP request
         """
         return pulumi.get(self, "http_custom_headers")
 
     @http_custom_headers.setter
-    def http_custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def http_custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "http_custom_headers", value)
 
     @property

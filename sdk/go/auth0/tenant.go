@@ -389,6 +389,91 @@ func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutpu
 	return o
 }
 
+// List(String). URLs that Auth0 may redirect to after logout.
+func (o TenantOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringArrayOutput { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+// List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+func (o TenantOutput) ChangePassword() TenantChangePasswordOutput {
+	return o.ApplyT(func(v *Tenant) TenantChangePasswordOutput { return v.ChangePassword }).(TenantChangePasswordOutput)
+}
+
+// String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+func (o TenantOutput) DefaultAudience() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DefaultAudience }).(pulumi.StringOutput)
+}
+
+// String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+func (o TenantOutput) DefaultDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DefaultDirectory }).(pulumi.StringOutput)
+}
+
+// String. The default absolute redirection uri, must be https and cannot contain a fragment.
+func (o TenantOutput) DefaultRedirectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DefaultRedirectionUri }).(pulumi.StringOutput)
+}
+
+// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+func (o TenantOutput) EnabledLocales() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringArrayOutput { return v.EnabledLocales }).(pulumi.StringArrayOutput)
+}
+
+// List(Resource). Configuration settings for error pages. For details, see Error Page.
+func (o TenantOutput) ErrorPage() TenantErrorPageOutput {
+	return o.ApplyT(func(v *Tenant) TenantErrorPageOutput { return v.ErrorPage }).(TenantErrorPageOutput)
+}
+
+// List(Resource). Configuration settings for tenant flags. For details, see Flags.
+func (o TenantOutput) Flags() TenantFlagsOutput {
+	return o.ApplyT(func(v *Tenant) TenantFlagsOutput { return v.Flags }).(TenantFlagsOutput)
+}
+
+// String. Friendly name for the tenant.
+func (o TenantOutput) FriendlyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+func (o TenantOutput) GuardianMfaPage() TenantGuardianMfaPageOutput {
+	return o.ApplyT(func(v *Tenant) TenantGuardianMfaPageOutput { return v.GuardianMfaPage }).(TenantGuardianMfaPageOutput)
+}
+
+// Integer. Number of hours during which a session can be inactive before the user must log in again.
+func (o TenantOutput) IdleSessionLifetime() pulumi.Float64Output {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64Output { return v.IdleSessionLifetime }).(pulumi.Float64Output)
+}
+
+// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+func (o TenantOutput) PictureUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.PictureUrl }).(pulumi.StringOutput)
+}
+
+// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
+func (o TenantOutput) SandboxVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.SandboxVersion }).(pulumi.StringOutput)
+}
+
+// Integer. Number of hours during which a session will stay valid.
+func (o TenantOutput) SessionLifetime() pulumi.Float64Output {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64Output { return v.SessionLifetime }).(pulumi.Float64Output)
+}
+
+// String. Support email address for authenticating users.
+func (o TenantOutput) SupportEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.SupportEmail }).(pulumi.StringOutput)
+}
+
+// String. Support URL for authenticating users.
+func (o TenantOutput) SupportUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.SupportUrl }).(pulumi.StringOutput)
+}
+
+// List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+func (o TenantOutput) UniversalLogin() TenantUniversalLoginOutput {
+	return o.ApplyT(func(v *Tenant) TenantUniversalLoginOutput { return v.UniversalLogin }).(TenantUniversalLoginOutput)
+}
+
 type TenantArrayOutput struct{ *pulumi.OutputState }
 
 func (TenantArrayOutput) ElementType() reflect.Type {
