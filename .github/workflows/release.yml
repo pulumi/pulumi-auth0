@@ -91,7 +91,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.18.x
         language:
         - nodejs
         - python
@@ -151,7 +151,7 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-        - 1.17.x
+        - 1.18.x
   lint_sdk:
     container: golangci/golangci-lint:latest
     name: lint-sdk
@@ -189,7 +189,7 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-        - 1.17.x
+        - 1.18.x
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
@@ -259,7 +259,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.18.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -314,7 +314,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.18.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -398,7 +398,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.18.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -502,7 +502,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.18.x
         language:
         - nodejs
         - python
