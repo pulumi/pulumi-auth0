@@ -43,7 +43,7 @@ import (
 // 			Nickname:       pulumi.String("some.nickname"),
 // 			Email:          pulumi.String("test@test.com"),
 // 			EmailVerified:  pulumi.Bool(true),
-// 			Password:       pulumi.String(fmt.Sprintf("%v%v%v%v%v", "passpass", "$", "12", "$", "12")),
+// 			Password:       pulumi.String(fmt.Sprintf("passpass$12$12")),
 // 			Roles: pulumi.StringArray{
 // 				admin.ID(),
 // 			},

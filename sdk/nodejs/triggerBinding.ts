@@ -13,49 +13,6 @@ import * as utilities from "./utilities";
  * The list of actions reflects the order in which they will be executed during the
  * appropriate flow.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const actionFoo = new auth0.Action("actionFoo", {
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v2",
- *     },
- *     code: `exports.onContinuePostLogin = async (event, api) => { 
- * 	console.log("foo") 
- * };"
- * `,
- *     deploy: true,
- * });
- * const actionBar = new auth0.Action("actionBar", {
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v2",
- *     },
- *     code: `exports.onContinuePostLogin = async (event, api) => { 
- * 	console.log("bar") 
- * };"
- * `,
- *     deploy: true,
- * });
- * const loginFlow = new auth0.TriggerBinding("loginFlow", {
- *     trigger: "post-login",
- *     actions: [
- *         {
- *             id: actionFoo.id,
- *             displayName: actionFoo.name,
- *         },
- *         {
- *             id: actionBar.id,
- *             displayName: actionBar.name,
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * auth0_trigger_binding can be imported using the bindings trigger ID, e.g.

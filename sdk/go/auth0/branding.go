@@ -36,7 +36,7 @@ import (
 // 			},
 // 			LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
 // 			UniversalLogin: &BrandingUniversalLoginArgs{
-// 				Body: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v", "<!DOCTYPE html><html><head>{", "%", "- auth0:head -", "%", "}</head><body>{", "%", "- auth0:widget -", "%", "}</body></html>")),
+// 				Body: pulumi.String(fmt.Sprintf("<!DOCTYPE html><html><head>{%v- auth0:head -%v}</head><body>{%v- auth0:widget -%v}</body></html>", "%", "%", "%", "%")),
 // 			},
 // 		})
 // 		if err != nil {

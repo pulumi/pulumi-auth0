@@ -9,33 +9,6 @@ import * as utilities from "./utilities";
  * exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
  * This resource allows you to create and manage client grants used with configured Auth0 clients.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myClient = new auth0.Client("myClient", {});
- * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
- *     identifier: "https://api.example.com/client-grant",
- *     scopes: [
- *         {
- *             value: "create:foo",
- *             description: "Create foos",
- *         },
- *         {
- *             value: "create:bar",
- *             description: "Create bars",
- *         },
- *     ],
- * });
- * const myClientGrant = new auth0.ClientGrant("myClientGrant", {
- *     clientId: myClient.id,
- *     audience: myResourceServer.identifier,
- *     scopes: ["create:foo"],
- * });
- * ```
- *
  * ## Import
  *
  * Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)

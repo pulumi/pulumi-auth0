@@ -9,35 +9,6 @@ import * as utilities from "./utilities";
  * into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
  * emails sent by Auth0. Used in conjunction with configured email providers.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myEmailProvider = new auth0.Email("myEmailProvider", {
- *     enabled: true,
- *     defaultFromAddress: "accounts@example.com",
- *     credentials: {
- *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
- *         secretAccessKey: "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *         region: "us-east-1",
- *     },
- * });
- * const myEmailTemplate = new auth0.EmailTemplate("myEmailTemplate", {
- *     template: "welcome_email",
- *     body: "<html><body><h1>Welcome!</h1></body></html>",
- *     from: "welcome@example.com",
- *     resultUrl: "https://example.com/welcome",
- *     subject: "Welcome",
- *     syntax: "liquid",
- *     urlLifetimeInSeconds: 3600,
- *     enabled: true,
- * }, {
- *     dependsOn: [myEmailProvider],
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported using the template name, e.g.

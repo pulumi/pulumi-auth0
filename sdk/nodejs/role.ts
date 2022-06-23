@@ -10,41 +10,6 @@ import * as utilities from "./utilities";
  * otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
  * optionally, users using this resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
- *     identifier: "my-resource-server-identifier",
- *     signingAlg: "RS256",
- *     tokenLifetime: 86400,
- *     skipConsentForVerifiableFirstPartyClients: true,
- *     enforcePolicies: true,
- *     scopes: [{
- *         value: "read:something",
- *         description: "read something",
- *     }],
- * });
- * const myRole = new auth0.Role("myRole", {
- *     description: "Role Description...",
- *     permissions: [{
- *         resourceServerIdentifier: myResourceServer.identifier,
- *         name: "read:something",
- *     }],
- * });
- * const myUser = new auth0.User("myUser", {
- *     connectionName: "Username-Password-Authentication",
- *     userId: "auth0|1234567890",
- *     email: "test@test.com",
- *     password: `passpass$12$12`,
- *     nickname: "testnick",
- *     username: "testnick",
- *     roles: [myRole.id],
- * });
- * ```
- *
  * ## Import
  *
  * Existing roles can be imported using their id, e.g.

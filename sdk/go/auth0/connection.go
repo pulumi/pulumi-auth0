@@ -37,7 +37,7 @@ import (
 // 					"foo": pulumi.String("bar"),
 // 				},
 // 				CustomScripts: pulumi.StringMap{
-// 					"getUser": pulumi.String(fmt.Sprintf("%v%v%v%v", "function getByEmail (email, callback) {\n", "  return callback(new Error(\"Whoops!\"))\n", "}\n", "\n")),
+// 					"getUser": pulumi.String(fmt.Sprintf("function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n\n")),
 // 				},
 // 				EnabledDatabaseCustomization: pulumi.Bool(true),
 // 				PasswordHistories: ConnectionOptionsPasswordHistoryArray{

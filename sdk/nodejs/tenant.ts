@@ -15,39 +15,6 @@ import * as utilities from "./utilities";
  * Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be
  * used to add/remove extensions.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- * import * from "fs";
- *
- * const tenant = new auth0.Tenant("tenant", {
- *     changePassword: {
- *         enabled: true,
- *         html: fs.readFileSync("./password_reset.html"),
- *     },
- *     guardianMfaPage: {
- *         enabled: true,
- *         html: fs.readFileSync("./guardian_multifactor.html"),
- *     },
- *     defaultAudience: "<client_id>",
- *     defaultDirectory: "Connection-Name",
- *     errorPage: {
- *         html: fs.readFileSync("./error.html"),
- *         showLogLink: true,
- *         url: "http://mysite/errors",
- *     },
- *     friendlyName: "Tenant Name",
- *     pictureUrl: "http://mysite/logo.png",
- *     supportEmail: "support@mysite",
- *     supportUrl: "http://mysite/support",
- *     allowedLogoutUrls: ["http://mysite/logout"],
- *     sessionLifetime: 46000,
- *     sandboxVersion: "8",
- * });
- * ```
- *
  * ## Import
  *
  * As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.

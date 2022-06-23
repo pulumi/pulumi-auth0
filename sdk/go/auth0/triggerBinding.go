@@ -37,7 +37,7 @@ import (
 // 				Id:      pulumi.String("post-login"),
 // 				Version: pulumi.String("v2"),
 // 			},
-// 			Code: pulumi.String(fmt.Sprintf("%v%v%v", "exports.onContinuePostLogin = async (event, api) => { \n", "	console.log(\"foo\") \n", "};\"\n")),
+// 			Code: pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => { \n	console.log(\"foo\") \n};\"\n")),
 // 			Deploy: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
@@ -48,7 +48,7 @@ import (
 // 				Id:      pulumi.String("post-login"),
 // 				Version: pulumi.String("v2"),
 // 			},
-// 			Code: pulumi.String(fmt.Sprintf("%v%v%v", "exports.onContinuePostLogin = async (event, api) => { \n", "	console.log(\"bar\") \n", "};\"\n")),
+// 			Code: pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => { \n	console.log(\"bar\") \n};\"\n")),
 // 			Deploy: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
