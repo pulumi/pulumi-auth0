@@ -23,10 +23,6 @@ namespace Pulumi.Auth0.Outputs
         public readonly ImmutableArray<string> AllowedAudiences;
         public readonly bool? ApiEnableUsers;
         /// <summary>
-        /// Azure AD domain name.
-        /// </summary>
-        public readonly string? AppDomain;
-        /// <summary>
         /// Azure AD app ID.
         /// </summary>
         public readonly string? AppId;
@@ -65,6 +61,10 @@ namespace Pulumi.Auth0.Outputs
         public readonly string? DigestAlgorithm;
         public readonly bool? DisableCache;
         /// <summary>
+        /// (Boolean) Disables or enables user sign out.
+        /// </summary>
+        public readonly bool? DisableSignOut;
+        /// <summary>
         /// Boolean. Indicates whether or not to allow user sign-ups to your application.
         /// </summary>
         public readonly bool? DisableSignup;
@@ -72,6 +72,9 @@ namespace Pulumi.Auth0.Outputs
         /// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
         /// </summary>
         public readonly string? DiscoveryUrl;
+        /// <summary>
+        /// Azure AD domain name.
+        /// </summary>
         public readonly string? Domain;
         /// <summary>
         /// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
@@ -85,7 +88,7 @@ namespace Pulumi.Auth0.Outputs
         /// <summary>
         /// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? FieldsMap;
+        public readonly string? FieldsMap;
         public readonly bool? ForwardRequestInfo;
         /// <summary>
         /// SMS number for the sender. Used when SMS Source is From.
@@ -122,6 +125,14 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? MessagingServiceSid;
         /// <summary>
+        /// URL of the SAML metadata document.
+        /// </summary>
+        public readonly string? MetadataUrl;
+        /// <summary>
+        /// XML content for the SAML metadata document.
+        /// </summary>
+        public readonly string? MetadataXml;
+        /// <summary>
         /// Configuration settings Options for multifactor authentication. For details, see MFA Options.
         /// </summary>
         public readonly Outputs.ConnectionOptionsMfa? Mfa;
@@ -153,6 +164,10 @@ namespace Pulumi.Auth0.Outputs
         /// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         /// </summary>
         public readonly string? PasswordPolicy;
+        /// <summary>
+        /// (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+        /// </summary>
+        public readonly bool? PkceEnabled;
         /// <summary>
         /// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
         /// </summary>
@@ -200,9 +215,16 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? SigningCert;
         /// <summary>
+        /// . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsSigningKey? SigningKey;
+        /// <summary>
         /// Version 1 is deprecated, use version 2.
         /// </summary>
         public readonly int? StrategyVersion;
+        /// <summary>
+        /// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// </summary>
         public readonly string? Subject;
         /// <summary>
         /// Syntax of the SMS. Options include `markdown` and `liquid`.
@@ -260,8 +282,6 @@ namespace Pulumi.Auth0.Outputs
 
             bool? apiEnableUsers,
 
-            string? appDomain,
-
             string? appId,
 
             string? authorizationEndpoint,
@@ -284,6 +304,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool? disableCache,
 
+            bool? disableSignOut,
+
             bool? disableSignup,
 
             string? discoveryUrl,
@@ -296,7 +318,7 @@ namespace Pulumi.Auth0.Outputs
 
             string? entityId,
 
-            ImmutableDictionary<string, string>? fieldsMap,
+            string? fieldsMap,
 
             bool? forwardRequestInfo,
 
@@ -326,6 +348,10 @@ namespace Pulumi.Auth0.Outputs
 
             string? messagingServiceSid,
 
+            string? metadataUrl,
+
+            string? metadataXml,
+
             Outputs.ConnectionOptionsMfa? mfa,
 
             string? name,
@@ -341,6 +367,8 @@ namespace Pulumi.Auth0.Outputs
             Outputs.ConnectionOptionsPasswordNoPersonalInfo? passwordNoPersonalInfo,
 
             string? passwordPolicy,
+
+            bool? pkceEnabled,
 
             string? protocolBinding,
 
@@ -367,6 +395,8 @@ namespace Pulumi.Auth0.Outputs
             string? signatureAlgorithm,
 
             string? signingCert,
+
+            Outputs.ConnectionOptionsSigningKey? signingKey,
 
             int? strategyVersion,
 
@@ -409,7 +439,6 @@ namespace Pulumi.Auth0.Outputs
             AdfsServer = adfsServer;
             AllowedAudiences = allowedAudiences;
             ApiEnableUsers = apiEnableUsers;
-            AppDomain = appDomain;
             AppId = appId;
             AuthorizationEndpoint = authorizationEndpoint;
             BruteForceProtection = bruteForceProtection;
@@ -421,6 +450,7 @@ namespace Pulumi.Auth0.Outputs
             Debug = debug;
             DigestAlgorithm = digestAlgorithm;
             DisableCache = disableCache;
+            DisableSignOut = disableSignOut;
             DisableSignup = disableSignup;
             DiscoveryUrl = discoveryUrl;
             Domain = domain;
@@ -442,6 +472,8 @@ namespace Pulumi.Auth0.Outputs
             KeyId = keyId;
             MaxGroupsToRetrieve = maxGroupsToRetrieve;
             MessagingServiceSid = messagingServiceSid;
+            MetadataUrl = metadataUrl;
+            MetadataXml = metadataXml;
             Mfa = mfa;
             Name = name;
             NonPersistentAttrs = nonPersistentAttrs;
@@ -450,6 +482,7 @@ namespace Pulumi.Auth0.Outputs
             PasswordHistories = passwordHistories;
             PasswordNoPersonalInfo = passwordNoPersonalInfo;
             PasswordPolicy = passwordPolicy;
+            PkceEnabled = pkceEnabled;
             ProtocolBinding = protocolBinding;
             Provider = provider;
             RequestTemplate = requestTemplate;
@@ -463,6 +496,7 @@ namespace Pulumi.Auth0.Outputs
             SignSamlRequest = signSamlRequest;
             SignatureAlgorithm = signatureAlgorithm;
             SigningCert = signingCert;
+            SigningKey = signingKey;
             StrategyVersion = strategyVersion;
             Subject = subject;
             Syntax = syntax;

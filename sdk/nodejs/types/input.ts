@@ -460,12 +460,6 @@ export interface ConnectionOptions {
     allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     apiEnableUsers?: pulumi.Input<boolean>;
     /**
-     * Azure AD domain name.
-     *
-     * @deprecated Use domain instead
-     */
-    appDomain?: pulumi.Input<string>;
-    /**
      * Azure AD app ID.
      */
     appId?: pulumi.Input<string>;
@@ -504,6 +498,10 @@ export interface ConnectionOptions {
     digestAlgorithm?: pulumi.Input<string>;
     disableCache?: pulumi.Input<boolean>;
     /**
+     * (Boolean) Disables or enables user sign out.
+     */
+    disableSignOut?: pulumi.Input<boolean>;
+    /**
      * Boolean. Indicates whether or not to allow user sign-ups to your application.
      */
     disableSignup?: pulumi.Input<boolean>;
@@ -511,6 +509,9 @@ export interface ConnectionOptions {
      * OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
      */
     discoveryUrl?: pulumi.Input<string>;
+    /**
+     * Azure AD domain name.
+     */
     domain?: pulumi.Input<string>;
     /**
      * List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
@@ -524,7 +525,7 @@ export interface ConnectionOptions {
     /**
      * SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
-    fieldsMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    fieldsMap?: pulumi.Input<string>;
     forwardRequestInfo?: pulumi.Input<boolean>;
     /**
      * SMS number for the sender. Used when SMS Source is From.
@@ -561,6 +562,14 @@ export interface ConnectionOptions {
      */
     messagingServiceSid?: pulumi.Input<string>;
     /**
+     * URL of the SAML metadata document.
+     */
+    metadataUrl?: pulumi.Input<string>;
+    /**
+     * XML content for the SAML metadata document.
+     */
+    metadataXml?: pulumi.Input<string>;
+    /**
      * Configuration settings Options for multifactor authentication. For details, see MFA Options.
      */
     mfa?: pulumi.Input<inputs.ConnectionOptionsMfa>;
@@ -592,6 +601,10 @@ export interface ConnectionOptions {
      * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
     passwordPolicy?: pulumi.Input<string>;
+    /**
+     * (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+     */
+    pkceEnabled?: pulumi.Input<boolean>;
     /**
      * The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
      */
@@ -639,9 +652,16 @@ export interface ConnectionOptions {
      */
     signingCert?: pulumi.Input<string>;
     /**
+     * . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     */
+    signingKey?: pulumi.Input<inputs.ConnectionOptionsSigningKey>;
+    /**
      * Version 1 is deprecated, use version 2.
      */
     strategyVersion?: pulumi.Input<number>;
+    /**
+     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     */
     subject?: pulumi.Input<string>;
     /**
      * Syntax of the SMS. Options include `markdown` and `liquid`.
@@ -697,6 +717,9 @@ export interface ConnectionOptionsGatewayAuthentication {
     method?: pulumi.Input<string>;
     secret?: pulumi.Input<string>;
     secretBase64Encoded?: pulumi.Input<boolean>;
+    /**
+     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     */
     subject?: pulumi.Input<string>;
 }
 
@@ -754,6 +777,11 @@ export interface ConnectionOptionsPasswordNoPersonalInfo {
      * Indicates whether the password personal info check is enabled for this connection.
      */
     enable?: pulumi.Input<boolean>;
+}
+
+export interface ConnectionOptionsSigningKey {
+    cert: pulumi.Input<string>;
+    key: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsTotp {
@@ -1001,7 +1029,7 @@ export interface LogStreamSink {
      */
     datadogApiKey?: pulumi.Input<string>;
     /**
-     * The Datadog region
+     * The Datadog region. Options are ["us", "eu", "us3", "us5"]
      */
     datadogRegion?: pulumi.Input<string>;
     /**
@@ -1119,9 +1147,41 @@ export interface TenantErrorPage {
 
 export interface TenantFlags {
     /**
+     * Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     */
+    allowLegacyDelegationGrantTypes?: pulumi.Input<boolean>;
+    /**
+     * Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     */
+    allowLegacyRoGrantTypes?: pulumi.Input<boolean>;
+    /**
+     * Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     */
+    allowLegacyTokeninfoEndpoint?: pulumi.Input<boolean>;
+    /**
+     * Boolean. Enables new insights activity page view.
+     */
+    dashboardInsightsView?: pulumi.Input<boolean>;
+    /**
+     * Boolean. Enables beta access to log streaming changes.
+     */
+    dashboardLogStreamsNext?: pulumi.Input<boolean>;
+    /**
      * Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      */
     disableClickjackProtectionHeaders?: pulumi.Input<boolean>;
+    /**
+     * Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+     */
+    disableFieldsMapFix?: pulumi.Input<boolean>;
+    /**
+     * Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     */
+    disableManagementApiSmsObfuscation?: pulumi.Input<boolean>;
+    /**
+     * Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     */
+    enableAdfsWaadEmailVerification?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether the APIs section is enabled for the tenant.
      */
@@ -1139,9 +1199,17 @@ export interface TenantFlags {
      */
     enableDynamicClientRegistration?: pulumi.Input<boolean>;
     /**
+     * Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+     */
+    enableIdtokenApi2?: pulumi.Input<boolean>;
+    /**
      * Boolean. Indicates whether to use the older v2 legacy logs search.
      */
     enableLegacyLogsSearchV2?: pulumi.Input<boolean>;
+    /**
+     * Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     */
+    enableLegacyProfile?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether advanced API Authorization scenarios are enabled.
      */
@@ -1150,6 +1218,14 @@ export interface TenantFlags {
      * Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
      */
     enablePublicSignupUserExistsError?: pulumi.Input<boolean>;
+    /**
+     * Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     */
+    noDiscloseEnterpriseConnections?: pulumi.Input<boolean>;
+    /**
+     * Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+     */
+    revokeRefreshTokenGrant?: pulumi.Input<boolean>;
     /**
      * Boolean. Indicates whether the tenant uses universal login.
      */

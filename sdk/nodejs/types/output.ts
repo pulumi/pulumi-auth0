@@ -426,19 +426,19 @@ export interface ClientRefreshToken {
     /**
      * Integer. The time in seconds after which inactive refresh tokens will expire.
      */
-    idleTokenLifetime?: number;
+    idleTokenLifetime: number;
     /**
      * Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
      */
-    infiniteIdleTokenLifetime?: boolean;
+    infiniteIdleTokenLifetime: boolean;
     /**
      * Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set
      */
-    infiniteTokenLifetime?: boolean;
+    infiniteTokenLifetime: boolean;
     /**
      * Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
      */
-    leeway?: number;
+    leeway: number;
     /**
      * String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      */
@@ -446,7 +446,7 @@ export interface ClientRefreshToken {
     /**
      * Integer. The absolute lifetime of a refresh token in seconds.
      */
-    tokenLifetime?: number;
+    tokenLifetime: number;
 }
 
 export interface ConnectionOptions {
@@ -459,12 +459,6 @@ export interface ConnectionOptions {
      */
     allowedAudiences: string[];
     apiEnableUsers?: boolean;
-    /**
-     * Azure AD domain name.
-     *
-     * @deprecated Use domain instead
-     */
-    appDomain?: string;
     /**
      * Azure AD app ID.
      */
@@ -504,6 +498,10 @@ export interface ConnectionOptions {
     digestAlgorithm?: string;
     disableCache?: boolean;
     /**
+     * (Boolean) Disables or enables user sign out.
+     */
+    disableSignOut?: boolean;
+    /**
      * Boolean. Indicates whether or not to allow user sign-ups to your application.
      */
     disableSignup?: boolean;
@@ -511,6 +509,9 @@ export interface ConnectionOptions {
      * OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
      */
     discoveryUrl?: string;
+    /**
+     * Azure AD domain name.
+     */
     domain?: string;
     /**
      * List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
@@ -524,7 +525,7 @@ export interface ConnectionOptions {
     /**
      * SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
-    fieldsMap?: {[key: string]: string};
+    fieldsMap?: string;
     forwardRequestInfo?: boolean;
     /**
      * SMS number for the sender. Used when SMS Source is From.
@@ -561,6 +562,14 @@ export interface ConnectionOptions {
      */
     messagingServiceSid?: string;
     /**
+     * URL of the SAML metadata document.
+     */
+    metadataUrl?: string;
+    /**
+     * XML content for the SAML metadata document.
+     */
+    metadataXml?: string;
+    /**
      * Configuration settings Options for multifactor authentication. For details, see MFA Options.
      */
     mfa: outputs.ConnectionOptionsMfa;
@@ -575,11 +584,11 @@ export interface ConnectionOptions {
     /**
      * Configuration settings for password complexity. For details, see Password Complexity Options.
      */
-    passwordComplexityOptions?: outputs.ConnectionOptionsPasswordComplexityOptions;
+    passwordComplexityOptions: outputs.ConnectionOptionsPasswordComplexityOptions;
     /**
      * Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
      */
-    passwordDictionary?: outputs.ConnectionOptionsPasswordDictionary;
+    passwordDictionary: outputs.ConnectionOptionsPasswordDictionary;
     /**
      * Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
      */
@@ -587,11 +596,15 @@ export interface ConnectionOptions {
     /**
      * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
      */
-    passwordNoPersonalInfo?: outputs.ConnectionOptionsPasswordNoPersonalInfo;
+    passwordNoPersonalInfo: outputs.ConnectionOptionsPasswordNoPersonalInfo;
     /**
      * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
     passwordPolicy: string;
+    /**
+     * (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+     */
+    pkceEnabled?: boolean;
     /**
      * The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
      */
@@ -639,9 +652,16 @@ export interface ConnectionOptions {
      */
     signingCert?: string;
     /**
+     * . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     */
+    signingKey?: outputs.ConnectionOptionsSigningKey;
+    /**
      * Version 1 is deprecated, use version 2.
      */
     strategyVersion: number;
+    /**
+     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     */
     subject?: string;
     /**
      * Syntax of the SMS. Options include `markdown` and `liquid`.
@@ -697,6 +717,9 @@ export interface ConnectionOptionsGatewayAuthentication {
     method?: string;
     secret?: string;
     secretBase64Encoded?: boolean;
+    /**
+     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     */
     subject?: string;
 }
 
@@ -754,6 +777,11 @@ export interface ConnectionOptionsPasswordNoPersonalInfo {
      * Indicates whether the password personal info check is enabled for this connection.
      */
     enable?: boolean;
+}
+
+export interface ConnectionOptionsSigningKey {
+    cert: string;
+    key: string;
 }
 
 export interface ConnectionOptionsTotp {
@@ -1115,12 +1143,12 @@ export interface GlobalClientNativeSocialLoginFacebook {
 
 export interface GlobalClientRefreshToken {
     expirationType: string;
-    idleTokenLifetime?: number;
-    infiniteIdleTokenLifetime?: boolean;
-    infiniteTokenLifetime?: boolean;
-    leeway?: number;
+    idleTokenLifetime: number;
+    infiniteIdleTokenLifetime: boolean;
+    infiniteTokenLifetime: boolean;
+    leeway: number;
     rotationType: string;
-    tokenLifetime?: number;
+    tokenLifetime: number;
 }
 
 export interface GuardianPhone {
@@ -1131,7 +1159,7 @@ export interface GuardianPhone {
     /**
      * List(Resource). Options for the various providers. See Options.
      */
-    options?: outputs.GuardianPhoneOptions;
+    options: outputs.GuardianPhoneOptions;
     /**
      * String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      */
@@ -1199,7 +1227,7 @@ export interface LogStreamSink {
      */
     datadogApiKey?: string;
     /**
-     * The Datadog region
+     * The Datadog region. Options are ["us", "eu", "us3", "us5"]
      */
     datadogRegion?: string;
     /**
@@ -1317,9 +1345,41 @@ export interface TenantErrorPage {
 
 export interface TenantFlags {
     /**
+     * Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     */
+    allowLegacyDelegationGrantTypes: boolean;
+    /**
+     * Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     */
+    allowLegacyRoGrantTypes: boolean;
+    /**
+     * Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     */
+    allowLegacyTokeninfoEndpoint: boolean;
+    /**
+     * Boolean. Enables new insights activity page view.
+     */
+    dashboardInsightsView: boolean;
+    /**
+     * Boolean. Enables beta access to log streaming changes.
+     */
+    dashboardLogStreamsNext: boolean;
+    /**
      * Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      */
     disableClickjackProtectionHeaders: boolean;
+    /**
+     * Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+     */
+    disableFieldsMapFix: boolean;
+    /**
+     * Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     */
+    disableManagementApiSmsObfuscation: boolean;
+    /**
+     * Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     */
+    enableAdfsWaadEmailVerification: boolean;
     /**
      * Boolean. Indicates whether the APIs section is enabled for the tenant.
      */
@@ -1337,9 +1397,17 @@ export interface TenantFlags {
      */
     enableDynamicClientRegistration: boolean;
     /**
+     * Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+     */
+    enableIdtokenApi2: boolean;
+    /**
      * Boolean. Indicates whether to use the older v2 legacy logs search.
      */
     enableLegacyLogsSearchV2: boolean;
+    /**
+     * Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     */
+    enableLegacyProfile: boolean;
     /**
      * Boolean. Indicates whether advanced API Authorization scenarios are enabled.
      */
@@ -1348,6 +1416,14 @@ export interface TenantFlags {
      * Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
      */
     enablePublicSignupUserExistsError: boolean;
+    /**
+     * Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     */
+    noDiscloseEnterpriseConnections: boolean;
+    /**
+     * Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+     */
+    revokeRefreshTokenGrant: boolean;
     /**
      * Boolean. Indicates whether the tenant uses universal login.
      */

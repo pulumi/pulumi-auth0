@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? DatadogApiKey;
         /// <summary>
-        /// The Datadog region
+        /// The Datadog region. Options are ["us", "eu", "us3", "us5"]
         /// </summary>
         public readonly string? DatadogRegion;
         /// <summary>

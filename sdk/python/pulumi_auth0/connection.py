@@ -19,6 +19,7 @@ class ConnectionArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -31,6 +32,7 @@ class ConnectionArgs:
         :param pulumi.Input[str] display_name: Name used in login screen
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
@@ -45,6 +47,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "enabled_clients", enabled_clients)
         if is_domain_connection is not None:
             pulumi.set(__self__, "is_domain_connection", is_domain_connection)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if options is not None:
@@ -105,6 +109,18 @@ class ConnectionArgs:
     @is_domain_connection.setter
     def is_domain_connection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_domain_connection", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
@@ -185,6 +201,7 @@ class _ConnectionState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -197,6 +214,7 @@ class _ConnectionState:
         :param pulumi.Input[str] display_name: Name used in login screen
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
@@ -211,6 +229,8 @@ class _ConnectionState:
             pulumi.set(__self__, "enabled_clients", enabled_clients)
         if is_domain_connection is not None:
             pulumi.set(__self__, "is_domain_connection", is_domain_connection)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if options is not None:
@@ -261,6 +281,18 @@ class _ConnectionState:
     @is_domain_connection.setter
     def is_domain_connection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_domain_connection", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter
@@ -355,6 +387,7 @@ class Connection(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -375,6 +408,10 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_connection = auth0.Connection("myConnection",
+            metadata={
+                "key1": "foo",
+                "key2": "bar",
+            },
             options=auth0.ConnectionOptionsArgs(
                 brute_force_protection=True,
                 configuration={
@@ -414,6 +451,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name used in login screen
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
@@ -440,6 +478,10 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_connection = auth0.Connection("myConnection",
+            metadata={
+                "key1": "foo",
+                "key2": "bar",
+            },
             options=auth0.ConnectionOptionsArgs(
                 brute_force_protection=True,
                 configuration={
@@ -492,6 +534,7 @@ class Connection(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -514,6 +557,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enabled_clients"] = enabled_clients
             __props__.__dict__["is_domain_connection"] = is_domain_connection
+            __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = options
             __props__.__dict__["realms"] = realms
@@ -536,6 +580,7 @@ class Connection(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_domain_connection: Optional[pulumi.Input[bool]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -553,6 +598,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name used in login screen
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
@@ -568,6 +614,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enabled_clients"] = enabled_clients
         __props__.__dict__["is_domain_connection"] = is_domain_connection
+        __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
         __props__.__dict__["realms"] = realms
@@ -600,6 +647,14 @@ class Connection(pulumi.CustomResource):
         Indicates whether the connection is domain level.
         """
         return pulumi.get(self, "is_domain_connection")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        """
+        return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter

@@ -127,7 +127,7 @@ export class Tenant extends pulumi.CustomResource {
     /**
      * Integer. Number of hours during which a session can be inactive before the user must log in again.
      */
-    public readonly idleSessionLifetime!: pulumi.Output<number>;
+    public readonly idleSessionLifetime!: pulumi.Output<number | undefined>;
     /**
      * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
@@ -139,7 +139,7 @@ export class Tenant extends pulumi.CustomResource {
     /**
      * Integer. Number of hours during which a session will stay valid.
      */
-    public readonly sessionLifetime!: pulumi.Output<number>;
+    public readonly sessionLifetime!: pulumi.Output<number | undefined>;
     /**
      * String. Support email address for authenticating users.
      */

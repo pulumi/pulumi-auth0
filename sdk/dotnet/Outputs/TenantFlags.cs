@@ -14,9 +14,41 @@ namespace Pulumi.Auth0.Outputs
     public sealed class TenantFlags
     {
         /// <summary>
+        /// Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+        /// </summary>
+        public readonly bool? AllowLegacyDelegationGrantTypes;
+        /// <summary>
+        /// Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+        /// </summary>
+        public readonly bool? AllowLegacyRoGrantTypes;
+        /// <summary>
+        /// Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+        /// </summary>
+        public readonly bool? AllowLegacyTokeninfoEndpoint;
+        /// <summary>
+        /// Boolean. Enables new insights activity page view.
+        /// </summary>
+        public readonly bool? DashboardInsightsView;
+        /// <summary>
+        /// Boolean. Enables beta access to log streaming changes.
+        /// </summary>
+        public readonly bool? DashboardLogStreamsNext;
+        /// <summary>
         /// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
         /// </summary>
         public readonly bool? DisableClickjackProtectionHeaders;
+        /// <summary>
+        /// Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+        /// </summary>
+        public readonly bool? DisableFieldsMapFix;
+        /// <summary>
+        /// Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+        /// </summary>
+        public readonly bool? DisableManagementApiSmsObfuscation;
+        /// <summary>
+        /// Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+        /// </summary>
+        public readonly bool? EnableAdfsWaadEmailVerification;
         /// <summary>
         /// Boolean. Indicates whether the APIs section is enabled for the tenant.
         /// </summary>
@@ -34,9 +66,17 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? EnableDynamicClientRegistration;
         /// <summary>
+        /// Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+        /// </summary>
+        public readonly bool? EnableIdtokenApi2;
+        /// <summary>
         /// Boolean. Indicates whether to use the older v2 legacy logs search.
         /// </summary>
         public readonly bool? EnableLegacyLogsSearchV2;
+        /// <summary>
+        /// Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+        /// </summary>
+        public readonly bool? EnableLegacyProfile;
         /// <summary>
         /// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
         /// </summary>
@@ -46,6 +86,14 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? EnablePublicSignupUserExistsError;
         /// <summary>
+        /// Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        /// </summary>
+        public readonly bool? NoDiscloseEnterpriseConnections;
+        /// <summary>
+        /// Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+        /// </summary>
+        public readonly bool? RevokeRefreshTokenGrant;
+        /// <summary>
         /// Boolean. Indicates whether the tenant uses universal login.
         /// </summary>
         public readonly bool? UniversalLogin;
@@ -53,7 +101,23 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private TenantFlags(
+            bool? allowLegacyDelegationGrantTypes,
+
+            bool? allowLegacyRoGrantTypes,
+
+            bool? allowLegacyTokeninfoEndpoint,
+
+            bool? dashboardInsightsView,
+
+            bool? dashboardLogStreamsNext,
+
             bool? disableClickjackProtectionHeaders,
+
+            bool? disableFieldsMapFix,
+
+            bool? disableManagementApiSmsObfuscation,
+
+            bool? enableAdfsWaadEmailVerification,
 
             bool? enableApisSection,
 
@@ -63,24 +127,44 @@ namespace Pulumi.Auth0.Outputs
 
             bool? enableDynamicClientRegistration,
 
+            bool? enableIdtokenApi2,
+
             bool? enableLegacyLogsSearchV2,
+
+            bool? enableLegacyProfile,
 
             bool? enablePipeline2,
 
             bool? enablePublicSignupUserExistsError,
 
+            bool? noDiscloseEnterpriseConnections,
+
+            bool? revokeRefreshTokenGrant,
+
             bool? universalLogin,
 
             bool? useScopeDescriptionsForConsent)
         {
+            AllowLegacyDelegationGrantTypes = allowLegacyDelegationGrantTypes;
+            AllowLegacyRoGrantTypes = allowLegacyRoGrantTypes;
+            AllowLegacyTokeninfoEndpoint = allowLegacyTokeninfoEndpoint;
+            DashboardInsightsView = dashboardInsightsView;
+            DashboardLogStreamsNext = dashboardLogStreamsNext;
             DisableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
+            DisableFieldsMapFix = disableFieldsMapFix;
+            DisableManagementApiSmsObfuscation = disableManagementApiSmsObfuscation;
+            EnableAdfsWaadEmailVerification = enableAdfsWaadEmailVerification;
             EnableApisSection = enableApisSection;
             EnableClientConnections = enableClientConnections;
             EnableCustomDomainInEmails = enableCustomDomainInEmails;
             EnableDynamicClientRegistration = enableDynamicClientRegistration;
+            EnableIdtokenApi2 = enableIdtokenApi2;
             EnableLegacyLogsSearchV2 = enableLegacyLogsSearchV2;
+            EnableLegacyProfile = enableLegacyProfile;
             EnablePipeline2 = enablePipeline2;
             EnablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            NoDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            RevokeRefreshTokenGrant = revokeRefreshTokenGrant;
             UniversalLogin = universalLogin;
             UseScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
         }

@@ -1182,7 +1182,20 @@
             "required": [
                 "expirationType",
                 "rotationType"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expirationType",
+                        "idleTokenLifetime",
+                        "infiniteIdleTokenLifetime",
+                        "infiniteTokenLifetime",
+                        "leeway",
+                        "rotationType",
+                        "tokenLifetime"
+                    ]
+                }
+            }
         },
         "auth0:index/ConnectionOptions:ConnectionOptions": {
             "properties": {
@@ -1209,16 +1222,6 @@
                 },
                 "apiEnableUsers": {
                     "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "appDomain": {
-                    "type": "string",
-                    "description": "Azure AD domain name.\n",
-                    "deprecationMessage": "Use domain instead",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1328,6 +1331,15 @@
                         }
                     }
                 },
+                "disableSignOut": {
+                    "type": "boolean",
+                    "description": "(Boolean) Disables or enables user sign out.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "disableSignup": {
                     "type": "boolean",
                     "description": "Boolean. Indicates whether or not to allow user sign-ups to your application.\n",
@@ -1348,6 +1360,7 @@
                 },
                 "domain": {
                     "type": "string",
+                    "description": "Azure AD domain name.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1384,10 +1397,7 @@
                     }
                 },
                 "fieldsMap": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
+                    "type": "string",
                     "description": "SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.\n",
                     "language": {
                         "python": {
@@ -1517,6 +1527,24 @@
                         }
                     }
                 },
+                "metadataUrl": {
+                    "type": "string",
+                    "description": "URL of the SAML metadata document.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metadataXml": {
+                    "type": "string",
+                    "description": "XML content for the SAML metadata document.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "mfa": {
                     "$ref": "#/types/auth0:index/ConnectionOptionsMfa:ConnectionOptionsMfa",
                     "description": "Configuration settings Options for multifactor authentication. For details, see MFA Options.\n",
@@ -1589,6 +1617,15 @@
                 "passwordPolicy": {
                     "type": "string",
                     "description": "Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pkceEnabled": {
+                    "type": "boolean",
+                    "description": "(Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1716,6 +1753,15 @@
                         }
                     }
                 },
+                "signingKey": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsSigningKey:ConnectionOptionsSigningKey",
+                    "description": ". The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "strategyVersion": {
                     "type": "integer",
                     "description": "Version 1 is deprecated, use version 2.\n",
@@ -1727,6 +1773,7 @@
                 },
                 "subject": {
                     "type": "string",
+                    "description": "String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1889,7 +1936,10 @@
                         "ips",
                         "mfa",
                         "nonPersistentAttrs",
+                        "passwordComplexityOptions",
+                        "passwordDictionary",
                         "passwordHistories",
+                        "passwordNoPersonalInfo",
                         "passwordPolicy",
                         "scopes",
                         "setUserRootAttributes",
@@ -1934,6 +1984,7 @@
                 },
                 "subject": {
                     "type": "string",
+                    "description": "String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2072,6 +2123,31 @@
                 }
             },
             "type": "object"
+        },
+        "auth0:index/ConnectionOptionsSigningKey:ConnectionOptionsSigningKey": {
+            "properties": {
+                "cert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "cert",
+                "key"
+            ]
         },
         "auth0:index/ConnectionOptionsTotp:ConnectionOptionsTotp": {
             "properties": {
@@ -2969,7 +3045,20 @@
             "required": [
                 "expirationType",
                 "rotationType"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expirationType",
+                        "idleTokenLifetime",
+                        "infiniteIdleTokenLifetime",
+                        "infiniteTokenLifetime",
+                        "leeway",
+                        "rotationType",
+                        "tokenLifetime"
+                    ]
+                }
+            }
         },
         "auth0:index/GuardianPhone:GuardianPhone": {
             "properties": {
@@ -3008,7 +3097,16 @@
             "required": [
                 "messageTypes",
                 "provider"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "messageTypes",
+                        "options",
+                        "provider"
+                    ]
+                }
+            }
         },
         "auth0:index/GuardianPhoneOptions:GuardianPhoneOptions": {
             "properties": {
@@ -3150,7 +3248,7 @@
                 },
                 "datadogRegion": {
                     "type": "string",
-                    "description": "The Datadog region\n",
+                    "description": "The Datadog region. Options are [\"us\", \"eu\", \"us3\", \"us5\"]\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3434,9 +3532,81 @@
         },
         "auth0:index/TenantFlags:TenantFlags": {
             "properties": {
+                "allowLegacyDelegationGrantTypes": {
+                    "type": "boolean",
+                    "description": "Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowLegacyRoGrantTypes": {
+                    "type": "boolean",
+                    "description": "Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowLegacyTokeninfoEndpoint": {
+                    "type": "boolean",
+                    "description": "Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dashboardInsightsView": {
+                    "type": "boolean",
+                    "description": "Boolean. Enables new insights activity page view.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dashboardLogStreamsNext": {
+                    "type": "boolean",
+                    "description": "Boolean. Enables beta access to log streaming changes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "disableClickjackProtectionHeaders": {
                     "type": "boolean",
                     "description": "Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disableFieldsMapFix": {
+                    "type": "boolean",
+                    "description": "Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disableManagementApiSmsObfuscation": {
+                    "type": "boolean",
+                    "description": "Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableAdfsWaadEmailVerification": {
+                    "type": "boolean",
+                    "description": "Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3479,9 +3649,27 @@
                         }
                     }
                 },
+                "enableIdtokenApi2": {
+                    "type": "boolean",
+                    "description": "Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "enableLegacyLogsSearchV2": {
                     "type": "boolean",
                     "description": "Boolean. Indicates whether to use the older v2 legacy logs search.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableLegacyProfile": {
+                    "type": "boolean",
+                    "description": "Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3500,6 +3688,24 @@
                 "enablePublicSignupUserExistsError": {
                     "type": "boolean",
                     "description": "Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "noDiscloseEnterpriseConnections": {
+                    "type": "boolean",
+                    "description": "Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "revokeRefreshTokenGrant": {
+                    "type": "boolean",
+                    "description": "Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3528,14 +3734,26 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "allowLegacyDelegationGrantTypes",
+                        "allowLegacyRoGrantTypes",
+                        "allowLegacyTokeninfoEndpoint",
+                        "dashboardInsightsView",
+                        "dashboardLogStreamsNext",
                         "disableClickjackProtectionHeaders",
+                        "disableFieldsMapFix",
+                        "disableManagementApiSmsObfuscation",
+                        "enableAdfsWaadEmailVerification",
                         "enableApisSection",
                         "enableClientConnections",
                         "enableCustomDomainInEmails",
                         "enableDynamicClientRegistration",
+                        "enableIdtokenApi2",
                         "enableLegacyLogsSearchV2",
+                        "enableLegacyProfile",
                         "enablePipeline2",
                         "enablePublicSignupUserExistsError",
+                        "noDiscloseEnterpriseConnections",
+                        "revokeRefreshTokenGrant",
                         "universalLogin",
                         "useScopeDescriptionsForConsent"
                     ]
@@ -6265,7 +6483,7 @@
             }
         },
         "auth0:index/connection:Connection": {
-            "description": "With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers\n(such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure\nand manage connections to be used with your clients and users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myConnection = new auth0.Connection(\"my_connection\", {\n    options: {\n        bruteForceProtection: true,\n        configuration: {\n            bar: \"baz\",\n            foo: \"bar\",\n        },\n        customScripts: {\n            get_user: `function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n`,\n        },\n        enabledDatabaseCustomization: true,\n        passwordHistories: [{\n            enable: true,\n            size: 3,\n        }],\n        passwordPolicy: \"excellent\",\n    },\n    strategy: \"auth0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_connection = auth0.Connection(\"myConnection\",\n    options=auth0.ConnectionOptionsArgs(\n        brute_force_protection=True,\n        configuration={\n            \"bar\": \"baz\",\n            \"foo\": \"bar\",\n        },\n        custom_scripts={\n            \"getUser\": \"\"\"function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n\n\"\"\",\n        },\n        enabled_database_customization=True,\n        password_histories=[auth0.ConnectionOptionsPasswordHistoryArgs(\n            enable=True,\n            size=3,\n        )],\n        password_policy=\"excellent\",\n    ),\n    strategy=\"auth0\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myConnection = new Auth0.Connection(\"myConnection\", new Auth0.ConnectionArgs\n        {\n            Options = new Auth0.Inputs.ConnectionOptionsArgs\n            {\n                BruteForceProtection = true,\n                Configuration = \n                {\n                    { \"bar\", \"baz\" },\n                    { \"foo\", \"bar\" },\n                },\n                CustomScripts = \n                {\n                    { \"getUser\", @\"function getByEmail (email, callback) {\n  return callback(new Error(\"\"Whoops!\"\"))\n}\n\n\" },\n                },\n                EnabledDatabaseCustomization = true,\n                PasswordHistories = \n                {\n                    new Auth0.Inputs.ConnectionOptionsPasswordHistoryArgs\n                    {\n                        Enable = true,\n                        Size = 3,\n                    },\n                },\n                PasswordPolicy = \"excellent\",\n            },\n            Strategy = \"auth0\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewConnection(ctx, \"myConnection\", \u0026auth0.ConnectionArgs{\n\t\t\tOptions: \u0026ConnectionOptionsArgs{\n\t\t\t\tBruteForceProtection: pulumi.Bool(true),\n\t\t\t\tConfiguration: pulumi.StringMap{\n\t\t\t\t\t\"bar\": pulumi.String(\"baz\"),\n\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t},\n\t\t\t\tCustomScripts: pulumi.StringMap{\n\t\t\t\t\t\"getUser\": pulumi.String(fmt.Sprintf(\"%v%v%v%v\", \"function getByEmail (email, callback) {\\n\", \"  return callback(new Error(\\\"Whoops!\\\"))\\n\", \"}\\n\", \"\\n\")),\n\t\t\t\t},\n\t\t\t\tEnabledDatabaseCustomization: pulumi.Bool(true),\n\t\t\t\tPasswordHistories: ConnectionOptionsPasswordHistoryArray{\n\t\t\t\t\t\u0026ConnectionOptionsPasswordHistoryArgs{\n\t\t\t\t\t\tEnable: pulumi.Bool(true),\n\t\t\t\t\t\tSize:   pulumi.Int(3),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tPasswordPolicy: pulumi.String(\"excellent\"),\n\t\t\t},\n\t\t\tStrategy: pulumi.String(\"auth0\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myConnection = new Connection(\"myConnection\", ConnectionArgs.builder()        \n            .options(ConnectionOptionsArgs.builder()\n                .bruteForceProtection(\"true\")\n                .configuration(Map.ofEntries(\n                    Map.entry(\"bar\", \"baz\"),\n                    Map.entry(\"foo\", \"bar\")\n                ))\n                .customScripts(Map.of(\"getUser\", \"\"\"\nfunction getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n\n                \"\"\"))\n                .enabledDatabaseCustomization(\"true\")\n                .passwordHistories(ConnectionOptionsPasswordHistoryArgs.builder()\n                    .enable(true)\n                    .size(3)\n                    .build())\n                .passwordPolicy(\"excellent\")\n                .build())\n            .strategy(\"auth0\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myConnection:\n    type: auth0:Connection\n    properties:\n      options:\n        bruteForceProtection: true\n        configuration:\n          bar: baz\n          foo: bar\n        customScripts:\n          getUser: |+\n            function getByEmail (email, callback) {\n              return callback(new Error(\"Whoops!\"))\n            }\n\n        enabledDatabaseCustomization: true\n        passwordHistories:\n          - enable: true\n            size: 3\n        passwordPolicy: excellent\n      strategy: auth0\n```\n\n\u003e The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the\ncreation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nConnections can be imported using their id, e.g.\n\n```sh\n $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0\n```\n\n ",
+            "description": "With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers\n(such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure\nand manage connections to be used with your clients and users.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myConnection = new auth0.Connection(\"my_connection\", {\n    metadata: {\n        key1: \"foo\",\n        key2: \"bar\",\n    },\n    options: {\n        bruteForceProtection: true,\n        configuration: {\n            bar: \"baz\",\n            foo: \"bar\",\n        },\n        customScripts: {\n            get_user: `function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n`,\n        },\n        enabledDatabaseCustomization: true,\n        passwordHistories: [{\n            enable: true,\n            size: 3,\n        }],\n        passwordPolicy: \"excellent\",\n    },\n    strategy: \"auth0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_connection = auth0.Connection(\"myConnection\",\n    metadata={\n        \"key1\": \"foo\",\n        \"key2\": \"bar\",\n    },\n    options=auth0.ConnectionOptionsArgs(\n        brute_force_protection=True,\n        configuration={\n            \"bar\": \"baz\",\n            \"foo\": \"bar\",\n        },\n        custom_scripts={\n            \"getUser\": \"\"\"function getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n\n\"\"\",\n        },\n        enabled_database_customization=True,\n        password_histories=[auth0.ConnectionOptionsPasswordHistoryArgs(\n            enable=True,\n            size=3,\n        )],\n        password_policy=\"excellent\",\n    ),\n    strategy=\"auth0\")\n```\n```csharp\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myConnection = new Auth0.Connection(\"myConnection\", new Auth0.ConnectionArgs\n        {\n            Metadata = \n            {\n                { \"key1\", \"foo\" },\n                { \"key2\", \"bar\" },\n            },\n            Options = new Auth0.Inputs.ConnectionOptionsArgs\n            {\n                BruteForceProtection = true,\n                Configuration = \n                {\n                    { \"bar\", \"baz\" },\n                    { \"foo\", \"bar\" },\n                },\n                CustomScripts = \n                {\n                    { \"getUser\", @\"function getByEmail (email, callback) {\n  return callback(new Error(\"\"Whoops!\"\"))\n}\n\n\" },\n                },\n                EnabledDatabaseCustomization = true,\n                PasswordHistories = \n                {\n                    new Auth0.Inputs.ConnectionOptionsPasswordHistoryArgs\n                    {\n                        Enable = true,\n                        Size = 3,\n                    },\n                },\n                PasswordPolicy = \"excellent\",\n            },\n            Strategy = \"auth0\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewConnection(ctx, \"myConnection\", \u0026auth0.ConnectionArgs{\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"key1\": pulumi.String(\"foo\"),\n\t\t\t\t\"key2\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t\tOptions: \u0026ConnectionOptionsArgs{\n\t\t\t\tBruteForceProtection: pulumi.Bool(true),\n\t\t\t\tConfiguration: pulumi.StringMap{\n\t\t\t\t\t\"bar\": pulumi.String(\"baz\"),\n\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t},\n\t\t\t\tCustomScripts: pulumi.StringMap{\n\t\t\t\t\t\"getUser\": pulumi.String(fmt.Sprintf(\"%v%v%v%v\", \"function getByEmail (email, callback) {\\n\", \"  return callback(new Error(\\\"Whoops!\\\"))\\n\", \"}\\n\", \"\\n\")),\n\t\t\t\t},\n\t\t\t\tEnabledDatabaseCustomization: pulumi.Bool(true),\n\t\t\t\tPasswordHistories: ConnectionOptionsPasswordHistoryArray{\n\t\t\t\t\t\u0026ConnectionOptionsPasswordHistoryArgs{\n\t\t\t\t\t\tEnable: pulumi.Bool(true),\n\t\t\t\t\t\tSize:   pulumi.Int(3),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tPasswordPolicy: pulumi.String(\"excellent\"),\n\t\t\t},\n\t\t\tStrategy: pulumi.String(\"auth0\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myConnection = new Connection(\"myConnection\", ConnectionArgs.builder()        \n            .metadata(Map.ofEntries(\n                Map.entry(\"key1\", \"foo\"),\n                Map.entry(\"key2\", \"bar\")\n            ))\n            .options(ConnectionOptionsArgs.builder()\n                .bruteForceProtection(true)\n                .configuration(Map.ofEntries(\n                    Map.entry(\"bar\", \"baz\"),\n                    Map.entry(\"foo\", \"bar\")\n                ))\n                .customScripts(Map.of(\"getUser\", \"\"\"\nfunction getByEmail (email, callback) {\n  return callback(new Error(\"Whoops!\"))\n}\n\n                \"\"\"))\n                .enabledDatabaseCustomization(true)\n                .passwordHistories(ConnectionOptionsPasswordHistoryArgs.builder()\n                    .enable(true)\n                    .size(3)\n                    .build())\n                .passwordPolicy(\"excellent\")\n                .build())\n            .strategy(\"auth0\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myConnection:\n    type: auth0:Connection\n    properties:\n      metadata:\n        key1: foo\n        key2: bar\n      options:\n        bruteForceProtection: true\n        configuration:\n          bar: baz\n          foo: bar\n        customScripts:\n          getUser: |+\n            function getByEmail (email, callback) {\n              return callback(new Error(\"Whoops!\"))\n            }\n\n        enabledDatabaseCustomization: true\n        passwordHistories:\n          - enable: true\n            size: 3\n        passwordPolicy: excellent\n      strategy: auth0\n```\n\n\u003e The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the\ncreation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nConnections can be imported using their id, e.g.\n\n```sh\n $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0\n```\n\n ",
             "properties": {
                 "displayName": {
                     "type": "string",
@@ -6281,6 +6499,13 @@
                 "isDomainConnection": {
                     "type": "boolean",
                     "description": "Indicates whether the connection is domain level.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.\n"
                 },
                 "name": {
                     "type": "string",
@@ -6342,6 +6567,13 @@
                     "type": "boolean",
                     "description": "Indicates whether the connection is domain level.\n"
                 },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the connection.\n",
@@ -6399,6 +6631,13 @@
                     "isDomainConnection": {
                         "type": "boolean",
                         "description": "Indicates whether the connection is domain level.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.\n"
                     },
                     "name": {
                         "type": "string",
@@ -8178,10 +8417,8 @@
                 "flags",
                 "friendlyName",
                 "guardianMfaPage",
-                "idleSessionLifetime",
                 "pictureUrl",
                 "sandboxVersion",
-                "sessionLifetime",
                 "supportEmail",
                 "supportUrl",
                 "universalLogin"
