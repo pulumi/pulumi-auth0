@@ -106,13 +106,13 @@ type Tenant struct {
 	// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
 	GuardianMfaPage TenantGuardianMfaPageOutput `pulumi:"guardianMfaPage"`
 	// Integer. Number of hours during which a session can be inactive before the user must log in again.
-	IdleSessionLifetime pulumi.Float64Output `pulumi:"idleSessionLifetime"`
+	IdleSessionLifetime pulumi.Float64PtrOutput `pulumi:"idleSessionLifetime"`
 	// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringOutput `pulumi:"pictureUrl"`
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringOutput `pulumi:"sandboxVersion"`
 	// Integer. Number of hours during which a session will stay valid.
-	SessionLifetime pulumi.Float64Output `pulumi:"sessionLifetime"`
+	SessionLifetime pulumi.Float64PtrOutput `pulumi:"sessionLifetime"`
 	// String. Support email address for authenticating users.
 	SupportEmail pulumi.StringOutput `pulumi:"supportEmail"`
 	// String. Support URL for authenticating users.
@@ -440,8 +440,8 @@ func (o TenantOutput) GuardianMfaPage() TenantGuardianMfaPageOutput {
 }
 
 // Integer. Number of hours during which a session can be inactive before the user must log in again.
-func (o TenantOutput) IdleSessionLifetime() pulumi.Float64Output {
-	return o.ApplyT(func(v *Tenant) pulumi.Float64Output { return v.IdleSessionLifetime }).(pulumi.Float64Output)
+func (o TenantOutput) IdleSessionLifetime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.IdleSessionLifetime }).(pulumi.Float64PtrOutput)
 }
 
 // . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
@@ -455,8 +455,8 @@ func (o TenantOutput) SandboxVersion() pulumi.StringOutput {
 }
 
 // Integer. Number of hours during which a session will stay valid.
-func (o TenantOutput) SessionLifetime() pulumi.Float64Output {
-	return o.ApplyT(func(v *Tenant) pulumi.Float64Output { return v.SessionLifetime }).(pulumi.Float64Output)
+func (o TenantOutput) SessionLifetime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.SessionLifetime }).(pulumi.Float64PtrOutput)
 }
 
 // String. Support email address for authenticating users.

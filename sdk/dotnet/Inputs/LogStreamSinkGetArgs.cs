@@ -61,7 +61,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? DatadogApiKey { get; set; }
 
         /// <summary>
-        /// The Datadog region
+        /// The Datadog region. Options are ["us", "eu", "us3", "us5"]
         /// </summary>
         [Input("datadogRegion")]
         public Input<string>? DatadogRegion { get; set; }

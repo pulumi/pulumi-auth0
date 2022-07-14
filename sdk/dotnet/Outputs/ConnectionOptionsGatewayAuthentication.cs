@@ -17,6 +17,9 @@ namespace Pulumi.Auth0.Outputs
         public readonly string? Method;
         public readonly string? Secret;
         public readonly bool? SecretBase64Encoded;
+        /// <summary>
+        /// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// </summary>
         public readonly string? Subject;
 
         [OutputConstructor]

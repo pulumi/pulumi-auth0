@@ -17,6 +17,10 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myConnection = new auth0.Connection("my_connection", {
+ *     metadata: {
+ *         key1: "foo",
+ *         key2: "bar",
+ *     },
  *     options: {
  *         bruteForceProtection: true,
  *         configuration: {
@@ -92,6 +96,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly isDomainConnection!: pulumi.Output<boolean>;
     /**
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     */
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Name of the connection.
      */
     public readonly name!: pulumi.Output<string>;
@@ -136,6 +144,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["enabledClients"] = state ? state.enabledClients : undefined;
             resourceInputs["isDomainConnection"] = state ? state.isDomainConnection : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["realms"] = state ? state.realms : undefined;
@@ -151,6 +160,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enabledClients"] = args ? args.enabledClients : undefined;
             resourceInputs["isDomainConnection"] = args ? args.isDomainConnection : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["realms"] = args ? args.realms : undefined;
@@ -180,6 +190,10 @@ export interface ConnectionState {
      * Indicates whether the connection is domain level.
      */
     isDomainConnection?: pulumi.Input<boolean>;
+    /**
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the connection.
      */
@@ -226,6 +240,10 @@ export interface ConnectionArgs {
      * Indicates whether the connection is domain level.
      */
     isDomainConnection?: pulumi.Input<boolean>;
+    /**
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the connection.
      */

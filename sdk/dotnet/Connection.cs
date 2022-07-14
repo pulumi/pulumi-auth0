@@ -26,6 +26,11 @@ namespace Pulumi.Auth0
     ///     {
     ///         var myConnection = new Auth0.Connection("myConnection", new Auth0.ConnectionArgs
     ///         {
+    ///             Metadata = 
+    ///             {
+    ///                 { "key1", "foo" },
+    ///                 { "key2", "bar" },
+    ///             },
     ///             Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///             {
     ///                 BruteForceProtection = true,
@@ -91,6 +96,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("isDomainConnection")]
         public Output<bool> IsDomainConnection { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        /// </summary>
+        [Output("metadata")]
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Name of the connection.
@@ -204,6 +215,18 @@ namespace Pulumi.Auth0
         [Input("isDomainConnection")]
         public Input<bool>? IsDomainConnection { get; set; }
 
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
+
         /// <summary>
         /// Name of the connection.
         /// </summary>
@@ -288,6 +311,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("isDomainConnection")]
         public Input<bool>? IsDomainConnection { get; set; }
+
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
 
         /// <summary>
         /// Name of the connection.

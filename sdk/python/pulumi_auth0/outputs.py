@@ -39,6 +39,7 @@ __all__ = [
     'ConnectionOptionsPasswordDictionary',
     'ConnectionOptionsPasswordHistory',
     'ConnectionOptionsPasswordNoPersonalInfo',
+    'ConnectionOptionsSigningKey',
     'ConnectionOptionsTotp',
     'ConnectionOptionsValidation',
     'ConnectionOptionsValidationUsername',
@@ -1652,8 +1653,6 @@ class ConnectionOptions(dict):
             suggest = "allowed_audiences"
         elif key == "apiEnableUsers":
             suggest = "api_enable_users"
-        elif key == "appDomain":
-            suggest = "app_domain"
         elif key == "appId":
             suggest = "app_id"
         elif key == "authorizationEndpoint":
@@ -1672,6 +1671,8 @@ class ConnectionOptions(dict):
             suggest = "digest_algorithm"
         elif key == "disableCache":
             suggest = "disable_cache"
+        elif key == "disableSignOut":
+            suggest = "disable_sign_out"
         elif key == "disableSignup":
             suggest = "disable_signup"
         elif key == "discoveryUrl":
@@ -1708,6 +1709,10 @@ class ConnectionOptions(dict):
             suggest = "max_groups_to_retrieve"
         elif key == "messagingServiceSid":
             suggest = "messaging_service_sid"
+        elif key == "metadataUrl":
+            suggest = "metadata_url"
+        elif key == "metadataXml":
+            suggest = "metadata_xml"
         elif key == "nonPersistentAttrs":
             suggest = "non_persistent_attrs"
         elif key == "passwordComplexityOptions":
@@ -1720,6 +1725,8 @@ class ConnectionOptions(dict):
             suggest = "password_no_personal_info"
         elif key == "passwordPolicy":
             suggest = "password_policy"
+        elif key == "pkceEnabled":
+            suggest = "pkce_enabled"
         elif key == "protocolBinding":
             suggest = "protocol_binding"
         elif key == "requestTemplate":
@@ -1740,6 +1747,8 @@ class ConnectionOptions(dict):
             suggest = "signature_algorithm"
         elif key == "signingCert":
             suggest = "signing_cert"
+        elif key == "signingKey":
+            suggest = "signing_key"
         elif key == "strategyVersion":
             suggest = "strategy_version"
         elif key == "teamId":
@@ -1782,7 +1791,6 @@ class ConnectionOptions(dict):
                  adfs_server: Optional[str] = None,
                  allowed_audiences: Optional[Sequence[str]] = None,
                  api_enable_users: Optional[bool] = None,
-                 app_domain: Optional[str] = None,
                  app_id: Optional[str] = None,
                  authorization_endpoint: Optional[str] = None,
                  brute_force_protection: Optional[bool] = None,
@@ -1794,13 +1802,14 @@ class ConnectionOptions(dict):
                  debug: Optional[bool] = None,
                  digest_algorithm: Optional[str] = None,
                  disable_cache: Optional[bool] = None,
+                 disable_sign_out: Optional[bool] = None,
                  disable_signup: Optional[bool] = None,
                  discovery_url: Optional[str] = None,
                  domain: Optional[str] = None,
                  domain_aliases: Optional[Sequence[str]] = None,
                  enabled_database_customization: Optional[bool] = None,
                  entity_id: Optional[str] = None,
-                 fields_map: Optional[Mapping[str, str]] = None,
+                 fields_map: Optional[str] = None,
                  forward_request_info: Optional[bool] = None,
                  from_: Optional[str] = None,
                  gateway_authentication: Optional['outputs.ConnectionOptionsGatewayAuthentication'] = None,
@@ -1815,6 +1824,8 @@ class ConnectionOptions(dict):
                  key_id: Optional[str] = None,
                  max_groups_to_retrieve: Optional[str] = None,
                  messaging_service_sid: Optional[str] = None,
+                 metadata_url: Optional[str] = None,
+                 metadata_xml: Optional[str] = None,
                  mfa: Optional['outputs.ConnectionOptionsMfa'] = None,
                  name: Optional[str] = None,
                  non_persistent_attrs: Optional[Sequence[str]] = None,
@@ -1823,6 +1834,7 @@ class ConnectionOptions(dict):
                  password_histories: Optional[Sequence['outputs.ConnectionOptionsPasswordHistory']] = None,
                  password_no_personal_info: Optional['outputs.ConnectionOptionsPasswordNoPersonalInfo'] = None,
                  password_policy: Optional[str] = None,
+                 pkce_enabled: Optional[bool] = None,
                  protocol_binding: Optional[str] = None,
                  provider: Optional[str] = None,
                  request_template: Optional[str] = None,
@@ -1836,6 +1848,7 @@ class ConnectionOptions(dict):
                  sign_saml_request: Optional[bool] = None,
                  signature_algorithm: Optional[str] = None,
                  signing_cert: Optional[str] = None,
+                 signing_key: Optional['outputs.ConnectionOptionsSigningKey'] = None,
                  strategy_version: Optional[int] = None,
                  subject: Optional[str] = None,
                  syntax: Optional[str] = None,
@@ -1858,7 +1871,6 @@ class ConnectionOptions(dict):
         """
         :param str adfs_server: ADFS Metadata source.
         :param Sequence[str] allowed_audiences: List of allowed audiences.
-        :param str app_domain: Azure AD domain name.
         :param str app_id: Azure AD app ID.
         :param bool brute_force_protection: Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         :param str client_id: OIDC provider client ID.
@@ -1868,11 +1880,13 @@ class ConnectionOptions(dict):
         :param Mapping[str, str] custom_scripts: Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
         :param bool debug: (Boolean) When enabled additional debugging information will be generated.
         :param str digest_algorithm: Sign Request Algorithm Digest
+        :param bool disable_sign_out: (Boolean) Disables or enables user sign out.
         :param bool disable_signup: Boolean. Indicates whether or not to allow user sign-ups to your application.
         :param str discovery_url: OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+        :param str domain: Azure AD domain name.
         :param Sequence[str] domain_aliases: List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
         :param str entity_id: Custom Entity ID for the connection.
-        :param Mapping[str, str] fields_map: SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+        :param str fields_map: SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         :param str from_: SMS number for the sender. Used when SMS Source is From.
         :param 'ConnectionOptionsIdpInitiatedArgs' idp_initiated: Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
         :param bool import_mode: Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
@@ -1880,6 +1894,8 @@ class ConnectionOptions(dict):
         :param str key_id: Key ID.
         :param str max_groups_to_retrieve: Maximum number of groups to retrieve.
         :param str messaging_service_sid: SID for Copilot. Used when SMS Source is Copilot.
+        :param str metadata_url: URL of the SAML metadata document.
+        :param str metadata_xml: XML content for the SAML metadata document.
         :param 'ConnectionOptionsMfaArgs' mfa: Configuration settings Options for multifactor authentication. For details, see MFA Options.
         :param str name: Name of the connection.
         :param Sequence[str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
@@ -1888,6 +1904,7 @@ class ConnectionOptions(dict):
         :param Sequence['ConnectionOptionsPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
         :param 'ConnectionOptionsPasswordNoPersonalInfoArgs' password_no_personal_info: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
         :param str password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+        :param bool pkce_enabled: (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
         :param str protocol_binding: The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
         :param str request_template: Template that formats the SAML request
         :param bool requires_username: Indicates whether or not the user is required to provide a username in addition to an email address.
@@ -1899,7 +1916,9 @@ class ConnectionOptions(dict):
         :param bool sign_saml_request: (Boolean) When enabled, the SAML authentication request will be signed.
         :param str signature_algorithm: Sign Request Algorithm
         :param str signing_cert: The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+        :param 'ConnectionOptionsSigningKeyArgs' signing_key: . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
         :param int strategy_version: Version 1 is deprecated, use version 2.
+        :param str subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
         :param str syntax: Syntax of the SMS. Options include `markdown` and `liquid`.
         :param str team_id: Team ID.
         :param str template: Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
@@ -1917,8 +1936,6 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "allowed_audiences", allowed_audiences)
         if api_enable_users is not None:
             pulumi.set(__self__, "api_enable_users", api_enable_users)
-        if app_domain is not None:
-            pulumi.set(__self__, "app_domain", app_domain)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if authorization_endpoint is not None:
@@ -1941,6 +1958,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         if disable_cache is not None:
             pulumi.set(__self__, "disable_cache", disable_cache)
+        if disable_sign_out is not None:
+            pulumi.set(__self__, "disable_sign_out", disable_sign_out)
         if disable_signup is not None:
             pulumi.set(__self__, "disable_signup", disable_signup)
         if discovery_url is not None:
@@ -1983,6 +2002,10 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "max_groups_to_retrieve", max_groups_to_retrieve)
         if messaging_service_sid is not None:
             pulumi.set(__self__, "messaging_service_sid", messaging_service_sid)
+        if metadata_url is not None:
+            pulumi.set(__self__, "metadata_url", metadata_url)
+        if metadata_xml is not None:
+            pulumi.set(__self__, "metadata_xml", metadata_xml)
         if mfa is not None:
             pulumi.set(__self__, "mfa", mfa)
         if name is not None:
@@ -1999,6 +2022,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "password_no_personal_info", password_no_personal_info)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
+        if pkce_enabled is not None:
+            pulumi.set(__self__, "pkce_enabled", pkce_enabled)
         if protocol_binding is not None:
             pulumi.set(__self__, "protocol_binding", protocol_binding)
         if provider is not None:
@@ -2025,6 +2050,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "signature_algorithm", signature_algorithm)
         if signing_cert is not None:
             pulumi.set(__self__, "signing_cert", signing_cert)
+        if signing_key is not None:
+            pulumi.set(__self__, "signing_key", signing_key)
         if strategy_version is not None:
             pulumi.set(__self__, "strategy_version", strategy_version)
         if subject is not None:
@@ -2084,14 +2111,6 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="apiEnableUsers")
     def api_enable_users(self) -> Optional[bool]:
         return pulumi.get(self, "api_enable_users")
-
-    @property
-    @pulumi.getter(name="appDomain")
-    def app_domain(self) -> Optional[str]:
-        """
-        Azure AD domain name.
-        """
-        return pulumi.get(self, "app_domain")
 
     @property
     @pulumi.getter(name="appId")
@@ -2176,6 +2195,14 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "disable_cache")
 
     @property
+    @pulumi.getter(name="disableSignOut")
+    def disable_sign_out(self) -> Optional[bool]:
+        """
+        (Boolean) Disables or enables user sign out.
+        """
+        return pulumi.get(self, "disable_sign_out")
+
+    @property
     @pulumi.getter(name="disableSignup")
     def disable_signup(self) -> Optional[bool]:
         """
@@ -2194,6 +2221,9 @@ class ConnectionOptions(dict):
     @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
+        """
+        Azure AD domain name.
+        """
         return pulumi.get(self, "domain")
 
     @property
@@ -2219,7 +2249,7 @@ class ConnectionOptions(dict):
 
     @property
     @pulumi.getter(name="fieldsMap")
-    def fields_map(self) -> Optional[Mapping[str, str]]:
+    def fields_map(self) -> Optional[str]:
         """
         SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         """
@@ -2317,6 +2347,22 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "messaging_service_sid")
 
     @property
+    @pulumi.getter(name="metadataUrl")
+    def metadata_url(self) -> Optional[str]:
+        """
+        URL of the SAML metadata document.
+        """
+        return pulumi.get(self, "metadata_url")
+
+    @property
+    @pulumi.getter(name="metadataXml")
+    def metadata_xml(self) -> Optional[str]:
+        """
+        XML content for the SAML metadata document.
+        """
+        return pulumi.get(self, "metadata_xml")
+
+    @property
     @pulumi.getter
     def mfa(self) -> Optional['outputs.ConnectionOptionsMfa']:
         """
@@ -2379,6 +2425,14 @@ class ConnectionOptions(dict):
         Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         """
         return pulumi.get(self, "password_policy")
+
+    @property
+    @pulumi.getter(name="pkceEnabled")
+    def pkce_enabled(self) -> Optional[bool]:
+        """
+        (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+        """
+        return pulumi.get(self, "pkce_enabled")
 
     @property
     @pulumi.getter(name="protocolBinding")
@@ -2479,6 +2533,14 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "signing_cert")
 
     @property
+    @pulumi.getter(name="signingKey")
+    def signing_key(self) -> Optional['outputs.ConnectionOptionsSigningKey']:
+        """
+        . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        """
+        return pulumi.get(self, "signing_key")
+
+    @property
     @pulumi.getter(name="strategyVersion")
     def strategy_version(self) -> Optional[int]:
         """
@@ -2489,6 +2551,9 @@ class ConnectionOptions(dict):
     @property
     @pulumi.getter
     def subject(self) -> Optional[str]:
+        """
+        String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
         return pulumi.get(self, "subject")
 
     @property
@@ -2632,6 +2697,9 @@ class ConnectionOptionsGatewayAuthentication(dict):
                  secret: Optional[str] = None,
                  secret_base64_encoded: Optional[bool] = None,
                  subject: Optional[str] = None):
+        """
+        :param str subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
         if method is not None:
@@ -2666,6 +2734,9 @@ class ConnectionOptionsGatewayAuthentication(dict):
     @property
     @pulumi.getter
     def subject(self) -> Optional[str]:
+        """
+        String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        """
         return pulumi.get(self, "subject")
 
 
@@ -2888,6 +2959,25 @@ class ConnectionOptionsPasswordNoPersonalInfo(dict):
         Indicates whether the password personal info check is enabled for this connection.
         """
         return pulumi.get(self, "enable")
+
+
+@pulumi.output_type
+class ConnectionOptionsSigningKey(dict):
+    def __init__(__self__, *,
+                 cert: str,
+                 key: str):
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> str:
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
 
 
 @pulumi.output_type
@@ -4149,7 +4239,7 @@ class LogStreamSink(dict):
         :param str azure_resource_group: The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
         :param str azure_subscription_id: The unique alphanumeric string that identifies your Azure subscription
         :param str datadog_api_key: The Datadog API key
-        :param str datadog_region: The Datadog region
+        :param str datadog_region: The Datadog region. Options are ["us", "eu", "us3", "us5"]
         :param str http_authorization: Sent in the HTTP "Authorization" header with each request
         :param str http_content_format: The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
         :param str http_content_type: The ContentType header to send over HTTP.  Common value is "application/json"
@@ -4267,7 +4357,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="datadogRegion")
     def datadog_region(self) -> Optional[str]:
         """
-        The Datadog region
+        The Datadog region. Options are ["us", "eu", "us3", "us5"]
         """
         return pulumi.get(self, "datadog_region")
 
@@ -4621,8 +4711,24 @@ class TenantFlags(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "disableClickjackProtectionHeaders":
+        if key == "allowLegacyDelegationGrantTypes":
+            suggest = "allow_legacy_delegation_grant_types"
+        elif key == "allowLegacyRoGrantTypes":
+            suggest = "allow_legacy_ro_grant_types"
+        elif key == "allowLegacyTokeninfoEndpoint":
+            suggest = "allow_legacy_tokeninfo_endpoint"
+        elif key == "dashboardInsightsView":
+            suggest = "dashboard_insights_view"
+        elif key == "dashboardLogStreamsNext":
+            suggest = "dashboard_log_streams_next"
+        elif key == "disableClickjackProtectionHeaders":
             suggest = "disable_clickjack_protection_headers"
+        elif key == "disableFieldsMapFix":
+            suggest = "disable_fields_map_fix"
+        elif key == "disableManagementApiSmsObfuscation":
+            suggest = "disable_management_api_sms_obfuscation"
+        elif key == "enableAdfsWaadEmailVerification":
+            suggest = "enable_adfs_waad_email_verification"
         elif key == "enableApisSection":
             suggest = "enable_apis_section"
         elif key == "enableClientConnections":
@@ -4631,12 +4737,20 @@ class TenantFlags(dict):
             suggest = "enable_custom_domain_in_emails"
         elif key == "enableDynamicClientRegistration":
             suggest = "enable_dynamic_client_registration"
+        elif key == "enableIdtokenApi2":
+            suggest = "enable_idtoken_api2"
         elif key == "enableLegacyLogsSearchV2":
             suggest = "enable_legacy_logs_search_v2"
+        elif key == "enableLegacyProfile":
+            suggest = "enable_legacy_profile"
         elif key == "enablePipeline2":
             suggest = "enable_pipeline2"
         elif key == "enablePublicSignupUserExistsError":
             suggest = "enable_public_signup_user_exists_error"
+        elif key == "noDiscloseEnterpriseConnections":
+            suggest = "no_disclose_enterprise_connections"
+        elif key == "revokeRefreshTokenGrant":
+            suggest = "revoke_refresh_token_grant"
         elif key == "universalLogin":
             suggest = "universal_login"
         elif key == "useScopeDescriptionsForConsent":
@@ -4654,29 +4768,69 @@ class TenantFlags(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allow_legacy_delegation_grant_types: Optional[bool] = None,
+                 allow_legacy_ro_grant_types: Optional[bool] = None,
+                 allow_legacy_tokeninfo_endpoint: Optional[bool] = None,
+                 dashboard_insights_view: Optional[bool] = None,
+                 dashboard_log_streams_next: Optional[bool] = None,
                  disable_clickjack_protection_headers: Optional[bool] = None,
+                 disable_fields_map_fix: Optional[bool] = None,
+                 disable_management_api_sms_obfuscation: Optional[bool] = None,
+                 enable_adfs_waad_email_verification: Optional[bool] = None,
                  enable_apis_section: Optional[bool] = None,
                  enable_client_connections: Optional[bool] = None,
                  enable_custom_domain_in_emails: Optional[bool] = None,
                  enable_dynamic_client_registration: Optional[bool] = None,
+                 enable_idtoken_api2: Optional[bool] = None,
                  enable_legacy_logs_search_v2: Optional[bool] = None,
+                 enable_legacy_profile: Optional[bool] = None,
                  enable_pipeline2: Optional[bool] = None,
                  enable_public_signup_user_exists_error: Optional[bool] = None,
+                 no_disclose_enterprise_connections: Optional[bool] = None,
+                 revoke_refresh_token_grant: Optional[bool] = None,
                  universal_login: Optional[bool] = None,
                  use_scope_descriptions_for_consent: Optional[bool] = None):
         """
+        :param bool allow_legacy_delegation_grant_types: Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+        :param bool allow_legacy_ro_grant_types: Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+        :param bool allow_legacy_tokeninfo_endpoint: Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+        :param bool dashboard_insights_view: Boolean. Enables new insights activity page view.
+        :param bool dashboard_log_streams_next: Boolean. Enables beta access to log streaming changes.
         :param bool disable_clickjack_protection_headers: Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+        :param bool disable_fields_map_fix: Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+        :param bool disable_management_api_sms_obfuscation: Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+        :param bool enable_adfs_waad_email_verification: Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
         :param bool enable_apis_section: Boolean. Indicates whether the APIs section is enabled for the tenant.
         :param bool enable_client_connections: Boolean. Indicates whether all current connections should be enabled when a new client is created.
         :param bool enable_custom_domain_in_emails: Boolean. Indicates whether the tenant allows custom domains in emails.
         :param bool enable_dynamic_client_registration: Boolean. Indicates whether the tenant allows dynamic client registration.
+        :param bool enable_idtoken_api2: Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
         :param bool enable_legacy_logs_search_v2: Boolean. Indicates whether to use the older v2 legacy logs search.
+        :param bool enable_legacy_profile: Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
         :param bool enable_pipeline2: Boolean. Indicates whether advanced API Authorization scenarios are enabled.
         :param bool enable_public_signup_user_exists_error: Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+        :param bool no_disclose_enterprise_connections: Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        :param bool revoke_refresh_token_grant: Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
         :param bool universal_login: Boolean. Indicates whether the tenant uses universal login.
         """
+        if allow_legacy_delegation_grant_types is not None:
+            pulumi.set(__self__, "allow_legacy_delegation_grant_types", allow_legacy_delegation_grant_types)
+        if allow_legacy_ro_grant_types is not None:
+            pulumi.set(__self__, "allow_legacy_ro_grant_types", allow_legacy_ro_grant_types)
+        if allow_legacy_tokeninfo_endpoint is not None:
+            pulumi.set(__self__, "allow_legacy_tokeninfo_endpoint", allow_legacy_tokeninfo_endpoint)
+        if dashboard_insights_view is not None:
+            pulumi.set(__self__, "dashboard_insights_view", dashboard_insights_view)
+        if dashboard_log_streams_next is not None:
+            pulumi.set(__self__, "dashboard_log_streams_next", dashboard_log_streams_next)
         if disable_clickjack_protection_headers is not None:
             pulumi.set(__self__, "disable_clickjack_protection_headers", disable_clickjack_protection_headers)
+        if disable_fields_map_fix is not None:
+            pulumi.set(__self__, "disable_fields_map_fix", disable_fields_map_fix)
+        if disable_management_api_sms_obfuscation is not None:
+            pulumi.set(__self__, "disable_management_api_sms_obfuscation", disable_management_api_sms_obfuscation)
+        if enable_adfs_waad_email_verification is not None:
+            pulumi.set(__self__, "enable_adfs_waad_email_verification", enable_adfs_waad_email_verification)
         if enable_apis_section is not None:
             pulumi.set(__self__, "enable_apis_section", enable_apis_section)
         if enable_client_connections is not None:
@@ -4685,16 +4839,64 @@ class TenantFlags(dict):
             pulumi.set(__self__, "enable_custom_domain_in_emails", enable_custom_domain_in_emails)
         if enable_dynamic_client_registration is not None:
             pulumi.set(__self__, "enable_dynamic_client_registration", enable_dynamic_client_registration)
+        if enable_idtoken_api2 is not None:
+            pulumi.set(__self__, "enable_idtoken_api2", enable_idtoken_api2)
         if enable_legacy_logs_search_v2 is not None:
             pulumi.set(__self__, "enable_legacy_logs_search_v2", enable_legacy_logs_search_v2)
+        if enable_legacy_profile is not None:
+            pulumi.set(__self__, "enable_legacy_profile", enable_legacy_profile)
         if enable_pipeline2 is not None:
             pulumi.set(__self__, "enable_pipeline2", enable_pipeline2)
         if enable_public_signup_user_exists_error is not None:
             pulumi.set(__self__, "enable_public_signup_user_exists_error", enable_public_signup_user_exists_error)
+        if no_disclose_enterprise_connections is not None:
+            pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
+        if revoke_refresh_token_grant is not None:
+            pulumi.set(__self__, "revoke_refresh_token_grant", revoke_refresh_token_grant)
         if universal_login is not None:
             pulumi.set(__self__, "universal_login", universal_login)
         if use_scope_descriptions_for_consent is not None:
             pulumi.set(__self__, "use_scope_descriptions_for_consent", use_scope_descriptions_for_consent)
+
+    @property
+    @pulumi.getter(name="allowLegacyDelegationGrantTypes")
+    def allow_legacy_delegation_grant_types(self) -> Optional[bool]:
+        """
+        Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+        """
+        return pulumi.get(self, "allow_legacy_delegation_grant_types")
+
+    @property
+    @pulumi.getter(name="allowLegacyRoGrantTypes")
+    def allow_legacy_ro_grant_types(self) -> Optional[bool]:
+        """
+        Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+        """
+        return pulumi.get(self, "allow_legacy_ro_grant_types")
+
+    @property
+    @pulumi.getter(name="allowLegacyTokeninfoEndpoint")
+    def allow_legacy_tokeninfo_endpoint(self) -> Optional[bool]:
+        """
+        Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+        """
+        return pulumi.get(self, "allow_legacy_tokeninfo_endpoint")
+
+    @property
+    @pulumi.getter(name="dashboardInsightsView")
+    def dashboard_insights_view(self) -> Optional[bool]:
+        """
+        Boolean. Enables new insights activity page view.
+        """
+        return pulumi.get(self, "dashboard_insights_view")
+
+    @property
+    @pulumi.getter(name="dashboardLogStreamsNext")
+    def dashboard_log_streams_next(self) -> Optional[bool]:
+        """
+        Boolean. Enables beta access to log streaming changes.
+        """
+        return pulumi.get(self, "dashboard_log_streams_next")
 
     @property
     @pulumi.getter(name="disableClickjackProtectionHeaders")
@@ -4703,6 +4905,30 @@ class TenantFlags(dict):
         Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
         """
         return pulumi.get(self, "disable_clickjack_protection_headers")
+
+    @property
+    @pulumi.getter(name="disableFieldsMapFix")
+    def disable_fields_map_fix(self) -> Optional[bool]:
+        """
+        Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+        """
+        return pulumi.get(self, "disable_fields_map_fix")
+
+    @property
+    @pulumi.getter(name="disableManagementApiSmsObfuscation")
+    def disable_management_api_sms_obfuscation(self) -> Optional[bool]:
+        """
+        Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+        """
+        return pulumi.get(self, "disable_management_api_sms_obfuscation")
+
+    @property
+    @pulumi.getter(name="enableAdfsWaadEmailVerification")
+    def enable_adfs_waad_email_verification(self) -> Optional[bool]:
+        """
+        Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+        """
+        return pulumi.get(self, "enable_adfs_waad_email_verification")
 
     @property
     @pulumi.getter(name="enableApisSection")
@@ -4737,12 +4963,28 @@ class TenantFlags(dict):
         return pulumi.get(self, "enable_dynamic_client_registration")
 
     @property
+    @pulumi.getter(name="enableIdtokenApi2")
+    def enable_idtoken_api2(self) -> Optional[bool]:
+        """
+        Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+        """
+        return pulumi.get(self, "enable_idtoken_api2")
+
+    @property
     @pulumi.getter(name="enableLegacyLogsSearchV2")
     def enable_legacy_logs_search_v2(self) -> Optional[bool]:
         """
         Boolean. Indicates whether to use the older v2 legacy logs search.
         """
         return pulumi.get(self, "enable_legacy_logs_search_v2")
+
+    @property
+    @pulumi.getter(name="enableLegacyProfile")
+    def enable_legacy_profile(self) -> Optional[bool]:
+        """
+        Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+        """
+        return pulumi.get(self, "enable_legacy_profile")
 
     @property
     @pulumi.getter(name="enablePipeline2")
@@ -4759,6 +5001,22 @@ class TenantFlags(dict):
         Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
         """
         return pulumi.get(self, "enable_public_signup_user_exists_error")
+
+    @property
+    @pulumi.getter(name="noDiscloseEnterpriseConnections")
+    def no_disclose_enterprise_connections(self) -> Optional[bool]:
+        """
+        Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        """
+        return pulumi.get(self, "no_disclose_enterprise_connections")
+
+    @property
+    @pulumi.getter(name="revokeRefreshTokenGrant")
+    def revoke_refresh_token_grant(self) -> Optional[bool]:
+        """
+        Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+        """
+        return pulumi.get(self, "revoke_refresh_token_grant")
 
     @property
     @pulumi.getter(name="universalLogin")

@@ -34,12 +34,6 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? ApiEnableUsers { get; set; }
 
         /// <summary>
-        /// Azure AD domain name.
-        /// </summary>
-        [Input("appDomain")]
-        public Input<string>? AppDomain { get; set; }
-
-        /// <summary>
         /// Azure AD app ID.
         /// </summary>
         [Input("appId")]
@@ -112,6 +106,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? DisableCache { get; set; }
 
         /// <summary>
+        /// (Boolean) Disables or enables user sign out.
+        /// </summary>
+        [Input("disableSignOut")]
+        public Input<bool>? DisableSignOut { get; set; }
+
+        /// <summary>
         /// Boolean. Indicates whether or not to allow user sign-ups to your application.
         /// </summary>
         [Input("disableSignup")]
@@ -123,6 +123,9 @@ namespace Pulumi.Auth0.Inputs
         [Input("discoveryUrl")]
         public Input<string>? DiscoveryUrl { get; set; }
 
+        /// <summary>
+        /// Azure AD domain name.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
@@ -147,17 +150,11 @@ namespace Pulumi.Auth0.Inputs
         [Input("entityId")]
         public Input<string>? EntityId { get; set; }
 
-        [Input("fieldsMap")]
-        private InputMap<string>? _fieldsMap;
-
         /// <summary>
         /// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         /// </summary>
-        public InputMap<string> FieldsMap
-        {
-            get => _fieldsMap ?? (_fieldsMap = new InputMap<string>());
-            set => _fieldsMap = value;
-        }
+        [Input("fieldsMap")]
+        public Input<string>? FieldsMap { get; set; }
 
         [Input("forwardRequestInfo")]
         public Input<bool>? ForwardRequestInfo { get; set; }
@@ -228,6 +225,18 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? MessagingServiceSid { get; set; }
 
         /// <summary>
+        /// URL of the SAML metadata document.
+        /// </summary>
+        [Input("metadataUrl")]
+        public Input<string>? MetadataUrl { get; set; }
+
+        /// <summary>
+        /// XML content for the SAML metadata document.
+        /// </summary>
+        [Input("metadataXml")]
+        public Input<string>? MetadataXml { get; set; }
+
+        /// <summary>
         /// Configuration settings Options for multifactor authentication. For details, see MFA Options.
         /// </summary>
         [Input("mfa")]
@@ -286,6 +295,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("passwordPolicy")]
         public Input<string>? PasswordPolicy { get; set; }
+
+        /// <summary>
+        /// (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+        /// </summary>
+        [Input("pkceEnabled")]
+        public Input<bool>? PkceEnabled { get; set; }
 
         /// <summary>
         /// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
@@ -371,11 +386,20 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? SigningCert { get; set; }
 
         /// <summary>
+        /// . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        /// </summary>
+        [Input("signingKey")]
+        public Input<Inputs.ConnectionOptionsSigningKeyGetArgs>? SigningKey { get; set; }
+
+        /// <summary>
         /// Version 1 is deprecated, use version 2.
         /// </summary>
         [Input("strategyVersion")]
         public Input<int>? StrategyVersion { get; set; }
 
+        /// <summary>
+        /// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 

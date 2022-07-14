@@ -4233,10 +4233,6 @@ type ConnectionOptions struct {
 	// List of allowed audiences.
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
 	ApiEnableUsers   *bool    `pulumi:"apiEnableUsers"`
-	// Azure AD domain name.
-	//
-	// Deprecated: Use domain instead
-	AppDomain *string `pulumi:"appDomain"`
 	// Azure AD app ID.
 	AppId                 *string `pulumi:"appId"`
 	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
@@ -4257,19 +4253,22 @@ type ConnectionOptions struct {
 	// Sign Request Algorithm Digest
 	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
 	DisableCache    *bool   `pulumi:"disableCache"`
+	// (Boolean) Disables or enables user sign out.
+	DisableSignOut *bool `pulumi:"disableSignOut"`
 	// Boolean. Indicates whether or not to allow user sign-ups to your application.
 	DisableSignup *bool `pulumi:"disableSignup"`
 	// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
 	DiscoveryUrl *string `pulumi:"discoveryUrl"`
-	Domain       *string `pulumi:"domain"`
+	// Azure AD domain name.
+	Domain *string `pulumi:"domain"`
 	// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 	DomainAliases                []string `pulumi:"domainAliases"`
 	EnabledDatabaseCustomization *bool    `pulumi:"enabledDatabaseCustomization"`
 	// Custom Entity ID for the connection.
 	EntityId *string `pulumi:"entityId"`
 	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
-	FieldsMap          map[string]string `pulumi:"fieldsMap"`
-	ForwardRequestInfo *bool             `pulumi:"forwardRequestInfo"`
+	FieldsMap          *string `pulumi:"fieldsMap"`
+	ForwardRequestInfo *bool   `pulumi:"forwardRequestInfo"`
 	// SMS number for the sender. Used when SMS Source is From.
 	From                  *string                                 `pulumi:"from"`
 	GatewayAuthentication *ConnectionOptionsGatewayAuthentication `pulumi:"gatewayAuthentication"`
@@ -4290,6 +4289,10 @@ type ConnectionOptions struct {
 	MaxGroupsToRetrieve *string `pulumi:"maxGroupsToRetrieve"`
 	// SID for Copilot. Used when SMS Source is Copilot.
 	MessagingServiceSid *string `pulumi:"messagingServiceSid"`
+	// URL of the SAML metadata document.
+	MetadataUrl *string `pulumi:"metadataUrl"`
+	// XML content for the SAML metadata document.
+	MetadataXml *string `pulumi:"metadataXml"`
 	// Configuration settings Options for multifactor authentication. For details, see MFA Options.
 	Mfa *ConnectionOptionsMfa `pulumi:"mfa"`
 	// Name of the connection.
@@ -4306,6 +4309,8 @@ type ConnectionOptions struct {
 	PasswordNoPersonalInfo *ConnectionOptionsPasswordNoPersonalInfo `pulumi:"passwordNoPersonalInfo"`
 	// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 	PasswordPolicy *string `pulumi:"passwordPolicy"`
+	// (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+	PkceEnabled *bool `pulumi:"pkceEnabled"`
 	// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
 	ProtocolBinding *string `pulumi:"protocolBinding"`
 	Provider        *string `pulumi:"provider"`
@@ -4330,9 +4335,12 @@ type ConnectionOptions struct {
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
 	// The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
 	SigningCert *string `pulumi:"signingCert"`
+	// . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+	SigningKey *ConnectionOptionsSigningKey `pulumi:"signingKey"`
 	// Version 1 is deprecated, use version 2.
-	StrategyVersion *int    `pulumi:"strategyVersion"`
-	Subject         *string `pulumi:"subject"`
+	StrategyVersion *int `pulumi:"strategyVersion"`
+	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+	Subject *string `pulumi:"subject"`
 	// Syntax of the SMS. Options include `markdown` and `liquid`.
 	Syntax *string `pulumi:"syntax"`
 	// Team ID.
@@ -4379,10 +4387,6 @@ type ConnectionOptionsArgs struct {
 	// List of allowed audiences.
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
 	ApiEnableUsers   pulumi.BoolPtrInput     `pulumi:"apiEnableUsers"`
-	// Azure AD domain name.
-	//
-	// Deprecated: Use domain instead
-	AppDomain pulumi.StringPtrInput `pulumi:"appDomain"`
 	// Azure AD app ID.
 	AppId                 pulumi.StringPtrInput `pulumi:"appId"`
 	AuthorizationEndpoint pulumi.StringPtrInput `pulumi:"authorizationEndpoint"`
@@ -4403,18 +4407,21 @@ type ConnectionOptionsArgs struct {
 	// Sign Request Algorithm Digest
 	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
 	DisableCache    pulumi.BoolPtrInput   `pulumi:"disableCache"`
+	// (Boolean) Disables or enables user sign out.
+	DisableSignOut pulumi.BoolPtrInput `pulumi:"disableSignOut"`
 	// Boolean. Indicates whether or not to allow user sign-ups to your application.
 	DisableSignup pulumi.BoolPtrInput `pulumi:"disableSignup"`
 	// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
 	DiscoveryUrl pulumi.StringPtrInput `pulumi:"discoveryUrl"`
-	Domain       pulumi.StringPtrInput `pulumi:"domain"`
+	// Azure AD domain name.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
 	DomainAliases                pulumi.StringArrayInput `pulumi:"domainAliases"`
 	EnabledDatabaseCustomization pulumi.BoolPtrInput     `pulumi:"enabledDatabaseCustomization"`
 	// Custom Entity ID for the connection.
 	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
 	// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
-	FieldsMap          pulumi.StringMapInput `pulumi:"fieldsMap"`
+	FieldsMap          pulumi.StringPtrInput `pulumi:"fieldsMap"`
 	ForwardRequestInfo pulumi.BoolPtrInput   `pulumi:"forwardRequestInfo"`
 	// SMS number for the sender. Used when SMS Source is From.
 	From                  pulumi.StringPtrInput                          `pulumi:"from"`
@@ -4436,6 +4443,10 @@ type ConnectionOptionsArgs struct {
 	MaxGroupsToRetrieve pulumi.StringPtrInput `pulumi:"maxGroupsToRetrieve"`
 	// SID for Copilot. Used when SMS Source is Copilot.
 	MessagingServiceSid pulumi.StringPtrInput `pulumi:"messagingServiceSid"`
+	// URL of the SAML metadata document.
+	MetadataUrl pulumi.StringPtrInput `pulumi:"metadataUrl"`
+	// XML content for the SAML metadata document.
+	MetadataXml pulumi.StringPtrInput `pulumi:"metadataXml"`
 	// Configuration settings Options for multifactor authentication. For details, see MFA Options.
 	Mfa ConnectionOptionsMfaPtrInput `pulumi:"mfa"`
 	// Name of the connection.
@@ -4452,6 +4463,8 @@ type ConnectionOptionsArgs struct {
 	PasswordNoPersonalInfo ConnectionOptionsPasswordNoPersonalInfoPtrInput `pulumi:"passwordNoPersonalInfo"`
 	// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 	PasswordPolicy pulumi.StringPtrInput `pulumi:"passwordPolicy"`
+	// (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+	PkceEnabled pulumi.BoolPtrInput `pulumi:"pkceEnabled"`
 	// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
 	ProtocolBinding pulumi.StringPtrInput `pulumi:"protocolBinding"`
 	Provider        pulumi.StringPtrInput `pulumi:"provider"`
@@ -4476,9 +4489,12 @@ type ConnectionOptionsArgs struct {
 	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
 	// The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
 	SigningCert pulumi.StringPtrInput `pulumi:"signingCert"`
+	// . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+	SigningKey ConnectionOptionsSigningKeyPtrInput `pulumi:"signingKey"`
 	// Version 1 is deprecated, use version 2.
-	StrategyVersion pulumi.IntPtrInput    `pulumi:"strategyVersion"`
-	Subject         pulumi.StringPtrInput `pulumi:"subject"`
+	StrategyVersion pulumi.IntPtrInput `pulumi:"strategyVersion"`
+	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
 	// Syntax of the SMS. Options include `markdown` and `liquid`.
 	Syntax pulumi.StringPtrInput `pulumi:"syntax"`
 	// Team ID.
@@ -4599,13 +4615,6 @@ func (o ConnectionOptionsOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.ApiEnableUsers }).(pulumi.BoolPtrOutput)
 }
 
-// Azure AD domain name.
-//
-// Deprecated: Use domain instead
-func (o ConnectionOptionsOutput) AppDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppDomain }).(pulumi.StringPtrOutput)
-}
-
 // Azure AD app ID.
 func (o ConnectionOptionsOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppId }).(pulumi.StringPtrOutput)
@@ -4659,6 +4668,11 @@ func (o ConnectionOptionsOutput) DisableCache() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableCache }).(pulumi.BoolPtrOutput)
 }
 
+// (Boolean) Disables or enables user sign out.
+func (o ConnectionOptionsOutput) DisableSignOut() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableSignOut }).(pulumi.BoolPtrOutput)
+}
+
 // Boolean. Indicates whether or not to allow user sign-ups to your application.
 func (o ConnectionOptionsOutput) DisableSignup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableSignup }).(pulumi.BoolPtrOutput)
@@ -4669,6 +4683,7 @@ func (o ConnectionOptionsOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
 }
 
+// Azure AD domain name.
 func (o ConnectionOptionsOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -4688,8 +4703,8 @@ func (o ConnectionOptionsOutput) EntityId() pulumi.StringPtrOutput {
 }
 
 // SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
-func (o ConnectionOptionsOutput) FieldsMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.FieldsMap }).(pulumi.StringMapOutput)
+func (o ConnectionOptionsOutput) FieldsMap() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.FieldsMap }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsOutput) ForwardRequestInfo() pulumi.BoolPtrOutput {
@@ -4755,6 +4770,16 @@ func (o ConnectionOptionsOutput) MessagingServiceSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.MessagingServiceSid }).(pulumi.StringPtrOutput)
 }
 
+// URL of the SAML metadata document.
+func (o ConnectionOptionsOutput) MetadataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.MetadataUrl }).(pulumi.StringPtrOutput)
+}
+
+// XML content for the SAML metadata document.
+func (o ConnectionOptionsOutput) MetadataXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.MetadataXml }).(pulumi.StringPtrOutput)
+}
+
 // Configuration settings Options for multifactor authentication. For details, see MFA Options.
 func (o ConnectionOptionsOutput) Mfa() ConnectionOptionsMfaPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsMfa { return v.Mfa }).(ConnectionOptionsMfaPtrOutput)
@@ -4795,6 +4820,11 @@ func (o ConnectionOptionsOutput) PasswordNoPersonalInfo() ConnectionOptionsPassw
 // Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 func (o ConnectionOptionsOutput) PasswordPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.PasswordPolicy }).(pulumi.StringPtrOutput)
+}
+
+// (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+func (o ConnectionOptionsOutput) PkceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.PkceEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
@@ -4860,11 +4890,17 @@ func (o ConnectionOptionsOutput) SigningCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.SigningCert }).(pulumi.StringPtrOutput)
 }
 
+// . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+func (o ConnectionOptionsOutput) SigningKey() ConnectionOptionsSigningKeyPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsSigningKey { return v.SigningKey }).(ConnectionOptionsSigningKeyPtrOutput)
+}
+
 // Version 1 is deprecated, use version 2.
 func (o ConnectionOptionsOutput) StrategyVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *int { return v.StrategyVersion }).(pulumi.IntPtrOutput)
 }
 
+// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 func (o ConnectionOptionsOutput) Subject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Subject }).(pulumi.StringPtrOutput)
 }
@@ -5000,18 +5036,6 @@ func (o ConnectionOptionsPtrOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Azure AD domain name.
-//
-// Deprecated: Use domain instead
-func (o ConnectionOptionsPtrOutput) AppDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AppDomain
-	}).(pulumi.StringPtrOutput)
-}
-
 // Azure AD app ID.
 func (o ConnectionOptionsPtrOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
@@ -5120,6 +5144,16 @@ func (o ConnectionOptionsPtrOutput) DisableCache() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Boolean) Disables or enables user sign out.
+func (o ConnectionOptionsPtrOutput) DisableSignOut() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableSignOut
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Boolean. Indicates whether or not to allow user sign-ups to your application.
 func (o ConnectionOptionsPtrOutput) DisableSignup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
@@ -5140,6 +5174,7 @@ func (o ConnectionOptionsPtrOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Azure AD domain name.
 func (o ConnectionOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -5179,13 +5214,13 @@ func (o ConnectionOptionsPtrOutput) EntityId() pulumi.StringPtrOutput {
 }
 
 // SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
-func (o ConnectionOptionsPtrOutput) FieldsMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
+func (o ConnectionOptionsPtrOutput) FieldsMap() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
 			return nil
 		}
 		return v.FieldsMap
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) ForwardRequestInfo() pulumi.BoolPtrOutput {
@@ -5321,6 +5356,26 @@ func (o ConnectionOptionsPtrOutput) MessagingServiceSid() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// URL of the SAML metadata document.
+func (o ConnectionOptionsPtrOutput) MetadataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// XML content for the SAML metadata document.
+func (o ConnectionOptionsPtrOutput) MetadataXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataXml
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration settings Options for multifactor authentication. For details, see MFA Options.
 func (o ConnectionOptionsPtrOutput) Mfa() ConnectionOptionsMfaPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsMfa {
@@ -5399,6 +5454,16 @@ func (o ConnectionOptionsPtrOutput) PasswordPolicy() pulumi.StringPtrOutput {
 		}
 		return v.PasswordPolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+// (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+func (o ConnectionOptionsPtrOutput) PkceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PkceEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
@@ -5529,6 +5594,16 @@ func (o ConnectionOptionsPtrOutput) SigningCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+func (o ConnectionOptionsPtrOutput) SigningKey() ConnectionOptionsSigningKeyPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsSigningKey {
+		if v == nil {
+			return nil
+		}
+		return v.SigningKey
+	}).(ConnectionOptionsSigningKeyPtrOutput)
+}
+
 // Version 1 is deprecated, use version 2.
 func (o ConnectionOptionsPtrOutput) StrategyVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *int {
@@ -5539,6 +5614,7 @@ func (o ConnectionOptionsPtrOutput) StrategyVersion() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 func (o ConnectionOptionsPtrOutput) Subject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -5716,7 +5792,8 @@ type ConnectionOptionsGatewayAuthentication struct {
 	Method              *string `pulumi:"method"`
 	Secret              *string `pulumi:"secret"`
 	SecretBase64Encoded *bool   `pulumi:"secretBase64Encoded"`
-	Subject             *string `pulumi:"subject"`
+	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+	Subject *string `pulumi:"subject"`
 }
 
 // ConnectionOptionsGatewayAuthenticationInput is an input type that accepts ConnectionOptionsGatewayAuthenticationArgs and ConnectionOptionsGatewayAuthenticationOutput values.
@@ -5735,7 +5812,8 @@ type ConnectionOptionsGatewayAuthenticationArgs struct {
 	Method              pulumi.StringPtrInput `pulumi:"method"`
 	Secret              pulumi.StringPtrInput `pulumi:"secret"`
 	SecretBase64Encoded pulumi.BoolPtrInput   `pulumi:"secretBase64Encoded"`
-	Subject             pulumi.StringPtrInput `pulumi:"subject"`
+	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
 }
 
 func (ConnectionOptionsGatewayAuthenticationArgs) ElementType() reflect.Type {
@@ -5831,6 +5909,7 @@ func (o ConnectionOptionsGatewayAuthenticationOutput) SecretBase64Encoded() pulu
 	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *bool { return v.SecretBase64Encoded }).(pulumi.BoolPtrOutput)
 }
 
+// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 func (o ConnectionOptionsGatewayAuthenticationOutput) Subject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsGatewayAuthentication) *string { return v.Subject }).(pulumi.StringPtrOutput)
 }
@@ -5895,6 +5974,7 @@ func (o ConnectionOptionsGatewayAuthenticationPtrOutput) SecretBase64Encoded() p
 	}).(pulumi.BoolPtrOutput)
 }
 
+// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 func (o ConnectionOptionsGatewayAuthenticationPtrOutput) Subject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsGatewayAuthentication) *string {
 		if v == nil {
@@ -6761,6 +6841,154 @@ func (o ConnectionOptionsPasswordNoPersonalInfoPtrOutput) Enable() pulumi.BoolPt
 		}
 		return v.Enable
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsSigningKey struct {
+	Cert string `pulumi:"cert"`
+	Key  string `pulumi:"key"`
+}
+
+// ConnectionOptionsSigningKeyInput is an input type that accepts ConnectionOptionsSigningKeyArgs and ConnectionOptionsSigningKeyOutput values.
+// You can construct a concrete instance of `ConnectionOptionsSigningKeyInput` via:
+//
+//          ConnectionOptionsSigningKeyArgs{...}
+type ConnectionOptionsSigningKeyInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsSigningKeyOutput() ConnectionOptionsSigningKeyOutput
+	ToConnectionOptionsSigningKeyOutputWithContext(context.Context) ConnectionOptionsSigningKeyOutput
+}
+
+type ConnectionOptionsSigningKeyArgs struct {
+	Cert pulumi.StringInput `pulumi:"cert"`
+	Key  pulumi.StringInput `pulumi:"key"`
+}
+
+func (ConnectionOptionsSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsSigningKey)(nil)).Elem()
+}
+
+func (i ConnectionOptionsSigningKeyArgs) ToConnectionOptionsSigningKeyOutput() ConnectionOptionsSigningKeyOutput {
+	return i.ToConnectionOptionsSigningKeyOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsSigningKeyArgs) ToConnectionOptionsSigningKeyOutputWithContext(ctx context.Context) ConnectionOptionsSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsSigningKeyOutput)
+}
+
+func (i ConnectionOptionsSigningKeyArgs) ToConnectionOptionsSigningKeyPtrOutput() ConnectionOptionsSigningKeyPtrOutput {
+	return i.ToConnectionOptionsSigningKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsSigningKeyArgs) ToConnectionOptionsSigningKeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsSigningKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsSigningKeyOutput).ToConnectionOptionsSigningKeyPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsSigningKeyPtrInput is an input type that accepts ConnectionOptionsSigningKeyArgs, ConnectionOptionsSigningKeyPtr and ConnectionOptionsSigningKeyPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsSigningKeyPtrInput` via:
+//
+//          ConnectionOptionsSigningKeyArgs{...}
+//
+//  or:
+//
+//          nil
+type ConnectionOptionsSigningKeyPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsSigningKeyPtrOutput() ConnectionOptionsSigningKeyPtrOutput
+	ToConnectionOptionsSigningKeyPtrOutputWithContext(context.Context) ConnectionOptionsSigningKeyPtrOutput
+}
+
+type connectionOptionsSigningKeyPtrType ConnectionOptionsSigningKeyArgs
+
+func ConnectionOptionsSigningKeyPtr(v *ConnectionOptionsSigningKeyArgs) ConnectionOptionsSigningKeyPtrInput {
+	return (*connectionOptionsSigningKeyPtrType)(v)
+}
+
+func (*connectionOptionsSigningKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsSigningKey)(nil)).Elem()
+}
+
+func (i *connectionOptionsSigningKeyPtrType) ToConnectionOptionsSigningKeyPtrOutput() ConnectionOptionsSigningKeyPtrOutput {
+	return i.ToConnectionOptionsSigningKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsSigningKeyPtrType) ToConnectionOptionsSigningKeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsSigningKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsSigningKeyPtrOutput)
+}
+
+type ConnectionOptionsSigningKeyOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsSigningKey)(nil)).Elem()
+}
+
+func (o ConnectionOptionsSigningKeyOutput) ToConnectionOptionsSigningKeyOutput() ConnectionOptionsSigningKeyOutput {
+	return o
+}
+
+func (o ConnectionOptionsSigningKeyOutput) ToConnectionOptionsSigningKeyOutputWithContext(ctx context.Context) ConnectionOptionsSigningKeyOutput {
+	return o
+}
+
+func (o ConnectionOptionsSigningKeyOutput) ToConnectionOptionsSigningKeyPtrOutput() ConnectionOptionsSigningKeyPtrOutput {
+	return o.ToConnectionOptionsSigningKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsSigningKeyOutput) ToConnectionOptionsSigningKeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsSigningKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsSigningKey) *ConnectionOptionsSigningKey {
+		return &v
+	}).(ConnectionOptionsSigningKeyPtrOutput)
+}
+
+func (o ConnectionOptionsSigningKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsSigningKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o ConnectionOptionsSigningKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsSigningKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type ConnectionOptionsSigningKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsSigningKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsSigningKey)(nil)).Elem()
+}
+
+func (o ConnectionOptionsSigningKeyPtrOutput) ToConnectionOptionsSigningKeyPtrOutput() ConnectionOptionsSigningKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsSigningKeyPtrOutput) ToConnectionOptionsSigningKeyPtrOutputWithContext(ctx context.Context) ConnectionOptionsSigningKeyPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsSigningKeyPtrOutput) Elem() ConnectionOptionsSigningKeyOutput {
+	return o.ApplyT(func(v *ConnectionOptionsSigningKey) ConnectionOptionsSigningKey {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsSigningKey
+		return ret
+	}).(ConnectionOptionsSigningKeyOutput)
+}
+
+func (o ConnectionOptionsSigningKeyPtrOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsSigningKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cert
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOptionsSigningKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsSigningKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsTotp struct {
@@ -10244,7 +10472,7 @@ type LogStreamSink struct {
 	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
 	// The Datadog API key
 	DatadogApiKey *string `pulumi:"datadogApiKey"`
-	// The Datadog region
+	// The Datadog region. Options are ["us", "eu", "us3", "us5"]
 	DatadogRegion *string `pulumi:"datadogRegion"`
 	// Sent in the HTTP "Authorization" header with each request
 	HttpAuthorization *string `pulumi:"httpAuthorization"`
@@ -10295,7 +10523,7 @@ type LogStreamSinkArgs struct {
 	AzureSubscriptionId pulumi.StringPtrInput `pulumi:"azureSubscriptionId"`
 	// The Datadog API key
 	DatadogApiKey pulumi.StringPtrInput `pulumi:"datadogApiKey"`
-	// The Datadog region
+	// The Datadog region. Options are ["us", "eu", "us3", "us5"]
 	DatadogRegion pulumi.StringPtrInput `pulumi:"datadogRegion"`
 	// Sent in the HTTP "Authorization" header with each request
 	HttpAuthorization pulumi.StringPtrInput `pulumi:"httpAuthorization"`
@@ -10435,7 +10663,7 @@ func (o LogStreamSinkOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
 }
 
-// The Datadog region
+// The Datadog region. Options are ["us", "eu", "us3", "us5"]
 func (o LogStreamSinkOutput) DatadogRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogRegion }).(pulumi.StringPtrOutput)
 }
@@ -10593,7 +10821,7 @@ func (o LogStreamSinkPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Datadog region
+// The Datadog region. Options are ["us", "eu", "us3", "us5"]
 func (o LogStreamSinkPtrOutput) DatadogRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -11520,8 +11748,24 @@ func (o TenantErrorPagePtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type TenantFlags struct {
+	// Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+	AllowLegacyDelegationGrantTypes *bool `pulumi:"allowLegacyDelegationGrantTypes"`
+	// Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+	AllowLegacyRoGrantTypes *bool `pulumi:"allowLegacyRoGrantTypes"`
+	// Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+	AllowLegacyTokeninfoEndpoint *bool `pulumi:"allowLegacyTokeninfoEndpoint"`
+	// Boolean. Enables new insights activity page view.
+	DashboardInsightsView *bool `pulumi:"dashboardInsightsView"`
+	// Boolean. Enables beta access to log streaming changes.
+	DashboardLogStreamsNext *bool `pulumi:"dashboardLogStreamsNext"`
 	// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
 	DisableClickjackProtectionHeaders *bool `pulumi:"disableClickjackProtectionHeaders"`
+	// Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+	DisableFieldsMapFix *bool `pulumi:"disableFieldsMapFix"`
+	// Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+	DisableManagementApiSmsObfuscation *bool `pulumi:"disableManagementApiSmsObfuscation"`
+	// Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+	EnableAdfsWaadEmailVerification *bool `pulumi:"enableAdfsWaadEmailVerification"`
 	// Boolean. Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection *bool `pulumi:"enableApisSection"`
 	// Boolean. Indicates whether all current connections should be enabled when a new client is created.
@@ -11530,12 +11774,20 @@ type TenantFlags struct {
 	EnableCustomDomainInEmails *bool `pulumi:"enableCustomDomainInEmails"`
 	// Boolean. Indicates whether the tenant allows dynamic client registration.
 	EnableDynamicClientRegistration *bool `pulumi:"enableDynamicClientRegistration"`
+	// Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+	EnableIdtokenApi2 *bool `pulumi:"enableIdtokenApi2"`
 	// Boolean. Indicates whether to use the older v2 legacy logs search.
 	EnableLegacyLogsSearchV2 *bool `pulumi:"enableLegacyLogsSearchV2"`
+	// Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+	EnableLegacyProfile *bool `pulumi:"enableLegacyProfile"`
 	// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
 	EnablePipeline2 *bool `pulumi:"enablePipeline2"`
 	// Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
 	EnablePublicSignupUserExistsError *bool `pulumi:"enablePublicSignupUserExistsError"`
+	// Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+	NoDiscloseEnterpriseConnections *bool `pulumi:"noDiscloseEnterpriseConnections"`
+	// Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+	RevokeRefreshTokenGrant *bool `pulumi:"revokeRefreshTokenGrant"`
 	// Boolean. Indicates whether the tenant uses universal login.
 	UniversalLogin                 *bool `pulumi:"universalLogin"`
 	UseScopeDescriptionsForConsent *bool `pulumi:"useScopeDescriptionsForConsent"`
@@ -11553,8 +11805,24 @@ type TenantFlagsInput interface {
 }
 
 type TenantFlagsArgs struct {
+	// Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+	AllowLegacyDelegationGrantTypes pulumi.BoolPtrInput `pulumi:"allowLegacyDelegationGrantTypes"`
+	// Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+	AllowLegacyRoGrantTypes pulumi.BoolPtrInput `pulumi:"allowLegacyRoGrantTypes"`
+	// Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+	AllowLegacyTokeninfoEndpoint pulumi.BoolPtrInput `pulumi:"allowLegacyTokeninfoEndpoint"`
+	// Boolean. Enables new insights activity page view.
+	DashboardInsightsView pulumi.BoolPtrInput `pulumi:"dashboardInsightsView"`
+	// Boolean. Enables beta access to log streaming changes.
+	DashboardLogStreamsNext pulumi.BoolPtrInput `pulumi:"dashboardLogStreamsNext"`
 	// Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
 	DisableClickjackProtectionHeaders pulumi.BoolPtrInput `pulumi:"disableClickjackProtectionHeaders"`
+	// Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+	DisableFieldsMapFix pulumi.BoolPtrInput `pulumi:"disableFieldsMapFix"`
+	// Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+	DisableManagementApiSmsObfuscation pulumi.BoolPtrInput `pulumi:"disableManagementApiSmsObfuscation"`
+	// Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+	EnableAdfsWaadEmailVerification pulumi.BoolPtrInput `pulumi:"enableAdfsWaadEmailVerification"`
 	// Boolean. Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection pulumi.BoolPtrInput `pulumi:"enableApisSection"`
 	// Boolean. Indicates whether all current connections should be enabled when a new client is created.
@@ -11563,12 +11831,20 @@ type TenantFlagsArgs struct {
 	EnableCustomDomainInEmails pulumi.BoolPtrInput `pulumi:"enableCustomDomainInEmails"`
 	// Boolean. Indicates whether the tenant allows dynamic client registration.
 	EnableDynamicClientRegistration pulumi.BoolPtrInput `pulumi:"enableDynamicClientRegistration"`
+	// Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+	EnableIdtokenApi2 pulumi.BoolPtrInput `pulumi:"enableIdtokenApi2"`
 	// Boolean. Indicates whether to use the older v2 legacy logs search.
 	EnableLegacyLogsSearchV2 pulumi.BoolPtrInput `pulumi:"enableLegacyLogsSearchV2"`
+	// Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+	EnableLegacyProfile pulumi.BoolPtrInput `pulumi:"enableLegacyProfile"`
 	// Boolean. Indicates whether advanced API Authorization scenarios are enabled.
 	EnablePipeline2 pulumi.BoolPtrInput `pulumi:"enablePipeline2"`
 	// Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
 	EnablePublicSignupUserExistsError pulumi.BoolPtrInput `pulumi:"enablePublicSignupUserExistsError"`
+	// Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+	NoDiscloseEnterpriseConnections pulumi.BoolPtrInput `pulumi:"noDiscloseEnterpriseConnections"`
+	// Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+	RevokeRefreshTokenGrant pulumi.BoolPtrInput `pulumi:"revokeRefreshTokenGrant"`
 	// Boolean. Indicates whether the tenant uses universal login.
 	UniversalLogin                 pulumi.BoolPtrInput `pulumi:"universalLogin"`
 	UseScopeDescriptionsForConsent pulumi.BoolPtrInput `pulumi:"useScopeDescriptionsForConsent"`
@@ -11651,9 +11927,49 @@ func (o TenantFlagsOutput) ToTenantFlagsPtrOutputWithContext(ctx context.Context
 	}).(TenantFlagsPtrOutput)
 }
 
+// Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+func (o TenantFlagsOutput) AllowLegacyDelegationGrantTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.AllowLegacyDelegationGrantTypes }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+func (o TenantFlagsOutput) AllowLegacyRoGrantTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.AllowLegacyRoGrantTypes }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+func (o TenantFlagsOutput) AllowLegacyTokeninfoEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.AllowLegacyTokeninfoEndpoint }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Enables new insights activity page view.
+func (o TenantFlagsOutput) DashboardInsightsView() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.DashboardInsightsView }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Enables beta access to log streaming changes.
+func (o TenantFlagsOutput) DashboardLogStreamsNext() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.DashboardLogStreamsNext }).(pulumi.BoolPtrOutput)
+}
+
 // Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
 func (o TenantFlagsOutput) DisableClickjackProtectionHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.DisableClickjackProtectionHeaders }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+func (o TenantFlagsOutput) DisableFieldsMapFix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.DisableFieldsMapFix }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+func (o TenantFlagsOutput) DisableManagementApiSmsObfuscation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.DisableManagementApiSmsObfuscation }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+func (o TenantFlagsOutput) EnableAdfsWaadEmailVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableAdfsWaadEmailVerification }).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether the APIs section is enabled for the tenant.
@@ -11676,9 +11992,19 @@ func (o TenantFlagsOutput) EnableDynamicClientRegistration() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableDynamicClientRegistration }).(pulumi.BoolPtrOutput)
 }
 
+// Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+func (o TenantFlagsOutput) EnableIdtokenApi2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableIdtokenApi2 }).(pulumi.BoolPtrOutput)
+}
+
 // Boolean. Indicates whether to use the older v2 legacy logs search.
 func (o TenantFlagsOutput) EnableLegacyLogsSearchV2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableLegacyLogsSearchV2 }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+func (o TenantFlagsOutput) EnableLegacyProfile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableLegacyProfile }).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether advanced API Authorization scenarios are enabled.
@@ -11689,6 +12015,16 @@ func (o TenantFlagsOutput) EnablePipeline2() pulumi.BoolPtrOutput {
 // Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
 func (o TenantFlagsOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+func (o TenantFlagsOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+func (o TenantFlagsOutput) RevokeRefreshTokenGrant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.RevokeRefreshTokenGrant }).(pulumi.BoolPtrOutput)
 }
 
 // Boolean. Indicates whether the tenant uses universal login.
@@ -11724,6 +12060,56 @@ func (o TenantFlagsPtrOutput) Elem() TenantFlagsOutput {
 	}).(TenantFlagsOutput)
 }
 
+// Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+func (o TenantFlagsPtrOutput) AllowLegacyDelegationGrantTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowLegacyDelegationGrantTypes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+func (o TenantFlagsPtrOutput) AllowLegacyRoGrantTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowLegacyRoGrantTypes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+func (o TenantFlagsPtrOutput) AllowLegacyTokeninfoEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowLegacyTokeninfoEndpoint
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Enables new insights activity page view.
+func (o TenantFlagsPtrOutput) DashboardInsightsView() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DashboardInsightsView
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Enables beta access to log streaming changes.
+func (o TenantFlagsPtrOutput) DashboardLogStreamsNext() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DashboardLogStreamsNext
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
 func (o TenantFlagsPtrOutput) DisableClickjackProtectionHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
@@ -11731,6 +12117,36 @@ func (o TenantFlagsPtrOutput) DisableClickjackProtectionHeaders() pulumi.BoolPtr
 			return nil
 		}
 		return v.DisableClickjackProtectionHeaders
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+func (o TenantFlagsPtrOutput) DisableFieldsMapFix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableFieldsMapFix
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+func (o TenantFlagsPtrOutput) DisableManagementApiSmsObfuscation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableManagementApiSmsObfuscation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+func (o TenantFlagsPtrOutput) EnableAdfsWaadEmailVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAdfsWaadEmailVerification
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -11774,6 +12190,16 @@ func (o TenantFlagsPtrOutput) EnableDynamicClientRegistration() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+func (o TenantFlagsPtrOutput) EnableIdtokenApi2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIdtokenApi2
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Boolean. Indicates whether to use the older v2 legacy logs search.
 func (o TenantFlagsPtrOutput) EnableLegacyLogsSearchV2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
@@ -11781,6 +12207,16 @@ func (o TenantFlagsPtrOutput) EnableLegacyLogsSearchV2() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.EnableLegacyLogsSearchV2
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+func (o TenantFlagsPtrOutput) EnableLegacyProfile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableLegacyProfile
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -11801,6 +12237,26 @@ func (o TenantFlagsPtrOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtr
 			return nil
 		}
 		return v.EnablePublicSignupUserExistsError
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+func (o TenantFlagsPtrOutput) NoDiscloseEnterpriseConnections() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoDiscloseEnterpriseConnections
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+func (o TenantFlagsPtrOutput) RevokeRefreshTokenGrant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RevokeRefreshTokenGrant
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -15027,6 +15483,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordHistoryArrayInput)(nil)).Elem(), ConnectionOptionsPasswordHistoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordNoPersonalInfoInput)(nil)).Elem(), ConnectionOptionsPasswordNoPersonalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPasswordNoPersonalInfoPtrInput)(nil)).Elem(), ConnectionOptionsPasswordNoPersonalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsSigningKeyInput)(nil)).Elem(), ConnectionOptionsSigningKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsSigningKeyPtrInput)(nil)).Elem(), ConnectionOptionsSigningKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsTotpInput)(nil)).Elem(), ConnectionOptionsTotpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsTotpPtrInput)(nil)).Elem(), ConnectionOptionsTotpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationInput)(nil)).Elem(), ConnectionOptionsValidationArgs{})
@@ -15183,6 +15641,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordHistoryArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordNoPersonalInfoOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPasswordNoPersonalInfoPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsSigningKeyOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsSigningKeyPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsTotpOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsTotpPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsValidationOutput{})

@@ -30,6 +30,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewConnection(ctx, "myConnection", &auth0.ConnectionArgs{
+// 			Metadata: pulumi.StringMap{
+// 				"key1": pulumi.String("foo"),
+// 				"key2": pulumi.String("bar"),
+// 			},
 // 			Options: &ConnectionOptionsArgs{
 // 				BruteForceProtection: pulumi.Bool(true),
 // 				Configuration: pulumi.StringMap{
@@ -77,6 +81,8 @@ type Connection struct {
 	EnabledClients pulumi.StringArrayOutput `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings for connection options. For details, see Options.
@@ -131,6 +137,8 @@ type connectionState struct {
 	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	Metadata map[string]string `pulumi:"metadata"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
 	// Configuration settings for connection options. For details, see Options.
@@ -154,6 +162,8 @@ type ConnectionState struct {
 	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	Metadata pulumi.StringMapInput
 	// Name of the connection.
 	Name pulumi.StringPtrInput
 	// Configuration settings for connection options. For details, see Options.
@@ -181,6 +191,8 @@ type connectionArgs struct {
 	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	Metadata map[string]string `pulumi:"metadata"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
 	// Configuration settings for connection options. For details, see Options.
@@ -205,6 +217,8 @@ type ConnectionArgs struct {
 	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	Metadata pulumi.StringMapInput
 	// Name of the connection.
 	Name pulumi.StringPtrInput
 	// Configuration settings for connection options. For details, see Options.
@@ -321,6 +335,11 @@ func (o ConnectionOutput) EnabledClients() pulumi.StringArrayOutput {
 // Indicates whether the connection is domain level.
 func (o ConnectionOutput) IsDomainConnection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.IsDomainConnection }).(pulumi.BoolOutput)
+}
+
+// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+func (o ConnectionOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // Name of the connection.

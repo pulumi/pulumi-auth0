@@ -937,7 +937,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="idleSessionLifetime")
-    def idle_session_lifetime(self) -> pulumi.Output[float]:
+    def idle_session_lifetime(self) -> pulumi.Output[Optional[float]]:
         """
         Integer. Number of hours during which a session can be inactive before the user must log in again.
         """
@@ -961,7 +961,7 @@ class Tenant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sessionLifetime")
-    def session_lifetime(self) -> pulumi.Output[float]:
+    def session_lifetime(self) -> pulumi.Output[Optional[float]]:
         """
         Integer. Number of hours during which a session will stay valid.
         """
