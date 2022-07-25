@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * import * from "fs";
+ * import * as fs from "fs";
  *
  * const tenant = new auth0.Tenant("tenant", {
  *     changePassword: {
@@ -45,6 +45,9 @@ import * as utilities from "./utilities";
  *     allowedLogoutUrls: ["http://mysite/logout"],
  *     sessionLifetime: 46000,
  *     sandboxVersion: "8",
+ *     sessionCookie: {
+ *         mode: "non-persistent",
+ *     },
  * });
  * ```
  *
@@ -137,6 +140,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly sandboxVersion!: pulumi.Output<string>;
     /**
+     * List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+     */
+    public readonly sessionCookie!: pulumi.Output<outputs.TenantSessionCookie>;
+    /**
      * Integer. Number of hours during which a session will stay valid.
      */
     public readonly sessionLifetime!: pulumi.Output<number | undefined>;
@@ -179,6 +186,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["idleSessionLifetime"] = state ? state.idleSessionLifetime : undefined;
             resourceInputs["pictureUrl"] = state ? state.pictureUrl : undefined;
             resourceInputs["sandboxVersion"] = state ? state.sandboxVersion : undefined;
+            resourceInputs["sessionCookie"] = state ? state.sessionCookie : undefined;
             resourceInputs["sessionLifetime"] = state ? state.sessionLifetime : undefined;
             resourceInputs["supportEmail"] = state ? state.supportEmail : undefined;
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
@@ -198,6 +206,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["idleSessionLifetime"] = args ? args.idleSessionLifetime : undefined;
             resourceInputs["pictureUrl"] = args ? args.pictureUrl : undefined;
             resourceInputs["sandboxVersion"] = args ? args.sandboxVersion : undefined;
+            resourceInputs["sessionCookie"] = args ? args.sessionCookie : undefined;
             resourceInputs["sessionLifetime"] = args ? args.sessionLifetime : undefined;
             resourceInputs["supportEmail"] = args ? args.supportEmail : undefined;
             resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
@@ -264,6 +273,10 @@ export interface TenantState {
      * String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
     sandboxVersion?: pulumi.Input<string>;
+    /**
+     * List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+     */
+    sessionCookie?: pulumi.Input<inputs.TenantSessionCookie>;
     /**
      * Integer. Number of hours during which a session will stay valid.
      */
@@ -338,6 +351,10 @@ export interface TenantArgs {
      * String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
     sandboxVersion?: pulumi.Input<string>;
+    /**
+     * List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+     */
+    sessionCookie?: pulumi.Input<inputs.TenantSessionCookie>;
     /**
      * Integer. Number of hours during which a session will stay valid.
      */

@@ -36,14 +36,14 @@ import (
 // 				"description":                   "Login to",
 // 				"editEmailText":                 "Edit",
 // 				"emailPlaceholder":              "Email address",
-// 				"federatedConnectionButtonText": fmt.Sprintf("%v%v", "Continue with ", connectionName),
+// 				"federatedConnectionButtonText": fmt.Sprintf("Continue with %v", connectionName),
 // 				"footerLinkText":                "Sign up",
 // 				"footerText":                    "Don't have an account?",
 // 				"forgotPasswordText":            "Forgot password?",
-// 				"invitationDescription":         fmt.Sprintf("%v%v%v%v%v%v%v", "Log in to accept ", inviterName, "'s invitation to join ", companyName, " on ", clientName, "."),
+// 				"invitationDescription":         fmt.Sprintf("Log in to accept %v's invitation to join %v on %v.", inviterName, companyName, clientName),
 // 				"invitationTitle":               "You've Been Invited!",
 // 				"logoAltText":                   companyName,
-// 				"pageTitle":                     fmt.Sprintf("%v%v", "Log in | ", clientName),
+// 				"pageTitle":                     fmt.Sprintf("Log in | %v", clientName),
 // 				"passwordPlaceholder":           "Password",
 // 				"separatorText":                 "Or",
 // 				"signupActionLinkText":          footerLinkText,
@@ -56,7 +56,7 @@ import (
 // 			return err
 // 		}
 // 		json0 := string(tmpJSON0)
-// 		_, err := auth0.NewPromptCustomText(ctx, "example", &auth0.PromptCustomTextArgs{
+// 		_, err = auth0.NewPromptCustomText(ctx, "example", &auth0.PromptCustomTextArgs{
 // 			Prompt:   pulumi.String("login"),
 // 			Language: pulumi.String("en"),
 // 			Body:     pulumi.String(json0),

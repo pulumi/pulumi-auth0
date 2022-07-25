@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const example = new auth0.Prompt("example", {
  *     identifierFirst: false,
  *     universalLoginExperience: "classic",
+ *     webauthnPlatformFirstFactor: true,
  * });
  * ```
  *
@@ -56,14 +57,17 @@ export class Prompt extends pulumi.CustomResource {
     }
 
     /**
-     * Boolean. Indicates whether the identifier first is used when using the new universal 
-     * login experience.
+     * Boolean. Indicates whether the identifier first is used when using the new universal login experience.
      */
     public readonly identifierFirst!: pulumi.Output<boolean | undefined>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
     public readonly universalLoginExperience!: pulumi.Output<string | undefined>;
+    /**
+     * Boolean. Determines if the login screen uses identifier and biometrics first.
+     */
+    public readonly webauthnPlatformFirstFactor!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Prompt resource with the given unique name, arguments, and options.
@@ -80,10 +84,12 @@ export class Prompt extends pulumi.CustomResource {
             const state = argsOrState as PromptState | undefined;
             resourceInputs["identifierFirst"] = state ? state.identifierFirst : undefined;
             resourceInputs["universalLoginExperience"] = state ? state.universalLoginExperience : undefined;
+            resourceInputs["webauthnPlatformFirstFactor"] = state ? state.webauthnPlatformFirstFactor : undefined;
         } else {
             const args = argsOrState as PromptArgs | undefined;
             resourceInputs["identifierFirst"] = args ? args.identifierFirst : undefined;
             resourceInputs["universalLoginExperience"] = args ? args.universalLoginExperience : undefined;
+            resourceInputs["webauthnPlatformFirstFactor"] = args ? args.webauthnPlatformFirstFactor : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Prompt.__pulumiType, name, resourceInputs, opts);
@@ -95,14 +101,17 @@ export class Prompt extends pulumi.CustomResource {
  */
 export interface PromptState {
     /**
-     * Boolean. Indicates whether the identifier first is used when using the new universal 
-     * login experience.
+     * Boolean. Indicates whether the identifier first is used when using the new universal login experience.
      */
     identifierFirst?: pulumi.Input<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
     universalLoginExperience?: pulumi.Input<string>;
+    /**
+     * Boolean. Determines if the login screen uses identifier and biometrics first.
+     */
+    webauthnPlatformFirstFactor?: pulumi.Input<boolean>;
 }
 
 /**
@@ -110,12 +119,15 @@ export interface PromptState {
  */
 export interface PromptArgs {
     /**
-     * Boolean. Indicates whether the identifier first is used when using the new universal 
-     * login experience.
+     * Boolean. Indicates whether the identifier first is used when using the new universal login experience.
      */
     identifierFirst?: pulumi.Input<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
     universalLoginExperience?: pulumi.Input<string>;
+    /**
+     * Boolean. Determines if the login screen uses identifier and biometrics first.
+     */
+    webauthnPlatformFirstFactor?: pulumi.Input<boolean>;
 }

@@ -23,8 +23,14 @@ namespace Pulumi.Auth0
     /// {
     ///     public MyStack()
     ///     {
-    ///         var @default = new Auth0.Guardian("default", new Auth0.GuardianArgs
+    ///         var myGuardian = new Auth0.Guardian("myGuardian", new Auth0.GuardianArgs
     ///         {
+    ///             Duo = new Auth0.Inputs.GuardianDuoArgs
+    ///             {
+    ///                 Hostname = "api-hostname",
+    ///                 IntegrationKey = "someKey",
+    ///                 SecretKey = "someSecret",
+    ///             },
     ///             Email = true,
     ///             Otp = true,
     ///             Phone = new Auth0.Inputs.GuardianPhoneArgs
@@ -32,6 +38,7 @@ namespace Pulumi.Auth0
     ///                 MessageTypes = 
     ///                 {
     ///                     "sms",
+    ///                     "voice",
     ///                 },
     ///                 Options = new Auth0.Inputs.GuardianPhoneOptionsArgs
     ///                 {
@@ -41,6 +48,29 @@ namespace Pulumi.Auth0
     ///                 Provider = "auth0",
     ///             },
     ///             Policy = "all-applications",
+    ///             Push = new Auth0.Inputs.GuardianPushArgs
+    ///             {
+    ///                 AmazonSns = new Auth0.Inputs.GuardianPushAmazonSnsArgs
+    ///                 {
+    ///                     AwsAccessKeyId = "test1",
+    ///                     AwsRegion = "us-west-1",
+    ///                     AwsSecretAccessKey = "secretKey",
+    ///                     SnsApnsPlatformApplicationArn = "test_arn",
+    ///                     SnsGcmPlatformApplicationArn = "test_arn",
+    ///                 },
+    ///                 CustomApp = new Auth0.Inputs.GuardianPushCustomAppArgs
+    ///                 {
+    ///                     AppName = "CustomApp",
+    ///                     AppleAppLink = "https://itunes.apple.com/us/app/my-app/id123121",
+    ///                     GoogleAppLink = "https://play.google.com/store/apps/details?id=com.my.app",
+    ///                 },
+    ///             },
+    ///             RecoveryCode = true,
+    ///             WebauthnPlatform = ,
+    ///             WebauthnRoaming = new Auth0.Inputs.GuardianWebauthnRoamingArgs
+    ///             {
+    ///                 UserVerification = "required",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -59,16 +89,27 @@ namespace Pulumi.Auth0
     public partial class Guardian : Pulumi.CustomResource
     {
         /// <summary>
+        /// List(Resource). Configuration settings for the Duo MFA.
+        /// If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+        /// </summary>
+        [Output("duo")]
+        public Output<Outputs.GuardianDuo?> Duo { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean. Indicates whether email MFA is enabled.
         /// </summary>
         [Output("email")]
         public Output<bool?> Email { get; private set; } = null!;
 
+        /// <summary>
+        /// Boolean. Indicates whether one time password MFA is enabled.
+        /// </summary>
         [Output("otp")]
         public Output<bool?> Otp { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
+        /// List(Resource). Configuration settings for the phone MFA. 
+        /// If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
         /// </summary>
         [Output("phone")]
         public Output<Outputs.GuardianPhone?> Phone { get; private set; } = null!;
@@ -79,6 +120,35 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
+
+        /// <summary>
+        /// List(Resource). Configuration settings for the Push MFA.
+        /// If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+        /// </summary>
+        [Output("push")]
+        public Output<Outputs.GuardianPush?> Push { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean. Indicates whether recovery code MFA is enabled.
+        /// </summary>
+        [Output("recoveryCode")]
+        public Output<bool?> RecoveryCode { get; private set; } = null!;
+
+        /// <summary>
+        /// List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
+        /// If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
+        /// For details, see WebAuthn Platform.
+        /// </summary>
+        [Output("webauthnPlatform")]
+        public Output<Outputs.GuardianWebauthnPlatform?> WebauthnPlatform { get; private set; } = null!;
+
+        /// <summary>
+        /// List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
+        /// If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
+        /// For details, see WebAuthn Roaming.
+        /// </summary>
+        [Output("webauthnRoaming")]
+        public Output<Outputs.GuardianWebauthnRoaming?> WebauthnRoaming { get; private set; } = null!;
 
 
         /// <summary>
@@ -127,16 +197,27 @@ namespace Pulumi.Auth0
     public sealed class GuardianArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// List(Resource). Configuration settings for the Duo MFA.
+        /// If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+        /// </summary>
+        [Input("duo")]
+        public Input<Inputs.GuardianDuoArgs>? Duo { get; set; }
+
+        /// <summary>
         /// Boolean. Indicates whether email MFA is enabled.
         /// </summary>
         [Input("email")]
         public Input<bool>? Email { get; set; }
 
+        /// <summary>
+        /// Boolean. Indicates whether one time password MFA is enabled.
+        /// </summary>
         [Input("otp")]
         public Input<bool>? Otp { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
+        /// List(Resource). Configuration settings for the phone MFA. 
+        /// If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
         /// </summary>
         [Input("phone")]
         public Input<Inputs.GuardianPhoneArgs>? Phone { get; set; }
@@ -148,6 +229,35 @@ namespace Pulumi.Auth0
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
+        /// <summary>
+        /// List(Resource). Configuration settings for the Push MFA.
+        /// If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+        /// </summary>
+        [Input("push")]
+        public Input<Inputs.GuardianPushArgs>? Push { get; set; }
+
+        /// <summary>
+        /// Boolean. Indicates whether recovery code MFA is enabled.
+        /// </summary>
+        [Input("recoveryCode")]
+        public Input<bool>? RecoveryCode { get; set; }
+
+        /// <summary>
+        /// List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
+        /// If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
+        /// For details, see WebAuthn Platform.
+        /// </summary>
+        [Input("webauthnPlatform")]
+        public Input<Inputs.GuardianWebauthnPlatformArgs>? WebauthnPlatform { get; set; }
+
+        /// <summary>
+        /// List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
+        /// If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
+        /// For details, see WebAuthn Roaming.
+        /// </summary>
+        [Input("webauthnRoaming")]
+        public Input<Inputs.GuardianWebauthnRoamingArgs>? WebauthnRoaming { get; set; }
+
         public GuardianArgs()
         {
         }
@@ -156,16 +266,27 @@ namespace Pulumi.Auth0
     public sealed class GuardianState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// List(Resource). Configuration settings for the Duo MFA.
+        /// If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+        /// </summary>
+        [Input("duo")]
+        public Input<Inputs.GuardianDuoGetArgs>? Duo { get; set; }
+
+        /// <summary>
         /// Boolean. Indicates whether email MFA is enabled.
         /// </summary>
         [Input("email")]
         public Input<bool>? Email { get; set; }
 
+        /// <summary>
+        /// Boolean. Indicates whether one time password MFA is enabled.
+        /// </summary>
         [Input("otp")]
         public Input<bool>? Otp { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the phone MFA. For details, see Phone.
+        /// List(Resource). Configuration settings for the phone MFA. 
+        /// If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
         /// </summary>
         [Input("phone")]
         public Input<Inputs.GuardianPhoneGetArgs>? Phone { get; set; }
@@ -176,6 +297,35 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
+
+        /// <summary>
+        /// List(Resource). Configuration settings for the Push MFA.
+        /// If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+        /// </summary>
+        [Input("push")]
+        public Input<Inputs.GuardianPushGetArgs>? Push { get; set; }
+
+        /// <summary>
+        /// Boolean. Indicates whether recovery code MFA is enabled.
+        /// </summary>
+        [Input("recoveryCode")]
+        public Input<bool>? RecoveryCode { get; set; }
+
+        /// <summary>
+        /// List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
+        /// If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
+        /// For details, see WebAuthn Platform.
+        /// </summary>
+        [Input("webauthnPlatform")]
+        public Input<Inputs.GuardianWebauthnPlatformGetArgs>? WebauthnPlatform { get; set; }
+
+        /// <summary>
+        /// List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
+        /// If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
+        /// For details, see WebAuthn Roaming.
+        /// </summary>
+        [Input("webauthnRoaming")]
+        public Input<Inputs.GuardianWebauthnRoamingGetArgs>? WebauthnRoaming { get; set; }
 
         public GuardianState()
         {

@@ -66,6 +66,9 @@ import (
 // 			},
 // 			SessionLifetime: pulumi.Float64(46000),
 // 			SandboxVersion:  pulumi.String("8"),
+// 			SessionCookie: &TenantSessionCookieArgs{
+// 				Mode: pulumi.String("non-persistent"),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -111,6 +114,8 @@ type Tenant struct {
 	PictureUrl pulumi.StringOutput `pulumi:"pictureUrl"`
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringOutput `pulumi:"sandboxVersion"`
+	// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+	SessionCookie TenantSessionCookieOutput `pulumi:"sessionCookie"`
 	// Integer. Number of hours during which a session will stay valid.
 	SessionLifetime pulumi.Float64PtrOutput `pulumi:"sessionLifetime"`
 	// String. Support email address for authenticating users.
@@ -176,6 +181,8 @@ type tenantState struct {
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion *string `pulumi:"sandboxVersion"`
+	// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+	SessionCookie *TenantSessionCookie `pulumi:"sessionCookie"`
 	// Integer. Number of hours during which a session will stay valid.
 	SessionLifetime *float64 `pulumi:"sessionLifetime"`
 	// String. Support email address for authenticating users.
@@ -213,6 +220,8 @@ type TenantState struct {
 	PictureUrl pulumi.StringPtrInput
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringPtrInput
+	// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+	SessionCookie TenantSessionCookiePtrInput
 	// Integer. Number of hours during which a session will stay valid.
 	SessionLifetime pulumi.Float64PtrInput
 	// String. Support email address for authenticating users.
@@ -254,6 +263,8 @@ type tenantArgs struct {
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion *string `pulumi:"sandboxVersion"`
+	// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+	SessionCookie *TenantSessionCookie `pulumi:"sessionCookie"`
 	// Integer. Number of hours during which a session will stay valid.
 	SessionLifetime *float64 `pulumi:"sessionLifetime"`
 	// String. Support email address for authenticating users.
@@ -292,6 +303,8 @@ type TenantArgs struct {
 	PictureUrl pulumi.StringPtrInput
 	// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringPtrInput
+	// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+	SessionCookie TenantSessionCookiePtrInput
 	// Integer. Number of hours during which a session will stay valid.
 	SessionLifetime pulumi.Float64PtrInput
 	// String. Support email address for authenticating users.
@@ -452,6 +465,11 @@ func (o TenantOutput) PictureUrl() pulumi.StringOutput {
 // String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 func (o TenantOutput) SandboxVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.SandboxVersion }).(pulumi.StringOutput)
+}
+
+// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+func (o TenantOutput) SessionCookie() TenantSessionCookieOutput {
+	return o.ApplyT(func(v *Tenant) TenantSessionCookieOutput { return v.SessionCookie }).(TenantSessionCookieOutput)
 }
 
 // Integer. Number of hours during which a session will stay valid.

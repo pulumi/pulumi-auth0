@@ -161,6 +161,7 @@ namespace Pulumi.Auth0
         /// Connections assigned to the organization. For
         /// details, see Connections
         /// </summary>
+        [Obsolete(@"Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.")]
         public InputList<Inputs.OrganizationConnectionArgs> Connections
         {
             get => _connections ?? (_connections = new InputList<Inputs.OrganizationConnectionArgs>());
@@ -213,6 +214,7 @@ namespace Pulumi.Auth0
         /// Connections assigned to the organization. For
         /// details, see Connections
         /// </summary>
+        [Obsolete(@"Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.")]
         public InputList<Inputs.OrganizationConnectionGetArgs> Connections
         {
             get => _connections ?? (_connections = new InputList<Inputs.OrganizationConnectionGetArgs>());

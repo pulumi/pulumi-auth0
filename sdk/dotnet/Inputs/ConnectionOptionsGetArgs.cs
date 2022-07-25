@@ -39,6 +39,18 @@ namespace Pulumi.Auth0.Inputs
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
+        [Input("authParams")]
+        private InputMap<string>? _authParams;
+
+        /// <summary>
+        /// Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+        /// </summary>
+        public InputMap<string> AuthParams
+        {
+            get => _authParams ?? (_authParams = new InputMap<string>());
+            set => _authParams = value;
+        }
+
         [Input("authorizationEndpoint")]
         public Input<string>? AuthorizationEndpoint { get; set; }
 
@@ -450,6 +462,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+        /// </summary>
+        [Input("upstreamParams")]
+        public Input<string>? UpstreamParams { get; set; }
 
         [Input("useCertAuth")]
         public Input<bool>? UseCertAuth { get; set; }

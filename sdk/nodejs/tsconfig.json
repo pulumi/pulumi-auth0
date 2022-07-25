@@ -34,6 +34,8 @@
         "index.ts",
         "logStream.ts",
         "organization.ts",
+        "organizationConnection.ts",
+        "organizationMember.ts",
         "prompt.ts",
         "promptCustomText.ts",
         "provider.ts",

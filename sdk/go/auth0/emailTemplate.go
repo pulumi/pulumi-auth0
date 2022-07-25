@@ -40,14 +40,15 @@ import (
 // 			return err
 // 		}
 // 		_, err = auth0.NewEmailTemplate(ctx, "myEmailTemplate", &auth0.EmailTemplateArgs{
-// 			Template:             pulumi.String("welcome_email"),
-// 			Body:                 pulumi.String("<html><body><h1>Welcome!</h1></body></html>"),
-// 			From:                 pulumi.String("welcome@example.com"),
-// 			ResultUrl:            pulumi.String("https://example.com/welcome"),
-// 			Subject:              pulumi.String("Welcome"),
-// 			Syntax:               pulumi.String("liquid"),
-// 			UrlLifetimeInSeconds: pulumi.Int(3600),
-// 			Enabled:              pulumi.Bool(true),
+// 			Template:               pulumi.String("welcome_email"),
+// 			Body:                   pulumi.String("<html><body><h1>Welcome!</h1></body></html>"),
+// 			From:                   pulumi.String("welcome@example.com"),
+// 			ResultUrl:              pulumi.String("https://example.com/welcome"),
+// 			Subject:                pulumi.String("Welcome"),
+// 			Syntax:                 pulumi.String("liquid"),
+// 			UrlLifetimeInSeconds:   pulumi.Int(3600),
+// 			Enabled:                pulumi.Bool(true),
+// 			IncludeEmailInRedirect: pulumi.Bool(true),
 // 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			myEmailProvider,
 // 		}))
@@ -75,6 +76,8 @@ type EmailTemplate struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From pulumi.StringOutput `pulumi:"from"`
+	// Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+	IncludeEmailInRedirect pulumi.BoolOutput `pulumi:"includeEmailInRedirect"`
 	// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
 	ResultUrl pulumi.StringPtrOutput `pulumi:"resultUrl"`
 	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -140,6 +143,8 @@ type emailTemplateState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From *string `pulumi:"from"`
+	// Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+	IncludeEmailInRedirect *bool `pulumi:"includeEmailInRedirect"`
 	// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
 	ResultUrl *string `pulumi:"resultUrl"`
 	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -159,6 +164,8 @@ type EmailTemplateState struct {
 	Enabled pulumi.BoolPtrInput
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From pulumi.StringPtrInput
+	// Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+	IncludeEmailInRedirect pulumi.BoolPtrInput
 	// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
 	ResultUrl pulumi.StringPtrInput
 	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -182,6 +189,8 @@ type emailTemplateArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From string `pulumi:"from"`
+	// Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+	IncludeEmailInRedirect *bool `pulumi:"includeEmailInRedirect"`
 	// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
 	ResultUrl *string `pulumi:"resultUrl"`
 	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -202,6 +211,8 @@ type EmailTemplateArgs struct {
 	Enabled pulumi.BoolInput
 	// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 	From pulumi.StringInput
+	// Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+	IncludeEmailInRedirect pulumi.BoolPtrInput
 	// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
 	ResultUrl pulumi.StringPtrInput
 	// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -314,6 +325,11 @@ func (o EmailTemplateOutput) Enabled() pulumi.BoolOutput {
 // String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
 func (o EmailTemplateOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.From }).(pulumi.StringOutput)
+}
+
+// Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+func (o EmailTemplateOutput) IncludeEmailInRedirect() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EmailTemplate) pulumi.BoolOutput { return v.IncludeEmailInRedirect }).(pulumi.BoolOutput)
 }
 
 // String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).

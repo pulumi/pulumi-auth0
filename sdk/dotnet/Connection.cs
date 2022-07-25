@@ -14,60 +14,6 @@ namespace Pulumi.Auth0
     /// (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
     /// and manage connections to be used with your clients and users.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myConnection = new Auth0.Connection("myConnection", new Auth0.ConnectionArgs
-    ///         {
-    ///             Metadata = 
-    ///             {
-    ///                 { "key1", "foo" },
-    ///                 { "key2", "bar" },
-    ///             },
-    ///             Options = new Auth0.Inputs.ConnectionOptionsArgs
-    ///             {
-    ///                 BruteForceProtection = true,
-    ///                 Configuration = 
-    ///                 {
-    ///                     { "bar", "baz" },
-    ///                     { "foo", "bar" },
-    ///                 },
-    ///                 CustomScripts = 
-    ///                 {
-    ///                     { "getUser", @"function getByEmail (email, callback) {
-    ///   return callback(new Error(""Whoops!""))
-    /// }
-    /// 
-    /// " },
-    ///                 },
-    ///                 EnabledDatabaseCustomization = true,
-    ///                 PasswordHistories = 
-    ///                 {
-    ///                     new Auth0.Inputs.ConnectionOptionsPasswordHistoryArgs
-    ///                     {
-    ///                         Enable = true,
-    ///                         Size = 3,
-    ///                     },
-    ///                 },
-    ///                 PasswordPolicy = "excellent",
-    ///             },
-    ///             Strategy = "auth0",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// &gt; The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
-    /// creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
-    /// 
     /// ## Import
     /// 
     /// Connections can be imported using their id, e.g.

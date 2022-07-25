@@ -35,7 +35,7 @@ import (
 // 				"auth0": pulumi.Any("2.30.0"),
 // 			},
 // 			Enabled: pulumi.Bool(true),
-// 			Script:  pulumi.String(fmt.Sprintf("%v%v%v%v", "function (user, context, callback) {\n", "  callback(null, { user });\n", "}\n", "\n")),
+// 			Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, { user });\n}\n\n")),
 // 			Secrets: pulumi.AnyMap{
 // 				"foo": pulumi.Any("bar"),
 // 			},

@@ -145,7 +145,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly allowedOrigins!: pulumi.Output<string[] | undefined>;
     /**
-     * String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
      */
     public readonly appType!: pulumi.Output<string | undefined>;
     /**
@@ -379,7 +379,7 @@ export interface ClientState {
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
      */
     appType?: pulumi.Input<string>;
     /**
@@ -523,7 +523,7 @@ export interface ClientArgs {
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
      */
     appType?: pulumi.Input<string>;
     /**

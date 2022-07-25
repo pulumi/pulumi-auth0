@@ -23,6 +23,8 @@ export * from "./guardian";
 export * from "./hook";
 export * from "./logStream";
 export * from "./organization";
+export * from "./organizationConnection";
+export * from "./organizationMember";
 export * from "./prompt";
 export * from "./promptCustomText";
 export * from "./provider";
@@ -59,6 +61,8 @@ import { Guardian } from "./guardian";
 import { Hook } from "./hook";
 import { LogStream } from "./logStream";
 import { Organization } from "./organization";
+import { OrganizationConnection } from "./organizationConnection";
+import { OrganizationMember } from "./organizationMember";
 import { Prompt } from "./prompt";
 import { PromptCustomText } from "./promptCustomText";
 import { ResourceServer } from "./resourceServer";
@@ -103,6 +107,10 @@ const _module = {
                 return new LogStream(name, <any>undefined, { urn })
             case "auth0:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "auth0:index/organizationConnection:OrganizationConnection":
+                return new OrganizationConnection(name, <any>undefined, { urn })
+            case "auth0:index/organizationMember:OrganizationMember":
+                return new OrganizationMember(name, <any>undefined, { urn })
             case "auth0:index/prompt:Prompt":
                 return new Prompt(name, <any>undefined, { urn })
             case "auth0:index/promptCustomText:PromptCustomText":
@@ -141,6 +149,8 @@ pulumi.runtime.registerResourceModule("auth0", "index/guardian", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationConnection", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationMember", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)

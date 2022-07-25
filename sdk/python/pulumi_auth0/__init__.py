@@ -23,6 +23,8 @@ from .guardian import *
 from .hook import *
 from .log_stream import *
 from .organization import *
+from .organization_connection import *
+from .organization_member import *
 from .prompt import *
 from .prompt_custom_text import *
 from .provider import *
@@ -164,6 +166,22 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationConnection",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationConnection:OrganizationConnection": "OrganizationConnection"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationMember",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationMember:OrganizationMember": "OrganizationMember"
   }
  },
  {

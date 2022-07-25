@@ -83,6 +83,8 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Connections assigned to the organization. For
      * details, see Connections
+     *
+     * @deprecated Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
      */
     public readonly connections!: pulumi.Output<outputs.OrganizationConnection[]>;
     /**
@@ -142,6 +144,8 @@ export interface OrganizationState {
     /**
      * Connections assigned to the organization. For
      * details, see Connections
+     *
+     * @deprecated Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
      */
     connections?: pulumi.Input<pulumi.Input<inputs.OrganizationConnection>[]>;
     /**
@@ -171,6 +175,8 @@ export interface OrganizationArgs {
     /**
      * Connections assigned to the organization. For
      * details, see Connections
+     *
+     * @deprecated Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
      */
     connections?: pulumi.Input<pulumi.Input<inputs.OrganizationConnection>[]>;
     /**

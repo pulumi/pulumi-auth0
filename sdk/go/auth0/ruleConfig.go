@@ -31,7 +31,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
 // 			Enabled: pulumi.Bool(true),
-// 			Script:  pulumi.String(fmt.Sprintf("%v%v%v%v", "function (user, context, callback) {\n", "  callback(null, user, context);\n", "}\n", "\n")),
+// 			Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, user, context);\n}\n\n")),
 // 		})
 // 		if err != nil {
 // 			return err

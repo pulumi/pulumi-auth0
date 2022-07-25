@@ -50,6 +50,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogStream{}
 	case "auth0:index/organization:Organization":
 		r = &Organization{}
+	case "auth0:index/organizationConnection:OrganizationConnection":
+		r = &OrganizationConnection{}
+	case "auth0:index/organizationMember:OrganizationMember":
+		r = &OrganizationMember{}
 	case "auth0:index/prompt:Prompt":
 		r = &Prompt{}
 	case "auth0:index/promptCustomText:PromptCustomText":
@@ -169,6 +173,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/organizationConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/organizationMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

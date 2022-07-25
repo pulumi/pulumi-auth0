@@ -463,6 +463,10 @@ export interface ConnectionOptions {
      * Azure AD app ID.
      */
     appId?: pulumi.Input<string>;
+    /**
+     * Map(String). Use this to append or override the link parameters (like `scope`, `redirectUri`, `protocol`, `responseType`), when you send a link using email.
+     */
+    authParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     authorizationEndpoint?: pulumi.Input<string>;
     /**
      * Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -693,6 +697,10 @@ export interface ConnectionOptions {
      * Value can be `backChannel` or `frontChannel`.
      */
     type?: pulumi.Input<string>;
+    /**
+     * String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+     */
+    upstreamParams?: pulumi.Input<string>;
     useCertAuth?: pulumi.Input<boolean>;
     useKerberos?: pulumi.Input<boolean>;
     useWsfed?: pulumi.Input<boolean>;
@@ -953,6 +961,21 @@ export interface GlobalClientRefreshToken {
     tokenLifetime?: pulumi.Input<number>;
 }
 
+export interface GuardianDuo {
+    /**
+     * String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * String. Duo client ID, see the Duo documentation for more details on Duo setup.
+     */
+    integrationKey: pulumi.Input<string>;
+    /**
+     * String. Duo client secret, see the Duo documentation for more details on Duo setup.
+     */
+    secretKey: pulumi.Input<string>;
+}
+
 export interface GuardianPhone {
     /**
      * List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
@@ -993,6 +1016,75 @@ export interface GuardianPhoneOptions {
      * String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
      */
     verificationMessage?: pulumi.Input<string>;
+}
+
+export interface GuardianPush {
+    amazonSns?: pulumi.Input<inputs.GuardianPushAmazonSns>;
+    customApp?: pulumi.Input<inputs.GuardianPushCustomApp>;
+}
+
+export interface GuardianPushAmazonSns {
+    /**
+     * String. Your AWS Access Key ID.
+     */
+    awsAccessKeyId: pulumi.Input<string>;
+    /**
+     * String. Your AWS application's region.
+     */
+    awsRegion: pulumi.Input<string>;
+    /**
+     * String. Your AWS Secret Access Key.
+     */
+    awsSecretAccessKey: pulumi.Input<string>;
+    /**
+     * String. The Amazon Resource Name for your Apple Push Notification Service.
+     */
+    snsApnsPlatformApplicationArn: pulumi.Input<string>;
+    /**
+     * String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
+     */
+    snsGcmPlatformApplicationArn: pulumi.Input<string>;
+}
+
+export interface GuardianPushCustomApp {
+    /**
+     * String. Custom Application Name.
+     */
+    appName?: pulumi.Input<string>;
+    /**
+     * String. Apple App Store URL.
+     */
+    appleAppLink?: pulumi.Input<string>;
+    /**
+     * String. Google Store URL.
+     */
+    googleAppLink?: pulumi.Input<string>;
+}
+
+export interface GuardianWebauthnPlatform {
+    /**
+     * Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     */
+    overrideRelyingParty?: pulumi.Input<boolean>;
+    /**
+     * String. The Relying Party should be a suffix of the custom domain.
+     */
+    relyingPartyIdentifier?: pulumi.Input<string>;
+}
+
+export interface GuardianWebauthnRoaming {
+    /**
+     * Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     */
+    overrideRelyingParty?: pulumi.Input<boolean>;
+    /**
+     * String. The Relying Party should be a suffix of the custom domain.
+     */
+    relyingPartyIdentifier?: pulumi.Input<string>;
+    /**
+     * String. User verification, one of `discouraged`, `preferred` or `required`.
+     */
+    userVerification?: pulumi.Input<string>;
 }
 
 export interface LogStreamSink {
@@ -1244,6 +1336,10 @@ export interface TenantGuardianMfaPage {
     html: pulumi.Input<string>;
 }
 
+export interface TenantSessionCookie {
+    mode?: pulumi.Input<string>;
+}
+
 export interface TenantUniversalLogin {
     /**
      * List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
@@ -1272,4 +1368,3 @@ export interface TriggerBindingAction {
      */
     id: pulumi.Input<string>;
 }
-

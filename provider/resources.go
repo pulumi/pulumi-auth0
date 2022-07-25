@@ -112,6 +112,8 @@ func Provider() tfbridge.ProviderInfo {
 			"auth0_trigger_binding":            {Tok: makeResource(mainMod, "TriggerBinding")},
 			"auth0_prompt_custom_text":         {Tok: makeResource(mainMod, "PromptCustomText")},
 			"auth0_attack_protection":          {Tok: makeResource(mainMod, "AttackProtection")},
+			"auth0_organization_connection":    {Tok: makeResource(mainMod, "OrganizationConnection")},
+			"auth0_organization_member":        {Tok: makeResource(mainMod, "OrganizationMember")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"auth0_client":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getClient")},

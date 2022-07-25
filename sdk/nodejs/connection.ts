@@ -10,43 +10,6 @@ import * as utilities from "./utilities";
  * (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
  * and manage connections to be used with your clients and users.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myConnection = new auth0.Connection("my_connection", {
- *     metadata: {
- *         key1: "foo",
- *         key2: "bar",
- *     },
- *     options: {
- *         bruteForceProtection: true,
- *         configuration: {
- *             bar: "baz",
- *             foo: "bar",
- *         },
- *         customScripts: {
- *             get_user: `function getByEmail (email, callback) {
- *   return callback(new Error("Whoops!"))
- * }
- * `,
- *         },
- *         enabledDatabaseCustomization: true,
- *         passwordHistories: [{
- *             enable: true,
- *             size: 3,
- *         }],
- *         passwordPolicy: "excellent",
- *     },
- *     strategy: "auth0",
- * });
- * ```
- *
- * > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
- * creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
- *
  * ## Import
  *
  * Connections can be imported using their id, e.g.

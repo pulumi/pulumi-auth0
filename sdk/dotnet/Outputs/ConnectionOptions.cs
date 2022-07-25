@@ -26,6 +26,10 @@ namespace Pulumi.Auth0.Outputs
         /// Azure AD app ID.
         /// </summary>
         public readonly string? AppId;
+        /// <summary>
+        /// Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? AuthParams;
         public readonly string? AuthorizationEndpoint;
         /// <summary>
         /// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -256,6 +260,10 @@ namespace Pulumi.Auth0.Outputs
         /// Value can be `back_channel` or `front_channel`.
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+        /// </summary>
+        public readonly string? UpstreamParams;
         public readonly bool? UseCertAuth;
         public readonly bool? UseKerberos;
         public readonly bool? UseWsfed;
@@ -283,6 +291,8 @@ namespace Pulumi.Auth0.Outputs
             bool? apiEnableUsers,
 
             string? appId,
+
+            ImmutableDictionary<string, string>? authParams,
 
             string? authorizationEndpoint,
 
@@ -420,6 +430,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? type,
 
+            string? upstreamParams,
+
             bool? useCertAuth,
 
             bool? useKerberos,
@@ -440,6 +452,7 @@ namespace Pulumi.Auth0.Outputs
             AllowedAudiences = allowedAudiences;
             ApiEnableUsers = apiEnableUsers;
             AppId = appId;
+            AuthParams = authParams;
             AuthorizationEndpoint = authorizationEndpoint;
             BruteForceProtection = bruteForceProtection;
             ClientId = clientId;
@@ -508,6 +521,7 @@ namespace Pulumi.Auth0.Outputs
             TwilioSid = twilioSid;
             TwilioToken = twilioToken;
             Type = type;
+            UpstreamParams = upstreamParams;
             UseCertAuth = useCertAuth;
             UseKerberos = useKerberos;
             UseWsfed = useWsfed;

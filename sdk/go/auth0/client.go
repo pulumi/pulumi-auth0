@@ -138,7 +138,7 @@ type Client struct {
 	AllowedLogoutUrls pulumi.StringArrayOutput `pulumi:"allowedLogoutUrls"`
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayOutput `pulumi:"allowedOrigins"`
-	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
 	AppType pulumi.StringPtrOutput `pulumi:"appType"`
 	// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayOutput `pulumi:"callbacks"`
@@ -242,7 +242,7 @@ type clientState struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
 	AppType *string `pulumi:"appType"`
 	// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
@@ -315,7 +315,7 @@ type ClientState struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
-	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
 	AppType pulumi.StringPtrInput
 	// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput
@@ -392,7 +392,7 @@ type clientArgs struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
 	AppType *string `pulumi:"appType"`
 	// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
@@ -460,7 +460,7 @@ type ClientArgs struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
-	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
 	AppType pulumi.StringPtrInput
 	// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput
@@ -625,7 +625,7 @@ func (o ClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+// String. Type of application the client represents. Options include `native`, `spa`, `regularWeb`, `nonInteractive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `ssoIntegration`, `zendesk`, `zoom`.
 func (o ClientOutput) AppType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.AppType }).(pulumi.StringPtrOutput)
 }

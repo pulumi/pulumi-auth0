@@ -25,8 +25,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewPrompt(ctx, "example", &auth0.PromptArgs{
-// 			IdentifierFirst:          pulumi.Bool(false),
-// 			UniversalLoginExperience: pulumi.String("classic"),
+// 			IdentifierFirst:             pulumi.Bool(false),
+// 			UniversalLoginExperience:    pulumi.String("classic"),
+// 			WebauthnPlatformFirstFactor: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -46,11 +47,12 @@ import (
 type Prompt struct {
 	pulumi.CustomResourceState
 
-	// Boolean. Indicates whether the identifier first is used when using the new universal
-	// login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
 	IdentifierFirst pulumi.BoolPtrOutput `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrOutput `pulumi:"universalLoginExperience"`
+	// Boolean. Determines if the login screen uses identifier and biometrics first.
+	WebauthnPlatformFirstFactor pulumi.BoolPtrOutput `pulumi:"webauthnPlatformFirstFactor"`
 }
 
 // NewPrompt registers a new resource with the given unique name, arguments, and options.
@@ -82,19 +84,21 @@ func GetPrompt(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Prompt resources.
 type promptState struct {
-	// Boolean. Indicates whether the identifier first is used when using the new universal
-	// login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
 	IdentifierFirst *bool `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience *string `pulumi:"universalLoginExperience"`
+	// Boolean. Determines if the login screen uses identifier and biometrics first.
+	WebauthnPlatformFirstFactor *bool `pulumi:"webauthnPlatformFirstFactor"`
 }
 
 type PromptState struct {
-	// Boolean. Indicates whether the identifier first is used when using the new universal
-	// login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
 	IdentifierFirst pulumi.BoolPtrInput
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrInput
+	// Boolean. Determines if the login screen uses identifier and biometrics first.
+	WebauthnPlatformFirstFactor pulumi.BoolPtrInput
 }
 
 func (PromptState) ElementType() reflect.Type {
@@ -102,20 +106,22 @@ func (PromptState) ElementType() reflect.Type {
 }
 
 type promptArgs struct {
-	// Boolean. Indicates whether the identifier first is used when using the new universal
-	// login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
 	IdentifierFirst *bool `pulumi:"identifierFirst"`
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience *string `pulumi:"universalLoginExperience"`
+	// Boolean. Determines if the login screen uses identifier and biometrics first.
+	WebauthnPlatformFirstFactor *bool `pulumi:"webauthnPlatformFirstFactor"`
 }
 
 // The set of arguments for constructing a Prompt resource.
 type PromptArgs struct {
-	// Boolean. Indicates whether the identifier first is used when using the new universal
-	// login experience.
+	// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
 	IdentifierFirst pulumi.BoolPtrInput
 	// Which login experience to use. Options include `classic` and `new`.
 	UniversalLoginExperience pulumi.StringPtrInput
+	// Boolean. Determines if the login screen uses identifier and biometrics first.
+	WebauthnPlatformFirstFactor pulumi.BoolPtrInput
 }
 
 func (PromptArgs) ElementType() reflect.Type {
@@ -205,8 +211,7 @@ func (o PromptOutput) ToPromptOutputWithContext(ctx context.Context) PromptOutpu
 	return o
 }
 
-// Boolean. Indicates whether the identifier first is used when using the new universal
-// login experience.
+// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
 func (o PromptOutput) IdentifierFirst() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Prompt) pulumi.BoolPtrOutput { return v.IdentifierFirst }).(pulumi.BoolPtrOutput)
 }
@@ -214,6 +219,11 @@ func (o PromptOutput) IdentifierFirst() pulumi.BoolPtrOutput {
 // Which login experience to use. Options include `classic` and `new`.
 func (o PromptOutput) UniversalLoginExperience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Prompt) pulumi.StringPtrOutput { return v.UniversalLoginExperience }).(pulumi.StringPtrOutput)
+}
+
+// Boolean. Determines if the login screen uses identifier and biometrics first.
+func (o PromptOutput) WebauthnPlatformFirstFactor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Prompt) pulumi.BoolPtrOutput { return v.WebauthnPlatformFirstFactor }).(pulumi.BoolPtrOutput)
 }
 
 type PromptArrayOutput struct{ *pulumi.OutputState }
