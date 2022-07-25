@@ -41,7 +41,7 @@ export interface AttackProtectionBreachedPasswordDetection {
     /**
      * When "adminNotification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      */
-    adminNotificationFrequencies?: string[];
+    adminNotificationFrequencies: string[];
     /**
      * Whether or not breached password detection is active.
      */
@@ -49,18 +49,18 @@ export interface AttackProtectionBreachedPasswordDetection {
     /**
      * The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
      */
-    method?: string;
+    method: string;
     /**
      * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
      */
-    shields?: string[];
+    shields: string[];
 }
 
 export interface AttackProtectionBruteForceProtection {
     /**
      * List of trusted IP addresses that will not have attack protection enforced against them.
      */
-    allowlists?: string[];
+    allowlists: string[];
     /**
      * Whether or not breached password detection is active.
      */
@@ -68,22 +68,22 @@ export interface AttackProtectionBruteForceProtection {
     /**
      * Maximum number of unsuccessful attempts. Only available on public tenants.
      */
-    maxAttempts?: number;
+    maxAttempts: number;
     /**
      * Determines whether or not IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
      */
-    mode?: string;
+    mode: string;
     /**
      * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
      */
-    shields?: string[];
+    shields: string[];
 }
 
 export interface AttackProtectionSuspiciousIpThrottling {
     /**
      * List of trusted IP addresses that will not have attack protection enforced against them.
      */
-    allowlists?: string[];
+    allowlists: string[];
     /**
      * Whether or not breached password detection is active.
      */
@@ -91,31 +91,31 @@ export interface AttackProtectionSuspiciousIpThrottling {
     /**
      * Configuration options that apply before every login attempt. Only available on public tenants.
      */
-    preLogin?: outputs.AttackProtectionSuspiciousIpThrottlingPreLogin;
+    preLogin: outputs.AttackProtectionSuspiciousIpThrottlingPreLogin;
     /**
      * Configuration options that apply before every user registration attempt. Only available on public tenants.
      */
-    preUserRegistration?: outputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration;
+    preUserRegistration: outputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration;
     /**
      * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
      */
-    shields?: string[];
+    shields: string[];
 }
 
 export interface AttackProtectionSuspiciousIpThrottlingPreLogin {
     /**
      * Maximum number of unsuccessful attempts. Only available on public tenants.
      */
-    maxAttempts?: number;
-    rate?: number;
+    maxAttempts: number;
+    rate: number;
 }
 
 export interface AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
     /**
      * Maximum number of unsuccessful attempts. Only available on public tenants.
      */
-    maxAttempts?: number;
-    rate?: number;
+    maxAttempts: number;
+    rate: number;
 }
 
 export interface BrandingColors {
@@ -463,6 +463,10 @@ export interface ConnectionOptions {
      * Azure AD app ID.
      */
     appId?: string;
+    /**
+     * Map(String). Use this to append or override the link parameters (like `scope`, `redirectUri`, `protocol`, `responseType`), when you send a link using email.
+     */
+    authParams?: {[key: string]: string};
     authorizationEndpoint?: string;
     /**
      * Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
@@ -693,6 +697,10 @@ export interface ConnectionOptions {
      * Value can be `backChannel` or `frontChannel`.
      */
     type?: string;
+    /**
+     * String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+     */
+    upstreamParams?: string;
     useCertAuth?: boolean;
     useKerberos?: boolean;
     useWsfed?: boolean;
@@ -1151,6 +1159,21 @@ export interface GlobalClientRefreshToken {
     tokenLifetime: number;
 }
 
+export interface GuardianDuo {
+    /**
+     * String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+     */
+    hostname: string;
+    /**
+     * String. Duo client ID, see the Duo documentation for more details on Duo setup.
+     */
+    integrationKey: string;
+    /**
+     * String. Duo client secret, see the Duo documentation for more details on Duo setup.
+     */
+    secretKey: string;
+}
+
 export interface GuardianPhone {
     /**
      * List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
@@ -1191,6 +1214,75 @@ export interface GuardianPhoneOptions {
      * String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
      */
     verificationMessage?: string;
+}
+
+export interface GuardianPush {
+    amazonSns?: outputs.GuardianPushAmazonSns;
+    customApp?: outputs.GuardianPushCustomApp;
+}
+
+export interface GuardianPushAmazonSns {
+    /**
+     * String. Your AWS Access Key ID.
+     */
+    awsAccessKeyId: string;
+    /**
+     * String. Your AWS application's region.
+     */
+    awsRegion: string;
+    /**
+     * String. Your AWS Secret Access Key.
+     */
+    awsSecretAccessKey: string;
+    /**
+     * String. The Amazon Resource Name for your Apple Push Notification Service.
+     */
+    snsApnsPlatformApplicationArn: string;
+    /**
+     * String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
+     */
+    snsGcmPlatformApplicationArn: string;
+}
+
+export interface GuardianPushCustomApp {
+    /**
+     * String. Custom Application Name.
+     */
+    appName?: string;
+    /**
+     * String. Apple App Store URL.
+     */
+    appleAppLink?: string;
+    /**
+     * String. Google Store URL.
+     */
+    googleAppLink?: string;
+}
+
+export interface GuardianWebauthnPlatform {
+    /**
+     * Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     */
+    overrideRelyingParty: boolean;
+    /**
+     * String. The Relying Party should be a suffix of the custom domain.
+     */
+    relyingPartyIdentifier: string;
+}
+
+export interface GuardianWebauthnRoaming {
+    /**
+     * Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     */
+    overrideRelyingParty: boolean;
+    /**
+     * String. The Relying Party should be a suffix of the custom domain.
+     */
+    relyingPartyIdentifier: string;
+    /**
+     * String. User verification, one of `discouraged`, `preferred` or `required`.
+     */
+    userVerification: string;
 }
 
 export interface LogStreamSink {
@@ -1442,6 +1534,10 @@ export interface TenantGuardianMfaPage {
     html: string;
 }
 
+export interface TenantSessionCookie {
+    mode?: string;
+}
+
 export interface TenantUniversalLogin {
     /**
      * List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
@@ -1470,4 +1566,3 @@ export interface TriggerBindingAction {
      */
     id: string;
 }
-

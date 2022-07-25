@@ -33,6 +33,7 @@ import * as utilities from "./utilities";
  *     syntax: "liquid",
  *     urlLifetimeInSeconds: 3600,
  *     enabled: true,
+ *     includeEmailInRedirect: true,
  * }, {
  *     dependsOn: [myEmailProvider],
  * });
@@ -87,6 +88,10 @@ export class EmailTemplate extends pulumi.CustomResource {
      */
     public readonly from!: pulumi.Output<string>;
     /**
+     * Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     */
+    public readonly includeEmailInRedirect!: pulumi.Output<boolean>;
+    /**
      * String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
      */
     public readonly resultUrl!: pulumi.Output<string | undefined>;
@@ -123,6 +128,7 @@ export class EmailTemplate extends pulumi.CustomResource {
             resourceInputs["body"] = state ? state.body : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["from"] = state ? state.from : undefined;
+            resourceInputs["includeEmailInRedirect"] = state ? state.includeEmailInRedirect : undefined;
             resourceInputs["resultUrl"] = state ? state.resultUrl : undefined;
             resourceInputs["subject"] = state ? state.subject : undefined;
             resourceInputs["syntax"] = state ? state.syntax : undefined;
@@ -151,6 +157,7 @@ export class EmailTemplate extends pulumi.CustomResource {
             resourceInputs["body"] = args ? args.body : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["from"] = args ? args.from : undefined;
+            resourceInputs["includeEmailInRedirect"] = args ? args.includeEmailInRedirect : undefined;
             resourceInputs["resultUrl"] = args ? args.resultUrl : undefined;
             resourceInputs["subject"] = args ? args.subject : undefined;
             resourceInputs["syntax"] = args ? args.syntax : undefined;
@@ -178,6 +185,10 @@ export interface EmailTemplateState {
      * String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
      */
     from?: pulumi.Input<string>;
+    /**
+     * Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     */
+    includeEmailInRedirect?: pulumi.Input<boolean>;
     /**
      * String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
      */
@@ -216,6 +227,10 @@ export interface EmailTemplateArgs {
      * String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
      */
     from: pulumi.Input<string>;
+    /**
+     * Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     */
+    includeEmailInRedirect?: pulumi.Input<boolean>;
     /**
      * String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
      */

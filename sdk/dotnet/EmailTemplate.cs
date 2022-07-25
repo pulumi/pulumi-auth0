@@ -45,6 +45,7 @@ namespace Pulumi.Auth0
     ///             Syntax = "liquid",
     ///             UrlLifetimeInSeconds = 3600,
     ///             Enabled = true,
+    ///             IncludeEmailInRedirect = true,
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 
@@ -85,6 +86,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("from")]
         public Output<string> From { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean. Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+        /// </summary>
+        [Output("includeEmailInRedirect")]
+        public Output<bool> IncludeEmailInRedirect { get; private set; } = null!;
 
         /// <summary>
         /// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
@@ -181,6 +188,12 @@ namespace Pulumi.Auth0
         public Input<string> From { get; set; } = null!;
 
         /// <summary>
+        /// Boolean. Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+        /// </summary>
+        [Input("includeEmailInRedirect")]
+        public Input<bool>? IncludeEmailInRedirect { get; set; }
+
+        /// <summary>
         /// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
         /// </summary>
         [Input("resultUrl")]
@@ -234,6 +247,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("from")]
         public Input<string>? From { get; set; }
+
+        /// <summary>
+        /// Boolean. Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+        /// </summary>
+        [Input("includeEmailInRedirect")]
+        public Input<bool>? IncludeEmailInRedirect { get; set; }
 
         /// <summary>
         /// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).

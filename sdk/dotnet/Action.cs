@@ -68,7 +68,7 @@ namespace Pulumi.Auth0
     ///             SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
     ///             {
     ///                 Id = "post-login",
-    ///                 Version = "v2",
+    ///                 Version = "v3",
     ///             },
     ///         });
     ///     }

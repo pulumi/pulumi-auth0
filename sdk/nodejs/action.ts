@@ -51,7 +51,7 @@ import * as utilities from "./utilities";
  *     ],
  *     supportedTriggers: {
  *         id: "post-login",
- *         version: "v2",
+ *         version: "v3",
  *     },
  * });
  * ```

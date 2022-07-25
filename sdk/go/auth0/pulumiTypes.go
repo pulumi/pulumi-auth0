@@ -4234,8 +4234,10 @@ type ConnectionOptions struct {
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
 	ApiEnableUsers   *bool    `pulumi:"apiEnableUsers"`
 	// Azure AD app ID.
-	AppId                 *string `pulumi:"appId"`
-	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
+	AppId *string `pulumi:"appId"`
+	// Map(String). Use this to append or override the link parameters (like `scope`, `redirectUri`, `protocol`, `responseType`), when you send a link using email.
+	AuthParams            map[string]string `pulumi:"authParams"`
+	AuthorizationEndpoint *string           `pulumi:"authorizationEndpoint"`
 	// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 	BruteForceProtection *bool `pulumi:"bruteForceProtection"`
 	// OIDC provider client ID.
@@ -4356,10 +4358,12 @@ type ConnectionOptions struct {
 	// AuthToken for your Twilio account.
 	TwilioToken *string `pulumi:"twilioToken"`
 	// Value can be `backChannel` or `frontChannel`.
-	Type        *string `pulumi:"type"`
-	UseCertAuth *bool   `pulumi:"useCertAuth"`
-	UseKerberos *bool   `pulumi:"useKerberos"`
-	UseWsfed    *bool   `pulumi:"useWsfed"`
+	Type *string `pulumi:"type"`
+	// String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+	UpstreamParams *string `pulumi:"upstreamParams"`
+	UseCertAuth    *bool   `pulumi:"useCertAuth"`
+	UseKerberos    *bool   `pulumi:"useKerberos"`
+	UseWsfed       *bool   `pulumi:"useWsfed"`
 	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
 	UserIdAttribute  *string `pulumi:"userIdAttribute"`
 	UserinfoEndpoint *string `pulumi:"userinfoEndpoint"`
@@ -4388,7 +4392,9 @@ type ConnectionOptionsArgs struct {
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
 	ApiEnableUsers   pulumi.BoolPtrInput     `pulumi:"apiEnableUsers"`
 	// Azure AD app ID.
-	AppId                 pulumi.StringPtrInput `pulumi:"appId"`
+	AppId pulumi.StringPtrInput `pulumi:"appId"`
+	// Map(String). Use this to append or override the link parameters (like `scope`, `redirectUri`, `protocol`, `responseType`), when you send a link using email.
+	AuthParams            pulumi.StringMapInput `pulumi:"authParams"`
 	AuthorizationEndpoint pulumi.StringPtrInput `pulumi:"authorizationEndpoint"`
 	// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
 	BruteForceProtection pulumi.BoolPtrInput `pulumi:"bruteForceProtection"`
@@ -4510,10 +4516,12 @@ type ConnectionOptionsArgs struct {
 	// AuthToken for your Twilio account.
 	TwilioToken pulumi.StringPtrInput `pulumi:"twilioToken"`
 	// Value can be `backChannel` or `frontChannel`.
-	Type        pulumi.StringPtrInput `pulumi:"type"`
-	UseCertAuth pulumi.BoolPtrInput   `pulumi:"useCertAuth"`
-	UseKerberos pulumi.BoolPtrInput   `pulumi:"useKerberos"`
-	UseWsfed    pulumi.BoolPtrInput   `pulumi:"useWsfed"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+	UpstreamParams pulumi.StringPtrInput `pulumi:"upstreamParams"`
+	UseCertAuth    pulumi.BoolPtrInput   `pulumi:"useCertAuth"`
+	UseKerberos    pulumi.BoolPtrInput   `pulumi:"useKerberos"`
+	UseWsfed       pulumi.BoolPtrInput   `pulumi:"useWsfed"`
 	// Attribute in the SAML token that will be mapped to the userId property in Auth0.
 	UserIdAttribute  pulumi.StringPtrInput `pulumi:"userIdAttribute"`
 	UserinfoEndpoint pulumi.StringPtrInput `pulumi:"userinfoEndpoint"`
@@ -4618,6 +4626,11 @@ func (o ConnectionOptionsOutput) ApiEnableUsers() pulumi.BoolPtrOutput {
 // Azure AD app ID.
 func (o ConnectionOptionsOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AppId }).(pulumi.StringPtrOutput)
+}
+
+// Map(String). Use this to append or override the link parameters (like `scope`, `redirectUri`, `protocol`, `responseType`), when you send a link using email.
+func (o ConnectionOptionsOutput) AuthParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.AuthParams }).(pulumi.StringMapOutput)
 }
 
 func (o ConnectionOptionsOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
@@ -4948,6 +4961,11 @@ func (o ConnectionOptionsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+func (o ConnectionOptionsOutput) UpstreamParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.UpstreamParams }).(pulumi.StringPtrOutput)
+}
+
 func (o ConnectionOptionsOutput) UseCertAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseCertAuth }).(pulumi.BoolPtrOutput)
 }
@@ -5044,6 +5062,16 @@ func (o ConnectionOptionsPtrOutput) AppId() pulumi.StringPtrOutput {
 		}
 		return v.AppId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Map(String). Use this to append or override the link parameters (like `scope`, `redirectUri`, `protocol`, `responseType`), when you send a link using email.
+func (o ConnectionOptionsPtrOutput) AuthParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthParams
+	}).(pulumi.StringMapOutput)
 }
 
 func (o ConnectionOptionsPtrOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
@@ -5709,6 +5737,16 @@ func (o ConnectionOptionsPtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+func (o ConnectionOptionsPtrOutput) UpstreamParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpstreamParams
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10048,6 +10086,181 @@ func (o GlobalClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GuardianDuo struct {
+	// String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+	Hostname string `pulumi:"hostname"`
+	// String. Duo client ID, see the Duo documentation for more details on Duo setup.
+	IntegrationKey string `pulumi:"integrationKey"`
+	// String. Duo client secret, see the Duo documentation for more details on Duo setup.
+	SecretKey string `pulumi:"secretKey"`
+}
+
+// GuardianDuoInput is an input type that accepts GuardianDuoArgs and GuardianDuoOutput values.
+// You can construct a concrete instance of `GuardianDuoInput` via:
+//
+//          GuardianDuoArgs{...}
+type GuardianDuoInput interface {
+	pulumi.Input
+
+	ToGuardianDuoOutput() GuardianDuoOutput
+	ToGuardianDuoOutputWithContext(context.Context) GuardianDuoOutput
+}
+
+type GuardianDuoArgs struct {
+	// String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// String. Duo client ID, see the Duo documentation for more details on Duo setup.
+	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
+	// String. Duo client secret, see the Duo documentation for more details on Duo setup.
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+}
+
+func (GuardianDuoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianDuo)(nil)).Elem()
+}
+
+func (i GuardianDuoArgs) ToGuardianDuoOutput() GuardianDuoOutput {
+	return i.ToGuardianDuoOutputWithContext(context.Background())
+}
+
+func (i GuardianDuoArgs) ToGuardianDuoOutputWithContext(ctx context.Context) GuardianDuoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianDuoOutput)
+}
+
+func (i GuardianDuoArgs) ToGuardianDuoPtrOutput() GuardianDuoPtrOutput {
+	return i.ToGuardianDuoPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianDuoArgs) ToGuardianDuoPtrOutputWithContext(ctx context.Context) GuardianDuoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianDuoOutput).ToGuardianDuoPtrOutputWithContext(ctx)
+}
+
+// GuardianDuoPtrInput is an input type that accepts GuardianDuoArgs, GuardianDuoPtr and GuardianDuoPtrOutput values.
+// You can construct a concrete instance of `GuardianDuoPtrInput` via:
+//
+//          GuardianDuoArgs{...}
+//
+//  or:
+//
+//          nil
+type GuardianDuoPtrInput interface {
+	pulumi.Input
+
+	ToGuardianDuoPtrOutput() GuardianDuoPtrOutput
+	ToGuardianDuoPtrOutputWithContext(context.Context) GuardianDuoPtrOutput
+}
+
+type guardianDuoPtrType GuardianDuoArgs
+
+func GuardianDuoPtr(v *GuardianDuoArgs) GuardianDuoPtrInput {
+	return (*guardianDuoPtrType)(v)
+}
+
+func (*guardianDuoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianDuo)(nil)).Elem()
+}
+
+func (i *guardianDuoPtrType) ToGuardianDuoPtrOutput() GuardianDuoPtrOutput {
+	return i.ToGuardianDuoPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianDuoPtrType) ToGuardianDuoPtrOutputWithContext(ctx context.Context) GuardianDuoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianDuoPtrOutput)
+}
+
+type GuardianDuoOutput struct{ *pulumi.OutputState }
+
+func (GuardianDuoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianDuo)(nil)).Elem()
+}
+
+func (o GuardianDuoOutput) ToGuardianDuoOutput() GuardianDuoOutput {
+	return o
+}
+
+func (o GuardianDuoOutput) ToGuardianDuoOutputWithContext(ctx context.Context) GuardianDuoOutput {
+	return o
+}
+
+func (o GuardianDuoOutput) ToGuardianDuoPtrOutput() GuardianDuoPtrOutput {
+	return o.ToGuardianDuoPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianDuoOutput) ToGuardianDuoPtrOutputWithContext(ctx context.Context) GuardianDuoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianDuo) *GuardianDuo {
+		return &v
+	}).(GuardianDuoPtrOutput)
+}
+
+// String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+func (o GuardianDuoOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianDuo) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// String. Duo client ID, see the Duo documentation for more details on Duo setup.
+func (o GuardianDuoOutput) IntegrationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianDuo) string { return v.IntegrationKey }).(pulumi.StringOutput)
+}
+
+// String. Duo client secret, see the Duo documentation for more details on Duo setup.
+func (o GuardianDuoOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianDuo) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+type GuardianDuoPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianDuoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianDuo)(nil)).Elem()
+}
+
+func (o GuardianDuoPtrOutput) ToGuardianDuoPtrOutput() GuardianDuoPtrOutput {
+	return o
+}
+
+func (o GuardianDuoPtrOutput) ToGuardianDuoPtrOutputWithContext(ctx context.Context) GuardianDuoPtrOutput {
+	return o
+}
+
+func (o GuardianDuoPtrOutput) Elem() GuardianDuoOutput {
+	return o.ApplyT(func(v *GuardianDuo) GuardianDuo {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianDuo
+		return ret
+	}).(GuardianDuoOutput)
+}
+
+// String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+func (o GuardianDuoPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianDuo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. Duo client ID, see the Duo documentation for more details on Duo setup.
+func (o GuardianDuoPtrOutput) IntegrationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianDuo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IntegrationKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. Duo client secret, see the Duo documentation for more details on Duo setup.
+func (o GuardianDuoPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianDuo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type GuardianPhone struct {
 	// List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
 	MessageTypes []string `pulumi:"messageTypes"`
@@ -10452,6 +10665,873 @@ func (o GuardianPhoneOptionsPtrOutput) VerificationMessage() pulumi.StringPtrOut
 			return nil
 		}
 		return v.VerificationMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardianPush struct {
+	AmazonSns *GuardianPushAmazonSns `pulumi:"amazonSns"`
+	CustomApp *GuardianPushCustomApp `pulumi:"customApp"`
+}
+
+// GuardianPushInput is an input type that accepts GuardianPushArgs and GuardianPushOutput values.
+// You can construct a concrete instance of `GuardianPushInput` via:
+//
+//          GuardianPushArgs{...}
+type GuardianPushInput interface {
+	pulumi.Input
+
+	ToGuardianPushOutput() GuardianPushOutput
+	ToGuardianPushOutputWithContext(context.Context) GuardianPushOutput
+}
+
+type GuardianPushArgs struct {
+	AmazonSns GuardianPushAmazonSnsPtrInput `pulumi:"amazonSns"`
+	CustomApp GuardianPushCustomAppPtrInput `pulumi:"customApp"`
+}
+
+func (GuardianPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPush)(nil)).Elem()
+}
+
+func (i GuardianPushArgs) ToGuardianPushOutput() GuardianPushOutput {
+	return i.ToGuardianPushOutputWithContext(context.Background())
+}
+
+func (i GuardianPushArgs) ToGuardianPushOutputWithContext(ctx context.Context) GuardianPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushOutput)
+}
+
+func (i GuardianPushArgs) ToGuardianPushPtrOutput() GuardianPushPtrOutput {
+	return i.ToGuardianPushPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianPushArgs) ToGuardianPushPtrOutputWithContext(ctx context.Context) GuardianPushPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushOutput).ToGuardianPushPtrOutputWithContext(ctx)
+}
+
+// GuardianPushPtrInput is an input type that accepts GuardianPushArgs, GuardianPushPtr and GuardianPushPtrOutput values.
+// You can construct a concrete instance of `GuardianPushPtrInput` via:
+//
+//          GuardianPushArgs{...}
+//
+//  or:
+//
+//          nil
+type GuardianPushPtrInput interface {
+	pulumi.Input
+
+	ToGuardianPushPtrOutput() GuardianPushPtrOutput
+	ToGuardianPushPtrOutputWithContext(context.Context) GuardianPushPtrOutput
+}
+
+type guardianPushPtrType GuardianPushArgs
+
+func GuardianPushPtr(v *GuardianPushArgs) GuardianPushPtrInput {
+	return (*guardianPushPtrType)(v)
+}
+
+func (*guardianPushPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPush)(nil)).Elem()
+}
+
+func (i *guardianPushPtrType) ToGuardianPushPtrOutput() GuardianPushPtrOutput {
+	return i.ToGuardianPushPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianPushPtrType) ToGuardianPushPtrOutputWithContext(ctx context.Context) GuardianPushPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushPtrOutput)
+}
+
+type GuardianPushOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPush)(nil)).Elem()
+}
+
+func (o GuardianPushOutput) ToGuardianPushOutput() GuardianPushOutput {
+	return o
+}
+
+func (o GuardianPushOutput) ToGuardianPushOutputWithContext(ctx context.Context) GuardianPushOutput {
+	return o
+}
+
+func (o GuardianPushOutput) ToGuardianPushPtrOutput() GuardianPushPtrOutput {
+	return o.ToGuardianPushPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianPushOutput) ToGuardianPushPtrOutputWithContext(ctx context.Context) GuardianPushPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianPush) *GuardianPush {
+		return &v
+	}).(GuardianPushPtrOutput)
+}
+
+func (o GuardianPushOutput) AmazonSns() GuardianPushAmazonSnsPtrOutput {
+	return o.ApplyT(func(v GuardianPush) *GuardianPushAmazonSns { return v.AmazonSns }).(GuardianPushAmazonSnsPtrOutput)
+}
+
+func (o GuardianPushOutput) CustomApp() GuardianPushCustomAppPtrOutput {
+	return o.ApplyT(func(v GuardianPush) *GuardianPushCustomApp { return v.CustomApp }).(GuardianPushCustomAppPtrOutput)
+}
+
+type GuardianPushPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPush)(nil)).Elem()
+}
+
+func (o GuardianPushPtrOutput) ToGuardianPushPtrOutput() GuardianPushPtrOutput {
+	return o
+}
+
+func (o GuardianPushPtrOutput) ToGuardianPushPtrOutputWithContext(ctx context.Context) GuardianPushPtrOutput {
+	return o
+}
+
+func (o GuardianPushPtrOutput) Elem() GuardianPushOutput {
+	return o.ApplyT(func(v *GuardianPush) GuardianPush {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianPush
+		return ret
+	}).(GuardianPushOutput)
+}
+
+func (o GuardianPushPtrOutput) AmazonSns() GuardianPushAmazonSnsPtrOutput {
+	return o.ApplyT(func(v *GuardianPush) *GuardianPushAmazonSns {
+		if v == nil {
+			return nil
+		}
+		return v.AmazonSns
+	}).(GuardianPushAmazonSnsPtrOutput)
+}
+
+func (o GuardianPushPtrOutput) CustomApp() GuardianPushCustomAppPtrOutput {
+	return o.ApplyT(func(v *GuardianPush) *GuardianPushCustomApp {
+		if v == nil {
+			return nil
+		}
+		return v.CustomApp
+	}).(GuardianPushCustomAppPtrOutput)
+}
+
+type GuardianPushAmazonSns struct {
+	// String. Your AWS Access Key ID.
+	AwsAccessKeyId string `pulumi:"awsAccessKeyId"`
+	// String. Your AWS application's region.
+	AwsRegion string `pulumi:"awsRegion"`
+	// String. Your AWS Secret Access Key.
+	AwsSecretAccessKey string `pulumi:"awsSecretAccessKey"`
+	// String. The Amazon Resource Name for your Apple Push Notification Service.
+	SnsApnsPlatformApplicationArn string `pulumi:"snsApnsPlatformApplicationArn"`
+	// String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
+	SnsGcmPlatformApplicationArn string `pulumi:"snsGcmPlatformApplicationArn"`
+}
+
+// GuardianPushAmazonSnsInput is an input type that accepts GuardianPushAmazonSnsArgs and GuardianPushAmazonSnsOutput values.
+// You can construct a concrete instance of `GuardianPushAmazonSnsInput` via:
+//
+//          GuardianPushAmazonSnsArgs{...}
+type GuardianPushAmazonSnsInput interface {
+	pulumi.Input
+
+	ToGuardianPushAmazonSnsOutput() GuardianPushAmazonSnsOutput
+	ToGuardianPushAmazonSnsOutputWithContext(context.Context) GuardianPushAmazonSnsOutput
+}
+
+type GuardianPushAmazonSnsArgs struct {
+	// String. Your AWS Access Key ID.
+	AwsAccessKeyId pulumi.StringInput `pulumi:"awsAccessKeyId"`
+	// String. Your AWS application's region.
+	AwsRegion pulumi.StringInput `pulumi:"awsRegion"`
+	// String. Your AWS Secret Access Key.
+	AwsSecretAccessKey pulumi.StringInput `pulumi:"awsSecretAccessKey"`
+	// String. The Amazon Resource Name for your Apple Push Notification Service.
+	SnsApnsPlatformApplicationArn pulumi.StringInput `pulumi:"snsApnsPlatformApplicationArn"`
+	// String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
+	SnsGcmPlatformApplicationArn pulumi.StringInput `pulumi:"snsGcmPlatformApplicationArn"`
+}
+
+func (GuardianPushAmazonSnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPushAmazonSns)(nil)).Elem()
+}
+
+func (i GuardianPushAmazonSnsArgs) ToGuardianPushAmazonSnsOutput() GuardianPushAmazonSnsOutput {
+	return i.ToGuardianPushAmazonSnsOutputWithContext(context.Background())
+}
+
+func (i GuardianPushAmazonSnsArgs) ToGuardianPushAmazonSnsOutputWithContext(ctx context.Context) GuardianPushAmazonSnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushAmazonSnsOutput)
+}
+
+func (i GuardianPushAmazonSnsArgs) ToGuardianPushAmazonSnsPtrOutput() GuardianPushAmazonSnsPtrOutput {
+	return i.ToGuardianPushAmazonSnsPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianPushAmazonSnsArgs) ToGuardianPushAmazonSnsPtrOutputWithContext(ctx context.Context) GuardianPushAmazonSnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushAmazonSnsOutput).ToGuardianPushAmazonSnsPtrOutputWithContext(ctx)
+}
+
+// GuardianPushAmazonSnsPtrInput is an input type that accepts GuardianPushAmazonSnsArgs, GuardianPushAmazonSnsPtr and GuardianPushAmazonSnsPtrOutput values.
+// You can construct a concrete instance of `GuardianPushAmazonSnsPtrInput` via:
+//
+//          GuardianPushAmazonSnsArgs{...}
+//
+//  or:
+//
+//          nil
+type GuardianPushAmazonSnsPtrInput interface {
+	pulumi.Input
+
+	ToGuardianPushAmazonSnsPtrOutput() GuardianPushAmazonSnsPtrOutput
+	ToGuardianPushAmazonSnsPtrOutputWithContext(context.Context) GuardianPushAmazonSnsPtrOutput
+}
+
+type guardianPushAmazonSnsPtrType GuardianPushAmazonSnsArgs
+
+func GuardianPushAmazonSnsPtr(v *GuardianPushAmazonSnsArgs) GuardianPushAmazonSnsPtrInput {
+	return (*guardianPushAmazonSnsPtrType)(v)
+}
+
+func (*guardianPushAmazonSnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPushAmazonSns)(nil)).Elem()
+}
+
+func (i *guardianPushAmazonSnsPtrType) ToGuardianPushAmazonSnsPtrOutput() GuardianPushAmazonSnsPtrOutput {
+	return i.ToGuardianPushAmazonSnsPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianPushAmazonSnsPtrType) ToGuardianPushAmazonSnsPtrOutputWithContext(ctx context.Context) GuardianPushAmazonSnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushAmazonSnsPtrOutput)
+}
+
+type GuardianPushAmazonSnsOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushAmazonSnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPushAmazonSns)(nil)).Elem()
+}
+
+func (o GuardianPushAmazonSnsOutput) ToGuardianPushAmazonSnsOutput() GuardianPushAmazonSnsOutput {
+	return o
+}
+
+func (o GuardianPushAmazonSnsOutput) ToGuardianPushAmazonSnsOutputWithContext(ctx context.Context) GuardianPushAmazonSnsOutput {
+	return o
+}
+
+func (o GuardianPushAmazonSnsOutput) ToGuardianPushAmazonSnsPtrOutput() GuardianPushAmazonSnsPtrOutput {
+	return o.ToGuardianPushAmazonSnsPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianPushAmazonSnsOutput) ToGuardianPushAmazonSnsPtrOutputWithContext(ctx context.Context) GuardianPushAmazonSnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianPushAmazonSns) *GuardianPushAmazonSns {
+		return &v
+	}).(GuardianPushAmazonSnsPtrOutput)
+}
+
+// String. Your AWS Access Key ID.
+func (o GuardianPushAmazonSnsOutput) AwsAccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.AwsAccessKeyId }).(pulumi.StringOutput)
+}
+
+// String. Your AWS application's region.
+func (o GuardianPushAmazonSnsOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.AwsRegion }).(pulumi.StringOutput)
+}
+
+// String. Your AWS Secret Access Key.
+func (o GuardianPushAmazonSnsOutput) AwsSecretAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.AwsSecretAccessKey }).(pulumi.StringOutput)
+}
+
+// String. The Amazon Resource Name for your Apple Push Notification Service.
+func (o GuardianPushAmazonSnsOutput) SnsApnsPlatformApplicationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.SnsApnsPlatformApplicationArn }).(pulumi.StringOutput)
+}
+
+// String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
+func (o GuardianPushAmazonSnsOutput) SnsGcmPlatformApplicationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPushAmazonSns) string { return v.SnsGcmPlatformApplicationArn }).(pulumi.StringOutput)
+}
+
+type GuardianPushAmazonSnsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushAmazonSnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPushAmazonSns)(nil)).Elem()
+}
+
+func (o GuardianPushAmazonSnsPtrOutput) ToGuardianPushAmazonSnsPtrOutput() GuardianPushAmazonSnsPtrOutput {
+	return o
+}
+
+func (o GuardianPushAmazonSnsPtrOutput) ToGuardianPushAmazonSnsPtrOutputWithContext(ctx context.Context) GuardianPushAmazonSnsPtrOutput {
+	return o
+}
+
+func (o GuardianPushAmazonSnsPtrOutput) Elem() GuardianPushAmazonSnsOutput {
+	return o.ApplyT(func(v *GuardianPushAmazonSns) GuardianPushAmazonSns {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianPushAmazonSns
+		return ret
+	}).(GuardianPushAmazonSnsOutput)
+}
+
+// String. Your AWS Access Key ID.
+func (o GuardianPushAmazonSnsPtrOutput) AwsAccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsAccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. Your AWS application's region.
+func (o GuardianPushAmazonSnsPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. Your AWS Secret Access Key.
+func (o GuardianPushAmazonSnsPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsSecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. The Amazon Resource Name for your Apple Push Notification Service.
+func (o GuardianPushAmazonSnsPtrOutput) SnsApnsPlatformApplicationArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SnsApnsPlatformApplicationArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
+func (o GuardianPushAmazonSnsPtrOutput) SnsGcmPlatformApplicationArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushAmazonSns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SnsGcmPlatformApplicationArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardianPushCustomApp struct {
+	// String. Custom Application Name.
+	AppName *string `pulumi:"appName"`
+	// String. Apple App Store URL.
+	AppleAppLink *string `pulumi:"appleAppLink"`
+	// String. Google Store URL.
+	GoogleAppLink *string `pulumi:"googleAppLink"`
+}
+
+// GuardianPushCustomAppInput is an input type that accepts GuardianPushCustomAppArgs and GuardianPushCustomAppOutput values.
+// You can construct a concrete instance of `GuardianPushCustomAppInput` via:
+//
+//          GuardianPushCustomAppArgs{...}
+type GuardianPushCustomAppInput interface {
+	pulumi.Input
+
+	ToGuardianPushCustomAppOutput() GuardianPushCustomAppOutput
+	ToGuardianPushCustomAppOutputWithContext(context.Context) GuardianPushCustomAppOutput
+}
+
+type GuardianPushCustomAppArgs struct {
+	// String. Custom Application Name.
+	AppName pulumi.StringPtrInput `pulumi:"appName"`
+	// String. Apple App Store URL.
+	AppleAppLink pulumi.StringPtrInput `pulumi:"appleAppLink"`
+	// String. Google Store URL.
+	GoogleAppLink pulumi.StringPtrInput `pulumi:"googleAppLink"`
+}
+
+func (GuardianPushCustomAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPushCustomApp)(nil)).Elem()
+}
+
+func (i GuardianPushCustomAppArgs) ToGuardianPushCustomAppOutput() GuardianPushCustomAppOutput {
+	return i.ToGuardianPushCustomAppOutputWithContext(context.Background())
+}
+
+func (i GuardianPushCustomAppArgs) ToGuardianPushCustomAppOutputWithContext(ctx context.Context) GuardianPushCustomAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushCustomAppOutput)
+}
+
+func (i GuardianPushCustomAppArgs) ToGuardianPushCustomAppPtrOutput() GuardianPushCustomAppPtrOutput {
+	return i.ToGuardianPushCustomAppPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianPushCustomAppArgs) ToGuardianPushCustomAppPtrOutputWithContext(ctx context.Context) GuardianPushCustomAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushCustomAppOutput).ToGuardianPushCustomAppPtrOutputWithContext(ctx)
+}
+
+// GuardianPushCustomAppPtrInput is an input type that accepts GuardianPushCustomAppArgs, GuardianPushCustomAppPtr and GuardianPushCustomAppPtrOutput values.
+// You can construct a concrete instance of `GuardianPushCustomAppPtrInput` via:
+//
+//          GuardianPushCustomAppArgs{...}
+//
+//  or:
+//
+//          nil
+type GuardianPushCustomAppPtrInput interface {
+	pulumi.Input
+
+	ToGuardianPushCustomAppPtrOutput() GuardianPushCustomAppPtrOutput
+	ToGuardianPushCustomAppPtrOutputWithContext(context.Context) GuardianPushCustomAppPtrOutput
+}
+
+type guardianPushCustomAppPtrType GuardianPushCustomAppArgs
+
+func GuardianPushCustomAppPtr(v *GuardianPushCustomAppArgs) GuardianPushCustomAppPtrInput {
+	return (*guardianPushCustomAppPtrType)(v)
+}
+
+func (*guardianPushCustomAppPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPushCustomApp)(nil)).Elem()
+}
+
+func (i *guardianPushCustomAppPtrType) ToGuardianPushCustomAppPtrOutput() GuardianPushCustomAppPtrOutput {
+	return i.ToGuardianPushCustomAppPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianPushCustomAppPtrType) ToGuardianPushCustomAppPtrOutputWithContext(ctx context.Context) GuardianPushCustomAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushCustomAppPtrOutput)
+}
+
+type GuardianPushCustomAppOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushCustomAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPushCustomApp)(nil)).Elem()
+}
+
+func (o GuardianPushCustomAppOutput) ToGuardianPushCustomAppOutput() GuardianPushCustomAppOutput {
+	return o
+}
+
+func (o GuardianPushCustomAppOutput) ToGuardianPushCustomAppOutputWithContext(ctx context.Context) GuardianPushCustomAppOutput {
+	return o
+}
+
+func (o GuardianPushCustomAppOutput) ToGuardianPushCustomAppPtrOutput() GuardianPushCustomAppPtrOutput {
+	return o.ToGuardianPushCustomAppPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianPushCustomAppOutput) ToGuardianPushCustomAppPtrOutputWithContext(ctx context.Context) GuardianPushCustomAppPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianPushCustomApp) *GuardianPushCustomApp {
+		return &v
+	}).(GuardianPushCustomAppPtrOutput)
+}
+
+// String. Custom Application Name.
+func (o GuardianPushCustomAppOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPushCustomApp) *string { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
+// String. Apple App Store URL.
+func (o GuardianPushCustomAppOutput) AppleAppLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPushCustomApp) *string { return v.AppleAppLink }).(pulumi.StringPtrOutput)
+}
+
+// String. Google Store URL.
+func (o GuardianPushCustomAppOutput) GoogleAppLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPushCustomApp) *string { return v.GoogleAppLink }).(pulumi.StringPtrOutput)
+}
+
+type GuardianPushCustomAppPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushCustomAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPushCustomApp)(nil)).Elem()
+}
+
+func (o GuardianPushCustomAppPtrOutput) ToGuardianPushCustomAppPtrOutput() GuardianPushCustomAppPtrOutput {
+	return o
+}
+
+func (o GuardianPushCustomAppPtrOutput) ToGuardianPushCustomAppPtrOutputWithContext(ctx context.Context) GuardianPushCustomAppPtrOutput {
+	return o
+}
+
+func (o GuardianPushCustomAppPtrOutput) Elem() GuardianPushCustomAppOutput {
+	return o.ApplyT(func(v *GuardianPushCustomApp) GuardianPushCustomApp {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianPushCustomApp
+		return ret
+	}).(GuardianPushCustomAppOutput)
+}
+
+// String. Custom Application Name.
+func (o GuardianPushCustomAppPtrOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushCustomApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppName
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. Apple App Store URL.
+func (o GuardianPushCustomAppPtrOutput) AppleAppLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushCustomApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppleAppLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. Google Store URL.
+func (o GuardianPushCustomAppPtrOutput) GoogleAppLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushCustomApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleAppLink
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardianWebauthnPlatform struct {
+	// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+	OverrideRelyingParty *bool `pulumi:"overrideRelyingParty"`
+	// String. The Relying Party should be a suffix of the custom domain.
+	RelyingPartyIdentifier *string `pulumi:"relyingPartyIdentifier"`
+}
+
+// GuardianWebauthnPlatformInput is an input type that accepts GuardianWebauthnPlatformArgs and GuardianWebauthnPlatformOutput values.
+// You can construct a concrete instance of `GuardianWebauthnPlatformInput` via:
+//
+//          GuardianWebauthnPlatformArgs{...}
+type GuardianWebauthnPlatformInput interface {
+	pulumi.Input
+
+	ToGuardianWebauthnPlatformOutput() GuardianWebauthnPlatformOutput
+	ToGuardianWebauthnPlatformOutputWithContext(context.Context) GuardianWebauthnPlatformOutput
+}
+
+type GuardianWebauthnPlatformArgs struct {
+	// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+	OverrideRelyingParty pulumi.BoolPtrInput `pulumi:"overrideRelyingParty"`
+	// String. The Relying Party should be a suffix of the custom domain.
+	RelyingPartyIdentifier pulumi.StringPtrInput `pulumi:"relyingPartyIdentifier"`
+}
+
+func (GuardianWebauthnPlatformArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianWebauthnPlatform)(nil)).Elem()
+}
+
+func (i GuardianWebauthnPlatformArgs) ToGuardianWebauthnPlatformOutput() GuardianWebauthnPlatformOutput {
+	return i.ToGuardianWebauthnPlatformOutputWithContext(context.Background())
+}
+
+func (i GuardianWebauthnPlatformArgs) ToGuardianWebauthnPlatformOutputWithContext(ctx context.Context) GuardianWebauthnPlatformOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianWebauthnPlatformOutput)
+}
+
+func (i GuardianWebauthnPlatformArgs) ToGuardianWebauthnPlatformPtrOutput() GuardianWebauthnPlatformPtrOutput {
+	return i.ToGuardianWebauthnPlatformPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianWebauthnPlatformArgs) ToGuardianWebauthnPlatformPtrOutputWithContext(ctx context.Context) GuardianWebauthnPlatformPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianWebauthnPlatformOutput).ToGuardianWebauthnPlatformPtrOutputWithContext(ctx)
+}
+
+// GuardianWebauthnPlatformPtrInput is an input type that accepts GuardianWebauthnPlatformArgs, GuardianWebauthnPlatformPtr and GuardianWebauthnPlatformPtrOutput values.
+// You can construct a concrete instance of `GuardianWebauthnPlatformPtrInput` via:
+//
+//          GuardianWebauthnPlatformArgs{...}
+//
+//  or:
+//
+//          nil
+type GuardianWebauthnPlatformPtrInput interface {
+	pulumi.Input
+
+	ToGuardianWebauthnPlatformPtrOutput() GuardianWebauthnPlatformPtrOutput
+	ToGuardianWebauthnPlatformPtrOutputWithContext(context.Context) GuardianWebauthnPlatformPtrOutput
+}
+
+type guardianWebauthnPlatformPtrType GuardianWebauthnPlatformArgs
+
+func GuardianWebauthnPlatformPtr(v *GuardianWebauthnPlatformArgs) GuardianWebauthnPlatformPtrInput {
+	return (*guardianWebauthnPlatformPtrType)(v)
+}
+
+func (*guardianWebauthnPlatformPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianWebauthnPlatform)(nil)).Elem()
+}
+
+func (i *guardianWebauthnPlatformPtrType) ToGuardianWebauthnPlatformPtrOutput() GuardianWebauthnPlatformPtrOutput {
+	return i.ToGuardianWebauthnPlatformPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianWebauthnPlatformPtrType) ToGuardianWebauthnPlatformPtrOutputWithContext(ctx context.Context) GuardianWebauthnPlatformPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianWebauthnPlatformPtrOutput)
+}
+
+type GuardianWebauthnPlatformOutput struct{ *pulumi.OutputState }
+
+func (GuardianWebauthnPlatformOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianWebauthnPlatform)(nil)).Elem()
+}
+
+func (o GuardianWebauthnPlatformOutput) ToGuardianWebauthnPlatformOutput() GuardianWebauthnPlatformOutput {
+	return o
+}
+
+func (o GuardianWebauthnPlatformOutput) ToGuardianWebauthnPlatformOutputWithContext(ctx context.Context) GuardianWebauthnPlatformOutput {
+	return o
+}
+
+func (o GuardianWebauthnPlatformOutput) ToGuardianWebauthnPlatformPtrOutput() GuardianWebauthnPlatformPtrOutput {
+	return o.ToGuardianWebauthnPlatformPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianWebauthnPlatformOutput) ToGuardianWebauthnPlatformPtrOutputWithContext(ctx context.Context) GuardianWebauthnPlatformPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianWebauthnPlatform) *GuardianWebauthnPlatform {
+		return &v
+	}).(GuardianWebauthnPlatformPtrOutput)
+}
+
+// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+func (o GuardianWebauthnPlatformOutput) OverrideRelyingParty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardianWebauthnPlatform) *bool { return v.OverrideRelyingParty }).(pulumi.BoolPtrOutput)
+}
+
+// String. The Relying Party should be a suffix of the custom domain.
+func (o GuardianWebauthnPlatformOutput) RelyingPartyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianWebauthnPlatform) *string { return v.RelyingPartyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+type GuardianWebauthnPlatformPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianWebauthnPlatformPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianWebauthnPlatform)(nil)).Elem()
+}
+
+func (o GuardianWebauthnPlatformPtrOutput) ToGuardianWebauthnPlatformPtrOutput() GuardianWebauthnPlatformPtrOutput {
+	return o
+}
+
+func (o GuardianWebauthnPlatformPtrOutput) ToGuardianWebauthnPlatformPtrOutputWithContext(ctx context.Context) GuardianWebauthnPlatformPtrOutput {
+	return o
+}
+
+func (o GuardianWebauthnPlatformPtrOutput) Elem() GuardianWebauthnPlatformOutput {
+	return o.ApplyT(func(v *GuardianWebauthnPlatform) GuardianWebauthnPlatform {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianWebauthnPlatform
+		return ret
+	}).(GuardianWebauthnPlatformOutput)
+}
+
+// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+func (o GuardianWebauthnPlatformPtrOutput) OverrideRelyingParty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianWebauthnPlatform) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideRelyingParty
+	}).(pulumi.BoolPtrOutput)
+}
+
+// String. The Relying Party should be a suffix of the custom domain.
+func (o GuardianWebauthnPlatformPtrOutput) RelyingPartyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianWebauthnPlatform) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelyingPartyIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardianWebauthnRoaming struct {
+	// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+	OverrideRelyingParty *bool `pulumi:"overrideRelyingParty"`
+	// String. The Relying Party should be a suffix of the custom domain.
+	RelyingPartyIdentifier *string `pulumi:"relyingPartyIdentifier"`
+	// String. User verification, one of `discouraged`, `preferred` or `required`.
+	UserVerification *string `pulumi:"userVerification"`
+}
+
+// GuardianWebauthnRoamingInput is an input type that accepts GuardianWebauthnRoamingArgs and GuardianWebauthnRoamingOutput values.
+// You can construct a concrete instance of `GuardianWebauthnRoamingInput` via:
+//
+//          GuardianWebauthnRoamingArgs{...}
+type GuardianWebauthnRoamingInput interface {
+	pulumi.Input
+
+	ToGuardianWebauthnRoamingOutput() GuardianWebauthnRoamingOutput
+	ToGuardianWebauthnRoamingOutputWithContext(context.Context) GuardianWebauthnRoamingOutput
+}
+
+type GuardianWebauthnRoamingArgs struct {
+	// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+	OverrideRelyingParty pulumi.BoolPtrInput `pulumi:"overrideRelyingParty"`
+	// String. The Relying Party should be a suffix of the custom domain.
+	RelyingPartyIdentifier pulumi.StringPtrInput `pulumi:"relyingPartyIdentifier"`
+	// String. User verification, one of `discouraged`, `preferred` or `required`.
+	UserVerification pulumi.StringPtrInput `pulumi:"userVerification"`
+}
+
+func (GuardianWebauthnRoamingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianWebauthnRoaming)(nil)).Elem()
+}
+
+func (i GuardianWebauthnRoamingArgs) ToGuardianWebauthnRoamingOutput() GuardianWebauthnRoamingOutput {
+	return i.ToGuardianWebauthnRoamingOutputWithContext(context.Background())
+}
+
+func (i GuardianWebauthnRoamingArgs) ToGuardianWebauthnRoamingOutputWithContext(ctx context.Context) GuardianWebauthnRoamingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianWebauthnRoamingOutput)
+}
+
+func (i GuardianWebauthnRoamingArgs) ToGuardianWebauthnRoamingPtrOutput() GuardianWebauthnRoamingPtrOutput {
+	return i.ToGuardianWebauthnRoamingPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianWebauthnRoamingArgs) ToGuardianWebauthnRoamingPtrOutputWithContext(ctx context.Context) GuardianWebauthnRoamingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianWebauthnRoamingOutput).ToGuardianWebauthnRoamingPtrOutputWithContext(ctx)
+}
+
+// GuardianWebauthnRoamingPtrInput is an input type that accepts GuardianWebauthnRoamingArgs, GuardianWebauthnRoamingPtr and GuardianWebauthnRoamingPtrOutput values.
+// You can construct a concrete instance of `GuardianWebauthnRoamingPtrInput` via:
+//
+//          GuardianWebauthnRoamingArgs{...}
+//
+//  or:
+//
+//          nil
+type GuardianWebauthnRoamingPtrInput interface {
+	pulumi.Input
+
+	ToGuardianWebauthnRoamingPtrOutput() GuardianWebauthnRoamingPtrOutput
+	ToGuardianWebauthnRoamingPtrOutputWithContext(context.Context) GuardianWebauthnRoamingPtrOutput
+}
+
+type guardianWebauthnRoamingPtrType GuardianWebauthnRoamingArgs
+
+func GuardianWebauthnRoamingPtr(v *GuardianWebauthnRoamingArgs) GuardianWebauthnRoamingPtrInput {
+	return (*guardianWebauthnRoamingPtrType)(v)
+}
+
+func (*guardianWebauthnRoamingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianWebauthnRoaming)(nil)).Elem()
+}
+
+func (i *guardianWebauthnRoamingPtrType) ToGuardianWebauthnRoamingPtrOutput() GuardianWebauthnRoamingPtrOutput {
+	return i.ToGuardianWebauthnRoamingPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianWebauthnRoamingPtrType) ToGuardianWebauthnRoamingPtrOutputWithContext(ctx context.Context) GuardianWebauthnRoamingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianWebauthnRoamingPtrOutput)
+}
+
+type GuardianWebauthnRoamingOutput struct{ *pulumi.OutputState }
+
+func (GuardianWebauthnRoamingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianWebauthnRoaming)(nil)).Elem()
+}
+
+func (o GuardianWebauthnRoamingOutput) ToGuardianWebauthnRoamingOutput() GuardianWebauthnRoamingOutput {
+	return o
+}
+
+func (o GuardianWebauthnRoamingOutput) ToGuardianWebauthnRoamingOutputWithContext(ctx context.Context) GuardianWebauthnRoamingOutput {
+	return o
+}
+
+func (o GuardianWebauthnRoamingOutput) ToGuardianWebauthnRoamingPtrOutput() GuardianWebauthnRoamingPtrOutput {
+	return o.ToGuardianWebauthnRoamingPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianWebauthnRoamingOutput) ToGuardianWebauthnRoamingPtrOutputWithContext(ctx context.Context) GuardianWebauthnRoamingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianWebauthnRoaming) *GuardianWebauthnRoaming {
+		return &v
+	}).(GuardianWebauthnRoamingPtrOutput)
+}
+
+// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+func (o GuardianWebauthnRoamingOutput) OverrideRelyingParty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardianWebauthnRoaming) *bool { return v.OverrideRelyingParty }).(pulumi.BoolPtrOutput)
+}
+
+// String. The Relying Party should be a suffix of the custom domain.
+func (o GuardianWebauthnRoamingOutput) RelyingPartyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianWebauthnRoaming) *string { return v.RelyingPartyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// String. User verification, one of `discouraged`, `preferred` or `required`.
+func (o GuardianWebauthnRoamingOutput) UserVerification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianWebauthnRoaming) *string { return v.UserVerification }).(pulumi.StringPtrOutput)
+}
+
+type GuardianWebauthnRoamingPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianWebauthnRoamingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianWebauthnRoaming)(nil)).Elem()
+}
+
+func (o GuardianWebauthnRoamingPtrOutput) ToGuardianWebauthnRoamingPtrOutput() GuardianWebauthnRoamingPtrOutput {
+	return o
+}
+
+func (o GuardianWebauthnRoamingPtrOutput) ToGuardianWebauthnRoamingPtrOutputWithContext(ctx context.Context) GuardianWebauthnRoamingPtrOutput {
+	return o
+}
+
+func (o GuardianWebauthnRoamingPtrOutput) Elem() GuardianWebauthnRoamingOutput {
+	return o.ApplyT(func(v *GuardianWebauthnRoaming) GuardianWebauthnRoaming {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianWebauthnRoaming
+		return ret
+	}).(GuardianWebauthnRoamingOutput)
+}
+
+// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+func (o GuardianWebauthnRoamingPtrOutput) OverrideRelyingParty() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianWebauthnRoaming) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideRelyingParty
+	}).(pulumi.BoolPtrOutput)
+}
+
+// String. The Relying Party should be a suffix of the custom domain.
+func (o GuardianWebauthnRoamingPtrOutput) RelyingPartyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianWebauthnRoaming) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelyingPartyIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// String. User verification, one of `discouraged`, `preferred` or `required`.
+func (o GuardianWebauthnRoamingPtrOutput) UserVerification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianWebauthnRoaming) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserVerification
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11086,7 +12166,7 @@ func (o OrganizationBrandingPtrOutput) LogoUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type OrganizationConnection struct {
+type OrganizationConnectionType struct {
 	// When true, all users that log in
 	// with this connection will be automatically granted membership in the
 	// organization. When false, users must be granted membership in the organization
@@ -11097,18 +12177,18 @@ type OrganizationConnection struct {
 	ConnectionId string `pulumi:"connectionId"`
 }
 
-// OrganizationConnectionInput is an input type that accepts OrganizationConnectionArgs and OrganizationConnectionOutput values.
-// You can construct a concrete instance of `OrganizationConnectionInput` via:
+// OrganizationConnectionTypeInput is an input type that accepts OrganizationConnectionTypeArgs and OrganizationConnectionTypeOutput values.
+// You can construct a concrete instance of `OrganizationConnectionTypeInput` via:
 //
-//          OrganizationConnectionArgs{...}
-type OrganizationConnectionInput interface {
+//          OrganizationConnectionTypeArgs{...}
+type OrganizationConnectionTypeInput interface {
 	pulumi.Input
 
-	ToOrganizationConnectionOutput() OrganizationConnectionOutput
-	ToOrganizationConnectionOutputWithContext(context.Context) OrganizationConnectionOutput
+	ToOrganizationConnectionTypeOutput() OrganizationConnectionTypeOutput
+	ToOrganizationConnectionTypeOutputWithContext(context.Context) OrganizationConnectionTypeOutput
 }
 
-type OrganizationConnectionArgs struct {
+type OrganizationConnectionTypeArgs struct {
 	// When true, all users that log in
 	// with this connection will be automatically granted membership in the
 	// organization. When false, users must be granted membership in the organization
@@ -11119,54 +12199,54 @@ type OrganizationConnectionArgs struct {
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
 }
 
-func (OrganizationConnectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationConnection)(nil)).Elem()
+func (OrganizationConnectionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConnectionType)(nil)).Elem()
 }
 
-func (i OrganizationConnectionArgs) ToOrganizationConnectionOutput() OrganizationConnectionOutput {
-	return i.ToOrganizationConnectionOutputWithContext(context.Background())
+func (i OrganizationConnectionTypeArgs) ToOrganizationConnectionTypeOutput() OrganizationConnectionTypeOutput {
+	return i.ToOrganizationConnectionTypeOutputWithContext(context.Background())
 }
 
-func (i OrganizationConnectionArgs) ToOrganizationConnectionOutputWithContext(ctx context.Context) OrganizationConnectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionOutput)
+func (i OrganizationConnectionTypeArgs) ToOrganizationConnectionTypeOutputWithContext(ctx context.Context) OrganizationConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionTypeOutput)
 }
 
-// OrganizationConnectionArrayInput is an input type that accepts OrganizationConnectionArray and OrganizationConnectionArrayOutput values.
-// You can construct a concrete instance of `OrganizationConnectionArrayInput` via:
+// OrganizationConnectionTypeArrayInput is an input type that accepts OrganizationConnectionTypeArray and OrganizationConnectionTypeArrayOutput values.
+// You can construct a concrete instance of `OrganizationConnectionTypeArrayInput` via:
 //
-//          OrganizationConnectionArray{ OrganizationConnectionArgs{...} }
-type OrganizationConnectionArrayInput interface {
+//          OrganizationConnectionTypeArray{ OrganizationConnectionTypeArgs{...} }
+type OrganizationConnectionTypeArrayInput interface {
 	pulumi.Input
 
-	ToOrganizationConnectionArrayOutput() OrganizationConnectionArrayOutput
-	ToOrganizationConnectionArrayOutputWithContext(context.Context) OrganizationConnectionArrayOutput
+	ToOrganizationConnectionTypeArrayOutput() OrganizationConnectionTypeArrayOutput
+	ToOrganizationConnectionTypeArrayOutputWithContext(context.Context) OrganizationConnectionTypeArrayOutput
 }
 
-type OrganizationConnectionArray []OrganizationConnectionInput
+type OrganizationConnectionTypeArray []OrganizationConnectionTypeInput
 
-func (OrganizationConnectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OrganizationConnection)(nil)).Elem()
+func (OrganizationConnectionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationConnectionType)(nil)).Elem()
 }
 
-func (i OrganizationConnectionArray) ToOrganizationConnectionArrayOutput() OrganizationConnectionArrayOutput {
-	return i.ToOrganizationConnectionArrayOutputWithContext(context.Background())
+func (i OrganizationConnectionTypeArray) ToOrganizationConnectionTypeArrayOutput() OrganizationConnectionTypeArrayOutput {
+	return i.ToOrganizationConnectionTypeArrayOutputWithContext(context.Background())
 }
 
-func (i OrganizationConnectionArray) ToOrganizationConnectionArrayOutputWithContext(ctx context.Context) OrganizationConnectionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionArrayOutput)
+func (i OrganizationConnectionTypeArray) ToOrganizationConnectionTypeArrayOutputWithContext(ctx context.Context) OrganizationConnectionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionTypeArrayOutput)
 }
 
-type OrganizationConnectionOutput struct{ *pulumi.OutputState }
+type OrganizationConnectionTypeOutput struct{ *pulumi.OutputState }
 
-func (OrganizationConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationConnection)(nil)).Elem()
+func (OrganizationConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConnectionType)(nil)).Elem()
 }
 
-func (o OrganizationConnectionOutput) ToOrganizationConnectionOutput() OrganizationConnectionOutput {
+func (o OrganizationConnectionTypeOutput) ToOrganizationConnectionTypeOutput() OrganizationConnectionTypeOutput {
 	return o
 }
 
-func (o OrganizationConnectionOutput) ToOrganizationConnectionOutputWithContext(ctx context.Context) OrganizationConnectionOutput {
+func (o OrganizationConnectionTypeOutput) ToOrganizationConnectionTypeOutputWithContext(ctx context.Context) OrganizationConnectionTypeOutput {
 	return o
 }
 
@@ -11174,34 +12254,34 @@ func (o OrganizationConnectionOutput) ToOrganizationConnectionOutputWithContext(
 // with this connection will be automatically granted membership in the
 // organization. When false, users must be granted membership in the organization
 // before logging in with this connection.
-func (o OrganizationConnectionOutput) AssignMembershipOnLogin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OrganizationConnection) *bool { return v.AssignMembershipOnLogin }).(pulumi.BoolPtrOutput)
+func (o OrganizationConnectionTypeOutput) AssignMembershipOnLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationConnectionType) *bool { return v.AssignMembershipOnLogin }).(pulumi.BoolPtrOutput)
 }
 
 // The connection ID of the connection to add to the
 // organization
-func (o OrganizationConnectionOutput) ConnectionId() pulumi.StringOutput {
-	return o.ApplyT(func(v OrganizationConnection) string { return v.ConnectionId }).(pulumi.StringOutput)
+func (o OrganizationConnectionTypeOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationConnectionType) string { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
-type OrganizationConnectionArrayOutput struct{ *pulumi.OutputState }
+type OrganizationConnectionTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (OrganizationConnectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OrganizationConnection)(nil)).Elem()
+func (OrganizationConnectionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationConnectionType)(nil)).Elem()
 }
 
-func (o OrganizationConnectionArrayOutput) ToOrganizationConnectionArrayOutput() OrganizationConnectionArrayOutput {
+func (o OrganizationConnectionTypeArrayOutput) ToOrganizationConnectionTypeArrayOutput() OrganizationConnectionTypeArrayOutput {
 	return o
 }
 
-func (o OrganizationConnectionArrayOutput) ToOrganizationConnectionArrayOutputWithContext(ctx context.Context) OrganizationConnectionArrayOutput {
+func (o OrganizationConnectionTypeArrayOutput) ToOrganizationConnectionTypeArrayOutputWithContext(ctx context.Context) OrganizationConnectionTypeArrayOutput {
 	return o
 }
 
-func (o OrganizationConnectionArrayOutput) Index(i pulumi.IntInput) OrganizationConnectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationConnection {
-		return vs[0].([]OrganizationConnection)[vs[1].(int)]
-	}).(OrganizationConnectionOutput)
+func (o OrganizationConnectionTypeArrayOutput) Index(i pulumi.IntInput) OrganizationConnectionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationConnectionType {
+		return vs[0].([]OrganizationConnectionType)[vs[1].(int)]
+	}).(OrganizationConnectionTypeOutput)
 }
 
 type ResourceServerScope struct {
@@ -12432,6 +13512,139 @@ func (o TenantGuardianMfaPagePtrOutput) Html() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Html
+	}).(pulumi.StringPtrOutput)
+}
+
+type TenantSessionCookie struct {
+	Mode *string `pulumi:"mode"`
+}
+
+// TenantSessionCookieInput is an input type that accepts TenantSessionCookieArgs and TenantSessionCookieOutput values.
+// You can construct a concrete instance of `TenantSessionCookieInput` via:
+//
+//          TenantSessionCookieArgs{...}
+type TenantSessionCookieInput interface {
+	pulumi.Input
+
+	ToTenantSessionCookieOutput() TenantSessionCookieOutput
+	ToTenantSessionCookieOutputWithContext(context.Context) TenantSessionCookieOutput
+}
+
+type TenantSessionCookieArgs struct {
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (TenantSessionCookieArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantSessionCookie)(nil)).Elem()
+}
+
+func (i TenantSessionCookieArgs) ToTenantSessionCookieOutput() TenantSessionCookieOutput {
+	return i.ToTenantSessionCookieOutputWithContext(context.Background())
+}
+
+func (i TenantSessionCookieArgs) ToTenantSessionCookieOutputWithContext(ctx context.Context) TenantSessionCookieOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantSessionCookieOutput)
+}
+
+func (i TenantSessionCookieArgs) ToTenantSessionCookiePtrOutput() TenantSessionCookiePtrOutput {
+	return i.ToTenantSessionCookiePtrOutputWithContext(context.Background())
+}
+
+func (i TenantSessionCookieArgs) ToTenantSessionCookiePtrOutputWithContext(ctx context.Context) TenantSessionCookiePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantSessionCookieOutput).ToTenantSessionCookiePtrOutputWithContext(ctx)
+}
+
+// TenantSessionCookiePtrInput is an input type that accepts TenantSessionCookieArgs, TenantSessionCookiePtr and TenantSessionCookiePtrOutput values.
+// You can construct a concrete instance of `TenantSessionCookiePtrInput` via:
+//
+//          TenantSessionCookieArgs{...}
+//
+//  or:
+//
+//          nil
+type TenantSessionCookiePtrInput interface {
+	pulumi.Input
+
+	ToTenantSessionCookiePtrOutput() TenantSessionCookiePtrOutput
+	ToTenantSessionCookiePtrOutputWithContext(context.Context) TenantSessionCookiePtrOutput
+}
+
+type tenantSessionCookiePtrType TenantSessionCookieArgs
+
+func TenantSessionCookiePtr(v *TenantSessionCookieArgs) TenantSessionCookiePtrInput {
+	return (*tenantSessionCookiePtrType)(v)
+}
+
+func (*tenantSessionCookiePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantSessionCookie)(nil)).Elem()
+}
+
+func (i *tenantSessionCookiePtrType) ToTenantSessionCookiePtrOutput() TenantSessionCookiePtrOutput {
+	return i.ToTenantSessionCookiePtrOutputWithContext(context.Background())
+}
+
+func (i *tenantSessionCookiePtrType) ToTenantSessionCookiePtrOutputWithContext(ctx context.Context) TenantSessionCookiePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantSessionCookiePtrOutput)
+}
+
+type TenantSessionCookieOutput struct{ *pulumi.OutputState }
+
+func (TenantSessionCookieOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantSessionCookie)(nil)).Elem()
+}
+
+func (o TenantSessionCookieOutput) ToTenantSessionCookieOutput() TenantSessionCookieOutput {
+	return o
+}
+
+func (o TenantSessionCookieOutput) ToTenantSessionCookieOutputWithContext(ctx context.Context) TenantSessionCookieOutput {
+	return o
+}
+
+func (o TenantSessionCookieOutput) ToTenantSessionCookiePtrOutput() TenantSessionCookiePtrOutput {
+	return o.ToTenantSessionCookiePtrOutputWithContext(context.Background())
+}
+
+func (o TenantSessionCookieOutput) ToTenantSessionCookiePtrOutputWithContext(ctx context.Context) TenantSessionCookiePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantSessionCookie) *TenantSessionCookie {
+		return &v
+	}).(TenantSessionCookiePtrOutput)
+}
+
+func (o TenantSessionCookieOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TenantSessionCookie) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type TenantSessionCookiePtrOutput struct{ *pulumi.OutputState }
+
+func (TenantSessionCookiePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantSessionCookie)(nil)).Elem()
+}
+
+func (o TenantSessionCookiePtrOutput) ToTenantSessionCookiePtrOutput() TenantSessionCookiePtrOutput {
+	return o
+}
+
+func (o TenantSessionCookiePtrOutput) ToTenantSessionCookiePtrOutputWithContext(ctx context.Context) TenantSessionCookiePtrOutput {
+	return o
+}
+
+func (o TenantSessionCookiePtrOutput) Elem() TenantSessionCookieOutput {
+	return o.ApplyT(func(v *TenantSessionCookie) TenantSessionCookie {
+		if v != nil {
+			return *v
+		}
+		var ret TenantSessionCookie
+		return ret
+	}).(TenantSessionCookieOutput)
+}
+
+func (o TenantSessionCookiePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantSessionCookie) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15515,16 +16728,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientNativeSocialLoginFacebookPtrInput)(nil)).Elem(), GlobalClientNativeSocialLoginFacebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientRefreshTokenInput)(nil)).Elem(), GlobalClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientRefreshTokenPtrInput)(nil)).Elem(), GlobalClientRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianDuoInput)(nil)).Elem(), GuardianDuoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianDuoPtrInput)(nil)).Elem(), GuardianDuoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneInput)(nil)).Elem(), GuardianPhoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhonePtrInput)(nil)).Elem(), GuardianPhoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneOptionsInput)(nil)).Elem(), GuardianPhoneOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPhoneOptionsPtrInput)(nil)).Elem(), GuardianPhoneOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushInput)(nil)).Elem(), GuardianPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushPtrInput)(nil)).Elem(), GuardianPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushAmazonSnsInput)(nil)).Elem(), GuardianPushAmazonSnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushAmazonSnsPtrInput)(nil)).Elem(), GuardianPushAmazonSnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushCustomAppInput)(nil)).Elem(), GuardianPushCustomAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushCustomAppPtrInput)(nil)).Elem(), GuardianPushCustomAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnPlatformInput)(nil)).Elem(), GuardianWebauthnPlatformArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnPlatformPtrInput)(nil)).Elem(), GuardianWebauthnPlatformArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnRoamingInput)(nil)).Elem(), GuardianWebauthnRoamingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnRoamingPtrInput)(nil)).Elem(), GuardianWebauthnRoamingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkInput)(nil)).Elem(), LogStreamSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkPtrInput)(nil)).Elem(), LogStreamSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionInput)(nil)).Elem(), OrganizationConnectionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionArrayInput)(nil)).Elem(), OrganizationConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionTypeInput)(nil)).Elem(), OrganizationConnectionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionTypeArrayInput)(nil)).Elem(), OrganizationConnectionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeInput)(nil)).Elem(), ResourceServerScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeArrayInput)(nil)).Elem(), ResourceServerScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionInput)(nil)).Elem(), RolePermissionArgs{})
@@ -15537,6 +16762,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsPtrInput)(nil)).Elem(), TenantFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantGuardianMfaPageInput)(nil)).Elem(), TenantGuardianMfaPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantGuardianMfaPagePtrInput)(nil)).Elem(), TenantGuardianMfaPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookieInput)(nil)).Elem(), TenantSessionCookieArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionCookiePtrInput)(nil)).Elem(), TenantSessionCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginInput)(nil)).Elem(), TenantUniversalLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginPtrInput)(nil)).Elem(), TenantUniversalLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
@@ -15673,16 +16900,28 @@ func init() {
 	pulumi.RegisterOutputType(GlobalClientNativeSocialLoginFacebookPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GlobalClientRefreshTokenPtrOutput{})
+	pulumi.RegisterOutputType(GuardianDuoOutput{})
+	pulumi.RegisterOutputType(GuardianDuoPtrOutput{})
 	pulumi.RegisterOutputType(GuardianPhoneOutput{})
 	pulumi.RegisterOutputType(GuardianPhonePtrOutput{})
 	pulumi.RegisterOutputType(GuardianPhoneOptionsOutput{})
 	pulumi.RegisterOutputType(GuardianPhoneOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GuardianPushOutput{})
+	pulumi.RegisterOutputType(GuardianPushPtrOutput{})
+	pulumi.RegisterOutputType(GuardianPushAmazonSnsOutput{})
+	pulumi.RegisterOutputType(GuardianPushAmazonSnsPtrOutput{})
+	pulumi.RegisterOutputType(GuardianPushCustomAppOutput{})
+	pulumi.RegisterOutputType(GuardianPushCustomAppPtrOutput{})
+	pulumi.RegisterOutputType(GuardianWebauthnPlatformOutput{})
+	pulumi.RegisterOutputType(GuardianWebauthnPlatformPtrOutput{})
+	pulumi.RegisterOutputType(GuardianWebauthnRoamingOutput{})
+	pulumi.RegisterOutputType(GuardianWebauthnRoamingPtrOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationBrandingOutput{})
 	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
-	pulumi.RegisterOutputType(OrganizationConnectionOutput{})
-	pulumi.RegisterOutputType(OrganizationConnectionArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationConnectionTypeOutput{})
+	pulumi.RegisterOutputType(OrganizationConnectionTypeArrayOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionOutput{})
@@ -15695,6 +16934,8 @@ func init() {
 	pulumi.RegisterOutputType(TenantFlagsPtrOutput{})
 	pulumi.RegisterOutputType(TenantGuardianMfaPageOutput{})
 	pulumi.RegisterOutputType(TenantGuardianMfaPagePtrOutput{})
+	pulumi.RegisterOutputType(TenantSessionCookieOutput{})
+	pulumi.RegisterOutputType(TenantSessionCookiePtrOutput{})
 	pulumi.RegisterOutputType(TenantUniversalLoginOutput{})
 	pulumi.RegisterOutputType(TenantUniversalLoginPtrOutput{})
 	pulumi.RegisterOutputType(TenantUniversalLoginColorsOutput{})

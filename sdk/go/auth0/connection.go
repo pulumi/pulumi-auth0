@@ -15,56 +15,6 @@ import (
 // (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
 // and manage connections to be used with your clients and users.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewConnection(ctx, "myConnection", &auth0.ConnectionArgs{
-// 			Metadata: pulumi.StringMap{
-// 				"key1": pulumi.String("foo"),
-// 				"key2": pulumi.String("bar"),
-// 			},
-// 			Options: &ConnectionOptionsArgs{
-// 				BruteForceProtection: pulumi.Bool(true),
-// 				Configuration: pulumi.StringMap{
-// 					"bar": pulumi.String("baz"),
-// 					"foo": pulumi.String("bar"),
-// 				},
-// 				CustomScripts: pulumi.StringMap{
-// 					"getUser": pulumi.String(fmt.Sprintf("%v%v%v%v", "function getByEmail (email, callback) {\n", "  return callback(new Error(\"Whoops!\"))\n", "}\n", "\n")),
-// 				},
-// 				EnabledDatabaseCustomization: pulumi.Bool(true),
-// 				PasswordHistories: ConnectionOptionsPasswordHistoryArray{
-// 					&ConnectionOptionsPasswordHistoryArgs{
-// 						Enable: pulumi.Bool(true),
-// 						Size:   pulumi.Int(3),
-// 					},
-// 				},
-// 				PasswordPolicy: pulumi.String("excellent"),
-// 			},
-// 			Strategy: pulumi.String("auth0"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
-// creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
-//
 // ## Import
 //
 // Connections can be imported using their id, e.g.

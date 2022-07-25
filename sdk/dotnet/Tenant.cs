@@ -60,6 +60,10 @@ namespace Pulumi.Auth0
     ///             },
     ///             SessionLifetime = 46000,
     ///             SandboxVersion = "8",
+    ///             SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs
+    ///             {
+    ///                 Mode = "non-persistent",
+    ///             },
     ///         });
     ///     }
     /// 
@@ -154,6 +158,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("sandboxVersion")]
         public Output<string> SandboxVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+        /// </summary>
+        [Output("sessionCookie")]
+        public Output<Outputs.TenantSessionCookie> SessionCookie { get; private set; } = null!;
 
         /// <summary>
         /// Integer. Number of hours during which a session will stay valid.
@@ -316,6 +326,12 @@ namespace Pulumi.Auth0
         public Input<string>? SandboxVersion { get; set; }
 
         /// <summary>
+        /// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+        /// </summary>
+        [Input("sessionCookie")]
+        public Input<Inputs.TenantSessionCookieArgs>? SessionCookie { get; set; }
+
+        /// <summary>
         /// Integer. Number of hours during which a session will stay valid.
         /// </summary>
         [Input("sessionLifetime")]
@@ -435,6 +451,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("sandboxVersion")]
         public Input<string>? SandboxVersion { get; set; }
+
+        /// <summary>
+        /// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+        /// </summary>
+        [Input("sessionCookie")]
+        public Input<Inputs.TenantSessionCookieGetArgs>? SessionCookie { get; set; }
 
         /// <summary>
         /// Integer. Number of hours during which a session will stay valid.

@@ -26,6 +26,7 @@ namespace Pulumi.Auth0
     ///         {
     ///             IdentifierFirst = false,
     ///             UniversalLoginExperience = "classic",
+    ///             WebauthnPlatformFirstFactor = true,
     ///         });
     ///     }
     /// 
@@ -44,8 +45,7 @@ namespace Pulumi.Auth0
     public partial class Prompt : Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean. Indicates whether the identifier first is used when using the new universal 
-        /// login experience.
+        /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
         /// </summary>
         [Output("identifierFirst")]
         public Output<bool?> IdentifierFirst { get; private set; } = null!;
@@ -55,6 +55,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("universalLoginExperience")]
         public Output<string?> UniversalLoginExperience { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean. Determines if the login screen uses identifier and biometrics first.
+        /// </summary>
+        [Output("webauthnPlatformFirstFactor")]
+        public Output<bool?> WebauthnPlatformFirstFactor { get; private set; } = null!;
 
 
         /// <summary>
@@ -103,8 +109,7 @@ namespace Pulumi.Auth0
     public sealed class PromptArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether the identifier first is used when using the new universal 
-        /// login experience.
+        /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
         /// </summary>
         [Input("identifierFirst")]
         public Input<bool>? IdentifierFirst { get; set; }
@@ -114,6 +119,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("universalLoginExperience")]
         public Input<string>? UniversalLoginExperience { get; set; }
+
+        /// <summary>
+        /// Boolean. Determines if the login screen uses identifier and biometrics first.
+        /// </summary>
+        [Input("webauthnPlatformFirstFactor")]
+        public Input<bool>? WebauthnPlatformFirstFactor { get; set; }
 
         public PromptArgs()
         {
@@ -123,8 +134,7 @@ namespace Pulumi.Auth0
     public sealed class PromptState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether the identifier first is used when using the new universal 
-        /// login experience.
+        /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
         /// </summary>
         [Input("identifierFirst")]
         public Input<bool>? IdentifierFirst { get; set; }
@@ -134,6 +144,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("universalLoginExperience")]
         public Input<string>? UniversalLoginExperience { get; set; }
+
+        /// <summary>
+        /// Boolean. Determines if the login screen uses identifier and biometrics first.
+        /// </summary>
+        [Input("webauthnPlatformFirstFactor")]
+        public Input<bool>? WebauthnPlatformFirstFactor { get; set; }
 
         public PromptState()
         {

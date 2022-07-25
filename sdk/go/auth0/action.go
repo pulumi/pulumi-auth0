@@ -30,7 +30,17 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := auth0.NewAction(ctx, "myAction", &auth0.ActionArgs{
-// 			Code: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v", "/**\n", " * Handler that will be called during the execution of a PostLogin flow.\n", " *\n", " * @param {Event} event - Details about the user and the context in which they are logging in.\n", " * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n", " */\n", " exports.onExecutePostLogin = async (event, api) => {\n", "	 console.log(event)\n", " };\n", "\n")),
+// 			Code: pulumi.String(fmt.Sprintf(`/**
+//  * Handler that will be called during the execution of a PostLogin flow.
+//  *
+//  * @param {Event} event - Details about the user and the context in which they are logging in.
+//  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+//  */
+//  exports.onExecutePostLogin = async (event, api) => {
+// 	 console.log(event)
+//  };
+//
+// `)),
 // 			Dependencies: ActionDependencyArray{
 // 				&ActionDependencyArgs{
 // 					Name:    pulumi.String("lodash"),
@@ -55,7 +65,7 @@ import (
 // 			},
 // 			SupportedTriggers: &ActionSupportedTriggersArgs{
 // 				Id:      pulumi.String("post-login"),
-// 				Version: pulumi.String("v2"),
+// 				Version: pulumi.String("v3"),
 // 			},
 // 		})
 // 		if err != nil {

@@ -42,8 +42,8 @@ import (
 // 					"page_background": pulumi.String("#e3e2ff"),
 // 				},
 // 			},
-// 			Connections: OrganizationConnectionArray{
-// 				&OrganizationConnectionArgs{
+// 			Connections: OrganizationConnectionTypeArray{
+// 				&OrganizationConnectionTypeArgs{
 // 					ConnectionId:            pulumi.Any(auth0_connection.Acme.Id),
 // 					AssignMembershipOnLogin: pulumi.Bool(true),
 // 				},
@@ -72,7 +72,9 @@ type Organization struct {
 	Branding OrganizationBrandingOutput `pulumi:"branding"`
 	// Connections assigned to the organization. For
 	// details, see Connections
-	Connections OrganizationConnectionArrayOutput `pulumi:"connections"`
+	//
+	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
+	Connections OrganizationConnectionTypeArrayOutput `pulumi:"connections"`
 	// Friendly name of this organization
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Metadata associated with the organization, Maximum of
@@ -116,7 +118,9 @@ type organizationState struct {
 	Branding *OrganizationBranding `pulumi:"branding"`
 	// Connections assigned to the organization. For
 	// details, see Connections
-	Connections []OrganizationConnection `pulumi:"connections"`
+	//
+	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
+	Connections []OrganizationConnectionType `pulumi:"connections"`
 	// Friendly name of this organization
 	DisplayName *string `pulumi:"displayName"`
 	// Metadata associated with the organization, Maximum of
@@ -132,7 +136,9 @@ type OrganizationState struct {
 	Branding OrganizationBrandingPtrInput
 	// Connections assigned to the organization. For
 	// details, see Connections
-	Connections OrganizationConnectionArrayInput
+	//
+	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
+	Connections OrganizationConnectionTypeArrayInput
 	// Friendly name of this organization
 	DisplayName pulumi.StringPtrInput
 	// Metadata associated with the organization, Maximum of
@@ -152,7 +158,9 @@ type organizationArgs struct {
 	Branding *OrganizationBranding `pulumi:"branding"`
 	// Connections assigned to the organization. For
 	// details, see Connections
-	Connections []OrganizationConnection `pulumi:"connections"`
+	//
+	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
+	Connections []OrganizationConnectionType `pulumi:"connections"`
 	// Friendly name of this organization
 	DisplayName *string `pulumi:"displayName"`
 	// Metadata associated with the organization, Maximum of
@@ -169,7 +177,9 @@ type OrganizationArgs struct {
 	Branding OrganizationBrandingPtrInput
 	// Connections assigned to the organization. For
 	// details, see Connections
-	Connections OrganizationConnectionArrayInput
+	//
+	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
+	Connections OrganizationConnectionTypeArrayInput
 	// Friendly name of this organization
 	DisplayName pulumi.StringPtrInput
 	// Metadata associated with the organization, Maximum of
@@ -274,8 +284,10 @@ func (o OrganizationOutput) Branding() OrganizationBrandingOutput {
 
 // Connections assigned to the organization. For
 // details, see Connections
-func (o OrganizationOutput) Connections() OrganizationConnectionArrayOutput {
-	return o.ApplyT(func(v *Organization) OrganizationConnectionArrayOutput { return v.Connections }).(OrganizationConnectionArrayOutput)
+//
+// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
+func (o OrganizationOutput) Connections() OrganizationConnectionTypeArrayOutput {
+	return o.ApplyT(func(v *Organization) OrganizationConnectionTypeArrayOutput { return v.Connections }).(OrganizationConnectionTypeArrayOutput)
 }
 
 // Friendly name of this organization

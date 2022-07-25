@@ -30,7 +30,14 @@ import (
 // 			Callbacks: pulumi.StringArray{
 // 				pulumi.String("http://somehostname.com/a/callback"),
 // 			},
-// 			CustomLoginPage:   pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "<html>\n", "    <head><title>My Custom Login Page</title></head>\n", "    <body>\n", "        I should probably have a login form here\n", "    </body>\n", "</html>\n", "\n")),
+// 			CustomLoginPage: pulumi.String(fmt.Sprintf(`<html>
+//     <head><title>My Custom Login Page</title></head>
+//     <body>
+//         I should probably have a login form here
+//     </body>
+// </html>
+//
+// `)),
 // 			CustomLoginPageOn: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
