@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ActionDependencyGetArgs : Pulumi.ResourceArgs
+    public sealed class ActionDependencyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Secret name.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ActionDependencyGetArgs()
         {
         }
+        public static new ActionDependencyGetArgs Empty => new ActionDependencyGetArgs();
     }
 }

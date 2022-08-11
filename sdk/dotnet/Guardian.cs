@@ -16,65 +16,63 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myGuardian = new Auth0.Guardian("myGuardian", new()
     ///     {
-    ///         var myGuardian = new Auth0.Guardian("myGuardian", new Auth0.GuardianArgs
+    ///         Duo = new Auth0.Inputs.GuardianDuoArgs
     ///         {
-    ///             Duo = new Auth0.Inputs.GuardianDuoArgs
+    ///             Hostname = "api-hostname",
+    ///             IntegrationKey = "someKey",
+    ///             SecretKey = "someSecret",
+    ///         },
+    ///         Email = true,
+    ///         Otp = true,
+    ///         Phone = new Auth0.Inputs.GuardianPhoneArgs
+    ///         {
+    ///             MessageTypes = new[]
     ///             {
-    ///                 Hostname = "api-hostname",
-    ///                 IntegrationKey = "someKey",
-    ///                 SecretKey = "someSecret",
+    ///                 "sms",
+    ///                 "voice",
     ///             },
-    ///             Email = true,
-    ///             Otp = true,
-    ///             Phone = new Auth0.Inputs.GuardianPhoneArgs
+    ///             Options = new Auth0.Inputs.GuardianPhoneOptionsArgs
     ///             {
-    ///                 MessageTypes = 
-    ///                 {
-    ///                     "sms",
-    ///                     "voice",
-    ///                 },
-    ///                 Options = new Auth0.Inputs.GuardianPhoneOptionsArgs
-    ///                 {
-    ///                     EnrollmentMessage = "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
-    ///                     VerificationMessage = "{{code}} is your verification code for {{tenant.friendly_name}}.",
-    ///                 },
-    ///                 Provider = "auth0",
+    ///                 EnrollmentMessage = "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
+    ///                 VerificationMessage = "{{code}} is your verification code for {{tenant.friendly_name}}.",
     ///             },
-    ///             Policy = "all-applications",
-    ///             Push = new Auth0.Inputs.GuardianPushArgs
+    ///             Provider = "auth0",
+    ///         },
+    ///         Policy = "all-applications",
+    ///         Push = new Auth0.Inputs.GuardianPushArgs
+    ///         {
+    ///             AmazonSns = new Auth0.Inputs.GuardianPushAmazonSnsArgs
     ///             {
-    ///                 AmazonSns = new Auth0.Inputs.GuardianPushAmazonSnsArgs
-    ///                 {
-    ///                     AwsAccessKeyId = "test1",
-    ///                     AwsRegion = "us-west-1",
-    ///                     AwsSecretAccessKey = "secretKey",
-    ///                     SnsApnsPlatformApplicationArn = "test_arn",
-    ///                     SnsGcmPlatformApplicationArn = "test_arn",
-    ///                 },
-    ///                 CustomApp = new Auth0.Inputs.GuardianPushCustomAppArgs
-    ///                 {
-    ///                     AppName = "CustomApp",
-    ///                     AppleAppLink = "https://itunes.apple.com/us/app/my-app/id123121",
-    ///                     GoogleAppLink = "https://play.google.com/store/apps/details?id=com.my.app",
-    ///                 },
+    ///                 AwsAccessKeyId = "test1",
+    ///                 AwsRegion = "us-west-1",
+    ///                 AwsSecretAccessKey = "secretKey",
+    ///                 SnsApnsPlatformApplicationArn = "test_arn",
+    ///                 SnsGcmPlatformApplicationArn = "test_arn",
     ///             },
-    ///             RecoveryCode = true,
-    ///             WebauthnPlatform = ,
-    ///             WebauthnRoaming = new Auth0.Inputs.GuardianWebauthnRoamingArgs
+    ///             CustomApp = new Auth0.Inputs.GuardianPushCustomAppArgs
     ///             {
-    ///                 UserVerification = "required",
+    ///                 AppName = "CustomApp",
+    ///                 AppleAppLink = "https://itunes.apple.com/us/app/my-app/id123121",
+    ///                 GoogleAppLink = "https://play.google.com/store/apps/details?id=com.my.app",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         RecoveryCode = true,
+    ///         WebauthnPlatform = ,
+    ///         WebauthnRoaming = new Auth0.Inputs.GuardianWebauthnRoamingArgs
+    ///         {
+    ///             UserVerification = "required",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -86,7 +84,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/guardian:Guardian")]
-    public partial class Guardian : Pulumi.CustomResource
+    public partial class Guardian : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List(Resource). Configuration settings for the Duo MFA.
@@ -194,7 +192,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class GuardianArgs : Pulumi.ResourceArgs
+    public sealed class GuardianArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for the Duo MFA.
@@ -261,9 +259,10 @@ namespace Pulumi.Auth0
         public GuardianArgs()
         {
         }
+        public static new GuardianArgs Empty => new GuardianArgs();
     }
 
-    public sealed class GuardianState : Pulumi.ResourceArgs
+    public sealed class GuardianState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for the Duo MFA.
@@ -330,5 +329,6 @@ namespace Pulumi.Auth0
         public GuardianState()
         {
         }
+        public static new GuardianState Empty => new GuardianState();
     }
 }

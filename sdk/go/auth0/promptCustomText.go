@@ -20,53 +20,56 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"login": map[string]interface{}{
-// 				"alertListTitle":                "Alerts",
-// 				"buttonText":                    "Continue",
-// 				"description":                   "Login to",
-// 				"editEmailText":                 "Edit",
-// 				"emailPlaceholder":              "Email address",
-// 				"federatedConnectionButtonText": fmt.Sprintf("Continue with %v", connectionName),
-// 				"footerLinkText":                "Sign up",
-// 				"footerText":                    "Don't have an account?",
-// 				"forgotPasswordText":            "Forgot password?",
-// 				"invitationDescription":         fmt.Sprintf("Log in to accept %v's invitation to join %v on %v.", inviterName, companyName, clientName),
-// 				"invitationTitle":               "You've Been Invited!",
-// 				"logoAltText":                   companyName,
-// 				"pageTitle":                     fmt.Sprintf("Log in | %v", clientName),
-// 				"passwordPlaceholder":           "Password",
-// 				"separatorText":                 "Or",
-// 				"signupActionLinkText":          footerLinkText,
-// 				"signupActionText":              footerText,
-// 				"title":                         "Welcome",
-// 				"usernamePlaceholder":           "Username or email address",
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		_, err = auth0.NewPromptCustomText(ctx, "example", &auth0.PromptCustomTextArgs{
-// 			Prompt:   pulumi.String("login"),
-// 			Language: pulumi.String("en"),
-// 			Body:     pulumi.String(json0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"login": map[string]interface{}{
+//					"alertListTitle":                "Alerts",
+//					"buttonText":                    "Continue",
+//					"description":                   "Login to",
+//					"editEmailText":                 "Edit",
+//					"emailPlaceholder":              "Email address",
+//					"federatedConnectionButtonText": fmt.Sprintf("Continue with %v", connectionName),
+//					"footerLinkText":                "Sign up",
+//					"footerText":                    "Don't have an account?",
+//					"forgotPasswordText":            "Forgot password?",
+//					"invitationDescription":         fmt.Sprintf("Log in to accept %v's invitation to join %v on %v.", inviterName, companyName, clientName),
+//					"invitationTitle":               "You've Been Invited!",
+//					"logoAltText":                   companyName,
+//					"pageTitle":                     fmt.Sprintf("Log in | %v", clientName),
+//					"passwordPlaceholder":           "Password",
+//					"separatorText":                 "Or",
+//					"signupActionLinkText":          footerLinkText,
+//					"signupActionText":              footerText,
+//					"title":                         "Welcome",
+//					"usernamePlaceholder":           "Username or email address",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = auth0.NewPromptCustomText(ctx, "example", &auth0.PromptCustomTextArgs{
+//				Prompt:   pulumi.String("login"),
+//				Language: pulumi.String("en"),
+//				Body:     pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -74,7 +77,9 @@ import (
 // This resource can be imported using the import command and specifying the prompt and language separated by *:* , e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/promptCustomText:PromptCustomText example login:en
+//
+//	$ pulumi import auth0:index/promptCustomText:PromptCustomText example login:en
+//
 // ```
 type PromptCustomText struct {
 	pulumi.CustomResourceState
@@ -191,7 +196,7 @@ func (i *PromptCustomText) ToPromptCustomTextOutputWithContext(ctx context.Conte
 // PromptCustomTextArrayInput is an input type that accepts PromptCustomTextArray and PromptCustomTextArrayOutput values.
 // You can construct a concrete instance of `PromptCustomTextArrayInput` via:
 //
-//          PromptCustomTextArray{ PromptCustomTextArgs{...} }
+//	PromptCustomTextArray{ PromptCustomTextArgs{...} }
 type PromptCustomTextArrayInput interface {
 	pulumi.Input
 
@@ -216,7 +221,7 @@ func (i PromptCustomTextArray) ToPromptCustomTextArrayOutputWithContext(ctx cont
 // PromptCustomTextMapInput is an input type that accepts PromptCustomTextMap and PromptCustomTextMapOutput values.
 // You can construct a concrete instance of `PromptCustomTextMapInput` via:
 //
-//          PromptCustomTextMap{ "key": PromptCustomTextArgs{...} }
+//	PromptCustomTextMap{ "key": PromptCustomTextArgs{...} }
 type PromptCustomTextMapInput interface {
 	pulumi.Input
 

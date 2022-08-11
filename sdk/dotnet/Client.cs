@@ -15,123 +15,121 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myClient = new Auth0.Client("myClient", new()
     ///     {
-    ///         var myClient = new Auth0.Client("myClient", new Auth0.ClientArgs
+    ///         Addons = new Auth0.Inputs.ClientAddonsArgs
     ///         {
-    ///             Addons = new Auth0.Inputs.ClientAddonsArgs
+    ///             Firebase = 
     ///             {
-    ///                 Firebase = 
+    ///                 { "clientEmail", "john.doe@example.com" },
+    ///                 { "lifetimeInSeconds", 1 },
+    ///                 { "privateKey", "wer" },
+    ///                 { "privateKeyId", "qwreerwerwe" },
+    ///             },
+    ///             Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs
+    ///             {
+    ///                 Audience = "https://example.com/saml",
+    ///                 CreateUpnClaim = false,
+    ///                 MapIdentities = false,
+    ///                 MapUnknownClaimsAsIs = false,
+    ///                 Mappings = 
     ///                 {
-    ///                     { "clientEmail", "john.doe@example.com" },
-    ///                     { "lifetimeInSeconds", 1 },
-    ///                     { "privateKey", "wer" },
-    ///                     { "privateKeyId", "qwreerwerwe" },
+    ///                     { "email", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" },
+    ///                     { "name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
     ///                 },
-    ///                 Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs
+    ///                 NameIdentifierFormat = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+    ///                 NameIdentifierProbes = new[]
     ///                 {
-    ///                     Audience = "https://example.com/saml",
-    ///                     CreateUpnClaim = false,
-    ///                     MapIdentities = false,
-    ///                     MapUnknownClaimsAsIs = false,
-    ///                     Mappings = 
-    ///                     {
-    ///                         { "email", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" },
-    ///                         { "name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
-    ///                     },
-    ///                     NameIdentifierFormat = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-    ///                     NameIdentifierProbes = 
-    ///                     {
-    ///                         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
-    ///                     },
-    ///                     PassthroughClaimsWithNoMapping = false,
-    ///                     SigningCert = "pemcertificate",
+    ///                     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
     ///                 },
+    ///                 PassthroughClaimsWithNoMapping = false,
+    ///                 SigningCert = "pemcertificate",
     ///             },
-    ///             AllowedClients = 
+    ///         },
+    ///         AllowedClients = new[]
+    ///         {
+    ///             "https://allowed.example.com",
+    ///         },
+    ///         AllowedLogoutUrls = new[]
+    ///         {
+    ///             "https://example.com",
+    ///         },
+    ///         AllowedOrigins = new[]
+    ///         {
+    ///             "https://example.com",
+    ///         },
+    ///         AppType = "non_interactive",
+    ///         Callbacks = new[]
+    ///         {
+    ///             "https://example.com/callback",
+    ///         },
+    ///         ClientMetadata = 
+    ///         {
+    ///             { "foo", "zoo" },
+    ///         },
+    ///         ClientSecretRotationTrigger = 
+    ///         {
+    ///             { "triggered_at", "2018-01-02T23:12:01Z" },
+    ///             { "triggered_by", "auth0" },
+    ///         },
+    ///         CustomLoginPageOn = true,
+    ///         Description = "Test Applications Long Description",
+    ///         GrantTypes = new[]
+    ///         {
+    ///             "authorization_code",
+    ///             "http://auth0.com/oauth/grant-type/password-realm",
+    ///             "implicit",
+    ///             "password",
+    ///             "refresh_token",
+    ///         },
+    ///         InitiateLoginUri = "https://example.com/login",
+    ///         IsFirstParty = true,
+    ///         IsTokenEndpointIpHeaderTrusted = true,
+    ///         JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs
+    ///         {
+    ///             Alg = "RS256",
+    ///             LifetimeInSeconds = 300,
+    ///             Scopes = 
     ///             {
-    ///                 "https://allowed.example.com",
+    ///                 { "foo", "bar" },
     ///             },
-    ///             AllowedLogoutUrls = 
+    ///             SecretEncoded = true,
+    ///         },
+    ///         Mobile = new Auth0.Inputs.ClientMobileArgs
+    ///         {
+    ///             Ios = new Auth0.Inputs.ClientMobileIosArgs
     ///             {
-    ///                 "https://example.com",
+    ///                 AppBundleIdentifier = "com.my.bundle.id",
+    ///                 TeamId = "9JA89QQLNQ",
     ///             },
-    ///             AllowedOrigins = 
-    ///             {
-    ///                 "https://example.com",
-    ///             },
-    ///             AppType = "non_interactive",
-    ///             Callbacks = 
-    ///             {
-    ///                 "https://example.com/callback",
-    ///             },
-    ///             ClientMetadata = 
-    ///             {
-    ///                 { "foo", "zoo" },
-    ///             },
-    ///             ClientSecretRotationTrigger = 
-    ///             {
-    ///                 { "triggered_at", "2018-01-02T23:12:01Z" },
-    ///                 { "triggered_by", "auth0" },
-    ///             },
-    ///             CustomLoginPageOn = true,
-    ///             Description = "Test Applications Long Description",
-    ///             GrantTypes = 
-    ///             {
-    ///                 "authorization_code",
-    ///                 "http://auth0.com/oauth/grant-type/password-realm",
-    ///                 "implicit",
-    ///                 "password",
-    ///                 "refresh_token",
-    ///             },
-    ///             InitiateLoginUri = "https://example.com/login",
-    ///             IsFirstParty = true,
-    ///             IsTokenEndpointIpHeaderTrusted = true,
-    ///             JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs
-    ///             {
-    ///                 Alg = "RS256",
-    ///                 LifetimeInSeconds = 300,
-    ///                 Scopes = 
-    ///                 {
-    ///                     { "foo", "bar" },
-    ///                 },
-    ///                 SecretEncoded = true,
-    ///             },
-    ///             Mobile = new Auth0.Inputs.ClientMobileArgs
-    ///             {
-    ///                 Ios = new Auth0.Inputs.ClientMobileIosArgs
-    ///                 {
-    ///                     AppBundleIdentifier = "com.my.bundle.id",
-    ///                     TeamId = "9JA89QQLNQ",
-    ///                 },
-    ///             },
-    ///             OidcConformant = false,
-    ///             OrganizationRequireBehavior = "no_prompt",
-    ///             OrganizationUsage = "deny",
-    ///             RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs
-    ///             {
-    ///                 ExpirationType = "expiring",
-    ///                 IdleTokenLifetime = 1296000,
-    ///                 InfiniteIdleTokenLifetime = true,
-    ///                 InfiniteTokenLifetime = false,
-    ///                 Leeway = 15,
-    ///                 RotationType = "rotating",
-    ///                 TokenLifetime = 84600,
-    ///             },
-    ///             TokenEndpointAuthMethod = "client_secret_post",
-    ///             WebOrigins = 
-    ///             {
-    ///                 "https://example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         OidcConformant = false,
+    ///         OrganizationRequireBehavior = "no_prompt",
+    ///         OrganizationUsage = "deny",
+    ///         RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs
+    ///         {
+    ///             ExpirationType = "expiring",
+    ///             IdleTokenLifetime = 1296000,
+    ///             InfiniteIdleTokenLifetime = true,
+    ///             InfiniteTokenLifetime = false,
+    ///             Leeway = 15,
+    ///             RotationType = "rotating",
+    ///             TokenLifetime = 84600,
+    ///         },
+    ///         TokenEndpointAuthMethod = "client_secret_post",
+    ///         WebOrigins = new[]
+    ///         {
+    ///             "https://example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -143,7 +141,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/client:Client")]
-    public partial class Client : Pulumi.CustomResource
+    public partial class Client : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
@@ -397,7 +395,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class ClientArgs : Pulumi.ResourceArgs
+    public sealed class ClientArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
@@ -649,9 +647,10 @@ namespace Pulumi.Auth0
         {
             Description = "Managed by Pulumi";
         }
+        public static new ClientArgs Empty => new ClientArgs();
     }
 
-    public sealed class ClientState : Pulumi.ResourceArgs
+    public sealed class ClientState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
@@ -925,5 +924,6 @@ namespace Pulumi.Auth0
         {
             Description = "Managed by Pulumi";
         }
+        public static new ClientState Empty => new ClientState();
     }
 }

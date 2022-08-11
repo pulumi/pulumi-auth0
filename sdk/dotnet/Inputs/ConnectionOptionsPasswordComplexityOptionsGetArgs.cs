@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsPasswordComplexityOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsPasswordComplexityOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Minimum number of characters allowed in passwords.
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsPasswordComplexityOptionsGetArgs()
         {
         }
+        public static new ConnectionOptionsPasswordComplexityOptionsGetArgs Empty => new ConnectionOptionsPasswordComplexityOptionsGetArgs();
     }
 }

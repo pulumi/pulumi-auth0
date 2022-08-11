@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class TenantErrorPageArgs : Pulumi.ResourceArgs
+    public sealed class TenantErrorPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, HTML format with supported Liquid syntax. Customized content of the error page.
@@ -33,5 +33,6 @@ namespace Pulumi.Auth0.Inputs
         public TenantErrorPageArgs()
         {
         }
+        public static new TenantErrorPageArgs Empty => new TenantErrorPageArgs();
     }
 }

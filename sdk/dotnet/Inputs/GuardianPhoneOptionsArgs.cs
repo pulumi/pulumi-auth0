@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GuardianPhoneOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GuardianPhoneOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String.
@@ -51,5 +51,6 @@ namespace Pulumi.Auth0.Inputs
         public GuardianPhoneOptionsArgs()
         {
         }
+        public static new GuardianPhoneOptionsArgs Empty => new GuardianPhoneOptionsArgs();
     }
 }

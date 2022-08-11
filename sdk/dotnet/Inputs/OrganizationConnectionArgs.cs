@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class OrganizationConnectionArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, all users that log in
@@ -31,5 +31,6 @@ namespace Pulumi.Auth0.Inputs
         public OrganizationConnectionArgs()
         {
         }
+        public static new OrganizationConnectionArgs Empty => new OrganizationConnectionArgs();
     }
 }

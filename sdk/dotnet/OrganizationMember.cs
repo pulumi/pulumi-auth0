@@ -15,25 +15,23 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var acmeAdmin = new Auth0.OrganizationMember("acmeAdmin", new()
     ///     {
-    ///         var acmeAdmin = new Auth0.OrganizationMember("acmeAdmin", new Auth0.OrganizationMemberArgs
+    ///         OrganizationId = auth0_organization.Acme.Id,
+    ///         UserId = auth0_user.Acme_user.Id,
+    ///         Roles = new[]
     ///         {
-    ///             OrganizationId = auth0_organization.Acme.Id,
-    ///             UserId = auth0_user.Acme_user.Id,
-    ///             Roles = 
-    ///             {
-    ///                 auth0_role.Admin.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///             auth0_role.Admin.Id,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organizationMember:OrganizationMember")]
-    public partial class OrganizationMember : Pulumi.CustomResource
+    public partial class OrganizationMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the organization
@@ -109,7 +107,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class OrganizationMemberArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the organization
@@ -138,9 +136,10 @@ namespace Pulumi.Auth0
         public OrganizationMemberArgs()
         {
         }
+        public static new OrganizationMemberArgs Empty => new OrganizationMemberArgs();
     }
 
-    public sealed class OrganizationMemberState : Pulumi.ResourceArgs
+    public sealed class OrganizationMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the organization
@@ -169,5 +168,6 @@ namespace Pulumi.Auth0
         public OrganizationMemberState()
         {
         }
+        public static new OrganizationMemberState Empty => new OrganizationMemberState();
     }
 }

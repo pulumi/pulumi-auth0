@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsValidationArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsValidationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the `min` and `max` values of username length. `min` and `max` are integers.
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsValidationArgs()
         {
         }
+        public static new ConnectionOptionsValidationArgs Empty => new ConnectionOptionsValidationArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GuardianDuoArgs : Pulumi.ResourceArgs
+    public sealed class GuardianDuoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
@@ -33,5 +33,6 @@ namespace Pulumi.Auth0.Inputs
         public GuardianDuoArgs()
         {
         }
+        public static new GuardianDuoArgs Empty => new GuardianDuoArgs();
     }
 }

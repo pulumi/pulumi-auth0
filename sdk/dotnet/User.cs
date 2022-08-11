@@ -16,36 +16,35 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var admin = new Auth0.Role("admin", new()
     ///     {
-    ///         var admin = new Auth0.Role("admin", new Auth0.RoleArgs
-    ///         {
-    ///             Description = "Administrator",
-    ///         });
-    ///         var user = new Auth0.User("user", new Auth0.UserArgs
-    ///         {
-    ///             ConnectionName = "Username-Password-Authentication",
-    ///             UserId = "12345",
-    ///             Username = "unique_username",
-    ///             GivenName = "Firstname",
-    ///             FamilyName = "Lastname",
-    ///             Nickname = "some.nickname",
-    ///             Email = "test@test.com",
-    ///             EmailVerified = true,
-    ///             Password = "passpass$12$12",
-    ///             Roles = 
-    ///             {
-    ///                 admin.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         Description = "Administrator",
+    ///     });
     /// 
-    /// }
+    ///     var user = new Auth0.User("user", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         UserId = "12345",
+    ///         Username = "unique_username",
+    ///         GivenName = "Firstname",
+    ///         FamilyName = "Lastname",
+    ///         Nickname = "some.nickname",
+    ///         Email = "test@test.com",
+    ///         EmailVerified = true,
+    ///         Password = "passpass$12$12",
+    ///         Roles = new[]
+    ///         {
+    ///             admin.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +56,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
@@ -196,7 +195,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
@@ -300,9 +299,10 @@ namespace Pulumi.Auth0
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
@@ -406,5 +406,6 @@ namespace Pulumi.Auth0
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

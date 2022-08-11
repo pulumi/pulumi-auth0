@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ClientAddonsSamlpGetArgs : Pulumi.ResourceArgs
+    public sealed class ClientAddonsSamlpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
@@ -153,5 +153,6 @@ namespace Pulumi.Auth0.Inputs
         public ClientAddonsSamlpGetArgs()
         {
         }
+        public static new ClientAddonsSamlpGetArgs Empty => new ClientAddonsSamlpGetArgs();
     }
 }

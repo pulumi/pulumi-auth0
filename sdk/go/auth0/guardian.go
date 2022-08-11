@@ -20,58 +20,61 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewGuardian(ctx, "myGuardian", &auth0.GuardianArgs{
-// 			Duo: &GuardianDuoArgs{
-// 				Hostname:       pulumi.String("api-hostname"),
-// 				IntegrationKey: pulumi.String("someKey"),
-// 				SecretKey:      pulumi.String("someSecret"),
-// 			},
-// 			Email: pulumi.Bool(true),
-// 			Otp:   pulumi.Bool(true),
-// 			Phone: &GuardianPhoneArgs{
-// 				MessageTypes: pulumi.StringArray{
-// 					pulumi.String("sms"),
-// 					pulumi.String("voice"),
-// 				},
-// 				Options: &GuardianPhoneOptionsArgs{
-// 					EnrollmentMessage:   pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment."),
-// 					VerificationMessage: pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}."),
-// 				},
-// 				Provider: pulumi.String("auth0"),
-// 			},
-// 			Policy: pulumi.String("all-applications"),
-// 			Push: &GuardianPushArgs{
-// 				AmazonSns: &GuardianPushAmazonSnsArgs{
-// 					AwsAccessKeyId:                pulumi.String("test1"),
-// 					AwsRegion:                     pulumi.String("us-west-1"),
-// 					AwsSecretAccessKey:            pulumi.String("secretKey"),
-// 					SnsApnsPlatformApplicationArn: pulumi.String("test_arn"),
-// 					SnsGcmPlatformApplicationArn:  pulumi.String("test_arn"),
-// 				},
-// 				CustomApp: &GuardianPushCustomAppArgs{
-// 					AppName:       pulumi.String("CustomApp"),
-// 					AppleAppLink:  pulumi.String("https://itunes.apple.com/us/app/my-app/id123121"),
-// 					GoogleAppLink: pulumi.String("https://play.google.com/store/apps/details?id=com.my.app"),
-// 				},
-// 			},
-// 			RecoveryCode:     pulumi.Bool(true),
-// 			WebauthnPlatform: nil,
-// 			WebauthnRoaming: &GuardianWebauthnRoamingArgs{
-// 				UserVerification: pulumi.String("required"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewGuardian(ctx, "myGuardian", &auth0.GuardianArgs{
+//				Duo: &GuardianDuoArgs{
+//					Hostname:       pulumi.String("api-hostname"),
+//					IntegrationKey: pulumi.String("someKey"),
+//					SecretKey:      pulumi.String("someSecret"),
+//				},
+//				Email: pulumi.Bool(true),
+//				Otp:   pulumi.Bool(true),
+//				Phone: &GuardianPhoneArgs{
+//					MessageTypes: pulumi.StringArray{
+//						pulumi.String("sms"),
+//						pulumi.String("voice"),
+//					},
+//					Options: &GuardianPhoneOptionsArgs{
+//						EnrollmentMessage:   pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment."),
+//						VerificationMessage: pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}."),
+//					},
+//					Provider: pulumi.String("auth0"),
+//				},
+//				Policy: pulumi.String("all-applications"),
+//				Push: &GuardianPushArgs{
+//					AmazonSns: &GuardianPushAmazonSnsArgs{
+//						AwsAccessKeyId:                pulumi.String("test1"),
+//						AwsRegion:                     pulumi.String("us-west-1"),
+//						AwsSecretAccessKey:            pulumi.String("secretKey"),
+//						SnsApnsPlatformApplicationArn: pulumi.String("test_arn"),
+//						SnsGcmPlatformApplicationArn:  pulumi.String("test_arn"),
+//					},
+//					CustomApp: &GuardianPushCustomAppArgs{
+//						AppName:       pulumi.String("CustomApp"),
+//						AppleAppLink:  pulumi.String("https://itunes.apple.com/us/app/my-app/id123121"),
+//						GoogleAppLink: pulumi.String("https://play.google.com/store/apps/details?id=com.my.app"),
+//					},
+//				},
+//				RecoveryCode:     pulumi.Bool(true),
+//				WebauthnPlatform: nil,
+//				WebauthnRoaming: &GuardianWebauthnRoamingArgs{
+//					UserVerification: pulumi.String("required"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -79,7 +82,9 @@ import (
 // As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/guardian:Guardian default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+//
+//	$ pulumi import auth0:index/guardian:Guardian default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+//
 // ```
 type Guardian struct {
 	pulumi.CustomResourceState
@@ -290,7 +295,7 @@ func (i *Guardian) ToGuardianOutputWithContext(ctx context.Context) GuardianOutp
 // GuardianArrayInput is an input type that accepts GuardianArray and GuardianArrayOutput values.
 // You can construct a concrete instance of `GuardianArrayInput` via:
 //
-//          GuardianArray{ GuardianArgs{...} }
+//	GuardianArray{ GuardianArgs{...} }
 type GuardianArrayInput interface {
 	pulumi.Input
 
@@ -315,7 +320,7 @@ func (i GuardianArray) ToGuardianArrayOutputWithContext(ctx context.Context) Gua
 // GuardianMapInput is an input type that accepts GuardianMap and GuardianMapOutput values.
 // You can construct a concrete instance of `GuardianMapInput` via:
 //
-//          GuardianMap{ "key": GuardianArgs{...} }
+//	GuardianMap{ "key": GuardianArgs{...} }
 type GuardianMapInput interface {
 	pulumi.Input
 

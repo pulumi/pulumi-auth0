@@ -15,20 +15,19 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @global = new Auth0.GlobalClient("global", new()
     ///     {
-    ///         var @global = new Auth0.GlobalClient("global", new Auth0.GlobalClientArgs
+    ///         Callbacks = new[]
     ///         {
-    ///             Callbacks = 
-    ///             {
-    ///                 "http://somehostname.com/a/callback",
-    ///             },
-    ///             CustomLoginPage = @"&lt;html&gt;
+    ///             "http://somehostname.com/a/callback",
+    ///         },
+    ///         CustomLoginPage = @"&lt;html&gt;
     ///     &lt;head&gt;&lt;title&gt;My Custom Login Page&lt;/title&gt;&lt;/head&gt;
     ///     &lt;body&gt;
     ///         I should probably have a login form here
@@ -36,11 +35,10 @@ namespace Pulumi.Auth0
     /// &lt;/html&gt;
     /// 
     /// ",
-    ///             CustomLoginPageOn = true,
-    ///         });
-    ///     }
+    ///         CustomLoginPageOn = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/globalClient:GlobalClient")]
-    public partial class GlobalClient : Pulumi.CustomResource
+    public partial class GlobalClient : global::Pulumi.CustomResource
     {
         [Output("addons")]
         public Output<Outputs.GlobalClientAddons> Addons { get; private set; } = null!;
@@ -203,7 +201,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class GlobalClientArgs : Pulumi.ResourceArgs
+    public sealed class GlobalClientArgs : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         public Input<Inputs.GlobalClientAddonsArgs>? Addons { get; set; }
@@ -363,9 +361,10 @@ namespace Pulumi.Auth0
         public GlobalClientArgs()
         {
         }
+        public static new GlobalClientArgs Empty => new GlobalClientArgs();
     }
 
-    public sealed class GlobalClientState : Pulumi.ResourceArgs
+    public sealed class GlobalClientState : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         public Input<Inputs.GlobalClientAddonsGetArgs>? Addons { get; set; }
@@ -525,5 +524,6 @@ namespace Pulumi.Auth0
         public GlobalClientState()
         {
         }
+        public static new GlobalClientState Empty => new GlobalClientState();
     }
 }

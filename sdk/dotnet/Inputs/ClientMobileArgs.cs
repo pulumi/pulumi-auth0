@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ClientMobileArgs : Pulumi.ResourceArgs
+    public sealed class ClientMobileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for Android native apps. For details, see Android.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ClientMobileArgs()
         {
         }
+        public static new ClientMobileArgs Empty => new ClientMobileArgs();
     }
 }

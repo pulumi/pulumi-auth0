@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GuardianPushArgs : Pulumi.ResourceArgs
+    public sealed class GuardianPushArgs : global::Pulumi.ResourceArgs
     {
         [Input("amazonSns")]
         public Input<Inputs.GuardianPushAmazonSnsArgs>? AmazonSns { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public GuardianPushArgs()
         {
         }
+        public static new GuardianPushArgs Empty => new GuardianPushArgs();
     }
 }

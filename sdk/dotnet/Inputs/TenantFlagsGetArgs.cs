@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class TenantFlagsGetArgs : Pulumi.ResourceArgs
+    public sealed class TenantFlagsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
@@ -144,5 +144,6 @@ namespace Pulumi.Auth0.Inputs
         public TenantFlagsGetArgs()
         {
         }
+        public static new TenantFlagsGetArgs Empty => new TenantFlagsGetArgs();
     }
 }

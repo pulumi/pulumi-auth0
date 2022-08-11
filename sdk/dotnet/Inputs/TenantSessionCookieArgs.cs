@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class TenantSessionCookieArgs : Pulumi.ResourceArgs
+    public sealed class TenantSessionCookieArgs : global::Pulumi.ResourceArgs
     {
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Auth0.Inputs
         public TenantSessionCookieArgs()
         {
         }
+        public static new TenantSessionCookieArgs Empty => new TenantSessionCookieArgs();
     }
 }

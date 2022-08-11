@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GlobalClientRefreshTokenGetArgs : Pulumi.ResourceArgs
+    public sealed class GlobalClientRefreshTokenGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("expirationType", required: true)]
         public Input<string> ExpirationType { get; set; } = null!;
@@ -36,5 +36,6 @@ namespace Pulumi.Auth0.Inputs
         public GlobalClientRefreshTokenGetArgs()
         {
         }
+        public static new GlobalClientRefreshTokenGetArgs Empty => new GlobalClientRefreshTokenGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ClientAddonsGetArgs : Pulumi.ResourceArgs
+    public sealed class ClientAddonsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("aws")]
         private InputMap<object>? _aws;
@@ -345,5 +345,6 @@ namespace Pulumi.Auth0.Inputs
         public ClientAddonsGetArgs()
         {
         }
+        public static new ClientAddonsGetArgs Empty => new ClientAddonsGetArgs();
     }
 }

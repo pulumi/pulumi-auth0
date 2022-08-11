@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GuardianWebauthnPlatformArgs : Pulumi.ResourceArgs
+    public sealed class GuardianWebauthnPlatformArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public GuardianWebauthnPlatformArgs()
         {
         }
+        public static new GuardianWebauthnPlatformArgs Empty => new GuardianWebauthnPlatformArgs();
     }
 }

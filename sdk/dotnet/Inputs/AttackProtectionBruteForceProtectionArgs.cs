@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class AttackProtectionBruteForceProtectionArgs : Pulumi.ResourceArgs
+    public sealed class AttackProtectionBruteForceProtectionArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowlists")]
         private InputList<string>? _allowlists;
@@ -57,5 +57,6 @@ namespace Pulumi.Auth0.Inputs
         public AttackProtectionBruteForceProtectionArgs()
         {
         }
+        public static new AttackProtectionBruteForceProtectionArgs Empty => new AttackProtectionBruteForceProtectionArgs();
     }
 }

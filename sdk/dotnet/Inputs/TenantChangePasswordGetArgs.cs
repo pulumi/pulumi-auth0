@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class TenantChangePasswordGetArgs : Pulumi.ResourceArgs
+    public sealed class TenantChangePasswordGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Indicates whether to use the custom change password page.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public TenantChangePasswordGetArgs()
         {
         }
+        public static new TenantChangePasswordGetArgs Empty => new TenantChangePasswordGetArgs();
     }
 }

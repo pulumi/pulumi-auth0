@@ -16,7 +16,7 @@ namespace Pulumi.Auth0
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [Auth0ResourceType("pulumi:providers:auth0")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         [Output("apiToken")]
         public Output<string?> ApiToken { get; private set; } = null!;
@@ -56,7 +56,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiToken")]
         public Input<string>? ApiToken { get; set; }
@@ -77,5 +77,6 @@ namespace Pulumi.Auth0
         {
             Debug = Utilities.GetEnvBoolean("AUTH0_DEBUG");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

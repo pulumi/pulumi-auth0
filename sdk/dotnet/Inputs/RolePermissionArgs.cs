@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class RolePermissionArgs : Pulumi.ResourceArgs
+    public sealed class RolePermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Name of the permission (scope).
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public RolePermissionArgs()
         {
         }
+        public static new RolePermissionArgs Empty => new RolePermissionArgs();
     }
 }

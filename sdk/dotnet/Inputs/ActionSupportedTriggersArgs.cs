@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ActionSupportedTriggersArgs : Pulumi.ResourceArgs
+    public sealed class ActionSupportedTriggersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Trigger ID.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ActionSupportedTriggersArgs()
         {
         }
+        public static new ActionSupportedTriggersArgs Empty => new ActionSupportedTriggersArgs();
     }
 }

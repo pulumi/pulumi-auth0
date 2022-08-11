@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsGatewayAuthenticationArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsGatewayAuthenticationArgs : global::Pulumi.ResourceArgs
     {
         [Input("audience")]
         public Input<string>? Audience { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsGatewayAuthenticationArgs()
         {
         }
+        public static new ConnectionOptionsGatewayAuthenticationArgs Empty => new ConnectionOptionsGatewayAuthenticationArgs();
     }
 }

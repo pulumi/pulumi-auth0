@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class TenantUniversalLoginColorsGetArgs : Pulumi.ResourceArgs
+    public sealed class TenantUniversalLoginColorsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, Hexadecimal. Background color of login pages.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public TenantUniversalLoginColorsGetArgs()
         {
         }
+        public static new TenantUniversalLoginColorsGetArgs Empty => new TenantUniversalLoginColorsGetArgs();
     }
 }

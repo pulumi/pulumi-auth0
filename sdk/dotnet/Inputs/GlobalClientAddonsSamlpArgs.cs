@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GlobalClientAddonsSamlpArgs : Pulumi.ResourceArgs
+    public sealed class GlobalClientAddonsSamlpArgs : global::Pulumi.ResourceArgs
     {
         [Input("audience")]
         public Input<string>? Audience { get; set; }
@@ -90,5 +90,6 @@ namespace Pulumi.Auth0.Inputs
         public GlobalClientAddonsSamlpArgs()
         {
         }
+        public static new GlobalClientAddonsSamlpArgs Empty => new GlobalClientAddonsSamlpArgs();
     }
 }

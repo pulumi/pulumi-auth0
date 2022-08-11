@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class AttackProtectionSuspiciousIpThrottlingPreLoginGetArgs : Pulumi.ResourceArgs
+    public sealed class AttackProtectionSuspiciousIpThrottlingPreLoginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of unsuccessful attempts. Only available on public tenants.
@@ -24,5 +24,6 @@ namespace Pulumi.Auth0.Inputs
         public AttackProtectionSuspiciousIpThrottlingPreLoginGetArgs()
         {
         }
+        public static new AttackProtectionSuspiciousIpThrottlingPreLoginGetArgs Empty => new AttackProtectionSuspiciousIpThrottlingPreLoginGetArgs();
     }
 }

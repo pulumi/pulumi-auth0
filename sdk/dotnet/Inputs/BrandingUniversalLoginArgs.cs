@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class BrandingUniversalLoginArgs : Pulumi.ResourceArgs
+    public sealed class BrandingUniversalLoginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, body of login pages.
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public BrandingUniversalLoginArgs()
         {
         }
+        public static new BrandingUniversalLoginArgs Empty => new BrandingUniversalLoginArgs();
     }
 }

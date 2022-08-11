@@ -17,30 +17,29 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myRule = new Auth0.Rule("myRule", new()
     ///     {
-    ///         var myRule = new Auth0.Rule("myRule", new Auth0.RuleArgs
-    ///         {
-    ///             Enabled = true,
-    ///             Script = @"function (user, context, callback) {
+    ///         Enabled = true,
+    ///         Script = @"function (user, context, callback) {
     ///   callback(null, user, context);
     /// }
     /// 
     /// ",
-    ///         });
-    ///         var myRuleConfig = new Auth0.RuleConfig("myRuleConfig", new Auth0.RuleConfigArgs
-    ///         {
-    ///             Key = "foo",
-    ///             Value = "bar",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    ///     var myRuleConfig = new Auth0.RuleConfig("myRuleConfig", new()
+    ///     {
+    ///         Key = "foo",
+    ///         Value = "bar",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/rule:Rule")]
-    public partial class Rule : Pulumi.CustomResource
+    public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean. Indicates whether the rule is enabled.
@@ -122,7 +121,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Indicates whether the rule is enabled.
@@ -151,9 +150,10 @@ namespace Pulumi.Auth0
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 
-    public sealed class RuleState : Pulumi.ResourceArgs
+    public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Indicates whether the rule is enabled.
@@ -182,5 +182,6 @@ namespace Pulumi.Auth0
         public RuleState()
         {
         }
+        public static new RuleState Empty => new RuleState();
     }
 }

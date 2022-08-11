@@ -20,59 +20,62 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
-// 			Identifier:    pulumi.String("my-resource-server-identifier"),
-// 			SigningAlg:    pulumi.String("RS256"),
-// 			TokenLifetime: pulumi.Int(86400),
-// 			SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
-// 			EnforcePolicies: pulumi.Bool(true),
-// 			Scopes: ResourceServerScopeArray{
-// 				&ResourceServerScopeArgs{
-// 					Value:       pulumi.String("read:something"),
-// 					Description: pulumi.String("read something"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myRole, err := auth0.NewRole(ctx, "myRole", &auth0.RoleArgs{
-// 			Description: pulumi.String("Role Description..."),
-// 			Permissions: RolePermissionArray{
-// 				&RolePermissionArgs{
-// 					ResourceServerIdentifier: myResourceServer.Identifier,
-// 					Name:                     pulumi.String("read:something"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = auth0.NewUser(ctx, "myUser", &auth0.UserArgs{
-// 			ConnectionName: pulumi.String("Username-Password-Authentication"),
-// 			UserId:         pulumi.String("auth0|1234567890"),
-// 			Email:          pulumi.String("test@test.com"),
-// 			Password:       pulumi.String(fmt.Sprintf("passpass$12$12")),
-// 			Nickname:       pulumi.String("testnick"),
-// 			Username:       pulumi.String("testnick"),
-// 			Roles: pulumi.StringArray{
-// 				myRole.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
+//				Identifier:    pulumi.String("my-resource-server-identifier"),
+//				SigningAlg:    pulumi.String("RS256"),
+//				TokenLifetime: pulumi.Int(86400),
+//				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
+//				EnforcePolicies: pulumi.Bool(true),
+//				Scopes: ResourceServerScopeArray{
+//					&ResourceServerScopeArgs{
+//						Value:       pulumi.String("read:something"),
+//						Description: pulumi.String("read something"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myRole, err := auth0.NewRole(ctx, "myRole", &auth0.RoleArgs{
+//				Description: pulumi.String("Role Description..."),
+//				Permissions: RolePermissionArray{
+//					&RolePermissionArgs{
+//						ResourceServerIdentifier: myResourceServer.Identifier,
+//						Name:                     pulumi.String("read:something"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewUser(ctx, "myUser", &auth0.UserArgs{
+//				ConnectionName: pulumi.String("Username-Password-Authentication"),
+//				UserId:         pulumi.String("auth0|1234567890"),
+//				Email:          pulumi.String("test@test.com"),
+//				Password:       pulumi.String(fmt.Sprintf("passpass$12$12")),
+//				Nickname:       pulumi.String("testnick"),
+//				Username:       pulumi.String("testnick"),
+//				Roles: pulumi.StringArray{
+//					myRole.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -80,7 +83,9 @@ import (
 // Existing roles can be imported using their id, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
+//
+//	$ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
+//
 // ```
 type Role struct {
 	pulumi.CustomResourceState
@@ -196,7 +201,7 @@ func (i *Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 // RoleArrayInput is an input type that accepts RoleArray and RoleArrayOutput values.
 // You can construct a concrete instance of `RoleArrayInput` via:
 //
-//          RoleArray{ RoleArgs{...} }
+//	RoleArray{ RoleArgs{...} }
 type RoleArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +226,7 @@ func (i RoleArray) ToRoleArrayOutputWithContext(ctx context.Context) RoleArrayOu
 // RoleMapInput is an input type that accepts RoleMap and RoleMapOutput values.
 // You can construct a concrete instance of `RoleMapInput` via:
 //
-//          RoleMap{ "key": RoleArgs{...} }
+//	RoleMap{ "key": RoleArgs{...} }
 type RoleMapInput interface {
 	pulumi.Input
 

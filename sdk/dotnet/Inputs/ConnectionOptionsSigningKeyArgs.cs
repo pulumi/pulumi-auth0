@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsSigningKeyArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsSigningKeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("cert", required: true)]
         public Input<string> Cert { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsSigningKeyArgs()
         {
         }
+        public static new ConnectionOptionsSigningKeyArgs Empty => new ConnectionOptionsSigningKeyArgs();
     }
 }

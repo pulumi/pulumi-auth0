@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class OrganizationBrandingGetArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationBrandingGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("colors")]
         private InputMap<string>? _colors;
@@ -33,5 +33,6 @@ namespace Pulumi.Auth0.Inputs
         public OrganizationBrandingGetArgs()
         {
         }
+        public static new OrganizationBrandingGetArgs Empty => new OrganizationBrandingGetArgs();
     }
 }

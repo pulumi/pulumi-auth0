@@ -27,34 +27,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewOrganization(ctx, "acme", &auth0.OrganizationArgs{
-// 			DisplayName: pulumi.String("Acme Inc."),
-// 			Branding: &OrganizationBrandingArgs{
-// 				LogoUrl: pulumi.String("https://acme.com/logo.svg"),
-// 				Colors: pulumi.StringMap{
-// 					"primary":         pulumi.String("#e3e2f0"),
-// 					"page_background": pulumi.String("#e3e2ff"),
-// 				},
-// 			},
-// 			Connections: OrganizationConnectionTypeArray{
-// 				&OrganizationConnectionTypeArgs{
-// 					ConnectionId:            pulumi.Any(auth0_connection.Acme.Id),
-// 					AssignMembershipOnLogin: pulumi.Bool(true),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewOrganization(ctx, "acme", &auth0.OrganizationArgs{
+//				DisplayName: pulumi.String("Acme Inc."),
+//				Branding: &OrganizationBrandingArgs{
+//					LogoUrl: pulumi.String("https://acme.com/logo.svg"),
+//					Colors: pulumi.StringMap{
+//						"primary":         pulumi.String("#e3e2f0"),
+//						"page_background": pulumi.String("#e3e2ff"),
+//					},
+//				},
+//				Connections: OrganizationConnectionTypeArray{
+//					&OrganizationConnectionTypeArgs{
+//						ConnectionId:            pulumi.Any(auth0_connection.Acme.Id),
+//						AssignMembershipOnLogin: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // Existing organizations can be imported using organization id, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+//
+//	$ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+//
 // ```
 type Organization struct {
 	pulumi.CustomResourceState
@@ -215,7 +220,7 @@ func (i *Organization) ToOrganizationOutputWithContext(ctx context.Context) Orga
 // OrganizationArrayInput is an input type that accepts OrganizationArray and OrganizationArrayOutput values.
 // You can construct a concrete instance of `OrganizationArrayInput` via:
 //
-//          OrganizationArray{ OrganizationArgs{...} }
+//	OrganizationArray{ OrganizationArgs{...} }
 type OrganizationArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +245,7 @@ func (i OrganizationArray) ToOrganizationArrayOutputWithContext(ctx context.Cont
 // OrganizationMapInput is an input type that accepts OrganizationMap and OrganizationMapOutput values.
 // You can construct a concrete instance of `OrganizationMapInput` via:
 //
-//          OrganizationMap{ "key": OrganizationArgs{...} }
+//	OrganizationMap{ "key": OrganizationArgs{...} }
 type OrganizationMapInput interface {
 	pulumi.Input
 

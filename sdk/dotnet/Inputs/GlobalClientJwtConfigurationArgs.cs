@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GlobalClientJwtConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class GlobalClientJwtConfigurationArgs : global::Pulumi.ResourceArgs
     {
         [Input("alg")]
         public Input<string>? Alg { get; set; }
@@ -32,5 +32,6 @@ namespace Pulumi.Auth0.Inputs
         public GlobalClientJwtConfigurationArgs()
         {
         }
+        public static new GlobalClientJwtConfigurationArgs Empty => new GlobalClientJwtConfigurationArgs();
     }
 }

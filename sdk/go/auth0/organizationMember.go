@@ -19,25 +19,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewOrganizationMember(ctx, "acmeAdmin", &auth0.OrganizationMemberArgs{
-// 			OrganizationId: pulumi.Any(auth0_organization.Acme.Id),
-// 			UserId:         pulumi.Any(auth0_user.Acme_user.Id),
-// 			Roles: pulumi.StringArray{
-// 				pulumi.Any(auth0_role.Admin.Id),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewOrganizationMember(ctx, "acmeAdmin", &auth0.OrganizationMemberArgs{
+//				OrganizationId: pulumi.Any(auth0_organization.Acme.Id),
+//				UserId:         pulumi.Any(auth0_user.Acme_user.Id),
+//				Roles: pulumi.StringArray{
+//					pulumi.Any(auth0_role.Admin.Id),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,7 +48,9 @@ import (
 // As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/organizationMember:OrganizationMember acme_admin 11f4a21b-011a-312d-9217-e291caca36c5
+//
+//	$ pulumi import auth0:index/organizationMember:OrganizationMember acme_admin 11f4a21b-011a-312d-9217-e291caca36c5
+//
 // ```
 type OrganizationMember struct {
 	pulumi.CustomResourceState
@@ -159,7 +164,7 @@ func (i *OrganizationMember) ToOrganizationMemberOutputWithContext(ctx context.C
 // OrganizationMemberArrayInput is an input type that accepts OrganizationMemberArray and OrganizationMemberArrayOutput values.
 // You can construct a concrete instance of `OrganizationMemberArrayInput` via:
 //
-//          OrganizationMemberArray{ OrganizationMemberArgs{...} }
+//	OrganizationMemberArray{ OrganizationMemberArgs{...} }
 type OrganizationMemberArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +189,7 @@ func (i OrganizationMemberArray) ToOrganizationMemberArrayOutputWithContext(ctx 
 // OrganizationMemberMapInput is an input type that accepts OrganizationMemberMap and OrganizationMemberMapOutput values.
 // You can construct a concrete instance of `OrganizationMemberMapInput` via:
 //
-//          OrganizationMemberMap{ "key": OrganizationMemberArgs{...} }
+//	OrganizationMemberMap{ "key": OrganizationMemberArgs{...} }
 type OrganizationMemberMapInput interface {
 	pulumi.Input
 

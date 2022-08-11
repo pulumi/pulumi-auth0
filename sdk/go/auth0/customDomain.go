@@ -20,22 +20,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewCustomDomain(ctx, "myCustomDomain", &auth0.CustomDomainArgs{
-// 			Domain: pulumi.String("auth.example.com"),
-// 			Type:   pulumi.String("auth0_managed_certs"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewCustomDomain(ctx, "myCustomDomain", &auth0.CustomDomainArgs{
+//				Domain: pulumi.String("auth.example.com"),
+//				Type:   pulumi.String("auth0_managed_certs"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // Custom Domains can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
+//
+//	$ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
+//
 // ```
 type CustomDomain struct {
 	pulumi.CustomResourceState
@@ -171,7 +176,7 @@ func (i *CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) Cust
 // CustomDomainArrayInput is an input type that accepts CustomDomainArray and CustomDomainArrayOutput values.
 // You can construct a concrete instance of `CustomDomainArrayInput` via:
 //
-//          CustomDomainArray{ CustomDomainArgs{...} }
+//	CustomDomainArray{ CustomDomainArgs{...} }
 type CustomDomainArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +201,7 @@ func (i CustomDomainArray) ToCustomDomainArrayOutputWithContext(ctx context.Cont
 // CustomDomainMapInput is an input type that accepts CustomDomainMap and CustomDomainMapOutput values.
 // You can construct a concrete instance of `CustomDomainMapInput` via:
 //
-//          CustomDomainMap{ "key": CustomDomainArgs{...} }
+//	CustomDomainMap{ "key": CustomDomainArgs{...} }
 type CustomDomainMapInput interface {
 	pulumi.Input
 

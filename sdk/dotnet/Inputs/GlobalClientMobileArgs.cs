@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GlobalClientMobileArgs : Pulumi.ResourceArgs
+    public sealed class GlobalClientMobileArgs : global::Pulumi.ResourceArgs
     {
         [Input("android")]
         public Input<Inputs.GlobalClientMobileAndroidArgs>? Android { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public GlobalClientMobileArgs()
         {
         }
+        public static new GlobalClientMobileArgs Empty => new GlobalClientMobileArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsTotpGetArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsTotpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Integer. Length of the one-time password.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsTotpGetArgs()
         {
         }
+        public static new ConnectionOptionsTotpGetArgs Empty => new ConnectionOptionsTotpGetArgs();
     }
 }

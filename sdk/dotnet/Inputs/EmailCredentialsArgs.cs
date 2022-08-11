@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class EmailCredentialsArgs : Pulumi.ResourceArgs
+    public sealed class EmailCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, Case-sensitive. AWS Access Key ID. Used only for AWS.
@@ -72,5 +72,6 @@ namespace Pulumi.Auth0.Inputs
         public EmailCredentialsArgs()
         {
         }
+        public static new EmailCredentialsArgs Empty => new EmailCredentialsArgs();
     }
 }

@@ -20,59 +20,59 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var actionFoo = new Auth0.Action("actionFoo", new()
     ///     {
-    ///         var actionFoo = new Auth0.Action("actionFoo", new Auth0.ActionArgs
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
     ///         {
-    ///             SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///             {
-    ///                 Id = "post-login",
-    ///                 Version = "v2",
-    ///             },
-    ///             Code = @"exports.onContinuePostLogin = async (event, api) =&gt; { 
+    ///             Id = "post-login",
+    ///             Version = "v2",
+    ///         },
+    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; { 
     /// 	console.log(""foo"") 
     /// };""
     /// ",
-    ///             Deploy = true,
-    ///         });
-    ///         var actionBar = new Auth0.Action("actionBar", new Auth0.ActionArgs
+    ///         Deploy = true,
+    ///     });
+    /// 
+    ///     var actionBar = new Auth0.Action("actionBar", new()
+    ///     {
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
     ///         {
-    ///             SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///             {
-    ///                 Id = "post-login",
-    ///                 Version = "v2",
-    ///             },
-    ///             Code = @"exports.onContinuePostLogin = async (event, api) =&gt; { 
+    ///             Id = "post-login",
+    ///             Version = "v2",
+    ///         },
+    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; { 
     /// 	console.log(""bar"") 
     /// };""
     /// ",
-    ///             Deploy = true,
-    ///         });
-    ///         var loginFlow = new Auth0.TriggerBinding("loginFlow", new Auth0.TriggerBindingArgs
-    ///         {
-    ///             Trigger = "post-login",
-    ///             Actions = 
-    ///             {
-    ///                 new Auth0.Inputs.TriggerBindingActionArgs
-    ///                 {
-    ///                     Id = actionFoo.Id,
-    ///                     DisplayName = actionFoo.Name,
-    ///                 },
-    ///                 new Auth0.Inputs.TriggerBindingActionArgs
-    ///                 {
-    ///                     Id = actionBar.Id,
-    ///                     DisplayName = actionBar.Name,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Deploy = true,
+    ///     });
     /// 
-    /// }
+    ///     var loginFlow = new Auth0.TriggerBinding("loginFlow", new()
+    ///     {
+    ///         Trigger = "post-login",
+    ///         Actions = new[]
+    ///         {
+    ///             new Auth0.Inputs.TriggerBindingActionArgs
+    ///             {
+    ///                 Id = actionFoo.Id,
+    ///                 DisplayName = actionFoo.Name,
+    ///             },
+    ///             new Auth0.Inputs.TriggerBindingActionArgs
+    ///             {
+    ///                 Id = actionBar.Id,
+    ///                 DisplayName = actionBar.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +84,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/triggerBinding:TriggerBinding")]
-    public partial class TriggerBinding : Pulumi.CustomResource
+    public partial class TriggerBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The actions bound to this trigger. For details, see
@@ -143,7 +143,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class TriggerBindingArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("actions", required: true)]
         private InputList<Inputs.TriggerBindingActionArgs>? _actions;
@@ -167,9 +167,10 @@ namespace Pulumi.Auth0
         public TriggerBindingArgs()
         {
         }
+        public static new TriggerBindingArgs Empty => new TriggerBindingArgs();
     }
 
-    public sealed class TriggerBindingState : Pulumi.ResourceArgs
+    public sealed class TriggerBindingState : global::Pulumi.ResourceArgs
     {
         [Input("actions")]
         private InputList<Inputs.TriggerBindingActionGetArgs>? _actions;
@@ -193,5 +194,6 @@ namespace Pulumi.Auth0
         public TriggerBindingState()
         {
         }
+        public static new TriggerBindingState Empty => new TriggerBindingState();
     }
 }

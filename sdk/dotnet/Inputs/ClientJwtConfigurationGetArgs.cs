@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ClientJwtConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class ClientJwtConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Algorithm used to sign JWTs.
@@ -45,5 +45,6 @@ namespace Pulumi.Auth0.Inputs
         public ClientJwtConfigurationGetArgs()
         {
         }
+        public static new ClientJwtConfigurationGetArgs Empty => new ClientJwtConfigurationGetArgs();
     }
 }

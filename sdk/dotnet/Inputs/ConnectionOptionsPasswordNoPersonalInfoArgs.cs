@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsPasswordNoPersonalInfoArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsPasswordNoPersonalInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the password personal info check is enabled for this connection.
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsPasswordNoPersonalInfoArgs()
         {
         }
+        public static new ConnectionOptionsPasswordNoPersonalInfoArgs Empty => new ConnectionOptionsPasswordNoPersonalInfoArgs();
     }
 }

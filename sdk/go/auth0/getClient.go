@@ -18,27 +18,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.LookupClient(ctx, &GetClientArgs{
-// 			Name: pulumi.StringRef("Name of my Application"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = auth0.LookupClient(ctx, &GetClientArgs{
-// 			ClientId: pulumi.StringRef("abcdefghkijklmnopqrstuvwxyz0123456789"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.LookupClient(ctx, &GetClientArgs{
+//				Name: pulumi.StringRef("Name of my Application"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.LookupClient(ctx, &GetClientArgs{
+//				ClientId: pulumi.StringRef("abcdefghkijklmnopqrstuvwxyz0123456789"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.InvokeOption) (*LookupClientResult, error) {
 	var rv LookupClientResult

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GuardianPhoneArgs : Pulumi.ResourceArgs
+    public sealed class GuardianPhoneArgs : global::Pulumi.ResourceArgs
     {
         [Input("messageTypes", required: true)]
         private InputList<string>? _messageTypes;
@@ -39,5 +39,6 @@ namespace Pulumi.Auth0.Inputs
         public GuardianPhoneArgs()
         {
         }
+        public static new GuardianPhoneArgs Empty => new GuardianPhoneArgs();
     }
 }

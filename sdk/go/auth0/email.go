@@ -21,27 +21,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
-// 			Credentials: &EmailCredentialsArgs{
-// 				AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
-// 				Region:          pulumi.String("us-east-1"),
-// 				SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-// 			},
-// 			DefaultFromAddress: pulumi.String("accounts@example.com"),
-// 			Enabled:            pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
+//				Credentials: &EmailCredentialsArgs{
+//					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
+//					Region:          pulumi.String("us-east-1"),
+//					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				},
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Enabled:            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/email:Email my_email_provider b4213dc2-2eed-42c3-9516-c6131a9ce0b0
+//
+//	$ pulumi import auth0:index/email:Email my_email_provider b4213dc2-2eed-42c3-9516-c6131a9ce0b0
+//
 // ```
 type Email struct {
 	pulumi.CustomResourceState
@@ -173,7 +178,7 @@ func (i *Email) ToEmailOutputWithContext(ctx context.Context) EmailOutput {
 // EmailArrayInput is an input type that accepts EmailArray and EmailArrayOutput values.
 // You can construct a concrete instance of `EmailArrayInput` via:
 //
-//          EmailArray{ EmailArgs{...} }
+//	EmailArray{ EmailArgs{...} }
 type EmailArrayInput interface {
 	pulumi.Input
 
@@ -198,7 +203,7 @@ func (i EmailArray) ToEmailArrayOutputWithContext(ctx context.Context) EmailArra
 // EmailMapInput is an input type that accepts EmailMap and EmailMapOutput values.
 // You can construct a concrete instance of `EmailMapInput` via:
 //
-//          EmailMap{ "key": EmailArgs{...} }
+//	EmailMap{ "key": EmailArgs{...} }
 type EmailMapInput interface {
 	pulumi.Input
 

@@ -16,21 +16,19 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myCustomDomain = new Auth0.CustomDomain("myCustomDomain", new()
     ///     {
-    ///         var myCustomDomain = new Auth0.CustomDomain("myCustomDomain", new Auth0.CustomDomainArgs
-    ///         {
-    ///             Domain = "auth.example.com",
-    ///             Type = "auth0_managed_certs",
-    ///         });
-    ///     }
+    ///         Domain = "auth.example.com",
+    ///         Type = "auth0_managed_certs",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/customDomain:CustomDomain")]
-    public partial class CustomDomain : Pulumi.CustomResource
+    public partial class CustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// String. Name of the custom domain.
@@ -124,7 +122,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class CustomDomainArgs : Pulumi.ResourceArgs
+    public sealed class CustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Name of the custom domain.
@@ -141,9 +139,10 @@ namespace Pulumi.Auth0
         public CustomDomainArgs()
         {
         }
+        public static new CustomDomainArgs Empty => new CustomDomainArgs();
     }
 
-    public sealed class CustomDomainState : Pulumi.ResourceArgs
+    public sealed class CustomDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Name of the custom domain.
@@ -190,5 +189,6 @@ namespace Pulumi.Auth0
         public CustomDomainState()
         {
         }
+        public static new CustomDomainState Empty => new CustomDomainState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class TriggerBindingActionArgs : Pulumi.ResourceArgs
+    public sealed class TriggerBindingActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of an action.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public TriggerBindingActionArgs()
         {
         }
+        public static new TriggerBindingActionArgs Empty => new TriggerBindingActionArgs();
     }
 }

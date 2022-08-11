@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GuardianPushAmazonSnsArgs : Pulumi.ResourceArgs
+    public sealed class GuardianPushAmazonSnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Your AWS Access Key ID.
@@ -45,5 +45,6 @@ namespace Pulumi.Auth0.Inputs
         public GuardianPushAmazonSnsArgs()
         {
         }
+        public static new GuardianPushAmazonSnsArgs Empty => new GuardianPushAmazonSnsArgs();
     }
 }

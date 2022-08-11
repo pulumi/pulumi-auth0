@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ClientNativeSocialLoginFacebookArgs : Pulumi.ResourceArgs
+    public sealed class ClientNativeSocialLoginFacebookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public ClientNativeSocialLoginFacebookArgs()
         {
         }
+        public static new ClientNativeSocialLoginFacebookArgs Empty => new ClientNativeSocialLoginFacebookArgs();
     }
 }

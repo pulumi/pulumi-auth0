@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GlobalClientMobileIosArgs : Pulumi.ResourceArgs
+    public sealed class GlobalClientMobileIosArgs : global::Pulumi.ResourceArgs
     {
         [Input("appBundleIdentifier")]
         public Input<string>? AppBundleIdentifier { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public GlobalClientMobileIosArgs()
         {
         }
+        public static new GlobalClientMobileIosArgs Empty => new GlobalClientMobileIosArgs();
     }
 }

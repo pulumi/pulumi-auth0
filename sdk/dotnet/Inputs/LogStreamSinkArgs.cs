@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class LogStreamSinkArgs : Pulumi.ResourceArgs
+    public sealed class LogStreamSinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AWS Account ID
@@ -132,5 +132,6 @@ namespace Pulumi.Auth0.Inputs
         public LogStreamSinkArgs()
         {
         }
+        public static new LogStreamSinkArgs Empty => new LogStreamSinkArgs();
     }
 }

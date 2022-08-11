@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class CustomDomainVerificationArgs : Pulumi.ResourceArgs
+    public sealed class CustomDomainVerificationArgs : global::Pulumi.ResourceArgs
     {
         [Input("methods")]
         private InputList<object>? _methods;
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public CustomDomainVerificationArgs()
         {
         }
+        public static new CustomDomainVerificationArgs Empty => new CustomDomainVerificationArgs();
     }
 }

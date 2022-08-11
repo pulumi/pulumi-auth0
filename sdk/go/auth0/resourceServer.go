@@ -18,35 +18,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
-// 			AllowOfflineAccess: pulumi.Bool(true),
-// 			Identifier:         pulumi.String("https://api.example.com"),
-// 			Scopes: ResourceServerScopeArray{
-// 				&ResourceServerScopeArgs{
-// 					Description: pulumi.String("Create foos"),
-// 					Value:       pulumi.String("create:foo"),
-// 				},
-// 				&ResourceServerScopeArgs{
-// 					Description: pulumi.String("Create bars"),
-// 					Value:       pulumi.String("create:bar"),
-// 				},
-// 			},
-// 			SigningAlg: pulumi.String("RS256"),
-// 			SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
-// 			TokenLifetime: pulumi.Int(8600),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
+//				AllowOfflineAccess: pulumi.Bool(true),
+//				Identifier:         pulumi.String("https://api.example.com"),
+//				Scopes: ResourceServerScopeArray{
+//					&ResourceServerScopeArgs{
+//						Description: pulumi.String("Create foos"),
+//						Value:       pulumi.String("create:foo"),
+//					},
+//					&ResourceServerScopeArgs{
+//						Description: pulumi.String("Create bars"),
+//						Value:       pulumi.String("create:bar"),
+//					},
+//				},
+//				SigningAlg: pulumi.String("RS256"),
+//				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
+//				TokenLifetime: pulumi.Int(8600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Existing resource servers can be imported using their id, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
+//
+//	$ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
+//
 // ```
 type ResourceServer struct {
 	pulumi.CustomResourceState
@@ -262,7 +267,7 @@ func (i *ResourceServer) ToResourceServerOutputWithContext(ctx context.Context) 
 // ResourceServerArrayInput is an input type that accepts ResourceServerArray and ResourceServerArrayOutput values.
 // You can construct a concrete instance of `ResourceServerArrayInput` via:
 //
-//          ResourceServerArray{ ResourceServerArgs{...} }
+//	ResourceServerArray{ ResourceServerArgs{...} }
 type ResourceServerArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +292,7 @@ func (i ResourceServerArray) ToResourceServerArrayOutputWithContext(ctx context.
 // ResourceServerMapInput is an input type that accepts ResourceServerMap and ResourceServerMapOutput values.
 // You can construct a concrete instance of `ResourceServerMapInput` via:
 //
-//          ResourceServerMap{ "key": ResourceServerArgs{...} }
+//	ResourceServerMap{ "key": ResourceServerArgs{...} }
 type ResourceServerMapInput interface {
 	pulumi.Input
 

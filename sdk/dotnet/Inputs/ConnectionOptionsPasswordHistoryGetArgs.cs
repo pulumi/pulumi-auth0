@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsPasswordHistoryGetArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsPasswordHistoryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsPasswordHistoryGetArgs()
         {
         }
+        public static new ConnectionOptionsPasswordHistoryGetArgs Empty => new ConnectionOptionsPasswordHistoryGetArgs();
     }
 }
