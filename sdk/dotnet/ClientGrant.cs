@@ -17,45 +17,43 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myClient = new Auth0.Client("myClient", new Auth0.ClientArgs
-    ///         {
-    ///         });
-    ///         var myResourceServer = new Auth0.ResourceServer("myResourceServer", new Auth0.ResourceServerArgs
-    ///         {
-    ///             Identifier = "https://api.example.com/client-grant",
-    ///             Scopes = 
-    ///             {
-    ///                 new Auth0.Inputs.ResourceServerScopeArgs
-    ///                 {
-    ///                     Value = "create:foo",
-    ///                     Description = "Create foos",
-    ///                 },
-    ///                 new Auth0.Inputs.ResourceServerScopeArgs
-    ///                 {
-    ///                     Value = "create:bar",
-    ///                     Description = "Create bars",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var myClientGrant = new Auth0.ClientGrant("myClientGrant", new Auth0.ClientGrantArgs
-    ///         {
-    ///             ClientId = myClient.Id,
-    ///             Audience = myResourceServer.Identifier,
-    ///             Scopes = 
-    ///             {
-    ///                 "create:foo",
-    ///             },
-    ///         });
-    ///     }
+    ///     var myClient = new Auth0.Client("myClient");
     /// 
-    /// }
+    ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
+    ///     {
+    ///         Identifier = "https://api.example.com/client-grant",
+    ///         Scopes = new[]
+    ///         {
+    ///             new Auth0.Inputs.ResourceServerScopeArgs
+    ///             {
+    ///                 Value = "create:foo",
+    ///                 Description = "Create foos",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerScopeArgs
+    ///             {
+    ///                 Value = "create:bar",
+    ///                 Description = "Create bars",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var myClientGrant = new Auth0.ClientGrant("myClientGrant", new()
+    ///     {
+    ///         ClientId = myClient.Id,
+    ///         Audience = myResourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             "create:foo",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +65,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/clientGrant:ClientGrant")]
-    public partial class ClientGrant : Pulumi.CustomResource
+    public partial class ClientGrant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// String. Audience or API Identifier for this grant.
@@ -131,7 +129,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class ClientGrantArgs : Pulumi.ResourceArgs
+    public sealed class ClientGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Audience or API Identifier for this grant.
@@ -160,9 +158,10 @@ namespace Pulumi.Auth0
         public ClientGrantArgs()
         {
         }
+        public static new ClientGrantArgs Empty => new ClientGrantArgs();
     }
 
-    public sealed class ClientGrantState : Pulumi.ResourceArgs
+    public sealed class ClientGrantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Audience or API Identifier for this grant.
@@ -191,5 +190,6 @@ namespace Pulumi.Auth0
         public ClientGrantState()
         {
         }
+        public static new ClientGrantState Empty => new ClientGrantState();
     }
 }

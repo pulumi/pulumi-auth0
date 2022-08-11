@@ -21,31 +21,34 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
-// 			Enabled: pulumi.Bool(true),
-// 			Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, user, context);\n}\n\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = auth0.NewRuleConfig(ctx, "myRuleConfig", &auth0.RuleConfigArgs{
-// 			Key:   pulumi.String("foo"),
-// 			Value: pulumi.String("bar"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
+//				Enabled: pulumi.Bool(true),
+//				Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, user, context);\n}\n\n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewRuleConfig(ctx, "myRuleConfig", &auth0.RuleConfigArgs{
+//				Key:   pulumi.String("foo"),
+//				Value: pulumi.String("bar"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // Existing rules can be imported using their id, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
+//
+//	$ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
+//
 // ```
 type Rule struct {
 	pulumi.CustomResourceState
@@ -174,7 +179,7 @@ func (i *Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // RuleArrayInput is an input type that accepts RuleArray and RuleArrayOutput values.
 // You can construct a concrete instance of `RuleArrayInput` via:
 //
-//          RuleArray{ RuleArgs{...} }
+//	RuleArray{ RuleArgs{...} }
 type RuleArrayInput interface {
 	pulumi.Input
 
@@ -199,7 +204,7 @@ func (i RuleArray) ToRuleArrayOutputWithContext(ctx context.Context) RuleArrayOu
 // RuleMapInput is an input type that accepts RuleMap and RuleMapOutput values.
 // You can construct a concrete instance of `RuleMapInput` via:
 //
-//          RuleMap{ "key": RuleArgs{...} }
+//	RuleMap{ "key": RuleArgs{...} }
 type RuleMapInput interface {
 	pulumi.Input
 

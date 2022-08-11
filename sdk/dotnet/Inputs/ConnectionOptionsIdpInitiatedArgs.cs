@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsIdpInitiatedArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsIdpInitiatedArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientAuthorizeQuery")]
         public Input<string>? ClientAuthorizeQuery { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsIdpInitiatedArgs()
         {
         }
+        public static new ConnectionOptionsIdpInitiatedArgs Empty => new ConnectionOptionsIdpInitiatedArgs();
     }
 }

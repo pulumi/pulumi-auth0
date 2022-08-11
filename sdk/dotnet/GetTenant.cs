@@ -19,17 +19,15 @@ namespace Pulumi.Auth0
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Auth0 = Pulumi.Auth0;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(Auth0.GetTenant.InvokeAsync());
-        ///     }
+        ///     var current = Auth0.GetTenant.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

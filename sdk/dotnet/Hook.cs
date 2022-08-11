@@ -18,34 +18,32 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myHook = new Auth0.Hook("myHook", new()
     ///     {
-    ///         var myHook = new Auth0.Hook("myHook", new Auth0.HookArgs
+    ///         Dependencies = 
     ///         {
-    ///             Dependencies = 
-    ///             {
-    ///                 { "auth0", "2.30.0" },
-    ///             },
-    ///             Enabled = true,
-    ///             Script = @"function (user, context, callback) {
+    ///             { "auth0", "2.30.0" },
+    ///         },
+    ///         Enabled = true,
+    ///         Script = @"function (user, context, callback) {
     ///   callback(null, { user });
     /// }
     /// 
     /// ",
-    ///             Secrets = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             TriggerId = "pre-user-registration",
-    ///         });
-    ///     }
+    ///         Secrets = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         TriggerId = "pre-user-registration",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/hook:Hook")]
-    public partial class Hook : Pulumi.CustomResource
+    public partial class Hook : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Dependencies of this hook used by the WebTask server.
@@ -140,7 +138,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class HookArgs : Pulumi.ResourceArgs
+    public sealed class HookArgs : global::Pulumi.ResourceArgs
     {
         [Input("dependencies")]
         private InputMap<object>? _dependencies;
@@ -194,9 +192,10 @@ namespace Pulumi.Auth0
         public HookArgs()
         {
         }
+        public static new HookArgs Empty => new HookArgs();
     }
 
-    public sealed class HookState : Pulumi.ResourceArgs
+    public sealed class HookState : global::Pulumi.ResourceArgs
     {
         [Input("dependencies")]
         private InputMap<object>? _dependencies;
@@ -250,5 +249,6 @@ namespace Pulumi.Auth0
         public HookState()
         {
         }
+        public static new HookState Empty => new HookState();
     }
 }

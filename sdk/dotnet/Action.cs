@@ -17,16 +17,15 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myAction = new Auth0.Action("myAction", new()
     ///     {
-    ///         var myAction = new Auth0.Action("myAction", new Auth0.ActionArgs
-    ///         {
-    ///             Code = @"/**
+    ///         Code = @"/**
     ///  * Handler that will be called during the execution of a PostLogin flow.
     ///  *
     ///  * @param {Event} event - Details about the user and the context in which they are logging in.
@@ -37,43 +36,42 @@ namespace Pulumi.Auth0
     ///  };
     /// 
     /// ",
-    ///             Dependencies = 
+    ///         Dependencies = new[]
+    ///         {
+    ///             new Auth0.Inputs.ActionDependencyArgs
     ///             {
-    ///                 new Auth0.Inputs.ActionDependencyArgs
-    ///                 {
-    ///                     Name = "lodash",
-    ///                     Version = "latest",
-    ///                 },
-    ///                 new Auth0.Inputs.ActionDependencyArgs
-    ///                 {
-    ///                     Name = "request",
-    ///                     Version = "latest",
-    ///                 },
+    ///                 Name = "lodash",
+    ///                 Version = "latest",
     ///             },
-    ///             Deploy = true,
-    ///             Runtime = "node16",
-    ///             Secrets = 
+    ///             new Auth0.Inputs.ActionDependencyArgs
     ///             {
-    ///                 new Auth0.Inputs.ActionSecretArgs
-    ///                 {
-    ///                     Name = "FOO",
-    ///                     Value = "Foo",
-    ///                 },
-    ///                 new Auth0.Inputs.ActionSecretArgs
-    ///                 {
-    ///                     Name = "BAR",
-    ///                     Value = "Bar",
-    ///                 },
+    ///                 Name = "request",
+    ///                 Version = "latest",
     ///             },
-    ///             SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         },
+    ///         Deploy = true,
+    ///         Runtime = "node16",
+    ///         Secrets = new[]
+    ///         {
+    ///             new Auth0.Inputs.ActionSecretArgs
     ///             {
-    ///                 Id = "post-login",
-    ///                 Version = "v3",
+    ///                 Name = "FOO",
+    ///                 Value = "Foo",
     ///             },
-    ///         });
-    ///     }
+    ///             new Auth0.Inputs.ActionSecretArgs
+    ///             {
+    ///                 Name = "BAR",
+    ///                 Value = "Bar",
+    ///             },
+    ///         },
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -87,7 +85,7 @@ namespace Pulumi.Auth0
     ///  ~&gt; For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
     /// </summary>
     [Auth0ResourceType("auth0:index/action:Action")]
-    public partial class Action : Pulumi.CustomResource
+    public partial class Action : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The source code of the action.
@@ -184,7 +182,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class ActionArgs : Pulumi.ResourceArgs
+    public sealed class ActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The source code of the action.
@@ -246,9 +244,10 @@ namespace Pulumi.Auth0
         public ActionArgs()
         {
         }
+        public static new ActionArgs Empty => new ActionArgs();
     }
 
-    public sealed class ActionState : Pulumi.ResourceArgs
+    public sealed class ActionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The source code of the action.
@@ -316,5 +315,6 @@ namespace Pulumi.Auth0
         public ActionState()
         {
         }
+        public static new ActionState Empty => new ActionState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class TenantGuardianMfaPageArgs : Pulumi.ResourceArgs
+    public sealed class TenantGuardianMfaPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Indicates whether to use the custom Guardian page.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public TenantGuardianMfaPageArgs()
         {
         }
+        public static new TenantGuardianMfaPageArgs Empty => new TenantGuardianMfaPageArgs();
     }
 }

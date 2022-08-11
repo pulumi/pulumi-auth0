@@ -19,24 +19,23 @@ namespace Pulumi.Auth0
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Auth0 = Pulumi.Auth0;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var some_client_by_name = Auth0.GetClient.Invoke(new()
         ///     {
-        ///         var some_client_by_name = Output.Create(Auth0.GetClient.InvokeAsync(new Auth0.GetClientArgs
-        ///         {
-        ///             Name = "Name of my Application",
-        ///         }));
-        ///         var some_client_by_id = Output.Create(Auth0.GetClient.InvokeAsync(new Auth0.GetClientArgs
-        ///         {
-        ///             ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
-        ///         }));
-        ///     }
+        ///         Name = "Name of my Application",
+        ///     });
         /// 
-        /// }
+        ///     var some_client_by_id = Auth0.GetClient.Invoke(new()
+        ///     {
+        ///         ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -52,24 +51,23 @@ namespace Pulumi.Auth0
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Auth0 = Pulumi.Auth0;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var some_client_by_name = Auth0.GetClient.Invoke(new()
         ///     {
-        ///         var some_client_by_name = Output.Create(Auth0.GetClient.InvokeAsync(new Auth0.GetClientArgs
-        ///         {
-        ///             Name = "Name of my Application",
-        ///         }));
-        ///         var some_client_by_id = Output.Create(Auth0.GetClient.InvokeAsync(new Auth0.GetClientArgs
-        ///         {
-        ///             ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
-        ///         }));
-        ///     }
+        ///         Name = "Name of my Application",
+        ///     });
         /// 
-        /// }
+        ///     var some_client_by_id = Auth0.GetClient.Invoke(new()
+        ///     {
+        ///         ClientId = "abcdefghkijklmnopqrstuvwxyz0123456789",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -79,7 +77,7 @@ namespace Pulumi.Auth0
     }
 
 
-    public sealed class GetClientArgs : Pulumi.InvokeArgs
+    public sealed class GetClientArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// String. client_id of the application.
@@ -96,9 +94,10 @@ namespace Pulumi.Auth0
         public GetClientArgs()
         {
         }
+        public static new GetClientArgs Empty => new GetClientArgs();
     }
 
-    public sealed class GetClientInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClientInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// String. client_id of the application.
@@ -115,6 +114,7 @@ namespace Pulumi.Auth0
         public GetClientInvokeArgs()
         {
         }
+        public static new GetClientInvokeArgs Empty => new GetClientInvokeArgs();
     }
 
 

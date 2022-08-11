@@ -21,43 +21,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myEmailProvider, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
-// 			Enabled:            pulumi.Bool(true),
-// 			DefaultFromAddress: pulumi.String("accounts@example.com"),
-// 			Credentials: &EmailCredentialsArgs{
-// 				AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
-// 				SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-// 				Region:          pulumi.String("us-east-1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = auth0.NewEmailTemplate(ctx, "myEmailTemplate", &auth0.EmailTemplateArgs{
-// 			Template:               pulumi.String("welcome_email"),
-// 			Body:                   pulumi.String("<html><body><h1>Welcome!</h1></body></html>"),
-// 			From:                   pulumi.String("welcome@example.com"),
-// 			ResultUrl:              pulumi.String("https://example.com/welcome"),
-// 			Subject:                pulumi.String("Welcome"),
-// 			Syntax:                 pulumi.String("liquid"),
-// 			UrlLifetimeInSeconds:   pulumi.Int(3600),
-// 			Enabled:                pulumi.Bool(true),
-// 			IncludeEmailInRedirect: pulumi.Bool(true),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			myEmailProvider,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myEmailProvider, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Credentials: &EmailCredentialsArgs{
+//					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
+//					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//					Region:          pulumi.String("us-east-1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewEmailTemplate(ctx, "myEmailTemplate", &auth0.EmailTemplateArgs{
+//				Template:               pulumi.String("welcome_email"),
+//				Body:                   pulumi.String("<html><body><h1>Welcome!</h1></body></html>"),
+//				From:                   pulumi.String("welcome@example.com"),
+//				ResultUrl:              pulumi.String("https://example.com/welcome"),
+//				Subject:                pulumi.String("Welcome"),
+//				Syntax:                 pulumi.String("liquid"),
+//				UrlLifetimeInSeconds:   pulumi.Int(3600),
+//				Enabled:                pulumi.Bool(true),
+//				IncludeEmailInRedirect: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				myEmailProvider,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +68,9 @@ import (
 // This resource can be imported using the template name, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
+//
+//	$ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
+//
 // ```
 type EmailTemplate struct {
 	pulumi.CustomResourceState
@@ -251,7 +256,7 @@ func (i *EmailTemplate) ToEmailTemplateOutputWithContext(ctx context.Context) Em
 // EmailTemplateArrayInput is an input type that accepts EmailTemplateArray and EmailTemplateArrayOutput values.
 // You can construct a concrete instance of `EmailTemplateArrayInput` via:
 //
-//          EmailTemplateArray{ EmailTemplateArgs{...} }
+//	EmailTemplateArray{ EmailTemplateArgs{...} }
 type EmailTemplateArrayInput interface {
 	pulumi.Input
 
@@ -276,7 +281,7 @@ func (i EmailTemplateArray) ToEmailTemplateArrayOutputWithContext(ctx context.Co
 // EmailTemplateMapInput is an input type that accepts EmailTemplateMap and EmailTemplateMapOutput values.
 // You can construct a concrete instance of `EmailTemplateMapInput` via:
 //
-//          EmailTemplateMap{ "key": EmailTemplateArgs{...} }
+//	EmailTemplateMap{ "key": EmailTemplateArgs{...} }
 type EmailTemplateMapInput interface {
 	pulumi.Input
 

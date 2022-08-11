@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class AttackProtectionBreachedPasswordDetectionGetArgs : Pulumi.ResourceArgs
+    public sealed class AttackProtectionBreachedPasswordDetectionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("adminNotificationFrequencies")]
         private InputList<string>? _adminNotificationFrequencies;
@@ -51,5 +51,6 @@ namespace Pulumi.Auth0.Inputs
         public AttackProtectionBreachedPasswordDetectionGetArgs()
         {
         }
+        public static new AttackProtectionBreachedPasswordDetectionGetArgs Empty => new AttackProtectionBreachedPasswordDetectionGetArgs();
     }
 }

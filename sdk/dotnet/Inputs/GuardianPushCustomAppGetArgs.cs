@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GuardianPushCustomAppGetArgs : Pulumi.ResourceArgs
+    public sealed class GuardianPushCustomAppGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Custom Application Name.
@@ -33,5 +33,6 @@ namespace Pulumi.Auth0.Inputs
         public GuardianPushCustomAppGetArgs()
         {
         }
+        public static new GuardianPushCustomAppGetArgs Empty => new GuardianPushCustomAppGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsPasswordDictionaryArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsPasswordDictionaryArgs : global::Pulumi.ResourceArgs
     {
         [Input("dictionaries")]
         private InputList<string>? _dictionaries;
@@ -33,5 +33,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsPasswordDictionaryArgs()
         {
         }
+        public static new ConnectionOptionsPasswordDictionaryArgs Empty => new ConnectionOptionsPasswordDictionaryArgs();
     }
 }

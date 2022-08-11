@@ -24,37 +24,35 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var acme = new Auth0.Organization("acme", new()
     ///     {
-    ///         var acme = new Auth0.Organization("acme", new Auth0.OrganizationArgs
+    ///         DisplayName = "Acme Inc.",
+    ///         Branding = new Auth0.Inputs.OrganizationBrandingArgs
     ///         {
-    ///             DisplayName = "Acme Inc.",
-    ///             Branding = new Auth0.Inputs.OrganizationBrandingArgs
+    ///             LogoUrl = "https://acme.com/logo.svg",
+    ///             Colors = 
     ///             {
-    ///                 LogoUrl = "https://acme.com/logo.svg",
-    ///                 Colors = 
-    ///                 {
-    ///                     { "primary", "#e3e2f0" },
-    ///                     { "page_background", "#e3e2ff" },
-    ///                 },
+    ///                 { "primary", "#e3e2f0" },
+    ///                 { "page_background", "#e3e2ff" },
     ///             },
-    ///             Connections = 
+    ///         },
+    ///         Connections = new[]
+    ///         {
+    ///             new Auth0.Inputs.OrganizationConnectionArgs
     ///             {
-    ///                 new Auth0.Inputs.OrganizationConnectionArgs
-    ///                 {
-    ///                     ConnectionId = auth0_connection.Acme.Id,
-    ///                     AssignMembershipOnLogin = true,
-    ///                 },
+    ///                 ConnectionId = auth0_connection.Acme.Id,
+    ///                 AssignMembershipOnLogin = true,
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +64,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organization:Organization")]
-    public partial class Organization : Pulumi.CustomResource
+    public partial class Organization : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Defines how to style the login pages. For details, see
@@ -145,7 +143,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class OrganizationArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines how to style the login pages. For details, see
@@ -196,9 +194,10 @@ namespace Pulumi.Auth0
         public OrganizationArgs()
         {
         }
+        public static new OrganizationArgs Empty => new OrganizationArgs();
     }
 
-    public sealed class OrganizationState : Pulumi.ResourceArgs
+    public sealed class OrganizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines how to style the login pages. For details, see
@@ -249,5 +248,6 @@ namespace Pulumi.Auth0
         public OrganizationState()
         {
         }
+        public static new OrganizationState Empty => new OrganizationState();
     }
 }

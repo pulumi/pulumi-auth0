@@ -19,36 +19,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewLogStream(ctx, "example", &auth0.LogStreamArgs{
-// 			Filters: pulumi.StringMapArray{
-// 				pulumi.StringMap{
-// 					"name": pulumi.String("auth.login.fail"),
-// 					"type": pulumi.String("category"),
-// 				},
-// 				pulumi.StringMap{
-// 					"name": pulumi.String("auth.signup.fail"),
-// 					"type": pulumi.String("category"),
-// 				},
-// 			},
-// 			Sink: &LogStreamSinkArgs{
-// 				AwsAccountId: pulumi.String("my_account_id"),
-// 				AwsRegion:    pulumi.String("us-east-2"),
-// 			},
-// 			Status: pulumi.String("active"),
-// 			Type:   pulumi.String("eventbridge"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewLogStream(ctx, "example", &auth0.LogStreamArgs{
+//				Filters: pulumi.StringMapArray{
+//					pulumi.StringMap{
+//						"name": pulumi.String("auth.login.fail"),
+//						"type": pulumi.String("category"),
+//					},
+//					pulumi.StringMap{
+//						"name": pulumi.String("auth.signup.fail"),
+//						"type": pulumi.String("category"),
+//					},
+//				},
+//				Sink: &LogStreamSinkArgs{
+//					AwsAccountId: pulumi.String("my_account_id"),
+//					AwsRegion:    pulumi.String("us-east-2"),
+//				},
+//				Status: pulumi.String("active"),
+//				Type:   pulumi.String("eventbridge"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -56,7 +59,9 @@ import (
 // Existing log stream can be imported using log stream id, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
+//
+//	$ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
+//
 // ```
 type LogStream struct {
 	pulumi.CustomResourceState
@@ -190,7 +195,7 @@ func (i *LogStream) ToLogStreamOutputWithContext(ctx context.Context) LogStreamO
 // LogStreamArrayInput is an input type that accepts LogStreamArray and LogStreamArrayOutput values.
 // You can construct a concrete instance of `LogStreamArrayInput` via:
 //
-//          LogStreamArray{ LogStreamArgs{...} }
+//	LogStreamArray{ LogStreamArgs{...} }
 type LogStreamArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +220,7 @@ func (i LogStreamArray) ToLogStreamArrayOutputWithContext(ctx context.Context) L
 // LogStreamMapInput is an input type that accepts LogStreamMap and LogStreamMapOutput values.
 // You can construct a concrete instance of `LogStreamMapInput` via:
 //
-//          LogStreamMap{ "key": LogStreamArgs{...} }
+//	LogStreamMap{ "key": LogStreamArgs{...} }
 type LogStreamMapInput interface {
 	pulumi.Input
 

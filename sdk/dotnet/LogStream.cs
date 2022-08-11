@@ -15,39 +15,37 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Auth0.LogStream("example", new()
     ///     {
-    ///         var example = new Auth0.LogStream("example", new Auth0.LogStreamArgs
+    ///         Filters = new[]
     ///         {
-    ///             Filters = 
+    ///             
     ///             {
-    ///                 
-    ///                 {
-    ///                     { "name", "auth.login.fail" },
-    ///                     { "type", "category" },
-    ///                 },
-    ///                 
-    ///                 {
-    ///                     { "name", "auth.signup.fail" },
-    ///                     { "type", "category" },
-    ///                 },
+    ///                 { "name", "auth.login.fail" },
+    ///                 { "type", "category" },
     ///             },
-    ///             Sink = new Auth0.Inputs.LogStreamSinkArgs
+    ///             
     ///             {
-    ///                 AwsAccountId = "my_account_id",
-    ///                 AwsRegion = "us-east-2",
+    ///                 { "name", "auth.signup.fail" },
+    ///                 { "type", "category" },
     ///             },
-    ///             Status = "active",
-    ///             Type = "eventbridge",
-    ///         });
-    ///     }
+    ///         },
+    ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
+    ///         {
+    ///             AwsAccountId = "my_account_id",
+    ///             AwsRegion = "us-east-2",
+    ///         },
+    ///         Status = "active",
+    ///         Type = "eventbridge",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +57,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/logStream:LogStream")]
-    public partial class LogStream : Pulumi.CustomResource
+    public partial class LogStream : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Only logs events matching these filters will be delivered by the stream.
@@ -135,7 +133,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class LogStreamArgs : Pulumi.ResourceArgs
+    public sealed class LogStreamArgs : global::Pulumi.ResourceArgs
     {
         [Input("filters")]
         private InputList<ImmutableDictionary<string, string>>? _filters;
@@ -176,9 +174,10 @@ namespace Pulumi.Auth0
         public LogStreamArgs()
         {
         }
+        public static new LogStreamArgs Empty => new LogStreamArgs();
     }
 
-    public sealed class LogStreamState : Pulumi.ResourceArgs
+    public sealed class LogStreamState : global::Pulumi.ResourceArgs
     {
         [Input("filters")]
         private InputList<ImmutableDictionary<string, string>>? _filters;
@@ -219,5 +218,6 @@ namespace Pulumi.Auth0
         public LogStreamState()
         {
         }
+        public static new LogStreamState Empty => new LogStreamState();
     }
 }

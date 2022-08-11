@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class BrandingFontGetArgs : Pulumi.ResourceArgs
+    public sealed class BrandingFontGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. URL for the custom font.
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public BrandingFontGetArgs()
         {
         }
+        public static new BrandingFontGetArgs Empty => new BrandingFontGetArgs();
     }
 }

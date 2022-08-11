@@ -15,22 +15,20 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Auth0.OrganizationConnection("example", new()
     ///     {
-    ///         var example = new Auth0.OrganizationConnection("example", new Auth0.OrganizationConnectionArgs
-    ///         {
-    ///             AssignMembershipOnLogin = true,
-    ///             ConnectionId = "con_XXXXXXXXXX",
-    ///             OrganizationId = "org_XXXXXXXXXX",
-    ///         });
-    ///     }
+    ///         AssignMembershipOnLogin = true,
+    ///         ConnectionId = "con_XXXXXXXXXX",
+    ///         OrganizationId = "org_XXXXXXXXXX",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organizationConnection:OrganizationConnection")]
-    public partial class OrganizationConnection : Pulumi.CustomResource
+    public partial class OrganizationConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
@@ -118,7 +116,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class OrganizationConnectionArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
@@ -141,9 +139,10 @@ namespace Pulumi.Auth0
         public OrganizationConnectionArgs()
         {
         }
+        public static new OrganizationConnectionArgs Empty => new OrganizationConnectionArgs();
     }
 
-    public sealed class OrganizationConnectionState : Pulumi.ResourceArgs
+    public sealed class OrganizationConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
@@ -178,5 +177,6 @@ namespace Pulumi.Auth0
         public OrganizationConnectionState()
         {
         }
+        public static new OrganizationConnectionState Empty => new OrganizationConnectionState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class TenantUniversalLoginArgs : Pulumi.ResourceArgs
+    public sealed class TenantUniversalLoginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public TenantUniversalLoginArgs()
         {
         }
+        public static new TenantUniversalLoginArgs Empty => new TenantUniversalLoginArgs();
     }
 }

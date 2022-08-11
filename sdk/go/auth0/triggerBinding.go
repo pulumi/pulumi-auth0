@@ -24,55 +24,58 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		actionFoo, err := auth0.NewAction(ctx, "actionFoo", &auth0.ActionArgs{
-// 			SupportedTriggers: &ActionSupportedTriggersArgs{
-// 				Id:      pulumi.String("post-login"),
-// 				Version: pulumi.String("v2"),
-// 			},
-// 			Code: pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => { \n	console.log(\"foo\") \n};\"\n")),
-// 			Deploy: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		actionBar, err := auth0.NewAction(ctx, "actionBar", &auth0.ActionArgs{
-// 			SupportedTriggers: &ActionSupportedTriggersArgs{
-// 				Id:      pulumi.String("post-login"),
-// 				Version: pulumi.String("v2"),
-// 			},
-// 			Code: pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => { \n	console.log(\"bar\") \n};\"\n")),
-// 			Deploy: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = auth0.NewTriggerBinding(ctx, "loginFlow", &auth0.TriggerBindingArgs{
-// 			Trigger: pulumi.String("post-login"),
-// 			Actions: TriggerBindingActionArray{
-// 				&TriggerBindingActionArgs{
-// 					Id:          actionFoo.ID(),
-// 					DisplayName: actionFoo.Name,
-// 				},
-// 				&TriggerBindingActionArgs{
-// 					Id:          actionBar.ID(),
-// 					DisplayName: actionBar.Name,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			actionFoo, err := auth0.NewAction(ctx, "actionFoo", &auth0.ActionArgs{
+//				SupportedTriggers: &ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("post-login"),
+//					Version: pulumi.String("v2"),
+//				},
+//				Code:   pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => { \n	console.log(\"foo\") \n};\"\n")),
+//				Deploy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			actionBar, err := auth0.NewAction(ctx, "actionBar", &auth0.ActionArgs{
+//				SupportedTriggers: &ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("post-login"),
+//					Version: pulumi.String("v2"),
+//				},
+//				Code:   pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => { \n	console.log(\"bar\") \n};\"\n")),
+//				Deploy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewTriggerBinding(ctx, "loginFlow", &auth0.TriggerBindingArgs{
+//				Trigger: pulumi.String("post-login"),
+//				Actions: TriggerBindingActionArray{
+//					&TriggerBindingActionArgs{
+//						Id:          actionFoo.ID(),
+//						DisplayName: actionFoo.Name,
+//					},
+//					&TriggerBindingActionArgs{
+//						Id:          actionBar.ID(),
+//						DisplayName: actionBar.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -80,7 +83,9 @@ import (
 // auth0_trigger_binding can be imported using the bindings trigger ID, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/triggerBinding:TriggerBinding example "post-login"
+//
+//	$ pulumi import auth0:index/triggerBinding:TriggerBinding example "post-login"
+//
 // ```
 type TriggerBinding struct {
 	pulumi.CustomResourceState
@@ -189,7 +194,7 @@ func (i *TriggerBinding) ToTriggerBindingOutputWithContext(ctx context.Context) 
 // TriggerBindingArrayInput is an input type that accepts TriggerBindingArray and TriggerBindingArrayOutput values.
 // You can construct a concrete instance of `TriggerBindingArrayInput` via:
 //
-//          TriggerBindingArray{ TriggerBindingArgs{...} }
+//	TriggerBindingArray{ TriggerBindingArgs{...} }
 type TriggerBindingArrayInput interface {
 	pulumi.Input
 
@@ -214,7 +219,7 @@ func (i TriggerBindingArray) ToTriggerBindingArrayOutputWithContext(ctx context.
 // TriggerBindingMapInput is an input type that accepts TriggerBindingMap and TriggerBindingMapOutput values.
 // You can construct a concrete instance of `TriggerBindingMapInput` via:
 //
-//          TriggerBindingMap{ "key": TriggerBindingArgs{...} }
+//	TriggerBindingMap{ "key": TriggerBindingArgs{...} }
 type TriggerBindingMapInput interface {
 	pulumi.Input
 

@@ -21,30 +21,33 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewBranding(ctx, "myBrand", &auth0.BrandingArgs{
-// 			Colors: &BrandingColorsArgs{
-// 				PageBackground: pulumi.String("#000000"),
-// 				Primary:        pulumi.String("#0059d6"),
-// 			},
-// 			LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
-// 			UniversalLogin: &BrandingUniversalLoginArgs{
-// 				Body: pulumi.String(fmt.Sprintf("<!DOCTYPE html><html><head>{%v- auth0:head -%v}</head><body>{%v- auth0:widget -%v}</body></html>", "%", "%", "%", "%")),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewBranding(ctx, "myBrand", &auth0.BrandingArgs{
+//				Colors: &BrandingColorsArgs{
+//					PageBackground: pulumi.String("#000000"),
+//					Primary:        pulumi.String("#0059d6"),
+//				},
+//				LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
+//				UniversalLogin: &BrandingUniversalLoginArgs{
+//					Body: pulumi.String(fmt.Sprintf("<!DOCTYPE html><html><head>{%v- auth0:head -%v}</head><body>{%v- auth0:widget -%v}</body></html>", "%", "%", "%", "%")),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Branding struct {
 	pulumi.CustomResourceState
@@ -182,7 +185,7 @@ func (i *Branding) ToBrandingOutputWithContext(ctx context.Context) BrandingOutp
 // BrandingArrayInput is an input type that accepts BrandingArray and BrandingArrayOutput values.
 // You can construct a concrete instance of `BrandingArrayInput` via:
 //
-//          BrandingArray{ BrandingArgs{...} }
+//	BrandingArray{ BrandingArgs{...} }
 type BrandingArrayInput interface {
 	pulumi.Input
 
@@ -207,7 +210,7 @@ func (i BrandingArray) ToBrandingArrayOutputWithContext(ctx context.Context) Bra
 // BrandingMapInput is an input type that accepts BrandingMap and BrandingMapOutput values.
 // You can construct a concrete instance of `BrandingMapInput` via:
 //
-//          BrandingMap{ "key": BrandingArgs{...} }
+//	BrandingMap{ "key": BrandingArgs{...} }
 type BrandingMapInput interface {
 	pulumi.Input
 

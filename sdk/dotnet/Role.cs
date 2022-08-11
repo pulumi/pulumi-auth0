@@ -17,57 +17,57 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
     ///     {
-    ///         var myResourceServer = new Auth0.ResourceServer("myResourceServer", new Auth0.ResourceServerArgs
+    ///         Identifier = "my-resource-server-identifier",
+    ///         SigningAlg = "RS256",
+    ///         TokenLifetime = 86400,
+    ///         SkipConsentForVerifiableFirstPartyClients = true,
+    ///         EnforcePolicies = true,
+    ///         Scopes = new[]
     ///         {
-    ///             Identifier = "my-resource-server-identifier",
-    ///             SigningAlg = "RS256",
-    ///             TokenLifetime = 86400,
-    ///             SkipConsentForVerifiableFirstPartyClients = true,
-    ///             EnforcePolicies = true,
-    ///             Scopes = 
+    ///             new Auth0.Inputs.ResourceServerScopeArgs
     ///             {
-    ///                 new Auth0.Inputs.ResourceServerScopeArgs
-    ///                 {
-    ///                     Value = "read:something",
-    ///                     Description = "read something",
-    ///                 },
+    ///                 Value = "read:something",
+    ///                 Description = "read something",
     ///             },
-    ///         });
-    ///         var myRole = new Auth0.Role("myRole", new Auth0.RoleArgs
-    ///         {
-    ///             Description = "Role Description...",
-    ///             Permissions = 
-    ///             {
-    ///                 new Auth0.Inputs.RolePermissionArgs
-    ///                 {
-    ///                     ResourceServerIdentifier = myResourceServer.Identifier,
-    ///                     Name = "read:something",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var myUser = new Auth0.User("myUser", new Auth0.UserArgs
-    ///         {
-    ///             ConnectionName = "Username-Password-Authentication",
-    ///             UserId = "auth0|1234567890",
-    ///             Email = "test@test.com",
-    ///             Password = "passpass$12$12",
-    ///             Nickname = "testnick",
-    ///             Username = "testnick",
-    ///             Roles = 
-    ///             {
-    ///                 myRole.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var myRole = new Auth0.Role("myRole", new()
+    ///     {
+    ///         Description = "Role Description...",
+    ///         Permissions = new[]
+    ///         {
+    ///             new Auth0.Inputs.RolePermissionArgs
+    ///             {
+    ///                 ResourceServerIdentifier = myResourceServer.Identifier,
+    ///                 Name = "read:something",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var myUser = new Auth0.User("myUser", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         UserId = "auth0|1234567890",
+    ///         Email = "test@test.com",
+    ///         Password = "passpass$12$12",
+    ///         Nickname = "testnick",
+    ///         Username = "testnick",
+    ///         Roles = new[]
+    ///         {
+    ///             myRole.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,7 +79,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// String. Description of the role.
@@ -144,7 +144,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Description of the role.
@@ -175,9 +175,10 @@ namespace Pulumi.Auth0
         {
             Description = "Managed by Pulumi";
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Description of the role.
@@ -208,5 +209,6 @@ namespace Pulumi.Auth0
         {
             Description = "Managed by Pulumi";
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ClientNativeSocialLoginArgs : Pulumi.ResourceArgs
+    public sealed class ClientNativeSocialLoginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource:
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ClientNativeSocialLoginArgs()
         {
         }
+        public static new ClientNativeSocialLoginArgs Empty => new ClientNativeSocialLoginArgs();
     }
 }

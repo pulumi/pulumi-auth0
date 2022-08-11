@@ -74,7 +74,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    internal sealed class Auth0ResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class Auth0ResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public Auth0ResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

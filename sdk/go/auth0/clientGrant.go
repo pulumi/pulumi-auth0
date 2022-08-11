@@ -21,45 +21,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myClient, err := auth0.NewClient(ctx, "myClient", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
-// 			Identifier: pulumi.String("https://api.example.com/client-grant"),
-// 			Scopes: ResourceServerScopeArray{
-// 				&ResourceServerScopeArgs{
-// 					Value:       pulumi.String("create:foo"),
-// 					Description: pulumi.String("Create foos"),
-// 				},
-// 				&ResourceServerScopeArgs{
-// 					Value:       pulumi.String("create:bar"),
-// 					Description: pulumi.String("Create bars"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = auth0.NewClientGrant(ctx, "myClientGrant", &auth0.ClientGrantArgs{
-// 			ClientId: myClient.ID(),
-// 			Audience: myResourceServer.Identifier,
-// 			Scopes: pulumi.StringArray{
-// 				pulumi.String("create:foo"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myClient, err := auth0.NewClient(ctx, "myClient", nil)
+//			if err != nil {
+//				return err
+//			}
+//			myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
+//				Identifier: pulumi.String("https://api.example.com/client-grant"),
+//				Scopes: ResourceServerScopeArray{
+//					&ResourceServerScopeArgs{
+//						Value:       pulumi.String("create:foo"),
+//						Description: pulumi.String("Create foos"),
+//					},
+//					&ResourceServerScopeArgs{
+//						Value:       pulumi.String("create:bar"),
+//						Description: pulumi.String("Create bars"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewClientGrant(ctx, "myClientGrant", &auth0.ClientGrantArgs{
+//				ClientId: myClient.ID(),
+//				Audience: myResourceServer.Identifier,
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("create:foo"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -67,7 +70,9 @@ import (
 // Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
 //
 // ```sh
-//  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
+//
+//	$ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
+//
 // ```
 type ClientGrant struct {
 	pulumi.CustomResourceState
@@ -184,7 +189,7 @@ func (i *ClientGrant) ToClientGrantOutputWithContext(ctx context.Context) Client
 // ClientGrantArrayInput is an input type that accepts ClientGrantArray and ClientGrantArrayOutput values.
 // You can construct a concrete instance of `ClientGrantArrayInput` via:
 //
-//          ClientGrantArray{ ClientGrantArgs{...} }
+//	ClientGrantArray{ ClientGrantArgs{...} }
 type ClientGrantArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +214,7 @@ func (i ClientGrantArray) ToClientGrantArrayOutputWithContext(ctx context.Contex
 // ClientGrantMapInput is an input type that accepts ClientGrantMap and ClientGrantMapOutput values.
 // You can construct a concrete instance of `ClientGrantMapInput` via:
 //
-//          ClientGrantMap{ "key": ClientGrantArgs{...} }
+//	ClientGrantMap{ "key": ClientGrantArgs{...} }
 type ClientGrantMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ADFS Metadata source.
@@ -505,5 +505,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsGetArgs()
         {
         }
+        public static new ConnectionOptionsGetArgs Empty => new ConnectionOptionsGetArgs();
     }
 }

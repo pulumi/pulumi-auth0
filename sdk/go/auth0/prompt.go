@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewPrompt(ctx, "example", &auth0.PromptArgs{
-// 			IdentifierFirst:             pulumi.Bool(false),
-// 			UniversalLoginExperience:    pulumi.String("classic"),
-// 			WebauthnPlatformFirstFactor: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewPrompt(ctx, "example", &auth0.PromptArgs{
+//				IdentifierFirst:             pulumi.Bool(false),
+//				UniversalLoginExperience:    pulumi.String("classic"),
+//				WebauthnPlatformFirstFactor: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // As this is not a resource identifiable by an ID within the Auth0 Management API, prompt can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/prompt:Prompt example 22f4f21b-017a-319d-92e7-2291c1ca36c4
+//
+//	$ pulumi import auth0:index/prompt:Prompt example 22f4f21b-017a-319d-92e7-2291c1ca36c4
+//
 // ```
 type Prompt struct {
 	pulumi.CustomResourceState
@@ -150,7 +155,7 @@ func (i *Prompt) ToPromptOutputWithContext(ctx context.Context) PromptOutput {
 // PromptArrayInput is an input type that accepts PromptArray and PromptArrayOutput values.
 // You can construct a concrete instance of `PromptArrayInput` via:
 //
-//          PromptArray{ PromptArgs{...} }
+//	PromptArray{ PromptArgs{...} }
 type PromptArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +180,7 @@ func (i PromptArray) ToPromptArrayOutputWithContext(ctx context.Context) PromptA
 // PromptMapInput is an input type that accepts PromptMap and PromptMapOutput values.
 // You can construct a concrete instance of `PromptMapInput` via:
 //
-//          PromptMap{ "key": PromptArgs{...} }
+//	PromptMap{ "key": PromptArgs{...} }
 type PromptMapInput interface {
 	pulumi.Input
 

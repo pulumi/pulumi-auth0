@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsMfaArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsMfaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether multifactor authentication is enabled for this connection.
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsMfaArgs()
         {
         }
+        public static new ConnectionOptionsMfaArgs Empty => new ConnectionOptionsMfaArgs();
     }
 }

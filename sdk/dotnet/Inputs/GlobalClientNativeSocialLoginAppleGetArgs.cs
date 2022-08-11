@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class GlobalClientNativeSocialLoginAppleGetArgs : Pulumi.ResourceArgs
+    public sealed class GlobalClientNativeSocialLoginAppleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Auth0.Inputs
         public GlobalClientNativeSocialLoginAppleGetArgs()
         {
         }
+        public static new GlobalClientNativeSocialLoginAppleGetArgs Empty => new GlobalClientNativeSocialLoginAppleGetArgs();
     }
 }

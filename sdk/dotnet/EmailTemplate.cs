@@ -17,45 +17,44 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myEmailProvider = new Auth0.Email("myEmailProvider", new()
     ///     {
-    ///         var myEmailProvider = new Auth0.Email("myEmailProvider", new Auth0.EmailArgs
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Credentials = new Auth0.Inputs.EmailCredentialsArgs
     ///         {
-    ///             Enabled = true,
-    ///             DefaultFromAddress = "accounts@example.com",
-    ///             Credentials = new Auth0.Inputs.EmailCredentialsArgs
-    ///             {
-    ///                 AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
-    ///                 SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///                 Region = "us-east-1",
-    ///             },
-    ///         });
-    ///         var myEmailTemplate = new Auth0.EmailTemplate("myEmailTemplate", new Auth0.EmailTemplateArgs
-    ///         {
-    ///             Template = "welcome_email",
-    ///             Body = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
-    ///             From = "welcome@example.com",
-    ///             ResultUrl = "https://example.com/welcome",
-    ///             Subject = "Welcome",
-    ///             Syntax = "liquid",
-    ///             UrlLifetimeInSeconds = 3600,
-    ///             Enabled = true,
-    ///             IncludeEmailInRedirect = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 myEmailProvider,
-    ///             },
-    ///         });
-    ///     }
+    ///             AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
+    ///             SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///             Region = "us-east-1",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var myEmailTemplate = new Auth0.EmailTemplate("myEmailTemplate", new()
+    ///     {
+    ///         Template = "welcome_email",
+    ///         Body = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Welcome!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///         From = "welcome@example.com",
+    ///         ResultUrl = "https://example.com/welcome",
+    ///         Subject = "Welcome",
+    ///         Syntax = "liquid",
+    ///         UrlLifetimeInSeconds = 3600,
+    ///         Enabled = true,
+    ///         IncludeEmailInRedirect = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             myEmailProvider,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +66,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/emailTemplate:EmailTemplate")]
-    public partial class EmailTemplate : Pulumi.CustomResource
+    public partial class EmailTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -167,7 +166,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class EmailTemplateArgs : Pulumi.ResourceArgs
+    public sealed class EmailTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -226,9 +225,10 @@ namespace Pulumi.Auth0
         public EmailTemplateArgs()
         {
         }
+        public static new EmailTemplateArgs Empty => new EmailTemplateArgs();
     }
 
-    public sealed class EmailTemplateState : Pulumi.ResourceArgs
+    public sealed class EmailTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
@@ -287,5 +287,6 @@ namespace Pulumi.Auth0
         public EmailTemplateState()
         {
         }
+        public static new EmailTemplateState Empty => new EmailTemplateState();
     }
 }

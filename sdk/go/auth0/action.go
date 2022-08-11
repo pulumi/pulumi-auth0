@@ -21,59 +21,63 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewAction(ctx, "myAction", &auth0.ActionArgs{
-// 			Code: pulumi.String(fmt.Sprintf(`/**
-//  * Handler that will be called during the execution of a PostLogin flow.
-//  *
-//  * @param {Event} event - Details about the user and the context in which they are logging in.
-//  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
-//  */
-//  exports.onExecutePostLogin = async (event, api) => {
-// 	 console.log(event)
-//  };
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewAction(ctx, "myAction", &auth0.ActionArgs{
+//				Code: pulumi.String(fmt.Sprintf(`/**
+//	 * Handler that will be called during the execution of a PostLogin flow.
+//	 *
+//	 * @param {Event} event - Details about the user and the context in which they are logging in.
+//	 * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+//	 */
+//	 exports.onExecutePostLogin = async (event, api) => {
+//		 console.log(event)
+//	 };
 //
 // `)),
-// 			Dependencies: ActionDependencyArray{
-// 				&ActionDependencyArgs{
-// 					Name:    pulumi.String("lodash"),
-// 					Version: pulumi.String("latest"),
-// 				},
-// 				&ActionDependencyArgs{
-// 					Name:    pulumi.String("request"),
-// 					Version: pulumi.String("latest"),
-// 				},
-// 			},
-// 			Deploy:  pulumi.Bool(true),
-// 			Runtime: pulumi.String("node16"),
-// 			Secrets: ActionSecretArray{
-// 				&ActionSecretArgs{
-// 					Name:  pulumi.String("FOO"),
-// 					Value: pulumi.String("Foo"),
-// 				},
-// 				&ActionSecretArgs{
-// 					Name:  pulumi.String("BAR"),
-// 					Value: pulumi.String("Bar"),
-// 				},
-// 			},
-// 			SupportedTriggers: &ActionSupportedTriggersArgs{
-// 				Id:      pulumi.String("post-login"),
-// 				Version: pulumi.String("v3"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				Dependencies: ActionDependencyArray{
+//					&ActionDependencyArgs{
+//						Name:    pulumi.String("lodash"),
+//						Version: pulumi.String("latest"),
+//					},
+//					&ActionDependencyArgs{
+//						Name:    pulumi.String("request"),
+//						Version: pulumi.String("latest"),
+//					},
+//				},
+//				Deploy:  pulumi.Bool(true),
+//				Runtime: pulumi.String("node16"),
+//				Secrets: ActionSecretArray{
+//					&ActionSecretArgs{
+//						Name:  pulumi.String("FOO"),
+//						Value: pulumi.String("Foo"),
+//					},
+//					&ActionSecretArgs{
+//						Name:  pulumi.String("BAR"),
+//						Value: pulumi.String("Bar"),
+//					},
+//				},
+//				SupportedTriggers: &ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("post-login"),
+//					Version: pulumi.String("v3"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -81,10 +85,12 @@ import (
 // An action can be imported using the action's ID, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
+//
+//	$ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
+//
 // ```
 //
-//  ~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
+//	~> For security reasons importing `secrets` is not allowed. Therefore, it is advised to import the action without secrets and adding them back after the action has been imported.
 type Action struct {
 	pulumi.CustomResourceState
 
@@ -258,7 +264,7 @@ func (i *Action) ToActionOutputWithContext(ctx context.Context) ActionOutput {
 // ActionArrayInput is an input type that accepts ActionArray and ActionArrayOutput values.
 // You can construct a concrete instance of `ActionArrayInput` via:
 //
-//          ActionArray{ ActionArgs{...} }
+//	ActionArray{ ActionArgs{...} }
 type ActionArrayInput interface {
 	pulumi.Input
 
@@ -283,7 +289,7 @@ func (i ActionArray) ToActionArrayOutputWithContext(ctx context.Context) ActionA
 // ActionMapInput is an input type that accepts ActionMap and ActionMapOutput values.
 // You can construct a concrete instance of `ActionMapInput` via:
 //
-//          ActionMap{ "key": ActionArgs{...} }
+//	ActionMap{ "key": ActionArgs{...} }
 type ActionMapInput interface {
 	pulumi.Input
 

@@ -22,52 +22,50 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tenant = new Auth0.Tenant("tenant", new()
     ///     {
-    ///         var tenant = new Auth0.Tenant("tenant", new Auth0.TenantArgs
+    ///         ChangePassword = new Auth0.Inputs.TenantChangePasswordArgs
     ///         {
-    ///             ChangePassword = new Auth0.Inputs.TenantChangePasswordArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Html = File.ReadAllText("./password_reset.html"),
-    ///             },
-    ///             GuardianMfaPage = new Auth0.Inputs.TenantGuardianMfaPageArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Html = File.ReadAllText("./guardian_multifactor.html"),
-    ///             },
-    ///             DefaultAudience = "&lt;client_id&gt;",
-    ///             DefaultDirectory = "Connection-Name",
-    ///             ErrorPage = new Auth0.Inputs.TenantErrorPageArgs
-    ///             {
-    ///                 Html = File.ReadAllText("./error.html"),
-    ///                 ShowLogLink = true,
-    ///                 Url = "http://mysite/errors",
-    ///             },
-    ///             FriendlyName = "Tenant Name",
-    ///             PictureUrl = "http://mysite/logo.png",
-    ///             SupportEmail = "support@mysite",
-    ///             SupportUrl = "http://mysite/support",
-    ///             AllowedLogoutUrls = 
-    ///             {
-    ///                 "http://mysite/logout",
-    ///             },
-    ///             SessionLifetime = 46000,
-    ///             SandboxVersion = "8",
-    ///             SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs
-    ///             {
-    ///                 Mode = "non-persistent",
-    ///             },
-    ///         });
-    ///     }
+    ///             Enabled = true,
+    ///             Html = File.ReadAllText("./password_reset.html"),
+    ///         },
+    ///         GuardianMfaPage = new Auth0.Inputs.TenantGuardianMfaPageArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Html = File.ReadAllText("./guardian_multifactor.html"),
+    ///         },
+    ///         DefaultAudience = "&lt;client_id&gt;",
+    ///         DefaultDirectory = "Connection-Name",
+    ///         ErrorPage = new Auth0.Inputs.TenantErrorPageArgs
+    ///         {
+    ///             Html = File.ReadAllText("./error.html"),
+    ///             ShowLogLink = true,
+    ///             Url = "http://mysite/errors",
+    ///         },
+    ///         FriendlyName = "Tenant Name",
+    ///         PictureUrl = "http://mysite/logo.png",
+    ///         SupportEmail = "support@mysite",
+    ///         SupportUrl = "http://mysite/support",
+    ///         AllowedLogoutUrls = new[]
+    ///         {
+    ///             "http://mysite/logout",
+    ///         },
+    ///         SessionLifetime = 46000,
+    ///         SandboxVersion = "8",
+    ///         SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs
+    ///         {
+    ///             Mode = "non-persistent",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,7 +77,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/tenant:Tenant")]
-    public partial class Tenant : Pulumi.CustomResource
+    public partial class Tenant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List(String). URLs that Auth0 may redirect to after logout.
@@ -233,7 +231,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class TenantArgs : Pulumi.ResourceArgs
+    public sealed class TenantArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedLogoutUrls")]
         private InputList<string>? _allowedLogoutUrls;
@@ -358,9 +356,10 @@ namespace Pulumi.Auth0
         public TenantArgs()
         {
         }
+        public static new TenantArgs Empty => new TenantArgs();
     }
 
-    public sealed class TenantState : Pulumi.ResourceArgs
+    public sealed class TenantState : global::Pulumi.ResourceArgs
     {
         [Input("allowedLogoutUrls")]
         private InputList<string>? _allowedLogoutUrls;
@@ -485,5 +484,6 @@ namespace Pulumi.Auth0
         public TenantState()
         {
         }
+        public static new TenantState Empty => new TenantState();
     }
 }

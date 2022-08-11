@@ -15,37 +15,35 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
     ///     {
-    ///         var myResourceServer = new Auth0.ResourceServer("myResourceServer", new Auth0.ResourceServerArgs
+    ///         AllowOfflineAccess = true,
+    ///         Identifier = "https://api.example.com",
+    ///         Scopes = new[]
     ///         {
-    ///             AllowOfflineAccess = true,
-    ///             Identifier = "https://api.example.com",
-    ///             Scopes = 
+    ///             new Auth0.Inputs.ResourceServerScopeArgs
     ///             {
-    ///                 new Auth0.Inputs.ResourceServerScopeArgs
-    ///                 {
-    ///                     Description = "Create foos",
-    ///                     Value = "create:foo",
-    ///                 },
-    ///                 new Auth0.Inputs.ResourceServerScopeArgs
-    ///                 {
-    ///                     Description = "Create bars",
-    ///                     Value = "create:bar",
-    ///                 },
+    ///                 Description = "Create foos",
+    ///                 Value = "create:foo",
     ///             },
-    ///             SigningAlg = "RS256",
-    ///             SkipConsentForVerifiableFirstPartyClients = true,
-    ///             TokenLifetime = 8600,
-    ///         });
-    ///     }
+    ///             new Auth0.Inputs.ResourceServerScopeArgs
+    ///             {
+    ///                 Description = "Create bars",
+    ///                 Value = "create:bar",
+    ///             },
+    ///         },
+    ///         SigningAlg = "RS256",
+    ///         SkipConsentForVerifiableFirstPartyClients = true,
+    ///         TokenLifetime = 8600,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/resourceServer:ResourceServer")]
-    public partial class ResourceServer : Pulumi.CustomResource
+    public partial class ResourceServer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean. Indicates whether refresh tokens can be issued for this resource server.
@@ -181,7 +179,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class ResourceServerArgs : Pulumi.ResourceArgs
+    public sealed class ResourceServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Indicates whether refresh tokens can be issued for this resource server.
@@ -276,9 +274,10 @@ namespace Pulumi.Auth0
         public ResourceServerArgs()
         {
         }
+        public static new ResourceServerArgs Empty => new ResourceServerArgs();
     }
 
-    public sealed class ResourceServerState : Pulumi.ResourceArgs
+    public sealed class ResourceServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Indicates whether refresh tokens can be issued for this resource server.
@@ -373,5 +372,6 @@ namespace Pulumi.Auth0
         public ResourceServerState()
         {
         }
+        public static new ResourceServerState Empty => new ResourceServerState();
     }
 }

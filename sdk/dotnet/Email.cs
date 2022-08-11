@@ -17,27 +17,25 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myEmailProvider = new Auth0.Email("myEmailProvider", new()
     ///     {
-    ///         var myEmailProvider = new Auth0.Email("myEmailProvider", new Auth0.EmailArgs
+    ///         Credentials = new Auth0.Inputs.EmailCredentialsArgs
     ///         {
-    ///             Credentials = new Auth0.Inputs.EmailCredentialsArgs
-    ///             {
-    ///                 AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
-    ///                 Region = "us-east-1",
-    ///                 SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///             },
-    ///             DefaultFromAddress = "accounts@example.com",
-    ///             Enabled = true,
-    ///         });
-    ///     }
+    ///             AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
+    ///             Region = "us-east-1",
+    ///             SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    ///         },
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Enabled = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/email:Email")]
-    public partial class Email : Pulumi.CustomResource
+    public partial class Email : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
@@ -119,7 +117,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class EmailArgs : Pulumi.ResourceArgs
+    public sealed class EmailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
@@ -148,9 +146,10 @@ namespace Pulumi.Auth0
         public EmailArgs()
         {
         }
+        public static new EmailArgs Empty => new EmailArgs();
     }
 
-    public sealed class EmailState : Pulumi.ResourceArgs
+    public sealed class EmailState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
@@ -179,5 +178,6 @@ namespace Pulumi.Auth0
         public EmailState()
         {
         }
+        public static new EmailState Empty => new EmailState();
     }
 }

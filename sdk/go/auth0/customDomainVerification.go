@@ -20,7 +20,9 @@ import (
 // You can import this resource using the custom domain id, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
+//
+//	$ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
+//
 // ```
 type CustomDomainVerification struct {
 	pulumi.CustomResourceState
@@ -120,7 +122,7 @@ func (i *CustomDomainVerification) ToCustomDomainVerificationOutputWithContext(c
 // CustomDomainVerificationArrayInput is an input type that accepts CustomDomainVerificationArray and CustomDomainVerificationArrayOutput values.
 // You can construct a concrete instance of `CustomDomainVerificationArrayInput` via:
 //
-//          CustomDomainVerificationArray{ CustomDomainVerificationArgs{...} }
+//	CustomDomainVerificationArray{ CustomDomainVerificationArgs{...} }
 type CustomDomainVerificationArrayInput interface {
 	pulumi.Input
 
@@ -145,7 +147,7 @@ func (i CustomDomainVerificationArray) ToCustomDomainVerificationArrayOutputWith
 // CustomDomainVerificationMapInput is an input type that accepts CustomDomainVerificationMap and CustomDomainVerificationMapOutput values.
 // You can construct a concrete instance of `CustomDomainVerificationMapInput` via:
 //
-//          CustomDomainVerificationMap{ "key": CustomDomainVerificationArgs{...} }
+//	CustomDomainVerificationMap{ "key": CustomDomainVerificationArgs{...} }
 type CustomDomainVerificationMapInput interface {
 	pulumi.Input
 

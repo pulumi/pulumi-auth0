@@ -18,34 +18,39 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewGlobalClient(ctx, "global", &auth0.GlobalClientArgs{
-// 			Callbacks: pulumi.StringArray{
-// 				pulumi.String("http://somehostname.com/a/callback"),
-// 			},
-// 			CustomLoginPage: pulumi.String(fmt.Sprintf(`<html>
-//     <head><title>My Custom Login Page</title></head>
-//     <body>
-//         I should probably have a login form here
-//     </body>
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewGlobalClient(ctx, "global", &auth0.GlobalClientArgs{
+//				Callbacks: pulumi.StringArray{
+//					pulumi.String("http://somehostname.com/a/callback"),
+//				},
+//				CustomLoginPage: pulumi.String(fmt.Sprintf(`<html>
+//	    <head><title>My Custom Login Page</title></head>
+//	    <body>
+//	        I should probably have a login form here
+//	    </body>
+//
 // </html>
 //
 // `)),
-// 			CustomLoginPageOn: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				CustomLoginPageOn: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +58,9 @@ import (
 // The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
 //
 // ```sh
-//  $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
+//
+//	$ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
+//
 // ```
 type GlobalClient struct {
 	pulumi.CustomResourceState
@@ -306,7 +313,7 @@ func (i *GlobalClient) ToGlobalClientOutputWithContext(ctx context.Context) Glob
 // GlobalClientArrayInput is an input type that accepts GlobalClientArray and GlobalClientArrayOutput values.
 // You can construct a concrete instance of `GlobalClientArrayInput` via:
 //
-//          GlobalClientArray{ GlobalClientArgs{...} }
+//	GlobalClientArray{ GlobalClientArgs{...} }
 type GlobalClientArrayInput interface {
 	pulumi.Input
 
@@ -331,7 +338,7 @@ func (i GlobalClientArray) ToGlobalClientArrayOutputWithContext(ctx context.Cont
 // GlobalClientMapInput is an input type that accepts GlobalClientMap and GlobalClientMapOutput values.
 // You can construct a concrete instance of `GlobalClientMapInput` via:
 //
-//          GlobalClientMap{ "key": GlobalClientArgs{...} }
+//	GlobalClientMap{ "key": GlobalClientArgs{...} }
 type GlobalClientMapInput interface {
 	pulumi.Input
 

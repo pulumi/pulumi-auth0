@@ -19,23 +19,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewOrganizationConnection(ctx, "example", &auth0.OrganizationConnectionArgs{
-// 			AssignMembershipOnLogin: pulumi.Bool(true),
-// 			ConnectionId:            pulumi.String("con_XXXXXXXXXX"),
-// 			OrganizationId:          pulumi.String("org_XXXXXXXXXX"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewOrganizationConnection(ctx, "example", &auth0.OrganizationConnectionArgs{
+//				AssignMembershipOnLogin: pulumi.Bool(true),
+//				ConnectionId:            pulumi.String("con_XXXXXXXXXX"),
+//				OrganizationId:          pulumi.String("org_XXXXXXXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/organizationConnection:OrganizationConnection example 11f4a21b-011a-312d-9217-e291caca36c4
+//
+//	$ pulumi import auth0:index/organizationConnection:OrganizationConnection example 11f4a21b-011a-312d-9217-e291caca36c4
+//
 // ```
 type OrganizationConnection struct {
 	pulumi.CustomResourceState
@@ -169,7 +174,7 @@ func (i *OrganizationConnection) ToOrganizationConnectionOutputWithContext(ctx c
 // OrganizationConnectionArrayInput is an input type that accepts OrganizationConnectionArray and OrganizationConnectionArrayOutput values.
 // You can construct a concrete instance of `OrganizationConnectionArrayInput` via:
 //
-//          OrganizationConnectionArray{ OrganizationConnectionArgs{...} }
+//	OrganizationConnectionArray{ OrganizationConnectionArgs{...} }
 type OrganizationConnectionArrayInput interface {
 	pulumi.Input
 
@@ -194,7 +199,7 @@ func (i OrganizationConnectionArray) ToOrganizationConnectionArrayOutputWithCont
 // OrganizationConnectionMapInput is an input type that accepts OrganizationConnectionMap and OrganizationConnectionMapOutput values.
 // You can construct a concrete instance of `OrganizationConnectionMapInput` via:
 //
-//          OrganizationConnectionMap{ "key": OrganizationConnectionArgs{...} }
+//	OrganizationConnectionMap{ "key": OrganizationConnectionArgs{...} }
 type OrganizationConnectionMapInput interface {
 	pulumi.Input
 

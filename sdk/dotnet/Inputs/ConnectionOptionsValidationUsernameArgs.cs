@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ConnectionOptionsValidationUsernameArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionOptionsValidationUsernameArgs : global::Pulumi.ResourceArgs
     {
         [Input("max")]
         public Input<int>? Max { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Auth0.Inputs
         public ConnectionOptionsValidationUsernameArgs()
         {
         }
+        public static new ConnectionOptionsValidationUsernameArgs Empty => new ConnectionOptionsValidationUsernameArgs();
     }
 }

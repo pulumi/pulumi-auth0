@@ -20,7 +20,9 @@ import (
 // Connections can be imported using their id, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+//
+//	$ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
+//
 // ```
 type Connection struct {
 	pulumi.CustomResourceState
@@ -211,7 +213,7 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
-//          ConnectionArray{ ConnectionArgs{...} }
+//	ConnectionArray{ ConnectionArgs{...} }
 type ConnectionArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +238,7 @@ func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context)
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
 // You can construct a concrete instance of `ConnectionMapInput` via:
 //
-//          ConnectionMap{ "key": ConnectionArgs{...} }
+//	ConnectionMap{ "key": ConnectionArgs{...} }
 type ConnectionMapInput interface {
 	pulumi.Input
 

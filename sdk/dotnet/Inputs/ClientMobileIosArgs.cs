@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ClientMobileIosArgs : Pulumi.ResourceArgs
+    public sealed class ClientMobileIosArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String
@@ -27,5 +27,6 @@ namespace Pulumi.Auth0.Inputs
         public ClientMobileIosArgs()
         {
         }
+        public static new ClientMobileIosArgs Empty => new ClientMobileIosArgs();
     }
 }

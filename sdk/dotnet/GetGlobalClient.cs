@@ -19,17 +19,15 @@ namespace Pulumi.Auth0
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Auth0 = Pulumi.Auth0;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @global = Output.Create(Auth0.GetGlobalClient.InvokeAsync());
-        ///     }
+        ///     var @global = Auth0.GetGlobalClient.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -45,17 +43,15 @@ namespace Pulumi.Auth0
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Auth0 = Pulumi.Auth0;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @global = Output.Create(Auth0.GetGlobalClient.InvokeAsync());
-        ///     }
+        ///     var @global = Auth0.GetGlobalClient.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -65,7 +61,7 @@ namespace Pulumi.Auth0
     }
 
 
-    public sealed class GetGlobalClientArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalClientArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// String. ID of the client.
@@ -80,9 +76,10 @@ namespace Pulumi.Auth0
         public GetGlobalClientArgs()
         {
         }
+        public static new GetGlobalClientArgs Empty => new GetGlobalClientArgs();
     }
 
-    public sealed class GetGlobalClientInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalClientInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// String. ID of the client.
@@ -97,6 +94,7 @@ namespace Pulumi.Auth0
         public GetGlobalClientInvokeArgs()
         {
         }
+        public static new GetGlobalClientInvokeArgs Empty => new GetGlobalClientInvokeArgs();
     }
 
 

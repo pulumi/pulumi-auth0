@@ -22,31 +22,34 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewHook(ctx, "myHook", &auth0.HookArgs{
-// 			Dependencies: pulumi.AnyMap{
-// 				"auth0": pulumi.Any("2.30.0"),
-// 			},
-// 			Enabled: pulumi.Bool(true),
-// 			Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, { user });\n}\n\n")),
-// 			Secrets: pulumi.AnyMap{
-// 				"foo": pulumi.Any("bar"),
-// 			},
-// 			TriggerId: pulumi.String("pre-user-registration"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewHook(ctx, "myHook", &auth0.HookArgs{
+//				Dependencies: pulumi.AnyMap{
+//					"auth0": pulumi.Any("2.30.0"),
+//				},
+//				Enabled: pulumi.Bool(true),
+//				Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, { user });\n}\n\n")),
+//				Secrets: pulumi.AnyMap{
+//					"foo": pulumi.Any("bar"),
+//				},
+//				TriggerId: pulumi.String("pre-user-registration"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // A hook can be imported using the hook's ID, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/hook:Hook my_hook 00001
+//
+//	$ pulumi import auth0:index/hook:Hook my_hook 00001
+//
 // ```
 type Hook struct {
 	pulumi.CustomResourceState
@@ -203,7 +208,7 @@ func (i *Hook) ToHookOutputWithContext(ctx context.Context) HookOutput {
 // HookArrayInput is an input type that accepts HookArray and HookArrayOutput values.
 // You can construct a concrete instance of `HookArrayInput` via:
 //
-//          HookArray{ HookArgs{...} }
+//	HookArray{ HookArgs{...} }
 type HookArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +233,7 @@ func (i HookArray) ToHookArrayOutputWithContext(ctx context.Context) HookArrayOu
 // HookMapInput is an input type that accepts HookMap and HookMapOutput values.
 // You can construct a concrete instance of `HookMapInput` via:
 //
-//          HookMap{ "key": HookArgs{...} }
+//	HookMap{ "key": HookArgs{...} }
 type HookMapInput interface {
 	pulumi.Input
 

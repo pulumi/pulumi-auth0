@@ -25,57 +25,60 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewTenant(ctx, "tenant", &auth0.TenantArgs{
-// 			ChangePassword: &TenantChangePasswordArgs{
-// 				Enabled: pulumi.Bool(true),
-// 				Html:    readFileOrPanic("./password_reset.html"),
-// 			},
-// 			GuardianMfaPage: &TenantGuardianMfaPageArgs{
-// 				Enabled: pulumi.Bool(true),
-// 				Html:    readFileOrPanic("./guardian_multifactor.html"),
-// 			},
-// 			DefaultAudience:  pulumi.String("<client_id>"),
-// 			DefaultDirectory: pulumi.String("Connection-Name"),
-// 			ErrorPage: &TenantErrorPageArgs{
-// 				Html:        readFileOrPanic("./error.html"),
-// 				ShowLogLink: pulumi.Bool(true),
-// 				Url:         pulumi.String("http://mysite/errors"),
-// 			},
-// 			FriendlyName: pulumi.String("Tenant Name"),
-// 			PictureUrl:   pulumi.String("http://mysite/logo.png"),
-// 			SupportEmail: pulumi.String("support@mysite"),
-// 			SupportUrl:   pulumi.String("http://mysite/support"),
-// 			AllowedLogoutUrls: pulumi.StringArray{
-// 				pulumi.String("http://mysite/logout"),
-// 			},
-// 			SessionLifetime: pulumi.Float64(46000),
-// 			SandboxVersion:  pulumi.String("8"),
-// 			SessionCookie: &TenantSessionCookieArgs{
-// 				Mode: pulumi.String("non-persistent"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewTenant(ctx, "tenant", &auth0.TenantArgs{
+//				ChangePassword: &TenantChangePasswordArgs{
+//					Enabled: pulumi.Bool(true),
+//					Html:    readFileOrPanic("./password_reset.html"),
+//				},
+//				GuardianMfaPage: &TenantGuardianMfaPageArgs{
+//					Enabled: pulumi.Bool(true),
+//					Html:    readFileOrPanic("./guardian_multifactor.html"),
+//				},
+//				DefaultAudience:  pulumi.String("<client_id>"),
+//				DefaultDirectory: pulumi.String("Connection-Name"),
+//				ErrorPage: &TenantErrorPageArgs{
+//					Html:        readFileOrPanic("./error.html"),
+//					ShowLogLink: pulumi.Bool(true),
+//					Url:         pulumi.String("http://mysite/errors"),
+//				},
+//				FriendlyName: pulumi.String("Tenant Name"),
+//				PictureUrl:   pulumi.String("http://mysite/logo.png"),
+//				SupportEmail: pulumi.String("support@mysite"),
+//				SupportUrl:   pulumi.String("http://mysite/support"),
+//				AllowedLogoutUrls: pulumi.StringArray{
+//					pulumi.String("http://mysite/logout"),
+//				},
+//				SessionLifetime: pulumi.Float64(46000),
+//				SandboxVersion:  pulumi.String("8"),
+//				SessionCookie: &TenantSessionCookieArgs{
+//					Mode: pulumi.String("non-persistent"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -83,7 +86,9 @@ import (
 // As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/tenant:Tenant tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
+//
+//	$ pulumi import auth0:index/tenant:Tenant tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
+//
 // ```
 type Tenant struct {
 	pulumi.CustomResourceState
@@ -341,7 +346,7 @@ func (i *Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 // TenantArrayInput is an input type that accepts TenantArray and TenantArrayOutput values.
 // You can construct a concrete instance of `TenantArrayInput` via:
 //
-//          TenantArray{ TenantArgs{...} }
+//	TenantArray{ TenantArgs{...} }
 type TenantArrayInput interface {
 	pulumi.Input
 
@@ -366,7 +371,7 @@ func (i TenantArray) ToTenantArrayOutputWithContext(ctx context.Context) TenantA
 // TenantMapInput is an input type that accepts TenantMap and TenantMapOutput values.
 // You can construct a concrete instance of `TenantMapInput` via:
 //
-//          TenantMap{ "key": TenantArgs{...} }
+//	TenantMap{ "key": TenantArgs{...} }
 type TenantMapInput interface {
 	pulumi.Input
 

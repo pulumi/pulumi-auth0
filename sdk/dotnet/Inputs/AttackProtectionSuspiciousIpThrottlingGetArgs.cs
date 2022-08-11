@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class AttackProtectionSuspiciousIpThrottlingGetArgs : Pulumi.ResourceArgs
+    public sealed class AttackProtectionSuspiciousIpThrottlingGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowlists")]
         private InputList<string>? _allowlists;
@@ -57,5 +57,6 @@ namespace Pulumi.Auth0.Inputs
         public AttackProtectionSuspiciousIpThrottlingGetArgs()
         {
         }
+        public static new AttackProtectionSuspiciousIpThrottlingGetArgs Empty => new AttackProtectionSuspiciousIpThrottlingGetArgs();
     }
 }

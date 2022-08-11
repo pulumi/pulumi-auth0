@@ -18,106 +18,109 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewClient(ctx, "myClient", &auth0.ClientArgs{
-// 			Addons: &ClientAddonsArgs{
-// 				Firebase: pulumi.AnyMap{
-// 					"clientEmail":       pulumi.Any("john.doe@example.com"),
-// 					"lifetimeInSeconds": pulumi.Any(1),
-// 					"privateKey":        pulumi.Any("wer"),
-// 					"privateKeyId":      pulumi.Any("qwreerwerwe"),
-// 				},
-// 				Samlp: &ClientAddonsSamlpArgs{
-// 					Audience:             pulumi.String("https://example.com/saml"),
-// 					CreateUpnClaim:       pulumi.Bool(false),
-// 					MapIdentities:        pulumi.Bool(false),
-// 					MapUnknownClaimsAsIs: pulumi.Bool(false),
-// 					Mappings: pulumi.AnyMap{
-// 						"email": pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
-// 						"name":  pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
-// 					},
-// 					NameIdentifierFormat: pulumi.String("urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"),
-// 					NameIdentifierProbes: pulumi.StringArray{
-// 						pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
-// 					},
-// 					PassthroughClaimsWithNoMapping: pulumi.Bool(false),
-// 					SigningCert:                    pulumi.String("pemcertificate"),
-// 				},
-// 			},
-// 			AllowedClients: pulumi.StringArray{
-// 				pulumi.String("https://allowed.example.com"),
-// 			},
-// 			AllowedLogoutUrls: pulumi.StringArray{
-// 				pulumi.String("https://example.com"),
-// 			},
-// 			AllowedOrigins: pulumi.StringArray{
-// 				pulumi.String("https://example.com"),
-// 			},
-// 			AppType: pulumi.String("non_interactive"),
-// 			Callbacks: pulumi.StringArray{
-// 				pulumi.String("https://example.com/callback"),
-// 			},
-// 			ClientMetadata: pulumi.AnyMap{
-// 				"foo": pulumi.Any("zoo"),
-// 			},
-// 			ClientSecretRotationTrigger: pulumi.AnyMap{
-// 				"triggered_at": pulumi.Any("2018-01-02T23:12:01Z"),
-// 				"triggered_by": pulumi.Any("auth0"),
-// 			},
-// 			CustomLoginPageOn: pulumi.Bool(true),
-// 			Description:       pulumi.String("Test Applications Long Description"),
-// 			GrantTypes: pulumi.StringArray{
-// 				pulumi.String("authorization_code"),
-// 				pulumi.String("http://auth0.com/oauth/grant-type/password-realm"),
-// 				pulumi.String("implicit"),
-// 				pulumi.String("password"),
-// 				pulumi.String("refresh_token"),
-// 			},
-// 			InitiateLoginUri:               pulumi.String("https://example.com/login"),
-// 			IsFirstParty:                   pulumi.Bool(true),
-// 			IsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),
-// 			JwtConfiguration: &ClientJwtConfigurationArgs{
-// 				Alg:               pulumi.String("RS256"),
-// 				LifetimeInSeconds: pulumi.Int(300),
-// 				Scopes: pulumi.StringMap{
-// 					"foo": pulumi.String("bar"),
-// 				},
-// 				SecretEncoded: pulumi.Bool(true),
-// 			},
-// 			Mobile: &ClientMobileArgs{
-// 				Ios: &ClientMobileIosArgs{
-// 					AppBundleIdentifier: pulumi.String("com.my.bundle.id"),
-// 					TeamId:              pulumi.String("9JA89QQLNQ"),
-// 				},
-// 			},
-// 			OidcConformant:              pulumi.Bool(false),
-// 			OrganizationRequireBehavior: pulumi.String("no_prompt"),
-// 			OrganizationUsage:           pulumi.String("deny"),
-// 			RefreshToken: &ClientRefreshTokenArgs{
-// 				ExpirationType:            pulumi.String("expiring"),
-// 				IdleTokenLifetime:         pulumi.Int(1296000),
-// 				InfiniteIdleTokenLifetime: pulumi.Bool(true),
-// 				InfiniteTokenLifetime:     pulumi.Bool(false),
-// 				Leeway:                    pulumi.Int(15),
-// 				RotationType:              pulumi.String("rotating"),
-// 				TokenLifetime:             pulumi.Int(84600),
-// 			},
-// 			TokenEndpointAuthMethod: pulumi.String("client_secret_post"),
-// 			WebOrigins: pulumi.StringArray{
-// 				pulumi.String("https://example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewClient(ctx, "myClient", &auth0.ClientArgs{
+//				Addons: &ClientAddonsArgs{
+//					Firebase: pulumi.AnyMap{
+//						"clientEmail":       pulumi.Any("john.doe@example.com"),
+//						"lifetimeInSeconds": pulumi.Any(1),
+//						"privateKey":        pulumi.Any("wer"),
+//						"privateKeyId":      pulumi.Any("qwreerwerwe"),
+//					},
+//					Samlp: &ClientAddonsSamlpArgs{
+//						Audience:             pulumi.String("https://example.com/saml"),
+//						CreateUpnClaim:       pulumi.Bool(false),
+//						MapIdentities:        pulumi.Bool(false),
+//						MapUnknownClaimsAsIs: pulumi.Bool(false),
+//						Mappings: pulumi.AnyMap{
+//							"email": pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+//							"name":  pulumi.Any("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
+//						},
+//						NameIdentifierFormat: pulumi.String("urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"),
+//						NameIdentifierProbes: pulumi.StringArray{
+//							pulumi.String("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+//						},
+//						PassthroughClaimsWithNoMapping: pulumi.Bool(false),
+//						SigningCert:                    pulumi.String("pemcertificate"),
+//					},
+//				},
+//				AllowedClients: pulumi.StringArray{
+//					pulumi.String("https://allowed.example.com"),
+//				},
+//				AllowedLogoutUrls: pulumi.StringArray{
+//					pulumi.String("https://example.com"),
+//				},
+//				AllowedOrigins: pulumi.StringArray{
+//					pulumi.String("https://example.com"),
+//				},
+//				AppType: pulumi.String("non_interactive"),
+//				Callbacks: pulumi.StringArray{
+//					pulumi.String("https://example.com/callback"),
+//				},
+//				ClientMetadata: pulumi.AnyMap{
+//					"foo": pulumi.Any("zoo"),
+//				},
+//				ClientSecretRotationTrigger: pulumi.AnyMap{
+//					"triggered_at": pulumi.Any("2018-01-02T23:12:01Z"),
+//					"triggered_by": pulumi.Any("auth0"),
+//				},
+//				CustomLoginPageOn: pulumi.Bool(true),
+//				Description:       pulumi.String("Test Applications Long Description"),
+//				GrantTypes: pulumi.StringArray{
+//					pulumi.String("authorization_code"),
+//					pulumi.String("http://auth0.com/oauth/grant-type/password-realm"),
+//					pulumi.String("implicit"),
+//					pulumi.String("password"),
+//					pulumi.String("refresh_token"),
+//				},
+//				InitiateLoginUri:               pulumi.String("https://example.com/login"),
+//				IsFirstParty:                   pulumi.Bool(true),
+//				IsTokenEndpointIpHeaderTrusted: pulumi.Bool(true),
+//				JwtConfiguration: &ClientJwtConfigurationArgs{
+//					Alg:               pulumi.String("RS256"),
+//					LifetimeInSeconds: pulumi.Int(300),
+//					Scopes: pulumi.StringMap{
+//						"foo": pulumi.String("bar"),
+//					},
+//					SecretEncoded: pulumi.Bool(true),
+//				},
+//				Mobile: &ClientMobileArgs{
+//					Ios: &ClientMobileIosArgs{
+//						AppBundleIdentifier: pulumi.String("com.my.bundle.id"),
+//						TeamId:              pulumi.String("9JA89QQLNQ"),
+//					},
+//				},
+//				OidcConformant:              pulumi.Bool(false),
+//				OrganizationRequireBehavior: pulumi.String("no_prompt"),
+//				OrganizationUsage:           pulumi.String("deny"),
+//				RefreshToken: &ClientRefreshTokenArgs{
+//					ExpirationType:            pulumi.String("expiring"),
+//					IdleTokenLifetime:         pulumi.Int(1296000),
+//					InfiniteIdleTokenLifetime: pulumi.Bool(true),
+//					InfiniteTokenLifetime:     pulumi.Bool(false),
+//					Leeway:                    pulumi.Int(15),
+//					RotationType:              pulumi.String("rotating"),
+//					TokenLifetime:             pulumi.Int(84600),
+//				},
+//				TokenEndpointAuthMethod: pulumi.String("client_secret_post"),
+//				WebOrigins: pulumi.StringArray{
+//					pulumi.String("https://example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -125,7 +128,9 @@ import (
 // A client can be imported using the client's ID, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
+//
+//	$ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
+//
 // ```
 type Client struct {
 	pulumi.CustomResourceState
@@ -544,7 +549,7 @@ func (i *Client) ToClientOutputWithContext(ctx context.Context) ClientOutput {
 // ClientArrayInput is an input type that accepts ClientArray and ClientArrayOutput values.
 // You can construct a concrete instance of `ClientArrayInput` via:
 //
-//          ClientArray{ ClientArgs{...} }
+//	ClientArray{ ClientArgs{...} }
 type ClientArrayInput interface {
 	pulumi.Input
 
@@ -569,7 +574,7 @@ func (i ClientArray) ToClientArrayOutputWithContext(ctx context.Context) ClientA
 // ClientMapInput is an input type that accepts ClientMap and ClientMapOutput values.
 // You can construct a concrete instance of `ClientMapInput` via:
 //
-//          ClientMap{ "key": ClientArgs{...} }
+//	ClientMap{ "key": ClientArgs{...} }
 type ClientMapInput interface {
 	pulumi.Input
 

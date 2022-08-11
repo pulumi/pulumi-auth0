@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0.Inputs
 {
 
-    public sealed class ClientRefreshTokenArgs : Pulumi.ResourceArgs
+    public sealed class ClientRefreshTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
@@ -57,5 +57,6 @@ namespace Pulumi.Auth0.Inputs
         public ClientRefreshTokenArgs()
         {
         }
+        public static new ClientRefreshTokenArgs Empty => new ClientRefreshTokenArgs();
     }
 }

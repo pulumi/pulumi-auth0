@@ -15,22 +15,20 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Auth0.Prompt("example", new()
     ///     {
-    ///         var example = new Auth0.Prompt("example", new Auth0.PromptArgs
-    ///         {
-    ///             IdentifierFirst = false,
-    ///             UniversalLoginExperience = "classic",
-    ///             WebauthnPlatformFirstFactor = true,
-    ///         });
-    ///     }
+    ///         IdentifierFirst = false,
+    ///         UniversalLoginExperience = "classic",
+    ///         WebauthnPlatformFirstFactor = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/prompt:Prompt")]
-    public partial class Prompt : Pulumi.CustomResource
+    public partial class Prompt : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
@@ -106,7 +104,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class PromptArgs : Pulumi.ResourceArgs
+    public sealed class PromptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
@@ -129,9 +127,10 @@ namespace Pulumi.Auth0
         public PromptArgs()
         {
         }
+        public static new PromptArgs Empty => new PromptArgs();
     }
 
-    public sealed class PromptState : Pulumi.ResourceArgs
+    public sealed class PromptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
@@ -154,5 +153,6 @@ namespace Pulumi.Auth0
         public PromptState()
         {
         }
+        public static new PromptState Empty => new PromptState();
     }
 }

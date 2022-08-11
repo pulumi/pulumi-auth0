@@ -21,43 +21,40 @@ namespace Pulumi.Auth0
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new Auth0.PromptCustomText("example", new()
     ///     {
-    ///         var example = new Auth0.PromptCustomText("example", new Auth0.PromptCustomTextArgs
+    ///         Prompt = "login",
+    ///         Language = "en",
+    ///         Body = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Prompt = "login",
-    ///             Language = "en",
-    ///             Body = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["login"] = new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "login", new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "alertListTitle", "Alerts" },
-    ///                     { "buttonText", "Continue" },
-    ///                     { "description", "Login to" },
-    ///                     { "editEmailText", "Edit" },
-    ///                     { "emailPlaceholder", "Email address" },
-    ///                     { "federatedConnectionButtonText", $"Continue with {connectionName}" },
-    ///                     { "footerLinkText", "Sign up" },
-    ///                     { "footerText", "Don't have an account?" },
-    ///                     { "forgotPasswordText", "Forgot password?" },
-    ///                     { "invitationDescription", $"Log in to accept {inviterName}'s invitation to join {companyName} on {clientName}." },
-    ///                     { "invitationTitle", "You've Been Invited!" },
-    ///                     { "logoAltText", companyName },
-    ///                     { "pageTitle", $"Log in | {clientName}" },
-    ///                     { "passwordPlaceholder", "Password" },
-    ///                     { "separatorText", "Or" },
-    ///                     { "signupActionLinkText", footerLinkText },
-    ///                     { "signupActionText", footerText },
-    ///                     { "title", "Welcome" },
-    ///                     { "usernamePlaceholder", "Username or email address" },
-    ///                 } },
-    ///             }),
-    ///         });
-    ///     }
+    ///                 ["alertListTitle"] = "Alerts",
+    ///                 ["buttonText"] = "Continue",
+    ///                 ["description"] = "Login to",
+    ///                 ["editEmailText"] = "Edit",
+    ///                 ["emailPlaceholder"] = "Email address",
+    ///                 ["federatedConnectionButtonText"] = $"Continue with {connectionName}",
+    ///                 ["footerLinkText"] = "Sign up",
+    ///                 ["footerText"] = "Don't have an account?",
+    ///                 ["forgotPasswordText"] = "Forgot password?",
+    ///                 ["invitationDescription"] = $"Log in to accept {inviterName}'s invitation to join {companyName} on {clientName}.",
+    ///                 ["invitationTitle"] = "You've Been Invited!",
+    ///                 ["logoAltText"] = companyName,
+    ///                 ["pageTitle"] = $"Log in | {clientName}",
+    ///                 ["passwordPlaceholder"] = "Password",
+    ///                 ["separatorText"] = "Or",
+    ///                 ["signupActionLinkText"] = footerLinkText,
+    ///                 ["signupActionText"] = footerText,
+    ///                 ["title"] = "Welcome",
+    ///                 ["usernamePlaceholder"] = "Username or email address",
+    ///             },
+    ///         }),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +66,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/promptCustomText:PromptCustomText")]
-    public partial class PromptCustomText : Pulumi.CustomResource
+    public partial class PromptCustomText : global::Pulumi.CustomResource
     {
         /// <summary>
         /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
@@ -133,7 +130,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class PromptCustomTextArgs : Pulumi.ResourceArgs
+    public sealed class PromptCustomTextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
@@ -156,9 +153,10 @@ namespace Pulumi.Auth0
         public PromptCustomTextArgs()
         {
         }
+        public static new PromptCustomTextArgs Empty => new PromptCustomTextArgs();
     }
 
-    public sealed class PromptCustomTextState : Pulumi.ResourceArgs
+    public sealed class PromptCustomTextState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
@@ -181,5 +179,6 @@ namespace Pulumi.Auth0
         public PromptCustomTextState()
         {
         }
+        public static new PromptCustomTextState Empty => new PromptCustomTextState();
     }
 }

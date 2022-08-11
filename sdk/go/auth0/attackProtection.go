@@ -18,61 +18,64 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := auth0.NewAttackProtection(ctx, "attackProtection", &auth0.AttackProtectionArgs{
-// 			BreachedPasswordDetection: &AttackProtectionBreachedPasswordDetectionArgs{
-// 				AdminNotificationFrequencies: pulumi.StringArray{
-// 					pulumi.String("daily"),
-// 				},
-// 				Enabled: pulumi.Bool(true),
-// 				Method:  pulumi.String("standard"),
-// 				Shields: pulumi.StringArray{
-// 					pulumi.String("admin_notification"),
-// 					pulumi.String("block"),
-// 				},
-// 			},
-// 			BruteForceProtection: &AttackProtectionBruteForceProtectionArgs{
-// 				Allowlists: pulumi.StringArray{
-// 					pulumi.String("127.0.0.1"),
-// 				},
-// 				Enabled:     pulumi.Bool(true),
-// 				MaxAttempts: pulumi.Int(5),
-// 				Mode:        pulumi.String("count_per_identifier_and_ip"),
-// 				Shields: pulumi.StringArray{
-// 					pulumi.String("block"),
-// 					pulumi.String("user_notification"),
-// 				},
-// 			},
-// 			SuspiciousIpThrottling: &AttackProtectionSuspiciousIpThrottlingArgs{
-// 				Allowlists: pulumi.StringArray{
-// 					pulumi.String("192.168.1.1"),
-// 				},
-// 				Enabled: pulumi.Bool(true),
-// 				PreLogin: &AttackProtectionSuspiciousIpThrottlingPreLoginArgs{
-// 					MaxAttempts: pulumi.Int(100),
-// 					Rate:        pulumi.Int(864000),
-// 				},
-// 				PreUserRegistration: &AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{
-// 					MaxAttempts: pulumi.Int(50),
-// 					Rate:        pulumi.Int(1200),
-// 				},
-// 				Shields: pulumi.StringArray{
-// 					pulumi.String("admin_notification"),
-// 					pulumi.String("block"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewAttackProtection(ctx, "attackProtection", &auth0.AttackProtectionArgs{
+//				BreachedPasswordDetection: &AttackProtectionBreachedPasswordDetectionArgs{
+//					AdminNotificationFrequencies: pulumi.StringArray{
+//						pulumi.String("daily"),
+//					},
+//					Enabled: pulumi.Bool(true),
+//					Method:  pulumi.String("standard"),
+//					Shields: pulumi.StringArray{
+//						pulumi.String("admin_notification"),
+//						pulumi.String("block"),
+//					},
+//				},
+//				BruteForceProtection: &AttackProtectionBruteForceProtectionArgs{
+//					Allowlists: pulumi.StringArray{
+//						pulumi.String("127.0.0.1"),
+//					},
+//					Enabled:     pulumi.Bool(true),
+//					MaxAttempts: pulumi.Int(5),
+//					Mode:        pulumi.String("count_per_identifier_and_ip"),
+//					Shields: pulumi.StringArray{
+//						pulumi.String("block"),
+//						pulumi.String("user_notification"),
+//					},
+//				},
+//				SuspiciousIpThrottling: &AttackProtectionSuspiciousIpThrottlingArgs{
+//					Allowlists: pulumi.StringArray{
+//						pulumi.String("192.168.1.1"),
+//					},
+//					Enabled: pulumi.Bool(true),
+//					PreLogin: &AttackProtectionSuspiciousIpThrottlingPreLoginArgs{
+//						MaxAttempts: pulumi.Int(100),
+//						Rate:        pulumi.Int(864000),
+//					},
+//					PreUserRegistration: &AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{
+//						MaxAttempts: pulumi.Int(50),
+//						Rate:        pulumi.Int(1200),
+//					},
+//					Shields: pulumi.StringArray{
+//						pulumi.String("admin_notification"),
+//						pulumi.String("block"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -80,7 +83,9 @@ import (
 // As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/attackProtection:AttackProtection default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+//
+//	$ pulumi import auth0:index/attackProtection:AttackProtection default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+//
 // ```
 type AttackProtection struct {
 	pulumi.CustomResourceState
@@ -188,7 +193,7 @@ func (i *AttackProtection) ToAttackProtectionOutputWithContext(ctx context.Conte
 // AttackProtectionArrayInput is an input type that accepts AttackProtectionArray and AttackProtectionArrayOutput values.
 // You can construct a concrete instance of `AttackProtectionArrayInput` via:
 //
-//          AttackProtectionArray{ AttackProtectionArgs{...} }
+//	AttackProtectionArray{ AttackProtectionArgs{...} }
 type AttackProtectionArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +218,7 @@ func (i AttackProtectionArray) ToAttackProtectionArrayOutputWithContext(ctx cont
 // AttackProtectionMapInput is an input type that accepts AttackProtectionMap and AttackProtectionMapOutput values.
 // You can construct a concrete instance of `AttackProtectionMapInput` via:
 //
-//          AttackProtectionMap{ "key": AttackProtectionArgs{...} }
+//	AttackProtectionMap{ "key": AttackProtectionArgs{...} }
 type AttackProtectionMapInput interface {
 	pulumi.Input
 

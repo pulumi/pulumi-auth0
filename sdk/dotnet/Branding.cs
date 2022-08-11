@@ -18,33 +18,31 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myBrand = new Auth0.Branding("myBrand", new()
     ///     {
-    ///         var myBrand = new Auth0.Branding("myBrand", new Auth0.BrandingArgs
+    ///         Colors = new Auth0.Inputs.BrandingColorsArgs
     ///         {
-    ///             Colors = new Auth0.Inputs.BrandingColorsArgs
-    ///             {
-    ///                 PageBackground = "#000000",
-    ///                 Primary = "#0059d6",
-    ///             },
-    ///             LogoUrl = "https://mycompany.org/logo.png",
-    ///             UniversalLogin = new Auth0.Inputs.BrandingUniversalLoginArgs
-    ///             {
-    ///                 Body = "&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;{%- auth0:head -%}&lt;/head&gt;&lt;body&gt;{%- auth0:widget -%}&lt;/body&gt;&lt;/html&gt;",
-    ///             },
-    ///         });
-    ///     }
+    ///             PageBackground = "#000000",
+    ///             Primary = "#0059d6",
+    ///         },
+    ///         LogoUrl = "https://mycompany.org/logo.png",
+    ///         UniversalLogin = new Auth0.Inputs.BrandingUniversalLoginArgs
+    ///         {
+    ///             Body = "&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;{%- auth0:head -%}&lt;/head&gt;&lt;body&gt;{%- auth0:widget -%}&lt;/body&gt;&lt;/html&gt;",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/branding:Branding")]
-    public partial class Branding : Pulumi.CustomResource
+    public partial class Branding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List(Resource). Configuration settings for colors for branding. See Colors.
@@ -122,7 +120,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class BrandingArgs : Pulumi.ResourceArgs
+    public sealed class BrandingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for colors for branding. See Colors.
@@ -159,9 +157,10 @@ namespace Pulumi.Auth0
         public BrandingArgs()
         {
         }
+        public static new BrandingArgs Empty => new BrandingArgs();
     }
 
-    public sealed class BrandingState : Pulumi.ResourceArgs
+    public sealed class BrandingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// List(Resource). Configuration settings for colors for branding. See Colors.
@@ -198,5 +197,6 @@ namespace Pulumi.Auth0
         public BrandingState()
         {
         }
+        public static new BrandingState Empty => new BrandingState();
     }
 }

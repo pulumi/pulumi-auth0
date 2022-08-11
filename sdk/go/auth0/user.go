@@ -20,40 +20,43 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
-// 			Description: pulumi.String("Administrator"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = auth0.NewUser(ctx, "user", &auth0.UserArgs{
-// 			ConnectionName: pulumi.String("Username-Password-Authentication"),
-// 			UserId:         pulumi.String("12345"),
-// 			Username:       pulumi.String("unique_username"),
-// 			GivenName:      pulumi.String("Firstname"),
-// 			FamilyName:     pulumi.String("Lastname"),
-// 			Nickname:       pulumi.String("some.nickname"),
-// 			Email:          pulumi.String("test@test.com"),
-// 			EmailVerified:  pulumi.Bool(true),
-// 			Password:       pulumi.String(fmt.Sprintf("passpass$12$12")),
-// 			Roles: pulumi.StringArray{
-// 				admin.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
+//				Description: pulumi.String("Administrator"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewUser(ctx, "user", &auth0.UserArgs{
+//				ConnectionName: pulumi.String("Username-Password-Authentication"),
+//				UserId:         pulumi.String("12345"),
+//				Username:       pulumi.String("unique_username"),
+//				GivenName:      pulumi.String("Firstname"),
+//				FamilyName:     pulumi.String("Lastname"),
+//				Nickname:       pulumi.String("some.nickname"),
+//				Email:          pulumi.String("test@test.com"),
+//				EmailVerified:  pulumi.Bool(true),
+//				Password:       pulumi.String(fmt.Sprintf("passpass$12$12")),
+//				Roles: pulumi.StringArray{
+//					admin.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -61,7 +64,9 @@ import (
 // auth0_user can be imported using the user ID, e.g.
 //
 // ```sh
-//  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+//
+//	$ pulumi import auth0:index/user:User user auth0|111111111111111111111111
+//
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -297,7 +302,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -322,7 +327,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

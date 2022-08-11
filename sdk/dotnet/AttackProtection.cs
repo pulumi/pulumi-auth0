@@ -15,71 +15,69 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var attackProtection = new Auth0.AttackProtection("attackProtection", new()
     ///     {
-    ///         var attackProtection = new Auth0.AttackProtection("attackProtection", new Auth0.AttackProtectionArgs
+    ///         BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs
     ///         {
-    ///             BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs
+    ///             AdminNotificationFrequencies = new[]
     ///             {
-    ///                 AdminNotificationFrequencies = 
-    ///                 {
-    ///                     "daily",
-    ///                 },
-    ///                 Enabled = true,
-    ///                 Method = "standard",
-    ///                 Shields = 
-    ///                 {
-    ///                     "admin_notification",
-    ///                     "block",
-    ///                 },
+    ///                 "daily",
     ///             },
-    ///             BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs
+    ///             Enabled = true,
+    ///             Method = "standard",
+    ///             Shields = new[]
     ///             {
-    ///                 Allowlists = 
-    ///                 {
-    ///                     "127.0.0.1",
-    ///                 },
-    ///                 Enabled = true,
-    ///                 MaxAttempts = 5,
-    ///                 Mode = "count_per_identifier_and_ip",
-    ///                 Shields = 
-    ///                 {
-    ///                     "block",
-    ///                     "user_notification",
-    ///                 },
+    ///                 "admin_notification",
+    ///                 "block",
     ///             },
-    ///             SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs
+    ///         },
+    ///         BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs
+    ///         {
+    ///             Allowlists = new[]
     ///             {
-    ///                 Allowlists = 
-    ///                 {
-    ///                     "192.168.1.1",
-    ///                 },
-    ///                 Enabled = true,
-    ///                 PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs
-    ///                 {
-    ///                     MaxAttempts = 100,
-    ///                     Rate = 864000,
-    ///                 },
-    ///                 PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
-    ///                 {
-    ///                     MaxAttempts = 50,
-    ///                     Rate = 1200,
-    ///                 },
-    ///                 Shields = 
-    ///                 {
-    ///                     "admin_notification",
-    ///                     "block",
-    ///                 },
+    ///                 "127.0.0.1",
     ///             },
-    ///         });
-    ///     }
+    ///             Enabled = true,
+    ///             MaxAttempts = 5,
+    ///             Mode = "count_per_identifier_and_ip",
+    ///             Shields = new[]
+    ///             {
+    ///                 "block",
+    ///                 "user_notification",
+    ///             },
+    ///         },
+    ///         SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs
+    ///         {
+    ///             Allowlists = new[]
+    ///             {
+    ///                 "192.168.1.1",
+    ///             },
+    ///             Enabled = true,
+    ///             PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs
+    ///             {
+    ///                 MaxAttempts = 100,
+    ///                 Rate = 864000,
+    ///             },
+    ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
+    ///             {
+    ///                 MaxAttempts = 50,
+    ///                 Rate = 1200,
+    ///             },
+    ///             Shields = new[]
+    ///             {
+    ///                 "admin_notification",
+    ///                 "block",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +89,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/attackProtection:AttackProtection")]
-    public partial class AttackProtection : Pulumi.CustomResource
+    public partial class AttackProtection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Breached password detection protects your applications from bad actors logging in with stolen credentials.
@@ -155,7 +153,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class AttackProtectionArgs : Pulumi.ResourceArgs
+    public sealed class AttackProtectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Breached password detection protects your applications from bad actors logging in with stolen credentials.
@@ -178,9 +176,10 @@ namespace Pulumi.Auth0
         public AttackProtectionArgs()
         {
         }
+        public static new AttackProtectionArgs Empty => new AttackProtectionArgs();
     }
 
-    public sealed class AttackProtectionState : Pulumi.ResourceArgs
+    public sealed class AttackProtectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Breached password detection protects your applications from bad actors logging in with stolen credentials.
@@ -203,5 +202,6 @@ namespace Pulumi.Auth0
         public AttackProtectionState()
         {
         }
+        public static new AttackProtectionState Empty => new AttackProtectionState();
     }
 }

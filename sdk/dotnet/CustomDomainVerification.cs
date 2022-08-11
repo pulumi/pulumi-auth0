@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/customDomainVerification:CustomDomainVerification")]
-    public partial class CustomDomainVerification : Pulumi.CustomResource
+    public partial class CustomDomainVerification : global::Pulumi.CustomResource
     {
         [Output("cnameApiKey")]
         public Output<string> CnameApiKey { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class CustomDomainVerificationArgs : Pulumi.ResourceArgs
+    public sealed class CustomDomainVerificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. ID of the custom domain resource.
@@ -95,9 +95,10 @@ namespace Pulumi.Auth0
         public CustomDomainVerificationArgs()
         {
         }
+        public static new CustomDomainVerificationArgs Empty => new CustomDomainVerificationArgs();
     }
 
-    public sealed class CustomDomainVerificationState : Pulumi.ResourceArgs
+    public sealed class CustomDomainVerificationState : global::Pulumi.ResourceArgs
     {
         [Input("cnameApiKey")]
         public Input<string>? CnameApiKey { get; set; }
@@ -117,5 +118,6 @@ namespace Pulumi.Auth0
         public CustomDomainVerificationState()
         {
         }
+        public static new CustomDomainVerificationState Empty => new CustomDomainVerificationState();
     }
 }

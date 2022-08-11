@@ -17,30 +17,29 @@ namespace Pulumi.Auth0
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myRule = new Auth0.Rule("myRule", new()
     ///     {
-    ///         var myRule = new Auth0.Rule("myRule", new Auth0.RuleArgs
-    ///         {
-    ///             Enabled = true,
-    ///             Script = @"function (user, context, callback) {
+    ///         Enabled = true,
+    ///         Script = @"function (user, context, callback) {
     ///   callback(null, user, context);
     /// }
     /// 
     /// ",
-    ///         });
-    ///         var myRuleConfig = new Auth0.RuleConfig("myRuleConfig", new Auth0.RuleConfigArgs
-    ///         {
-    ///             Key = "foo",
-    ///             Value = "bar",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    ///     var myRuleConfig = new Auth0.RuleConfig("myRuleConfig", new()
+    ///     {
+    ///         Key = "foo",
+    ///         Value = "bar",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.Auth0
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/ruleConfig:RuleConfig")]
-    public partial class RuleConfig : Pulumi.CustomResource
+    public partial class RuleConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// String. Key for a rules configuration variable.
@@ -110,7 +109,7 @@ namespace Pulumi.Auth0
         }
     }
 
-    public sealed class RuleConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuleConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Key for a rules configuration variable.
@@ -127,9 +126,10 @@ namespace Pulumi.Auth0
         public RuleConfigArgs()
         {
         }
+        public static new RuleConfigArgs Empty => new RuleConfigArgs();
     }
 
-    public sealed class RuleConfigState : Pulumi.ResourceArgs
+    public sealed class RuleConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String. Key for a rules configuration variable.
@@ -146,5 +146,6 @@ namespace Pulumi.Auth0
         public RuleConfigState()
         {
         }
+        public static new RuleConfigState Empty => new RuleConfigState();
     }
 }
