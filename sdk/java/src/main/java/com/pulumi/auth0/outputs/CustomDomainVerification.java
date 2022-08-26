@@ -15,13 +15,9 @@ public final class CustomDomainVerification {
      * @return List(Map). Verification methods for the domain.
      * 
      */
-    private final @Nullable List<Object> methods;
+    private @Nullable List<Object> methods;
 
-    @CustomType.Constructor
-    private CustomDomainVerification(@CustomType.Parameter("methods") @Nullable List<Object> methods) {
-        this.methods = methods;
-    }
-
+    private CustomDomainVerification() {}
     /**
      * @return List(Map). Verification methods for the domain.
      * 
@@ -37,27 +33,27 @@ public final class CustomDomainVerification {
     public static Builder builder(CustomDomainVerification defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Object> methods;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CustomDomainVerification defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.methods = defaults.methods;
         }
 
+        @CustomType.Setter
         public Builder methods(@Nullable List<Object> methods) {
             this.methods = methods;
             return this;
         }
         public Builder methods(Object... methods) {
             return methods(List.of(methods));
-        }        public CustomDomainVerification build() {
-            return new CustomDomainVerification(methods);
+        }
+        public CustomDomainVerification build() {
+            final var o = new CustomDomainVerification();
+            o.methods = methods;
+            return o;
         }
     }
 }

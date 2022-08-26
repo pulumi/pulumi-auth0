@@ -13,21 +13,14 @@ public final class TriggerBindingAction {
      * @return The name of an action.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return Trigger ID.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private TriggerBindingAction(
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("id") String id) {
-        this.displayName = displayName;
-        this.id = id;
-    }
-
+    private TriggerBindingAction() {}
     /**
      * @return The name of an action.
      * 
@@ -50,30 +43,32 @@ public final class TriggerBindingAction {
     public static Builder builder(TriggerBindingAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String displayName;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBindingAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public TriggerBindingAction build() {
-            return new TriggerBindingAction(displayName, id);
+        }
+        public TriggerBindingAction build() {
+            final var o = new TriggerBindingAction();
+            o.displayName = displayName;
+            o.id = id;
+            return o;
         }
     }
 }

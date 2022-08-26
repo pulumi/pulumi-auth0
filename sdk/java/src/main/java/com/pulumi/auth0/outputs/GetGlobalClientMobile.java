@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGlobalClientMobile {
-    private final List<GetGlobalClientMobileAndroid> androids;
-    private final List<GetGlobalClientMobileIo> ios;
+    private List<GetGlobalClientMobileAndroid> androids;
+    private List<GetGlobalClientMobileIo> ios;
 
-    @CustomType.Constructor
-    private GetGlobalClientMobile(
-        @CustomType.Parameter("androids") List<GetGlobalClientMobileAndroid> androids,
-        @CustomType.Parameter("ios") List<GetGlobalClientMobileIo> ios) {
-        this.androids = androids;
-        this.ios = ios;
-    }
-
+    private GetGlobalClientMobile() {}
     public List<GetGlobalClientMobileAndroid> androids() {
         return this.androids;
     }
@@ -36,21 +29,18 @@ public final class GetGlobalClientMobile {
     public static Builder builder(GetGlobalClientMobile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetGlobalClientMobileAndroid> androids;
         private List<GetGlobalClientMobileIo> ios;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalClientMobile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.androids = defaults.androids;
     	      this.ios = defaults.ios;
         }
 
+        @CustomType.Setter
         public Builder androids(List<GetGlobalClientMobileAndroid> androids) {
             this.androids = Objects.requireNonNull(androids);
             return this;
@@ -58,14 +48,19 @@ public final class GetGlobalClientMobile {
         public Builder androids(GetGlobalClientMobileAndroid... androids) {
             return androids(List.of(androids));
         }
+        @CustomType.Setter
         public Builder ios(List<GetGlobalClientMobileIo> ios) {
             this.ios = Objects.requireNonNull(ios);
             return this;
         }
         public Builder ios(GetGlobalClientMobileIo... ios) {
             return ios(List.of(ios));
-        }        public GetGlobalClientMobile build() {
-            return new GetGlobalClientMobile(androids, ios);
+        }
+        public GetGlobalClientMobile build() {
+            final var o = new GetGlobalClientMobile();
+            o.androids = androids;
+            o.ios = ios;
+            return o;
         }
     }
 }

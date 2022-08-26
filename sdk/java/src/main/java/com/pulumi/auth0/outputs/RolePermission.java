@@ -13,21 +13,14 @@ public final class RolePermission {
      * @return String. Name of the permission (scope).
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return String. Unique identifier for the resource server.
      * 
      */
-    private final String resourceServerIdentifier;
+    private String resourceServerIdentifier;
 
-    @CustomType.Constructor
-    private RolePermission(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("resourceServerIdentifier") String resourceServerIdentifier) {
-        this.name = name;
-        this.resourceServerIdentifier = resourceServerIdentifier;
-    }
-
+    private RolePermission() {}
     /**
      * @return String. Name of the permission (scope).
      * 
@@ -50,30 +43,32 @@ public final class RolePermission {
     public static Builder builder(RolePermission defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String resourceServerIdentifier;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RolePermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceServerIdentifier(String resourceServerIdentifier) {
             this.resourceServerIdentifier = Objects.requireNonNull(resourceServerIdentifier);
             return this;
-        }        public RolePermission build() {
-            return new RolePermission(name, resourceServerIdentifier);
+        }
+        public RolePermission build() {
+            final var o = new RolePermission();
+            o.name = name;
+            o.resourceServerIdentifier = resourceServerIdentifier;
+            return o;
         }
     }
 }

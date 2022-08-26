@@ -15,17 +15,10 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
      * @return Maximum number of unsuccessful attempts. Only available on public tenants.
      * 
      */
-    private final @Nullable Integer maxAttempts;
-    private final @Nullable Integer rate;
+    private @Nullable Integer maxAttempts;
+    private @Nullable Integer rate;
 
-    @CustomType.Constructor
-    private AttackProtectionSuspiciousIpThrottlingPreUserRegistration(
-        @CustomType.Parameter("maxAttempts") @Nullable Integer maxAttempts,
-        @CustomType.Parameter("rate") @Nullable Integer rate) {
-        this.maxAttempts = maxAttempts;
-        this.rate = rate;
-    }
-
+    private AttackProtectionSuspiciousIpThrottlingPreUserRegistration() {}
     /**
      * @return Maximum number of unsuccessful attempts. Only available on public tenants.
      * 
@@ -44,30 +37,32 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
     public static Builder builder(AttackProtectionSuspiciousIpThrottlingPreUserRegistration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxAttempts;
         private @Nullable Integer rate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AttackProtectionSuspiciousIpThrottlingPreUserRegistration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxAttempts = defaults.maxAttempts;
     	      this.rate = defaults.rate;
         }
 
+        @CustomType.Setter
         public Builder maxAttempts(@Nullable Integer maxAttempts) {
             this.maxAttempts = maxAttempts;
             return this;
         }
+        @CustomType.Setter
         public Builder rate(@Nullable Integer rate) {
             this.rate = rate;
             return this;
-        }        public AttackProtectionSuspiciousIpThrottlingPreUserRegistration build() {
-            return new AttackProtectionSuspiciousIpThrottlingPreUserRegistration(maxAttempts, rate);
+        }
+        public AttackProtectionSuspiciousIpThrottlingPreUserRegistration build() {
+            final var o = new AttackProtectionSuspiciousIpThrottlingPreUserRegistration();
+            o.maxAttempts = maxAttempts;
+            o.rate = rate;
+            return o;
         }
     }
 }

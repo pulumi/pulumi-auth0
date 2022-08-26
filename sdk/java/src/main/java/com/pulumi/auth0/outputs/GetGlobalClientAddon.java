@@ -13,95 +13,36 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGlobalClientAddon {
-    private final Map<String,Object> aws;
-    private final Map<String,Object> azureBlob;
-    private final Map<String,Object> azureSb;
-    private final Map<String,Object> box;
-    private final Map<String,Object> cloudbees;
-    private final Map<String,Object> concur;
-    private final Map<String,Object> dropbox;
-    private final Map<String,Object> echosign;
-    private final Map<String,Object> egnyte;
-    private final Map<String,Object> firebase;
-    private final Map<String,Object> layer;
-    private final Map<String,Object> mscrm;
-    private final Map<String,Object> newrelic;
-    private final Map<String,Object> office365;
-    private final Map<String,Object> rms;
-    private final Map<String,Object> salesforce;
-    private final Map<String,Object> salesforceApi;
-    private final Map<String,Object> salesforceSandboxApi;
-    private final List<GetGlobalClientAddonSamlp> samlps;
-    private final Map<String,Object> sapApi;
-    private final Map<String,Object> sentry;
-    private final Map<String,Object> sharepoint;
-    private final Map<String,Object> slack;
-    private final Map<String,Object> springcm;
-    private final Map<String,Object> wams;
-    private final Map<String,Object> wsfed;
-    private final Map<String,Object> zendesk;
-    private final Map<String,Object> zoom;
+    private Map<String,Object> aws;
+    private Map<String,Object> azureBlob;
+    private Map<String,Object> azureSb;
+    private Map<String,Object> box;
+    private Map<String,Object> cloudbees;
+    private Map<String,Object> concur;
+    private Map<String,Object> dropbox;
+    private Map<String,Object> echosign;
+    private Map<String,Object> egnyte;
+    private Map<String,Object> firebase;
+    private Map<String,Object> layer;
+    private Map<String,Object> mscrm;
+    private Map<String,Object> newrelic;
+    private Map<String,Object> office365;
+    private Map<String,Object> rms;
+    private Map<String,Object> salesforce;
+    private Map<String,Object> salesforceApi;
+    private Map<String,Object> salesforceSandboxApi;
+    private List<GetGlobalClientAddonSamlp> samlps;
+    private Map<String,Object> sapApi;
+    private Map<String,Object> sentry;
+    private Map<String,Object> sharepoint;
+    private Map<String,Object> slack;
+    private Map<String,Object> springcm;
+    private Map<String,Object> wams;
+    private Map<String,Object> wsfed;
+    private Map<String,Object> zendesk;
+    private Map<String,Object> zoom;
 
-    @CustomType.Constructor
-    private GetGlobalClientAddon(
-        @CustomType.Parameter("aws") Map<String,Object> aws,
-        @CustomType.Parameter("azureBlob") Map<String,Object> azureBlob,
-        @CustomType.Parameter("azureSb") Map<String,Object> azureSb,
-        @CustomType.Parameter("box") Map<String,Object> box,
-        @CustomType.Parameter("cloudbees") Map<String,Object> cloudbees,
-        @CustomType.Parameter("concur") Map<String,Object> concur,
-        @CustomType.Parameter("dropbox") Map<String,Object> dropbox,
-        @CustomType.Parameter("echosign") Map<String,Object> echosign,
-        @CustomType.Parameter("egnyte") Map<String,Object> egnyte,
-        @CustomType.Parameter("firebase") Map<String,Object> firebase,
-        @CustomType.Parameter("layer") Map<String,Object> layer,
-        @CustomType.Parameter("mscrm") Map<String,Object> mscrm,
-        @CustomType.Parameter("newrelic") Map<String,Object> newrelic,
-        @CustomType.Parameter("office365") Map<String,Object> office365,
-        @CustomType.Parameter("rms") Map<String,Object> rms,
-        @CustomType.Parameter("salesforce") Map<String,Object> salesforce,
-        @CustomType.Parameter("salesforceApi") Map<String,Object> salesforceApi,
-        @CustomType.Parameter("salesforceSandboxApi") Map<String,Object> salesforceSandboxApi,
-        @CustomType.Parameter("samlps") List<GetGlobalClientAddonSamlp> samlps,
-        @CustomType.Parameter("sapApi") Map<String,Object> sapApi,
-        @CustomType.Parameter("sentry") Map<String,Object> sentry,
-        @CustomType.Parameter("sharepoint") Map<String,Object> sharepoint,
-        @CustomType.Parameter("slack") Map<String,Object> slack,
-        @CustomType.Parameter("springcm") Map<String,Object> springcm,
-        @CustomType.Parameter("wams") Map<String,Object> wams,
-        @CustomType.Parameter("wsfed") Map<String,Object> wsfed,
-        @CustomType.Parameter("zendesk") Map<String,Object> zendesk,
-        @CustomType.Parameter("zoom") Map<String,Object> zoom) {
-        this.aws = aws;
-        this.azureBlob = azureBlob;
-        this.azureSb = azureSb;
-        this.box = box;
-        this.cloudbees = cloudbees;
-        this.concur = concur;
-        this.dropbox = dropbox;
-        this.echosign = echosign;
-        this.egnyte = egnyte;
-        this.firebase = firebase;
-        this.layer = layer;
-        this.mscrm = mscrm;
-        this.newrelic = newrelic;
-        this.office365 = office365;
-        this.rms = rms;
-        this.salesforce = salesforce;
-        this.salesforceApi = salesforceApi;
-        this.salesforceSandboxApi = salesforceSandboxApi;
-        this.samlps = samlps;
-        this.sapApi = sapApi;
-        this.sentry = sentry;
-        this.sharepoint = sharepoint;
-        this.slack = slack;
-        this.springcm = springcm;
-        this.wams = wams;
-        this.wsfed = wsfed;
-        this.zendesk = zendesk;
-        this.zoom = zoom;
-    }
-
+    private GetGlobalClientAddon() {}
     public Map<String,Object> aws() {
         return this.aws;
     }
@@ -194,7 +135,7 @@ public final class GetGlobalClientAddon {
     public static Builder builder(GetGlobalClientAddon defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> aws;
         private Map<String,Object> azureBlob;
@@ -224,11 +165,7 @@ public final class GetGlobalClientAddon {
         private Map<String,Object> wsfed;
         private Map<String,Object> zendesk;
         private Map<String,Object> zoom;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalClientAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aws = defaults.aws;
@@ -261,78 +198,97 @@ public final class GetGlobalClientAddon {
     	      this.zoom = defaults.zoom;
         }
 
+        @CustomType.Setter
         public Builder aws(Map<String,Object> aws) {
             this.aws = Objects.requireNonNull(aws);
             return this;
         }
+        @CustomType.Setter
         public Builder azureBlob(Map<String,Object> azureBlob) {
             this.azureBlob = Objects.requireNonNull(azureBlob);
             return this;
         }
+        @CustomType.Setter
         public Builder azureSb(Map<String,Object> azureSb) {
             this.azureSb = Objects.requireNonNull(azureSb);
             return this;
         }
+        @CustomType.Setter
         public Builder box(Map<String,Object> box) {
             this.box = Objects.requireNonNull(box);
             return this;
         }
+        @CustomType.Setter
         public Builder cloudbees(Map<String,Object> cloudbees) {
             this.cloudbees = Objects.requireNonNull(cloudbees);
             return this;
         }
+        @CustomType.Setter
         public Builder concur(Map<String,Object> concur) {
             this.concur = Objects.requireNonNull(concur);
             return this;
         }
+        @CustomType.Setter
         public Builder dropbox(Map<String,Object> dropbox) {
             this.dropbox = Objects.requireNonNull(dropbox);
             return this;
         }
+        @CustomType.Setter
         public Builder echosign(Map<String,Object> echosign) {
             this.echosign = Objects.requireNonNull(echosign);
             return this;
         }
+        @CustomType.Setter
         public Builder egnyte(Map<String,Object> egnyte) {
             this.egnyte = Objects.requireNonNull(egnyte);
             return this;
         }
+        @CustomType.Setter
         public Builder firebase(Map<String,Object> firebase) {
             this.firebase = Objects.requireNonNull(firebase);
             return this;
         }
+        @CustomType.Setter
         public Builder layer(Map<String,Object> layer) {
             this.layer = Objects.requireNonNull(layer);
             return this;
         }
+        @CustomType.Setter
         public Builder mscrm(Map<String,Object> mscrm) {
             this.mscrm = Objects.requireNonNull(mscrm);
             return this;
         }
+        @CustomType.Setter
         public Builder newrelic(Map<String,Object> newrelic) {
             this.newrelic = Objects.requireNonNull(newrelic);
             return this;
         }
+        @CustomType.Setter
         public Builder office365(Map<String,Object> office365) {
             this.office365 = Objects.requireNonNull(office365);
             return this;
         }
+        @CustomType.Setter
         public Builder rms(Map<String,Object> rms) {
             this.rms = Objects.requireNonNull(rms);
             return this;
         }
+        @CustomType.Setter
         public Builder salesforce(Map<String,Object> salesforce) {
             this.salesforce = Objects.requireNonNull(salesforce);
             return this;
         }
+        @CustomType.Setter
         public Builder salesforceApi(Map<String,Object> salesforceApi) {
             this.salesforceApi = Objects.requireNonNull(salesforceApi);
             return this;
         }
+        @CustomType.Setter
         public Builder salesforceSandboxApi(Map<String,Object> salesforceSandboxApi) {
             this.salesforceSandboxApi = Objects.requireNonNull(salesforceSandboxApi);
             return this;
         }
+        @CustomType.Setter
         public Builder samlps(List<GetGlobalClientAddonSamlp> samlps) {
             this.samlps = Objects.requireNonNull(samlps);
             return this;
@@ -340,43 +296,82 @@ public final class GetGlobalClientAddon {
         public Builder samlps(GetGlobalClientAddonSamlp... samlps) {
             return samlps(List.of(samlps));
         }
+        @CustomType.Setter
         public Builder sapApi(Map<String,Object> sapApi) {
             this.sapApi = Objects.requireNonNull(sapApi);
             return this;
         }
+        @CustomType.Setter
         public Builder sentry(Map<String,Object> sentry) {
             this.sentry = Objects.requireNonNull(sentry);
             return this;
         }
+        @CustomType.Setter
         public Builder sharepoint(Map<String,Object> sharepoint) {
             this.sharepoint = Objects.requireNonNull(sharepoint);
             return this;
         }
+        @CustomType.Setter
         public Builder slack(Map<String,Object> slack) {
             this.slack = Objects.requireNonNull(slack);
             return this;
         }
+        @CustomType.Setter
         public Builder springcm(Map<String,Object> springcm) {
             this.springcm = Objects.requireNonNull(springcm);
             return this;
         }
+        @CustomType.Setter
         public Builder wams(Map<String,Object> wams) {
             this.wams = Objects.requireNonNull(wams);
             return this;
         }
+        @CustomType.Setter
         public Builder wsfed(Map<String,Object> wsfed) {
             this.wsfed = Objects.requireNonNull(wsfed);
             return this;
         }
+        @CustomType.Setter
         public Builder zendesk(Map<String,Object> zendesk) {
             this.zendesk = Objects.requireNonNull(zendesk);
             return this;
         }
+        @CustomType.Setter
         public Builder zoom(Map<String,Object> zoom) {
             this.zoom = Objects.requireNonNull(zoom);
             return this;
-        }        public GetGlobalClientAddon build() {
-            return new GetGlobalClientAddon(aws, azureBlob, azureSb, box, cloudbees, concur, dropbox, echosign, egnyte, firebase, layer, mscrm, newrelic, office365, rms, salesforce, salesforceApi, salesforceSandboxApi, samlps, sapApi, sentry, sharepoint, slack, springcm, wams, wsfed, zendesk, zoom);
+        }
+        public GetGlobalClientAddon build() {
+            final var o = new GetGlobalClientAddon();
+            o.aws = aws;
+            o.azureBlob = azureBlob;
+            o.azureSb = azureSb;
+            o.box = box;
+            o.cloudbees = cloudbees;
+            o.concur = concur;
+            o.dropbox = dropbox;
+            o.echosign = echosign;
+            o.egnyte = egnyte;
+            o.firebase = firebase;
+            o.layer = layer;
+            o.mscrm = mscrm;
+            o.newrelic = newrelic;
+            o.office365 = office365;
+            o.rms = rms;
+            o.salesforce = salesforce;
+            o.salesforceApi = salesforceApi;
+            o.salesforceSandboxApi = salesforceSandboxApi;
+            o.samlps = samlps;
+            o.sapApi = sapApi;
+            o.sentry = sentry;
+            o.sharepoint = sharepoint;
+            o.slack = slack;
+            o.springcm = springcm;
+            o.wams = wams;
+            o.wsfed = wsfed;
+            o.zendesk = zendesk;
+            o.zoom = zoom;
+            return o;
         }
     }
 }

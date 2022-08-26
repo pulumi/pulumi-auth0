@@ -14,21 +14,14 @@ public final class TenantChangePassword {
      * @return Boolean. Indicates whether to use the custom change password page.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return String, HTML format with supported Liquid syntax. Customized content of the change password page.
      * 
      */
-    private final String html;
+    private String html;
 
-    @CustomType.Constructor
-    private TenantChangePassword(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("html") String html) {
-        this.enabled = enabled;
-        this.html = html;
-    }
-
+    private TenantChangePassword() {}
     /**
      * @return Boolean. Indicates whether to use the custom change password page.
      * 
@@ -51,30 +44,32 @@ public final class TenantChangePassword {
     public static Builder builder(TenantChangePassword defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String html;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TenantChangePassword defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.html = defaults.html;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder html(String html) {
             this.html = Objects.requireNonNull(html);
             return this;
-        }        public TenantChangePassword build() {
-            return new TenantChangePassword(enabled, html);
+        }
+        public TenantChangePassword build() {
+            final var o = new TenantChangePassword();
+            o.enabled = enabled;
+            o.html = html;
+            return o;
         }
     }
 }

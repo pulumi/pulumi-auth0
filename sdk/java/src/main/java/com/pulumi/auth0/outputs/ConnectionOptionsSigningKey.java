@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class ConnectionOptionsSigningKey {
-    private final String cert;
-    private final String key;
+    private String cert;
+    private String key;
 
-    @CustomType.Constructor
-    private ConnectionOptionsSigningKey(
-        @CustomType.Parameter("cert") String cert,
-        @CustomType.Parameter("key") String key) {
-        this.cert = cert;
-        this.key = key;
-    }
-
+    private ConnectionOptionsSigningKey() {}
     public String cert() {
         return this.cert;
     }
@@ -34,30 +27,32 @@ public final class ConnectionOptionsSigningKey {
     public static Builder builder(ConnectionOptionsSigningKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cert;
         private String key;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsSigningKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cert = defaults.cert;
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
         public Builder cert(String cert) {
             this.cert = Objects.requireNonNull(cert);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
-        }        public ConnectionOptionsSigningKey build() {
-            return new ConnectionOptionsSigningKey(cert, key);
+        }
+        public ConnectionOptionsSigningKey build() {
+            final var o = new ConnectionOptionsSigningKey();
+            o.cert = cert;
+            o.key = key;
+            return o;
         }
     }
 }

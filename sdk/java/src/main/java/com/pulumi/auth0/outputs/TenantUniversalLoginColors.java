@@ -15,21 +15,14 @@ public final class TenantUniversalLoginColors {
      * @return String, Hexadecimal. Background color of login pages.
      * 
      */
-    private final @Nullable String pageBackground;
+    private @Nullable String pageBackground;
     /**
      * @return String, Hexadecimal. Primary button background color.
      * 
      */
-    private final @Nullable String primary;
+    private @Nullable String primary;
 
-    @CustomType.Constructor
-    private TenantUniversalLoginColors(
-        @CustomType.Parameter("pageBackground") @Nullable String pageBackground,
-        @CustomType.Parameter("primary") @Nullable String primary) {
-        this.pageBackground = pageBackground;
-        this.primary = primary;
-    }
-
+    private TenantUniversalLoginColors() {}
     /**
      * @return String, Hexadecimal. Background color of login pages.
      * 
@@ -52,30 +45,32 @@ public final class TenantUniversalLoginColors {
     public static Builder builder(TenantUniversalLoginColors defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String pageBackground;
         private @Nullable String primary;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TenantUniversalLoginColors defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pageBackground = defaults.pageBackground;
     	      this.primary = defaults.primary;
         }
 
+        @CustomType.Setter
         public Builder pageBackground(@Nullable String pageBackground) {
             this.pageBackground = pageBackground;
             return this;
         }
+        @CustomType.Setter
         public Builder primary(@Nullable String primary) {
             this.primary = primary;
             return this;
-        }        public TenantUniversalLoginColors build() {
-            return new TenantUniversalLoginColors(pageBackground, primary);
+        }
+        public TenantUniversalLoginColors build() {
+            final var o = new TenantUniversalLoginColors();
+            o.pageBackground = pageBackground;
+            o.primary = primary;
+            return o;
         }
     }
 }

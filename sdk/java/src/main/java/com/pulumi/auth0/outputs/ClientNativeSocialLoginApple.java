@@ -15,13 +15,9 @@ public final class ClientNativeSocialLoginApple {
      * @return Boolean
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private ClientNativeSocialLoginApple(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private ClientNativeSocialLoginApple() {}
     /**
      * @return Boolean
      * 
@@ -37,24 +33,24 @@ public final class ClientNativeSocialLoginApple {
     public static Builder builder(ClientNativeSocialLoginApple defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClientNativeSocialLoginApple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public ClientNativeSocialLoginApple build() {
-            return new ClientNativeSocialLoginApple(enabled);
+        }
+        public ClientNativeSocialLoginApple build() {
+            final var o = new ClientNativeSocialLoginApple();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

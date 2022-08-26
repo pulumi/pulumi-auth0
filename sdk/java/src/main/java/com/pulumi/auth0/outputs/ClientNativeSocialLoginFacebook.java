@@ -15,13 +15,9 @@ public final class ClientNativeSocialLoginFacebook {
      * @return Boolean
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private ClientNativeSocialLoginFacebook(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private ClientNativeSocialLoginFacebook() {}
     /**
      * @return Boolean
      * 
@@ -37,24 +33,24 @@ public final class ClientNativeSocialLoginFacebook {
     public static Builder builder(ClientNativeSocialLoginFacebook defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClientNativeSocialLoginFacebook defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public ClientNativeSocialLoginFacebook build() {
-            return new ClientNativeSocialLoginFacebook(enabled);
+        }
+        public ClientNativeSocialLoginFacebook build() {
+            final var o = new ClientNativeSocialLoginFacebook();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

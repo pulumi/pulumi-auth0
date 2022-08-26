@@ -15,13 +15,9 @@ public final class ConnectionOptionsPasswordNoPersonalInfo {
      * @return Indicates whether the password personal info check is enabled for this connection.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
 
-    @CustomType.Constructor
-    private ConnectionOptionsPasswordNoPersonalInfo(@CustomType.Parameter("enable") @Nullable Boolean enable) {
-        this.enable = enable;
-    }
-
+    private ConnectionOptionsPasswordNoPersonalInfo() {}
     /**
      * @return Indicates whether the password personal info check is enabled for this connection.
      * 
@@ -37,24 +33,24 @@ public final class ConnectionOptionsPasswordNoPersonalInfo {
     public static Builder builder(ConnectionOptionsPasswordNoPersonalInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsPasswordNoPersonalInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
-        }        public ConnectionOptionsPasswordNoPersonalInfo build() {
-            return new ConnectionOptionsPasswordNoPersonalInfo(enable);
+        }
+        public ConnectionOptionsPasswordNoPersonalInfo build() {
+            final var o = new ConnectionOptionsPasswordNoPersonalInfo();
+            o.enable = enable;
+            return o;
         }
     }
 }

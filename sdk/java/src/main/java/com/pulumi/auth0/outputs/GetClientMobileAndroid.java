@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientMobileAndroid {
-    private final String appPackageName;
-    private final List<String> sha256CertFingerprints;
+    private String appPackageName;
+    private List<String> sha256CertFingerprints;
 
-    @CustomType.Constructor
-    private GetClientMobileAndroid(
-        @CustomType.Parameter("appPackageName") String appPackageName,
-        @CustomType.Parameter("sha256CertFingerprints") List<String> sha256CertFingerprints) {
-        this.appPackageName = appPackageName;
-        this.sha256CertFingerprints = sha256CertFingerprints;
-    }
-
+    private GetClientMobileAndroid() {}
     public String appPackageName() {
         return this.appPackageName;
     }
@@ -35,33 +28,35 @@ public final class GetClientMobileAndroid {
     public static Builder builder(GetClientMobileAndroid defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appPackageName;
         private List<String> sha256CertFingerprints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientMobileAndroid defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appPackageName = defaults.appPackageName;
     	      this.sha256CertFingerprints = defaults.sha256CertFingerprints;
         }
 
+        @CustomType.Setter
         public Builder appPackageName(String appPackageName) {
             this.appPackageName = Objects.requireNonNull(appPackageName);
             return this;
         }
+        @CustomType.Setter
         public Builder sha256CertFingerprints(List<String> sha256CertFingerprints) {
             this.sha256CertFingerprints = Objects.requireNonNull(sha256CertFingerprints);
             return this;
         }
         public Builder sha256CertFingerprints(String... sha256CertFingerprints) {
             return sha256CertFingerprints(List.of(sha256CertFingerprints));
-        }        public GetClientMobileAndroid build() {
-            return new GetClientMobileAndroid(appPackageName, sha256CertFingerprints);
+        }
+        public GetClientMobileAndroid build() {
+            final var o = new GetClientMobileAndroid();
+            o.appPackageName = appPackageName;
+            o.sha256CertFingerprints = sha256CertFingerprints;
+            return o;
         }
     }
 }

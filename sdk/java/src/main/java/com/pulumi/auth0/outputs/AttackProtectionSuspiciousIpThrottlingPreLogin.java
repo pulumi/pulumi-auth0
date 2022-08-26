@@ -15,17 +15,10 @@ public final class AttackProtectionSuspiciousIpThrottlingPreLogin {
      * @return Maximum number of unsuccessful attempts. Only available on public tenants.
      * 
      */
-    private final @Nullable Integer maxAttempts;
-    private final @Nullable Integer rate;
+    private @Nullable Integer maxAttempts;
+    private @Nullable Integer rate;
 
-    @CustomType.Constructor
-    private AttackProtectionSuspiciousIpThrottlingPreLogin(
-        @CustomType.Parameter("maxAttempts") @Nullable Integer maxAttempts,
-        @CustomType.Parameter("rate") @Nullable Integer rate) {
-        this.maxAttempts = maxAttempts;
-        this.rate = rate;
-    }
-
+    private AttackProtectionSuspiciousIpThrottlingPreLogin() {}
     /**
      * @return Maximum number of unsuccessful attempts. Only available on public tenants.
      * 
@@ -44,30 +37,32 @@ public final class AttackProtectionSuspiciousIpThrottlingPreLogin {
     public static Builder builder(AttackProtectionSuspiciousIpThrottlingPreLogin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxAttempts;
         private @Nullable Integer rate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AttackProtectionSuspiciousIpThrottlingPreLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxAttempts = defaults.maxAttempts;
     	      this.rate = defaults.rate;
         }
 
+        @CustomType.Setter
         public Builder maxAttempts(@Nullable Integer maxAttempts) {
             this.maxAttempts = maxAttempts;
             return this;
         }
+        @CustomType.Setter
         public Builder rate(@Nullable Integer rate) {
             this.rate = rate;
             return this;
-        }        public AttackProtectionSuspiciousIpThrottlingPreLogin build() {
-            return new AttackProtectionSuspiciousIpThrottlingPreLogin(maxAttempts, rate);
+        }
+        public AttackProtectionSuspiciousIpThrottlingPreLogin build() {
+            final var o = new AttackProtectionSuspiciousIpThrottlingPreLogin();
+            o.maxAttempts = maxAttempts;
+            o.rate = rate;
+            return o;
         }
     }
 }

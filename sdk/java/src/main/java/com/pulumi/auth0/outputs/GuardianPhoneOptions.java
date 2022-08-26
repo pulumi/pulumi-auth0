@@ -15,49 +15,34 @@ public final class GuardianPhoneOptions {
      * @return String.
      * 
      */
-    private final @Nullable String authToken;
+    private @Nullable String authToken;
     /**
      * @return String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
      * 
      */
-    private final @Nullable String enrollmentMessage;
+    private @Nullable String enrollmentMessage;
     /**
      * @return String.
      * 
      */
-    private final @Nullable String from;
+    private @Nullable String from;
     /**
      * @return String.
      * 
      */
-    private final @Nullable String messagingServiceSid;
+    private @Nullable String messagingServiceSid;
     /**
      * @return String.
      * 
      */
-    private final @Nullable String sid;
+    private @Nullable String sid;
     /**
      * @return String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
      * 
      */
-    private final @Nullable String verificationMessage;
+    private @Nullable String verificationMessage;
 
-    @CustomType.Constructor
-    private GuardianPhoneOptions(
-        @CustomType.Parameter("authToken") @Nullable String authToken,
-        @CustomType.Parameter("enrollmentMessage") @Nullable String enrollmentMessage,
-        @CustomType.Parameter("from") @Nullable String from,
-        @CustomType.Parameter("messagingServiceSid") @Nullable String messagingServiceSid,
-        @CustomType.Parameter("sid") @Nullable String sid,
-        @CustomType.Parameter("verificationMessage") @Nullable String verificationMessage) {
-        this.authToken = authToken;
-        this.enrollmentMessage = enrollmentMessage;
-        this.from = from;
-        this.messagingServiceSid = messagingServiceSid;
-        this.sid = sid;
-        this.verificationMessage = verificationMessage;
-    }
-
+    private GuardianPhoneOptions() {}
     /**
      * @return String.
      * 
@@ -108,7 +93,7 @@ public final class GuardianPhoneOptions {
     public static Builder builder(GuardianPhoneOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authToken;
         private @Nullable String enrollmentMessage;
@@ -116,11 +101,7 @@ public final class GuardianPhoneOptions {
         private @Nullable String messagingServiceSid;
         private @Nullable String sid;
         private @Nullable String verificationMessage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuardianPhoneOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authToken = defaults.authToken;
@@ -131,31 +112,45 @@ public final class GuardianPhoneOptions {
     	      this.verificationMessage = defaults.verificationMessage;
         }
 
+        @CustomType.Setter
         public Builder authToken(@Nullable String authToken) {
             this.authToken = authToken;
             return this;
         }
+        @CustomType.Setter
         public Builder enrollmentMessage(@Nullable String enrollmentMessage) {
             this.enrollmentMessage = enrollmentMessage;
             return this;
         }
+        @CustomType.Setter
         public Builder from(@Nullable String from) {
             this.from = from;
             return this;
         }
+        @CustomType.Setter
         public Builder messagingServiceSid(@Nullable String messagingServiceSid) {
             this.messagingServiceSid = messagingServiceSid;
             return this;
         }
+        @CustomType.Setter
         public Builder sid(@Nullable String sid) {
             this.sid = sid;
             return this;
         }
+        @CustomType.Setter
         public Builder verificationMessage(@Nullable String verificationMessage) {
             this.verificationMessage = verificationMessage;
             return this;
-        }        public GuardianPhoneOptions build() {
-            return new GuardianPhoneOptions(authToken, enrollmentMessage, from, messagingServiceSid, sid, verificationMessage);
+        }
+        public GuardianPhoneOptions build() {
+            final var o = new GuardianPhoneOptions();
+            o.authToken = authToken;
+            o.enrollmentMessage = enrollmentMessage;
+            o.from = from;
+            o.messagingServiceSid = messagingServiceSid;
+            o.sid = sid;
+            o.verificationMessage = verificationMessage;
+            return o;
         }
     }
 }

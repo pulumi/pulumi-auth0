@@ -16,73 +16,50 @@ public final class EmailCredentials {
      * @return String, Case-sensitive. AWS Access Key ID. Used only for AWS.
      * 
      */
-    private final @Nullable String accessKeyId;
+    private @Nullable String accessKeyId;
     /**
      * @return String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
      * 
      */
-    private final @Nullable String apiKey;
+    private @Nullable String apiKey;
     /**
      * @return String. API User for your email service.
      * 
      */
-    private final @Nullable String apiUser;
-    private final @Nullable String domain;
+    private @Nullable String apiUser;
+    private @Nullable String domain;
     /**
      * @return String. Default region. Used only for AWS, Mailgun, and SparkPost.
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
      * 
      */
-    private final @Nullable String secretAccessKey;
+    private @Nullable String secretAccessKey;
     /**
      * @return String. Hostname or IP address of your SMTP server. Used only for SMTP.
      * 
      */
-    private final @Nullable String smtpHost;
+    private @Nullable String smtpHost;
     /**
      * @return String, Case-sensitive. SMTP password. Used only for SMTP.
      * 
      */
-    private final @Nullable String smtpPass;
+    private @Nullable String smtpPass;
     /**
      * @return Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
      * 
      */
-    private final @Nullable Integer smtpPort;
+    private @Nullable Integer smtpPort;
     /**
      * @return String. SMTP username. Used only for SMTP.
      * 
      */
-    private final @Nullable String smtpUser;
+    private @Nullable String smtpUser;
 
-    @CustomType.Constructor
-    private EmailCredentials(
-        @CustomType.Parameter("accessKeyId") @Nullable String accessKeyId,
-        @CustomType.Parameter("apiKey") @Nullable String apiKey,
-        @CustomType.Parameter("apiUser") @Nullable String apiUser,
-        @CustomType.Parameter("domain") @Nullable String domain,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretAccessKey") @Nullable String secretAccessKey,
-        @CustomType.Parameter("smtpHost") @Nullable String smtpHost,
-        @CustomType.Parameter("smtpPass") @Nullable String smtpPass,
-        @CustomType.Parameter("smtpPort") @Nullable Integer smtpPort,
-        @CustomType.Parameter("smtpUser") @Nullable String smtpUser) {
-        this.accessKeyId = accessKeyId;
-        this.apiKey = apiKey;
-        this.apiUser = apiUser;
-        this.domain = domain;
-        this.region = region;
-        this.secretAccessKey = secretAccessKey;
-        this.smtpHost = smtpHost;
-        this.smtpPass = smtpPass;
-        this.smtpPort = smtpPort;
-        this.smtpUser = smtpUser;
-    }
-
+    private EmailCredentials() {}
     /**
      * @return String, Case-sensitive. AWS Access Key ID. Used only for AWS.
      * 
@@ -157,7 +134,7 @@ public final class EmailCredentials {
     public static Builder builder(EmailCredentials defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKeyId;
         private @Nullable String apiKey;
@@ -169,11 +146,7 @@ public final class EmailCredentials {
         private @Nullable String smtpPass;
         private @Nullable Integer smtpPort;
         private @Nullable String smtpUser;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EmailCredentials defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKeyId = defaults.accessKeyId;
@@ -188,47 +161,69 @@ public final class EmailCredentials {
     	      this.smtpUser = defaults.smtpUser;
         }
 
+        @CustomType.Setter
         public Builder accessKeyId(@Nullable String accessKeyId) {
             this.accessKeyId = accessKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder apiKey(@Nullable String apiKey) {
             this.apiKey = apiKey;
             return this;
         }
+        @CustomType.Setter
         public Builder apiUser(@Nullable String apiUser) {
             this.apiUser = apiUser;
             return this;
         }
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretAccessKey(@Nullable String secretAccessKey) {
             this.secretAccessKey = secretAccessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder smtpHost(@Nullable String smtpHost) {
             this.smtpHost = smtpHost;
             return this;
         }
+        @CustomType.Setter
         public Builder smtpPass(@Nullable String smtpPass) {
             this.smtpPass = smtpPass;
             return this;
         }
+        @CustomType.Setter
         public Builder smtpPort(@Nullable Integer smtpPort) {
             this.smtpPort = smtpPort;
             return this;
         }
+        @CustomType.Setter
         public Builder smtpUser(@Nullable String smtpUser) {
             this.smtpUser = smtpUser;
             return this;
-        }        public EmailCredentials build() {
-            return new EmailCredentials(accessKeyId, apiKey, apiUser, domain, region, secretAccessKey, smtpHost, smtpPass, smtpPort, smtpUser);
+        }
+        public EmailCredentials build() {
+            final var o = new EmailCredentials();
+            o.accessKeyId = accessKeyId;
+            o.apiKey = apiKey;
+            o.apiUser = apiUser;
+            o.domain = domain;
+            o.region = region;
+            o.secretAccessKey = secretAccessKey;
+            o.smtpHost = smtpHost;
+            o.smtpPass = smtpPass;
+            o.smtpPort = smtpPort;
+            o.smtpUser = smtpUser;
+            return o;
         }
     }
 }

@@ -19,42 +19,29 @@ public final class AttackProtectionSuspiciousIpThrottling {
      * @return List of trusted IP addresses that will not have attack protection enforced against them.
      * 
      */
-    private final @Nullable List<String> allowlists;
+    private @Nullable List<String> allowlists;
     /**
      * @return Whether or not breached password detection is active.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Configuration options that apply before every login attempt. Only available on public tenants.
      * 
      */
-    private final @Nullable AttackProtectionSuspiciousIpThrottlingPreLogin preLogin;
+    private @Nullable AttackProtectionSuspiciousIpThrottlingPreLogin preLogin;
     /**
      * @return Configuration options that apply before every user registration attempt. Only available on public tenants.
      * 
      */
-    private final @Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration;
+    private @Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration;
     /**
      * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
      * 
      */
-    private final @Nullable List<String> shields;
+    private @Nullable List<String> shields;
 
-    @CustomType.Constructor
-    private AttackProtectionSuspiciousIpThrottling(
-        @CustomType.Parameter("allowlists") @Nullable List<String> allowlists,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("preLogin") @Nullable AttackProtectionSuspiciousIpThrottlingPreLogin preLogin,
-        @CustomType.Parameter("preUserRegistration") @Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration,
-        @CustomType.Parameter("shields") @Nullable List<String> shields) {
-        this.allowlists = allowlists;
-        this.enabled = enabled;
-        this.preLogin = preLogin;
-        this.preUserRegistration = preUserRegistration;
-        this.shields = shields;
-    }
-
+    private AttackProtectionSuspiciousIpThrottling() {}
     /**
      * @return List of trusted IP addresses that will not have attack protection enforced against them.
      * 
@@ -98,18 +85,14 @@ public final class AttackProtectionSuspiciousIpThrottling {
     public static Builder builder(AttackProtectionSuspiciousIpThrottling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowlists;
         private @Nullable Boolean enabled;
         private @Nullable AttackProtectionSuspiciousIpThrottlingPreLogin preLogin;
         private @Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration;
         private @Nullable List<String> shields;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AttackProtectionSuspiciousIpThrottling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowlists = defaults.allowlists;
@@ -119,6 +102,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
     	      this.shields = defaults.shields;
         }
 
+        @CustomType.Setter
         public Builder allowlists(@Nullable List<String> allowlists) {
             this.allowlists = allowlists;
             return this;
@@ -126,26 +110,37 @@ public final class AttackProtectionSuspiciousIpThrottling {
         public Builder allowlists(String... allowlists) {
             return allowlists(List.of(allowlists));
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder preLogin(@Nullable AttackProtectionSuspiciousIpThrottlingPreLogin preLogin) {
             this.preLogin = preLogin;
             return this;
         }
+        @CustomType.Setter
         public Builder preUserRegistration(@Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration) {
             this.preUserRegistration = preUserRegistration;
             return this;
         }
+        @CustomType.Setter
         public Builder shields(@Nullable List<String> shields) {
             this.shields = shields;
             return this;
         }
         public Builder shields(String... shields) {
             return shields(List.of(shields));
-        }        public AttackProtectionSuspiciousIpThrottling build() {
-            return new AttackProtectionSuspiciousIpThrottling(allowlists, enabled, preLogin, preUserRegistration, shields);
+        }
+        public AttackProtectionSuspiciousIpThrottling build() {
+            final var o = new AttackProtectionSuspiciousIpThrottling();
+            o.allowlists = allowlists;
+            o.enabled = enabled;
+            o.preLogin = preLogin;
+            o.preUserRegistration = preUserRegistration;
+            o.shields = shields;
+            return o;
         }
     }
 }

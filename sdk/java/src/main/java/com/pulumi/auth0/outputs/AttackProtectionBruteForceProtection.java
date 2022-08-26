@@ -18,42 +18,29 @@ public final class AttackProtectionBruteForceProtection {
      * @return List of trusted IP addresses that will not have attack protection enforced against them.
      * 
      */
-    private final @Nullable List<String> allowlists;
+    private @Nullable List<String> allowlists;
     /**
      * @return Whether or not breached password detection is active.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Maximum number of unsuccessful attempts. Only available on public tenants.
      * 
      */
-    private final @Nullable Integer maxAttempts;
+    private @Nullable Integer maxAttempts;
     /**
      * @return Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
      * 
      */
-    private final @Nullable List<String> shields;
+    private @Nullable List<String> shields;
 
-    @CustomType.Constructor
-    private AttackProtectionBruteForceProtection(
-        @CustomType.Parameter("allowlists") @Nullable List<String> allowlists,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("maxAttempts") @Nullable Integer maxAttempts,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("shields") @Nullable List<String> shields) {
-        this.allowlists = allowlists;
-        this.enabled = enabled;
-        this.maxAttempts = maxAttempts;
-        this.mode = mode;
-        this.shields = shields;
-    }
-
+    private AttackProtectionBruteForceProtection() {}
     /**
      * @return List of trusted IP addresses that will not have attack protection enforced against them.
      * 
@@ -97,18 +84,14 @@ public final class AttackProtectionBruteForceProtection {
     public static Builder builder(AttackProtectionBruteForceProtection defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowlists;
         private @Nullable Boolean enabled;
         private @Nullable Integer maxAttempts;
         private @Nullable String mode;
         private @Nullable List<String> shields;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AttackProtectionBruteForceProtection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowlists = defaults.allowlists;
@@ -118,6 +101,7 @@ public final class AttackProtectionBruteForceProtection {
     	      this.shields = defaults.shields;
         }
 
+        @CustomType.Setter
         public Builder allowlists(@Nullable List<String> allowlists) {
             this.allowlists = allowlists;
             return this;
@@ -125,26 +109,37 @@ public final class AttackProtectionBruteForceProtection {
         public Builder allowlists(String... allowlists) {
             return allowlists(List.of(allowlists));
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder maxAttempts(@Nullable Integer maxAttempts) {
             this.maxAttempts = maxAttempts;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder shields(@Nullable List<String> shields) {
             this.shields = shields;
             return this;
         }
         public Builder shields(String... shields) {
             return shields(List.of(shields));
-        }        public AttackProtectionBruteForceProtection build() {
-            return new AttackProtectionBruteForceProtection(allowlists, enabled, maxAttempts, mode, shields);
+        }
+        public AttackProtectionBruteForceProtection build() {
+            final var o = new AttackProtectionBruteForceProtection();
+            o.allowlists = allowlists;
+            o.enabled = enabled;
+            o.maxAttempts = maxAttempts;
+            o.mode = mode;
+            o.shields = shields;
+            return o;
         }
     }
 }

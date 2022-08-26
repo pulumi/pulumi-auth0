@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGlobalClientMobileIo {
-    private final String appBundleIdentifier;
-    private final String teamId;
+    private String appBundleIdentifier;
+    private String teamId;
 
-    @CustomType.Constructor
-    private GetGlobalClientMobileIo(
-        @CustomType.Parameter("appBundleIdentifier") String appBundleIdentifier,
-        @CustomType.Parameter("teamId") String teamId) {
-        this.appBundleIdentifier = appBundleIdentifier;
-        this.teamId = teamId;
-    }
-
+    private GetGlobalClientMobileIo() {}
     public String appBundleIdentifier() {
         return this.appBundleIdentifier;
     }
@@ -34,30 +27,32 @@ public final class GetGlobalClientMobileIo {
     public static Builder builder(GetGlobalClientMobileIo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appBundleIdentifier;
         private String teamId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalClientMobileIo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appBundleIdentifier = defaults.appBundleIdentifier;
     	      this.teamId = defaults.teamId;
         }
 
+        @CustomType.Setter
         public Builder appBundleIdentifier(String appBundleIdentifier) {
             this.appBundleIdentifier = Objects.requireNonNull(appBundleIdentifier);
             return this;
         }
+        @CustomType.Setter
         public Builder teamId(String teamId) {
             this.teamId = Objects.requireNonNull(teamId);
             return this;
-        }        public GetGlobalClientMobileIo build() {
-            return new GetGlobalClientMobileIo(appBundleIdentifier, teamId);
+        }
+        public GetGlobalClientMobileIo build() {
+            final var o = new GetGlobalClientMobileIo();
+            o.appBundleIdentifier = appBundleIdentifier;
+            o.teamId = teamId;
+            return o;
         }
     }
 }

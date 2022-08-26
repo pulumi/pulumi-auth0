@@ -13,28 +13,19 @@ public final class GetTenantResult {
      * @return String. Your Auth0 domain name.
      * 
      */
-    private final String domain;
+    private String domain;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return String. The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
      * 
      */
-    private final String managementApiIdentifier;
+    private String managementApiIdentifier;
 
-    @CustomType.Constructor
-    private GetTenantResult(
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("managementApiIdentifier") String managementApiIdentifier) {
-        this.domain = domain;
-        this.id = id;
-        this.managementApiIdentifier = managementApiIdentifier;
-    }
-
+    private GetTenantResult() {}
     /**
      * @return String. Your Auth0 domain name.
      * 
@@ -64,16 +55,12 @@ public final class GetTenantResult {
     public static Builder builder(GetTenantResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domain;
         private String id;
         private String managementApiIdentifier;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTenantResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -81,19 +68,27 @@ public final class GetTenantResult {
     	      this.managementApiIdentifier = defaults.managementApiIdentifier;
         }
 
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder managementApiIdentifier(String managementApiIdentifier) {
             this.managementApiIdentifier = Objects.requireNonNull(managementApiIdentifier);
             return this;
-        }        public GetTenantResult build() {
-            return new GetTenantResult(domain, id, managementApiIdentifier);
+        }
+        public GetTenantResult build() {
+            final var o = new GetTenantResult();
+            o.domain = domain;
+            o.id = id;
+            o.managementApiIdentifier = managementApiIdentifier;
+            return o;
         }
     }
 }

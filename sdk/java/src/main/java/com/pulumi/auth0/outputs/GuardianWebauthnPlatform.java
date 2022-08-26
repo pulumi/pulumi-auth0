@@ -16,21 +16,14 @@ public final class GuardianWebauthnPlatform {
      * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
      * 
      */
-    private final @Nullable Boolean overrideRelyingParty;
+    private @Nullable Boolean overrideRelyingParty;
     /**
      * @return String. The Relying Party should be a suffix of the custom domain.
      * 
      */
-    private final @Nullable String relyingPartyIdentifier;
+    private @Nullable String relyingPartyIdentifier;
 
-    @CustomType.Constructor
-    private GuardianWebauthnPlatform(
-        @CustomType.Parameter("overrideRelyingParty") @Nullable Boolean overrideRelyingParty,
-        @CustomType.Parameter("relyingPartyIdentifier") @Nullable String relyingPartyIdentifier) {
-        this.overrideRelyingParty = overrideRelyingParty;
-        this.relyingPartyIdentifier = relyingPartyIdentifier;
-    }
-
+    private GuardianWebauthnPlatform() {}
     /**
      * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
      * 
@@ -53,30 +46,32 @@ public final class GuardianWebauthnPlatform {
     public static Builder builder(GuardianWebauthnPlatform defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean overrideRelyingParty;
         private @Nullable String relyingPartyIdentifier;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuardianWebauthnPlatform defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.overrideRelyingParty = defaults.overrideRelyingParty;
     	      this.relyingPartyIdentifier = defaults.relyingPartyIdentifier;
         }
 
+        @CustomType.Setter
         public Builder overrideRelyingParty(@Nullable Boolean overrideRelyingParty) {
             this.overrideRelyingParty = overrideRelyingParty;
             return this;
         }
+        @CustomType.Setter
         public Builder relyingPartyIdentifier(@Nullable String relyingPartyIdentifier) {
             this.relyingPartyIdentifier = relyingPartyIdentifier;
             return this;
-        }        public GuardianWebauthnPlatform build() {
-            return new GuardianWebauthnPlatform(overrideRelyingParty, relyingPartyIdentifier);
+        }
+        public GuardianWebauthnPlatform build() {
+            final var o = new GuardianWebauthnPlatform();
+            o.overrideRelyingParty = overrideRelyingParty;
+            o.relyingPartyIdentifier = relyingPartyIdentifier;
+            return o;
         }
     }
 }

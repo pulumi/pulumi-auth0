@@ -13,28 +13,19 @@ public final class GuardianDuo {
      * @return String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
      * 
      */
-    private final String hostname;
+    private String hostname;
     /**
      * @return String. Duo client ID, see the Duo documentation for more details on Duo setup.
      * 
      */
-    private final String integrationKey;
+    private String integrationKey;
     /**
      * @return String. Duo client secret, see the Duo documentation for more details on Duo setup.
      * 
      */
-    private final String secretKey;
+    private String secretKey;
 
-    @CustomType.Constructor
-    private GuardianDuo(
-        @CustomType.Parameter("hostname") String hostname,
-        @CustomType.Parameter("integrationKey") String integrationKey,
-        @CustomType.Parameter("secretKey") String secretKey) {
-        this.hostname = hostname;
-        this.integrationKey = integrationKey;
-        this.secretKey = secretKey;
-    }
-
+    private GuardianDuo() {}
     /**
      * @return String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
      * 
@@ -64,16 +55,12 @@ public final class GuardianDuo {
     public static Builder builder(GuardianDuo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String hostname;
         private String integrationKey;
         private String secretKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuardianDuo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostname = defaults.hostname;
@@ -81,19 +68,27 @@ public final class GuardianDuo {
     	      this.secretKey = defaults.secretKey;
         }
 
+        @CustomType.Setter
         public Builder hostname(String hostname) {
             this.hostname = Objects.requireNonNull(hostname);
             return this;
         }
+        @CustomType.Setter
         public Builder integrationKey(String integrationKey) {
             this.integrationKey = Objects.requireNonNull(integrationKey);
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(String secretKey) {
             this.secretKey = Objects.requireNonNull(secretKey);
             return this;
-        }        public GuardianDuo build() {
-            return new GuardianDuo(hostname, integrationKey, secretKey);
+        }
+        public GuardianDuo build() {
+            final var o = new GuardianDuo();
+            o.hostname = hostname;
+            o.integrationKey = integrationKey;
+            o.secretKey = secretKey;
+            return o;
         }
     }
 }

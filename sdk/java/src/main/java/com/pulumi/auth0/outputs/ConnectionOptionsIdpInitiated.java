@@ -11,24 +11,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsIdpInitiated {
-    private final @Nullable String clientAuthorizeQuery;
+    private @Nullable String clientAuthorizeQuery;
     /**
      * @return Google client ID.
      * 
      */
-    private final @Nullable String clientId;
-    private final @Nullable String clientProtocol;
+    private @Nullable String clientId;
+    private @Nullable String clientProtocol;
 
-    @CustomType.Constructor
-    private ConnectionOptionsIdpInitiated(
-        @CustomType.Parameter("clientAuthorizeQuery") @Nullable String clientAuthorizeQuery,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientProtocol") @Nullable String clientProtocol) {
-        this.clientAuthorizeQuery = clientAuthorizeQuery;
-        this.clientId = clientId;
-        this.clientProtocol = clientProtocol;
-    }
-
+    private ConnectionOptionsIdpInitiated() {}
     public Optional<String> clientAuthorizeQuery() {
         return Optional.ofNullable(this.clientAuthorizeQuery);
     }
@@ -50,16 +41,12 @@ public final class ConnectionOptionsIdpInitiated {
     public static Builder builder(ConnectionOptionsIdpInitiated defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clientAuthorizeQuery;
         private @Nullable String clientId;
         private @Nullable String clientProtocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsIdpInitiated defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientAuthorizeQuery = defaults.clientAuthorizeQuery;
@@ -67,19 +54,27 @@ public final class ConnectionOptionsIdpInitiated {
     	      this.clientProtocol = defaults.clientProtocol;
         }
 
+        @CustomType.Setter
         public Builder clientAuthorizeQuery(@Nullable String clientAuthorizeQuery) {
             this.clientAuthorizeQuery = clientAuthorizeQuery;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientProtocol(@Nullable String clientProtocol) {
             this.clientProtocol = clientProtocol;
             return this;
-        }        public ConnectionOptionsIdpInitiated build() {
-            return new ConnectionOptionsIdpInitiated(clientAuthorizeQuery, clientId, clientProtocol);
+        }
+        public ConnectionOptionsIdpInitiated build() {
+            final var o = new ConnectionOptionsIdpInitiated();
+            o.clientAuthorizeQuery = clientAuthorizeQuery;
+            o.clientId = clientId;
+            o.clientProtocol = clientProtocol;
+            return o;
         }
     }
 }

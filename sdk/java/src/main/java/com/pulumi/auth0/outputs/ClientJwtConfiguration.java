@@ -18,35 +18,24 @@ public final class ClientJwtConfiguration {
      * @return String. Algorithm used to sign JWTs.
      * 
      */
-    private final @Nullable String alg;
+    private @Nullable String alg;
     /**
      * @return Integer. Number of seconds during which the JWT will be valid.
      * 
      */
-    private final @Nullable Integer lifetimeInSeconds;
+    private @Nullable Integer lifetimeInSeconds;
     /**
      * @return Map(String). Permissions (scopes) included in JWTs.
      * 
      */
-    private final @Nullable Map<String,String> scopes;
+    private @Nullable Map<String,String> scopes;
     /**
      * @return Boolean. Indicates whether or not the client secret is base64 encoded.
      * 
      */
-    private final @Nullable Boolean secretEncoded;
+    private @Nullable Boolean secretEncoded;
 
-    @CustomType.Constructor
-    private ClientJwtConfiguration(
-        @CustomType.Parameter("alg") @Nullable String alg,
-        @CustomType.Parameter("lifetimeInSeconds") @Nullable Integer lifetimeInSeconds,
-        @CustomType.Parameter("scopes") @Nullable Map<String,String> scopes,
-        @CustomType.Parameter("secretEncoded") @Nullable Boolean secretEncoded) {
-        this.alg = alg;
-        this.lifetimeInSeconds = lifetimeInSeconds;
-        this.scopes = scopes;
-        this.secretEncoded = secretEncoded;
-    }
-
+    private ClientJwtConfiguration() {}
     /**
      * @return String. Algorithm used to sign JWTs.
      * 
@@ -83,17 +72,13 @@ public final class ClientJwtConfiguration {
     public static Builder builder(ClientJwtConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String alg;
         private @Nullable Integer lifetimeInSeconds;
         private @Nullable Map<String,String> scopes;
         private @Nullable Boolean secretEncoded;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClientJwtConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alg = defaults.alg;
@@ -102,23 +87,33 @@ public final class ClientJwtConfiguration {
     	      this.secretEncoded = defaults.secretEncoded;
         }
 
+        @CustomType.Setter
         public Builder alg(@Nullable String alg) {
             this.alg = alg;
             return this;
         }
+        @CustomType.Setter
         public Builder lifetimeInSeconds(@Nullable Integer lifetimeInSeconds) {
             this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(@Nullable Map<String,String> scopes) {
             this.scopes = scopes;
             return this;
         }
+        @CustomType.Setter
         public Builder secretEncoded(@Nullable Boolean secretEncoded) {
             this.secretEncoded = secretEncoded;
             return this;
-        }        public ClientJwtConfiguration build() {
-            return new ClientJwtConfiguration(alg, lifetimeInSeconds, scopes, secretEncoded);
+        }
+        public ClientJwtConfiguration build() {
+            final var o = new ClientJwtConfiguration();
+            o.alg = alg;
+            o.lifetimeInSeconds = lifetimeInSeconds;
+            o.scopes = scopes;
+            o.secretEncoded = secretEncoded;
+            return o;
         }
     }
 }

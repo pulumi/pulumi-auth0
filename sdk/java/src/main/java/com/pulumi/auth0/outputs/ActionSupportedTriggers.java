@@ -13,21 +13,14 @@ public final class ActionSupportedTriggers {
      * @return Trigger ID.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Trigger version.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private ActionSupportedTriggers(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("version") String version) {
-        this.id = id;
-        this.version = version;
-    }
-
+    private ActionSupportedTriggers() {}
     /**
      * @return Trigger ID.
      * 
@@ -50,30 +43,32 @@ public final class ActionSupportedTriggers {
     public static Builder builder(ActionSupportedTriggers defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ActionSupportedTriggers defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public ActionSupportedTriggers build() {
-            return new ActionSupportedTriggers(id, version);
+        }
+        public ActionSupportedTriggers build() {
+            final var o = new ActionSupportedTriggers();
+            o.id = id;
+            o.version = version;
+            return o;
         }
     }
 }

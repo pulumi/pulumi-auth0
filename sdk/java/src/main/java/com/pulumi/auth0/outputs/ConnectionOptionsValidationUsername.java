@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsValidationUsername {
-    private final @Nullable Integer max;
-    private final @Nullable Integer min;
+    private @Nullable Integer max;
+    private @Nullable Integer min;
 
-    @CustomType.Constructor
-    private ConnectionOptionsValidationUsername(
-        @CustomType.Parameter("max") @Nullable Integer max,
-        @CustomType.Parameter("min") @Nullable Integer min) {
-        this.max = max;
-        this.min = min;
-    }
-
+    private ConnectionOptionsValidationUsername() {}
     public Optional<Integer> max() {
         return Optional.ofNullable(this.max);
     }
@@ -36,30 +29,32 @@ public final class ConnectionOptionsValidationUsername {
     public static Builder builder(ConnectionOptionsValidationUsername defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer max;
         private @Nullable Integer min;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsValidationUsername defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.max = defaults.max;
     	      this.min = defaults.min;
         }
 
+        @CustomType.Setter
         public Builder max(@Nullable Integer max) {
             this.max = max;
             return this;
         }
+        @CustomType.Setter
         public Builder min(@Nullable Integer min) {
             this.min = min;
             return this;
-        }        public ConnectionOptionsValidationUsername build() {
-            return new ConnectionOptionsValidationUsername(max, min);
+        }
+        public ConnectionOptionsValidationUsername build() {
+            final var o = new ConnectionOptionsValidationUsername();
+            o.max = max;
+            o.min = min;
+            return o;
         }
     }
 }

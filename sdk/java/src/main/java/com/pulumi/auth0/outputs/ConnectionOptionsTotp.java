@@ -15,21 +15,14 @@ public final class ConnectionOptionsTotp {
      * @return Integer. Length of the one-time password.
      * 
      */
-    private final @Nullable Integer length;
+    private @Nullable Integer length;
     /**
      * @return Integer. Seconds between allowed generation of new passwords.
      * 
      */
-    private final @Nullable Integer timeStep;
+    private @Nullable Integer timeStep;
 
-    @CustomType.Constructor
-    private ConnectionOptionsTotp(
-        @CustomType.Parameter("length") @Nullable Integer length,
-        @CustomType.Parameter("timeStep") @Nullable Integer timeStep) {
-        this.length = length;
-        this.timeStep = timeStep;
-    }
-
+    private ConnectionOptionsTotp() {}
     /**
      * @return Integer. Length of the one-time password.
      * 
@@ -52,30 +45,32 @@ public final class ConnectionOptionsTotp {
     public static Builder builder(ConnectionOptionsTotp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer length;
         private @Nullable Integer timeStep;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsTotp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.length = defaults.length;
     	      this.timeStep = defaults.timeStep;
         }
 
+        @CustomType.Setter
         public Builder length(@Nullable Integer length) {
             this.length = length;
             return this;
         }
+        @CustomType.Setter
         public Builder timeStep(@Nullable Integer timeStep) {
             this.timeStep = timeStep;
             return this;
-        }        public ConnectionOptionsTotp build() {
-            return new ConnectionOptionsTotp(length, timeStep);
+        }
+        public ConnectionOptionsTotp build() {
+            final var o = new ConnectionOptionsTotp();
+            o.length = length;
+            o.timeStep = timeStep;
+            return o;
         }
     }
 }

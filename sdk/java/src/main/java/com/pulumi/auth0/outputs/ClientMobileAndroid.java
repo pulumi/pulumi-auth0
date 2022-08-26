@@ -16,21 +16,14 @@ public final class ClientMobileAndroid {
      * @return String
      * 
      */
-    private final @Nullable String appPackageName;
+    private @Nullable String appPackageName;
     /**
      * @return List(String)
      * 
      */
-    private final @Nullable List<String> sha256CertFingerprints;
+    private @Nullable List<String> sha256CertFingerprints;
 
-    @CustomType.Constructor
-    private ClientMobileAndroid(
-        @CustomType.Parameter("appPackageName") @Nullable String appPackageName,
-        @CustomType.Parameter("sha256CertFingerprints") @Nullable List<String> sha256CertFingerprints) {
-        this.appPackageName = appPackageName;
-        this.sha256CertFingerprints = sha256CertFingerprints;
-    }
-
+    private ClientMobileAndroid() {}
     /**
      * @return String
      * 
@@ -53,33 +46,35 @@ public final class ClientMobileAndroid {
     public static Builder builder(ClientMobileAndroid defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String appPackageName;
         private @Nullable List<String> sha256CertFingerprints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClientMobileAndroid defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appPackageName = defaults.appPackageName;
     	      this.sha256CertFingerprints = defaults.sha256CertFingerprints;
         }
 
+        @CustomType.Setter
         public Builder appPackageName(@Nullable String appPackageName) {
             this.appPackageName = appPackageName;
             return this;
         }
+        @CustomType.Setter
         public Builder sha256CertFingerprints(@Nullable List<String> sha256CertFingerprints) {
             this.sha256CertFingerprints = sha256CertFingerprints;
             return this;
         }
         public Builder sha256CertFingerprints(String... sha256CertFingerprints) {
             return sha256CertFingerprints(List.of(sha256CertFingerprints));
-        }        public ClientMobileAndroid build() {
-            return new ClientMobileAndroid(appPackageName, sha256CertFingerprints);
+        }
+        public ClientMobileAndroid build() {
+            final var o = new ClientMobileAndroid();
+            o.appPackageName = appPackageName;
+            o.sha256CertFingerprints = sha256CertFingerprints;
+            return o;
         }
     }
 }

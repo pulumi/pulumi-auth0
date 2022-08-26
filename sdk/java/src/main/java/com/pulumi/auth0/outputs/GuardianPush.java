@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuardianPush {
-    private final @Nullable GuardianPushAmazonSns amazonSns;
-    private final @Nullable GuardianPushCustomApp customApp;
+    private @Nullable GuardianPushAmazonSns amazonSns;
+    private @Nullable GuardianPushCustomApp customApp;
 
-    @CustomType.Constructor
-    private GuardianPush(
-        @CustomType.Parameter("amazonSns") @Nullable GuardianPushAmazonSns amazonSns,
-        @CustomType.Parameter("customApp") @Nullable GuardianPushCustomApp customApp) {
-        this.amazonSns = amazonSns;
-        this.customApp = customApp;
-    }
-
+    private GuardianPush() {}
     public Optional<GuardianPushAmazonSns> amazonSns() {
         return Optional.ofNullable(this.amazonSns);
     }
@@ -37,30 +30,32 @@ public final class GuardianPush {
     public static Builder builder(GuardianPush defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GuardianPushAmazonSns amazonSns;
         private @Nullable GuardianPushCustomApp customApp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuardianPush defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.amazonSns = defaults.amazonSns;
     	      this.customApp = defaults.customApp;
         }
 
+        @CustomType.Setter
         public Builder amazonSns(@Nullable GuardianPushAmazonSns amazonSns) {
             this.amazonSns = amazonSns;
             return this;
         }
+        @CustomType.Setter
         public Builder customApp(@Nullable GuardianPushCustomApp customApp) {
             this.customApp = customApp;
             return this;
-        }        public GuardianPush build() {
-            return new GuardianPush(amazonSns, customApp);
+        }
+        public GuardianPush build() {
+            final var o = new GuardianPush();
+            o.amazonSns = amazonSns;
+            o.customApp = customApp;
+            return o;
         }
     }
 }

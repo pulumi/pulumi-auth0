@@ -16,21 +16,14 @@ public final class ClientNativeSocialLogin {
      * @return Resource:
      * 
      */
-    private final @Nullable ClientNativeSocialLoginApple apple;
+    private @Nullable ClientNativeSocialLoginApple apple;
     /**
      * @return Resources:
      * 
      */
-    private final @Nullable ClientNativeSocialLoginFacebook facebook;
+    private @Nullable ClientNativeSocialLoginFacebook facebook;
 
-    @CustomType.Constructor
-    private ClientNativeSocialLogin(
-        @CustomType.Parameter("apple") @Nullable ClientNativeSocialLoginApple apple,
-        @CustomType.Parameter("facebook") @Nullable ClientNativeSocialLoginFacebook facebook) {
-        this.apple = apple;
-        this.facebook = facebook;
-    }
-
+    private ClientNativeSocialLogin() {}
     /**
      * @return Resource:
      * 
@@ -53,30 +46,32 @@ public final class ClientNativeSocialLogin {
     public static Builder builder(ClientNativeSocialLogin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClientNativeSocialLoginApple apple;
         private @Nullable ClientNativeSocialLoginFacebook facebook;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClientNativeSocialLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apple = defaults.apple;
     	      this.facebook = defaults.facebook;
         }
 
+        @CustomType.Setter
         public Builder apple(@Nullable ClientNativeSocialLoginApple apple) {
             this.apple = apple;
             return this;
         }
+        @CustomType.Setter
         public Builder facebook(@Nullable ClientNativeSocialLoginFacebook facebook) {
             this.facebook = facebook;
             return this;
-        }        public ClientNativeSocialLogin build() {
-            return new ClientNativeSocialLogin(apple, facebook);
+        }
+        public ClientNativeSocialLogin build() {
+            final var o = new ClientNativeSocialLogin();
+            o.apple = apple;
+            o.facebook = facebook;
+            return o;
         }
     }
 }

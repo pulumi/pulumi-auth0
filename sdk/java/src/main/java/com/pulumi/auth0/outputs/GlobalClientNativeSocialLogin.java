@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientNativeSocialLogin {
-    private final @Nullable GlobalClientNativeSocialLoginApple apple;
-    private final @Nullable GlobalClientNativeSocialLoginFacebook facebook;
+    private @Nullable GlobalClientNativeSocialLoginApple apple;
+    private @Nullable GlobalClientNativeSocialLoginFacebook facebook;
 
-    @CustomType.Constructor
-    private GlobalClientNativeSocialLogin(
-        @CustomType.Parameter("apple") @Nullable GlobalClientNativeSocialLoginApple apple,
-        @CustomType.Parameter("facebook") @Nullable GlobalClientNativeSocialLoginFacebook facebook) {
-        this.apple = apple;
-        this.facebook = facebook;
-    }
-
+    private GlobalClientNativeSocialLogin() {}
     public Optional<GlobalClientNativeSocialLoginApple> apple() {
         return Optional.ofNullable(this.apple);
     }
@@ -37,30 +30,32 @@ public final class GlobalClientNativeSocialLogin {
     public static Builder builder(GlobalClientNativeSocialLogin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GlobalClientNativeSocialLoginApple apple;
         private @Nullable GlobalClientNativeSocialLoginFacebook facebook;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientNativeSocialLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apple = defaults.apple;
     	      this.facebook = defaults.facebook;
         }
 
+        @CustomType.Setter
         public Builder apple(@Nullable GlobalClientNativeSocialLoginApple apple) {
             this.apple = apple;
             return this;
         }
+        @CustomType.Setter
         public Builder facebook(@Nullable GlobalClientNativeSocialLoginFacebook facebook) {
             this.facebook = facebook;
             return this;
-        }        public GlobalClientNativeSocialLogin build() {
-            return new GlobalClientNativeSocialLogin(apple, facebook);
+        }
+        public GlobalClientNativeSocialLogin build() {
+            final var o = new GlobalClientNativeSocialLogin();
+            o.apple = apple;
+            o.facebook = facebook;
+            return o;
         }
     }
 }

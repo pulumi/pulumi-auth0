@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TenantSessionCookie {
-    private final @Nullable String mode;
+    private @Nullable String mode;
 
-    @CustomType.Constructor
-    private TenantSessionCookie(@CustomType.Parameter("mode") @Nullable String mode) {
-        this.mode = mode;
-    }
-
+    private TenantSessionCookie() {}
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
@@ -29,24 +25,24 @@ public final class TenantSessionCookie {
     public static Builder builder(TenantSessionCookie defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TenantSessionCookie defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
         }
 
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
-        }        public TenantSessionCookie build() {
-            return new TenantSessionCookie(mode);
+        }
+        public TenantSessionCookie build() {
+            final var o = new TenantSessionCookie();
+            o.mode = mode;
+            return o;
         }
     }
 }

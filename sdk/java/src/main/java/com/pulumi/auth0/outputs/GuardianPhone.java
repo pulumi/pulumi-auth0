@@ -17,28 +17,19 @@ public final class GuardianPhone {
      * @return List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
      * 
      */
-    private final List<String> messageTypes;
+    private List<String> messageTypes;
     /**
      * @return List(Resource). Options for the various providers. See Options.
      * 
      */
-    private final @Nullable GuardianPhoneOptions options;
+    private @Nullable GuardianPhoneOptions options;
     /**
      * @return String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
-    private final String provider;
+    private String provider;
 
-    @CustomType.Constructor
-    private GuardianPhone(
-        @CustomType.Parameter("messageTypes") List<String> messageTypes,
-        @CustomType.Parameter("options") @Nullable GuardianPhoneOptions options,
-        @CustomType.Parameter("provider") String provider) {
-        this.messageTypes = messageTypes;
-        this.options = options;
-        this.provider = provider;
-    }
-
+    private GuardianPhone() {}
     /**
      * @return List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
      * 
@@ -68,16 +59,12 @@ public final class GuardianPhone {
     public static Builder builder(GuardianPhone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> messageTypes;
         private @Nullable GuardianPhoneOptions options;
         private String provider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuardianPhone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.messageTypes = defaults.messageTypes;
@@ -85,6 +72,7 @@ public final class GuardianPhone {
     	      this.provider = defaults.provider;
         }
 
+        @CustomType.Setter
         public Builder messageTypes(List<String> messageTypes) {
             this.messageTypes = Objects.requireNonNull(messageTypes);
             return this;
@@ -92,15 +80,22 @@ public final class GuardianPhone {
         public Builder messageTypes(String... messageTypes) {
             return messageTypes(List.of(messageTypes));
         }
+        @CustomType.Setter
         public Builder options(@Nullable GuardianPhoneOptions options) {
             this.options = options;
             return this;
         }
+        @CustomType.Setter
         public Builder provider(String provider) {
             this.provider = Objects.requireNonNull(provider);
             return this;
-        }        public GuardianPhone build() {
-            return new GuardianPhone(messageTypes, options, provider);
+        }
+        public GuardianPhone build() {
+            final var o = new GuardianPhone();
+            o.messageTypes = messageTypes;
+            o.options = options;
+            o.provider = provider;
+            return o;
         }
     }
 }

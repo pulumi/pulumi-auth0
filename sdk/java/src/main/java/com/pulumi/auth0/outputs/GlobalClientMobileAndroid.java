@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientMobileAndroid {
-    private final @Nullable String appPackageName;
-    private final @Nullable List<String> sha256CertFingerprints;
+    private @Nullable String appPackageName;
+    private @Nullable List<String> sha256CertFingerprints;
 
-    @CustomType.Constructor
-    private GlobalClientMobileAndroid(
-        @CustomType.Parameter("appPackageName") @Nullable String appPackageName,
-        @CustomType.Parameter("sha256CertFingerprints") @Nullable List<String> sha256CertFingerprints) {
-        this.appPackageName = appPackageName;
-        this.sha256CertFingerprints = sha256CertFingerprints;
-    }
-
+    private GlobalClientMobileAndroid() {}
     public Optional<String> appPackageName() {
         return Optional.ofNullable(this.appPackageName);
     }
@@ -37,33 +30,35 @@ public final class GlobalClientMobileAndroid {
     public static Builder builder(GlobalClientMobileAndroid defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String appPackageName;
         private @Nullable List<String> sha256CertFingerprints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientMobileAndroid defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appPackageName = defaults.appPackageName;
     	      this.sha256CertFingerprints = defaults.sha256CertFingerprints;
         }
 
+        @CustomType.Setter
         public Builder appPackageName(@Nullable String appPackageName) {
             this.appPackageName = appPackageName;
             return this;
         }
+        @CustomType.Setter
         public Builder sha256CertFingerprints(@Nullable List<String> sha256CertFingerprints) {
             this.sha256CertFingerprints = sha256CertFingerprints;
             return this;
         }
         public Builder sha256CertFingerprints(String... sha256CertFingerprints) {
             return sha256CertFingerprints(List.of(sha256CertFingerprints));
-        }        public GlobalClientMobileAndroid build() {
-            return new GlobalClientMobileAndroid(appPackageName, sha256CertFingerprints);
+        }
+        public GlobalClientMobileAndroid build() {
+            final var o = new GlobalClientMobileAndroid();
+            o.appPackageName = appPackageName;
+            o.sha256CertFingerprints = sha256CertFingerprints;
+            return o;
         }
     }
 }

@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientNativeSocialLoginApple {
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private GlobalClientNativeSocialLoginApple(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GlobalClientNativeSocialLoginApple() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -29,24 +25,24 @@ public final class GlobalClientNativeSocialLoginApple {
     public static Builder builder(GlobalClientNativeSocialLoginApple defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientNativeSocialLoginApple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public GlobalClientNativeSocialLoginApple build() {
-            return new GlobalClientNativeSocialLoginApple(enabled);
+        }
+        public GlobalClientNativeSocialLoginApple build() {
+            final var o = new GlobalClientNativeSocialLoginApple();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

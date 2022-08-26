@@ -16,21 +16,14 @@ public final class ClientMobile {
      * @return List(Resource). Configuration settings for Android native apps. For details, see Android.
      * 
      */
-    private final @Nullable ClientMobileAndroid android;
+    private @Nullable ClientMobileAndroid android;
     /**
      * @return List(Resource). Configuration settings for i0S native apps. For details, see iOS.
      * 
      */
-    private final @Nullable ClientMobileIos ios;
+    private @Nullable ClientMobileIos ios;
 
-    @CustomType.Constructor
-    private ClientMobile(
-        @CustomType.Parameter("android") @Nullable ClientMobileAndroid android,
-        @CustomType.Parameter("ios") @Nullable ClientMobileIos ios) {
-        this.android = android;
-        this.ios = ios;
-    }
-
+    private ClientMobile() {}
     /**
      * @return List(Resource). Configuration settings for Android native apps. For details, see Android.
      * 
@@ -53,30 +46,32 @@ public final class ClientMobile {
     public static Builder builder(ClientMobile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClientMobileAndroid android;
         private @Nullable ClientMobileIos ios;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClientMobile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.android = defaults.android;
     	      this.ios = defaults.ios;
         }
 
+        @CustomType.Setter
         public Builder android(@Nullable ClientMobileAndroid android) {
             this.android = android;
             return this;
         }
+        @CustomType.Setter
         public Builder ios(@Nullable ClientMobileIos ios) {
             this.ios = ios;
             return this;
-        }        public ClientMobile build() {
-            return new ClientMobile(android, ios);
+        }
+        public ClientMobile build() {
+            final var o = new ClientMobile();
+            o.android = android;
+            o.ios = ios;
+            return o;
         }
     }
 }

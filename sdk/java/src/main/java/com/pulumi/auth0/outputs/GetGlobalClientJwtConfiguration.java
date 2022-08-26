@@ -12,23 +12,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGlobalClientJwtConfiguration {
-    private final String alg;
-    private final Integer lifetimeInSeconds;
-    private final Map<String,String> scopes;
-    private final Boolean secretEncoded;
+    private String alg;
+    private Integer lifetimeInSeconds;
+    private Map<String,String> scopes;
+    private Boolean secretEncoded;
 
-    @CustomType.Constructor
-    private GetGlobalClientJwtConfiguration(
-        @CustomType.Parameter("alg") String alg,
-        @CustomType.Parameter("lifetimeInSeconds") Integer lifetimeInSeconds,
-        @CustomType.Parameter("scopes") Map<String,String> scopes,
-        @CustomType.Parameter("secretEncoded") Boolean secretEncoded) {
-        this.alg = alg;
-        this.lifetimeInSeconds = lifetimeInSeconds;
-        this.scopes = scopes;
-        this.secretEncoded = secretEncoded;
-    }
-
+    private GetGlobalClientJwtConfiguration() {}
     public String alg() {
         return this.alg;
     }
@@ -49,17 +38,13 @@ public final class GetGlobalClientJwtConfiguration {
     public static Builder builder(GetGlobalClientJwtConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alg;
         private Integer lifetimeInSeconds;
         private Map<String,String> scopes;
         private Boolean secretEncoded;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalClientJwtConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alg = defaults.alg;
@@ -68,23 +53,33 @@ public final class GetGlobalClientJwtConfiguration {
     	      this.secretEncoded = defaults.secretEncoded;
         }
 
+        @CustomType.Setter
         public Builder alg(String alg) {
             this.alg = Objects.requireNonNull(alg);
             return this;
         }
+        @CustomType.Setter
         public Builder lifetimeInSeconds(Integer lifetimeInSeconds) {
             this.lifetimeInSeconds = Objects.requireNonNull(lifetimeInSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(Map<String,String> scopes) {
             this.scopes = Objects.requireNonNull(scopes);
             return this;
         }
+        @CustomType.Setter
         public Builder secretEncoded(Boolean secretEncoded) {
             this.secretEncoded = Objects.requireNonNull(secretEncoded);
             return this;
-        }        public GetGlobalClientJwtConfiguration build() {
-            return new GetGlobalClientJwtConfiguration(alg, lifetimeInSeconds, scopes, secretEncoded);
+        }
+        public GetGlobalClientJwtConfiguration build() {
+            final var o = new GetGlobalClientJwtConfiguration();
+            o.alg = alg;
+            o.lifetimeInSeconds = lifetimeInSeconds;
+            o.scopes = scopes;
+            o.secretEncoded = secretEncoded;
+            return o;
         }
     }
 }

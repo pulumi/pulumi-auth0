@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientNativeSocialLoginFacebook {
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private GlobalClientNativeSocialLoginFacebook(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GlobalClientNativeSocialLoginFacebook() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -29,24 +25,24 @@ public final class GlobalClientNativeSocialLoginFacebook {
     public static Builder builder(GlobalClientNativeSocialLoginFacebook defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientNativeSocialLoginFacebook defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public GlobalClientNativeSocialLoginFacebook build() {
-            return new GlobalClientNativeSocialLoginFacebook(enabled);
+        }
+        public GlobalClientNativeSocialLoginFacebook build() {
+            final var o = new GlobalClientNativeSocialLoginFacebook();
+            o.enabled = enabled;
+            return o;
         }
     }
 }
