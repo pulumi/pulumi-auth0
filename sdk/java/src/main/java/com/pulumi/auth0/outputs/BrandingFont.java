@@ -15,13 +15,9 @@ public final class BrandingFont {
      * @return String. URL for the custom font.
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private BrandingFont(@CustomType.Parameter("url") @Nullable String url) {
-        this.url = url;
-    }
-
+    private BrandingFont() {}
     /**
      * @return String. URL for the custom font.
      * 
@@ -37,24 +33,24 @@ public final class BrandingFont {
     public static Builder builder(BrandingFont defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BrandingFont defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public BrandingFont build() {
-            return new BrandingFont(url);
+        }
+        public BrandingFont build() {
+            final var o = new BrandingFont();
+            o.url = url;
+            return o;
         }
     }
 }

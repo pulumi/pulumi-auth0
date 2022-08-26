@@ -19,22 +19,15 @@ public final class OrganizationConnection {
      * before logging in with this connection.
      * 
      */
-    private final @Nullable Boolean assignMembershipOnLogin;
+    private @Nullable Boolean assignMembershipOnLogin;
     /**
      * @return The connection ID of the connection to add to the
      * organization
      * 
      */
-    private final String connectionId;
+    private String connectionId;
 
-    @CustomType.Constructor
-    private OrganizationConnection(
-        @CustomType.Parameter("assignMembershipOnLogin") @Nullable Boolean assignMembershipOnLogin,
-        @CustomType.Parameter("connectionId") String connectionId) {
-        this.assignMembershipOnLogin = assignMembershipOnLogin;
-        this.connectionId = connectionId;
-    }
-
+    private OrganizationConnection() {}
     /**
      * @return When true, all users that log in
      * with this connection will be automatically granted membership in the
@@ -61,30 +54,32 @@ public final class OrganizationConnection {
     public static Builder builder(OrganizationConnection defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean assignMembershipOnLogin;
         private String connectionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assignMembershipOnLogin = defaults.assignMembershipOnLogin;
     	      this.connectionId = defaults.connectionId;
         }
 
+        @CustomType.Setter
         public Builder assignMembershipOnLogin(@Nullable Boolean assignMembershipOnLogin) {
             this.assignMembershipOnLogin = assignMembershipOnLogin;
             return this;
         }
+        @CustomType.Setter
         public Builder connectionId(String connectionId) {
             this.connectionId = Objects.requireNonNull(connectionId);
             return this;
-        }        public OrganizationConnection build() {
-            return new OrganizationConnection(assignMembershipOnLogin, connectionId);
+        }
+        public OrganizationConnection build() {
+            final var o = new OrganizationConnection();
+            o.assignMembershipOnLogin = assignMembershipOnLogin;
+            o.connectionId = connectionId;
+            return o;
         }
     }
 }

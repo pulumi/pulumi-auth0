@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientNativeSocialLogin {
-    private final List<GetClientNativeSocialLoginApple> apples;
-    private final List<GetClientNativeSocialLoginFacebook> facebooks;
+    private List<GetClientNativeSocialLoginApple> apples;
+    private List<GetClientNativeSocialLoginFacebook> facebooks;
 
-    @CustomType.Constructor
-    private GetClientNativeSocialLogin(
-        @CustomType.Parameter("apples") List<GetClientNativeSocialLoginApple> apples,
-        @CustomType.Parameter("facebooks") List<GetClientNativeSocialLoginFacebook> facebooks) {
-        this.apples = apples;
-        this.facebooks = facebooks;
-    }
-
+    private GetClientNativeSocialLogin() {}
     public List<GetClientNativeSocialLoginApple> apples() {
         return this.apples;
     }
@@ -36,21 +29,18 @@ public final class GetClientNativeSocialLogin {
     public static Builder builder(GetClientNativeSocialLogin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClientNativeSocialLoginApple> apples;
         private List<GetClientNativeSocialLoginFacebook> facebooks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientNativeSocialLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apples = defaults.apples;
     	      this.facebooks = defaults.facebooks;
         }
 
+        @CustomType.Setter
         public Builder apples(List<GetClientNativeSocialLoginApple> apples) {
             this.apples = Objects.requireNonNull(apples);
             return this;
@@ -58,14 +48,19 @@ public final class GetClientNativeSocialLogin {
         public Builder apples(GetClientNativeSocialLoginApple... apples) {
             return apples(List.of(apples));
         }
+        @CustomType.Setter
         public Builder facebooks(List<GetClientNativeSocialLoginFacebook> facebooks) {
             this.facebooks = Objects.requireNonNull(facebooks);
             return this;
         }
         public Builder facebooks(GetClientNativeSocialLoginFacebook... facebooks) {
             return facebooks(List.of(facebooks));
-        }        public GetClientNativeSocialLogin build() {
-            return new GetClientNativeSocialLogin(apples, facebooks);
+        }
+        public GetClientNativeSocialLogin build() {
+            final var o = new GetClientNativeSocialLogin();
+            o.apples = apples;
+            o.facebooks = facebooks;
+            return o;
         }
     }
 }

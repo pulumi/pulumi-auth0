@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientMobileIos {
-    private final @Nullable String appBundleIdentifier;
-    private final @Nullable String teamId;
+    private @Nullable String appBundleIdentifier;
+    private @Nullable String teamId;
 
-    @CustomType.Constructor
-    private GlobalClientMobileIos(
-        @CustomType.Parameter("appBundleIdentifier") @Nullable String appBundleIdentifier,
-        @CustomType.Parameter("teamId") @Nullable String teamId) {
-        this.appBundleIdentifier = appBundleIdentifier;
-        this.teamId = teamId;
-    }
-
+    private GlobalClientMobileIos() {}
     public Optional<String> appBundleIdentifier() {
         return Optional.ofNullable(this.appBundleIdentifier);
     }
@@ -36,30 +29,32 @@ public final class GlobalClientMobileIos {
     public static Builder builder(GlobalClientMobileIos defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String appBundleIdentifier;
         private @Nullable String teamId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientMobileIos defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appBundleIdentifier = defaults.appBundleIdentifier;
     	      this.teamId = defaults.teamId;
         }
 
+        @CustomType.Setter
         public Builder appBundleIdentifier(@Nullable String appBundleIdentifier) {
             this.appBundleIdentifier = appBundleIdentifier;
             return this;
         }
+        @CustomType.Setter
         public Builder teamId(@Nullable String teamId) {
             this.teamId = teamId;
             return this;
-        }        public GlobalClientMobileIos build() {
-            return new GlobalClientMobileIos(appBundleIdentifier, teamId);
+        }
+        public GlobalClientMobileIos build() {
+            final var o = new GlobalClientMobileIos();
+            o.appBundleIdentifier = appBundleIdentifier;
+            o.teamId = teamId;
+            return o;
         }
     }
 }

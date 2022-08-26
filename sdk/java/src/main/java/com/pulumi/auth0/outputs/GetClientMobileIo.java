@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientMobileIo {
-    private final String appBundleIdentifier;
-    private final String teamId;
+    private String appBundleIdentifier;
+    private String teamId;
 
-    @CustomType.Constructor
-    private GetClientMobileIo(
-        @CustomType.Parameter("appBundleIdentifier") String appBundleIdentifier,
-        @CustomType.Parameter("teamId") String teamId) {
-        this.appBundleIdentifier = appBundleIdentifier;
-        this.teamId = teamId;
-    }
-
+    private GetClientMobileIo() {}
     public String appBundleIdentifier() {
         return this.appBundleIdentifier;
     }
@@ -34,30 +27,32 @@ public final class GetClientMobileIo {
     public static Builder builder(GetClientMobileIo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appBundleIdentifier;
         private String teamId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientMobileIo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appBundleIdentifier = defaults.appBundleIdentifier;
     	      this.teamId = defaults.teamId;
         }
 
+        @CustomType.Setter
         public Builder appBundleIdentifier(String appBundleIdentifier) {
             this.appBundleIdentifier = Objects.requireNonNull(appBundleIdentifier);
             return this;
         }
+        @CustomType.Setter
         public Builder teamId(String teamId) {
             this.teamId = Objects.requireNonNull(teamId);
             return this;
-        }        public GetClientMobileIo build() {
-            return new GetClientMobileIo(appBundleIdentifier, teamId);
+        }
+        public GetClientMobileIo build() {
+            final var o = new GetClientMobileIo();
+            o.appBundleIdentifier = appBundleIdentifier;
+            o.teamId = teamId;
+            return o;
         }
     }
 }

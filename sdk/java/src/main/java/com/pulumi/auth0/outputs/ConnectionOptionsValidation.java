@@ -15,13 +15,9 @@ public final class ConnectionOptionsValidation {
      * @return Specifies the `min` and `max` values of username length. `min` and `max` are integers.
      * 
      */
-    private final @Nullable ConnectionOptionsValidationUsername username;
+    private @Nullable ConnectionOptionsValidationUsername username;
 
-    @CustomType.Constructor
-    private ConnectionOptionsValidation(@CustomType.Parameter("username") @Nullable ConnectionOptionsValidationUsername username) {
-        this.username = username;
-    }
-
+    private ConnectionOptionsValidation() {}
     /**
      * @return Specifies the `min` and `max` values of username length. `min` and `max` are integers.
      * 
@@ -37,24 +33,24 @@ public final class ConnectionOptionsValidation {
     public static Builder builder(ConnectionOptionsValidation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ConnectionOptionsValidationUsername username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsValidation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder username(@Nullable ConnectionOptionsValidationUsername username) {
             this.username = username;
             return this;
-        }        public ConnectionOptionsValidation build() {
-            return new ConnectionOptionsValidation(username);
+        }
+        public ConnectionOptionsValidation build() {
+            final var o = new ConnectionOptionsValidation();
+            o.username = username;
+            return o;
         }
     }
 }

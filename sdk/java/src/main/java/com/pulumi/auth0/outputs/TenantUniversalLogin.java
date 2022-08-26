@@ -15,13 +15,9 @@ public final class TenantUniversalLogin {
      * @return List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
      * 
      */
-    private final @Nullable TenantUniversalLoginColors colors;
+    private @Nullable TenantUniversalLoginColors colors;
 
-    @CustomType.Constructor
-    private TenantUniversalLogin(@CustomType.Parameter("colors") @Nullable TenantUniversalLoginColors colors) {
-        this.colors = colors;
-    }
-
+    private TenantUniversalLogin() {}
     /**
      * @return List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
      * 
@@ -37,24 +33,24 @@ public final class TenantUniversalLogin {
     public static Builder builder(TenantUniversalLogin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable TenantUniversalLoginColors colors;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TenantUniversalLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.colors = defaults.colors;
         }
 
+        @CustomType.Setter
         public Builder colors(@Nullable TenantUniversalLoginColors colors) {
             this.colors = colors;
             return this;
-        }        public TenantUniversalLogin build() {
-            return new TenantUniversalLogin(colors);
+        }
+        public TenantUniversalLogin build() {
+            final var o = new TenantUniversalLogin();
+            o.colors = colors;
+            return o;
         }
     }
 }

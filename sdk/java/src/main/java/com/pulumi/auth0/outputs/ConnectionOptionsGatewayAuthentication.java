@@ -12,30 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsGatewayAuthentication {
-    private final @Nullable String audience;
-    private final @Nullable String method;
-    private final @Nullable String secret;
-    private final @Nullable Boolean secretBase64Encoded;
+    private @Nullable String audience;
+    private @Nullable String method;
+    private @Nullable String secret;
+    private @Nullable Boolean secretBase64Encoded;
     /**
      * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
      * 
      */
-    private final @Nullable String subject;
+    private @Nullable String subject;
 
-    @CustomType.Constructor
-    private ConnectionOptionsGatewayAuthentication(
-        @CustomType.Parameter("audience") @Nullable String audience,
-        @CustomType.Parameter("method") @Nullable String method,
-        @CustomType.Parameter("secret") @Nullable String secret,
-        @CustomType.Parameter("secretBase64Encoded") @Nullable Boolean secretBase64Encoded,
-        @CustomType.Parameter("subject") @Nullable String subject) {
-        this.audience = audience;
-        this.method = method;
-        this.secret = secret;
-        this.secretBase64Encoded = secretBase64Encoded;
-        this.subject = subject;
-    }
-
+    private ConnectionOptionsGatewayAuthentication() {}
     public Optional<String> audience() {
         return Optional.ofNullable(this.audience);
     }
@@ -63,18 +50,14 @@ public final class ConnectionOptionsGatewayAuthentication {
     public static Builder builder(ConnectionOptionsGatewayAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String audience;
         private @Nullable String method;
         private @Nullable String secret;
         private @Nullable Boolean secretBase64Encoded;
         private @Nullable String subject;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsGatewayAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.audience = defaults.audience;
@@ -84,27 +67,39 @@ public final class ConnectionOptionsGatewayAuthentication {
     	      this.subject = defaults.subject;
         }
 
+        @CustomType.Setter
         public Builder audience(@Nullable String audience) {
             this.audience = audience;
             return this;
         }
+        @CustomType.Setter
         public Builder method(@Nullable String method) {
             this.method = method;
             return this;
         }
+        @CustomType.Setter
         public Builder secret(@Nullable String secret) {
             this.secret = secret;
             return this;
         }
+        @CustomType.Setter
         public Builder secretBase64Encoded(@Nullable Boolean secretBase64Encoded) {
             this.secretBase64Encoded = secretBase64Encoded;
             return this;
         }
+        @CustomType.Setter
         public Builder subject(@Nullable String subject) {
             this.subject = subject;
             return this;
-        }        public ConnectionOptionsGatewayAuthentication build() {
-            return new ConnectionOptionsGatewayAuthentication(audience, method, secret, secretBase64Encoded, subject);
+        }
+        public ConnectionOptionsGatewayAuthentication build() {
+            final var o = new ConnectionOptionsGatewayAuthentication();
+            o.audience = audience;
+            o.method = method;
+            o.secret = secret;
+            o.secretBase64Encoded = secretBase64Encoded;
+            o.subject = subject;
+            return o;
         }
     }
 }

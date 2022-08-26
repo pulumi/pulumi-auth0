@@ -16,71 +16,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientAddonsSamlp {
-    private final @Nullable String audience;
-    private final @Nullable String authnContextClassRef;
-    private final @Nullable String binding;
-    private final @Nullable Boolean createUpnClaim;
-    private final @Nullable String destination;
-    private final @Nullable String digestAlgorithm;
-    private final @Nullable Boolean includeAttributeNameFormat;
-    private final @Nullable Integer lifetimeInSeconds;
-    private final @Nullable Map<String,Object> logout;
-    private final @Nullable Boolean mapIdentities;
-    private final @Nullable Boolean mapUnknownClaimsAsIs;
-    private final @Nullable Map<String,Object> mappings;
-    private final @Nullable String nameIdentifierFormat;
-    private final @Nullable List<String> nameIdentifierProbes;
-    private final @Nullable Boolean passthroughClaimsWithNoMapping;
-    private final @Nullable String recipient;
-    private final @Nullable Boolean signResponse;
-    private final @Nullable String signatureAlgorithm;
-    private final @Nullable String signingCert;
-    private final @Nullable Boolean typedAttributes;
+    private @Nullable String audience;
+    private @Nullable String authnContextClassRef;
+    private @Nullable String binding;
+    private @Nullable Boolean createUpnClaim;
+    private @Nullable String destination;
+    private @Nullable String digestAlgorithm;
+    private @Nullable Boolean includeAttributeNameFormat;
+    private @Nullable Integer lifetimeInSeconds;
+    private @Nullable Map<String,Object> logout;
+    private @Nullable Boolean mapIdentities;
+    private @Nullable Boolean mapUnknownClaimsAsIs;
+    private @Nullable Map<String,Object> mappings;
+    private @Nullable String nameIdentifierFormat;
+    private @Nullable List<String> nameIdentifierProbes;
+    private @Nullable Boolean passthroughClaimsWithNoMapping;
+    private @Nullable String recipient;
+    private @Nullable Boolean signResponse;
+    private @Nullable String signatureAlgorithm;
+    private @Nullable String signingCert;
+    private @Nullable Boolean typedAttributes;
 
-    @CustomType.Constructor
-    private GlobalClientAddonsSamlp(
-        @CustomType.Parameter("audience") @Nullable String audience,
-        @CustomType.Parameter("authnContextClassRef") @Nullable String authnContextClassRef,
-        @CustomType.Parameter("binding") @Nullable String binding,
-        @CustomType.Parameter("createUpnClaim") @Nullable Boolean createUpnClaim,
-        @CustomType.Parameter("destination") @Nullable String destination,
-        @CustomType.Parameter("digestAlgorithm") @Nullable String digestAlgorithm,
-        @CustomType.Parameter("includeAttributeNameFormat") @Nullable Boolean includeAttributeNameFormat,
-        @CustomType.Parameter("lifetimeInSeconds") @Nullable Integer lifetimeInSeconds,
-        @CustomType.Parameter("logout") @Nullable Map<String,Object> logout,
-        @CustomType.Parameter("mapIdentities") @Nullable Boolean mapIdentities,
-        @CustomType.Parameter("mapUnknownClaimsAsIs") @Nullable Boolean mapUnknownClaimsAsIs,
-        @CustomType.Parameter("mappings") @Nullable Map<String,Object> mappings,
-        @CustomType.Parameter("nameIdentifierFormat") @Nullable String nameIdentifierFormat,
-        @CustomType.Parameter("nameIdentifierProbes") @Nullable List<String> nameIdentifierProbes,
-        @CustomType.Parameter("passthroughClaimsWithNoMapping") @Nullable Boolean passthroughClaimsWithNoMapping,
-        @CustomType.Parameter("recipient") @Nullable String recipient,
-        @CustomType.Parameter("signResponse") @Nullable Boolean signResponse,
-        @CustomType.Parameter("signatureAlgorithm") @Nullable String signatureAlgorithm,
-        @CustomType.Parameter("signingCert") @Nullable String signingCert,
-        @CustomType.Parameter("typedAttributes") @Nullable Boolean typedAttributes) {
-        this.audience = audience;
-        this.authnContextClassRef = authnContextClassRef;
-        this.binding = binding;
-        this.createUpnClaim = createUpnClaim;
-        this.destination = destination;
-        this.digestAlgorithm = digestAlgorithm;
-        this.includeAttributeNameFormat = includeAttributeNameFormat;
-        this.lifetimeInSeconds = lifetimeInSeconds;
-        this.logout = logout;
-        this.mapIdentities = mapIdentities;
-        this.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
-        this.mappings = mappings;
-        this.nameIdentifierFormat = nameIdentifierFormat;
-        this.nameIdentifierProbes = nameIdentifierProbes;
-        this.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
-        this.recipient = recipient;
-        this.signResponse = signResponse;
-        this.signatureAlgorithm = signatureAlgorithm;
-        this.signingCert = signingCert;
-        this.typedAttributes = typedAttributes;
-    }
-
+    private GlobalClientAddonsSamlp() {}
     public Optional<String> audience() {
         return Optional.ofNullable(this.audience);
     }
@@ -149,7 +106,7 @@ public final class GlobalClientAddonsSamlp {
     public static Builder builder(GlobalClientAddonsSamlp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String audience;
         private @Nullable String authnContextClassRef;
@@ -171,11 +128,7 @@ public final class GlobalClientAddonsSamlp {
         private @Nullable String signatureAlgorithm;
         private @Nullable String signingCert;
         private @Nullable Boolean typedAttributes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientAddonsSamlp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.audience = defaults.audience;
@@ -200,58 +153,72 @@ public final class GlobalClientAddonsSamlp {
     	      this.typedAttributes = defaults.typedAttributes;
         }
 
+        @CustomType.Setter
         public Builder audience(@Nullable String audience) {
             this.audience = audience;
             return this;
         }
+        @CustomType.Setter
         public Builder authnContextClassRef(@Nullable String authnContextClassRef) {
             this.authnContextClassRef = authnContextClassRef;
             return this;
         }
+        @CustomType.Setter
         public Builder binding(@Nullable String binding) {
             this.binding = binding;
             return this;
         }
+        @CustomType.Setter
         public Builder createUpnClaim(@Nullable Boolean createUpnClaim) {
             this.createUpnClaim = createUpnClaim;
             return this;
         }
+        @CustomType.Setter
         public Builder destination(@Nullable String destination) {
             this.destination = destination;
             return this;
         }
+        @CustomType.Setter
         public Builder digestAlgorithm(@Nullable String digestAlgorithm) {
             this.digestAlgorithm = digestAlgorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder includeAttributeNameFormat(@Nullable Boolean includeAttributeNameFormat) {
             this.includeAttributeNameFormat = includeAttributeNameFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder lifetimeInSeconds(@Nullable Integer lifetimeInSeconds) {
             this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder logout(@Nullable Map<String,Object> logout) {
             this.logout = logout;
             return this;
         }
+        @CustomType.Setter
         public Builder mapIdentities(@Nullable Boolean mapIdentities) {
             this.mapIdentities = mapIdentities;
             return this;
         }
+        @CustomType.Setter
         public Builder mapUnknownClaimsAsIs(@Nullable Boolean mapUnknownClaimsAsIs) {
             this.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
             return this;
         }
+        @CustomType.Setter
         public Builder mappings(@Nullable Map<String,Object> mappings) {
             this.mappings = mappings;
             return this;
         }
+        @CustomType.Setter
         public Builder nameIdentifierFormat(@Nullable String nameIdentifierFormat) {
             this.nameIdentifierFormat = nameIdentifierFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder nameIdentifierProbes(@Nullable List<String> nameIdentifierProbes) {
             this.nameIdentifierProbes = nameIdentifierProbes;
             return this;
@@ -259,31 +226,59 @@ public final class GlobalClientAddonsSamlp {
         public Builder nameIdentifierProbes(String... nameIdentifierProbes) {
             return nameIdentifierProbes(List.of(nameIdentifierProbes));
         }
+        @CustomType.Setter
         public Builder passthroughClaimsWithNoMapping(@Nullable Boolean passthroughClaimsWithNoMapping) {
             this.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
             return this;
         }
+        @CustomType.Setter
         public Builder recipient(@Nullable String recipient) {
             this.recipient = recipient;
             return this;
         }
+        @CustomType.Setter
         public Builder signResponse(@Nullable Boolean signResponse) {
             this.signResponse = signResponse;
             return this;
         }
+        @CustomType.Setter
         public Builder signatureAlgorithm(@Nullable String signatureAlgorithm) {
             this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder signingCert(@Nullable String signingCert) {
             this.signingCert = signingCert;
             return this;
         }
+        @CustomType.Setter
         public Builder typedAttributes(@Nullable Boolean typedAttributes) {
             this.typedAttributes = typedAttributes;
             return this;
-        }        public GlobalClientAddonsSamlp build() {
-            return new GlobalClientAddonsSamlp(audience, authnContextClassRef, binding, createUpnClaim, destination, digestAlgorithm, includeAttributeNameFormat, lifetimeInSeconds, logout, mapIdentities, mapUnknownClaimsAsIs, mappings, nameIdentifierFormat, nameIdentifierProbes, passthroughClaimsWithNoMapping, recipient, signResponse, signatureAlgorithm, signingCert, typedAttributes);
+        }
+        public GlobalClientAddonsSamlp build() {
+            final var o = new GlobalClientAddonsSamlp();
+            o.audience = audience;
+            o.authnContextClassRef = authnContextClassRef;
+            o.binding = binding;
+            o.createUpnClaim = createUpnClaim;
+            o.destination = destination;
+            o.digestAlgorithm = digestAlgorithm;
+            o.includeAttributeNameFormat = includeAttributeNameFormat;
+            o.lifetimeInSeconds = lifetimeInSeconds;
+            o.logout = logout;
+            o.mapIdentities = mapIdentities;
+            o.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
+            o.mappings = mappings;
+            o.nameIdentifierFormat = nameIdentifierFormat;
+            o.nameIdentifierProbes = nameIdentifierProbes;
+            o.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
+            o.recipient = recipient;
+            o.signResponse = signResponse;
+            o.signatureAlgorithm = signatureAlgorithm;
+            o.signingCert = signingCert;
+            o.typedAttributes = typedAttributes;
+            return o;
         }
     }
 }

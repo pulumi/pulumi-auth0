@@ -20,147 +20,104 @@ public final class ClientAddonsSamlp {
      * @return String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
      * 
      */
-    private final @Nullable String audience;
+    private @Nullable String audience;
     /**
      * @return String. Class reference of the authentication context.
      * 
      */
-    private final @Nullable String authnContextClassRef;
+    private @Nullable String authnContextClassRef;
     /**
      * @return String. Protocol binding used for SAML logout responses.
      * 
      */
-    private final @Nullable String binding;
+    private @Nullable String binding;
     /**
      * @return Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
      * 
      */
-    private final @Nullable Boolean createUpnClaim;
+    private @Nullable Boolean createUpnClaim;
     /**
      * @return String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
      * 
      */
-    private final @Nullable String destination;
+    private @Nullable String destination;
     /**
      * @return String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
      * 
      */
-    private final @Nullable String digestAlgorithm;
+    private @Nullable String digestAlgorithm;
     /**
      * @return Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
      * 
      */
-    private final @Nullable Boolean includeAttributeNameFormat;
+    private @Nullable Boolean includeAttributeNameFormat;
     /**
      * @return Integer, (Default=3600). Number of seconds during which the token is valid.
      * 
      */
-    private final @Nullable Integer lifetimeInSeconds;
+    private @Nullable Integer lifetimeInSeconds;
     /**
      * @return Map(Resource). Configuration settings for logout. For details, see Logout.
      * 
      */
-    private final @Nullable Map<String,Object> logout;
+    private @Nullable Map<String,Object> logout;
     /**
      * @return Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
      * 
      */
-    private final @Nullable Boolean mapIdentities;
+    private @Nullable Boolean mapIdentities;
     /**
      * @return Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
      * 
      */
-    private final @Nullable Boolean mapUnknownClaimsAsIs;
+    private @Nullable Boolean mapUnknownClaimsAsIs;
     /**
      * @return Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      * 
      */
-    private final @Nullable Map<String,Object> mappings;
+    private @Nullable Map<String,Object> mappings;
     /**
      * @return String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
      * 
      */
-    private final @Nullable String nameIdentifierFormat;
+    private @Nullable String nameIdentifierFormat;
     /**
      * @return List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
      * 
      */
-    private final @Nullable List<String> nameIdentifierProbes;
+    private @Nullable List<String> nameIdentifierProbes;
     /**
      * @return Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
      * 
      */
-    private final @Nullable Boolean passthroughClaimsWithNoMapping;
+    private @Nullable Boolean passthroughClaimsWithNoMapping;
     /**
      * @return String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
      * 
      */
-    private final @Nullable String recipient;
+    private @Nullable String recipient;
     /**
      * @return Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
      * 
      */
-    private final @Nullable Boolean signResponse;
+    private @Nullable Boolean signResponse;
     /**
      * @return String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
      * 
      */
-    private final @Nullable String signatureAlgorithm;
+    private @Nullable String signatureAlgorithm;
     /**
      * @return String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
      * 
      */
-    private final @Nullable String signingCert;
+    private @Nullable String signingCert;
     /**
      * @return Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
      * 
      */
-    private final @Nullable Boolean typedAttributes;
+    private @Nullable Boolean typedAttributes;
 
-    @CustomType.Constructor
-    private ClientAddonsSamlp(
-        @CustomType.Parameter("audience") @Nullable String audience,
-        @CustomType.Parameter("authnContextClassRef") @Nullable String authnContextClassRef,
-        @CustomType.Parameter("binding") @Nullable String binding,
-        @CustomType.Parameter("createUpnClaim") @Nullable Boolean createUpnClaim,
-        @CustomType.Parameter("destination") @Nullable String destination,
-        @CustomType.Parameter("digestAlgorithm") @Nullable String digestAlgorithm,
-        @CustomType.Parameter("includeAttributeNameFormat") @Nullable Boolean includeAttributeNameFormat,
-        @CustomType.Parameter("lifetimeInSeconds") @Nullable Integer lifetimeInSeconds,
-        @CustomType.Parameter("logout") @Nullable Map<String,Object> logout,
-        @CustomType.Parameter("mapIdentities") @Nullable Boolean mapIdentities,
-        @CustomType.Parameter("mapUnknownClaimsAsIs") @Nullable Boolean mapUnknownClaimsAsIs,
-        @CustomType.Parameter("mappings") @Nullable Map<String,Object> mappings,
-        @CustomType.Parameter("nameIdentifierFormat") @Nullable String nameIdentifierFormat,
-        @CustomType.Parameter("nameIdentifierProbes") @Nullable List<String> nameIdentifierProbes,
-        @CustomType.Parameter("passthroughClaimsWithNoMapping") @Nullable Boolean passthroughClaimsWithNoMapping,
-        @CustomType.Parameter("recipient") @Nullable String recipient,
-        @CustomType.Parameter("signResponse") @Nullable Boolean signResponse,
-        @CustomType.Parameter("signatureAlgorithm") @Nullable String signatureAlgorithm,
-        @CustomType.Parameter("signingCert") @Nullable String signingCert,
-        @CustomType.Parameter("typedAttributes") @Nullable Boolean typedAttributes) {
-        this.audience = audience;
-        this.authnContextClassRef = authnContextClassRef;
-        this.binding = binding;
-        this.createUpnClaim = createUpnClaim;
-        this.destination = destination;
-        this.digestAlgorithm = digestAlgorithm;
-        this.includeAttributeNameFormat = includeAttributeNameFormat;
-        this.lifetimeInSeconds = lifetimeInSeconds;
-        this.logout = logout;
-        this.mapIdentities = mapIdentities;
-        this.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
-        this.mappings = mappings;
-        this.nameIdentifierFormat = nameIdentifierFormat;
-        this.nameIdentifierProbes = nameIdentifierProbes;
-        this.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
-        this.recipient = recipient;
-        this.signResponse = signResponse;
-        this.signatureAlgorithm = signatureAlgorithm;
-        this.signingCert = signingCert;
-        this.typedAttributes = typedAttributes;
-    }
-
+    private ClientAddonsSamlp() {}
     /**
      * @return String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
      * 
@@ -309,7 +266,7 @@ public final class ClientAddonsSamlp {
     public static Builder builder(ClientAddonsSamlp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String audience;
         private @Nullable String authnContextClassRef;
@@ -331,11 +288,7 @@ public final class ClientAddonsSamlp {
         private @Nullable String signatureAlgorithm;
         private @Nullable String signingCert;
         private @Nullable Boolean typedAttributes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClientAddonsSamlp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.audience = defaults.audience;
@@ -360,58 +313,72 @@ public final class ClientAddonsSamlp {
     	      this.typedAttributes = defaults.typedAttributes;
         }
 
+        @CustomType.Setter
         public Builder audience(@Nullable String audience) {
             this.audience = audience;
             return this;
         }
+        @CustomType.Setter
         public Builder authnContextClassRef(@Nullable String authnContextClassRef) {
             this.authnContextClassRef = authnContextClassRef;
             return this;
         }
+        @CustomType.Setter
         public Builder binding(@Nullable String binding) {
             this.binding = binding;
             return this;
         }
+        @CustomType.Setter
         public Builder createUpnClaim(@Nullable Boolean createUpnClaim) {
             this.createUpnClaim = createUpnClaim;
             return this;
         }
+        @CustomType.Setter
         public Builder destination(@Nullable String destination) {
             this.destination = destination;
             return this;
         }
+        @CustomType.Setter
         public Builder digestAlgorithm(@Nullable String digestAlgorithm) {
             this.digestAlgorithm = digestAlgorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder includeAttributeNameFormat(@Nullable Boolean includeAttributeNameFormat) {
             this.includeAttributeNameFormat = includeAttributeNameFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder lifetimeInSeconds(@Nullable Integer lifetimeInSeconds) {
             this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder logout(@Nullable Map<String,Object> logout) {
             this.logout = logout;
             return this;
         }
+        @CustomType.Setter
         public Builder mapIdentities(@Nullable Boolean mapIdentities) {
             this.mapIdentities = mapIdentities;
             return this;
         }
+        @CustomType.Setter
         public Builder mapUnknownClaimsAsIs(@Nullable Boolean mapUnknownClaimsAsIs) {
             this.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
             return this;
         }
+        @CustomType.Setter
         public Builder mappings(@Nullable Map<String,Object> mappings) {
             this.mappings = mappings;
             return this;
         }
+        @CustomType.Setter
         public Builder nameIdentifierFormat(@Nullable String nameIdentifierFormat) {
             this.nameIdentifierFormat = nameIdentifierFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder nameIdentifierProbes(@Nullable List<String> nameIdentifierProbes) {
             this.nameIdentifierProbes = nameIdentifierProbes;
             return this;
@@ -419,31 +386,59 @@ public final class ClientAddonsSamlp {
         public Builder nameIdentifierProbes(String... nameIdentifierProbes) {
             return nameIdentifierProbes(List.of(nameIdentifierProbes));
         }
+        @CustomType.Setter
         public Builder passthroughClaimsWithNoMapping(@Nullable Boolean passthroughClaimsWithNoMapping) {
             this.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
             return this;
         }
+        @CustomType.Setter
         public Builder recipient(@Nullable String recipient) {
             this.recipient = recipient;
             return this;
         }
+        @CustomType.Setter
         public Builder signResponse(@Nullable Boolean signResponse) {
             this.signResponse = signResponse;
             return this;
         }
+        @CustomType.Setter
         public Builder signatureAlgorithm(@Nullable String signatureAlgorithm) {
             this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder signingCert(@Nullable String signingCert) {
             this.signingCert = signingCert;
             return this;
         }
+        @CustomType.Setter
         public Builder typedAttributes(@Nullable Boolean typedAttributes) {
             this.typedAttributes = typedAttributes;
             return this;
-        }        public ClientAddonsSamlp build() {
-            return new ClientAddonsSamlp(audience, authnContextClassRef, binding, createUpnClaim, destination, digestAlgorithm, includeAttributeNameFormat, lifetimeInSeconds, logout, mapIdentities, mapUnknownClaimsAsIs, mappings, nameIdentifierFormat, nameIdentifierProbes, passthroughClaimsWithNoMapping, recipient, signResponse, signatureAlgorithm, signingCert, typedAttributes);
+        }
+        public ClientAddonsSamlp build() {
+            final var o = new ClientAddonsSamlp();
+            o.audience = audience;
+            o.authnContextClassRef = authnContextClassRef;
+            o.binding = binding;
+            o.createUpnClaim = createUpnClaim;
+            o.destination = destination;
+            o.digestAlgorithm = digestAlgorithm;
+            o.includeAttributeNameFormat = includeAttributeNameFormat;
+            o.lifetimeInSeconds = lifetimeInSeconds;
+            o.logout = logout;
+            o.mapIdentities = mapIdentities;
+            o.mapUnknownClaimsAsIs = mapUnknownClaimsAsIs;
+            o.mappings = mappings;
+            o.nameIdentifierFormat = nameIdentifierFormat;
+            o.nameIdentifierProbes = nameIdentifierProbes;
+            o.passthroughClaimsWithNoMapping = passthroughClaimsWithNoMapping;
+            o.recipient = recipient;
+            o.signResponse = signResponse;
+            o.signatureAlgorithm = signatureAlgorithm;
+            o.signingCert = signingCert;
+            o.typedAttributes = typedAttributes;
+            return o;
         }
     }
 }

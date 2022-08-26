@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientMobile {
-    private final @Nullable GlobalClientMobileAndroid android;
-    private final @Nullable GlobalClientMobileIos ios;
+    private @Nullable GlobalClientMobileAndroid android;
+    private @Nullable GlobalClientMobileIos ios;
 
-    @CustomType.Constructor
-    private GlobalClientMobile(
-        @CustomType.Parameter("android") @Nullable GlobalClientMobileAndroid android,
-        @CustomType.Parameter("ios") @Nullable GlobalClientMobileIos ios) {
-        this.android = android;
-        this.ios = ios;
-    }
-
+    private GlobalClientMobile() {}
     public Optional<GlobalClientMobileAndroid> android() {
         return Optional.ofNullable(this.android);
     }
@@ -37,30 +30,32 @@ public final class GlobalClientMobile {
     public static Builder builder(GlobalClientMobile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GlobalClientMobileAndroid android;
         private @Nullable GlobalClientMobileIos ios;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientMobile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.android = defaults.android;
     	      this.ios = defaults.ios;
         }
 
+        @CustomType.Setter
         public Builder android(@Nullable GlobalClientMobileAndroid android) {
             this.android = android;
             return this;
         }
+        @CustomType.Setter
         public Builder ios(@Nullable GlobalClientMobileIos ios) {
             this.ios = ios;
             return this;
-        }        public GlobalClientMobile build() {
-            return new GlobalClientMobile(android, ios);
+        }
+        public GlobalClientMobile build() {
+            final var o = new GlobalClientMobile();
+            o.android = android;
+            o.ios = ios;
+            return o;
         }
     }
 }

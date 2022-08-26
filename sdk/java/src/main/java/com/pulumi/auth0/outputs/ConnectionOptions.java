@@ -29,501 +29,334 @@ public final class ConnectionOptions {
      * @return ADFS Metadata source.
      * 
      */
-    private final @Nullable String adfsServer;
+    private @Nullable String adfsServer;
     /**
      * @return List of allowed audiences.
      * 
      */
-    private final @Nullable List<String> allowedAudiences;
-    private final @Nullable Boolean apiEnableUsers;
+    private @Nullable List<String> allowedAudiences;
+    private @Nullable Boolean apiEnableUsers;
     /**
      * @return Azure AD app ID.
      * 
      */
-    private final @Nullable String appId;
+    private @Nullable String appId;
     /**
      * @return Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
      * 
      */
-    private final @Nullable Map<String,String> authParams;
-    private final @Nullable String authorizationEndpoint;
+    private @Nullable Map<String,String> authParams;
+    private @Nullable String authorizationEndpoint;
     /**
      * @return Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      * 
      */
-    private final @Nullable Boolean bruteForceProtection;
+    private @Nullable Boolean bruteForceProtection;
     /**
      * @return OIDC provider client ID.
      * 
      */
-    private final @Nullable String clientId;
+    private @Nullable String clientId;
     /**
      * @return OIDC provider client secret.
      * 
      */
-    private final @Nullable String clientSecret;
+    private @Nullable String clientSecret;
     /**
      * @return String.
      * 
      */
-    private final @Nullable String communityBaseUrl;
+    private @Nullable String communityBaseUrl;
     /**
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    private final @Nullable Map<String,String> configuration;
+    private @Nullable Map<String,String> configuration;
     /**
      * @return Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
      * 
      */
-    private final @Nullable Map<String,String> customScripts;
+    private @Nullable Map<String,String> customScripts;
     /**
      * @return (Boolean) When enabled additional debugging information will be generated.
      * 
      */
-    private final @Nullable Boolean debug;
+    private @Nullable Boolean debug;
     /**
      * @return Sign Request Algorithm Digest
      * 
      */
-    private final @Nullable String digestAlgorithm;
-    private final @Nullable Boolean disableCache;
+    private @Nullable String digestAlgorithm;
+    private @Nullable Boolean disableCache;
     /**
      * @return (Boolean) Disables or enables user sign out.
      * 
      */
-    private final @Nullable Boolean disableSignOut;
+    private @Nullable Boolean disableSignOut;
     /**
      * @return Boolean. Indicates whether or not to allow user sign-ups to your application.
      * 
      */
-    private final @Nullable Boolean disableSignup;
+    private @Nullable Boolean disableSignup;
     /**
      * @return OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
      * 
      */
-    private final @Nullable String discoveryUrl;
+    private @Nullable String discoveryUrl;
     /**
      * @return Azure AD domain name.
      * 
      */
-    private final @Nullable String domain;
+    private @Nullable String domain;
     /**
      * @return List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
      * 
      */
-    private final @Nullable List<String> domainAliases;
-    private final @Nullable Boolean enabledDatabaseCustomization;
+    private @Nullable List<String> domainAliases;
+    private @Nullable Boolean enabledDatabaseCustomization;
     /**
      * @return Custom Entity ID for the connection.
      * 
      */
-    private final @Nullable String entityId;
+    private @Nullable String entityId;
     /**
      * @return SAML Attributes mapping. If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
      */
-    private final @Nullable String fieldsMap;
-    private final @Nullable Boolean forwardRequestInfo;
+    private @Nullable String fieldsMap;
+    private @Nullable Boolean forwardRequestInfo;
     /**
      * @return SMS number for the sender. Used when SMS Source is From.
      * 
      */
-    private final @Nullable String from;
-    private final @Nullable ConnectionOptionsGatewayAuthentication gatewayAuthentication;
-    private final @Nullable String gatewayUrl;
-    private final @Nullable String iconUrl;
-    private final @Nullable String identityApi;
+    private @Nullable String from;
+    private @Nullable ConnectionOptionsGatewayAuthentication gatewayAuthentication;
+    private @Nullable String gatewayUrl;
+    private @Nullable String iconUrl;
+    private @Nullable String identityApi;
     /**
      * @return Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
      * 
      */
-    private final @Nullable ConnectionOptionsIdpInitiated idpInitiated;
+    private @Nullable ConnectionOptionsIdpInitiated idpInitiated;
     /**
      * @return Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
      * 
      */
-    private final @Nullable Boolean importMode;
-    private final @Nullable List<String> ips;
+    private @Nullable Boolean importMode;
+    private @Nullable List<String> ips;
     /**
      * @return Issuer URL. E.g. `https://auth.example.com`
      * 
      */
-    private final @Nullable String issuer;
-    private final @Nullable String jwksUri;
+    private @Nullable String issuer;
+    private @Nullable String jwksUri;
     /**
      * @return Key ID.
      * 
      */
-    private final @Nullable String keyId;
+    private @Nullable String keyId;
     /**
      * @return Maximum number of groups to retrieve.
      * 
      */
-    private final @Nullable String maxGroupsToRetrieve;
+    private @Nullable String maxGroupsToRetrieve;
     /**
      * @return SID for Copilot. Used when SMS Source is Copilot.
      * 
      */
-    private final @Nullable String messagingServiceSid;
+    private @Nullable String messagingServiceSid;
     /**
      * @return URL of the SAML metadata document.
      * 
      */
-    private final @Nullable String metadataUrl;
+    private @Nullable String metadataUrl;
     /**
      * @return XML content for the SAML metadata document.
      * 
      */
-    private final @Nullable String metadataXml;
+    private @Nullable String metadataXml;
     /**
      * @return Configuration settings Options for multifactor authentication. For details, see MFA Options.
      * 
      */
-    private final @Nullable ConnectionOptionsMfa mfa;
+    private @Nullable ConnectionOptionsMfa mfa;
     /**
      * @return Name of the connection.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
      * 
      */
-    private final @Nullable List<String> nonPersistentAttrs;
+    private @Nullable List<String> nonPersistentAttrs;
     /**
      * @return Configuration settings for password complexity. For details, see Password Complexity Options.
      * 
      */
-    private final @Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions;
+    private @Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions;
     /**
      * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
      * 
      */
-    private final @Nullable ConnectionOptionsPasswordDictionary passwordDictionary;
+    private @Nullable ConnectionOptionsPasswordDictionary passwordDictionary;
     /**
      * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
      * 
      */
-    private final @Nullable List<ConnectionOptionsPasswordHistory> passwordHistories;
+    private @Nullable List<ConnectionOptionsPasswordHistory> passwordHistories;
     /**
      * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user&#39;s email, or first part of the user&#39;s email. For details, see Password No Personal Info.
      * 
      */
-    private final @Nullable ConnectionOptionsPasswordNoPersonalInfo passwordNoPersonalInfo;
+    private @Nullable ConnectionOptionsPasswordNoPersonalInfo passwordNoPersonalInfo;
     /**
      * @return Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      * 
      */
-    private final @Nullable String passwordPolicy;
+    private @Nullable String passwordPolicy;
     /**
      * @return (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
      * 
      */
-    private final @Nullable Boolean pkceEnabled;
+    private @Nullable Boolean pkceEnabled;
     /**
      * @return The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
      * 
      */
-    private final @Nullable String protocolBinding;
-    private final @Nullable String provider;
+    private @Nullable String protocolBinding;
+    private @Nullable String provider;
     /**
      * @return Template that formats the SAML request
      * 
      */
-    private final @Nullable String requestTemplate;
+    private @Nullable String requestTemplate;
     /**
      * @return Indicates whether or not the user is required to provide a username in addition to an email address.
      * 
      */
-    private final @Nullable Boolean requiresUsername;
+    private @Nullable Boolean requiresUsername;
     /**
      * @return Scopes required by the connection. The value must be a list, for example `[&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`.
      * 
      */
-    private final @Nullable List<String> scopes;
-    private final @Nullable Map<String,String> scripts;
+    private @Nullable List<String> scopes;
+    private @Nullable Map<String,String> scripts;
     /**
      * @return Determines whether the &#39;name&#39;, &#39;given_name&#39;, &#39;family_name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
      * 
      */
-    private final @Nullable String setUserRootAttributes;
+    private @Nullable String setUserRootAttributes;
     /**
      * @return Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
      * 
      */
-    private final @Nullable String shouldTrustEmailVerifiedConnection;
+    private @Nullable String shouldTrustEmailVerifiedConnection;
     /**
      * @return SAML single login URL for the connection.
      * 
      */
-    private final @Nullable String signInEndpoint;
+    private @Nullable String signInEndpoint;
     /**
      * @return SAML single logout URL for the connection.
      * 
      */
-    private final @Nullable String signOutEndpoint;
+    private @Nullable String signOutEndpoint;
     /**
      * @return (Boolean) When enabled, the SAML authentication request will be signed.
      * 
      */
-    private final @Nullable Boolean signSamlRequest;
+    private @Nullable Boolean signSamlRequest;
     /**
      * @return Sign Request Algorithm
      * 
      */
-    private final @Nullable String signatureAlgorithm;
+    private @Nullable String signatureAlgorithm;
     /**
      * @return The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
      * 
      */
-    private final @Nullable String signingCert;
+    private @Nullable String signingCert;
     /**
      * @return . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      * 
      */
-    private final @Nullable ConnectionOptionsSigningKey signingKey;
+    private @Nullable ConnectionOptionsSigningKey signingKey;
     /**
      * @return Version 1 is deprecated, use version 2.
      * 
      */
-    private final @Nullable Integer strategyVersion;
+    private @Nullable Integer strategyVersion;
     /**
      * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
      * 
      */
-    private final @Nullable String subject;
+    private @Nullable String subject;
     /**
      * @return Syntax of the SMS. Options include `markdown` and `liquid`.
      * 
      */
-    private final @Nullable String syntax;
+    private @Nullable String syntax;
     /**
      * @return Team ID.
      * 
      */
-    private final @Nullable String teamId;
+    private @Nullable String teamId;
     /**
      * @return Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
      * 
      */
-    private final @Nullable String template;
-    private final @Nullable String tenantDomain;
-    private final @Nullable String tokenEndpoint;
+    private @Nullable String template;
+    private @Nullable String tenantDomain;
+    private @Nullable String tokenEndpoint;
     /**
      * @return Configuration options for one-time passwords. For details, see TOTP.
      * 
      */
-    private final @Nullable ConnectionOptionsTotp totp;
+    private @Nullable ConnectionOptionsTotp totp;
     /**
      * @return SID for your Twilio account.
      * 
      */
-    private final @Nullable String twilioSid;
+    private @Nullable String twilioSid;
     /**
      * @return AuthToken for your Twilio account.
      * 
      */
-    private final @Nullable String twilioToken;
+    private @Nullable String twilioToken;
     /**
      * @return Value can be `back_channel` or `front_channel`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
     /**
      * @return String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
      * 
      */
-    private final @Nullable String upstreamParams;
-    private final @Nullable Boolean useCertAuth;
-    private final @Nullable Boolean useKerberos;
-    private final @Nullable Boolean useWsfed;
+    private @Nullable String upstreamParams;
+    private @Nullable Boolean useCertAuth;
+    private @Nullable Boolean useKerberos;
+    private @Nullable Boolean useWsfed;
     /**
      * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
      * 
      */
-    private final @Nullable String userIdAttribute;
-    private final @Nullable String userinfoEndpoint;
+    private @Nullable String userIdAttribute;
+    private @Nullable String userinfoEndpoint;
     /**
      * @return Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
      * 
      */
-    private final @Nullable ConnectionOptionsValidation validation;
+    private @Nullable ConnectionOptionsValidation validation;
     /**
      * @return Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
      * 
      */
-    private final @Nullable Boolean waadCommonEndpoint;
-    private final @Nullable String waadProtocol;
+    private @Nullable Boolean waadCommonEndpoint;
+    private @Nullable String waadProtocol;
 
-    @CustomType.Constructor
-    private ConnectionOptions(
-        @CustomType.Parameter("adfsServer") @Nullable String adfsServer,
-        @CustomType.Parameter("allowedAudiences") @Nullable List<String> allowedAudiences,
-        @CustomType.Parameter("apiEnableUsers") @Nullable Boolean apiEnableUsers,
-        @CustomType.Parameter("appId") @Nullable String appId,
-        @CustomType.Parameter("authParams") @Nullable Map<String,String> authParams,
-        @CustomType.Parameter("authorizationEndpoint") @Nullable String authorizationEndpoint,
-        @CustomType.Parameter("bruteForceProtection") @Nullable Boolean bruteForceProtection,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientSecret") @Nullable String clientSecret,
-        @CustomType.Parameter("communityBaseUrl") @Nullable String communityBaseUrl,
-        @CustomType.Parameter("configuration") @Nullable Map<String,String> configuration,
-        @CustomType.Parameter("customScripts") @Nullable Map<String,String> customScripts,
-        @CustomType.Parameter("debug") @Nullable Boolean debug,
-        @CustomType.Parameter("digestAlgorithm") @Nullable String digestAlgorithm,
-        @CustomType.Parameter("disableCache") @Nullable Boolean disableCache,
-        @CustomType.Parameter("disableSignOut") @Nullable Boolean disableSignOut,
-        @CustomType.Parameter("disableSignup") @Nullable Boolean disableSignup,
-        @CustomType.Parameter("discoveryUrl") @Nullable String discoveryUrl,
-        @CustomType.Parameter("domain") @Nullable String domain,
-        @CustomType.Parameter("domainAliases") @Nullable List<String> domainAliases,
-        @CustomType.Parameter("enabledDatabaseCustomization") @Nullable Boolean enabledDatabaseCustomization,
-        @CustomType.Parameter("entityId") @Nullable String entityId,
-        @CustomType.Parameter("fieldsMap") @Nullable String fieldsMap,
-        @CustomType.Parameter("forwardRequestInfo") @Nullable Boolean forwardRequestInfo,
-        @CustomType.Parameter("from") @Nullable String from,
-        @CustomType.Parameter("gatewayAuthentication") @Nullable ConnectionOptionsGatewayAuthentication gatewayAuthentication,
-        @CustomType.Parameter("gatewayUrl") @Nullable String gatewayUrl,
-        @CustomType.Parameter("iconUrl") @Nullable String iconUrl,
-        @CustomType.Parameter("identityApi") @Nullable String identityApi,
-        @CustomType.Parameter("idpInitiated") @Nullable ConnectionOptionsIdpInitiated idpInitiated,
-        @CustomType.Parameter("importMode") @Nullable Boolean importMode,
-        @CustomType.Parameter("ips") @Nullable List<String> ips,
-        @CustomType.Parameter("issuer") @Nullable String issuer,
-        @CustomType.Parameter("jwksUri") @Nullable String jwksUri,
-        @CustomType.Parameter("keyId") @Nullable String keyId,
-        @CustomType.Parameter("maxGroupsToRetrieve") @Nullable String maxGroupsToRetrieve,
-        @CustomType.Parameter("messagingServiceSid") @Nullable String messagingServiceSid,
-        @CustomType.Parameter("metadataUrl") @Nullable String metadataUrl,
-        @CustomType.Parameter("metadataXml") @Nullable String metadataXml,
-        @CustomType.Parameter("mfa") @Nullable ConnectionOptionsMfa mfa,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nonPersistentAttrs") @Nullable List<String> nonPersistentAttrs,
-        @CustomType.Parameter("passwordComplexityOptions") @Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions,
-        @CustomType.Parameter("passwordDictionary") @Nullable ConnectionOptionsPasswordDictionary passwordDictionary,
-        @CustomType.Parameter("passwordHistories") @Nullable List<ConnectionOptionsPasswordHistory> passwordHistories,
-        @CustomType.Parameter("passwordNoPersonalInfo") @Nullable ConnectionOptionsPasswordNoPersonalInfo passwordNoPersonalInfo,
-        @CustomType.Parameter("passwordPolicy") @Nullable String passwordPolicy,
-        @CustomType.Parameter("pkceEnabled") @Nullable Boolean pkceEnabled,
-        @CustomType.Parameter("protocolBinding") @Nullable String protocolBinding,
-        @CustomType.Parameter("provider") @Nullable String provider,
-        @CustomType.Parameter("requestTemplate") @Nullable String requestTemplate,
-        @CustomType.Parameter("requiresUsername") @Nullable Boolean requiresUsername,
-        @CustomType.Parameter("scopes") @Nullable List<String> scopes,
-        @CustomType.Parameter("scripts") @Nullable Map<String,String> scripts,
-        @CustomType.Parameter("setUserRootAttributes") @Nullable String setUserRootAttributes,
-        @CustomType.Parameter("shouldTrustEmailVerifiedConnection") @Nullable String shouldTrustEmailVerifiedConnection,
-        @CustomType.Parameter("signInEndpoint") @Nullable String signInEndpoint,
-        @CustomType.Parameter("signOutEndpoint") @Nullable String signOutEndpoint,
-        @CustomType.Parameter("signSamlRequest") @Nullable Boolean signSamlRequest,
-        @CustomType.Parameter("signatureAlgorithm") @Nullable String signatureAlgorithm,
-        @CustomType.Parameter("signingCert") @Nullable String signingCert,
-        @CustomType.Parameter("signingKey") @Nullable ConnectionOptionsSigningKey signingKey,
-        @CustomType.Parameter("strategyVersion") @Nullable Integer strategyVersion,
-        @CustomType.Parameter("subject") @Nullable String subject,
-        @CustomType.Parameter("syntax") @Nullable String syntax,
-        @CustomType.Parameter("teamId") @Nullable String teamId,
-        @CustomType.Parameter("template") @Nullable String template,
-        @CustomType.Parameter("tenantDomain") @Nullable String tenantDomain,
-        @CustomType.Parameter("tokenEndpoint") @Nullable String tokenEndpoint,
-        @CustomType.Parameter("totp") @Nullable ConnectionOptionsTotp totp,
-        @CustomType.Parameter("twilioSid") @Nullable String twilioSid,
-        @CustomType.Parameter("twilioToken") @Nullable String twilioToken,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("upstreamParams") @Nullable String upstreamParams,
-        @CustomType.Parameter("useCertAuth") @Nullable Boolean useCertAuth,
-        @CustomType.Parameter("useKerberos") @Nullable Boolean useKerberos,
-        @CustomType.Parameter("useWsfed") @Nullable Boolean useWsfed,
-        @CustomType.Parameter("userIdAttribute") @Nullable String userIdAttribute,
-        @CustomType.Parameter("userinfoEndpoint") @Nullable String userinfoEndpoint,
-        @CustomType.Parameter("validation") @Nullable ConnectionOptionsValidation validation,
-        @CustomType.Parameter("waadCommonEndpoint") @Nullable Boolean waadCommonEndpoint,
-        @CustomType.Parameter("waadProtocol") @Nullable String waadProtocol) {
-        this.adfsServer = adfsServer;
-        this.allowedAudiences = allowedAudiences;
-        this.apiEnableUsers = apiEnableUsers;
-        this.appId = appId;
-        this.authParams = authParams;
-        this.authorizationEndpoint = authorizationEndpoint;
-        this.bruteForceProtection = bruteForceProtection;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.communityBaseUrl = communityBaseUrl;
-        this.configuration = configuration;
-        this.customScripts = customScripts;
-        this.debug = debug;
-        this.digestAlgorithm = digestAlgorithm;
-        this.disableCache = disableCache;
-        this.disableSignOut = disableSignOut;
-        this.disableSignup = disableSignup;
-        this.discoveryUrl = discoveryUrl;
-        this.domain = domain;
-        this.domainAliases = domainAliases;
-        this.enabledDatabaseCustomization = enabledDatabaseCustomization;
-        this.entityId = entityId;
-        this.fieldsMap = fieldsMap;
-        this.forwardRequestInfo = forwardRequestInfo;
-        this.from = from;
-        this.gatewayAuthentication = gatewayAuthentication;
-        this.gatewayUrl = gatewayUrl;
-        this.iconUrl = iconUrl;
-        this.identityApi = identityApi;
-        this.idpInitiated = idpInitiated;
-        this.importMode = importMode;
-        this.ips = ips;
-        this.issuer = issuer;
-        this.jwksUri = jwksUri;
-        this.keyId = keyId;
-        this.maxGroupsToRetrieve = maxGroupsToRetrieve;
-        this.messagingServiceSid = messagingServiceSid;
-        this.metadataUrl = metadataUrl;
-        this.metadataXml = metadataXml;
-        this.mfa = mfa;
-        this.name = name;
-        this.nonPersistentAttrs = nonPersistentAttrs;
-        this.passwordComplexityOptions = passwordComplexityOptions;
-        this.passwordDictionary = passwordDictionary;
-        this.passwordHistories = passwordHistories;
-        this.passwordNoPersonalInfo = passwordNoPersonalInfo;
-        this.passwordPolicy = passwordPolicy;
-        this.pkceEnabled = pkceEnabled;
-        this.protocolBinding = protocolBinding;
-        this.provider = provider;
-        this.requestTemplate = requestTemplate;
-        this.requiresUsername = requiresUsername;
-        this.scopes = scopes;
-        this.scripts = scripts;
-        this.setUserRootAttributes = setUserRootAttributes;
-        this.shouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
-        this.signInEndpoint = signInEndpoint;
-        this.signOutEndpoint = signOutEndpoint;
-        this.signSamlRequest = signSamlRequest;
-        this.signatureAlgorithm = signatureAlgorithm;
-        this.signingCert = signingCert;
-        this.signingKey = signingKey;
-        this.strategyVersion = strategyVersion;
-        this.subject = subject;
-        this.syntax = syntax;
-        this.teamId = teamId;
-        this.template = template;
-        this.tenantDomain = tenantDomain;
-        this.tokenEndpoint = tokenEndpoint;
-        this.totp = totp;
-        this.twilioSid = twilioSid;
-        this.twilioToken = twilioToken;
-        this.type = type;
-        this.upstreamParams = upstreamParams;
-        this.useCertAuth = useCertAuth;
-        this.useKerberos = useKerberos;
-        this.useWsfed = useWsfed;
-        this.userIdAttribute = userIdAttribute;
-        this.userinfoEndpoint = userinfoEndpoint;
-        this.validation = validation;
-        this.waadCommonEndpoint = waadCommonEndpoint;
-        this.waadProtocol = waadProtocol;
-    }
-
+    private ConnectionOptions() {}
     /**
      * @return ADFS Metadata source.
      * 
@@ -1026,7 +859,7 @@ public final class ConnectionOptions {
     public static Builder builder(ConnectionOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String adfsServer;
         private @Nullable List<String> allowedAudiences;
@@ -1110,11 +943,7 @@ public final class ConnectionOptions {
         private @Nullable ConnectionOptionsValidation validation;
         private @Nullable Boolean waadCommonEndpoint;
         private @Nullable String waadProtocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adfsServer = defaults.adfsServer;
@@ -1201,10 +1030,12 @@ public final class ConnectionOptions {
     	      this.waadProtocol = defaults.waadProtocol;
         }
 
+        @CustomType.Setter
         public Builder adfsServer(@Nullable String adfsServer) {
             this.adfsServer = adfsServer;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedAudiences(@Nullable List<String> allowedAudiences) {
             this.allowedAudiences = allowedAudiences;
             return this;
@@ -1212,74 +1043,92 @@ public final class ConnectionOptions {
         public Builder allowedAudiences(String... allowedAudiences) {
             return allowedAudiences(List.of(allowedAudiences));
         }
+        @CustomType.Setter
         public Builder apiEnableUsers(@Nullable Boolean apiEnableUsers) {
             this.apiEnableUsers = apiEnableUsers;
             return this;
         }
+        @CustomType.Setter
         public Builder appId(@Nullable String appId) {
             this.appId = appId;
             return this;
         }
+        @CustomType.Setter
         public Builder authParams(@Nullable Map<String,String> authParams) {
             this.authParams = authParams;
             return this;
         }
+        @CustomType.Setter
         public Builder authorizationEndpoint(@Nullable String authorizationEndpoint) {
             this.authorizationEndpoint = authorizationEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder bruteForceProtection(@Nullable Boolean bruteForceProtection) {
             this.bruteForceProtection = bruteForceProtection;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
             this.clientSecret = clientSecret;
             return this;
         }
+        @CustomType.Setter
         public Builder communityBaseUrl(@Nullable String communityBaseUrl) {
             this.communityBaseUrl = communityBaseUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder configuration(@Nullable Map<String,String> configuration) {
             this.configuration = configuration;
             return this;
         }
+        @CustomType.Setter
         public Builder customScripts(@Nullable Map<String,String> customScripts) {
             this.customScripts = customScripts;
             return this;
         }
+        @CustomType.Setter
         public Builder debug(@Nullable Boolean debug) {
             this.debug = debug;
             return this;
         }
+        @CustomType.Setter
         public Builder digestAlgorithm(@Nullable String digestAlgorithm) {
             this.digestAlgorithm = digestAlgorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder disableCache(@Nullable Boolean disableCache) {
             this.disableCache = disableCache;
             return this;
         }
+        @CustomType.Setter
         public Builder disableSignOut(@Nullable Boolean disableSignOut) {
             this.disableSignOut = disableSignOut;
             return this;
         }
+        @CustomType.Setter
         public Builder disableSignup(@Nullable Boolean disableSignup) {
             this.disableSignup = disableSignup;
             return this;
         }
+        @CustomType.Setter
         public Builder discoveryUrl(@Nullable String discoveryUrl) {
             this.discoveryUrl = discoveryUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
         public Builder domainAliases(@Nullable List<String> domainAliases) {
             this.domainAliases = domainAliases;
             return this;
@@ -1287,50 +1136,62 @@ public final class ConnectionOptions {
         public Builder domainAliases(String... domainAliases) {
             return domainAliases(List.of(domainAliases));
         }
+        @CustomType.Setter
         public Builder enabledDatabaseCustomization(@Nullable Boolean enabledDatabaseCustomization) {
             this.enabledDatabaseCustomization = enabledDatabaseCustomization;
             return this;
         }
+        @CustomType.Setter
         public Builder entityId(@Nullable String entityId) {
             this.entityId = entityId;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldsMap(@Nullable String fieldsMap) {
             this.fieldsMap = fieldsMap;
             return this;
         }
+        @CustomType.Setter
         public Builder forwardRequestInfo(@Nullable Boolean forwardRequestInfo) {
             this.forwardRequestInfo = forwardRequestInfo;
             return this;
         }
+        @CustomType.Setter
         public Builder from(@Nullable String from) {
             this.from = from;
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayAuthentication(@Nullable ConnectionOptionsGatewayAuthentication gatewayAuthentication) {
             this.gatewayAuthentication = gatewayAuthentication;
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayUrl(@Nullable String gatewayUrl) {
             this.gatewayUrl = gatewayUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder iconUrl(@Nullable String iconUrl) {
             this.iconUrl = iconUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder identityApi(@Nullable String identityApi) {
             this.identityApi = identityApi;
             return this;
         }
+        @CustomType.Setter
         public Builder idpInitiated(@Nullable ConnectionOptionsIdpInitiated idpInitiated) {
             this.idpInitiated = idpInitiated;
             return this;
         }
+        @CustomType.Setter
         public Builder importMode(@Nullable Boolean importMode) {
             this.importMode = importMode;
             return this;
         }
+        @CustomType.Setter
         public Builder ips(@Nullable List<String> ips) {
             this.ips = ips;
             return this;
@@ -1338,42 +1199,52 @@ public final class ConnectionOptions {
         public Builder ips(String... ips) {
             return ips(List.of(ips));
         }
+        @CustomType.Setter
         public Builder issuer(@Nullable String issuer) {
             this.issuer = issuer;
             return this;
         }
+        @CustomType.Setter
         public Builder jwksUri(@Nullable String jwksUri) {
             this.jwksUri = jwksUri;
             return this;
         }
+        @CustomType.Setter
         public Builder keyId(@Nullable String keyId) {
             this.keyId = keyId;
             return this;
         }
+        @CustomType.Setter
         public Builder maxGroupsToRetrieve(@Nullable String maxGroupsToRetrieve) {
             this.maxGroupsToRetrieve = maxGroupsToRetrieve;
             return this;
         }
+        @CustomType.Setter
         public Builder messagingServiceSid(@Nullable String messagingServiceSid) {
             this.messagingServiceSid = messagingServiceSid;
             return this;
         }
+        @CustomType.Setter
         public Builder metadataUrl(@Nullable String metadataUrl) {
             this.metadataUrl = metadataUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder metadataXml(@Nullable String metadataXml) {
             this.metadataXml = metadataXml;
             return this;
         }
+        @CustomType.Setter
         public Builder mfa(@Nullable ConnectionOptionsMfa mfa) {
             this.mfa = mfa;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nonPersistentAttrs(@Nullable List<String> nonPersistentAttrs) {
             this.nonPersistentAttrs = nonPersistentAttrs;
             return this;
@@ -1381,14 +1252,17 @@ public final class ConnectionOptions {
         public Builder nonPersistentAttrs(String... nonPersistentAttrs) {
             return nonPersistentAttrs(List.of(nonPersistentAttrs));
         }
+        @CustomType.Setter
         public Builder passwordComplexityOptions(@Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions) {
             this.passwordComplexityOptions = passwordComplexityOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder passwordDictionary(@Nullable ConnectionOptionsPasswordDictionary passwordDictionary) {
             this.passwordDictionary = passwordDictionary;
             return this;
         }
+        @CustomType.Setter
         public Builder passwordHistories(@Nullable List<ConnectionOptionsPasswordHistory> passwordHistories) {
             this.passwordHistories = passwordHistories;
             return this;
@@ -1396,34 +1270,42 @@ public final class ConnectionOptions {
         public Builder passwordHistories(ConnectionOptionsPasswordHistory... passwordHistories) {
             return passwordHistories(List.of(passwordHistories));
         }
+        @CustomType.Setter
         public Builder passwordNoPersonalInfo(@Nullable ConnectionOptionsPasswordNoPersonalInfo passwordNoPersonalInfo) {
             this.passwordNoPersonalInfo = passwordNoPersonalInfo;
             return this;
         }
+        @CustomType.Setter
         public Builder passwordPolicy(@Nullable String passwordPolicy) {
             this.passwordPolicy = passwordPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder pkceEnabled(@Nullable Boolean pkceEnabled) {
             this.pkceEnabled = pkceEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder protocolBinding(@Nullable String protocolBinding) {
             this.protocolBinding = protocolBinding;
             return this;
         }
+        @CustomType.Setter
         public Builder provider(@Nullable String provider) {
             this.provider = provider;
             return this;
         }
+        @CustomType.Setter
         public Builder requestTemplate(@Nullable String requestTemplate) {
             this.requestTemplate = requestTemplate;
             return this;
         }
+        @CustomType.Setter
         public Builder requiresUsername(@Nullable Boolean requiresUsername) {
             this.requiresUsername = requiresUsername;
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
             this.scopes = scopes;
             return this;
@@ -1431,123 +1313,236 @@ public final class ConnectionOptions {
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }
+        @CustomType.Setter
         public Builder scripts(@Nullable Map<String,String> scripts) {
             this.scripts = scripts;
             return this;
         }
+        @CustomType.Setter
         public Builder setUserRootAttributes(@Nullable String setUserRootAttributes) {
             this.setUserRootAttributes = setUserRootAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder shouldTrustEmailVerifiedConnection(@Nullable String shouldTrustEmailVerifiedConnection) {
             this.shouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
             return this;
         }
+        @CustomType.Setter
         public Builder signInEndpoint(@Nullable String signInEndpoint) {
             this.signInEndpoint = signInEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder signOutEndpoint(@Nullable String signOutEndpoint) {
             this.signOutEndpoint = signOutEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder signSamlRequest(@Nullable Boolean signSamlRequest) {
             this.signSamlRequest = signSamlRequest;
             return this;
         }
+        @CustomType.Setter
         public Builder signatureAlgorithm(@Nullable String signatureAlgorithm) {
             this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder signingCert(@Nullable String signingCert) {
             this.signingCert = signingCert;
             return this;
         }
+        @CustomType.Setter
         public Builder signingKey(@Nullable ConnectionOptionsSigningKey signingKey) {
             this.signingKey = signingKey;
             return this;
         }
+        @CustomType.Setter
         public Builder strategyVersion(@Nullable Integer strategyVersion) {
             this.strategyVersion = strategyVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder subject(@Nullable String subject) {
             this.subject = subject;
             return this;
         }
+        @CustomType.Setter
         public Builder syntax(@Nullable String syntax) {
             this.syntax = syntax;
             return this;
         }
+        @CustomType.Setter
         public Builder teamId(@Nullable String teamId) {
             this.teamId = teamId;
             return this;
         }
+        @CustomType.Setter
         public Builder template(@Nullable String template) {
             this.template = template;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantDomain(@Nullable String tenantDomain) {
             this.tenantDomain = tenantDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder tokenEndpoint(@Nullable String tokenEndpoint) {
             this.tokenEndpoint = tokenEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder totp(@Nullable ConnectionOptionsTotp totp) {
             this.totp = totp;
             return this;
         }
+        @CustomType.Setter
         public Builder twilioSid(@Nullable String twilioSid) {
             this.twilioSid = twilioSid;
             return this;
         }
+        @CustomType.Setter
         public Builder twilioToken(@Nullable String twilioToken) {
             this.twilioToken = twilioToken;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder upstreamParams(@Nullable String upstreamParams) {
             this.upstreamParams = upstreamParams;
             return this;
         }
+        @CustomType.Setter
         public Builder useCertAuth(@Nullable Boolean useCertAuth) {
             this.useCertAuth = useCertAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder useKerberos(@Nullable Boolean useKerberos) {
             this.useKerberos = useKerberos;
             return this;
         }
+        @CustomType.Setter
         public Builder useWsfed(@Nullable Boolean useWsfed) {
             this.useWsfed = useWsfed;
             return this;
         }
+        @CustomType.Setter
         public Builder userIdAttribute(@Nullable String userIdAttribute) {
             this.userIdAttribute = userIdAttribute;
             return this;
         }
+        @CustomType.Setter
         public Builder userinfoEndpoint(@Nullable String userinfoEndpoint) {
             this.userinfoEndpoint = userinfoEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder validation(@Nullable ConnectionOptionsValidation validation) {
             this.validation = validation;
             return this;
         }
+        @CustomType.Setter
         public Builder waadCommonEndpoint(@Nullable Boolean waadCommonEndpoint) {
             this.waadCommonEndpoint = waadCommonEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder waadProtocol(@Nullable String waadProtocol) {
             this.waadProtocol = waadProtocol;
             return this;
-        }        public ConnectionOptions build() {
-            return new ConnectionOptions(adfsServer, allowedAudiences, apiEnableUsers, appId, authParams, authorizationEndpoint, bruteForceProtection, clientId, clientSecret, communityBaseUrl, configuration, customScripts, debug, digestAlgorithm, disableCache, disableSignOut, disableSignup, discoveryUrl, domain, domainAliases, enabledDatabaseCustomization, entityId, fieldsMap, forwardRequestInfo, from, gatewayAuthentication, gatewayUrl, iconUrl, identityApi, idpInitiated, importMode, ips, issuer, jwksUri, keyId, maxGroupsToRetrieve, messagingServiceSid, metadataUrl, metadataXml, mfa, name, nonPersistentAttrs, passwordComplexityOptions, passwordDictionary, passwordHistories, passwordNoPersonalInfo, passwordPolicy, pkceEnabled, protocolBinding, provider, requestTemplate, requiresUsername, scopes, scripts, setUserRootAttributes, shouldTrustEmailVerifiedConnection, signInEndpoint, signOutEndpoint, signSamlRequest, signatureAlgorithm, signingCert, signingKey, strategyVersion, subject, syntax, teamId, template, tenantDomain, tokenEndpoint, totp, twilioSid, twilioToken, type, upstreamParams, useCertAuth, useKerberos, useWsfed, userIdAttribute, userinfoEndpoint, validation, waadCommonEndpoint, waadProtocol);
+        }
+        public ConnectionOptions build() {
+            final var o = new ConnectionOptions();
+            o.adfsServer = adfsServer;
+            o.allowedAudiences = allowedAudiences;
+            o.apiEnableUsers = apiEnableUsers;
+            o.appId = appId;
+            o.authParams = authParams;
+            o.authorizationEndpoint = authorizationEndpoint;
+            o.bruteForceProtection = bruteForceProtection;
+            o.clientId = clientId;
+            o.clientSecret = clientSecret;
+            o.communityBaseUrl = communityBaseUrl;
+            o.configuration = configuration;
+            o.customScripts = customScripts;
+            o.debug = debug;
+            o.digestAlgorithm = digestAlgorithm;
+            o.disableCache = disableCache;
+            o.disableSignOut = disableSignOut;
+            o.disableSignup = disableSignup;
+            o.discoveryUrl = discoveryUrl;
+            o.domain = domain;
+            o.domainAliases = domainAliases;
+            o.enabledDatabaseCustomization = enabledDatabaseCustomization;
+            o.entityId = entityId;
+            o.fieldsMap = fieldsMap;
+            o.forwardRequestInfo = forwardRequestInfo;
+            o.from = from;
+            o.gatewayAuthentication = gatewayAuthentication;
+            o.gatewayUrl = gatewayUrl;
+            o.iconUrl = iconUrl;
+            o.identityApi = identityApi;
+            o.idpInitiated = idpInitiated;
+            o.importMode = importMode;
+            o.ips = ips;
+            o.issuer = issuer;
+            o.jwksUri = jwksUri;
+            o.keyId = keyId;
+            o.maxGroupsToRetrieve = maxGroupsToRetrieve;
+            o.messagingServiceSid = messagingServiceSid;
+            o.metadataUrl = metadataUrl;
+            o.metadataXml = metadataXml;
+            o.mfa = mfa;
+            o.name = name;
+            o.nonPersistentAttrs = nonPersistentAttrs;
+            o.passwordComplexityOptions = passwordComplexityOptions;
+            o.passwordDictionary = passwordDictionary;
+            o.passwordHistories = passwordHistories;
+            o.passwordNoPersonalInfo = passwordNoPersonalInfo;
+            o.passwordPolicy = passwordPolicy;
+            o.pkceEnabled = pkceEnabled;
+            o.protocolBinding = protocolBinding;
+            o.provider = provider;
+            o.requestTemplate = requestTemplate;
+            o.requiresUsername = requiresUsername;
+            o.scopes = scopes;
+            o.scripts = scripts;
+            o.setUserRootAttributes = setUserRootAttributes;
+            o.shouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
+            o.signInEndpoint = signInEndpoint;
+            o.signOutEndpoint = signOutEndpoint;
+            o.signSamlRequest = signSamlRequest;
+            o.signatureAlgorithm = signatureAlgorithm;
+            o.signingCert = signingCert;
+            o.signingKey = signingKey;
+            o.strategyVersion = strategyVersion;
+            o.subject = subject;
+            o.syntax = syntax;
+            o.teamId = teamId;
+            o.template = template;
+            o.tenantDomain = tenantDomain;
+            o.tokenEndpoint = tokenEndpoint;
+            o.totp = totp;
+            o.twilioSid = twilioSid;
+            o.twilioToken = twilioToken;
+            o.type = type;
+            o.upstreamParams = upstreamParams;
+            o.useCertAuth = useCertAuth;
+            o.useKerberos = useKerberos;
+            o.useWsfed = useWsfed;
+            o.userIdAttribute = userIdAttribute;
+            o.userinfoEndpoint = userinfoEndpoint;
+            o.validation = validation;
+            o.waadCommonEndpoint = waadCommonEndpoint;
+            o.waadProtocol = waadProtocol;
+            return o;
         }
     }
 }

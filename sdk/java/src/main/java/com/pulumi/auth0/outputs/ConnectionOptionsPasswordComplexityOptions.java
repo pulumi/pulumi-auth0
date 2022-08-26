@@ -15,13 +15,9 @@ public final class ConnectionOptionsPasswordComplexityOptions {
      * @return Minimum number of characters allowed in passwords.
      * 
      */
-    private final @Nullable Integer minLength;
+    private @Nullable Integer minLength;
 
-    @CustomType.Constructor
-    private ConnectionOptionsPasswordComplexityOptions(@CustomType.Parameter("minLength") @Nullable Integer minLength) {
-        this.minLength = minLength;
-    }
-
+    private ConnectionOptionsPasswordComplexityOptions() {}
     /**
      * @return Minimum number of characters allowed in passwords.
      * 
@@ -37,24 +33,24 @@ public final class ConnectionOptionsPasswordComplexityOptions {
     public static Builder builder(ConnectionOptionsPasswordComplexityOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer minLength;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsPasswordComplexityOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.minLength = defaults.minLength;
         }
 
+        @CustomType.Setter
         public Builder minLength(@Nullable Integer minLength) {
             this.minLength = minLength;
             return this;
-        }        public ConnectionOptionsPasswordComplexityOptions build() {
-            return new ConnectionOptionsPasswordComplexityOptions(minLength);
+        }
+        public ConnectionOptionsPasswordComplexityOptions build() {
+            final var o = new ConnectionOptionsPasswordComplexityOptions();
+            o.minLength = minLength;
+            return o;
         }
     }
 }

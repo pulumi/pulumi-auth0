@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientNativeSocialLoginFacebook {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClientNativeSocialLoginFacebook(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetClientNativeSocialLoginFacebook() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetClientNativeSocialLoginFacebook {
     public static Builder builder(GetClientNativeSocialLoginFacebook defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientNativeSocialLoginFacebook defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetClientNativeSocialLoginFacebook build() {
-            return new GetClientNativeSocialLoginFacebook(enabled);
+        }
+        public GetClientNativeSocialLoginFacebook build() {
+            final var o = new GetClientNativeSocialLoginFacebook();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class TenantGuardianMfaPage {
      * @return Boolean. Indicates whether to use the custom Guardian page.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
      * 
      */
-    private final String html;
+    private String html;
 
-    @CustomType.Constructor
-    private TenantGuardianMfaPage(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("html") String html) {
-        this.enabled = enabled;
-        this.html = html;
-    }
-
+    private TenantGuardianMfaPage() {}
     /**
      * @return Boolean. Indicates whether to use the custom Guardian page.
      * 
@@ -51,30 +44,32 @@ public final class TenantGuardianMfaPage {
     public static Builder builder(TenantGuardianMfaPage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String html;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TenantGuardianMfaPage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.html = defaults.html;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder html(String html) {
             this.html = Objects.requireNonNull(html);
             return this;
-        }        public TenantGuardianMfaPage build() {
-            return new TenantGuardianMfaPage(enabled, html);
+        }
+        public TenantGuardianMfaPage build() {
+            final var o = new TenantGuardianMfaPage();
+            o.enabled = enabled;
+            o.html = html;
+            return o;
         }
     }
 }

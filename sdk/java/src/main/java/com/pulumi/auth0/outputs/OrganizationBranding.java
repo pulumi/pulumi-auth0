@@ -16,21 +16,14 @@ public final class OrganizationBranding {
      * @return Color scheme used to customize the login pages
      * 
      */
-    private final @Nullable Map<String,String> colors;
+    private @Nullable Map<String,String> colors;
     /**
      * @return URL of logo to display on login page
      * 
      */
-    private final @Nullable String logoUrl;
+    private @Nullable String logoUrl;
 
-    @CustomType.Constructor
-    private OrganizationBranding(
-        @CustomType.Parameter("colors") @Nullable Map<String,String> colors,
-        @CustomType.Parameter("logoUrl") @Nullable String logoUrl) {
-        this.colors = colors;
-        this.logoUrl = logoUrl;
-    }
-
+    private OrganizationBranding() {}
     /**
      * @return Color scheme used to customize the login pages
      * 
@@ -53,30 +46,32 @@ public final class OrganizationBranding {
     public static Builder builder(OrganizationBranding defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> colors;
         private @Nullable String logoUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationBranding defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.colors = defaults.colors;
     	      this.logoUrl = defaults.logoUrl;
         }
 
+        @CustomType.Setter
         public Builder colors(@Nullable Map<String,String> colors) {
             this.colors = colors;
             return this;
         }
+        @CustomType.Setter
         public Builder logoUrl(@Nullable String logoUrl) {
             this.logoUrl = logoUrl;
             return this;
-        }        public OrganizationBranding build() {
-            return new OrganizationBranding(colors, logoUrl);
+        }
+        public OrganizationBranding build() {
+            final var o = new OrganizationBranding();
+            o.colors = colors;
+            o.logoUrl = logoUrl;
+            return o;
         }
     }
 }

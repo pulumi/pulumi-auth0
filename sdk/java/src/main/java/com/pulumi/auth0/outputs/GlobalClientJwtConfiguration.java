@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientJwtConfiguration {
-    private final @Nullable String alg;
-    private final @Nullable Integer lifetimeInSeconds;
-    private final @Nullable Map<String,String> scopes;
-    private final @Nullable Boolean secretEncoded;
+    private @Nullable String alg;
+    private @Nullable Integer lifetimeInSeconds;
+    private @Nullable Map<String,String> scopes;
+    private @Nullable Boolean secretEncoded;
 
-    @CustomType.Constructor
-    private GlobalClientJwtConfiguration(
-        @CustomType.Parameter("alg") @Nullable String alg,
-        @CustomType.Parameter("lifetimeInSeconds") @Nullable Integer lifetimeInSeconds,
-        @CustomType.Parameter("scopes") @Nullable Map<String,String> scopes,
-        @CustomType.Parameter("secretEncoded") @Nullable Boolean secretEncoded) {
-        this.alg = alg;
-        this.lifetimeInSeconds = lifetimeInSeconds;
-        this.scopes = scopes;
-        this.secretEncoded = secretEncoded;
-    }
-
+    private GlobalClientJwtConfiguration() {}
     public Optional<String> alg() {
         return Optional.ofNullable(this.alg);
     }
@@ -51,17 +40,13 @@ public final class GlobalClientJwtConfiguration {
     public static Builder builder(GlobalClientJwtConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String alg;
         private @Nullable Integer lifetimeInSeconds;
         private @Nullable Map<String,String> scopes;
         private @Nullable Boolean secretEncoded;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientJwtConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alg = defaults.alg;
@@ -70,23 +55,33 @@ public final class GlobalClientJwtConfiguration {
     	      this.secretEncoded = defaults.secretEncoded;
         }
 
+        @CustomType.Setter
         public Builder alg(@Nullable String alg) {
             this.alg = alg;
             return this;
         }
+        @CustomType.Setter
         public Builder lifetimeInSeconds(@Nullable Integer lifetimeInSeconds) {
             this.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(@Nullable Map<String,String> scopes) {
             this.scopes = scopes;
             return this;
         }
+        @CustomType.Setter
         public Builder secretEncoded(@Nullable Boolean secretEncoded) {
             this.secretEncoded = secretEncoded;
             return this;
-        }        public GlobalClientJwtConfiguration build() {
-            return new GlobalClientJwtConfiguration(alg, lifetimeInSeconds, scopes, secretEncoded);
+        }
+        public GlobalClientJwtConfiguration build() {
+            final var o = new GlobalClientJwtConfiguration();
+            o.alg = alg;
+            o.lifetimeInSeconds = lifetimeInSeconds;
+            o.scopes = scopes;
+            o.secretEncoded = secretEncoded;
+            return o;
         }
     }
 }

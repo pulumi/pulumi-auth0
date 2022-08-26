@@ -14,95 +14,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientAddons {
-    private final @Nullable Map<String,Object> aws;
-    private final @Nullable Map<String,Object> azureBlob;
-    private final @Nullable Map<String,Object> azureSb;
-    private final @Nullable Map<String,Object> box;
-    private final @Nullable Map<String,Object> cloudbees;
-    private final @Nullable Map<String,Object> concur;
-    private final @Nullable Map<String,Object> dropbox;
-    private final @Nullable Map<String,Object> echosign;
-    private final @Nullable Map<String,Object> egnyte;
-    private final @Nullable Map<String,Object> firebase;
-    private final @Nullable Map<String,Object> layer;
-    private final @Nullable Map<String,Object> mscrm;
-    private final @Nullable Map<String,Object> newrelic;
-    private final @Nullable Map<String,Object> office365;
-    private final @Nullable Map<String,Object> rms;
-    private final @Nullable Map<String,Object> salesforce;
-    private final @Nullable Map<String,Object> salesforceApi;
-    private final @Nullable Map<String,Object> salesforceSandboxApi;
-    private final @Nullable GlobalClientAddonsSamlp samlp;
-    private final @Nullable Map<String,Object> sapApi;
-    private final @Nullable Map<String,Object> sentry;
-    private final @Nullable Map<String,Object> sharepoint;
-    private final @Nullable Map<String,Object> slack;
-    private final @Nullable Map<String,Object> springcm;
-    private final @Nullable Map<String,Object> wams;
-    private final @Nullable Map<String,Object> wsfed;
-    private final @Nullable Map<String,Object> zendesk;
-    private final @Nullable Map<String,Object> zoom;
+    private @Nullable Map<String,Object> aws;
+    private @Nullable Map<String,Object> azureBlob;
+    private @Nullable Map<String,Object> azureSb;
+    private @Nullable Map<String,Object> box;
+    private @Nullable Map<String,Object> cloudbees;
+    private @Nullable Map<String,Object> concur;
+    private @Nullable Map<String,Object> dropbox;
+    private @Nullable Map<String,Object> echosign;
+    private @Nullable Map<String,Object> egnyte;
+    private @Nullable Map<String,Object> firebase;
+    private @Nullable Map<String,Object> layer;
+    private @Nullable Map<String,Object> mscrm;
+    private @Nullable Map<String,Object> newrelic;
+    private @Nullable Map<String,Object> office365;
+    private @Nullable Map<String,Object> rms;
+    private @Nullable Map<String,Object> salesforce;
+    private @Nullable Map<String,Object> salesforceApi;
+    private @Nullable Map<String,Object> salesforceSandboxApi;
+    private @Nullable GlobalClientAddonsSamlp samlp;
+    private @Nullable Map<String,Object> sapApi;
+    private @Nullable Map<String,Object> sentry;
+    private @Nullable Map<String,Object> sharepoint;
+    private @Nullable Map<String,Object> slack;
+    private @Nullable Map<String,Object> springcm;
+    private @Nullable Map<String,Object> wams;
+    private @Nullable Map<String,Object> wsfed;
+    private @Nullable Map<String,Object> zendesk;
+    private @Nullable Map<String,Object> zoom;
 
-    @CustomType.Constructor
-    private GlobalClientAddons(
-        @CustomType.Parameter("aws") @Nullable Map<String,Object> aws,
-        @CustomType.Parameter("azureBlob") @Nullable Map<String,Object> azureBlob,
-        @CustomType.Parameter("azureSb") @Nullable Map<String,Object> azureSb,
-        @CustomType.Parameter("box") @Nullable Map<String,Object> box,
-        @CustomType.Parameter("cloudbees") @Nullable Map<String,Object> cloudbees,
-        @CustomType.Parameter("concur") @Nullable Map<String,Object> concur,
-        @CustomType.Parameter("dropbox") @Nullable Map<String,Object> dropbox,
-        @CustomType.Parameter("echosign") @Nullable Map<String,Object> echosign,
-        @CustomType.Parameter("egnyte") @Nullable Map<String,Object> egnyte,
-        @CustomType.Parameter("firebase") @Nullable Map<String,Object> firebase,
-        @CustomType.Parameter("layer") @Nullable Map<String,Object> layer,
-        @CustomType.Parameter("mscrm") @Nullable Map<String,Object> mscrm,
-        @CustomType.Parameter("newrelic") @Nullable Map<String,Object> newrelic,
-        @CustomType.Parameter("office365") @Nullable Map<String,Object> office365,
-        @CustomType.Parameter("rms") @Nullable Map<String,Object> rms,
-        @CustomType.Parameter("salesforce") @Nullable Map<String,Object> salesforce,
-        @CustomType.Parameter("salesforceApi") @Nullable Map<String,Object> salesforceApi,
-        @CustomType.Parameter("salesforceSandboxApi") @Nullable Map<String,Object> salesforceSandboxApi,
-        @CustomType.Parameter("samlp") @Nullable GlobalClientAddonsSamlp samlp,
-        @CustomType.Parameter("sapApi") @Nullable Map<String,Object> sapApi,
-        @CustomType.Parameter("sentry") @Nullable Map<String,Object> sentry,
-        @CustomType.Parameter("sharepoint") @Nullable Map<String,Object> sharepoint,
-        @CustomType.Parameter("slack") @Nullable Map<String,Object> slack,
-        @CustomType.Parameter("springcm") @Nullable Map<String,Object> springcm,
-        @CustomType.Parameter("wams") @Nullable Map<String,Object> wams,
-        @CustomType.Parameter("wsfed") @Nullable Map<String,Object> wsfed,
-        @CustomType.Parameter("zendesk") @Nullable Map<String,Object> zendesk,
-        @CustomType.Parameter("zoom") @Nullable Map<String,Object> zoom) {
-        this.aws = aws;
-        this.azureBlob = azureBlob;
-        this.azureSb = azureSb;
-        this.box = box;
-        this.cloudbees = cloudbees;
-        this.concur = concur;
-        this.dropbox = dropbox;
-        this.echosign = echosign;
-        this.egnyte = egnyte;
-        this.firebase = firebase;
-        this.layer = layer;
-        this.mscrm = mscrm;
-        this.newrelic = newrelic;
-        this.office365 = office365;
-        this.rms = rms;
-        this.salesforce = salesforce;
-        this.salesforceApi = salesforceApi;
-        this.salesforceSandboxApi = salesforceSandboxApi;
-        this.samlp = samlp;
-        this.sapApi = sapApi;
-        this.sentry = sentry;
-        this.sharepoint = sharepoint;
-        this.slack = slack;
-        this.springcm = springcm;
-        this.wams = wams;
-        this.wsfed = wsfed;
-        this.zendesk = zendesk;
-        this.zoom = zoom;
-    }
-
+    private GlobalClientAddons() {}
     public Map<String,Object> aws() {
         return this.aws == null ? Map.of() : this.aws;
     }
@@ -195,7 +136,7 @@ public final class GlobalClientAddons {
     public static Builder builder(GlobalClientAddons defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> aws;
         private @Nullable Map<String,Object> azureBlob;
@@ -225,11 +166,7 @@ public final class GlobalClientAddons {
         private @Nullable Map<String,Object> wsfed;
         private @Nullable Map<String,Object> zendesk;
         private @Nullable Map<String,Object> zoom;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientAddons defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aws = defaults.aws;
@@ -262,119 +199,177 @@ public final class GlobalClientAddons {
     	      this.zoom = defaults.zoom;
         }
 
+        @CustomType.Setter
         public Builder aws(@Nullable Map<String,Object> aws) {
             this.aws = aws;
             return this;
         }
+        @CustomType.Setter
         public Builder azureBlob(@Nullable Map<String,Object> azureBlob) {
             this.azureBlob = azureBlob;
             return this;
         }
+        @CustomType.Setter
         public Builder azureSb(@Nullable Map<String,Object> azureSb) {
             this.azureSb = azureSb;
             return this;
         }
+        @CustomType.Setter
         public Builder box(@Nullable Map<String,Object> box) {
             this.box = box;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudbees(@Nullable Map<String,Object> cloudbees) {
             this.cloudbees = cloudbees;
             return this;
         }
+        @CustomType.Setter
         public Builder concur(@Nullable Map<String,Object> concur) {
             this.concur = concur;
             return this;
         }
+        @CustomType.Setter
         public Builder dropbox(@Nullable Map<String,Object> dropbox) {
             this.dropbox = dropbox;
             return this;
         }
+        @CustomType.Setter
         public Builder echosign(@Nullable Map<String,Object> echosign) {
             this.echosign = echosign;
             return this;
         }
+        @CustomType.Setter
         public Builder egnyte(@Nullable Map<String,Object> egnyte) {
             this.egnyte = egnyte;
             return this;
         }
+        @CustomType.Setter
         public Builder firebase(@Nullable Map<String,Object> firebase) {
             this.firebase = firebase;
             return this;
         }
+        @CustomType.Setter
         public Builder layer(@Nullable Map<String,Object> layer) {
             this.layer = layer;
             return this;
         }
+        @CustomType.Setter
         public Builder mscrm(@Nullable Map<String,Object> mscrm) {
             this.mscrm = mscrm;
             return this;
         }
+        @CustomType.Setter
         public Builder newrelic(@Nullable Map<String,Object> newrelic) {
             this.newrelic = newrelic;
             return this;
         }
+        @CustomType.Setter
         public Builder office365(@Nullable Map<String,Object> office365) {
             this.office365 = office365;
             return this;
         }
+        @CustomType.Setter
         public Builder rms(@Nullable Map<String,Object> rms) {
             this.rms = rms;
             return this;
         }
+        @CustomType.Setter
         public Builder salesforce(@Nullable Map<String,Object> salesforce) {
             this.salesforce = salesforce;
             return this;
         }
+        @CustomType.Setter
         public Builder salesforceApi(@Nullable Map<String,Object> salesforceApi) {
             this.salesforceApi = salesforceApi;
             return this;
         }
+        @CustomType.Setter
         public Builder salesforceSandboxApi(@Nullable Map<String,Object> salesforceSandboxApi) {
             this.salesforceSandboxApi = salesforceSandboxApi;
             return this;
         }
+        @CustomType.Setter
         public Builder samlp(@Nullable GlobalClientAddonsSamlp samlp) {
             this.samlp = samlp;
             return this;
         }
+        @CustomType.Setter
         public Builder sapApi(@Nullable Map<String,Object> sapApi) {
             this.sapApi = sapApi;
             return this;
         }
+        @CustomType.Setter
         public Builder sentry(@Nullable Map<String,Object> sentry) {
             this.sentry = sentry;
             return this;
         }
+        @CustomType.Setter
         public Builder sharepoint(@Nullable Map<String,Object> sharepoint) {
             this.sharepoint = sharepoint;
             return this;
         }
+        @CustomType.Setter
         public Builder slack(@Nullable Map<String,Object> slack) {
             this.slack = slack;
             return this;
         }
+        @CustomType.Setter
         public Builder springcm(@Nullable Map<String,Object> springcm) {
             this.springcm = springcm;
             return this;
         }
+        @CustomType.Setter
         public Builder wams(@Nullable Map<String,Object> wams) {
             this.wams = wams;
             return this;
         }
+        @CustomType.Setter
         public Builder wsfed(@Nullable Map<String,Object> wsfed) {
             this.wsfed = wsfed;
             return this;
         }
+        @CustomType.Setter
         public Builder zendesk(@Nullable Map<String,Object> zendesk) {
             this.zendesk = zendesk;
             return this;
         }
+        @CustomType.Setter
         public Builder zoom(@Nullable Map<String,Object> zoom) {
             this.zoom = zoom;
             return this;
-        }        public GlobalClientAddons build() {
-            return new GlobalClientAddons(aws, azureBlob, azureSb, box, cloudbees, concur, dropbox, echosign, egnyte, firebase, layer, mscrm, newrelic, office365, rms, salesforce, salesforceApi, salesforceSandboxApi, samlp, sapApi, sentry, sharepoint, slack, springcm, wams, wsfed, zendesk, zoom);
+        }
+        public GlobalClientAddons build() {
+            final var o = new GlobalClientAddons();
+            o.aws = aws;
+            o.azureBlob = azureBlob;
+            o.azureSb = azureSb;
+            o.box = box;
+            o.cloudbees = cloudbees;
+            o.concur = concur;
+            o.dropbox = dropbox;
+            o.echosign = echosign;
+            o.egnyte = egnyte;
+            o.firebase = firebase;
+            o.layer = layer;
+            o.mscrm = mscrm;
+            o.newrelic = newrelic;
+            o.office365 = office365;
+            o.rms = rms;
+            o.salesforce = salesforce;
+            o.salesforceApi = salesforceApi;
+            o.salesforceSandboxApi = salesforceSandboxApi;
+            o.samlp = samlp;
+            o.sapApi = sapApi;
+            o.sentry = sentry;
+            o.sharepoint = sharepoint;
+            o.slack = slack;
+            o.springcm = springcm;
+            o.wams = wams;
+            o.wsfed = wsfed;
+            o.zendesk = zendesk;
+            o.zoom = zoom;
+            return o;
         }
     }
 }

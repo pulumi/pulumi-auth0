@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientNativeSocialLoginApple {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClientNativeSocialLoginApple(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetClientNativeSocialLoginApple() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetClientNativeSocialLoginApple {
     public static Builder builder(GetClientNativeSocialLoginApple defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientNativeSocialLoginApple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetClientNativeSocialLoginApple build() {
-            return new GetClientNativeSocialLoginApple(enabled);
+        }
+        public GetClientNativeSocialLoginApple build() {
+            final var o = new GetClientNativeSocialLoginApple();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

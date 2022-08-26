@@ -16,28 +16,19 @@ public final class GuardianWebauthnRoaming {
      * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
      * 
      */
-    private final @Nullable Boolean overrideRelyingParty;
+    private @Nullable Boolean overrideRelyingParty;
     /**
      * @return String. The Relying Party should be a suffix of the custom domain.
      * 
      */
-    private final @Nullable String relyingPartyIdentifier;
+    private @Nullable String relyingPartyIdentifier;
     /**
      * @return String. User verification, one of `discouraged`, `preferred` or `required`.
      * 
      */
-    private final @Nullable String userVerification;
+    private @Nullable String userVerification;
 
-    @CustomType.Constructor
-    private GuardianWebauthnRoaming(
-        @CustomType.Parameter("overrideRelyingParty") @Nullable Boolean overrideRelyingParty,
-        @CustomType.Parameter("relyingPartyIdentifier") @Nullable String relyingPartyIdentifier,
-        @CustomType.Parameter("userVerification") @Nullable String userVerification) {
-        this.overrideRelyingParty = overrideRelyingParty;
-        this.relyingPartyIdentifier = relyingPartyIdentifier;
-        this.userVerification = userVerification;
-    }
-
+    private GuardianWebauthnRoaming() {}
     /**
      * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
      * 
@@ -67,16 +58,12 @@ public final class GuardianWebauthnRoaming {
     public static Builder builder(GuardianWebauthnRoaming defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean overrideRelyingParty;
         private @Nullable String relyingPartyIdentifier;
         private @Nullable String userVerification;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuardianWebauthnRoaming defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.overrideRelyingParty = defaults.overrideRelyingParty;
@@ -84,19 +71,27 @@ public final class GuardianWebauthnRoaming {
     	      this.userVerification = defaults.userVerification;
         }
 
+        @CustomType.Setter
         public Builder overrideRelyingParty(@Nullable Boolean overrideRelyingParty) {
             this.overrideRelyingParty = overrideRelyingParty;
             return this;
         }
+        @CustomType.Setter
         public Builder relyingPartyIdentifier(@Nullable String relyingPartyIdentifier) {
             this.relyingPartyIdentifier = relyingPartyIdentifier;
             return this;
         }
+        @CustomType.Setter
         public Builder userVerification(@Nullable String userVerification) {
             this.userVerification = userVerification;
             return this;
-        }        public GuardianWebauthnRoaming build() {
-            return new GuardianWebauthnRoaming(overrideRelyingParty, relyingPartyIdentifier, userVerification);
+        }
+        public GuardianWebauthnRoaming build() {
+            final var o = new GuardianWebauthnRoaming();
+            o.overrideRelyingParty = overrideRelyingParty;
+            o.relyingPartyIdentifier = relyingPartyIdentifier;
+            o.userVerification = userVerification;
+            return o;
         }
     }
 }

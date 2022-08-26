@@ -14,28 +14,19 @@ public final class TenantErrorPage {
      * @return String, HTML format with supported Liquid syntax. Customized content of the error page.
      * 
      */
-    private final String html;
+    private String html;
     /**
      * @return Boolean. Indicates whether to show the link to logs as part of the default error page.
      * 
      */
-    private final Boolean showLogLink;
+    private Boolean showLogLink;
     /**
      * @return String. URL to redirect to when an error occurs rather than showing the default error page.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private TenantErrorPage(
-        @CustomType.Parameter("html") String html,
-        @CustomType.Parameter("showLogLink") Boolean showLogLink,
-        @CustomType.Parameter("url") String url) {
-        this.html = html;
-        this.showLogLink = showLogLink;
-        this.url = url;
-    }
-
+    private TenantErrorPage() {}
     /**
      * @return String, HTML format with supported Liquid syntax. Customized content of the error page.
      * 
@@ -65,16 +56,12 @@ public final class TenantErrorPage {
     public static Builder builder(TenantErrorPage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String html;
         private Boolean showLogLink;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TenantErrorPage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.html = defaults.html;
@@ -82,19 +69,27 @@ public final class TenantErrorPage {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder html(String html) {
             this.html = Objects.requireNonNull(html);
             return this;
         }
+        @CustomType.Setter
         public Builder showLogLink(Boolean showLogLink) {
             this.showLogLink = Objects.requireNonNull(showLogLink);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public TenantErrorPage build() {
-            return new TenantErrorPage(html, showLogLink, url);
+        }
+        public TenantErrorPage build() {
+            final var o = new TenantErrorPage();
+            o.html = html;
+            o.showLogLink = showLogLink;
+            o.url = url;
+            return o;
         }
     }
 }

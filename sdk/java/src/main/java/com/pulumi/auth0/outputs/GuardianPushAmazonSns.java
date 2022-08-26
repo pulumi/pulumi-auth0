@@ -13,42 +13,29 @@ public final class GuardianPushAmazonSns {
      * @return String. Your AWS Access Key ID.
      * 
      */
-    private final String awsAccessKeyId;
+    private String awsAccessKeyId;
     /**
      * @return String. Your AWS application&#39;s region.
      * 
      */
-    private final String awsRegion;
+    private String awsRegion;
     /**
      * @return String. Your AWS Secret Access Key.
      * 
      */
-    private final String awsSecretAccessKey;
+    private String awsSecretAccessKey;
     /**
      * @return String. The Amazon Resource Name for your Apple Push Notification Service.
      * 
      */
-    private final String snsApnsPlatformApplicationArn;
+    private String snsApnsPlatformApplicationArn;
     /**
      * @return String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
      * 
      */
-    private final String snsGcmPlatformApplicationArn;
+    private String snsGcmPlatformApplicationArn;
 
-    @CustomType.Constructor
-    private GuardianPushAmazonSns(
-        @CustomType.Parameter("awsAccessKeyId") String awsAccessKeyId,
-        @CustomType.Parameter("awsRegion") String awsRegion,
-        @CustomType.Parameter("awsSecretAccessKey") String awsSecretAccessKey,
-        @CustomType.Parameter("snsApnsPlatformApplicationArn") String snsApnsPlatformApplicationArn,
-        @CustomType.Parameter("snsGcmPlatformApplicationArn") String snsGcmPlatformApplicationArn) {
-        this.awsAccessKeyId = awsAccessKeyId;
-        this.awsRegion = awsRegion;
-        this.awsSecretAccessKey = awsSecretAccessKey;
-        this.snsApnsPlatformApplicationArn = snsApnsPlatformApplicationArn;
-        this.snsGcmPlatformApplicationArn = snsGcmPlatformApplicationArn;
-    }
-
+    private GuardianPushAmazonSns() {}
     /**
      * @return String. Your AWS Access Key ID.
      * 
@@ -92,18 +79,14 @@ public final class GuardianPushAmazonSns {
     public static Builder builder(GuardianPushAmazonSns defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String awsAccessKeyId;
         private String awsRegion;
         private String awsSecretAccessKey;
         private String snsApnsPlatformApplicationArn;
         private String snsGcmPlatformApplicationArn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuardianPushAmazonSns defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccessKeyId = defaults.awsAccessKeyId;
@@ -113,27 +96,39 @@ public final class GuardianPushAmazonSns {
     	      this.snsGcmPlatformApplicationArn = defaults.snsGcmPlatformApplicationArn;
         }
 
+        @CustomType.Setter
         public Builder awsAccessKeyId(String awsAccessKeyId) {
             this.awsAccessKeyId = Objects.requireNonNull(awsAccessKeyId);
             return this;
         }
+        @CustomType.Setter
         public Builder awsRegion(String awsRegion) {
             this.awsRegion = Objects.requireNonNull(awsRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder awsSecretAccessKey(String awsSecretAccessKey) {
             this.awsSecretAccessKey = Objects.requireNonNull(awsSecretAccessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder snsApnsPlatformApplicationArn(String snsApnsPlatformApplicationArn) {
             this.snsApnsPlatformApplicationArn = Objects.requireNonNull(snsApnsPlatformApplicationArn);
             return this;
         }
+        @CustomType.Setter
         public Builder snsGcmPlatformApplicationArn(String snsGcmPlatformApplicationArn) {
             this.snsGcmPlatformApplicationArn = Objects.requireNonNull(snsGcmPlatformApplicationArn);
             return this;
-        }        public GuardianPushAmazonSns build() {
-            return new GuardianPushAmazonSns(awsAccessKeyId, awsRegion, awsSecretAccessKey, snsApnsPlatformApplicationArn, snsGcmPlatformApplicationArn);
+        }
+        public GuardianPushAmazonSns build() {
+            final var o = new GuardianPushAmazonSns();
+            o.awsAccessKeyId = awsAccessKeyId;
+            o.awsRegion = awsRegion;
+            o.awsSecretAccessKey = awsSecretAccessKey;
+            o.snsApnsPlatformApplicationArn = snsApnsPlatformApplicationArn;
+            o.snsGcmPlatformApplicationArn = snsGcmPlatformApplicationArn;
+            return o;
         }
     }
 }

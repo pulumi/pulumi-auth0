@@ -15,13 +15,9 @@ public final class BrandingUniversalLogin {
      * @return String, body of login pages.
      * 
      */
-    private final @Nullable String body;
+    private @Nullable String body;
 
-    @CustomType.Constructor
-    private BrandingUniversalLogin(@CustomType.Parameter("body") @Nullable String body) {
-        this.body = body;
-    }
-
+    private BrandingUniversalLogin() {}
     /**
      * @return String, body of login pages.
      * 
@@ -37,24 +33,24 @@ public final class BrandingUniversalLogin {
     public static Builder builder(BrandingUniversalLogin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String body;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BrandingUniversalLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.body = defaults.body;
         }
 
+        @CustomType.Setter
         public Builder body(@Nullable String body) {
             this.body = body;
             return this;
-        }        public BrandingUniversalLogin build() {
-            return new BrandingUniversalLogin(body);
+        }
+        public BrandingUniversalLogin build() {
+            final var o = new BrandingUniversalLogin();
+            o.body = body;
+            return o;
         }
     }
 }

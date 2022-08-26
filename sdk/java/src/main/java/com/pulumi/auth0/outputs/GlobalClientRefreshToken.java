@@ -13,32 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientRefreshToken {
-    private final String expirationType;
-    private final @Nullable Integer idleTokenLifetime;
-    private final @Nullable Boolean infiniteIdleTokenLifetime;
-    private final @Nullable Boolean infiniteTokenLifetime;
-    private final @Nullable Integer leeway;
-    private final String rotationType;
-    private final @Nullable Integer tokenLifetime;
+    private String expirationType;
+    private @Nullable Integer idleTokenLifetime;
+    private @Nullable Boolean infiniteIdleTokenLifetime;
+    private @Nullable Boolean infiniteTokenLifetime;
+    private @Nullable Integer leeway;
+    private String rotationType;
+    private @Nullable Integer tokenLifetime;
 
-    @CustomType.Constructor
-    private GlobalClientRefreshToken(
-        @CustomType.Parameter("expirationType") String expirationType,
-        @CustomType.Parameter("idleTokenLifetime") @Nullable Integer idleTokenLifetime,
-        @CustomType.Parameter("infiniteIdleTokenLifetime") @Nullable Boolean infiniteIdleTokenLifetime,
-        @CustomType.Parameter("infiniteTokenLifetime") @Nullable Boolean infiniteTokenLifetime,
-        @CustomType.Parameter("leeway") @Nullable Integer leeway,
-        @CustomType.Parameter("rotationType") String rotationType,
-        @CustomType.Parameter("tokenLifetime") @Nullable Integer tokenLifetime) {
-        this.expirationType = expirationType;
-        this.idleTokenLifetime = idleTokenLifetime;
-        this.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
-        this.infiniteTokenLifetime = infiniteTokenLifetime;
-        this.leeway = leeway;
-        this.rotationType = rotationType;
-        this.tokenLifetime = tokenLifetime;
-    }
-
+    private GlobalClientRefreshToken() {}
     public String expirationType() {
         return this.expirationType;
     }
@@ -68,7 +51,7 @@ public final class GlobalClientRefreshToken {
     public static Builder builder(GlobalClientRefreshToken defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String expirationType;
         private @Nullable Integer idleTokenLifetime;
@@ -77,11 +60,7 @@ public final class GlobalClientRefreshToken {
         private @Nullable Integer leeway;
         private String rotationType;
         private @Nullable Integer tokenLifetime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalClientRefreshToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expirationType = defaults.expirationType;
@@ -93,35 +72,51 @@ public final class GlobalClientRefreshToken {
     	      this.tokenLifetime = defaults.tokenLifetime;
         }
 
+        @CustomType.Setter
         public Builder expirationType(String expirationType) {
             this.expirationType = Objects.requireNonNull(expirationType);
             return this;
         }
+        @CustomType.Setter
         public Builder idleTokenLifetime(@Nullable Integer idleTokenLifetime) {
             this.idleTokenLifetime = idleTokenLifetime;
             return this;
         }
+        @CustomType.Setter
         public Builder infiniteIdleTokenLifetime(@Nullable Boolean infiniteIdleTokenLifetime) {
             this.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
             return this;
         }
+        @CustomType.Setter
         public Builder infiniteTokenLifetime(@Nullable Boolean infiniteTokenLifetime) {
             this.infiniteTokenLifetime = infiniteTokenLifetime;
             return this;
         }
+        @CustomType.Setter
         public Builder leeway(@Nullable Integer leeway) {
             this.leeway = leeway;
             return this;
         }
+        @CustomType.Setter
         public Builder rotationType(String rotationType) {
             this.rotationType = Objects.requireNonNull(rotationType);
             return this;
         }
+        @CustomType.Setter
         public Builder tokenLifetime(@Nullable Integer tokenLifetime) {
             this.tokenLifetime = tokenLifetime;
             return this;
-        }        public GlobalClientRefreshToken build() {
-            return new GlobalClientRefreshToken(expirationType, idleTokenLifetime, infiniteIdleTokenLifetime, infiniteTokenLifetime, leeway, rotationType, tokenLifetime);
+        }
+        public GlobalClientRefreshToken build() {
+            final var o = new GlobalClientRefreshToken();
+            o.expirationType = expirationType;
+            o.idleTokenLifetime = idleTokenLifetime;
+            o.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
+            o.infiniteTokenLifetime = infiniteTokenLifetime;
+            o.leeway = leeway;
+            o.rotationType = rotationType;
+            o.tokenLifetime = tokenLifetime;
+            return o;
         }
     }
 }

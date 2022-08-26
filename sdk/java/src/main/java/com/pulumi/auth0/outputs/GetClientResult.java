@@ -20,120 +20,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClientResult {
-    private final List<GetClientAddon> addons;
-    private final List<String> allowedClients;
-    private final List<String> allowedLogoutUrls;
-    private final List<String> allowedOrigins;
-    private final String appType;
-    private final List<String> callbacks;
-    private final @Nullable String clientId;
-    private final Map<String,Object> clientMetadata;
-    private final String clientSecret;
-    private final Boolean crossOriginAuth;
-    private final String crossOriginLoc;
-    private final String customLoginPage;
-    private final Boolean customLoginPageOn;
-    private final String description;
-    private final Map<String,String> encryptionKey;
-    private final String formTemplate;
-    private final List<String> grantTypes;
+    private List<GetClientAddon> addons;
+    private List<String> allowedClients;
+    private List<String> allowedLogoutUrls;
+    private List<String> allowedOrigins;
+    private String appType;
+    private List<String> callbacks;
+    private @Nullable String clientId;
+    private Map<String,Object> clientMetadata;
+    private String clientSecret;
+    private Boolean crossOriginAuth;
+    private String crossOriginLoc;
+    private String customLoginPage;
+    private Boolean customLoginPageOn;
+    private String description;
+    private Map<String,String> encryptionKey;
+    private String formTemplate;
+    private List<String> grantTypes;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String initiateLoginUri;
-    private final Boolean isFirstParty;
-    private final Boolean isTokenEndpointIpHeaderTrusted;
-    private final List<GetClientJwtConfiguration> jwtConfigurations;
-    private final String logoUri;
-    private final List<GetClientMobile> mobiles;
-    private final @Nullable String name;
-    private final List<GetClientNativeSocialLogin> nativeSocialLogins;
-    private final Boolean oidcConformant;
-    private final String organizationRequireBehavior;
-    private final String organizationUsage;
-    private final List<GetClientRefreshToken> refreshTokens;
-    private final List<Map<String,Object>> signingKeys;
-    private final Boolean sso;
-    private final Boolean ssoDisabled;
-    private final String tokenEndpointAuthMethod;
-    private final List<String> webOrigins;
+    private String id;
+    private String initiateLoginUri;
+    private Boolean isFirstParty;
+    private Boolean isTokenEndpointIpHeaderTrusted;
+    private List<GetClientJwtConfiguration> jwtConfigurations;
+    private String logoUri;
+    private List<GetClientMobile> mobiles;
+    private @Nullable String name;
+    private List<GetClientNativeSocialLogin> nativeSocialLogins;
+    private Boolean oidcConformant;
+    private String organizationRequireBehavior;
+    private String organizationUsage;
+    private List<GetClientRefreshToken> refreshTokens;
+    private List<Map<String,Object>> signingKeys;
+    private Boolean sso;
+    private Boolean ssoDisabled;
+    private String tokenEndpointAuthMethod;
+    private List<String> webOrigins;
 
-    @CustomType.Constructor
-    private GetClientResult(
-        @CustomType.Parameter("addons") List<GetClientAddon> addons,
-        @CustomType.Parameter("allowedClients") List<String> allowedClients,
-        @CustomType.Parameter("allowedLogoutUrls") List<String> allowedLogoutUrls,
-        @CustomType.Parameter("allowedOrigins") List<String> allowedOrigins,
-        @CustomType.Parameter("appType") String appType,
-        @CustomType.Parameter("callbacks") List<String> callbacks,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientMetadata") Map<String,Object> clientMetadata,
-        @CustomType.Parameter("clientSecret") String clientSecret,
-        @CustomType.Parameter("crossOriginAuth") Boolean crossOriginAuth,
-        @CustomType.Parameter("crossOriginLoc") String crossOriginLoc,
-        @CustomType.Parameter("customLoginPage") String customLoginPage,
-        @CustomType.Parameter("customLoginPageOn") Boolean customLoginPageOn,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("encryptionKey") Map<String,String> encryptionKey,
-        @CustomType.Parameter("formTemplate") String formTemplate,
-        @CustomType.Parameter("grantTypes") List<String> grantTypes,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("initiateLoginUri") String initiateLoginUri,
-        @CustomType.Parameter("isFirstParty") Boolean isFirstParty,
-        @CustomType.Parameter("isTokenEndpointIpHeaderTrusted") Boolean isTokenEndpointIpHeaderTrusted,
-        @CustomType.Parameter("jwtConfigurations") List<GetClientJwtConfiguration> jwtConfigurations,
-        @CustomType.Parameter("logoUri") String logoUri,
-        @CustomType.Parameter("mobiles") List<GetClientMobile> mobiles,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nativeSocialLogins") List<GetClientNativeSocialLogin> nativeSocialLogins,
-        @CustomType.Parameter("oidcConformant") Boolean oidcConformant,
-        @CustomType.Parameter("organizationRequireBehavior") String organizationRequireBehavior,
-        @CustomType.Parameter("organizationUsage") String organizationUsage,
-        @CustomType.Parameter("refreshTokens") List<GetClientRefreshToken> refreshTokens,
-        @CustomType.Parameter("signingKeys") List<Map<String,Object>> signingKeys,
-        @CustomType.Parameter("sso") Boolean sso,
-        @CustomType.Parameter("ssoDisabled") Boolean ssoDisabled,
-        @CustomType.Parameter("tokenEndpointAuthMethod") String tokenEndpointAuthMethod,
-        @CustomType.Parameter("webOrigins") List<String> webOrigins) {
-        this.addons = addons;
-        this.allowedClients = allowedClients;
-        this.allowedLogoutUrls = allowedLogoutUrls;
-        this.allowedOrigins = allowedOrigins;
-        this.appType = appType;
-        this.callbacks = callbacks;
-        this.clientId = clientId;
-        this.clientMetadata = clientMetadata;
-        this.clientSecret = clientSecret;
-        this.crossOriginAuth = crossOriginAuth;
-        this.crossOriginLoc = crossOriginLoc;
-        this.customLoginPage = customLoginPage;
-        this.customLoginPageOn = customLoginPageOn;
-        this.description = description;
-        this.encryptionKey = encryptionKey;
-        this.formTemplate = formTemplate;
-        this.grantTypes = grantTypes;
-        this.id = id;
-        this.initiateLoginUri = initiateLoginUri;
-        this.isFirstParty = isFirstParty;
-        this.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
-        this.jwtConfigurations = jwtConfigurations;
-        this.logoUri = logoUri;
-        this.mobiles = mobiles;
-        this.name = name;
-        this.nativeSocialLogins = nativeSocialLogins;
-        this.oidcConformant = oidcConformant;
-        this.organizationRequireBehavior = organizationRequireBehavior;
-        this.organizationUsage = organizationUsage;
-        this.refreshTokens = refreshTokens;
-        this.signingKeys = signingKeys;
-        this.sso = sso;
-        this.ssoDisabled = ssoDisabled;
-        this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
-        this.webOrigins = webOrigins;
-    }
-
+    private GetClientResult() {}
     public List<GetClientAddon> addons() {
         return this.addons;
     }
@@ -251,7 +178,7 @@ public final class GetClientResult {
     public static Builder builder(GetClientResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClientAddon> addons;
         private List<String> allowedClients;
@@ -288,11 +215,7 @@ public final class GetClientResult {
         private Boolean ssoDisabled;
         private String tokenEndpointAuthMethod;
         private List<String> webOrigins;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addons = defaults.addons;
@@ -332,6 +255,7 @@ public final class GetClientResult {
     	      this.webOrigins = defaults.webOrigins;
         }
 
+        @CustomType.Setter
         public Builder addons(List<GetClientAddon> addons) {
             this.addons = Objects.requireNonNull(addons);
             return this;
@@ -339,6 +263,7 @@ public final class GetClientResult {
         public Builder addons(GetClientAddon... addons) {
             return addons(List.of(addons));
         }
+        @CustomType.Setter
         public Builder allowedClients(List<String> allowedClients) {
             this.allowedClients = Objects.requireNonNull(allowedClients);
             return this;
@@ -346,6 +271,7 @@ public final class GetClientResult {
         public Builder allowedClients(String... allowedClients) {
             return allowedClients(List.of(allowedClients));
         }
+        @CustomType.Setter
         public Builder allowedLogoutUrls(List<String> allowedLogoutUrls) {
             this.allowedLogoutUrls = Objects.requireNonNull(allowedLogoutUrls);
             return this;
@@ -353,6 +279,7 @@ public final class GetClientResult {
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
             return allowedLogoutUrls(List.of(allowedLogoutUrls));
         }
+        @CustomType.Setter
         public Builder allowedOrigins(List<String> allowedOrigins) {
             this.allowedOrigins = Objects.requireNonNull(allowedOrigins);
             return this;
@@ -360,10 +287,12 @@ public final class GetClientResult {
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
         }
+        @CustomType.Setter
         public Builder appType(String appType) {
             this.appType = Objects.requireNonNull(appType);
             return this;
         }
+        @CustomType.Setter
         public Builder callbacks(List<String> callbacks) {
             this.callbacks = Objects.requireNonNull(callbacks);
             return this;
@@ -371,46 +300,57 @@ public final class GetClientResult {
         public Builder callbacks(String... callbacks) {
             return callbacks(List.of(callbacks));
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientMetadata(Map<String,Object> clientMetadata) {
             this.clientMetadata = Objects.requireNonNull(clientMetadata);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
             this.clientSecret = Objects.requireNonNull(clientSecret);
             return this;
         }
+        @CustomType.Setter
         public Builder crossOriginAuth(Boolean crossOriginAuth) {
             this.crossOriginAuth = Objects.requireNonNull(crossOriginAuth);
             return this;
         }
+        @CustomType.Setter
         public Builder crossOriginLoc(String crossOriginLoc) {
             this.crossOriginLoc = Objects.requireNonNull(crossOriginLoc);
             return this;
         }
+        @CustomType.Setter
         public Builder customLoginPage(String customLoginPage) {
             this.customLoginPage = Objects.requireNonNull(customLoginPage);
             return this;
         }
+        @CustomType.Setter
         public Builder customLoginPageOn(Boolean customLoginPageOn) {
             this.customLoginPageOn = Objects.requireNonNull(customLoginPageOn);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionKey(Map<String,String> encryptionKey) {
             this.encryptionKey = Objects.requireNonNull(encryptionKey);
             return this;
         }
+        @CustomType.Setter
         public Builder formTemplate(String formTemplate) {
             this.formTemplate = Objects.requireNonNull(formTemplate);
             return this;
         }
+        @CustomType.Setter
         public Builder grantTypes(List<String> grantTypes) {
             this.grantTypes = Objects.requireNonNull(grantTypes);
             return this;
@@ -418,22 +358,27 @@ public final class GetClientResult {
         public Builder grantTypes(String... grantTypes) {
             return grantTypes(List.of(grantTypes));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder initiateLoginUri(String initiateLoginUri) {
             this.initiateLoginUri = Objects.requireNonNull(initiateLoginUri);
             return this;
         }
+        @CustomType.Setter
         public Builder isFirstParty(Boolean isFirstParty) {
             this.isFirstParty = Objects.requireNonNull(isFirstParty);
             return this;
         }
+        @CustomType.Setter
         public Builder isTokenEndpointIpHeaderTrusted(Boolean isTokenEndpointIpHeaderTrusted) {
             this.isTokenEndpointIpHeaderTrusted = Objects.requireNonNull(isTokenEndpointIpHeaderTrusted);
             return this;
         }
+        @CustomType.Setter
         public Builder jwtConfigurations(List<GetClientJwtConfiguration> jwtConfigurations) {
             this.jwtConfigurations = Objects.requireNonNull(jwtConfigurations);
             return this;
@@ -441,10 +386,12 @@ public final class GetClientResult {
         public Builder jwtConfigurations(GetClientJwtConfiguration... jwtConfigurations) {
             return jwtConfigurations(List.of(jwtConfigurations));
         }
+        @CustomType.Setter
         public Builder logoUri(String logoUri) {
             this.logoUri = Objects.requireNonNull(logoUri);
             return this;
         }
+        @CustomType.Setter
         public Builder mobiles(List<GetClientMobile> mobiles) {
             this.mobiles = Objects.requireNonNull(mobiles);
             return this;
@@ -452,10 +399,12 @@ public final class GetClientResult {
         public Builder mobiles(GetClientMobile... mobiles) {
             return mobiles(List.of(mobiles));
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nativeSocialLogins(List<GetClientNativeSocialLogin> nativeSocialLogins) {
             this.nativeSocialLogins = Objects.requireNonNull(nativeSocialLogins);
             return this;
@@ -463,18 +412,22 @@ public final class GetClientResult {
         public Builder nativeSocialLogins(GetClientNativeSocialLogin... nativeSocialLogins) {
             return nativeSocialLogins(List.of(nativeSocialLogins));
         }
+        @CustomType.Setter
         public Builder oidcConformant(Boolean oidcConformant) {
             this.oidcConformant = Objects.requireNonNull(oidcConformant);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationRequireBehavior(String organizationRequireBehavior) {
             this.organizationRequireBehavior = Objects.requireNonNull(organizationRequireBehavior);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationUsage(String organizationUsage) {
             this.organizationUsage = Objects.requireNonNull(organizationUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder refreshTokens(List<GetClientRefreshToken> refreshTokens) {
             this.refreshTokens = Objects.requireNonNull(refreshTokens);
             return this;
@@ -482,30 +435,72 @@ public final class GetClientResult {
         public Builder refreshTokens(GetClientRefreshToken... refreshTokens) {
             return refreshTokens(List.of(refreshTokens));
         }
+        @CustomType.Setter
         public Builder signingKeys(List<Map<String,Object>> signingKeys) {
             this.signingKeys = Objects.requireNonNull(signingKeys);
             return this;
         }
+        @CustomType.Setter
         public Builder sso(Boolean sso) {
             this.sso = Objects.requireNonNull(sso);
             return this;
         }
+        @CustomType.Setter
         public Builder ssoDisabled(Boolean ssoDisabled) {
             this.ssoDisabled = Objects.requireNonNull(ssoDisabled);
             return this;
         }
+        @CustomType.Setter
         public Builder tokenEndpointAuthMethod(String tokenEndpointAuthMethod) {
             this.tokenEndpointAuthMethod = Objects.requireNonNull(tokenEndpointAuthMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder webOrigins(List<String> webOrigins) {
             this.webOrigins = Objects.requireNonNull(webOrigins);
             return this;
         }
         public Builder webOrigins(String... webOrigins) {
             return webOrigins(List.of(webOrigins));
-        }        public GetClientResult build() {
-            return new GetClientResult(addons, allowedClients, allowedLogoutUrls, allowedOrigins, appType, callbacks, clientId, clientMetadata, clientSecret, crossOriginAuth, crossOriginLoc, customLoginPage, customLoginPageOn, description, encryptionKey, formTemplate, grantTypes, id, initiateLoginUri, isFirstParty, isTokenEndpointIpHeaderTrusted, jwtConfigurations, logoUri, mobiles, name, nativeSocialLogins, oidcConformant, organizationRequireBehavior, organizationUsage, refreshTokens, signingKeys, sso, ssoDisabled, tokenEndpointAuthMethod, webOrigins);
+        }
+        public GetClientResult build() {
+            final var o = new GetClientResult();
+            o.addons = addons;
+            o.allowedClients = allowedClients;
+            o.allowedLogoutUrls = allowedLogoutUrls;
+            o.allowedOrigins = allowedOrigins;
+            o.appType = appType;
+            o.callbacks = callbacks;
+            o.clientId = clientId;
+            o.clientMetadata = clientMetadata;
+            o.clientSecret = clientSecret;
+            o.crossOriginAuth = crossOriginAuth;
+            o.crossOriginLoc = crossOriginLoc;
+            o.customLoginPage = customLoginPage;
+            o.customLoginPageOn = customLoginPageOn;
+            o.description = description;
+            o.encryptionKey = encryptionKey;
+            o.formTemplate = formTemplate;
+            o.grantTypes = grantTypes;
+            o.id = id;
+            o.initiateLoginUri = initiateLoginUri;
+            o.isFirstParty = isFirstParty;
+            o.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
+            o.jwtConfigurations = jwtConfigurations;
+            o.logoUri = logoUri;
+            o.mobiles = mobiles;
+            o.name = name;
+            o.nativeSocialLogins = nativeSocialLogins;
+            o.oidcConformant = oidcConformant;
+            o.organizationRequireBehavior = organizationRequireBehavior;
+            o.organizationUsage = organizationUsage;
+            o.refreshTokens = refreshTokens;
+            o.signingKeys = signingKeys;
+            o.sso = sso;
+            o.ssoDisabled = ssoDisabled;
+            o.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
+            o.webOrigins = webOrigins;
+            return o;
         }
     }
 }

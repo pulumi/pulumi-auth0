@@ -15,157 +15,110 @@ public final class TenantFlags {
      * @return Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
      * 
      */
-    private final @Nullable Boolean allowLegacyDelegationGrantTypes;
+    private @Nullable Boolean allowLegacyDelegationGrantTypes;
     /**
      * @return Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
      * 
      */
-    private final @Nullable Boolean allowLegacyRoGrantTypes;
+    private @Nullable Boolean allowLegacyRoGrantTypes;
     /**
      * @return Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
      * 
      */
-    private final @Nullable Boolean allowLegacyTokeninfoEndpoint;
+    private @Nullable Boolean allowLegacyTokeninfoEndpoint;
     /**
      * @return Boolean. Enables new insights activity page view.
      * 
      */
-    private final @Nullable Boolean dashboardInsightsView;
+    private @Nullable Boolean dashboardInsightsView;
     /**
      * @return Boolean. Enables beta access to log streaming changes.
      * 
      */
-    private final @Nullable Boolean dashboardLogStreamsNext;
+    private @Nullable Boolean dashboardLogStreamsNext;
     /**
      * @return Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      * 
      */
-    private final @Nullable Boolean disableClickjackProtectionHeaders;
+    private @Nullable Boolean disableClickjackProtectionHeaders;
     /**
      * @return Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
      * 
      */
-    private final @Nullable Boolean disableFieldsMapFix;
+    private @Nullable Boolean disableFieldsMapFix;
     /**
      * @return Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      * 
      */
-    private final @Nullable Boolean disableManagementApiSmsObfuscation;
+    private @Nullable Boolean disableManagementApiSmsObfuscation;
     /**
      * @return Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      * 
      */
-    private final @Nullable Boolean enableAdfsWaadEmailVerification;
+    private @Nullable Boolean enableAdfsWaadEmailVerification;
     /**
      * @return Boolean. Indicates whether the APIs section is enabled for the tenant.
      * 
      */
-    private final @Nullable Boolean enableApisSection;
+    private @Nullable Boolean enableApisSection;
     /**
      * @return Boolean. Indicates whether all current connections should be enabled when a new client is created.
      * 
      */
-    private final @Nullable Boolean enableClientConnections;
+    private @Nullable Boolean enableClientConnections;
     /**
      * @return Boolean. Indicates whether the tenant allows custom domains in emails.
      * 
      */
-    private final @Nullable Boolean enableCustomDomainInEmails;
+    private @Nullable Boolean enableCustomDomainInEmails;
     /**
      * @return Boolean. Indicates whether the tenant allows dynamic client registration.
      * 
      */
-    private final @Nullable Boolean enableDynamicClientRegistration;
+    private @Nullable Boolean enableDynamicClientRegistration;
     /**
      * @return Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
      * 
      */
-    private final @Nullable Boolean enableIdtokenApi2;
+    private @Nullable Boolean enableIdtokenApi2;
     /**
      * @return Boolean. Indicates whether to use the older v2 legacy logs search.
      * 
      */
-    private final @Nullable Boolean enableLegacyLogsSearchV2;
+    private @Nullable Boolean enableLegacyLogsSearchV2;
     /**
      * @return Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
      * 
      */
-    private final @Nullable Boolean enableLegacyProfile;
+    private @Nullable Boolean enableLegacyProfile;
     /**
      * @return Boolean. Indicates whether advanced API Authorization scenarios are enabled.
      * 
      */
-    private final @Nullable Boolean enablePipeline2;
+    private @Nullable Boolean enablePipeline2;
     /**
      * @return Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
      * 
      */
-    private final @Nullable Boolean enablePublicSignupUserExistsError;
+    private @Nullable Boolean enablePublicSignupUserExistsError;
     /**
      * @return Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      * 
      */
-    private final @Nullable Boolean noDiscloseEnterpriseConnections;
+    private @Nullable Boolean noDiscloseEnterpriseConnections;
     /**
      * @return Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
      * 
      */
-    private final @Nullable Boolean revokeRefreshTokenGrant;
+    private @Nullable Boolean revokeRefreshTokenGrant;
     /**
      * @return Boolean. Indicates whether the tenant uses universal login.
      * 
      */
-    private final @Nullable Boolean universalLogin;
-    private final @Nullable Boolean useScopeDescriptionsForConsent;
+    private @Nullable Boolean universalLogin;
+    private @Nullable Boolean useScopeDescriptionsForConsent;
 
-    @CustomType.Constructor
-    private TenantFlags(
-        @CustomType.Parameter("allowLegacyDelegationGrantTypes") @Nullable Boolean allowLegacyDelegationGrantTypes,
-        @CustomType.Parameter("allowLegacyRoGrantTypes") @Nullable Boolean allowLegacyRoGrantTypes,
-        @CustomType.Parameter("allowLegacyTokeninfoEndpoint") @Nullable Boolean allowLegacyTokeninfoEndpoint,
-        @CustomType.Parameter("dashboardInsightsView") @Nullable Boolean dashboardInsightsView,
-        @CustomType.Parameter("dashboardLogStreamsNext") @Nullable Boolean dashboardLogStreamsNext,
-        @CustomType.Parameter("disableClickjackProtectionHeaders") @Nullable Boolean disableClickjackProtectionHeaders,
-        @CustomType.Parameter("disableFieldsMapFix") @Nullable Boolean disableFieldsMapFix,
-        @CustomType.Parameter("disableManagementApiSmsObfuscation") @Nullable Boolean disableManagementApiSmsObfuscation,
-        @CustomType.Parameter("enableAdfsWaadEmailVerification") @Nullable Boolean enableAdfsWaadEmailVerification,
-        @CustomType.Parameter("enableApisSection") @Nullable Boolean enableApisSection,
-        @CustomType.Parameter("enableClientConnections") @Nullable Boolean enableClientConnections,
-        @CustomType.Parameter("enableCustomDomainInEmails") @Nullable Boolean enableCustomDomainInEmails,
-        @CustomType.Parameter("enableDynamicClientRegistration") @Nullable Boolean enableDynamicClientRegistration,
-        @CustomType.Parameter("enableIdtokenApi2") @Nullable Boolean enableIdtokenApi2,
-        @CustomType.Parameter("enableLegacyLogsSearchV2") @Nullable Boolean enableLegacyLogsSearchV2,
-        @CustomType.Parameter("enableLegacyProfile") @Nullable Boolean enableLegacyProfile,
-        @CustomType.Parameter("enablePipeline2") @Nullable Boolean enablePipeline2,
-        @CustomType.Parameter("enablePublicSignupUserExistsError") @Nullable Boolean enablePublicSignupUserExistsError,
-        @CustomType.Parameter("noDiscloseEnterpriseConnections") @Nullable Boolean noDiscloseEnterpriseConnections,
-        @CustomType.Parameter("revokeRefreshTokenGrant") @Nullable Boolean revokeRefreshTokenGrant,
-        @CustomType.Parameter("universalLogin") @Nullable Boolean universalLogin,
-        @CustomType.Parameter("useScopeDescriptionsForConsent") @Nullable Boolean useScopeDescriptionsForConsent) {
-        this.allowLegacyDelegationGrantTypes = allowLegacyDelegationGrantTypes;
-        this.allowLegacyRoGrantTypes = allowLegacyRoGrantTypes;
-        this.allowLegacyTokeninfoEndpoint = allowLegacyTokeninfoEndpoint;
-        this.dashboardInsightsView = dashboardInsightsView;
-        this.dashboardLogStreamsNext = dashboardLogStreamsNext;
-        this.disableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
-        this.disableFieldsMapFix = disableFieldsMapFix;
-        this.disableManagementApiSmsObfuscation = disableManagementApiSmsObfuscation;
-        this.enableAdfsWaadEmailVerification = enableAdfsWaadEmailVerification;
-        this.enableApisSection = enableApisSection;
-        this.enableClientConnections = enableClientConnections;
-        this.enableCustomDomainInEmails = enableCustomDomainInEmails;
-        this.enableDynamicClientRegistration = enableDynamicClientRegistration;
-        this.enableIdtokenApi2 = enableIdtokenApi2;
-        this.enableLegacyLogsSearchV2 = enableLegacyLogsSearchV2;
-        this.enableLegacyProfile = enableLegacyProfile;
-        this.enablePipeline2 = enablePipeline2;
-        this.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
-        this.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
-        this.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
-        this.universalLogin = universalLogin;
-        this.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
-    }
-
+    private TenantFlags() {}
     /**
      * @return Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
      * 
@@ -324,7 +277,7 @@ public final class TenantFlags {
     public static Builder builder(TenantFlags defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowLegacyDelegationGrantTypes;
         private @Nullable Boolean allowLegacyRoGrantTypes;
@@ -348,11 +301,7 @@ public final class TenantFlags {
         private @Nullable Boolean revokeRefreshTokenGrant;
         private @Nullable Boolean universalLogin;
         private @Nullable Boolean useScopeDescriptionsForConsent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TenantFlags defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowLegacyDelegationGrantTypes = defaults.allowLegacyDelegationGrantTypes;
@@ -379,95 +328,141 @@ public final class TenantFlags {
     	      this.useScopeDescriptionsForConsent = defaults.useScopeDescriptionsForConsent;
         }
 
+        @CustomType.Setter
         public Builder allowLegacyDelegationGrantTypes(@Nullable Boolean allowLegacyDelegationGrantTypes) {
             this.allowLegacyDelegationGrantTypes = allowLegacyDelegationGrantTypes;
             return this;
         }
+        @CustomType.Setter
         public Builder allowLegacyRoGrantTypes(@Nullable Boolean allowLegacyRoGrantTypes) {
             this.allowLegacyRoGrantTypes = allowLegacyRoGrantTypes;
             return this;
         }
+        @CustomType.Setter
         public Builder allowLegacyTokeninfoEndpoint(@Nullable Boolean allowLegacyTokeninfoEndpoint) {
             this.allowLegacyTokeninfoEndpoint = allowLegacyTokeninfoEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder dashboardInsightsView(@Nullable Boolean dashboardInsightsView) {
             this.dashboardInsightsView = dashboardInsightsView;
             return this;
         }
+        @CustomType.Setter
         public Builder dashboardLogStreamsNext(@Nullable Boolean dashboardLogStreamsNext) {
             this.dashboardLogStreamsNext = dashboardLogStreamsNext;
             return this;
         }
+        @CustomType.Setter
         public Builder disableClickjackProtectionHeaders(@Nullable Boolean disableClickjackProtectionHeaders) {
             this.disableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
             return this;
         }
+        @CustomType.Setter
         public Builder disableFieldsMapFix(@Nullable Boolean disableFieldsMapFix) {
             this.disableFieldsMapFix = disableFieldsMapFix;
             return this;
         }
+        @CustomType.Setter
         public Builder disableManagementApiSmsObfuscation(@Nullable Boolean disableManagementApiSmsObfuscation) {
             this.disableManagementApiSmsObfuscation = disableManagementApiSmsObfuscation;
             return this;
         }
+        @CustomType.Setter
         public Builder enableAdfsWaadEmailVerification(@Nullable Boolean enableAdfsWaadEmailVerification) {
             this.enableAdfsWaadEmailVerification = enableAdfsWaadEmailVerification;
             return this;
         }
+        @CustomType.Setter
         public Builder enableApisSection(@Nullable Boolean enableApisSection) {
             this.enableApisSection = enableApisSection;
             return this;
         }
+        @CustomType.Setter
         public Builder enableClientConnections(@Nullable Boolean enableClientConnections) {
             this.enableClientConnections = enableClientConnections;
             return this;
         }
+        @CustomType.Setter
         public Builder enableCustomDomainInEmails(@Nullable Boolean enableCustomDomainInEmails) {
             this.enableCustomDomainInEmails = enableCustomDomainInEmails;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDynamicClientRegistration(@Nullable Boolean enableDynamicClientRegistration) {
             this.enableDynamicClientRegistration = enableDynamicClientRegistration;
             return this;
         }
+        @CustomType.Setter
         public Builder enableIdtokenApi2(@Nullable Boolean enableIdtokenApi2) {
             this.enableIdtokenApi2 = enableIdtokenApi2;
             return this;
         }
+        @CustomType.Setter
         public Builder enableLegacyLogsSearchV2(@Nullable Boolean enableLegacyLogsSearchV2) {
             this.enableLegacyLogsSearchV2 = enableLegacyLogsSearchV2;
             return this;
         }
+        @CustomType.Setter
         public Builder enableLegacyProfile(@Nullable Boolean enableLegacyProfile) {
             this.enableLegacyProfile = enableLegacyProfile;
             return this;
         }
+        @CustomType.Setter
         public Builder enablePipeline2(@Nullable Boolean enablePipeline2) {
             this.enablePipeline2 = enablePipeline2;
             return this;
         }
+        @CustomType.Setter
         public Builder enablePublicSignupUserExistsError(@Nullable Boolean enablePublicSignupUserExistsError) {
             this.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
             return this;
         }
+        @CustomType.Setter
         public Builder noDiscloseEnterpriseConnections(@Nullable Boolean noDiscloseEnterpriseConnections) {
             this.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             return this;
         }
+        @CustomType.Setter
         public Builder revokeRefreshTokenGrant(@Nullable Boolean revokeRefreshTokenGrant) {
             this.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
             return this;
         }
+        @CustomType.Setter
         public Builder universalLogin(@Nullable Boolean universalLogin) {
             this.universalLogin = universalLogin;
             return this;
         }
+        @CustomType.Setter
         public Builder useScopeDescriptionsForConsent(@Nullable Boolean useScopeDescriptionsForConsent) {
             this.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
             return this;
-        }        public TenantFlags build() {
-            return new TenantFlags(allowLegacyDelegationGrantTypes, allowLegacyRoGrantTypes, allowLegacyTokeninfoEndpoint, dashboardInsightsView, dashboardLogStreamsNext, disableClickjackProtectionHeaders, disableFieldsMapFix, disableManagementApiSmsObfuscation, enableAdfsWaadEmailVerification, enableApisSection, enableClientConnections, enableCustomDomainInEmails, enableDynamicClientRegistration, enableIdtokenApi2, enableLegacyLogsSearchV2, enableLegacyProfile, enablePipeline2, enablePublicSignupUserExistsError, noDiscloseEnterpriseConnections, revokeRefreshTokenGrant, universalLogin, useScopeDescriptionsForConsent);
+        }
+        public TenantFlags build() {
+            final var o = new TenantFlags();
+            o.allowLegacyDelegationGrantTypes = allowLegacyDelegationGrantTypes;
+            o.allowLegacyRoGrantTypes = allowLegacyRoGrantTypes;
+            o.allowLegacyTokeninfoEndpoint = allowLegacyTokeninfoEndpoint;
+            o.dashboardInsightsView = dashboardInsightsView;
+            o.dashboardLogStreamsNext = dashboardLogStreamsNext;
+            o.disableClickjackProtectionHeaders = disableClickjackProtectionHeaders;
+            o.disableFieldsMapFix = disableFieldsMapFix;
+            o.disableManagementApiSmsObfuscation = disableManagementApiSmsObfuscation;
+            o.enableAdfsWaadEmailVerification = enableAdfsWaadEmailVerification;
+            o.enableApisSection = enableApisSection;
+            o.enableClientConnections = enableClientConnections;
+            o.enableCustomDomainInEmails = enableCustomDomainInEmails;
+            o.enableDynamicClientRegistration = enableDynamicClientRegistration;
+            o.enableIdtokenApi2 = enableIdtokenApi2;
+            o.enableLegacyLogsSearchV2 = enableLegacyLogsSearchV2;
+            o.enableLegacyProfile = enableLegacyProfile;
+            o.enablePipeline2 = enablePipeline2;
+            o.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            o.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
+            o.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
+            o.universalLogin = universalLogin;
+            o.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
+            return o;
         }
     }
 }

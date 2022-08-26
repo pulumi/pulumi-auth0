@@ -16,21 +16,14 @@ public final class ConnectionOptionsPasswordHistory {
      * @return Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
     /**
      * @return Indicates the number of passwords to keep in history with a maximum of 24.
      * 
      */
-    private final @Nullable Integer size;
+    private @Nullable Integer size;
 
-    @CustomType.Constructor
-    private ConnectionOptionsPasswordHistory(
-        @CustomType.Parameter("enable") @Nullable Boolean enable,
-        @CustomType.Parameter("size") @Nullable Integer size) {
-        this.enable = enable;
-        this.size = size;
-    }
-
+    private ConnectionOptionsPasswordHistory() {}
     /**
      * @return Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
      * 
@@ -53,30 +46,32 @@ public final class ConnectionOptionsPasswordHistory {
     public static Builder builder(ConnectionOptionsPasswordHistory defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable Integer size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsPasswordHistory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
             this.size = size;
             return this;
-        }        public ConnectionOptionsPasswordHistory build() {
-            return new ConnectionOptionsPasswordHistory(enable, size);
+        }
+        public ConnectionOptionsPasswordHistory build() {
+            final var o = new ConnectionOptionsPasswordHistory();
+            o.enable = enable;
+            o.size = size;
+            return o;
         }
     }
 }

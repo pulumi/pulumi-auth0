@@ -15,21 +15,14 @@ public final class ConnectionOptionsMfa {
      * @return Indicates whether multifactor authentication is enabled for this connection.
      * 
      */
-    private final @Nullable Boolean active;
+    private @Nullable Boolean active;
     /**
      * @return Indicates whether multifactor authentication enrollment settings will be returned.
      * 
      */
-    private final @Nullable Boolean returnEnrollSettings;
+    private @Nullable Boolean returnEnrollSettings;
 
-    @CustomType.Constructor
-    private ConnectionOptionsMfa(
-        @CustomType.Parameter("active") @Nullable Boolean active,
-        @CustomType.Parameter("returnEnrollSettings") @Nullable Boolean returnEnrollSettings) {
-        this.active = active;
-        this.returnEnrollSettings = returnEnrollSettings;
-    }
-
+    private ConnectionOptionsMfa() {}
     /**
      * @return Indicates whether multifactor authentication is enabled for this connection.
      * 
@@ -52,30 +45,32 @@ public final class ConnectionOptionsMfa {
     public static Builder builder(ConnectionOptionsMfa defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean active;
         private @Nullable Boolean returnEnrollSettings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsMfa defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.active = defaults.active;
     	      this.returnEnrollSettings = defaults.returnEnrollSettings;
         }
 
+        @CustomType.Setter
         public Builder active(@Nullable Boolean active) {
             this.active = active;
             return this;
         }
+        @CustomType.Setter
         public Builder returnEnrollSettings(@Nullable Boolean returnEnrollSettings) {
             this.returnEnrollSettings = returnEnrollSettings;
             return this;
-        }        public ConnectionOptionsMfa build() {
-            return new ConnectionOptionsMfa(active, returnEnrollSettings);
+        }
+        public ConnectionOptionsMfa build() {
+            final var o = new ConnectionOptionsMfa();
+            o.active = active;
+            o.returnEnrollSettings = returnEnrollSettings;
+            return o;
         }
     }
 }

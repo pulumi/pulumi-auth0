@@ -15,28 +15,19 @@ public final class GuardianPushCustomApp {
      * @return String. Custom Application Name.
      * 
      */
-    private final @Nullable String appName;
+    private @Nullable String appName;
     /**
      * @return String. Apple App Store URL.
      * 
      */
-    private final @Nullable String appleAppLink;
+    private @Nullable String appleAppLink;
     /**
      * @return String. Google Store URL.
      * 
      */
-    private final @Nullable String googleAppLink;
+    private @Nullable String googleAppLink;
 
-    @CustomType.Constructor
-    private GuardianPushCustomApp(
-        @CustomType.Parameter("appName") @Nullable String appName,
-        @CustomType.Parameter("appleAppLink") @Nullable String appleAppLink,
-        @CustomType.Parameter("googleAppLink") @Nullable String googleAppLink) {
-        this.appName = appName;
-        this.appleAppLink = appleAppLink;
-        this.googleAppLink = googleAppLink;
-    }
-
+    private GuardianPushCustomApp() {}
     /**
      * @return String. Custom Application Name.
      * 
@@ -66,16 +57,12 @@ public final class GuardianPushCustomApp {
     public static Builder builder(GuardianPushCustomApp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String appName;
         private @Nullable String appleAppLink;
         private @Nullable String googleAppLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuardianPushCustomApp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appName = defaults.appName;
@@ -83,19 +70,27 @@ public final class GuardianPushCustomApp {
     	      this.googleAppLink = defaults.googleAppLink;
         }
 
+        @CustomType.Setter
         public Builder appName(@Nullable String appName) {
             this.appName = appName;
             return this;
         }
+        @CustomType.Setter
         public Builder appleAppLink(@Nullable String appleAppLink) {
             this.appleAppLink = appleAppLink;
             return this;
         }
+        @CustomType.Setter
         public Builder googleAppLink(@Nullable String googleAppLink) {
             this.googleAppLink = googleAppLink;
             return this;
-        }        public GuardianPushCustomApp build() {
-            return new GuardianPushCustomApp(appName, appleAppLink, googleAppLink);
+        }
+        public GuardianPushCustomApp build() {
+            final var o = new GuardianPushCustomApp();
+            o.appName = appName;
+            o.appleAppLink = appleAppLink;
+            o.googleAppLink = googleAppLink;
+            return o;
         }
     }
 }

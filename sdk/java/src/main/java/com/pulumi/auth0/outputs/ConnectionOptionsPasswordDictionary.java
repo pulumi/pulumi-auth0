@@ -17,21 +17,14 @@ public final class ConnectionOptionsPasswordDictionary {
      * @return Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
      * 
      */
-    private final @Nullable List<String> dictionaries;
+    private @Nullable List<String> dictionaries;
     /**
      * @return Indicates whether the password dictionary check is enabled for this connection.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
 
-    @CustomType.Constructor
-    private ConnectionOptionsPasswordDictionary(
-        @CustomType.Parameter("dictionaries") @Nullable List<String> dictionaries,
-        @CustomType.Parameter("enable") @Nullable Boolean enable) {
-        this.dictionaries = dictionaries;
-        this.enable = enable;
-    }
-
+    private ConnectionOptionsPasswordDictionary() {}
     /**
      * @return Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
      * 
@@ -54,21 +47,18 @@ public final class ConnectionOptionsPasswordDictionary {
     public static Builder builder(ConnectionOptionsPasswordDictionary defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> dictionaries;
         private @Nullable Boolean enable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionOptionsPasswordDictionary defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dictionaries = defaults.dictionaries;
     	      this.enable = defaults.enable;
         }
 
+        @CustomType.Setter
         public Builder dictionaries(@Nullable List<String> dictionaries) {
             this.dictionaries = dictionaries;
             return this;
@@ -76,11 +66,16 @@ public final class ConnectionOptionsPasswordDictionary {
         public Builder dictionaries(String... dictionaries) {
             return dictionaries(List.of(dictionaries));
         }
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
-        }        public ConnectionOptionsPasswordDictionary build() {
-            return new ConnectionOptionsPasswordDictionary(dictionaries, enable);
+        }
+        public ConnectionOptionsPasswordDictionary build() {
+            final var o = new ConnectionOptionsPasswordDictionary();
+            o.dictionaries = dictionaries;
+            o.enable = enable;
+            return o;
         }
     }
 }
