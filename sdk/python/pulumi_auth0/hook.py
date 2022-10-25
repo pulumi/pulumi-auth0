@@ -256,7 +256,7 @@ class Hook(pulumi.CustomResource):
 
         ## Import
 
-        # A hook can be imported using the hook's ID. # # Example
+        A hook can be imported using the hook's ID. # Example
 
         ```sh
          $ pulumi import auth0:index/hook:Hook my_hook 00001
@@ -304,7 +304,7 @@ class Hook(pulumi.CustomResource):
 
         ## Import
 
-        # A hook can be imported using the hook's ID. # # Example
+        A hook can be imported using the hook's ID. # Example
 
         ```sh
          $ pulumi import auth0:index/hook:Hook my_hook 00001
@@ -346,10 +346,12 @@ class Hook(pulumi.CustomResource):
             if script is None and not opts.urn:
                 raise TypeError("Missing required property 'script'")
             __props__.__dict__["script"] = script
-            __props__.__dict__["secrets"] = secrets
+            __props__.__dict__["secrets"] = None if secrets is None else pulumi.Output.secret(secrets)
             if trigger_id is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_id'")
             __props__.__dict__["trigger_id"] = trigger_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secrets"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Hook, __self__).__init__(
             'auth0:index/hook:Hook',
             resource_name,

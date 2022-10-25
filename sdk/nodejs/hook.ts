@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # A hook can be imported using the hook's ID. # # Example
+ * A hook can be imported using the hook's ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/hook:Hook my_hook 00001
@@ -121,10 +121,12 @@ export class Hook extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["script"] = args ? args.script : undefined;
-            resourceInputs["secrets"] = args ? args.secrets : undefined;
+            resourceInputs["secrets"] = args?.secrets ? pulumi.secret(args.secrets) : undefined;
             resourceInputs["triggerId"] = args ? args.triggerId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secrets"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Hook.__pulumiType, name, resourceInputs, opts);
     }
 }

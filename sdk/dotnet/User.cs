@@ -47,7 +47,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # This resource can be imported using the user ID. # # Example
+    /// This resource can be imported using the user ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
@@ -187,6 +187,10 @@ namespace Pulumi.Auth0
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -264,11 +268,21 @@ namespace Pulumi.Auth0
         [Input("nickname")]
         public Input<string>? Nickname { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Initial password for this user. Required for non-passwordless connections (SMS and email).
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
@@ -386,11 +400,21 @@ namespace Pulumi.Auth0
         [Input("nickname")]
         public Input<string>? Nickname { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Initial password for this user. Required for non-passwordless connections (SMS and email).
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.

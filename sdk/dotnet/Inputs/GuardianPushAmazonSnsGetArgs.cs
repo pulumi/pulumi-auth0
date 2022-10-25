@@ -19,7 +19,16 @@ namespace Pulumi.Auth0.Inputs
         public Input<string> AwsRegion { get; set; } = null!;
 
         [Input("awsSecretAccessKey", required: true)]
-        public Input<string> AwsSecretAccessKey { get; set; } = null!;
+        private Input<string>? _awsSecretAccessKey;
+        public Input<string>? AwsSecretAccessKey
+        {
+            get => _awsSecretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsSecretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("snsApnsPlatformApplicationArn", required: true)]
         public Input<string> SnsApnsPlatformApplicationArn { get; set; } = null!;

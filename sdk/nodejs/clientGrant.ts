@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Client grants can be imported using the grant ID. # # Application -> APIs -> Expand the required API # # Example
+ * Client grants can be imported using the grant ID. # Application -> APIs -> Expand the required API # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX

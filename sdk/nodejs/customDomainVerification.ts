@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # You can import this resource using the custom domain ID. # # Example
+ * You can import this resource using the custom domain ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
@@ -83,6 +83,8 @@ export class CustomDomainVerification extends pulumi.CustomResource {
             resourceInputs["originDomainName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["cnameApiKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(CustomDomainVerification.__pulumiType, name, resourceInputs, opts);
     }
 }

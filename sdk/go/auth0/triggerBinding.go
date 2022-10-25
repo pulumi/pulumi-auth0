@@ -75,7 +75,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using the bindings trigger ID. # # Example
+// This resource can be imported using the bindings trigger ID. # Example
 //
 // ```sh
 //

@@ -42,7 +42,7 @@ import (
 //
 // ## Import
 //
-// # Custom domains can be imported using their ID. # # Example
+// Custom domains can be imported using their ID. # Example
 //
 // ```sh
 //

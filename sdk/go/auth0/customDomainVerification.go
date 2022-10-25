@@ -15,7 +15,7 @@ import (
 //
 // ## Import
 //
-// # You can import this resource using the custom domain ID. # # Example
+// You can import this resource using the custom domain ID. # Example
 //
 // ```sh
 //
@@ -44,6 +44,10 @@ func NewCustomDomainVerification(ctx *pulumi.Context,
 	if args.CustomDomainId == nil {
 		return nil, errors.New("invalid value for required argument 'CustomDomainId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"cnameApiKey",
+	})
+	opts = append(opts, secrets)
 	var resource CustomDomainVerification
 	err := ctx.RegisterResource("auth0:index/customDomainVerification:CustomDomainVerification", name, args, &resource, opts...)
 	if err != nil {

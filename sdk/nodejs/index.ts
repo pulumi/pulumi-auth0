@@ -5,37 +5,159 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./action";
-export * from "./attackProtection";
-export * from "./branding";
-export * from "./brandingTheme";
-export * from "./client";
-export * from "./clientGrant";
-export * from "./connection";
-export * from "./customDomain";
-export * from "./customDomainVerification";
-export * from "./email";
-export * from "./emailTemplate";
-export * from "./getClient";
-export * from "./getGlobalClient";
-export * from "./getTenant";
-export * from "./globalClient";
-export * from "./guardian";
-export * from "./hook";
-export * from "./logStream";
-export * from "./organization";
-export * from "./organizationConnection";
-export * from "./organizationMember";
-export * from "./prompt";
-export * from "./promptCustomText";
-export * from "./provider";
-export * from "./resourceServer";
-export * from "./role";
-export * from "./rule";
-export * from "./ruleConfig";
-export * from "./tenant";
-export * from "./triggerBinding";
-export * from "./user";
+export { ActionArgs, ActionState } from "./action";
+export type Action = import("./action").Action;
+export const Action: typeof import("./action").Action = null as any;
+utilities.lazyLoad(exports, ["Action"], () => require("./action"));
+
+export { AttackProtectionArgs, AttackProtectionState } from "./attackProtection";
+export type AttackProtection = import("./attackProtection").AttackProtection;
+export const AttackProtection: typeof import("./attackProtection").AttackProtection = null as any;
+utilities.lazyLoad(exports, ["AttackProtection"], () => require("./attackProtection"));
+
+export { BrandingArgs, BrandingState } from "./branding";
+export type Branding = import("./branding").Branding;
+export const Branding: typeof import("./branding").Branding = null as any;
+utilities.lazyLoad(exports, ["Branding"], () => require("./branding"));
+
+export { BrandingThemeArgs, BrandingThemeState } from "./brandingTheme";
+export type BrandingTheme = import("./brandingTheme").BrandingTheme;
+export const BrandingTheme: typeof import("./brandingTheme").BrandingTheme = null as any;
+utilities.lazyLoad(exports, ["BrandingTheme"], () => require("./brandingTheme"));
+
+export { ClientArgs, ClientState } from "./client";
+export type Client = import("./client").Client;
+export const Client: typeof import("./client").Client = null as any;
+utilities.lazyLoad(exports, ["Client"], () => require("./client"));
+
+export { ClientGrantArgs, ClientGrantState } from "./clientGrant";
+export type ClientGrant = import("./clientGrant").ClientGrant;
+export const ClientGrant: typeof import("./clientGrant").ClientGrant = null as any;
+utilities.lazyLoad(exports, ["ClientGrant"], () => require("./clientGrant"));
+
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { CustomDomainArgs, CustomDomainState } from "./customDomain";
+export type CustomDomain = import("./customDomain").CustomDomain;
+export const CustomDomain: typeof import("./customDomain").CustomDomain = null as any;
+utilities.lazyLoad(exports, ["CustomDomain"], () => require("./customDomain"));
+
+export { CustomDomainVerificationArgs, CustomDomainVerificationState } from "./customDomainVerification";
+export type CustomDomainVerification = import("./customDomainVerification").CustomDomainVerification;
+export const CustomDomainVerification: typeof import("./customDomainVerification").CustomDomainVerification = null as any;
+utilities.lazyLoad(exports, ["CustomDomainVerification"], () => require("./customDomainVerification"));
+
+export { EmailArgs, EmailState } from "./email";
+export type Email = import("./email").Email;
+export const Email: typeof import("./email").Email = null as any;
+utilities.lazyLoad(exports, ["Email"], () => require("./email"));
+
+export { EmailTemplateArgs, EmailTemplateState } from "./emailTemplate";
+export type EmailTemplate = import("./emailTemplate").EmailTemplate;
+export const EmailTemplate: typeof import("./emailTemplate").EmailTemplate = null as any;
+utilities.lazyLoad(exports, ["EmailTemplate"], () => require("./emailTemplate"));
+
+export { GetClientArgs, GetClientResult, GetClientOutputArgs } from "./getClient";
+export const getClient: typeof import("./getClient").getClient = null as any;
+export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
+utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
+
+export { GetGlobalClientResult } from "./getGlobalClient";
+export const getGlobalClient: typeof import("./getGlobalClient").getGlobalClient = null as any;
+utilities.lazyLoad(exports, ["getGlobalClient"], () => require("./getGlobalClient"));
+
+export { GetTenantResult } from "./getTenant";
+export const getTenant: typeof import("./getTenant").getTenant = null as any;
+utilities.lazyLoad(exports, ["getTenant"], () => require("./getTenant"));
+
+export { GlobalClientArgs, GlobalClientState } from "./globalClient";
+export type GlobalClient = import("./globalClient").GlobalClient;
+export const GlobalClient: typeof import("./globalClient").GlobalClient = null as any;
+utilities.lazyLoad(exports, ["GlobalClient"], () => require("./globalClient"));
+
+export { GuardianArgs, GuardianState } from "./guardian";
+export type Guardian = import("./guardian").Guardian;
+export const Guardian: typeof import("./guardian").Guardian = null as any;
+utilities.lazyLoad(exports, ["Guardian"], () => require("./guardian"));
+
+export { HookArgs, HookState } from "./hook";
+export type Hook = import("./hook").Hook;
+export const Hook: typeof import("./hook").Hook = null as any;
+utilities.lazyLoad(exports, ["Hook"], () => require("./hook"));
+
+export { LogStreamArgs, LogStreamState } from "./logStream";
+export type LogStream = import("./logStream").LogStream;
+export const LogStream: typeof import("./logStream").LogStream = null as any;
+utilities.lazyLoad(exports, ["LogStream"], () => require("./logStream"));
+
+export { OrganizationArgs, OrganizationState } from "./organization";
+export type Organization = import("./organization").Organization;
+export const Organization: typeof import("./organization").Organization = null as any;
+utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
+
+export { OrganizationConnectionArgs, OrganizationConnectionState } from "./organizationConnection";
+export type OrganizationConnection = import("./organizationConnection").OrganizationConnection;
+export const OrganizationConnection: typeof import("./organizationConnection").OrganizationConnection = null as any;
+utilities.lazyLoad(exports, ["OrganizationConnection"], () => require("./organizationConnection"));
+
+export { OrganizationMemberArgs, OrganizationMemberState } from "./organizationMember";
+export type OrganizationMember = import("./organizationMember").OrganizationMember;
+export const OrganizationMember: typeof import("./organizationMember").OrganizationMember = null as any;
+utilities.lazyLoad(exports, ["OrganizationMember"], () => require("./organizationMember"));
+
+export { PromptArgs, PromptState } from "./prompt";
+export type Prompt = import("./prompt").Prompt;
+export const Prompt: typeof import("./prompt").Prompt = null as any;
+utilities.lazyLoad(exports, ["Prompt"], () => require("./prompt"));
+
+export { PromptCustomTextArgs, PromptCustomTextState } from "./promptCustomText";
+export type PromptCustomText = import("./promptCustomText").PromptCustomText;
+export const PromptCustomText: typeof import("./promptCustomText").PromptCustomText = null as any;
+utilities.lazyLoad(exports, ["PromptCustomText"], () => require("./promptCustomText"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { ResourceServerArgs, ResourceServerState } from "./resourceServer";
+export type ResourceServer = import("./resourceServer").ResourceServer;
+export const ResourceServer: typeof import("./resourceServer").ResourceServer = null as any;
+utilities.lazyLoad(exports, ["ResourceServer"], () => require("./resourceServer"));
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
+export { RuleConfigArgs, RuleConfigState } from "./ruleConfig";
+export type RuleConfig = import("./ruleConfig").RuleConfig;
+export const RuleConfig: typeof import("./ruleConfig").RuleConfig = null as any;
+utilities.lazyLoad(exports, ["RuleConfig"], () => require("./ruleConfig"));
+
+export { TenantArgs, TenantState } from "./tenant";
+export type Tenant = import("./tenant").Tenant;
+export const Tenant: typeof import("./tenant").Tenant = null as any;
+utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
+
+export { TriggerBindingArgs, TriggerBindingState } from "./triggerBinding";
+export type TriggerBinding = import("./triggerBinding").TriggerBinding;
+export const TriggerBinding: typeof import("./triggerBinding").TriggerBinding = null as any;
+utilities.lazyLoad(exports, ["TriggerBinding"], () => require("./triggerBinding"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -45,35 +167,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { Action } from "./action";
-import { AttackProtection } from "./attackProtection";
-import { Branding } from "./branding";
-import { BrandingTheme } from "./brandingTheme";
-import { Client } from "./client";
-import { ClientGrant } from "./clientGrant";
-import { Connection } from "./connection";
-import { CustomDomain } from "./customDomain";
-import { CustomDomainVerification } from "./customDomainVerification";
-import { Email } from "./email";
-import { EmailTemplate } from "./emailTemplate";
-import { GlobalClient } from "./globalClient";
-import { Guardian } from "./guardian";
-import { Hook } from "./hook";
-import { LogStream } from "./logStream";
-import { Organization } from "./organization";
-import { OrganizationConnection } from "./organizationConnection";
-import { OrganizationMember } from "./organizationMember";
-import { Prompt } from "./prompt";
-import { PromptCustomText } from "./promptCustomText";
-import { ResourceServer } from "./resourceServer";
-import { Role } from "./role";
-import { Rule } from "./rule";
-import { RuleConfig } from "./ruleConfig";
-import { Tenant } from "./tenant";
-import { TriggerBinding } from "./triggerBinding";
-import { User } from "./user";
 
 const _module = {
     version: utilities.getVersion(),
@@ -165,9 +258,6 @@ pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerBinding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/user", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("auth0", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

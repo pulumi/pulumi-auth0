@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # A client can be imported using the client&#39;s ID. # # Example
+ * A client can be imported using the client&#39;s ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
@@ -671,6 +671,10 @@ public class Client extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "clientSecret",
+                "signingKeys"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -110,7 +110,7 @@ import (
 //
 // ## Import
 //
-// # Branding Themes can be imported using their ID. # # Example
+// Branding Themes can be imported using their ID. # Example
 //
 // ```sh
 //

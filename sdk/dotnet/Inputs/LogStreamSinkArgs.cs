@@ -54,11 +54,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("azureSubscriptionId")]
         public Input<string>? AzureSubscriptionId { get; set; }
 
+        [Input("datadogApiKey")]
+        private Input<string>? _datadogApiKey;
+
         /// <summary>
         /// The Datadog API key.
         /// </summary>
-        [Input("datadogApiKey")]
-        public Input<string>? DatadogApiKey { get; set; }
+        public Input<string>? DatadogApiKey
+        {
+            get => _datadogApiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _datadogApiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Datadog region. Options are ["us", "eu", "us3", "us5"].
@@ -66,11 +76,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("datadogRegion")]
         public Input<string>? DatadogRegion { get; set; }
 
+        [Input("httpAuthorization")]
+        private Input<string>? _httpAuthorization;
+
         /// <summary>
         /// Sent in the HTTP "Authorization" header with each request.
         /// </summary>
-        [Input("httpAuthorization")]
-        public Input<string>? HttpAuthorization { get; set; }
+        public Input<string>? HttpAuthorization
+        {
+            get => _httpAuthorization;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _httpAuthorization = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
@@ -120,11 +140,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("splunkSecure")]
         public Input<bool>? SplunkSecure { get; set; }
 
+        [Input("splunkToken")]
+        private Input<string>? _splunkToken;
+
         /// <summary>
         /// The Splunk access token.
         /// </summary>
-        [Input("splunkToken")]
-        public Input<string>? SplunkToken { get; set; }
+        public Input<string>? SplunkToken
+        {
+            get => _splunkToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _splunkToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0.

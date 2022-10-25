@@ -51,7 +51,7 @@ import (
 //
 // ## Import
 //
-// # A hook can be imported using the hook's ID. # # Example
+// A hook can be imported using the hook's ID. # Example
 //
 // ```sh
 //
@@ -88,6 +88,13 @@ func NewHook(ctx *pulumi.Context,
 	if args.TriggerId == nil {
 		return nil, errors.New("invalid value for required argument 'TriggerId'")
 	}
+	if args.Secrets != nil {
+		args.Secrets = pulumi.ToSecret(args.Secrets).(pulumi.MapOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secrets",
+	})
+	opts = append(opts, secrets)
 	var resource Hook
 	err := ctx.RegisterResource("auth0:index/hook:Hook", name, args, &resource, opts...)
 	if err != nil {

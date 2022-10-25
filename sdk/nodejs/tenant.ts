@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -63,7 +64,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # As this is not a resource identifiable by an ID within the Auth0 Management API, # tenant can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/tenant:Tenant my_tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4

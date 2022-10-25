@@ -650,7 +650,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        # This resource can be imported using the user ID. # # Example
+        This resource can be imported using the user ID. # Example
 
         ```sh
          $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
@@ -707,7 +707,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        # This resource can be imported using the user ID. # # Example
+        This resource can be imported using the user ID. # Example
 
         ```sh
          $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
@@ -766,7 +766,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["given_name"] = given_name
             __props__.__dict__["name"] = name
             __props__.__dict__["nickname"] = nickname
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["phone_number"] = phone_number
             __props__.__dict__["phone_verified"] = phone_verified
             __props__.__dict__["picture"] = picture
@@ -775,6 +775,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["user_metadata"] = user_metadata
             __props__.__dict__["username"] = username
             __props__.__dict__["verify_email"] = verify_email
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'auth0:index/user:User',
             resource_name,

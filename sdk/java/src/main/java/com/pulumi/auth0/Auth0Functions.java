@@ -267,31 +267,6 @@ public final class Auth0Functions {
      * Retrieves a tenant&#39;s global Auth0 Application client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGlobalClientResult> getGlobalClient() {
@@ -301,31 +276,6 @@ public final class Auth0Functions {
      * Retrieves a tenant&#39;s global Auth0 Application client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGlobalClientResult> getGlobalClientPlain() {
@@ -335,31 +285,6 @@ public final class Auth0Functions {
      * Retrieves a tenant&#39;s global Auth0 Application client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGlobalClientResult> getGlobalClient(InvokeArgs args) {
@@ -369,31 +294,6 @@ public final class Auth0Functions {
      * Retrieves a tenant&#39;s global Auth0 Application client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGlobalClientResult> getGlobalClientPlain(InvokeArgs args) {
@@ -403,31 +303,6 @@ public final class Auth0Functions {
      * Retrieves a tenant&#39;s global Auth0 Application client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGlobalClientResult> getGlobalClient(InvokeArgs args, InvokeOptions options) {
@@ -437,31 +312,6 @@ public final class Auth0Functions {
      * Retrieves a tenant&#39;s global Auth0 Application client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var global = Auth0Functions.getGlobalClient();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGlobalClientResult> getGlobalClientPlain(InvokeArgs args, InvokeOptions options) {
@@ -471,31 +321,6 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetTenantResult> getTenant() {
@@ -505,31 +330,6 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetTenantResult> getTenantPlain() {
@@ -539,31 +339,6 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetTenantResult> getTenant(InvokeArgs args) {
@@ -573,31 +348,6 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetTenantResult> getTenantPlain(InvokeArgs args) {
@@ -607,31 +357,6 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetTenantResult> getTenant(InvokeArgs args, InvokeOptions options) {
@@ -641,31 +366,6 @@ public final class Auth0Functions {
      * Use this data source to access information about the tenant this provider is configured to access.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myTenant = Auth0Functions.getTenant();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetTenantResult> getTenantPlain(InvokeArgs args, InvokeOptions options) {

@@ -72,11 +72,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// The strategy's client secret.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Salesforce community base URL.
@@ -93,7 +103,11 @@ namespace Pulumi.Auth0.Inputs
         public InputMap<object> Configuration
         {
             get => _configuration ?? (_configuration = new InputMap<object>());
-            set => _configuration = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _configuration = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("customScripts")]
@@ -498,11 +512,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("twilioSid")]
         public Input<string>? TwilioSid { get; set; }
 
+        [Input("twilioToken")]
+        private Input<string>? _twilioToken;
+
         /// <summary>
         /// AuthToken for your Twilio account.
         /// </summary>
-        [Input("twilioToken")]
-        public Input<string>? TwilioToken { get; set; }
+        public Input<string>? TwilioToken
+        {
+            get => _twilioToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _twilioToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Value can be `back_channel` or `front_channel`.

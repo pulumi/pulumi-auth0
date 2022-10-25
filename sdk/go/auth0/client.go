@@ -14,7 +14,7 @@ import (
 //
 // ## Import
 //
-// # A client can be imported using the client's ID. # # Example
+// A client can be imported using the client's ID. # Example
 //
 // ```sh
 //
@@ -109,6 +109,11 @@ func NewClient(ctx *pulumi.Context,
 	if isZero(args.Description) {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientSecret",
+		"signingKeys",
+	})
+	opts = append(opts, secrets)
 	var resource Client
 	err := ctx.RegisterResource("auth0:index/client:Client", name, args, &resource, opts...)
 	if err != nil {

@@ -32,7 +32,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # Custom domains can be imported using their ID. # # Example
+    /// Custom domains can be imported using their ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX

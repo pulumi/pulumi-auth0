@@ -175,7 +175,7 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        # Existing roles can be imported using their ID. # # Example
+        Existing roles can be imported using their ID. # Example
 
         ```sh
          $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
@@ -230,7 +230,7 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        # Existing roles can be imported using their ID. # # Example
+        Existing roles can be imported using their ID. # Example
 
         ```sh
          $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX

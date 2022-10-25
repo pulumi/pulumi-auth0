@@ -13,27 +13,9 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Use this data source to access information about the tenant this provider is configured to access.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myTenant = Auth0.GetTenant.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTenantResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("auth0:index/getTenant:getTenant", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("auth0:index/getTenant:getTenant", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

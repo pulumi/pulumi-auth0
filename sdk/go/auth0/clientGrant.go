@@ -65,7 +65,7 @@ import (
 //
 // ## Import
 //
-// # Client grants can be imported using the grant ID. # # Application -> APIs -> Expand the required API # # Example
+// Client grants can be imported using the grant ID. # Application -> APIs -> Expand the required API # Example
 //
 // ```sh
 //

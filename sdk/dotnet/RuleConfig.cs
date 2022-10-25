@@ -42,7 +42,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # Existing rule configs can be imported using their key name. # # Example
+    /// Existing rule configs can be imported using their key name. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
@@ -86,6 +86,10 @@ namespace Pulumi.Auth0
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -115,11 +119,21 @@ namespace Pulumi.Auth0
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        [Input("value", required: true)]
+        private Input<string>? _value;
+
         /// <summary>
         /// Value for a rules configuration variable.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public RuleConfigArgs()
         {
@@ -135,11 +149,21 @@ namespace Pulumi.Auth0
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// Value for a rules configuration variable.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public RuleConfigState()
         {

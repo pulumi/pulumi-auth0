@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -61,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # A hook can be imported using the hook&#39;s ID. # # Example
+ * A hook can be imported using the hook&#39;s ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/hook:Hook my_hook 00001
@@ -187,6 +188,9 @@ public class Hook extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secrets"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

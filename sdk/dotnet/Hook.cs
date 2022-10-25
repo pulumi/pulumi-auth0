@@ -45,7 +45,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # A hook can be imported using the hook's ID. # # Example
+    /// A hook can be imported using the hook's ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/hook:Hook my_hook 00001
@@ -113,6 +113,10 @@ namespace Pulumi.Auth0
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secrets",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -175,7 +179,11 @@ namespace Pulumi.Auth0
         public InputMap<object> Secrets
         {
             get => _secrets ?? (_secrets = new InputMap<object>());
-            set => _secrets = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _secrets = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -231,7 +239,11 @@ namespace Pulumi.Auth0
         public InputMap<object> Secrets
         {
             get => _secrets ?? (_secrets = new InputMap<object>());
-            set => _secrets = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _secrets = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

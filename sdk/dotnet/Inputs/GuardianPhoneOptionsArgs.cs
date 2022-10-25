@@ -13,7 +13,16 @@ namespace Pulumi.Auth0.Inputs
     public sealed class GuardianPhoneOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
+        private Input<string>? _authToken;
+        public Input<string>? AuthToken
+        {
+            get => _authToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("enrollmentMessage")]
         public Input<string>? EnrollmentMessage { get; set; }

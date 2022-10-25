@@ -611,7 +611,7 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        # Connections can be imported using their ID. # # Example
+        Connections can be imported using their ID. # Example
 
         ```sh
          $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
@@ -865,7 +865,7 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        # Connections can be imported using their ID. # # Example
+        Connections can be imported using their ID. # Example
 
         ```sh
          $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0

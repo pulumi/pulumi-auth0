@@ -111,7 +111,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # Branding Themes can be imported using their ID. # # Example
+    /// Branding Themes can be imported using their ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme XXXXXXXXXXXXXXXXXXXX

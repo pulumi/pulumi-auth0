@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -30,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # The auth0_global_client can be imported using the global client's ID. # # You can find the ID of the global client by going to the # [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) # and fetching the clients that have `"global"true`. # # Example
+ * The auth0_global_client can be imported using the global client's ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
@@ -270,7 +271,7 @@ export class GlobalClient extends pulumi.CustomResource {
             resourceInputs["clientAliases"] = args ? args.clientAliases : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientMetadata"] = args ? args.clientMetadata : undefined;
-            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
             resourceInputs["clientSecretRotationTrigger"] = args ? args.clientSecretRotationTrigger : undefined;
             resourceInputs["crossOriginAuth"] = args ? args.crossOriginAuth : undefined;
             resourceInputs["crossOriginLoc"] = args ? args.crossOriginLoc : undefined;
@@ -292,13 +293,15 @@ export class GlobalClient extends pulumi.CustomResource {
             resourceInputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = args ? args.organizationUsage : undefined;
             resourceInputs["refreshToken"] = args ? args.refreshToken : undefined;
-            resourceInputs["signingKeys"] = args ? args.signingKeys : undefined;
+            resourceInputs["signingKeys"] = args?.signingKeys ? pulumi.secret(args.signingKeys) : undefined;
             resourceInputs["sso"] = args ? args.sso : undefined;
             resourceInputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
             resourceInputs["tokenEndpointAuthMethod"] = args ? args.tokenEndpointAuthMethod : undefined;
             resourceInputs["webOrigins"] = args ? args.webOrigins : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientSecret", "signingKeys"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GlobalClient.__pulumiType, name, resourceInputs, opts);
     }
 }

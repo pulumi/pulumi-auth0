@@ -54,7 +54,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # This resource can be imported by specifying the # organization ID and user ID separated by ":". # # Example
+    /// This resource can be imported by specifying the organization ID and user ID separated by ":". # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX:auth0|XXXXX"

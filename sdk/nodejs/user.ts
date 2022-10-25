@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # This resource can be imported using the user ID. # # Example
+ * This resource can be imported using the user ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
@@ -181,7 +181,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["givenName"] = args ? args.givenName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nickname"] = args ? args.nickname : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["phoneNumber"] = args ? args.phoneNumber : undefined;
             resourceInputs["phoneVerified"] = args ? args.phoneVerified : undefined;
             resourceInputs["picture"] = args ? args.picture : undefined;
@@ -192,6 +192,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["verifyEmail"] = args ? args.verifyEmail : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }

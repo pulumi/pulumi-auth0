@@ -19,7 +19,16 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? Method { get; set; }
 
         [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        private Input<string>? _secret;
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("secretBase64Encoded")]
         public Input<bool>? SecretBase64Encoded { get; set; }

@@ -74,7 +74,7 @@ import (
 //
 // ## Import
 //
-// # An existing log stream can be imported using its ID. # # Example
+// An existing log stream can be imported using its ID. # Example
 //
 // ```sh
 //

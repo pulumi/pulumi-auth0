@@ -104,7 +104,7 @@ class CustomDomainVerification(pulumi.CustomResource):
 
         ## Import
 
-        # You can import this resource using the custom domain ID. # # Example
+        You can import this resource using the custom domain ID. # Example
 
         ```sh
          $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
@@ -125,7 +125,7 @@ class CustomDomainVerification(pulumi.CustomResource):
 
         ## Import
 
-        # You can import this resource using the custom domain ID. # # Example
+        You can import this resource using the custom domain ID. # Example
 
         ```sh
          $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
@@ -161,6 +161,8 @@ class CustomDomainVerification(pulumi.CustomResource):
             __props__.__dict__["custom_domain_id"] = custom_domain_id
             __props__.__dict__["cname_api_key"] = None
             __props__.__dict__["origin_domain_name"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["cnameApiKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(CustomDomainVerification, __self__).__init__(
             'auth0:index/customDomainVerification:CustomDomainVerification',
             resource_name,

@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -18,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # You can import this resource using the custom domain ID. # # Example
+ * You can import this resource using the custom domain ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
@@ -104,6 +105,9 @@ public class CustomDomainVerification extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "cnameApiKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

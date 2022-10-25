@@ -53,7 +53,7 @@ import (
 //
 // ## Import
 //
-// # Existing organizations can be imported using the organization ID. # # Example
+// Existing organizations can be imported using the organization ID. # Example
 //
 // ```sh
 //

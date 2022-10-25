@@ -57,7 +57,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # Client grants can be imported using the grant ID. # # Application -&gt; APIs -&gt; Expand the required API # # Example
+    /// Client grants can be imported using the grant ID. # Application -&gt; APIs -&gt; Expand the required API # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX

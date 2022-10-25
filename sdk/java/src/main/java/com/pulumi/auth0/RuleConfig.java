@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -61,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Existing rule configs can be imported using their key name. # # Example
+ * Existing rule configs can be imported using their key name. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
@@ -131,6 +132,9 @@ public class RuleConfig extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "value"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

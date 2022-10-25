@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -51,7 +52,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # An existing log stream can be imported using its ID. # # Example
+ * An existing log stream can be imported using its ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX

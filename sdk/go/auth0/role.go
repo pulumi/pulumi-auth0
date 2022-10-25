@@ -78,7 +78,7 @@ import (
 //
 // ## Import
 //
-// # Existing roles can be imported using their ID. # # Example
+// Existing roles can be imported using their ID. # Example
 //
 // ```sh
 //

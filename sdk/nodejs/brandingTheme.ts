@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -90,7 +91,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Branding Themes can be imported using their ID. # # Example
+ * Branding Themes can be imported using their ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme XXXXXXXXXXXXXXXXXXXX

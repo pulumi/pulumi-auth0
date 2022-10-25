@@ -55,7 +55,7 @@ import (
 //
 // ## Import
 //
-// # Existing resource servers can be imported using their ID. # # Example
+// Existing resource servers can be imported using their ID. # Example
 //
 // ```sh
 //

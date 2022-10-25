@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -94,7 +95,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # A client can be imported using the client's ID. # # Example
+ * A client can be imported using the client's ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
@@ -363,6 +364,8 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["signingKeys"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientSecret", "signingKeys"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Client.__pulumiType, name, resourceInputs, opts);
     }
 }

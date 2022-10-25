@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # An action can be imported using the action&#39;s ID. # # Example
+ * An action can be imported using the action&#39;s ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4

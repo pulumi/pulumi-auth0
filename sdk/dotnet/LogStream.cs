@@ -72,7 +72,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # An existing log stream can be imported using its ID. # # Example
+    /// An existing log stream can be imported using its ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX

@@ -55,7 +55,7 @@ import (
 //
 // ## Import
 //
-// # The auth0_global_client can be imported using the global client's ID. # # You can find the ID of the global client by going to the # [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) # and fetching the clients that have `"global"true`. # # Example
+// The auth0_global_client can be imported using the global client's ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`. # Example
 //
 // ```sh
 //
@@ -147,6 +147,17 @@ func NewGlobalClient(ctx *pulumi.Context,
 		args = &GlobalClientArgs{}
 	}
 
+	if args.ClientSecret != nil {
+		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrOutput)
+	}
+	if args.SigningKeys != nil {
+		args.SigningKeys = pulumi.ToSecret(args.SigningKeys).(pulumi.MapArrayOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientSecret",
+		"signingKeys",
+	})
+	opts = append(opts, secrets)
 	var resource GlobalClient
 	err := ctx.RegisterResource("auth0:index/globalClient:GlobalClient", name, args, &resource, opts...)
 	if err != nil {

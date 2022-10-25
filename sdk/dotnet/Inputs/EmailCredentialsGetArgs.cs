@@ -12,17 +12,37 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class EmailCredentialsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKeyId")]
+        private Input<string>? _accessKeyId;
+
         /// <summary>
         /// AWS Access Key ID. Used only for AWS.
         /// </summary>
-        [Input("accessKeyId")]
-        public Input<string>? AccessKeyId { get; set; }
+        public Input<string>? AccessKeyId
+        {
+            get => _accessKeyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("apiKey")]
+        private Input<string>? _apiKey;
 
         /// <summary>
         /// API Key for your email service. Will always be encrypted in our database.
         /// </summary>
-        [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// API User for your email service.
@@ -42,11 +62,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("secretAccessKey")]
+        private Input<string>? _secretAccessKey;
+
         /// <summary>
         /// AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
         /// </summary>
-        [Input("secretAccessKey")]
-        public Input<string>? SecretAccessKey { get; set; }
+        public Input<string>? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Hostname or IP address of your SMTP server. Used only for SMTP.
@@ -54,11 +84,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("smtpHost")]
         public Input<string>? SmtpHost { get; set; }
 
+        [Input("smtpPass")]
+        private Input<string>? _smtpPass;
+
         /// <summary>
         /// SMTP password. Used only for SMTP.
         /// </summary>
-        [Input("smtpPass")]
-        public Input<string>? SmtpPass { get; set; }
+        public Input<string>? SmtpPass
+        {
+            get => _smtpPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _smtpPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.

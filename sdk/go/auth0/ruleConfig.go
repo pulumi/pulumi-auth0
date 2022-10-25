@@ -51,7 +51,7 @@ import (
 //
 // ## Import
 //
-// # Existing rule configs can be imported using their key name. # # Example
+// Existing rule configs can be imported using their key name. # Example
 //
 // ```sh
 //
@@ -80,6 +80,13 @@ func NewRuleConfig(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource RuleConfig
 	err := ctx.RegisterResource("auth0:index/ruleConfig:RuleConfig", name, args, &resource, opts...)
 	if err != nil {

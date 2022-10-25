@@ -15,7 +15,7 @@ import (
 //
 // ## Import
 //
-// # An action can be imported using the action's ID. # # Example
+// An action can be imported using the action's ID. # Example
 //
 // ```sh
 //

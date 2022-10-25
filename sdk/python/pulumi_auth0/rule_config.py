@@ -120,7 +120,7 @@ class RuleConfig(pulumi.CustomResource):
 
         ## Import
 
-        # Existing rule configs can be imported using their key name. # # Example
+        Existing rule configs can be imported using their key name. # Example
 
         ```sh
          $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
@@ -160,7 +160,7 @@ class RuleConfig(pulumi.CustomResource):
 
         ## Import
 
-        # Existing rule configs can be imported using their key name. # # Example
+        Existing rule configs can be imported using their key name. # Example
 
         ```sh
          $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
@@ -197,7 +197,9 @@ class RuleConfig(pulumi.CustomResource):
             __props__.__dict__["key"] = key
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__.__dict__["value"] = value
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RuleConfig, __self__).__init__(
             'auth0:index/ruleConfig:RuleConfig',
             resource_name,

@@ -64,7 +64,7 @@ namespace Pulumi.Auth0
     ///             },
     ///         },
     ///         RecoveryCode = true,
-    ///         WebauthnPlatform = ,
+    ///         WebauthnPlatform = null,
     ///         WebauthnRoaming = new Auth0.Inputs.GuardianWebauthnRoamingArgs
     ///         {
     ///             UserVerification = "required",
@@ -76,7 +76,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # As this is not a resource identifiable by an ID within the Auth0 Management API, # guardian can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
+    /// As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/guardian:Guardian my_guardian 24940d4b-4bd4-44e7-894e-f92e4de36a40

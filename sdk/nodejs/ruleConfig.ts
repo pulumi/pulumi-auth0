@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Existing rule configs can be imported using their key name. # # Example
+ * Existing rule configs can be imported using their key name. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
@@ -95,9 +95,11 @@ export class RuleConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'value'");
             }
             resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RuleConfig.__pulumiType, name, resourceInputs, opts);
     }
 }

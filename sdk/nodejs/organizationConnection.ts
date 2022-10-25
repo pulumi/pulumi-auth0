@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # This resource can be imported by specifying the # organization ID and connection ID separated by ":". # # Example
+ * This resource can be imported by specifying the organization ID and connection ID separated by ":". # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn org_XXXXX:con_XXXXX

@@ -1251,7 +1251,7 @@ class GlobalClient(pulumi.CustomResource):
 
         ## Import
 
-        # The auth0_global_client can be imported using the global client's ID. # # You can find the ID of the global client by going to the # [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) # and fetching the clients that have `"global"true`. # # Example
+        The auth0_global_client can be imported using the global client's ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`. # Example
 
         ```sh
          $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
@@ -1327,7 +1327,7 @@ class GlobalClient(pulumi.CustomResource):
 
         ## Import
 
-        # The auth0_global_client can be imported using the global client's ID. # # You can find the ID of the global client by going to the # [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) # and fetching the clients that have `"global"true`. # # Example
+        The auth0_global_client can be imported using the global client's ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`. # Example
 
         ```sh
          $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
@@ -1402,7 +1402,7 @@ class GlobalClient(pulumi.CustomResource):
             __props__.__dict__["client_aliases"] = client_aliases
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_metadata"] = client_metadata
-            __props__.__dict__["client_secret"] = client_secret
+            __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
             __props__.__dict__["client_secret_rotation_trigger"] = client_secret_rotation_trigger
             __props__.__dict__["cross_origin_auth"] = cross_origin_auth
             __props__.__dict__["cross_origin_loc"] = cross_origin_loc
@@ -1424,11 +1424,13 @@ class GlobalClient(pulumi.CustomResource):
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
-            __props__.__dict__["signing_keys"] = signing_keys
+            __props__.__dict__["signing_keys"] = None if signing_keys is None else pulumi.Output.secret(signing_keys)
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
             __props__.__dict__["token_endpoint_auth_method"] = token_endpoint_auth_method
             __props__.__dict__["web_origins"] = web_origins
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret", "signingKeys"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GlobalClient, __self__).__init__(
             'auth0:index/globalClient:GlobalClient',
             resource_name,

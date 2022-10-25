@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # An action can be imported using the action's ID. # # Example
+ * An action can be imported using the action's ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4

@@ -14,7 +14,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # You can import this resource using the custom domain ID. # # Example
+    /// You can import this resource using the custom domain ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
@@ -65,6 +65,10 @@ namespace Pulumi.Auth0
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "cnameApiKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -102,12 +106,22 @@ namespace Pulumi.Auth0
 
     public sealed class CustomDomainVerificationState : global::Pulumi.ResourceArgs
     {
+        [Input("cnameApiKey")]
+        private Input<string>? _cnameApiKey;
+
         /// <summary>
         /// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
         /// is `self_managed_certs` and Terraform originally managed the domain's verification.
         /// </summary>
-        [Input("cnameApiKey")]
-        public Input<string>? CnameApiKey { get; set; }
+        public Input<string>? CnameApiKey
+        {
+            get => _cnameApiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cnameApiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// ID of the custom domain resource.

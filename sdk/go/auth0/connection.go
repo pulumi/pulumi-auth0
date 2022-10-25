@@ -398,7 +398,7 @@ import (
 //
 // ## Import
 //
-// # Connections can be imported using their ID. # # Example
+// Connections can be imported using their ID. # Example
 //
 // ```sh
 //

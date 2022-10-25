@@ -59,7 +59,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using the user ID. # # Example
+// This resource can be imported using the user ID. # Example
 //
 // ```sh
 //
@@ -117,6 +117,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.ConnectionName == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectionName'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("auth0:index/user:User", name, args, &resource, opts...)
 	if err != nil {

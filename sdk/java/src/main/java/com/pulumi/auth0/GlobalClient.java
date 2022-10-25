@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # The auth0_global_client can be imported using the global client&#39;s ID. # # You can find the ID of the global client by going to the # [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) # and fetching the clients that have `&#34;global&#34;true`. # # Example
+ * The auth0_global_client can be imported using the global client&#39;s ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `&#34;global&#34;true`. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
@@ -616,6 +616,10 @@ public class GlobalClient extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "clientSecret",
+                "signingKeys"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

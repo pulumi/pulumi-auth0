@@ -24,11 +24,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("integrationKey", required: true)]
         public Input<string> IntegrationKey { get; set; } = null!;
 
+        [Input("secretKey", required: true)]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// Duo client secret, see the Duo documentation for more details on Duo setup.
         /// </summary>
-        [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GuardianDuoGetArgs()
         {

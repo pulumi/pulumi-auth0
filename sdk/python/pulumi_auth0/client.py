@@ -1183,7 +1183,7 @@ class Client(pulumi.CustomResource):
 
         ## Import
 
-        # A client can be imported using the client's ID. # # Example
+        A client can be imported using the client's ID. # Example
 
         ```sh
          $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
@@ -1236,7 +1236,7 @@ class Client(pulumi.CustomResource):
 
         ## Import
 
-        # A client can be imported using the client's ID. # # Example
+        A client can be imported using the client's ID. # Example
 
         ```sh
          $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
@@ -1337,6 +1337,8 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["client_id"] = None
             __props__.__dict__["client_secret"] = None
             __props__.__dict__["signing_keys"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret", "signingKeys"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Client, __self__).__init__(
             'auth0:index/client:Client',
             resource_name,

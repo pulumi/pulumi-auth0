@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupClient(ctx, &GetClientArgs{
+//			_, err = auth0.LookupClient(ctx, &GetClientArgs{
 //				Name: pulumi.StringRef("Name of my Application"),
 //			}, nil)
 //			if err != nil {

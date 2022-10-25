@@ -464,15 +464,6 @@ class AwaitableGetGlobalClientResult(GetGlobalClientResult):
 def get_global_client(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGlobalClientResult:
     """
     Retrieves a tenant's global Auth0 Application client.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    global_ = auth0.get_global_client()
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -43,7 +43,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// # The auth0_global_client can be imported using the global client's ID. # # You can find the ID of the global client by going to the # [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) # and fetching the clients that have `"global"true`. # # Example
+    /// The auth0_global_client can be imported using the global client's ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
@@ -292,6 +292,11 @@ namespace Pulumi.Auth0
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clientSecret",
+                    "signingKeys",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -405,12 +410,22 @@ namespace Pulumi.Auth0
             set => _clientMetadata = value;
         }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
         /// Terraform client. Otherwise, the attribute will contain an empty string.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clientSecretRotationTrigger")]
         private InputMap<object>? _clientSecretRotationTrigger;
@@ -565,7 +580,11 @@ namespace Pulumi.Auth0
         public InputList<ImmutableDictionary<string, object>> SigningKeys
         {
             get => _signingKeys ?? (_signingKeys = new InputList<ImmutableDictionary<string, object>>());
-            set => _signingKeys = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<ImmutableDictionary<string, object>>());
+                _signingKeys = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -696,12 +715,22 @@ namespace Pulumi.Auth0
             set => _clientMetadata = value;
         }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
         /// Terraform client. Otherwise, the attribute will contain an empty string.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clientSecretRotationTrigger")]
         private InputMap<object>? _clientSecretRotationTrigger;
@@ -856,7 +885,11 @@ namespace Pulumi.Auth0
         public InputList<ImmutableDictionary<string, object>> SigningKeys
         {
             get => _signingKeys ?? (_signingKeys = new InputList<ImmutableDictionary<string, object>>());
-            set => _signingKeys = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<ImmutableDictionary<string, object>>());
+                _signingKeys = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

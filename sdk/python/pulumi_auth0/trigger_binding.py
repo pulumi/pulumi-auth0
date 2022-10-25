@@ -144,7 +144,7 @@ class TriggerBinding(pulumi.CustomResource):
 
         ## Import
 
-        # This resource can be imported using the bindings trigger ID. # # Example
+        This resource can be imported using the bindings trigger ID. # Example
 
         ```sh
          $ pulumi import auth0:index/triggerBinding:TriggerBinding example "post-login"
@@ -206,7 +206,7 @@ class TriggerBinding(pulumi.CustomResource):
 
         ## Import
 
-        # This resource can be imported using the bindings trigger ID. # # Example
+        This resource can be imported using the bindings trigger ID. # Example
 
         ```sh
          $ pulumi import auth0:index/triggerBinding:TriggerBinding example "post-login"

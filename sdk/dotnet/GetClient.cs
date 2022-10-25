@@ -41,7 +41,7 @@ namespace Pulumi.Auth0
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientResult> InvokeAsync(GetClientArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
@@ -73,7 +73,7 @@ namespace Pulumi.Auth0
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClientResult> Invoke(GetClientInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -55,7 +55,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the # organization ID and connection ID separated by ":". # # Example
+// This resource can be imported by specifying the organization ID and connection ID separated by ":". # Example
 //
 // ```sh
 //
