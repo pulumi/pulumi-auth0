@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BrandingColors {
     /**
-     * @return String, Hexadecimal. Background color of login pages.
+     * @return Background color of login pages in hexadecimal.
      * 
      */
     private @Nullable String pageBackground;
     /**
-     * @return String, Hexadecimal. Primary button background color.
+     * @return Primary button background color in hexadecimal.
      * 
      */
     private @Nullable String primary;
 
     private BrandingColors() {}
     /**
-     * @return String, Hexadecimal. Background color of login pages.
+     * @return Background color of login pages in hexadecimal.
      * 
      */
     public Optional<String> pageBackground() {
         return Optional.ofNullable(this.pageBackground);
     }
     /**
-     * @return String, Hexadecimal. Primary button background color.
+     * @return Primary button background color in hexadecimal.
      * 
      */
     public Optional<String> primary() {

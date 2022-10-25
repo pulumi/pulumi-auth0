@@ -6,8 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
- * manage a custom domain within your Auth0 tenant.
+ * With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
  *
  * ## Example Usage
  *
@@ -23,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Custom Domains can be imported using the id, e.g.
+ * # Custom domains can be imported using their ID. # # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
@@ -58,27 +57,35 @@ export class CustomDomain extends pulumi.CustomResource {
     }
 
     /**
-     * String. Name of the custom domain.
+     * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+     */
+    public readonly customClientIpHeader!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the custom domain.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
     public /*out*/ readonly originDomainName!: pulumi.Output<string>;
     /**
-     * Boolean. Indicates whether this is a primary domain.
+     * Indicates whether this is a primary domain.
      */
     public /*out*/ readonly primary!: pulumi.Output<boolean>;
     /**
-     * String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+     */
+    public readonly tlsPolicy!: pulumi.Output<string>;
+    /**
+     * Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * List(Resource). Configuration settings for verification. For details, see Verification.
+     * Configuration settings for verification.
      */
     public /*out*/ readonly verifications!: pulumi.Output<outputs.CustomDomainVerification[]>;
 
@@ -95,10 +102,12 @@ export class CustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDomainState | undefined;
+            resourceInputs["customClientIpHeader"] = state ? state.customClientIpHeader : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["originDomainName"] = state ? state.originDomainName : undefined;
             resourceInputs["primary"] = state ? state.primary : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tlsPolicy"] = state ? state.tlsPolicy : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["verifications"] = state ? state.verifications : undefined;
         } else {
@@ -109,7 +118,9 @@ export class CustomDomain extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["customClientIpHeader"] = args ? args.customClientIpHeader : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["tlsPolicy"] = args ? args.tlsPolicy : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["originDomainName"] = undefined /*out*/;
             resourceInputs["primary"] = undefined /*out*/;
@@ -126,27 +137,35 @@ export class CustomDomain extends pulumi.CustomResource {
  */
 export interface CustomDomainState {
     /**
-     * String. Name of the custom domain.
+     * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+     */
+    customClientIpHeader?: pulumi.Input<string>;
+    /**
+     * Name of the custom domain.
      */
     domain?: pulumi.Input<string>;
     /**
-     * String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
     originDomainName?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether this is a primary domain.
+     * Indicates whether this is a primary domain.
      */
     primary?: pulumi.Input<boolean>;
     /**
-     * String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
      */
     status?: pulumi.Input<string>;
     /**
-     * String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+     */
+    tlsPolicy?: pulumi.Input<string>;
+    /**
+     * Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      */
     type?: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings for verification. For details, see Verification.
+     * Configuration settings for verification.
      */
     verifications?: pulumi.Input<pulumi.Input<inputs.CustomDomainVerification>[]>;
 }
@@ -156,11 +175,19 @@ export interface CustomDomainState {
  */
 export interface CustomDomainArgs {
     /**
-     * String. Name of the custom domain.
+     * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+     */
+    customClientIpHeader?: pulumi.Input<string>;
+    /**
+     * Name of the custom domain.
      */
     domain: pulumi.Input<string>;
     /**
-     * String. Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+     */
+    tlsPolicy?: pulumi.Input<string>;
+    /**
+     * Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      */
     type: pulumi.Input<string>;
 }

@@ -14,14 +14,14 @@ public final class ActionSupportedTriggersArgs extends com.pulumi.resources.Reso
     public static final ActionSupportedTriggersArgs Empty = new ActionSupportedTriggersArgs();
 
     /**
-     * Trigger ID.
+     * The trigger ID.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Trigger ID.
+     * @return The trigger ID.
      * 
      */
     public Output<String> id() {
@@ -29,14 +29,14 @@ public final class ActionSupportedTriggersArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Trigger version.
+     * The trigger version. This regulates which `runtime` versions are supported.
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return Trigger version.
+     * @return The trigger version. This regulates which `runtime` versions are supported.
      * 
      */
     public Output<String> version() {
@@ -69,7 +69,7 @@ public final class ActionSupportedTriggersArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id Trigger ID.
+         * @param id The trigger ID.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ActionSupportedTriggersArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id Trigger ID.
+         * @param id The trigger ID.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ActionSupportedTriggersArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param version Trigger version.
+         * @param version The trigger version. This regulates which `runtime` versions are supported.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ActionSupportedTriggersArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param version Trigger version.
+         * @param version The trigger version. This regulates which `runtime` versions are supported.
          * 
          * @return builder
          * 

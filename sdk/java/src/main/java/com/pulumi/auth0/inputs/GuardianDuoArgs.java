@@ -14,14 +14,14 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
     public static final GuardianDuoArgs Empty = new GuardianDuoArgs();
 
     /**
-     * String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+     * Duo API Hostname, see the Duo documentation for more details on Duo setup.
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+     * @return Duo API Hostname, see the Duo documentation for more details on Duo setup.
      * 
      */
     public Output<String> hostname() {
@@ -29,14 +29,14 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Duo client ID, see the Duo documentation for more details on Duo setup.
+     * Duo client ID, see the Duo documentation for more details on Duo setup.
      * 
      */
     @Import(name="integrationKey", required=true)
     private Output<String> integrationKey;
 
     /**
-     * @return String. Duo client ID, see the Duo documentation for more details on Duo setup.
+     * @return Duo client ID, see the Duo documentation for more details on Duo setup.
      * 
      */
     public Output<String> integrationKey() {
@@ -44,14 +44,14 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Duo client secret, see the Duo documentation for more details on Duo setup.
+     * Duo client secret, see the Duo documentation for more details on Duo setup.
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return String. Duo client secret, see the Duo documentation for more details on Duo setup.
+     * @return Duo client secret, see the Duo documentation for more details on Duo setup.
      * 
      */
     public Output<String> secretKey() {
@@ -85,7 +85,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+         * @param hostname Duo API Hostname, see the Duo documentation for more details on Duo setup.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+         * @param hostname Duo API Hostname, see the Duo documentation for more details on Duo setup.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param integrationKey String. Duo client ID, see the Duo documentation for more details on Duo setup.
+         * @param integrationKey Duo client ID, see the Duo documentation for more details on Duo setup.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param integrationKey String. Duo client ID, see the Duo documentation for more details on Duo setup.
+         * @param integrationKey Duo client ID, see the Duo documentation for more details on Duo setup.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretKey String. Duo client secret, see the Duo documentation for more details on Duo setup.
+         * @param secretKey Duo client secret, see the Duo documentation for more details on Duo setup.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretKey String. Duo client secret, see the Duo documentation for more details on Duo setup.
+         * @param secretKey Duo client secret, see the Duo documentation for more details on Duo setup.
          * 
          * @return builder
          * 

@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
-// exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
-// This resource allows you to create and manage client grants used with configured Auth0 clients.
+// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
 //
 // ## Example Usage
 //
@@ -67,7 +65,7 @@ import (
 //
 // ## Import
 //
-// Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
+// # Client grants can be imported using the grant ID. # # Application -> APIs -> Expand the required API # # Example
 //
 // ```sh
 //
@@ -77,11 +75,11 @@ import (
 type ClientGrant struct {
 	pulumi.CustomResourceState
 
-	// String. Audience or API Identifier for this grant.
+	// Audience or API Identifier for this grant.
 	Audience pulumi.StringOutput `pulumi:"audience"`
-	// String. ID of the client for this grant.
+	// ID of the client for this grant.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
-	// List(String). Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 }
 
@@ -123,20 +121,20 @@ func GetClientGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClientGrant resources.
 type clientGrantState struct {
-	// String. Audience or API Identifier for this grant.
+	// Audience or API Identifier for this grant.
 	Audience *string `pulumi:"audience"`
-	// String. ID of the client for this grant.
+	// ID of the client for this grant.
 	ClientId *string `pulumi:"clientId"`
-	// List(String). Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant.
 	Scopes []string `pulumi:"scopes"`
 }
 
 type ClientGrantState struct {
-	// String. Audience or API Identifier for this grant.
+	// Audience or API Identifier for this grant.
 	Audience pulumi.StringPtrInput
-	// String. ID of the client for this grant.
+	// ID of the client for this grant.
 	ClientId pulumi.StringPtrInput
-	// List(String). Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayInput
 }
 
@@ -145,21 +143,21 @@ func (ClientGrantState) ElementType() reflect.Type {
 }
 
 type clientGrantArgs struct {
-	// String. Audience or API Identifier for this grant.
+	// Audience or API Identifier for this grant.
 	Audience string `pulumi:"audience"`
-	// String. ID of the client for this grant.
+	// ID of the client for this grant.
 	ClientId string `pulumi:"clientId"`
-	// List(String). Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant.
 	Scopes []string `pulumi:"scopes"`
 }
 
 // The set of arguments for constructing a ClientGrant resource.
 type ClientGrantArgs struct {
-	// String. Audience or API Identifier for this grant.
+	// Audience or API Identifier for this grant.
 	Audience pulumi.StringInput
-	// String. ID of the client for this grant.
+	// ID of the client for this grant.
 	ClientId pulumi.StringInput
-	// List(String). Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayInput
 }
 
@@ -250,17 +248,17 @@ func (o ClientGrantOutput) ToClientGrantOutputWithContext(ctx context.Context) C
 	return o
 }
 
-// String. Audience or API Identifier for this grant.
+// Audience or API Identifier for this grant.
 func (o ClientGrantOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.Audience }).(pulumi.StringOutput)
 }
 
-// String. ID of the client for this grant.
+// ID of the client for this grant.
 func (o ClientGrantOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// List(String). Permissions (scopes) included in this grant.
+// Permissions (scopes) included in this grant.
 func (o ClientGrantOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Trigger ID.
+        /// Action ID.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

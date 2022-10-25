@@ -20,7 +20,7 @@ public final class AttackProtectionBruteForceProtection {
      */
     private @Nullable List<String> allowlists;
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether brute force attack protections are active.
      * 
      */
     private @Nullable Boolean enabled;
@@ -30,12 +30,12 @@ public final class AttackProtectionBruteForceProtection {
      */
     private @Nullable Integer maxAttempts;
     /**
-     * @return Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
      * 
      */
     private @Nullable String mode;
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
      * 
      */
     private @Nullable List<String> shields;
@@ -49,7 +49,7 @@ public final class AttackProtectionBruteForceProtection {
         return this.allowlists == null ? List.of() : this.allowlists;
     }
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether brute force attack protections are active.
      * 
      */
     public Optional<Boolean> enabled() {
@@ -63,14 +63,14 @@ public final class AttackProtectionBruteForceProtection {
         return Optional.ofNullable(this.maxAttempts);
     }
     /**
-     * @return Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
      * 
      */
     public List<String> shields() {

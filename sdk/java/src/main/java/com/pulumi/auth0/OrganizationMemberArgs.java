@@ -17,14 +17,14 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
     public static final OrganizationMemberArgs Empty = new OrganizationMemberArgs();
 
     /**
-     * The ID of the organization
+     * The ID of the organization to assign the member to.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization
+     * @return The ID of the organization to assign the member to.
      * 
      */
     public Output<String> organizationId() {
@@ -32,14 +32,14 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Set(string). List of role IDs to assign to member.
+     * The role ID(s) to assign to the organization member.
      * 
      */
     @Import(name="roles")
     private @Nullable Output<List<String>> roles;
 
     /**
-     * @return Set(string). List of role IDs to assign to member.
+     * @return The role ID(s) to assign to the organization member.
      * 
      */
     public Optional<Output<List<String>>> roles() {
@@ -47,14 +47,14 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The user ID of the member
+     * ID of the user to add as an organization member.
      * 
      */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
     /**
-     * @return The user ID of the member
+     * @return ID of the user to add as an organization member.
      * 
      */
     public Output<String> userId() {
@@ -88,7 +88,7 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param organizationId The ID of the organization
+         * @param organizationId The ID of the organization to assign the member to.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param organizationId The ID of the organization
+         * @param organizationId The ID of the organization to assign the member to.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param roles Set(string). List of role IDs to assign to member.
+         * @param roles The role ID(s) to assign to the organization member.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param roles Set(string). List of role IDs to assign to member.
+         * @param roles The role ID(s) to assign to the organization member.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param roles Set(string). List of role IDs to assign to member.
+         * @param roles The role ID(s) to assign to the organization member.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param userId The user ID of the member
+         * @param userId ID of the user to add as an organization member.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param userId The user ID of the member
+         * @param userId ID of the user to add as an organization member.
          * 
          * @return builder
          * 

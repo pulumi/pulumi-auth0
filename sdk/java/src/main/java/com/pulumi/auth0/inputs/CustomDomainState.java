@@ -19,14 +19,29 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     public static final CustomDomainState Empty = new CustomDomainState();
 
     /**
-     * String. Name of the custom domain.
+     * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * 
+     */
+    @Import(name="customClientIpHeader")
+    private @Nullable Output<String> customClientIpHeader;
+
+    /**
+     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * 
+     */
+    public Optional<Output<String>> customClientIpHeader() {
+        return Optional.ofNullable(this.customClientIpHeader);
+    }
+
+    /**
+     * Name of the custom domain.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return String. Name of the custom domain.
+     * @return Name of the custom domain.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -34,14 +49,14 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
     @Import(name="originDomainName")
     private @Nullable Output<String> originDomainName;
 
     /**
-     * @return String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     * @return Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
     public Optional<Output<String>> originDomainName() {
@@ -49,14 +64,14 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether this is a primary domain.
+     * Indicates whether this is a primary domain.
      * 
      */
     @Import(name="primary")
     private @Nullable Output<Boolean> primary;
 
     /**
-     * @return Boolean. Indicates whether this is a primary domain.
+     * @return Indicates whether this is a primary domain.
      * 
      */
     public Optional<Output<Boolean>> primary() {
@@ -64,14 +79,14 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -79,14 +94,29 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * 
+     */
+    @Import(name="tlsPolicy")
+    private @Nullable Output<String> tlsPolicy;
+
+    /**
+     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * 
+     */
+    public Optional<Output<String>> tlsPolicy() {
+        return Optional.ofNullable(this.tlsPolicy);
+    }
+
+    /**
+     * Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * @return Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -94,14 +124,14 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for verification. For details, see Verification.
+     * Configuration settings for verification.
      * 
      */
     @Import(name="verifications")
     private @Nullable Output<List<CustomDomainVerificationArgs>> verifications;
 
     /**
-     * @return List(Resource). Configuration settings for verification. For details, see Verification.
+     * @return Configuration settings for verification.
      * 
      */
     public Optional<Output<List<CustomDomainVerificationArgs>>> verifications() {
@@ -111,10 +141,12 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     private CustomDomainState() {}
 
     private CustomDomainState(CustomDomainState $) {
+        this.customClientIpHeader = $.customClientIpHeader;
         this.domain = $.domain;
         this.originDomainName = $.originDomainName;
         this.primary = $.primary;
         this.status = $.status;
+        this.tlsPolicy = $.tlsPolicy;
         this.type = $.type;
         this.verifications = $.verifications;
     }
@@ -138,7 +170,28 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain String. Name of the custom domain.
+         * @param customClientIpHeader The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customClientIpHeader(@Nullable Output<String> customClientIpHeader) {
+            $.customClientIpHeader = customClientIpHeader;
+            return this;
+        }
+
+        /**
+         * @param customClientIpHeader The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customClientIpHeader(String customClientIpHeader) {
+            return customClientIpHeader(Output.of(customClientIpHeader));
+        }
+
+        /**
+         * @param domain Name of the custom domain.
          * 
          * @return builder
          * 
@@ -149,7 +202,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain String. Name of the custom domain.
+         * @param domain Name of the custom domain.
          * 
          * @return builder
          * 
@@ -159,7 +212,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originDomainName String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+         * @param originDomainName Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
          * 
          * @return builder
          * 
@@ -170,7 +223,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originDomainName String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+         * @param originDomainName Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
          * 
          * @return builder
          * 
@@ -180,7 +233,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primary Boolean. Indicates whether this is a primary domain.
+         * @param primary Indicates whether this is a primary domain.
          * 
          * @return builder
          * 
@@ -191,7 +244,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primary Boolean. Indicates whether this is a primary domain.
+         * @param primary Indicates whether this is a primary domain.
          * 
          * @return builder
          * 
@@ -201,7 +254,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+         * @param status Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
          * 
          * @return builder
          * 
@@ -212,7 +265,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+         * @param status Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
          * 
          * @return builder
          * 
@@ -222,7 +275,28 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+         * @param tlsPolicy TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsPolicy(@Nullable Output<String> tlsPolicy) {
+            $.tlsPolicy = tlsPolicy;
+            return this;
+        }
+
+        /**
+         * @param tlsPolicy TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsPolicy(String tlsPolicy) {
+            return tlsPolicy(Output.of(tlsPolicy));
+        }
+
+        /**
+         * @param type Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
          * 
          * @return builder
          * 
@@ -233,7 +307,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+         * @param type Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
          * 
          * @return builder
          * 
@@ -243,7 +317,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifications List(Resource). Configuration settings for verification. For details, see Verification.
+         * @param verifications Configuration settings for verification.
          * 
          * @return builder
          * 
@@ -254,7 +328,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifications List(Resource). Configuration settings for verification. For details, see Verification.
+         * @param verifications Configuration settings for verification.
          * 
          * @return builder
          * 
@@ -264,7 +338,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifications List(Resource). Configuration settings for verification. For details, see Verification.
+         * @param verifications Configuration settings for verification.
          * 
          * @return builder
          * 

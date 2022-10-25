@@ -15,97 +15,245 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGlobalClientResult {
-    private List<GetGlobalClientAddon> addons;
-    private List<String> allowedClients;
-    private List<String> allowedLogoutUrls;
-    private List<String> allowedOrigins;
-    private String appType;
-    private List<String> callbacks;
     /**
-     * @return String. ID of the client.
-     * * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+     * @return Addons enabled for this client and their associated configurations.
      * 
      */
-    private @Nullable String clientId;
+    private List<GetGlobalClientAddon> addons;
     /**
-     * @return (Optional) Map(String)
+     * @return List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+     * 
+     */
+    private List<String> allowedClients;
+    /**
+     * @return URLs that Auth0 may redirect to after logout.
+     * 
+     */
+    private List<String> allowedLogoutUrls;
+    /**
+     * @return URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+     * 
+     */
+    private List<String> allowedOrigins;
+    /**
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * 
+     */
+    private String appType;
+    /**
+     * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+     * 
+     */
+    private List<String> callbacks;
+    /**
+     * @return List of audiences/realms for SAML protocol. Used by the wsfed addon.
+     * 
+     */
+    private List<String> clientAliases;
+    /**
+     * @return The ID of the client.
+     * 
+     */
+    private String clientId;
+    /**
+     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
      * 
      */
     private Map<String,Object> clientMetadata;
     private String clientSecret;
+    /**
+     * @return Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * 
+     */
     private Boolean crossOriginAuth;
+    /**
+     * @return URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+     * 
+     */
     private String crossOriginLoc;
     /**
-     * @return String. Content of the custom login page.
+     * @return The content (HTML, CSS, JS) of the custom login page.
      * 
      */
     private String customLoginPage;
     /**
-     * @return Boolean. Indicates whether a custom login page is to be used.
+     * @return Indicates whether a custom login page is to be used.
      * 
      */
     private Boolean customLoginPageOn;
+    /**
+     * @return Description of the purpose of the client.
+     * 
+     */
     private String description;
+    /**
+     * @return Encryption used for WS-Fed responses with this client.
+     * 
+     */
     private Map<String,String> encryptionKey;
+    /**
+     * @return HTML form template to be used for WS-Federation.
+     * 
+     */
     private String formTemplate;
+    /**
+     * @return Types of grants that this client is authorized to use.
+     * 
+     */
     private List<String> grantTypes;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Initiate login URI, must be HTTPS.
+     * 
+     */
     private String initiateLoginUri;
+    /**
+     * @return Indicates whether this client is a first-party client.
+     * 
+     */
     private Boolean isFirstParty;
+    /**
+     * @return Indicates whether the token endpoint IP header is trusted.
+     * 
+     */
     private Boolean isTokenEndpointIpHeaderTrusted;
+    /**
+     * @return Configuration settings for the JWTs issued for this client.
+     * 
+     */
     private List<GetGlobalClientJwtConfiguration> jwtConfigurations;
+    /**
+     * @return URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+     * 
+     */
     private String logoUri;
+    /**
+     * @return Additional configuration for native mobile apps.
+     * 
+     */
     private List<GetGlobalClientMobile> mobiles;
-    private @Nullable String name;
+    /**
+     * @return Name of the client.
+     * 
+     */
+    private String name;
+    /**
+     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+     * 
+     */
     private List<GetGlobalClientNativeSocialLogin> nativeSocialLogins;
+    /**
+     * @return Indicates whether this client will conform to strict OIDC specifications.
+     * 
+     */
     private Boolean oidcConformant;
+    /**
+     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+     * 
+     */
     private String organizationRequireBehavior;
+    /**
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
     private String organizationUsage;
+    /**
+     * @return Configuration settings for the refresh tokens issued for this client.
+     * 
+     */
     private List<GetGlobalClientRefreshToken> refreshTokens;
+    /**
+     * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+     * 
+     */
     private List<Map<String,Object>> signingKeys;
+    /**
+     * @return Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+     * 
+     */
     private Boolean sso;
+    /**
+     * @return Indicates whether or not SSO is disabled.
+     * 
+     */
     private Boolean ssoDisabled;
+    /**
+     * @return Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+     * 
+     */
     private String tokenEndpointAuthMethod;
+    /**
+     * @return URLs that represent valid web origins for use with web message response mode.
+     * 
+     */
     private List<String> webOrigins;
 
     private GetGlobalClientResult() {}
+    /**
+     * @return Addons enabled for this client and their associated configurations.
+     * 
+     */
     public List<GetGlobalClientAddon> addons() {
         return this.addons;
     }
+    /**
+     * @return List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+     * 
+     */
     public List<String> allowedClients() {
         return this.allowedClients;
     }
+    /**
+     * @return URLs that Auth0 may redirect to after logout.
+     * 
+     */
     public List<String> allowedLogoutUrls() {
         return this.allowedLogoutUrls;
     }
+    /**
+     * @return URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+     * 
+     */
     public List<String> allowedOrigins() {
         return this.allowedOrigins;
     }
+    /**
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * 
+     */
     public String appType() {
         return this.appType;
     }
+    /**
+     * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+     * 
+     */
     public List<String> callbacks() {
         return this.callbacks;
     }
     /**
-     * @return String. ID of the client.
-     * * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+     * @return List of audiences/realms for SAML protocol. Used by the wsfed addon.
      * 
      */
-    public Optional<String> clientId() {
-        return Optional.ofNullable(this.clientId);
+    public List<String> clientAliases() {
+        return this.clientAliases;
     }
     /**
-     * @return (Optional) Map(String)
+     * @return The ID of the client.
+     * 
+     */
+    public String clientId() {
+        return this.clientId;
+    }
+    /**
+     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
      * 
      */
     public Map<String,Object> clientMetadata() {
@@ -114,35 +262,59 @@ public final class GetGlobalClientResult {
     public String clientSecret() {
         return this.clientSecret;
     }
+    /**
+     * @return Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * 
+     */
     public Boolean crossOriginAuth() {
         return this.crossOriginAuth;
     }
+    /**
+     * @return URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+     * 
+     */
     public String crossOriginLoc() {
         return this.crossOriginLoc;
     }
     /**
-     * @return String. Content of the custom login page.
+     * @return The content (HTML, CSS, JS) of the custom login page.
      * 
      */
     public String customLoginPage() {
         return this.customLoginPage;
     }
     /**
-     * @return Boolean. Indicates whether a custom login page is to be used.
+     * @return Indicates whether a custom login page is to be used.
      * 
      */
     public Boolean customLoginPageOn() {
         return this.customLoginPageOn;
     }
+    /**
+     * @return Description of the purpose of the client.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Encryption used for WS-Fed responses with this client.
+     * 
+     */
     public Map<String,String> encryptionKey() {
         return this.encryptionKey;
     }
+    /**
+     * @return HTML form template to be used for WS-Federation.
+     * 
+     */
     public String formTemplate() {
         return this.formTemplate;
     }
+    /**
+     * @return Types of grants that this client is authorized to use.
+     * 
+     */
     public List<String> grantTypes() {
         return this.grantTypes;
     }
@@ -153,54 +325,122 @@ public final class GetGlobalClientResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Initiate login URI, must be HTTPS.
+     * 
+     */
     public String initiateLoginUri() {
         return this.initiateLoginUri;
     }
+    /**
+     * @return Indicates whether this client is a first-party client.
+     * 
+     */
     public Boolean isFirstParty() {
         return this.isFirstParty;
     }
+    /**
+     * @return Indicates whether the token endpoint IP header is trusted.
+     * 
+     */
     public Boolean isTokenEndpointIpHeaderTrusted() {
         return this.isTokenEndpointIpHeaderTrusted;
     }
+    /**
+     * @return Configuration settings for the JWTs issued for this client.
+     * 
+     */
     public List<GetGlobalClientJwtConfiguration> jwtConfigurations() {
         return this.jwtConfigurations;
     }
+    /**
+     * @return URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+     * 
+     */
     public String logoUri() {
         return this.logoUri;
     }
+    /**
+     * @return Additional configuration for native mobile apps.
+     * 
+     */
     public List<GetGlobalClientMobile> mobiles() {
         return this.mobiles;
     }
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    /**
+     * @return Name of the client.
+     * 
+     */
+    public String name() {
+        return this.name;
     }
+    /**
+     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+     * 
+     */
     public List<GetGlobalClientNativeSocialLogin> nativeSocialLogins() {
         return this.nativeSocialLogins;
     }
+    /**
+     * @return Indicates whether this client will conform to strict OIDC specifications.
+     * 
+     */
     public Boolean oidcConformant() {
         return this.oidcConformant;
     }
+    /**
+     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+     * 
+     */
     public String organizationRequireBehavior() {
         return this.organizationRequireBehavior;
     }
+    /**
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
     public String organizationUsage() {
         return this.organizationUsage;
     }
+    /**
+     * @return Configuration settings for the refresh tokens issued for this client.
+     * 
+     */
     public List<GetGlobalClientRefreshToken> refreshTokens() {
         return this.refreshTokens;
     }
+    /**
+     * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+     * 
+     */
     public List<Map<String,Object>> signingKeys() {
         return this.signingKeys;
     }
+    /**
+     * @return Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+     * 
+     */
     public Boolean sso() {
         return this.sso;
     }
+    /**
+     * @return Indicates whether or not SSO is disabled.
+     * 
+     */
     public Boolean ssoDisabled() {
         return this.ssoDisabled;
     }
+    /**
+     * @return Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+     * 
+     */
     public String tokenEndpointAuthMethod() {
         return this.tokenEndpointAuthMethod;
     }
+    /**
+     * @return URLs that represent valid web origins for use with web message response mode.
+     * 
+     */
     public List<String> webOrigins() {
         return this.webOrigins;
     }
@@ -220,7 +460,8 @@ public final class GetGlobalClientResult {
         private List<String> allowedOrigins;
         private String appType;
         private List<String> callbacks;
-        private @Nullable String clientId;
+        private List<String> clientAliases;
+        private String clientId;
         private Map<String,Object> clientMetadata;
         private String clientSecret;
         private Boolean crossOriginAuth;
@@ -238,7 +479,7 @@ public final class GetGlobalClientResult {
         private List<GetGlobalClientJwtConfiguration> jwtConfigurations;
         private String logoUri;
         private List<GetGlobalClientMobile> mobiles;
-        private @Nullable String name;
+        private String name;
         private List<GetGlobalClientNativeSocialLogin> nativeSocialLogins;
         private Boolean oidcConformant;
         private String organizationRequireBehavior;
@@ -258,6 +499,7 @@ public final class GetGlobalClientResult {
     	      this.allowedOrigins = defaults.allowedOrigins;
     	      this.appType = defaults.appType;
     	      this.callbacks = defaults.callbacks;
+    	      this.clientAliases = defaults.clientAliases;
     	      this.clientId = defaults.clientId;
     	      this.clientMetadata = defaults.clientMetadata;
     	      this.clientSecret = defaults.clientSecret;
@@ -335,8 +577,16 @@ public final class GetGlobalClientResult {
             return callbacks(List.of(callbacks));
         }
         @CustomType.Setter
-        public Builder clientId(@Nullable String clientId) {
-            this.clientId = clientId;
+        public Builder clientAliases(List<String> clientAliases) {
+            this.clientAliases = Objects.requireNonNull(clientAliases);
+            return this;
+        }
+        public Builder clientAliases(String... clientAliases) {
+            return clientAliases(List.of(clientAliases));
+        }
+        @CustomType.Setter
+        public Builder clientId(String clientId) {
+            this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
         @CustomType.Setter
@@ -434,8 +684,8 @@ public final class GetGlobalClientResult {
             return mobiles(List.of(mobiles));
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-            this.name = name;
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
@@ -505,6 +755,7 @@ public final class GetGlobalClientResult {
             o.allowedOrigins = allowedOrigins;
             o.appType = appType;
             o.callbacks = callbacks;
+            o.clientAliases = clientAliases;
             o.clientId = clientId;
             o.clientMetadata = clientMetadata;
             o.clientSecret = clientSecret;

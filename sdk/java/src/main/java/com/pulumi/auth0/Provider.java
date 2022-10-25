@@ -22,27 +22,79 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:auth0")
 public class Provider extends com.pulumi.resources.ProviderResource {
+    /**
+     * Your Auth0 [management api access
+     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     * 
+     */
     @Export(name="apiToken", type=String.class, parameters={})
     private Output</* @Nullable */ String> apiToken;
 
+    /**
+     * @return Your Auth0 [management api access
+     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     * 
+     */
     public Output<Optional<String>> apiToken() {
         return Codegen.optional(this.apiToken);
     }
+    /**
+     * Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+     * 
+     */
+    @Export(name="audience", type=String.class, parameters={})
+    private Output</* @Nullable */ String> audience;
+
+    /**
+     * @return Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+     * 
+     */
+    public Output<Optional<String>> audience() {
+        return Codegen.optional(this.audience);
+    }
+    /**
+     * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+     * 
+     */
     @Export(name="clientId", type=String.class, parameters={})
     private Output</* @Nullable */ String> clientId;
 
+    /**
+     * @return Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+     * 
+     */
     public Output<Optional<String>> clientId() {
         return Codegen.optional(this.clientId);
     }
+    /**
+     * Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+     * 
+     */
     @Export(name="clientSecret", type=String.class, parameters={})
     private Output</* @Nullable */ String> clientSecret;
 
+    /**
+     * @return Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+     * 
+     */
     public Output<Optional<String>> clientSecret() {
         return Codegen.optional(this.clientSecret);
     }
+    /**
+     * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+     * 
+     */
     @Export(name="domain", type=String.class, parameters={})
     private Output<String> domain;
 
+    /**
+     * @return Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+     * 
+     */
     public Output<String> domain() {
         return this.domain;
     }

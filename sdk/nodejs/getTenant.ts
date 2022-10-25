@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const current = pulumi.output(auth0.getTenant());
+ * const myTenant = pulumi.output(auth0.getTenant());
  * ```
  */
 export function getTenant(opts?: pulumi.InvokeOptions): Promise<GetTenantResult> {
@@ -31,7 +31,7 @@ export function getTenant(opts?: pulumi.InvokeOptions): Promise<GetTenantResult>
  */
 export interface GetTenantResult {
     /**
-     * String. Your Auth0 domain name.
+     * Your Auth0 domain name.
      */
     readonly domain: string;
     /**
@@ -39,7 +39,7 @@ export interface GetTenantResult {
      */
     readonly id: string;
     /**
-     * String. The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
+     * The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
      */
     readonly managementApiIdentifier: string;
 }

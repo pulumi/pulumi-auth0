@@ -16,14 +16,14 @@ public final class RuleConfigState extends com.pulumi.resources.ResourceArgs {
     public static final RuleConfigState Empty = new RuleConfigState();
 
     /**
-     * String. Key for a rules configuration variable.
+     * Key for a rules configuration variable.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return String. Key for a rules configuration variable.
+     * @return Key for a rules configuration variable.
      * 
      */
     public Optional<Output<String>> key() {
@@ -31,14 +31,14 @@ public final class RuleConfigState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String, Case-sensitive. Value for a rules configuration variable.
+     * Value for a rules configuration variable.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return String, Case-sensitive. Value for a rules configuration variable.
+     * @return Value for a rules configuration variable.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class RuleConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key String. Key for a rules configuration variable.
+         * @param key Key for a rules configuration variable.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RuleConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key String. Key for a rules configuration variable.
+         * @param key Key for a rules configuration variable.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RuleConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value String, Case-sensitive. Value for a rules configuration variable.
+         * @param value Value for a rules configuration variable.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RuleConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value String, Case-sensitive. Value for a rules configuration variable.
+         * @param value Value for a rules configuration variable.
          * 
          * @return builder
          * 

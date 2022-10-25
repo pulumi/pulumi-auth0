@@ -15,7 +15,7 @@ public final class TriggerBindingAction {
      */
     private String displayName;
     /**
-     * @return Trigger ID.
+     * @return Action ID.
      * 
      */
     private String id;
@@ -29,7 +29,7 @@ public final class TriggerBindingAction {
         return this.displayName;
     }
     /**
-     * @return Trigger ID.
+     * @return Action ID.
      * 
      */
     public String id() {

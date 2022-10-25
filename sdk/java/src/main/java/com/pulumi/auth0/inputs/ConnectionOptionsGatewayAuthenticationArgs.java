@@ -44,17 +44,9 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
         return Optional.ofNullable(this.secretBase64Encoded);
     }
 
-    /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-     * 
-     */
     @Import(name="subject")
     private @Nullable Output<String> subject;
 
-    /**
-     * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-     * 
-     */
     public Optional<Output<String>> subject() {
         return Optional.ofNullable(this.subject);
     }
@@ -123,23 +115,11 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
             return secretBase64Encoded(Output.of(secretBase64Encoded));
         }
 
-        /**
-         * @param subject String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-         * 
-         * @return builder
-         * 
-         */
         public Builder subject(@Nullable Output<String> subject) {
             $.subject = subject;
             return this;
         }
 
-        /**
-         * @param subject String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-         * 
-         * @return builder
-         * 
-         */
         public Builder subject(String subject) {
             return subject(Output.of(subject));
         }

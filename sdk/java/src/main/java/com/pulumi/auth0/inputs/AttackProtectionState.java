@@ -33,14 +33,14 @@ public final class AttackProtectionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Safeguards against a single IP address attacking a single user account.
+     * Brute-force protection safeguards against a single IP address attacking a single user account.
      * 
      */
     @Import(name="bruteForceProtection")
     private @Nullable Output<AttackProtectionBruteForceProtectionArgs> bruteForceProtection;
 
     /**
-     * @return Safeguards against a single IP address attacking a single user account.
+     * @return Brute-force protection safeguards against a single IP address attacking a single user account.
      * 
      */
     public Optional<Output<AttackProtectionBruteForceProtectionArgs>> bruteForceProtection() {
@@ -110,7 +110,7 @@ public final class AttackProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bruteForceProtection Safeguards against a single IP address attacking a single user account.
+         * @param bruteForceProtection Brute-force protection safeguards against a single IP address attacking a single user account.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class AttackProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bruteForceProtection Safeguards against a single IP address attacking a single user account.
+         * @param bruteForceProtection Brute-force protection safeguards against a single IP address attacking a single user account.
          * 
          * @return builder
          * 

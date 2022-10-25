@@ -12,9 +12,15 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class GuardianPushArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for Amazon SNS.
+        /// </summary>
         [Input("amazonSns")]
         public Input<Inputs.GuardianPushAmazonSnsArgs>? AmazonSns { get; set; }
 
+        /// <summary>
+        /// Configuration for the Guardian Custom App.
+        /// </summary>
         [Input("customApp")]
         public Input<Inputs.GuardianPushCustomAppArgs>? CustomApp { get; set; }
 

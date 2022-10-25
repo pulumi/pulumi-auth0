@@ -18,422 +18,214 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClientAddonsArgs Empty = new ClientAddonsArgs();
 
-    /**
-     * String
-     * 
-     */
     @Import(name="aws")
     private @Nullable Output<Map<String,Object>> aws;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> aws() {
         return Optional.ofNullable(this.aws);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="azureBlob")
     private @Nullable Output<Map<String,Object>> azureBlob;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> azureBlob() {
         return Optional.ofNullable(this.azureBlob);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="azureSb")
     private @Nullable Output<Map<String,Object>> azureSb;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> azureSb() {
         return Optional.ofNullable(this.azureSb);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="box")
     private @Nullable Output<Map<String,Object>> box;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> box() {
         return Optional.ofNullable(this.box);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="cloudbees")
     private @Nullable Output<Map<String,Object>> cloudbees;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> cloudbees() {
         return Optional.ofNullable(this.cloudbees);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="concur")
     private @Nullable Output<Map<String,Object>> concur;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> concur() {
         return Optional.ofNullable(this.concur);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="dropbox")
     private @Nullable Output<Map<String,Object>> dropbox;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> dropbox() {
         return Optional.ofNullable(this.dropbox);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="echosign")
     private @Nullable Output<Map<String,Object>> echosign;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> echosign() {
         return Optional.ofNullable(this.echosign);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="egnyte")
     private @Nullable Output<Map<String,Object>> egnyte;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> egnyte() {
         return Optional.ofNullable(this.egnyte);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="firebase")
     private @Nullable Output<Map<String,Object>> firebase;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> firebase() {
         return Optional.ofNullable(this.firebase);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="layer")
     private @Nullable Output<Map<String,Object>> layer;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> layer() {
         return Optional.ofNullable(this.layer);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="mscrm")
     private @Nullable Output<Map<String,Object>> mscrm;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> mscrm() {
         return Optional.ofNullable(this.mscrm);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="newrelic")
     private @Nullable Output<Map<String,Object>> newrelic;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> newrelic() {
         return Optional.ofNullable(this.newrelic);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="office365")
     private @Nullable Output<Map<String,Object>> office365;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> office365() {
         return Optional.ofNullable(this.office365);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="rms")
     private @Nullable Output<Map<String,Object>> rms;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> rms() {
         return Optional.ofNullable(this.rms);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="salesforce")
     private @Nullable Output<Map<String,Object>> salesforce;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> salesforce() {
         return Optional.ofNullable(this.salesforce);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="salesforceApi")
     private @Nullable Output<Map<String,Object>> salesforceApi;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> salesforceApi() {
         return Optional.ofNullable(this.salesforceApi);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="salesforceSandboxApi")
     private @Nullable Output<Map<String,Object>> salesforceSandboxApi;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> salesforceSandboxApi() {
         return Optional.ofNullable(this.salesforceSandboxApi);
     }
 
     /**
-     * List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+     * Configuration settings for a SAML add-on.
      * 
      */
     @Import(name="samlp")
     private @Nullable Output<ClientAddonsSamlpArgs> samlp;
 
     /**
-     * @return List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+     * @return Configuration settings for a SAML add-on.
      * 
      */
     public Optional<Output<ClientAddonsSamlpArgs>> samlp() {
         return Optional.ofNullable(this.samlp);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="sapApi")
     private @Nullable Output<Map<String,Object>> sapApi;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> sapApi() {
         return Optional.ofNullable(this.sapApi);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="sentry")
     private @Nullable Output<Map<String,Object>> sentry;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> sentry() {
         return Optional.ofNullable(this.sentry);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="sharepoint")
     private @Nullable Output<Map<String,Object>> sharepoint;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> sharepoint() {
         return Optional.ofNullable(this.sharepoint);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="slack")
     private @Nullable Output<Map<String,Object>> slack;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> slack() {
         return Optional.ofNullable(this.slack);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="springcm")
     private @Nullable Output<Map<String,Object>> springcm;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> springcm() {
         return Optional.ofNullable(this.springcm);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="wams")
     private @Nullable Output<Map<String,Object>> wams;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> wams() {
         return Optional.ofNullable(this.wams);
     }
 
     /**
-     * String
+     * WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
      * 
      */
     @Import(name="wsfed")
     private @Nullable Output<Map<String,Object>> wsfed;
 
     /**
-     * @return String
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
      * 
      */
     public Optional<Output<Map<String,Object>>> wsfed() {
         return Optional.ofNullable(this.wsfed);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="zendesk")
     private @Nullable Output<Map<String,Object>> zendesk;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> zendesk() {
         return Optional.ofNullable(this.zendesk);
     }
 
-    /**
-     * String
-     * 
-     */
     @Import(name="zoom")
     private @Nullable Output<Map<String,Object>> zoom;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<Map<String,Object>>> zoom() {
         return Optional.ofNullable(this.zoom);
     }
@@ -489,386 +281,170 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ClientAddonsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param aws String
-         * 
-         * @return builder
-         * 
-         */
         public Builder aws(@Nullable Output<Map<String,Object>> aws) {
             $.aws = aws;
             return this;
         }
 
-        /**
-         * @param aws String
-         * 
-         * @return builder
-         * 
-         */
         public Builder aws(Map<String,Object> aws) {
             return aws(Output.of(aws));
         }
 
-        /**
-         * @param azureBlob String
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureBlob(@Nullable Output<Map<String,Object>> azureBlob) {
             $.azureBlob = azureBlob;
             return this;
         }
 
-        /**
-         * @param azureBlob String
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureBlob(Map<String,Object> azureBlob) {
             return azureBlob(Output.of(azureBlob));
         }
 
-        /**
-         * @param azureSb String
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureSb(@Nullable Output<Map<String,Object>> azureSb) {
             $.azureSb = azureSb;
             return this;
         }
 
-        /**
-         * @param azureSb String
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureSb(Map<String,Object> azureSb) {
             return azureSb(Output.of(azureSb));
         }
 
-        /**
-         * @param box String
-         * 
-         * @return builder
-         * 
-         */
         public Builder box(@Nullable Output<Map<String,Object>> box) {
             $.box = box;
             return this;
         }
 
-        /**
-         * @param box String
-         * 
-         * @return builder
-         * 
-         */
         public Builder box(Map<String,Object> box) {
             return box(Output.of(box));
         }
 
-        /**
-         * @param cloudbees String
-         * 
-         * @return builder
-         * 
-         */
         public Builder cloudbees(@Nullable Output<Map<String,Object>> cloudbees) {
             $.cloudbees = cloudbees;
             return this;
         }
 
-        /**
-         * @param cloudbees String
-         * 
-         * @return builder
-         * 
-         */
         public Builder cloudbees(Map<String,Object> cloudbees) {
             return cloudbees(Output.of(cloudbees));
         }
 
-        /**
-         * @param concur String
-         * 
-         * @return builder
-         * 
-         */
         public Builder concur(@Nullable Output<Map<String,Object>> concur) {
             $.concur = concur;
             return this;
         }
 
-        /**
-         * @param concur String
-         * 
-         * @return builder
-         * 
-         */
         public Builder concur(Map<String,Object> concur) {
             return concur(Output.of(concur));
         }
 
-        /**
-         * @param dropbox String
-         * 
-         * @return builder
-         * 
-         */
         public Builder dropbox(@Nullable Output<Map<String,Object>> dropbox) {
             $.dropbox = dropbox;
             return this;
         }
 
-        /**
-         * @param dropbox String
-         * 
-         * @return builder
-         * 
-         */
         public Builder dropbox(Map<String,Object> dropbox) {
             return dropbox(Output.of(dropbox));
         }
 
-        /**
-         * @param echosign String
-         * 
-         * @return builder
-         * 
-         */
         public Builder echosign(@Nullable Output<Map<String,Object>> echosign) {
             $.echosign = echosign;
             return this;
         }
 
-        /**
-         * @param echosign String
-         * 
-         * @return builder
-         * 
-         */
         public Builder echosign(Map<String,Object> echosign) {
             return echosign(Output.of(echosign));
         }
 
-        /**
-         * @param egnyte String
-         * 
-         * @return builder
-         * 
-         */
         public Builder egnyte(@Nullable Output<Map<String,Object>> egnyte) {
             $.egnyte = egnyte;
             return this;
         }
 
-        /**
-         * @param egnyte String
-         * 
-         * @return builder
-         * 
-         */
         public Builder egnyte(Map<String,Object> egnyte) {
             return egnyte(Output.of(egnyte));
         }
 
-        /**
-         * @param firebase String
-         * 
-         * @return builder
-         * 
-         */
         public Builder firebase(@Nullable Output<Map<String,Object>> firebase) {
             $.firebase = firebase;
             return this;
         }
 
-        /**
-         * @param firebase String
-         * 
-         * @return builder
-         * 
-         */
         public Builder firebase(Map<String,Object> firebase) {
             return firebase(Output.of(firebase));
         }
 
-        /**
-         * @param layer String
-         * 
-         * @return builder
-         * 
-         */
         public Builder layer(@Nullable Output<Map<String,Object>> layer) {
             $.layer = layer;
             return this;
         }
 
-        /**
-         * @param layer String
-         * 
-         * @return builder
-         * 
-         */
         public Builder layer(Map<String,Object> layer) {
             return layer(Output.of(layer));
         }
 
-        /**
-         * @param mscrm String
-         * 
-         * @return builder
-         * 
-         */
         public Builder mscrm(@Nullable Output<Map<String,Object>> mscrm) {
             $.mscrm = mscrm;
             return this;
         }
 
-        /**
-         * @param mscrm String
-         * 
-         * @return builder
-         * 
-         */
         public Builder mscrm(Map<String,Object> mscrm) {
             return mscrm(Output.of(mscrm));
         }
 
-        /**
-         * @param newrelic String
-         * 
-         * @return builder
-         * 
-         */
         public Builder newrelic(@Nullable Output<Map<String,Object>> newrelic) {
             $.newrelic = newrelic;
             return this;
         }
 
-        /**
-         * @param newrelic String
-         * 
-         * @return builder
-         * 
-         */
         public Builder newrelic(Map<String,Object> newrelic) {
             return newrelic(Output.of(newrelic));
         }
 
-        /**
-         * @param office365 String
-         * 
-         * @return builder
-         * 
-         */
         public Builder office365(@Nullable Output<Map<String,Object>> office365) {
             $.office365 = office365;
             return this;
         }
 
-        /**
-         * @param office365 String
-         * 
-         * @return builder
-         * 
-         */
         public Builder office365(Map<String,Object> office365) {
             return office365(Output.of(office365));
         }
 
-        /**
-         * @param rms String
-         * 
-         * @return builder
-         * 
-         */
         public Builder rms(@Nullable Output<Map<String,Object>> rms) {
             $.rms = rms;
             return this;
         }
 
-        /**
-         * @param rms String
-         * 
-         * @return builder
-         * 
-         */
         public Builder rms(Map<String,Object> rms) {
             return rms(Output.of(rms));
         }
 
-        /**
-         * @param salesforce String
-         * 
-         * @return builder
-         * 
-         */
         public Builder salesforce(@Nullable Output<Map<String,Object>> salesforce) {
             $.salesforce = salesforce;
             return this;
         }
 
-        /**
-         * @param salesforce String
-         * 
-         * @return builder
-         * 
-         */
         public Builder salesforce(Map<String,Object> salesforce) {
             return salesforce(Output.of(salesforce));
         }
 
-        /**
-         * @param salesforceApi String
-         * 
-         * @return builder
-         * 
-         */
         public Builder salesforceApi(@Nullable Output<Map<String,Object>> salesforceApi) {
             $.salesforceApi = salesforceApi;
             return this;
         }
 
-        /**
-         * @param salesforceApi String
-         * 
-         * @return builder
-         * 
-         */
         public Builder salesforceApi(Map<String,Object> salesforceApi) {
             return salesforceApi(Output.of(salesforceApi));
         }
 
-        /**
-         * @param salesforceSandboxApi String
-         * 
-         * @return builder
-         * 
-         */
         public Builder salesforceSandboxApi(@Nullable Output<Map<String,Object>> salesforceSandboxApi) {
             $.salesforceSandboxApi = salesforceSandboxApi;
             return this;
         }
 
-        /**
-         * @param salesforceSandboxApi String
-         * 
-         * @return builder
-         * 
-         */
         public Builder salesforceSandboxApi(Map<String,Object> salesforceSandboxApi) {
             return salesforceSandboxApi(Output.of(salesforceSandboxApi));
         }
 
         /**
-         * @param samlp List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+         * @param samlp Configuration settings for a SAML add-on.
          * 
          * @return builder
          * 
@@ -879,7 +455,7 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlp List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+         * @param samlp Configuration settings for a SAML add-on.
          * 
          * @return builder
          * 
@@ -888,134 +464,62 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
             return samlp(Output.of(samlp));
         }
 
-        /**
-         * @param sapApi String
-         * 
-         * @return builder
-         * 
-         */
         public Builder sapApi(@Nullable Output<Map<String,Object>> sapApi) {
             $.sapApi = sapApi;
             return this;
         }
 
-        /**
-         * @param sapApi String
-         * 
-         * @return builder
-         * 
-         */
         public Builder sapApi(Map<String,Object> sapApi) {
             return sapApi(Output.of(sapApi));
         }
 
-        /**
-         * @param sentry String
-         * 
-         * @return builder
-         * 
-         */
         public Builder sentry(@Nullable Output<Map<String,Object>> sentry) {
             $.sentry = sentry;
             return this;
         }
 
-        /**
-         * @param sentry String
-         * 
-         * @return builder
-         * 
-         */
         public Builder sentry(Map<String,Object> sentry) {
             return sentry(Output.of(sentry));
         }
 
-        /**
-         * @param sharepoint String
-         * 
-         * @return builder
-         * 
-         */
         public Builder sharepoint(@Nullable Output<Map<String,Object>> sharepoint) {
             $.sharepoint = sharepoint;
             return this;
         }
 
-        /**
-         * @param sharepoint String
-         * 
-         * @return builder
-         * 
-         */
         public Builder sharepoint(Map<String,Object> sharepoint) {
             return sharepoint(Output.of(sharepoint));
         }
 
-        /**
-         * @param slack String
-         * 
-         * @return builder
-         * 
-         */
         public Builder slack(@Nullable Output<Map<String,Object>> slack) {
             $.slack = slack;
             return this;
         }
 
-        /**
-         * @param slack String
-         * 
-         * @return builder
-         * 
-         */
         public Builder slack(Map<String,Object> slack) {
             return slack(Output.of(slack));
         }
 
-        /**
-         * @param springcm String
-         * 
-         * @return builder
-         * 
-         */
         public Builder springcm(@Nullable Output<Map<String,Object>> springcm) {
             $.springcm = springcm;
             return this;
         }
 
-        /**
-         * @param springcm String
-         * 
-         * @return builder
-         * 
-         */
         public Builder springcm(Map<String,Object> springcm) {
             return springcm(Output.of(springcm));
         }
 
-        /**
-         * @param wams String
-         * 
-         * @return builder
-         * 
-         */
         public Builder wams(@Nullable Output<Map<String,Object>> wams) {
             $.wams = wams;
             return this;
         }
 
-        /**
-         * @param wams String
-         * 
-         * @return builder
-         * 
-         */
         public Builder wams(Map<String,Object> wams) {
             return wams(Output.of(wams));
         }
 
         /**
-         * @param wsfed String
+         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
          * 
          * @return builder
          * 
@@ -1026,7 +530,7 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wsfed String
+         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
          * 
          * @return builder
          * 
@@ -1035,44 +539,20 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
             return wsfed(Output.of(wsfed));
         }
 
-        /**
-         * @param zendesk String
-         * 
-         * @return builder
-         * 
-         */
         public Builder zendesk(@Nullable Output<Map<String,Object>> zendesk) {
             $.zendesk = zendesk;
             return this;
         }
 
-        /**
-         * @param zendesk String
-         * 
-         * @return builder
-         * 
-         */
         public Builder zendesk(Map<String,Object> zendesk) {
             return zendesk(Output.of(zendesk));
         }
 
-        /**
-         * @param zoom String
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoom(@Nullable Output<Map<String,Object>> zoom) {
             $.zoom = zoom;
             return this;
         }
 
-        /**
-         * @param zoom String
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoom(Map<String,Object> zoom) {
             return zoom(Output.of(zoom));
         }

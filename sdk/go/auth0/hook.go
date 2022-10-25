@@ -11,10 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected
-// extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
-//
-// Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
+// Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code. Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
 //
 // ## Example Usage
 //
@@ -37,7 +34,7 @@ import (
 //					"auth0": pulumi.Any("2.30.0"),
 //				},
 //				Enabled: pulumi.Bool(true),
-//				Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, { user });\n}\n\n")),
+//				Script:  pulumi.String(fmt.Sprintf("    function (user, context, callback) {\n      callback(null, { user });\n    }\n  \n")),
 //				Secrets: pulumi.AnyMap{
 //					"foo": pulumi.Any("bar"),
 //				},
@@ -54,7 +51,7 @@ import (
 //
 // ## Import
 //
-// A hook can be imported using the hook's ID, e.g.
+// # A hook can be imported using the hook's ID. # # Example
 //
 // ```sh
 //
@@ -72,10 +69,9 @@ type Hook struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Code to be executed when this hook runs.
 	Script pulumi.StringOutput `pulumi:"script"`
-	// Map(String), sets the hook secrets associated with this hook.
-	// If specified, any secrets not listed here will be removed from the hook.
+	// The secrets associated with the hook.
 	Secrets pulumi.MapOutput `pulumi:"secrets"`
-	// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 }
 
@@ -122,10 +118,9 @@ type hookState struct {
 	Name *string `pulumi:"name"`
 	// Code to be executed when this hook runs.
 	Script *string `pulumi:"script"`
-	// Map(String), sets the hook secrets associated with this hook.
-	// If specified, any secrets not listed here will be removed from the hook.
+	// The secrets associated with the hook.
 	Secrets map[string]interface{} `pulumi:"secrets"`
-	// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId *string `pulumi:"triggerId"`
 }
 
@@ -138,10 +133,9 @@ type HookState struct {
 	Name pulumi.StringPtrInput
 	// Code to be executed when this hook runs.
 	Script pulumi.StringPtrInput
-	// Map(String), sets the hook secrets associated with this hook.
-	// If specified, any secrets not listed here will be removed from the hook.
+	// The secrets associated with the hook.
 	Secrets pulumi.MapInput
-	// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId pulumi.StringPtrInput
 }
 
@@ -158,10 +152,9 @@ type hookArgs struct {
 	Name *string `pulumi:"name"`
 	// Code to be executed when this hook runs.
 	Script string `pulumi:"script"`
-	// Map(String), sets the hook secrets associated with this hook.
-	// If specified, any secrets not listed here will be removed from the hook.
+	// The secrets associated with the hook.
 	Secrets map[string]interface{} `pulumi:"secrets"`
-	// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId string `pulumi:"triggerId"`
 }
 
@@ -175,10 +168,9 @@ type HookArgs struct {
 	Name pulumi.StringPtrInput
 	// Code to be executed when this hook runs.
 	Script pulumi.StringInput
-	// Map(String), sets the hook secrets associated with this hook.
-	// If specified, any secrets not listed here will be removed from the hook.
+	// The secrets associated with the hook.
 	Secrets pulumi.MapInput
-	// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+	// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 	TriggerId pulumi.StringInput
 }
 
@@ -289,13 +281,12 @@ func (o HookOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hook) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
 }
 
-// Map(String), sets the hook secrets associated with this hook.
-// If specified, any secrets not listed here will be removed from the hook.
+// The secrets associated with the hook.
 func (o HookOutput) Secrets() pulumi.MapOutput {
 	return o.ApplyT(func(v *Hook) pulumi.MapOutput { return v.Secrets }).(pulumi.MapOutput)
 }
 
-// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
 func (o HookOutput) TriggerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hook) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
 }

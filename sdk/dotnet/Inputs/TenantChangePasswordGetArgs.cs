@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class TenantChangePasswordGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether to use the custom change password page.
+        /// Indicates whether to use the custom change password page.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// String, HTML format with supported Liquid syntax. Customized content of the change password page.
+        /// HTML format with supported Liquid syntax. Customized content of the change password page.
         /// </summary>
         [Input("html", required: true)]
         public Input<string> Html { get; set; } = null!;

@@ -15,22 +15,32 @@ public final class CustomDomainVerificationState extends com.pulumi.resources.Re
 
     public static final CustomDomainVerificationState Empty = new CustomDomainVerificationState();
 
+    /**
+     * The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+     * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
+     * 
+     */
     @Import(name="cnameApiKey")
     private @Nullable Output<String> cnameApiKey;
 
+    /**
+     * @return The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+     * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
+     * 
+     */
     public Optional<Output<String>> cnameApiKey() {
         return Optional.ofNullable(this.cnameApiKey);
     }
 
     /**
-     * String. ID of the custom domain resource.
+     * ID of the custom domain resource.
      * 
      */
     @Import(name="customDomainId")
     private @Nullable Output<String> customDomainId;
 
     /**
-     * @return String. ID of the custom domain resource.
+     * @return ID of the custom domain resource.
      * 
      */
     public Optional<Output<String>> customDomainId() {
@@ -38,14 +48,14 @@ public final class CustomDomainVerificationState extends com.pulumi.resources.Re
     }
 
     /**
-     * String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     * The DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
     @Import(name="originDomainName")
     private @Nullable Output<String> originDomainName;
 
     /**
-     * @return String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     * @return The DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
     public Optional<Output<String>> originDomainName() {
@@ -78,17 +88,31 @@ public final class CustomDomainVerificationState extends com.pulumi.resources.Re
             $ = new CustomDomainVerificationState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cnameApiKey The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+         * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cnameApiKey(@Nullable Output<String> cnameApiKey) {
             $.cnameApiKey = cnameApiKey;
             return this;
         }
 
+        /**
+         * @param cnameApiKey The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+         * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cnameApiKey(String cnameApiKey) {
             return cnameApiKey(Output.of(cnameApiKey));
         }
 
         /**
-         * @param customDomainId String. ID of the custom domain resource.
+         * @param customDomainId ID of the custom domain resource.
          * 
          * @return builder
          * 
@@ -99,7 +123,7 @@ public final class CustomDomainVerificationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customDomainId String. ID of the custom domain resource.
+         * @param customDomainId ID of the custom domain resource.
          * 
          * @return builder
          * 
@@ -109,7 +133,7 @@ public final class CustomDomainVerificationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param originDomainName String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+         * @param originDomainName The DNS name of the Auth0 origin server that handles traffic for the custom domain.
          * 
          * @return builder
          * 
@@ -120,7 +144,7 @@ public final class CustomDomainVerificationState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param originDomainName String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+         * @param originDomainName The DNS name of the Auth0 origin server that handles traffic for the custom domain.
          * 
          * @return builder
          * 

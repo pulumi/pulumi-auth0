@@ -25,9 +25,28 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * Your Auth0 [management api access
+     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     */
     public readonly apiToken!: pulumi.Output<string | undefined>;
+    /**
+     * Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+     */
+    public readonly audience!: pulumi.Output<string | undefined>;
+    /**
+     * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+     */
     public readonly clientId!: pulumi.Output<string | undefined>;
+    /**
+     * Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+     */
     public readonly clientSecret!: pulumi.Output<string | undefined>;
+    /**
+     * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+     */
     public readonly domain!: pulumi.Output<string>;
 
     /**
@@ -45,6 +64,7 @@ export class Provider extends pulumi.ProviderResource {
                 throw new Error("Missing required property 'domain'");
             }
             resourceInputs["apiToken"] = args ? args.apiToken : undefined;
+            resourceInputs["audience"] = args ? args.audience : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
@@ -59,9 +79,31 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Your Auth0 [management api access
+     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     */
     apiToken?: pulumi.Input<string>;
+    /**
+     * Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+     */
+    audience?: pulumi.Input<string>;
+    /**
+     * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+     */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * Indicates whether to turn on debug mode.
+     */
     debug?: pulumi.Input<boolean>;
+    /**
+     * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+     */
     domain: pulumi.Input<string>;
 }

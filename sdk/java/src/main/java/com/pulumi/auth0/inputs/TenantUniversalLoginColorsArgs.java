@@ -15,32 +15,16 @@ public final class TenantUniversalLoginColorsArgs extends com.pulumi.resources.R
 
     public static final TenantUniversalLoginColorsArgs Empty = new TenantUniversalLoginColorsArgs();
 
-    /**
-     * String, Hexadecimal. Background color of login pages.
-     * 
-     */
     @Import(name="pageBackground")
     private @Nullable Output<String> pageBackground;
 
-    /**
-     * @return String, Hexadecimal. Background color of login pages.
-     * 
-     */
     public Optional<Output<String>> pageBackground() {
         return Optional.ofNullable(this.pageBackground);
     }
 
-    /**
-     * String, Hexadecimal. Primary button background color.
-     * 
-     */
     @Import(name="primary")
     private @Nullable Output<String> primary;
 
-    /**
-     * @return String, Hexadecimal. Primary button background color.
-     * 
-     */
     public Optional<Output<String>> primary() {
         return Optional.ofNullable(this.primary);
     }
@@ -70,44 +54,20 @@ public final class TenantUniversalLoginColorsArgs extends com.pulumi.resources.R
             $ = new TenantUniversalLoginColorsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param pageBackground String, Hexadecimal. Background color of login pages.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pageBackground(@Nullable Output<String> pageBackground) {
             $.pageBackground = pageBackground;
             return this;
         }
 
-        /**
-         * @param pageBackground String, Hexadecimal. Background color of login pages.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pageBackground(String pageBackground) {
             return pageBackground(Output.of(pageBackground));
         }
 
-        /**
-         * @param primary String, Hexadecimal. Primary button background color.
-         * 
-         * @return builder
-         * 
-         */
         public Builder primary(@Nullable Output<String> primary) {
             $.primary = primary;
             return this;
         }
 
-        /**
-         * @param primary String, Hexadecimal. Primary button background color.
-         * 
-         * @return builder
-         * 
-         */
         public Builder primary(String primary) {
             return primary(Output.of(primary));
         }

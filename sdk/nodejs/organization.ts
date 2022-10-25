@@ -6,10 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * The Organizations feature represents a broad update to the Auth0 platform that
- * allows our business-to-business (B2B) customers to better manage their partners
- * and customers, and to customize the ways that end-users access their
- * applications. Auth0 customers can use Organizations to:
+ * The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
  *
  *   - Represent their business customers and partners in Auth0 and manage their
  *     membership.
@@ -23,28 +20,24 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const acme = new auth0.Organization("acme", {
- *     displayName: "Acme Inc.",
+ * const myOrganization = new auth0.Organization("my_organization", {
  *     branding: {
- *         logoUrl: "https://acme.com/logo.svg",
  *         colors: {
- *             primary: "#e3e2f0",
- *             page_background: "#e3e2ff",
+ *             page_background: "#e1e1e1",
+ *             primary: "#f2f2f2",
  *         },
+ *         logoUrl: "https://example.com/assets/icons/icon.png",
  *     },
- *     connections: [{
- *         connectionId: auth0_connection.acme.id,
- *         assignMembershipOnLogin: true,
- *     }],
+ *     displayName: "Auth0 Inc.",
  * });
  * ```
  *
  * ## Import
  *
- * Existing organizations can be imported using organization id, e.g.
+ * # Existing organizations can be imported using the organization ID. # # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+ *  $ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
  * ```
  */
 export class Organization extends pulumi.CustomResource {
@@ -76,28 +69,19 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /**
-     * Defines how to style the login pages. For details, see
-     * Branding
+     * Defines how to style the login pages.
      */
     public readonly branding!: pulumi.Output<outputs.OrganizationBranding>;
     /**
-     * Connections assigned to the organization. For
-     * details, see Connections
-     *
-     * @deprecated Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-     */
-    public readonly connections!: pulumi.Output<outputs.OrganizationConnection[]>;
-    /**
-     * Friendly name of this organization
+     * Friendly name of this organization.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Metadata associated with the organization, Maximum of
-     * 10 metadata properties allowed
+     * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name of this organization
+     * The name of this organization.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -115,14 +99,12 @@ export class Organization extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
             resourceInputs["branding"] = state ? state.branding : undefined;
-            resourceInputs["connections"] = state ? state.connections : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
             resourceInputs["branding"] = args ? args.branding : undefined;
-            resourceInputs["connections"] = args ? args.connections : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -137,28 +119,19 @@ export class Organization extends pulumi.CustomResource {
  */
 export interface OrganizationState {
     /**
-     * Defines how to style the login pages. For details, see
-     * Branding
+     * Defines how to style the login pages.
      */
     branding?: pulumi.Input<inputs.OrganizationBranding>;
     /**
-     * Connections assigned to the organization. For
-     * details, see Connections
-     *
-     * @deprecated Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-     */
-    connections?: pulumi.Input<pulumi.Input<inputs.OrganizationConnection>[]>;
-    /**
-     * Friendly name of this organization
+     * Friendly name of this organization.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Metadata associated with the organization, Maximum of
-     * 10 metadata properties allowed
+     * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of this organization
+     * The name of this organization.
      */
     name?: pulumi.Input<string>;
 }
@@ -168,28 +141,19 @@ export interface OrganizationState {
  */
 export interface OrganizationArgs {
     /**
-     * Defines how to style the login pages. For details, see
-     * Branding
+     * Defines how to style the login pages.
      */
     branding?: pulumi.Input<inputs.OrganizationBranding>;
     /**
-     * Connections assigned to the organization. For
-     * details, see Connections
-     *
-     * @deprecated Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-     */
-    connections?: pulumi.Input<pulumi.Input<inputs.OrganizationConnection>[]>;
-    /**
-     * Friendly name of this organization
+     * Friendly name of this organization.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Metadata associated with the organization, Maximum of
-     * 10 metadata properties allowed
+     * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of this organization
+     * The name of this organization.
      */
     name?: pulumi.Input<string>;
 }

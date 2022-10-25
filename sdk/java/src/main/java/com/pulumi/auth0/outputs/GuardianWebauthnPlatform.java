@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GuardianWebauthnPlatform {
     /**
-     * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * @return The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
     private @Nullable Boolean overrideRelyingParty;
     /**
-     * @return String. The Relying Party should be a suffix of the custom domain.
+     * @return The Relying Party should be a suffix of the custom domain.
      * 
      */
     private @Nullable String relyingPartyIdentifier;
 
     private GuardianWebauthnPlatform() {}
     /**
-     * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * @return The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
     public Optional<Boolean> overrideRelyingParty() {
         return Optional.ofNullable(this.overrideRelyingParty);
     }
     /**
-     * @return String. The Relying Party should be a suffix of the custom domain.
+     * @return The Relying Party should be a suffix of the custom domain.
      * 
      */
     public Optional<String> relyingPartyIdentifier() {

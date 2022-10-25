@@ -19,9 +19,9 @@ class OrganizationMemberArgs:
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OrganizationMember resource.
-        :param pulumi.Input[str] organization_id: The ID of the organization
-        :param pulumi.Input[str] user_id: The user ID of the member
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set(string). List of role IDs to assign to member.
+        :param pulumi.Input[str] organization_id: The ID of the organization to assign the member to.
+        :param pulumi.Input[str] user_id: ID of the user to add as an organization member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "user_id", user_id)
@@ -32,7 +32,7 @@ class OrganizationMemberArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         """
-        The ID of the organization
+        The ID of the organization to assign the member to.
         """
         return pulumi.get(self, "organization_id")
 
@@ -44,7 +44,7 @@ class OrganizationMemberArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[str]:
         """
-        The user ID of the member
+        ID of the user to add as an organization member.
         """
         return pulumi.get(self, "user_id")
 
@@ -56,7 +56,7 @@ class OrganizationMemberArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Set(string). List of role IDs to assign to member.
+        The role ID(s) to assign to the organization member.
         """
         return pulumi.get(self, "roles")
 
@@ -73,9 +73,9 @@ class _OrganizationMemberState:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OrganizationMember resources.
-        :param pulumi.Input[str] organization_id: The ID of the organization
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set(string). List of role IDs to assign to member.
-        :param pulumi.Input[str] user_id: The user ID of the member
+        :param pulumi.Input[str] organization_id: The ID of the organization to assign the member to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
+        :param pulumi.Input[str] user_id: ID of the user to add as an organization member.
         """
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
@@ -88,7 +88,7 @@ class _OrganizationMemberState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the organization
+        The ID of the organization to assign the member to.
         """
         return pulumi.get(self, "organization_id")
 
@@ -100,7 +100,7 @@ class _OrganizationMemberState:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Set(string). List of role IDs to assign to member.
+        The role ID(s) to assign to the organization member.
         """
         return pulumi.get(self, "roles")
 
@@ -112,7 +112,7 @@ class _OrganizationMemberState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The user ID of the member
+        ID of the user to add as an organization member.
         """
         return pulumi.get(self, "user_id")
 
@@ -139,25 +139,36 @@ class OrganizationMember(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        acme_admin = auth0.OrganizationMember("acmeAdmin",
-            organization_id=auth0_organization["acme"]["id"],
-            user_id=auth0_user["acme_user"]["id"],
-            roles=[auth0_role["admin"]["id"]])
+        reader = auth0.Role("reader")
+        admin = auth0.Role("admin")
+        user = auth0.User("user",
+            email="test-user@auth0.com",
+            connection_name="Username-Password-Authentication",
+            email_verified=True,
+            password="MyPass123$")
+        my_org = auth0.Organization("myOrg", display_name="Admin")
+        my_org_member = auth0.OrganizationMember("myOrgMember",
+            organization_id=my_org.id,
+            user_id=user.id,
+            roles=[
+                reader.id,
+                admin.id,
+            ])
         ```
 
         ## Import
 
-        As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+        # This resource can be imported by specifying the # organization ID and user ID separated by ":". # # Example
 
         ```sh
-         $ pulumi import auth0:index/organizationMember:OrganizationMember acme_admin 11f4a21b-011a-312d-9217-e291caca36c5
+         $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX:auth0|XXXXX"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] organization_id: The ID of the organization
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set(string). List of role IDs to assign to member.
-        :param pulumi.Input[str] user_id: The user ID of the member
+        :param pulumi.Input[str] organization_id: The ID of the organization to assign the member to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
+        :param pulumi.Input[str] user_id: ID of the user to add as an organization member.
         """
         ...
     @overload
@@ -174,18 +185,29 @@ class OrganizationMember(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        acme_admin = auth0.OrganizationMember("acmeAdmin",
-            organization_id=auth0_organization["acme"]["id"],
-            user_id=auth0_user["acme_user"]["id"],
-            roles=[auth0_role["admin"]["id"]])
+        reader = auth0.Role("reader")
+        admin = auth0.Role("admin")
+        user = auth0.User("user",
+            email="test-user@auth0.com",
+            connection_name="Username-Password-Authentication",
+            email_verified=True,
+            password="MyPass123$")
+        my_org = auth0.Organization("myOrg", display_name="Admin")
+        my_org_member = auth0.OrganizationMember("myOrgMember",
+            organization_id=my_org.id,
+            user_id=user.id,
+            roles=[
+                reader.id,
+                admin.id,
+            ])
         ```
 
         ## Import
 
-        As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+        # This resource can be imported by specifying the # organization ID and user ID separated by ":". # # Example
 
         ```sh
-         $ pulumi import auth0:index/organizationMember:OrganizationMember acme_admin 11f4a21b-011a-312d-9217-e291caca36c5
+         $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX:auth0|XXXXX"
         ```
 
         :param str resource_name: The name of the resource.
@@ -242,9 +264,9 @@ class OrganizationMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] organization_id: The ID of the organization
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set(string). List of role IDs to assign to member.
-        :param pulumi.Input[str] user_id: The user ID of the member
+        :param pulumi.Input[str] organization_id: The ID of the organization to assign the member to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
+        :param pulumi.Input[str] user_id: ID of the user to add as an organization member.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -259,7 +281,7 @@ class OrganizationMember(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[str]:
         """
-        The ID of the organization
+        The ID of the organization to assign the member to.
         """
         return pulumi.get(self, "organization_id")
 
@@ -267,7 +289,7 @@ class OrganizationMember(pulumi.CustomResource):
     @pulumi.getter
     def roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Set(string). List of role IDs to assign to member.
+        The role ID(s) to assign to the organization member.
         """
         return pulumi.get(self, "roles")
 
@@ -275,7 +297,7 @@ class OrganizationMember(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        The user ID of the member
+        ID of the user to add as an organization member.
         """
         return pulumi.get(self, "user_id")
 

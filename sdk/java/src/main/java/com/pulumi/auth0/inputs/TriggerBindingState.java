@@ -18,16 +18,14 @@ public final class TriggerBindingState extends com.pulumi.resources.ResourceArgs
     public static final TriggerBindingState Empty = new TriggerBindingState();
 
     /**
-     * The actions bound to this trigger. For details, see
-     * Actions.
+     * The actions bound to this trigger
      * 
      */
     @Import(name="actions")
     private @Nullable Output<List<TriggerBindingActionArgs>> actions;
 
     /**
-     * @return The actions bound to this trigger. For details, see
-     * Actions.
+     * @return The actions bound to this trigger
      * 
      */
     public Optional<Output<List<TriggerBindingActionArgs>>> actions() {
@@ -35,14 +33,14 @@ public final class TriggerBindingState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The id of the trigger to bind with
+     * The ID of the trigger to bind with.
      * 
      */
     @Import(name="trigger")
     private @Nullable Output<String> trigger;
 
     /**
-     * @return The id of the trigger to bind with
+     * @return The ID of the trigger to bind with.
      * 
      */
     public Optional<Output<String>> trigger() {
@@ -75,8 +73,7 @@ public final class TriggerBindingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param actions The actions bound to this trigger. For details, see
-         * Actions.
+         * @param actions The actions bound to this trigger
          * 
          * @return builder
          * 
@@ -87,8 +84,7 @@ public final class TriggerBindingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param actions The actions bound to this trigger. For details, see
-         * Actions.
+         * @param actions The actions bound to this trigger
          * 
          * @return builder
          * 
@@ -98,8 +94,7 @@ public final class TriggerBindingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param actions The actions bound to this trigger. For details, see
-         * Actions.
+         * @param actions The actions bound to this trigger
          * 
          * @return builder
          * 
@@ -109,7 +104,7 @@ public final class TriggerBindingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param trigger The id of the trigger to bind with
+         * @param trigger The ID of the trigger to bind with.
          * 
          * @return builder
          * 
@@ -120,7 +115,7 @@ public final class TriggerBindingState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param trigger The id of the trigger to bind with
+         * @param trigger The ID of the trigger to bind with.
          * 
          * @return builder
          * 

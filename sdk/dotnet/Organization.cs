@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// The Organizations feature represents a broad update to the Auth0 platform that
-    /// allows our business-to-business (B2B) customers to better manage their partners
-    /// and customers, and to customize the ways that end-users access their
-    /// applications. Auth0 customers can use Organizations to:
+    /// The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
     /// 
     ///   - Represent their business customers and partners in Auth0 and manage their
     ///     membership.
@@ -30,26 +27,18 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var acme = new Auth0.Organization("acme", new()
+    ///     var myOrganization = new Auth0.Organization("myOrganization", new()
     ///     {
-    ///         DisplayName = "Acme Inc.",
     ///         Branding = new Auth0.Inputs.OrganizationBrandingArgs
     ///         {
-    ///             LogoUrl = "https://acme.com/logo.svg",
     ///             Colors = 
     ///             {
-    ///                 { "primary", "#e3e2f0" },
-    ///                 { "page_background", "#e3e2ff" },
+    ///                 { "pageBackground", "#e1e1e1" },
+    ///                 { "primary", "#f2f2f2" },
     ///             },
+    ///             LogoUrl = "https://example.com/assets/icons/icon.png",
     ///         },
-    ///         Connections = new[]
-    ///         {
-    ///             new Auth0.Inputs.OrganizationConnectionArgs
-    ///             {
-    ///                 ConnectionId = auth0_connection.Acme.Id,
-    ///                 AssignMembershipOnLogin = true,
-    ///             },
-    ///         },
+    ///         DisplayName = "Auth0 Inc.",
     ///     });
     /// 
     /// });
@@ -57,44 +46,35 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Existing organizations can be imported using organization id, e.g.
+    /// # Existing organizations can be imported using the organization ID. # # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+    ///  $ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organization:Organization")]
     public partial class Organization : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines how to style the login pages. For details, see
-        /// Branding
+        /// Defines how to style the login pages.
         /// </summary>
         [Output("branding")]
         public Output<Outputs.OrganizationBranding> Branding { get; private set; } = null!;
 
         /// <summary>
-        /// Connections assigned to the organization. For
-        /// details, see Connections
-        /// </summary>
-        [Output("connections")]
-        public Output<ImmutableArray<Outputs.OrganizationConnection>> Connections { get; private set; } = null!;
-
-        /// <summary>
-        /// Friendly name of this organization
+        /// Friendly name of this organization.
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata associated with the organization, Maximum of
-        /// 10 metadata properties allowed
+        /// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The name of this organization
+        /// The name of this organization.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -146,28 +126,13 @@ namespace Pulumi.Auth0
     public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines how to style the login pages. For details, see
-        /// Branding
+        /// Defines how to style the login pages.
         /// </summary>
         [Input("branding")]
         public Input<Inputs.OrganizationBrandingArgs>? Branding { get; set; }
 
-        [Input("connections")]
-        private InputList<Inputs.OrganizationConnectionArgs>? _connections;
-
         /// <summary>
-        /// Connections assigned to the organization. For
-        /// details, see Connections
-        /// </summary>
-        [Obsolete(@"Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.")]
-        public InputList<Inputs.OrganizationConnectionArgs> Connections
-        {
-            get => _connections ?? (_connections = new InputList<Inputs.OrganizationConnectionArgs>());
-            set => _connections = value;
-        }
-
-        /// <summary>
-        /// Friendly name of this organization
+        /// Friendly name of this organization.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -176,8 +141,7 @@ namespace Pulumi.Auth0
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Metadata associated with the organization, Maximum of
-        /// 10 metadata properties allowed
+        /// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -186,7 +150,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The name of this organization
+        /// The name of this organization.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -200,28 +164,13 @@ namespace Pulumi.Auth0
     public sealed class OrganizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines how to style the login pages. For details, see
-        /// Branding
+        /// Defines how to style the login pages.
         /// </summary>
         [Input("branding")]
         public Input<Inputs.OrganizationBrandingGetArgs>? Branding { get; set; }
 
-        [Input("connections")]
-        private InputList<Inputs.OrganizationConnectionGetArgs>? _connections;
-
         /// <summary>
-        /// Connections assigned to the organization. For
-        /// details, see Connections
-        /// </summary>
-        [Obsolete(@"Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.")]
-        public InputList<Inputs.OrganizationConnectionGetArgs> Connections
-        {
-            get => _connections ?? (_connections = new InputList<Inputs.OrganizationConnectionGetArgs>());
-            set => _connections = value;
-        }
-
-        /// <summary>
-        /// Friendly name of this organization
+        /// Friendly name of this organization.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -230,8 +179,7 @@ namespace Pulumi.Auth0
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Metadata associated with the organization, Maximum of
-        /// 10 metadata properties allowed
+        /// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -240,7 +188,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The name of this organization
+        /// The name of this organization.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

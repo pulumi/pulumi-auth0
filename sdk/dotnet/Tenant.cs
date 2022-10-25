@@ -10,58 +10,74 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error
-    /// pages, and configuring default tenant behaviors.
+    /// With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
     /// 
-    /// &gt; Auth0 does not currently support creating tenants through the Management API. Therefore, this resource can only
+    /// &gt; Creating tenants through the Management API is not currently supported. Therefore, this resource can only
     /// manage an existing tenant created through the Auth0 dashboard.
-    /// 
-    /// Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be
-    /// used to add/remove extensions.
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tenant = new Auth0.Tenant("tenant", new()
+    ///     var myTenant = new Auth0.Tenant("myTenant", new()
     ///     {
+    ///         AllowedLogoutUrls = new[]
+    ///         {
+    ///             "http://example.com/logout",
+    ///         },
     ///         ChangePassword = new Auth0.Inputs.TenantChangePasswordArgs
     ///         {
     ///             Enabled = true,
-    ///             Html = File.ReadAllText("./password_reset.html"),
+    ///             Html = "&lt;html&gt;Change Password&lt;/html&gt;",
     ///         },
+    ///         DefaultRedirectionUri = "https://example.com/login",
+    ///         EnabledLocales = new[]
+    ///         {
+    ///             "en",
+    ///         },
+    ///         ErrorPage = new Auth0.Inputs.TenantErrorPageArgs
+    ///         {
+    ///             Html = "&lt;html&gt;Error Page&lt;/html&gt;",
+    ///             ShowLogLink = true,
+    ///             Url = "https://example.com/errors",
+    ///         },
+    ///         Flags = new Auth0.Inputs.TenantFlagsArgs
+    ///         {
+    ///             DisableClickjackProtectionHeaders = true,
+    ///             DisableFieldsMapFix = false,
+    ///             DisableManagementApiSmsObfuscation = false,
+    ///             EnablePublicSignupUserExistsError = true,
+    ///             NoDiscloseEnterpriseConnections = false,
+    ///             UniversalLogin = true,
+    ///             UseScopeDescriptionsForConsent = true,
+    ///         },
+    ///         FriendlyName = "Tenant Name",
     ///         GuardianMfaPage = new Auth0.Inputs.TenantGuardianMfaPageArgs
     ///         {
     ///             Enabled = true,
-    ///             Html = File.ReadAllText("./guardian_multifactor.html"),
+    ///             Html = "&lt;html&gt;MFA&lt;/html&gt;",
     ///         },
-    ///         DefaultAudience = "&lt;client_id&gt;",
-    ///         DefaultDirectory = "Connection-Name",
-    ///         ErrorPage = new Auth0.Inputs.TenantErrorPageArgs
-    ///         {
-    ///             Html = File.ReadAllText("./error.html"),
-    ///             ShowLogLink = true,
-    ///             Url = "http://mysite/errors",
-    ///         },
-    ///         FriendlyName = "Tenant Name",
-    ///         PictureUrl = "http://mysite/logo.png",
-    ///         SupportEmail = "support@mysite",
-    ///         SupportUrl = "http://mysite/support",
-    ///         AllowedLogoutUrls = new[]
-    ///         {
-    ///             "http://mysite/logout",
-    ///         },
-    ///         SessionLifetime = 46000,
-    ///         SandboxVersion = "8",
+    ///         PictureUrl = "http://example.com/logo.png",
+    ///         SandboxVersion = "12",
     ///         SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs
     ///         {
     ///             Mode = "non-persistent",
+    ///         },
+    ///         SessionLifetime = 8760,
+    ///         SupportEmail = "support@example.com",
+    ///         SupportUrl = "http://example.com/support",
+    ///         UniversalLogin = new Auth0.Inputs.TenantUniversalLoginArgs
+    ///         {
+    ///             Colors = new Auth0.Inputs.TenantUniversalLoginColorsArgs
+    ///             {
+    ///                 PageBackground = "#000000",
+    ///                 Primary = "#0059d6",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -70,119 +86,119 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// # As this is not a resource identifiable by an ID within the Auth0 Management API, # tenant can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/tenant:Tenant tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
+    ///  $ pulumi import auth0:index/tenant:Tenant my_tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/tenant:Tenant")]
     public partial class Tenant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List(String). URLs that Auth0 may redirect to after logout.
+        /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         [Output("allowedLogoutUrls")]
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+        /// Configuration settings for change password page.
         /// </summary>
         [Output("changePassword")]
         public Output<Outputs.TenantChangePassword> ChangePassword { get; private set; } = null!;
 
         /// <summary>
-        /// String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+        /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         /// </summary>
         [Output("defaultAudience")]
         public Output<string> DefaultAudience { get; private set; } = null!;
 
         /// <summary>
-        /// String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         /// </summary>
         [Output("defaultDirectory")]
         public Output<string> DefaultDirectory { get; private set; } = null!;
 
         /// <summary>
-        /// String. The default absolute redirection uri, must be https and cannot contain a fragment.
+        /// The default absolute redirection URI, must be https and cannot contain a fragment.
         /// </summary>
         [Output("defaultRedirectionUri")]
         public Output<string> DefaultRedirectionUri { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        /// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         /// </summary>
         [Output("enabledLocales")]
         public Output<ImmutableArray<string>> EnabledLocales { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for error pages. For details, see Error Page.
+        /// Configuration settings for error pages.
         /// </summary>
         [Output("errorPage")]
         public Output<Outputs.TenantErrorPage> ErrorPage { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for tenant flags. For details, see Flags.
+        /// Configuration settings for tenant flags.
         /// </summary>
         [Output("flags")]
         public Output<Outputs.TenantFlags> Flags { get; private set; } = null!;
 
         /// <summary>
-        /// String. Friendly name for the tenant.
+        /// Friendly name for the tenant.
         /// </summary>
         [Output("friendlyName")]
         public Output<string> FriendlyName { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+        /// Configuration settings for the Guardian MFA page.
         /// </summary>
         [Output("guardianMfaPage")]
         public Output<Outputs.TenantGuardianMfaPage> GuardianMfaPage { get; private set; } = null!;
 
         /// <summary>
-        /// Integer. Number of hours during which a session can be inactive before the user must log in again.
+        /// Number of hours during which a session can be inactive before the user must log in again.
         /// </summary>
         [Output("idleSessionLifetime")]
         public Output<double?> IdleSessionLifetime { get; private set; } = null!;
 
         /// <summary>
-        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Output("pictureUrl")]
         public Output<string> PictureUrl { get; private set; } = null!;
 
         /// <summary>
-        /// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
+        /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         /// </summary>
         [Output("sandboxVersion")]
         public Output<string> SandboxVersion { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+        /// Alters behavior of tenant's session cookie. Contains a single `mode` property.
         /// </summary>
         [Output("sessionCookie")]
         public Output<Outputs.TenantSessionCookie> SessionCookie { get; private set; } = null!;
 
         /// <summary>
-        /// Integer. Number of hours during which a session will stay valid.
+        /// Number of hours during which a session will stay valid.
         /// </summary>
         [Output("sessionLifetime")]
         public Output<double?> SessionLifetime { get; private set; } = null!;
 
         /// <summary>
-        /// String. Support email address for authenticating users.
+        /// Support email address for authenticating users.
         /// </summary>
         [Output("supportEmail")]
         public Output<string> SupportEmail { get; private set; } = null!;
 
         /// <summary>
-        /// String. Support URL for authenticating users.
+        /// Support URL for authenticating users.
         /// </summary>
         [Output("supportUrl")]
         public Output<string> SupportUrl { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+        /// Configuration settings for Universal Login.
         /// </summary>
         [Output("universalLogin")]
         public Output<Outputs.TenantUniversalLogin> UniversalLogin { get; private set; } = null!;
@@ -237,7 +253,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedLogoutUrls;
 
         /// <summary>
-        /// List(String). URLs that Auth0 may redirect to after logout.
+        /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         public InputList<string> AllowedLogoutUrls
         {
@@ -246,25 +262,25 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+        /// Configuration settings for change password page.
         /// </summary>
         [Input("changePassword")]
         public Input<Inputs.TenantChangePasswordArgs>? ChangePassword { get; set; }
 
         /// <summary>
-        /// String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+        /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         /// </summary>
         [Input("defaultAudience")]
         public Input<string>? DefaultAudience { get; set; }
 
         /// <summary>
-        /// String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         /// </summary>
         [Input("defaultDirectory")]
         public Input<string>? DefaultDirectory { get; set; }
 
         /// <summary>
-        /// String. The default absolute redirection uri, must be https and cannot contain a fragment.
+        /// The default absolute redirection URI, must be https and cannot contain a fragment.
         /// </summary>
         [Input("defaultRedirectionUri")]
         public Input<string>? DefaultRedirectionUri { get; set; }
@@ -273,7 +289,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _enabledLocales;
 
         /// <summary>
-        /// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        /// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         /// </summary>
         public InputList<string> EnabledLocales
         {
@@ -282,73 +298,73 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// List(Resource). Configuration settings for error pages. For details, see Error Page.
+        /// Configuration settings for error pages.
         /// </summary>
         [Input("errorPage")]
         public Input<Inputs.TenantErrorPageArgs>? ErrorPage { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for tenant flags. For details, see Flags.
+        /// Configuration settings for tenant flags.
         /// </summary>
         [Input("flags")]
         public Input<Inputs.TenantFlagsArgs>? Flags { get; set; }
 
         /// <summary>
-        /// String. Friendly name for the tenant.
+        /// Friendly name for the tenant.
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+        /// Configuration settings for the Guardian MFA page.
         /// </summary>
         [Input("guardianMfaPage")]
         public Input<Inputs.TenantGuardianMfaPageArgs>? GuardianMfaPage { get; set; }
 
         /// <summary>
-        /// Integer. Number of hours during which a session can be inactive before the user must log in again.
+        /// Number of hours during which a session can be inactive before the user must log in again.
         /// </summary>
         [Input("idleSessionLifetime")]
         public Input<double>? IdleSessionLifetime { get; set; }
 
         /// <summary>
-        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Input("pictureUrl")]
         public Input<string>? PictureUrl { get; set; }
 
         /// <summary>
-        /// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
+        /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         /// </summary>
         [Input("sandboxVersion")]
         public Input<string>? SandboxVersion { get; set; }
 
         /// <summary>
-        /// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+        /// Alters behavior of tenant's session cookie. Contains a single `mode` property.
         /// </summary>
         [Input("sessionCookie")]
         public Input<Inputs.TenantSessionCookieArgs>? SessionCookie { get; set; }
 
         /// <summary>
-        /// Integer. Number of hours during which a session will stay valid.
+        /// Number of hours during which a session will stay valid.
         /// </summary>
         [Input("sessionLifetime")]
         public Input<double>? SessionLifetime { get; set; }
 
         /// <summary>
-        /// String. Support email address for authenticating users.
+        /// Support email address for authenticating users.
         /// </summary>
         [Input("supportEmail")]
         public Input<string>? SupportEmail { get; set; }
 
         /// <summary>
-        /// String. Support URL for authenticating users.
+        /// Support URL for authenticating users.
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+        /// Configuration settings for Universal Login.
         /// </summary>
         [Input("universalLogin")]
         public Input<Inputs.TenantUniversalLoginArgs>? UniversalLogin { get; set; }
@@ -365,7 +381,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedLogoutUrls;
 
         /// <summary>
-        /// List(String). URLs that Auth0 may redirect to after logout.
+        /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         public InputList<string> AllowedLogoutUrls
         {
@@ -374,25 +390,25 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+        /// Configuration settings for change password page.
         /// </summary>
         [Input("changePassword")]
         public Input<Inputs.TenantChangePasswordGetArgs>? ChangePassword { get; set; }
 
         /// <summary>
-        /// String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+        /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         /// </summary>
         [Input("defaultAudience")]
         public Input<string>? DefaultAudience { get; set; }
 
         /// <summary>
-        /// String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         /// </summary>
         [Input("defaultDirectory")]
         public Input<string>? DefaultDirectory { get; set; }
 
         /// <summary>
-        /// String. The default absolute redirection uri, must be https and cannot contain a fragment.
+        /// The default absolute redirection URI, must be https and cannot contain a fragment.
         /// </summary>
         [Input("defaultRedirectionUri")]
         public Input<string>? DefaultRedirectionUri { get; set; }
@@ -401,7 +417,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _enabledLocales;
 
         /// <summary>
-        /// List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        /// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         /// </summary>
         public InputList<string> EnabledLocales
         {
@@ -410,73 +426,73 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// List(Resource). Configuration settings for error pages. For details, see Error Page.
+        /// Configuration settings for error pages.
         /// </summary>
         [Input("errorPage")]
         public Input<Inputs.TenantErrorPageGetArgs>? ErrorPage { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for tenant flags. For details, see Flags.
+        /// Configuration settings for tenant flags.
         /// </summary>
         [Input("flags")]
         public Input<Inputs.TenantFlagsGetArgs>? Flags { get; set; }
 
         /// <summary>
-        /// String. Friendly name for the tenant.
+        /// Friendly name for the tenant.
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+        /// Configuration settings for the Guardian MFA page.
         /// </summary>
         [Input("guardianMfaPage")]
         public Input<Inputs.TenantGuardianMfaPageGetArgs>? GuardianMfaPage { get; set; }
 
         /// <summary>
-        /// Integer. Number of hours during which a session can be inactive before the user must log in again.
+        /// Number of hours during which a session can be inactive before the user must log in again.
         /// </summary>
         [Input("idleSessionLifetime")]
         public Input<double>? IdleSessionLifetime { get; set; }
 
         /// <summary>
-        /// . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Input("pictureUrl")]
         public Input<string>? PictureUrl { get; set; }
 
         /// <summary>
-        /// String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
+        /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         /// </summary>
         [Input("sandboxVersion")]
         public Input<string>? SandboxVersion { get; set; }
 
         /// <summary>
-        /// List(Resource). Alters behavior of tenant's session cookie. Contains a single `mode` property that accepts two values: `"persistent"` or `"non-persistent"`.
+        /// Alters behavior of tenant's session cookie. Contains a single `mode` property.
         /// </summary>
         [Input("sessionCookie")]
         public Input<Inputs.TenantSessionCookieGetArgs>? SessionCookie { get; set; }
 
         /// <summary>
-        /// Integer. Number of hours during which a session will stay valid.
+        /// Number of hours during which a session will stay valid.
         /// </summary>
         [Input("sessionLifetime")]
         public Input<double>? SessionLifetime { get; set; }
 
         /// <summary>
-        /// String. Support email address for authenticating users.
+        /// Support email address for authenticating users.
         /// </summary>
         [Input("supportEmail")]
         public Input<string>? SupportEmail { get; set; }
 
         /// <summary>
-        /// String. Support URL for authenticating users.
+        /// Support URL for authenticating users.
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+        /// Configuration settings for Universal Login.
         /// </summary>
         [Input("universalLogin")]
         public Input<Inputs.TenantUniversalLoginGetArgs>? UniversalLogin { get; set; }

@@ -43,10 +43,10 @@ func LookupTenant(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupTena
 
 // A collection of values returned by getTenant.
 type LookupTenantResult struct {
-	// String. Your Auth0 domain name.
+	// Your Auth0 domain name.
 	Domain string `pulumi:"domain"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// String. The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
+	// The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
 	ManagementApiIdentifier string `pulumi:"managementApiIdentifier"`
 }

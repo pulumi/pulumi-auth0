@@ -21,14 +21,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     public static final ResourceServerState Empty = new ResourceServerState();
 
     /**
-     * Boolean. Indicates whether refresh tokens can be issued for this resource server.
+     * Indicates whether refresh tokens can be issued for this resource server.
      * 
      */
     @Import(name="allowOfflineAccess")
     private @Nullable Output<Boolean> allowOfflineAccess;
 
     /**
-     * @return Boolean. Indicates whether refresh tokens can be issued for this resource server.
+     * @return Indicates whether refresh tokens can be issued for this resource server.
      * 
      */
     public Optional<Output<Boolean>> allowOfflineAccess() {
@@ -36,14 +36,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Boolean. Indicates whether authorization polices are enforced.
+     * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      * 
      */
     @Import(name="enforcePolicies")
     private @Nullable Output<Boolean> enforcePolicies;
 
     /**
-     * @return Boolean. Indicates whether authorization polices are enforced.
+     * @return If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      * 
      */
     public Optional<Output<Boolean>> enforcePolicies() {
@@ -51,14 +51,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+     * @return Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -66,14 +66,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * String. Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+     * Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return String. Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+     * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
     public Optional<Output<String>> name() {
@@ -81,14 +81,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Map(String). Used to store additional metadata
+     * Used to store additional metadata.
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,String>> options;
 
     /**
-     * @return Map(String). Used to store additional metadata
+     * @return Used to store additional metadata.
      * 
      */
     public Optional<Output<Map<String,String>>> options() {
@@ -96,14 +96,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+     * List of permissions (scopes) used by this resource server.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<ResourceServerScopeArgs>> scopes;
 
     /**
-     * @return Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+     * @return List of permissions (scopes) used by this resource server.
      * 
      */
     public Optional<Output<List<ResourceServerScopeArgs>>> scopes() {
@@ -111,14 +111,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      * 
      */
     @Import(name="signingAlg")
     private @Nullable Output<String> signingAlg;
 
     /**
-     * @return String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * @return Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      * 
      */
     public Optional<Output<String>> signingAlg() {
@@ -126,14 +126,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * String. Secret used to sign tokens when using symmetric algorithms (HS256).
+     * Secret used to sign tokens when using symmetric algorithms (HS256).
      * 
      */
     @Import(name="signingSecret")
     private @Nullable Output<String> signingSecret;
 
     /**
-     * @return String. Secret used to sign tokens when using symmetric algorithms (HS256).
+     * @return Secret used to sign tokens when using symmetric algorithms (HS256).
      * 
      */
     public Optional<Output<String>> signingSecret() {
@@ -141,14 +141,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Boolean. Indicates whether to skip user consent for applications flagged as first party.
+     * Indicates whether to skip user consent for applications flagged as first party.
      * 
      */
     @Import(name="skipConsentForVerifiableFirstPartyClients")
     private @Nullable Output<Boolean> skipConsentForVerifiableFirstPartyClients;
 
     /**
-     * @return Boolean. Indicates whether to skip user consent for applications flagged as first party.
+     * @return Indicates whether to skip user consent for applications flagged as first party.
      * 
      */
     public Optional<Output<Boolean>> skipConsentForVerifiableFirstPartyClients() {
@@ -156,14 +156,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
+     * Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
      * 
      */
     @Import(name="tokenDialect")
     private @Nullable Output<String> tokenDialect;
 
     /**
-     * @return String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
+     * @return Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
      * 
      */
     public Optional<Output<String>> tokenDialect() {
@@ -171,14 +171,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+     * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      * 
      */
     @Import(name="tokenLifetime")
     private @Nullable Output<Integer> tokenLifetime;
 
     /**
-     * @return Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+     * @return Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      * 
      */
     public Optional<Output<Integer>> tokenLifetime() {
@@ -186,14 +186,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+     * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
      * 
      */
     @Import(name="tokenLifetimeForWeb")
     private @Nullable Output<Integer> tokenLifetimeForWeb;
 
     /**
-     * @return Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+     * @return Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
      * 
      */
     public Optional<Output<Integer>> tokenLifetimeForWeb() {
@@ -201,14 +201,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * String
+     * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      * 
      */
     @Import(name="verificationLocation")
     private @Nullable Output<String> verificationLocation;
 
     /**
-     * @return String
+     * @return URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      * 
      */
     public Optional<Output<String>> verificationLocation() {
@@ -252,7 +252,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param allowOfflineAccess Boolean. Indicates whether refresh tokens can be issued for this resource server.
+         * @param allowOfflineAccess Indicates whether refresh tokens can be issued for this resource server.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param allowOfflineAccess Boolean. Indicates whether refresh tokens can be issued for this resource server.
+         * @param allowOfflineAccess Indicates whether refresh tokens can be issued for this resource server.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enforcePolicies Boolean. Indicates whether authorization polices are enforced.
+         * @param enforcePolicies If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enforcePolicies Boolean. Indicates whether authorization polices are enforced.
+         * @param enforcePolicies If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param identifier String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+         * @param identifier Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param identifier String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+         * @param identifier Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name String. Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+         * @param name Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name String. Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+         * @param name Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param options Map(String). Used to store additional metadata
+         * @param options Used to store additional metadata.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param options Map(String). Used to store additional metadata
+         * @param options Used to store additional metadata.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scopes Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+         * @param scopes List of permissions (scopes) used by this resource server.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scopes Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+         * @param scopes List of permissions (scopes) used by this resource server.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scopes Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+         * @param scopes List of permissions (scopes) used by this resource server.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param signingAlg String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+         * @param signingAlg Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param signingAlg String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+         * @param signingAlg Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param signingSecret String. Secret used to sign tokens when using symmetric algorithms (HS256).
+         * @param signingSecret Secret used to sign tokens when using symmetric algorithms (HS256).
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param signingSecret String. Secret used to sign tokens when using symmetric algorithms (HS256).
+         * @param signingSecret Secret used to sign tokens when using symmetric algorithms (HS256).
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param skipConsentForVerifiableFirstPartyClients Boolean. Indicates whether to skip user consent for applications flagged as first party.
+         * @param skipConsentForVerifiableFirstPartyClients Indicates whether to skip user consent for applications flagged as first party.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param skipConsentForVerifiableFirstPartyClients Boolean. Indicates whether to skip user consent for applications flagged as first party.
+         * @param skipConsentForVerifiableFirstPartyClients Indicates whether to skip user consent for applications flagged as first party.
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tokenDialect String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
+         * @param tokenDialect Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tokenDialect String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
+         * @param tokenDialect Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tokenLifetime Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+         * @param tokenLifetime Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tokenLifetime Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+         * @param tokenLifetime Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tokenLifetimeForWeb Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+         * @param tokenLifetimeForWeb Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tokenLifetimeForWeb Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+         * @param tokenLifetimeForWeb Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param verificationLocation String
+         * @param verificationLocation URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
          * 
          * @return builder
          * 
@@ -525,7 +525,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param verificationLocation String
+         * @param verificationLocation URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class TenantUniversalLoginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+        /// Configuration settings for Universal Login colors.
         /// </summary>
         [Input("colors")]
         public Input<Inputs.TenantUniversalLoginColorsGetArgs>? Colors { get; set; }

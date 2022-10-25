@@ -16,245 +16,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddonsSamlp {
-    /**
-     * @return String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
-     * 
-     */
     private @Nullable String audience;
-    /**
-     * @return String. Class reference of the authentication context.
-     * 
-     */
     private @Nullable String authnContextClassRef;
-    /**
-     * @return String. Protocol binding used for SAML logout responses.
-     * 
-     */
     private @Nullable String binding;
-    /**
-     * @return Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
-     * 
-     */
     private @Nullable Boolean createUpnClaim;
-    /**
-     * @return String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
-     * 
-     */
     private @Nullable String destination;
-    /**
-     * @return String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
-     * 
-     */
     private @Nullable String digestAlgorithm;
-    /**
-     * @return Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-     * 
-     */
     private @Nullable Boolean includeAttributeNameFormat;
-    /**
-     * @return Integer, (Default=3600). Number of seconds during which the token is valid.
-     * 
-     */
+    private @Nullable String issuer;
     private @Nullable Integer lifetimeInSeconds;
-    /**
-     * @return Map(Resource). Configuration settings for logout. For details, see Logout.
-     * 
-     */
     private @Nullable Map<String,Object> logout;
-    /**
-     * @return Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
-     * 
-     */
     private @Nullable Boolean mapIdentities;
-    /**
-     * @return Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
-     * 
-     */
     private @Nullable Boolean mapUnknownClaimsAsIs;
-    /**
-     * @return Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-     * 
-     */
     private @Nullable Map<String,Object> mappings;
-    /**
-     * @return String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-     * 
-     */
     private @Nullable String nameIdentifierFormat;
-    /**
-     * @return List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-     * 
-     */
     private @Nullable List<String> nameIdentifierProbes;
-    /**
-     * @return Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
-     * 
-     */
     private @Nullable Boolean passthroughClaimsWithNoMapping;
-    /**
-     * @return String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
-     * 
-     */
     private @Nullable String recipient;
-    /**
-     * @return Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-     * 
-     */
     private @Nullable Boolean signResponse;
-    /**
-     * @return String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
-     * 
-     */
     private @Nullable String signatureAlgorithm;
-    /**
-     * @return String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
-     * 
-     */
     private @Nullable String signingCert;
-    /**
-     * @return Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
-     * 
-     */
     private @Nullable Boolean typedAttributes;
 
     private ClientAddonsSamlp() {}
-    /**
-     * @return String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
-     * 
-     */
     public Optional<String> audience() {
         return Optional.ofNullable(this.audience);
     }
-    /**
-     * @return String. Class reference of the authentication context.
-     * 
-     */
     public Optional<String> authnContextClassRef() {
         return Optional.ofNullable(this.authnContextClassRef);
     }
-    /**
-     * @return String. Protocol binding used for SAML logout responses.
-     * 
-     */
     public Optional<String> binding() {
         return Optional.ofNullable(this.binding);
     }
-    /**
-     * @return Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
-     * 
-     */
     public Optional<Boolean> createUpnClaim() {
         return Optional.ofNullable(this.createUpnClaim);
     }
-    /**
-     * @return String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
-     * 
-     */
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }
-    /**
-     * @return String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
-     * 
-     */
     public Optional<String> digestAlgorithm() {
         return Optional.ofNullable(this.digestAlgorithm);
     }
-    /**
-     * @return Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-     * 
-     */
     public Optional<Boolean> includeAttributeNameFormat() {
         return Optional.ofNullable(this.includeAttributeNameFormat);
     }
-    /**
-     * @return Integer, (Default=3600). Number of seconds during which the token is valid.
-     * 
-     */
+    public Optional<String> issuer() {
+        return Optional.ofNullable(this.issuer);
+    }
     public Optional<Integer> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
-    /**
-     * @return Map(Resource). Configuration settings for logout. For details, see Logout.
-     * 
-     */
     public Map<String,Object> logout() {
         return this.logout == null ? Map.of() : this.logout;
     }
-    /**
-     * @return Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
-     * 
-     */
     public Optional<Boolean> mapIdentities() {
         return Optional.ofNullable(this.mapIdentities);
     }
-    /**
-     * @return Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
-     * 
-     */
     public Optional<Boolean> mapUnknownClaimsAsIs() {
         return Optional.ofNullable(this.mapUnknownClaimsAsIs);
     }
-    /**
-     * @return Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-     * 
-     */
     public Map<String,Object> mappings() {
         return this.mappings == null ? Map.of() : this.mappings;
     }
-    /**
-     * @return String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-     * 
-     */
     public Optional<String> nameIdentifierFormat() {
         return Optional.ofNullable(this.nameIdentifierFormat);
     }
-    /**
-     * @return List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-     * 
-     */
     public List<String> nameIdentifierProbes() {
         return this.nameIdentifierProbes == null ? List.of() : this.nameIdentifierProbes;
     }
-    /**
-     * @return Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
-     * 
-     */
     public Optional<Boolean> passthroughClaimsWithNoMapping() {
         return Optional.ofNullable(this.passthroughClaimsWithNoMapping);
     }
-    /**
-     * @return String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
-     * 
-     */
     public Optional<String> recipient() {
         return Optional.ofNullable(this.recipient);
     }
-    /**
-     * @return Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-     * 
-     */
     public Optional<Boolean> signResponse() {
         return Optional.ofNullable(this.signResponse);
     }
-    /**
-     * @return String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
-     * 
-     */
     public Optional<String> signatureAlgorithm() {
         return Optional.ofNullable(this.signatureAlgorithm);
     }
-    /**
-     * @return String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
-     * 
-     */
     public Optional<String> signingCert() {
         return Optional.ofNullable(this.signingCert);
     }
-    /**
-     * @return Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
-     * 
-     */
     public Optional<Boolean> typedAttributes() {
         return Optional.ofNullable(this.typedAttributes);
     }
@@ -275,6 +119,7 @@ public final class ClientAddonsSamlp {
         private @Nullable String destination;
         private @Nullable String digestAlgorithm;
         private @Nullable Boolean includeAttributeNameFormat;
+        private @Nullable String issuer;
         private @Nullable Integer lifetimeInSeconds;
         private @Nullable Map<String,Object> logout;
         private @Nullable Boolean mapIdentities;
@@ -298,6 +143,7 @@ public final class ClientAddonsSamlp {
     	      this.destination = defaults.destination;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.includeAttributeNameFormat = defaults.includeAttributeNameFormat;
+    	      this.issuer = defaults.issuer;
     	      this.lifetimeInSeconds = defaults.lifetimeInSeconds;
     	      this.logout = defaults.logout;
     	      this.mapIdentities = defaults.mapIdentities;
@@ -346,6 +192,11 @@ public final class ClientAddonsSamlp {
         @CustomType.Setter
         public Builder includeAttributeNameFormat(@Nullable Boolean includeAttributeNameFormat) {
             this.includeAttributeNameFormat = includeAttributeNameFormat;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issuer(@Nullable String issuer) {
+            this.issuer = issuer;
             return this;
         }
         @CustomType.Setter
@@ -425,6 +276,7 @@ public final class ClientAddonsSamlp {
             o.destination = destination;
             o.digestAlgorithm = digestAlgorithm;
             o.includeAttributeNameFormat = includeAttributeNameFormat;
+            o.issuer = issuer;
             o.lifetimeInSeconds = lifetimeInSeconds;
             o.logout = logout;
             o.mapIdentities = mapIdentities;

@@ -15,14 +15,14 @@ public final class TenantChangePasswordArgs extends com.pulumi.resources.Resourc
     public static final TenantChangePasswordArgs Empty = new TenantChangePasswordArgs();
 
     /**
-     * Boolean. Indicates whether to use the custom change password page.
+     * Indicates whether to use the custom change password page.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Boolean. Indicates whether to use the custom change password page.
+     * @return Indicates whether to use the custom change password page.
      * 
      */
     public Output<Boolean> enabled() {
@@ -30,14 +30,14 @@ public final class TenantChangePasswordArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * String, HTML format with supported Liquid syntax. Customized content of the change password page.
+     * HTML format with supported Liquid syntax. Customized content of the change password page.
      * 
      */
     @Import(name="html", required=true)
     private Output<String> html;
 
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the change password page.
+     * @return HTML format with supported Liquid syntax. Customized content of the change password page.
      * 
      */
     public Output<String> html() {
@@ -70,7 +70,7 @@ public final class TenantChangePasswordArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enabled Boolean. Indicates whether to use the custom change password page.
+         * @param enabled Indicates whether to use the custom change password page.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class TenantChangePasswordArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enabled Boolean. Indicates whether to use the custom change password page.
+         * @param enabled Indicates whether to use the custom change password page.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class TenantChangePasswordArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param html String, HTML format with supported Liquid syntax. Customized content of the change password page.
+         * @param html HTML format with supported Liquid syntax. Customized content of the change password page.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class TenantChangePasswordArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param html String, HTML format with supported Liquid syntax. Customized content of the change password page.
+         * @param html HTML format with supported Liquid syntax. Customized content of the change password page.
          * 
          * @return builder
          * 

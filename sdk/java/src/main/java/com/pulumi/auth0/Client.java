@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application&#39;s API (such as Firebase and AWS) on behalf of an authenticated user.
+ * With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
  * 
  * ## Example Usage
  * ```java
@@ -56,15 +56,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myClient = new Client(&#34;myClient&#34;, ClientArgs.builder()        
  *             .addons(ClientAddonsArgs.builder()
- *                 .firebase(Map.ofEntries(
- *                     Map.entry(&#34;clientEmail&#34;, &#34;john.doe@example.com&#34;),
- *                     Map.entry(&#34;lifetimeInSeconds&#34;, 1),
- *                     Map.entry(&#34;privateKey&#34;, &#34;wer&#34;),
- *                     Map.entry(&#34;privateKeyId&#34;, &#34;qwreerwerwe&#34;)
- *                 ))
  *                 .samlp(ClientAddonsSamlpArgs.builder()
  *                     .audience(&#34;https://example.com/saml&#34;)
  *                     .createUpnClaim(false)
+ *                     .issuer(&#34;https://example.com&#34;)
  *                     .mapIdentities(false)
  *                     .mapUnknownClaimsAsIs(false)
  *                     .mappings(Map.ofEntries(
@@ -74,19 +69,21 @@ import javax.annotation.Nullable;
  *                     .nameIdentifierFormat(&#34;urn:oasis:names:tc:SAML:2.0:nameid-format:persistent&#34;)
  *                     .nameIdentifierProbes(&#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress&#34;)
  *                     .passthroughClaimsWithNoMapping(false)
- *                     .signingCert(&#34;pemcertificate&#34;)
+ *                     .signingCert(&#34;&#34;&#34;
+ * -----BEGIN PUBLIC KEY-----
+ * MIGf...bpP/t3
+ * +JGNGIRMj1hF1rnb6QIDAQAB
+ * -----END PUBLIC KEY-----
+ * 
+ *                     &#34;&#34;&#34;)
+ *                     .signingKey(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                     .build())
  *                 .build())
- *             .allowedClients(&#34;https://allowed.example.com&#34;)
  *             .allowedLogoutUrls(&#34;https://example.com&#34;)
  *             .allowedOrigins(&#34;https://example.com&#34;)
  *             .appType(&#34;non_interactive&#34;)
  *             .callbacks(&#34;https://example.com/callback&#34;)
  *             .clientMetadata(Map.of(&#34;foo&#34;, &#34;zoo&#34;))
- *             .clientSecretRotationTrigger(Map.ofEntries(
- *                 Map.entry(&#34;triggered_at&#34;, &#34;2018-01-02T23:12:01Z&#34;),
- *                 Map.entry(&#34;triggered_by&#34;, &#34;auth0&#34;)
- *             ))
  *             .customLoginPageOn(true)
  *             .description(&#34;Test Applications Long Description&#34;)
  *             .grantTypes(            
@@ -95,7 +92,6 @@ import javax.annotation.Nullable;
  *                 &#34;implicit&#34;,
  *                 &#34;password&#34;,
  *                 &#34;refresh_token&#34;)
- *             .initiateLoginUri(&#34;https://example.com/login&#34;)
  *             .isFirstParty(true)
  *             .isTokenEndpointIpHeaderTrusted(true)
  *             .jwtConfiguration(ClientJwtConfigurationArgs.builder()
@@ -111,16 +107,11 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .oidcConformant(false)
- *             .organizationRequireBehavior(&#34;no_prompt&#34;)
- *             .organizationUsage(&#34;deny&#34;)
  *             .refreshToken(ClientRefreshTokenArgs.builder()
  *                 .expirationType(&#34;expiring&#34;)
- *                 .idleTokenLifetime(1296000)
- *                 .infiniteIdleTokenLifetime(true)
- *                 .infiniteTokenLifetime(false)
- *                 .leeway(15)
+ *                 .leeway(0)
  *                 .rotationType(&#34;rotating&#34;)
- *                 .tokenLifetime(84600)
+ *                 .tokenLifetime(2592000)
  *                 .build())
  *             .tokenEndpointAuthMethod(&#34;client_secret_post&#34;)
  *             .webOrigins(&#34;https://example.com&#34;)
@@ -132,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A client can be imported using the client&#39;s ID, e.g.
+ * # A client can be imported using the client&#39;s ID. # # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
@@ -142,484 +133,506 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/client:Client")
 public class Client extends com.pulumi.resources.CustomResource {
     /**
-     * List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+     * Addons enabled for this client and their associated configurations.
      * 
      */
     @Export(name="addons", type=ClientAddons.class, parameters={})
-    private Output</* @Nullable */ ClientAddons> addons;
+    private Output<ClientAddons> addons;
 
     /**
-     * @return List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+     * @return Addons enabled for this client and their associated configurations.
      * 
      */
-    public Output<Optional<ClientAddons>> addons() {
-        return Codegen.optional(this.addons);
+    public Output<ClientAddons> addons() {
+        return this.addons;
     }
     /**
-     * List(String). List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+     * List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
      */
     @Export(name="allowedClients", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> allowedClients;
 
     /**
-     * @return List(String). List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+     * @return List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
      */
     public Output<Optional<List<String>>> allowedClients() {
         return Codegen.optional(this.allowedClients);
     }
     /**
-     * List(String). URLs that Auth0 may redirect to after logout.
+     * URLs that Auth0 may redirect to after logout.
      * 
      */
     @Export(name="allowedLogoutUrls", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> allowedLogoutUrls;
 
     /**
-     * @return List(String). URLs that Auth0 may redirect to after logout.
+     * @return URLs that Auth0 may redirect to after logout.
      * 
      */
     public Output<Optional<List<String>>> allowedLogoutUrls() {
         return Codegen.optional(this.allowedLogoutUrls);
     }
     /**
-     * List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+     * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      * 
      */
     @Export(name="allowedOrigins", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> allowedOrigins;
 
     /**
-     * @return List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+     * @return URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      * 
      */
     public Output<Optional<List<String>>> allowedOrigins() {
         return Codegen.optional(this.allowedOrigins);
     }
     /**
-     * String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     @Export(name="appType", type=String.class, parameters={})
     private Output</* @Nullable */ String> appType;
 
     /**
-     * @return String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     public Output<Optional<String>> appType() {
         return Codegen.optional(this.appType);
     }
     /**
-     * List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+     * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
     @Export(name="callbacks", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> callbacks;
 
     /**
-     * @return List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+     * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
     public Output<Optional<List<String>>> callbacks() {
         return Codegen.optional(this.callbacks);
     }
     /**
-     * String. ID of the client.
-     * * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+     * List of audiences/realms for SAML protocol. Used by the wsfed addon.
+     * 
+     */
+    @Export(name="clientAliases", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> clientAliases;
+
+    /**
+     * @return List of audiences/realms for SAML protocol. Used by the wsfed addon.
+     * 
+     */
+    public Output<Optional<List<String>>> clientAliases() {
+        return Codegen.optional(this.clientAliases);
+    }
+    /**
+     * The ID of the client.
      * 
      */
     @Export(name="clientId", type=String.class, parameters={})
     private Output<String> clientId;
 
     /**
-     * @return String. ID of the client.
-     * * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+     * @return The ID of the client.
      * 
      */
     public Output<String> clientId() {
         return this.clientId;
     }
     /**
-     * Map(String)
+     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
      * 
      */
     @Export(name="clientMetadata", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> clientMetadata;
 
     /**
-     * @return Map(String)
+     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
      * 
      */
     public Output<Optional<Map<String,Object>>> clientMetadata() {
         return Codegen.optional(this.clientMetadata);
     }
+    /**
+     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+     * Terraform client. Otherwise, the attribute will contain an empty string.
+     * 
+     */
     @Export(name="clientSecret", type=String.class, parameters={})
     private Output<String> clientSecret;
 
+    /**
+     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+     * Terraform client. Otherwise, the attribute will contain an empty string.
+     * 
+     */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
     /**
-     * Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+     * Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      * 
      */
     @Export(name="clientSecretRotationTrigger", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> clientSecretRotationTrigger;
 
     /**
-     * @return Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+     * @return Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      * 
      */
     public Output<Optional<Map<String,Object>>> clientSecretRotationTrigger() {
         return Codegen.optional(this.clientSecretRotationTrigger);
     }
     /**
-     * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+     * Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
      * 
      */
     @Export(name="crossOriginAuth", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> crossOriginAuth;
 
     /**
-     * @return Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+     * @return Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
      * 
      */
     public Output<Optional<Boolean>> crossOriginAuth() {
         return Codegen.optional(this.crossOriginAuth);
     }
     /**
-     * String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+     * URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
      * 
      */
     @Export(name="crossOriginLoc", type=String.class, parameters={})
     private Output</* @Nullable */ String> crossOriginLoc;
 
     /**
-     * @return String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+     * @return URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
      * 
      */
     public Output<Optional<String>> crossOriginLoc() {
         return Codegen.optional(this.crossOriginLoc);
     }
     /**
-     * String. Content of the custom login page.
+     * The content (HTML, CSS, JS) of the custom login page.
      * 
      */
     @Export(name="customLoginPage", type=String.class, parameters={})
     private Output</* @Nullable */ String> customLoginPage;
 
     /**
-     * @return String. Content of the custom login page.
+     * @return The content (HTML, CSS, JS) of the custom login page.
      * 
      */
     public Output<Optional<String>> customLoginPage() {
         return Codegen.optional(this.customLoginPage);
     }
     /**
-     * Boolean. Indicates whether or not a custom login page is to be used.
+     * Indicates whether a custom login page is to be used.
      * 
      */
     @Export(name="customLoginPageOn", type=Boolean.class, parameters={})
     private Output<Boolean> customLoginPageOn;
 
     /**
-     * @return Boolean. Indicates whether or not a custom login page is to be used.
+     * @return Indicates whether a custom login page is to be used.
      * 
      */
     public Output<Boolean> customLoginPageOn() {
         return this.customLoginPageOn;
     }
     /**
-     * String, (Max length = 140 characters). Description of the purpose of the client.
+     * Description of the purpose of the client.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
-     * @return String, (Max length = 140 characters). Description of the purpose of the client.
+     * @return Description of the purpose of the client.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Map(String).
+     * Encryption used for WS-Fed responses with this client.
      * 
      */
     @Export(name="encryptionKey", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> encryptionKey;
 
     /**
-     * @return Map(String).
+     * @return Encryption used for WS-Fed responses with this client.
      * 
      */
     public Output<Optional<Map<String,String>>> encryptionKey() {
         return Codegen.optional(this.encryptionKey);
     }
     /**
-     * String. Form template for WS-Federation protocol.
+     * HTML form template to be used for WS-Federation.
      * 
      */
     @Export(name="formTemplate", type=String.class, parameters={})
     private Output</* @Nullable */ String> formTemplate;
 
     /**
-     * @return String. Form template for WS-Federation protocol.
+     * @return HTML form template to be used for WS-Federation.
      * 
      */
     public Output<Optional<String>> formTemplate() {
         return Codegen.optional(this.formTemplate);
     }
     /**
-     * List(String). Types of grants that this client is authorized to use.
+     * Types of grants that this client is authorized to use.
      * 
      */
     @Export(name="grantTypes", type=List.class, parameters={String.class})
     private Output<List<String>> grantTypes;
 
     /**
-     * @return List(String). Types of grants that this client is authorized to use.
+     * @return Types of grants that this client is authorized to use.
      * 
      */
     public Output<List<String>> grantTypes() {
         return this.grantTypes;
     }
     /**
-     * String. Initiate login uri, must be https.
+     * Initiate login URI, must be HTTPS.
      * 
      */
     @Export(name="initiateLoginUri", type=String.class, parameters={})
     private Output</* @Nullable */ String> initiateLoginUri;
 
     /**
-     * @return String. Initiate login uri, must be https.
+     * @return Initiate login URI, must be HTTPS.
      * 
      */
     public Output<Optional<String>> initiateLoginUri() {
         return Codegen.optional(this.initiateLoginUri);
     }
     /**
-     * Boolean. Indicates whether or not this client is a first-party client.
+     * Indicates whether this client is a first-party client.
      * 
      */
     @Export(name="isFirstParty", type=Boolean.class, parameters={})
     private Output<Boolean> isFirstParty;
 
     /**
-     * @return Boolean. Indicates whether or not this client is a first-party client.
+     * @return Indicates whether this client is a first-party client.
      * 
      */
     public Output<Boolean> isFirstParty() {
         return this.isFirstParty;
     }
     /**
-     * Boolean. Indicates whether or not the token endpoint IP header is trusted.
+     * Indicates whether the token endpoint IP header is trusted.
      * 
      */
     @Export(name="isTokenEndpointIpHeaderTrusted", type=Boolean.class, parameters={})
     private Output<Boolean> isTokenEndpointIpHeaderTrusted;
 
     /**
-     * @return Boolean. Indicates whether or not the token endpoint IP header is trusted.
+     * @return Indicates whether the token endpoint IP header is trusted.
      * 
      */
     public Output<Boolean> isTokenEndpointIpHeaderTrusted() {
         return this.isTokenEndpointIpHeaderTrusted;
     }
     /**
-     * List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+     * Configuration settings for the JWTs issued for this client.
      * 
      */
     @Export(name="jwtConfiguration", type=ClientJwtConfiguration.class, parameters={})
     private Output<ClientJwtConfiguration> jwtConfiguration;
 
     /**
-     * @return List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+     * @return Configuration settings for the JWTs issued for this client.
      * 
      */
     public Output<ClientJwtConfiguration> jwtConfiguration() {
         return this.jwtConfiguration;
     }
     /**
-     * String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+     * URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      * 
      */
     @Export(name="logoUri", type=String.class, parameters={})
     private Output</* @Nullable */ String> logoUri;
 
     /**
-     * @return String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+     * @return URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      * 
      */
     public Output<Optional<String>> logoUri() {
         return Codegen.optional(this.logoUri);
     }
     /**
-     * List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+     * Additional configuration for native mobile apps.
      * 
      */
     @Export(name="mobile", type=ClientMobile.class, parameters={})
     private Output<ClientMobile> mobile;
 
     /**
-     * @return List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+     * @return Additional configuration for native mobile apps.
      * 
      */
     public Output<ClientMobile> mobile() {
         return this.mobile;
     }
     /**
-     * String. Name of the client.
+     * Name of the client.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return String. Name of the client.
+     * @return Name of the client.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+     * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
      * 
      */
     @Export(name="nativeSocialLogin", type=ClientNativeSocialLogin.class, parameters={})
     private Output<ClientNativeSocialLogin> nativeSocialLogin;
 
     /**
-     * @return List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
      * 
      */
     public Output<ClientNativeSocialLogin> nativeSocialLogin() {
         return this.nativeSocialLogin;
     }
     /**
-     * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+     * Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
     @Export(name="oidcConformant", type=Boolean.class, parameters={})
     private Output<Boolean> oidcConformant;
 
     /**
-     * @return Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+     * @return Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
     public Output<Boolean> oidcConformant() {
         return this.oidcConformant;
     }
     /**
-     * String. Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+     * Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
      * 
      */
     @Export(name="organizationRequireBehavior", type=String.class, parameters={})
     private Output</* @Nullable */ String> organizationRequireBehavior;
 
     /**
-     * @return String. Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
      * 
      */
     public Output<Optional<String>> organizationRequireBehavior() {
         return Codegen.optional(this.organizationRequireBehavior);
     }
     /**
-     * String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      * 
      */
     @Export(name="organizationUsage", type=String.class, parameters={})
     private Output</* @Nullable */ String> organizationUsage;
 
     /**
-     * @return String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      * 
      */
     public Output<Optional<String>> organizationUsage() {
         return Codegen.optional(this.organizationUsage);
     }
     /**
-     * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+     * Configuration settings for the refresh tokens issued for this client.
      * 
      */
     @Export(name="refreshToken", type=ClientRefreshToken.class, parameters={})
     private Output<ClientRefreshToken> refreshToken;
 
     /**
-     * @return List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+     * @return Configuration settings for the refresh tokens issued for this client.
      * 
      */
     public Output<ClientRefreshToken> refreshToken() {
         return this.refreshToken;
     }
     /**
-     * List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+     * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
     @Export(name="signingKeys", type=List.class, parameters={Map.class})
     private Output<List<Map<String,Object>>> signingKeys;
 
     /**
-     * @return List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+     * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
     public Output<List<Map<String,Object>>> signingKeys() {
         return this.signingKeys;
     }
     /**
-     * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+     * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
      */
     @Export(name="sso", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> sso;
 
     /**
-     * @return Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+     * @return Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
      */
     public Output<Optional<Boolean>> sso() {
         return Codegen.optional(this.sso);
     }
     /**
-     * Boolean. Indicates whether or not SSO is disabled.
+     * Indicates whether or not SSO is disabled.
      * 
      */
     @Export(name="ssoDisabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> ssoDisabled;
 
     /**
-     * @return Boolean. Indicates whether or not SSO is disabled.
+     * @return Indicates whether or not SSO is disabled.
      * 
      */
     public Output<Optional<Boolean>> ssoDisabled() {
         return Codegen.optional(this.ssoDisabled);
     }
     /**
-     * String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+     * Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
      * 
      */
     @Export(name="tokenEndpointAuthMethod", type=String.class, parameters={})
     private Output<String> tokenEndpointAuthMethod;
 
     /**
-     * @return String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+     * @return Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
      * 
      */
     public Output<String> tokenEndpointAuthMethod() {
         return this.tokenEndpointAuthMethod;
     }
     /**
-     * List(String). URLs that represent valid web origins for use with web message response mode.
+     * URLs that represent valid web origins for use with web message response mode.
      * 
      */
     @Export(name="webOrigins", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> webOrigins;
 
     /**
-     * @return List(String). URLs that represent valid web origins for use with web message response mode.
+     * @return URLs that represent valid web origins for use with web message response mode.
      * 
      */
     public Output<Optional<List<String>>> webOrigins() {

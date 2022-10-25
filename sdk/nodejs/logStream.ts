@@ -14,7 +14,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const example = new auth0.LogStream("example", {
+ * // This is an example of an http log stream.
+ * const myWebhook = new auth0.LogStream("my_webhook", {
  *     filters: [
  *         {
  *             name: "auth.login.fail",
@@ -26,6 +27,20 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     sink: {
+ *         httpAuthorization: "AKIAXXXXXXXXXXXXXXXX",
+ *         httpContentFormat: "JSONOBJECT",
+ *         httpContentType: "application/json",
+ *         httpCustomHeaders: [{
+ *             header: "foo",
+ *             value: "bar",
+ *         }],
+ *         httpEndpoint: "https://example.com/logs",
+ *     },
+ *     type: "http",
+ * });
+ * // This is an example of an Amazon EventBridge log stream.
+ * const exampleAws = new auth0.LogStream("example_aws", {
+ *     sink: {
  *         awsAccountId: "my_account_id",
  *         awsRegion: "us-east-2",
  *     },
@@ -36,7 +51,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Existing log stream can be imported using log stream id, e.g.
+ * # An existing log stream can be imported using its ID. # # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
@@ -71,23 +86,23 @@ export class LogStream extends pulumi.CustomResource {
     }
 
     /**
-     * Only logs events matching these filters will be delivered by the stream.
+     * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
      */
     public readonly filters!: pulumi.Output<{[key: string]: string}[] | undefined>;
     /**
-     * Name of the log stream
+     * Name of the log stream.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     * The sink configuration for the log stream.
      */
     public readonly sink!: pulumi.Output<outputs.LogStreamSink>;
     /**
-     * The current status of the log stream. Options are "active", "paused", "suspended"
+     * The current status of the log stream. Options are "active", "paused", "suspended".
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+     * Type of the log stream, which indicates the sink provider.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -133,23 +148,23 @@ export class LogStream extends pulumi.CustomResource {
  */
 export interface LogStreamState {
     /**
-     * Only logs events matching these filters will be delivered by the stream.
+     * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
      */
     filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
-     * Name of the log stream
+     * Name of the log stream.
      */
     name?: pulumi.Input<string>;
     /**
-     * List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     * The sink configuration for the log stream.
      */
     sink?: pulumi.Input<inputs.LogStreamSink>;
     /**
-     * The current status of the log stream. Options are "active", "paused", "suspended"
+     * The current status of the log stream. Options are "active", "paused", "suspended".
      */
     status?: pulumi.Input<string>;
     /**
-     * The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+     * Type of the log stream, which indicates the sink provider.
      */
     type?: pulumi.Input<string>;
 }
@@ -159,23 +174,23 @@ export interface LogStreamState {
  */
 export interface LogStreamArgs {
     /**
-     * Only logs events matching these filters will be delivered by the stream.
+     * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
      */
     filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
-     * Name of the log stream
+     * Name of the log stream.
      */
     name?: pulumi.Input<string>;
     /**
-     * List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     * The sink configuration for the log stream.
      */
     sink: pulumi.Input<inputs.LogStreamSink>;
     /**
-     * The current status of the log stream. Options are "active", "paused", "suspended"
+     * The current status of the log stream. Options are "active", "paused", "suspended".
      */
     status?: pulumi.Input<string>;
     /**
-     * The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+     * Type of the log stream, which indicates the sink provider.
      */
     type: pulumi.Input<string>;
 }

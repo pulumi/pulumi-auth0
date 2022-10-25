@@ -16,7 +16,7 @@ import com.pulumi.core.internal.Codegen;
 import javax.annotation.Nullable;
 
 /**
- * Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHA
+ * Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
  * 
  * ## Example Usage
  * ```java
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var attackProtection = new AttackProtection(&#34;attackProtection&#34;, AttackProtectionArgs.builder()        
+ *         var myProtection = new AttackProtection(&#34;myProtection&#34;, AttackProtectionArgs.builder()        
  *             .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()
  *                 .adminNotificationFrequencies(&#34;daily&#34;)
  *                 .enabled(true)
@@ -86,10 +86,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * # As this is not a resource identifiable by an ID within the Auth0 Management API, # attack_protection can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/attackProtection:AttackProtection default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+ *  $ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40
  * ```
  * 
  */
@@ -110,14 +110,14 @@ public class AttackProtection extends com.pulumi.resources.CustomResource {
         return this.breachedPasswordDetection;
     }
     /**
-     * Safeguards against a single IP address attacking a single user account.
+     * Brute-force protection safeguards against a single IP address attacking a single user account.
      * 
      */
     @Export(name="bruteForceProtection", type=AttackProtectionBruteForceProtection.class, parameters={})
     private Output<AttackProtectionBruteForceProtection> bruteForceProtection;
 
     /**
-     * @return Safeguards against a single IP address attacking a single user account.
+     * @return Brute-force protection safeguards against a single IP address attacking a single user account.
      * 
      */
     public Output<AttackProtectionBruteForceProtection> bruteForceProtection() {

@@ -14,9 +14,6 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ConnectionOptionsIdpInitiated
     {
         public readonly string? ClientAuthorizeQuery;
-        /// <summary>
-        /// Google client ID.
-        /// </summary>
         public readonly string? ClientId;
         public readonly string? ClientProtocol;
 

@@ -10,15 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// This resource allows you to manage branding within your Auth0 tenant.
-    /// 
-    /// Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user
-    /// expectations.
+    /// This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.IO;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -26,52 +24,58 @@ namespace Pulumi.Auth0
     /// {
     ///     var myBrand = new Auth0.Branding("myBrand", new()
     ///     {
+    ///         LogoUrl = "https://mycompany.org/logo.png",
     ///         Colors = new Auth0.Inputs.BrandingColorsArgs
     ///         {
-    ///             PageBackground = "#000000",
     ///             Primary = "#0059d6",
+    ///             PageBackground = "#000000",
     ///         },
-    ///         LogoUrl = "https://mycompany.org/logo.png",
     ///         UniversalLogin = new Auth0.Inputs.BrandingUniversalLoginArgs
     ///         {
-    ///             Body = "&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;{%- auth0:head -%}&lt;/head&gt;&lt;body&gt;{%- auth0:widget -%}&lt;/body&gt;&lt;/html&gt;",
+    ///             Body = File.ReadAllText("universal_login_body.html"),
     ///         },
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # As this is not a resource identifiable by an ID within the Auth0 Management API, # branding can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
+    /// 
+    /// ```sh
+    ///  $ pulumi import auth0:index/branding:Branding my_brand 22f4f21b-017a-319d-92e7-2291c1ca36c4
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/branding:Branding")]
     public partial class Branding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List(Resource). Configuration settings for colors for branding. See Colors.
+        /// Configuration settings for colors for branding.
         /// </summary>
         [Output("colors")]
         public Output<Outputs.BrandingColors?> Colors { get; private set; } = null!;
 
         /// <summary>
-        /// String. URL for the favicon.
+        /// URL for the favicon.
         /// </summary>
         [Output("faviconUrl")]
         public Output<string> FaviconUrl { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings to customize the font. See Font.
+        /// Configuration settings to customize the font.
         /// </summary>
         [Output("font")]
         public Output<Outputs.BrandingFont?> Font { get; private set; } = null!;
 
         /// <summary>
-        /// String. URL of logo for branding.
+        /// URL of logo for branding.
         /// </summary>
         [Output("logoUrl")]
         public Output<string> LogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login.
-        /// See Universal Login. This capability can only be used if the tenant has
-        /// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        /// Configuration settings for Universal Login.
         /// </summary>
         [Output("universalLogin")]
         public Output<Outputs.BrandingUniversalLogin?> UniversalLogin { get; private set; } = null!;
@@ -123,33 +127,31 @@ namespace Pulumi.Auth0
     public sealed class BrandingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for colors for branding. See Colors.
+        /// Configuration settings for colors for branding.
         /// </summary>
         [Input("colors")]
         public Input<Inputs.BrandingColorsArgs>? Colors { get; set; }
 
         /// <summary>
-        /// String. URL for the favicon.
+        /// URL for the favicon.
         /// </summary>
         [Input("faviconUrl")]
         public Input<string>? FaviconUrl { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings to customize the font. See Font.
+        /// Configuration settings to customize the font.
         /// </summary>
         [Input("font")]
         public Input<Inputs.BrandingFontArgs>? Font { get; set; }
 
         /// <summary>
-        /// String. URL of logo for branding.
+        /// URL of logo for branding.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login.
-        /// See Universal Login. This capability can only be used if the tenant has
-        /// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        /// Configuration settings for Universal Login.
         /// </summary>
         [Input("universalLogin")]
         public Input<Inputs.BrandingUniversalLoginArgs>? UniversalLogin { get; set; }
@@ -163,33 +165,31 @@ namespace Pulumi.Auth0
     public sealed class BrandingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for colors for branding. See Colors.
+        /// Configuration settings for colors for branding.
         /// </summary>
         [Input("colors")]
         public Input<Inputs.BrandingColorsGetArgs>? Colors { get; set; }
 
         /// <summary>
-        /// String. URL for the favicon.
+        /// URL for the favicon.
         /// </summary>
         [Input("faviconUrl")]
         public Input<string>? FaviconUrl { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings to customize the font. See Font.
+        /// Configuration settings to customize the font.
         /// </summary>
         [Input("font")]
         public Input<Inputs.BrandingFontGetArgs>? Font { get; set; }
 
         /// <summary>
-        /// String. URL of logo for branding.
+        /// URL of logo for branding.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login.
-        /// See Universal Login. This capability can only be used if the tenant has
-        /// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+        /// Configuration settings for Universal Login.
         /// </summary>
         [Input("universalLogin")]
         public Input<Inputs.BrandingUniversalLoginGetArgs>? UniversalLogin { get; set; }

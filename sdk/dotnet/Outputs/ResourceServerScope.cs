@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ResourceServerScope
     {
         /// <summary>
-        /// String. Description of the permission (scope).
+        /// Description of the permission (scope).
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+        /// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
         /// </summary>
         public readonly string Value;
 

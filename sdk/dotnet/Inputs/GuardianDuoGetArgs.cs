@@ -13,19 +13,19 @@ namespace Pulumi.Auth0.Inputs
     public sealed class GuardianDuoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+        /// Duo API Hostname, see the Duo documentation for more details on Duo setup.
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
-        /// String. Duo client ID, see the Duo documentation for more details on Duo setup.
+        /// Duo client ID, see the Duo documentation for more details on Duo setup.
         /// </summary>
         [Input("integrationKey", required: true)]
         public Input<string> IntegrationKey { get; set; } = null!;
 
         /// <summary>
-        /// String. Duo client secret, see the Duo documentation for more details on Duo setup.
+        /// Duo client secret, see the Duo documentation for more details on Duo setup.
         /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;

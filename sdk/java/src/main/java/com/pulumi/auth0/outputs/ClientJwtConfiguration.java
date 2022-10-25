@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientJwtConfiguration {
     /**
-     * @return String. Algorithm used to sign JWTs.
+     * @return Algorithm used to sign JWTs.
      * 
      */
     private @Nullable String alg;
     /**
-     * @return Integer. Number of seconds during which the JWT will be valid.
+     * @return Number of seconds during which the JWT will be valid.
      * 
      */
     private @Nullable Integer lifetimeInSeconds;
     /**
-     * @return Map(String). Permissions (scopes) included in JWTs.
+     * @return Permissions (scopes) included in JWTs.
      * 
      */
     private @Nullable Map<String,String> scopes;
     /**
-     * @return Boolean. Indicates whether or not the client secret is base64 encoded.
+     * @return Indicates whether the client secret is Base64-encoded.
      * 
      */
     private @Nullable Boolean secretEncoded;
 
     private ClientJwtConfiguration() {}
     /**
-     * @return String. Algorithm used to sign JWTs.
+     * @return Algorithm used to sign JWTs.
      * 
      */
     public Optional<String> alg() {
         return Optional.ofNullable(this.alg);
     }
     /**
-     * @return Integer. Number of seconds during which the JWT will be valid.
+     * @return Number of seconds during which the JWT will be valid.
      * 
      */
     public Optional<Integer> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
     /**
-     * @return Map(String). Permissions (scopes) included in JWTs.
+     * @return Permissions (scopes) included in JWTs.
      * 
      */
     public Map<String,String> scopes() {
         return this.scopes == null ? Map.of() : this.scopes;
     }
     /**
-     * @return Boolean. Indicates whether or not the client secret is base64 encoded.
+     * @return Indicates whether the client secret is Base64-encoded.
      * 
      */
     public Optional<Boolean> secretEncoded() {

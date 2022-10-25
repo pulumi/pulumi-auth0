@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 export * from "./action";
 export * from "./attackProtection";
 export * from "./branding";
+export * from "./brandingTheme";
 export * from "./client";
 export * from "./clientGrant";
 export * from "./connection";
@@ -49,6 +50,7 @@ export {
 import { Action } from "./action";
 import { AttackProtection } from "./attackProtection";
 import { Branding } from "./branding";
+import { BrandingTheme } from "./brandingTheme";
 import { Client } from "./client";
 import { ClientGrant } from "./clientGrant";
 import { Connection } from "./connection";
@@ -83,6 +85,8 @@ const _module = {
                 return new AttackProtection(name, <any>undefined, { urn })
             case "auth0:index/branding:Branding":
                 return new Branding(name, <any>undefined, { urn })
+            case "auth0:index/brandingTheme:BrandingTheme":
+                return new BrandingTheme(name, <any>undefined, { urn })
             case "auth0:index/client:Client":
                 return new Client(name, <any>undefined, { urn })
             case "auth0:index/clientGrant:ClientGrant":
@@ -137,6 +141,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("auth0", "index/action", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/attackProtection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/branding", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/brandingTheme", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)

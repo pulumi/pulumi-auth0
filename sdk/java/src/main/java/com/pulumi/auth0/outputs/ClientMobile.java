@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientMobile {
     /**
-     * @return List(Resource). Configuration settings for Android native apps. For details, see Android.
+     * @return Configuration settings for Android native apps.
      * 
      */
     private @Nullable ClientMobileAndroid android;
     /**
-     * @return List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+     * @return Configuration settings for i0S native apps.
      * 
      */
     private @Nullable ClientMobileIos ios;
 
     private ClientMobile() {}
     /**
-     * @return List(Resource). Configuration settings for Android native apps. For details, see Android.
+     * @return Configuration settings for Android native apps.
      * 
      */
     public Optional<ClientMobileAndroid> android() {
         return Optional.ofNullable(this.android);
     }
     /**
-     * @return List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+     * @return Configuration settings for i0S native apps.
      * 
      */
     public Optional<ClientMobileIos> ios() {

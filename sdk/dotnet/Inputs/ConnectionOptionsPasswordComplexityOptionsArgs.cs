@@ -12,9 +12,6 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ConnectionOptionsPasswordComplexityOptionsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Minimum number of characters allowed in passwords.
-        /// </summary>
         [Input("minLength")]
         public Input<int>? MinLength { get; set; }
 

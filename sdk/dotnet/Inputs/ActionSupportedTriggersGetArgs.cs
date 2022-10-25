@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ActionSupportedTriggersGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Trigger ID.
+        /// The trigger ID.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Trigger version.
+        /// The trigger version. This regulates which `runtime` versions are supported.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

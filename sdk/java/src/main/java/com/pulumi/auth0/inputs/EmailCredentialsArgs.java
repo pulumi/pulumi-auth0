@@ -17,14 +17,14 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     public static final EmailCredentialsArgs Empty = new EmailCredentialsArgs();
 
     /**
-     * String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+     * AWS Access Key ID. Used only for AWS.
      * 
      */
     @Import(name="accessKeyId")
     private @Nullable Output<String> accessKeyId;
 
     /**
-     * @return String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+     * @return AWS Access Key ID. Used only for AWS.
      * 
      */
     public Optional<Output<String>> accessKeyId() {
@@ -32,14 +32,14 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+     * API Key for your email service. Will always be encrypted in our database.
      * 
      */
     @Import(name="apiKey")
     private @Nullable Output<String> apiKey;
 
     /**
-     * @return String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+     * @return API Key for your email service. Will always be encrypted in our database.
      * 
      */
     public Optional<Output<String>> apiKey() {
@@ -47,36 +47,44 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * String. API User for your email service.
+     * API User for your email service.
      * 
      */
     @Import(name="apiUser")
     private @Nullable Output<String> apiUser;
 
     /**
-     * @return String. API User for your email service.
+     * @return API User for your email service.
      * 
      */
     public Optional<Output<String>> apiUser() {
         return Optional.ofNullable(this.apiUser);
     }
 
+    /**
+     * Domain name.
+     * 
+     */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
+    /**
+     * @return Domain name.
+     * 
+     */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
 
     /**
-     * String. Default region. Used only for AWS, Mailgun, and SparkPost.
+     * Default region. Used only for AWS, Mailgun, and SparkPost.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return String. Default region. Used only for AWS, Mailgun, and SparkPost.
+     * @return Default region. Used only for AWS, Mailgun, and SparkPost.
      * 
      */
     public Optional<Output<String>> region() {
@@ -84,14 +92,14 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+     * AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
      * 
      */
     @Import(name="secretAccessKey")
     private @Nullable Output<String> secretAccessKey;
 
     /**
-     * @return String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+     * @return AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
      * 
      */
     public Optional<Output<String>> secretAccessKey() {
@@ -99,14 +107,14 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * String. Hostname or IP address of your SMTP server. Used only for SMTP.
+     * Hostname or IP address of your SMTP server. Used only for SMTP.
      * 
      */
     @Import(name="smtpHost")
     private @Nullable Output<String> smtpHost;
 
     /**
-     * @return String. Hostname or IP address of your SMTP server. Used only for SMTP.
+     * @return Hostname or IP address of your SMTP server. Used only for SMTP.
      * 
      */
     public Optional<Output<String>> smtpHost() {
@@ -114,14 +122,14 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * String, Case-sensitive. SMTP password. Used only for SMTP.
+     * SMTP password. Used only for SMTP.
      * 
      */
     @Import(name="smtpPass")
     private @Nullable Output<String> smtpPass;
 
     /**
-     * @return String, Case-sensitive. SMTP password. Used only for SMTP.
+     * @return SMTP password. Used only for SMTP.
      * 
      */
     public Optional<Output<String>> smtpPass() {
@@ -129,14 +137,14 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+     * Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
      * 
      */
     @Import(name="smtpPort")
     private @Nullable Output<Integer> smtpPort;
 
     /**
-     * @return Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+     * @return Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
      * 
      */
     public Optional<Output<Integer>> smtpPort() {
@@ -144,14 +152,14 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * String. SMTP username. Used only for SMTP.
+     * SMTP username. Used only for SMTP.
      * 
      */
     @Import(name="smtpUser")
     private @Nullable Output<String> smtpUser;
 
     /**
-     * @return String. SMTP username. Used only for SMTP.
+     * @return SMTP username. Used only for SMTP.
      * 
      */
     public Optional<Output<String>> smtpUser() {
@@ -192,7 +200,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessKeyId String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+         * @param accessKeyId AWS Access Key ID. Used only for AWS.
          * 
          * @return builder
          * 
@@ -203,7 +211,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accessKeyId String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+         * @param accessKeyId AWS Access Key ID. Used only for AWS.
          * 
          * @return builder
          * 
@@ -213,7 +221,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apiKey String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+         * @param apiKey API Key for your email service. Will always be encrypted in our database.
          * 
          * @return builder
          * 
@@ -224,7 +232,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apiKey String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+         * @param apiKey API Key for your email service. Will always be encrypted in our database.
          * 
          * @return builder
          * 
@@ -234,7 +242,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apiUser String. API User for your email service.
+         * @param apiUser API User for your email service.
          * 
          * @return builder
          * 
@@ -245,7 +253,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apiUser String. API User for your email service.
+         * @param apiUser API User for your email service.
          * 
          * @return builder
          * 
@@ -254,17 +262,29 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
             return apiUser(Output.of(apiUser));
         }
 
+        /**
+         * @param domain Domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain Domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
 
         /**
-         * @param region String. Default region. Used only for AWS, Mailgun, and SparkPost.
+         * @param region Default region. Used only for AWS, Mailgun, and SparkPost.
          * 
          * @return builder
          * 
@@ -275,7 +295,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region String. Default region. Used only for AWS, Mailgun, and SparkPost.
+         * @param region Default region. Used only for AWS, Mailgun, and SparkPost.
          * 
          * @return builder
          * 
@@ -285,7 +305,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secretAccessKey String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+         * @param secretAccessKey AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
          * 
          * @return builder
          * 
@@ -296,7 +316,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secretAccessKey String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+         * @param secretAccessKey AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
          * 
          * @return builder
          * 
@@ -306,7 +326,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param smtpHost String. Hostname or IP address of your SMTP server. Used only for SMTP.
+         * @param smtpHost Hostname or IP address of your SMTP server. Used only for SMTP.
          * 
          * @return builder
          * 
@@ -317,7 +337,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param smtpHost String. Hostname or IP address of your SMTP server. Used only for SMTP.
+         * @param smtpHost Hostname or IP address of your SMTP server. Used only for SMTP.
          * 
          * @return builder
          * 
@@ -327,7 +347,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param smtpPass String, Case-sensitive. SMTP password. Used only for SMTP.
+         * @param smtpPass SMTP password. Used only for SMTP.
          * 
          * @return builder
          * 
@@ -338,7 +358,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param smtpPass String, Case-sensitive. SMTP password. Used only for SMTP.
+         * @param smtpPass SMTP password. Used only for SMTP.
          * 
          * @return builder
          * 
@@ -348,7 +368,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param smtpPort Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+         * @param smtpPort Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
          * 
          * @return builder
          * 
@@ -359,7 +379,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param smtpPort Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+         * @param smtpPort Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
          * 
          * @return builder
          * 
@@ -369,7 +389,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param smtpUser String. SMTP username. Used only for SMTP.
+         * @param smtpUser SMTP username. Used only for SMTP.
          * 
          * @return builder
          * 
@@ -380,7 +400,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param smtpUser String. SMTP username. Used only for SMTP.
+         * @param smtpUser SMTP username. Used only for SMTP.
          * 
          * @return builder
          * 

@@ -8,6 +8,7 @@ import typing
 from .action import *
 from .attack_protection import *
 from .branding import *
+from .branding_theme import *
 from .client import *
 from .client_grant import *
 from .connection import *
@@ -70,6 +71,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/branding:Branding": "Branding"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/brandingTheme",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/brandingTheme:BrandingTheme": "BrandingTheme"
   }
  },
  {

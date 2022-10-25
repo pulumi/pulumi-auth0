@@ -6,9 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can create and manage collections of permissions that can be assigned to users, which are
- * otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
- * optionally, users using this resource.
+ * With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `auth0.ResourceServer`, then associated with roles and optionally, users using this resource.
  *
  * ## Example Usage
  *
@@ -47,7 +45,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Existing roles can be imported using their id, e.g.
+ * # Existing roles can be imported using their ID. # # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
@@ -82,16 +80,15 @@ export class Role extends pulumi.CustomResource {
     }
 
     /**
-     * String. Description of the role.
+     * Description of the role.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * String. Name for this role.
+     * Name for this role.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-     * For details, see Permissions.
+     * Configuration settings for permissions (scopes) attached to the role.
      */
     public readonly permissions!: pulumi.Output<outputs.RolePermission[] | undefined>;
 
@@ -127,16 +124,15 @@ export class Role extends pulumi.CustomResource {
  */
 export interface RoleState {
     /**
-     * String. Description of the role.
+     * Description of the role.
      */
     description?: pulumi.Input<string>;
     /**
-     * String. Name for this role.
+     * Name for this role.
      */
     name?: pulumi.Input<string>;
     /**
-     * Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-     * For details, see Permissions.
+     * Configuration settings for permissions (scopes) attached to the role.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }
@@ -146,16 +142,15 @@ export interface RoleState {
  */
 export interface RoleArgs {
     /**
-     * String. Description of the role.
+     * Description of the role.
      */
     description?: pulumi.Input<string>;
     /**
-     * String. Name for this role.
+     * Name for this role.
      */
     name?: pulumi.Input<string>;
     /**
-     * Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-     * For details, see Permissions.
+     * Configuration settings for permissions (scopes) attached to the role.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }

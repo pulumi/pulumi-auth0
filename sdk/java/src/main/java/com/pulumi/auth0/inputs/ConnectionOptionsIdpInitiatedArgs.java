@@ -22,17 +22,9 @@ public final class ConnectionOptionsIdpInitiatedArgs extends com.pulumi.resource
         return Optional.ofNullable(this.clientAuthorizeQuery);
     }
 
-    /**
-     * Google client ID.
-     * 
-     */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
-    /**
-     * @return Google client ID.
-     * 
-     */
     public Optional<Output<String>> clientId() {
         return Optional.ofNullable(this.clientId);
     }
@@ -79,23 +71,11 @@ public final class ConnectionOptionsIdpInitiatedArgs extends com.pulumi.resource
             return clientAuthorizeQuery(Output.of(clientAuthorizeQuery));
         }
 
-        /**
-         * @param clientId Google client ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
-        /**
-         * @param clientId Google client ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }

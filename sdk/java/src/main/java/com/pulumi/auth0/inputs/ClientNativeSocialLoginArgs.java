@@ -16,32 +16,16 @@ public final class ClientNativeSocialLoginArgs extends com.pulumi.resources.Reso
 
     public static final ClientNativeSocialLoginArgs Empty = new ClientNativeSocialLoginArgs();
 
-    /**
-     * Resource:
-     * 
-     */
     @Import(name="apple")
     private @Nullable Output<ClientNativeSocialLoginAppleArgs> apple;
 
-    /**
-     * @return Resource:
-     * 
-     */
     public Optional<Output<ClientNativeSocialLoginAppleArgs>> apple() {
         return Optional.ofNullable(this.apple);
     }
 
-    /**
-     * Resources:
-     * 
-     */
     @Import(name="facebook")
     private @Nullable Output<ClientNativeSocialLoginFacebookArgs> facebook;
 
-    /**
-     * @return Resources:
-     * 
-     */
     public Optional<Output<ClientNativeSocialLoginFacebookArgs>> facebook() {
         return Optional.ofNullable(this.facebook);
     }
@@ -71,44 +55,20 @@ public final class ClientNativeSocialLoginArgs extends com.pulumi.resources.Reso
             $ = new ClientNativeSocialLoginArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param apple Resource:
-         * 
-         * @return builder
-         * 
-         */
         public Builder apple(@Nullable Output<ClientNativeSocialLoginAppleArgs> apple) {
             $.apple = apple;
             return this;
         }
 
-        /**
-         * @param apple Resource:
-         * 
-         * @return builder
-         * 
-         */
         public Builder apple(ClientNativeSocialLoginAppleArgs apple) {
             return apple(Output.of(apple));
         }
 
-        /**
-         * @param facebook Resources:
-         * 
-         * @return builder
-         * 
-         */
         public Builder facebook(@Nullable Output<ClientNativeSocialLoginFacebookArgs> facebook) {
             $.facebook = facebook;
             return this;
         }
 
-        /**
-         * @param facebook Resources:
-         * 
-         * @return builder
-         * 
-         */
         public Builder facebook(ClientNativeSocialLoginFacebookArgs facebook) {
             return facebook(Output.of(facebook));
         }

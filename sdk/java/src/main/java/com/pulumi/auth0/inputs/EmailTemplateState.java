@@ -18,14 +18,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     public static final EmailTemplateState Empty = new EmailTemplateState();
 
     /**
-     * String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     @Import(name="body")
     private @Nullable Output<String> body;
 
     /**
-     * @return String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     public Optional<Output<String>> body() {
@@ -33,14 +33,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Boolean. Indicates whether the template is enabled.
+     * Indicates whether the template is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Boolean. Indicates whether the template is enabled.
+     * @return Indicates whether the template is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -48,14 +48,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     @Import(name="from")
     private @Nullable Output<String> from;
 
     /**
-     * @return String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     public Optional<Output<String>> from() {
@@ -63,14 +63,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Boolean. Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     * Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
     @Import(name="includeEmailInRedirect")
     private @Nullable Output<Boolean> includeEmailInRedirect;
 
     /**
-     * @return Boolean. Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     * @return Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> includeEmailInRedirect() {
@@ -78,14 +78,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+     * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      * 
      */
     @Import(name="resultUrl")
     private @Nullable Output<String> resultUrl;
 
     /**
-     * @return String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+     * @return URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      * 
      */
     public Optional<Output<String>> resultUrl() {
@@ -93,14 +93,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     @Import(name="subject")
     private @Nullable Output<String> subject;
 
     /**
-     * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     public Optional<Output<String>> subject() {
@@ -108,14 +108,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+     * Syntax of the template body. You can use either text or HTML with Liquid syntax.
      * 
      */
     @Import(name="syntax")
     private @Nullable Output<String> syntax;
 
     /**
-     * @return String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+     * @return Syntax of the template body. You can use either text or HTML with Liquid syntax.
      * 
      */
     public Optional<Output<String>> syntax() {
@@ -123,14 +123,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+     * Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
      * 
      */
     @Import(name="template")
     private @Nullable Output<String> template;
 
     /**
-     * @return String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+     * @return Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
      * 
      */
     public Optional<Output<String>> template() {
@@ -138,14 +138,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Integer. Number of seconds during which the link within the email will be valid.
+     * Number of seconds during which the link within the email will be valid.
      * 
      */
     @Import(name="urlLifetimeInSeconds")
     private @Nullable Output<Integer> urlLifetimeInSeconds;
 
     /**
-     * @return Integer. Number of seconds during which the link within the email will be valid.
+     * @return Number of seconds during which the link within the email will be valid.
      * 
      */
     public Optional<Output<Integer>> urlLifetimeInSeconds() {
@@ -185,7 +185,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param body String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+         * @param body Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param body String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+         * @param body Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enabled Boolean. Indicates whether the template is enabled.
+         * @param enabled Indicates whether the template is enabled.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enabled Boolean. Indicates whether the template is enabled.
+         * @param enabled Indicates whether the template is enabled.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param from String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+         * @param from Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param from String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+         * @param from Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includeEmailInRedirect Boolean. Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+         * @param includeEmailInRedirect Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includeEmailInRedirect Boolean. Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+         * @param includeEmailInRedirect Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resultUrl String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+         * @param resultUrl URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resultUrl String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+         * @param resultUrl URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param subject String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+         * @param subject Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param subject String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+         * @param subject Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syntax String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+         * @param syntax Syntax of the template body. You can use either text or HTML with Liquid syntax.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param syntax String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+         * @param syntax Syntax of the template body. You can use either text or HTML with Liquid syntax.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+         * @param template Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+         * @param template Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param urlLifetimeInSeconds Integer. Number of seconds during which the link within the email will be valid.
+         * @param urlLifetimeInSeconds Number of seconds during which the link within the email will be valid.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param urlLifetimeInSeconds Integer. Number of seconds during which the link within the email will be valid.
+         * @param urlLifetimeInSeconds Number of seconds during which the link within the email will be valid.
          * 
          * @return builder
          * 

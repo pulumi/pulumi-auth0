@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientMobileIos {
-    /**
-     * @return String
-     * 
-     */
     private @Nullable String appBundleIdentifier;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable String teamId;
 
     private ClientMobileIos() {}
-    /**
-     * @return String
-     * 
-     */
     public Optional<String> appBundleIdentifier() {
         return Optional.ofNullable(this.appBundleIdentifier);
     }
-    /**
-     * @return String
-     * 
-     */
     public Optional<String> teamId() {
         return Optional.ofNullable(this.teamId);
     }

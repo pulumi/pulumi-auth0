@@ -16,14 +16,14 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetClientArgs Empty = new GetClientArgs();
 
     /**
-     * String. client_id of the application.
+     * The ID of the client. If not provided, `name` must be set.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return String. client_id of the application.
+     * @return The ID of the client. If not provided, `name` must be set.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -31,14 +31,14 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * String. Name of the application. Ignored if `client_id` is also specified.
+     * The name of the client. If not provided, `client_id` must be set.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return String. Name of the application. Ignored if `client_id` is also specified.
+     * @return The name of the client. If not provided, `client_id` must be set.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +71,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clientId String. client_id of the application.
+         * @param clientId The ID of the client. If not provided, `name` must be set.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clientId String. client_id of the application.
+         * @param clientId The ID of the client. If not provided, `name` must be set.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name String. Name of the application. Ignored if `client_id` is also specified.
+         * @param name The name of the client. If not provided, `client_id` must be set.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name String. Name of the application. Ignored if `client_id` is also specified.
+         * @param name The name of the client. If not provided, `client_id` must be set.
          * 
          * @return builder
          * 

@@ -10,13 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must
-    /// configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0.
-    /// This resource allows for automating the verification part of the process.
+    /// With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
     /// 
     /// ## Import
     /// 
-    /// You can import this resource using the custom domain id, e.g.
+    /// # You can import this resource using the custom domain ID. # # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
@@ -25,17 +23,21 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/customDomainVerification:CustomDomainVerification")]
     public partial class CustomDomainVerification : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+        /// is `self_managed_certs` and Terraform originally managed the domain's verification.
+        /// </summary>
         [Output("cnameApiKey")]
         public Output<string> CnameApiKey { get; private set; } = null!;
 
         /// <summary>
-        /// String. ID of the custom domain resource.
+        /// ID of the custom domain resource.
         /// </summary>
         [Output("customDomainId")]
         public Output<string> CustomDomainId { get; private set; } = null!;
 
         /// <summary>
-        /// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// The DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         [Output("originDomainName")]
         public Output<string> OriginDomainName { get; private set; } = null!;
@@ -87,7 +89,7 @@ namespace Pulumi.Auth0
     public sealed class CustomDomainVerificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. ID of the custom domain resource.
+        /// ID of the custom domain resource.
         /// </summary>
         [Input("customDomainId", required: true)]
         public Input<string> CustomDomainId { get; set; } = null!;
@@ -100,17 +102,21 @@ namespace Pulumi.Auth0
 
     public sealed class CustomDomainVerificationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+        /// is `self_managed_certs` and Terraform originally managed the domain's verification.
+        /// </summary>
         [Input("cnameApiKey")]
         public Input<string>? CnameApiKey { get; set; }
 
         /// <summary>
-        /// String. ID of the custom domain resource.
+        /// ID of the custom domain resource.
         /// </summary>
         [Input("customDomainId")]
         public Input<string>? CustomDomainId { get; set; }
 
         /// <summary>
-        /// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// The DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         [Input("originDomainName")]
         public Input<string>? OriginDomainName { get; set; }

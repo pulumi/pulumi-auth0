@@ -13,58 +13,61 @@ namespace Pulumi.Auth0.Inputs
     public sealed class EmailCredentialsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+        /// AWS Access Key ID. Used only for AWS.
         /// </summary>
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
 
         /// <summary>
-        /// String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+        /// API Key for your email service. Will always be encrypted in our database.
         /// </summary>
         [Input("apiKey")]
         public Input<string>? ApiKey { get; set; }
 
         /// <summary>
-        /// String. API User for your email service.
+        /// API User for your email service.
         /// </summary>
         [Input("apiUser")]
         public Input<string>? ApiUser { get; set; }
 
+        /// <summary>
+        /// Domain name.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// String. Default region. Used only for AWS, Mailgun, and SparkPost.
+        /// Default region. Used only for AWS, Mailgun, and SparkPost.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+        /// AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
         /// </summary>
         [Input("secretAccessKey")]
         public Input<string>? SecretAccessKey { get; set; }
 
         /// <summary>
-        /// String. Hostname or IP address of your SMTP server. Used only for SMTP.
+        /// Hostname or IP address of your SMTP server. Used only for SMTP.
         /// </summary>
         [Input("smtpHost")]
         public Input<string>? SmtpHost { get; set; }
 
         /// <summary>
-        /// String, Case-sensitive. SMTP password. Used only for SMTP.
+        /// SMTP password. Used only for SMTP.
         /// </summary>
         [Input("smtpPass")]
         public Input<string>? SmtpPass { get; set; }
 
         /// <summary>
-        /// Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+        /// Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
         /// </summary>
         [Input("smtpPort")]
         public Input<int>? SmtpPort { get; set; }
 
         /// <summary>
-        /// String. SMTP username. Used only for SMTP.
+        /// SMTP username. Used only for SMTP.
         /// </summary>
         [Input("smtpUser")]
         public Input<string>? SmtpUser { get; set; }

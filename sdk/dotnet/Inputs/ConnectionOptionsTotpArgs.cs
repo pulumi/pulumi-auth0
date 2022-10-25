@@ -12,15 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ConnectionOptionsTotpArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Integer. Length of the one-time password.
-        /// </summary>
         [Input("length")]
         public Input<int>? Length { get; set; }
 
-        /// <summary>
-        /// Integer. Seconds between allowed generation of new passwords.
-        /// </summary>
         [Input("timeStep")]
         public Input<int>? TimeStep { get; set; }
 

@@ -33,6 +33,9 @@ namespace Pulumi.Auth0.Inputs
         [Input("includeAttributeNameFormat")]
         public Input<bool>? IncludeAttributeNameFormat { get; set; }
 
+        [Input("issuer")]
+        public Input<string>? Issuer { get; set; }
+
         [Input("lifetimeInSeconds")]
         public Input<int>? LifetimeInSeconds { get; set; }
 

@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AdminNotificationFrequencies;
         /// <summary>
-        /// Whether or not breached password detection is active.
+        /// Whether breached password detection is active.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        /// Action to take when a breached password is detected.
         /// </summary>
         public readonly ImmutableArray<string> Shields;
 

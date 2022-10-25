@@ -10,38 +10,38 @@ import java.util.Objects;
 @CustomType
 public final class GuardianDuo {
     /**
-     * @return String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+     * @return Duo API Hostname, see the Duo documentation for more details on Duo setup.
      * 
      */
     private String hostname;
     /**
-     * @return String. Duo client ID, see the Duo documentation for more details on Duo setup.
+     * @return Duo client ID, see the Duo documentation for more details on Duo setup.
      * 
      */
     private String integrationKey;
     /**
-     * @return String. Duo client secret, see the Duo documentation for more details on Duo setup.
+     * @return Duo client secret, see the Duo documentation for more details on Duo setup.
      * 
      */
     private String secretKey;
 
     private GuardianDuo() {}
     /**
-     * @return String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+     * @return Duo API Hostname, see the Duo documentation for more details on Duo setup.
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return String. Duo client ID, see the Duo documentation for more details on Duo setup.
+     * @return Duo client ID, see the Duo documentation for more details on Duo setup.
      * 
      */
     public String integrationKey() {
         return this.integrationKey;
     }
     /**
-     * @return String. Duo client secret, see the Duo documentation for more details on Duo setup.
+     * @return Duo client secret, see the Duo documentation for more details on Duo setup.
      * 
      */
     public String secretKey() {

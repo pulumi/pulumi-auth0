@@ -15,32 +15,16 @@ public final class ConnectionOptionsMfaArgs extends com.pulumi.resources.Resourc
 
     public static final ConnectionOptionsMfaArgs Empty = new ConnectionOptionsMfaArgs();
 
-    /**
-     * Indicates whether multifactor authentication is enabled for this connection.
-     * 
-     */
     @Import(name="active")
     private @Nullable Output<Boolean> active;
 
-    /**
-     * @return Indicates whether multifactor authentication is enabled for this connection.
-     * 
-     */
     public Optional<Output<Boolean>> active() {
         return Optional.ofNullable(this.active);
     }
 
-    /**
-     * Indicates whether multifactor authentication enrollment settings will be returned.
-     * 
-     */
     @Import(name="returnEnrollSettings")
     private @Nullable Output<Boolean> returnEnrollSettings;
 
-    /**
-     * @return Indicates whether multifactor authentication enrollment settings will be returned.
-     * 
-     */
     public Optional<Output<Boolean>> returnEnrollSettings() {
         return Optional.ofNullable(this.returnEnrollSettings);
     }
@@ -70,44 +54,20 @@ public final class ConnectionOptionsMfaArgs extends com.pulumi.resources.Resourc
             $ = new ConnectionOptionsMfaArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param active Indicates whether multifactor authentication is enabled for this connection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder active(@Nullable Output<Boolean> active) {
             $.active = active;
             return this;
         }
 
-        /**
-         * @param active Indicates whether multifactor authentication is enabled for this connection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder active(Boolean active) {
             return active(Output.of(active));
         }
 
-        /**
-         * @param returnEnrollSettings Indicates whether multifactor authentication enrollment settings will be returned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder returnEnrollSettings(@Nullable Output<Boolean> returnEnrollSettings) {
             $.returnEnrollSettings = returnEnrollSettings;
             return this;
         }
 
-        /**
-         * @param returnEnrollSettings Indicates whether multifactor authentication enrollment settings will be returned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder returnEnrollSettings(Boolean returnEnrollSettings) {
             return returnEnrollSettings(Output.of(returnEnrollSettings));
         }

@@ -15,17 +15,9 @@ public final class ConnectionOptionsPasswordComplexityOptionsArgs extends com.pu
 
     public static final ConnectionOptionsPasswordComplexityOptionsArgs Empty = new ConnectionOptionsPasswordComplexityOptionsArgs();
 
-    /**
-     * Minimum number of characters allowed in passwords.
-     * 
-     */
     @Import(name="minLength")
     private @Nullable Output<Integer> minLength;
 
-    /**
-     * @return Minimum number of characters allowed in passwords.
-     * 
-     */
     public Optional<Output<Integer>> minLength() {
         return Optional.ofNullable(this.minLength);
     }
@@ -54,23 +46,11 @@ public final class ConnectionOptionsPasswordComplexityOptionsArgs extends com.pu
             $ = new ConnectionOptionsPasswordComplexityOptionsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param minLength Minimum number of characters allowed in passwords.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minLength(@Nullable Output<Integer> minLength) {
             $.minLength = minLength;
             return this;
         }
 
-        /**
-         * @param minLength Minimum number of characters allowed in passwords.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minLength(Integer minLength) {
             return minLength(Output.of(minLength));
         }

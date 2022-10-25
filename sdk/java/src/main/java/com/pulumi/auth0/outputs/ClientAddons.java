@@ -14,341 +14,133 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientAddons {
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> aws;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> azureBlob;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> azureSb;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> box;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> cloudbees;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> concur;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> dropbox;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> echosign;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> egnyte;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> firebase;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> layer;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> mscrm;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> newrelic;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> office365;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> rms;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> salesforce;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> salesforceApi;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> salesforceSandboxApi;
     /**
-     * @return List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+     * @return Configuration settings for a SAML add-on.
      * 
      */
     private @Nullable ClientAddonsSamlp samlp;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> sapApi;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> sentry;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> sharepoint;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> slack;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> springcm;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> wams;
     /**
-     * @return String
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
      * 
      */
     private @Nullable Map<String,Object> wsfed;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> zendesk;
-    /**
-     * @return String
-     * 
-     */
     private @Nullable Map<String,Object> zoom;
 
     private ClientAddons() {}
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> aws() {
         return this.aws == null ? Map.of() : this.aws;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> azureBlob() {
         return this.azureBlob == null ? Map.of() : this.azureBlob;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> azureSb() {
         return this.azureSb == null ? Map.of() : this.azureSb;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> box() {
         return this.box == null ? Map.of() : this.box;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> cloudbees() {
         return this.cloudbees == null ? Map.of() : this.cloudbees;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> concur() {
         return this.concur == null ? Map.of() : this.concur;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> dropbox() {
         return this.dropbox == null ? Map.of() : this.dropbox;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> echosign() {
         return this.echosign == null ? Map.of() : this.echosign;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> egnyte() {
         return this.egnyte == null ? Map.of() : this.egnyte;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> firebase() {
         return this.firebase == null ? Map.of() : this.firebase;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> layer() {
         return this.layer == null ? Map.of() : this.layer;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> mscrm() {
         return this.mscrm == null ? Map.of() : this.mscrm;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> newrelic() {
         return this.newrelic == null ? Map.of() : this.newrelic;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> office365() {
         return this.office365 == null ? Map.of() : this.office365;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> rms() {
         return this.rms == null ? Map.of() : this.rms;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> salesforce() {
         return this.salesforce == null ? Map.of() : this.salesforce;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> salesforceApi() {
         return this.salesforceApi == null ? Map.of() : this.salesforceApi;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> salesforceSandboxApi() {
         return this.salesforceSandboxApi == null ? Map.of() : this.salesforceSandboxApi;
     }
     /**
-     * @return List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+     * @return Configuration settings for a SAML add-on.
      * 
      */
     public Optional<ClientAddonsSamlp> samlp() {
         return Optional.ofNullable(this.samlp);
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> sapApi() {
         return this.sapApi == null ? Map.of() : this.sapApi;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> sentry() {
         return this.sentry == null ? Map.of() : this.sentry;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> sharepoint() {
         return this.sharepoint == null ? Map.of() : this.sharepoint;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> slack() {
         return this.slack == null ? Map.of() : this.slack;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> springcm() {
         return this.springcm == null ? Map.of() : this.springcm;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> wams() {
         return this.wams == null ? Map.of() : this.wams;
     }
     /**
-     * @return String
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
      * 
      */
     public Map<String,Object> wsfed() {
         return this.wsfed == null ? Map.of() : this.wsfed;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> zendesk() {
         return this.zendesk == null ? Map.of() : this.zendesk;
     }
-    /**
-     * @return String
-     * 
-     */
     public Map<String,Object> zoom() {
         return this.zoom == null ? Map.of() : this.zoom;
     }

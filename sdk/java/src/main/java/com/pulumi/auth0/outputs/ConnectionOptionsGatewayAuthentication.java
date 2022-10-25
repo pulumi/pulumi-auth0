@@ -16,10 +16,6 @@ public final class ConnectionOptionsGatewayAuthentication {
     private @Nullable String method;
     private @Nullable String secret;
     private @Nullable Boolean secretBase64Encoded;
-    /**
-     * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-     * 
-     */
     private @Nullable String subject;
 
     private ConnectionOptionsGatewayAuthentication() {}
@@ -35,10 +31,6 @@ public final class ConnectionOptionsGatewayAuthentication {
     public Optional<Boolean> secretBase64Encoded() {
         return Optional.ofNullable(this.secretBase64Encoded);
     }
-    /**
-     * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-     * 
-     */
     public Optional<String> subject() {
         return Optional.ofNullable(this.subject);
     }

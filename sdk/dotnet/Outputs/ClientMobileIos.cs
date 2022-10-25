@@ -13,13 +13,7 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientMobileIos
     {
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly string? AppBundleIdentifier;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly string? TeamId;
 
         [OutputConstructor]

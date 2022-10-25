@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class TenantGuardianMfaPageGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether to use the custom Guardian page.
+        /// Indicates whether to use the custom Guardian page.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+        /// HTML format with supported Liquid syntax. Customized content of the Guardian page.
         /// </summary>
         [Input("html", required: true)]
         public Input<string> Html { get; set; } = null!;

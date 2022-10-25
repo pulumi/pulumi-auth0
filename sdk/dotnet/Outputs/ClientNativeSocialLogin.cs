@@ -13,13 +13,7 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientNativeSocialLogin
     {
-        /// <summary>
-        /// Resource:
-        /// </summary>
         public readonly Outputs.ClientNativeSocialLoginApple? Apple;
-        /// <summary>
-        /// Resources:
-        /// </summary>
         public readonly Outputs.ClientNativeSocialLoginFacebook? Facebook;
 
         [OutputConstructor]

@@ -13,9 +13,6 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ConnectionOptionsPasswordComplexityOptions
     {
-        /// <summary>
-        /// Minimum number of characters allowed in passwords.
-        /// </summary>
         public readonly int? MinLength;
 
         [OutputConstructor]

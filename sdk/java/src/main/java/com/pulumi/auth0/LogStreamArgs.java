@@ -19,14 +19,14 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
     public static final LogStreamArgs Empty = new LogStreamArgs();
 
     /**
-     * Only logs events matching these filters will be delivered by the stream.
+     * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<Map<String,String>>> filters;
 
     /**
-     * @return Only logs events matching these filters will be delivered by the stream.
+     * @return Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
      * 
      */
     public Optional<Output<List<Map<String,String>>>> filters() {
@@ -34,14 +34,14 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the log stream
+     * Name of the log stream.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the log stream
+     * @return Name of the log stream.
      * 
      */
     public Optional<Output<String>> name() {
@@ -49,14 +49,14 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     * The sink configuration for the log stream.
      * 
      */
     @Import(name="sink", required=true)
     private Output<LogStreamSinkArgs> sink;
 
     /**
-     * @return List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     * @return The sink configuration for the log stream.
      * 
      */
     public Output<LogStreamSinkArgs> sink() {
@@ -64,14 +64,14 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;
+     * The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;
+     * @return The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -79,14 +79,14 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of log stream. Options are &#34;eventbridge&#34;, &#34;eventgrid&#34;, &#34;http&#34;, &#34;datadog&#34;, &#34;splunk&#34;, &#34;sumo&#34;
+     * Type of the log stream, which indicates the sink provider.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of log stream. Options are &#34;eventbridge&#34;, &#34;eventgrid&#34;, &#34;http&#34;, &#34;datadog&#34;, &#34;splunk&#34;, &#34;sumo&#34;
+     * @return Type of the log stream, which indicates the sink provider.
      * 
      */
     public Output<String> type() {
@@ -122,7 +122,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters Only logs events matching these filters will be delivered by the stream.
+         * @param filters Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters Only logs events matching these filters will be delivered by the stream.
+         * @param filters Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters Only logs events matching these filters will be delivered by the stream.
+         * @param filters Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the log stream
+         * @param name Name of the log stream.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the log stream
+         * @param name Name of the log stream.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sink List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+         * @param sink The sink configuration for the log stream.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sink List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+         * @param sink The sink configuration for the log stream.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;
+         * @param status The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;
+         * @param status The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of log stream. Options are &#34;eventbridge&#34;, &#34;eventgrid&#34;, &#34;http&#34;, &#34;datadog&#34;, &#34;splunk&#34;, &#34;sumo&#34;
+         * @param type Type of the log stream, which indicates the sink provider.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of log stream. Options are &#34;eventbridge&#34;, &#34;eventgrid&#34;, &#34;http&#34;, &#34;datadog&#34;, &#34;splunk&#34;, &#34;sumo&#34;
+         * @param type Type of the log stream, which indicates the sink provider.
          * 
          * @return builder
          * 

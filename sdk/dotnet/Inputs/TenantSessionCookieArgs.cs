@@ -12,6 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class TenantSessionCookieArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 

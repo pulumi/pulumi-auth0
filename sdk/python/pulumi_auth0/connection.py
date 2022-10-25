@@ -29,17 +29,15 @@ class ConnectionArgs:
                  validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Connection resource.
-        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-        :param pulumi.Input[str] display_name: Name used in login screen
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
+        :param pulumi.Input[str] display_name: Name used in login screen.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
-        :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
-        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available for enterprise connections.
-        :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         """
         pulumi.set(__self__, "strategy", strategy)
         if display_name is not None:
@@ -67,7 +65,7 @@ class ConnectionArgs:
     @pulumi.getter
     def strategy(self) -> pulumi.Input[str]:
         """
-        Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        Type of the connection, which indicates the identity provider.
         """
         return pulumi.get(self, "strategy")
 
@@ -79,7 +77,7 @@ class ConnectionArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name used in login screen
+        Name used in login screen.
         """
         return pulumi.get(self, "display_name")
 
@@ -91,7 +89,7 @@ class ConnectionArgs:
     @pulumi.getter(name="enabledClients")
     def enabled_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        IDs of the clients for which the connection is enabled.
         """
         return pulumi.get(self, "enabled_clients")
 
@@ -139,7 +137,7 @@ class ConnectionArgs:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input['ConnectionOptionsArgs']]:
         """
-        Configuration settings for connection options. For details, see Options.
+        Configuration settings for connection options.
         """
         return pulumi.get(self, "options")
 
@@ -151,7 +149,7 @@ class ConnectionArgs:
     @pulumi.getter
     def realms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         """
         return pulumi.get(self, "realms")
 
@@ -163,7 +161,7 @@ class ConnectionArgs:
     @pulumi.getter(name="showAsButton")
     def show_as_button(self) -> Optional[pulumi.Input[bool]]:
         """
-        Display connection as a button. Only available for enterprise connections.
+        Display connection as a button. Only available on enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 
@@ -174,9 +172,6 @@ class ConnectionArgs:
     @property
     @pulumi.getter(name="strategyVersion")
     def strategy_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Version 1 is deprecated, use version 2.
-        """
         return pulumi.get(self, "strategy_version")
 
     @strategy_version.setter
@@ -186,9 +181,6 @@ class ConnectionArgs:
     @property
     @pulumi.getter
     def validation(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-        """
         return pulumi.get(self, "validation")
 
     @validation.setter
@@ -212,17 +204,15 @@ class _ConnectionState:
                  validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-        :param pulumi.Input[str] display_name: Name used in login screen
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        :param pulumi.Input[str] display_name: Name used in login screen.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
-        :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options. For details, see Options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
-        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available for enterprise connections.
-        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-        :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
+        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -251,7 +241,7 @@ class _ConnectionState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name used in login screen
+        Name used in login screen.
         """
         return pulumi.get(self, "display_name")
 
@@ -263,7 +253,7 @@ class _ConnectionState:
     @pulumi.getter(name="enabledClients")
     def enabled_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        IDs of the clients for which the connection is enabled.
         """
         return pulumi.get(self, "enabled_clients")
 
@@ -311,7 +301,7 @@ class _ConnectionState:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input['ConnectionOptionsArgs']]:
         """
-        Configuration settings for connection options. For details, see Options.
+        Configuration settings for connection options.
         """
         return pulumi.get(self, "options")
 
@@ -323,7 +313,7 @@ class _ConnectionState:
     @pulumi.getter
     def realms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         """
         return pulumi.get(self, "realms")
 
@@ -335,7 +325,7 @@ class _ConnectionState:
     @pulumi.getter(name="showAsButton")
     def show_as_button(self) -> Optional[pulumi.Input[bool]]:
         """
-        Display connection as a button. Only available for enterprise connections.
+        Display connection as a button. Only available on enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 
@@ -347,7 +337,7 @@ class _ConnectionState:
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        Type of the connection, which indicates the identity provider.
         """
         return pulumi.get(self, "strategy")
 
@@ -358,9 +348,6 @@ class _ConnectionState:
     @property
     @pulumi.getter(name="strategyVersion")
     def strategy_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Version 1 is deprecated, use version 2.
-        """
         return pulumi.get(self, "strategy_version")
 
     @strategy_version.setter
@@ -370,9 +357,6 @@ class _ConnectionState:
     @property
     @pulumi.getter
     def validation(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-        """
         return pulumi.get(self, "validation")
 
     @validation.setter
@@ -398,13 +382,236 @@ class Connection(pulumi.CustomResource):
                  validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
-        (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
-        and manage connections to be used with your clients and users.
+        With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+
+        > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+        creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+
+        ## Example Usage
+        ### Google OAuth2 Connection
+
+        > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        google_oauth2 = auth0.Connection("googleOauth2",
+            options=auth0.ConnectionOptionsArgs(
+                allowed_audiences=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "email",
+                    "profile",
+                    "gmail",
+                    "youtube",
+                ],
+                set_user_root_attributes="on_each_login",
+            ),
+            strategy="google-oauth2")
+        ```
+        ### Facebook Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        facebook = auth0.Connection("facebook",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "public_profile",
+                    "email",
+                    "groups_access_member_info",
+                    "user_birthday",
+                ],
+            ),
+            strategy="facebook")
+        ```
+        ### Apple Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        apple = auth0.Connection("apple",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<private-key>",
+                key_id="<key-id>",
+                scopes=[
+                    "email",
+                    "name",
+                ],
+                team_id="<team-id>",
+            ),
+            strategy="apple")
+        ```
+        ### LinkedIn Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        linkedin = auth0.Connection("linkedin",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "basic_profile",
+                    "profile",
+                    "email",
+                ],
+                strategy_version=2,
+            ),
+            strategy="linkedin")
+        ```
+        ### GitHub Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        github = auth0.Connection("github",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "email",
+                    "profile",
+                    "public_repo",
+                    "repo",
+                ],
+            ),
+            strategy="github")
+        ```
+        ### SalesForce Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        salesforce = auth0.Connection("salesforce",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                community_base_url="https://salesforce.example.com",
+            ),
+            strategy="salesforce")
+        ```
+        ### OAuth2 Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        oauth2 = auth0.Connection("oauth2",
+            options=auth0.ConnectionOptionsArgs(
+                authorization_endpoint="https://auth.example.com/oauth2/authorize",
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                pkce_enabled=True,
+                scripts={
+                    "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
+                  return callback(new Error("Whoops!"));
+                }
+              
+        \"\"\",
+                },
+                token_endpoint="https://auth.example.com/oauth2/token",
+            ),
+            strategy="oauth2")
+        ```
+        ### SMS Connection
+
+        > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        sms = auth0.Connection("sms",
+            is_domain_connection=False,
+            options=auth0.ConnectionOptionsArgs(
+                brute_force_protection=True,
+                disable_signup=False,
+                forward_request_info=True,
+                from_="+15555555555",
+                gateway_authentication=auth0.ConnectionOptionsGatewayAuthenticationArgs(
+                    audience="https://somewhere.com/sms-gateway",
+                    method="bearer",
+                    secret="4e2680bb74ec2ae24736476dd37ed6c2",
+                    secret_base64_encoded=False,
+                    subject="test.us.auth0.com:sms",
+                ),
+                gateway_url="https://somewhere.com/sms-gateway",
+                name="sms",
+                provider="sms_gateway",
+                syntax="md_with_macros",
+                template="@@password@@",
+                totp=auth0.ConnectionOptionsTotpArgs(
+                    length=6,
+                    time_step=300,
+                ),
+            ),
+            strategy="sms")
+        ```
+        ### Email Connection
+
+        > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        passwordless_email = auth0.Connection("passwordlessEmail",
+            options=auth0.ConnectionOptionsArgs(
+                auth_params={
+                    "responseType": "code",
+                    "scope": "openid email profile offline_access",
+                },
+                brute_force_protection=True,
+                disable_signup=False,
+                from_="{{ application.name }} <root@auth0.com>",
+                non_persistent_attrs=[],
+                set_user_root_attributes=[],
+                subject="Welcome to {{ application.name }}",
+                syntax="liquid",
+                template="<html>This is the body of the email</html>",
+                totp=auth0.ConnectionOptionsTotpArgs(
+                    length=6,
+                    time_step=300,
+                ),
+            ),
+            strategy="email")
+        ```
+        ### WindowsLive Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        windowslive = auth0.Connection("windowslive",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "signin",
+                    "graph_user",
+                ],
+                strategy_version=2,
+            ),
+            strategy="windowslive")
+        ```
 
         ## Import
 
-        Connections can be imported using their id, e.g.
+        # Connections can be imported using their ID. # # Example
 
         ```sh
          $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
@@ -412,17 +619,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Name used in login screen
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        :param pulumi.Input[str] display_name: Name used in login screen.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
-        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available for enterprise connections.
-        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-        :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
+        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
         """
         ...
     @overload
@@ -431,13 +636,236 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
-        (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
-        and manage connections to be used with your clients and users.
+        With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+
+        > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+        creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+
+        ## Example Usage
+        ### Google OAuth2 Connection
+
+        > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        google_oauth2 = auth0.Connection("googleOauth2",
+            options=auth0.ConnectionOptionsArgs(
+                allowed_audiences=[
+                    "example.com",
+                    "api.example.com",
+                ],
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "email",
+                    "profile",
+                    "gmail",
+                    "youtube",
+                ],
+                set_user_root_attributes="on_each_login",
+            ),
+            strategy="google-oauth2")
+        ```
+        ### Facebook Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        facebook = auth0.Connection("facebook",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "public_profile",
+                    "email",
+                    "groups_access_member_info",
+                    "user_birthday",
+                ],
+            ),
+            strategy="facebook")
+        ```
+        ### Apple Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        apple = auth0.Connection("apple",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<private-key>",
+                key_id="<key-id>",
+                scopes=[
+                    "email",
+                    "name",
+                ],
+                team_id="<team-id>",
+            ),
+            strategy="apple")
+        ```
+        ### LinkedIn Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        linkedin = auth0.Connection("linkedin",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "basic_profile",
+                    "profile",
+                    "email",
+                ],
+                strategy_version=2,
+            ),
+            strategy="linkedin")
+        ```
+        ### GitHub Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        github = auth0.Connection("github",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "email",
+                    "profile",
+                    "public_repo",
+                    "repo",
+                ],
+            ),
+            strategy="github")
+        ```
+        ### SalesForce Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        salesforce = auth0.Connection("salesforce",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                community_base_url="https://salesforce.example.com",
+            ),
+            strategy="salesforce")
+        ```
+        ### OAuth2 Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        oauth2 = auth0.Connection("oauth2",
+            options=auth0.ConnectionOptionsArgs(
+                authorization_endpoint="https://auth.example.com/oauth2/authorize",
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                pkce_enabled=True,
+                scripts={
+                    "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
+                  return callback(new Error("Whoops!"));
+                }
+              
+        \"\"\",
+                },
+                token_endpoint="https://auth.example.com/oauth2/token",
+            ),
+            strategy="oauth2")
+        ```
+        ### SMS Connection
+
+        > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        sms = auth0.Connection("sms",
+            is_domain_connection=False,
+            options=auth0.ConnectionOptionsArgs(
+                brute_force_protection=True,
+                disable_signup=False,
+                forward_request_info=True,
+                from_="+15555555555",
+                gateway_authentication=auth0.ConnectionOptionsGatewayAuthenticationArgs(
+                    audience="https://somewhere.com/sms-gateway",
+                    method="bearer",
+                    secret="4e2680bb74ec2ae24736476dd37ed6c2",
+                    secret_base64_encoded=False,
+                    subject="test.us.auth0.com:sms",
+                ),
+                gateway_url="https://somewhere.com/sms-gateway",
+                name="sms",
+                provider="sms_gateway",
+                syntax="md_with_macros",
+                template="@@password@@",
+                totp=auth0.ConnectionOptionsTotpArgs(
+                    length=6,
+                    time_step=300,
+                ),
+            ),
+            strategy="sms")
+        ```
+        ### Email Connection
+
+        > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        passwordless_email = auth0.Connection("passwordlessEmail",
+            options=auth0.ConnectionOptionsArgs(
+                auth_params={
+                    "responseType": "code",
+                    "scope": "openid email profile offline_access",
+                },
+                brute_force_protection=True,
+                disable_signup=False,
+                from_="{{ application.name }} <root@auth0.com>",
+                non_persistent_attrs=[],
+                set_user_root_attributes=[],
+                subject="Welcome to {{ application.name }}",
+                syntax="liquid",
+                template="<html>This is the body of the email</html>",
+                totp=auth0.ConnectionOptionsTotpArgs(
+                    length=6,
+                    time_step=300,
+                ),
+            ),
+            strategy="email")
+        ```
+        ### WindowsLive Connection
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        windowslive = auth0.Connection("windowslive",
+            options=auth0.ConnectionOptionsArgs(
+                client_id="<client-id>",
+                client_secret="<client-secret>",
+                scopes=[
+                    "signin",
+                    "graph_user",
+                ],
+                strategy_version=2,
+            ),
+            strategy="windowslive")
+        ```
 
         ## Import
 
-        Connections can be imported using their id, e.g.
+        # Connections can be imported using their ID. # # Example
 
         ```sh
          $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
@@ -519,17 +947,15 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Name used in login screen
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        :param pulumi.Input[str] display_name: Name used in login screen.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options. For details, see Options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
-        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available for enterprise connections.
-        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-        :param pulumi.Input[str] strategy_version: Version 1 is deprecated, use version 2.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
+        :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
+        :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -552,7 +978,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Name used in login screen
+        Name used in login screen.
         """
         return pulumi.get(self, "display_name")
 
@@ -560,7 +986,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="enabledClients")
     def enabled_clients(self) -> pulumi.Output[Sequence[str]]:
         """
-        IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        IDs of the clients for which the connection is enabled.
         """
         return pulumi.get(self, "enabled_clients")
 
@@ -592,7 +1018,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output['outputs.ConnectionOptions']:
         """
-        Configuration settings for connection options. For details, see Options.
+        Configuration settings for connection options.
         """
         return pulumi.get(self, "options")
 
@@ -600,7 +1026,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def realms(self) -> pulumi.Output[Sequence[str]]:
         """
-        Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         """
         return pulumi.get(self, "realms")
 
@@ -608,7 +1034,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="showAsButton")
     def show_as_button(self) -> pulumi.Output[Optional[bool]]:
         """
-        Display connection as a button. Only available for enterprise connections.
+        Display connection as a button. Only available on enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 
@@ -616,23 +1042,17 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def strategy(self) -> pulumi.Output[str]:
         """
-        Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        Type of the connection, which indicates the identity provider.
         """
         return pulumi.get(self, "strategy")
 
     @property
     @pulumi.getter(name="strategyVersion")
     def strategy_version(self) -> pulumi.Output[str]:
-        """
-        Version 1 is deprecated, use version 2.
-        """
         return pulumi.get(self, "strategy_version")
 
     @property
     @pulumi.getter
     def validation(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-        """
         return pulumi.get(self, "validation")
 

@@ -20,9 +20,8 @@ class TriggerBindingArgs:
                  trigger: pulumi.Input[str]):
         """
         The set of arguments for constructing a TriggerBinding resource.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]] actions: The actions bound to this trigger. For details, see
-               Actions.
-        :param pulumi.Input[str] trigger: The id of the trigger to bind with
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]] actions: The actions bound to this trigger
+        :param pulumi.Input[str] trigger: The ID of the trigger to bind with.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "trigger", trigger)
@@ -31,8 +30,7 @@ class TriggerBindingArgs:
     @pulumi.getter
     def actions(self) -> pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]]:
         """
-        The actions bound to this trigger. For details, see
-        Actions.
+        The actions bound to this trigger
         """
         return pulumi.get(self, "actions")
 
@@ -44,7 +42,7 @@ class TriggerBindingArgs:
     @pulumi.getter
     def trigger(self) -> pulumi.Input[str]:
         """
-        The id of the trigger to bind with
+        The ID of the trigger to bind with.
         """
         return pulumi.get(self, "trigger")
 
@@ -60,9 +58,8 @@ class _TriggerBindingState:
                  trigger: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TriggerBinding resources.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]] actions: The actions bound to this trigger. For details, see
-               Actions.
-        :param pulumi.Input[str] trigger: The id of the trigger to bind with
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]] actions: The actions bound to this trigger
+        :param pulumi.Input[str] trigger: The ID of the trigger to bind with.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -73,8 +70,7 @@ class _TriggerBindingState:
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]]]:
         """
-        The actions bound to this trigger. For details, see
-        Actions.
+        The actions bound to this trigger
         """
         return pulumi.get(self, "actions")
 
@@ -86,7 +82,7 @@ class _TriggerBindingState:
     @pulumi.getter
     def trigger(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the trigger to bind with
+        The ID of the trigger to bind with.
         """
         return pulumi.get(self, "trigger")
 
@@ -104,12 +100,7 @@ class TriggerBinding(pulumi.CustomResource):
                  trigger: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With this resource, you can bind an action to a trigger. Once an action is
-        created and deployed, it can be attached (i.e. bound) to a trigger so that it
-        will be executed as part of a flow.
-
-        The list of actions reflects the order in which they will be executed during the
-        appropriate flow.
+        With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
 
         ## Example Usage
 
@@ -118,25 +109,25 @@ class TriggerBinding(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         action_foo = auth0.Action("actionFoo",
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v2",
-            ),
-            code=\"\"\"exports.onContinuePostLogin = async (event, api) => { 
-        	console.log("foo") 
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+          console.log("foo");
         };"
         \"\"\",
-            deploy=True)
+            deploy=True,
+            supported_triggers=auth0.ActionSupportedTriggersArgs(
+                id="post-login",
+                version="v3",
+            ))
         action_bar = auth0.Action("actionBar",
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v2",
-            ),
-            code=\"\"\"exports.onContinuePostLogin = async (event, api) => { 
-        	console.log("bar") 
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+          console.log("bar");
         };"
         \"\"\",
-            deploy=True)
+            deploy=True,
+            supported_triggers=auth0.ActionSupportedTriggersArgs(
+                id="post-login",
+                version="v3",
+            ))
         login_flow = auth0.TriggerBinding("loginFlow",
             trigger="post-login",
             actions=[
@@ -153,7 +144,7 @@ class TriggerBinding(pulumi.CustomResource):
 
         ## Import
 
-        auth0_trigger_binding can be imported using the bindings trigger ID, e.g.
+        # This resource can be imported using the bindings trigger ID. # # Example
 
         ```sh
          $ pulumi import auth0:index/triggerBinding:TriggerBinding example "post-login"
@@ -161,9 +152,8 @@ class TriggerBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerBindingActionArgs']]]] actions: The actions bound to this trigger. For details, see
-               Actions.
-        :param pulumi.Input[str] trigger: The id of the trigger to bind with
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerBindingActionArgs']]]] actions: The actions bound to this trigger
+        :param pulumi.Input[str] trigger: The ID of the trigger to bind with.
         """
         ...
     @overload
@@ -172,12 +162,7 @@ class TriggerBinding(pulumi.CustomResource):
                  args: TriggerBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource, you can bind an action to a trigger. Once an action is
-        created and deployed, it can be attached (i.e. bound) to a trigger so that it
-        will be executed as part of a flow.
-
-        The list of actions reflects the order in which they will be executed during the
-        appropriate flow.
+        With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
 
         ## Example Usage
 
@@ -186,25 +171,25 @@ class TriggerBinding(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         action_foo = auth0.Action("actionFoo",
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v2",
-            ),
-            code=\"\"\"exports.onContinuePostLogin = async (event, api) => { 
-        	console.log("foo") 
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+          console.log("foo");
         };"
         \"\"\",
-            deploy=True)
+            deploy=True,
+            supported_triggers=auth0.ActionSupportedTriggersArgs(
+                id="post-login",
+                version="v3",
+            ))
         action_bar = auth0.Action("actionBar",
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v2",
-            ),
-            code=\"\"\"exports.onContinuePostLogin = async (event, api) => { 
-        	console.log("bar") 
+            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+          console.log("bar");
         };"
         \"\"\",
-            deploy=True)
+            deploy=True,
+            supported_triggers=auth0.ActionSupportedTriggersArgs(
+                id="post-login",
+                version="v3",
+            ))
         login_flow = auth0.TriggerBinding("loginFlow",
             trigger="post-login",
             actions=[
@@ -221,7 +206,7 @@ class TriggerBinding(pulumi.CustomResource):
 
         ## Import
 
-        auth0_trigger_binding can be imported using the bindings trigger ID, e.g.
+        # This resource can be imported using the bindings trigger ID. # # Example
 
         ```sh
          $ pulumi import auth0:index/triggerBinding:TriggerBinding example "post-login"
@@ -278,9 +263,8 @@ class TriggerBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerBindingActionArgs']]]] actions: The actions bound to this trigger. For details, see
-               Actions.
-        :param pulumi.Input[str] trigger: The id of the trigger to bind with
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerBindingActionArgs']]]] actions: The actions bound to this trigger
+        :param pulumi.Input[str] trigger: The ID of the trigger to bind with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -294,8 +278,7 @@ class TriggerBinding(pulumi.CustomResource):
     @pulumi.getter
     def actions(self) -> pulumi.Output[Sequence['outputs.TriggerBindingAction']]:
         """
-        The actions bound to this trigger. For details, see
-        Actions.
+        The actions bound to this trigger
         """
         return pulumi.get(self, "actions")
 
@@ -303,7 +286,7 @@ class TriggerBinding(pulumi.CustomResource):
     @pulumi.getter
     def trigger(self) -> pulumi.Output[str]:
         """
-        The id of the trigger to bind with
+        The ID of the trigger to bind with.
         """
         return pulumi.get(self, "trigger")
 

@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientRefreshToken {
+    /**
+     * @return Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     * 
+     */
     private String expirationType;
+    /**
+     * @return The time in seconds after which inactive refresh tokens will expire.
+     * 
+     */
     private @Nullable Integer idleTokenLifetime;
+    /**
+     * @return Whether inactive refresh tokens should remain valid indefinitely.
+     * 
+     */
     private @Nullable Boolean infiniteIdleTokenLifetime;
+    /**
+     * @return Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+     * 
+     */
     private @Nullable Boolean infiniteTokenLifetime;
+    /**
+     * @return The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+     * 
+     */
     private @Nullable Integer leeway;
+    /**
+     * @return Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     * 
+     */
     private String rotationType;
+    /**
+     * @return The absolute lifetime of a refresh token in seconds.
+     * 
+     */
     private @Nullable Integer tokenLifetime;
 
     private GlobalClientRefreshToken() {}
+    /**
+     * @return Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     * 
+     */
     public String expirationType() {
         return this.expirationType;
     }
+    /**
+     * @return The time in seconds after which inactive refresh tokens will expire.
+     * 
+     */
     public Optional<Integer> idleTokenLifetime() {
         return Optional.ofNullable(this.idleTokenLifetime);
     }
+    /**
+     * @return Whether inactive refresh tokens should remain valid indefinitely.
+     * 
+     */
     public Optional<Boolean> infiniteIdleTokenLifetime() {
         return Optional.ofNullable(this.infiniteIdleTokenLifetime);
     }
+    /**
+     * @return Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+     * 
+     */
     public Optional<Boolean> infiniteTokenLifetime() {
         return Optional.ofNullable(this.infiniteTokenLifetime);
     }
+    /**
+     * @return The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+     * 
+     */
     public Optional<Integer> leeway() {
         return Optional.ofNullable(this.leeway);
     }
+    /**
+     * @return Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     * 
+     */
     public String rotationType() {
         return this.rotationType;
     }
+    /**
+     * @return The absolute lifetime of a refresh token in seconds.
+     * 
+     */
     public Optional<Integer> tokenLifetime() {
         return Optional.ofNullable(this.tokenLifetime);
     }

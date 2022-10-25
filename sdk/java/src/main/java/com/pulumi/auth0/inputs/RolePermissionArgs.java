@@ -14,14 +14,14 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
     public static final RolePermissionArgs Empty = new RolePermissionArgs();
 
     /**
-     * String. Name of the permission (scope).
+     * Name of the permission (scope).
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return String. Name of the permission (scope).
+     * @return Name of the permission (scope).
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * String. Unique identifier for the resource server.
+     * Unique identifier for the resource server.
      * 
      */
     @Import(name="resourceServerIdentifier", required=true)
     private Output<String> resourceServerIdentifier;
 
     /**
-     * @return String. Unique identifier for the resource server.
+     * @return Unique identifier for the resource server.
      * 
      */
     public Output<String> resourceServerIdentifier() {
@@ -69,7 +69,7 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name String. Name of the permission (scope).
+         * @param name Name of the permission (scope).
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name String. Name of the permission (scope).
+         * @param name Name of the permission (scope).
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceServerIdentifier String. Unique identifier for the resource server.
+         * @param resourceServerIdentifier Unique identifier for the resource server.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceServerIdentifier String. Unique identifier for the resource server.
+         * @param resourceServerIdentifier Unique identifier for the resource server.
          * 
          * @return builder
          * 

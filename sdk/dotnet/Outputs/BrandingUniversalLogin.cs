@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingUniversalLogin
     {
         /// <summary>
-        /// String, body of login pages.
+        /// The body of login pages.
         /// </summary>
         public readonly string? Body;
 

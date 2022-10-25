@@ -14,13 +14,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must
- * configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0.
- * This resource allows for automating the verification part of the process.
+ * With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
  * 
  * ## Import
  * 
- * You can import this resource using the custom domain id, e.g.
+ * # You can import this resource using the custom domain ID. # # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification cd_XXXXXXXXXXXXXXXX
@@ -29,35 +27,45 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="auth0:index/customDomainVerification:CustomDomainVerification")
 public class CustomDomainVerification extends com.pulumi.resources.CustomResource {
+    /**
+     * The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+     * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
+     * 
+     */
     @Export(name="cnameApiKey", type=String.class, parameters={})
     private Output<String> cnameApiKey;
 
+    /**
+     * @return The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+     * is `self_managed_certs` and Terraform originally managed the domain&#39;s verification.
+     * 
+     */
     public Output<String> cnameApiKey() {
         return this.cnameApiKey;
     }
     /**
-     * String. ID of the custom domain resource.
+     * ID of the custom domain resource.
      * 
      */
     @Export(name="customDomainId", type=String.class, parameters={})
     private Output<String> customDomainId;
 
     /**
-     * @return String. ID of the custom domain resource.
+     * @return ID of the custom domain resource.
      * 
      */
     public Output<String> customDomainId() {
         return this.customDomainId;
     }
     /**
-     * String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     * The DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
     @Export(name="originDomainName", type=String.class, parameters={})
     private Output<String> originDomainName;
 
     /**
-     * @return String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     * @return The DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
     public Output<String> originDomainName() {

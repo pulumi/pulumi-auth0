@@ -15,9 +15,17 @@ public final class TenantSessionCookieArgs extends com.pulumi.resources.Resource
 
     public static final TenantSessionCookieArgs Empty = new TenantSessionCookieArgs();
 
+    /**
+     * Behavior of tenant session cookie. Accepts either &#34;persistent&#34; or &#34;non-persistent&#34;.
+     * 
+     */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
+    /**
+     * @return Behavior of tenant session cookie. Accepts either &#34;persistent&#34; or &#34;non-persistent&#34;.
+     * 
+     */
     public Optional<Output<String>> mode() {
         return Optional.ofNullable(this.mode);
     }
@@ -46,11 +54,23 @@ public final class TenantSessionCookieArgs extends com.pulumi.resources.Resource
             $ = new TenantSessionCookieArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mode Behavior of tenant session cookie. Accepts either &#34;persistent&#34; or &#34;non-persistent&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode Behavior of tenant session cookie. Accepts either &#34;persistent&#34; or &#34;non-persistent&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }

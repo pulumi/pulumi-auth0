@@ -14,15 +14,15 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GuardianDuo
     {
         /// <summary>
-        /// String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+        /// Duo API Hostname, see the Duo documentation for more details on Duo setup.
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// String. Duo client ID, see the Duo documentation for more details on Duo setup.
+        /// Duo client ID, see the Duo documentation for more details on Duo setup.
         /// </summary>
         public readonly string IntegrationKey;
         /// <summary>
-        /// String. Duo client secret, see the Duo documentation for more details on Duo setup.
+        /// Duo client secret, see the Duo documentation for more details on Duo setup.
         /// </summary>
         public readonly string SecretKey;
 

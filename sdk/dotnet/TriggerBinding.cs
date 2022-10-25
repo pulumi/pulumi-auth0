@@ -10,12 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can bind an action to a trigger. Once an action is
-    /// created and deployed, it can be attached (i.e. bound) to a trigger so that it
-    /// will be executed as part of a flow.
-    /// 
-    /// The list of actions reflects the order in which they will be executed during the
-    /// appropriate flow.
+    /// With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
     /// 
     /// ## Example Usage
     /// 
@@ -28,30 +23,30 @@ namespace Pulumi.Auth0
     /// {
     ///     var actionFoo = new Auth0.Action("actionFoo", new()
     ///     {
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "post-login",
-    ///             Version = "v2",
-    ///         },
-    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; { 
-    /// 	console.log(""foo"") 
+    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
+    ///   console.log(""foo"");
     /// };""
     /// ",
     ///         Deploy = true,
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
     ///     });
     /// 
     ///     var actionBar = new Auth0.Action("actionBar", new()
     ///     {
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "post-login",
-    ///             Version = "v2",
-    ///         },
-    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; { 
-    /// 	console.log(""bar"") 
+    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
+    ///   console.log(""bar"");
     /// };""
     /// ",
     ///         Deploy = true,
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
     ///     });
     /// 
     ///     var loginFlow = new Auth0.TriggerBinding("loginFlow", new()
@@ -77,7 +72,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// auth0_trigger_binding can be imported using the bindings trigger ID, e.g.
+    /// # This resource can be imported using the bindings trigger ID. # # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/triggerBinding:TriggerBinding example "post-login"
@@ -87,14 +82,13 @@ namespace Pulumi.Auth0
     public partial class TriggerBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The actions bound to this trigger. For details, see
-        /// Actions.
+        /// The actions bound to this trigger
         /// </summary>
         [Output("actions")]
         public Output<ImmutableArray<Outputs.TriggerBindingAction>> Actions { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the trigger to bind with
+        /// The ID of the trigger to bind with.
         /// </summary>
         [Output("trigger")]
         public Output<string> Trigger { get; private set; } = null!;
@@ -149,8 +143,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.TriggerBindingActionArgs>? _actions;
 
         /// <summary>
-        /// The actions bound to this trigger. For details, see
-        /// Actions.
+        /// The actions bound to this trigger
         /// </summary>
         public InputList<Inputs.TriggerBindingActionArgs> Actions
         {
@@ -159,7 +152,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The id of the trigger to bind with
+        /// The ID of the trigger to bind with.
         /// </summary>
         [Input("trigger", required: true)]
         public Input<string> Trigger { get; set; } = null!;
@@ -176,8 +169,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.TriggerBindingActionGetArgs>? _actions;
 
         /// <summary>
-        /// The actions bound to this trigger. For details, see
-        /// Actions.
+        /// The actions bound to this trigger
         /// </summary>
         public InputList<Inputs.TriggerBindingActionGetArgs> Actions
         {
@@ -186,7 +178,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The id of the trigger to bind with
+        /// The ID of the trigger to bind with.
         /// </summary>
         [Input("trigger")]
         public Input<string>? Trigger { get; set; }

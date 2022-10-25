@@ -18,36 +18,44 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     public static final UserArgs Empty = new UserArgs();
 
     /**
-     * String, JSON format. Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+     * Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      * 
      */
     @Import(name="appMetadata")
     private @Nullable Output<String> appMetadata;
 
     /**
-     * @return String, JSON format. Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+     * @return Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      * 
      */
     public Optional<Output<String>> appMetadata() {
         return Optional.ofNullable(this.appMetadata);
     }
 
+    /**
+     * Indicates whether the user is blocked or not.
+     * 
+     */
     @Import(name="blocked")
     private @Nullable Output<Boolean> blocked;
 
+    /**
+     * @return Indicates whether the user is blocked or not.
+     * 
+     */
     public Optional<Output<Boolean>> blocked() {
         return Optional.ofNullable(this.blocked);
     }
 
     /**
-     * String. Name of the connection from which the user information was sourced.
+     * Name of the connection from which the user information was sourced.
      * 
      */
     @Import(name="connectionName", required=true)
     private Output<String> connectionName;
 
     /**
-     * @return String. Name of the connection from which the user information was sourced.
+     * @return Name of the connection from which the user information was sourced.
      * 
      */
     public Output<String> connectionName() {
@@ -55,14 +63,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Email address of the user.
+     * Email address of the user.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return String. Email address of the user.
+     * @return Email address of the user.
      * 
      */
     public Optional<Output<String>> email() {
@@ -70,50 +78,74 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether the email address has been verified.
+     * Indicates whether the email address has been verified.
      * 
      */
     @Import(name="emailVerified")
     private @Nullable Output<Boolean> emailVerified;
 
     /**
-     * @return Boolean. Indicates whether the email address has been verified.
+     * @return Indicates whether the email address has been verified.
      * 
      */
     public Optional<Output<Boolean>> emailVerified() {
         return Optional.ofNullable(this.emailVerified);
     }
 
+    /**
+     * Family name of the user.
+     * 
+     */
     @Import(name="familyName")
     private @Nullable Output<String> familyName;
 
+    /**
+     * @return Family name of the user.
+     * 
+     */
     public Optional<Output<String>> familyName() {
         return Optional.ofNullable(this.familyName);
     }
 
+    /**
+     * Given name of the user.
+     * 
+     */
     @Import(name="givenName")
     private @Nullable Output<String> givenName;
 
+    /**
+     * @return Given name of the user.
+     * 
+     */
     public Optional<Output<String>> givenName() {
         return Optional.ofNullable(this.givenName);
     }
 
+    /**
+     * Name of the user.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of the user.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * String. Preferred nickname or alias of the user.
+     * Preferred nickname or alias of the user.
      * 
      */
     @Import(name="nickname")
     private @Nullable Output<String> nickname;
 
     /**
-     * @return String. Preferred nickname or alias of the user.
+     * @return Preferred nickname or alias of the user.
      * 
      */
     public Optional<Output<String>> nickname() {
@@ -121,14 +153,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email).
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * @return Initial password for this user. Required for non-passwordless connections (SMS and email).
      * 
      */
     public Optional<Output<String>> password() {
@@ -136,14 +168,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+     * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
      */
     @Import(name="phoneNumber")
     private @Nullable Output<String> phoneNumber;
 
     /**
-     * @return String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+     * @return Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
      */
     public Optional<Output<String>> phoneNumber() {
@@ -151,36 +183,44 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether the phone number has been verified.
+     * Indicates whether the phone number has been verified.
      * 
      */
     @Import(name="phoneVerified")
     private @Nullable Output<Boolean> phoneVerified;
 
     /**
-     * @return Boolean. Indicates whether the phone number has been verified.
+     * @return Indicates whether the phone number has been verified.
      * 
      */
     public Optional<Output<Boolean>> phoneVerified() {
         return Optional.ofNullable(this.phoneVerified);
     }
 
+    /**
+     * Picture of the user.
+     * 
+     */
     @Import(name="picture")
     private @Nullable Output<String> picture;
 
+    /**
+     * @return Picture of the user.
+     * 
+     */
     public Optional<Output<String>> picture() {
         return Optional.ofNullable(this.picture);
     }
 
     /**
-     * Set(String). Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user.
      * 
      */
     @Import(name="roles")
     private @Nullable Output<List<String>> roles;
 
     /**
-     * @return Set(String). Set of IDs of roles assigned to the user.
+     * @return Set of IDs of roles assigned to the user.
      * 
      */
     public Optional<Output<List<String>>> roles() {
@@ -188,14 +228,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. ID of the user.
+     * ID of the user.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<String> userId;
 
     /**
-     * @return String. ID of the user.
+     * @return ID of the user.
      * 
      */
     public Optional<Output<String>> userId() {
@@ -203,14 +243,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String, JSON format. Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
+     * Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
      * 
      */
     @Import(name="userMetadata")
     private @Nullable Output<String> userMetadata;
 
     /**
-     * @return String, JSON format. Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
+     * @return Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
      * 
      */
     public Optional<Output<String>> userMetadata() {
@@ -218,14 +258,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Username of the user. Only valid if the connection requires a username.
+     * Username of the user. Only valid if the connection requires a username.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return String. Username of the user. Only valid if the connection requires a username.
+     * @return Username of the user. Only valid if the connection requires a username.
      * 
      */
     public Optional<Output<String>> username() {
@@ -233,14 +273,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
      * 
      */
     @Import(name="verifyEmail")
     private @Nullable Output<Boolean> verifyEmail;
 
     /**
-     * @return Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
      * 
      */
     public Optional<Output<Boolean>> verifyEmail() {
@@ -289,7 +329,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appMetadata String, JSON format. Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+         * @param appMetadata Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
          * 
          * @return builder
          * 
@@ -300,7 +340,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appMetadata String, JSON format. Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+         * @param appMetadata Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
          * 
          * @return builder
          * 
@@ -309,17 +349,29 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
             return appMetadata(Output.of(appMetadata));
         }
 
+        /**
+         * @param blocked Indicates whether the user is blocked or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blocked(@Nullable Output<Boolean> blocked) {
             $.blocked = blocked;
             return this;
         }
 
+        /**
+         * @param blocked Indicates whether the user is blocked or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blocked(Boolean blocked) {
             return blocked(Output.of(blocked));
         }
 
         /**
-         * @param connectionName String. Name of the connection from which the user information was sourced.
+         * @param connectionName Name of the connection from which the user information was sourced.
          * 
          * @return builder
          * 
@@ -330,7 +382,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionName String. Name of the connection from which the user information was sourced.
+         * @param connectionName Name of the connection from which the user information was sourced.
          * 
          * @return builder
          * 
@@ -340,7 +392,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email String. Email address of the user.
+         * @param email Email address of the user.
          * 
          * @return builder
          * 
@@ -351,7 +403,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email String. Email address of the user.
+         * @param email Email address of the user.
          * 
          * @return builder
          * 
@@ -361,7 +413,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailVerified Boolean. Indicates whether the email address has been verified.
+         * @param emailVerified Indicates whether the email address has been verified.
          * 
          * @return builder
          * 
@@ -372,7 +424,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailVerified Boolean. Indicates whether the email address has been verified.
+         * @param emailVerified Indicates whether the email address has been verified.
          * 
          * @return builder
          * 
@@ -381,35 +433,71 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
             return emailVerified(Output.of(emailVerified));
         }
 
+        /**
+         * @param familyName Family name of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder familyName(@Nullable Output<String> familyName) {
             $.familyName = familyName;
             return this;
         }
 
+        /**
+         * @param familyName Family name of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder familyName(String familyName) {
             return familyName(Output.of(familyName));
         }
 
+        /**
+         * @param givenName Given name of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder givenName(@Nullable Output<String> givenName) {
             $.givenName = givenName;
             return this;
         }
 
+        /**
+         * @param givenName Given name of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder givenName(String givenName) {
             return givenName(Output.of(givenName));
         }
 
+        /**
+         * @param name Name of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param nickname String. Preferred nickname or alias of the user.
+         * @param nickname Preferred nickname or alias of the user.
          * 
          * @return builder
          * 
@@ -420,7 +508,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nickname String. Preferred nickname or alias of the user.
+         * @param nickname Preferred nickname or alias of the user.
          * 
          * @return builder
          * 
@@ -430,7 +518,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+         * @param password Initial password for this user. Required for non-passwordless connections (SMS and email).
          * 
          * @return builder
          * 
@@ -441,7 +529,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+         * @param password Initial password for this user. Required for non-passwordless connections (SMS and email).
          * 
          * @return builder
          * 
@@ -451,7 +539,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phoneNumber String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+         * @param phoneNumber Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
          * 
          * @return builder
          * 
@@ -462,7 +550,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phoneNumber String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+         * @param phoneNumber Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
          * 
          * @return builder
          * 
@@ -472,7 +560,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phoneVerified Boolean. Indicates whether the phone number has been verified.
+         * @param phoneVerified Indicates whether the phone number has been verified.
          * 
          * @return builder
          * 
@@ -483,7 +571,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phoneVerified Boolean. Indicates whether the phone number has been verified.
+         * @param phoneVerified Indicates whether the phone number has been verified.
          * 
          * @return builder
          * 
@@ -492,17 +580,29 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
             return phoneVerified(Output.of(phoneVerified));
         }
 
+        /**
+         * @param picture Picture of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder picture(@Nullable Output<String> picture) {
             $.picture = picture;
             return this;
         }
 
+        /**
+         * @param picture Picture of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder picture(String picture) {
             return picture(Output.of(picture));
         }
 
         /**
-         * @param roles Set(String). Set of IDs of roles assigned to the user.
+         * @param roles Set of IDs of roles assigned to the user.
          * 
          * @return builder
          * 
@@ -513,7 +613,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Set(String). Set of IDs of roles assigned to the user.
+         * @param roles Set of IDs of roles assigned to the user.
          * 
          * @return builder
          * 
@@ -523,7 +623,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roles Set(String). Set of IDs of roles assigned to the user.
+         * @param roles Set of IDs of roles assigned to the user.
          * 
          * @return builder
          * 
@@ -533,7 +633,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId String. ID of the user.
+         * @param userId ID of the user.
          * 
          * @return builder
          * 
@@ -544,7 +644,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId String. ID of the user.
+         * @param userId ID of the user.
          * 
          * @return builder
          * 
@@ -554,7 +654,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userMetadata String, JSON format. Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
+         * @param userMetadata Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
          * 
          * @return builder
          * 
@@ -565,7 +665,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userMetadata String, JSON format. Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
+         * @param userMetadata Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
          * 
          * @return builder
          * 
@@ -575,7 +675,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username String. Username of the user. Only valid if the connection requires a username.
+         * @param username Username of the user. Only valid if the connection requires a username.
          * 
          * @return builder
          * 
@@ -586,7 +686,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username String. Username of the user. Only valid if the connection requires a username.
+         * @param username Username of the user. Only valid if the connection requires a username.
          * 
          * @return builder
          * 
@@ -596,7 +696,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifyEmail Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+         * @param verifyEmail Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
          * 
          * @return builder
          * 
@@ -607,7 +707,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifyEmail Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+         * @param verifyEmail Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
          * 
          * @return builder
          * 

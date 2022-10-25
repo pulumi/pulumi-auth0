@@ -12,21 +12,12 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class GuardianPushCustomAppGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// String. Custom Application Name.
-        /// </summary>
         [Input("appName")]
         public Input<string>? AppName { get; set; }
 
-        /// <summary>
-        /// String. Apple App Store URL.
-        /// </summary>
         [Input("appleAppLink")]
         public Input<string>? AppleAppLink { get; set; }
 
-        /// <summary>
-        /// String. Google Store URL.
-        /// </summary>
         [Input("googleAppLink")]
         public Input<string>? GoogleAppLink { get; set; }
 

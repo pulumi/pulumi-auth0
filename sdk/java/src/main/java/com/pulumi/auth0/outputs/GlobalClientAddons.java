@@ -32,6 +32,10 @@ public final class GlobalClientAddons {
     private @Nullable Map<String,Object> salesforce;
     private @Nullable Map<String,Object> salesforceApi;
     private @Nullable Map<String,Object> salesforceSandboxApi;
+    /**
+     * @return Configuration settings for a SAML add-on.
+     * 
+     */
     private @Nullable GlobalClientAddonsSamlp samlp;
     private @Nullable Map<String,Object> sapApi;
     private @Nullable Map<String,Object> sentry;
@@ -39,6 +43,10 @@ public final class GlobalClientAddons {
     private @Nullable Map<String,Object> slack;
     private @Nullable Map<String,Object> springcm;
     private @Nullable Map<String,Object> wams;
+    /**
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+     * 
+     */
     private @Nullable Map<String,Object> wsfed;
     private @Nullable Map<String,Object> zendesk;
     private @Nullable Map<String,Object> zoom;
@@ -98,6 +106,10 @@ public final class GlobalClientAddons {
     public Map<String,Object> salesforceSandboxApi() {
         return this.salesforceSandboxApi == null ? Map.of() : this.salesforceSandboxApi;
     }
+    /**
+     * @return Configuration settings for a SAML add-on.
+     * 
+     */
     public Optional<GlobalClientAddonsSamlp> samlp() {
         return Optional.ofNullable(this.samlp);
     }
@@ -119,6 +131,10 @@ public final class GlobalClientAddons {
     public Map<String,Object> wams() {
         return this.wams == null ? Map.of() : this.wams;
     }
+    /**
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+     * 
+     */
     public Map<String,Object> wsfed() {
         return this.wsfed == null ? Map.of() : this.wsfed;
     }

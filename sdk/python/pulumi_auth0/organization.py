@@ -17,28 +17,18 @@ __all__ = ['OrganizationArgs', 'Organization']
 class OrganizationArgs:
     def __init__(__self__, *,
                  branding: Optional[pulumi.Input['OrganizationBrandingArgs']] = None,
-                 connections: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionArgs']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Organization resource.
-        :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages. For details, see
-               Branding
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionArgs']]] connections: Connections assigned to the organization. For
-               details, see Connections
-        :param pulumi.Input[str] display_name: Friendly name of this organization
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization, Maximum of
-               10 metadata properties allowed
-        :param pulumi.Input[str] name: The name of this organization
+        :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages.
+        :param pulumi.Input[str] display_name: Friendly name of this organization.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[str] name: The name of this organization.
         """
         if branding is not None:
             pulumi.set(__self__, "branding", branding)
-        if connections is not None:
-            warnings.warn("""Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.""", DeprecationWarning)
-            pulumi.log.warn("""connections is deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.""")
-        if connections is not None:
-            pulumi.set(__self__, "connections", connections)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if metadata is not None:
@@ -50,8 +40,7 @@ class OrganizationArgs:
     @pulumi.getter
     def branding(self) -> Optional[pulumi.Input['OrganizationBrandingArgs']]:
         """
-        Defines how to style the login pages. For details, see
-        Branding
+        Defines how to style the login pages.
         """
         return pulumi.get(self, "branding")
 
@@ -60,23 +49,10 @@ class OrganizationArgs:
         pulumi.set(self, "branding", value)
 
     @property
-    @pulumi.getter
-    def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionArgs']]]]:
-        """
-        Connections assigned to the organization. For
-        details, see Connections
-        """
-        return pulumi.get(self, "connections")
-
-    @connections.setter
-    def connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionArgs']]]]):
-        pulumi.set(self, "connections", value)
-
-    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Friendly name of this organization
+        Friendly name of this organization.
         """
         return pulumi.get(self, "display_name")
 
@@ -88,8 +64,7 @@ class OrganizationArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Metadata associated with the organization, Maximum of
-        10 metadata properties allowed
+        Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         """
         return pulumi.get(self, "metadata")
 
@@ -101,7 +76,7 @@ class OrganizationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this organization
+        The name of this organization.
         """
         return pulumi.get(self, "name")
 
@@ -114,28 +89,18 @@ class OrganizationArgs:
 class _OrganizationState:
     def __init__(__self__, *,
                  branding: Optional[pulumi.Input['OrganizationBrandingArgs']] = None,
-                 connections: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionArgs']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
-        :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages. For details, see
-               Branding
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionArgs']]] connections: Connections assigned to the organization. For
-               details, see Connections
-        :param pulumi.Input[str] display_name: Friendly name of this organization
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization, Maximum of
-               10 metadata properties allowed
-        :param pulumi.Input[str] name: The name of this organization
+        :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages.
+        :param pulumi.Input[str] display_name: Friendly name of this organization.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[str] name: The name of this organization.
         """
         if branding is not None:
             pulumi.set(__self__, "branding", branding)
-        if connections is not None:
-            warnings.warn("""Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.""", DeprecationWarning)
-            pulumi.log.warn("""connections is deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.""")
-        if connections is not None:
-            pulumi.set(__self__, "connections", connections)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if metadata is not None:
@@ -147,8 +112,7 @@ class _OrganizationState:
     @pulumi.getter
     def branding(self) -> Optional[pulumi.Input['OrganizationBrandingArgs']]:
         """
-        Defines how to style the login pages. For details, see
-        Branding
+        Defines how to style the login pages.
         """
         return pulumi.get(self, "branding")
 
@@ -157,23 +121,10 @@ class _OrganizationState:
         pulumi.set(self, "branding", value)
 
     @property
-    @pulumi.getter
-    def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionArgs']]]]:
-        """
-        Connections assigned to the organization. For
-        details, see Connections
-        """
-        return pulumi.get(self, "connections")
-
-    @connections.setter
-    def connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionArgs']]]]):
-        pulumi.set(self, "connections", value)
-
-    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Friendly name of this organization
+        Friendly name of this organization.
         """
         return pulumi.get(self, "display_name")
 
@@ -185,8 +136,7 @@ class _OrganizationState:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Metadata associated with the organization, Maximum of
-        10 metadata properties allowed
+        Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         """
         return pulumi.get(self, "metadata")
 
@@ -198,7 +148,7 @@ class _OrganizationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this organization
+        The name of this organization.
         """
         return pulumi.get(self, "name")
 
@@ -213,16 +163,12 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branding: Optional[pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']]] = None,
-                 connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationConnectionArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Organizations feature represents a broad update to the Auth0 platform that
-        allows our business-to-business (B2B) customers to better manage their partners
-        and customers, and to customize the ways that end-users access their
-        applications. Auth0 customers can use Organizations to:
+        The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
 
           - Represent their business customers and partners in Auth0 and manage their
             membership.
@@ -236,39 +182,31 @@ class Organization(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        acme = auth0.Organization("acme",
-            display_name="Acme Inc.",
+        my_organization = auth0.Organization("myOrganization",
             branding=auth0.OrganizationBrandingArgs(
-                logo_url="https://acme.com/logo.svg",
                 colors={
-                    "primary": "#e3e2f0",
-                    "page_background": "#e3e2ff",
+                    "pageBackground": "#e1e1e1",
+                    "primary": "#f2f2f2",
                 },
+                logo_url="https://example.com/assets/icons/icon.png",
             ),
-            connections=[auth0.OrganizationConnectionArgs(
-                connection_id=auth0_connection["acme"]["id"],
-                assign_membership_on_login=True,
-            )])
+            display_name="Auth0 Inc.")
         ```
 
         ## Import
 
-        Existing organizations can be imported using organization id, e.g.
+        # Existing organizations can be imported using the organization ID. # # Example
 
         ```sh
-         $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+         $ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']] branding: Defines how to style the login pages. For details, see
-               Branding
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationConnectionArgs']]]] connections: Connections assigned to the organization. For
-               details, see Connections
-        :param pulumi.Input[str] display_name: Friendly name of this organization
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization, Maximum of
-               10 metadata properties allowed
-        :param pulumi.Input[str] name: The name of this organization
+        :param pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']] branding: Defines how to style the login pages.
+        :param pulumi.Input[str] display_name: Friendly name of this organization.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[str] name: The name of this organization.
         """
         ...
     @overload
@@ -277,10 +215,7 @@ class Organization(pulumi.CustomResource):
                  args: Optional[OrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Organizations feature represents a broad update to the Auth0 platform that
-        allows our business-to-business (B2B) customers to better manage their partners
-        and customers, and to customize the ways that end-users access their
-        applications. Auth0 customers can use Organizations to:
+        The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
 
           - Represent their business customers and partners in Auth0 and manage their
             membership.
@@ -294,27 +229,23 @@ class Organization(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        acme = auth0.Organization("acme",
-            display_name="Acme Inc.",
+        my_organization = auth0.Organization("myOrganization",
             branding=auth0.OrganizationBrandingArgs(
-                logo_url="https://acme.com/logo.svg",
                 colors={
-                    "primary": "#e3e2f0",
-                    "page_background": "#e3e2ff",
+                    "pageBackground": "#e1e1e1",
+                    "primary": "#f2f2f2",
                 },
+                logo_url="https://example.com/assets/icons/icon.png",
             ),
-            connections=[auth0.OrganizationConnectionArgs(
-                connection_id=auth0_connection["acme"]["id"],
-                assign_membership_on_login=True,
-            )])
+            display_name="Auth0 Inc.")
         ```
 
         ## Import
 
-        Existing organizations can be imported using organization id, e.g.
+        # Existing organizations can be imported using the organization ID. # # Example
 
         ```sh
-         $ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+         $ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
         ```
 
         :param str resource_name: The name of the resource.
@@ -333,7 +264,6 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branding: Optional[pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']]] = None,
-                 connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationConnectionArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -347,10 +277,6 @@ class Organization(pulumi.CustomResource):
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
             __props__.__dict__["branding"] = branding
-            if connections is not None and not opts.urn:
-                warnings.warn("""Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.""", DeprecationWarning)
-                pulumi.log.warn("""connections is deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.""")
-            __props__.__dict__["connections"] = connections
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
@@ -365,7 +291,6 @@ class Organization(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             branding: Optional[pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']]] = None,
-            connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationConnectionArgs']]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Organization':
@@ -376,21 +301,16 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']] branding: Defines how to style the login pages. For details, see
-               Branding
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationConnectionArgs']]]] connections: Connections assigned to the organization. For
-               details, see Connections
-        :param pulumi.Input[str] display_name: Friendly name of this organization
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization, Maximum of
-               10 metadata properties allowed
-        :param pulumi.Input[str] name: The name of this organization
+        :param pulumi.Input[pulumi.InputType['OrganizationBrandingArgs']] branding: Defines how to style the login pages.
+        :param pulumi.Input[str] display_name: Friendly name of this organization.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[str] name: The name of this organization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _OrganizationState.__new__(_OrganizationState)
 
         __props__.__dict__["branding"] = branding
-        __props__.__dict__["connections"] = connections
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
@@ -400,25 +320,15 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter
     def branding(self) -> pulumi.Output['outputs.OrganizationBranding']:
         """
-        Defines how to style the login pages. For details, see
-        Branding
+        Defines how to style the login pages.
         """
         return pulumi.get(self, "branding")
-
-    @property
-    @pulumi.getter
-    def connections(self) -> pulumi.Output[Sequence['outputs.OrganizationConnection']]:
-        """
-        Connections assigned to the organization. For
-        details, see Connections
-        """
-        return pulumi.get(self, "connections")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Friendly name of this organization
+        Friendly name of this organization.
         """
         return pulumi.get(self, "display_name")
 
@@ -426,8 +336,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Metadata associated with the organization, Maximum of
-        10 metadata properties allowed
+        Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         """
         return pulumi.get(self, "metadata")
 
@@ -435,7 +344,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of this organization
+        The name of this organization.
         """
         return pulumi.get(self, "name")
 

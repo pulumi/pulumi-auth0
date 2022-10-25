@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
-    /// into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
-    /// emails sent by Auth0. Used in conjunction with configured email providers.
+    /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
     /// 
     /// ## Example Usage
     /// 
@@ -45,7 +43,6 @@ namespace Pulumi.Auth0
     ///         Syntax = "liquid",
     ///         UrlLifetimeInSeconds = 3600,
     ///         Enabled = true,
-    ///         IncludeEmailInRedirect = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
@@ -59,7 +56,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the template name, e.g.
+    /// # This resource can be imported using the pre-defined template name. # # These names are `verify_email`, `verify_email_by_code`, `reset_email`, # `welcome_email`, `blocked_account`, `stolen_credentials`, # `enrollment_email`, `mfa_oob_code`, and `user_invitation`. # # The names `change_password`, and `password_reset` are also supported # for legacy scenarios. # # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
@@ -69,55 +66,55 @@ namespace Pulumi.Auth0
     public partial class EmailTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Output("body")]
         public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether the template is enabled.
+        /// Indicates whether the template is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Output("from")]
         public Output<string> From { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+        /// Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
         /// </summary>
         [Output("includeEmailInRedirect")]
         public Output<bool> IncludeEmailInRedirect { get; private set; } = null!;
 
         /// <summary>
-        /// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+        /// URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         /// </summary>
         [Output("resultUrl")]
         public Output<string?> ResultUrl { get; private set; } = null!;
 
         /// <summary>
-        /// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Output("subject")]
         public Output<string> Subject { get; private set; } = null!;
 
         /// <summary>
-        /// String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+        /// Syntax of the template body. You can use either text or HTML with Liquid syntax.
         /// </summary>
         [Output("syntax")]
         public Output<string> Syntax { get; private set; } = null!;
 
         /// <summary>
-        /// String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         /// </summary>
         [Output("template")]
         public Output<string> Template { get; private set; } = null!;
 
         /// <summary>
-        /// Integer. Number of seconds during which the link within the email will be valid.
+        /// Number of seconds during which the link within the email will be valid.
         /// </summary>
         [Output("urlLifetimeInSeconds")]
         public Output<int?> UrlLifetimeInSeconds { get; private set; } = null!;
@@ -169,55 +166,55 @@ namespace Pulumi.Auth0
     public sealed class EmailTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Input("body", required: true)]
         public Input<string> Body { get; set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether the template is enabled.
+        /// Indicates whether the template is enabled.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Input("from", required: true)]
         public Input<string> From { get; set; } = null!;
 
         /// <summary>
-        /// Boolean. Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+        /// Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
         /// </summary>
         [Input("includeEmailInRedirect")]
         public Input<bool>? IncludeEmailInRedirect { get; set; }
 
         /// <summary>
-        /// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+        /// URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         /// </summary>
         [Input("resultUrl")]
         public Input<string>? ResultUrl { get; set; }
 
         /// <summary>
-        /// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Input("subject", required: true)]
         public Input<string> Subject { get; set; } = null!;
 
         /// <summary>
-        /// String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+        /// Syntax of the template body. You can use either text or HTML with Liquid syntax.
         /// </summary>
         [Input("syntax", required: true)]
         public Input<string> Syntax { get; set; } = null!;
 
         /// <summary>
-        /// String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         /// </summary>
         [Input("template", required: true)]
         public Input<string> Template { get; set; } = null!;
 
         /// <summary>
-        /// Integer. Number of seconds during which the link within the email will be valid.
+        /// Number of seconds during which the link within the email will be valid.
         /// </summary>
         [Input("urlLifetimeInSeconds")]
         public Input<int>? UrlLifetimeInSeconds { get; set; }
@@ -231,55 +228,55 @@ namespace Pulumi.Auth0
     public sealed class EmailTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Input("body")]
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether the template is enabled.
+        /// Indicates whether the template is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Input("from")]
         public Input<string>? From { get; set; }
 
         /// <summary>
-        /// Boolean. Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+        /// Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
         /// </summary>
         [Input("includeEmailInRedirect")]
         public Input<bool>? IncludeEmailInRedirect { get; set; }
 
         /// <summary>
-        /// String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+        /// URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         /// </summary>
         [Input("resultUrl")]
         public Input<string>? ResultUrl { get; set; }
 
         /// <summary>
-        /// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 
         /// <summary>
-        /// String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+        /// Syntax of the template body. You can use either text or HTML with Liquid syntax.
         /// </summary>
         [Input("syntax")]
         public Input<string>? Syntax { get; set; }
 
         /// <summary>
-        /// String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+        /// Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
 
         /// <summary>
-        /// Integer. Number of seconds during which the link within the email will be valid.
+        /// Number of seconds during which the link within the email will be valid.
         /// </summary>
         [Input("urlLifetimeInSeconds")]
         public Input<int>? UrlLifetimeInSeconds { get; set; }

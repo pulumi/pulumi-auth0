@@ -24,14 +24,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     public static final TenantArgs Empty = new TenantArgs();
 
     /**
-     * List(String). URLs that Auth0 may redirect to after logout.
+     * URLs that Auth0 may redirect to after logout.
      * 
      */
     @Import(name="allowedLogoutUrls")
     private @Nullable Output<List<String>> allowedLogoutUrls;
 
     /**
-     * @return List(String). URLs that Auth0 may redirect to after logout.
+     * @return URLs that Auth0 may redirect to after logout.
      * 
      */
     public Optional<Output<List<String>>> allowedLogoutUrls() {
@@ -39,14 +39,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+     * Configuration settings for change password page.
      * 
      */
     @Import(name="changePassword")
     private @Nullable Output<TenantChangePasswordArgs> changePassword;
 
     /**
-     * @return List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+     * @return Configuration settings for change password page.
      * 
      */
     public Optional<Output<TenantChangePasswordArgs>> changePassword() {
@@ -54,14 +54,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+     * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
      */
     @Import(name="defaultAudience")
     private @Nullable Output<String> defaultAudience;
 
     /**
-     * @return String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+     * @return API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
      */
     public Optional<Output<String>> defaultAudience() {
@@ -69,14 +69,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+     * Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      * 
      */
     @Import(name="defaultDirectory")
     private @Nullable Output<String> defaultDirectory;
 
     /**
-     * @return String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+     * @return Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      * 
      */
     public Optional<Output<String>> defaultDirectory() {
@@ -84,14 +84,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. The default absolute redirection uri, must be https and cannot contain a fragment.
+     * The default absolute redirection URI, must be https and cannot contain a fragment.
      * 
      */
     @Import(name="defaultRedirectionUri")
     private @Nullable Output<String> defaultRedirectionUri;
 
     /**
-     * @return String. The default absolute redirection uri, must be https and cannot contain a fragment.
+     * @return The default absolute redirection URI, must be https and cannot contain a fragment.
      * 
      */
     public Optional<Output<String>> defaultRedirectionUri() {
@@ -99,14 +99,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+     * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
     @Import(name="enabledLocales")
     private @Nullable Output<List<String>> enabledLocales;
 
     /**
-     * @return List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+     * @return Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
     public Optional<Output<List<String>>> enabledLocales() {
@@ -114,14 +114,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for error pages. For details, see Error Page.
+     * Configuration settings for error pages.
      * 
      */
     @Import(name="errorPage")
     private @Nullable Output<TenantErrorPageArgs> errorPage;
 
     /**
-     * @return List(Resource). Configuration settings for error pages. For details, see Error Page.
+     * @return Configuration settings for error pages.
      * 
      */
     public Optional<Output<TenantErrorPageArgs>> errorPage() {
@@ -129,14 +129,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for tenant flags. For details, see Flags.
+     * Configuration settings for tenant flags.
      * 
      */
     @Import(name="flags")
     private @Nullable Output<TenantFlagsArgs> flags;
 
     /**
-     * @return List(Resource). Configuration settings for tenant flags. For details, see Flags.
+     * @return Configuration settings for tenant flags.
      * 
      */
     public Optional<Output<TenantFlagsArgs>> flags() {
@@ -144,14 +144,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Friendly name for the tenant.
+     * Friendly name for the tenant.
      * 
      */
     @Import(name="friendlyName")
     private @Nullable Output<String> friendlyName;
 
     /**
-     * @return String. Friendly name for the tenant.
+     * @return Friendly name for the tenant.
      * 
      */
     public Optional<Output<String>> friendlyName() {
@@ -159,14 +159,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+     * Configuration settings for the Guardian MFA page.
      * 
      */
     @Import(name="guardianMfaPage")
     private @Nullable Output<TenantGuardianMfaPageArgs> guardianMfaPage;
 
     /**
-     * @return List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+     * @return Configuration settings for the Guardian MFA page.
      * 
      */
     public Optional<Output<TenantGuardianMfaPageArgs>> guardianMfaPage() {
@@ -174,14 +174,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Integer. Number of hours during which a session can be inactive before the user must log in again.
+     * Number of hours during which a session can be inactive before the user must log in again.
      * 
      */
     @Import(name="idleSessionLifetime")
     private @Nullable Output<Double> idleSessionLifetime;
 
     /**
-     * @return Integer. Number of hours during which a session can be inactive before the user must log in again.
+     * @return Number of hours during which a session can be inactive before the user must log in again.
      * 
      */
     public Optional<Output<Double>> idleSessionLifetime() {
@@ -189,14 +189,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+     * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
     @Import(name="pictureUrl")
     private @Nullable Output<String> pictureUrl;
 
     /**
-     * @return . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+     * @return URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
     public Optional<Output<String>> pictureUrl() {
@@ -204,14 +204,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
+     * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
      */
     @Import(name="sandboxVersion")
     private @Nullable Output<String> sandboxVersion;
 
     /**
-     * @return String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
+     * @return Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
      */
     public Optional<Output<String>> sandboxVersion() {
@@ -219,14 +219,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property that accepts two values: `&#34;persistent&#34;` or `&#34;non-persistent&#34;`.
+     * Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property.
      * 
      */
     @Import(name="sessionCookie")
     private @Nullable Output<TenantSessionCookieArgs> sessionCookie;
 
     /**
-     * @return List(Resource). Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property that accepts two values: `&#34;persistent&#34;` or `&#34;non-persistent&#34;`.
+     * @return Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property.
      * 
      */
     public Optional<Output<TenantSessionCookieArgs>> sessionCookie() {
@@ -234,14 +234,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Integer. Number of hours during which a session will stay valid.
+     * Number of hours during which a session will stay valid.
      * 
      */
     @Import(name="sessionLifetime")
     private @Nullable Output<Double> sessionLifetime;
 
     /**
-     * @return Integer. Number of hours during which a session will stay valid.
+     * @return Number of hours during which a session will stay valid.
      * 
      */
     public Optional<Output<Double>> sessionLifetime() {
@@ -249,14 +249,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Support email address for authenticating users.
+     * Support email address for authenticating users.
      * 
      */
     @Import(name="supportEmail")
     private @Nullable Output<String> supportEmail;
 
     /**
-     * @return String. Support email address for authenticating users.
+     * @return Support email address for authenticating users.
      * 
      */
     public Optional<Output<String>> supportEmail() {
@@ -264,14 +264,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Support URL for authenticating users.
+     * Support URL for authenticating users.
      * 
      */
     @Import(name="supportUrl")
     private @Nullable Output<String> supportUrl;
 
     /**
-     * @return String. Support URL for authenticating users.
+     * @return Support URL for authenticating users.
      * 
      */
     public Optional<Output<String>> supportUrl() {
@@ -279,14 +279,14 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+     * Configuration settings for Universal Login.
      * 
      */
     @Import(name="universalLogin")
     private @Nullable Output<TenantUniversalLoginArgs> universalLogin;
 
     /**
-     * @return List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+     * @return Configuration settings for Universal Login.
      * 
      */
     public Optional<Output<TenantUniversalLoginArgs>> universalLogin() {
@@ -335,7 +335,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedLogoutUrls List(String). URLs that Auth0 may redirect to after logout.
+         * @param allowedLogoutUrls URLs that Auth0 may redirect to after logout.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedLogoutUrls List(String). URLs that Auth0 may redirect to after logout.
+         * @param allowedLogoutUrls URLs that Auth0 may redirect to after logout.
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedLogoutUrls List(String). URLs that Auth0 may redirect to after logout.
+         * @param allowedLogoutUrls URLs that Auth0 may redirect to after logout.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param changePassword List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+         * @param changePassword Configuration settings for change password page.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param changePassword List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+         * @param changePassword Configuration settings for change password page.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultAudience String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+         * @param defaultAudience API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultAudience String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+         * @param defaultAudience API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultDirectory String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+         * @param defaultDirectory Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultDirectory String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+         * @param defaultDirectory Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRedirectionUri String. The default absolute redirection uri, must be https and cannot contain a fragment.
+         * @param defaultRedirectionUri The default absolute redirection URI, must be https and cannot contain a fragment.
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRedirectionUri String. The default absolute redirection uri, must be https and cannot contain a fragment.
+         * @param defaultRedirectionUri The default absolute redirection URI, must be https and cannot contain a fragment.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledLocales List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+         * @param enabledLocales Supported locales for the user interface. The first locale in the list will be used to set the default locale.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledLocales List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+         * @param enabledLocales Supported locales for the user interface. The first locale in the list will be used to set the default locale.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledLocales List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+         * @param enabledLocales Supported locales for the user interface. The first locale in the list will be used to set the default locale.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param errorPage List(Resource). Configuration settings for error pages. For details, see Error Page.
+         * @param errorPage Configuration settings for error pages.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param errorPage List(Resource). Configuration settings for error pages. For details, see Error Page.
+         * @param errorPage Configuration settings for error pages.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flags List(Resource). Configuration settings for tenant flags. For details, see Flags.
+         * @param flags Configuration settings for tenant flags.
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flags List(Resource). Configuration settings for tenant flags. For details, see Flags.
+         * @param flags Configuration settings for tenant flags.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param friendlyName String. Friendly name for the tenant.
+         * @param friendlyName Friendly name for the tenant.
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param friendlyName String. Friendly name for the tenant.
+         * @param friendlyName Friendly name for the tenant.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param guardianMfaPage List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+         * @param guardianMfaPage Configuration settings for the Guardian MFA page.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param guardianMfaPage List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+         * @param guardianMfaPage Configuration settings for the Guardian MFA page.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleSessionLifetime Integer. Number of hours during which a session can be inactive before the user must log in again.
+         * @param idleSessionLifetime Number of hours during which a session can be inactive before the user must log in again.
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleSessionLifetime Integer. Number of hours during which a session can be inactive before the user must log in again.
+         * @param idleSessionLifetime Number of hours during which a session can be inactive before the user must log in again.
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pictureUrl . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+         * @param pictureUrl URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
          * 
          * @return builder
          * 
@@ -597,7 +597,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pictureUrl . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+         * @param pictureUrl URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
          * 
          * @return builder
          * 
@@ -607,7 +607,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sandboxVersion String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
+         * @param sandboxVersion Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
          * 
          * @return builder
          * 
@@ -618,7 +618,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sandboxVersion String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
+         * @param sandboxVersion Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionCookie List(Resource). Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property that accepts two values: `&#34;persistent&#34;` or `&#34;non-persistent&#34;`.
+         * @param sessionCookie Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property.
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionCookie List(Resource). Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property that accepts two values: `&#34;persistent&#34;` or `&#34;non-persistent&#34;`.
+         * @param sessionCookie Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property.
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionLifetime Integer. Number of hours during which a session will stay valid.
+         * @param sessionLifetime Number of hours during which a session will stay valid.
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionLifetime Integer. Number of hours during which a session will stay valid.
+         * @param sessionLifetime Number of hours during which a session will stay valid.
          * 
          * @return builder
          * 
@@ -670,7 +670,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportEmail String. Support email address for authenticating users.
+         * @param supportEmail Support email address for authenticating users.
          * 
          * @return builder
          * 
@@ -681,7 +681,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportEmail String. Support email address for authenticating users.
+         * @param supportEmail Support email address for authenticating users.
          * 
          * @return builder
          * 
@@ -691,7 +691,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportUrl String. Support URL for authenticating users.
+         * @param supportUrl Support URL for authenticating users.
          * 
          * @return builder
          * 
@@ -702,7 +702,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportUrl String. Support URL for authenticating users.
+         * @param supportUrl Support URL for authenticating users.
          * 
          * @return builder
          * 
@@ -712,7 +712,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param universalLogin List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+         * @param universalLogin Configuration settings for Universal Login.
          * 
          * @return builder
          * 
@@ -723,7 +723,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param universalLogin List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+         * @param universalLogin Configuration settings for Universal Login.
          * 
          * @return builder
          * 

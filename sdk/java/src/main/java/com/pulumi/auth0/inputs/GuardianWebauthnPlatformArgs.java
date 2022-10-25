@@ -17,14 +17,14 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
     public static final GuardianWebauthnPlatformArgs Empty = new GuardianWebauthnPlatformArgs();
 
     /**
-     * Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
     @Import(name="overrideRelyingParty")
     private @Nullable Output<Boolean> overrideRelyingParty;
 
     /**
-     * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * @return The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
     public Optional<Output<Boolean>> overrideRelyingParty() {
@@ -32,14 +32,14 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * String. The Relying Party should be a suffix of the custom domain.
+     * The Relying Party should be a suffix of the custom domain.
      * 
      */
     @Import(name="relyingPartyIdentifier")
     private @Nullable Output<String> relyingPartyIdentifier;
 
     /**
-     * @return String. The Relying Party should be a suffix of the custom domain.
+     * @return The Relying Party should be a suffix of the custom domain.
      * 
      */
     public Optional<Output<String>> relyingPartyIdentifier() {
@@ -72,7 +72,7 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param overrideRelyingParty Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+         * @param overrideRelyingParty The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param overrideRelyingParty Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+         * @param overrideRelyingParty The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param relyingPartyIdentifier String. The Relying Party should be a suffix of the custom domain.
+         * @param relyingPartyIdentifier The Relying Party should be a suffix of the custom domain.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param relyingPartyIdentifier String. The Relying Party should be a suffix of the custom domain.
+         * @param relyingPartyIdentifier The Relying Party should be a suffix of the custom domain.
          * 
          * @return builder
          * 

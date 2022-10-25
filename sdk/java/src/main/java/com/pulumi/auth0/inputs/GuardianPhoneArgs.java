@@ -18,14 +18,14 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
     public static final GuardianPhoneArgs Empty = new GuardianPhoneArgs();
 
     /**
-     * List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+     * Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      * 
      */
     @Import(name="messageTypes", required=true)
     private Output<List<String>> messageTypes;
 
     /**
-     * @return List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+     * @return Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      * 
      */
     public Output<List<String>> messageTypes() {
@@ -33,14 +33,14 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Options for the various providers. See Options.
+     * Options for the various providers.
      * 
      */
     @Import(name="options")
     private @Nullable Output<GuardianPhoneOptionsArgs> options;
 
     /**
-     * @return List(Resource). Options for the various providers. See Options.
+     * @return Options for the various providers.
      * 
      */
     public Optional<Output<GuardianPhoneOptionsArgs>> options() {
@@ -48,14 +48,14 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
     @Import(name="provider", required=true)
     private Output<String> provider;
 
     /**
-     * @return String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
     public Output<String> provider() {
@@ -89,7 +89,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param messageTypes List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+         * @param messageTypes Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param messageTypes List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+         * @param messageTypes Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param messageTypes List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+         * @param messageTypes Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options List(Resource). Options for the various providers. See Options.
+         * @param options Options for the various providers.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options List(Resource). Options for the various providers. See Options.
+         * @param options Options for the various providers.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provider String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provider String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
          * 
          * @return builder
          * 

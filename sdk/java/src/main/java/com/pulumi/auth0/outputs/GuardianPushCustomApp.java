@@ -11,41 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuardianPushCustomApp {
-    /**
-     * @return String. Custom Application Name.
-     * 
-     */
     private @Nullable String appName;
-    /**
-     * @return String. Apple App Store URL.
-     * 
-     */
     private @Nullable String appleAppLink;
-    /**
-     * @return String. Google Store URL.
-     * 
-     */
     private @Nullable String googleAppLink;
 
     private GuardianPushCustomApp() {}
-    /**
-     * @return String. Custom Application Name.
-     * 
-     */
     public Optional<String> appName() {
         return Optional.ofNullable(this.appName);
     }
-    /**
-     * @return String. Apple App Store URL.
-     * 
-     */
     public Optional<String> appleAppLink() {
         return Optional.ofNullable(this.appleAppLink);
     }
-    /**
-     * @return String. Google Store URL.
-     * 
-     */
     public Optional<String> googleAppLink() {
         return Optional.ofNullable(this.googleAppLink);
     }

@@ -12,9 +12,6 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientNativeSocialLoginFacebookGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Boolean
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

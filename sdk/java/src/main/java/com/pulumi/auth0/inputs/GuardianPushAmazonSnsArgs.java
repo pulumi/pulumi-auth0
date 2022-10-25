@@ -13,77 +13,37 @@ public final class GuardianPushAmazonSnsArgs extends com.pulumi.resources.Resour
 
     public static final GuardianPushAmazonSnsArgs Empty = new GuardianPushAmazonSnsArgs();
 
-    /**
-     * String. Your AWS Access Key ID.
-     * 
-     */
     @Import(name="awsAccessKeyId", required=true)
     private Output<String> awsAccessKeyId;
 
-    /**
-     * @return String. Your AWS Access Key ID.
-     * 
-     */
     public Output<String> awsAccessKeyId() {
         return this.awsAccessKeyId;
     }
 
-    /**
-     * String. Your AWS application&#39;s region.
-     * 
-     */
     @Import(name="awsRegion", required=true)
     private Output<String> awsRegion;
 
-    /**
-     * @return String. Your AWS application&#39;s region.
-     * 
-     */
     public Output<String> awsRegion() {
         return this.awsRegion;
     }
 
-    /**
-     * String. Your AWS Secret Access Key.
-     * 
-     */
     @Import(name="awsSecretAccessKey", required=true)
     private Output<String> awsSecretAccessKey;
 
-    /**
-     * @return String. Your AWS Secret Access Key.
-     * 
-     */
     public Output<String> awsSecretAccessKey() {
         return this.awsSecretAccessKey;
     }
 
-    /**
-     * String. The Amazon Resource Name for your Apple Push Notification Service.
-     * 
-     */
     @Import(name="snsApnsPlatformApplicationArn", required=true)
     private Output<String> snsApnsPlatformApplicationArn;
 
-    /**
-     * @return String. The Amazon Resource Name for your Apple Push Notification Service.
-     * 
-     */
     public Output<String> snsApnsPlatformApplicationArn() {
         return this.snsApnsPlatformApplicationArn;
     }
 
-    /**
-     * String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-     * 
-     */
     @Import(name="snsGcmPlatformApplicationArn", required=true)
     private Output<String> snsGcmPlatformApplicationArn;
 
-    /**
-     * @return String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-     * 
-     */
     public Output<String> snsGcmPlatformApplicationArn() {
         return this.snsGcmPlatformApplicationArn;
     }
@@ -116,107 +76,47 @@ public final class GuardianPushAmazonSnsArgs extends com.pulumi.resources.Resour
             $ = new GuardianPushAmazonSnsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param awsAccessKeyId String. Your AWS Access Key ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccessKeyId(Output<String> awsAccessKeyId) {
             $.awsAccessKeyId = awsAccessKeyId;
             return this;
         }
 
-        /**
-         * @param awsAccessKeyId String. Your AWS Access Key ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccessKeyId(String awsAccessKeyId) {
             return awsAccessKeyId(Output.of(awsAccessKeyId));
         }
 
-        /**
-         * @param awsRegion String. Your AWS application&#39;s region.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsRegion(Output<String> awsRegion) {
             $.awsRegion = awsRegion;
             return this;
         }
 
-        /**
-         * @param awsRegion String. Your AWS application&#39;s region.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsRegion(String awsRegion) {
             return awsRegion(Output.of(awsRegion));
         }
 
-        /**
-         * @param awsSecretAccessKey String. Your AWS Secret Access Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsSecretAccessKey(Output<String> awsSecretAccessKey) {
             $.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
 
-        /**
-         * @param awsSecretAccessKey String. Your AWS Secret Access Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsSecretAccessKey(String awsSecretAccessKey) {
             return awsSecretAccessKey(Output.of(awsSecretAccessKey));
         }
 
-        /**
-         * @param snsApnsPlatformApplicationArn String. The Amazon Resource Name for your Apple Push Notification Service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder snsApnsPlatformApplicationArn(Output<String> snsApnsPlatformApplicationArn) {
             $.snsApnsPlatformApplicationArn = snsApnsPlatformApplicationArn;
             return this;
         }
 
-        /**
-         * @param snsApnsPlatformApplicationArn String. The Amazon Resource Name for your Apple Push Notification Service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder snsApnsPlatformApplicationArn(String snsApnsPlatformApplicationArn) {
             return snsApnsPlatformApplicationArn(Output.of(snsApnsPlatformApplicationArn));
         }
 
-        /**
-         * @param snsGcmPlatformApplicationArn String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder snsGcmPlatformApplicationArn(Output<String> snsGcmPlatformApplicationArn) {
             $.snsGcmPlatformApplicationArn = snsGcmPlatformApplicationArn;
             return this;
         }
 
-        /**
-         * @param snsGcmPlatformApplicationArn String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder snsGcmPlatformApplicationArn(String snsGcmPlatformApplicationArn) {
             return snsGcmPlatformApplicationArn(Output.of(snsGcmPlatformApplicationArn));
         }

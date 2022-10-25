@@ -11,77 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuardianPhoneOptions {
-    /**
-     * @return String.
-     * 
-     */
     private @Nullable String authToken;
-    /**
-     * @return String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-     * 
-     */
     private @Nullable String enrollmentMessage;
-    /**
-     * @return String.
-     * 
-     */
     private @Nullable String from;
-    /**
-     * @return String.
-     * 
-     */
     private @Nullable String messagingServiceSid;
-    /**
-     * @return String.
-     * 
-     */
     private @Nullable String sid;
-    /**
-     * @return String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-     * 
-     */
     private @Nullable String verificationMessage;
 
     private GuardianPhoneOptions() {}
-    /**
-     * @return String.
-     * 
-     */
     public Optional<String> authToken() {
         return Optional.ofNullable(this.authToken);
     }
-    /**
-     * @return String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-     * 
-     */
     public Optional<String> enrollmentMessage() {
         return Optional.ofNullable(this.enrollmentMessage);
     }
-    /**
-     * @return String.
-     * 
-     */
     public Optional<String> from() {
         return Optional.ofNullable(this.from);
     }
-    /**
-     * @return String.
-     * 
-     */
     public Optional<String> messagingServiceSid() {
         return Optional.ofNullable(this.messagingServiceSid);
     }
-    /**
-     * @return String.
-     * 
-     */
     public Optional<String> sid() {
         return Optional.ofNullable(this.sid);
     }
-    /**
-     * @return String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-     * 
-     */
     public Optional<String> verificationMessage() {
         return Optional.ofNullable(this.verificationMessage);
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class TenantSessionCookie
     {
+        /// <summary>
+        /// Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+        /// </summary>
         public readonly string? Mode;
 
         [OutputConstructor]

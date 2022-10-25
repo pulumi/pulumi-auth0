@@ -35,14 +35,14 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
     }
 
     /**
-     * Whether or not breached password detection is active.
+     * Whether suspicious IP throttling attack protections are active.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether suspicious IP throttling attack protections are active.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -80,14 +80,14 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
     }
 
     /**
-     * Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
      * 
      */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
      * 
      */
     public Optional<Output<List<String>>> shields() {
@@ -154,7 +154,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param enabled Whether or not breached password detection is active.
+         * @param enabled Whether suspicious IP throttling attack protections are active.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param enabled Whether or not breached password detection is active.
+         * @param enabled Whether suspicious IP throttling attack protections are active.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class AttackProtectionSuspiciousIpThrottlingArgs extends com.pulumi
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
          * 
          * @return builder
          * 

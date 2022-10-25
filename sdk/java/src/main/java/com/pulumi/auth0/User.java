@@ -17,8 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking,
- * and deleting users.
+ * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
  * 
  * ## Example Usage
  * ```java
@@ -52,12 +51,11 @@ import javax.annotation.Nullable;
  *             .connectionName(&#34;Username-Password-Authentication&#34;)
  *             .userId(&#34;12345&#34;)
  *             .username(&#34;unique_username&#34;)
- *             .givenName(&#34;Firstname&#34;)
- *             .familyName(&#34;Lastname&#34;)
  *             .nickname(&#34;some.nickname&#34;)
  *             .email(&#34;test@test.com&#34;)
  *             .emailVerified(true)
  *             .password(&#34;passpass$12$12&#34;)
+ *             .picture(&#34;https://www.example.com/a-valid-picture-url.jpg&#34;)
  *             .roles(admin.id())
  *             .build());
  * 
@@ -67,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * auth0_user can be imported using the user ID, e.g.
+ * # This resource can be imported using the user ID. # # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
@@ -77,212 +75,252 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
-     * String, JSON format. Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+     * Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      * 
      */
     @Export(name="appMetadata", type=String.class, parameters={})
     private Output</* @Nullable */ String> appMetadata;
 
     /**
-     * @return String, JSON format. Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+     * @return Custom fields that store info about the user that impact the user&#39;s core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      * 
      */
     public Output<Optional<String>> appMetadata() {
         return Codegen.optional(this.appMetadata);
     }
+    /**
+     * Indicates whether the user is blocked or not.
+     * 
+     */
     @Export(name="blocked", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> blocked;
 
+    /**
+     * @return Indicates whether the user is blocked or not.
+     * 
+     */
     public Output<Optional<Boolean>> blocked() {
         return Codegen.optional(this.blocked);
     }
     /**
-     * String. Name of the connection from which the user information was sourced.
+     * Name of the connection from which the user information was sourced.
      * 
      */
     @Export(name="connectionName", type=String.class, parameters={})
     private Output<String> connectionName;
 
     /**
-     * @return String. Name of the connection from which the user information was sourced.
+     * @return Name of the connection from which the user information was sourced.
      * 
      */
     public Output<String> connectionName() {
         return this.connectionName;
     }
     /**
-     * String. Email address of the user.
+     * Email address of the user.
      * 
      */
     @Export(name="email", type=String.class, parameters={})
     private Output</* @Nullable */ String> email;
 
     /**
-     * @return String. Email address of the user.
+     * @return Email address of the user.
      * 
      */
     public Output<Optional<String>> email() {
         return Codegen.optional(this.email);
     }
     /**
-     * Boolean. Indicates whether the email address has been verified.
+     * Indicates whether the email address has been verified.
      * 
      */
     @Export(name="emailVerified", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> emailVerified;
 
     /**
-     * @return Boolean. Indicates whether the email address has been verified.
+     * @return Indicates whether the email address has been verified.
      * 
      */
     public Output<Optional<Boolean>> emailVerified() {
         return Codegen.optional(this.emailVerified);
     }
+    /**
+     * Family name of the user.
+     * 
+     */
     @Export(name="familyName", type=String.class, parameters={})
     private Output</* @Nullable */ String> familyName;
 
+    /**
+     * @return Family name of the user.
+     * 
+     */
     public Output<Optional<String>> familyName() {
         return Codegen.optional(this.familyName);
     }
+    /**
+     * Given name of the user.
+     * 
+     */
     @Export(name="givenName", type=String.class, parameters={})
     private Output</* @Nullable */ String> givenName;
 
+    /**
+     * @return Given name of the user.
+     * 
+     */
     public Output<Optional<String>> givenName() {
         return Codegen.optional(this.givenName);
     }
+    /**
+     * Name of the user.
+     * 
+     */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
+    /**
+     * @return Name of the user.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * String. Preferred nickname or alias of the user.
+     * Preferred nickname or alias of the user.
      * 
      */
     @Export(name="nickname", type=String.class, parameters={})
     private Output<String> nickname;
 
     /**
-     * @return String. Preferred nickname or alias of the user.
+     * @return Preferred nickname or alias of the user.
      * 
      */
     public Output<String> nickname() {
         return this.nickname;
     }
     /**
-     * String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email).
      * 
      */
     @Export(name="password", type=String.class, parameters={})
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * @return Initial password for this user. Required for non-passwordless connections (SMS and email).
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+     * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
      */
     @Export(name="phoneNumber", type=String.class, parameters={})
     private Output</* @Nullable */ String> phoneNumber;
 
     /**
-     * @return String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+     * @return Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
      */
     public Output<Optional<String>> phoneNumber() {
         return Codegen.optional(this.phoneNumber);
     }
     /**
-     * Boolean. Indicates whether the phone number has been verified.
+     * Indicates whether the phone number has been verified.
      * 
      */
     @Export(name="phoneVerified", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> phoneVerified;
 
     /**
-     * @return Boolean. Indicates whether the phone number has been verified.
+     * @return Indicates whether the phone number has been verified.
      * 
      */
     public Output<Optional<Boolean>> phoneVerified() {
         return Codegen.optional(this.phoneVerified);
     }
+    /**
+     * Picture of the user.
+     * 
+     */
     @Export(name="picture", type=String.class, parameters={})
     private Output<String> picture;
 
+    /**
+     * @return Picture of the user.
+     * 
+     */
     public Output<String> picture() {
         return this.picture;
     }
     /**
-     * Set(String). Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user.
      * 
      */
     @Export(name="roles", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> roles;
 
     /**
-     * @return Set(String). Set of IDs of roles assigned to the user.
+     * @return Set of IDs of roles assigned to the user.
      * 
      */
     public Output<Optional<List<String>>> roles() {
         return Codegen.optional(this.roles);
     }
     /**
-     * String. ID of the user.
+     * ID of the user.
      * 
      */
     @Export(name="userId", type=String.class, parameters={})
     private Output<String> userId;
 
     /**
-     * @return String. ID of the user.
+     * @return ID of the user.
      * 
      */
     public Output<String> userId() {
         return this.userId;
     }
     /**
-     * String, JSON format. Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
+     * Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
      * 
      */
     @Export(name="userMetadata", type=String.class, parameters={})
     private Output</* @Nullable */ String> userMetadata;
 
     /**
-     * @return String, JSON format. Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
+     * @return Custom fields that store info about the user that does not impact a user&#39;s core functionality. Examples include work address, home address, and user preferences.
      * 
      */
     public Output<Optional<String>> userMetadata() {
         return Codegen.optional(this.userMetadata);
     }
     /**
-     * String. Username of the user. Only valid if the connection requires a username.
+     * Username of the user. Only valid if the connection requires a username.
      * 
      */
     @Export(name="username", type=String.class, parameters={})
     private Output</* @Nullable */ String> username;
 
     /**
-     * @return String. Username of the user. Only valid if the connection requires a username.
+     * @return Username of the user. Only valid if the connection requires a username.
      * 
      */
     public Output<Optional<String>> username() {
         return Codegen.optional(this.username);
     }
     /**
-     * Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
      * 
      */
     @Export(name="verifyEmail", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> verifyEmail;
 
     /**
-     * @return Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
      * 
      */
     public Output<Optional<Boolean>> verifyEmail() {

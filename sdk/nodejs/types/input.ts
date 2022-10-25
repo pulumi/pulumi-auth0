@@ -6,11 +6,11 @@ import { input as inputs, output as outputs } from "../types";
 
 export interface ActionDependency {
     /**
-     * Secret name.
+     * Dependency name, e.g. `lodash`.
      */
     name: pulumi.Input<string>;
     /**
-     * Trigger version.
+     * Dependency version, e.g. `latest` or `4.17.21`.
      */
     version: pulumi.Input<string>;
 }
@@ -28,11 +28,11 @@ export interface ActionSecret {
 
 export interface ActionSupportedTriggers {
     /**
-     * Trigger ID.
+     * The trigger ID.
      */
     id: pulumi.Input<string>;
     /**
-     * Trigger version.
+     * The trigger version. This regulates which `runtime` versions are supported.
      */
     version: pulumi.Input<string>;
 }
@@ -43,7 +43,7 @@ export interface AttackProtectionBreachedPasswordDetection {
      */
     adminNotificationFrequencies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether or not breached password detection is active.
+     * Whether breached password detection is active.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -51,7 +51,7 @@ export interface AttackProtectionBreachedPasswordDetection {
      */
     method?: pulumi.Input<string>;
     /**
-     * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+     * Action to take when a breached password is detected.
      */
     shields?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -62,7 +62,7 @@ export interface AttackProtectionBruteForceProtection {
      */
     allowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether or not breached password detection is active.
+     * Whether brute force attack protections are active.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -70,11 +70,11 @@ export interface AttackProtectionBruteForceProtection {
      */
     maxAttempts?: pulumi.Input<number>;
     /**
-     * Determines whether or not IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
+     * Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` or `countPerIdentifier`.
      */
     mode?: pulumi.Input<string>;
     /**
-     * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+     * Action to take when a brute force protection threshold is violated. Possible values: `block`, `userNotification`
      */
     shields?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -85,7 +85,7 @@ export interface AttackProtectionSuspiciousIpThrottling {
      */
     allowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether or not breached password detection is active.
+     * Whether suspicious IP throttling attack protections are active.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -97,354 +97,408 @@ export interface AttackProtectionSuspiciousIpThrottling {
      */
     preUserRegistration?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration>;
     /**
-     * Action to take when a breached password is detected. Possible values: `block`, `userNotification`, `adminNotification`.
+     * Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `adminNotification`
      */
     shields?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AttackProtectionSuspiciousIpThrottlingPreLogin {
-    /**
-     * Maximum number of unsuccessful attempts. Only available on public tenants.
-     */
     maxAttempts?: pulumi.Input<number>;
     rate?: pulumi.Input<number>;
 }
 
 export interface AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
-    /**
-     * Maximum number of unsuccessful attempts. Only available on public tenants.
-     */
     maxAttempts?: pulumi.Input<number>;
     rate?: pulumi.Input<number>;
 }
 
 export interface BrandingColors {
     /**
-     * String, Hexadecimal. Background color of login pages.
+     * Background color of login pages in hexadecimal.
      */
     pageBackground?: pulumi.Input<string>;
     /**
-     * String, Hexadecimal. Primary button background color.
+     * Primary button background color in hexadecimal.
      */
     primary?: pulumi.Input<string>;
 }
 
 export interface BrandingFont {
     /**
-     * String. URL for the custom font.
+     * URL for the custom font.
      */
     url?: pulumi.Input<string>;
 }
 
+export interface BrandingThemeBorders {
+    /**
+     * Button border radius. Value needs to be between `1` and `10`.
+     */
+    buttonBorderRadius: pulumi.Input<number>;
+    /**
+     * Button border weight. Value needs to be between `0` and `10`.
+     */
+    buttonBorderWeight: pulumi.Input<number>;
+    /**
+     * Buttons style. Available options: `pill`, `rounded`, `sharp`.
+     */
+    buttonsStyle: pulumi.Input<string>;
+    /**
+     * Input border radius. Value needs to be between `0` and `10`.
+     */
+    inputBorderRadius: pulumi.Input<number>;
+    /**
+     * Input border weight. Value needs to be between `0` and `3`.
+     */
+    inputBorderWeight: pulumi.Input<number>;
+    /**
+     * Inputs style. Available options: `pill`, `rounded`, `sharp`.
+     */
+    inputsStyle: pulumi.Input<string>;
+    /**
+     * Show widget shadow.
+     */
+    showWidgetShadow: pulumi.Input<boolean>;
+    /**
+     * Widget border weight. Value needs to be between `0` and `10`.
+     */
+    widgetBorderWeight: pulumi.Input<number>;
+    /**
+     * Widget corner radius. Value needs to be between `0` and `50`.
+     */
+    widgetCornerRadius: pulumi.Input<number>;
+}
+
+export interface BrandingThemeColors {
+    /**
+     * Base focus color.
+     */
+    baseFocusColor?: pulumi.Input<string>;
+    /**
+     * Base hover color.
+     */
+    baseHoverColor?: pulumi.Input<string>;
+    /**
+     * Body text.
+     */
+    bodyText: pulumi.Input<string>;
+    /**
+     * Error.
+     */
+    error: pulumi.Input<string>;
+    /**
+     * Header.
+     */
+    header: pulumi.Input<string>;
+    /**
+     * Icons.
+     */
+    icons: pulumi.Input<string>;
+    /**
+     * Input background.
+     */
+    inputBackground: pulumi.Input<string>;
+    /**
+     * Input border.
+     */
+    inputBorder: pulumi.Input<string>;
+    /**
+     * Input filled text.
+     */
+    inputFilledText: pulumi.Input<string>;
+    /**
+     * Input labels & placeholders.
+     */
+    inputLabelsPlaceholders: pulumi.Input<string>;
+    /**
+     * Links & focused components.
+     */
+    linksFocusedComponents: pulumi.Input<string>;
+    /**
+     * Primary button.
+     */
+    primaryButton: pulumi.Input<string>;
+    /**
+     * Primary button label.
+     */
+    primaryButtonLabel: pulumi.Input<string>;
+    /**
+     * Secondary button border.
+     */
+    secondaryButtonBorder: pulumi.Input<string>;
+    /**
+     * Secondary button label.
+     */
+    secondaryButtonLabel: pulumi.Input<string>;
+    /**
+     * Success.
+     */
+    success: pulumi.Input<string>;
+    /**
+     * Widget background.
+     */
+    widgetBackground: pulumi.Input<string>;
+    /**
+     * Widget border.
+     */
+    widgetBorder: pulumi.Input<string>;
+}
+
+export interface BrandingThemeFonts {
+    /**
+     * Body text.
+     */
+    bodyText: pulumi.Input<inputs.BrandingThemeFontsBodyText>;
+    /**
+     * Buttons text.
+     */
+    buttonsText: pulumi.Input<inputs.BrandingThemeFontsButtonsText>;
+    /**
+     * Font URL.
+     */
+    fontUrl: pulumi.Input<string>;
+    /**
+     * Input labels.
+     */
+    inputLabels: pulumi.Input<inputs.BrandingThemeFontsInputLabels>;
+    /**
+     * Links.
+     */
+    links: pulumi.Input<inputs.BrandingThemeFontsLinks>;
+    /**
+     * Links style.
+     */
+    linksStyle: pulumi.Input<string>;
+    /**
+     * Reference text size. Value needs to be between `12` and `24`.
+     */
+    referenceTextSize: pulumi.Input<number>;
+    /**
+     * Subtitle.
+     */
+    subtitle: pulumi.Input<inputs.BrandingThemeFontsSubtitle>;
+    /**
+     * Title.
+     */
+    title: pulumi.Input<inputs.BrandingThemeFontsTitle>;
+}
+
+export interface BrandingThemeFontsBodyText {
+    bold: pulumi.Input<boolean>;
+    size: pulumi.Input<number>;
+}
+
+export interface BrandingThemeFontsButtonsText {
+    bold: pulumi.Input<boolean>;
+    size: pulumi.Input<number>;
+}
+
+export interface BrandingThemeFontsInputLabels {
+    bold: pulumi.Input<boolean>;
+    size: pulumi.Input<number>;
+}
+
+export interface BrandingThemeFontsLinks {
+    bold: pulumi.Input<boolean>;
+    size: pulumi.Input<number>;
+}
+
+export interface BrandingThemeFontsSubtitle {
+    bold: pulumi.Input<boolean>;
+    size: pulumi.Input<number>;
+}
+
+export interface BrandingThemeFontsTitle {
+    bold: pulumi.Input<boolean>;
+    size: pulumi.Input<number>;
+}
+
+export interface BrandingThemePageBackground {
+    /**
+     * Background color.
+     */
+    backgroundColor: pulumi.Input<string>;
+    /**
+     * Background image url.
+     */
+    backgroundImageUrl: pulumi.Input<string>;
+    /**
+     * Page layout. Available options: `center`, `left`, `right`.
+     */
+    pageLayout: pulumi.Input<string>;
+}
+
+export interface BrandingThemeWidget {
+    /**
+     * Header text alignment. Available options: `center`, `left`, `right`.
+     */
+    headerTextAlignment: pulumi.Input<string>;
+    /**
+     * Logo height. Value needs to be between `1` and `100`.
+     */
+    logoHeight: pulumi.Input<number>;
+    /**
+     * Logo position. Available options: `center`, `left`, `right`, `none`.
+     */
+    logoPosition: pulumi.Input<string>;
+    /**
+     * Logo url.
+     */
+    logoUrl: pulumi.Input<string>;
+    /**
+     * Social buttons layout.  Available options: `bottom`, `top`.
+     */
+    socialButtonsLayout: pulumi.Input<string>;
+}
+
 export interface BrandingUniversalLogin {
     /**
-     * String, body of login pages.
+     * The body of login pages.
      */
     body?: pulumi.Input<string>;
 }
 
 export interface ClientAddons {
-    /**
-     * String
-     */
     aws?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     azureBlob?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     azureSb?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     box?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     cloudbees?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     concur?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     dropbox?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     echosign?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     egnyte?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     firebase?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     layer?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     mscrm?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     newrelic?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     office365?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     rms?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     salesforce?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     salesforceApi?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     salesforceSandboxApi?: pulumi.Input<{[key: string]: any}>;
     /**
-     * List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+     * Configuration settings for a SAML add-on.
      */
     samlp?: pulumi.Input<inputs.ClientAddonsSamlp>;
-    /**
-     * String
-     */
     sapApi?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     sentry?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     sharepoint?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     slack?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     springcm?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     wams?: pulumi.Input<{[key: string]: any}>;
     /**
-     * String
+     * WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
      */
     wsfed?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     zendesk?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String
-     */
     zoom?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface ClientAddonsSamlp {
-    /**
-     * String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
-     */
     audience?: pulumi.Input<string>;
-    /**
-     * String. Class reference of the authentication context.
-     */
     authnContextClassRef?: pulumi.Input<string>;
-    /**
-     * String. Protocol binding used for SAML logout responses.
-     */
     binding?: pulumi.Input<string>;
-    /**
-     * Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
-     */
     createUpnClaim?: pulumi.Input<boolean>;
-    /**
-     * String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
-     */
     destination?: pulumi.Input<string>;
-    /**
-     * String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
-     */
     digestAlgorithm?: pulumi.Input<string>;
-    /**
-     * Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-     */
     includeAttributeNameFormat?: pulumi.Input<boolean>;
-    /**
-     * Integer, (Default=3600). Number of seconds during which the token is valid.
-     */
+    issuer?: pulumi.Input<string>;
     lifetimeInSeconds?: pulumi.Input<number>;
-    /**
-     * Map(Resource). Configuration settings for logout. For details, see Logout.
-     */
     logout?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
-     */
     mapIdentities?: pulumi.Input<boolean>;
-    /**
-     * Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
-     */
     mapUnknownClaimsAsIs?: pulumi.Input<boolean>;
-    /**
-     * Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-     */
     mappings?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-     */
     nameIdentifierFormat?: pulumi.Input<string>;
-    /**
-     * List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-     */
     nameIdentifierProbes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
-     */
     passthroughClaimsWithNoMapping?: pulumi.Input<boolean>;
-    /**
-     * String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
-     */
     recipient?: pulumi.Input<string>;
-    /**
-     * Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-     */
     signResponse?: pulumi.Input<boolean>;
-    /**
-     * String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
-     */
     signatureAlgorithm?: pulumi.Input<string>;
-    /**
-     * String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
-     */
     signingCert?: pulumi.Input<string>;
-    /**
-     * Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
-     */
     typedAttributes?: pulumi.Input<boolean>;
 }
 
 export interface ClientJwtConfiguration {
     /**
-     * String. Algorithm used to sign JWTs.
+     * Algorithm used to sign JWTs.
      */
     alg?: pulumi.Input<string>;
     /**
-     * Integer. Number of seconds during which the JWT will be valid.
+     * Number of seconds during which the JWT will be valid.
      */
     lifetimeInSeconds?: pulumi.Input<number>;
     /**
-     * Map(String). Permissions (scopes) included in JWTs.
+     * Permissions (scopes) included in JWTs.
      */
     scopes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Boolean. Indicates whether or not the client secret is base64 encoded.
+     * Indicates whether the client secret is Base64-encoded.
      */
     secretEncoded?: pulumi.Input<boolean>;
 }
 
 export interface ClientMobile {
     /**
-     * List(Resource). Configuration settings for Android native apps. For details, see Android.
+     * Configuration settings for Android native apps.
      */
     android?: pulumi.Input<inputs.ClientMobileAndroid>;
     /**
-     * List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+     * Configuration settings for i0S native apps.
      */
     ios?: pulumi.Input<inputs.ClientMobileIos>;
 }
 
 export interface ClientMobileAndroid {
-    /**
-     * String
-     */
     appPackageName?: pulumi.Input<string>;
-    /**
-     * List(String)
-     */
     sha256CertFingerprints?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ClientMobileIos {
-    /**
-     * String
-     */
     appBundleIdentifier?: pulumi.Input<string>;
-    /**
-     * String
-     */
     teamId?: pulumi.Input<string>;
 }
 
 export interface ClientNativeSocialLogin {
-    /**
-     * Resource:
-     */
     apple?: pulumi.Input<inputs.ClientNativeSocialLoginApple>;
-    /**
-     * Resources:
-     */
     facebook?: pulumi.Input<inputs.ClientNativeSocialLoginFacebook>;
 }
 
 export interface ClientNativeSocialLoginApple {
-    /**
-     * Boolean
-     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ClientNativeSocialLoginFacebook {
-    /**
-     * Boolean
-     */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ClientRefreshToken {
     /**
-     * String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
      */
     expirationType: pulumi.Input<string>;
     /**
-     * Integer. The time in seconds after which inactive refresh tokens will expire.
+     * The time in seconds after which inactive refresh tokens will expire.
      */
     idleTokenLifetime?: pulumi.Input<number>;
     /**
-     * Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+     * Whether inactive refresh tokens should remain valid indefinitely.
      */
     infiniteIdleTokenLifetime?: pulumi.Input<boolean>;
     /**
-     * Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set
+     * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
      */
     infiniteTokenLifetime?: pulumi.Input<boolean>;
     /**
-     * Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+     * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
      */
     leeway?: pulumi.Input<number>;
     /**
-     * String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      */
     rotationType: pulumi.Input<string>;
     /**
-     * Integer. The absolute lifetime of a refresh token in seconds.
+     * The absolute lifetime of a refresh token in seconds.
      */
     tokenLifetime?: pulumi.Input<number>;
 }
@@ -458,103 +512,136 @@ export interface ConnectionOptions {
      * List of allowed audiences.
      */
     allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable API Access to users.
+     */
     apiEnableUsers?: pulumi.Input<boolean>;
     /**
-     * Azure AD app ID.
+     * App ID.
      */
     appId?: pulumi.Input<string>;
     /**
-     * Map(String). Use this to append or override the link parameters (like `scope`, `redirectUri`, `protocol`, `responseType`), when you send a link using email.
+     * Query string parameters to be included as part of the generated passwordless email link.
      */
     authParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Authorization endpoint.
+     */
     authorizationEndpoint?: pulumi.Input<string>;
     /**
-     * Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     * Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      */
     bruteForceProtection?: pulumi.Input<boolean>;
     /**
-     * OIDC provider client ID.
+     * The strategy's client ID.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * OIDC provider client secret.
+     * The strategy's client secret.
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * String.
+     * Salesforce community base URL.
      */
     communityBaseUrl?: pulumi.Input<string>;
     /**
      * A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      */
-    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configuration?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+     * A map of scripts used to integrate with a custom database.
      */
     customScripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * (Boolean) When enabled additional debugging information will be generated.
+     * When enabled, additional debug information will be generated.
      */
     debug?: pulumi.Input<boolean>;
     /**
-     * Sign Request Algorithm Digest
+     * Sign Request Algorithm Digest.
      */
     digestAlgorithm?: pulumi.Input<string>;
+    /**
+     * Indicates whether to disable the cache or not.
+     */
     disableCache?: pulumi.Input<boolean>;
     /**
-     * (Boolean) Disables or enables user sign out.
+     * When enabled, will disable sign out.
      */
     disableSignOut?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether or not to allow user sign-ups to your application.
+     * Indicates whether to allow user sign-ups to your application.
      */
     disableSignup?: pulumi.Input<boolean>;
     /**
-     * OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
      */
     discoveryUrl?: pulumi.Input<string>;
     /**
-     * Azure AD domain name.
+     * Domain name.
      */
     domain?: pulumi.Input<string>;
     /**
-     * List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+     * List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      */
     domainAliases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set to `true` to use a legacy user store.
+     */
     enabledDatabaseCustomization?: pulumi.Input<boolean>;
     /**
      * Custom Entity ID for the connection.
      */
     entityId?: pulumi.Input<string>;
     /**
-     * SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     * If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
     fieldsMap?: pulumi.Input<string>;
+    /**
+     * Specifies whether or not request info should be forwarded to sms gateway.
+     */
     forwardRequestInfo?: pulumi.Input<boolean>;
     /**
-     * SMS number for the sender. Used when SMS Source is From.
+     * Address to use as the sender.
      */
     from?: pulumi.Input<string>;
+    /**
+     * Defines the parameters used to generate the auth token for the custom gateway.
+     */
     gatewayAuthentication?: pulumi.Input<inputs.ConnectionOptionsGatewayAuthentication>;
+    /**
+     * Defines a custom sms gateway to use instead of Twilio.
+     */
     gatewayUrl?: pulumi.Input<string>;
+    /**
+     * Icon URL.
+     */
     iconUrl?: pulumi.Input<string>;
+    /**
+     * Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+     */
     identityApi?: pulumi.Input<string>;
     /**
-     * Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`
+     * Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
      */
     idpInitiated?: pulumi.Input<inputs.ConnectionOptionsIdpInitiated>;
     /**
-     * Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+     * Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
      */
     importMode?: pulumi.Input<boolean>;
+    /**
+     * A list of IPs.
+     */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Issuer URL. E.g. `https://auth.example.com`
+     * Issuer URL, e.g. `https://auth.example.com`.
      */
     issuer?: pulumi.Input<string>;
+    /**
+     * JWKS URI.
+     */
     jwksUri?: pulumi.Input<string>;
     /**
-     * Key ID.
+     * Apple Key ID.
      */
     keyId?: pulumi.Input<string>;
     /**
@@ -566,39 +653,39 @@ export interface ConnectionOptions {
      */
     messagingServiceSid?: pulumi.Input<string>;
     /**
-     * URL of the SAML metadata document.
+     * The URL of the SAML metadata document.
      */
     metadataUrl?: pulumi.Input<string>;
     /**
-     * XML content for the SAML metadata document.
+     * The XML content for the SAML metadata document.
      */
     metadataXml?: pulumi.Input<string>;
     /**
-     * Configuration settings Options for multifactor authentication. For details, see MFA Options.
+     * Configuration options for multifactor authentication.
      */
     mfa?: pulumi.Input<inputs.ConnectionOptionsMfa>;
     /**
-     * Name of the connection.
+     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      */
     name?: pulumi.Input<string>;
     /**
-     * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+     * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      */
     nonPersistentAttrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configuration settings for password complexity. For details, see Password Complexity Options.
+     * Configuration settings for password complexity.
      */
     passwordComplexityOptions?: pulumi.Input<inputs.ConnectionOptionsPasswordComplexityOptions>;
     /**
-     * Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+     * Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
      */
     passwordDictionary?: pulumi.Input<inputs.ConnectionOptionsPasswordDictionary>;
     /**
-     * Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+     * Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
      */
     passwordHistories?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsPasswordHistory>[]>;
     /**
-     * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+     * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
      */
     passwordNoPersonalInfo?: pulumi.Input<inputs.ConnectionOptionsPasswordNoPersonalInfo>;
     /**
@@ -606,33 +693,39 @@ export interface ConnectionOptions {
      */
     passwordPolicy?: pulumi.Input<string>;
     /**
-     * (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+     * Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      */
     pkceEnabled?: pulumi.Input<boolean>;
     /**
-     * The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+     * The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      */
     protocolBinding?: pulumi.Input<string>;
+    /**
+     * Defines the custom `smsGateway` provider.
+     */
     provider?: pulumi.Input<string>;
     /**
-     * Template that formats the SAML request
+     * Template that formats the SAML request.
      */
     requestTemplate?: pulumi.Input<string>;
     /**
-     * Indicates whether or not the user is required to provide a username in addition to an email address.
+     * Indicates whether the user is required to provide a username in addition to an email address.
      */
     requiresUsername?: pulumi.Input<boolean>;
     /**
-     * Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
+     * Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+     */
     scripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `onEachLogin` and can be set to `onFirstLogin`.
+     * Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
      */
     setUserRootAttributes?: pulumi.Input<string>;
     /**
-     * Determines how Auth0 sets the emailVerified field in the user profile. Can either be set to `neverSetEmailsAsVerified` or `alwaysSetEmailsAsVerified`.
+     * Choose how Auth0 sets the emailVerified field in the user profile.
      */
     shouldTrustEmailVerifiedConnection?: pulumi.Input<string>;
     /**
@@ -644,19 +737,19 @@ export interface ConnectionOptions {
      */
     signOutEndpoint?: pulumi.Input<string>;
     /**
-     * (Boolean) When enabled, the SAML authentication request will be signed.
+     * When enabled, the SAML authentication request will be signed.
      */
     signSamlRequest?: pulumi.Input<boolean>;
     /**
-     * Sign Request Algorithm
+     * Sign Request Algorithm.
      */
     signatureAlgorithm?: pulumi.Input<string>;
     /**
-     * The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+     * X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      */
     signingCert?: pulumi.Input<string>;
     /**
-     * . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      */
     signingKey?: pulumi.Input<inputs.ConnectionOptionsSigningKey>;
     /**
@@ -664,25 +757,31 @@ export interface ConnectionOptions {
      */
     strategyVersion?: pulumi.Input<number>;
     /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Subject line of the email.
      */
     subject?: pulumi.Input<string>;
     /**
-     * Syntax of the SMS. Options include `markdown` and `liquid`.
+     * Syntax of the template body.
      */
     syntax?: pulumi.Input<string>;
     /**
-     * Team ID.
+     * Apple Team ID.
      */
     teamId?: pulumi.Input<string>;
     /**
-     * Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+     * Body of the template.
      */
     template?: pulumi.Input<string>;
+    /**
+     * Tenant domain name.
+     */
     tenantDomain?: pulumi.Input<string>;
+    /**
+     * Token endpoint.
+     */
     tokenEndpoint?: pulumi.Input<string>;
     /**
-     * Configuration options for one-time passwords. For details, see TOTP.
+     * Configuration options for one-time passwords.
      */
     totp?: pulumi.Input<inputs.ConnectionOptionsTotp>;
     /**
@@ -698,25 +797,40 @@ export interface ConnectionOptions {
      */
     type?: pulumi.Input<string>;
     /**
-     * String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+     * You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
      */
     upstreamParams?: pulumi.Input<string>;
+    /**
+     * Indicates whether to use cert auth or not.
+     */
     useCertAuth?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether to use Kerberos or not.
+     */
     useKerberos?: pulumi.Input<boolean>;
+    /**
+     * Whether to use WS-Fed.
+     */
     useWsfed?: pulumi.Input<boolean>;
     /**
      * Attribute in the SAML token that will be mapped to the userId property in Auth0.
      */
     userIdAttribute?: pulumi.Input<string>;
+    /**
+     * User info endpoint.
+     */
     userinfoEndpoint?: pulumi.Input<string>;
     /**
-     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+     * Validation of the minimum and maximum values allowed for a user to have as username.
      */
     validation?: pulumi.Input<inputs.ConnectionOptionsValidation>;
     /**
-     * Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+     * Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
      */
     waadCommonEndpoint?: pulumi.Input<boolean>;
+    /**
+     * Protocol to use.
+     */
     waadProtocol?: pulumi.Input<string>;
 }
 
@@ -725,65 +839,35 @@ export interface ConnectionOptionsGatewayAuthentication {
     method?: pulumi.Input<string>;
     secret?: pulumi.Input<string>;
     secretBase64Encoded?: pulumi.Input<boolean>;
-    /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-     */
     subject?: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsIdpInitiated {
     clientAuthorizeQuery?: pulumi.Input<string>;
-    /**
-     * Google client ID.
-     */
     clientId?: pulumi.Input<string>;
     clientProtocol?: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsMfa {
-    /**
-     * Indicates whether multifactor authentication is enabled for this connection.
-     */
     active?: pulumi.Input<boolean>;
-    /**
-     * Indicates whether multifactor authentication enrollment settings will be returned.
-     */
     returnEnrollSettings?: pulumi.Input<boolean>;
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {
-    /**
-     * Minimum number of characters allowed in passwords.
-     */
     minLength?: pulumi.Input<number>;
 }
 
 export interface ConnectionOptionsPasswordDictionary {
-    /**
-     * Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
-     */
     dictionaries?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Indicates whether the password dictionary check is enabled for this connection.
-     */
     enable?: pulumi.Input<boolean>;
 }
 
 export interface ConnectionOptionsPasswordHistory {
-    /**
-     * Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-     */
     enable?: pulumi.Input<boolean>;
-    /**
-     * Indicates the number of passwords to keep in history with a maximum of 24.
-     */
     size?: pulumi.Input<number>;
 }
 
 export interface ConnectionOptionsPasswordNoPersonalInfo {
-    /**
-     * Indicates whether the password personal info check is enabled for this connection.
-     */
     enable?: pulumi.Input<boolean>;
 }
 
@@ -793,20 +877,11 @@ export interface ConnectionOptionsSigningKey {
 }
 
 export interface ConnectionOptionsTotp {
-    /**
-     * Integer. Length of the one-time password.
-     */
     length?: pulumi.Input<number>;
-    /**
-     * Integer. Seconds between allowed generation of new passwords.
-     */
     timeStep?: pulumi.Input<number>;
 }
 
 export interface ConnectionOptionsValidation {
-    /**
-     * Specifies the `min` and `max` values of username length. `min` and `max` are integers.
-     */
     username?: pulumi.Input<inputs.ConnectionOptionsValidationUsername>;
 }
 
@@ -816,48 +891,48 @@ export interface ConnectionOptionsValidationUsername {
 }
 
 export interface CustomDomainVerification {
-    /**
-     * List(Map). Verification methods for the domain.
-     */
     methods?: pulumi.Input<any[]>;
 }
 
 export interface EmailCredentials {
     /**
-     * String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+     * AWS Access Key ID. Used only for AWS.
      */
     accessKeyId?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+     * API Key for your email service. Will always be encrypted in our database.
      */
     apiKey?: pulumi.Input<string>;
     /**
-     * String. API User for your email service.
+     * API User for your email service.
      */
     apiUser?: pulumi.Input<string>;
+    /**
+     * Domain name.
+     */
     domain?: pulumi.Input<string>;
     /**
-     * String. Default region. Used only for AWS, Mailgun, and SparkPost.
+     * Default region. Used only for AWS, Mailgun, and SparkPost.
      */
     region?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+     * AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
      */
     secretAccessKey?: pulumi.Input<string>;
     /**
-     * String. Hostname or IP address of your SMTP server. Used only for SMTP.
+     * Hostname or IP address of your SMTP server. Used only for SMTP.
      */
     smtpHost?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. SMTP password. Used only for SMTP.
+     * SMTP password. Used only for SMTP.
      */
     smtpPass?: pulumi.Input<string>;
     /**
-     * Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+     * Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
      */
     smtpPort?: pulumi.Input<number>;
     /**
-     * String. SMTP username. Used only for SMTP.
+     * SMTP username. Used only for SMTP.
      */
     smtpUser?: pulumi.Input<string>;
 }
@@ -881,6 +956,9 @@ export interface GlobalClientAddons {
     salesforce?: pulumi.Input<{[key: string]: any}>;
     salesforceApi?: pulumi.Input<{[key: string]: any}>;
     salesforceSandboxApi?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Configuration settings for a SAML add-on.
+     */
     samlp?: pulumi.Input<inputs.GlobalClientAddonsSamlp>;
     sapApi?: pulumi.Input<{[key: string]: any}>;
     sentry?: pulumi.Input<{[key: string]: any}>;
@@ -888,6 +966,9 @@ export interface GlobalClientAddons {
     slack?: pulumi.Input<{[key: string]: any}>;
     springcm?: pulumi.Input<{[key: string]: any}>;
     wams?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `clientAliases` properties on the client.
+     */
     wsfed?: pulumi.Input<{[key: string]: any}>;
     zendesk?: pulumi.Input<{[key: string]: any}>;
     zoom?: pulumi.Input<{[key: string]: any}>;
@@ -901,6 +982,7 @@ export interface GlobalClientAddonsSamlp {
     destination?: pulumi.Input<string>;
     digestAlgorithm?: pulumi.Input<string>;
     includeAttributeNameFormat?: pulumi.Input<boolean>;
+    issuer?: pulumi.Input<string>;
     lifetimeInSeconds?: pulumi.Input<number>;
     logout?: pulumi.Input<{[key: string]: any}>;
     mapIdentities?: pulumi.Input<boolean>;
@@ -917,14 +999,32 @@ export interface GlobalClientAddonsSamlp {
 }
 
 export interface GlobalClientJwtConfiguration {
+    /**
+     * Algorithm used to sign JWTs.
+     */
     alg?: pulumi.Input<string>;
+    /**
+     * Number of seconds during which the JWT will be valid.
+     */
     lifetimeInSeconds?: pulumi.Input<number>;
+    /**
+     * Permissions (scopes) included in JWTs.
+     */
     scopes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicates whether the client secret is Base64-encoded.
+     */
     secretEncoded?: pulumi.Input<boolean>;
 }
 
 export interface GlobalClientMobile {
+    /**
+     * Configuration settings for Android native apps.
+     */
     android?: pulumi.Input<inputs.GlobalClientMobileAndroid>;
+    /**
+     * Configuration settings for i0S native apps.
+     */
     ios?: pulumi.Input<inputs.GlobalClientMobileIos>;
 }
 
@@ -952,180 +1052,165 @@ export interface GlobalClientNativeSocialLoginFacebook {
 }
 
 export interface GlobalClientRefreshToken {
+    /**
+     * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     */
     expirationType: pulumi.Input<string>;
+    /**
+     * The time in seconds after which inactive refresh tokens will expire.
+     */
     idleTokenLifetime?: pulumi.Input<number>;
+    /**
+     * Whether inactive refresh tokens should remain valid indefinitely.
+     */
     infiniteIdleTokenLifetime?: pulumi.Input<boolean>;
+    /**
+     * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
+     */
     infiniteTokenLifetime?: pulumi.Input<boolean>;
+    /**
+     * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+     */
     leeway?: pulumi.Input<number>;
+    /**
+     * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     */
     rotationType: pulumi.Input<string>;
+    /**
+     * The absolute lifetime of a refresh token in seconds.
+     */
     tokenLifetime?: pulumi.Input<number>;
 }
 
 export interface GuardianDuo {
     /**
-     * String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+     * Duo API Hostname, see the Duo documentation for more details on Duo setup.
      */
     hostname: pulumi.Input<string>;
     /**
-     * String. Duo client ID, see the Duo documentation for more details on Duo setup.
+     * Duo client ID, see the Duo documentation for more details on Duo setup.
      */
     integrationKey: pulumi.Input<string>;
     /**
-     * String. Duo client secret, see the Duo documentation for more details on Duo setup.
+     * Duo client secret, see the Duo documentation for more details on Duo setup.
      */
     secretKey: pulumi.Input<string>;
 }
 
 export interface GuardianPhone {
     /**
-     * List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+     * Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      */
     messageTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List(Resource). Options for the various providers. See Options.
+     * Options for the various providers.
      */
     options?: pulumi.Input<inputs.GuardianPhoneOptions>;
     /**
-     * String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      */
     provider: pulumi.Input<string>;
 }
 
 export interface GuardianPhoneOptions {
-    /**
-     * String.
-     */
     authToken?: pulumi.Input<string>;
-    /**
-     * String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-     */
     enrollmentMessage?: pulumi.Input<string>;
-    /**
-     * String.
-     */
     from?: pulumi.Input<string>;
-    /**
-     * String.
-     */
     messagingServiceSid?: pulumi.Input<string>;
-    /**
-     * String.
-     */
     sid?: pulumi.Input<string>;
-    /**
-     * String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-     */
     verificationMessage?: pulumi.Input<string>;
 }
 
 export interface GuardianPush {
+    /**
+     * Configuration for Amazon SNS.
+     */
     amazonSns?: pulumi.Input<inputs.GuardianPushAmazonSns>;
+    /**
+     * Configuration for the Guardian Custom App.
+     */
     customApp?: pulumi.Input<inputs.GuardianPushCustomApp>;
 }
 
 export interface GuardianPushAmazonSns {
-    /**
-     * String. Your AWS Access Key ID.
-     */
     awsAccessKeyId: pulumi.Input<string>;
-    /**
-     * String. Your AWS application's region.
-     */
     awsRegion: pulumi.Input<string>;
-    /**
-     * String. Your AWS Secret Access Key.
-     */
     awsSecretAccessKey: pulumi.Input<string>;
-    /**
-     * String. The Amazon Resource Name for your Apple Push Notification Service.
-     */
     snsApnsPlatformApplicationArn: pulumi.Input<string>;
-    /**
-     * String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-     */
     snsGcmPlatformApplicationArn: pulumi.Input<string>;
 }
 
 export interface GuardianPushCustomApp {
-    /**
-     * String. Custom Application Name.
-     */
     appName?: pulumi.Input<string>;
-    /**
-     * String. Apple App Store URL.
-     */
     appleAppLink?: pulumi.Input<string>;
-    /**
-     * String. Google Store URL.
-     */
     googleAppLink?: pulumi.Input<string>;
 }
 
 export interface GuardianWebauthnPlatform {
     /**
-     * Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      */
     overrideRelyingParty?: pulumi.Input<boolean>;
     /**
-     * String. The Relying Party should be a suffix of the custom domain.
+     * The Relying Party should be a suffix of the custom domain.
      */
     relyingPartyIdentifier?: pulumi.Input<string>;
 }
 
 export interface GuardianWebauthnRoaming {
     /**
-     * Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      */
     overrideRelyingParty?: pulumi.Input<boolean>;
     /**
-     * String. The Relying Party should be a suffix of the custom domain.
+     * The Relying Party should be a suffix of the custom domain.
      */
     relyingPartyIdentifier?: pulumi.Input<string>;
     /**
-     * String. User verification, one of `discouraged`, `preferred` or `required`.
+     * User verification, one of `discouraged`, `preferred` or `required`.
      */
     userVerification?: pulumi.Input<string>;
 }
 
 export interface LogStreamSink {
     /**
-     * The AWS Account ID
+     * The AWS Account ID.
      */
     awsAccountId?: pulumi.Input<string>;
     /**
-     * Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
+     * Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS, so this should be an output attribute.
      */
     awsPartnerEventSource?: pulumi.Input<string>;
     /**
-     * The AWS Region (i.e "us-east-2")
+     * The AWS Region, e.g. "us-east-2").
      */
     awsRegion?: pulumi.Input<string>;
     /**
-     * Name of the Partner Topic to be used with Azure.  Generally should not be specified.
+     * Name of the Partner Topic to be used with Azure. Generally should not be specified.
      */
     azurePartnerTopic?: pulumi.Input<string>;
     /**
-     * The Azure region code (i.e. "ne")
+     * The Azure region code, e.g. "ne")
      */
     azureRegion?: pulumi.Input<string>;
     /**
-     * The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
+     * The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
      */
     azureResourceGroup?: pulumi.Input<string>;
     /**
-     * The unique alphanumeric string that identifies your Azure subscription
+     * The unique alphanumeric string that identifies your Azure subscription.
      */
     azureSubscriptionId?: pulumi.Input<string>;
     /**
-     * The Datadog API key
+     * The Datadog API key.
      */
     datadogApiKey?: pulumi.Input<string>;
     /**
-     * The Datadog region. Options are ["us", "eu", "us3", "us5"]
+     * The Datadog region. Options are ["us", "eu", "us3", "us5"].
      */
     datadogRegion?: pulumi.Input<string>;
     /**
-     * Sent in the HTTP "Authorization" header with each request
+     * Sent in the HTTP "Authorization" header with each request.
      */
     httpAuthorization?: pulumi.Input<string>;
     /**
@@ -1133,228 +1218,216 @@ export interface LogStreamSink {
      */
     httpContentFormat?: pulumi.Input<string>;
     /**
-     * The ContentType header to send over HTTP.  Common value is "application/json"
+     * The "Content-Type" header to send over HTTP. Common value is "application/json".
      */
     httpContentType?: pulumi.Input<string>;
     /**
-     * Additional HTTP headers to be included as part of the HTTP request
+     * Additional HTTP headers to be included as part of the HTTP request.
      */
     httpCustomHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
-     * The HTTP endpoint to send streaming logs
+     * The HTTP endpoint to send streaming logs.
      */
     httpEndpoint?: pulumi.Input<string>;
     /**
-     * The Splunk domain name
+     * The Splunk domain name.
      */
     splunkDomain?: pulumi.Input<string>;
+    /**
+     * The Splunk port.
+     */
     splunkPort?: pulumi.Input<string>;
     /**
-     * This toggle should be turned off when using self-signed certificates
+     * This toggle should be turned off when using self-signed certificates.
      */
     splunkSecure?: pulumi.Input<boolean>;
     /**
-     * The Splunk access token
+     * The Splunk access token.
      */
     splunkToken?: pulumi.Input<string>;
     /**
-     * Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
+     * Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0.
      */
     sumoSourceAddress?: pulumi.Input<string>;
 }
 
 export interface OrganizationBranding {
     /**
-     * Color scheme used to customize the login pages
+     * Color scheme used to customize the login pages.
      */
     colors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * URL of logo to display on login page
+     * URL of logo to display on login page.
      */
     logoUrl?: pulumi.Input<string>;
 }
 
-export interface OrganizationConnection {
-    /**
-     * When true, all users that log in
-     * with this connection will be automatically granted membership in the
-     * organization. When false, users must be granted membership in the organization
-     * before logging in with this connection.
-     */
-    assignMembershipOnLogin?: pulumi.Input<boolean>;
-    /**
-     * The connection ID of the connection to add to the
-     * organization
-     */
-    connectionId: pulumi.Input<string>;
-}
-
 export interface ResourceServerScope {
     /**
-     * String. Description of the permission (scope).
+     * Description of the permission (scope).
      */
     description?: pulumi.Input<string>;
     /**
-     * String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+     * Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
      */
     value: pulumi.Input<string>;
 }
 
 export interface RolePermission {
     /**
-     * String. Name of the permission (scope).
+     * Name of the permission (scope).
      */
     name: pulumi.Input<string>;
     /**
-     * String. Unique identifier for the resource server.
+     * Unique identifier for the resource server.
      */
     resourceServerIdentifier: pulumi.Input<string>;
 }
 
 export interface TenantChangePassword {
     /**
-     * Boolean. Indicates whether to use the custom change password page.
+     * Indicates whether to use the custom change password page.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * String, HTML format with supported Liquid syntax. Customized content of the change password page.
+     * HTML format with supported Liquid syntax. Customized content of the change password page.
      */
     html: pulumi.Input<string>;
 }
 
 export interface TenantErrorPage {
     /**
-     * String, HTML format with supported Liquid syntax. Customized content of the error page.
+     * HTML format with supported Liquid syntax. Customized content of the error page.
      */
     html: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether to show the link to logs as part of the default error page.
+     * Indicates whether to show the link to logs as part of the default error page.
      */
     showLogLink: pulumi.Input<boolean>;
     /**
-     * String. URL to redirect to when an error occurs rather than showing the default error page.
+     * URL to redirect to when an error occurs rather than showing the default error page.
      */
     url: pulumi.Input<string>;
 }
 
 export interface TenantFlags {
     /**
-     * Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     * Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
      */
     allowLegacyDelegationGrantTypes?: pulumi.Input<boolean>;
     /**
-     * Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     * Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
      */
     allowLegacyRoGrantTypes?: pulumi.Input<boolean>;
     /**
-     * Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     * If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
      */
     allowLegacyTokeninfoEndpoint?: pulumi.Input<boolean>;
     /**
-     * Boolean. Enables new insights activity page view.
+     * Enables new insights activity page view.
      */
     dashboardInsightsView?: pulumi.Input<boolean>;
     /**
-     * Boolean. Enables beta access to log streaming changes.
+     * Enables beta access to log streaming changes.
      */
     dashboardLogStreamsNext?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      */
     disableClickjackProtectionHeaders?: pulumi.Input<boolean>;
     /**
-     * Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+     * Disables SAML fields map fix for bad mappings with repeated attributes.
      */
     disableFieldsMapFix?: pulumi.Input<boolean>;
     /**
-     * Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     * If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      */
     disableManagementApiSmsObfuscation?: pulumi.Input<boolean>;
     /**
-     * Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     * If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      */
     enableAdfsWaadEmailVerification?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether the APIs section is enabled for the tenant.
+     * Indicates whether the APIs section is enabled for the tenant.
      */
     enableApisSection?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether all current connections should be enabled when a new client is created.
+     * Indicates whether all current connections should be enabled when a new client is created.
      */
     enableClientConnections?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether the tenant allows custom domains in emails.
+     * Indicates whether the tenant allows custom domains in emails.
      */
     enableCustomDomainInEmails?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether the tenant allows dynamic client registration.
+     * Indicates whether the tenant allows dynamic client registration.
      */
     enableDynamicClientRegistration?: pulumi.Input<boolean>;
     /**
-     * Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+     * Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
      */
     enableIdtokenApi2?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether to use the older v2 legacy logs search.
+     * Indicates whether to use the older v2 legacy logs search.
      */
     enableLegacyLogsSearchV2?: pulumi.Input<boolean>;
     /**
-     * Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     * Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
      */
     enableLegacyProfile?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+     * Indicates whether advanced API Authorization scenarios are enabled.
      */
     enablePipeline2?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether the public sign up process shows a userExists error if the user already exists.
+     * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      */
     enablePublicSignupUserExistsError?: pulumi.Input<boolean>;
     /**
-     * Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      */
     noDiscloseEnterpriseConnections?: pulumi.Input<boolean>;
     /**
-     * Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+     * Delete underlying grant when a refresh token is revoked via the Authentication API.
      */
     revokeRefreshTokenGrant?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether the tenant uses universal login.
+     * Indicates whether the tenant uses Universal Login.
      */
     universalLogin?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether to use scope descriptions for consent.
+     */
     useScopeDescriptionsForConsent?: pulumi.Input<boolean>;
 }
 
 export interface TenantGuardianMfaPage {
     /**
-     * Boolean. Indicates whether to use the custom Guardian page.
+     * Indicates whether to use the custom Guardian page.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+     * HTML format with supported Liquid syntax. Customized content of the Guardian page.
      */
     html: pulumi.Input<string>;
 }
 
 export interface TenantSessionCookie {
+    /**
+     * Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+     */
     mode?: pulumi.Input<string>;
 }
 
 export interface TenantUniversalLogin {
     /**
-     * List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+     * Configuration settings for Universal Login colors.
      */
     colors?: pulumi.Input<inputs.TenantUniversalLoginColors>;
 }
 
 export interface TenantUniversalLoginColors {
-    /**
-     * String, Hexadecimal. Background color of login pages.
-     */
     pageBackground?: pulumi.Input<string>;
-    /**
-     * String, Hexadecimal. Primary button background color.
-     */
     primary?: pulumi.Input<string>;
 }
 
@@ -1364,7 +1437,7 @@ export interface TriggerBindingAction {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Trigger ID.
+     * Action ID.
      */
     id: pulumi.Input<string>;
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class TenantUniversalLogin
     {
         /// <summary>
-        /// List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+        /// Configuration settings for Universal Login colors.
         /// </summary>
         public readonly Outputs.TenantUniversalLoginColors? Colors;
 

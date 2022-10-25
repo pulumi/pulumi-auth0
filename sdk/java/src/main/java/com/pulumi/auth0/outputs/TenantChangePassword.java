@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class TenantChangePassword {
     /**
-     * @return Boolean. Indicates whether to use the custom change password page.
+     * @return Indicates whether to use the custom change password page.
      * 
      */
     private Boolean enabled;
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the change password page.
+     * @return HTML format with supported Liquid syntax. Customized content of the change password page.
      * 
      */
     private String html;
 
     private TenantChangePassword() {}
     /**
-     * @return Boolean. Indicates whether to use the custom change password page.
+     * @return Indicates whether to use the custom change password page.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the change password page.
+     * @return HTML format with supported Liquid syntax. Customized content of the change password page.
      * 
      */
     public String html() {

@@ -13,13 +13,7 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientMobileAndroid
     {
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly string? AppPackageName;
-        /// <summary>
-        /// List(String)
-        /// </summary>
         public readonly ImmutableArray<string> Sha256CertFingerprints;
 
         [OutputConstructor]

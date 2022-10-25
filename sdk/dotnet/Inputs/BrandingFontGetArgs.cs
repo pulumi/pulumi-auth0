@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingFontGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. URL for the custom font.
+        /// URL for the custom font.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

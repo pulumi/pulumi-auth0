@@ -12,10 +12,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionOptionsIdpInitiated {
     private @Nullable String clientAuthorizeQuery;
-    /**
-     * @return Google client ID.
-     * 
-     */
     private @Nullable String clientId;
     private @Nullable String clientProtocol;
 
@@ -23,10 +19,6 @@ public final class ConnectionOptionsIdpInitiated {
     public Optional<String> clientAuthorizeQuery() {
         return Optional.ofNullable(this.clientAuthorizeQuery);
     }
-    /**
-     * @return Google client ID.
-     * 
-     */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }

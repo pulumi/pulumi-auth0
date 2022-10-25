@@ -16,16 +16,32 @@ public final class GlobalClientMobileArgs extends com.pulumi.resources.ResourceA
 
     public static final GlobalClientMobileArgs Empty = new GlobalClientMobileArgs();
 
+    /**
+     * Configuration settings for Android native apps.
+     * 
+     */
     @Import(name="android")
     private @Nullable Output<GlobalClientMobileAndroidArgs> android;
 
+    /**
+     * @return Configuration settings for Android native apps.
+     * 
+     */
     public Optional<Output<GlobalClientMobileAndroidArgs>> android() {
         return Optional.ofNullable(this.android);
     }
 
+    /**
+     * Configuration settings for i0S native apps.
+     * 
+     */
     @Import(name="ios")
     private @Nullable Output<GlobalClientMobileIosArgs> ios;
 
+    /**
+     * @return Configuration settings for i0S native apps.
+     * 
+     */
     public Optional<Output<GlobalClientMobileIosArgs>> ios() {
         return Optional.ofNullable(this.ios);
     }
@@ -55,20 +71,44 @@ public final class GlobalClientMobileArgs extends com.pulumi.resources.ResourceA
             $ = new GlobalClientMobileArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param android Configuration settings for Android native apps.
+         * 
+         * @return builder
+         * 
+         */
         public Builder android(@Nullable Output<GlobalClientMobileAndroidArgs> android) {
             $.android = android;
             return this;
         }
 
+        /**
+         * @param android Configuration settings for Android native apps.
+         * 
+         * @return builder
+         * 
+         */
         public Builder android(GlobalClientMobileAndroidArgs android) {
             return android(Output.of(android));
         }
 
+        /**
+         * @param ios Configuration settings for i0S native apps.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ios(@Nullable Output<GlobalClientMobileIosArgs> ios) {
             $.ios = ios;
             return this;
         }
 
+        /**
+         * @param ios Configuration settings for i0S native apps.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ios(GlobalClientMobileIosArgs ios) {
             return ios(Output.of(ios));
         }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,7 +55,7 @@ import (
 //
 // ## Import
 //
-// Existing resource servers can be imported using their id, e.g.
+// # Existing resource servers can be imported using their ID. # # Example
 //
 // ```sh
 //
@@ -64,31 +65,31 @@ import (
 type ResourceServer struct {
 	pulumi.CustomResourceState
 
-	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
+	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrOutput `pulumi:"allowOfflineAccess"`
-	// Boolean. Indicates whether authorization polices are enforced.
-	EnforcePolicies pulumi.BoolPtrOutput `pulumi:"enforcePolicies"`
-	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
-	Identifier pulumi.StringPtrOutput `pulumi:"identifier"`
-	// String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
+	EnforcePolicies pulumi.BoolOutput `pulumi:"enforcePolicies"`
+	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Map(String). Used to store additional metadata
+	// Used to store additional metadata.
 	Options pulumi.StringMapOutput `pulumi:"options"`
-	// Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+	// List of permissions (scopes) used by this resource server.
 	Scopes ResourceServerScopeArrayOutput `pulumi:"scopes"`
-	// String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringOutput `pulumi:"signingAlg"`
-	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
+	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringOutput `pulumi:"signingSecret"`
-	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
-	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrOutput `pulumi:"skipConsentForVerifiableFirstPartyClients"`
-	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+	// Indicates whether to skip user consent for applications flagged as first party.
+	SkipConsentForVerifiableFirstPartyClients pulumi.BoolOutput `pulumi:"skipConsentForVerifiableFirstPartyClients"`
+	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
 	TokenDialect pulumi.StringPtrOutput `pulumi:"tokenDialect"`
-	// Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntOutput `pulumi:"tokenLifetime"`
-	// Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntOutput `pulumi:"tokenLifetimeForWeb"`
-	// String
+	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
 	VerificationLocation pulumi.StringPtrOutput `pulumi:"verificationLocation"`
 }
 
@@ -96,9 +97,12 @@ type ResourceServer struct {
 func NewResourceServer(ctx *pulumi.Context,
 	name string, args *ResourceServerArgs, opts ...pulumi.ResourceOption) (*ResourceServer, error) {
 	if args == nil {
-		args = &ResourceServerArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Identifier == nil {
+		return nil, errors.New("invalid value for required argument 'Identifier'")
+	}
 	var resource ResourceServer
 	err := ctx.RegisterResource("auth0:index/resourceServer:ResourceServer", name, args, &resource, opts...)
 	if err != nil {
@@ -121,60 +125,60 @@ func GetResourceServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceServer resources.
 type resourceServerState struct {
-	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
+	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
-	// Boolean. Indicates whether authorization polices are enforced.
+	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies *bool `pulumi:"enforcePolicies"`
-	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier *string `pulumi:"identifier"`
-	// String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
-	// Map(String). Used to store additional metadata
+	// Used to store additional metadata.
 	Options map[string]string `pulumi:"options"`
-	// Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+	// List of permissions (scopes) used by this resource server.
 	Scopes []ResourceServerScope `pulumi:"scopes"`
-	// String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
-	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
+	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret *string `pulumi:"signingSecret"`
-	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
+	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients *bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
-	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
 	TokenDialect *string `pulumi:"tokenDialect"`
-	// Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime *int `pulumi:"tokenLifetime"`
-	// Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb *int `pulumi:"tokenLifetimeForWeb"`
-	// String
+	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
 	VerificationLocation *string `pulumi:"verificationLocation"`
 }
 
 type ResourceServerState struct {
-	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
+	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrInput
-	// Boolean. Indicates whether authorization polices are enforced.
+	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies pulumi.BoolPtrInput
-	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier pulumi.StringPtrInput
-	// String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
-	// Map(String). Used to store additional metadata
+	// Used to store additional metadata.
 	Options pulumi.StringMapInput
-	// Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+	// List of permissions (scopes) used by this resource server.
 	Scopes ResourceServerScopeArrayInput
-	// String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringPtrInput
-	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
+	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringPtrInput
-	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
+	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrInput
-	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
 	TokenDialect pulumi.StringPtrInput
-	// Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntPtrInput
-	// Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntPtrInput
-	// String
+	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
 	VerificationLocation pulumi.StringPtrInput
 }
 
@@ -183,61 +187,61 @@ func (ResourceServerState) ElementType() reflect.Type {
 }
 
 type resourceServerArgs struct {
-	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
+	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
-	// Boolean. Indicates whether authorization polices are enforced.
+	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies *bool `pulumi:"enforcePolicies"`
-	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
-	Identifier *string `pulumi:"identifier"`
-	// String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
+	Identifier string `pulumi:"identifier"`
+	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
-	// Map(String). Used to store additional metadata
+	// Used to store additional metadata.
 	Options map[string]string `pulumi:"options"`
-	// Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+	// List of permissions (scopes) used by this resource server.
 	Scopes []ResourceServerScope `pulumi:"scopes"`
-	// String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
-	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
+	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret *string `pulumi:"signingSecret"`
-	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
+	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients *bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
-	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
 	TokenDialect *string `pulumi:"tokenDialect"`
-	// Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime *int `pulumi:"tokenLifetime"`
-	// Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb *int `pulumi:"tokenLifetimeForWeb"`
-	// String
+	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
 	VerificationLocation *string `pulumi:"verificationLocation"`
 }
 
 // The set of arguments for constructing a ResourceServer resource.
 type ResourceServerArgs struct {
-	// Boolean. Indicates whether refresh tokens can be issued for this resource server.
+	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrInput
-	// Boolean. Indicates whether authorization polices are enforced.
+	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
 	EnforcePolicies pulumi.BoolPtrInput
-	// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
-	Identifier pulumi.StringPtrInput
-	// String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
+	Identifier pulumi.StringInput
+	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
-	// Map(String). Used to store additional metadata
+	// Used to store additional metadata.
 	Options pulumi.StringMapInput
-	// Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+	// List of permissions (scopes) used by this resource server.
 	Scopes ResourceServerScopeArrayInput
-	// String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringPtrInput
-	// String. Secret used to sign tokens when using symmetric algorithms (HS256).
+	// Secret used to sign tokens when using symmetric algorithms (HS256).
 	SigningSecret pulumi.StringPtrInput
-	// Boolean. Indicates whether to skip user consent for applications flagged as first party.
+	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrInput
-	// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
 	TokenDialect pulumi.StringPtrInput
-	// Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntPtrInput
-	// Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntPtrInput
-	// String
+	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
 	VerificationLocation pulumi.StringPtrInput
 }
 
@@ -328,67 +332,67 @@ func (o ResourceServerOutput) ToResourceServerOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Boolean. Indicates whether refresh tokens can be issued for this resource server.
+// Indicates whether refresh tokens can be issued for this resource server.
 func (o ResourceServerOutput) AllowOfflineAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.BoolPtrOutput { return v.AllowOfflineAccess }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean. Indicates whether authorization polices are enforced.
-func (o ResourceServerOutput) EnforcePolicies() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ResourceServer) pulumi.BoolPtrOutput { return v.EnforcePolicies }).(pulumi.BoolPtrOutput)
+// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
+func (o ResourceServerOutput) EnforcePolicies() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.BoolOutput { return v.EnforcePolicies }).(pulumi.BoolOutput)
 }
 
-// String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
-func (o ResourceServerOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceServer) pulumi.StringPtrOutput { return v.Identifier }).(pulumi.StringPtrOutput)
+// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
+func (o ResourceServerOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+// Friendly name for the resource server. Cannot include `<` or `>` characters.
 func (o ResourceServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Map(String). Used to store additional metadata
+// Used to store additional metadata.
 func (o ResourceServerOutput) Options() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
 }
 
-// Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+// List of permissions (scopes) used by this resource server.
 func (o ResourceServerOutput) Scopes() ResourceServerScopeArrayOutput {
 	return o.ApplyT(func(v *ResourceServer) ResourceServerScopeArrayOutput { return v.Scopes }).(ResourceServerScopeArrayOutput)
 }
 
-// String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 func (o ResourceServerOutput) SigningAlg() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.SigningAlg }).(pulumi.StringOutput)
 }
 
-// String. Secret used to sign tokens when using symmetric algorithms (HS256).
+// Secret used to sign tokens when using symmetric algorithms (HS256).
 func (o ResourceServerOutput) SigningSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.SigningSecret }).(pulumi.StringOutput)
 }
 
-// Boolean. Indicates whether to skip user consent for applications flagged as first party.
-func (o ResourceServerOutput) SkipConsentForVerifiableFirstPartyClients() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ResourceServer) pulumi.BoolPtrOutput { return v.SkipConsentForVerifiableFirstPartyClients }).(pulumi.BoolPtrOutput)
+// Indicates whether to skip user consent for applications flagged as first party.
+func (o ResourceServerOutput) SkipConsentForVerifiableFirstPartyClients() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.BoolOutput { return v.SkipConsentForVerifiableFirstPartyClients }).(pulumi.BoolOutput)
 }
 
-// String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+// Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
 func (o ResourceServerOutput) TokenDialect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringPtrOutput { return v.TokenDialect }).(pulumi.StringPtrOutput)
 }
 
-// Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 func (o ResourceServerOutput) TokenLifetime() pulumi.IntOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.IntOutput { return v.TokenLifetime }).(pulumi.IntOutput)
 }
 
-// Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 func (o ResourceServerOutput) TokenLifetimeForWeb() pulumi.IntOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.IntOutput { return v.TokenLifetimeForWeb }).(pulumi.IntOutput)
 }
 
-// String
+// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
 func (o ResourceServerOutput) VerificationLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringPtrOutput { return v.VerificationLocation }).(pulumi.StringPtrOutput)
 }

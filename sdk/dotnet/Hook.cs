@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected
-    /// extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
-    /// 
-    /// Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
+    /// Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code. Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
     /// 
     /// ## Example Usage
     /// 
@@ -31,10 +28,10 @@ namespace Pulumi.Auth0
     ///             { "auth0", "2.30.0" },
     ///         },
     ///         Enabled = true,
-    ///         Script = @"function (user, context, callback) {
-    ///   callback(null, { user });
-    /// }
-    /// 
+    ///         Script = @"    function (user, context, callback) {
+    ///       callback(null, { user });
+    ///     }
+    ///   
     /// ",
     ///         Secrets = 
     ///         {
@@ -48,7 +45,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// A hook can be imported using the hook's ID, e.g.
+    /// # A hook can be imported using the hook's ID. # # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/hook:Hook my_hook 00001
@@ -82,14 +79,13 @@ namespace Pulumi.Auth0
         public Output<string> Script { get; private set; } = null!;
 
         /// <summary>
-        /// Map(String), sets the hook secrets associated with this hook. 
-        /// If specified, any secrets not listed here will be removed from the hook.
+        /// The secrets associated with the hook.
         /// </summary>
         [Output("secrets")]
         public Output<ImmutableDictionary<string, object>?> Secrets { get; private set; } = null!;
 
         /// <summary>
-        /// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+        /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         /// </summary>
         [Output("triggerId")]
         public Output<string> TriggerId { get; private set; } = null!;
@@ -174,8 +170,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _secrets;
 
         /// <summary>
-        /// Map(String), sets the hook secrets associated with this hook. 
-        /// If specified, any secrets not listed here will be removed from the hook.
+        /// The secrets associated with the hook.
         /// </summary>
         public InputMap<object> Secrets
         {
@@ -184,7 +179,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+        /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         /// </summary>
         [Input("triggerId", required: true)]
         public Input<string> TriggerId { get; set; } = null!;
@@ -231,8 +226,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _secrets;
 
         /// <summary>
-        /// Map(String), sets the hook secrets associated with this hook. 
-        /// If specified, any secrets not listed here will be removed from the hook.
+        /// The secrets associated with the hook.
         /// </summary>
         public InputMap<object> Secrets
         {
@@ -241,7 +235,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+        /// Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         /// </summary>
         [Input("triggerId")]
         public Input<string>? TriggerId { get; set; }

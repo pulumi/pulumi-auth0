@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GlobalClientMobile
     {
+        /// <summary>
+        /// Configuration settings for Android native apps.
+        /// </summary>
         public readonly Outputs.GlobalClientMobileAndroid? Android;
+        /// <summary>
+        /// Configuration settings for i0S native apps.
+        /// </summary>
         public readonly Outputs.GlobalClientMobileIos? Ios;
 
         [OutputConstructor]

@@ -21,10 +21,10 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Auth0.Prompt("example", new()
+    ///     var myPrompt = new Auth0.Prompt("myPrompt", new()
     ///     {
     ///         IdentifierFirst = false,
-    ///         UniversalLoginExperience = "classic",
+    ///         UniversalLoginExperience = "new",
     ///         WebauthnPlatformFirstFactor = true,
     ///     });
     /// 
@@ -33,17 +33,17 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// As this is not a resource identifiable by an ID within the Auth0 Management API, prompt can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// # As this is not a resource identifiable by an ID within the Auth0 Management API, # prompts can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/prompt:Prompt example 22f4f21b-017a-319d-92e7-2291c1ca36c4
+    ///  $ pulumi import auth0:index/prompt:Prompt my_prompt 22f4f21b-017a-319d-92e7-2291c1ca36c4
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/prompt:Prompt")]
     public partial class Prompt : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        /// Indicates whether the identifier first is used when using the new Universal Login experience.
         /// </summary>
         [Output("identifierFirst")]
         public Output<bool?> IdentifierFirst { get; private set; } = null!;
@@ -52,13 +52,13 @@ namespace Pulumi.Auth0
         /// Which login experience to use. Options include `classic` and `new`.
         /// </summary>
         [Output("universalLoginExperience")]
-        public Output<string?> UniversalLoginExperience { get; private set; } = null!;
+        public Output<string> UniversalLoginExperience { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Determines if the login screen uses identifier and biometrics first.
+        /// Determines if the login screen uses identifier and biometrics first.
         /// </summary>
         [Output("webauthnPlatformFirstFactor")]
-        public Output<bool?> WebauthnPlatformFirstFactor { get; private set; } = null!;
+        public Output<bool> WebauthnPlatformFirstFactor { get; private set; } = null!;
 
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Pulumi.Auth0
     public sealed class PromptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        /// Indicates whether the identifier first is used when using the new Universal Login experience.
         /// </summary>
         [Input("identifierFirst")]
         public Input<bool>? IdentifierFirst { get; set; }
@@ -119,7 +119,7 @@ namespace Pulumi.Auth0
         public Input<string>? UniversalLoginExperience { get; set; }
 
         /// <summary>
-        /// Boolean. Determines if the login screen uses identifier and biometrics first.
+        /// Determines if the login screen uses identifier and biometrics first.
         /// </summary>
         [Input("webauthnPlatformFirstFactor")]
         public Input<bool>? WebauthnPlatformFirstFactor { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.Auth0
     public sealed class PromptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        /// Indicates whether the identifier first is used when using the new Universal Login experience.
         /// </summary>
         [Input("identifierFirst")]
         public Input<bool>? IdentifierFirst { get; set; }
@@ -145,7 +145,7 @@ namespace Pulumi.Auth0
         public Input<string>? UniversalLoginExperience { get; set; }
 
         /// <summary>
-        /// Boolean. Determines if the login screen uses identifier and biometrics first.
+        /// Determines if the login screen uses identifier and biometrics first.
         /// </summary>
         [Input("webauthnPlatformFirstFactor")]
         public Input<bool>? WebauthnPlatformFirstFactor { get; set; }

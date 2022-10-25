@@ -12,9 +12,6 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ConnectionOptionsValidationArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specifies the `min` and `max` values of username length. `min` and `max` are integers.
-        /// </summary>
         [Input("username")]
         public Input<Inputs.ConnectionOptionsValidationUsernameArgs>? Username { get; set; }
 

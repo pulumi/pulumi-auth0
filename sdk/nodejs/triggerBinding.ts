@@ -6,12 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can bind an action to a trigger. Once an action is
- * created and deployed, it can be attached (i.e. bound) to a trigger so that it
- * will be executed as part of a flow.
- *
- * The list of actions reflects the order in which they will be executed during the
- * appropriate flow.
+ * With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
  *
  * ## Example Usage
  *
@@ -20,26 +15,26 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const actionFoo = new auth0.Action("actionFoo", {
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v2",
- *     },
- *     code: `exports.onContinuePostLogin = async (event, api) => { 
- * 	console.log("foo") 
+ *     code: `exports.onContinuePostLogin = async (event, api) => {
+ *   console.log("foo");
  * };"
  * `,
  *     deploy: true,
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
  * });
  * const actionBar = new auth0.Action("actionBar", {
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v2",
- *     },
- *     code: `exports.onContinuePostLogin = async (event, api) => { 
- * 	console.log("bar") 
+ *     code: `exports.onContinuePostLogin = async (event, api) => {
+ *   console.log("bar");
  * };"
  * `,
  *     deploy: true,
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
  * });
  * const loginFlow = new auth0.TriggerBinding("loginFlow", {
  *     trigger: "post-login",
@@ -58,7 +53,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * auth0_trigger_binding can be imported using the bindings trigger ID, e.g.
+ * # This resource can be imported using the bindings trigger ID. # # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/triggerBinding:TriggerBinding example "post-login"
@@ -93,12 +88,11 @@ export class TriggerBinding extends pulumi.CustomResource {
     }
 
     /**
-     * The actions bound to this trigger. For details, see
-     * Actions.
+     * The actions bound to this trigger
      */
     public readonly actions!: pulumi.Output<outputs.TriggerBindingAction[]>;
     /**
-     * The id of the trigger to bind with
+     * The ID of the trigger to bind with.
      */
     public readonly trigger!: pulumi.Output<string>;
 
@@ -138,12 +132,11 @@ export class TriggerBinding extends pulumi.CustomResource {
  */
 export interface TriggerBindingState {
     /**
-     * The actions bound to this trigger. For details, see
-     * Actions.
+     * The actions bound to this trigger
      */
     actions?: pulumi.Input<pulumi.Input<inputs.TriggerBindingAction>[]>;
     /**
-     * The id of the trigger to bind with
+     * The ID of the trigger to bind with.
      */
     trigger?: pulumi.Input<string>;
 }
@@ -153,12 +146,11 @@ export interface TriggerBindingState {
  */
 export interface TriggerBindingArgs {
     /**
-     * The actions bound to this trigger. For details, see
-     * Actions.
+     * The actions bound to this trigger
      */
     actions: pulumi.Input<pulumi.Input<inputs.TriggerBindingAction>[]>;
     /**
-     * The id of the trigger to bind with
+     * The ID of the trigger to bind with.
      */
     trigger: pulumi.Input<string>;
 }

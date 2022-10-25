@@ -29,14 +29,14 @@ public final class TriggerBindingActionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Trigger ID.
+     * Action ID.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Trigger ID.
+     * @return Action ID.
      * 
      */
     public Output<String> id() {
@@ -90,7 +90,7 @@ public final class TriggerBindingActionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id Trigger ID.
+         * @param id Action ID.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class TriggerBindingActionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id Trigger ID.
+         * @param id Action ID.
          * 
          * @return builder
          * 

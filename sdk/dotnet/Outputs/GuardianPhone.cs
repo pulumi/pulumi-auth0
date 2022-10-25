@@ -14,15 +14,15 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GuardianPhone
     {
         /// <summary>
-        /// List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+        /// Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
         /// </summary>
         public readonly ImmutableArray<string> MessageTypes;
         /// <summary>
-        /// List(Resource). Options for the various providers. See Options.
+        /// Options for the various providers.
         /// </summary>
         public readonly Outputs.GuardianPhoneOptions? Options;
         /// <summary>
-        /// String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        /// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
         /// </summary>
         public readonly string Provider;
 

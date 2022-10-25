@@ -12,15 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientNativeSocialLoginArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Resource:
-        /// </summary>
         [Input("apple")]
         public Input<Inputs.ClientNativeSocialLoginAppleArgs>? Apple { get; set; }
 
-        /// <summary>
-        /// Resources:
-        /// </summary>
         [Input("facebook")]
         public Input<Inputs.ClientNativeSocialLoginFacebookArgs>? Facebook { get; set; }
 

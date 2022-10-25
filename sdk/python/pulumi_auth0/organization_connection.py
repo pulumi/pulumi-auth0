@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['OrganizationConnectionInitArgs', 'OrganizationConnection']
+__all__ = ['OrganizationConnectionArgs', 'OrganizationConnection']
 
 @pulumi.input_type
-class OrganizationConnectionInitArgs:
+class OrganizationConnectionArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
@@ -171,18 +171,20 @@ class OrganizationConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        example = auth0.OrganizationConnection("example",
-            assign_membership_on_login=True,
-            connection_id="con_XXXXXXXXXX",
-            organization_id="org_XXXXXXXXXX")
+        my_connection = auth0.Connection("myConnection", strategy="auth0")
+        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
+        my_org_conn = auth0.OrganizationConnection("myOrgConn",
+            organization_id=my_organization.id,
+            connection_id=my_connection.id,
+            assign_membership_on_login=True)
         ```
 
         ## Import
 
-        As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+        # This resource can be imported by specifying the # organization ID and connection ID separated by ":". # # Example
 
         ```sh
-         $ pulumi import auth0:index/organizationConnection:OrganizationConnection example 11f4a21b-011a-312d-9217-e291caca36c4
+         $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn org_XXXXX:con_XXXXX
         ```
 
         :param str resource_name: The name of the resource.
@@ -195,7 +197,7 @@ class OrganizationConnection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationConnectionInitArgs,
+                 args: OrganizationConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage enabled connections on an organization.
@@ -206,27 +208,29 @@ class OrganizationConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        example = auth0.OrganizationConnection("example",
-            assign_membership_on_login=True,
-            connection_id="con_XXXXXXXXXX",
-            organization_id="org_XXXXXXXXXX")
+        my_connection = auth0.Connection("myConnection", strategy="auth0")
+        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
+        my_org_conn = auth0.OrganizationConnection("myOrgConn",
+            organization_id=my_organization.id,
+            connection_id=my_connection.id,
+            assign_membership_on_login=True)
         ```
 
         ## Import
 
-        As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+        # This resource can be imported by specifying the # organization ID and connection ID separated by ":". # # Example
 
         ```sh
-         $ pulumi import auth0:index/organizationConnection:OrganizationConnection example 11f4a21b-011a-312d-9217-e291caca36c4
+         $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn org_XXXXX:con_XXXXX
         ```
 
         :param str resource_name: The name of the resource.
-        :param OrganizationConnectionInitArgs args: The arguments to use to populate this resource's properties.
+        :param OrganizationConnectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OrganizationConnectionInitArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -245,7 +249,7 @@ class OrganizationConnection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OrganizationConnectionInitArgs.__new__(OrganizationConnectionInitArgs)
+            __props__ = OrganizationConnectionArgs.__new__(OrganizationConnectionArgs)
 
             __props__.__dict__["assign_membership_on_login"] = assign_membership_on_login
             if connection_id is None and not opts.urn:

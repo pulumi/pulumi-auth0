@@ -14,40 +14,43 @@ namespace Pulumi.Auth0.Outputs
     public sealed class EmailCredentials
     {
         /// <summary>
-        /// String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+        /// AWS Access Key ID. Used only for AWS.
         /// </summary>
         public readonly string? AccessKeyId;
         /// <summary>
-        /// String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+        /// API Key for your email service. Will always be encrypted in our database.
         /// </summary>
         public readonly string? ApiKey;
         /// <summary>
-        /// String. API User for your email service.
+        /// API User for your email service.
         /// </summary>
         public readonly string? ApiUser;
+        /// <summary>
+        /// Domain name.
+        /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// String. Default region. Used only for AWS, Mailgun, and SparkPost.
+        /// Default region. Used only for AWS, Mailgun, and SparkPost.
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+        /// AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
         /// </summary>
         public readonly string? SecretAccessKey;
         /// <summary>
-        /// String. Hostname or IP address of your SMTP server. Used only for SMTP.
+        /// Hostname or IP address of your SMTP server. Used only for SMTP.
         /// </summary>
         public readonly string? SmtpHost;
         /// <summary>
-        /// String, Case-sensitive. SMTP password. Used only for SMTP.
+        /// SMTP password. Used only for SMTP.
         /// </summary>
         public readonly string? SmtpPass;
         /// <summary>
-        /// Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+        /// Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
         /// </summary>
         public readonly int? SmtpPort;
         /// <summary>
-        /// String. SMTP username. Used only for SMTP.
+        /// SMTP username. Used only for SMTP.
         /// </summary>
         public readonly string? SmtpUser;
 

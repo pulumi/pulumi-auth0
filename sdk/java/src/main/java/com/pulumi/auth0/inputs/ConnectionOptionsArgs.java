@@ -17,6 +17,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -59,22 +60,30 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.allowedAudiences);
     }
 
+    /**
+     * Enable API Access to users.
+     * 
+     */
     @Import(name="apiEnableUsers")
     private @Nullable Output<Boolean> apiEnableUsers;
 
+    /**
+     * @return Enable API Access to users.
+     * 
+     */
     public Optional<Output<Boolean>> apiEnableUsers() {
         return Optional.ofNullable(this.apiEnableUsers);
     }
 
     /**
-     * Azure AD app ID.
+     * App ID.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return Azure AD app ID.
+     * @return App ID.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -82,36 +91,44 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+     * Query string parameters to be included as part of the generated passwordless email link.
      * 
      */
     @Import(name="authParams")
     private @Nullable Output<Map<String,String>> authParams;
 
     /**
-     * @return Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+     * @return Query string parameters to be included as part of the generated passwordless email link.
      * 
      */
     public Optional<Output<Map<String,String>>> authParams() {
         return Optional.ofNullable(this.authParams);
     }
 
+    /**
+     * Authorization endpoint.
+     * 
+     */
     @Import(name="authorizationEndpoint")
     private @Nullable Output<String> authorizationEndpoint;
 
+    /**
+     * @return Authorization endpoint.
+     * 
+     */
     public Optional<Output<String>> authorizationEndpoint() {
         return Optional.ofNullable(this.authorizationEndpoint);
     }
 
     /**
-     * Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     * Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      * 
      */
     @Import(name="bruteForceProtection")
     private @Nullable Output<Boolean> bruteForceProtection;
 
     /**
-     * @return Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     * @return Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      * 
      */
     public Optional<Output<Boolean>> bruteForceProtection() {
@@ -119,14 +136,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * OIDC provider client ID.
+     * The strategy&#39;s client ID.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return OIDC provider client ID.
+     * @return The strategy&#39;s client ID.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -134,14 +151,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * OIDC provider client secret.
+     * The strategy&#39;s client secret.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return OIDC provider client secret.
+     * @return The strategy&#39;s client secret.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -149,14 +166,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * String.
+     * Salesforce community base URL.
      * 
      */
     @Import(name="communityBaseUrl")
     private @Nullable Output<String> communityBaseUrl;
 
     /**
-     * @return String.
+     * @return Salesforce community base URL.
      * 
      */
     public Optional<Output<String>> communityBaseUrl() {
@@ -168,25 +185,25 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="configuration")
-    private @Nullable Output<Map<String,String>> configuration;
+    private @Nullable Output<Map<String,Object>> configuration;
 
     /**
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    public Optional<Output<Map<String,String>>> configuration() {
+    public Optional<Output<Map<String,Object>>> configuration() {
         return Optional.ofNullable(this.configuration);
     }
 
     /**
-     * Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+     * A map of scripts used to integrate with a custom database.
      * 
      */
     @Import(name="customScripts")
     private @Nullable Output<Map<String,String>> customScripts;
 
     /**
-     * @return Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+     * @return A map of scripts used to integrate with a custom database.
      * 
      */
     public Optional<Output<Map<String,String>>> customScripts() {
@@ -194,14 +211,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Boolean) When enabled additional debugging information will be generated.
+     * When enabled, additional debug information will be generated.
      * 
      */
     @Import(name="debug")
     private @Nullable Output<Boolean> debug;
 
     /**
-     * @return (Boolean) When enabled additional debugging information will be generated.
+     * @return When enabled, additional debug information will be generated.
      * 
      */
     public Optional<Output<Boolean>> debug() {
@@ -209,36 +226,44 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Sign Request Algorithm Digest
+     * Sign Request Algorithm Digest.
      * 
      */
     @Import(name="digestAlgorithm")
     private @Nullable Output<String> digestAlgorithm;
 
     /**
-     * @return Sign Request Algorithm Digest
+     * @return Sign Request Algorithm Digest.
      * 
      */
     public Optional<Output<String>> digestAlgorithm() {
         return Optional.ofNullable(this.digestAlgorithm);
     }
 
+    /**
+     * Indicates whether to disable the cache or not.
+     * 
+     */
     @Import(name="disableCache")
     private @Nullable Output<Boolean> disableCache;
 
+    /**
+     * @return Indicates whether to disable the cache or not.
+     * 
+     */
     public Optional<Output<Boolean>> disableCache() {
         return Optional.ofNullable(this.disableCache);
     }
 
     /**
-     * (Boolean) Disables or enables user sign out.
+     * When enabled, will disable sign out.
      * 
      */
     @Import(name="disableSignOut")
     private @Nullable Output<Boolean> disableSignOut;
 
     /**
-     * @return (Boolean) Disables or enables user sign out.
+     * @return When enabled, will disable sign out.
      * 
      */
     public Optional<Output<Boolean>> disableSignOut() {
@@ -246,14 +271,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Boolean. Indicates whether or not to allow user sign-ups to your application.
+     * Indicates whether to allow user sign-ups to your application.
      * 
      */
     @Import(name="disableSignup")
     private @Nullable Output<Boolean> disableSignup;
 
     /**
-     * @return Boolean. Indicates whether or not to allow user sign-ups to your application.
+     * @return Indicates whether to allow user sign-ups to your application.
      * 
      */
     public Optional<Output<Boolean>> disableSignup() {
@@ -261,14 +286,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
      * 
      */
     @Import(name="discoveryUrl")
     private @Nullable Output<String> discoveryUrl;
 
     /**
-     * @return OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
      * 
      */
     public Optional<Output<String>> discoveryUrl() {
@@ -276,14 +301,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Azure AD domain name.
+     * Domain name.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Azure AD domain name.
+     * @return Domain name.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -291,23 +316,31 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+     * List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      * 
      */
     @Import(name="domainAliases")
     private @Nullable Output<List<String>> domainAliases;
 
     /**
-     * @return List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+     * @return List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      * 
      */
     public Optional<Output<List<String>>> domainAliases() {
         return Optional.ofNullable(this.domainAliases);
     }
 
+    /**
+     * Set to `true` to use a legacy user store.
+     * 
+     */
     @Import(name="enabledDatabaseCustomization")
     private @Nullable Output<Boolean> enabledDatabaseCustomization;
 
+    /**
+     * @return Set to `true` to use a legacy user store.
+     * 
+     */
     public Optional<Output<Boolean>> enabledDatabaseCustomization() {
         return Optional.ofNullable(this.enabledDatabaseCustomization);
     }
@@ -328,79 +361,119 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * SAML Attributes mapping. If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     * If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
      */
     @Import(name="fieldsMap")
     private @Nullable Output<String> fieldsMap;
 
     /**
-     * @return SAML Attributes mapping. If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
      */
     public Optional<Output<String>> fieldsMap() {
         return Optional.ofNullable(this.fieldsMap);
     }
 
+    /**
+     * Specifies whether or not request info should be forwarded to sms gateway.
+     * 
+     */
     @Import(name="forwardRequestInfo")
     private @Nullable Output<Boolean> forwardRequestInfo;
 
+    /**
+     * @return Specifies whether or not request info should be forwarded to sms gateway.
+     * 
+     */
     public Optional<Output<Boolean>> forwardRequestInfo() {
         return Optional.ofNullable(this.forwardRequestInfo);
     }
 
     /**
-     * SMS number for the sender. Used when SMS Source is From.
+     * Address to use as the sender.
      * 
      */
     @Import(name="from")
     private @Nullable Output<String> from;
 
     /**
-     * @return SMS number for the sender. Used when SMS Source is From.
+     * @return Address to use as the sender.
      * 
      */
     public Optional<Output<String>> from() {
         return Optional.ofNullable(this.from);
     }
 
+    /**
+     * Defines the parameters used to generate the auth token for the custom gateway.
+     * 
+     */
     @Import(name="gatewayAuthentication")
     private @Nullable Output<ConnectionOptionsGatewayAuthenticationArgs> gatewayAuthentication;
 
+    /**
+     * @return Defines the parameters used to generate the auth token for the custom gateway.
+     * 
+     */
     public Optional<Output<ConnectionOptionsGatewayAuthenticationArgs>> gatewayAuthentication() {
         return Optional.ofNullable(this.gatewayAuthentication);
     }
 
+    /**
+     * Defines a custom sms gateway to use instead of Twilio.
+     * 
+     */
     @Import(name="gatewayUrl")
     private @Nullable Output<String> gatewayUrl;
 
+    /**
+     * @return Defines a custom sms gateway to use instead of Twilio.
+     * 
+     */
     public Optional<Output<String>> gatewayUrl() {
         return Optional.ofNullable(this.gatewayUrl);
     }
 
+    /**
+     * Icon URL.
+     * 
+     */
     @Import(name="iconUrl")
     private @Nullable Output<String> iconUrl;
 
+    /**
+     * @return Icon URL.
+     * 
+     */
     public Optional<Output<String>> iconUrl() {
         return Optional.ofNullable(this.iconUrl);
     }
 
+    /**
+     * Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+     * 
+     */
     @Import(name="identityApi")
     private @Nullable Output<String> identityApi;
 
+    /**
+     * @return Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+     * 
+     */
     public Optional<Output<String>> identityApi() {
         return Optional.ofNullable(this.identityApi);
     }
 
     /**
-     * Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+     * Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
      * 
      */
     @Import(name="idpInitiated")
     private @Nullable Output<ConnectionOptionsIdpInitiatedArgs> idpInitiated;
 
     /**
-     * @return Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
      * 
      */
     public Optional<Output<ConnectionOptionsIdpInitiatedArgs>> idpInitiated() {
@@ -408,58 +481,74 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+     * Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
      * 
      */
     @Import(name="importMode")
     private @Nullable Output<Boolean> importMode;
 
     /**
-     * @return Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+     * @return Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
      * 
      */
     public Optional<Output<Boolean>> importMode() {
         return Optional.ofNullable(this.importMode);
     }
 
+    /**
+     * A list of IPs.
+     * 
+     */
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
+    /**
+     * @return A list of IPs.
+     * 
+     */
     public Optional<Output<List<String>>> ips() {
         return Optional.ofNullable(this.ips);
     }
 
     /**
-     * Issuer URL. E.g. `https://auth.example.com`
+     * Issuer URL, e.g. `https://auth.example.com`.
      * 
      */
     @Import(name="issuer")
     private @Nullable Output<String> issuer;
 
     /**
-     * @return Issuer URL. E.g. `https://auth.example.com`
+     * @return Issuer URL, e.g. `https://auth.example.com`.
      * 
      */
     public Optional<Output<String>> issuer() {
         return Optional.ofNullable(this.issuer);
     }
 
+    /**
+     * JWKS URI.
+     * 
+     */
     @Import(name="jwksUri")
     private @Nullable Output<String> jwksUri;
 
+    /**
+     * @return JWKS URI.
+     * 
+     */
     public Optional<Output<String>> jwksUri() {
         return Optional.ofNullable(this.jwksUri);
     }
 
     /**
-     * Key ID.
+     * Apple Key ID.
      * 
      */
     @Import(name="keyId")
     private @Nullable Output<String> keyId;
 
     /**
-     * @return Key ID.
+     * @return Apple Key ID.
      * 
      */
     public Optional<Output<String>> keyId() {
@@ -497,14 +586,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * URL of the SAML metadata document.
+     * The URL of the SAML metadata document.
      * 
      */
     @Import(name="metadataUrl")
     private @Nullable Output<String> metadataUrl;
 
     /**
-     * @return URL of the SAML metadata document.
+     * @return The URL of the SAML metadata document.
      * 
      */
     public Optional<Output<String>> metadataUrl() {
@@ -512,14 +601,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * XML content for the SAML metadata document.
+     * The XML content for the SAML metadata document.
      * 
      */
     @Import(name="metadataXml")
     private @Nullable Output<String> metadataXml;
 
     /**
-     * @return XML content for the SAML metadata document.
+     * @return The XML content for the SAML metadata document.
      * 
      */
     public Optional<Output<String>> metadataXml() {
@@ -527,14 +616,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Configuration settings Options for multifactor authentication. For details, see MFA Options.
+     * Configuration options for multifactor authentication.
      * 
      */
     @Import(name="mfa")
     private @Nullable Output<ConnectionOptionsMfaArgs> mfa;
 
     /**
-     * @return Configuration settings Options for multifactor authentication. For details, see MFA Options.
+     * @return Configuration options for multifactor authentication.
      * 
      */
     public Optional<Output<ConnectionOptionsMfaArgs>> mfa() {
@@ -542,14 +631,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Name of the connection.
+     * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the connection.
+     * @return The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -557,14 +646,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+     * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      * 
      */
     @Import(name="nonPersistentAttrs")
     private @Nullable Output<List<String>> nonPersistentAttrs;
 
     /**
-     * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+     * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      * 
      */
     public Optional<Output<List<String>>> nonPersistentAttrs() {
@@ -572,14 +661,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Configuration settings for password complexity. For details, see Password Complexity Options.
+     * Configuration settings for password complexity.
      * 
      */
     @Import(name="passwordComplexityOptions")
     private @Nullable Output<ConnectionOptionsPasswordComplexityOptionsArgs> passwordComplexityOptions;
 
     /**
-     * @return Configuration settings for password complexity. For details, see Password Complexity Options.
+     * @return Configuration settings for password complexity.
      * 
      */
     public Optional<Output<ConnectionOptionsPasswordComplexityOptionsArgs>> passwordComplexityOptions() {
@@ -587,14 +676,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+     * Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
      * 
      */
     @Import(name="passwordDictionary")
     private @Nullable Output<ConnectionOptionsPasswordDictionaryArgs> passwordDictionary;
 
     /**
-     * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+     * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
      * 
      */
     public Optional<Output<ConnectionOptionsPasswordDictionaryArgs>> passwordDictionary() {
@@ -602,14 +691,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+     * Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
      * 
      */
     @Import(name="passwordHistories")
     private @Nullable Output<List<ConnectionOptionsPasswordHistoryArgs>> passwordHistories;
 
     /**
-     * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+     * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
      * 
      */
     public Optional<Output<List<ConnectionOptionsPasswordHistoryArgs>>> passwordHistories() {
@@ -617,14 +706,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user&#39;s email, or first part of the user&#39;s email. For details, see Password No Personal Info.
+     * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user&#39;s `email`, or first part of the user&#39;s `email`.
      * 
      */
     @Import(name="passwordNoPersonalInfo")
     private @Nullable Output<ConnectionOptionsPasswordNoPersonalInfoArgs> passwordNoPersonalInfo;
 
     /**
-     * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user&#39;s email, or first part of the user&#39;s email. For details, see Password No Personal Info.
+     * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user&#39;s `email`, or first part of the user&#39;s `email`.
      * 
      */
     public Optional<Output<ConnectionOptionsPasswordNoPersonalInfoArgs>> passwordNoPersonalInfo() {
@@ -647,14 +736,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+     * Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      * 
      */
     @Import(name="pkceEnabled")
     private @Nullable Output<Boolean> pkceEnabled;
 
     /**
-     * @return (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+     * @return Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      * 
      */
     public Optional<Output<Boolean>> pkceEnabled() {
@@ -662,36 +751,44 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+     * The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
     @Import(name="protocolBinding")
     private @Nullable Output<String> protocolBinding;
 
     /**
-     * @return The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+     * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
     public Optional<Output<String>> protocolBinding() {
         return Optional.ofNullable(this.protocolBinding);
     }
 
+    /**
+     * Defines the custom `sms_gateway` provider.
+     * 
+     */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
+    /**
+     * @return Defines the custom `sms_gateway` provider.
+     * 
+     */
     public Optional<Output<String>> provider() {
         return Optional.ofNullable(this.provider);
     }
 
     /**
-     * Template that formats the SAML request
+     * Template that formats the SAML request.
      * 
      */
     @Import(name="requestTemplate")
     private @Nullable Output<String> requestTemplate;
 
     /**
-     * @return Template that formats the SAML request
+     * @return Template that formats the SAML request.
      * 
      */
     public Optional<Output<String>> requestTemplate() {
@@ -699,14 +796,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether or not the user is required to provide a username in addition to an email address.
+     * Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
     @Import(name="requiresUsername")
     private @Nullable Output<Boolean> requiresUsername;
 
     /**
-     * @return Indicates whether or not the user is required to provide a username in addition to an email address.
+     * @return Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
     public Optional<Output<Boolean>> requiresUsername() {
@@ -714,36 +811,44 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Scopes required by the connection. The value must be a list, for example `[&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`.
+     * Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Scopes required by the connection. The value must be a list, for example `[&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`.
+     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
+    /**
+     * A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+     * 
+     */
     @Import(name="scripts")
     private @Nullable Output<Map<String,String>> scripts;
 
+    /**
+     * @return A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+     * 
+     */
     public Optional<Output<Map<String,String>>> scripts() {
         return Optional.ofNullable(this.scripts);
     }
 
     /**
-     * Determines whether the &#39;name&#39;, &#39;given_name&#39;, &#39;family_name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+     * Determines whether the &#39;name&#39;, &#39;given*name&#39;, &#39;family*name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using an external IdP. Possible values are &#39;on*each*login&#39; (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), &#39;on*first*login&#39; (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
      * 
      */
     @Import(name="setUserRootAttributes")
     private @Nullable Output<String> setUserRootAttributes;
 
     /**
-     * @return Determines whether the &#39;name&#39;, &#39;given_name&#39;, &#39;family_name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+     * @return Determines whether the &#39;name&#39;, &#39;given*name&#39;, &#39;family*name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using an external IdP. Possible values are &#39;on*each*login&#39; (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), &#39;on*first*login&#39; (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
      * 
      */
     public Optional<Output<String>> setUserRootAttributes() {
@@ -751,14 +856,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+     * Choose how Auth0 sets the email_verified field in the user profile.
      * 
      */
     @Import(name="shouldTrustEmailVerifiedConnection")
     private @Nullable Output<String> shouldTrustEmailVerifiedConnection;
 
     /**
-     * @return Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+     * @return Choose how Auth0 sets the email_verified field in the user profile.
      * 
      */
     public Optional<Output<String>> shouldTrustEmailVerifiedConnection() {
@@ -796,14 +901,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Boolean) When enabled, the SAML authentication request will be signed.
+     * When enabled, the SAML authentication request will be signed.
      * 
      */
     @Import(name="signSamlRequest")
     private @Nullable Output<Boolean> signSamlRequest;
 
     /**
-     * @return (Boolean) When enabled, the SAML authentication request will be signed.
+     * @return When enabled, the SAML authentication request will be signed.
      * 
      */
     public Optional<Output<Boolean>> signSamlRequest() {
@@ -811,14 +916,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Sign Request Algorithm
+     * Sign Request Algorithm.
      * 
      */
     @Import(name="signatureAlgorithm")
     private @Nullable Output<String> signatureAlgorithm;
 
     /**
-     * @return Sign Request Algorithm
+     * @return Sign Request Algorithm.
      * 
      */
     public Optional<Output<String>> signatureAlgorithm() {
@@ -826,14 +931,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+     * X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      * 
      */
     @Import(name="signingCert")
     private @Nullable Output<String> signingCert;
 
     /**
-     * @return The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+     * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      * 
      */
     public Optional<Output<String>> signingCert() {
@@ -841,14 +946,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      * 
      */
     @Import(name="signingKey")
     private @Nullable Output<ConnectionOptionsSigningKeyArgs> signingKey;
 
     /**
-     * @return . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * @return The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      * 
      */
     public Optional<Output<ConnectionOptionsSigningKeyArgs>> signingKey() {
@@ -871,14 +976,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Subject line of the email.
      * 
      */
     @Import(name="subject")
     private @Nullable Output<String> subject;
 
     /**
-     * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Subject line of the email.
      * 
      */
     public Optional<Output<String>> subject() {
@@ -886,14 +991,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Syntax of the SMS. Options include `markdown` and `liquid`.
+     * Syntax of the template body.
      * 
      */
     @Import(name="syntax")
     private @Nullable Output<String> syntax;
 
     /**
-     * @return Syntax of the SMS. Options include `markdown` and `liquid`.
+     * @return Syntax of the template body.
      * 
      */
     public Optional<Output<String>> syntax() {
@@ -901,14 +1006,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Team ID.
+     * Apple Team ID.
      * 
      */
     @Import(name="teamId")
     private @Nullable Output<String> teamId;
 
     /**
-     * @return Team ID.
+     * @return Apple Team ID.
      * 
      */
     public Optional<Output<String>> teamId() {
@@ -916,43 +1021,59 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+     * Body of the template.
      * 
      */
     @Import(name="template")
     private @Nullable Output<String> template;
 
     /**
-     * @return Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+     * @return Body of the template.
      * 
      */
     public Optional<Output<String>> template() {
         return Optional.ofNullable(this.template);
     }
 
+    /**
+     * Tenant domain name.
+     * 
+     */
     @Import(name="tenantDomain")
     private @Nullable Output<String> tenantDomain;
 
+    /**
+     * @return Tenant domain name.
+     * 
+     */
     public Optional<Output<String>> tenantDomain() {
         return Optional.ofNullable(this.tenantDomain);
     }
 
+    /**
+     * Token endpoint.
+     * 
+     */
     @Import(name="tokenEndpoint")
     private @Nullable Output<String> tokenEndpoint;
 
+    /**
+     * @return Token endpoint.
+     * 
+     */
     public Optional<Output<String>> tokenEndpoint() {
         return Optional.ofNullable(this.tokenEndpoint);
     }
 
     /**
-     * Configuration options for one-time passwords. For details, see TOTP.
+     * Configuration options for one-time passwords.
      * 
      */
     @Import(name="totp")
     private @Nullable Output<ConnectionOptionsTotpArgs> totp;
 
     /**
-     * @return Configuration options for one-time passwords. For details, see TOTP.
+     * @return Configuration options for one-time passwords.
      * 
      */
     public Optional<Output<ConnectionOptionsTotpArgs>> totp() {
@@ -1005,37 +1126,61 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+     * You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
      * 
      */
     @Import(name="upstreamParams")
     private @Nullable Output<String> upstreamParams;
 
     /**
-     * @return String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+     * @return You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
      * 
      */
     public Optional<Output<String>> upstreamParams() {
         return Optional.ofNullable(this.upstreamParams);
     }
 
+    /**
+     * Indicates whether to use cert auth or not.
+     * 
+     */
     @Import(name="useCertAuth")
     private @Nullable Output<Boolean> useCertAuth;
 
+    /**
+     * @return Indicates whether to use cert auth or not.
+     * 
+     */
     public Optional<Output<Boolean>> useCertAuth() {
         return Optional.ofNullable(this.useCertAuth);
     }
 
+    /**
+     * Indicates whether to use Kerberos or not.
+     * 
+     */
     @Import(name="useKerberos")
     private @Nullable Output<Boolean> useKerberos;
 
+    /**
+     * @return Indicates whether to use Kerberos or not.
+     * 
+     */
     public Optional<Output<Boolean>> useKerberos() {
         return Optional.ofNullable(this.useKerberos);
     }
 
+    /**
+     * Whether to use WS-Fed.
+     * 
+     */
     @Import(name="useWsfed")
     private @Nullable Output<Boolean> useWsfed;
 
+    /**
+     * @return Whether to use WS-Fed.
+     * 
+     */
     public Optional<Output<Boolean>> useWsfed() {
         return Optional.ofNullable(this.useWsfed);
     }
@@ -1055,22 +1200,30 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.userIdAttribute);
     }
 
+    /**
+     * User info endpoint.
+     * 
+     */
     @Import(name="userinfoEndpoint")
     private @Nullable Output<String> userinfoEndpoint;
 
+    /**
+     * @return User info endpoint.
+     * 
+     */
     public Optional<Output<String>> userinfoEndpoint() {
         return Optional.ofNullable(this.userinfoEndpoint);
     }
 
     /**
-     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+     * Validation of the minimum and maximum values allowed for a user to have as username.
      * 
      */
     @Import(name="validation")
     private @Nullable Output<ConnectionOptionsValidationArgs> validation;
 
     /**
-     * @return Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+     * @return Validation of the minimum and maximum values allowed for a user to have as username.
      * 
      */
     public Optional<Output<ConnectionOptionsValidationArgs>> validation() {
@@ -1078,23 +1231,31 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
+     * Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
      * 
      */
     @Import(name="waadCommonEndpoint")
     private @Nullable Output<Boolean> waadCommonEndpoint;
 
     /**
-     * @return Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
+     * @return Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
      * 
      */
     public Optional<Output<Boolean>> waadCommonEndpoint() {
         return Optional.ofNullable(this.waadCommonEndpoint);
     }
 
+    /**
+     * Protocol to use.
+     * 
+     */
     @Import(name="waadProtocol")
     private @Nullable Output<String> waadProtocol;
 
+    /**
+     * @return Protocol to use.
+     * 
+     */
     public Optional<Output<String>> waadProtocol() {
         return Optional.ofNullable(this.waadProtocol);
     }
@@ -1256,17 +1417,29 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return allowedAudiences(List.of(allowedAudiences));
         }
 
+        /**
+         * @param apiEnableUsers Enable API Access to users.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiEnableUsers(@Nullable Output<Boolean> apiEnableUsers) {
             $.apiEnableUsers = apiEnableUsers;
             return this;
         }
 
+        /**
+         * @param apiEnableUsers Enable API Access to users.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiEnableUsers(Boolean apiEnableUsers) {
             return apiEnableUsers(Output.of(apiEnableUsers));
         }
 
         /**
-         * @param appId Azure AD app ID.
+         * @param appId App ID.
          * 
          * @return builder
          * 
@@ -1277,7 +1450,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param appId Azure AD app ID.
+         * @param appId App ID.
          * 
          * @return builder
          * 
@@ -1287,7 +1460,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param authParams Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+         * @param authParams Query string parameters to be included as part of the generated passwordless email link.
          * 
          * @return builder
          * 
@@ -1298,7 +1471,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param authParams Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+         * @param authParams Query string parameters to be included as part of the generated passwordless email link.
          * 
          * @return builder
          * 
@@ -1307,17 +1480,29 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return authParams(Output.of(authParams));
         }
 
+        /**
+         * @param authorizationEndpoint Authorization endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorizationEndpoint(@Nullable Output<String> authorizationEndpoint) {
             $.authorizationEndpoint = authorizationEndpoint;
             return this;
         }
 
+        /**
+         * @param authorizationEndpoint Authorization endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorizationEndpoint(String authorizationEndpoint) {
             return authorizationEndpoint(Output.of(authorizationEndpoint));
         }
 
         /**
-         * @param bruteForceProtection Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+         * @param bruteForceProtection Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
          * 
          * @return builder
          * 
@@ -1328,7 +1513,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bruteForceProtection Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+         * @param bruteForceProtection Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
          * 
          * @return builder
          * 
@@ -1338,7 +1523,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientId OIDC provider client ID.
+         * @param clientId The strategy&#39;s client ID.
          * 
          * @return builder
          * 
@@ -1349,7 +1534,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientId OIDC provider client ID.
+         * @param clientId The strategy&#39;s client ID.
          * 
          * @return builder
          * 
@@ -1359,7 +1544,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientSecret OIDC provider client secret.
+         * @param clientSecret The strategy&#39;s client secret.
          * 
          * @return builder
          * 
@@ -1370,7 +1555,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientSecret OIDC provider client secret.
+         * @param clientSecret The strategy&#39;s client secret.
          * 
          * @return builder
          * 
@@ -1380,7 +1565,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param communityBaseUrl String.
+         * @param communityBaseUrl Salesforce community base URL.
          * 
          * @return builder
          * 
@@ -1391,7 +1576,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param communityBaseUrl String.
+         * @param communityBaseUrl Salesforce community base URL.
          * 
          * @return builder
          * 
@@ -1406,7 +1591,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder configuration(@Nullable Output<Map<String,String>> configuration) {
+        public Builder configuration(@Nullable Output<Map<String,Object>> configuration) {
             $.configuration = configuration;
             return this;
         }
@@ -1417,12 +1602,12 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder configuration(Map<String,String> configuration) {
+        public Builder configuration(Map<String,Object> configuration) {
             return configuration(Output.of(configuration));
         }
 
         /**
-         * @param customScripts Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+         * @param customScripts A map of scripts used to integrate with a custom database.
          * 
          * @return builder
          * 
@@ -1433,7 +1618,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customScripts Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+         * @param customScripts A map of scripts used to integrate with a custom database.
          * 
          * @return builder
          * 
@@ -1443,7 +1628,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param debug (Boolean) When enabled additional debugging information will be generated.
+         * @param debug When enabled, additional debug information will be generated.
          * 
          * @return builder
          * 
@@ -1454,7 +1639,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param debug (Boolean) When enabled additional debugging information will be generated.
+         * @param debug When enabled, additional debug information will be generated.
          * 
          * @return builder
          * 
@@ -1464,7 +1649,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param digestAlgorithm Sign Request Algorithm Digest
+         * @param digestAlgorithm Sign Request Algorithm Digest.
          * 
          * @return builder
          * 
@@ -1475,7 +1660,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param digestAlgorithm Sign Request Algorithm Digest
+         * @param digestAlgorithm Sign Request Algorithm Digest.
          * 
          * @return builder
          * 
@@ -1484,17 +1669,29 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return digestAlgorithm(Output.of(digestAlgorithm));
         }
 
+        /**
+         * @param disableCache Indicates whether to disable the cache or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableCache(@Nullable Output<Boolean> disableCache) {
             $.disableCache = disableCache;
             return this;
         }
 
+        /**
+         * @param disableCache Indicates whether to disable the cache or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableCache(Boolean disableCache) {
             return disableCache(Output.of(disableCache));
         }
 
         /**
-         * @param disableSignOut (Boolean) Disables or enables user sign out.
+         * @param disableSignOut When enabled, will disable sign out.
          * 
          * @return builder
          * 
@@ -1505,7 +1702,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableSignOut (Boolean) Disables or enables user sign out.
+         * @param disableSignOut When enabled, will disable sign out.
          * 
          * @return builder
          * 
@@ -1515,7 +1712,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableSignup Boolean. Indicates whether or not to allow user sign-ups to your application.
+         * @param disableSignup Indicates whether to allow user sign-ups to your application.
          * 
          * @return builder
          * 
@@ -1526,7 +1723,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableSignup Boolean. Indicates whether or not to allow user sign-ups to your application.
+         * @param disableSignup Indicates whether to allow user sign-ups to your application.
          * 
          * @return builder
          * 
@@ -1536,7 +1733,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param discoveryUrl OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+         * @param discoveryUrl OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
          * 
          * @return builder
          * 
@@ -1547,7 +1744,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param discoveryUrl OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+         * @param discoveryUrl OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
          * 
          * @return builder
          * 
@@ -1557,7 +1754,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domain Azure AD domain name.
+         * @param domain Domain name.
          * 
          * @return builder
          * 
@@ -1568,7 +1765,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domain Azure AD domain name.
+         * @param domain Domain name.
          * 
          * @return builder
          * 
@@ -1578,7 +1775,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domainAliases List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+         * @param domainAliases List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
          * 
          * @return builder
          * 
@@ -1589,7 +1786,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domainAliases List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+         * @param domainAliases List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
          * 
          * @return builder
          * 
@@ -1599,7 +1796,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param domainAliases List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+         * @param domainAliases List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
          * 
          * @return builder
          * 
@@ -1608,11 +1805,23 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return domainAliases(List.of(domainAliases));
         }
 
+        /**
+         * @param enabledDatabaseCustomization Set to `true` to use a legacy user store.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabledDatabaseCustomization(@Nullable Output<Boolean> enabledDatabaseCustomization) {
             $.enabledDatabaseCustomization = enabledDatabaseCustomization;
             return this;
         }
 
+        /**
+         * @param enabledDatabaseCustomization Set to `true` to use a legacy user store.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabledDatabaseCustomization(Boolean enabledDatabaseCustomization) {
             return enabledDatabaseCustomization(Output.of(enabledDatabaseCustomization));
         }
@@ -1639,7 +1848,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fieldsMap SAML Attributes mapping. If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+         * @param fieldsMap If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
          * 
          * @return builder
          * 
@@ -1650,7 +1859,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fieldsMap SAML Attributes mapping. If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+         * @param fieldsMap If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
          * 
          * @return builder
          * 
@@ -1659,17 +1868,29 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return fieldsMap(Output.of(fieldsMap));
         }
 
+        /**
+         * @param forwardRequestInfo Specifies whether or not request info should be forwarded to sms gateway.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forwardRequestInfo(@Nullable Output<Boolean> forwardRequestInfo) {
             $.forwardRequestInfo = forwardRequestInfo;
             return this;
         }
 
+        /**
+         * @param forwardRequestInfo Specifies whether or not request info should be forwarded to sms gateway.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forwardRequestInfo(Boolean forwardRequestInfo) {
             return forwardRequestInfo(Output.of(forwardRequestInfo));
         }
 
         /**
-         * @param from SMS number for the sender. Used when SMS Source is From.
+         * @param from Address to use as the sender.
          * 
          * @return builder
          * 
@@ -1680,7 +1901,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param from SMS number for the sender. Used when SMS Source is From.
+         * @param from Address to use as the sender.
          * 
          * @return builder
          * 
@@ -1689,44 +1910,92 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return from(Output.of(from));
         }
 
+        /**
+         * @param gatewayAuthentication Defines the parameters used to generate the auth token for the custom gateway.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayAuthentication(@Nullable Output<ConnectionOptionsGatewayAuthenticationArgs> gatewayAuthentication) {
             $.gatewayAuthentication = gatewayAuthentication;
             return this;
         }
 
+        /**
+         * @param gatewayAuthentication Defines the parameters used to generate the auth token for the custom gateway.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayAuthentication(ConnectionOptionsGatewayAuthenticationArgs gatewayAuthentication) {
             return gatewayAuthentication(Output.of(gatewayAuthentication));
         }
 
+        /**
+         * @param gatewayUrl Defines a custom sms gateway to use instead of Twilio.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayUrl(@Nullable Output<String> gatewayUrl) {
             $.gatewayUrl = gatewayUrl;
             return this;
         }
 
+        /**
+         * @param gatewayUrl Defines a custom sms gateway to use instead of Twilio.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayUrl(String gatewayUrl) {
             return gatewayUrl(Output.of(gatewayUrl));
         }
 
+        /**
+         * @param iconUrl Icon URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iconUrl(@Nullable Output<String> iconUrl) {
             $.iconUrl = iconUrl;
             return this;
         }
 
+        /**
+         * @param iconUrl Icon URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iconUrl(String iconUrl) {
             return iconUrl(Output.of(iconUrl));
         }
 
+        /**
+         * @param identityApi Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityApi(@Nullable Output<String> identityApi) {
             $.identityApi = identityApi;
             return this;
         }
 
+        /**
+         * @param identityApi Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityApi(String identityApi) {
             return identityApi(Output.of(identityApi));
         }
 
         /**
-         * @param idpInitiated Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+         * @param idpInitiated Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
          * 
          * @return builder
          * 
@@ -1737,7 +2006,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param idpInitiated Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+         * @param idpInitiated Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
          * 
          * @return builder
          * 
@@ -1747,7 +2016,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param importMode Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+         * @param importMode Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
          * 
          * @return builder
          * 
@@ -1758,7 +2027,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param importMode Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+         * @param importMode Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
          * 
          * @return builder
          * 
@@ -1767,21 +2036,39 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return importMode(Output.of(importMode));
         }
 
+        /**
+         * @param ips A list of IPs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(@Nullable Output<List<String>> ips) {
             $.ips = ips;
             return this;
         }
 
+        /**
+         * @param ips A list of IPs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(List<String> ips) {
             return ips(Output.of(ips));
         }
 
+        /**
+         * @param ips A list of IPs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(String... ips) {
             return ips(List.of(ips));
         }
 
         /**
-         * @param issuer Issuer URL. E.g. `https://auth.example.com`
+         * @param issuer Issuer URL, e.g. `https://auth.example.com`.
          * 
          * @return builder
          * 
@@ -1792,7 +2079,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param issuer Issuer URL. E.g. `https://auth.example.com`
+         * @param issuer Issuer URL, e.g. `https://auth.example.com`.
          * 
          * @return builder
          * 
@@ -1801,17 +2088,29 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return issuer(Output.of(issuer));
         }
 
+        /**
+         * @param jwksUri JWKS URI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jwksUri(@Nullable Output<String> jwksUri) {
             $.jwksUri = jwksUri;
             return this;
         }
 
+        /**
+         * @param jwksUri JWKS URI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jwksUri(String jwksUri) {
             return jwksUri(Output.of(jwksUri));
         }
 
         /**
-         * @param keyId Key ID.
+         * @param keyId Apple Key ID.
          * 
          * @return builder
          * 
@@ -1822,7 +2121,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param keyId Key ID.
+         * @param keyId Apple Key ID.
          * 
          * @return builder
          * 
@@ -1874,7 +2173,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param metadataUrl URL of the SAML metadata document.
+         * @param metadataUrl The URL of the SAML metadata document.
          * 
          * @return builder
          * 
@@ -1885,7 +2184,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param metadataUrl URL of the SAML metadata document.
+         * @param metadataUrl The URL of the SAML metadata document.
          * 
          * @return builder
          * 
@@ -1895,7 +2194,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param metadataXml XML content for the SAML metadata document.
+         * @param metadataXml The XML content for the SAML metadata document.
          * 
          * @return builder
          * 
@@ -1906,7 +2205,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param metadataXml XML content for the SAML metadata document.
+         * @param metadataXml The XML content for the SAML metadata document.
          * 
          * @return builder
          * 
@@ -1916,7 +2215,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mfa Configuration settings Options for multifactor authentication. For details, see MFA Options.
+         * @param mfa Configuration options for multifactor authentication.
          * 
          * @return builder
          * 
@@ -1927,7 +2226,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mfa Configuration settings Options for multifactor authentication. For details, see MFA Options.
+         * @param mfa Configuration options for multifactor authentication.
          * 
          * @return builder
          * 
@@ -1937,7 +2236,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the connection.
+         * @param name The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
          * 
          * @return builder
          * 
@@ -1948,7 +2247,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the connection.
+         * @param name The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
          * 
          * @return builder
          * 
@@ -1958,7 +2257,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nonPersistentAttrs If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+         * @param nonPersistentAttrs If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
          * 
          * @return builder
          * 
@@ -1969,7 +2268,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nonPersistentAttrs If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+         * @param nonPersistentAttrs If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
          * 
          * @return builder
          * 
@@ -1979,7 +2278,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nonPersistentAttrs If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+         * @param nonPersistentAttrs If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
          * 
          * @return builder
          * 
@@ -1989,7 +2288,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordComplexityOptions Configuration settings for password complexity. For details, see Password Complexity Options.
+         * @param passwordComplexityOptions Configuration settings for password complexity.
          * 
          * @return builder
          * 
@@ -2000,7 +2299,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordComplexityOptions Configuration settings for password complexity. For details, see Password Complexity Options.
+         * @param passwordComplexityOptions Configuration settings for password complexity.
          * 
          * @return builder
          * 
@@ -2010,7 +2309,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordDictionary Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+         * @param passwordDictionary Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
          * 
          * @return builder
          * 
@@ -2021,7 +2320,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordDictionary Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+         * @param passwordDictionary Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
          * 
          * @return builder
          * 
@@ -2031,7 +2330,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordHistories Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+         * @param passwordHistories Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
          * 
          * @return builder
          * 
@@ -2042,7 +2341,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordHistories Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+         * @param passwordHistories Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
          * 
          * @return builder
          * 
@@ -2052,7 +2351,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordHistories Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+         * @param passwordHistories Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
          * 
          * @return builder
          * 
@@ -2062,7 +2361,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordNoPersonalInfo Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user&#39;s email, or first part of the user&#39;s email. For details, see Password No Personal Info.
+         * @param passwordNoPersonalInfo Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user&#39;s `email`, or first part of the user&#39;s `email`.
          * 
          * @return builder
          * 
@@ -2073,7 +2372,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passwordNoPersonalInfo Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user&#39;s email, or first part of the user&#39;s email. For details, see Password No Personal Info.
+         * @param passwordNoPersonalInfo Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user&#39;s `email`, or first part of the user&#39;s `email`.
          * 
          * @return builder
          * 
@@ -2104,7 +2403,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pkceEnabled (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+         * @param pkceEnabled Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
          * 
          * @return builder
          * 
@@ -2115,7 +2414,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pkceEnabled (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+         * @param pkceEnabled Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
          * 
          * @return builder
          * 
@@ -2125,7 +2424,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param protocolBinding The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+         * @param protocolBinding The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
          * 
          * @return builder
          * 
@@ -2136,7 +2435,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param protocolBinding The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+         * @param protocolBinding The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
          * 
          * @return builder
          * 
@@ -2145,17 +2444,29 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return protocolBinding(Output.of(protocolBinding));
         }
 
+        /**
+         * @param provider Defines the custom `sms_gateway` provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(@Nullable Output<String> provider) {
             $.provider = provider;
             return this;
         }
 
+        /**
+         * @param provider Defines the custom `sms_gateway` provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
         }
 
         /**
-         * @param requestTemplate Template that formats the SAML request
+         * @param requestTemplate Template that formats the SAML request.
          * 
          * @return builder
          * 
@@ -2166,7 +2477,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param requestTemplate Template that formats the SAML request
+         * @param requestTemplate Template that formats the SAML request.
          * 
          * @return builder
          * 
@@ -2176,7 +2487,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param requiresUsername Indicates whether or not the user is required to provide a username in addition to an email address.
+         * @param requiresUsername Indicates whether the user is required to provide a username in addition to an email address.
          * 
          * @return builder
          * 
@@ -2187,7 +2498,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param requiresUsername Indicates whether or not the user is required to provide a username in addition to an email address.
+         * @param requiresUsername Indicates whether the user is required to provide a username in addition to an email address.
          * 
          * @return builder
          * 
@@ -2197,7 +2508,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes Scopes required by the connection. The value must be a list, for example `[&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`.
+         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
          * 
          * @return builder
          * 
@@ -2208,7 +2519,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes Scopes required by the connection. The value must be a list, for example `[&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`.
+         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
          * 
          * @return builder
          * 
@@ -2218,7 +2529,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes Scopes required by the connection. The value must be a list, for example `[&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`.
+         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
          * 
          * @return builder
          * 
@@ -2227,17 +2538,29 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return scopes(List.of(scopes));
         }
 
+        /**
+         * @param scripts A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scripts(@Nullable Output<Map<String,String>> scripts) {
             $.scripts = scripts;
             return this;
         }
 
+        /**
+         * @param scripts A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scripts(Map<String,String> scripts) {
             return scripts(Output.of(scripts));
         }
 
         /**
-         * @param setUserRootAttributes Determines whether the &#39;name&#39;, &#39;given_name&#39;, &#39;family_name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+         * @param setUserRootAttributes Determines whether the &#39;name&#39;, &#39;given*name&#39;, &#39;family*name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using an external IdP. Possible values are &#39;on*each*login&#39; (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), &#39;on*first*login&#39; (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
          * 
          * @return builder
          * 
@@ -2248,7 +2571,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param setUserRootAttributes Determines whether the &#39;name&#39;, &#39;given_name&#39;, &#39;family_name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+         * @param setUserRootAttributes Determines whether the &#39;name&#39;, &#39;given*name&#39;, &#39;family*name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using an external IdP. Possible values are &#39;on*each*login&#39; (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), &#39;on*first*login&#39; (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
          * 
          * @return builder
          * 
@@ -2258,7 +2581,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shouldTrustEmailVerifiedConnection Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+         * @param shouldTrustEmailVerifiedConnection Choose how Auth0 sets the email_verified field in the user profile.
          * 
          * @return builder
          * 
@@ -2269,7 +2592,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shouldTrustEmailVerifiedConnection Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+         * @param shouldTrustEmailVerifiedConnection Choose how Auth0 sets the email_verified field in the user profile.
          * 
          * @return builder
          * 
@@ -2321,7 +2644,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signSamlRequest (Boolean) When enabled, the SAML authentication request will be signed.
+         * @param signSamlRequest When enabled, the SAML authentication request will be signed.
          * 
          * @return builder
          * 
@@ -2332,7 +2655,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signSamlRequest (Boolean) When enabled, the SAML authentication request will be signed.
+         * @param signSamlRequest When enabled, the SAML authentication request will be signed.
          * 
          * @return builder
          * 
@@ -2342,7 +2665,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signatureAlgorithm Sign Request Algorithm
+         * @param signatureAlgorithm Sign Request Algorithm.
          * 
          * @return builder
          * 
@@ -2353,7 +2676,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signatureAlgorithm Sign Request Algorithm
+         * @param signatureAlgorithm Sign Request Algorithm.
          * 
          * @return builder
          * 
@@ -2363,7 +2686,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signingCert The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+         * @param signingCert X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
          * 
          * @return builder
          * 
@@ -2374,7 +2697,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signingCert The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+         * @param signingCert X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
          * 
          * @return builder
          * 
@@ -2384,7 +2707,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signingKey . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+         * @param signingKey The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
          * 
          * @return builder
          * 
@@ -2395,7 +2718,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signingKey . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+         * @param signingKey The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
          * 
          * @return builder
          * 
@@ -2426,7 +2749,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param subject String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+         * @param subject Subject line of the email.
          * 
          * @return builder
          * 
@@ -2437,7 +2760,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param subject String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+         * @param subject Subject line of the email.
          * 
          * @return builder
          * 
@@ -2447,7 +2770,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param syntax Syntax of the SMS. Options include `markdown` and `liquid`.
+         * @param syntax Syntax of the template body.
          * 
          * @return builder
          * 
@@ -2458,7 +2781,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param syntax Syntax of the SMS. Options include `markdown` and `liquid`.
+         * @param syntax Syntax of the template body.
          * 
          * @return builder
          * 
@@ -2468,7 +2791,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param teamId Team ID.
+         * @param teamId Apple Team ID.
          * 
          * @return builder
          * 
@@ -2479,7 +2802,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param teamId Team ID.
+         * @param teamId Apple Team ID.
          * 
          * @return builder
          * 
@@ -2489,7 +2812,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param template Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+         * @param template Body of the template.
          * 
          * @return builder
          * 
@@ -2500,7 +2823,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param template Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+         * @param template Body of the template.
          * 
          * @return builder
          * 
@@ -2509,26 +2832,50 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return template(Output.of(template));
         }
 
+        /**
+         * @param tenantDomain Tenant domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantDomain(@Nullable Output<String> tenantDomain) {
             $.tenantDomain = tenantDomain;
             return this;
         }
 
+        /**
+         * @param tenantDomain Tenant domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantDomain(String tenantDomain) {
             return tenantDomain(Output.of(tenantDomain));
         }
 
+        /**
+         * @param tokenEndpoint Token endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenEndpoint(@Nullable Output<String> tokenEndpoint) {
             $.tokenEndpoint = tokenEndpoint;
             return this;
         }
 
+        /**
+         * @param tokenEndpoint Token endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenEndpoint(String tokenEndpoint) {
             return tokenEndpoint(Output.of(tokenEndpoint));
         }
 
         /**
-         * @param totp Configuration options for one-time passwords. For details, see TOTP.
+         * @param totp Configuration options for one-time passwords.
          * 
          * @return builder
          * 
@@ -2539,7 +2886,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param totp Configuration options for one-time passwords. For details, see TOTP.
+         * @param totp Configuration options for one-time passwords.
          * 
          * @return builder
          * 
@@ -2612,7 +2959,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param upstreamParams String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+         * @param upstreamParams You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
          * 
          * @return builder
          * 
@@ -2623,7 +2970,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param upstreamParams String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+         * @param upstreamParams You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
          * 
          * @return builder
          * 
@@ -2632,29 +2979,65 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return upstreamParams(Output.of(upstreamParams));
         }
 
+        /**
+         * @param useCertAuth Indicates whether to use cert auth or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useCertAuth(@Nullable Output<Boolean> useCertAuth) {
             $.useCertAuth = useCertAuth;
             return this;
         }
 
+        /**
+         * @param useCertAuth Indicates whether to use cert auth or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useCertAuth(Boolean useCertAuth) {
             return useCertAuth(Output.of(useCertAuth));
         }
 
+        /**
+         * @param useKerberos Indicates whether to use Kerberos or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useKerberos(@Nullable Output<Boolean> useKerberos) {
             $.useKerberos = useKerberos;
             return this;
         }
 
+        /**
+         * @param useKerberos Indicates whether to use Kerberos or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useKerberos(Boolean useKerberos) {
             return useKerberos(Output.of(useKerberos));
         }
 
+        /**
+         * @param useWsfed Whether to use WS-Fed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useWsfed(@Nullable Output<Boolean> useWsfed) {
             $.useWsfed = useWsfed;
             return this;
         }
 
+        /**
+         * @param useWsfed Whether to use WS-Fed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useWsfed(Boolean useWsfed) {
             return useWsfed(Output.of(useWsfed));
         }
@@ -2680,17 +3063,29 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return userIdAttribute(Output.of(userIdAttribute));
         }
 
+        /**
+         * @param userinfoEndpoint User info endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userinfoEndpoint(@Nullable Output<String> userinfoEndpoint) {
             $.userinfoEndpoint = userinfoEndpoint;
             return this;
         }
 
+        /**
+         * @param userinfoEndpoint User info endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userinfoEndpoint(String userinfoEndpoint) {
             return userinfoEndpoint(Output.of(userinfoEndpoint));
         }
 
         /**
-         * @param validation Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+         * @param validation Validation of the minimum and maximum values allowed for a user to have as username.
          * 
          * @return builder
          * 
@@ -2701,7 +3096,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param validation Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+         * @param validation Validation of the minimum and maximum values allowed for a user to have as username.
          * 
          * @return builder
          * 
@@ -2711,7 +3106,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waadCommonEndpoint Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
+         * @param waadCommonEndpoint Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
          * 
          * @return builder
          * 
@@ -2722,7 +3117,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waadCommonEndpoint Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
+         * @param waadCommonEndpoint Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
          * 
          * @return builder
          * 
@@ -2731,11 +3126,23 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
             return waadCommonEndpoint(Output.of(waadCommonEndpoint));
         }
 
+        /**
+         * @param waadProtocol Protocol to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waadProtocol(@Nullable Output<String> waadProtocol) {
             $.waadProtocol = waadProtocol;
             return this;
         }
 
+        /**
+         * @param waadProtocol Protocol to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waadProtocol(String waadProtocol) {
             return waadProtocol(Output.of(waadProtocol));
         }

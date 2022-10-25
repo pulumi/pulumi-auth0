@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientMobile
     {
         /// <summary>
-        /// List(Resource). Configuration settings for Android native apps. For details, see Android.
+        /// Configuration settings for Android native apps.
         /// </summary>
         public readonly Outputs.ClientMobileAndroid? Android;
         /// <summary>
-        /// List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+        /// Configuration settings for i0S native apps.
         /// </summary>
         public readonly Outputs.ClientMobileIos? Ios;
 

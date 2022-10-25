@@ -18,14 +18,14 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
     public static final EmailState Empty = new EmailState();
 
     /**
-     * List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+     * Configuration settings for the credentials for the email provider.
      * 
      */
     @Import(name="credentials")
     private @Nullable Output<EmailCredentialsArgs> credentials;
 
     /**
-     * @return List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+     * @return Configuration settings for the credentials for the email provider.
      * 
      */
     public Optional<Output<EmailCredentialsArgs>> credentials() {
@@ -33,14 +33,14 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Email address to use as the sender when no other &#34;from&#34; address is specified.
+     * Email address to use as the sender when no other &#34;from&#34; address is specified.
      * 
      */
     @Import(name="defaultFromAddress")
     private @Nullable Output<String> defaultFromAddress;
 
     /**
-     * @return String. Email address to use as the sender when no other &#34;from&#34; address is specified.
+     * @return Email address to use as the sender when no other &#34;from&#34; address is specified.
      * 
      */
     public Optional<Output<String>> defaultFromAddress() {
@@ -48,14 +48,14 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether or not the email provider is enabled.
+     * Indicates whether the email provider is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Boolean. Indicates whether or not the email provider is enabled.
+     * @return Indicates whether the email provider is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -63,14 +63,14 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+     * Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+     * @return Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -105,7 +105,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param credentials List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+         * @param credentials Configuration settings for the credentials for the email provider.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param credentials List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+         * @param credentials Configuration settings for the credentials for the email provider.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultFromAddress String. Email address to use as the sender when no other &#34;from&#34; address is specified.
+         * @param defaultFromAddress Email address to use as the sender when no other &#34;from&#34; address is specified.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultFromAddress String. Email address to use as the sender when no other &#34;from&#34; address is specified.
+         * @param defaultFromAddress Email address to use as the sender when no other &#34;from&#34; address is specified.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Boolean. Indicates whether or not the email provider is enabled.
+         * @param enabled Indicates whether the email provider is enabled.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Boolean. Indicates whether or not the email provider is enabled.
+         * @param enabled Indicates whether the email provider is enabled.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+         * @param name Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+         * @param name Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
          * 
          * @return builder
          * 

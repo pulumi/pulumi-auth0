@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BrandingFont {
     /**
-     * @return String. URL for the custom font.
+     * @return URL for the custom font.
      * 
      */
     private @Nullable String url;
 
     private BrandingFont() {}
     /**
-     * @return String. URL for the custom font.
+     * @return URL for the custom font.
      * 
      */
     public Optional<String> url() {

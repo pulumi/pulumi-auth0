@@ -40,9 +40,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Prompt(&#34;example&#34;, PromptArgs.builder()        
+ *         var myPrompt = new Prompt(&#34;myPrompt&#34;, PromptArgs.builder()        
  *             .identifierFirst(false)
- *             .universalLoginExperience(&#34;classic&#34;)
+ *             .universalLoginExperience(&#34;new&#34;)
  *             .webauthnPlatformFirstFactor(true)
  *             .build());
  * 
@@ -52,24 +52,24 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As this is not a resource identifiable by an ID within the Auth0 Management API, prompt can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * # As this is not a resource identifiable by an ID within the Auth0 Management API, # prompts can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/prompt:Prompt example 22f4f21b-017a-319d-92e7-2291c1ca36c4
+ *  $ pulumi import auth0:index/prompt:Prompt my_prompt 22f4f21b-017a-319d-92e7-2291c1ca36c4
  * ```
  * 
  */
 @ResourceType(type="auth0:index/prompt:Prompt")
 public class Prompt extends com.pulumi.resources.CustomResource {
     /**
-     * Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+     * Indicates whether the identifier first is used when using the new Universal Login experience.
      * 
      */
     @Export(name="identifierFirst", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> identifierFirst;
 
     /**
-     * @return Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+     * @return Indicates whether the identifier first is used when using the new Universal Login experience.
      * 
      */
     public Output<Optional<Boolean>> identifierFirst() {
@@ -80,28 +80,28 @@ public class Prompt extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="universalLoginExperience", type=String.class, parameters={})
-    private Output</* @Nullable */ String> universalLoginExperience;
+    private Output<String> universalLoginExperience;
 
     /**
      * @return Which login experience to use. Options include `classic` and `new`.
      * 
      */
-    public Output<Optional<String>> universalLoginExperience() {
-        return Codegen.optional(this.universalLoginExperience);
+    public Output<String> universalLoginExperience() {
+        return this.universalLoginExperience;
     }
     /**
-     * Boolean. Determines if the login screen uses identifier and biometrics first.
+     * Determines if the login screen uses identifier and biometrics first.
      * 
      */
     @Export(name="webauthnPlatformFirstFactor", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> webauthnPlatformFirstFactor;
+    private Output<Boolean> webauthnPlatformFirstFactor;
 
     /**
-     * @return Boolean. Determines if the login screen uses identifier and biometrics first.
+     * @return Determines if the login screen uses identifier and biometrics first.
      * 
      */
-    public Output<Optional<Boolean>> webauthnPlatformFirstFactor() {
-        return Codegen.optional(this.webauthnPlatformFirstFactor);
+    public Output<Boolean> webauthnPlatformFirstFactor() {
+        return this.webauthnPlatformFirstFactor;
     }
 
     /**

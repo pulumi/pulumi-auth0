@@ -21,6 +21,17 @@ __all__ = [
     'AttackProtectionSuspiciousIpThrottlingPreUserRegistration',
     'BrandingColors',
     'BrandingFont',
+    'BrandingThemeBorders',
+    'BrandingThemeColors',
+    'BrandingThemeFonts',
+    'BrandingThemeFontsBodyText',
+    'BrandingThemeFontsButtonsText',
+    'BrandingThemeFontsInputLabels',
+    'BrandingThemeFontsLinks',
+    'BrandingThemeFontsSubtitle',
+    'BrandingThemeFontsTitle',
+    'BrandingThemePageBackground',
+    'BrandingThemeWidget',
     'BrandingUniversalLogin',
     'ClientAddons',
     'ClientAddonsSamlp',
@@ -66,7 +77,6 @@ __all__ = [
     'GuardianWebauthnRoaming',
     'LogStreamSink',
     'OrganizationBranding',
-    'OrganizationConnection',
     'ResourceServerScope',
     'RolePermission',
     'TenantChangePassword',
@@ -105,8 +115,8 @@ class ActionDependency(dict):
                  name: str,
                  version: str):
         """
-        :param str name: Secret name.
-        :param str version: Trigger version.
+        :param str name: Dependency name, e.g. `lodash`.
+        :param str version: Dependency version, e.g. `latest` or `4.17.21`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "version", version)
@@ -115,7 +125,7 @@ class ActionDependency(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Secret name.
+        Dependency name, e.g. `lodash`.
         """
         return pulumi.get(self, "name")
 
@@ -123,7 +133,7 @@ class ActionDependency(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Trigger version.
+        Dependency version, e.g. `latest` or `4.17.21`.
         """
         return pulumi.get(self, "version")
 
@@ -163,8 +173,8 @@ class ActionSupportedTriggers(dict):
                  id: str,
                  version: str):
         """
-        :param str id: Trigger ID.
-        :param str version: Trigger version.
+        :param str id: The trigger ID.
+        :param str version: The trigger version. This regulates which `runtime` versions are supported.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "version", version)
@@ -173,7 +183,7 @@ class ActionSupportedTriggers(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        Trigger ID.
+        The trigger ID.
         """
         return pulumi.get(self, "id")
 
@@ -181,7 +191,7 @@ class ActionSupportedTriggers(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Trigger version.
+        The trigger version. This regulates which `runtime` versions are supported.
         """
         return pulumi.get(self, "version")
 
@@ -212,9 +222,9 @@ class AttackProtectionBreachedPasswordDetection(dict):
                  shields: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] admin_notification_frequencies: When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
-        :param bool enabled: Whether or not breached password detection is active.
+        :param bool enabled: Whether breached password detection is active.
         :param str method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
-        :param Sequence[str] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        :param Sequence[str] shields: Action to take when a breached password is detected.
         """
         if admin_notification_frequencies is not None:
             pulumi.set(__self__, "admin_notification_frequencies", admin_notification_frequencies)
@@ -237,7 +247,7 @@ class AttackProtectionBreachedPasswordDetection(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether or not breached password detection is active.
+        Whether breached password detection is active.
         """
         return pulumi.get(self, "enabled")
 
@@ -253,7 +263,7 @@ class AttackProtectionBreachedPasswordDetection(dict):
     @pulumi.getter
     def shields(self) -> Optional[Sequence[str]]:
         """
-        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        Action to take when a breached password is detected.
         """
         return pulumi.get(self, "shields")
 
@@ -285,10 +295,10 @@ class AttackProtectionBruteForceProtection(dict):
                  shields: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] allowlists: List of trusted IP addresses that will not have attack protection enforced against them.
-        :param bool enabled: Whether or not breached password detection is active.
+        :param bool enabled: Whether brute force attack protections are active.
         :param int max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
-        :param str mode: Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
-        :param Sequence[str] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        :param str mode: Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        :param Sequence[str] shields: Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
         """
         if allowlists is not None:
             pulumi.set(__self__, "allowlists", allowlists)
@@ -313,7 +323,7 @@ class AttackProtectionBruteForceProtection(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether or not breached password detection is active.
+        Whether brute force attack protections are active.
         """
         return pulumi.get(self, "enabled")
 
@@ -329,7 +339,7 @@ class AttackProtectionBruteForceProtection(dict):
     @pulumi.getter
     def mode(self) -> Optional[str]:
         """
-        Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
         """
         return pulumi.get(self, "mode")
 
@@ -337,7 +347,7 @@ class AttackProtectionBruteForceProtection(dict):
     @pulumi.getter
     def shields(self) -> Optional[Sequence[str]]:
         """
-        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
         """
         return pulumi.get(self, "shields")
 
@@ -371,10 +381,10 @@ class AttackProtectionSuspiciousIpThrottling(dict):
                  shields: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] allowlists: List of trusted IP addresses that will not have attack protection enforced against them.
-        :param bool enabled: Whether or not breached password detection is active.
+        :param bool enabled: Whether suspicious IP throttling attack protections are active.
         :param 'AttackProtectionSuspiciousIpThrottlingPreLoginArgs' pre_login: Configuration options that apply before every login attempt. Only available on public tenants.
         :param 'AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs' pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
-        :param Sequence[str] shields: Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        :param Sequence[str] shields: Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
         """
         if allowlists is not None:
             pulumi.set(__self__, "allowlists", allowlists)
@@ -399,7 +409,7 @@ class AttackProtectionSuspiciousIpThrottling(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether or not breached password detection is active.
+        Whether suspicious IP throttling attack protections are active.
         """
         return pulumi.get(self, "enabled")
 
@@ -423,7 +433,7 @@ class AttackProtectionSuspiciousIpThrottling(dict):
     @pulumi.getter
     def shields(self) -> Optional[Sequence[str]]:
         """
-        Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
         """
         return pulumi.get(self, "shields")
 
@@ -450,9 +460,6 @@ class AttackProtectionSuspiciousIpThrottlingPreLogin(dict):
     def __init__(__self__, *,
                  max_attempts: Optional[int] = None,
                  rate: Optional[int] = None):
-        """
-        :param int max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
-        """
         if max_attempts is not None:
             pulumi.set(__self__, "max_attempts", max_attempts)
         if rate is not None:
@@ -461,9 +468,6 @@ class AttackProtectionSuspiciousIpThrottlingPreLogin(dict):
     @property
     @pulumi.getter(name="maxAttempts")
     def max_attempts(self) -> Optional[int]:
-        """
-        Maximum number of unsuccessful attempts. Only available on public tenants.
-        """
         return pulumi.get(self, "max_attempts")
 
     @property
@@ -494,9 +498,6 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistration(dict):
     def __init__(__self__, *,
                  max_attempts: Optional[int] = None,
                  rate: Optional[int] = None):
-        """
-        :param int max_attempts: Maximum number of unsuccessful attempts. Only available on public tenants.
-        """
         if max_attempts is not None:
             pulumi.set(__self__, "max_attempts", max_attempts)
         if rate is not None:
@@ -505,9 +506,6 @@ class AttackProtectionSuspiciousIpThrottlingPreUserRegistration(dict):
     @property
     @pulumi.getter(name="maxAttempts")
     def max_attempts(self) -> Optional[int]:
-        """
-        Maximum number of unsuccessful attempts. Only available on public tenants.
-        """
         return pulumi.get(self, "max_attempts")
 
     @property
@@ -539,8 +537,8 @@ class BrandingColors(dict):
                  page_background: Optional[str] = None,
                  primary: Optional[str] = None):
         """
-        :param str page_background: String, Hexadecimal. Background color of login pages.
-        :param str primary: String, Hexadecimal. Primary button background color.
+        :param str page_background: Background color of login pages in hexadecimal.
+        :param str primary: Primary button background color in hexadecimal.
         """
         if page_background is not None:
             pulumi.set(__self__, "page_background", page_background)
@@ -551,7 +549,7 @@ class BrandingColors(dict):
     @pulumi.getter(name="pageBackground")
     def page_background(self) -> Optional[str]:
         """
-        String, Hexadecimal. Background color of login pages.
+        Background color of login pages in hexadecimal.
         """
         return pulumi.get(self, "page_background")
 
@@ -559,7 +557,7 @@ class BrandingColors(dict):
     @pulumi.getter
     def primary(self) -> Optional[str]:
         """
-        String, Hexadecimal. Primary button background color.
+        Primary button background color in hexadecimal.
         """
         return pulumi.get(self, "primary")
 
@@ -569,7 +567,7 @@ class BrandingFont(dict):
     def __init__(__self__, *,
                  url: Optional[str] = None):
         """
-        :param str url: String. URL for the custom font.
+        :param str url: URL for the custom font.
         """
         if url is not None:
             pulumi.set(__self__, "url", url)
@@ -578,9 +576,793 @@ class BrandingFont(dict):
     @pulumi.getter
     def url(self) -> Optional[str]:
         """
-        String. URL for the custom font.
+        URL for the custom font.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class BrandingThemeBorders(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buttonBorderRadius":
+            suggest = "button_border_radius"
+        elif key == "buttonBorderWeight":
+            suggest = "button_border_weight"
+        elif key == "buttonsStyle":
+            suggest = "buttons_style"
+        elif key == "inputBorderRadius":
+            suggest = "input_border_radius"
+        elif key == "inputBorderWeight":
+            suggest = "input_border_weight"
+        elif key == "inputsStyle":
+            suggest = "inputs_style"
+        elif key == "showWidgetShadow":
+            suggest = "show_widget_shadow"
+        elif key == "widgetBorderWeight":
+            suggest = "widget_border_weight"
+        elif key == "widgetCornerRadius":
+            suggest = "widget_corner_radius"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrandingThemeBorders. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrandingThemeBorders.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrandingThemeBorders.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 button_border_radius: float,
+                 button_border_weight: float,
+                 buttons_style: str,
+                 input_border_radius: float,
+                 input_border_weight: float,
+                 inputs_style: str,
+                 show_widget_shadow: bool,
+                 widget_border_weight: float,
+                 widget_corner_radius: float):
+        """
+        :param float button_border_radius: Button border radius. Value needs to be between `1` and `10`.
+        :param float button_border_weight: Button border weight. Value needs to be between `0` and `10`.
+        :param str buttons_style: Buttons style. Available options: `pill`, `rounded`, `sharp`.
+        :param float input_border_radius: Input border radius. Value needs to be between `0` and `10`.
+        :param float input_border_weight: Input border weight. Value needs to be between `0` and `3`.
+        :param str inputs_style: Inputs style. Available options: `pill`, `rounded`, `sharp`.
+        :param bool show_widget_shadow: Show widget shadow.
+        :param float widget_border_weight: Widget border weight. Value needs to be between `0` and `10`.
+        :param float widget_corner_radius: Widget corner radius. Value needs to be between `0` and `50`.
+        """
+        pulumi.set(__self__, "button_border_radius", button_border_radius)
+        pulumi.set(__self__, "button_border_weight", button_border_weight)
+        pulumi.set(__self__, "buttons_style", buttons_style)
+        pulumi.set(__self__, "input_border_radius", input_border_radius)
+        pulumi.set(__self__, "input_border_weight", input_border_weight)
+        pulumi.set(__self__, "inputs_style", inputs_style)
+        pulumi.set(__self__, "show_widget_shadow", show_widget_shadow)
+        pulumi.set(__self__, "widget_border_weight", widget_border_weight)
+        pulumi.set(__self__, "widget_corner_radius", widget_corner_radius)
+
+    @property
+    @pulumi.getter(name="buttonBorderRadius")
+    def button_border_radius(self) -> float:
+        """
+        Button border radius. Value needs to be between `1` and `10`.
+        """
+        return pulumi.get(self, "button_border_radius")
+
+    @property
+    @pulumi.getter(name="buttonBorderWeight")
+    def button_border_weight(self) -> float:
+        """
+        Button border weight. Value needs to be between `0` and `10`.
+        """
+        return pulumi.get(self, "button_border_weight")
+
+    @property
+    @pulumi.getter(name="buttonsStyle")
+    def buttons_style(self) -> str:
+        """
+        Buttons style. Available options: `pill`, `rounded`, `sharp`.
+        """
+        return pulumi.get(self, "buttons_style")
+
+    @property
+    @pulumi.getter(name="inputBorderRadius")
+    def input_border_radius(self) -> float:
+        """
+        Input border radius. Value needs to be between `0` and `10`.
+        """
+        return pulumi.get(self, "input_border_radius")
+
+    @property
+    @pulumi.getter(name="inputBorderWeight")
+    def input_border_weight(self) -> float:
+        """
+        Input border weight. Value needs to be between `0` and `3`.
+        """
+        return pulumi.get(self, "input_border_weight")
+
+    @property
+    @pulumi.getter(name="inputsStyle")
+    def inputs_style(self) -> str:
+        """
+        Inputs style. Available options: `pill`, `rounded`, `sharp`.
+        """
+        return pulumi.get(self, "inputs_style")
+
+    @property
+    @pulumi.getter(name="showWidgetShadow")
+    def show_widget_shadow(self) -> bool:
+        """
+        Show widget shadow.
+        """
+        return pulumi.get(self, "show_widget_shadow")
+
+    @property
+    @pulumi.getter(name="widgetBorderWeight")
+    def widget_border_weight(self) -> float:
+        """
+        Widget border weight. Value needs to be between `0` and `10`.
+        """
+        return pulumi.get(self, "widget_border_weight")
+
+    @property
+    @pulumi.getter(name="widgetCornerRadius")
+    def widget_corner_radius(self) -> float:
+        """
+        Widget corner radius. Value needs to be between `0` and `50`.
+        """
+        return pulumi.get(self, "widget_corner_radius")
+
+
+@pulumi.output_type
+class BrandingThemeColors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bodyText":
+            suggest = "body_text"
+        elif key == "inputBackground":
+            suggest = "input_background"
+        elif key == "inputBorder":
+            suggest = "input_border"
+        elif key == "inputFilledText":
+            suggest = "input_filled_text"
+        elif key == "inputLabelsPlaceholders":
+            suggest = "input_labels_placeholders"
+        elif key == "linksFocusedComponents":
+            suggest = "links_focused_components"
+        elif key == "primaryButton":
+            suggest = "primary_button"
+        elif key == "primaryButtonLabel":
+            suggest = "primary_button_label"
+        elif key == "secondaryButtonBorder":
+            suggest = "secondary_button_border"
+        elif key == "secondaryButtonLabel":
+            suggest = "secondary_button_label"
+        elif key == "widgetBackground":
+            suggest = "widget_background"
+        elif key == "widgetBorder":
+            suggest = "widget_border"
+        elif key == "baseFocusColor":
+            suggest = "base_focus_color"
+        elif key == "baseHoverColor":
+            suggest = "base_hover_color"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrandingThemeColors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrandingThemeColors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrandingThemeColors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 body_text: str,
+                 error: str,
+                 header: str,
+                 icons: str,
+                 input_background: str,
+                 input_border: str,
+                 input_filled_text: str,
+                 input_labels_placeholders: str,
+                 links_focused_components: str,
+                 primary_button: str,
+                 primary_button_label: str,
+                 secondary_button_border: str,
+                 secondary_button_label: str,
+                 success: str,
+                 widget_background: str,
+                 widget_border: str,
+                 base_focus_color: Optional[str] = None,
+                 base_hover_color: Optional[str] = None):
+        """
+        :param str body_text: Body text.
+        :param str error: Error.
+        :param str header: Header.
+        :param str icons: Icons.
+        :param str input_background: Input background.
+        :param str input_border: Input border.
+        :param str input_filled_text: Input filled text.
+        :param str input_labels_placeholders: Input labels & placeholders.
+        :param str links_focused_components: Links & focused components.
+        :param str primary_button: Primary button.
+        :param str primary_button_label: Primary button label.
+        :param str secondary_button_border: Secondary button border.
+        :param str secondary_button_label: Secondary button label.
+        :param str success: Success.
+        :param str widget_background: Widget background.
+        :param str widget_border: Widget border.
+        :param str base_focus_color: Base focus color.
+        :param str base_hover_color: Base hover color.
+        """
+        pulumi.set(__self__, "body_text", body_text)
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "header", header)
+        pulumi.set(__self__, "icons", icons)
+        pulumi.set(__self__, "input_background", input_background)
+        pulumi.set(__self__, "input_border", input_border)
+        pulumi.set(__self__, "input_filled_text", input_filled_text)
+        pulumi.set(__self__, "input_labels_placeholders", input_labels_placeholders)
+        pulumi.set(__self__, "links_focused_components", links_focused_components)
+        pulumi.set(__self__, "primary_button", primary_button)
+        pulumi.set(__self__, "primary_button_label", primary_button_label)
+        pulumi.set(__self__, "secondary_button_border", secondary_button_border)
+        pulumi.set(__self__, "secondary_button_label", secondary_button_label)
+        pulumi.set(__self__, "success", success)
+        pulumi.set(__self__, "widget_background", widget_background)
+        pulumi.set(__self__, "widget_border", widget_border)
+        if base_focus_color is not None:
+            pulumi.set(__self__, "base_focus_color", base_focus_color)
+        if base_hover_color is not None:
+            pulumi.set(__self__, "base_hover_color", base_hover_color)
+
+    @property
+    @pulumi.getter(name="bodyText")
+    def body_text(self) -> str:
+        """
+        Body text.
+        """
+        return pulumi.get(self, "body_text")
+
+    @property
+    @pulumi.getter
+    def error(self) -> str:
+        """
+        Error.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def header(self) -> str:
+        """
+        Header.
+        """
+        return pulumi.get(self, "header")
+
+    @property
+    @pulumi.getter
+    def icons(self) -> str:
+        """
+        Icons.
+        """
+        return pulumi.get(self, "icons")
+
+    @property
+    @pulumi.getter(name="inputBackground")
+    def input_background(self) -> str:
+        """
+        Input background.
+        """
+        return pulumi.get(self, "input_background")
+
+    @property
+    @pulumi.getter(name="inputBorder")
+    def input_border(self) -> str:
+        """
+        Input border.
+        """
+        return pulumi.get(self, "input_border")
+
+    @property
+    @pulumi.getter(name="inputFilledText")
+    def input_filled_text(self) -> str:
+        """
+        Input filled text.
+        """
+        return pulumi.get(self, "input_filled_text")
+
+    @property
+    @pulumi.getter(name="inputLabelsPlaceholders")
+    def input_labels_placeholders(self) -> str:
+        """
+        Input labels & placeholders.
+        """
+        return pulumi.get(self, "input_labels_placeholders")
+
+    @property
+    @pulumi.getter(name="linksFocusedComponents")
+    def links_focused_components(self) -> str:
+        """
+        Links & focused components.
+        """
+        return pulumi.get(self, "links_focused_components")
+
+    @property
+    @pulumi.getter(name="primaryButton")
+    def primary_button(self) -> str:
+        """
+        Primary button.
+        """
+        return pulumi.get(self, "primary_button")
+
+    @property
+    @pulumi.getter(name="primaryButtonLabel")
+    def primary_button_label(self) -> str:
+        """
+        Primary button label.
+        """
+        return pulumi.get(self, "primary_button_label")
+
+    @property
+    @pulumi.getter(name="secondaryButtonBorder")
+    def secondary_button_border(self) -> str:
+        """
+        Secondary button border.
+        """
+        return pulumi.get(self, "secondary_button_border")
+
+    @property
+    @pulumi.getter(name="secondaryButtonLabel")
+    def secondary_button_label(self) -> str:
+        """
+        Secondary button label.
+        """
+        return pulumi.get(self, "secondary_button_label")
+
+    @property
+    @pulumi.getter
+    def success(self) -> str:
+        """
+        Success.
+        """
+        return pulumi.get(self, "success")
+
+    @property
+    @pulumi.getter(name="widgetBackground")
+    def widget_background(self) -> str:
+        """
+        Widget background.
+        """
+        return pulumi.get(self, "widget_background")
+
+    @property
+    @pulumi.getter(name="widgetBorder")
+    def widget_border(self) -> str:
+        """
+        Widget border.
+        """
+        return pulumi.get(self, "widget_border")
+
+    @property
+    @pulumi.getter(name="baseFocusColor")
+    def base_focus_color(self) -> Optional[str]:
+        """
+        Base focus color.
+        """
+        return pulumi.get(self, "base_focus_color")
+
+    @property
+    @pulumi.getter(name="baseHoverColor")
+    def base_hover_color(self) -> Optional[str]:
+        """
+        Base hover color.
+        """
+        return pulumi.get(self, "base_hover_color")
+
+
+@pulumi.output_type
+class BrandingThemeFonts(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bodyText":
+            suggest = "body_text"
+        elif key == "buttonsText":
+            suggest = "buttons_text"
+        elif key == "fontUrl":
+            suggest = "font_url"
+        elif key == "inputLabels":
+            suggest = "input_labels"
+        elif key == "linksStyle":
+            suggest = "links_style"
+        elif key == "referenceTextSize":
+            suggest = "reference_text_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrandingThemeFonts. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrandingThemeFonts.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrandingThemeFonts.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 body_text: 'outputs.BrandingThemeFontsBodyText',
+                 buttons_text: 'outputs.BrandingThemeFontsButtonsText',
+                 font_url: str,
+                 input_labels: 'outputs.BrandingThemeFontsInputLabels',
+                 links: 'outputs.BrandingThemeFontsLinks',
+                 links_style: str,
+                 reference_text_size: float,
+                 subtitle: 'outputs.BrandingThemeFontsSubtitle',
+                 title: 'outputs.BrandingThemeFontsTitle'):
+        """
+        :param 'BrandingThemeFontsBodyTextArgs' body_text: Body text.
+        :param 'BrandingThemeFontsButtonsTextArgs' buttons_text: Buttons text.
+        :param str font_url: Font URL.
+        :param 'BrandingThemeFontsInputLabelsArgs' input_labels: Input labels.
+        :param 'BrandingThemeFontsLinksArgs' links: Links.
+        :param str links_style: Links style.
+        :param float reference_text_size: Reference text size. Value needs to be between `12` and `24`.
+        :param 'BrandingThemeFontsSubtitleArgs' subtitle: Subtitle.
+        :param 'BrandingThemeFontsTitleArgs' title: Title.
+        """
+        pulumi.set(__self__, "body_text", body_text)
+        pulumi.set(__self__, "buttons_text", buttons_text)
+        pulumi.set(__self__, "font_url", font_url)
+        pulumi.set(__self__, "input_labels", input_labels)
+        pulumi.set(__self__, "links", links)
+        pulumi.set(__self__, "links_style", links_style)
+        pulumi.set(__self__, "reference_text_size", reference_text_size)
+        pulumi.set(__self__, "subtitle", subtitle)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="bodyText")
+    def body_text(self) -> 'outputs.BrandingThemeFontsBodyText':
+        """
+        Body text.
+        """
+        return pulumi.get(self, "body_text")
+
+    @property
+    @pulumi.getter(name="buttonsText")
+    def buttons_text(self) -> 'outputs.BrandingThemeFontsButtonsText':
+        """
+        Buttons text.
+        """
+        return pulumi.get(self, "buttons_text")
+
+    @property
+    @pulumi.getter(name="fontUrl")
+    def font_url(self) -> str:
+        """
+        Font URL.
+        """
+        return pulumi.get(self, "font_url")
+
+    @property
+    @pulumi.getter(name="inputLabels")
+    def input_labels(self) -> 'outputs.BrandingThemeFontsInputLabels':
+        """
+        Input labels.
+        """
+        return pulumi.get(self, "input_labels")
+
+    @property
+    @pulumi.getter
+    def links(self) -> 'outputs.BrandingThemeFontsLinks':
+        """
+        Links.
+        """
+        return pulumi.get(self, "links")
+
+    @property
+    @pulumi.getter(name="linksStyle")
+    def links_style(self) -> str:
+        """
+        Links style.
+        """
+        return pulumi.get(self, "links_style")
+
+    @property
+    @pulumi.getter(name="referenceTextSize")
+    def reference_text_size(self) -> float:
+        """
+        Reference text size. Value needs to be between `12` and `24`.
+        """
+        return pulumi.get(self, "reference_text_size")
+
+    @property
+    @pulumi.getter
+    def subtitle(self) -> 'outputs.BrandingThemeFontsSubtitle':
+        """
+        Subtitle.
+        """
+        return pulumi.get(self, "subtitle")
+
+    @property
+    @pulumi.getter
+    def title(self) -> 'outputs.BrandingThemeFontsTitle':
+        """
+        Title.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class BrandingThemeFontsBodyText(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class BrandingThemeFontsButtonsText(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class BrandingThemeFontsInputLabels(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class BrandingThemeFontsLinks(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class BrandingThemeFontsSubtitle(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class BrandingThemeFontsTitle(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class BrandingThemePageBackground(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backgroundColor":
+            suggest = "background_color"
+        elif key == "backgroundImageUrl":
+            suggest = "background_image_url"
+        elif key == "pageLayout":
+            suggest = "page_layout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrandingThemePageBackground. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrandingThemePageBackground.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrandingThemePageBackground.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 background_color: str,
+                 background_image_url: str,
+                 page_layout: str):
+        """
+        :param str background_color: Background color.
+        :param str background_image_url: Background image url.
+        :param str page_layout: Page layout. Available options: `center`, `left`, `right`.
+        """
+        pulumi.set(__self__, "background_color", background_color)
+        pulumi.set(__self__, "background_image_url", background_image_url)
+        pulumi.set(__self__, "page_layout", page_layout)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> str:
+        """
+        Background color.
+        """
+        return pulumi.get(self, "background_color")
+
+    @property
+    @pulumi.getter(name="backgroundImageUrl")
+    def background_image_url(self) -> str:
+        """
+        Background image url.
+        """
+        return pulumi.get(self, "background_image_url")
+
+    @property
+    @pulumi.getter(name="pageLayout")
+    def page_layout(self) -> str:
+        """
+        Page layout. Available options: `center`, `left`, `right`.
+        """
+        return pulumi.get(self, "page_layout")
+
+
+@pulumi.output_type
+class BrandingThemeWidget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerTextAlignment":
+            suggest = "header_text_alignment"
+        elif key == "logoHeight":
+            suggest = "logo_height"
+        elif key == "logoPosition":
+            suggest = "logo_position"
+        elif key == "logoUrl":
+            suggest = "logo_url"
+        elif key == "socialButtonsLayout":
+            suggest = "social_buttons_layout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrandingThemeWidget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrandingThemeWidget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrandingThemeWidget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_text_alignment: str,
+                 logo_height: float,
+                 logo_position: str,
+                 logo_url: str,
+                 social_buttons_layout: str):
+        """
+        :param str header_text_alignment: Header text alignment. Available options: `center`, `left`, `right`.
+        :param float logo_height: Logo height. Value needs to be between `1` and `100`.
+        :param str logo_position: Logo position. Available options: `center`, `left`, `right`, `none`.
+        :param str logo_url: Logo url.
+        :param str social_buttons_layout: Social buttons layout.  Available options: `bottom`, `top`.
+        """
+        pulumi.set(__self__, "header_text_alignment", header_text_alignment)
+        pulumi.set(__self__, "logo_height", logo_height)
+        pulumi.set(__self__, "logo_position", logo_position)
+        pulumi.set(__self__, "logo_url", logo_url)
+        pulumi.set(__self__, "social_buttons_layout", social_buttons_layout)
+
+    @property
+    @pulumi.getter(name="headerTextAlignment")
+    def header_text_alignment(self) -> str:
+        """
+        Header text alignment. Available options: `center`, `left`, `right`.
+        """
+        return pulumi.get(self, "header_text_alignment")
+
+    @property
+    @pulumi.getter(name="logoHeight")
+    def logo_height(self) -> float:
+        """
+        Logo height. Value needs to be between `1` and `100`.
+        """
+        return pulumi.get(self, "logo_height")
+
+    @property
+    @pulumi.getter(name="logoPosition")
+    def logo_position(self) -> str:
+        """
+        Logo position. Available options: `center`, `left`, `right`, `none`.
+        """
+        return pulumi.get(self, "logo_position")
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> str:
+        """
+        Logo url.
+        """
+        return pulumi.get(self, "logo_url")
+
+    @property
+    @pulumi.getter(name="socialButtonsLayout")
+    def social_buttons_layout(self) -> str:
+        """
+        Social buttons layout.  Available options: `bottom`, `top`.
+        """
+        return pulumi.get(self, "social_buttons_layout")
 
 
 @pulumi.output_type
@@ -588,7 +1370,7 @@ class BrandingUniversalLogin(dict):
     def __init__(__self__, *,
                  body: Optional[str] = None):
         """
-        :param str body: String, body of login pages.
+        :param str body: The body of login pages.
         """
         if body is not None:
             pulumi.set(__self__, "body", body)
@@ -597,7 +1379,7 @@ class BrandingUniversalLogin(dict):
     @pulumi.getter
     def body(self) -> Optional[str]:
         """
-        String, body of login pages.
+        The body of login pages.
         """
         return pulumi.get(self, "body")
 
@@ -659,34 +1441,8 @@ class ClientAddons(dict):
                  zendesk: Optional[Mapping[str, Any]] = None,
                  zoom: Optional[Mapping[str, Any]] = None):
         """
-        :param Mapping[str, Any] aws: String
-        :param Mapping[str, Any] azure_blob: String
-        :param Mapping[str, Any] azure_sb: String
-        :param Mapping[str, Any] box: String
-        :param Mapping[str, Any] cloudbees: String
-        :param Mapping[str, Any] concur: String
-        :param Mapping[str, Any] dropbox: String
-        :param Mapping[str, Any] echosign: String
-        :param Mapping[str, Any] egnyte: String
-        :param Mapping[str, Any] firebase: String
-        :param Mapping[str, Any] layer: String
-        :param Mapping[str, Any] mscrm: String
-        :param Mapping[str, Any] newrelic: String
-        :param Mapping[str, Any] office365: String
-        :param Mapping[str, Any] rms: String
-        :param Mapping[str, Any] salesforce: String
-        :param Mapping[str, Any] salesforce_api: String
-        :param Mapping[str, Any] salesforce_sandbox_api: String
-        :param 'ClientAddonsSamlpArgs' samlp: List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
-        :param Mapping[str, Any] sap_api: String
-        :param Mapping[str, Any] sentry: String
-        :param Mapping[str, Any] sharepoint: String
-        :param Mapping[str, Any] slack: String
-        :param Mapping[str, Any] springcm: String
-        :param Mapping[str, Any] wams: String
-        :param Mapping[str, Any] wsfed: String
-        :param Mapping[str, Any] zendesk: String
-        :param Mapping[str, Any] zoom: String
+        :param 'ClientAddonsSamlpArgs' samlp: Configuration settings for a SAML add-on.
+        :param Mapping[str, Any] wsfed: WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
         """
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
@@ -748,225 +1504,147 @@ class ClientAddons(dict):
     @property
     @pulumi.getter
     def aws(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "aws")
 
     @property
     @pulumi.getter(name="azureBlob")
     def azure_blob(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "azure_blob")
 
     @property
     @pulumi.getter(name="azureSb")
     def azure_sb(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "azure_sb")
 
     @property
     @pulumi.getter
     def box(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "box")
 
     @property
     @pulumi.getter
     def cloudbees(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "cloudbees")
 
     @property
     @pulumi.getter
     def concur(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "concur")
 
     @property
     @pulumi.getter
     def dropbox(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "dropbox")
 
     @property
     @pulumi.getter
     def echosign(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "echosign")
 
     @property
     @pulumi.getter
     def egnyte(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "egnyte")
 
     @property
     @pulumi.getter
     def firebase(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "firebase")
 
     @property
     @pulumi.getter
     def layer(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "layer")
 
     @property
     @pulumi.getter
     def mscrm(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "mscrm")
 
     @property
     @pulumi.getter
     def newrelic(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "newrelic")
 
     @property
     @pulumi.getter
     def office365(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "office365")
 
     @property
     @pulumi.getter
     def rms(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "rms")
 
     @property
     @pulumi.getter
     def salesforce(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "salesforce")
 
     @property
     @pulumi.getter(name="salesforceApi")
     def salesforce_api(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "salesforce_api")
 
     @property
     @pulumi.getter(name="salesforceSandboxApi")
     def salesforce_sandbox_api(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "salesforce_sandbox_api")
 
     @property
     @pulumi.getter
     def samlp(self) -> Optional['outputs.ClientAddonsSamlp']:
         """
-        List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+        Configuration settings for a SAML add-on.
         """
         return pulumi.get(self, "samlp")
 
     @property
     @pulumi.getter(name="sapApi")
     def sap_api(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "sap_api")
 
     @property
     @pulumi.getter
     def sentry(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "sentry")
 
     @property
     @pulumi.getter
     def sharepoint(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "sharepoint")
 
     @property
     @pulumi.getter
     def slack(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "slack")
 
     @property
     @pulumi.getter
     def springcm(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "springcm")
 
     @property
     @pulumi.getter
     def wams(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "wams")
 
     @property
     @pulumi.getter
     def wsfed(self) -> Optional[Mapping[str, Any]]:
         """
-        String
+        WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
         """
         return pulumi.get(self, "wsfed")
 
     @property
     @pulumi.getter
     def zendesk(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "zendesk")
 
     @property
     @pulumi.getter
     def zoom(self) -> Optional[Mapping[str, Any]]:
-        """
-        String
-        """
         return pulumi.get(self, "zoom")
 
 
@@ -1023,6 +1701,7 @@ class ClientAddonsSamlp(dict):
                  destination: Optional[str] = None,
                  digest_algorithm: Optional[str] = None,
                  include_attribute_name_format: Optional[bool] = None,
+                 issuer: Optional[str] = None,
                  lifetime_in_seconds: Optional[int] = None,
                  logout: Optional[Mapping[str, Any]] = None,
                  map_identities: Optional[bool] = None,
@@ -1036,28 +1715,6 @@ class ClientAddonsSamlp(dict):
                  signature_algorithm: Optional[str] = None,
                  signing_cert: Optional[str] = None,
                  typed_attributes: Optional[bool] = None):
-        """
-        :param str audience: String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
-        :param str authn_context_class_ref: String. Class reference of the authentication context.
-        :param str binding: String. Protocol binding used for SAML logout responses.
-        :param bool create_upn_claim: Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
-        :param str destination: String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
-        :param str digest_algorithm: String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
-        :param bool include_attribute_name_format: Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-        :param int lifetime_in_seconds: Integer, (Default=3600). Number of seconds during which the token is valid.
-        :param Mapping[str, Any] logout: Map(Resource). Configuration settings for logout. For details, see Logout.
-        :param bool map_identities: Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
-        :param bool map_unknown_claims_as_is: Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
-        :param Mapping[str, Any] mappings: Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-        :param str name_identifier_format: String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-        :param Sequence[str] name_identifier_probes: List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-        :param bool passthrough_claims_with_no_mapping: Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
-        :param str recipient: String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
-        :param bool sign_response: Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-        :param str signature_algorithm: String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
-        :param str signing_cert: String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\\nMIGf...bpP/t3\\n+JGNGIRMj1hF1rnb6QIDAQAB\\n-----END PUBLIC KEY-----\\n`.
-        :param bool typed_attributes: Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
-        """
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
         if authn_context_class_ref is not None:
@@ -1072,6 +1729,8 @@ class ClientAddonsSamlp(dict):
             pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         if include_attribute_name_format is not None:
             pulumi.set(__self__, "include_attribute_name_format", include_attribute_name_format)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
         if lifetime_in_seconds is not None:
             pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
         if logout is not None:
@@ -1102,161 +1761,106 @@ class ClientAddonsSamlp(dict):
     @property
     @pulumi.getter
     def audience(self) -> Optional[str]:
-        """
-        String. Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
-        """
         return pulumi.get(self, "audience")
 
     @property
     @pulumi.getter(name="authnContextClassRef")
     def authn_context_class_ref(self) -> Optional[str]:
-        """
-        String. Class reference of the authentication context.
-        """
         return pulumi.get(self, "authn_context_class_ref")
 
     @property
     @pulumi.getter
     def binding(self) -> Optional[str]:
-        """
-        String. Protocol binding used for SAML logout responses.
-        """
         return pulumi.get(self, "binding")
 
     @property
     @pulumi.getter(name="createUpnClaim")
     def create_upn_claim(self) -> Optional[bool]:
-        """
-        Boolean, (Default=true) Indicates whether or not a UPN claim should be created.
-        """
         return pulumi.get(self, "create_upn_claim")
 
     @property
     @pulumi.getter
     def destination(self) -> Optional[str]:
-        """
-        String. Destination of the SAML Response. If not specified, it will be AssertionConsumerUrlof SAMLRequest or Callback URL if there was no SAMLRequest.
-        """
         return pulumi.get(self, "destination")
 
     @property
     @pulumi.getter(name="digestAlgorithm")
     def digest_algorithm(self) -> Optional[str]:
-        """
-        String, (Default=`sha1`). Algorithm used to calculate the digest of the SAML Assertion or response. Options include `defaultsha1` and `sha256`.
-        """
         return pulumi.get(self, "digest_algorithm")
 
     @property
     @pulumi.getter(name="includeAttributeNameFormat")
     def include_attribute_name_format(self) -> Optional[bool]:
-        """
-        Boolean,(Default=true). Indicates whether or not we should infer the NameFormat based on the attribute name. If set to false, the attribute NameFormat is not set in the assertion.
-        """
         return pulumi.get(self, "include_attribute_name_format")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[str]:
+        return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")
     def lifetime_in_seconds(self) -> Optional[int]:
-        """
-        Integer, (Default=3600). Number of seconds during which the token is valid.
-        """
         return pulumi.get(self, "lifetime_in_seconds")
 
     @property
     @pulumi.getter
     def logout(self) -> Optional[Mapping[str, Any]]:
-        """
-        Map(Resource). Configuration settings for logout. For details, see Logout.
-        """
         return pulumi.get(self, "logout")
 
     @property
     @pulumi.getter(name="mapIdentities")
     def map_identities(self) -> Optional[bool]:
-        """
-        Boolean, (Default=true). Indicates whether or not to add additional identity information in the token, such as the provider used and the access_token, if available.
-        """
         return pulumi.get(self, "map_identities")
 
     @property
     @pulumi.getter(name="mapUnknownClaimsAsIs")
     def map_unknown_claims_as_is(self) -> Optional[bool]:
-        """
-        Boolean, (Default=false). Indicates whether or not to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
-        """
         return pulumi.get(self, "map_unknown_claims_as_is")
 
     @property
     @pulumi.getter
     def mappings(self) -> Optional[Mapping[str, Any]]:
-        """
-        Map(String). Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-        """
         return pulumi.get(self, "mappings")
 
     @property
     @pulumi.getter(name="nameIdentifierFormat")
     def name_identifier_format(self) -> Optional[str]:
-        """
-        String, (Default=`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`). Format of the name identifier.
-        """
         return pulumi.get(self, "name_identifier_format")
 
     @property
     @pulumi.getter(name="nameIdentifierProbes")
     def name_identifier_probes(self) -> Optional[Sequence[str]]:
-        """
-        List(String). Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-        """
         return pulumi.get(self, "name_identifier_probes")
 
     @property
     @pulumi.getter(name="passthroughClaimsWithNoMapping")
     def passthrough_claims_with_no_mapping(self) -> Optional[bool]:
-        """
-        Boolean, (Default=true). Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
-        """
         return pulumi.get(self, "passthrough_claims_with_no_mapping")
 
     @property
     @pulumi.getter
     def recipient(self) -> Optional[str]:
-        """
-        String. Recipient of the SAML Assertion (SubjectConfirmationData). Default is AssertionConsumerUrl on SAMLRequest or Callback URL if no SAMLRequest was sent.
-        """
         return pulumi.get(self, "recipient")
 
     @property
     @pulumi.getter(name="signResponse")
     def sign_response(self) -> Optional[bool]:
-        """
-        Boolean. Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-        """
         return pulumi.get(self, "sign_response")
 
     @property
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[str]:
-        """
-        String, (Default=`rsa-sha1`). Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
-        """
         return pulumi.get(self, "signature_algorithm")
 
     @property
     @pulumi.getter(name="signingCert")
     def signing_cert(self) -> Optional[str]:
-        """
-        String. Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\\nMIGf...bpP/t3\\n+JGNGIRMj1hF1rnb6QIDAQAB\\n-----END PUBLIC KEY-----\\n`.
-        """
         return pulumi.get(self, "signing_cert")
 
     @property
     @pulumi.getter(name="typedAttributes")
     def typed_attributes(self) -> Optional[bool]:
-        """
-        Boolean, (Default=true). Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to false, all `xs:type` are `xs:anyType`.
-        """
         return pulumi.get(self, "typed_attributes")
 
 
@@ -1287,10 +1891,10 @@ class ClientJwtConfiguration(dict):
                  scopes: Optional[Mapping[str, str]] = None,
                  secret_encoded: Optional[bool] = None):
         """
-        :param str alg: String. Algorithm used to sign JWTs.
-        :param int lifetime_in_seconds: Integer. Number of seconds during which the JWT will be valid.
-        :param Mapping[str, str] scopes: Map(String). Permissions (scopes) included in JWTs.
-        :param bool secret_encoded: Boolean. Indicates whether or not the client secret is base64 encoded.
+        :param str alg: Algorithm used to sign JWTs.
+        :param int lifetime_in_seconds: Number of seconds during which the JWT will be valid.
+        :param Mapping[str, str] scopes: Permissions (scopes) included in JWTs.
+        :param bool secret_encoded: Indicates whether the client secret is Base64-encoded.
         """
         if alg is not None:
             pulumi.set(__self__, "alg", alg)
@@ -1305,7 +1909,7 @@ class ClientJwtConfiguration(dict):
     @pulumi.getter
     def alg(self) -> Optional[str]:
         """
-        String. Algorithm used to sign JWTs.
+        Algorithm used to sign JWTs.
         """
         return pulumi.get(self, "alg")
 
@@ -1313,7 +1917,7 @@ class ClientJwtConfiguration(dict):
     @pulumi.getter(name="lifetimeInSeconds")
     def lifetime_in_seconds(self) -> Optional[int]:
         """
-        Integer. Number of seconds during which the JWT will be valid.
+        Number of seconds during which the JWT will be valid.
         """
         return pulumi.get(self, "lifetime_in_seconds")
 
@@ -1321,7 +1925,7 @@ class ClientJwtConfiguration(dict):
     @pulumi.getter
     def scopes(self) -> Optional[Mapping[str, str]]:
         """
-        Map(String). Permissions (scopes) included in JWTs.
+        Permissions (scopes) included in JWTs.
         """
         return pulumi.get(self, "scopes")
 
@@ -1329,7 +1933,7 @@ class ClientJwtConfiguration(dict):
     @pulumi.getter(name="secretEncoded")
     def secret_encoded(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not the client secret is base64 encoded.
+        Indicates whether the client secret is Base64-encoded.
         """
         return pulumi.get(self, "secret_encoded")
 
@@ -1340,8 +1944,8 @@ class ClientMobile(dict):
                  android: Optional['outputs.ClientMobileAndroid'] = None,
                  ios: Optional['outputs.ClientMobileIos'] = None):
         """
-        :param 'ClientMobileAndroidArgs' android: List(Resource). Configuration settings for Android native apps. For details, see Android.
-        :param 'ClientMobileIosArgs' ios: List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+        :param 'ClientMobileAndroidArgs' android: Configuration settings for Android native apps.
+        :param 'ClientMobileIosArgs' ios: Configuration settings for i0S native apps.
         """
         if android is not None:
             pulumi.set(__self__, "android", android)
@@ -1352,7 +1956,7 @@ class ClientMobile(dict):
     @pulumi.getter
     def android(self) -> Optional['outputs.ClientMobileAndroid']:
         """
-        List(Resource). Configuration settings for Android native apps. For details, see Android.
+        Configuration settings for Android native apps.
         """
         return pulumi.get(self, "android")
 
@@ -1360,7 +1964,7 @@ class ClientMobile(dict):
     @pulumi.getter
     def ios(self) -> Optional['outputs.ClientMobileIos']:
         """
-        List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+        Configuration settings for i0S native apps.
         """
         return pulumi.get(self, "ios")
 
@@ -1389,10 +1993,6 @@ class ClientMobileAndroid(dict):
     def __init__(__self__, *,
                  app_package_name: Optional[str] = None,
                  sha256_cert_fingerprints: Optional[Sequence[str]] = None):
-        """
-        :param str app_package_name: String
-        :param Sequence[str] sha256_cert_fingerprints: List(String)
-        """
         if app_package_name is not None:
             pulumi.set(__self__, "app_package_name", app_package_name)
         if sha256_cert_fingerprints is not None:
@@ -1401,17 +2001,11 @@ class ClientMobileAndroid(dict):
     @property
     @pulumi.getter(name="appPackageName")
     def app_package_name(self) -> Optional[str]:
-        """
-        String
-        """
         return pulumi.get(self, "app_package_name")
 
     @property
     @pulumi.getter(name="sha256CertFingerprints")
     def sha256_cert_fingerprints(self) -> Optional[Sequence[str]]:
-        """
-        List(String)
-        """
         return pulumi.get(self, "sha256_cert_fingerprints")
 
 
@@ -1439,10 +2033,6 @@ class ClientMobileIos(dict):
     def __init__(__self__, *,
                  app_bundle_identifier: Optional[str] = None,
                  team_id: Optional[str] = None):
-        """
-        :param str app_bundle_identifier: String
-        :param str team_id: String
-        """
         if app_bundle_identifier is not None:
             pulumi.set(__self__, "app_bundle_identifier", app_bundle_identifier)
         if team_id is not None:
@@ -1451,17 +2041,11 @@ class ClientMobileIos(dict):
     @property
     @pulumi.getter(name="appBundleIdentifier")
     def app_bundle_identifier(self) -> Optional[str]:
-        """
-        String
-        """
         return pulumi.get(self, "app_bundle_identifier")
 
     @property
     @pulumi.getter(name="teamId")
     def team_id(self) -> Optional[str]:
-        """
-        String
-        """
         return pulumi.get(self, "team_id")
 
 
@@ -1470,10 +2054,6 @@ class ClientNativeSocialLogin(dict):
     def __init__(__self__, *,
                  apple: Optional['outputs.ClientNativeSocialLoginApple'] = None,
                  facebook: Optional['outputs.ClientNativeSocialLoginFacebook'] = None):
-        """
-        :param 'ClientNativeSocialLoginAppleArgs' apple: Resource:
-        :param 'ClientNativeSocialLoginFacebookArgs' facebook: Resources:
-        """
         if apple is not None:
             pulumi.set(__self__, "apple", apple)
         if facebook is not None:
@@ -1482,17 +2062,11 @@ class ClientNativeSocialLogin(dict):
     @property
     @pulumi.getter
     def apple(self) -> Optional['outputs.ClientNativeSocialLoginApple']:
-        """
-        Resource:
-        """
         return pulumi.get(self, "apple")
 
     @property
     @pulumi.getter
     def facebook(self) -> Optional['outputs.ClientNativeSocialLoginFacebook']:
-        """
-        Resources:
-        """
         return pulumi.get(self, "facebook")
 
 
@@ -1500,18 +2074,12 @@ class ClientNativeSocialLogin(dict):
 class ClientNativeSocialLoginApple(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
-        """
-        :param bool enabled: Boolean
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Boolean
-        """
         return pulumi.get(self, "enabled")
 
 
@@ -1519,18 +2087,12 @@ class ClientNativeSocialLoginApple(dict):
 class ClientNativeSocialLoginFacebook(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
-        """
-        :param bool enabled: Boolean
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Boolean
-        """
         return pulumi.get(self, "enabled")
 
 
@@ -1572,13 +2134,13 @@ class ClientRefreshToken(dict):
                  leeway: Optional[int] = None,
                  token_lifetime: Optional[int] = None):
         """
-        :param str expiration_type: String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
-        :param str rotation_type: String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
-        :param int idle_token_lifetime: Integer. The time in seconds after which inactive refresh tokens will expire.
-        :param bool infinite_idle_token_lifetime: Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
-        :param bool infinite_token_lifetime: Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
-        :param int leeway: Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
-        :param int token_lifetime: Integer. The absolute lifetime of a refresh token in seconds.
+        :param str expiration_type: Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        :param str rotation_type: Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        :param int idle_token_lifetime: The time in seconds after which inactive refresh tokens will expire.
+        :param bool infinite_idle_token_lifetime: Whether inactive refresh tokens should remain valid indefinitely.
+        :param bool infinite_token_lifetime: Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+        :param int leeway: The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        :param int token_lifetime: The absolute lifetime of a refresh token in seconds.
         """
         pulumi.set(__self__, "expiration_type", expiration_type)
         pulumi.set(__self__, "rotation_type", rotation_type)
@@ -1597,7 +2159,7 @@ class ClientRefreshToken(dict):
     @pulumi.getter(name="expirationType")
     def expiration_type(self) -> str:
         """
-        String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
         """
         return pulumi.get(self, "expiration_type")
 
@@ -1605,7 +2167,7 @@ class ClientRefreshToken(dict):
     @pulumi.getter(name="rotationType")
     def rotation_type(self) -> str:
         """
-        String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
         """
         return pulumi.get(self, "rotation_type")
 
@@ -1613,7 +2175,7 @@ class ClientRefreshToken(dict):
     @pulumi.getter(name="idleTokenLifetime")
     def idle_token_lifetime(self) -> Optional[int]:
         """
-        Integer. The time in seconds after which inactive refresh tokens will expire.
+        The time in seconds after which inactive refresh tokens will expire.
         """
         return pulumi.get(self, "idle_token_lifetime")
 
@@ -1621,7 +2183,7 @@ class ClientRefreshToken(dict):
     @pulumi.getter(name="infiniteIdleTokenLifetime")
     def infinite_idle_token_lifetime(self) -> Optional[bool]:
         """
-        Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+        Whether inactive refresh tokens should remain valid indefinitely.
         """
         return pulumi.get(self, "infinite_idle_token_lifetime")
 
@@ -1629,7 +2191,7 @@ class ClientRefreshToken(dict):
     @pulumi.getter(name="infiniteTokenLifetime")
     def infinite_token_lifetime(self) -> Optional[bool]:
         """
-        Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+        Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
         """
         return pulumi.get(self, "infinite_token_lifetime")
 
@@ -1637,7 +2199,7 @@ class ClientRefreshToken(dict):
     @pulumi.getter
     def leeway(self) -> Optional[int]:
         """
-        Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+        The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
         """
         return pulumi.get(self, "leeway")
 
@@ -1645,7 +2207,7 @@ class ClientRefreshToken(dict):
     @pulumi.getter(name="tokenLifetime")
     def token_lifetime(self) -> Optional[int]:
         """
-        Integer. The absolute lifetime of a refresh token in seconds.
+        The absolute lifetime of a refresh token in seconds.
         """
         return pulumi.get(self, "token_lifetime")
 
@@ -1810,7 +2372,7 @@ class ConnectionOptions(dict):
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  community_base_url: Optional[str] = None,
-                 configuration: Optional[Mapping[str, str]] = None,
+                 configuration: Optional[Mapping[str, Any]] = None,
                  custom_scripts: Optional[Mapping[str, str]] = None,
                  debug: Optional[bool] = None,
                  digest_algorithm: Optional[str] = None,
@@ -1885,66 +2447,86 @@ class ConnectionOptions(dict):
         """
         :param str adfs_server: ADFS Metadata source.
         :param Sequence[str] allowed_audiences: List of allowed audiences.
-        :param str app_id: Azure AD app ID.
-        :param Mapping[str, str] auth_params: Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
-        :param bool brute_force_protection: Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
-        :param str client_id: OIDC provider client ID.
-        :param str client_secret: OIDC provider client secret.
-        :param str community_base_url: String.
-        :param Mapping[str, str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
-        :param Mapping[str, str] custom_scripts: Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
-        :param bool debug: (Boolean) When enabled additional debugging information will be generated.
-        :param str digest_algorithm: Sign Request Algorithm Digest
-        :param bool disable_sign_out: (Boolean) Disables or enables user sign out.
-        :param bool disable_signup: Boolean. Indicates whether or not to allow user sign-ups to your application.
-        :param str discovery_url: OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
-        :param str domain: Azure AD domain name.
-        :param Sequence[str] domain_aliases: List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+        :param bool api_enable_users: Enable API Access to users.
+        :param str app_id: App ID.
+        :param Mapping[str, str] auth_params: Query string parameters to be included as part of the generated passwordless email link.
+        :param str authorization_endpoint: Authorization endpoint.
+        :param bool brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+        :param str client_id: The strategy's client ID.
+        :param str client_secret: The strategy's client secret.
+        :param str community_base_url: Salesforce community base URL.
+        :param Mapping[str, Any] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+        :param Mapping[str, str] custom_scripts: A map of scripts used to integrate with a custom database.
+        :param bool debug: When enabled, additional debug information will be generated.
+        :param str digest_algorithm: Sign Request Algorithm Digest.
+        :param bool disable_cache: Indicates whether to disable the cache or not.
+        :param bool disable_sign_out: When enabled, will disable sign out.
+        :param bool disable_signup: Indicates whether to allow user sign-ups to your application.
+        :param str discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+        :param str domain: Domain name.
+        :param Sequence[str] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        :param bool enabled_database_customization: Set to `true` to use a legacy user store.
         :param str entity_id: Custom Entity ID for the connection.
-        :param str fields_map: SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
-        :param str from_: SMS number for the sender. Used when SMS Source is From.
-        :param 'ConnectionOptionsIdpInitiatedArgs' idp_initiated: Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
-        :param bool import_mode: Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
-        :param str issuer: Issuer URL. E.g. `https://auth.example.com`
-        :param str key_id: Key ID.
+        :param str fields_map: If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+        :param bool forward_request_info: Specifies whether or not request info should be forwarded to sms gateway.
+        :param str from_: Address to use as the sender.
+        :param 'ConnectionOptionsGatewayAuthenticationArgs' gateway_authentication: Defines the parameters used to generate the auth token for the custom gateway.
+        :param str gateway_url: Defines a custom sms gateway to use instead of Twilio.
+        :param str icon_url: Icon URL.
+        :param str identity_api: Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+        :param 'ConnectionOptionsIdpInitiatedArgs' idp_initiated: Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+        :param bool import_mode: Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
+        :param Sequence[str] ips: A list of IPs.
+        :param str issuer: Issuer URL, e.g. `https://auth.example.com`.
+        :param str jwks_uri: JWKS URI.
+        :param str key_id: Apple Key ID.
         :param str max_groups_to_retrieve: Maximum number of groups to retrieve.
         :param str messaging_service_sid: SID for Copilot. Used when SMS Source is Copilot.
-        :param str metadata_url: URL of the SAML metadata document.
-        :param str metadata_xml: XML content for the SAML metadata document.
-        :param 'ConnectionOptionsMfaArgs' mfa: Configuration settings Options for multifactor authentication. For details, see MFA Options.
-        :param str name: Name of the connection.
-        :param Sequence[str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
-        :param 'ConnectionOptionsPasswordComplexityOptionsArgs' password_complexity_options: Configuration settings for password complexity. For details, see Password Complexity Options.
-        :param 'ConnectionOptionsPasswordDictionaryArgs' password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
-        :param Sequence['ConnectionOptionsPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
-        :param 'ConnectionOptionsPasswordNoPersonalInfoArgs' password_no_personal_info: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+        :param str metadata_url: The URL of the SAML metadata document.
+        :param str metadata_xml: The XML content for the SAML metadata document.
+        :param 'ConnectionOptionsMfaArgs' mfa: Configuration options for multifactor authentication.
+        :param str name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+        :param Sequence[str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+        :param 'ConnectionOptionsPasswordComplexityOptionsArgs' password_complexity_options: Configuration settings for password complexity.
+        :param 'ConnectionOptionsPasswordDictionaryArgs' password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
+        :param Sequence['ConnectionOptionsPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
+        :param 'ConnectionOptionsPasswordNoPersonalInfoArgs' password_no_personal_info: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
         :param str password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
-        :param bool pkce_enabled: (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
-        :param str protocol_binding: The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
-        :param str request_template: Template that formats the SAML request
-        :param bool requires_username: Indicates whether or not the user is required to provide a username in addition to an email address.
-        :param Sequence[str] scopes: Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
-        :param str set_user_root_attributes: Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
-        :param str should_trust_email_verified_connection: Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+        :param bool pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+        :param str protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
+        :param str provider: Defines the custom `sms_gateway` provider.
+        :param str request_template: Template that formats the SAML request.
+        :param bool requires_username: Indicates whether the user is required to provide a username in addition to an email address.
+        :param Sequence[str] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+        :param Mapping[str, str] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        :param str set_user_root_attributes: Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+        :param str should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param str sign_in_endpoint: SAML single login URL for the connection.
         :param str sign_out_endpoint: SAML single logout URL for the connection.
-        :param bool sign_saml_request: (Boolean) When enabled, the SAML authentication request will be signed.
-        :param str signature_algorithm: Sign Request Algorithm
-        :param str signing_cert: The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
-        :param 'ConnectionOptionsSigningKeyArgs' signing_key: . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        :param bool sign_saml_request: When enabled, the SAML authentication request will be signed.
+        :param str signature_algorithm: Sign Request Algorithm.
+        :param str signing_cert: X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
+        :param 'ConnectionOptionsSigningKeyArgs' signing_key: The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
         :param int strategy_version: Version 1 is deprecated, use version 2.
-        :param str subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-        :param str syntax: Syntax of the SMS. Options include `markdown` and `liquid`.
-        :param str team_id: Team ID.
-        :param str template: Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
-        :param 'ConnectionOptionsTotpArgs' totp: Configuration options for one-time passwords. For details, see TOTP.
+        :param str subject: Subject line of the email.
+        :param str syntax: Syntax of the template body.
+        :param str team_id: Apple Team ID.
+        :param str template: Body of the template.
+        :param str tenant_domain: Tenant domain name.
+        :param str token_endpoint: Token endpoint.
+        :param 'ConnectionOptionsTotpArgs' totp: Configuration options for one-time passwords.
         :param str twilio_sid: SID for your Twilio account.
         :param str twilio_token: AuthToken for your Twilio account.
         :param str type: Value can be `back_channel` or `front_channel`.
-        :param str upstream_params: String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+        :param str upstream_params: You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
+        :param bool use_cert_auth: Indicates whether to use cert auth or not.
+        :param bool use_kerberos: Indicates whether to use Kerberos or not.
+        :param bool use_wsfed: Whether to use WS-Fed.
         :param str user_id_attribute: Attribute in the SAML token that will be mapped to the user_id property in Auth0.
-        :param 'ConnectionOptionsValidationArgs' validation: Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-        :param bool waad_common_endpoint: Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+        :param str userinfo_endpoint: User info endpoint.
+        :param 'ConnectionOptionsValidationArgs' validation: Validation of the minimum and maximum values allowed for a user to have as username.
+        :param bool waad_common_endpoint: Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+        :param str waad_protocol: Protocol to use.
         """
         if adfs_server is not None:
             pulumi.set(__self__, "adfs_server", adfs_server)
@@ -2130,13 +2712,16 @@ class ConnectionOptions(dict):
     @property
     @pulumi.getter(name="apiEnableUsers")
     def api_enable_users(self) -> Optional[bool]:
+        """
+        Enable API Access to users.
+        """
         return pulumi.get(self, "api_enable_users")
 
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[str]:
         """
-        Azure AD app ID.
+        App ID.
         """
         return pulumi.get(self, "app_id")
 
@@ -2144,20 +2729,23 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="authParams")
     def auth_params(self) -> Optional[Mapping[str, str]]:
         """
-        Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+        Query string parameters to be included as part of the generated passwordless email link.
         """
         return pulumi.get(self, "auth_params")
 
     @property
     @pulumi.getter(name="authorizationEndpoint")
     def authorization_endpoint(self) -> Optional[str]:
+        """
+        Authorization endpoint.
+        """
         return pulumi.get(self, "authorization_endpoint")
 
     @property
     @pulumi.getter(name="bruteForceProtection")
     def brute_force_protection(self) -> Optional[bool]:
         """
-        Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+        Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         """
         return pulumi.get(self, "brute_force_protection")
 
@@ -2165,7 +2753,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        OIDC provider client ID.
+        The strategy's client ID.
         """
         return pulumi.get(self, "client_id")
 
@@ -2173,7 +2761,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
         """
-        OIDC provider client secret.
+        The strategy's client secret.
         """
         return pulumi.get(self, "client_secret")
 
@@ -2181,13 +2769,13 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="communityBaseUrl")
     def community_base_url(self) -> Optional[str]:
         """
-        String.
+        Salesforce community base URL.
         """
         return pulumi.get(self, "community_base_url")
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[Mapping[str, str]]:
+    def configuration(self) -> Optional[Mapping[str, Any]]:
         """
         A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         """
@@ -2197,7 +2785,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="customScripts")
     def custom_scripts(self) -> Optional[Mapping[str, str]]:
         """
-        Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+        A map of scripts used to integrate with a custom database.
         """
         return pulumi.get(self, "custom_scripts")
 
@@ -2205,7 +2793,7 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def debug(self) -> Optional[bool]:
         """
-        (Boolean) When enabled additional debugging information will be generated.
+        When enabled, additional debug information will be generated.
         """
         return pulumi.get(self, "debug")
 
@@ -2213,20 +2801,23 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="digestAlgorithm")
     def digest_algorithm(self) -> Optional[str]:
         """
-        Sign Request Algorithm Digest
+        Sign Request Algorithm Digest.
         """
         return pulumi.get(self, "digest_algorithm")
 
     @property
     @pulumi.getter(name="disableCache")
     def disable_cache(self) -> Optional[bool]:
+        """
+        Indicates whether to disable the cache or not.
+        """
         return pulumi.get(self, "disable_cache")
 
     @property
     @pulumi.getter(name="disableSignOut")
     def disable_sign_out(self) -> Optional[bool]:
         """
-        (Boolean) Disables or enables user sign out.
+        When enabled, will disable sign out.
         """
         return pulumi.get(self, "disable_sign_out")
 
@@ -2234,7 +2825,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="disableSignup")
     def disable_signup(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether or not to allow user sign-ups to your application.
+        Indicates whether to allow user sign-ups to your application.
         """
         return pulumi.get(self, "disable_signup")
 
@@ -2242,7 +2833,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="discoveryUrl")
     def discovery_url(self) -> Optional[str]:
         """
-        OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+        OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         """
         return pulumi.get(self, "discovery_url")
 
@@ -2250,7 +2841,7 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
-        Azure AD domain name.
+        Domain name.
         """
         return pulumi.get(self, "domain")
 
@@ -2258,13 +2849,16 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="domainAliases")
     def domain_aliases(self) -> Optional[Sequence[str]]:
         """
-        List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+        List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
         """
         return pulumi.get(self, "domain_aliases")
 
     @property
     @pulumi.getter(name="enabledDatabaseCustomization")
     def enabled_database_customization(self) -> Optional[bool]:
+        """
+        Set to `true` to use a legacy user store.
+        """
         return pulumi.get(self, "enabled_database_customization")
 
     @property
@@ -2279,48 +2873,63 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="fieldsMap")
     def fields_map(self) -> Optional[str]:
         """
-        SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+        If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         """
         return pulumi.get(self, "fields_map")
 
     @property
     @pulumi.getter(name="forwardRequestInfo")
     def forward_request_info(self) -> Optional[bool]:
+        """
+        Specifies whether or not request info should be forwarded to sms gateway.
+        """
         return pulumi.get(self, "forward_request_info")
 
     @property
     @pulumi.getter(name="from")
     def from_(self) -> Optional[str]:
         """
-        SMS number for the sender. Used when SMS Source is From.
+        Address to use as the sender.
         """
         return pulumi.get(self, "from_")
 
     @property
     @pulumi.getter(name="gatewayAuthentication")
     def gateway_authentication(self) -> Optional['outputs.ConnectionOptionsGatewayAuthentication']:
+        """
+        Defines the parameters used to generate the auth token for the custom gateway.
+        """
         return pulumi.get(self, "gateway_authentication")
 
     @property
     @pulumi.getter(name="gatewayUrl")
     def gateway_url(self) -> Optional[str]:
+        """
+        Defines a custom sms gateway to use instead of Twilio.
+        """
         return pulumi.get(self, "gateway_url")
 
     @property
     @pulumi.getter(name="iconUrl")
     def icon_url(self) -> Optional[str]:
+        """
+        Icon URL.
+        """
         return pulumi.get(self, "icon_url")
 
     @property
     @pulumi.getter(name="identityApi")
     def identity_api(self) -> Optional[str]:
+        """
+        Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+        """
         return pulumi.get(self, "identity_api")
 
     @property
     @pulumi.getter(name="idpInitiated")
     def idp_initiated(self) -> Optional['outputs.ConnectionOptionsIdpInitiated']:
         """
-        Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+        Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
         """
         return pulumi.get(self, "idp_initiated")
 
@@ -2328,33 +2937,39 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="importMode")
     def import_mode(self) -> Optional[bool]:
         """
-        Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+        Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
         """
         return pulumi.get(self, "import_mode")
 
     @property
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
+        """
+        A list of IPs.
+        """
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter
     def issuer(self) -> Optional[str]:
         """
-        Issuer URL. E.g. `https://auth.example.com`
+        Issuer URL, e.g. `https://auth.example.com`.
         """
         return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="jwksUri")
     def jwks_uri(self) -> Optional[str]:
+        """
+        JWKS URI.
+        """
         return pulumi.get(self, "jwks_uri")
 
     @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[str]:
         """
-        Key ID.
+        Apple Key ID.
         """
         return pulumi.get(self, "key_id")
 
@@ -2378,7 +2993,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="metadataUrl")
     def metadata_url(self) -> Optional[str]:
         """
-        URL of the SAML metadata document.
+        The URL of the SAML metadata document.
         """
         return pulumi.get(self, "metadata_url")
 
@@ -2386,7 +3001,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="metadataXml")
     def metadata_xml(self) -> Optional[str]:
         """
-        XML content for the SAML metadata document.
+        The XML content for the SAML metadata document.
         """
         return pulumi.get(self, "metadata_xml")
 
@@ -2394,7 +3009,7 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def mfa(self) -> Optional['outputs.ConnectionOptionsMfa']:
         """
-        Configuration settings Options for multifactor authentication. For details, see MFA Options.
+        Configuration options for multifactor authentication.
         """
         return pulumi.get(self, "mfa")
 
@@ -2402,7 +3017,7 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the connection.
+        The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         """
         return pulumi.get(self, "name")
 
@@ -2410,7 +3025,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="nonPersistentAttrs")
     def non_persistent_attrs(self) -> Optional[Sequence[str]]:
         """
-        If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+        If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
         """
         return pulumi.get(self, "non_persistent_attrs")
 
@@ -2418,7 +3033,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="passwordComplexityOptions")
     def password_complexity_options(self) -> Optional['outputs.ConnectionOptionsPasswordComplexityOptions']:
         """
-        Configuration settings for password complexity. For details, see Password Complexity Options.
+        Configuration settings for password complexity.
         """
         return pulumi.get(self, "password_complexity_options")
 
@@ -2426,7 +3041,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="passwordDictionary")
     def password_dictionary(self) -> Optional['outputs.ConnectionOptionsPasswordDictionary']:
         """
-        Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+        Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
         """
         return pulumi.get(self, "password_dictionary")
 
@@ -2434,7 +3049,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="passwordHistories")
     def password_histories(self) -> Optional[Sequence['outputs.ConnectionOptionsPasswordHistory']]:
         """
-        Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+        Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
         """
         return pulumi.get(self, "password_histories")
 
@@ -2442,7 +3057,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="passwordNoPersonalInfo")
     def password_no_personal_info(self) -> Optional['outputs.ConnectionOptionsPasswordNoPersonalInfo']:
         """
-        Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+        Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
         """
         return pulumi.get(self, "password_no_personal_info")
 
@@ -2458,7 +3073,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="pkceEnabled")
     def pkce_enabled(self) -> Optional[bool]:
         """
-        (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+        Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
         """
         return pulumi.get(self, "pkce_enabled")
 
@@ -2466,20 +3081,23 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="protocolBinding")
     def protocol_binding(self) -> Optional[str]:
         """
-        The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+        The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         """
         return pulumi.get(self, "protocol_binding")
 
     @property
     @pulumi.getter
     def provider(self) -> Optional[str]:
+        """
+        Defines the custom `sms_gateway` provider.
+        """
         return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter(name="requestTemplate")
     def request_template(self) -> Optional[str]:
         """
-        Template that formats the SAML request
+        Template that formats the SAML request.
         """
         return pulumi.get(self, "request_template")
 
@@ -2487,7 +3105,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="requiresUsername")
     def requires_username(self) -> Optional[bool]:
         """
-        Indicates whether or not the user is required to provide a username in addition to an email address.
+        Indicates whether the user is required to provide a username in addition to an email address.
         """
         return pulumi.get(self, "requires_username")
 
@@ -2495,20 +3113,23 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def scopes(self) -> Optional[Sequence[str]]:
         """
-        Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
+        Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         """
         return pulumi.get(self, "scopes")
 
     @property
     @pulumi.getter
     def scripts(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        """
         return pulumi.get(self, "scripts")
 
     @property
     @pulumi.getter(name="setUserRootAttributes")
     def set_user_root_attributes(self) -> Optional[str]:
         """
-        Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+        Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
         """
         return pulumi.get(self, "set_user_root_attributes")
 
@@ -2516,7 +3137,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="shouldTrustEmailVerifiedConnection")
     def should_trust_email_verified_connection(self) -> Optional[str]:
         """
-        Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+        Choose how Auth0 sets the email_verified field in the user profile.
         """
         return pulumi.get(self, "should_trust_email_verified_connection")
 
@@ -2540,7 +3161,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="signSamlRequest")
     def sign_saml_request(self) -> Optional[bool]:
         """
-        (Boolean) When enabled, the SAML authentication request will be signed.
+        When enabled, the SAML authentication request will be signed.
         """
         return pulumi.get(self, "sign_saml_request")
 
@@ -2548,7 +3169,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[str]:
         """
-        Sign Request Algorithm
+        Sign Request Algorithm.
         """
         return pulumi.get(self, "signature_algorithm")
 
@@ -2556,7 +3177,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="signingCert")
     def signing_cert(self) -> Optional[str]:
         """
-        The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+        X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
         """
         return pulumi.get(self, "signing_cert")
 
@@ -2564,7 +3185,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="signingKey")
     def signing_key(self) -> Optional['outputs.ConnectionOptionsSigningKey']:
         """
-        . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
         """
         return pulumi.get(self, "signing_key")
 
@@ -2580,7 +3201,7 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def subject(self) -> Optional[str]:
         """
-        String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        Subject line of the email.
         """
         return pulumi.get(self, "subject")
 
@@ -2588,7 +3209,7 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def syntax(self) -> Optional[str]:
         """
-        Syntax of the SMS. Options include `markdown` and `liquid`.
+        Syntax of the template body.
         """
         return pulumi.get(self, "syntax")
 
@@ -2596,7 +3217,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="teamId")
     def team_id(self) -> Optional[str]:
         """
-        Team ID.
+        Apple Team ID.
         """
         return pulumi.get(self, "team_id")
 
@@ -2604,25 +3225,31 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def template(self) -> Optional[str]:
         """
-        Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+        Body of the template.
         """
         return pulumi.get(self, "template")
 
     @property
     @pulumi.getter(name="tenantDomain")
     def tenant_domain(self) -> Optional[str]:
+        """
+        Tenant domain name.
+        """
         return pulumi.get(self, "tenant_domain")
 
     @property
     @pulumi.getter(name="tokenEndpoint")
     def token_endpoint(self) -> Optional[str]:
+        """
+        Token endpoint.
+        """
         return pulumi.get(self, "token_endpoint")
 
     @property
     @pulumi.getter
     def totp(self) -> Optional['outputs.ConnectionOptionsTotp']:
         """
-        Configuration options for one-time passwords. For details, see TOTP.
+        Configuration options for one-time passwords.
         """
         return pulumi.get(self, "totp")
 
@@ -2654,23 +3281,32 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="upstreamParams")
     def upstream_params(self) -> Optional[str]:
         """
-        String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+        You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         """
         return pulumi.get(self, "upstream_params")
 
     @property
     @pulumi.getter(name="useCertAuth")
     def use_cert_auth(self) -> Optional[bool]:
+        """
+        Indicates whether to use cert auth or not.
+        """
         return pulumi.get(self, "use_cert_auth")
 
     @property
     @pulumi.getter(name="useKerberos")
     def use_kerberos(self) -> Optional[bool]:
+        """
+        Indicates whether to use Kerberos or not.
+        """
         return pulumi.get(self, "use_kerberos")
 
     @property
     @pulumi.getter(name="useWsfed")
     def use_wsfed(self) -> Optional[bool]:
+        """
+        Whether to use WS-Fed.
+        """
         return pulumi.get(self, "use_wsfed")
 
     @property
@@ -2684,13 +3320,16 @@ class ConnectionOptions(dict):
     @property
     @pulumi.getter(name="userinfoEndpoint")
     def userinfo_endpoint(self) -> Optional[str]:
+        """
+        User info endpoint.
+        """
         return pulumi.get(self, "userinfo_endpoint")
 
     @property
     @pulumi.getter
     def validation(self) -> Optional['outputs.ConnectionOptionsValidation']:
         """
-        Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        Validation of the minimum and maximum values allowed for a user to have as username.
         """
         return pulumi.get(self, "validation")
 
@@ -2698,13 +3337,16 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="waadCommonEndpoint")
     def waad_common_endpoint(self) -> Optional[bool]:
         """
-        Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+        Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         """
         return pulumi.get(self, "waad_common_endpoint")
 
     @property
     @pulumi.getter(name="waadProtocol")
     def waad_protocol(self) -> Optional[str]:
+        """
+        Protocol to use.
+        """
         return pulumi.get(self, "waad_protocol")
 
 
@@ -2733,9 +3375,6 @@ class ConnectionOptionsGatewayAuthentication(dict):
                  secret: Optional[str] = None,
                  secret_base64_encoded: Optional[bool] = None,
                  subject: Optional[str] = None):
-        """
-        :param str subject: String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-        """
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
         if method is not None:
@@ -2770,9 +3409,6 @@ class ConnectionOptionsGatewayAuthentication(dict):
     @property
     @pulumi.getter
     def subject(self) -> Optional[str]:
-        """
-        String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-        """
         return pulumi.get(self, "subject")
 
 
@@ -2803,9 +3439,6 @@ class ConnectionOptionsIdpInitiated(dict):
                  client_authorize_query: Optional[str] = None,
                  client_id: Optional[str] = None,
                  client_protocol: Optional[str] = None):
-        """
-        :param str client_id: Google client ID.
-        """
         if client_authorize_query is not None:
             pulumi.set(__self__, "client_authorize_query", client_authorize_query)
         if client_id is not None:
@@ -2821,9 +3454,6 @@ class ConnectionOptionsIdpInitiated(dict):
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
-        """
-        Google client ID.
-        """
         return pulumi.get(self, "client_id")
 
     @property
@@ -2854,10 +3484,6 @@ class ConnectionOptionsMfa(dict):
     def __init__(__self__, *,
                  active: Optional[bool] = None,
                  return_enroll_settings: Optional[bool] = None):
-        """
-        :param bool active: Indicates whether multifactor authentication is enabled for this connection.
-        :param bool return_enroll_settings: Indicates whether multifactor authentication enrollment settings will be returned.
-        """
         if active is not None:
             pulumi.set(__self__, "active", active)
         if return_enroll_settings is not None:
@@ -2866,17 +3492,11 @@ class ConnectionOptionsMfa(dict):
     @property
     @pulumi.getter
     def active(self) -> Optional[bool]:
-        """
-        Indicates whether multifactor authentication is enabled for this connection.
-        """
         return pulumi.get(self, "active")
 
     @property
     @pulumi.getter(name="returnEnrollSettings")
     def return_enroll_settings(self) -> Optional[bool]:
-        """
-        Indicates whether multifactor authentication enrollment settings will be returned.
-        """
         return pulumi.get(self, "return_enroll_settings")
 
 
@@ -2901,18 +3521,12 @@ class ConnectionOptionsPasswordComplexityOptions(dict):
 
     def __init__(__self__, *,
                  min_length: Optional[int] = None):
-        """
-        :param int min_length: Minimum number of characters allowed in passwords.
-        """
         if min_length is not None:
             pulumi.set(__self__, "min_length", min_length)
 
     @property
     @pulumi.getter(name="minLength")
     def min_length(self) -> Optional[int]:
-        """
-        Minimum number of characters allowed in passwords.
-        """
         return pulumi.get(self, "min_length")
 
 
@@ -2921,10 +3535,6 @@ class ConnectionOptionsPasswordDictionary(dict):
     def __init__(__self__, *,
                  dictionaries: Optional[Sequence[str]] = None,
                  enable: Optional[bool] = None):
-        """
-        :param Sequence[str] dictionaries: Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
-        :param bool enable: Indicates whether the password dictionary check is enabled for this connection.
-        """
         if dictionaries is not None:
             pulumi.set(__self__, "dictionaries", dictionaries)
         if enable is not None:
@@ -2933,17 +3543,11 @@ class ConnectionOptionsPasswordDictionary(dict):
     @property
     @pulumi.getter
     def dictionaries(self) -> Optional[Sequence[str]]:
-        """
-        Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
-        """
         return pulumi.get(self, "dictionaries")
 
     @property
     @pulumi.getter
     def enable(self) -> Optional[bool]:
-        """
-        Indicates whether the password dictionary check is enabled for this connection.
-        """
         return pulumi.get(self, "enable")
 
 
@@ -2952,10 +3556,6 @@ class ConnectionOptionsPasswordHistory(dict):
     def __init__(__self__, *,
                  enable: Optional[bool] = None,
                  size: Optional[int] = None):
-        """
-        :param bool enable: Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-        :param int size: Indicates the number of passwords to keep in history with a maximum of 24.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if size is not None:
@@ -2964,17 +3564,11 @@ class ConnectionOptionsPasswordHistory(dict):
     @property
     @pulumi.getter
     def enable(self) -> Optional[bool]:
-        """
-        Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-        """
         return pulumi.get(self, "enable")
 
     @property
     @pulumi.getter
     def size(self) -> Optional[int]:
-        """
-        Indicates the number of passwords to keep in history with a maximum of 24.
-        """
         return pulumi.get(self, "size")
 
 
@@ -2982,18 +3576,12 @@ class ConnectionOptionsPasswordHistory(dict):
 class ConnectionOptionsPasswordNoPersonalInfo(dict):
     def __init__(__self__, *,
                  enable: Optional[bool] = None):
-        """
-        :param bool enable: Indicates whether the password personal info check is enabled for this connection.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
 
     @property
     @pulumi.getter
     def enable(self) -> Optional[bool]:
-        """
-        Indicates whether the password personal info check is enabled for this connection.
-        """
         return pulumi.get(self, "enable")
 
 
@@ -3038,10 +3626,6 @@ class ConnectionOptionsTotp(dict):
     def __init__(__self__, *,
                  length: Optional[int] = None,
                  time_step: Optional[int] = None):
-        """
-        :param int length: Integer. Length of the one-time password.
-        :param int time_step: Integer. Seconds between allowed generation of new passwords.
-        """
         if length is not None:
             pulumi.set(__self__, "length", length)
         if time_step is not None:
@@ -3050,17 +3634,11 @@ class ConnectionOptionsTotp(dict):
     @property
     @pulumi.getter
     def length(self) -> Optional[int]:
-        """
-        Integer. Length of the one-time password.
-        """
         return pulumi.get(self, "length")
 
     @property
     @pulumi.getter(name="timeStep")
     def time_step(self) -> Optional[int]:
-        """
-        Integer. Seconds between allowed generation of new passwords.
-        """
         return pulumi.get(self, "time_step")
 
 
@@ -3068,18 +3646,12 @@ class ConnectionOptionsTotp(dict):
 class ConnectionOptionsValidation(dict):
     def __init__(__self__, *,
                  username: Optional['outputs.ConnectionOptionsValidationUsername'] = None):
-        """
-        :param 'ConnectionOptionsValidationUsernameArgs' username: Specifies the `min` and `max` values of username length. `min` and `max` are integers.
-        """
         if username is not None:
             pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
     def username(self) -> Optional['outputs.ConnectionOptionsValidationUsername']:
-        """
-        Specifies the `min` and `max` values of username length. `min` and `max` are integers.
-        """
         return pulumi.get(self, "username")
 
 
@@ -3108,18 +3680,12 @@ class ConnectionOptionsValidationUsername(dict):
 class CustomDomainVerification(dict):
     def __init__(__self__, *,
                  methods: Optional[Sequence[Any]] = None):
-        """
-        :param Sequence[Any] methods: List(Map). Verification methods for the domain.
-        """
         if methods is not None:
             pulumi.set(__self__, "methods", methods)
 
     @property
     @pulumi.getter
     def methods(self) -> Optional[Sequence[Any]]:
-        """
-        List(Map). Verification methods for the domain.
-        """
         return pulumi.get(self, "methods")
 
 
@@ -3168,15 +3734,16 @@ class EmailCredentials(dict):
                  smtp_port: Optional[int] = None,
                  smtp_user: Optional[str] = None):
         """
-        :param str access_key_id: String, Case-sensitive. AWS Access Key ID. Used only for AWS.
-        :param str api_key: String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
-        :param str api_user: String. API User for your email service.
-        :param str region: String. Default region. Used only for AWS, Mailgun, and SparkPost.
-        :param str secret_access_key: String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
-        :param str smtp_host: String. Hostname or IP address of your SMTP server. Used only for SMTP.
-        :param str smtp_pass: String, Case-sensitive. SMTP password. Used only for SMTP.
-        :param int smtp_port: Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
-        :param str smtp_user: String. SMTP username. Used only for SMTP.
+        :param str access_key_id: AWS Access Key ID. Used only for AWS.
+        :param str api_key: API Key for your email service. Will always be encrypted in our database.
+        :param str api_user: API User for your email service.
+        :param str domain: Domain name.
+        :param str region: Default region. Used only for AWS, Mailgun, and SparkPost.
+        :param str secret_access_key: AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+        :param str smtp_host: Hostname or IP address of your SMTP server. Used only for SMTP.
+        :param str smtp_pass: SMTP password. Used only for SMTP.
+        :param int smtp_port: Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+        :param str smtp_user: SMTP username. Used only for SMTP.
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
@@ -3203,7 +3770,7 @@ class EmailCredentials(dict):
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> Optional[str]:
         """
-        String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+        AWS Access Key ID. Used only for AWS.
         """
         return pulumi.get(self, "access_key_id")
 
@@ -3211,7 +3778,7 @@ class EmailCredentials(dict):
     @pulumi.getter(name="apiKey")
     def api_key(self) -> Optional[str]:
         """
-        String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+        API Key for your email service. Will always be encrypted in our database.
         """
         return pulumi.get(self, "api_key")
 
@@ -3219,20 +3786,23 @@ class EmailCredentials(dict):
     @pulumi.getter(name="apiUser")
     def api_user(self) -> Optional[str]:
         """
-        String. API User for your email service.
+        API User for your email service.
         """
         return pulumi.get(self, "api_user")
 
     @property
     @pulumi.getter
     def domain(self) -> Optional[str]:
+        """
+        Domain name.
+        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
-        String. Default region. Used only for AWS, Mailgun, and SparkPost.
+        Default region. Used only for AWS, Mailgun, and SparkPost.
         """
         return pulumi.get(self, "region")
 
@@ -3240,7 +3810,7 @@ class EmailCredentials(dict):
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[str]:
         """
-        String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+        AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
         """
         return pulumi.get(self, "secret_access_key")
 
@@ -3248,7 +3818,7 @@ class EmailCredentials(dict):
     @pulumi.getter(name="smtpHost")
     def smtp_host(self) -> Optional[str]:
         """
-        String. Hostname or IP address of your SMTP server. Used only for SMTP.
+        Hostname or IP address of your SMTP server. Used only for SMTP.
         """
         return pulumi.get(self, "smtp_host")
 
@@ -3256,7 +3826,7 @@ class EmailCredentials(dict):
     @pulumi.getter(name="smtpPass")
     def smtp_pass(self) -> Optional[str]:
         """
-        String, Case-sensitive. SMTP password. Used only for SMTP.
+        SMTP password. Used only for SMTP.
         """
         return pulumi.get(self, "smtp_pass")
 
@@ -3264,7 +3834,7 @@ class EmailCredentials(dict):
     @pulumi.getter(name="smtpPort")
     def smtp_port(self) -> Optional[int]:
         """
-        Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+        Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
         """
         return pulumi.get(self, "smtp_port")
 
@@ -3272,7 +3842,7 @@ class EmailCredentials(dict):
     @pulumi.getter(name="smtpUser")
     def smtp_user(self) -> Optional[str]:
         """
-        String. SMTP username. Used only for SMTP.
+        SMTP username. Used only for SMTP.
         """
         return pulumi.get(self, "smtp_user")
 
@@ -3333,6 +3903,10 @@ class GlobalClientAddons(dict):
                  wsfed: Optional[Mapping[str, Any]] = None,
                  zendesk: Optional[Mapping[str, Any]] = None,
                  zoom: Optional[Mapping[str, Any]] = None):
+        """
+        :param 'GlobalClientAddonsSamlpArgs' samlp: Configuration settings for a SAML add-on.
+        :param Mapping[str, Any] wsfed: WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+        """
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
         if azure_blob is not None:
@@ -3483,6 +4057,9 @@ class GlobalClientAddons(dict):
     @property
     @pulumi.getter
     def samlp(self) -> Optional['outputs.GlobalClientAddonsSamlp']:
+        """
+        Configuration settings for a SAML add-on.
+        """
         return pulumi.get(self, "samlp")
 
     @property
@@ -3518,6 +4095,9 @@ class GlobalClientAddons(dict):
     @property
     @pulumi.getter
     def wsfed(self) -> Optional[Mapping[str, Any]]:
+        """
+        WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+        """
         return pulumi.get(self, "wsfed")
 
     @property
@@ -3584,6 +4164,7 @@ class GlobalClientAddonsSamlp(dict):
                  destination: Optional[str] = None,
                  digest_algorithm: Optional[str] = None,
                  include_attribute_name_format: Optional[bool] = None,
+                 issuer: Optional[str] = None,
                  lifetime_in_seconds: Optional[int] = None,
                  logout: Optional[Mapping[str, Any]] = None,
                  map_identities: Optional[bool] = None,
@@ -3611,6 +4192,8 @@ class GlobalClientAddonsSamlp(dict):
             pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         if include_attribute_name_format is not None:
             pulumi.set(__self__, "include_attribute_name_format", include_attribute_name_format)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
         if lifetime_in_seconds is not None:
             pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
         if logout is not None:
@@ -3672,6 +4255,11 @@ class GlobalClientAddonsSamlp(dict):
     @pulumi.getter(name="includeAttributeNameFormat")
     def include_attribute_name_format(self) -> Optional[bool]:
         return pulumi.get(self, "include_attribute_name_format")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[str]:
+        return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")
@@ -3765,6 +4353,12 @@ class GlobalClientJwtConfiguration(dict):
                  lifetime_in_seconds: Optional[int] = None,
                  scopes: Optional[Mapping[str, str]] = None,
                  secret_encoded: Optional[bool] = None):
+        """
+        :param str alg: Algorithm used to sign JWTs.
+        :param int lifetime_in_seconds: Number of seconds during which the JWT will be valid.
+        :param Mapping[str, str] scopes: Permissions (scopes) included in JWTs.
+        :param bool secret_encoded: Indicates whether the client secret is Base64-encoded.
+        """
         if alg is not None:
             pulumi.set(__self__, "alg", alg)
         if lifetime_in_seconds is not None:
@@ -3777,21 +4371,33 @@ class GlobalClientJwtConfiguration(dict):
     @property
     @pulumi.getter
     def alg(self) -> Optional[str]:
+        """
+        Algorithm used to sign JWTs.
+        """
         return pulumi.get(self, "alg")
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")
     def lifetime_in_seconds(self) -> Optional[int]:
+        """
+        Number of seconds during which the JWT will be valid.
+        """
         return pulumi.get(self, "lifetime_in_seconds")
 
     @property
     @pulumi.getter
     def scopes(self) -> Optional[Mapping[str, str]]:
+        """
+        Permissions (scopes) included in JWTs.
+        """
         return pulumi.get(self, "scopes")
 
     @property
     @pulumi.getter(name="secretEncoded")
     def secret_encoded(self) -> Optional[bool]:
+        """
+        Indicates whether the client secret is Base64-encoded.
+        """
         return pulumi.get(self, "secret_encoded")
 
 
@@ -3800,6 +4406,10 @@ class GlobalClientMobile(dict):
     def __init__(__self__, *,
                  android: Optional['outputs.GlobalClientMobileAndroid'] = None,
                  ios: Optional['outputs.GlobalClientMobileIos'] = None):
+        """
+        :param 'GlobalClientMobileAndroidArgs' android: Configuration settings for Android native apps.
+        :param 'GlobalClientMobileIosArgs' ios: Configuration settings for i0S native apps.
+        """
         if android is not None:
             pulumi.set(__self__, "android", android)
         if ios is not None:
@@ -3808,11 +4418,17 @@ class GlobalClientMobile(dict):
     @property
     @pulumi.getter
     def android(self) -> Optional['outputs.GlobalClientMobileAndroid']:
+        """
+        Configuration settings for Android native apps.
+        """
         return pulumi.get(self, "android")
 
     @property
     @pulumi.getter
     def ios(self) -> Optional['outputs.GlobalClientMobileIos']:
+        """
+        Configuration settings for i0S native apps.
+        """
         return pulumi.get(self, "ios")
 
 
@@ -3980,6 +4596,15 @@ class GlobalClientRefreshToken(dict):
                  infinite_token_lifetime: Optional[bool] = None,
                  leeway: Optional[int] = None,
                  token_lifetime: Optional[int] = None):
+        """
+        :param str expiration_type: Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        :param str rotation_type: Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        :param int idle_token_lifetime: The time in seconds after which inactive refresh tokens will expire.
+        :param bool infinite_idle_token_lifetime: Whether inactive refresh tokens should remain valid indefinitely.
+        :param bool infinite_token_lifetime: Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+        :param int leeway: The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        :param int token_lifetime: The absolute lifetime of a refresh token in seconds.
+        """
         pulumi.set(__self__, "expiration_type", expiration_type)
         pulumi.set(__self__, "rotation_type", rotation_type)
         if idle_token_lifetime is not None:
@@ -3996,36 +4621,57 @@ class GlobalClientRefreshToken(dict):
     @property
     @pulumi.getter(name="expirationType")
     def expiration_type(self) -> str:
+        """
+        Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        """
         return pulumi.get(self, "expiration_type")
 
     @property
     @pulumi.getter(name="rotationType")
     def rotation_type(self) -> str:
+        """
+        Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        """
         return pulumi.get(self, "rotation_type")
 
     @property
     @pulumi.getter(name="idleTokenLifetime")
     def idle_token_lifetime(self) -> Optional[int]:
+        """
+        The time in seconds after which inactive refresh tokens will expire.
+        """
         return pulumi.get(self, "idle_token_lifetime")
 
     @property
     @pulumi.getter(name="infiniteIdleTokenLifetime")
     def infinite_idle_token_lifetime(self) -> Optional[bool]:
+        """
+        Whether inactive refresh tokens should remain valid indefinitely.
+        """
         return pulumi.get(self, "infinite_idle_token_lifetime")
 
     @property
     @pulumi.getter(name="infiniteTokenLifetime")
     def infinite_token_lifetime(self) -> Optional[bool]:
+        """
+        Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+        """
         return pulumi.get(self, "infinite_token_lifetime")
 
     @property
     @pulumi.getter
     def leeway(self) -> Optional[int]:
+        """
+        The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        """
         return pulumi.get(self, "leeway")
 
     @property
     @pulumi.getter(name="tokenLifetime")
     def token_lifetime(self) -> Optional[int]:
+        """
+        The absolute lifetime of a refresh token in seconds.
+        """
         return pulumi.get(self, "token_lifetime")
 
 
@@ -4055,9 +4701,9 @@ class GuardianDuo(dict):
                  integration_key: str,
                  secret_key: str):
         """
-        :param str hostname: String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
-        :param str integration_key: String. Duo client ID, see the Duo documentation for more details on Duo setup.
-        :param str secret_key: String. Duo client secret, see the Duo documentation for more details on Duo setup.
+        :param str hostname: Duo API Hostname, see the Duo documentation for more details on Duo setup.
+        :param str integration_key: Duo client ID, see the Duo documentation for more details on Duo setup.
+        :param str secret_key: Duo client secret, see the Duo documentation for more details on Duo setup.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "integration_key", integration_key)
@@ -4067,7 +4713,7 @@ class GuardianDuo(dict):
     @pulumi.getter
     def hostname(self) -> str:
         """
-        String. Duo API Hostname, see the Duo documentation for more details on Duo setup.
+        Duo API Hostname, see the Duo documentation for more details on Duo setup.
         """
         return pulumi.get(self, "hostname")
 
@@ -4075,7 +4721,7 @@ class GuardianDuo(dict):
     @pulumi.getter(name="integrationKey")
     def integration_key(self) -> str:
         """
-        String. Duo client ID, see the Duo documentation for more details on Duo setup.
+        Duo client ID, see the Duo documentation for more details on Duo setup.
         """
         return pulumi.get(self, "integration_key")
 
@@ -4083,7 +4729,7 @@ class GuardianDuo(dict):
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> str:
         """
-        String. Duo client secret, see the Duo documentation for more details on Duo setup.
+        Duo client secret, see the Duo documentation for more details on Duo setup.
         """
         return pulumi.get(self, "secret_key")
 
@@ -4112,9 +4758,9 @@ class GuardianPhone(dict):
                  provider: str,
                  options: Optional['outputs.GuardianPhoneOptions'] = None):
         """
-        :param Sequence[str] message_types: List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
-        :param str provider: String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
-        :param 'GuardianPhoneOptionsArgs' options: List(Resource). Options for the various providers. See Options.
+        :param Sequence[str] message_types: Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
+        :param str provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        :param 'GuardianPhoneOptionsArgs' options: Options for the various providers.
         """
         pulumi.set(__self__, "message_types", message_types)
         pulumi.set(__self__, "provider", provider)
@@ -4125,7 +4771,7 @@ class GuardianPhone(dict):
     @pulumi.getter(name="messageTypes")
     def message_types(self) -> Sequence[str]:
         """
-        List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+        Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
         """
         return pulumi.get(self, "message_types")
 
@@ -4133,7 +4779,7 @@ class GuardianPhone(dict):
     @pulumi.getter
     def provider(self) -> str:
         """
-        String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
         """
         return pulumi.get(self, "provider")
 
@@ -4141,7 +4787,7 @@ class GuardianPhone(dict):
     @pulumi.getter
     def options(self) -> Optional['outputs.GuardianPhoneOptions']:
         """
-        List(Resource). Options for the various providers. See Options.
+        Options for the various providers.
         """
         return pulumi.get(self, "options")
 
@@ -4180,14 +4826,6 @@ class GuardianPhoneOptions(dict):
                  messaging_service_sid: Optional[str] = None,
                  sid: Optional[str] = None,
                  verification_message: Optional[str] = None):
-        """
-        :param str auth_token: String.
-        :param str enrollment_message: String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-        :param str from_: String.
-        :param str messaging_service_sid: String.
-        :param str sid: String.
-        :param str verification_message: String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-        """
         if auth_token is not None:
             pulumi.set(__self__, "auth_token", auth_token)
         if enrollment_message is not None:
@@ -4204,49 +4842,31 @@ class GuardianPhoneOptions(dict):
     @property
     @pulumi.getter(name="authToken")
     def auth_token(self) -> Optional[str]:
-        """
-        String.
-        """
         return pulumi.get(self, "auth_token")
 
     @property
     @pulumi.getter(name="enrollmentMessage")
     def enrollment_message(self) -> Optional[str]:
-        """
-        String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-        """
         return pulumi.get(self, "enrollment_message")
 
     @property
     @pulumi.getter(name="from")
     def from_(self) -> Optional[str]:
-        """
-        String.
-        """
         return pulumi.get(self, "from_")
 
     @property
     @pulumi.getter(name="messagingServiceSid")
     def messaging_service_sid(self) -> Optional[str]:
-        """
-        String.
-        """
         return pulumi.get(self, "messaging_service_sid")
 
     @property
     @pulumi.getter
     def sid(self) -> Optional[str]:
-        """
-        String.
-        """
         return pulumi.get(self, "sid")
 
     @property
     @pulumi.getter(name="verificationMessage")
     def verification_message(self) -> Optional[str]:
-        """
-        String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-        """
         return pulumi.get(self, "verification_message")
 
 
@@ -4274,6 +4894,10 @@ class GuardianPush(dict):
     def __init__(__self__, *,
                  amazon_sns: Optional['outputs.GuardianPushAmazonSns'] = None,
                  custom_app: Optional['outputs.GuardianPushCustomApp'] = None):
+        """
+        :param 'GuardianPushAmazonSnsArgs' amazon_sns: Configuration for Amazon SNS.
+        :param 'GuardianPushCustomAppArgs' custom_app: Configuration for the Guardian Custom App.
+        """
         if amazon_sns is not None:
             pulumi.set(__self__, "amazon_sns", amazon_sns)
         if custom_app is not None:
@@ -4282,11 +4906,17 @@ class GuardianPush(dict):
     @property
     @pulumi.getter(name="amazonSns")
     def amazon_sns(self) -> Optional['outputs.GuardianPushAmazonSns']:
+        """
+        Configuration for Amazon SNS.
+        """
         return pulumi.get(self, "amazon_sns")
 
     @property
     @pulumi.getter(name="customApp")
     def custom_app(self) -> Optional['outputs.GuardianPushCustomApp']:
+        """
+        Configuration for the Guardian Custom App.
+        """
         return pulumi.get(self, "custom_app")
 
 
@@ -4323,13 +4953,6 @@ class GuardianPushAmazonSns(dict):
                  aws_secret_access_key: str,
                  sns_apns_platform_application_arn: str,
                  sns_gcm_platform_application_arn: str):
-        """
-        :param str aws_access_key_id: String. Your AWS Access Key ID.
-        :param str aws_region: String. Your AWS application's region.
-        :param str aws_secret_access_key: String. Your AWS Secret Access Key.
-        :param str sns_apns_platform_application_arn: String. The Amazon Resource Name for your Apple Push Notification Service.
-        :param str sns_gcm_platform_application_arn: String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-        """
         pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
         pulumi.set(__self__, "aws_region", aws_region)
         pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
@@ -4339,41 +4962,26 @@ class GuardianPushAmazonSns(dict):
     @property
     @pulumi.getter(name="awsAccessKeyId")
     def aws_access_key_id(self) -> str:
-        """
-        String. Your AWS Access Key ID.
-        """
         return pulumi.get(self, "aws_access_key_id")
 
     @property
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> str:
-        """
-        String. Your AWS application's region.
-        """
         return pulumi.get(self, "aws_region")
 
     @property
     @pulumi.getter(name="awsSecretAccessKey")
     def aws_secret_access_key(self) -> str:
-        """
-        String. Your AWS Secret Access Key.
-        """
         return pulumi.get(self, "aws_secret_access_key")
 
     @property
     @pulumi.getter(name="snsApnsPlatformApplicationArn")
     def sns_apns_platform_application_arn(self) -> str:
-        """
-        String. The Amazon Resource Name for your Apple Push Notification Service.
-        """
         return pulumi.get(self, "sns_apns_platform_application_arn")
 
     @property
     @pulumi.getter(name="snsGcmPlatformApplicationArn")
     def sns_gcm_platform_application_arn(self) -> str:
-        """
-        String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-        """
         return pulumi.get(self, "sns_gcm_platform_application_arn")
 
 
@@ -4404,11 +5012,6 @@ class GuardianPushCustomApp(dict):
                  app_name: Optional[str] = None,
                  apple_app_link: Optional[str] = None,
                  google_app_link: Optional[str] = None):
-        """
-        :param str app_name: String. Custom Application Name.
-        :param str apple_app_link: String. Apple App Store URL.
-        :param str google_app_link: String. Google Store URL.
-        """
         if app_name is not None:
             pulumi.set(__self__, "app_name", app_name)
         if apple_app_link is not None:
@@ -4419,25 +5022,16 @@ class GuardianPushCustomApp(dict):
     @property
     @pulumi.getter(name="appName")
     def app_name(self) -> Optional[str]:
-        """
-        String. Custom Application Name.
-        """
         return pulumi.get(self, "app_name")
 
     @property
     @pulumi.getter(name="appleAppLink")
     def apple_app_link(self) -> Optional[str]:
-        """
-        String. Apple App Store URL.
-        """
         return pulumi.get(self, "apple_app_link")
 
     @property
     @pulumi.getter(name="googleAppLink")
     def google_app_link(self) -> Optional[str]:
-        """
-        String. Google Store URL.
-        """
         return pulumi.get(self, "google_app_link")
 
 
@@ -4466,8 +5060,8 @@ class GuardianWebauthnPlatform(dict):
                  override_relying_party: Optional[bool] = None,
                  relying_party_identifier: Optional[str] = None):
         """
-        :param bool override_relying_party: Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
-        :param str relying_party_identifier: String. The Relying Party should be a suffix of the custom domain.
+        :param bool override_relying_party: The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
+        :param str relying_party_identifier: The Relying Party should be a suffix of the custom domain.
         """
         if override_relying_party is not None:
             pulumi.set(__self__, "override_relying_party", override_relying_party)
@@ -4478,7 +5072,7 @@ class GuardianWebauthnPlatform(dict):
     @pulumi.getter(name="overrideRelyingParty")
     def override_relying_party(self) -> Optional[bool]:
         """
-        Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+        The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         """
         return pulumi.get(self, "override_relying_party")
 
@@ -4486,7 +5080,7 @@ class GuardianWebauthnPlatform(dict):
     @pulumi.getter(name="relyingPartyIdentifier")
     def relying_party_identifier(self) -> Optional[str]:
         """
-        String. The Relying Party should be a suffix of the custom domain.
+        The Relying Party should be a suffix of the custom domain.
         """
         return pulumi.get(self, "relying_party_identifier")
 
@@ -4519,9 +5113,9 @@ class GuardianWebauthnRoaming(dict):
                  relying_party_identifier: Optional[str] = None,
                  user_verification: Optional[str] = None):
         """
-        :param bool override_relying_party: Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
-        :param str relying_party_identifier: String. The Relying Party should be a suffix of the custom domain.
-        :param str user_verification: String. User verification, one of `discouraged`, `preferred` or `required`.
+        :param bool override_relying_party: The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
+        :param str relying_party_identifier: The Relying Party should be a suffix of the custom domain.
+        :param str user_verification: User verification, one of `discouraged`, `preferred` or `required`.
         """
         if override_relying_party is not None:
             pulumi.set(__self__, "override_relying_party", override_relying_party)
@@ -4534,7 +5128,7 @@ class GuardianWebauthnRoaming(dict):
     @pulumi.getter(name="overrideRelyingParty")
     def override_relying_party(self) -> Optional[bool]:
         """
-        Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+        The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         """
         return pulumi.get(self, "override_relying_party")
 
@@ -4542,7 +5136,7 @@ class GuardianWebauthnRoaming(dict):
     @pulumi.getter(name="relyingPartyIdentifier")
     def relying_party_identifier(self) -> Optional[str]:
         """
-        String. The Relying Party should be a suffix of the custom domain.
+        The Relying Party should be a suffix of the custom domain.
         """
         return pulumi.get(self, "relying_party_identifier")
 
@@ -4550,7 +5144,7 @@ class GuardianWebauthnRoaming(dict):
     @pulumi.getter(name="userVerification")
     def user_verification(self) -> Optional[str]:
         """
-        String. User verification, one of `discouraged`, `preferred` or `required`.
+        User verification, one of `discouraged`, `preferred` or `required`.
         """
         return pulumi.get(self, "user_verification")
 
@@ -4631,24 +5225,25 @@ class LogStreamSink(dict):
                  splunk_token: Optional[str] = None,
                  sumo_source_address: Optional[str] = None):
         """
-        :param str aws_account_id: The AWS Account ID
-        :param str aws_partner_event_source: Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
-        :param str aws_region: The AWS Region (i.e "us-east-2")
-        :param str azure_partner_topic: Name of the Partner Topic to be used with Azure.  Generally should not be specified.
-        :param str azure_region: The Azure region code (i.e. "ne")
-        :param str azure_resource_group: The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
-        :param str azure_subscription_id: The unique alphanumeric string that identifies your Azure subscription
-        :param str datadog_api_key: The Datadog API key
-        :param str datadog_region: The Datadog region. Options are ["us", "eu", "us3", "us5"]
-        :param str http_authorization: Sent in the HTTP "Authorization" header with each request
+        :param str aws_account_id: The AWS Account ID.
+        :param str aws_partner_event_source: Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS, so this should be an output attribute.
+        :param str aws_region: The AWS Region, e.g. "us-east-2").
+        :param str azure_partner_topic: Name of the Partner Topic to be used with Azure. Generally should not be specified.
+        :param str azure_region: The Azure region code, e.g. "ne")
+        :param str azure_resource_group: The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
+        :param str azure_subscription_id: The unique alphanumeric string that identifies your Azure subscription.
+        :param str datadog_api_key: The Datadog API key.
+        :param str datadog_region: The Datadog region. Options are ["us", "eu", "us3", "us5"].
+        :param str http_authorization: Sent in the HTTP "Authorization" header with each request.
         :param str http_content_format: The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
-        :param str http_content_type: The ContentType header to send over HTTP.  Common value is "application/json"
-        :param Sequence[Mapping[str, str]] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request
-        :param str http_endpoint: The HTTP endpoint to send streaming logs
-        :param str splunk_domain: The Splunk domain name
-        :param bool splunk_secure: This toggle should be turned off when using self-signed certificates
-        :param str splunk_token: The Splunk access token
-        :param str sumo_source_address: Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
+        :param str http_content_type: The "Content-Type" header to send over HTTP. Common value is "application/json".
+        :param Sequence[Mapping[str, str]] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request.
+        :param str http_endpoint: The HTTP endpoint to send streaming logs.
+        :param str splunk_domain: The Splunk domain name.
+        :param str splunk_port: The Splunk port.
+        :param bool splunk_secure: This toggle should be turned off when using self-signed certificates.
+        :param str splunk_token: The Splunk access token.
+        :param str sumo_source_address: Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0.
         """
         if aws_account_id is not None:
             pulumi.set(__self__, "aws_account_id", aws_account_id)
@@ -4693,7 +5288,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> Optional[str]:
         """
-        The AWS Account ID
+        The AWS Account ID.
         """
         return pulumi.get(self, "aws_account_id")
 
@@ -4701,7 +5296,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="awsPartnerEventSource")
     def aws_partner_event_source(self) -> Optional[str]:
         """
-        Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS so this should generally be an output attribute.
+        Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS, so this should be an output attribute.
         """
         return pulumi.get(self, "aws_partner_event_source")
 
@@ -4709,7 +5304,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> Optional[str]:
         """
-        The AWS Region (i.e "us-east-2")
+        The AWS Region, e.g. "us-east-2").
         """
         return pulumi.get(self, "aws_region")
 
@@ -4717,7 +5312,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="azurePartnerTopic")
     def azure_partner_topic(self) -> Optional[str]:
         """
-        Name of the Partner Topic to be used with Azure.  Generally should not be specified.
+        Name of the Partner Topic to be used with Azure. Generally should not be specified.
         """
         return pulumi.get(self, "azure_partner_topic")
 
@@ -4725,7 +5320,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="azureRegion")
     def azure_region(self) -> Optional[str]:
         """
-        The Azure region code (i.e. "ne")
+        The Azure region code, e.g. "ne")
         """
         return pulumi.get(self, "azure_region")
 
@@ -4733,7 +5328,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="azureResourceGroup")
     def azure_resource_group(self) -> Optional[str]:
         """
-        The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription
+        The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
         """
         return pulumi.get(self, "azure_resource_group")
 
@@ -4741,7 +5336,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="azureSubscriptionId")
     def azure_subscription_id(self) -> Optional[str]:
         """
-        The unique alphanumeric string that identifies your Azure subscription
+        The unique alphanumeric string that identifies your Azure subscription.
         """
         return pulumi.get(self, "azure_subscription_id")
 
@@ -4749,7 +5344,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="datadogApiKey")
     def datadog_api_key(self) -> Optional[str]:
         """
-        The Datadog API key
+        The Datadog API key.
         """
         return pulumi.get(self, "datadog_api_key")
 
@@ -4757,7 +5352,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="datadogRegion")
     def datadog_region(self) -> Optional[str]:
         """
-        The Datadog region. Options are ["us", "eu", "us3", "us5"]
+        The Datadog region. Options are ["us", "eu", "us3", "us5"].
         """
         return pulumi.get(self, "datadog_region")
 
@@ -4765,7 +5360,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="httpAuthorization")
     def http_authorization(self) -> Optional[str]:
         """
-        Sent in the HTTP "Authorization" header with each request
+        Sent in the HTTP "Authorization" header with each request.
         """
         return pulumi.get(self, "http_authorization")
 
@@ -4781,7 +5376,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="httpContentType")
     def http_content_type(self) -> Optional[str]:
         """
-        The ContentType header to send over HTTP.  Common value is "application/json"
+        The "Content-Type" header to send over HTTP. Common value is "application/json".
         """
         return pulumi.get(self, "http_content_type")
 
@@ -4789,7 +5384,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="httpCustomHeaders")
     def http_custom_headers(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
-        Additional HTTP headers to be included as part of the HTTP request
+        Additional HTTP headers to be included as part of the HTTP request.
         """
         return pulumi.get(self, "http_custom_headers")
 
@@ -4797,7 +5392,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="httpEndpoint")
     def http_endpoint(self) -> Optional[str]:
         """
-        The HTTP endpoint to send streaming logs
+        The HTTP endpoint to send streaming logs.
         """
         return pulumi.get(self, "http_endpoint")
 
@@ -4805,20 +5400,23 @@ class LogStreamSink(dict):
     @pulumi.getter(name="splunkDomain")
     def splunk_domain(self) -> Optional[str]:
         """
-        The Splunk domain name
+        The Splunk domain name.
         """
         return pulumi.get(self, "splunk_domain")
 
     @property
     @pulumi.getter(name="splunkPort")
     def splunk_port(self) -> Optional[str]:
+        """
+        The Splunk port.
+        """
         return pulumi.get(self, "splunk_port")
 
     @property
     @pulumi.getter(name="splunkSecure")
     def splunk_secure(self) -> Optional[bool]:
         """
-        This toggle should be turned off when using self-signed certificates
+        This toggle should be turned off when using self-signed certificates.
         """
         return pulumi.get(self, "splunk_secure")
 
@@ -4826,7 +5424,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> Optional[str]:
         """
-        The Splunk access token
+        The Splunk access token.
         """
         return pulumi.get(self, "splunk_token")
 
@@ -4834,7 +5432,7 @@ class LogStreamSink(dict):
     @pulumi.getter(name="sumoSourceAddress")
     def sumo_source_address(self) -> Optional[str]:
         """
-        Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0
+        Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0.
         """
         return pulumi.get(self, "sumo_source_address")
 
@@ -4862,8 +5460,8 @@ class OrganizationBranding(dict):
                  colors: Optional[Mapping[str, str]] = None,
                  logo_url: Optional[str] = None):
         """
-        :param Mapping[str, str] colors: Color scheme used to customize the login pages
-        :param str logo_url: URL of logo to display on login page
+        :param Mapping[str, str] colors: Color scheme used to customize the login pages.
+        :param str logo_url: URL of logo to display on login page.
         """
         if colors is not None:
             pulumi.set(__self__, "colors", colors)
@@ -4874,7 +5472,7 @@ class OrganizationBranding(dict):
     @pulumi.getter
     def colors(self) -> Optional[Mapping[str, str]]:
         """
-        Color scheme used to customize the login pages
+        Color scheme used to customize the login pages.
         """
         return pulumi.get(self, "colors")
 
@@ -4882,66 +5480,9 @@ class OrganizationBranding(dict):
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[str]:
         """
-        URL of logo to display on login page
+        URL of logo to display on login page.
         """
         return pulumi.get(self, "logo_url")
-
-
-@pulumi.output_type
-class OrganizationConnection(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "connectionId":
-            suggest = "connection_id"
-        elif key == "assignMembershipOnLogin":
-            suggest = "assign_membership_on_login"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OrganizationConnection. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OrganizationConnection.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OrganizationConnection.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 connection_id: str,
-                 assign_membership_on_login: Optional[bool] = None):
-        """
-        :param str connection_id: The connection ID of the connection to add to the
-               organization
-        :param bool assign_membership_on_login: When true, all users that log in
-               with this connection will be automatically granted membership in the
-               organization. When false, users must be granted membership in the organization
-               before logging in with this connection.
-        """
-        pulumi.set(__self__, "connection_id", connection_id)
-        if assign_membership_on_login is not None:
-            pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
-
-    @property
-    @pulumi.getter(name="connectionId")
-    def connection_id(self) -> str:
-        """
-        The connection ID of the connection to add to the
-        organization
-        """
-        return pulumi.get(self, "connection_id")
-
-    @property
-    @pulumi.getter(name="assignMembershipOnLogin")
-    def assign_membership_on_login(self) -> Optional[bool]:
-        """
-        When true, all users that log in
-        with this connection will be automatically granted membership in the
-        organization. When false, users must be granted membership in the organization
-        before logging in with this connection.
-        """
-        return pulumi.get(self, "assign_membership_on_login")
 
 
 @pulumi.output_type
@@ -4950,8 +5491,8 @@ class ResourceServerScope(dict):
                  value: str,
                  description: Optional[str] = None):
         """
-        :param str value: String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-        :param str description: String. Description of the permission (scope).
+        :param str value: Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+        :param str description: Description of the permission (scope).
         """
         pulumi.set(__self__, "value", value)
         if description is not None:
@@ -4961,7 +5502,7 @@ class ResourceServerScope(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+        Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
         """
         return pulumi.get(self, "value")
 
@@ -4969,7 +5510,7 @@ class ResourceServerScope(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        String. Description of the permission (scope).
+        Description of the permission (scope).
         """
         return pulumi.get(self, "description")
 
@@ -4997,8 +5538,8 @@ class RolePermission(dict):
                  name: str,
                  resource_server_identifier: str):
         """
-        :param str name: String. Name of the permission (scope).
-        :param str resource_server_identifier: String. Unique identifier for the resource server.
+        :param str name: Name of the permission (scope).
+        :param str resource_server_identifier: Unique identifier for the resource server.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
@@ -5007,7 +5548,7 @@ class RolePermission(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        String. Name of the permission (scope).
+        Name of the permission (scope).
         """
         return pulumi.get(self, "name")
 
@@ -5015,7 +5556,7 @@ class RolePermission(dict):
     @pulumi.getter(name="resourceServerIdentifier")
     def resource_server_identifier(self) -> str:
         """
-        String. Unique identifier for the resource server.
+        Unique identifier for the resource server.
         """
         return pulumi.get(self, "resource_server_identifier")
 
@@ -5026,8 +5567,8 @@ class TenantChangePassword(dict):
                  enabled: bool,
                  html: str):
         """
-        :param bool enabled: Boolean. Indicates whether to use the custom change password page.
-        :param str html: String, HTML format with supported Liquid syntax. Customized content of the change password page.
+        :param bool enabled: Indicates whether to use the custom change password page.
+        :param str html: HTML format with supported Liquid syntax. Customized content of the change password page.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "html", html)
@@ -5036,7 +5577,7 @@ class TenantChangePassword(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Boolean. Indicates whether to use the custom change password page.
+        Indicates whether to use the custom change password page.
         """
         return pulumi.get(self, "enabled")
 
@@ -5044,7 +5585,7 @@ class TenantChangePassword(dict):
     @pulumi.getter
     def html(self) -> str:
         """
-        String, HTML format with supported Liquid syntax. Customized content of the change password page.
+        HTML format with supported Liquid syntax. Customized content of the change password page.
         """
         return pulumi.get(self, "html")
 
@@ -5073,9 +5614,9 @@ class TenantErrorPage(dict):
                  show_log_link: bool,
                  url: str):
         """
-        :param str html: String, HTML format with supported Liquid syntax. Customized content of the error page.
-        :param bool show_log_link: Boolean. Indicates whether to show the link to logs as part of the default error page.
-        :param str url: String. URL to redirect to when an error occurs rather than showing the default error page.
+        :param str html: HTML format with supported Liquid syntax. Customized content of the error page.
+        :param bool show_log_link: Indicates whether to show the link to logs as part of the default error page.
+        :param str url: URL to redirect to when an error occurs rather than showing the default error page.
         """
         pulumi.set(__self__, "html", html)
         pulumi.set(__self__, "show_log_link", show_log_link)
@@ -5085,7 +5626,7 @@ class TenantErrorPage(dict):
     @pulumi.getter
     def html(self) -> str:
         """
-        String, HTML format with supported Liquid syntax. Customized content of the error page.
+        HTML format with supported Liquid syntax. Customized content of the error page.
         """
         return pulumi.get(self, "html")
 
@@ -5093,7 +5634,7 @@ class TenantErrorPage(dict):
     @pulumi.getter(name="showLogLink")
     def show_log_link(self) -> bool:
         """
-        Boolean. Indicates whether to show the link to logs as part of the default error page.
+        Indicates whether to show the link to logs as part of the default error page.
         """
         return pulumi.get(self, "show_log_link")
 
@@ -5101,7 +5642,7 @@ class TenantErrorPage(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        String. URL to redirect to when an error occurs rather than showing the default error page.
+        URL to redirect to when an error occurs rather than showing the default error page.
         """
         return pulumi.get(self, "url")
 
@@ -5191,27 +5732,28 @@ class TenantFlags(dict):
                  universal_login: Optional[bool] = None,
                  use_scope_descriptions_for_consent: Optional[bool] = None):
         """
-        :param bool allow_legacy_delegation_grant_types: Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
-        :param bool allow_legacy_ro_grant_types: Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
-        :param bool allow_legacy_tokeninfo_endpoint: Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
-        :param bool dashboard_insights_view: Boolean. Enables new insights activity page view.
-        :param bool dashboard_log_streams_next: Boolean. Enables beta access to log streaming changes.
-        :param bool disable_clickjack_protection_headers: Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
-        :param bool disable_fields_map_fix: Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
-        :param bool disable_management_api_sms_obfuscation: Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
-        :param bool enable_adfs_waad_email_verification: Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
-        :param bool enable_apis_section: Boolean. Indicates whether the APIs section is enabled for the tenant.
-        :param bool enable_client_connections: Boolean. Indicates whether all current connections should be enabled when a new client is created.
-        :param bool enable_custom_domain_in_emails: Boolean. Indicates whether the tenant allows custom domains in emails.
-        :param bool enable_dynamic_client_registration: Boolean. Indicates whether the tenant allows dynamic client registration.
-        :param bool enable_idtoken_api2: Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
-        :param bool enable_legacy_logs_search_v2: Boolean. Indicates whether to use the older v2 legacy logs search.
-        :param bool enable_legacy_profile: Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
-        :param bool enable_pipeline2: Boolean. Indicates whether advanced API Authorization scenarios are enabled.
-        :param bool enable_public_signup_user_exists_error: Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
-        :param bool no_disclose_enterprise_connections: Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
-        :param bool revoke_refresh_token_grant: Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
-        :param bool universal_login: Boolean. Indicates whether the tenant uses universal login.
+        :param bool allow_legacy_delegation_grant_types: Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+        :param bool allow_legacy_ro_grant_types: Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+        :param bool allow_legacy_tokeninfo_endpoint: If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+        :param bool dashboard_insights_view: Enables new insights activity page view.
+        :param bool dashboard_log_streams_next: Enables beta access to log streaming changes.
+        :param bool disable_clickjack_protection_headers: Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+        :param bool disable_fields_map_fix: Disables SAML fields map fix for bad mappings with repeated attributes.
+        :param bool disable_management_api_sms_obfuscation: If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+        :param bool enable_adfs_waad_email_verification: If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+        :param bool enable_apis_section: Indicates whether the APIs section is enabled for the tenant.
+        :param bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created.
+        :param bool enable_custom_domain_in_emails: Indicates whether the tenant allows custom domains in emails.
+        :param bool enable_dynamic_client_registration: Indicates whether the tenant allows dynamic client registration.
+        :param bool enable_idtoken_api2: Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
+        :param bool enable_legacy_logs_search_v2: Indicates whether to use the older v2 legacy logs search.
+        :param bool enable_legacy_profile: Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+        :param bool enable_pipeline2: Indicates whether advanced API Authorization scenarios are enabled.
+        :param bool enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        :param bool no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        :param bool revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
+        :param bool universal_login: Indicates whether the tenant uses Universal Login.
+        :param bool use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
         """
         if allow_legacy_delegation_grant_types is not None:
             pulumi.set(__self__, "allow_legacy_delegation_grant_types", allow_legacy_delegation_grant_types)
@@ -5262,7 +5804,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="allowLegacyDelegationGrantTypes")
     def allow_legacy_delegation_grant_types(self) -> Optional[bool]:
         """
-        Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+        Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
         """
         return pulumi.get(self, "allow_legacy_delegation_grant_types")
 
@@ -5270,7 +5812,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="allowLegacyRoGrantTypes")
     def allow_legacy_ro_grant_types(self) -> Optional[bool]:
         """
-        Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+        Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
         """
         return pulumi.get(self, "allow_legacy_ro_grant_types")
 
@@ -5278,7 +5820,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="allowLegacyTokeninfoEndpoint")
     def allow_legacy_tokeninfo_endpoint(self) -> Optional[bool]:
         """
-        Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+        If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
         """
         return pulumi.get(self, "allow_legacy_tokeninfo_endpoint")
 
@@ -5286,7 +5828,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="dashboardInsightsView")
     def dashboard_insights_view(self) -> Optional[bool]:
         """
-        Boolean. Enables new insights activity page view.
+        Enables new insights activity page view.
         """
         return pulumi.get(self, "dashboard_insights_view")
 
@@ -5294,7 +5836,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="dashboardLogStreamsNext")
     def dashboard_log_streams_next(self) -> Optional[bool]:
         """
-        Boolean. Enables beta access to log streaming changes.
+        Enables beta access to log streaming changes.
         """
         return pulumi.get(self, "dashboard_log_streams_next")
 
@@ -5302,7 +5844,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="disableClickjackProtectionHeaders")
     def disable_clickjack_protection_headers(self) -> Optional[bool]:
         """
-        Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+        Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
         """
         return pulumi.get(self, "disable_clickjack_protection_headers")
 
@@ -5310,7 +5852,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="disableFieldsMapFix")
     def disable_fields_map_fix(self) -> Optional[bool]:
         """
-        Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+        Disables SAML fields map fix for bad mappings with repeated attributes.
         """
         return pulumi.get(self, "disable_fields_map_fix")
 
@@ -5318,7 +5860,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="disableManagementApiSmsObfuscation")
     def disable_management_api_sms_obfuscation(self) -> Optional[bool]:
         """
-        Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+        If true, SMS phone numbers will not be obfuscated in Management API GET calls.
         """
         return pulumi.get(self, "disable_management_api_sms_obfuscation")
 
@@ -5326,7 +5868,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableAdfsWaadEmailVerification")
     def enable_adfs_waad_email_verification(self) -> Optional[bool]:
         """
-        Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+        If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
         """
         return pulumi.get(self, "enable_adfs_waad_email_verification")
 
@@ -5334,7 +5876,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableApisSection")
     def enable_apis_section(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether the APIs section is enabled for the tenant.
+        Indicates whether the APIs section is enabled for the tenant.
         """
         return pulumi.get(self, "enable_apis_section")
 
@@ -5342,7 +5884,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableClientConnections")
     def enable_client_connections(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether all current connections should be enabled when a new client is created.
+        Indicates whether all current connections should be enabled when a new client is created.
         """
         return pulumi.get(self, "enable_client_connections")
 
@@ -5350,7 +5892,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableCustomDomainInEmails")
     def enable_custom_domain_in_emails(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether the tenant allows custom domains in emails.
+        Indicates whether the tenant allows custom domains in emails.
         """
         return pulumi.get(self, "enable_custom_domain_in_emails")
 
@@ -5358,7 +5900,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableDynamicClientRegistration")
     def enable_dynamic_client_registration(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether the tenant allows dynamic client registration.
+        Indicates whether the tenant allows dynamic client registration.
         """
         return pulumi.get(self, "enable_dynamic_client_registration")
 
@@ -5366,7 +5908,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableIdtokenApi2")
     def enable_idtoken_api2(self) -> Optional[bool]:
         """
-        Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+        Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
         """
         return pulumi.get(self, "enable_idtoken_api2")
 
@@ -5374,7 +5916,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableLegacyLogsSearchV2")
     def enable_legacy_logs_search_v2(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether to use the older v2 legacy logs search.
+        Indicates whether to use the older v2 legacy logs search.
         """
         return pulumi.get(self, "enable_legacy_logs_search_v2")
 
@@ -5382,7 +5924,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableLegacyProfile")
     def enable_legacy_profile(self) -> Optional[bool]:
         """
-        Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+        Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
         """
         return pulumi.get(self, "enable_legacy_profile")
 
@@ -5390,7 +5932,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enablePipeline2")
     def enable_pipeline2(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+        Indicates whether advanced API Authorization scenarios are enabled.
         """
         return pulumi.get(self, "enable_pipeline2")
 
@@ -5398,7 +5940,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enablePublicSignupUserExistsError")
     def enable_public_signup_user_exists_error(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+        Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
         """
         return pulumi.get(self, "enable_public_signup_user_exists_error")
 
@@ -5406,7 +5948,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="noDiscloseEnterpriseConnections")
     def no_disclose_enterprise_connections(self) -> Optional[bool]:
         """
-        Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
         """
         return pulumi.get(self, "no_disclose_enterprise_connections")
 
@@ -5414,7 +5956,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="revokeRefreshTokenGrant")
     def revoke_refresh_token_grant(self) -> Optional[bool]:
         """
-        Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+        Delete underlying grant when a refresh token is revoked via the Authentication API.
         """
         return pulumi.get(self, "revoke_refresh_token_grant")
 
@@ -5422,13 +5964,16 @@ class TenantFlags(dict):
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[bool]:
         """
-        Boolean. Indicates whether the tenant uses universal login.
+        Indicates whether the tenant uses Universal Login.
         """
         return pulumi.get(self, "universal_login")
 
     @property
     @pulumi.getter(name="useScopeDescriptionsForConsent")
     def use_scope_descriptions_for_consent(self) -> Optional[bool]:
+        """
+        Indicates whether to use scope descriptions for consent.
+        """
         return pulumi.get(self, "use_scope_descriptions_for_consent")
 
 
@@ -5438,8 +5983,8 @@ class TenantGuardianMfaPage(dict):
                  enabled: bool,
                  html: str):
         """
-        :param bool enabled: Boolean. Indicates whether to use the custom Guardian page.
-        :param str html: String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+        :param bool enabled: Indicates whether to use the custom Guardian page.
+        :param str html: HTML format with supported Liquid syntax. Customized content of the Guardian page.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "html", html)
@@ -5448,7 +5993,7 @@ class TenantGuardianMfaPage(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Boolean. Indicates whether to use the custom Guardian page.
+        Indicates whether to use the custom Guardian page.
         """
         return pulumi.get(self, "enabled")
 
@@ -5456,7 +6001,7 @@ class TenantGuardianMfaPage(dict):
     @pulumi.getter
     def html(self) -> str:
         """
-        String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+        HTML format with supported Liquid syntax. Customized content of the Guardian page.
         """
         return pulumi.get(self, "html")
 
@@ -5465,12 +6010,18 @@ class TenantGuardianMfaPage(dict):
 class TenantSessionCookie(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None):
+        """
+        :param str mode: Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+        """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
+        """
+        Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+        """
         return pulumi.get(self, "mode")
 
 
@@ -5479,7 +6030,7 @@ class TenantUniversalLogin(dict):
     def __init__(__self__, *,
                  colors: Optional['outputs.TenantUniversalLoginColors'] = None):
         """
-        :param 'TenantUniversalLoginColorsArgs' colors: List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+        :param 'TenantUniversalLoginColorsArgs' colors: Configuration settings for Universal Login colors.
         """
         if colors is not None:
             pulumi.set(__self__, "colors", colors)
@@ -5488,7 +6039,7 @@ class TenantUniversalLogin(dict):
     @pulumi.getter
     def colors(self) -> Optional['outputs.TenantUniversalLoginColors']:
         """
-        List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+        Configuration settings for Universal Login colors.
         """
         return pulumi.get(self, "colors")
 
@@ -5515,10 +6066,6 @@ class TenantUniversalLoginColors(dict):
     def __init__(__self__, *,
                  page_background: Optional[str] = None,
                  primary: Optional[str] = None):
-        """
-        :param str page_background: String, Hexadecimal. Background color of login pages.
-        :param str primary: String, Hexadecimal. Primary button background color.
-        """
         if page_background is not None:
             pulumi.set(__self__, "page_background", page_background)
         if primary is not None:
@@ -5527,17 +6074,11 @@ class TenantUniversalLoginColors(dict):
     @property
     @pulumi.getter(name="pageBackground")
     def page_background(self) -> Optional[str]:
-        """
-        String, Hexadecimal. Background color of login pages.
-        """
         return pulumi.get(self, "page_background")
 
     @property
     @pulumi.getter
     def primary(self) -> Optional[str]:
-        """
-        String, Hexadecimal. Primary button background color.
-        """
         return pulumi.get(self, "primary")
 
 
@@ -5565,7 +6106,7 @@ class TriggerBindingAction(dict):
                  id: str):
         """
         :param str display_name: The name of an action.
-        :param str id: Trigger ID.
+        :param str id: Action ID.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "id", id)
@@ -5582,7 +6123,7 @@ class TriggerBindingAction(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        Trigger ID.
+        Action ID.
         """
         return pulumi.get(self, "id")
 
@@ -5798,6 +6339,7 @@ class GetClientAddonSamlpResult(dict):
                  destination: str,
                  digest_algorithm: str,
                  include_attribute_name_format: bool,
+                 issuer: str,
                  lifetime_in_seconds: int,
                  logout: Mapping[str, Any],
                  map_identities: bool,
@@ -5818,6 +6360,7 @@ class GetClientAddonSamlpResult(dict):
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         pulumi.set(__self__, "include_attribute_name_format", include_attribute_name_format)
+        pulumi.set(__self__, "issuer", issuer)
         pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
         pulumi.set(__self__, "logout", logout)
         pulumi.set(__self__, "map_identities", map_identities)
@@ -5866,6 +6409,11 @@ class GetClientAddonSamlpResult(dict):
     @pulumi.getter(name="includeAttributeNameFormat")
     def include_attribute_name_format(self) -> bool:
         return pulumi.get(self, "include_attribute_name_format")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")
@@ -6331,6 +6879,7 @@ class GetGlobalClientAddonSamlpResult(dict):
                  destination: str,
                  digest_algorithm: str,
                  include_attribute_name_format: bool,
+                 issuer: str,
                  lifetime_in_seconds: int,
                  logout: Mapping[str, Any],
                  map_identities: bool,
@@ -6351,6 +6900,7 @@ class GetGlobalClientAddonSamlpResult(dict):
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         pulumi.set(__self__, "include_attribute_name_format", include_attribute_name_format)
+        pulumi.set(__self__, "issuer", issuer)
         pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
         pulumi.set(__self__, "logout", logout)
         pulumi.set(__self__, "map_identities", map_identities)
@@ -6399,6 +6949,11 @@ class GetGlobalClientAddonSamlpResult(dict):
     @pulumi.getter(name="includeAttributeNameFormat")
     def include_attribute_name_format(self) -> bool:
         return pulumi.get(self, "include_attribute_name_format")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="lifetimeInSeconds")

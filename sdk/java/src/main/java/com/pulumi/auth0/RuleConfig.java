@@ -14,9 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
- * authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables
- * that are available to all rules via Auth0&#39;s global configuration object. Used in conjunction with configured rules.
+ * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0&#39;s global configuration object. Used in conjunction with configured rules.
  * 
  * ## Example Usage
  * ```java
@@ -45,10 +43,10 @@ import javax.annotation.Nullable;
  *         var myRule = new Rule(&#34;myRule&#34;, RuleArgs.builder()        
  *             .enabled(true)
  *             .script(&#34;&#34;&#34;
- * function (user, context, callback) {
- *   callback(null, user, context);
- * }
- * 
+ *     function (user, context, callback) {
+ *       callback(null, user, context);
+ *     }
+ *   
  *             &#34;&#34;&#34;)
  *             .build());
  * 
@@ -63,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Existing rule configs can be imported using their key name, e.g.
+ * # Existing rule configs can be imported using their key name. # # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
@@ -73,28 +71,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/ruleConfig:RuleConfig")
 public class RuleConfig extends com.pulumi.resources.CustomResource {
     /**
-     * String. Key for a rules configuration variable.
+     * Key for a rules configuration variable.
      * 
      */
     @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
-     * @return String. Key for a rules configuration variable.
+     * @return Key for a rules configuration variable.
      * 
      */
     public Output<String> key() {
         return this.key;
     }
     /**
-     * String, Case-sensitive. Value for a rules configuration variable.
+     * Value for a rules configuration variable.
      * 
      */
     @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**
-     * @return String, Case-sensitive. Value for a rules configuration variable.
+     * @return Value for a rules configuration variable.
      * 
      */
     public Output<String> value() {

@@ -17,14 +17,14 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
     public static final GuardianWebauthnRoamingArgs Empty = new GuardianWebauthnRoamingArgs();
 
     /**
-     * Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
     @Import(name="overrideRelyingParty")
     private @Nullable Output<Boolean> overrideRelyingParty;
 
     /**
-     * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * @return The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
     public Optional<Output<Boolean>> overrideRelyingParty() {
@@ -32,14 +32,14 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String. The Relying Party should be a suffix of the custom domain.
+     * The Relying Party should be a suffix of the custom domain.
      * 
      */
     @Import(name="relyingPartyIdentifier")
     private @Nullable Output<String> relyingPartyIdentifier;
 
     /**
-     * @return String. The Relying Party should be a suffix of the custom domain.
+     * @return The Relying Party should be a suffix of the custom domain.
      * 
      */
     public Optional<Output<String>> relyingPartyIdentifier() {
@@ -47,14 +47,14 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String. User verification, one of `discouraged`, `preferred` or `required`.
+     * User verification, one of `discouraged`, `preferred` or `required`.
      * 
      */
     @Import(name="userVerification")
     private @Nullable Output<String> userVerification;
 
     /**
-     * @return String. User verification, one of `discouraged`, `preferred` or `required`.
+     * @return User verification, one of `discouraged`, `preferred` or `required`.
      * 
      */
     public Optional<Output<String>> userVerification() {
@@ -88,7 +88,7 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param overrideRelyingParty Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+         * @param overrideRelyingParty The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param overrideRelyingParty Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+         * @param overrideRelyingParty The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param relyingPartyIdentifier String. The Relying Party should be a suffix of the custom domain.
+         * @param relyingPartyIdentifier The Relying Party should be a suffix of the custom domain.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param relyingPartyIdentifier String. The Relying Party should be a suffix of the custom domain.
+         * @param relyingPartyIdentifier The Relying Party should be a suffix of the custom domain.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param userVerification String. User verification, one of `discouraged`, `preferred` or `required`.
+         * @param userVerification User verification, one of `discouraged`, `preferred` or `required`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param userVerification String. User verification, one of `discouraged`, `preferred` or `required`.
+         * @param userVerification User verification, one of `discouraged`, `preferred` or `required`.
          * 
          * @return builder
          * 

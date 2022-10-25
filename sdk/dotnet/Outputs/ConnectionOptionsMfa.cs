@@ -13,13 +13,7 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ConnectionOptionsMfa
     {
-        /// <summary>
-        /// Indicates whether multifactor authentication is enabled for this connection.
-        /// </summary>
         public readonly bool? Active;
-        /// <summary>
-        /// Indicates whether multifactor authentication enrollment settings will be returned.
-        /// </summary>
         public readonly bool? ReturnEnrollSettings;
 
         [OutputConstructor]

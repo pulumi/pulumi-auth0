@@ -16,14 +16,14 @@ public final class ResourceServerScopeArgs extends com.pulumi.resources.Resource
     public static final ResourceServerScopeArgs Empty = new ResourceServerScopeArgs();
 
     /**
-     * String. Description of the permission (scope).
+     * Description of the permission (scope).
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return String. Description of the permission (scope).
+     * @return Description of the permission (scope).
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class ResourceServerScopeArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+     * Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+     * @return Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
      * 
      */
     public Output<String> value() {
@@ -71,7 +71,7 @@ public final class ResourceServerScopeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description String. Description of the permission (scope).
+         * @param description Description of the permission (scope).
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ResourceServerScopeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description String. Description of the permission (scope).
+         * @param description Description of the permission (scope).
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ResourceServerScopeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param value String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+         * @param value Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ResourceServerScopeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param value String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+         * @param value Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
          * 
          * @return builder
          * 

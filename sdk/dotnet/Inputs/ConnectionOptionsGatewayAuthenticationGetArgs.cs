@@ -24,9 +24,6 @@ namespace Pulumi.Auth0.Inputs
         [Input("secretBase64Encoded")]
         public Input<bool>? SecretBase64Encoded { get; set; }
 
-        /// <summary>
-        /// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
-        /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 

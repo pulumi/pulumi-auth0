@@ -32,125 +32,154 @@ namespace Pulumi.Auth0
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetGlobalClientResult> InvokeAsync(GetGlobalClientArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalClientResult>("auth0:index/getGlobalClient:getGlobalClient", args ?? new GetGlobalClientArgs(), options.WithDefaults());
-
-        /// <summary>
-        /// Retrieves a tenant's global Auth0 Application client.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @global = Auth0.GetGlobalClient.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
-        public static Output<GetGlobalClientResult> Invoke(GetGlobalClientInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalClientResult>("auth0:index/getGlobalClient:getGlobalClient", args ?? new GetGlobalClientInvokeArgs(), options.WithDefaults());
-    }
-
-
-    public sealed class GetGlobalClientArgs : global::Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// String. ID of the client.
-        /// * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
-        /// </summary>
-        [Input("clientId")]
-        public string? ClientId { get; set; }
-
-        [Input("name")]
-        public string? Name { get; set; }
-
-        public GetGlobalClientArgs()
-        {
-        }
-        public static new GetGlobalClientArgs Empty => new GetGlobalClientArgs();
-    }
-
-    public sealed class GetGlobalClientInvokeArgs : global::Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// String. ID of the client.
-        /// * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
-        /// </summary>
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public GetGlobalClientInvokeArgs()
-        {
-        }
-        public static new GetGlobalClientInvokeArgs Empty => new GetGlobalClientInvokeArgs();
+        public static Task<GetGlobalClientResult> InvokeAsync(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalClientResult>("auth0:index/getGlobalClient:getGlobalClient", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
     [OutputType]
     public sealed class GetGlobalClientResult
     {
+        /// <summary>
+        /// Addons enabled for this client and their associated configurations.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGlobalClientAddonResult> Addons;
+        /// <summary>
+        /// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedClients;
+        /// <summary>
+        /// URLs that Auth0 may redirect to after logout.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedLogoutUrls;
+        /// <summary>
+        /// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
+        /// <summary>
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// </summary>
         public readonly string AppType;
+        /// <summary>
+        /// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        /// </summary>
         public readonly ImmutableArray<string> Callbacks;
         /// <summary>
-        /// String. ID of the client.
-        /// * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+        /// List of audiences/realms for SAML protocol. Used by the wsfed addon.
         /// </summary>
-        public readonly string? ClientId;
+        public readonly ImmutableArray<string> ClientAliases;
         /// <summary>
-        /// (Optional) Map(String)
+        /// The ID of the client.
+        /// </summary>
+        public readonly string ClientId;
+        /// <summary>
+        /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
         public readonly ImmutableDictionary<string, object> ClientMetadata;
         public readonly string ClientSecret;
+        /// <summary>
+        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        /// </summary>
         public readonly bool CrossOriginAuth;
+        /// <summary>
+        /// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+        /// </summary>
         public readonly string CrossOriginLoc;
         /// <summary>
-        /// String. Content of the custom login page.
+        /// The content (HTML, CSS, JS) of the custom login page.
         /// </summary>
         public readonly string CustomLoginPage;
         /// <summary>
-        /// Boolean. Indicates whether a custom login page is to be used.
+        /// Indicates whether a custom login page is to be used.
         /// </summary>
         public readonly bool CustomLoginPageOn;
+        /// <summary>
+        /// Description of the purpose of the client.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Encryption used for WS-Fed responses with this client.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EncryptionKey;
+        /// <summary>
+        /// HTML form template to be used for WS-Federation.
+        /// </summary>
         public readonly string FormTemplate;
+        /// <summary>
+        /// Types of grants that this client is authorized to use.
+        /// </summary>
         public readonly ImmutableArray<string> GrantTypes;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Initiate login URI, must be HTTPS.
+        /// </summary>
         public readonly string InitiateLoginUri;
+        /// <summary>
+        /// Indicates whether this client is a first-party client.
+        /// </summary>
         public readonly bool IsFirstParty;
+        /// <summary>
+        /// Indicates whether the token endpoint IP header is trusted.
+        /// </summary>
         public readonly bool IsTokenEndpointIpHeaderTrusted;
+        /// <summary>
+        /// Configuration settings for the JWTs issued for this client.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGlobalClientJwtConfigurationResult> JwtConfigurations;
+        /// <summary>
+        /// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        /// </summary>
         public readonly string LogoUri;
+        /// <summary>
+        /// Additional configuration for native mobile apps.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGlobalClientMobileResult> Mobiles;
-        public readonly string? Name;
+        /// <summary>
+        /// Name of the client.
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGlobalClientNativeSocialLoginResult> NativeSocialLogins;
+        /// <summary>
+        /// Indicates whether this client will conform to strict OIDC specifications.
+        /// </summary>
         public readonly bool OidcConformant;
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// </summary>
         public readonly string OrganizationRequireBehavior;
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        /// </summary>
         public readonly string OrganizationUsage;
+        /// <summary>
+        /// Configuration settings for the refresh tokens issued for this client.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGlobalClientRefreshTokenResult> RefreshTokens;
+        /// <summary>
+        /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, object>> SigningKeys;
+        /// <summary>
+        /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+        /// </summary>
         public readonly bool Sso;
+        /// <summary>
+        /// Indicates whether or not SSO is disabled.
+        /// </summary>
         public readonly bool SsoDisabled;
+        /// <summary>
+        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// </summary>
         public readonly string TokenEndpointAuthMethod;
+        /// <summary>
+        /// URLs that represent valid web origins for use with web message response mode.
+        /// </summary>
         public readonly ImmutableArray<string> WebOrigins;
 
         [OutputConstructor]
@@ -167,7 +196,9 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> callbacks,
 
-            string? clientId,
+            ImmutableArray<string> clientAliases,
+
+            string clientId,
 
             ImmutableDictionary<string, object> clientMetadata,
 
@@ -203,7 +234,7 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetGlobalClientMobileResult> mobiles,
 
-            string? name,
+            string name,
 
             ImmutableArray<Outputs.GetGlobalClientNativeSocialLoginResult> nativeSocialLogins,
 
@@ -231,6 +262,7 @@ namespace Pulumi.Auth0
             AllowedOrigins = allowedOrigins;
             AppType = appType;
             Callbacks = callbacks;
+            ClientAliases = clientAliases;
             ClientId = clientId;
             ClientMetadata = clientMetadata;
             ClientSecret = clientSecret;

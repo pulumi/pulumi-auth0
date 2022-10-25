@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingColorsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String, Hexadecimal. Background color of login pages.
+        /// Background color of login pages in hexadecimal.
         /// </summary>
         [Input("pageBackground")]
         public Input<string>? PageBackground { get; set; }
 
         /// <summary>
-        /// String, Hexadecimal. Primary button background color.
+        /// Primary button background color in hexadecimal.
         /// </summary>
         [Input("primary")]
         public Input<string>? Primary { get; set; }

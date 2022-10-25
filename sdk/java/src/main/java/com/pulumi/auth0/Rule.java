@@ -13,13 +13,10 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
- * authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules.
- * You can create global variable for use with rules by using the auth0.RuleConfig resource.
+ * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the `auth0.RuleConfig` resource.
  * 
  * ## Example Usage
  * ```java
@@ -30,8 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Rule;
  * import com.pulumi.auth0.RuleArgs;
- * import com.pulumi.auth0.RuleConfig;
- * import com.pulumi.auth0.RuleConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,16 +43,11 @@ import javax.annotation.Nullable;
  *         var myRule = new Rule(&#34;myRule&#34;, RuleArgs.builder()        
  *             .enabled(true)
  *             .script(&#34;&#34;&#34;
- * function (user, context, callback) {
- *   callback(null, user, context);
- * }
- * 
+ *     function (user, context, callback) {
+ *       callback(null, user, context);
+ *     }
+ *   
  *             &#34;&#34;&#34;)
- *             .build());
- * 
- *         var myRuleConfig = new RuleConfig(&#34;myRuleConfig&#34;, RuleConfigArgs.builder()        
- *             .key(&#34;foo&#34;)
- *             .value(&#34;bar&#34;)
  *             .build());
  * 
  *     }
@@ -66,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Existing rules can be imported using their id, e.g.
+ * # Existing rules can be imported using their ID. # # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
@@ -76,56 +66,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/rule:Rule")
 public class Rule extends com.pulumi.resources.CustomResource {
     /**
-     * Boolean. Indicates whether the rule is enabled.
+     * Indicates whether the rule is enabled.
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
-     * @return Boolean. Indicates whether the rule is enabled.
+     * @return Indicates whether the rule is enabled.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
-     * String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+     * Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+     * @return Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+     * Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      * 
      */
     @Export(name="order", type=Integer.class, parameters={})
     private Output<Integer> order;
 
     /**
-     * @return Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+     * @return Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      * 
      */
     public Output<Integer> order() {
         return this.order;
     }
     /**
-     * String. Code to be executed when the rule runs.
+     * Code to be executed when the rule runs.
      * 
      */
     @Export(name="script", type=String.class, parameters={})
     private Output<String> script;
 
     /**
-     * @return String. Code to be executed when the rule runs.
+     * @return Code to be executed when the rule runs.
      * 
      */
     public Output<String> script() {

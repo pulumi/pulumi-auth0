@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can create and manage collections of permissions that can be assigned to users, which are
-    /// otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
-    /// optionally, users using this resource.
+    /// With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `auth0.ResourceServer`, then associated with roles and optionally, users using this resource.
     /// 
     /// ## Example Usage
     /// 
@@ -72,7 +70,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Existing roles can be imported using their id, e.g.
+    /// # Existing roles can be imported using their ID. # # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
@@ -82,20 +80,19 @@ namespace Pulumi.Auth0
     public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// String. Description of the role.
+        /// Description of the role.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// String. Name for this role.
+        /// Name for this role.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-        /// For details, see Permissions.
+        /// Configuration settings for permissions (scopes) attached to the role.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.RolePermission>> Permissions { get; private set; } = null!;
@@ -147,13 +144,13 @@ namespace Pulumi.Auth0
     public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Description of the role.
+        /// Description of the role.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// String. Name for this role.
+        /// Name for this role.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -162,8 +159,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.RolePermissionArgs>? _permissions;
 
         /// <summary>
-        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-        /// For details, see Permissions.
+        /// Configuration settings for permissions (scopes) attached to the role.
         /// </summary>
         public InputList<Inputs.RolePermissionArgs> Permissions
         {
@@ -181,13 +177,13 @@ namespace Pulumi.Auth0
     public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Description of the role.
+        /// Description of the role.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// String. Name for this role.
+        /// Name for this role.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -196,8 +192,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.RolePermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-        /// For details, see Permissions.
+        /// Configuration settings for permissions (scopes) attached to the role.
         /// </summary>
         public InputList<Inputs.RolePermissionGetArgs> Permissions
         {

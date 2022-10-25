@@ -21,6 +21,7 @@ public final class GetClientAddonSamlp {
     private String destination;
     private String digestAlgorithm;
     private Boolean includeAttributeNameFormat;
+    private String issuer;
     private Integer lifetimeInSeconds;
     private Map<String,Object> logout;
     private Boolean mapIdentities;
@@ -56,6 +57,9 @@ public final class GetClientAddonSamlp {
     }
     public Boolean includeAttributeNameFormat() {
         return this.includeAttributeNameFormat;
+    }
+    public String issuer() {
+        return this.issuer;
     }
     public Integer lifetimeInSeconds() {
         return this.lifetimeInSeconds;
@@ -113,6 +117,7 @@ public final class GetClientAddonSamlp {
         private String destination;
         private String digestAlgorithm;
         private Boolean includeAttributeNameFormat;
+        private String issuer;
         private Integer lifetimeInSeconds;
         private Map<String,Object> logout;
         private Boolean mapIdentities;
@@ -136,6 +141,7 @@ public final class GetClientAddonSamlp {
     	      this.destination = defaults.destination;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.includeAttributeNameFormat = defaults.includeAttributeNameFormat;
+    	      this.issuer = defaults.issuer;
     	      this.lifetimeInSeconds = defaults.lifetimeInSeconds;
     	      this.logout = defaults.logout;
     	      this.mapIdentities = defaults.mapIdentities;
@@ -184,6 +190,11 @@ public final class GetClientAddonSamlp {
         @CustomType.Setter
         public Builder includeAttributeNameFormat(Boolean includeAttributeNameFormat) {
             this.includeAttributeNameFormat = Objects.requireNonNull(includeAttributeNameFormat);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issuer(String issuer) {
+            this.issuer = Objects.requireNonNull(issuer);
             return this;
         }
         @CustomType.Setter
@@ -263,6 +274,7 @@ public final class GetClientAddonSamlp {
             o.destination = destination;
             o.digestAlgorithm = digestAlgorithm;
             o.includeAttributeNameFormat = includeAttributeNameFormat;
+            o.issuer = issuer;
             o.lifetimeInSeconds = lifetimeInSeconds;
             o.logout = logout;
             o.mapIdentities = mapIdentities;

@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientMobileGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for Android native apps. For details, see Android.
+        /// Configuration settings for Android native apps.
         /// </summary>
         [Input("android")]
         public Input<Inputs.ClientMobileAndroidGetArgs>? Android { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+        /// Configuration settings for i0S native apps.
         /// </summary>
         [Input("ios")]
         public Input<Inputs.ClientMobileIosGetArgs>? Ios { get; set; }

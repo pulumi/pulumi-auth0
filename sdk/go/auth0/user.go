@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking,
-// and deleting users.
+// With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
 //
 // ## Example Usage
 //
@@ -40,12 +39,11 @@ import (
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
 //				UserId:         pulumi.String("12345"),
 //				Username:       pulumi.String("unique_username"),
-//				GivenName:      pulumi.String("Firstname"),
-//				FamilyName:     pulumi.String("Lastname"),
 //				Nickname:       pulumi.String("some.nickname"),
 //				Email:          pulumi.String("test@test.com"),
 //				EmailVerified:  pulumi.Bool(true),
 //				Password:       pulumi.String(fmt.Sprintf("passpass$12$12")),
+//				Picture:        pulumi.String("https://www.example.com/a-valid-picture-url.jpg"),
 //				Roles: pulumi.StringArray{
 //					admin.ID(),
 //				},
@@ -61,7 +59,7 @@ import (
 //
 // ## Import
 //
-// auth0_user can be imported using the user ID, e.g.
+// # This resource can be imported using the user ID. # # Example
 //
 // ```sh
 //
@@ -71,36 +69,41 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+	// Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
 	AppMetadata pulumi.StringPtrOutput `pulumi:"appMetadata"`
-	Blocked     pulumi.BoolPtrOutput   `pulumi:"blocked"`
-	// String. Name of the connection from which the user information was sourced.
+	// Indicates whether the user is blocked or not.
+	Blocked pulumi.BoolPtrOutput `pulumi:"blocked"`
+	// Name of the connection from which the user information was sourced.
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
-	// String. Email address of the user.
+	// Email address of the user.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
-	// Boolean. Indicates whether the email address has been verified.
-	EmailVerified pulumi.BoolPtrOutput   `pulumi:"emailVerified"`
-	FamilyName    pulumi.StringPtrOutput `pulumi:"familyName"`
-	GivenName     pulumi.StringPtrOutput `pulumi:"givenName"`
-	Name          pulumi.StringOutput    `pulumi:"name"`
-	// String. Preferred nickname or alias of the user.
+	// Indicates whether the email address has been verified.
+	EmailVerified pulumi.BoolPtrOutput `pulumi:"emailVerified"`
+	// Family name of the user.
+	FamilyName pulumi.StringPtrOutput `pulumi:"familyName"`
+	// Given name of the user.
+	GivenName pulumi.StringPtrOutput `pulumi:"givenName"`
+	// Name of the user.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Preferred nickname or alias of the user.
 	Nickname pulumi.StringOutput `pulumi:"nickname"`
-	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrOutput `pulumi:"phoneNumber"`
-	// Boolean. Indicates whether the phone number has been verified.
+	// Indicates whether the phone number has been verified.
 	PhoneVerified pulumi.BoolPtrOutput `pulumi:"phoneVerified"`
-	Picture       pulumi.StringOutput  `pulumi:"picture"`
-	// Set(String). Set of IDs of roles assigned to the user.
+	// Picture of the user.
+	Picture pulumi.StringOutput `pulumi:"picture"`
+	// Set of IDs of roles assigned to the user.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
-	// String. ID of the user.
+	// ID of the user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
-	// String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
 	UserMetadata pulumi.StringPtrOutput `pulumi:"userMetadata"`
-	// String. Username of the user. Only valid if the connection requires a username.
+	// Username of the user. Only valid if the connection requires a username.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail pulumi.BoolPtrOutput `pulumi:"verifyEmail"`
 }
 
@@ -136,70 +139,80 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+	// Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
 	AppMetadata *string `pulumi:"appMetadata"`
-	Blocked     *bool   `pulumi:"blocked"`
-	// String. Name of the connection from which the user information was sourced.
+	// Indicates whether the user is blocked or not.
+	Blocked *bool `pulumi:"blocked"`
+	// Name of the connection from which the user information was sourced.
 	ConnectionName *string `pulumi:"connectionName"`
-	// String. Email address of the user.
+	// Email address of the user.
 	Email *string `pulumi:"email"`
-	// Boolean. Indicates whether the email address has been verified.
-	EmailVerified *bool   `pulumi:"emailVerified"`
-	FamilyName    *string `pulumi:"familyName"`
-	GivenName     *string `pulumi:"givenName"`
-	Name          *string `pulumi:"name"`
-	// String. Preferred nickname or alias of the user.
+	// Indicates whether the email address has been verified.
+	EmailVerified *bool `pulumi:"emailVerified"`
+	// Family name of the user.
+	FamilyName *string `pulumi:"familyName"`
+	// Given name of the user.
+	GivenName *string `pulumi:"givenName"`
+	// Name of the user.
+	Name *string `pulumi:"name"`
+	// Preferred nickname or alias of the user.
 	Nickname *string `pulumi:"nickname"`
-	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password *string `pulumi:"password"`
-	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber *string `pulumi:"phoneNumber"`
-	// Boolean. Indicates whether the phone number has been verified.
-	PhoneVerified *bool   `pulumi:"phoneVerified"`
-	Picture       *string `pulumi:"picture"`
-	// Set(String). Set of IDs of roles assigned to the user.
+	// Indicates whether the phone number has been verified.
+	PhoneVerified *bool `pulumi:"phoneVerified"`
+	// Picture of the user.
+	Picture *string `pulumi:"picture"`
+	// Set of IDs of roles assigned to the user.
 	Roles []string `pulumi:"roles"`
-	// String. ID of the user.
+	// ID of the user.
 	UserId *string `pulumi:"userId"`
-	// String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
 	UserMetadata *string `pulumi:"userMetadata"`
-	// String. Username of the user. Only valid if the connection requires a username.
+	// Username of the user. Only valid if the connection requires a username.
 	Username *string `pulumi:"username"`
-	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail *bool `pulumi:"verifyEmail"`
 }
 
 type UserState struct {
-	// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+	// Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
 	AppMetadata pulumi.StringPtrInput
-	Blocked     pulumi.BoolPtrInput
-	// String. Name of the connection from which the user information was sourced.
+	// Indicates whether the user is blocked or not.
+	Blocked pulumi.BoolPtrInput
+	// Name of the connection from which the user information was sourced.
 	ConnectionName pulumi.StringPtrInput
-	// String. Email address of the user.
+	// Email address of the user.
 	Email pulumi.StringPtrInput
-	// Boolean. Indicates whether the email address has been verified.
+	// Indicates whether the email address has been verified.
 	EmailVerified pulumi.BoolPtrInput
-	FamilyName    pulumi.StringPtrInput
-	GivenName     pulumi.StringPtrInput
-	Name          pulumi.StringPtrInput
-	// String. Preferred nickname or alias of the user.
+	// Family name of the user.
+	FamilyName pulumi.StringPtrInput
+	// Given name of the user.
+	GivenName pulumi.StringPtrInput
+	// Name of the user.
+	Name pulumi.StringPtrInput
+	// Preferred nickname or alias of the user.
 	Nickname pulumi.StringPtrInput
-	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password pulumi.StringPtrInput
-	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrInput
-	// Boolean. Indicates whether the phone number has been verified.
+	// Indicates whether the phone number has been verified.
 	PhoneVerified pulumi.BoolPtrInput
-	Picture       pulumi.StringPtrInput
-	// Set(String). Set of IDs of roles assigned to the user.
+	// Picture of the user.
+	Picture pulumi.StringPtrInput
+	// Set of IDs of roles assigned to the user.
 	Roles pulumi.StringArrayInput
-	// String. ID of the user.
+	// ID of the user.
 	UserId pulumi.StringPtrInput
-	// String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
 	UserMetadata pulumi.StringPtrInput
-	// String. Username of the user. Only valid if the connection requires a username.
+	// Username of the user. Only valid if the connection requires a username.
 	Username pulumi.StringPtrInput
-	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail pulumi.BoolPtrInput
 }
 
@@ -208,71 +221,81 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+	// Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
 	AppMetadata *string `pulumi:"appMetadata"`
-	Blocked     *bool   `pulumi:"blocked"`
-	// String. Name of the connection from which the user information was sourced.
+	// Indicates whether the user is blocked or not.
+	Blocked *bool `pulumi:"blocked"`
+	// Name of the connection from which the user information was sourced.
 	ConnectionName string `pulumi:"connectionName"`
-	// String. Email address of the user.
+	// Email address of the user.
 	Email *string `pulumi:"email"`
-	// Boolean. Indicates whether the email address has been verified.
-	EmailVerified *bool   `pulumi:"emailVerified"`
-	FamilyName    *string `pulumi:"familyName"`
-	GivenName     *string `pulumi:"givenName"`
-	Name          *string `pulumi:"name"`
-	// String. Preferred nickname or alias of the user.
+	// Indicates whether the email address has been verified.
+	EmailVerified *bool `pulumi:"emailVerified"`
+	// Family name of the user.
+	FamilyName *string `pulumi:"familyName"`
+	// Given name of the user.
+	GivenName *string `pulumi:"givenName"`
+	// Name of the user.
+	Name *string `pulumi:"name"`
+	// Preferred nickname or alias of the user.
 	Nickname *string `pulumi:"nickname"`
-	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password *string `pulumi:"password"`
-	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber *string `pulumi:"phoneNumber"`
-	// Boolean. Indicates whether the phone number has been verified.
-	PhoneVerified *bool   `pulumi:"phoneVerified"`
-	Picture       *string `pulumi:"picture"`
-	// Set(String). Set of IDs of roles assigned to the user.
+	// Indicates whether the phone number has been verified.
+	PhoneVerified *bool `pulumi:"phoneVerified"`
+	// Picture of the user.
+	Picture *string `pulumi:"picture"`
+	// Set of IDs of roles assigned to the user.
 	Roles []string `pulumi:"roles"`
-	// String. ID of the user.
+	// ID of the user.
 	UserId *string `pulumi:"userId"`
-	// String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
 	UserMetadata *string `pulumi:"userMetadata"`
-	// String. Username of the user. Only valid if the connection requires a username.
+	// Username of the user. Only valid if the connection requires a username.
 	Username *string `pulumi:"username"`
-	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail *bool `pulumi:"verifyEmail"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+	// Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
 	AppMetadata pulumi.StringPtrInput
-	Blocked     pulumi.BoolPtrInput
-	// String. Name of the connection from which the user information was sourced.
+	// Indicates whether the user is blocked or not.
+	Blocked pulumi.BoolPtrInput
+	// Name of the connection from which the user information was sourced.
 	ConnectionName pulumi.StringInput
-	// String. Email address of the user.
+	// Email address of the user.
 	Email pulumi.StringPtrInput
-	// Boolean. Indicates whether the email address has been verified.
+	// Indicates whether the email address has been verified.
 	EmailVerified pulumi.BoolPtrInput
-	FamilyName    pulumi.StringPtrInput
-	GivenName     pulumi.StringPtrInput
-	Name          pulumi.StringPtrInput
-	// String. Preferred nickname or alias of the user.
+	// Family name of the user.
+	FamilyName pulumi.StringPtrInput
+	// Given name of the user.
+	GivenName pulumi.StringPtrInput
+	// Name of the user.
+	Name pulumi.StringPtrInput
+	// Preferred nickname or alias of the user.
 	Nickname pulumi.StringPtrInput
-	// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password pulumi.StringPtrInput
-	// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrInput
-	// Boolean. Indicates whether the phone number has been verified.
+	// Indicates whether the phone number has been verified.
 	PhoneVerified pulumi.BoolPtrInput
-	Picture       pulumi.StringPtrInput
-	// Set(String). Set of IDs of roles assigned to the user.
+	// Picture of the user.
+	Picture pulumi.StringPtrInput
+	// Set of IDs of roles assigned to the user.
 	Roles pulumi.StringArrayInput
-	// String. ID of the user.
+	// ID of the user.
 	UserId pulumi.StringPtrInput
-	// String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
 	UserMetadata pulumi.StringPtrInput
-	// String. Username of the user. Only valid if the connection requires a username.
+	// Username of the user. Only valid if the connection requires a username.
 	Username pulumi.StringPtrInput
-	// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+	// Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 	VerifyEmail pulumi.BoolPtrInput
 }
 
@@ -363,87 +386,92 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-// String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+// Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
 func (o UserOutput) AppMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.AppMetadata }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the user is blocked or not.
 func (o UserOutput) Blocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Blocked }).(pulumi.BoolPtrOutput)
 }
 
-// String. Name of the connection from which the user information was sourced.
+// Name of the connection from which the user information was sourced.
 func (o UserOutput) ConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ConnectionName }).(pulumi.StringOutput)
 }
 
-// String. Email address of the user.
+// Email address of the user.
 func (o UserOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether the email address has been verified.
+// Indicates whether the email address has been verified.
 func (o UserOutput) EmailVerified() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.EmailVerified }).(pulumi.BoolPtrOutput)
 }
 
+// Family name of the user.
 func (o UserOutput) FamilyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.FamilyName }).(pulumi.StringPtrOutput)
 }
 
+// Given name of the user.
 func (o UserOutput) GivenName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.GivenName }).(pulumi.StringPtrOutput)
 }
 
+// Name of the user.
 func (o UserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// String. Preferred nickname or alias of the user.
+// Preferred nickname or alias of the user.
 func (o UserOutput) Nickname() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Nickname }).(pulumi.StringOutput)
 }
 
-// String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+// Initial password for this user. Required for non-passwordless connections (SMS and email).
 func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 func (o UserOutput) PhoneNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PhoneNumber }).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether the phone number has been verified.
+// Indicates whether the phone number has been verified.
 func (o UserOutput) PhoneVerified() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.PhoneVerified }).(pulumi.BoolPtrOutput)
 }
 
+// Picture of the user.
 func (o UserOutput) Picture() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Picture }).(pulumi.StringOutput)
 }
 
-// Set(String). Set of IDs of roles assigned to the user.
+// Set of IDs of roles assigned to the user.
 func (o UserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// String. ID of the user.
+// ID of the user.
 func (o UserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
-// String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
 func (o UserOutput) UserMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }
 
-// String. Username of the user. Only valid if the connection requires a username.
+// Username of the user. Only valid if the connection requires a username.
 func (o UserOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-// Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+// Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
 func (o UserOutput) VerifyEmail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.VerifyEmail }).(pulumi.BoolPtrOutput)
 }

@@ -156,6 +156,9 @@ namespace Pulumi.Auth0.Inputs
             set => _salesforceSandboxApi = value;
         }
 
+        /// <summary>
+        /// Configuration settings for a SAML add-on.
+        /// </summary>
         [Input("samlp")]
         public Input<Inputs.GlobalClientAddonsSamlpArgs>? Samlp { get; set; }
 
@@ -209,6 +212,10 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("wsfed")]
         private InputMap<object>? _wsfed;
+
+        /// <summary>
+        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+        /// </summary>
         public InputMap<object> Wsfed
         {
             get => _wsfed ?? (_wsfed = new InputMap<object>());

@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsPasswordHistory {
-    /**
-     * @return Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-     * 
-     */
     private @Nullable Boolean enable;
-    /**
-     * @return Indicates the number of passwords to keep in history with a maximum of 24.
-     * 
-     */
     private @Nullable Integer size;
 
     private ConnectionOptionsPasswordHistory() {}
-    /**
-     * @return Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-     * 
-     */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
-    /**
-     * @return Indicates the number of passwords to keep in history with a maximum of 24.
-     * 
-     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

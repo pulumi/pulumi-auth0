@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TenantUniversalLogin {
     /**
-     * @return List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+     * @return Configuration settings for Universal Login colors.
      * 
      */
     private @Nullable TenantUniversalLoginColors colors;
 
     private TenantUniversalLogin() {}
     /**
-     * @return List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+     * @return Configuration settings for Universal Login colors.
      * 
      */
     public Optional<TenantUniversalLoginColors> colors() {

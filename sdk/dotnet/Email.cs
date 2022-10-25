@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
-    /// into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's
-    /// authentication workflows through the supported high-volume email service of your choice.
+    /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
     /// 
     /// ## Example Usage
     /// 
@@ -23,7 +21,8 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myEmailProvider = new Auth0.Email("myEmailProvider", new()
+    ///     // This is an example on how to set up the email provider with Amazon SES.
+    ///     var amazonSesEmailProvider = new Auth0.Email("amazonSesEmailProvider", new()
     ///     {
     ///         Credentials = new Auth0.Inputs.EmailCredentialsArgs
     ///         {
@@ -35,12 +34,37 @@ namespace Pulumi.Auth0
     ///         Enabled = true,
     ///     });
     /// 
+    ///     // This is an example on how to set up the email provider with SMTP.
+    ///     var smtpEmailProvider = new Auth0.Email("smtpEmailProvider", new()
+    ///     {
+    ///         Credentials = new Auth0.Inputs.EmailCredentialsArgs
+    ///         {
+    ///             SmtpHost = "your.smtp.host.com",
+    ///             SmtpPass = "SMTP Password",
+    ///             SmtpPort = 583,
+    ///             SmtpUser = "SMTP Username",
+    ///         },
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     // This is an example on how to set up the email provider with Sendgrid.
+    ///     var sendgridEmailProvider = new Auth0.Email("sendgridEmailProvider", new()
+    ///     {
+    ///         Credentials = new Auth0.Inputs.EmailCredentialsArgs
+    ///         {
+    ///             ApiKey = "secretAPIKey",
+    ///         },
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///         Enabled = true,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// # As this is not a resource identifiable by an ID within the Auth0 Management API, # email can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/email:Email my_email_provider b4213dc2-2eed-42c3-9516-c6131a9ce0b0
@@ -50,25 +74,25 @@ namespace Pulumi.Auth0
     public partial class Email : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+        /// Configuration settings for the credentials for the email provider.
         /// </summary>
         [Output("credentials")]
         public Output<Outputs.EmailCredentials> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// String. Email address to use as the sender when no other "from" address is specified.
+        /// Email address to use as the sender when no other "from" address is specified.
         /// </summary>
         [Output("defaultFromAddress")]
         public Output<string> DefaultFromAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the email provider is enabled.
+        /// Indicates whether the email provider is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        /// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -120,25 +144,25 @@ namespace Pulumi.Auth0
     public sealed class EmailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+        /// Configuration settings for the credentials for the email provider.
         /// </summary>
         [Input("credentials", required: true)]
         public Input<Inputs.EmailCredentialsArgs> Credentials { get; set; } = null!;
 
         /// <summary>
-        /// String. Email address to use as the sender when no other "from" address is specified.
+        /// Email address to use as the sender when no other "from" address is specified.
         /// </summary>
         [Input("defaultFromAddress", required: true)]
         public Input<string> DefaultFromAddress { get; set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the email provider is enabled.
+        /// Indicates whether the email provider is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        /// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -152,25 +176,25 @@ namespace Pulumi.Auth0
     public sealed class EmailState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+        /// Configuration settings for the credentials for the email provider.
         /// </summary>
         [Input("credentials")]
         public Input<Inputs.EmailCredentialsGetArgs>? Credentials { get; set; }
 
         /// <summary>
-        /// String. Email address to use as the sender when no other "from" address is specified.
+        /// Email address to use as the sender when no other "from" address is specified.
         /// </summary>
         [Input("defaultFromAddress")]
         public Input<string>? DefaultFromAddress { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the email provider is enabled.
+        /// Indicates whether the email provider is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        /// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

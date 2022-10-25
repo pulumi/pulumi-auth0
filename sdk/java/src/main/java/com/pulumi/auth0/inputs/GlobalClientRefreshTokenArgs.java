@@ -17,51 +17,107 @@ public final class GlobalClientRefreshTokenArgs extends com.pulumi.resources.Res
 
     public static final GlobalClientRefreshTokenArgs Empty = new GlobalClientRefreshTokenArgs();
 
+    /**
+     * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     * 
+     */
     @Import(name="expirationType", required=true)
     private Output<String> expirationType;
 
+    /**
+     * @return Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     * 
+     */
     public Output<String> expirationType() {
         return this.expirationType;
     }
 
+    /**
+     * The time in seconds after which inactive refresh tokens will expire.
+     * 
+     */
     @Import(name="idleTokenLifetime")
     private @Nullable Output<Integer> idleTokenLifetime;
 
+    /**
+     * @return The time in seconds after which inactive refresh tokens will expire.
+     * 
+     */
     public Optional<Output<Integer>> idleTokenLifetime() {
         return Optional.ofNullable(this.idleTokenLifetime);
     }
 
+    /**
+     * Whether inactive refresh tokens should remain valid indefinitely.
+     * 
+     */
     @Import(name="infiniteIdleTokenLifetime")
     private @Nullable Output<Boolean> infiniteIdleTokenLifetime;
 
+    /**
+     * @return Whether inactive refresh tokens should remain valid indefinitely.
+     * 
+     */
     public Optional<Output<Boolean>> infiniteIdleTokenLifetime() {
         return Optional.ofNullable(this.infiniteIdleTokenLifetime);
     }
 
+    /**
+     * Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+     * 
+     */
     @Import(name="infiniteTokenLifetime")
     private @Nullable Output<Boolean> infiniteTokenLifetime;
 
+    /**
+     * @return Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+     * 
+     */
     public Optional<Output<Boolean>> infiniteTokenLifetime() {
         return Optional.ofNullable(this.infiniteTokenLifetime);
     }
 
+    /**
+     * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+     * 
+     */
     @Import(name="leeway")
     private @Nullable Output<Integer> leeway;
 
+    /**
+     * @return The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+     * 
+     */
     public Optional<Output<Integer>> leeway() {
         return Optional.ofNullable(this.leeway);
     }
 
+    /**
+     * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     * 
+     */
     @Import(name="rotationType", required=true)
     private Output<String> rotationType;
 
+    /**
+     * @return Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     * 
+     */
     public Output<String> rotationType() {
         return this.rotationType;
     }
 
+    /**
+     * The absolute lifetime of a refresh token in seconds.
+     * 
+     */
     @Import(name="tokenLifetime")
     private @Nullable Output<Integer> tokenLifetime;
 
+    /**
+     * @return The absolute lifetime of a refresh token in seconds.
+     * 
+     */
     public Optional<Output<Integer>> tokenLifetime() {
         return Optional.ofNullable(this.tokenLifetime);
     }
@@ -96,65 +152,149 @@ public final class GlobalClientRefreshTokenArgs extends com.pulumi.resources.Res
             $ = new GlobalClientRefreshTokenArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param expirationType Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expirationType(Output<String> expirationType) {
             $.expirationType = expirationType;
             return this;
         }
 
+        /**
+         * @param expirationType Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expirationType(String expirationType) {
             return expirationType(Output.of(expirationType));
         }
 
+        /**
+         * @param idleTokenLifetime The time in seconds after which inactive refresh tokens will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idleTokenLifetime(@Nullable Output<Integer> idleTokenLifetime) {
             $.idleTokenLifetime = idleTokenLifetime;
             return this;
         }
 
+        /**
+         * @param idleTokenLifetime The time in seconds after which inactive refresh tokens will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idleTokenLifetime(Integer idleTokenLifetime) {
             return idleTokenLifetime(Output.of(idleTokenLifetime));
         }
 
+        /**
+         * @param infiniteIdleTokenLifetime Whether inactive refresh tokens should remain valid indefinitely.
+         * 
+         * @return builder
+         * 
+         */
         public Builder infiniteIdleTokenLifetime(@Nullable Output<Boolean> infiniteIdleTokenLifetime) {
             $.infiniteIdleTokenLifetime = infiniteIdleTokenLifetime;
             return this;
         }
 
+        /**
+         * @param infiniteIdleTokenLifetime Whether inactive refresh tokens should remain valid indefinitely.
+         * 
+         * @return builder
+         * 
+         */
         public Builder infiniteIdleTokenLifetime(Boolean infiniteIdleTokenLifetime) {
             return infiniteIdleTokenLifetime(Output.of(infiniteIdleTokenLifetime));
         }
 
+        /**
+         * @param infiniteTokenLifetime Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder infiniteTokenLifetime(@Nullable Output<Boolean> infiniteTokenLifetime) {
             $.infiniteTokenLifetime = infiniteTokenLifetime;
             return this;
         }
 
+        /**
+         * @param infiniteTokenLifetime Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder infiniteTokenLifetime(Boolean infiniteTokenLifetime) {
             return infiniteTokenLifetime(Output.of(infiniteTokenLifetime));
         }
 
+        /**
+         * @param leeway The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder leeway(@Nullable Output<Integer> leeway) {
             $.leeway = leeway;
             return this;
         }
 
+        /**
+         * @param leeway The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder leeway(Integer leeway) {
             return leeway(Output.of(leeway));
         }
 
+        /**
+         * @param rotationType Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rotationType(Output<String> rotationType) {
             $.rotationType = rotationType;
             return this;
         }
 
+        /**
+         * @param rotationType Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rotationType(String rotationType) {
             return rotationType(Output.of(rotationType));
         }
 
+        /**
+         * @param tokenLifetime The absolute lifetime of a refresh token in seconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenLifetime(@Nullable Output<Integer> tokenLifetime) {
             $.tokenLifetime = tokenLifetime;
             return this;
         }
 
+        /**
+         * @param tokenLifetime The absolute lifetime of a refresh token in seconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenLifetime(Integer tokenLifetime) {
             return tokenLifetime(Output.of(tokenLifetime));
         }

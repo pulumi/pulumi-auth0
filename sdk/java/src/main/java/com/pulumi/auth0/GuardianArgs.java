@@ -22,16 +22,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     public static final GuardianArgs Empty = new GuardianArgs();
 
     /**
-     * List(Resource). Configuration settings for the Duo MFA.
-     * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+     * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      * 
      */
     @Import(name="duo")
     private @Nullable Output<GuardianDuoArgs> duo;
 
     /**
-     * @return List(Resource). Configuration settings for the Duo MFA.
-     * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+     * @return Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      * 
      */
     public Optional<Output<GuardianDuoArgs>> duo() {
@@ -39,14 +37,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether email MFA is enabled.
+     * Indicates whether email MFA is enabled.
      * 
      */
     @Import(name="email")
     private @Nullable Output<Boolean> email;
 
     /**
-     * @return Boolean. Indicates whether email MFA is enabled.
+     * @return Indicates whether email MFA is enabled.
      * 
      */
     public Optional<Output<Boolean>> email() {
@@ -54,14 +52,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether one time password MFA is enabled.
+     * Indicates whether one time password MFA is enabled.
      * 
      */
     @Import(name="otp")
     private @Nullable Output<Boolean> otp;
 
     /**
-     * @return Boolean. Indicates whether one time password MFA is enabled.
+     * @return Indicates whether one time password MFA is enabled.
      * 
      */
     public Optional<Output<Boolean>> otp() {
@@ -69,16 +67,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for the phone MFA.
-     * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+     * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      * 
      */
     @Import(name="phone")
     private @Nullable Output<GuardianPhoneArgs> phone;
 
     /**
-     * @return List(Resource). Configuration settings for the phone MFA.
-     * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+     * @return Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      * 
      */
     public Optional<Output<GuardianPhoneArgs>> phone() {
@@ -86,16 +82,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-     * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+     * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      * 
      */
     @Import(name="policy", required=true)
     private Output<String> policy;
 
     /**
-     * @return String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-     * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+     * @return Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      * 
      */
     public Output<String> policy() {
@@ -103,16 +97,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for the Push MFA.
-     * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+     * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      * 
      */
     @Import(name="push")
     private @Nullable Output<GuardianPushArgs> push;
 
     /**
-     * @return List(Resource). Configuration settings for the Push MFA.
-     * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+     * @return Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      * 
      */
     public Optional<Output<GuardianPushArgs>> push() {
@@ -120,14 +112,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether recovery code MFA is enabled.
+     * Indicates whether recovery code MFA is enabled.
      * 
      */
     @Import(name="recoveryCode")
     private @Nullable Output<Boolean> recoveryCode;
 
     /**
-     * @return Boolean. Indicates whether recovery code MFA is enabled.
+     * @return Indicates whether recovery code MFA is enabled.
      * 
      */
     public Optional<Output<Boolean>> recoveryCode() {
@@ -135,18 +127,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-     * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Platform.
+     * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      * 
      */
     @Import(name="webauthnPlatform")
     private @Nullable Output<GuardianWebauthnPlatformArgs> webauthnPlatform;
 
     /**
-     * @return List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-     * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Platform.
+     * @return Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      * 
      */
     public Optional<Output<GuardianWebauthnPlatformArgs>> webauthnPlatform() {
@@ -154,18 +142,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-     * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Roaming.
+     * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      * 
      */
     @Import(name="webauthnRoaming")
     private @Nullable Output<GuardianWebauthnRoamingArgs> webauthnRoaming;
 
     /**
-     * @return List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-     * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Roaming.
+     * @return Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      * 
      */
     public Optional<Output<GuardianWebauthnRoamingArgs>> webauthnRoaming() {
@@ -205,8 +189,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duo List(Resource). Configuration settings for the Duo MFA.
-         * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+         * @param duo Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -217,8 +200,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duo List(Resource). Configuration settings for the Duo MFA.
-         * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+         * @param duo Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -228,7 +210,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Boolean. Indicates whether email MFA is enabled.
+         * @param email Indicates whether email MFA is enabled.
          * 
          * @return builder
          * 
@@ -239,7 +221,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Boolean. Indicates whether email MFA is enabled.
+         * @param email Indicates whether email MFA is enabled.
          * 
          * @return builder
          * 
@@ -249,7 +231,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otp Boolean. Indicates whether one time password MFA is enabled.
+         * @param otp Indicates whether one time password MFA is enabled.
          * 
          * @return builder
          * 
@@ -260,7 +242,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otp Boolean. Indicates whether one time password MFA is enabled.
+         * @param otp Indicates whether one time password MFA is enabled.
          * 
          * @return builder
          * 
@@ -270,8 +252,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phone List(Resource). Configuration settings for the phone MFA.
-         * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+         * @param phone Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -282,8 +263,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phone List(Resource). Configuration settings for the phone MFA.
-         * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+         * @param phone Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -293,8 +273,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policy String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-         * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+         * @param policy Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
          * 
          * @return builder
          * 
@@ -305,8 +284,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policy String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-         * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+         * @param policy Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
          * 
          * @return builder
          * 
@@ -316,8 +294,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param push List(Resource). Configuration settings for the Push MFA.
-         * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+         * @param push Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -328,8 +305,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param push List(Resource). Configuration settings for the Push MFA.
-         * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+         * @param push Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -339,7 +315,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recoveryCode Boolean. Indicates whether recovery code MFA is enabled.
+         * @param recoveryCode Indicates whether recovery code MFA is enabled.
          * 
          * @return builder
          * 
@@ -350,7 +326,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recoveryCode Boolean. Indicates whether recovery code MFA is enabled.
+         * @param recoveryCode Indicates whether recovery code MFA is enabled.
          * 
          * @return builder
          * 
@@ -360,9 +336,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webauthnPlatform List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-         * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-         * For details, see WebAuthn Platform.
+         * @param webauthnPlatform Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -373,9 +347,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webauthnPlatform List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-         * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-         * For details, see WebAuthn Platform.
+         * @param webauthnPlatform Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -385,9 +357,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webauthnRoaming List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-         * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-         * For details, see WebAuthn Roaming.
+         * @param webauthnRoaming Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 
@@ -398,9 +368,7 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webauthnRoaming List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-         * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-         * For details, see WebAuthn Roaming.
+         * @param webauthnRoaming Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
          * 
          * @return builder
          * 

@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TenantUniversalLoginColors {
-    /**
-     * @return String, Hexadecimal. Background color of login pages.
-     * 
-     */
     private @Nullable String pageBackground;
-    /**
-     * @return String, Hexadecimal. Primary button background color.
-     * 
-     */
     private @Nullable String primary;
 
     private TenantUniversalLoginColors() {}
-    /**
-     * @return String, Hexadecimal. Background color of login pages.
-     * 
-     */
     public Optional<String> pageBackground() {
         return Optional.ofNullable(this.pageBackground);
     }
-    /**
-     * @return String, Hexadecimal. Primary button background color.
-     * 
-     */
     public Optional<String> primary() {
         return Optional.ofNullable(this.primary);
     }

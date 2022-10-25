@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ActionSupportedTriggers
     {
         /// <summary>
-        /// Trigger ID.
+        /// The trigger ID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Trigger version.
+        /// The trigger version. This regulates which `runtime` versions are supported.
         /// </summary>
         public readonly string Version;
 

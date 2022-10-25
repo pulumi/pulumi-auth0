@@ -16,14 +16,14 @@ public final class BrandingFontArgs extends com.pulumi.resources.ResourceArgs {
     public static final BrandingFontArgs Empty = new BrandingFontArgs();
 
     /**
-     * String. URL for the custom font.
+     * URL for the custom font.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return String. URL for the custom font.
+     * @return URL for the custom font.
      * 
      */
     public Optional<Output<String>> url() {
@@ -55,7 +55,7 @@ public final class BrandingFontArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url String. URL for the custom font.
+         * @param url URL for the custom font.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class BrandingFontArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url String. URL for the custom font.
+         * @param url URL for the custom font.
          * 
          * @return builder
          * 

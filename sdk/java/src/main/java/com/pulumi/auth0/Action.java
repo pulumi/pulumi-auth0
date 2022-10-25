@@ -20,81 +20,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Actions are secure, tenant-specific, versioned functions written in Node.js that
- * execute at certain points during the Auth0 runtime. Actions are used to
- * customize and extend Auth0&#39;s capabilities with custom logic.
- * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.auth0.Action;
- * import com.pulumi.auth0.ActionArgs;
- * import com.pulumi.auth0.inputs.ActionDependencyArgs;
- * import com.pulumi.auth0.inputs.ActionSecretArgs;
- * import com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myAction = new Action(&#34;myAction&#34;, ActionArgs.builder()        
- *             .code(&#34;&#34;&#34;
- * /**
- *  * Handler that will be called during the execution of a PostLogin flow.
- *  *
- *  * @param {Event} event - Details about the user and the context in which they are logging in.
- *  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
- *  *{@literal /}
- *  exports.onExecutePostLogin = async (event, api) =&gt; {
- * 	 console.log(event)
- *  };
- * 
- *             &#34;&#34;&#34;)
- *             .dependencies(            
- *                 ActionDependencyArgs.builder()
- *                     .name(&#34;lodash&#34;)
- *                     .version(&#34;latest&#34;)
- *                     .build(),
- *                 ActionDependencyArgs.builder()
- *                     .name(&#34;request&#34;)
- *                     .version(&#34;latest&#34;)
- *                     .build())
- *             .deploy(true)
- *             .runtime(&#34;node16&#34;)
- *             .secrets(            
- *                 ActionSecretArgs.builder()
- *                     .name(&#34;FOO&#34;)
- *                     .value(&#34;Foo&#34;)
- *                     .build(),
- *                 ActionSecretArgs.builder()
- *                     .name(&#34;BAR&#34;)
- *                     .value(&#34;Bar&#34;)
- *                     .build())
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id(&#34;post-login&#34;)
- *                 .version(&#34;v3&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
+ * Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0&#39;s capabilities with custom logic.
  * 
  * ## Import
  * 
- * An action can be imported using the action&#39;s ID, e.g.
+ * # An action can be imported using the action&#39;s ID. # # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
@@ -134,46 +64,42 @@ public class Action extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dependencies);
     }
     /**
-     * Deploying an action will create a new immutable version of the action.
-     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-     * action immediately. Default is `false`.
+     * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      * 
      */
     @Export(name="deploy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deploy;
 
     /**
-     * @return Deploying an action will create a new immutable version of the action.
-     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-     * action immediately. Default is `false`.
+     * @return Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      * 
      */
     public Output<Optional<Boolean>> deploy() {
         return Codegen.optional(this.deploy);
     }
     /**
-     * Secret name.
+     * The name of the action.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Secret name.
+     * @return The name of the action.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The Node runtime. For example `node16`, defaults to `node12`.
+     * The Node runtime, e.g. `node16`. Defaults to `node12`.
      * 
      */
     @Export(name="runtime", type=String.class, parameters={})
     private Output<String> runtime;
 
     /**
-     * @return The Node runtime. For example `node16`, defaults to `node12`.
+     * @return The Node runtime, e.g. `node16`. Defaults to `node12`.
      * 
      */
     public Output<String> runtime() {
@@ -194,16 +120,20 @@ public class Action extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secrets);
     }
     /**
-     * List of triggers that this action supports. At this time, an action can only target
-     * a single trigger at a time.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+     * [Retrieving the set of triggers available within
+     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+     * trigger versions supported.
      * 
      */
     @Export(name="supportedTriggers", type=ActionSupportedTriggers.class, parameters={})
     private Output<ActionSupportedTriggers> supportedTriggers;
 
     /**
-     * @return List of triggers that this action supports. At this time, an action can only target
-     * a single trigger at a time.
+     * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+     * [Retrieving the set of triggers available within
+     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+     * trigger versions supported.
      * 
      */
     public Output<ActionSupportedTriggers> supportedTriggers() {

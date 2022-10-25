@@ -16,17 +16,9 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
 
     public static final CustomDomainVerificationArgs Empty = new CustomDomainVerificationArgs();
 
-    /**
-     * List(Map). Verification methods for the domain.
-     * 
-     */
     @Import(name="methods")
     private @Nullable Output<List<Object>> methods;
 
-    /**
-     * @return List(Map). Verification methods for the domain.
-     * 
-     */
     public Optional<Output<List<Object>>> methods() {
         return Optional.ofNullable(this.methods);
     }
@@ -55,33 +47,15 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
             $ = new CustomDomainVerificationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param methods List(Map). Verification methods for the domain.
-         * 
-         * @return builder
-         * 
-         */
         public Builder methods(@Nullable Output<List<Object>> methods) {
             $.methods = methods;
             return this;
         }
 
-        /**
-         * @param methods List(Map). Verification methods for the domain.
-         * 
-         * @return builder
-         * 
-         */
         public Builder methods(List<Object> methods) {
             return methods(Output.of(methods));
         }
 
-        /**
-         * @param methods List(Map). Verification methods for the domain.
-         * 
-         * @return builder
-         * 
-         */
         public Builder methods(Object... methods) {
             return methods(List.of(methods));
         }

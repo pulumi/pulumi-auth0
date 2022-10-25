@@ -17,20 +17,28 @@ __all__ = ['CustomDomainArgs', 'CustomDomain']
 class CustomDomainArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str],
-                 type: pulumi.Input[str]):
+                 type: pulumi.Input[str],
+                 custom_client_ip_header: Optional[pulumi.Input[str]] = None,
+                 tls_policy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CustomDomain resource.
-        :param pulumi.Input[str] domain: String. Name of the custom domain.
-        :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        :param pulumi.Input[str] domain: Name of the custom domain.
+        :param pulumi.Input[str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        :param pulumi.Input[str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        :param pulumi.Input[str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "type", type)
+        if custom_client_ip_header is not None:
+            pulumi.set(__self__, "custom_client_ip_header", custom_client_ip_header)
+        if tls_policy is not None:
+            pulumi.set(__self__, "tls_policy", tls_policy)
 
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        String. Name of the custom domain.
+        Name of the custom domain.
         """
         return pulumi.get(self, "domain")
 
@@ -42,7 +50,7 @@ class CustomDomainArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         """
         return pulumi.get(self, "type")
 
@@ -50,25 +58,55 @@ class CustomDomainArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter(name="customClientIpHeader")
+    def custom_client_ip_header(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        """
+        return pulumi.get(self, "custom_client_ip_header")
+
+    @custom_client_ip_header.setter
+    def custom_client_ip_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_client_ip_header", value)
+
+    @property
+    @pulumi.getter(name="tlsPolicy")
+    def tls_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        """
+        return pulumi.get(self, "tls_policy")
+
+    @tls_policy.setter
+    def tls_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_policy", value)
+
 
 @pulumi.input_type
 class _CustomDomainState:
     def __init__(__self__, *,
+                 custom_client_ip_header: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  origin_domain_name: Optional[pulumi.Input[str]] = None,
                  primary: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tls_policy: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  verifications: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomDomain resources.
-        :param pulumi.Input[str] domain: String. Name of the custom domain.
-        :param pulumi.Input[str] origin_domain_name: String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
-        :param pulumi.Input[bool] primary: Boolean. Indicates whether this is a primary domain.
-        :param pulumi.Input[str] status: String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
-        :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]] verifications: List(Resource). Configuration settings for verification. For details, see Verification.
+        :param pulumi.Input[str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        :param pulumi.Input[str] domain: Name of the custom domain.
+        :param pulumi.Input[str] origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        :param pulumi.Input[bool] primary: Indicates whether this is a primary domain.
+        :param pulumi.Input[str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        :param pulumi.Input[str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        :param pulumi.Input[str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]] verifications: Configuration settings for verification.
         """
+        if custom_client_ip_header is not None:
+            pulumi.set(__self__, "custom_client_ip_header", custom_client_ip_header)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if origin_domain_name is not None:
@@ -77,16 +115,30 @@ class _CustomDomainState:
             pulumi.set(__self__, "primary", primary)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tls_policy is not None:
+            pulumi.set(__self__, "tls_policy", tls_policy)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if verifications is not None:
             pulumi.set(__self__, "verifications", verifications)
 
     @property
+    @pulumi.getter(name="customClientIpHeader")
+    def custom_client_ip_header(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        """
+        return pulumi.get(self, "custom_client_ip_header")
+
+    @custom_client_ip_header.setter
+    def custom_client_ip_header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_client_ip_header", value)
+
+    @property
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Name of the custom domain.
+        Name of the custom domain.
         """
         return pulumi.get(self, "domain")
 
@@ -98,7 +150,7 @@ class _CustomDomainState:
     @pulumi.getter(name="originDomainName")
     def origin_domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         """
         return pulumi.get(self, "origin_domain_name")
 
@@ -110,7 +162,7 @@ class _CustomDomainState:
     @pulumi.getter
     def primary(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether this is a primary domain.
+        Indicates whether this is a primary domain.
         """
         return pulumi.get(self, "primary")
 
@@ -122,7 +174,7 @@ class _CustomDomainState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         """
         return pulumi.get(self, "status")
 
@@ -131,10 +183,22 @@ class _CustomDomainState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="tlsPolicy")
+    def tls_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        """
+        return pulumi.get(self, "tls_policy")
+
+    @tls_policy.setter
+    def tls_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_policy", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         """
         return pulumi.get(self, "type")
 
@@ -146,7 +210,7 @@ class _CustomDomainState:
     @pulumi.getter
     def verifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]]:
         """
-        List(Resource). Configuration settings for verification. For details, see Verification.
+        Configuration settings for verification.
         """
         return pulumi.get(self, "verifications")
 
@@ -160,12 +224,13 @@ class CustomDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_client_ip_header: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 tls_policy: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
-        manage a custom domain within your Auth0 tenant.
+        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
 
         ## Example Usage
 
@@ -180,7 +245,7 @@ class CustomDomain(pulumi.CustomResource):
 
         ## Import
 
-        Custom Domains can be imported using the id, e.g.
+        # Custom domains can be imported using their ID. # # Example
 
         ```sh
          $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
@@ -188,8 +253,10 @@ class CustomDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: String. Name of the custom domain.
-        :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        :param pulumi.Input[str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        :param pulumi.Input[str] domain: Name of the custom domain.
+        :param pulumi.Input[str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        :param pulumi.Input[str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         """
         ...
     @overload
@@ -198,8 +265,7 @@ class CustomDomain(pulumi.CustomResource):
                  args: CustomDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
-        manage a custom domain within your Auth0 tenant.
+        With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
 
         ## Example Usage
 
@@ -214,7 +280,7 @@ class CustomDomain(pulumi.CustomResource):
 
         ## Import
 
-        Custom Domains can be imported using the id, e.g.
+        # Custom domains can be imported using their ID. # # Example
 
         ```sh
          $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
@@ -235,7 +301,9 @@ class CustomDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_client_ip_header: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 tls_policy: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -246,9 +314,11 @@ class CustomDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomDomainArgs.__new__(CustomDomainArgs)
 
+            __props__.__dict__["custom_client_ip_header"] = custom_client_ip_header
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
+            __props__.__dict__["tls_policy"] = tls_policy
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -266,10 +336,12 @@ class CustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            custom_client_ip_header: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             origin_domain_name: Optional[pulumi.Input[str]] = None,
             primary: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tls_policy: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             verifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]]]] = None) -> 'CustomDomain':
         """
@@ -279,30 +351,42 @@ class CustomDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: String. Name of the custom domain.
-        :param pulumi.Input[str] origin_domain_name: String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
-        :param pulumi.Input[bool] primary: Boolean. Indicates whether this is a primary domain.
-        :param pulumi.Input[str] status: String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
-        :param pulumi.Input[str] type: String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]]] verifications: List(Resource). Configuration settings for verification. For details, see Verification.
+        :param pulumi.Input[str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        :param pulumi.Input[str] domain: Name of the custom domain.
+        :param pulumi.Input[str] origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        :param pulumi.Input[bool] primary: Indicates whether this is a primary domain.
+        :param pulumi.Input[str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        :param pulumi.Input[str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        :param pulumi.Input[str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainVerificationArgs']]]] verifications: Configuration settings for verification.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CustomDomainState.__new__(_CustomDomainState)
 
+        __props__.__dict__["custom_client_ip_header"] = custom_client_ip_header
         __props__.__dict__["domain"] = domain
         __props__.__dict__["origin_domain_name"] = origin_domain_name
         __props__.__dict__["primary"] = primary
         __props__.__dict__["status"] = status
+        __props__.__dict__["tls_policy"] = tls_policy
         __props__.__dict__["type"] = type
         __props__.__dict__["verifications"] = verifications
         return CustomDomain(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="customClientIpHeader")
+    def custom_client_ip_header(self) -> pulumi.Output[Optional[str]]:
+        """
+        The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        """
+        return pulumi.get(self, "custom_client_ip_header")
+
+    @property
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        String. Name of the custom domain.
+        Name of the custom domain.
         """
         return pulumi.get(self, "domain")
 
@@ -310,7 +394,7 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="originDomainName")
     def origin_domain_name(self) -> pulumi.Output[str]:
         """
-        String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         """
         return pulumi.get(self, "origin_domain_name")
 
@@ -318,7 +402,7 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter
     def primary(self) -> pulumi.Output[bool]:
         """
-        Boolean. Indicates whether this is a primary domain.
+        Indicates whether this is a primary domain.
         """
         return pulumi.get(self, "primary")
 
@@ -326,15 +410,23 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tlsPolicy")
+    def tls_policy(self) -> pulumi.Output[str]:
+        """
+        TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        """
+        return pulumi.get(self, "tls_policy")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         """
         return pulumi.get(self, "type")
 
@@ -342,7 +434,7 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter
     def verifications(self) -> pulumi.Output[Sequence['outputs.CustomDomainVerification']]:
         """
-        List(Resource). Configuration settings for verification. For details, see Verification.
+        Configuration settings for verification.
         """
         return pulumi.get(self, "verifications")
 

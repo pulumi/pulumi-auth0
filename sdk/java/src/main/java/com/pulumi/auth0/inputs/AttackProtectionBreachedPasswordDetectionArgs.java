@@ -33,14 +33,14 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
     }
 
     /**
-     * Whether or not breached password detection is active.
+     * Whether breached password detection is active.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether breached password detection is active.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -63,14 +63,14 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
     }
 
     /**
-     * Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * Action to take when a breached password is detected.
      * 
      */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a breached password is detected.
      * 
      */
     public Optional<Output<List<String>>> shields() {
@@ -136,7 +136,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param enabled Whether or not breached password detection is active.
+         * @param enabled Whether breached password detection is active.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param enabled Whether or not breached password detection is active.
+         * @param enabled Whether breached password detection is active.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a breached password is detected.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a breached password is detected.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a breached password is detected.
          * 
          * @return builder
          * 

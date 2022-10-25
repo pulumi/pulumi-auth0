@@ -6,13 +6,245 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
- * (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
- * and manage connections to be used with your clients and users.
+ * With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+ *
+ * > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+ * creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+ *
+ * ## Example Usage
+ * ### Google OAuth2 Connection
+ *
+ * > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const googleOauth2 = new auth0.Connection("google_oauth2", {
+ *     options: {
+ *         allowedAudiences: [
+ *             "example.com",
+ *             "api.example.com",
+ *         ],
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         scopes: [
+ *             "email",
+ *             "profile",
+ *             "gmail",
+ *             "youtube",
+ *         ],
+ *         setUserRootAttributes: "on_each_login",
+ *     },
+ *     strategy: "google-oauth2",
+ * });
+ * ```
+ * ### Facebook Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const facebook = new auth0.Connection("facebook", {
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         scopes: [
+ *             "public_profile",
+ *             "email",
+ *             "groups_access_member_info",
+ *             "user_birthday",
+ *         ],
+ *     },
+ *     strategy: "facebook",
+ * });
+ * ```
+ * ### Apple Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const apple = new auth0.Connection("apple", {
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<private-key>",
+ *         keyId: "<key-id>",
+ *         scopes: [
+ *             "email",
+ *             "name",
+ *         ],
+ *         teamId: "<team-id>",
+ *     },
+ *     strategy: "apple",
+ * });
+ * ```
+ * ### LinkedIn Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const linkedin = new auth0.Connection("linkedin", {
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         scopes: [
+ *             "basic_profile",
+ *             "profile",
+ *             "email",
+ *         ],
+ *         strategyVersion: 2,
+ *     },
+ *     strategy: "linkedin",
+ * });
+ * ```
+ * ### GitHub Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const github = new auth0.Connection("github", {
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         scopes: [
+ *             "email",
+ *             "profile",
+ *             "public_repo",
+ *             "repo",
+ *         ],
+ *     },
+ *     strategy: "github",
+ * });
+ * ```
+ * ### SalesForce Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const salesforce = new auth0.Connection("salesforce", {
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         communityBaseUrl: "https://salesforce.example.com",
+ *     },
+ *     strategy: "salesforce",
+ * });
+ * ```
+ * ### OAuth2 Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const oauth2 = new auth0.Connection("oauth2", {
+ *     options: {
+ *         authorizationEndpoint: "https://auth.example.com/oauth2/authorize",
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         pkceEnabled: true,
+ *         scripts: {
+ *             fetchUserProfile: `        function fetchUserProfile(accessToken, context, callback) {
+ *           return callback(new Error("Whoops!"));
+ *         }
+ *       `,
+ *         },
+ *         tokenEndpoint: "https://auth.example.com/oauth2/token",
+ *     },
+ *     strategy: "oauth2",
+ * });
+ * ```
+ * ### SMS Connection
+ *
+ * > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const sms = new auth0.Connection("sms", {
+ *     isDomainConnection: false,
+ *     options: {
+ *         bruteForceProtection: true,
+ *         disableSignup: false,
+ *         forwardRequestInfo: true,
+ *         from: "+15555555555",
+ *         gatewayAuthentication: {
+ *             audience: "https://somewhere.com/sms-gateway",
+ *             method: "bearer",
+ *             secret: "4e2680bb74ec2ae24736476dd37ed6c2",
+ *             secretBase64Encoded: false,
+ *             subject: "test.us.auth0.com:sms",
+ *         },
+ *         gatewayUrl: "https://somewhere.com/sms-gateway",
+ *         name: "sms",
+ *         provider: "sms_gateway",
+ *         syntax: "md_with_macros",
+ *         template: "@@password@@",
+ *         totp: {
+ *             length: 6,
+ *             timeStep: 300,
+ *         },
+ *     },
+ *     strategy: "sms",
+ * });
+ * ```
+ * ### Email Connection
+ *
+ * > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const passwordlessEmail = new auth0.Connection("passwordless_email", {
+ *     options: {
+ *         authParams: {
+ *             response_type: "code",
+ *             scope: "openid email profile offline_access",
+ *         },
+ *         bruteForceProtection: true,
+ *         disableSignup: false,
+ *         from: "{{ application.name }} <root@auth0.com>",
+ *         nonPersistentAttrs: [],
+ *         setUserRootAttributes: [],
+ *         subject: "Welcome to {{ application.name }}",
+ *         syntax: "liquid",
+ *         template: "<html>This is the body of the email</html>",
+ *         totp: {
+ *             length: 6,
+ *             timeStep: 300,
+ *         },
+ *     },
+ *     strategy: "email",
+ * });
+ * ```
+ * ### WindowsLive Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const windowslive = new auth0.Connection("windowslive", {
+ *     options: {
+ *         clientId: "<client-id>",
+ *         clientSecret: "<client-secret>",
+ *         scopes: [
+ *             "signin",
+ *             "graph_user",
+ *         ],
+ *         strategyVersion: 2,
+ *     },
+ *     strategy: "windowslive",
+ * });
+ * ```
  *
  * ## Import
  *
- * Connections can be imported using their id, e.g.
+ * # Connections can be imported using their ID. # # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
@@ -47,11 +279,11 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * Name used in login screen
+     * Name used in login screen.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+     * IDs of the clients for which the connection is enabled.
      */
     public readonly enabledClients!: pulumi.Output<string[]>;
     /**
@@ -67,28 +299,22 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Configuration settings for connection options. For details, see Options.
+     * Configuration settings for connection options.
      */
     public readonly options!: pulumi.Output<outputs.ConnectionOptions>;
     /**
-     * Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+     * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      */
     public readonly realms!: pulumi.Output<string[]>;
     /**
-     * Display connection as a button. Only available for enterprise connections.
+     * Display connection as a button. Only available on enterprise connections.
      */
     public readonly showAsButton!: pulumi.Output<boolean | undefined>;
     /**
-     * Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+     * Type of the connection, which indicates the identity provider.
      */
     public readonly strategy!: pulumi.Output<string>;
-    /**
-     * Version 1 is deprecated, use version 2.
-     */
     public readonly strategyVersion!: pulumi.Output<string>;
-    /**
-     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-     */
     public readonly validation!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -142,11 +368,11 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * Name used in login screen
+     * Name used in login screen.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+     * IDs of the clients for which the connection is enabled.
      */
     enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -162,28 +388,22 @@ export interface ConnectionState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Configuration settings for connection options. For details, see Options.
+     * Configuration settings for connection options.
      */
     options?: pulumi.Input<inputs.ConnectionOptions>;
     /**
-     * Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+     * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      */
     realms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Display connection as a button. Only available for enterprise connections.
+     * Display connection as a button. Only available on enterprise connections.
      */
     showAsButton?: pulumi.Input<boolean>;
     /**
-     * Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+     * Type of the connection, which indicates the identity provider.
      */
     strategy?: pulumi.Input<string>;
-    /**
-     * Version 1 is deprecated, use version 2.
-     */
     strategyVersion?: pulumi.Input<string>;
-    /**
-     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-     */
     validation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -192,11 +412,11 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
-     * Name used in login screen
+     * Name used in login screen.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+     * IDs of the clients for which the connection is enabled.
      */
     enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -212,27 +432,21 @@ export interface ConnectionArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Configuration settings for connection options. For details, see Options.
+     * Configuration settings for connection options.
      */
     options?: pulumi.Input<inputs.ConnectionOptions>;
     /**
-     * Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+     * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      */
     realms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Display connection as a button. Only available for enterprise connections.
+     * Display connection as a button. Only available on enterprise connections.
      */
     showAsButton?: pulumi.Input<boolean>;
     /**
-     * Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+     * Type of the connection, which indicates the identity provider.
      */
     strategy: pulumi.Input<string>;
-    /**
-     * Version 1 is deprecated, use version 2.
-     */
     strategyVersion?: pulumi.Input<string>;
-    /**
-     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-     */
     validation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

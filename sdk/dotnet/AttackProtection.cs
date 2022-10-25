@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHA
+    /// Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
     /// 
     /// ## Example Usage
     /// 
@@ -21,7 +21,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var attackProtection = new Auth0.AttackProtection("attackProtection", new()
+    ///     var myProtection = new Auth0.AttackProtection("myProtection", new()
     ///     {
     ///         BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs
     ///         {
@@ -82,10 +82,10 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// # As this is not a resource identifiable by an ID within the Auth0 Management API, # attack_protection can be imported using a random string. # # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/attackProtection:AttackProtection default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+    ///  $ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/attackProtection:AttackProtection")]
@@ -98,7 +98,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.AttackProtectionBreachedPasswordDetection> BreachedPasswordDetection { get; private set; } = null!;
 
         /// <summary>
-        /// Safeguards against a single IP address attacking a single user account.
+        /// Brute-force protection safeguards against a single IP address attacking a single user account.
         /// </summary>
         [Output("bruteForceProtection")]
         public Output<Outputs.AttackProtectionBruteForceProtection> BruteForceProtection { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.AttackProtectionBreachedPasswordDetectionArgs>? BreachedPasswordDetection { get; set; }
 
         /// <summary>
-        /// Safeguards against a single IP address attacking a single user account.
+        /// Brute-force protection safeguards against a single IP address attacking a single user account.
         /// </summary>
         [Input("bruteForceProtection")]
         public Input<Inputs.AttackProtectionBruteForceProtectionArgs>? BruteForceProtection { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.AttackProtectionBreachedPasswordDetectionGetArgs>? BreachedPasswordDetection { get; set; }
 
         /// <summary>
-        /// Safeguards against a single IP address attacking a single user account.
+        /// Brute-force protection safeguards against a single IP address attacking a single user account.
         /// </summary>
         [Input("bruteForceProtection")]
         public Input<Inputs.AttackProtectionBruteForceProtectionGetArgs>? BruteForceProtection { get; set; }

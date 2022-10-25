@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class TenantGuardianMfaPage {
     /**
-     * @return Boolean. Indicates whether to use the custom Guardian page.
+     * @return Indicates whether to use the custom Guardian page.
      * 
      */
     private Boolean enabled;
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+     * @return HTML format with supported Liquid syntax. Customized content of the Guardian page.
      * 
      */
     private String html;
 
     private TenantGuardianMfaPage() {}
     /**
-     * @return Boolean. Indicates whether to use the custom Guardian page.
+     * @return Indicates whether to use the custom Guardian page.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+     * @return HTML format with supported Liquid syntax. Customized content of the Guardian page.
      * 
      */
     public String html() {

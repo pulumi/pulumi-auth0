@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientMobileAndroid {
-    /**
-     * @return String
-     * 
-     */
     private @Nullable String appPackageName;
-    /**
-     * @return List(String)
-     * 
-     */
     private @Nullable List<String> sha256CertFingerprints;
 
     private ClientMobileAndroid() {}
-    /**
-     * @return String
-     * 
-     */
     public Optional<String> appPackageName() {
         return Optional.ofNullable(this.appPackageName);
     }
-    /**
-     * @return List(String)
-     * 
-     */
     public List<String> sha256CertFingerprints() {
         return this.sha256CertFingerprints == null ? List.of() : this.sha256CertFingerprints;
     }

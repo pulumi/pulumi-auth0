@@ -16,14 +16,14 @@ public final class BrandingColorsArgs extends com.pulumi.resources.ResourceArgs 
     public static final BrandingColorsArgs Empty = new BrandingColorsArgs();
 
     /**
-     * String, Hexadecimal. Background color of login pages.
+     * Background color of login pages in hexadecimal.
      * 
      */
     @Import(name="pageBackground")
     private @Nullable Output<String> pageBackground;
 
     /**
-     * @return String, Hexadecimal. Background color of login pages.
+     * @return Background color of login pages in hexadecimal.
      * 
      */
     public Optional<Output<String>> pageBackground() {
@@ -31,14 +31,14 @@ public final class BrandingColorsArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * String, Hexadecimal. Primary button background color.
+     * Primary button background color in hexadecimal.
      * 
      */
     @Import(name="primary")
     private @Nullable Output<String> primary;
 
     /**
-     * @return String, Hexadecimal. Primary button background color.
+     * @return Primary button background color in hexadecimal.
      * 
      */
     public Optional<Output<String>> primary() {
@@ -71,7 +71,7 @@ public final class BrandingColorsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pageBackground String, Hexadecimal. Background color of login pages.
+         * @param pageBackground Background color of login pages in hexadecimal.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class BrandingColorsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pageBackground String, Hexadecimal. Background color of login pages.
+         * @param pageBackground Background color of login pages in hexadecimal.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class BrandingColorsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param primary String, Hexadecimal. Primary button background color.
+         * @param primary Primary button background color in hexadecimal.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class BrandingColorsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param primary String, Hexadecimal. Primary button background color.
+         * @param primary Primary button background color in hexadecimal.
          * 
          * @return builder
          * 

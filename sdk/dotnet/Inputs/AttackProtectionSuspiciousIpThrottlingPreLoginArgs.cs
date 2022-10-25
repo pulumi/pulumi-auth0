@@ -12,9 +12,6 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class AttackProtectionSuspiciousIpThrottlingPreLoginArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Maximum number of unsuccessful attempts. Only available on public tenants.
-        /// </summary>
         [Input("maxAttempts")]
         public Input<int>? MaxAttempts { get; set; }
 

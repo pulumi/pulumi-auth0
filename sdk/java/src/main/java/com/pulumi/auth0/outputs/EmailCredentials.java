@@ -13,114 +13,122 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EmailCredentials {
     /**
-     * @return String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+     * @return AWS Access Key ID. Used only for AWS.
      * 
      */
     private @Nullable String accessKeyId;
     /**
-     * @return String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+     * @return API Key for your email service. Will always be encrypted in our database.
      * 
      */
     private @Nullable String apiKey;
     /**
-     * @return String. API User for your email service.
+     * @return API User for your email service.
      * 
      */
     private @Nullable String apiUser;
+    /**
+     * @return Domain name.
+     * 
+     */
     private @Nullable String domain;
     /**
-     * @return String. Default region. Used only for AWS, Mailgun, and SparkPost.
+     * @return Default region. Used only for AWS, Mailgun, and SparkPost.
      * 
      */
     private @Nullable String region;
     /**
-     * @return String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+     * @return AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
      * 
      */
     private @Nullable String secretAccessKey;
     /**
-     * @return String. Hostname or IP address of your SMTP server. Used only for SMTP.
+     * @return Hostname or IP address of your SMTP server. Used only for SMTP.
      * 
      */
     private @Nullable String smtpHost;
     /**
-     * @return String, Case-sensitive. SMTP password. Used only for SMTP.
+     * @return SMTP password. Used only for SMTP.
      * 
      */
     private @Nullable String smtpPass;
     /**
-     * @return Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+     * @return Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
      * 
      */
     private @Nullable Integer smtpPort;
     /**
-     * @return String. SMTP username. Used only for SMTP.
+     * @return SMTP username. Used only for SMTP.
      * 
      */
     private @Nullable String smtpUser;
 
     private EmailCredentials() {}
     /**
-     * @return String, Case-sensitive. AWS Access Key ID. Used only for AWS.
+     * @return AWS Access Key ID. Used only for AWS.
      * 
      */
     public Optional<String> accessKeyId() {
         return Optional.ofNullable(this.accessKeyId);
     }
     /**
-     * @return String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+     * @return API Key for your email service. Will always be encrypted in our database.
      * 
      */
     public Optional<String> apiKey() {
         return Optional.ofNullable(this.apiKey);
     }
     /**
-     * @return String. API User for your email service.
+     * @return API User for your email service.
      * 
      */
     public Optional<String> apiUser() {
         return Optional.ofNullable(this.apiUser);
     }
+    /**
+     * @return Domain name.
+     * 
+     */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return String. Default region. Used only for AWS, Mailgun, and SparkPost.
+     * @return Default region. Used only for AWS, Mailgun, and SparkPost.
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+     * @return AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
      * 
      */
     public Optional<String> secretAccessKey() {
         return Optional.ofNullable(this.secretAccessKey);
     }
     /**
-     * @return String. Hostname or IP address of your SMTP server. Used only for SMTP.
+     * @return Hostname or IP address of your SMTP server. Used only for SMTP.
      * 
      */
     public Optional<String> smtpHost() {
         return Optional.ofNullable(this.smtpHost);
     }
     /**
-     * @return String, Case-sensitive. SMTP password. Used only for SMTP.
+     * @return SMTP password. Used only for SMTP.
      * 
      */
     public Optional<String> smtpPass() {
         return Optional.ofNullable(this.smtpPass);
     }
     /**
-     * @return Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+     * @return Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
      * 
      */
     public Optional<Integer> smtpPort() {
         return Optional.ofNullable(this.smtpPort);
     }
     /**
-     * @return String. SMTP username. Used only for SMTP.
+     * @return SMTP username. Used only for SMTP.
      * 
      */
     public Optional<String> smtpUser() {

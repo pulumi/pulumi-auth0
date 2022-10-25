@@ -12,15 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class TenantUniversalLoginColorsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// String, Hexadecimal. Background color of login pages.
-        /// </summary>
         [Input("pageBackground")]
         public Input<string>? PageBackground { get; set; }
 
-        /// <summary>
-        /// String, Hexadecimal. Primary button background color.
-        /// </summary>
         [Input("primary")]
         public Input<string>? Primary { get; set; }
 

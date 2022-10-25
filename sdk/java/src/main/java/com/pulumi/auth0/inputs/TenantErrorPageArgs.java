@@ -15,14 +15,14 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
     public static final TenantErrorPageArgs Empty = new TenantErrorPageArgs();
 
     /**
-     * String, HTML format with supported Liquid syntax. Customized content of the error page.
+     * HTML format with supported Liquid syntax. Customized content of the error page.
      * 
      */
     @Import(name="html", required=true)
     private Output<String> html;
 
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the error page.
+     * @return HTML format with supported Liquid syntax. Customized content of the error page.
      * 
      */
     public Output<String> html() {
@@ -30,14 +30,14 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Boolean. Indicates whether to show the link to logs as part of the default error page.
+     * Indicates whether to show the link to logs as part of the default error page.
      * 
      */
     @Import(name="showLogLink", required=true)
     private Output<Boolean> showLogLink;
 
     /**
-     * @return Boolean. Indicates whether to show the link to logs as part of the default error page.
+     * @return Indicates whether to show the link to logs as part of the default error page.
      * 
      */
     public Output<Boolean> showLogLink() {
@@ -45,14 +45,14 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * String. URL to redirect to when an error occurs rather than showing the default error page.
+     * URL to redirect to when an error occurs rather than showing the default error page.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return String. URL to redirect to when an error occurs rather than showing the default error page.
+     * @return URL to redirect to when an error occurs rather than showing the default error page.
      * 
      */
     public Output<String> url() {
@@ -86,7 +86,7 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param html String, HTML format with supported Liquid syntax. Customized content of the error page.
+         * @param html HTML format with supported Liquid syntax. Customized content of the error page.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param html String, HTML format with supported Liquid syntax. Customized content of the error page.
+         * @param html HTML format with supported Liquid syntax. Customized content of the error page.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param showLogLink Boolean. Indicates whether to show the link to logs as part of the default error page.
+         * @param showLogLink Indicates whether to show the link to logs as part of the default error page.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param showLogLink Boolean. Indicates whether to show the link to logs as part of the default error page.
+         * @param showLogLink Indicates whether to show the link to logs as part of the default error page.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param url String. URL to redirect to when an error occurs rather than showing the default error page.
+         * @param url URL to redirect to when an error occurs rather than showing the default error page.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class TenantErrorPageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param url String. URL to redirect to when an error occurs rather than showing the default error page.
+         * @param url URL to redirect to when an error occurs rather than showing the default error page.
          * 
          * @return builder
          * 

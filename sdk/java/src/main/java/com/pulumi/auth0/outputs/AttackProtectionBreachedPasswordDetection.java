@@ -19,7 +19,7 @@ public final class AttackProtectionBreachedPasswordDetection {
      */
     private @Nullable List<String> adminNotificationFrequencies;
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether breached password detection is active.
      * 
      */
     private @Nullable Boolean enabled;
@@ -29,7 +29,7 @@ public final class AttackProtectionBreachedPasswordDetection {
      */
     private @Nullable String method;
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a breached password is detected.
      * 
      */
     private @Nullable List<String> shields;
@@ -43,7 +43,7 @@ public final class AttackProtectionBreachedPasswordDetection {
         return this.adminNotificationFrequencies == null ? List.of() : this.adminNotificationFrequencies;
     }
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether breached password detection is active.
      * 
      */
     public Optional<Boolean> enabled() {
@@ -57,7 +57,7 @@ public final class AttackProtectionBreachedPasswordDetection {
         return Optional.ofNullable(this.method);
     }
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a breached password is detected.
      * 
      */
     public List<String> shields() {

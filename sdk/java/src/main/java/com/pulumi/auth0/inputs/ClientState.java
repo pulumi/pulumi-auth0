@@ -26,14 +26,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     public static final ClientState Empty = new ClientState();
 
     /**
-     * List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+     * Addons enabled for this client and their associated configurations.
      * 
      */
     @Import(name="addons")
     private @Nullable Output<ClientAddonsArgs> addons;
 
     /**
-     * @return List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+     * @return Addons enabled for this client and their associated configurations.
      * 
      */
     public Optional<Output<ClientAddonsArgs>> addons() {
@@ -41,14 +41,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(String). List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+     * List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
      */
     @Import(name="allowedClients")
     private @Nullable Output<List<String>> allowedClients;
 
     /**
-     * @return List(String). List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+     * @return List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
      */
     public Optional<Output<List<String>>> allowedClients() {
@@ -56,14 +56,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(String). URLs that Auth0 may redirect to after logout.
+     * URLs that Auth0 may redirect to after logout.
      * 
      */
     @Import(name="allowedLogoutUrls")
     private @Nullable Output<List<String>> allowedLogoutUrls;
 
     /**
-     * @return List(String). URLs that Auth0 may redirect to after logout.
+     * @return URLs that Auth0 may redirect to after logout.
      * 
      */
     public Optional<Output<List<String>>> allowedLogoutUrls() {
@@ -71,14 +71,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+     * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      * 
      */
     @Import(name="allowedOrigins")
     private @Nullable Output<List<String>> allowedOrigins;
 
     /**
-     * @return List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+     * @return URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      * 
      */
     public Optional<Output<List<String>>> allowedOrigins() {
@@ -86,14 +86,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     @Import(name="appType")
     private @Nullable Output<String> appType;
 
     /**
-     * @return String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     public Optional<Output<String>> appType() {
@@ -101,14 +101,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+     * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
     @Import(name="callbacks")
     private @Nullable Output<List<String>> callbacks;
 
     /**
-     * @return List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+     * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
     public Optional<Output<List<String>>> callbacks() {
@@ -116,16 +116,29 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. ID of the client.
-     * * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+     * List of audiences/realms for SAML protocol. Used by the wsfed addon.
+     * 
+     */
+    @Import(name="clientAliases")
+    private @Nullable Output<List<String>> clientAliases;
+
+    /**
+     * @return List of audiences/realms for SAML protocol. Used by the wsfed addon.
+     * 
+     */
+    public Optional<Output<List<String>>> clientAliases() {
+        return Optional.ofNullable(this.clientAliases);
+    }
+
+    /**
+     * The ID of the client.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return String. ID of the client.
-     * * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+     * @return The ID of the client.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -133,36 +146,46 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map(String)
+     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
      * 
      */
     @Import(name="clientMetadata")
     private @Nullable Output<Map<String,Object>> clientMetadata;
 
     /**
-     * @return Map(String)
+     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
      * 
      */
     public Optional<Output<Map<String,Object>>> clientMetadata() {
         return Optional.ofNullable(this.clientMetadata);
     }
 
+    /**
+     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+     * Terraform client. Otherwise, the attribute will contain an empty string.
+     * 
+     */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
+    /**
+     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+     * Terraform client. Otherwise, the attribute will contain an empty string.
+     * 
+     */
     public Optional<Output<String>> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
 
     /**
-     * Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+     * Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      * 
      */
     @Import(name="clientSecretRotationTrigger")
     private @Nullable Output<Map<String,Object>> clientSecretRotationTrigger;
 
     /**
-     * @return Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+     * @return Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      * 
      */
     public Optional<Output<Map<String,Object>>> clientSecretRotationTrigger() {
@@ -170,14 +193,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+     * Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
      * 
      */
     @Import(name="crossOriginAuth")
     private @Nullable Output<Boolean> crossOriginAuth;
 
     /**
-     * @return Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+     * @return Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
      * 
      */
     public Optional<Output<Boolean>> crossOriginAuth() {
@@ -185,14 +208,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+     * URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
      * 
      */
     @Import(name="crossOriginLoc")
     private @Nullable Output<String> crossOriginLoc;
 
     /**
-     * @return String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+     * @return URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
      * 
      */
     public Optional<Output<String>> crossOriginLoc() {
@@ -200,14 +223,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Content of the custom login page.
+     * The content (HTML, CSS, JS) of the custom login page.
      * 
      */
     @Import(name="customLoginPage")
     private @Nullable Output<String> customLoginPage;
 
     /**
-     * @return String. Content of the custom login page.
+     * @return The content (HTML, CSS, JS) of the custom login page.
      * 
      */
     public Optional<Output<String>> customLoginPage() {
@@ -215,14 +238,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether or not a custom login page is to be used.
+     * Indicates whether a custom login page is to be used.
      * 
      */
     @Import(name="customLoginPageOn")
     private @Nullable Output<Boolean> customLoginPageOn;
 
     /**
-     * @return Boolean. Indicates whether or not a custom login page is to be used.
+     * @return Indicates whether a custom login page is to be used.
      * 
      */
     public Optional<Output<Boolean>> customLoginPageOn() {
@@ -230,14 +253,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String, (Max length = 140 characters). Description of the purpose of the client.
+     * Description of the purpose of the client.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return String, (Max length = 140 characters). Description of the purpose of the client.
+     * @return Description of the purpose of the client.
      * 
      */
     public Optional<Output<String>> description() {
@@ -245,14 +268,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map(String).
+     * Encryption used for WS-Fed responses with this client.
      * 
      */
     @Import(name="encryptionKey")
     private @Nullable Output<Map<String,String>> encryptionKey;
 
     /**
-     * @return Map(String).
+     * @return Encryption used for WS-Fed responses with this client.
      * 
      */
     public Optional<Output<Map<String,String>>> encryptionKey() {
@@ -260,14 +283,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Form template for WS-Federation protocol.
+     * HTML form template to be used for WS-Federation.
      * 
      */
     @Import(name="formTemplate")
     private @Nullable Output<String> formTemplate;
 
     /**
-     * @return String. Form template for WS-Federation protocol.
+     * @return HTML form template to be used for WS-Federation.
      * 
      */
     public Optional<Output<String>> formTemplate() {
@@ -275,14 +298,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(String). Types of grants that this client is authorized to use.
+     * Types of grants that this client is authorized to use.
      * 
      */
     @Import(name="grantTypes")
     private @Nullable Output<List<String>> grantTypes;
 
     /**
-     * @return List(String). Types of grants that this client is authorized to use.
+     * @return Types of grants that this client is authorized to use.
      * 
      */
     public Optional<Output<List<String>>> grantTypes() {
@@ -290,14 +313,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Initiate login uri, must be https.
+     * Initiate login URI, must be HTTPS.
      * 
      */
     @Import(name="initiateLoginUri")
     private @Nullable Output<String> initiateLoginUri;
 
     /**
-     * @return String. Initiate login uri, must be https.
+     * @return Initiate login URI, must be HTTPS.
      * 
      */
     public Optional<Output<String>> initiateLoginUri() {
@@ -305,14 +328,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether or not this client is a first-party client.
+     * Indicates whether this client is a first-party client.
      * 
      */
     @Import(name="isFirstParty")
     private @Nullable Output<Boolean> isFirstParty;
 
     /**
-     * @return Boolean. Indicates whether or not this client is a first-party client.
+     * @return Indicates whether this client is a first-party client.
      * 
      */
     public Optional<Output<Boolean>> isFirstParty() {
@@ -320,14 +343,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether or not the token endpoint IP header is trusted.
+     * Indicates whether the token endpoint IP header is trusted.
      * 
      */
     @Import(name="isTokenEndpointIpHeaderTrusted")
     private @Nullable Output<Boolean> isTokenEndpointIpHeaderTrusted;
 
     /**
-     * @return Boolean. Indicates whether or not the token endpoint IP header is trusted.
+     * @return Indicates whether the token endpoint IP header is trusted.
      * 
      */
     public Optional<Output<Boolean>> isTokenEndpointIpHeaderTrusted() {
@@ -335,14 +358,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+     * Configuration settings for the JWTs issued for this client.
      * 
      */
     @Import(name="jwtConfiguration")
     private @Nullable Output<ClientJwtConfigurationArgs> jwtConfiguration;
 
     /**
-     * @return List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+     * @return Configuration settings for the JWTs issued for this client.
      * 
      */
     public Optional<Output<ClientJwtConfigurationArgs>> jwtConfiguration() {
@@ -350,14 +373,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+     * URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      * 
      */
     @Import(name="logoUri")
     private @Nullable Output<String> logoUri;
 
     /**
-     * @return String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+     * @return URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      * 
      */
     public Optional<Output<String>> logoUri() {
@@ -365,14 +388,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+     * Additional configuration for native mobile apps.
      * 
      */
     @Import(name="mobile")
     private @Nullable Output<ClientMobileArgs> mobile;
 
     /**
-     * @return List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+     * @return Additional configuration for native mobile apps.
      * 
      */
     public Optional<Output<ClientMobileArgs>> mobile() {
@@ -380,14 +403,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Name of the client.
+     * Name of the client.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return String. Name of the client.
+     * @return Name of the client.
      * 
      */
     public Optional<Output<String>> name() {
@@ -395,14 +418,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+     * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
      * 
      */
     @Import(name="nativeSocialLogin")
     private @Nullable Output<ClientNativeSocialLoginArgs> nativeSocialLogin;
 
     /**
-     * @return List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
      * 
      */
     public Optional<Output<ClientNativeSocialLoginArgs>> nativeSocialLogin() {
@@ -410,14 +433,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+     * Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
     @Import(name="oidcConformant")
     private @Nullable Output<Boolean> oidcConformant;
 
     /**
-     * @return Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+     * @return Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
     public Optional<Output<Boolean>> oidcConformant() {
@@ -425,14 +448,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+     * Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
      * 
      */
     @Import(name="organizationRequireBehavior")
     private @Nullable Output<String> organizationRequireBehavior;
 
     /**
-     * @return String. Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
      * 
      */
     public Optional<Output<String>> organizationRequireBehavior() {
@@ -440,14 +463,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      * 
      */
     @Import(name="organizationUsage")
     private @Nullable Output<String> organizationUsage;
 
     /**
-     * @return String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      * 
      */
     public Optional<Output<String>> organizationUsage() {
@@ -455,14 +478,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+     * Configuration settings for the refresh tokens issued for this client.
      * 
      */
     @Import(name="refreshToken")
     private @Nullable Output<ClientRefreshTokenArgs> refreshToken;
 
     /**
-     * @return List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+     * @return Configuration settings for the refresh tokens issued for this client.
      * 
      */
     public Optional<Output<ClientRefreshTokenArgs>> refreshToken() {
@@ -470,14 +493,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+     * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
     @Import(name="signingKeys")
     private @Nullable Output<List<Map<String,Object>>> signingKeys;
 
     /**
-     * @return List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+     * @return List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      * 
      */
     public Optional<Output<List<Map<String,Object>>>> signingKeys() {
@@ -485,14 +508,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+     * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
      */
     @Import(name="sso")
     private @Nullable Output<Boolean> sso;
 
     /**
-     * @return Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+     * @return Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
      */
     public Optional<Output<Boolean>> sso() {
@@ -500,14 +523,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether or not SSO is disabled.
+     * Indicates whether or not SSO is disabled.
      * 
      */
     @Import(name="ssoDisabled")
     private @Nullable Output<Boolean> ssoDisabled;
 
     /**
-     * @return Boolean. Indicates whether or not SSO is disabled.
+     * @return Indicates whether or not SSO is disabled.
      * 
      */
     public Optional<Output<Boolean>> ssoDisabled() {
@@ -515,14 +538,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+     * Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
      * 
      */
     @Import(name="tokenEndpointAuthMethod")
     private @Nullable Output<String> tokenEndpointAuthMethod;
 
     /**
-     * @return String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+     * @return Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
      * 
      */
     public Optional<Output<String>> tokenEndpointAuthMethod() {
@@ -530,14 +553,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(String). URLs that represent valid web origins for use with web message response mode.
+     * URLs that represent valid web origins for use with web message response mode.
      * 
      */
     @Import(name="webOrigins")
     private @Nullable Output<List<String>> webOrigins;
 
     /**
-     * @return List(String). URLs that represent valid web origins for use with web message response mode.
+     * @return URLs that represent valid web origins for use with web message response mode.
      * 
      */
     public Optional<Output<List<String>>> webOrigins() {
@@ -553,6 +576,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.allowedOrigins = $.allowedOrigins;
         this.appType = $.appType;
         this.callbacks = $.callbacks;
+        this.clientAliases = $.clientAliases;
         this.clientId = $.clientId;
         this.clientMetadata = $.clientMetadata;
         this.clientSecret = $.clientSecret;
@@ -603,7 +627,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+         * @param addons Addons enabled for this client and their associated configurations.
          * 
          * @return builder
          * 
@@ -614,7 +638,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addons List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+         * @param addons Addons enabled for this client and their associated configurations.
          * 
          * @return builder
          * 
@@ -624,7 +648,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedClients List(String). List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+         * @param allowedClients List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
          * 
          * @return builder
          * 
@@ -635,7 +659,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedClients List(String). List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+         * @param allowedClients List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
          * 
          * @return builder
          * 
@@ -645,7 +669,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedClients List(String). List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
+         * @param allowedClients List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
          * 
          * @return builder
          * 
@@ -655,7 +679,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedLogoutUrls List(String). URLs that Auth0 may redirect to after logout.
+         * @param allowedLogoutUrls URLs that Auth0 may redirect to after logout.
          * 
          * @return builder
          * 
@@ -666,7 +690,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedLogoutUrls List(String). URLs that Auth0 may redirect to after logout.
+         * @param allowedLogoutUrls URLs that Auth0 may redirect to after logout.
          * 
          * @return builder
          * 
@@ -676,7 +700,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedLogoutUrls List(String). URLs that Auth0 may redirect to after logout.
+         * @param allowedLogoutUrls URLs that Auth0 may redirect to after logout.
          * 
          * @return builder
          * 
@@ -686,7 +710,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedOrigins List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+         * @param allowedOrigins URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
          * 
          * @return builder
          * 
@@ -697,7 +721,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedOrigins List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+         * @param allowedOrigins URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
          * 
          * @return builder
          * 
@@ -707,7 +731,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedOrigins List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+         * @param allowedOrigins URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
          * 
          * @return builder
          * 
@@ -717,7 +741,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
          * 
          * @return builder
          * 
@@ -728,7 +752,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
          * 
          * @return builder
          * 
@@ -738,7 +762,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param callbacks List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+         * @param callbacks URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
          * 
          * @return builder
          * 
@@ -749,7 +773,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param callbacks List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+         * @param callbacks URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
          * 
          * @return builder
          * 
@@ -759,7 +783,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param callbacks List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+         * @param callbacks URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
          * 
          * @return builder
          * 
@@ -769,8 +793,38 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId String. ID of the client.
-         * * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+         * @param clientAliases List of audiences/realms for SAML protocol. Used by the wsfed addon.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAliases(@Nullable Output<List<String>> clientAliases) {
+            $.clientAliases = clientAliases;
+            return this;
+        }
+
+        /**
+         * @param clientAliases List of audiences/realms for SAML protocol. Used by the wsfed addon.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAliases(List<String> clientAliases) {
+            return clientAliases(Output.of(clientAliases));
+        }
+
+        /**
+         * @param clientAliases List of audiences/realms for SAML protocol. Used by the wsfed addon.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAliases(String... clientAliases) {
+            return clientAliases(List.of(clientAliases));
+        }
+
+        /**
+         * @param clientId The ID of the client.
          * 
          * @return builder
          * 
@@ -781,8 +835,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId String. ID of the client.
-         * * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+         * @param clientId The ID of the client.
          * 
          * @return builder
          * 
@@ -792,7 +845,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientMetadata Map(String)
+         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
          * 
          * @return builder
          * 
@@ -803,7 +856,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientMetadata Map(String)
+         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;@ [Tab] [Space]`.
          * 
          * @return builder
          * 
@@ -812,17 +865,31 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
             return clientMetadata(Output.of(clientMetadata));
         }
 
+        /**
+         * @param clientSecret Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+         * Terraform client. Otherwise, the attribute will contain an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(@Nullable Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+         * Terraform client. Otherwise, the attribute will contain an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
 
         /**
-         * @param clientSecretRotationTrigger Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+         * @param clientSecretRotationTrigger Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
          * 
          * @return builder
          * 
@@ -833,7 +900,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientSecretRotationTrigger Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+         * @param clientSecretRotationTrigger Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
          * 
          * @return builder
          * 
@@ -843,7 +910,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossOriginAuth Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
          * 
          * @return builder
          * 
@@ -854,7 +921,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossOriginAuth Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
          * 
          * @return builder
          * 
@@ -864,7 +931,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossOriginLoc String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+         * @param crossOriginLoc URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
          * 
          * @return builder
          * 
@@ -875,7 +942,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossOriginLoc String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+         * @param crossOriginLoc URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
          * 
          * @return builder
          * 
@@ -885,7 +952,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLoginPage String. Content of the custom login page.
+         * @param customLoginPage The content (HTML, CSS, JS) of the custom login page.
          * 
          * @return builder
          * 
@@ -896,7 +963,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLoginPage String. Content of the custom login page.
+         * @param customLoginPage The content (HTML, CSS, JS) of the custom login page.
          * 
          * @return builder
          * 
@@ -906,7 +973,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLoginPageOn Boolean. Indicates whether or not a custom login page is to be used.
+         * @param customLoginPageOn Indicates whether a custom login page is to be used.
          * 
          * @return builder
          * 
@@ -917,7 +984,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLoginPageOn Boolean. Indicates whether or not a custom login page is to be used.
+         * @param customLoginPageOn Indicates whether a custom login page is to be used.
          * 
          * @return builder
          * 
@@ -927,7 +994,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description String, (Max length = 140 characters). Description of the purpose of the client.
+         * @param description Description of the purpose of the client.
          * 
          * @return builder
          * 
@@ -938,7 +1005,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description String, (Max length = 140 characters). Description of the purpose of the client.
+         * @param description Description of the purpose of the client.
          * 
          * @return builder
          * 
@@ -948,7 +1015,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKey Map(String).
+         * @param encryptionKey Encryption used for WS-Fed responses with this client.
          * 
          * @return builder
          * 
@@ -959,7 +1026,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKey Map(String).
+         * @param encryptionKey Encryption used for WS-Fed responses with this client.
          * 
          * @return builder
          * 
@@ -969,7 +1036,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param formTemplate String. Form template for WS-Federation protocol.
+         * @param formTemplate HTML form template to be used for WS-Federation.
          * 
          * @return builder
          * 
@@ -980,7 +1047,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param formTemplate String. Form template for WS-Federation protocol.
+         * @param formTemplate HTML form template to be used for WS-Federation.
          * 
          * @return builder
          * 
@@ -990,7 +1057,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes List(String). Types of grants that this client is authorized to use.
+         * @param grantTypes Types of grants that this client is authorized to use.
          * 
          * @return builder
          * 
@@ -1001,7 +1068,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes List(String). Types of grants that this client is authorized to use.
+         * @param grantTypes Types of grants that this client is authorized to use.
          * 
          * @return builder
          * 
@@ -1011,7 +1078,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes List(String). Types of grants that this client is authorized to use.
+         * @param grantTypes Types of grants that this client is authorized to use.
          * 
          * @return builder
          * 
@@ -1021,7 +1088,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initiateLoginUri String. Initiate login uri, must be https.
+         * @param initiateLoginUri Initiate login URI, must be HTTPS.
          * 
          * @return builder
          * 
@@ -1032,7 +1099,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initiateLoginUri String. Initiate login uri, must be https.
+         * @param initiateLoginUri Initiate login URI, must be HTTPS.
          * 
          * @return builder
          * 
@@ -1042,7 +1109,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFirstParty Boolean. Indicates whether or not this client is a first-party client.
+         * @param isFirstParty Indicates whether this client is a first-party client.
          * 
          * @return builder
          * 
@@ -1053,7 +1120,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFirstParty Boolean. Indicates whether or not this client is a first-party client.
+         * @param isFirstParty Indicates whether this client is a first-party client.
          * 
          * @return builder
          * 
@@ -1063,7 +1130,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isTokenEndpointIpHeaderTrusted Boolean. Indicates whether or not the token endpoint IP header is trusted.
+         * @param isTokenEndpointIpHeaderTrusted Indicates whether the token endpoint IP header is trusted.
          * 
          * @return builder
          * 
@@ -1074,7 +1141,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isTokenEndpointIpHeaderTrusted Boolean. Indicates whether or not the token endpoint IP header is trusted.
+         * @param isTokenEndpointIpHeaderTrusted Indicates whether the token endpoint IP header is trusted.
          * 
          * @return builder
          * 
@@ -1084,7 +1151,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jwtConfiguration List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+         * @param jwtConfiguration Configuration settings for the JWTs issued for this client.
          * 
          * @return builder
          * 
@@ -1095,7 +1162,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jwtConfiguration List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+         * @param jwtConfiguration Configuration settings for the JWTs issued for this client.
          * 
          * @return builder
          * 
@@ -1105,7 +1172,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logoUri String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+         * @param logoUri URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
          * 
          * @return builder
          * 
@@ -1116,7 +1183,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logoUri String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+         * @param logoUri URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
          * 
          * @return builder
          * 
@@ -1126,7 +1193,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mobile List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+         * @param mobile Additional configuration for native mobile apps.
          * 
          * @return builder
          * 
@@ -1137,7 +1204,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mobile List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+         * @param mobile Additional configuration for native mobile apps.
          * 
          * @return builder
          * 
@@ -1147,7 +1214,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name String. Name of the client.
+         * @param name Name of the client.
          * 
          * @return builder
          * 
@@ -1158,7 +1225,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name String. Name of the client.
+         * @param name Name of the client.
          * 
          * @return builder
          * 
@@ -1168,7 +1235,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nativeSocialLogin List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+         * @param nativeSocialLogin Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
          * 
          * @return builder
          * 
@@ -1179,7 +1246,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nativeSocialLogin List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+         * @param nativeSocialLogin Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
          * 
          * @return builder
          * 
@@ -1189,7 +1256,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oidcConformant Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+         * @param oidcConformant Indicates whether this client will conform to strict OIDC specifications.
          * 
          * @return builder
          * 
@@ -1200,7 +1267,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oidcConformant Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+         * @param oidcConformant Indicates whether this client will conform to strict OIDC specifications.
          * 
          * @return builder
          * 
@@ -1210,7 +1277,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationRequireBehavior String. Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+         * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
          * 
          * @return builder
          * 
@@ -1221,7 +1288,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationRequireBehavior String. Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+         * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
          * 
          * @return builder
          * 
@@ -1231,7 +1298,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationUsage String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+         * @param organizationUsage Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
          * 
          * @return builder
          * 
@@ -1242,7 +1309,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationUsage String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+         * @param organizationUsage Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
          * 
          * @return builder
          * 
@@ -1252,7 +1319,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refreshToken List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+         * @param refreshToken Configuration settings for the refresh tokens issued for this client.
          * 
          * @return builder
          * 
@@ -1263,7 +1330,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refreshToken List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+         * @param refreshToken Configuration settings for the refresh tokens issued for this client.
          * 
          * @return builder
          * 
@@ -1273,7 +1340,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param signingKeys List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+         * @param signingKeys List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
          * 
          * @return builder
          * 
@@ -1284,7 +1351,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param signingKeys List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+         * @param signingKeys List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
          * 
          * @return builder
          * 
@@ -1294,7 +1361,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param signingKeys List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+         * @param signingKeys List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
          * 
          * @return builder
          * 
@@ -1304,7 +1371,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sso Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+         * @param sso Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
          * 
          * @return builder
          * 
@@ -1315,7 +1382,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sso Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+         * @param sso Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
          * 
          * @return builder
          * 
@@ -1325,7 +1392,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoDisabled Boolean. Indicates whether or not SSO is disabled.
+         * @param ssoDisabled Indicates whether or not SSO is disabled.
          * 
          * @return builder
          * 
@@ -1336,7 +1403,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoDisabled Boolean. Indicates whether or not SSO is disabled.
+         * @param ssoDisabled Indicates whether or not SSO is disabled.
          * 
          * @return builder
          * 
@@ -1346,7 +1413,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokenEndpointAuthMethod String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+         * @param tokenEndpointAuthMethod Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
          * 
          * @return builder
          * 
@@ -1357,7 +1424,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokenEndpointAuthMethod String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+         * @param tokenEndpointAuthMethod Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
          * 
          * @return builder
          * 
@@ -1367,7 +1434,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webOrigins List(String). URLs that represent valid web origins for use with web message response mode.
+         * @param webOrigins URLs that represent valid web origins for use with web message response mode.
          * 
          * @return builder
          * 
@@ -1378,7 +1445,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webOrigins List(String). URLs that represent valid web origins for use with web message response mode.
+         * @param webOrigins URLs that represent valid web origins for use with web message response mode.
          * 
          * @return builder
          * 
@@ -1388,7 +1455,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webOrigins List(String). URLs that represent valid web origins for use with web message response mode.
+         * @param webOrigins URLs that represent valid web origins for use with web message response mode.
          * 
          * @return builder
          * 

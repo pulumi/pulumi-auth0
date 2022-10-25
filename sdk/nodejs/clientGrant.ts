@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
- * exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
- * This resource allows you to create and manage client grants used with configured Auth0 clients.
+ * Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
  *
  * ## Example Usage
  *
@@ -15,6 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // The following example grants a client the "create:foo" permission (scope).
  * const myClient = new auth0.Client("myClient", {});
  * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
  *     identifier: "https://api.example.com/client-grant",
@@ -38,7 +37,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
+ * # Client grants can be imported using the grant ID. # # Application -> APIs -> Expand the required API # # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
@@ -73,15 +72,15 @@ export class ClientGrant extends pulumi.CustomResource {
     }
 
     /**
-     * String. Audience or API Identifier for this grant.
+     * Audience or API Identifier for this grant.
      */
     public readonly audience!: pulumi.Output<string>;
     /**
-     * String. ID of the client for this grant.
+     * ID of the client for this grant.
      */
     public readonly clientId!: pulumi.Output<string>;
     /**
-     * List(String). Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant.
      */
     public readonly scopes!: pulumi.Output<string[]>;
 
@@ -126,15 +125,15 @@ export class ClientGrant extends pulumi.CustomResource {
  */
 export interface ClientGrantState {
     /**
-     * String. Audience or API Identifier for this grant.
+     * Audience or API Identifier for this grant.
      */
     audience?: pulumi.Input<string>;
     /**
-     * String. ID of the client for this grant.
+     * ID of the client for this grant.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * List(String). Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -144,15 +143,15 @@ export interface ClientGrantState {
  */
 export interface ClientGrantArgs {
     /**
-     * String. Audience or API Identifier for this grant.
+     * Audience or API Identifier for this grant.
      */
     audience: pulumi.Input<string>;
     /**
-     * String. ID of the client for this grant.
+     * ID of the client for this grant.
      */
     clientId: pulumi.Input<string>;
     /**
-     * List(String). Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
 }

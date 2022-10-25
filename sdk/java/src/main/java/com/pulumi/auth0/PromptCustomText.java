@@ -14,8 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts
- * [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
+ * With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
  * 
  * ## Example Usage
  * ```java
@@ -75,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using the import command and specifying the prompt and language separated by *:* , e.g.
+ * # This resource can be imported by specifying the prompt and language separated by &#34;:&#34;. # # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/promptCustomText:PromptCustomText example login:en
@@ -85,14 +84,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/promptCustomText:PromptCustomText")
 public class PromptCustomText extends com.pulumi.resources.CustomResource {
     /**
-     * JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
+     * JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
      * 
      */
     @Export(name="body", type=String.class, parameters={})
     private Output<String> body;
 
     /**
-     * @return JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
+     * @return JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
      * 
      */
     public Output<String> body() {
@@ -113,14 +112,14 @@ public class PromptCustomText extends com.pulumi.resources.CustomResource {
         return this.language;
     }
     /**
-     * The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`
+     * The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`.
      * 
      */
     @Export(name="prompt", type=String.class, parameters={})
     private Output<String> prompt;
 
     /**
-     * @return The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`
+     * @return The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`.
      * 
      */
     public Output<String> prompt() {

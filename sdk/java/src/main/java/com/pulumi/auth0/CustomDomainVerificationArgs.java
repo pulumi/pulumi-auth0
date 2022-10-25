@@ -14,14 +14,14 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
     public static final CustomDomainVerificationArgs Empty = new CustomDomainVerificationArgs();
 
     /**
-     * String. ID of the custom domain resource.
+     * ID of the custom domain resource.
      * 
      */
     @Import(name="customDomainId", required=true)
     private Output<String> customDomainId;
 
     /**
-     * @return String. ID of the custom domain resource.
+     * @return ID of the custom domain resource.
      * 
      */
     public Output<String> customDomainId() {
@@ -53,7 +53,7 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customDomainId String. ID of the custom domain resource.
+         * @param customDomainId ID of the custom domain resource.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customDomainId String. ID of the custom domain resource.
+         * @param customDomainId ID of the custom domain resource.
          * 
          * @return builder
          * 

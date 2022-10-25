@@ -11,18 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
-    /**
-     * @return Maximum number of unsuccessful attempts. Only available on public tenants.
-     * 
-     */
     private @Nullable Integer maxAttempts;
     private @Nullable Integer rate;
 
     private AttackProtectionSuspiciousIpThrottlingPreUserRegistration() {}
-    /**
-     * @return Maximum number of unsuccessful attempts. Only available on public tenants.
-     * 
-     */
     public Optional<Integer> maxAttempts() {
         return Optional.ofNullable(this.maxAttempts);
     }

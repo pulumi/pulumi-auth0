@@ -16,32 +16,16 @@ public final class ClientMobileAndroidArgs extends com.pulumi.resources.Resource
 
     public static final ClientMobileAndroidArgs Empty = new ClientMobileAndroidArgs();
 
-    /**
-     * String
-     * 
-     */
     @Import(name="appPackageName")
     private @Nullable Output<String> appPackageName;
 
-    /**
-     * @return String
-     * 
-     */
     public Optional<Output<String>> appPackageName() {
         return Optional.ofNullable(this.appPackageName);
     }
 
-    /**
-     * List(String)
-     * 
-     */
     @Import(name="sha256CertFingerprints")
     private @Nullable Output<List<String>> sha256CertFingerprints;
 
-    /**
-     * @return List(String)
-     * 
-     */
     public Optional<Output<List<String>>> sha256CertFingerprints() {
         return Optional.ofNullable(this.sha256CertFingerprints);
     }
@@ -71,54 +55,24 @@ public final class ClientMobileAndroidArgs extends com.pulumi.resources.Resource
             $ = new ClientMobileAndroidArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param appPackageName String
-         * 
-         * @return builder
-         * 
-         */
         public Builder appPackageName(@Nullable Output<String> appPackageName) {
             $.appPackageName = appPackageName;
             return this;
         }
 
-        /**
-         * @param appPackageName String
-         * 
-         * @return builder
-         * 
-         */
         public Builder appPackageName(String appPackageName) {
             return appPackageName(Output.of(appPackageName));
         }
 
-        /**
-         * @param sha256CertFingerprints List(String)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sha256CertFingerprints(@Nullable Output<List<String>> sha256CertFingerprints) {
             $.sha256CertFingerprints = sha256CertFingerprints;
             return this;
         }
 
-        /**
-         * @param sha256CertFingerprints List(String)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sha256CertFingerprints(List<String> sha256CertFingerprints) {
             return sha256CertFingerprints(Output.of(sha256CertFingerprints));
         }
 
-        /**
-         * @param sha256CertFingerprints List(String)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sha256CertFingerprints(String... sha256CertFingerprints) {
             return sha256CertFingerprints(List.of(sha256CertFingerprints));
         }

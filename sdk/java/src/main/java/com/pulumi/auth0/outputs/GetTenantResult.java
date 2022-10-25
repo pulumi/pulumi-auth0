@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GetTenantResult {
     /**
-     * @return String. Your Auth0 domain name.
+     * @return Your Auth0 domain name.
      * 
      */
     private String domain;
@@ -20,14 +20,14 @@ public final class GetTenantResult {
      */
     private String id;
     /**
-     * @return String. The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
+     * @return The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
      * 
      */
     private String managementApiIdentifier;
 
     private GetTenantResult() {}
     /**
-     * @return String. Your Auth0 domain name.
+     * @return Your Auth0 domain name.
      * 
      */
     public String domain() {
@@ -41,7 +41,7 @@ public final class GetTenantResult {
         return this.id;
     }
     /**
-     * @return String. The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
+     * @return The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
      * 
      */
     public String managementApiIdentifier() {

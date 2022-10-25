@@ -15,47 +15,23 @@ public final class GuardianPushCustomAppArgs extends com.pulumi.resources.Resour
 
     public static final GuardianPushCustomAppArgs Empty = new GuardianPushCustomAppArgs();
 
-    /**
-     * String. Custom Application Name.
-     * 
-     */
     @Import(name="appName")
     private @Nullable Output<String> appName;
 
-    /**
-     * @return String. Custom Application Name.
-     * 
-     */
     public Optional<Output<String>> appName() {
         return Optional.ofNullable(this.appName);
     }
 
-    /**
-     * String. Apple App Store URL.
-     * 
-     */
     @Import(name="appleAppLink")
     private @Nullable Output<String> appleAppLink;
 
-    /**
-     * @return String. Apple App Store URL.
-     * 
-     */
     public Optional<Output<String>> appleAppLink() {
         return Optional.ofNullable(this.appleAppLink);
     }
 
-    /**
-     * String. Google Store URL.
-     * 
-     */
     @Import(name="googleAppLink")
     private @Nullable Output<String> googleAppLink;
 
-    /**
-     * @return String. Google Store URL.
-     * 
-     */
     public Optional<Output<String>> googleAppLink() {
         return Optional.ofNullable(this.googleAppLink);
     }
@@ -86,65 +62,29 @@ public final class GuardianPushCustomAppArgs extends com.pulumi.resources.Resour
             $ = new GuardianPushCustomAppArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param appName String. Custom Application Name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder appName(@Nullable Output<String> appName) {
             $.appName = appName;
             return this;
         }
 
-        /**
-         * @param appName String. Custom Application Name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder appName(String appName) {
             return appName(Output.of(appName));
         }
 
-        /**
-         * @param appleAppLink String. Apple App Store URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder appleAppLink(@Nullable Output<String> appleAppLink) {
             $.appleAppLink = appleAppLink;
             return this;
         }
 
-        /**
-         * @param appleAppLink String. Apple App Store URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder appleAppLink(String appleAppLink) {
             return appleAppLink(Output.of(appleAppLink));
         }
 
-        /**
-         * @param googleAppLink String. Google Store URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder googleAppLink(@Nullable Output<String> googleAppLink) {
             $.googleAppLink = googleAppLink;
             return this;
         }
 
-        /**
-         * @param googleAppLink String. Google Store URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder googleAppLink(String googleAppLink) {
             return googleAppLink(Output.of(googleAppLink));
         }
