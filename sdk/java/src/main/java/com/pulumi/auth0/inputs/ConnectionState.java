@@ -20,14 +20,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     public static final ConnectionState Empty = new ConnectionState();
 
     /**
-     * Name used in login screen
+     * Name used in login screen.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Name used in login screen
+     * @return Name used in login screen.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -35,14 +35,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+     * IDs of the clients for which the connection is enabled.
      * 
      */
     @Import(name="enabledClients")
     private @Nullable Output<List<String>> enabledClients;
 
     /**
-     * @return IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+     * @return IDs of the clients for which the connection is enabled.
      * 
      */
     public Optional<Output<List<String>>> enabledClients() {
@@ -95,14 +95,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration settings for connection options. For details, see Options.
+     * Configuration settings for connection options.
      * 
      */
     @Import(name="options")
     private @Nullable Output<ConnectionOptionsArgs> options;
 
     /**
-     * @return Configuration settings for connection options. For details, see Options.
+     * @return Configuration settings for connection options.
      * 
      */
     public Optional<Output<ConnectionOptionsArgs>> options() {
@@ -110,14 +110,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+     * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      * 
      */
     @Import(name="realms")
     private @Nullable Output<List<String>> realms;
 
     /**
-     * @return Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+     * @return Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      * 
      */
     public Optional<Output<List<String>>> realms() {
@@ -125,14 +125,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Display connection as a button. Only available for enterprise connections.
+     * Display connection as a button. Only available on enterprise connections.
      * 
      */
     @Import(name="showAsButton")
     private @Nullable Output<Boolean> showAsButton;
 
     /**
-     * @return Display connection as a button. Only available for enterprise connections.
+     * @return Display connection as a button. Only available on enterprise connections.
      * 
      */
     public Optional<Output<Boolean>> showAsButton() {
@@ -140,46 +140,30 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+     * Type of the connection, which indicates the identity provider.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+     * @return Type of the connection, which indicates the identity provider.
      * 
      */
     public Optional<Output<String>> strategy() {
         return Optional.ofNullable(this.strategy);
     }
 
-    /**
-     * Version 1 is deprecated, use version 2.
-     * 
-     */
     @Import(name="strategyVersion")
     private @Nullable Output<String> strategyVersion;
 
-    /**
-     * @return Version 1 is deprecated, use version 2.
-     * 
-     */
     public Optional<Output<String>> strategyVersion() {
         return Optional.ofNullable(this.strategyVersion);
     }
 
-    /**
-     * Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-     * 
-     */
     @Import(name="validation")
     private @Nullable Output<Map<String,String>> validation;
 
-    /**
-     * @return Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-     * 
-     */
     public Optional<Output<Map<String,String>>> validation() {
         return Optional.ofNullable(this.validation);
     }
@@ -219,7 +203,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Name used in login screen
+         * @param displayName Name used in login screen.
          * 
          * @return builder
          * 
@@ -230,7 +214,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Name used in login screen
+         * @param displayName Name used in login screen.
          * 
          * @return builder
          * 
@@ -240,7 +224,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledClients IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+         * @param enabledClients IDs of the clients for which the connection is enabled.
          * 
          * @return builder
          * 
@@ -251,7 +235,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledClients IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+         * @param enabledClients IDs of the clients for which the connection is enabled.
          * 
          * @return builder
          * 
@@ -261,7 +245,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledClients IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+         * @param enabledClients IDs of the clients for which the connection is enabled.
          * 
          * @return builder
          * 
@@ -334,7 +318,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options Configuration settings for connection options. For details, see Options.
+         * @param options Configuration settings for connection options.
          * 
          * @return builder
          * 
@@ -345,7 +329,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options Configuration settings for connection options. For details, see Options.
+         * @param options Configuration settings for connection options.
          * 
          * @return builder
          * 
@@ -355,7 +339,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param realms Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+         * @param realms Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
          * 
          * @return builder
          * 
@@ -366,7 +350,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param realms Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+         * @param realms Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
          * 
          * @return builder
          * 
@@ -376,7 +360,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param realms Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+         * @param realms Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
          * 
          * @return builder
          * 
@@ -386,7 +370,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showAsButton Display connection as a button. Only available for enterprise connections.
+         * @param showAsButton Display connection as a button. Only available on enterprise connections.
          * 
          * @return builder
          * 
@@ -397,7 +381,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showAsButton Display connection as a button. Only available for enterprise connections.
+         * @param showAsButton Display connection as a button. Only available on enterprise connections.
          * 
          * @return builder
          * 
@@ -407,7 +391,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param strategy Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+         * @param strategy Type of the connection, which indicates the identity provider.
          * 
          * @return builder
          * 
@@ -418,7 +402,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param strategy Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+         * @param strategy Type of the connection, which indicates the identity provider.
          * 
          * @return builder
          * 
@@ -427,44 +411,20 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
             return strategy(Output.of(strategy));
         }
 
-        /**
-         * @param strategyVersion Version 1 is deprecated, use version 2.
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategyVersion(@Nullable Output<String> strategyVersion) {
             $.strategyVersion = strategyVersion;
             return this;
         }
 
-        /**
-         * @param strategyVersion Version 1 is deprecated, use version 2.
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategyVersion(String strategyVersion) {
             return strategyVersion(Output.of(strategyVersion));
         }
 
-        /**
-         * @param validation Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-         * 
-         * @return builder
-         * 
-         */
         public Builder validation(@Nullable Output<Map<String,String>> validation) {
             $.validation = validation;
             return this;
         }
 
-        /**
-         * @param validation Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-         * 
-         * @return builder
-         * 
-         */
         public Builder validation(Map<String,String> validation) {
             return validation(Output.of(validation));
         }

@@ -21,7 +21,8 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Auth0.LogStream("example", new()
+    ///     // This is an example of an http log stream.
+    ///     var myWebhook = new Auth0.LogStream("myWebhook", new()
     ///     {
     ///         Filters = new[]
     ///         {
@@ -38,6 +39,27 @@ namespace Pulumi.Auth0
     ///         },
     ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
     ///         {
+    ///             HttpAuthorization = "AKIAXXXXXXXXXXXXXXXX",
+    ///             HttpContentFormat = "JSONOBJECT",
+    ///             HttpContentType = "application/json",
+    ///             HttpCustomHeaders = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "header", "foo" },
+    ///                     { "value", "bar" },
+    ///                 },
+    ///             },
+    ///             HttpEndpoint = "https://example.com/logs",
+    ///         },
+    ///         Type = "http",
+    ///     });
+    /// 
+    ///     // This is an example of an Amazon EventBridge log stream.
+    ///     var exampleAws = new Auth0.LogStream("exampleAws", new()
+    ///     {
+    ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
+    ///         {
     ///             AwsAccountId = "my_account_id",
     ///             AwsRegion = "us-east-2",
     ///         },
@@ -50,7 +72,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Existing log stream can be imported using log stream id, e.g.
+    /// An existing log stream can be imported using its ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
@@ -60,31 +82,31 @@ namespace Pulumi.Auth0
     public partial class LogStream : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Only logs events matching these filters will be delivered by the stream.
+        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> Filters { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the log stream
+        /// Name of the log stream.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        /// The sink configuration for the log stream.
         /// </summary>
         [Output("sink")]
         public Output<Outputs.LogStreamSink> Sink { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of the log stream. Options are "active", "paused", "suspended"
+        /// The current status of the log stream. Options are "active", "paused", "suspended".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        /// Type of the log stream, which indicates the sink provider.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -139,7 +161,7 @@ namespace Pulumi.Auth0
         private InputList<ImmutableDictionary<string, string>>? _filters;
 
         /// <summary>
-        /// Only logs events matching these filters will be delivered by the stream.
+        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
         /// </summary>
         public InputList<ImmutableDictionary<string, string>> Filters
         {
@@ -148,25 +170,25 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Name of the log stream
+        /// Name of the log stream.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        /// The sink configuration for the log stream.
         /// </summary>
         [Input("sink", required: true)]
         public Input<Inputs.LogStreamSinkArgs> Sink { get; set; } = null!;
 
         /// <summary>
-        /// The current status of the log stream. Options are "active", "paused", "suspended"
+        /// The current status of the log stream. Options are "active", "paused", "suspended".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        /// Type of the log stream, which indicates the sink provider.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -183,7 +205,7 @@ namespace Pulumi.Auth0
         private InputList<ImmutableDictionary<string, string>>? _filters;
 
         /// <summary>
-        /// Only logs events matching these filters will be delivered by the stream.
+        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
         /// </summary>
         public InputList<ImmutableDictionary<string, string>> Filters
         {
@@ -192,25 +214,25 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Name of the log stream
+        /// Name of the log stream.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        /// The sink configuration for the log stream.
         /// </summary>
         [Input("sink")]
         public Input<Inputs.LogStreamSinkGetArgs>? Sink { get; set; }
 
         /// <summary>
-        /// The current status of the log stream. Options are "active", "paused", "suspended"
+        /// The current status of the log stream. Options are "active", "paused", "suspended".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        /// Type of the log stream, which indicates the sink provider.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

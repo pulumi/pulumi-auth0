@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class TenantChangePassword
     {
         /// <summary>
-        /// Boolean. Indicates whether to use the custom change password page.
+        /// Indicates whether to use the custom change password page.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// String, HTML format with supported Liquid syntax. Customized content of the change password page.
+        /// HTML format with supported Liquid syntax. Customized content of the change password page.
         /// </summary>
         public readonly string Html;
 

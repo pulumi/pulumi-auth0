@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and
-    /// manage a custom domain within your Auth0 tenant.
+    /// With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
     /// 
     /// ## Example Usage
     /// 
@@ -33,7 +32,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Custom Domains can be imported using the id, e.g.
+    /// Custom domains can be imported using their ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX
@@ -43,37 +42,49 @@ namespace Pulumi.Auth0
     public partial class CustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// String. Name of the custom domain.
+        /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        /// </summary>
+        [Output("customClientIpHeader")]
+        public Output<string?> CustomClientIpHeader { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the custom domain.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         [Output("originDomainName")]
         public Output<string> OriginDomainName { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether this is a primary domain.
+        /// Indicates whether this is a primary domain.
         /// </summary>
         [Output("primary")]
         public Output<bool> Primary { get; private set; } = null!;
 
         /// <summary>
-        /// String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        /// Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        /// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        /// </summary>
+        [Output("tlsPolicy")]
+        public Output<string> TlsPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for verification. For details, see Verification.
+        /// Configuration settings for verification.
         /// </summary>
         [Output("verifications")]
         public Output<ImmutableArray<Outputs.CustomDomainVerification>> Verifications { get; private set; } = null!;
@@ -125,13 +136,25 @@ namespace Pulumi.Auth0
     public sealed class CustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Name of the custom domain.
+        /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        /// </summary>
+        [Input("customClientIpHeader")]
+        public Input<string>? CustomClientIpHeader { get; set; }
+
+        /// <summary>
+        /// Name of the custom domain.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        /// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        /// </summary>
+        [Input("tlsPolicy")]
+        public Input<string>? TlsPolicy { get; set; }
+
+        /// <summary>
+        /// Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -145,31 +168,43 @@ namespace Pulumi.Auth0
     public sealed class CustomDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Name of the custom domain.
+        /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        /// </summary>
+        [Input("customClientIpHeader")]
+        public Input<string>? CustomClientIpHeader { get; set; }
+
+        /// <summary>
+        /// Name of the custom domain.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// String. Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         [Input("originDomainName")]
         public Input<string>? OriginDomainName { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether this is a primary domain.
+        /// Indicates whether this is a primary domain.
         /// </summary>
         [Input("primary")]
         public Input<bool>? Primary { get; set; }
 
         /// <summary>
-        /// String. Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        /// Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        /// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        /// </summary>
+        [Input("tlsPolicy")]
+        public Input<string>? TlsPolicy { get; set; }
+
+        /// <summary>
+        /// Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -178,7 +213,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.CustomDomainVerificationGetArgs>? _verifications;
 
         /// <summary>
-        /// List(Resource). Configuration settings for verification. For details, see Verification.
+        /// Configuration settings for verification.
         /// </summary>
         public InputList<Inputs.CustomDomainVerificationGetArgs> Verifications
         {

@@ -21,8 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized
- * access. With this resource you can configure some options available for MFA.
+ * Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
  * 
  * ## Example Usage
  * ```java
@@ -100,152 +99,136 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/guardian:Guardian default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+ *  $ pulumi import auth0:index/guardian:Guardian my_guardian 24940d4b-4bd4-44e7-894e-f92e4de36a40
  * ```
  * 
  */
 @ResourceType(type="auth0:index/guardian:Guardian")
 public class Guardian extends com.pulumi.resources.CustomResource {
     /**
-     * List(Resource). Configuration settings for the Duo MFA.
-     * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+     * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      * 
      */
     @Export(name="duo", type=GuardianDuo.class, parameters={})
     private Output</* @Nullable */ GuardianDuo> duo;
 
     /**
-     * @return List(Resource). Configuration settings for the Duo MFA.
-     * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+     * @return Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      * 
      */
     public Output<Optional<GuardianDuo>> duo() {
         return Codegen.optional(this.duo);
     }
     /**
-     * Boolean. Indicates whether email MFA is enabled.
+     * Indicates whether email MFA is enabled.
      * 
      */
     @Export(name="email", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> email;
 
     /**
-     * @return Boolean. Indicates whether email MFA is enabled.
+     * @return Indicates whether email MFA is enabled.
      * 
      */
     public Output<Optional<Boolean>> email() {
         return Codegen.optional(this.email);
     }
     /**
-     * Boolean. Indicates whether one time password MFA is enabled.
+     * Indicates whether one time password MFA is enabled.
      * 
      */
     @Export(name="otp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> otp;
 
     /**
-     * @return Boolean. Indicates whether one time password MFA is enabled.
+     * @return Indicates whether one time password MFA is enabled.
      * 
      */
     public Output<Optional<Boolean>> otp() {
         return Codegen.optional(this.otp);
     }
     /**
-     * List(Resource). Configuration settings for the phone MFA.
-     * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+     * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      * 
      */
     @Export(name="phone", type=GuardianPhone.class, parameters={})
     private Output</* @Nullable */ GuardianPhone> phone;
 
     /**
-     * @return List(Resource). Configuration settings for the phone MFA.
-     * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+     * @return Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      * 
      */
     public Output<Optional<GuardianPhone>> phone() {
         return Codegen.optional(this.phone);
     }
     /**
-     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-     * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+     * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      * 
      */
     @Export(name="policy", type=String.class, parameters={})
     private Output<String> policy;
 
     /**
-     * @return String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-     * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+     * @return Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      * 
      */
     public Output<String> policy() {
         return this.policy;
     }
     /**
-     * List(Resource). Configuration settings for the Push MFA.
-     * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+     * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      * 
      */
     @Export(name="push", type=GuardianPush.class, parameters={})
     private Output</* @Nullable */ GuardianPush> push;
 
     /**
-     * @return List(Resource). Configuration settings for the Push MFA.
-     * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+     * @return Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      * 
      */
     public Output<Optional<GuardianPush>> push() {
         return Codegen.optional(this.push);
     }
     /**
-     * Boolean. Indicates whether recovery code MFA is enabled.
+     * Indicates whether recovery code MFA is enabled.
      * 
      */
     @Export(name="recoveryCode", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> recoveryCode;
 
     /**
-     * @return Boolean. Indicates whether recovery code MFA is enabled.
+     * @return Indicates whether recovery code MFA is enabled.
      * 
      */
     public Output<Optional<Boolean>> recoveryCode() {
         return Codegen.optional(this.recoveryCode);
     }
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-     * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Platform.
+     * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      * 
      */
     @Export(name="webauthnPlatform", type=GuardianWebauthnPlatform.class, parameters={})
     private Output</* @Nullable */ GuardianWebauthnPlatform> webauthnPlatform;
 
     /**
-     * @return List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-     * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Platform.
+     * @return Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      * 
      */
     public Output<Optional<GuardianWebauthnPlatform>> webauthnPlatform() {
         return Codegen.optional(this.webauthnPlatform);
     }
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-     * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Roaming.
+     * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      * 
      */
     @Export(name="webauthnRoaming", type=GuardianWebauthnRoaming.class, parameters={})
     private Output</* @Nullable */ GuardianWebauthnRoaming> webauthnRoaming;
 
     /**
-     * @return List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-     * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Roaming.
+     * @return Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      * 
      */
     public Output<Optional<GuardianWebauthnRoaming>> webauthnRoaming() {

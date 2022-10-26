@@ -12,260 +12,268 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TenantFlags {
     /**
-     * @return Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     * @return Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
      * 
      */
     private @Nullable Boolean allowLegacyDelegationGrantTypes;
     /**
-     * @return Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     * @return Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
      * 
      */
     private @Nullable Boolean allowLegacyRoGrantTypes;
     /**
-     * @return Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     * @return If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
      * 
      */
     private @Nullable Boolean allowLegacyTokeninfoEndpoint;
     /**
-     * @return Boolean. Enables new insights activity page view.
+     * @return Enables new insights activity page view.
      * 
      */
     private @Nullable Boolean dashboardInsightsView;
     /**
-     * @return Boolean. Enables beta access to log streaming changes.
+     * @return Enables beta access to log streaming changes.
      * 
      */
     private @Nullable Boolean dashboardLogStreamsNext;
     /**
-     * @return Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * @return Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      * 
      */
     private @Nullable Boolean disableClickjackProtectionHeaders;
     /**
-     * @return Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+     * @return Disables SAML fields map fix for bad mappings with repeated attributes.
      * 
      */
     private @Nullable Boolean disableFieldsMapFix;
     /**
-     * @return Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     * @return If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      * 
      */
     private @Nullable Boolean disableManagementApiSmsObfuscation;
     /**
-     * @return Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     * @return If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      * 
      */
     private @Nullable Boolean enableAdfsWaadEmailVerification;
     /**
-     * @return Boolean. Indicates whether the APIs section is enabled for the tenant.
+     * @return Indicates whether the APIs section is enabled for the tenant.
      * 
      */
     private @Nullable Boolean enableApisSection;
     /**
-     * @return Boolean. Indicates whether all current connections should be enabled when a new client is created.
+     * @return Indicates whether all current connections should be enabled when a new client is created.
      * 
      */
     private @Nullable Boolean enableClientConnections;
     /**
-     * @return Boolean. Indicates whether the tenant allows custom domains in emails.
+     * @return Indicates whether the tenant allows custom domains in emails.
      * 
      */
     private @Nullable Boolean enableCustomDomainInEmails;
     /**
-     * @return Boolean. Indicates whether the tenant allows dynamic client registration.
+     * @return Indicates whether the tenant allows dynamic client registration.
      * 
      */
     private @Nullable Boolean enableDynamicClientRegistration;
     /**
-     * @return Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+     * @return Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
      * 
      */
     private @Nullable Boolean enableIdtokenApi2;
     /**
-     * @return Boolean. Indicates whether to use the older v2 legacy logs search.
+     * @return Indicates whether to use the older v2 legacy logs search.
      * 
      */
     private @Nullable Boolean enableLegacyLogsSearchV2;
     /**
-     * @return Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     * @return Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
      * 
      */
     private @Nullable Boolean enableLegacyProfile;
     /**
-     * @return Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+     * @return Indicates whether advanced API Authorization scenarios are enabled.
      * 
      */
     private @Nullable Boolean enablePipeline2;
     /**
-     * @return Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
      * 
      */
     private @Nullable Boolean enablePublicSignupUserExistsError;
     /**
-     * @return Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      * 
      */
     private @Nullable Boolean noDiscloseEnterpriseConnections;
     /**
-     * @return Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+     * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
      * 
      */
     private @Nullable Boolean revokeRefreshTokenGrant;
     /**
-     * @return Boolean. Indicates whether the tenant uses universal login.
+     * @return Indicates whether the tenant uses Universal Login.
      * 
      */
     private @Nullable Boolean universalLogin;
+    /**
+     * @return Indicates whether to use scope descriptions for consent.
+     * 
+     */
     private @Nullable Boolean useScopeDescriptionsForConsent;
 
     private TenantFlags() {}
     /**
-     * @return Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     * @return Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
      * 
      */
     public Optional<Boolean> allowLegacyDelegationGrantTypes() {
         return Optional.ofNullable(this.allowLegacyDelegationGrantTypes);
     }
     /**
-     * @return Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     * @return Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
      * 
      */
     public Optional<Boolean> allowLegacyRoGrantTypes() {
         return Optional.ofNullable(this.allowLegacyRoGrantTypes);
     }
     /**
-     * @return Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     * @return If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
      * 
      */
     public Optional<Boolean> allowLegacyTokeninfoEndpoint() {
         return Optional.ofNullable(this.allowLegacyTokeninfoEndpoint);
     }
     /**
-     * @return Boolean. Enables new insights activity page view.
+     * @return Enables new insights activity page view.
      * 
      */
     public Optional<Boolean> dashboardInsightsView() {
         return Optional.ofNullable(this.dashboardInsightsView);
     }
     /**
-     * @return Boolean. Enables beta access to log streaming changes.
+     * @return Enables beta access to log streaming changes.
      * 
      */
     public Optional<Boolean> dashboardLogStreamsNext() {
         return Optional.ofNullable(this.dashboardLogStreamsNext);
     }
     /**
-     * @return Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * @return Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      * 
      */
     public Optional<Boolean> disableClickjackProtectionHeaders() {
         return Optional.ofNullable(this.disableClickjackProtectionHeaders);
     }
     /**
-     * @return Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+     * @return Disables SAML fields map fix for bad mappings with repeated attributes.
      * 
      */
     public Optional<Boolean> disableFieldsMapFix() {
         return Optional.ofNullable(this.disableFieldsMapFix);
     }
     /**
-     * @return Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     * @return If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      * 
      */
     public Optional<Boolean> disableManagementApiSmsObfuscation() {
         return Optional.ofNullable(this.disableManagementApiSmsObfuscation);
     }
     /**
-     * @return Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     * @return If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      * 
      */
     public Optional<Boolean> enableAdfsWaadEmailVerification() {
         return Optional.ofNullable(this.enableAdfsWaadEmailVerification);
     }
     /**
-     * @return Boolean. Indicates whether the APIs section is enabled for the tenant.
+     * @return Indicates whether the APIs section is enabled for the tenant.
      * 
      */
     public Optional<Boolean> enableApisSection() {
         return Optional.ofNullable(this.enableApisSection);
     }
     /**
-     * @return Boolean. Indicates whether all current connections should be enabled when a new client is created.
+     * @return Indicates whether all current connections should be enabled when a new client is created.
      * 
      */
     public Optional<Boolean> enableClientConnections() {
         return Optional.ofNullable(this.enableClientConnections);
     }
     /**
-     * @return Boolean. Indicates whether the tenant allows custom domains in emails.
+     * @return Indicates whether the tenant allows custom domains in emails.
      * 
      */
     public Optional<Boolean> enableCustomDomainInEmails() {
         return Optional.ofNullable(this.enableCustomDomainInEmails);
     }
     /**
-     * @return Boolean. Indicates whether the tenant allows dynamic client registration.
+     * @return Indicates whether the tenant allows dynamic client registration.
      * 
      */
     public Optional<Boolean> enableDynamicClientRegistration() {
         return Optional.ofNullable(this.enableDynamicClientRegistration);
     }
     /**
-     * @return Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+     * @return Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
      * 
      */
     public Optional<Boolean> enableIdtokenApi2() {
         return Optional.ofNullable(this.enableIdtokenApi2);
     }
     /**
-     * @return Boolean. Indicates whether to use the older v2 legacy logs search.
+     * @return Indicates whether to use the older v2 legacy logs search.
      * 
      */
     public Optional<Boolean> enableLegacyLogsSearchV2() {
         return Optional.ofNullable(this.enableLegacyLogsSearchV2);
     }
     /**
-     * @return Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     * @return Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
      * 
      */
     public Optional<Boolean> enableLegacyProfile() {
         return Optional.ofNullable(this.enableLegacyProfile);
     }
     /**
-     * @return Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+     * @return Indicates whether advanced API Authorization scenarios are enabled.
      * 
      */
     public Optional<Boolean> enablePipeline2() {
         return Optional.ofNullable(this.enablePipeline2);
     }
     /**
-     * @return Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
      * 
      */
     public Optional<Boolean> enablePublicSignupUserExistsError() {
         return Optional.ofNullable(this.enablePublicSignupUserExistsError);
     }
     /**
-     * @return Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      * 
      */
     public Optional<Boolean> noDiscloseEnterpriseConnections() {
         return Optional.ofNullable(this.noDiscloseEnterpriseConnections);
     }
     /**
-     * @return Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+     * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
      * 
      */
     public Optional<Boolean> revokeRefreshTokenGrant() {
         return Optional.ofNullable(this.revokeRefreshTokenGrant);
     }
     /**
-     * @return Boolean. Indicates whether the tenant uses universal login.
+     * @return Indicates whether the tenant uses Universal Login.
      * 
      */
     public Optional<Boolean> universalLogin() {
         return Optional.ofNullable(this.universalLogin);
     }
+    /**
+     * @return Indicates whether to use scope descriptions for consent.
+     * 
+     */
     public Optional<Boolean> useScopeDescriptionsForConsent() {
         return Optional.ofNullable(this.useScopeDescriptionsForConsent);
     }

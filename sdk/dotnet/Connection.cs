@@ -10,13 +10,328 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
-    /// (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
-    /// and manage connections to be used with your clients and users.
+    /// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+    /// 
+    /// &gt; The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+    /// creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+    /// 
+    /// ## Example Usage
+    /// ### Google OAuth2 Connection
+    /// 
+    /// &gt; Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var googleOauth2 = new Auth0.Connection("googleOauth2", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             AllowedAudiences = new[]
+    ///             {
+    ///                 "example.com",
+    ///                 "api.example.com",
+    ///             },
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "email",
+    ///                 "profile",
+    ///                 "gmail",
+    ///                 "youtube",
+    ///             },
+    ///             SetUserRootAttributes = "on_each_login",
+    ///         },
+    ///         Strategy = "google-oauth2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Facebook Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var facebook = new Auth0.Connection("facebook", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "public_profile",
+    ///                 "email",
+    ///                 "groups_access_member_info",
+    ///                 "user_birthday",
+    ///             },
+    ///         },
+    ///         Strategy = "facebook",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Apple Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apple = new Auth0.Connection("apple", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;private-key&gt;",
+    ///             KeyId = "&lt;key-id&gt;",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "email",
+    ///                 "name",
+    ///             },
+    ///             TeamId = "&lt;team-id&gt;",
+    ///         },
+    ///         Strategy = "apple",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### LinkedIn Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var linkedin = new Auth0.Connection("linkedin", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "basic_profile",
+    ///                 "profile",
+    ///                 "email",
+    ///             },
+    ///             StrategyVersion = 2,
+    ///         },
+    ///         Strategy = "linkedin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### GitHub Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var github = new Auth0.Connection("github", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "email",
+    ///                 "profile",
+    ///                 "public_repo",
+    ///                 "repo",
+    ///             },
+    ///         },
+    ///         Strategy = "github",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### SalesForce Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var salesforce = new Auth0.Connection("salesforce", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             CommunityBaseUrl = "https://salesforce.example.com",
+    ///         },
+    ///         Strategy = "salesforce",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### OAuth2 Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var oauth2 = new Auth0.Connection("oauth2", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             PkceEnabled = true,
+    ///             Scripts = 
+    ///             {
+    ///                 { "fetchUserProfile", @"        function fetchUserProfile(accessToken, context, callback) {
+    ///           return callback(new Error(""Whoops!""));
+    ///         }
+    ///       
+    /// " },
+    ///             },
+    ///             TokenEndpoint = "https://auth.example.com/oauth2/token",
+    ///         },
+    ///         Strategy = "oauth2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### SMS Connection
+    /// 
+    /// &gt; To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sms = new Auth0.Connection("sms", new()
+    ///     {
+    ///         IsDomainConnection = false,
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             BruteForceProtection = true,
+    ///             DisableSignup = false,
+    ///             ForwardRequestInfo = true,
+    ///             From = "+15555555555",
+    ///             GatewayAuthentication = new Auth0.Inputs.ConnectionOptionsGatewayAuthenticationArgs
+    ///             {
+    ///                 Audience = "https://somewhere.com/sms-gateway",
+    ///                 Method = "bearer",
+    ///                 Secret = "4e2680bb74ec2ae24736476dd37ed6c2",
+    ///                 SecretBase64Encoded = false,
+    ///                 Subject = "test.us.auth0.com:sms",
+    ///             },
+    ///             GatewayUrl = "https://somewhere.com/sms-gateway",
+    ///             Name = "sms",
+    ///             Provider = "sms_gateway",
+    ///             Syntax = "md_with_macros",
+    ///             Template = "@@password@@",
+    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
+    ///             {
+    ///                 Length = 6,
+    ///                 TimeStep = 300,
+    ///             },
+    ///         },
+    ///         Strategy = "sms",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Email Connection
+    /// 
+    /// &gt; To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var passwordlessEmail = new Auth0.Connection("passwordlessEmail", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             AuthParams = 
+    ///             {
+    ///                 { "responseType", "code" },
+    ///                 { "scope", "openid email profile offline_access" },
+    ///             },
+    ///             BruteForceProtection = true,
+    ///             DisableSignup = false,
+    ///             From = "{{ application.name }} &lt;root@auth0.com&gt;",
+    ///             NonPersistentAttrs = new[] {},
+    ///             SetUserRootAttributes = new[] {},
+    ///             Subject = "Welcome to {{ application.name }}",
+    ///             Syntax = "liquid",
+    ///             Template = "&lt;html&gt;This is the body of the email&lt;/html&gt;",
+    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
+    ///             {
+    ///                 Length = 6,
+    ///                 TimeStep = 300,
+    ///             },
+    ///         },
+    ///         Strategy = "email",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### WindowsLive Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var windowslive = new Auth0.Connection("windowslive", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "signin",
+    ///                 "graph_user",
+    ///             },
+    ///             StrategyVersion = 2,
+    ///         },
+    ///         Strategy = "windowslive",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// Connections can be imported using their id, e.g.
+    /// Connections can be imported using their ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/connection:Connection google con_a17f21fdb24d48a0
@@ -26,13 +341,13 @@ namespace Pulumi.Auth0
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name used in login screen
+        /// Name used in login screen.
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        /// IDs of the clients for which the connection is enabled.
         /// </summary>
         [Output("enabledClients")]
         public Output<ImmutableArray<string>> EnabledClients { get; private set; } = null!;
@@ -56,38 +371,32 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings for connection options. For details, see Options.
+        /// Configuration settings for connection options.
         /// </summary>
         [Output("options")]
         public Output<Outputs.ConnectionOptions> Options { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        /// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         /// </summary>
         [Output("realms")]
         public Output<ImmutableArray<string>> Realms { get; private set; } = null!;
 
         /// <summary>
-        /// Display connection as a button. Only available for enterprise connections.
+        /// Display connection as a button. Only available on enterprise connections.
         /// </summary>
         [Output("showAsButton")]
         public Output<bool?> ShowAsButton { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        /// Type of the connection, which indicates the identity provider.
         /// </summary>
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
 
-        /// <summary>
-        /// Version 1 is deprecated, use version 2.
-        /// </summary>
         [Output("strategyVersion")]
         public Output<string> StrategyVersion { get; private set; } = null!;
 
-        /// <summary>
-        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-        /// </summary>
         [Output("validation")]
         public Output<ImmutableDictionary<string, string>?> Validation { get; private set; } = null!;
 
@@ -138,7 +447,7 @@ namespace Pulumi.Auth0
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name used in login screen
+        /// Name used in login screen.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -147,7 +456,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _enabledClients;
 
         /// <summary>
-        /// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        /// IDs of the clients for which the connection is enabled.
         /// </summary>
         public InputList<string> EnabledClients
         {
@@ -180,7 +489,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Configuration settings for connection options. For details, see Options.
+        /// Configuration settings for connection options.
         /// </summary>
         [Input("options")]
         public Input<Inputs.ConnectionOptionsArgs>? Options { get; set; }
@@ -189,7 +498,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _realms;
 
         /// <summary>
-        /// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        /// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         /// </summary>
         public InputList<string> Realms
         {
@@ -198,29 +507,22 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Display connection as a button. Only available for enterprise connections.
+        /// Display connection as a button. Only available on enterprise connections.
         /// </summary>
         [Input("showAsButton")]
         public Input<bool>? ShowAsButton { get; set; }
 
         /// <summary>
-        /// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        /// Type of the connection, which indicates the identity provider.
         /// </summary>
         [Input("strategy", required: true)]
         public Input<string> Strategy { get; set; } = null!;
 
-        /// <summary>
-        /// Version 1 is deprecated, use version 2.
-        /// </summary>
         [Input("strategyVersion")]
         public Input<string>? StrategyVersion { get; set; }
 
         [Input("validation")]
         private InputMap<string>? _validation;
-
-        /// <summary>
-        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-        /// </summary>
         public InputMap<string> Validation
         {
             get => _validation ?? (_validation = new InputMap<string>());
@@ -236,7 +538,7 @@ namespace Pulumi.Auth0
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name used in login screen
+        /// Name used in login screen.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -245,7 +547,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _enabledClients;
 
         /// <summary>
-        /// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+        /// IDs of the clients for which the connection is enabled.
         /// </summary>
         public InputList<string> EnabledClients
         {
@@ -278,7 +580,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Configuration settings for connection options. For details, see Options.
+        /// Configuration settings for connection options.
         /// </summary>
         [Input("options")]
         public Input<Inputs.ConnectionOptionsGetArgs>? Options { get; set; }
@@ -287,7 +589,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _realms;
 
         /// <summary>
-        /// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+        /// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         /// </summary>
         public InputList<string> Realms
         {
@@ -296,29 +598,22 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Display connection as a button. Only available for enterprise connections.
+        /// Display connection as a button. Only available on enterprise connections.
         /// </summary>
         [Input("showAsButton")]
         public Input<bool>? ShowAsButton { get; set; }
 
         /// <summary>
-        /// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+        /// Type of the connection, which indicates the identity provider.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
 
-        /// <summary>
-        /// Version 1 is deprecated, use version 2.
-        /// </summary>
         [Input("strategyVersion")]
         public Input<string>? StrategyVersion { get; set; }
 
         [Input("validation")]
         private InputMap<string>? _validation;
-
-        /// <summary>
-        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-        /// </summary>
         public InputMap<string> Validation
         {
             get => _validation ?? (_validation = new InputMap<string>());

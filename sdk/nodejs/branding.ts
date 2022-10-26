@@ -2,31 +2,38 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to manage branding within your Auth0 tenant.
- *
- * Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user
- * expectations.
+ * This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
  *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
+ * import * as fs from "fs";
  *
- * const myBrand = new auth0.Branding("my_brand", {
- *     colors: {
- *         pageBackground: "#000000",
- *         primary: "#0059d6",
- *     },
+ * const myBrand = new auth0.Branding("myBrand", {
  *     logoUrl: "https://mycompany.org/logo.png",
+ *     colors: {
+ *         primary: "#0059d6",
+ *         pageBackground: "#000000",
+ *     },
  *     universalLogin: {
- *         body: "<!DOCTYPE html><html><head>{%- auth0:head -%}</head><body>{%- auth0:widget -%}</body></html>",
+ *         body: fs.readFileSync("universal_login_body.html"),
  *     },
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, branding can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
+ *
+ * ```sh
+ *  $ pulumi import auth0:index/branding:Branding my_brand 22f4f21b-017a-319d-92e7-2291c1ca36c4
  * ```
  */
 export class Branding extends pulumi.CustomResource {
@@ -58,25 +65,23 @@ export class Branding extends pulumi.CustomResource {
     }
 
     /**
-     * List(Resource). Configuration settings for colors for branding. See Colors.
+     * Configuration settings for colors for branding.
      */
     public readonly colors!: pulumi.Output<outputs.BrandingColors | undefined>;
     /**
-     * String. URL for the favicon.
+     * URL for the favicon.
      */
     public readonly faviconUrl!: pulumi.Output<string>;
     /**
-     * List(Resource). Configuration settings to customize the font. See Font.
+     * Configuration settings to customize the font.
      */
     public readonly font!: pulumi.Output<outputs.BrandingFont | undefined>;
     /**
-     * String. URL of logo for branding.
+     * URL of logo for branding.
      */
     public readonly logoUrl!: pulumi.Output<string>;
     /**
-     * List(Resource). Configuration settings for Universal Login.
-     * See Universal Login. This capability can only be used if the tenant has
-     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * Configuration settings for Universal Login.
      */
     public readonly universalLogin!: pulumi.Output<outputs.BrandingUniversalLogin | undefined>;
 
@@ -116,25 +121,23 @@ export class Branding extends pulumi.CustomResource {
  */
 export interface BrandingState {
     /**
-     * List(Resource). Configuration settings for colors for branding. See Colors.
+     * Configuration settings for colors for branding.
      */
     colors?: pulumi.Input<inputs.BrandingColors>;
     /**
-     * String. URL for the favicon.
+     * URL for the favicon.
      */
     faviconUrl?: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings to customize the font. See Font.
+     * Configuration settings to customize the font.
      */
     font?: pulumi.Input<inputs.BrandingFont>;
     /**
-     * String. URL of logo for branding.
+     * URL of logo for branding.
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings for Universal Login.
-     * See Universal Login. This capability can only be used if the tenant has
-     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * Configuration settings for Universal Login.
      */
     universalLogin?: pulumi.Input<inputs.BrandingUniversalLogin>;
 }
@@ -144,25 +147,23 @@ export interface BrandingState {
  */
 export interface BrandingArgs {
     /**
-     * List(Resource). Configuration settings for colors for branding. See Colors.
+     * Configuration settings for colors for branding.
      */
     colors?: pulumi.Input<inputs.BrandingColors>;
     /**
-     * String. URL for the favicon.
+     * URL for the favicon.
      */
     faviconUrl?: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings to customize the font. See Font.
+     * Configuration settings to customize the font.
      */
     font?: pulumi.Input<inputs.BrandingFont>;
     /**
-     * String. URL of logo for branding.
+     * URL of logo for branding.
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings for Universal Login.
-     * See Universal Login. This capability can only be used if the tenant has
-     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * Configuration settings for Universal Login.
      */
     universalLogin?: pulumi.Input<inputs.BrandingUniversalLogin>;
 }

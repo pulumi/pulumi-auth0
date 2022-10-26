@@ -16,14 +16,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     public static final TenantFlagsArgs Empty = new TenantFlagsArgs();
 
     /**
-     * Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     * Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
      * 
      */
     @Import(name="allowLegacyDelegationGrantTypes")
     private @Nullable Output<Boolean> allowLegacyDelegationGrantTypes;
 
     /**
-     * @return Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+     * @return Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
      * 
      */
     public Optional<Output<Boolean>> allowLegacyDelegationGrantTypes() {
@@ -31,14 +31,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     * Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
      * 
      */
     @Import(name="allowLegacyRoGrantTypes")
     private @Nullable Output<Boolean> allowLegacyRoGrantTypes;
 
     /**
-     * @return Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+     * @return Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
      * 
      */
     public Optional<Output<Boolean>> allowLegacyRoGrantTypes() {
@@ -46,14 +46,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     * If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
      * 
      */
     @Import(name="allowLegacyTokeninfoEndpoint")
     private @Nullable Output<Boolean> allowLegacyTokeninfoEndpoint;
 
     /**
-     * @return Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+     * @return If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
      * 
      */
     public Optional<Output<Boolean>> allowLegacyTokeninfoEndpoint() {
@@ -61,14 +61,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Enables new insights activity page view.
+     * Enables new insights activity page view.
      * 
      */
     @Import(name="dashboardInsightsView")
     private @Nullable Output<Boolean> dashboardInsightsView;
 
     /**
-     * @return Boolean. Enables new insights activity page view.
+     * @return Enables new insights activity page view.
      * 
      */
     public Optional<Output<Boolean>> dashboardInsightsView() {
@@ -76,14 +76,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Enables beta access to log streaming changes.
+     * Enables beta access to log streaming changes.
      * 
      */
     @Import(name="dashboardLogStreamsNext")
     private @Nullable Output<Boolean> dashboardLogStreamsNext;
 
     /**
-     * @return Boolean. Enables beta access to log streaming changes.
+     * @return Enables beta access to log streaming changes.
      * 
      */
     public Optional<Output<Boolean>> dashboardLogStreamsNext() {
@@ -91,14 +91,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      * 
      */
     @Import(name="disableClickjackProtectionHeaders")
     private @Nullable Output<Boolean> disableClickjackProtectionHeaders;
 
     /**
-     * @return Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+     * @return Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      * 
      */
     public Optional<Output<Boolean>> disableClickjackProtectionHeaders() {
@@ -106,14 +106,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+     * Disables SAML fields map fix for bad mappings with repeated attributes.
      * 
      */
     @Import(name="disableFieldsMapFix")
     private @Nullable Output<Boolean> disableFieldsMapFix;
 
     /**
-     * @return Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+     * @return Disables SAML fields map fix for bad mappings with repeated attributes.
      * 
      */
     public Optional<Output<Boolean>> disableFieldsMapFix() {
@@ -121,14 +121,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     * If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      * 
      */
     @Import(name="disableManagementApiSmsObfuscation")
     private @Nullable Output<Boolean> disableManagementApiSmsObfuscation;
 
     /**
-     * @return Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+     * @return If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      * 
      */
     public Optional<Output<Boolean>> disableManagementApiSmsObfuscation() {
@@ -136,14 +136,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     * If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      * 
      */
     @Import(name="enableAdfsWaadEmailVerification")
     private @Nullable Output<Boolean> enableAdfsWaadEmailVerification;
 
     /**
-     * @return Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+     * @return If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      * 
      */
     public Optional<Output<Boolean>> enableAdfsWaadEmailVerification() {
@@ -151,14 +151,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether the APIs section is enabled for the tenant.
+     * Indicates whether the APIs section is enabled for the tenant.
      * 
      */
     @Import(name="enableApisSection")
     private @Nullable Output<Boolean> enableApisSection;
 
     /**
-     * @return Boolean. Indicates whether the APIs section is enabled for the tenant.
+     * @return Indicates whether the APIs section is enabled for the tenant.
      * 
      */
     public Optional<Output<Boolean>> enableApisSection() {
@@ -166,14 +166,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether all current connections should be enabled when a new client is created.
+     * Indicates whether all current connections should be enabled when a new client is created.
      * 
      */
     @Import(name="enableClientConnections")
     private @Nullable Output<Boolean> enableClientConnections;
 
     /**
-     * @return Boolean. Indicates whether all current connections should be enabled when a new client is created.
+     * @return Indicates whether all current connections should be enabled when a new client is created.
      * 
      */
     public Optional<Output<Boolean>> enableClientConnections() {
@@ -181,14 +181,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether the tenant allows custom domains in emails.
+     * Indicates whether the tenant allows custom domains in emails.
      * 
      */
     @Import(name="enableCustomDomainInEmails")
     private @Nullable Output<Boolean> enableCustomDomainInEmails;
 
     /**
-     * @return Boolean. Indicates whether the tenant allows custom domains in emails.
+     * @return Indicates whether the tenant allows custom domains in emails.
      * 
      */
     public Optional<Output<Boolean>> enableCustomDomainInEmails() {
@@ -196,14 +196,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether the tenant allows dynamic client registration.
+     * Indicates whether the tenant allows dynamic client registration.
      * 
      */
     @Import(name="enableDynamicClientRegistration")
     private @Nullable Output<Boolean> enableDynamicClientRegistration;
 
     /**
-     * @return Boolean. Indicates whether the tenant allows dynamic client registration.
+     * @return Indicates whether the tenant allows dynamic client registration.
      * 
      */
     public Optional<Output<Boolean>> enableDynamicClientRegistration() {
@@ -211,14 +211,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+     * Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
      * 
      */
     @Import(name="enableIdtokenApi2")
     private @Nullable Output<Boolean> enableIdtokenApi2;
 
     /**
-     * @return Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+     * @return Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
      * 
      */
     public Optional<Output<Boolean>> enableIdtokenApi2() {
@@ -226,14 +226,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether to use the older v2 legacy logs search.
+     * Indicates whether to use the older v2 legacy logs search.
      * 
      */
     @Import(name="enableLegacyLogsSearchV2")
     private @Nullable Output<Boolean> enableLegacyLogsSearchV2;
 
     /**
-     * @return Boolean. Indicates whether to use the older v2 legacy logs search.
+     * @return Indicates whether to use the older v2 legacy logs search.
      * 
      */
     public Optional<Output<Boolean>> enableLegacyLogsSearchV2() {
@@ -241,14 +241,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     * Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
      * 
      */
     @Import(name="enableLegacyProfile")
     private @Nullable Output<Boolean> enableLegacyProfile;
 
     /**
-     * @return Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+     * @return Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
      * 
      */
     public Optional<Output<Boolean>> enableLegacyProfile() {
@@ -256,14 +256,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+     * Indicates whether advanced API Authorization scenarios are enabled.
      * 
      */
     @Import(name="enablePipeline2")
     private @Nullable Output<Boolean> enablePipeline2;
 
     /**
-     * @return Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+     * @return Indicates whether advanced API Authorization scenarios are enabled.
      * 
      */
     public Optional<Output<Boolean>> enablePipeline2() {
@@ -271,14 +271,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+     * Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
      * 
      */
     @Import(name="enablePublicSignupUserExistsError")
     private @Nullable Output<Boolean> enablePublicSignupUserExistsError;
 
     /**
-     * @return Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
      * 
      */
     public Optional<Output<Boolean>> enablePublicSignupUserExistsError() {
@@ -286,14 +286,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      * 
      */
     @Import(name="noDiscloseEnterpriseConnections")
     private @Nullable Output<Boolean> noDiscloseEnterpriseConnections;
 
     /**
-     * @return Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      * 
      */
     public Optional<Output<Boolean>> noDiscloseEnterpriseConnections() {
@@ -301,14 +301,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+     * Delete underlying grant when a refresh token is revoked via the Authentication API.
      * 
      */
     @Import(name="revokeRefreshTokenGrant")
     private @Nullable Output<Boolean> revokeRefreshTokenGrant;
 
     /**
-     * @return Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+     * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
      * 
      */
     public Optional<Output<Boolean>> revokeRefreshTokenGrant() {
@@ -316,23 +316,31 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Indicates whether the tenant uses universal login.
+     * Indicates whether the tenant uses Universal Login.
      * 
      */
     @Import(name="universalLogin")
     private @Nullable Output<Boolean> universalLogin;
 
     /**
-     * @return Boolean. Indicates whether the tenant uses universal login.
+     * @return Indicates whether the tenant uses Universal Login.
      * 
      */
     public Optional<Output<Boolean>> universalLogin() {
         return Optional.ofNullable(this.universalLogin);
     }
 
+    /**
+     * Indicates whether to use scope descriptions for consent.
+     * 
+     */
     @Import(name="useScopeDescriptionsForConsent")
     private @Nullable Output<Boolean> useScopeDescriptionsForConsent;
 
+    /**
+     * @return Indicates whether to use scope descriptions for consent.
+     * 
+     */
     public Optional<Output<Boolean>> useScopeDescriptionsForConsent() {
         return Optional.ofNullable(this.useScopeDescriptionsForConsent);
     }
@@ -383,7 +391,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowLegacyDelegationGrantTypes Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+         * @param allowLegacyDelegationGrantTypes Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
          * 
          * @return builder
          * 
@@ -394,7 +402,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowLegacyDelegationGrantTypes Boolean. Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+         * @param allowLegacyDelegationGrantTypes Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
          * 
          * @return builder
          * 
@@ -404,7 +412,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowLegacyRoGrantTypes Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+         * @param allowLegacyRoGrantTypes Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
          * 
          * @return builder
          * 
@@ -415,7 +423,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowLegacyRoGrantTypes Boolean. Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+         * @param allowLegacyRoGrantTypes Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
          * 
          * @return builder
          * 
@@ -425,7 +433,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowLegacyTokeninfoEndpoint Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+         * @param allowLegacyTokeninfoEndpoint If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
          * 
          * @return builder
          * 
@@ -436,7 +444,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowLegacyTokeninfoEndpoint Boolean. If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+         * @param allowLegacyTokeninfoEndpoint If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
          * 
          * @return builder
          * 
@@ -446,7 +454,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardInsightsView Boolean. Enables new insights activity page view.
+         * @param dashboardInsightsView Enables new insights activity page view.
          * 
          * @return builder
          * 
@@ -457,7 +465,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardInsightsView Boolean. Enables new insights activity page view.
+         * @param dashboardInsightsView Enables new insights activity page view.
          * 
          * @return builder
          * 
@@ -467,7 +475,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardLogStreamsNext Boolean. Enables beta access to log streaming changes.
+         * @param dashboardLogStreamsNext Enables beta access to log streaming changes.
          * 
          * @return builder
          * 
@@ -478,7 +486,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardLogStreamsNext Boolean. Enables beta access to log streaming changes.
+         * @param dashboardLogStreamsNext Enables beta access to log streaming changes.
          * 
          * @return builder
          * 
@@ -488,7 +496,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableClickjackProtectionHeaders Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+         * @param disableClickjackProtectionHeaders Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
          * 
          * @return builder
          * 
@@ -499,7 +507,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableClickjackProtectionHeaders Boolean. Indicated whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+         * @param disableClickjackProtectionHeaders Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
          * 
          * @return builder
          * 
@@ -509,7 +517,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableFieldsMapFix Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+         * @param disableFieldsMapFix Disables SAML fields map fix for bad mappings with repeated attributes.
          * 
          * @return builder
          * 
@@ -520,7 +528,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableFieldsMapFix Boolean. Disables SAML fields map fix for bad mappings with repeated attributes.
+         * @param disableFieldsMapFix Disables SAML fields map fix for bad mappings with repeated attributes.
          * 
          * @return builder
          * 
@@ -530,7 +538,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableManagementApiSmsObfuscation Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+         * @param disableManagementApiSmsObfuscation If true, SMS phone numbers will not be obfuscated in Management API GET calls.
          * 
          * @return builder
          * 
@@ -541,7 +549,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableManagementApiSmsObfuscation Boolean. If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+         * @param disableManagementApiSmsObfuscation If true, SMS phone numbers will not be obfuscated in Management API GET calls.
          * 
          * @return builder
          * 
@@ -551,7 +559,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableAdfsWaadEmailVerification Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+         * @param enableAdfsWaadEmailVerification If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
          * 
          * @return builder
          * 
@@ -562,7 +570,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableAdfsWaadEmailVerification Boolean. If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+         * @param enableAdfsWaadEmailVerification If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
          * 
          * @return builder
          * 
@@ -572,7 +580,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableApisSection Boolean. Indicates whether the APIs section is enabled for the tenant.
+         * @param enableApisSection Indicates whether the APIs section is enabled for the tenant.
          * 
          * @return builder
          * 
@@ -583,7 +591,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableApisSection Boolean. Indicates whether the APIs section is enabled for the tenant.
+         * @param enableApisSection Indicates whether the APIs section is enabled for the tenant.
          * 
          * @return builder
          * 
@@ -593,7 +601,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableClientConnections Boolean. Indicates whether all current connections should be enabled when a new client is created.
+         * @param enableClientConnections Indicates whether all current connections should be enabled when a new client is created.
          * 
          * @return builder
          * 
@@ -604,7 +612,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableClientConnections Boolean. Indicates whether all current connections should be enabled when a new client is created.
+         * @param enableClientConnections Indicates whether all current connections should be enabled when a new client is created.
          * 
          * @return builder
          * 
@@ -614,7 +622,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableCustomDomainInEmails Boolean. Indicates whether the tenant allows custom domains in emails.
+         * @param enableCustomDomainInEmails Indicates whether the tenant allows custom domains in emails.
          * 
          * @return builder
          * 
@@ -625,7 +633,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableCustomDomainInEmails Boolean. Indicates whether the tenant allows custom domains in emails.
+         * @param enableCustomDomainInEmails Indicates whether the tenant allows custom domains in emails.
          * 
          * @return builder
          * 
@@ -635,7 +643,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableDynamicClientRegistration Boolean. Indicates whether the tenant allows dynamic client registration.
+         * @param enableDynamicClientRegistration Indicates whether the tenant allows dynamic client registration.
          * 
          * @return builder
          * 
@@ -646,7 +654,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableDynamicClientRegistration Boolean. Indicates whether the tenant allows dynamic client registration.
+         * @param enableDynamicClientRegistration Indicates whether the tenant allows dynamic client registration.
          * 
          * @return builder
          * 
@@ -656,7 +664,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIdtokenApi2 Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+         * @param enableIdtokenApi2 Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
          * 
          * @return builder
          * 
@@ -667,7 +675,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIdtokenApi2 Boolean. Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).
+         * @param enableIdtokenApi2 Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
          * 
          * @return builder
          * 
@@ -677,7 +685,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableLegacyLogsSearchV2 Boolean. Indicates whether to use the older v2 legacy logs search.
+         * @param enableLegacyLogsSearchV2 Indicates whether to use the older v2 legacy logs search.
          * 
          * @return builder
          * 
@@ -688,7 +696,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableLegacyLogsSearchV2 Boolean. Indicates whether to use the older v2 legacy logs search.
+         * @param enableLegacyLogsSearchV2 Indicates whether to use the older v2 legacy logs search.
          * 
          * @return builder
          * 
@@ -698,7 +706,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableLegacyProfile Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+         * @param enableLegacyProfile Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
          * 
          * @return builder
          * 
@@ -709,7 +717,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableLegacyProfile Boolean. Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+         * @param enableLegacyProfile Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
          * 
          * @return builder
          * 
@@ -719,7 +727,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePipeline2 Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+         * @param enablePipeline2 Indicates whether advanced API Authorization scenarios are enabled.
          * 
          * @return builder
          * 
@@ -730,7 +738,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePipeline2 Boolean. Indicates whether advanced API Authorization scenarios are enabled.
+         * @param enablePipeline2 Indicates whether advanced API Authorization scenarios are enabled.
          * 
          * @return builder
          * 
@@ -740,7 +748,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublicSignupUserExistsError Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
          * 
          * @return builder
          * 
@@ -751,7 +759,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublicSignupUserExistsError Boolean. Indicates whether the public sign up process shows a user_exists error if the user already exists.
+         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
          * 
          * @return builder
          * 
@@ -761,7 +769,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noDiscloseEnterpriseConnections Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+         * @param noDiscloseEnterpriseConnections Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
          * 
          * @return builder
          * 
@@ -772,7 +780,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noDiscloseEnterpriseConnections Boolean. Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+         * @param noDiscloseEnterpriseConnections Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
          * 
          * @return builder
          * 
@@ -782,7 +790,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param revokeRefreshTokenGrant Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+         * @param revokeRefreshTokenGrant Delete underlying grant when a refresh token is revoked via the Authentication API.
          * 
          * @return builder
          * 
@@ -793,7 +801,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param revokeRefreshTokenGrant Boolean. Delete underlying grant when a Refresh Token is revoked via the Authentication API.
+         * @param revokeRefreshTokenGrant Delete underlying grant when a refresh token is revoked via the Authentication API.
          * 
          * @return builder
          * 
@@ -803,7 +811,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param universalLogin Boolean. Indicates whether the tenant uses universal login.
+         * @param universalLogin Indicates whether the tenant uses Universal Login.
          * 
          * @return builder
          * 
@@ -814,7 +822,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param universalLogin Boolean. Indicates whether the tenant uses universal login.
+         * @param universalLogin Indicates whether the tenant uses Universal Login.
          * 
          * @return builder
          * 
@@ -823,11 +831,23 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
             return universalLogin(Output.of(universalLogin));
         }
 
+        /**
+         * @param useScopeDescriptionsForConsent Indicates whether to use scope descriptions for consent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useScopeDescriptionsForConsent(@Nullable Output<Boolean> useScopeDescriptionsForConsent) {
             $.useScopeDescriptionsForConsent = useScopeDescriptionsForConsent;
             return this;
         }
 
+        /**
+         * @param useScopeDescriptionsForConsent Indicates whether to use scope descriptions for consent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useScopeDescriptionsForConsent(Boolean useScopeDescriptionsForConsent) {
             return useScopeDescriptionsForConsent(Output.of(useScopeDescriptionsForConsent));
         }

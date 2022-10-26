@@ -16,12 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can bind an action to a trigger. Once an action is
- * created and deployed, it can be attached (i.e. bound) to a trigger so that it
- * will be executed as part of a flow.
- * 
- * The list of actions reflects the order in which they will be executed during the
- * appropriate flow.
+ * With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
  * 
  * ## Example Usage
  * ```java
@@ -50,29 +45,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var actionFoo = new Action(&#34;actionFoo&#34;, ActionArgs.builder()        
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id(&#34;post-login&#34;)
- *                 .version(&#34;v2&#34;)
- *                 .build())
  *             .code(&#34;&#34;&#34;
- * exports.onContinuePostLogin = async (event, api) =&gt; { 
- * 	console.log(&#34;foo&#34;) 
+ * exports.onContinuePostLogin = async (event, api) =&gt; {
+ *   console.log(&#34;foo&#34;);
  * };&#34;
  *             &#34;&#34;&#34;)
  *             .deploy(true)
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id(&#34;post-login&#34;)
+ *                 .version(&#34;v3&#34;)
+ *                 .build())
  *             .build());
  * 
  *         var actionBar = new Action(&#34;actionBar&#34;, ActionArgs.builder()        
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id(&#34;post-login&#34;)
- *                 .version(&#34;v2&#34;)
- *                 .build())
  *             .code(&#34;&#34;&#34;
- * exports.onContinuePostLogin = async (event, api) =&gt; { 
- * 	console.log(&#34;bar&#34;) 
+ * exports.onContinuePostLogin = async (event, api) =&gt; {
+ *   console.log(&#34;bar&#34;);
  * };&#34;
  *             &#34;&#34;&#34;)
  *             .deploy(true)
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id(&#34;post-login&#34;)
+ *                 .version(&#34;v3&#34;)
+ *                 .build())
  *             .build());
  * 
  *         var loginFlow = new TriggerBinding(&#34;loginFlow&#34;, TriggerBindingArgs.builder()        
@@ -94,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * auth0_trigger_binding can be imported using the bindings trigger ID, e.g.
+ * This resource can be imported using the bindings trigger ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/triggerBinding:TriggerBinding example &#34;post-login&#34;
@@ -104,30 +99,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/triggerBinding:TriggerBinding")
 public class TriggerBinding extends com.pulumi.resources.CustomResource {
     /**
-     * The actions bound to this trigger. For details, see
-     * Actions.
+     * The actions bound to this trigger
      * 
      */
     @Export(name="actions", type=List.class, parameters={TriggerBindingAction.class})
     private Output<List<TriggerBindingAction>> actions;
 
     /**
-     * @return The actions bound to this trigger. For details, see
-     * Actions.
+     * @return The actions bound to this trigger
      * 
      */
     public Output<List<TriggerBindingAction>> actions() {
         return this.actions;
     }
     /**
-     * The id of the trigger to bind with
+     * The ID of the trigger to bind with.
      * 
      */
     @Export(name="trigger", type=String.class, parameters={})
     private Output<String> trigger;
 
     /**
-     * @return The id of the trigger to bind with
+     * @return The ID of the trigger to bind with.
      * 
      */
     public Output<String> trigger() {

@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Whether or not breached password detection is active.
+        /// Whether suspicious IP throttling attack protections are active.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _shields;
 
         /// <summary>
-        /// Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        /// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
         /// </summary>
         public InputList<string> Shields
         {

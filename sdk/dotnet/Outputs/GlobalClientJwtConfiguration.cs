@@ -13,9 +13,21 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GlobalClientJwtConfiguration
     {
+        /// <summary>
+        /// Algorithm used to sign JWTs.
+        /// </summary>
         public readonly string? Alg;
+        /// <summary>
+        /// Number of seconds during which the JWT will be valid.
+        /// </summary>
         public readonly int? LifetimeInSeconds;
+        /// <summary>
+        /// Permissions (scopes) included in JWTs.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Scopes;
+        /// <summary>
+        /// Indicates whether the client secret is Base64-encoded.
+        /// </summary>
         public readonly bool? SecretEncoded;
 
         [OutputConstructor]

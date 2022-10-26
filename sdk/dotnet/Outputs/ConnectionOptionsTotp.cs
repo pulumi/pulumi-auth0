@@ -13,13 +13,7 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ConnectionOptionsTotp
     {
-        /// <summary>
-        /// Integer. Length of the one-time password.
-        /// </summary>
         public readonly int? Length;
-        /// <summary>
-        /// Integer. Seconds between allowed generation of new passwords.
-        /// </summary>
         public readonly int? TimeStep;
 
         [OutputConstructor]

@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientNativeSocialLogin {
-    /**
-     * @return Resource:
-     * 
-     */
     private @Nullable ClientNativeSocialLoginApple apple;
-    /**
-     * @return Resources:
-     * 
-     */
     private @Nullable ClientNativeSocialLoginFacebook facebook;
 
     private ClientNativeSocialLogin() {}
-    /**
-     * @return Resource:
-     * 
-     */
     public Optional<ClientNativeSocialLoginApple> apple() {
         return Optional.ofNullable(this.apple);
     }
-    /**
-     * @return Resources:
-     * 
-     */
     public Optional<ClientNativeSocialLoginFacebook> facebook() {
         return Optional.ofNullable(this.facebook);
     }

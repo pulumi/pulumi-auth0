@@ -12,20 +12,33 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class GlobalClientJwtConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Algorithm used to sign JWTs.
+        /// </summary>
         [Input("alg")]
         public Input<string>? Alg { get; set; }
 
+        /// <summary>
+        /// Number of seconds during which the JWT will be valid.
+        /// </summary>
         [Input("lifetimeInSeconds")]
         public Input<int>? LifetimeInSeconds { get; set; }
 
         [Input("scopes")]
         private InputMap<string>? _scopes;
+
+        /// <summary>
+        /// Permissions (scopes) included in JWTs.
+        /// </summary>
         public InputMap<string> Scopes
         {
             get => _scopes ?? (_scopes = new InputMap<string>());
             set => _scopes = value;
         }
 
+        /// <summary>
+        /// Indicates whether the client secret is Base64-encoded.
+        /// </summary>
         [Input("secretEncoded")]
         public Input<bool>? SecretEncoded { get; set; }
 

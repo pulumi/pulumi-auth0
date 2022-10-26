@@ -18,10 +18,19 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	ApiToken     pulumi.StringPtrOutput `pulumi:"apiToken"`
-	ClientId     pulumi.StringPtrOutput `pulumi:"clientId"`
+	// Your Auth0 [management api access
+	// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+	// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+	// specified, `api_token` will be used over `client_id` + `client_secret` fields.
+	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
+	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+	Audience pulumi.StringPtrOutput `pulumi:"audience"`
+	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
-	Domain       pulumi.StringOutput    `pulumi:"domain"`
+	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+	Domain pulumi.StringOutput `pulumi:"domain"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -46,20 +55,40 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	ApiToken     *string `pulumi:"apiToken"`
-	ClientId     *string `pulumi:"clientId"`
+	// Your Auth0 [management api access
+	// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+	// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+	// specified, `api_token` will be used over `client_id` + `client_secret` fields.
+	ApiToken *string `pulumi:"apiToken"`
+	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+	Audience *string `pulumi:"audience"`
+	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+	ClientId *string `pulumi:"clientId"`
+	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret *string `pulumi:"clientSecret"`
-	Debug        *bool   `pulumi:"debug"`
-	Domain       string  `pulumi:"domain"`
+	// Indicates whether to turn on debug mode.
+	Debug *bool `pulumi:"debug"`
+	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+	Domain string `pulumi:"domain"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	ApiToken     pulumi.StringPtrInput
-	ClientId     pulumi.StringPtrInput
+	// Your Auth0 [management api access
+	// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+	// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+	// specified, `api_token` will be used over `client_id` + `client_secret` fields.
+	ApiToken pulumi.StringPtrInput
+	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+	Audience pulumi.StringPtrInput
+	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+	ClientId pulumi.StringPtrInput
+	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret pulumi.StringPtrInput
-	Debug        pulumi.BoolPtrInput
-	Domain       pulumi.StringInput
+	// Indicates whether to turn on debug mode.
+	Debug pulumi.BoolPtrInput
+	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+	Domain pulumi.StringInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -99,18 +128,30 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// Your Auth0 [management api access
+// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+// specified, `api_token` will be used over `client_id` + `client_secret` fields.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
+// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+func (o ProviderOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
 func (o ProviderOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }

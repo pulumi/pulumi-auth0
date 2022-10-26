@@ -18,30 +18,62 @@ public final class GlobalClientJwtConfigurationArgs extends com.pulumi.resources
 
     public static final GlobalClientJwtConfigurationArgs Empty = new GlobalClientJwtConfigurationArgs();
 
+    /**
+     * Algorithm used to sign JWTs.
+     * 
+     */
     @Import(name="alg")
     private @Nullable Output<String> alg;
 
+    /**
+     * @return Algorithm used to sign JWTs.
+     * 
+     */
     public Optional<Output<String>> alg() {
         return Optional.ofNullable(this.alg);
     }
 
+    /**
+     * Number of seconds during which the JWT will be valid.
+     * 
+     */
     @Import(name="lifetimeInSeconds")
     private @Nullable Output<Integer> lifetimeInSeconds;
 
+    /**
+     * @return Number of seconds during which the JWT will be valid.
+     * 
+     */
     public Optional<Output<Integer>> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
 
+    /**
+     * Permissions (scopes) included in JWTs.
+     * 
+     */
     @Import(name="scopes")
     private @Nullable Output<Map<String,String>> scopes;
 
+    /**
+     * @return Permissions (scopes) included in JWTs.
+     * 
+     */
     public Optional<Output<Map<String,String>>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
+    /**
+     * Indicates whether the client secret is Base64-encoded.
+     * 
+     */
     @Import(name="secretEncoded")
     private @Nullable Output<Boolean> secretEncoded;
 
+    /**
+     * @return Indicates whether the client secret is Base64-encoded.
+     * 
+     */
     public Optional<Output<Boolean>> secretEncoded() {
         return Optional.ofNullable(this.secretEncoded);
     }
@@ -73,38 +105,86 @@ public final class GlobalClientJwtConfigurationArgs extends com.pulumi.resources
             $ = new GlobalClientJwtConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alg Algorithm used to sign JWTs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alg(@Nullable Output<String> alg) {
             $.alg = alg;
             return this;
         }
 
+        /**
+         * @param alg Algorithm used to sign JWTs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alg(String alg) {
             return alg(Output.of(alg));
         }
 
+        /**
+         * @param lifetimeInSeconds Number of seconds during which the JWT will be valid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeInSeconds(@Nullable Output<Integer> lifetimeInSeconds) {
             $.lifetimeInSeconds = lifetimeInSeconds;
             return this;
         }
 
+        /**
+         * @param lifetimeInSeconds Number of seconds during which the JWT will be valid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeInSeconds(Integer lifetimeInSeconds) {
             return lifetimeInSeconds(Output.of(lifetimeInSeconds));
         }
 
+        /**
+         * @param scopes Permissions (scopes) included in JWTs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(@Nullable Output<Map<String,String>> scopes) {
             $.scopes = scopes;
             return this;
         }
 
+        /**
+         * @param scopes Permissions (scopes) included in JWTs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(Map<String,String> scopes) {
             return scopes(Output.of(scopes));
         }
 
+        /**
+         * @param secretEncoded Indicates whether the client secret is Base64-encoded.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretEncoded(@Nullable Output<Boolean> secretEncoded) {
             $.secretEncoded = secretEncoded;
             return this;
         }
 
+        /**
+         * @param secretEncoded Indicates whether the client secret is Base64-encoded.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretEncoded(Boolean secretEncoded) {
             return secretEncoded(Output.of(secretEncoded));
         }

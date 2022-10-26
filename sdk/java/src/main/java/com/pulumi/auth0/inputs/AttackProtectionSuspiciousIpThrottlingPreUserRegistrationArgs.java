@@ -15,17 +15,9 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
 
     public static final AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs Empty = new AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs();
 
-    /**
-     * Maximum number of unsuccessful attempts. Only available on public tenants.
-     * 
-     */
     @Import(name="maxAttempts")
     private @Nullable Output<Integer> maxAttempts;
 
-    /**
-     * @return Maximum number of unsuccessful attempts. Only available on public tenants.
-     * 
-     */
     public Optional<Output<Integer>> maxAttempts() {
         return Optional.ofNullable(this.maxAttempts);
     }
@@ -62,23 +54,11 @@ public final class AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs
             $ = new AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param maxAttempts Maximum number of unsuccessful attempts. Only available on public tenants.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxAttempts(@Nullable Output<Integer> maxAttempts) {
             $.maxAttempts = maxAttempts;
             return this;
         }
 
-        /**
-         * @param maxAttempts Maximum number of unsuccessful attempts. Only available on public tenants.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxAttempts(Integer maxAttempts) {
             return maxAttempts(Output.of(maxAttempts));
         }

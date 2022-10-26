@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TenantSessionCookie {
+    /**
+     * @return Behavior of tenant session cookie. Accepts either &#34;persistent&#34; or &#34;non-persistent&#34;.
+     * 
+     */
     private @Nullable String mode;
 
     private TenantSessionCookie() {}
+    /**
+     * @return Behavior of tenant session cookie. Accepts either &#34;persistent&#34; or &#34;non-persistent&#34;.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }

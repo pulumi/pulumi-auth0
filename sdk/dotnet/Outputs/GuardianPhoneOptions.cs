@@ -13,29 +13,11 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GuardianPhoneOptions
     {
-        /// <summary>
-        /// String.
-        /// </summary>
         public readonly string? AuthToken;
-        /// <summary>
-        /// String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-        /// </summary>
         public readonly string? EnrollmentMessage;
-        /// <summary>
-        /// String.
-        /// </summary>
         public readonly string? From;
-        /// <summary>
-        /// String.
-        /// </summary>
         public readonly string? MessagingServiceSid;
-        /// <summary>
-        /// String.
-        /// </summary>
         public readonly string? Sid;
-        /// <summary>
-        /// String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-        /// </summary>
         public readonly string? VerificationMessage;
 
         [OutputConstructor]

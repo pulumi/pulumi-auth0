@@ -13,19 +13,19 @@ namespace Pulumi.Auth0.Inputs
     public sealed class GuardianWebauthnRoamingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+        /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         /// </summary>
         [Input("overrideRelyingParty")]
         public Input<bool>? OverrideRelyingParty { get; set; }
 
         /// <summary>
-        /// String. The Relying Party should be a suffix of the custom domain.
+        /// The Relying Party should be a suffix of the custom domain.
         /// </summary>
         [Input("relyingPartyIdentifier")]
         public Input<string>? RelyingPartyIdentifier { get; set; }
 
         /// <summary>
-        /// String. User verification, one of `discouraged`, `preferred` or `required`.
+        /// User verification, one of `discouraged`, `preferred` or `required`.
         /// </summary>
         [Input("userVerification")]
         public Input<string>? UserVerification { get; set; }

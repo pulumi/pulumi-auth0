@@ -55,7 +55,7 @@ import (
 //
 // ## Import
 //
-// The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
+// The auth0_global_client can be imported using the global client's ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`. # Example
 //
 // ```sh
 //
@@ -65,41 +65,79 @@ import (
 type GlobalClient struct {
 	pulumi.CustomResourceState
 
-	Addons                         GlobalClientAddonsOutput            `pulumi:"addons"`
-	AllowedClients                 pulumi.StringArrayOutput            `pulumi:"allowedClients"`
-	AllowedLogoutUrls              pulumi.StringArrayOutput            `pulumi:"allowedLogoutUrls"`
-	AllowedOrigins                 pulumi.StringArrayOutput            `pulumi:"allowedOrigins"`
-	AppType                        pulumi.StringOutput                 `pulumi:"appType"`
-	Callbacks                      pulumi.StringArrayOutput            `pulumi:"callbacks"`
-	ClientId                       pulumi.StringOutput                 `pulumi:"clientId"`
-	ClientMetadata                 pulumi.MapOutput                    `pulumi:"clientMetadata"`
-	ClientSecret                   pulumi.StringOutput                 `pulumi:"clientSecret"`
-	ClientSecretRotationTrigger    pulumi.MapOutput                    `pulumi:"clientSecretRotationTrigger"`
-	CrossOriginAuth                pulumi.BoolOutput                   `pulumi:"crossOriginAuth"`
-	CrossOriginLoc                 pulumi.StringOutput                 `pulumi:"crossOriginLoc"`
-	CustomLoginPage                pulumi.StringOutput                 `pulumi:"customLoginPage"`
-	CustomLoginPageOn              pulumi.BoolOutput                   `pulumi:"customLoginPageOn"`
-	Description                    pulumi.StringOutput                 `pulumi:"description"`
-	EncryptionKey                  pulumi.StringMapOutput              `pulumi:"encryptionKey"`
-	FormTemplate                   pulumi.StringOutput                 `pulumi:"formTemplate"`
-	GrantTypes                     pulumi.StringArrayOutput            `pulumi:"grantTypes"`
-	InitiateLoginUri               pulumi.StringOutput                 `pulumi:"initiateLoginUri"`
-	IsFirstParty                   pulumi.BoolOutput                   `pulumi:"isFirstParty"`
-	IsTokenEndpointIpHeaderTrusted pulumi.BoolOutput                   `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	JwtConfiguration               GlobalClientJwtConfigurationOutput  `pulumi:"jwtConfiguration"`
-	LogoUri                        pulumi.StringOutput                 `pulumi:"logoUri"`
-	Mobile                         GlobalClientMobileOutput            `pulumi:"mobile"`
-	Name                           pulumi.StringOutput                 `pulumi:"name"`
-	NativeSocialLogin              GlobalClientNativeSocialLoginOutput `pulumi:"nativeSocialLogin"`
-	OidcConformant                 pulumi.BoolOutput                   `pulumi:"oidcConformant"`
-	OrganizationRequireBehavior    pulumi.StringOutput                 `pulumi:"organizationRequireBehavior"`
-	OrganizationUsage              pulumi.StringOutput                 `pulumi:"organizationUsage"`
-	RefreshToken                   GlobalClientRefreshTokenOutput      `pulumi:"refreshToken"`
-	SigningKeys                    pulumi.MapArrayOutput               `pulumi:"signingKeys"`
-	Sso                            pulumi.BoolOutput                   `pulumi:"sso"`
-	SsoDisabled                    pulumi.BoolOutput                   `pulumi:"ssoDisabled"`
-	TokenEndpointAuthMethod        pulumi.StringOutput                 `pulumi:"tokenEndpointAuthMethod"`
-	WebOrigins                     pulumi.StringArrayOutput            `pulumi:"webOrigins"`
+	// Addons enabled for this client and their associated configurations.
+	Addons GlobalClientAddonsOutput `pulumi:"addons"`
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients pulumi.StringArrayOutput `pulumi:"allowedClients"`
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls pulumi.StringArrayOutput `pulumi:"allowedLogoutUrls"`
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins pulumi.StringArrayOutput `pulumi:"allowedOrigins"`
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	AppType pulumi.StringOutput `pulumi:"appType"`
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks pulumi.StringArrayOutput `pulumi:"callbacks"`
+	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+	ClientAliases pulumi.StringArrayOutput `pulumi:"clientAliases"`
+	// The ID of the client.
+	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata pulumi.MapOutput `pulumi:"clientMetadata"`
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+	// Terraform client. Otherwise, the attribute will contain an empty string.
+	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	ClientSecretRotationTrigger pulumi.MapOutput `pulumi:"clientSecretRotationTrigger"`
+	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	CrossOriginAuth pulumi.BoolOutput `pulumi:"crossOriginAuth"`
+	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+	CrossOriginLoc pulumi.StringOutput `pulumi:"crossOriginLoc"`
+	// The content (HTML, CSS, JS) of the custom login page.
+	CustomLoginPage pulumi.StringOutput `pulumi:"customLoginPage"`
+	// Indicates whether a custom login page is to be used.
+	CustomLoginPageOn pulumi.BoolOutput `pulumi:"customLoginPageOn"`
+	// Description of the purpose of the client.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Encryption used for WS-Fed responses with this client.
+	EncryptionKey pulumi.StringMapOutput `pulumi:"encryptionKey"`
+	// HTML form template to be used for WS-Federation.
+	FormTemplate pulumi.StringOutput `pulumi:"formTemplate"`
+	// Types of grants that this client is authorized to use.
+	GrantTypes pulumi.StringArrayOutput `pulumi:"grantTypes"`
+	// Initiate login URI, must be HTTPS.
+	InitiateLoginUri pulumi.StringOutput `pulumi:"initiateLoginUri"`
+	// Indicates whether this client is a first-party client.
+	IsFirstParty pulumi.BoolOutput `pulumi:"isFirstParty"`
+	// Indicates whether the token endpoint IP header is trusted.
+	IsTokenEndpointIpHeaderTrusted pulumi.BoolOutput `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// Configuration settings for the JWTs issued for this client.
+	JwtConfiguration GlobalClientJwtConfigurationOutput `pulumi:"jwtConfiguration"`
+	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+	LogoUri pulumi.StringOutput `pulumi:"logoUri"`
+	// Additional configuration for native mobile apps.
+	Mobile GlobalClientMobileOutput `pulumi:"mobile"`
+	// Name of the client.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
+	NativeSocialLogin GlobalClientNativeSocialLoginOutput `pulumi:"nativeSocialLogin"`
+	// Indicates whether this client will conform to strict OIDC specifications.
+	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringOutput `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringOutput `pulumi:"organizationUsage"`
+	// Configuration settings for the refresh tokens issued for this client.
+	RefreshToken GlobalClientRefreshTokenOutput `pulumi:"refreshToken"`
+	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+	SigningKeys pulumi.MapArrayOutput `pulumi:"signingKeys"`
+	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+	Sso pulumi.BoolOutput `pulumi:"sso"`
+	// Indicates whether or not SSO is disabled.
+	SsoDisabled pulumi.BoolOutput `pulumi:"ssoDisabled"`
+	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	TokenEndpointAuthMethod pulumi.StringOutput `pulumi:"tokenEndpointAuthMethod"`
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins pulumi.StringArrayOutput `pulumi:"webOrigins"`
 }
 
 // NewGlobalClient registers a new resource with the given unique name, arguments, and options.
@@ -109,6 +147,17 @@ func NewGlobalClient(ctx *pulumi.Context,
 		args = &GlobalClientArgs{}
 	}
 
+	if args.ClientSecret != nil {
+		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrOutput)
+	}
+	if args.SigningKeys != nil {
+		args.SigningKeys = pulumi.ToSecret(args.SigningKeys).(pulumi.MapArrayOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientSecret",
+		"signingKeys",
+	})
+	opts = append(opts, secrets)
 	var resource GlobalClient
 	err := ctx.RegisterResource("auth0:index/globalClient:GlobalClient", name, args, &resource, opts...)
 	if err != nil {
@@ -131,79 +180,155 @@ func GetGlobalClient(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalClient resources.
 type globalClientState struct {
-	Addons                         *GlobalClientAddons            `pulumi:"addons"`
-	AllowedClients                 []string                       `pulumi:"allowedClients"`
-	AllowedLogoutUrls              []string                       `pulumi:"allowedLogoutUrls"`
-	AllowedOrigins                 []string                       `pulumi:"allowedOrigins"`
-	AppType                        *string                        `pulumi:"appType"`
-	Callbacks                      []string                       `pulumi:"callbacks"`
-	ClientId                       *string                        `pulumi:"clientId"`
-	ClientMetadata                 map[string]interface{}         `pulumi:"clientMetadata"`
-	ClientSecret                   *string                        `pulumi:"clientSecret"`
-	ClientSecretRotationTrigger    map[string]interface{}         `pulumi:"clientSecretRotationTrigger"`
-	CrossOriginAuth                *bool                          `pulumi:"crossOriginAuth"`
-	CrossOriginLoc                 *string                        `pulumi:"crossOriginLoc"`
-	CustomLoginPage                *string                        `pulumi:"customLoginPage"`
-	CustomLoginPageOn              *bool                          `pulumi:"customLoginPageOn"`
-	Description                    *string                        `pulumi:"description"`
-	EncryptionKey                  map[string]string              `pulumi:"encryptionKey"`
-	FormTemplate                   *string                        `pulumi:"formTemplate"`
-	GrantTypes                     []string                       `pulumi:"grantTypes"`
-	InitiateLoginUri               *string                        `pulumi:"initiateLoginUri"`
-	IsFirstParty                   *bool                          `pulumi:"isFirstParty"`
-	IsTokenEndpointIpHeaderTrusted *bool                          `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	JwtConfiguration               *GlobalClientJwtConfiguration  `pulumi:"jwtConfiguration"`
-	LogoUri                        *string                        `pulumi:"logoUri"`
-	Mobile                         *GlobalClientMobile            `pulumi:"mobile"`
-	Name                           *string                        `pulumi:"name"`
-	NativeSocialLogin              *GlobalClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
-	OidcConformant                 *bool                          `pulumi:"oidcConformant"`
-	OrganizationRequireBehavior    *string                        `pulumi:"organizationRequireBehavior"`
-	OrganizationUsage              *string                        `pulumi:"organizationUsage"`
-	RefreshToken                   *GlobalClientRefreshToken      `pulumi:"refreshToken"`
-	SigningKeys                    []map[string]interface{}       `pulumi:"signingKeys"`
-	Sso                            *bool                          `pulumi:"sso"`
-	SsoDisabled                    *bool                          `pulumi:"ssoDisabled"`
-	TokenEndpointAuthMethod        *string                        `pulumi:"tokenEndpointAuthMethod"`
-	WebOrigins                     []string                       `pulumi:"webOrigins"`
+	// Addons enabled for this client and their associated configurations.
+	Addons *GlobalClientAddons `pulumi:"addons"`
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients []string `pulumi:"allowedClients"`
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	AppType *string `pulumi:"appType"`
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks []string `pulumi:"callbacks"`
+	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+	ClientAliases []string `pulumi:"clientAliases"`
+	// The ID of the client.
+	ClientId *string `pulumi:"clientId"`
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+	// Terraform client. Otherwise, the attribute will contain an empty string.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
+	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
+	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+	CrossOriginLoc *string `pulumi:"crossOriginLoc"`
+	// The content (HTML, CSS, JS) of the custom login page.
+	CustomLoginPage *string `pulumi:"customLoginPage"`
+	// Indicates whether a custom login page is to be used.
+	CustomLoginPageOn *bool `pulumi:"customLoginPageOn"`
+	// Description of the purpose of the client.
+	Description *string `pulumi:"description"`
+	// Encryption used for WS-Fed responses with this client.
+	EncryptionKey map[string]string `pulumi:"encryptionKey"`
+	// HTML form template to be used for WS-Federation.
+	FormTemplate *string `pulumi:"formTemplate"`
+	// Types of grants that this client is authorized to use.
+	GrantTypes []string `pulumi:"grantTypes"`
+	// Initiate login URI, must be HTTPS.
+	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
+	// Indicates whether this client is a first-party client.
+	IsFirstParty *bool `pulumi:"isFirstParty"`
+	// Indicates whether the token endpoint IP header is trusted.
+	IsTokenEndpointIpHeaderTrusted *bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// Configuration settings for the JWTs issued for this client.
+	JwtConfiguration *GlobalClientJwtConfiguration `pulumi:"jwtConfiguration"`
+	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+	LogoUri *string `pulumi:"logoUri"`
+	// Additional configuration for native mobile apps.
+	Mobile *GlobalClientMobile `pulumi:"mobile"`
+	// Name of the client.
+	Name *string `pulumi:"name"`
+	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
+	NativeSocialLogin *GlobalClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
+	// Indicates whether this client will conform to strict OIDC specifications.
+	OidcConformant *bool `pulumi:"oidcConformant"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage *string `pulumi:"organizationUsage"`
+	// Configuration settings for the refresh tokens issued for this client.
+	RefreshToken *GlobalClientRefreshToken `pulumi:"refreshToken"`
+	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+	SigningKeys []map[string]interface{} `pulumi:"signingKeys"`
+	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+	Sso *bool `pulumi:"sso"`
+	// Indicates whether or not SSO is disabled.
+	SsoDisabled *bool `pulumi:"ssoDisabled"`
+	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	TokenEndpointAuthMethod *string `pulumi:"tokenEndpointAuthMethod"`
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins []string `pulumi:"webOrigins"`
 }
 
 type GlobalClientState struct {
-	Addons                         GlobalClientAddonsPtrInput
-	AllowedClients                 pulumi.StringArrayInput
-	AllowedLogoutUrls              pulumi.StringArrayInput
-	AllowedOrigins                 pulumi.StringArrayInput
-	AppType                        pulumi.StringPtrInput
-	Callbacks                      pulumi.StringArrayInput
-	ClientId                       pulumi.StringPtrInput
-	ClientMetadata                 pulumi.MapInput
-	ClientSecret                   pulumi.StringPtrInput
-	ClientSecretRotationTrigger    pulumi.MapInput
-	CrossOriginAuth                pulumi.BoolPtrInput
-	CrossOriginLoc                 pulumi.StringPtrInput
-	CustomLoginPage                pulumi.StringPtrInput
-	CustomLoginPageOn              pulumi.BoolPtrInput
-	Description                    pulumi.StringPtrInput
-	EncryptionKey                  pulumi.StringMapInput
-	FormTemplate                   pulumi.StringPtrInput
-	GrantTypes                     pulumi.StringArrayInput
-	InitiateLoginUri               pulumi.StringPtrInput
-	IsFirstParty                   pulumi.BoolPtrInput
+	// Addons enabled for this client and their associated configurations.
+	Addons GlobalClientAddonsPtrInput
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients pulumi.StringArrayInput
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls pulumi.StringArrayInput
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins pulumi.StringArrayInput
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	AppType pulumi.StringPtrInput
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks pulumi.StringArrayInput
+	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+	ClientAliases pulumi.StringArrayInput
+	// The ID of the client.
+	ClientId pulumi.StringPtrInput
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata pulumi.MapInput
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+	// Terraform client. Otherwise, the attribute will contain an empty string.
+	ClientSecret pulumi.StringPtrInput
+	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	ClientSecretRotationTrigger pulumi.MapInput
+	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	CrossOriginAuth pulumi.BoolPtrInput
+	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+	CrossOriginLoc pulumi.StringPtrInput
+	// The content (HTML, CSS, JS) of the custom login page.
+	CustomLoginPage pulumi.StringPtrInput
+	// Indicates whether a custom login page is to be used.
+	CustomLoginPageOn pulumi.BoolPtrInput
+	// Description of the purpose of the client.
+	Description pulumi.StringPtrInput
+	// Encryption used for WS-Fed responses with this client.
+	EncryptionKey pulumi.StringMapInput
+	// HTML form template to be used for WS-Federation.
+	FormTemplate pulumi.StringPtrInput
+	// Types of grants that this client is authorized to use.
+	GrantTypes pulumi.StringArrayInput
+	// Initiate login URI, must be HTTPS.
+	InitiateLoginUri pulumi.StringPtrInput
+	// Indicates whether this client is a first-party client.
+	IsFirstParty pulumi.BoolPtrInput
+	// Indicates whether the token endpoint IP header is trusted.
 	IsTokenEndpointIpHeaderTrusted pulumi.BoolPtrInput
-	JwtConfiguration               GlobalClientJwtConfigurationPtrInput
-	LogoUri                        pulumi.StringPtrInput
-	Mobile                         GlobalClientMobilePtrInput
-	Name                           pulumi.StringPtrInput
-	NativeSocialLogin              GlobalClientNativeSocialLoginPtrInput
-	OidcConformant                 pulumi.BoolPtrInput
-	OrganizationRequireBehavior    pulumi.StringPtrInput
-	OrganizationUsage              pulumi.StringPtrInput
-	RefreshToken                   GlobalClientRefreshTokenPtrInput
-	SigningKeys                    pulumi.MapArrayInput
-	Sso                            pulumi.BoolPtrInput
-	SsoDisabled                    pulumi.BoolPtrInput
-	TokenEndpointAuthMethod        pulumi.StringPtrInput
-	WebOrigins                     pulumi.StringArrayInput
+	// Configuration settings for the JWTs issued for this client.
+	JwtConfiguration GlobalClientJwtConfigurationPtrInput
+	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+	LogoUri pulumi.StringPtrInput
+	// Additional configuration for native mobile apps.
+	Mobile GlobalClientMobilePtrInput
+	// Name of the client.
+	Name pulumi.StringPtrInput
+	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
+	NativeSocialLogin GlobalClientNativeSocialLoginPtrInput
+	// Indicates whether this client will conform to strict OIDC specifications.
+	OidcConformant pulumi.BoolPtrInput
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrInput
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrInput
+	// Configuration settings for the refresh tokens issued for this client.
+	RefreshToken GlobalClientRefreshTokenPtrInput
+	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+	SigningKeys pulumi.MapArrayInput
+	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+	Sso pulumi.BoolPtrInput
+	// Indicates whether or not SSO is disabled.
+	SsoDisabled pulumi.BoolPtrInput
+	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	TokenEndpointAuthMethod pulumi.StringPtrInput
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins pulumi.StringArrayInput
 }
 
 func (GlobalClientState) ElementType() reflect.Type {
@@ -211,80 +336,156 @@ func (GlobalClientState) ElementType() reflect.Type {
 }
 
 type globalClientArgs struct {
-	Addons                         *GlobalClientAddons            `pulumi:"addons"`
-	AllowedClients                 []string                       `pulumi:"allowedClients"`
-	AllowedLogoutUrls              []string                       `pulumi:"allowedLogoutUrls"`
-	AllowedOrigins                 []string                       `pulumi:"allowedOrigins"`
-	AppType                        *string                        `pulumi:"appType"`
-	Callbacks                      []string                       `pulumi:"callbacks"`
-	ClientId                       *string                        `pulumi:"clientId"`
-	ClientMetadata                 map[string]interface{}         `pulumi:"clientMetadata"`
-	ClientSecret                   *string                        `pulumi:"clientSecret"`
-	ClientSecretRotationTrigger    map[string]interface{}         `pulumi:"clientSecretRotationTrigger"`
-	CrossOriginAuth                *bool                          `pulumi:"crossOriginAuth"`
-	CrossOriginLoc                 *string                        `pulumi:"crossOriginLoc"`
-	CustomLoginPage                *string                        `pulumi:"customLoginPage"`
-	CustomLoginPageOn              *bool                          `pulumi:"customLoginPageOn"`
-	Description                    *string                        `pulumi:"description"`
-	EncryptionKey                  map[string]string              `pulumi:"encryptionKey"`
-	FormTemplate                   *string                        `pulumi:"formTemplate"`
-	GrantTypes                     []string                       `pulumi:"grantTypes"`
-	InitiateLoginUri               *string                        `pulumi:"initiateLoginUri"`
-	IsFirstParty                   *bool                          `pulumi:"isFirstParty"`
-	IsTokenEndpointIpHeaderTrusted *bool                          `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	JwtConfiguration               *GlobalClientJwtConfiguration  `pulumi:"jwtConfiguration"`
-	LogoUri                        *string                        `pulumi:"logoUri"`
-	Mobile                         *GlobalClientMobile            `pulumi:"mobile"`
-	Name                           *string                        `pulumi:"name"`
-	NativeSocialLogin              *GlobalClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
-	OidcConformant                 *bool                          `pulumi:"oidcConformant"`
-	OrganizationRequireBehavior    *string                        `pulumi:"organizationRequireBehavior"`
-	OrganizationUsage              *string                        `pulumi:"organizationUsage"`
-	RefreshToken                   *GlobalClientRefreshToken      `pulumi:"refreshToken"`
-	SigningKeys                    []map[string]interface{}       `pulumi:"signingKeys"`
-	Sso                            *bool                          `pulumi:"sso"`
-	SsoDisabled                    *bool                          `pulumi:"ssoDisabled"`
-	TokenEndpointAuthMethod        *string                        `pulumi:"tokenEndpointAuthMethod"`
-	WebOrigins                     []string                       `pulumi:"webOrigins"`
+	// Addons enabled for this client and their associated configurations.
+	Addons *GlobalClientAddons `pulumi:"addons"`
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients []string `pulumi:"allowedClients"`
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	AppType *string `pulumi:"appType"`
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks []string `pulumi:"callbacks"`
+	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+	ClientAliases []string `pulumi:"clientAliases"`
+	// The ID of the client.
+	ClientId *string `pulumi:"clientId"`
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+	// Terraform client. Otherwise, the attribute will contain an empty string.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
+	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
+	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+	CrossOriginLoc *string `pulumi:"crossOriginLoc"`
+	// The content (HTML, CSS, JS) of the custom login page.
+	CustomLoginPage *string `pulumi:"customLoginPage"`
+	// Indicates whether a custom login page is to be used.
+	CustomLoginPageOn *bool `pulumi:"customLoginPageOn"`
+	// Description of the purpose of the client.
+	Description *string `pulumi:"description"`
+	// Encryption used for WS-Fed responses with this client.
+	EncryptionKey map[string]string `pulumi:"encryptionKey"`
+	// HTML form template to be used for WS-Federation.
+	FormTemplate *string `pulumi:"formTemplate"`
+	// Types of grants that this client is authorized to use.
+	GrantTypes []string `pulumi:"grantTypes"`
+	// Initiate login URI, must be HTTPS.
+	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
+	// Indicates whether this client is a first-party client.
+	IsFirstParty *bool `pulumi:"isFirstParty"`
+	// Indicates whether the token endpoint IP header is trusted.
+	IsTokenEndpointIpHeaderTrusted *bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// Configuration settings for the JWTs issued for this client.
+	JwtConfiguration *GlobalClientJwtConfiguration `pulumi:"jwtConfiguration"`
+	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+	LogoUri *string `pulumi:"logoUri"`
+	// Additional configuration for native mobile apps.
+	Mobile *GlobalClientMobile `pulumi:"mobile"`
+	// Name of the client.
+	Name *string `pulumi:"name"`
+	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
+	NativeSocialLogin *GlobalClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
+	// Indicates whether this client will conform to strict OIDC specifications.
+	OidcConformant *bool `pulumi:"oidcConformant"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage *string `pulumi:"organizationUsage"`
+	// Configuration settings for the refresh tokens issued for this client.
+	RefreshToken *GlobalClientRefreshToken `pulumi:"refreshToken"`
+	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+	SigningKeys []map[string]interface{} `pulumi:"signingKeys"`
+	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+	Sso *bool `pulumi:"sso"`
+	// Indicates whether or not SSO is disabled.
+	SsoDisabled *bool `pulumi:"ssoDisabled"`
+	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	TokenEndpointAuthMethod *string `pulumi:"tokenEndpointAuthMethod"`
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins []string `pulumi:"webOrigins"`
 }
 
 // The set of arguments for constructing a GlobalClient resource.
 type GlobalClientArgs struct {
-	Addons                         GlobalClientAddonsPtrInput
-	AllowedClients                 pulumi.StringArrayInput
-	AllowedLogoutUrls              pulumi.StringArrayInput
-	AllowedOrigins                 pulumi.StringArrayInput
-	AppType                        pulumi.StringPtrInput
-	Callbacks                      pulumi.StringArrayInput
-	ClientId                       pulumi.StringPtrInput
-	ClientMetadata                 pulumi.MapInput
-	ClientSecret                   pulumi.StringPtrInput
-	ClientSecretRotationTrigger    pulumi.MapInput
-	CrossOriginAuth                pulumi.BoolPtrInput
-	CrossOriginLoc                 pulumi.StringPtrInput
-	CustomLoginPage                pulumi.StringPtrInput
-	CustomLoginPageOn              pulumi.BoolPtrInput
-	Description                    pulumi.StringPtrInput
-	EncryptionKey                  pulumi.StringMapInput
-	FormTemplate                   pulumi.StringPtrInput
-	GrantTypes                     pulumi.StringArrayInput
-	InitiateLoginUri               pulumi.StringPtrInput
-	IsFirstParty                   pulumi.BoolPtrInput
+	// Addons enabled for this client and their associated configurations.
+	Addons GlobalClientAddonsPtrInput
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients pulumi.StringArrayInput
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls pulumi.StringArrayInput
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins pulumi.StringArrayInput
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	AppType pulumi.StringPtrInput
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks pulumi.StringArrayInput
+	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+	ClientAliases pulumi.StringArrayInput
+	// The ID of the client.
+	ClientId pulumi.StringPtrInput
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata pulumi.MapInput
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+	// Terraform client. Otherwise, the attribute will contain an empty string.
+	ClientSecret pulumi.StringPtrInput
+	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	ClientSecretRotationTrigger pulumi.MapInput
+	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	CrossOriginAuth pulumi.BoolPtrInput
+	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+	CrossOriginLoc pulumi.StringPtrInput
+	// The content (HTML, CSS, JS) of the custom login page.
+	CustomLoginPage pulumi.StringPtrInput
+	// Indicates whether a custom login page is to be used.
+	CustomLoginPageOn pulumi.BoolPtrInput
+	// Description of the purpose of the client.
+	Description pulumi.StringPtrInput
+	// Encryption used for WS-Fed responses with this client.
+	EncryptionKey pulumi.StringMapInput
+	// HTML form template to be used for WS-Federation.
+	FormTemplate pulumi.StringPtrInput
+	// Types of grants that this client is authorized to use.
+	GrantTypes pulumi.StringArrayInput
+	// Initiate login URI, must be HTTPS.
+	InitiateLoginUri pulumi.StringPtrInput
+	// Indicates whether this client is a first-party client.
+	IsFirstParty pulumi.BoolPtrInput
+	// Indicates whether the token endpoint IP header is trusted.
 	IsTokenEndpointIpHeaderTrusted pulumi.BoolPtrInput
-	JwtConfiguration               GlobalClientJwtConfigurationPtrInput
-	LogoUri                        pulumi.StringPtrInput
-	Mobile                         GlobalClientMobilePtrInput
-	Name                           pulumi.StringPtrInput
-	NativeSocialLogin              GlobalClientNativeSocialLoginPtrInput
-	OidcConformant                 pulumi.BoolPtrInput
-	OrganizationRequireBehavior    pulumi.StringPtrInput
-	OrganizationUsage              pulumi.StringPtrInput
-	RefreshToken                   GlobalClientRefreshTokenPtrInput
-	SigningKeys                    pulumi.MapArrayInput
-	Sso                            pulumi.BoolPtrInput
-	SsoDisabled                    pulumi.BoolPtrInput
-	TokenEndpointAuthMethod        pulumi.StringPtrInput
-	WebOrigins                     pulumi.StringArrayInput
+	// Configuration settings for the JWTs issued for this client.
+	JwtConfiguration GlobalClientJwtConfigurationPtrInput
+	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+	LogoUri pulumi.StringPtrInput
+	// Additional configuration for native mobile apps.
+	Mobile GlobalClientMobilePtrInput
+	// Name of the client.
+	Name pulumi.StringPtrInput
+	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
+	NativeSocialLogin GlobalClientNativeSocialLoginPtrInput
+	// Indicates whether this client will conform to strict OIDC specifications.
+	OidcConformant pulumi.BoolPtrInput
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrInput
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrInput
+	// Configuration settings for the refresh tokens issued for this client.
+	RefreshToken GlobalClientRefreshTokenPtrInput
+	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+	SigningKeys pulumi.MapArrayInput
+	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+	Sso pulumi.BoolPtrInput
+	// Indicates whether or not SSO is disabled.
+	SsoDisabled pulumi.BoolPtrInput
+	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	TokenEndpointAuthMethod pulumi.StringPtrInput
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins pulumi.StringArrayInput
 }
 
 func (GlobalClientArgs) ElementType() reflect.Type {
@@ -374,142 +575,183 @@ func (o GlobalClientOutput) ToGlobalClientOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Addons enabled for this client and their associated configurations.
 func (o GlobalClientOutput) Addons() GlobalClientAddonsOutput {
 	return o.ApplyT(func(v *GlobalClient) GlobalClientAddonsOutput { return v.Addons }).(GlobalClientAddonsOutput)
 }
 
+// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 func (o GlobalClientOutput) AllowedClients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.AllowedClients }).(pulumi.StringArrayOutput)
 }
 
+// URLs that Auth0 may redirect to after logout.
 func (o GlobalClientOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
 }
 
+// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 func (o GlobalClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 func (o GlobalClientOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.AppType }).(pulumi.StringOutput)
 }
 
+// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 func (o GlobalClientOutput) Callbacks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.Callbacks }).(pulumi.StringArrayOutput)
 }
 
+// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+func (o GlobalClientOutput) ClientAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.ClientAliases }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the client.
 func (o GlobalClientOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 func (o GlobalClientOutput) ClientMetadata() pulumi.MapOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.MapOutput { return v.ClientMetadata }).(pulumi.MapOutput)
 }
 
+// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+// Terraform client. Otherwise, the attribute will contain an empty string.
 func (o GlobalClientOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
+// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 func (o GlobalClientOutput) ClientSecretRotationTrigger() pulumi.MapOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.MapOutput { return v.ClientSecretRotationTrigger }).(pulumi.MapOutput)
 }
 
+// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
 func (o GlobalClientOutput) CrossOriginAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.CrossOriginAuth }).(pulumi.BoolOutput)
 }
 
+// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
 func (o GlobalClientOutput) CrossOriginLoc() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.CrossOriginLoc }).(pulumi.StringOutput)
 }
 
+// The content (HTML, CSS, JS) of the custom login page.
 func (o GlobalClientOutput) CustomLoginPage() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.CustomLoginPage }).(pulumi.StringOutput)
 }
 
+// Indicates whether a custom login page is to be used.
 func (o GlobalClientOutput) CustomLoginPageOn() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.CustomLoginPageOn }).(pulumi.BoolOutput)
 }
 
+// Description of the purpose of the client.
 func (o GlobalClientOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Encryption used for WS-Fed responses with this client.
 func (o GlobalClientOutput) EncryptionKey() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringMapOutput { return v.EncryptionKey }).(pulumi.StringMapOutput)
 }
 
+// HTML form template to be used for WS-Federation.
 func (o GlobalClientOutput) FormTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.FormTemplate }).(pulumi.StringOutput)
 }
 
+// Types of grants that this client is authorized to use.
 func (o GlobalClientOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
 
+// Initiate login URI, must be HTTPS.
 func (o GlobalClientOutput) InitiateLoginUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.InitiateLoginUri }).(pulumi.StringOutput)
 }
 
+// Indicates whether this client is a first-party client.
 func (o GlobalClientOutput) IsFirstParty() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.IsFirstParty }).(pulumi.BoolOutput)
 }
 
+// Indicates whether the token endpoint IP header is trusted.
 func (o GlobalClientOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
 }
 
+// Configuration settings for the JWTs issued for this client.
 func (o GlobalClientOutput) JwtConfiguration() GlobalClientJwtConfigurationOutput {
 	return o.ApplyT(func(v *GlobalClient) GlobalClientJwtConfigurationOutput { return v.JwtConfiguration }).(GlobalClientJwtConfigurationOutput)
 }
 
+// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
 func (o GlobalClientOutput) LogoUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.LogoUri }).(pulumi.StringOutput)
 }
 
+// Additional configuration for native mobile apps.
 func (o GlobalClientOutput) Mobile() GlobalClientMobileOutput {
 	return o.ApplyT(func(v *GlobalClient) GlobalClientMobileOutput { return v.Mobile }).(GlobalClientMobileOutput)
 }
 
+// Name of the client.
 func (o GlobalClientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 func (o GlobalClientOutput) NativeSocialLogin() GlobalClientNativeSocialLoginOutput {
 	return o.ApplyT(func(v *GlobalClient) GlobalClientNativeSocialLoginOutput { return v.NativeSocialLogin }).(GlobalClientNativeSocialLoginOutput)
 }
 
+// Indicates whether this client will conform to strict OIDC specifications.
 func (o GlobalClientOutput) OidcConformant() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.OidcConformant }).(pulumi.BoolOutput)
 }
 
+// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
 func (o GlobalClientOutput) OrganizationRequireBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.OrganizationRequireBehavior }).(pulumi.StringOutput)
 }
 
+// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 func (o GlobalClientOutput) OrganizationUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.OrganizationUsage }).(pulumi.StringOutput)
 }
 
+// Configuration settings for the refresh tokens issued for this client.
 func (o GlobalClientOutput) RefreshToken() GlobalClientRefreshTokenOutput {
 	return o.ApplyT(func(v *GlobalClient) GlobalClientRefreshTokenOutput { return v.RefreshToken }).(GlobalClientRefreshTokenOutput)
 }
 
+// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 func (o GlobalClientOutput) SigningKeys() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.MapArrayOutput { return v.SigningKeys }).(pulumi.MapArrayOutput)
 }
 
+// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 func (o GlobalClientOutput) Sso() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.Sso }).(pulumi.BoolOutput)
 }
 
+// Indicates whether or not SSO is disabled.
 func (o GlobalClientOutput) SsoDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.BoolOutput { return v.SsoDisabled }).(pulumi.BoolOutput)
 }
 
+// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
 func (o GlobalClientOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
 }
 
+// URLs that represent valid web origins for use with web message response mode.
 func (o GlobalClientOutput) WebOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringArrayOutput { return v.WebOrigins }).(pulumi.StringArrayOutput)
 }

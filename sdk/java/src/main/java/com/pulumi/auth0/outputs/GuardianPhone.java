@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GuardianPhone {
     /**
-     * @return List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+     * @return Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      * 
      */
     private List<String> messageTypes;
     /**
-     * @return List(Resource). Options for the various providers. See Options.
+     * @return Options for the various providers.
      * 
      */
     private @Nullable GuardianPhoneOptions options;
     /**
-     * @return String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
     private String provider;
 
     private GuardianPhone() {}
     /**
-     * @return List(String). Message types to use, array of `sms` and or `voice`. Adding both to array should enable the user to choose.
+     * @return Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      * 
      */
     public List<String> messageTypes() {
         return this.messageTypes;
     }
     /**
-     * @return List(Resource). Options for the various providers. See Options.
+     * @return Options for the various providers.
      * 
      */
     public Optional<GuardianPhoneOptions> options() {
         return Optional.ofNullable(this.options);
     }
     /**
-     * @return String, Case-sensitive. Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
     public String provider() {

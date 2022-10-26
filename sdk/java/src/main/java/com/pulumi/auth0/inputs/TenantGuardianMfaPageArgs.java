@@ -15,14 +15,14 @@ public final class TenantGuardianMfaPageArgs extends com.pulumi.resources.Resour
     public static final TenantGuardianMfaPageArgs Empty = new TenantGuardianMfaPageArgs();
 
     /**
-     * Boolean. Indicates whether to use the custom Guardian page.
+     * Indicates whether to use the custom Guardian page.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Boolean. Indicates whether to use the custom Guardian page.
+     * @return Indicates whether to use the custom Guardian page.
      * 
      */
     public Output<Boolean> enabled() {
@@ -30,14 +30,14 @@ public final class TenantGuardianMfaPageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+     * HTML format with supported Liquid syntax. Customized content of the Guardian page.
      * 
      */
     @Import(name="html", required=true)
     private Output<String> html;
 
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+     * @return HTML format with supported Liquid syntax. Customized content of the Guardian page.
      * 
      */
     public Output<String> html() {
@@ -70,7 +70,7 @@ public final class TenantGuardianMfaPageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled Boolean. Indicates whether to use the custom Guardian page.
+         * @param enabled Indicates whether to use the custom Guardian page.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class TenantGuardianMfaPageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled Boolean. Indicates whether to use the custom Guardian page.
+         * @param enabled Indicates whether to use the custom Guardian page.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class TenantGuardianMfaPageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param html String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+         * @param html HTML format with supported Liquid syntax. Customized content of the Guardian page.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class TenantGuardianMfaPageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param html String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+         * @param html HTML format with supported Liquid syntax. Customized content of the Guardian page.
          * 
          * @return builder
          * 

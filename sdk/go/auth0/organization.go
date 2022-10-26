@@ -10,10 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Organizations feature represents a broad update to the Auth0 platform that
-// allows our business-to-business (B2B) customers to better manage their partners
-// and customers, and to customize the ways that end-users access their
-// applications. Auth0 customers can use Organizations to:
+// The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
 //
 //   - Represent their business customers and partners in Auth0 and manage their
 //     membership.
@@ -35,21 +32,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewOrganization(ctx, "acme", &auth0.OrganizationArgs{
-//				DisplayName: pulumi.String("Acme Inc."),
+//			_, err := auth0.NewOrganization(ctx, "myOrganization", &auth0.OrganizationArgs{
 //				Branding: &OrganizationBrandingArgs{
-//					LogoUrl: pulumi.String("https://acme.com/logo.svg"),
 //					Colors: pulumi.StringMap{
-//						"primary":         pulumi.String("#e3e2f0"),
-//						"page_background": pulumi.String("#e3e2ff"),
+//						"pageBackground": pulumi.String("#e1e1e1"),
+//						"primary":        pulumi.String("#f2f2f2"),
 //					},
+//					LogoUrl: pulumi.String("https://example.com/assets/icons/icon.png"),
 //				},
-//				Connections: OrganizationConnectionTypeArray{
-//					&OrganizationConnectionTypeArgs{
-//						ConnectionId:            pulumi.Any(auth0_connection.Acme.Id),
-//						AssignMembershipOnLogin: pulumi.Bool(true),
-//					},
-//				},
+//				DisplayName: pulumi.String("Auth0 Inc."),
 //			})
 //			if err != nil {
 //				return err
@@ -62,30 +53,23 @@ import (
 //
 // ## Import
 //
-// Existing organizations can be imported using organization id, e.g.
+// Existing organizations can be imported using the organization ID. # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/organization:Organization acme org_XXXXXXXXXXXXXX
+//	$ pulumi import auth0:index/organization:Organization my_organization org_XXXXXXXXXXXXXX
 //
 // ```
 type Organization struct {
 	pulumi.CustomResourceState
 
-	// Defines how to style the login pages. For details, see
-	// Branding
+	// Defines how to style the login pages.
 	Branding OrganizationBrandingOutput `pulumi:"branding"`
-	// Connections assigned to the organization. For
-	// details, see Connections
-	//
-	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-	Connections OrganizationConnectionTypeArrayOutput `pulumi:"connections"`
-	// Friendly name of this organization
+	// Friendly name of this organization.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Metadata associated with the organization, Maximum of
-	// 10 metadata properties allowed
+	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// The name of this organization
+	// The name of this organization.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -118,38 +102,24 @@ func GetOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Organization resources.
 type organizationState struct {
-	// Defines how to style the login pages. For details, see
-	// Branding
+	// Defines how to style the login pages.
 	Branding *OrganizationBranding `pulumi:"branding"`
-	// Connections assigned to the organization. For
-	// details, see Connections
-	//
-	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-	Connections []OrganizationConnectionType `pulumi:"connections"`
-	// Friendly name of this organization
+	// Friendly name of this organization.
 	DisplayName *string `pulumi:"displayName"`
-	// Metadata associated with the organization, Maximum of
-	// 10 metadata properties allowed
+	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata map[string]string `pulumi:"metadata"`
-	// The name of this organization
+	// The name of this organization.
 	Name *string `pulumi:"name"`
 }
 
 type OrganizationState struct {
-	// Defines how to style the login pages. For details, see
-	// Branding
+	// Defines how to style the login pages.
 	Branding OrganizationBrandingPtrInput
-	// Connections assigned to the organization. For
-	// details, see Connections
-	//
-	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-	Connections OrganizationConnectionTypeArrayInput
-	// Friendly name of this organization
+	// Friendly name of this organization.
 	DisplayName pulumi.StringPtrInput
-	// Metadata associated with the organization, Maximum of
-	// 10 metadata properties allowed
+	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata pulumi.StringMapInput
-	// The name of this organization
+	// The name of this organization.
 	Name pulumi.StringPtrInput
 }
 
@@ -158,39 +128,25 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
-	// Defines how to style the login pages. For details, see
-	// Branding
+	// Defines how to style the login pages.
 	Branding *OrganizationBranding `pulumi:"branding"`
-	// Connections assigned to the organization. For
-	// details, see Connections
-	//
-	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-	Connections []OrganizationConnectionType `pulumi:"connections"`
-	// Friendly name of this organization
+	// Friendly name of this organization.
 	DisplayName *string `pulumi:"displayName"`
-	// Metadata associated with the organization, Maximum of
-	// 10 metadata properties allowed
+	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata map[string]string `pulumi:"metadata"`
-	// The name of this organization
+	// The name of this organization.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
-	// Defines how to style the login pages. For details, see
-	// Branding
+	// Defines how to style the login pages.
 	Branding OrganizationBrandingPtrInput
-	// Connections assigned to the organization. For
-	// details, see Connections
-	//
-	// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-	Connections OrganizationConnectionTypeArrayInput
-	// Friendly name of this organization
+	// Friendly name of this organization.
 	DisplayName pulumi.StringPtrInput
-	// Metadata associated with the organization, Maximum of
-	// 10 metadata properties allowed
+	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata pulumi.StringMapInput
-	// The name of this organization
+	// The name of this organization.
 	Name pulumi.StringPtrInput
 }
 
@@ -281,32 +237,22 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Defines how to style the login pages. For details, see
-// Branding
+// Defines how to style the login pages.
 func (o OrganizationOutput) Branding() OrganizationBrandingOutput {
 	return o.ApplyT(func(v *Organization) OrganizationBrandingOutput { return v.Branding }).(OrganizationBrandingOutput)
 }
 
-// Connections assigned to the organization. For
-// details, see Connections
-//
-// Deprecated: Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-func (o OrganizationOutput) Connections() OrganizationConnectionTypeArrayOutput {
-	return o.ApplyT(func(v *Organization) OrganizationConnectionTypeArrayOutput { return v.Connections }).(OrganizationConnectionTypeArrayOutput)
-}
-
-// Friendly name of this organization
+// Friendly name of this organization.
 func (o OrganizationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Metadata associated with the organization, Maximum of
-// 10 metadata properties allowed
+// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 func (o OrganizationOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The name of this organization
+// The name of this organization.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

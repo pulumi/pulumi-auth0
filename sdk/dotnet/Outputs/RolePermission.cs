@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class RolePermission
     {
         /// <summary>
-        /// String. Name of the permission (scope).
+        /// Name of the permission (scope).
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// String. Unique identifier for the resource server.
+        /// Unique identifier for the resource server.
         /// </summary>
         public readonly string ResourceServerIdentifier;
 

@@ -13,27 +13,9 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Use this data source to access information about the tenant this provider is configured to access.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// using Auth0 = Pulumi.Auth0;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var current = Auth0.GetTenant.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTenantResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("auth0:index/getTenant:getTenant", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("auth0:index/getTenant:getTenant", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
@@ -41,7 +23,7 @@ namespace Pulumi.Auth0
     public sealed class GetTenantResult
     {
         /// <summary>
-        /// String. Your Auth0 domain name.
+        /// Your Auth0 domain name.
         /// </summary>
         public readonly string Domain;
         /// <summary>
@@ -49,7 +31,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// String. The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
+        /// The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
         /// </summary>
         public readonly string ManagementApiIdentifier;
 

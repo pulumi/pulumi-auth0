@@ -18,10 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to manage branding within your Auth0 tenant.
- * 
- * Auth0 can be customized with a look and feel that aligns with your organization&#39;s brand requirements and user
- * expectations.
+ * This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization&#39;s brand requirements and user expectations.
  * 
  * ## Example Usage
  * ```java
@@ -48,13 +45,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myBrand = new Branding(&#34;myBrand&#34;, BrandingArgs.builder()        
- *             .colors(BrandingColorsArgs.builder()
- *                 .pageBackground(&#34;#000000&#34;)
- *                 .primary(&#34;#0059d6&#34;)
- *                 .build())
  *             .logoUrl(&#34;https://mycompany.org/logo.png&#34;)
+ *             .colors(BrandingColorsArgs.builder()
+ *                 .primary(&#34;#0059d6&#34;)
+ *                 .pageBackground(&#34;#000000&#34;)
+ *                 .build())
  *             .universalLogin(BrandingUniversalLoginArgs.builder()
- *                 .body(&#34;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;{%- auth0:head -%}&lt;/head&gt;&lt;body&gt;{%- auth0:widget -%}&lt;/body&gt;&lt;/html&gt;&#34;)
+ *                 .body(Files.readString(Paths.get(&#34;universal_login_body.html&#34;)))
  *                 .build())
  *             .build());
  * 
@@ -62,78 +59,82 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, branding can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
+ * 
+ * ```sh
+ *  $ pulumi import auth0:index/branding:Branding my_brand 22f4f21b-017a-319d-92e7-2291c1ca36c4
+ * ```
+ * 
  */
 @ResourceType(type="auth0:index/branding:Branding")
 public class Branding extends com.pulumi.resources.CustomResource {
     /**
-     * List(Resource). Configuration settings for colors for branding. See Colors.
+     * Configuration settings for colors for branding.
      * 
      */
     @Export(name="colors", type=BrandingColors.class, parameters={})
     private Output</* @Nullable */ BrandingColors> colors;
 
     /**
-     * @return List(Resource). Configuration settings for colors for branding. See Colors.
+     * @return Configuration settings for colors for branding.
      * 
      */
     public Output<Optional<BrandingColors>> colors() {
         return Codegen.optional(this.colors);
     }
     /**
-     * String. URL for the favicon.
+     * URL for the favicon.
      * 
      */
     @Export(name="faviconUrl", type=String.class, parameters={})
     private Output<String> faviconUrl;
 
     /**
-     * @return String. URL for the favicon.
+     * @return URL for the favicon.
      * 
      */
     public Output<String> faviconUrl() {
         return this.faviconUrl;
     }
     /**
-     * List(Resource). Configuration settings to customize the font. See Font.
+     * Configuration settings to customize the font.
      * 
      */
     @Export(name="font", type=BrandingFont.class, parameters={})
     private Output</* @Nullable */ BrandingFont> font;
 
     /**
-     * @return List(Resource). Configuration settings to customize the font. See Font.
+     * @return Configuration settings to customize the font.
      * 
      */
     public Output<Optional<BrandingFont>> font() {
         return Codegen.optional(this.font);
     }
     /**
-     * String. URL of logo for branding.
+     * URL of logo for branding.
      * 
      */
     @Export(name="logoUrl", type=String.class, parameters={})
     private Output<String> logoUrl;
 
     /**
-     * @return String. URL of logo for branding.
+     * @return URL of logo for branding.
      * 
      */
     public Output<String> logoUrl() {
         return this.logoUrl;
     }
     /**
-     * List(Resource). Configuration settings for Universal Login.
-     * See Universal Login. This capability can only be used if the tenant has
-     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * Configuration settings for Universal Login.
      * 
      */
     @Export(name="universalLogin", type=BrandingUniversalLogin.class, parameters={})
     private Output</* @Nullable */ BrandingUniversalLogin> universalLogin;
 
     /**
-     * @return List(Resource). Configuration settings for Universal Login.
-     * See Universal Login. This capability can only be used if the tenant has
-     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * @return Configuration settings for Universal Login.
      * 
      */
     public Output<Optional<BrandingUniversalLogin>> universalLogin() {

@@ -15,32 +15,16 @@ public final class ConnectionOptionsTotpArgs extends com.pulumi.resources.Resour
 
     public static final ConnectionOptionsTotpArgs Empty = new ConnectionOptionsTotpArgs();
 
-    /**
-     * Integer. Length of the one-time password.
-     * 
-     */
     @Import(name="length")
     private @Nullable Output<Integer> length;
 
-    /**
-     * @return Integer. Length of the one-time password.
-     * 
-     */
     public Optional<Output<Integer>> length() {
         return Optional.ofNullable(this.length);
     }
 
-    /**
-     * Integer. Seconds between allowed generation of new passwords.
-     * 
-     */
     @Import(name="timeStep")
     private @Nullable Output<Integer> timeStep;
 
-    /**
-     * @return Integer. Seconds between allowed generation of new passwords.
-     * 
-     */
     public Optional<Output<Integer>> timeStep() {
         return Optional.ofNullable(this.timeStep);
     }
@@ -70,44 +54,20 @@ public final class ConnectionOptionsTotpArgs extends com.pulumi.resources.Resour
             $ = new ConnectionOptionsTotpArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param length Integer. Length of the one-time password.
-         * 
-         * @return builder
-         * 
-         */
         public Builder length(@Nullable Output<Integer> length) {
             $.length = length;
             return this;
         }
 
-        /**
-         * @param length Integer. Length of the one-time password.
-         * 
-         * @return builder
-         * 
-         */
         public Builder length(Integer length) {
             return length(Output.of(length));
         }
 
-        /**
-         * @param timeStep Integer. Seconds between allowed generation of new passwords.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeStep(@Nullable Output<Integer> timeStep) {
             $.timeStep = timeStep;
             return this;
         }
 
-        /**
-         * @param timeStep Integer. Seconds between allowed generation of new passwords.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeStep(Integer timeStep) {
             return timeStep(Output.of(timeStep));
         }

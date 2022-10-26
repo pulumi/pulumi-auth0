@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized
- * access. With this resource you can configure some options available for MFA.
+ * Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
  *
  * ## Example Usage
  *
@@ -59,10 +59,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/guardian:Guardian default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+ *  $ pulumi import auth0:index/guardian:Guardian my_guardian 24940d4b-4bd4-44e7-894e-f92e4de36a40
  * ```
  */
 export class Guardian extends pulumi.CustomResource {
@@ -94,47 +94,39 @@ export class Guardian extends pulumi.CustomResource {
     }
 
     /**
-     * List(Resource). Configuration settings for the Duo MFA.
-     * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+     * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      */
     public readonly duo!: pulumi.Output<outputs.GuardianDuo | undefined>;
     /**
-     * Boolean. Indicates whether email MFA is enabled.
+     * Indicates whether email MFA is enabled.
      */
     public readonly email!: pulumi.Output<boolean | undefined>;
     /**
-     * Boolean. Indicates whether one time password MFA is enabled.
+     * Indicates whether one time password MFA is enabled.
      */
     public readonly otp!: pulumi.Output<boolean | undefined>;
     /**
-     * List(Resource). Configuration settings for the phone MFA. 
-     * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+     * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
     public readonly phone!: pulumi.Output<outputs.GuardianPhone | undefined>;
     /**
-     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-     * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+     * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
     public readonly policy!: pulumi.Output<string>;
     /**
-     * List(Resource). Configuration settings for the Push MFA.
-     * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+     * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      */
     public readonly push!: pulumi.Output<outputs.GuardianPush | undefined>;
     /**
-     * Boolean. Indicates whether recovery code MFA is enabled.
+     * Indicates whether recovery code MFA is enabled.
      */
     public readonly recoveryCode!: pulumi.Output<boolean | undefined>;
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-     * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Platform.
+     * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
     public readonly webauthnPlatform!: pulumi.Output<outputs.GuardianWebauthnPlatform | undefined>;
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-     * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Roaming.
+     * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      */
     public readonly webauthnRoaming!: pulumi.Output<outputs.GuardianWebauthnRoaming | undefined>;
 
@@ -185,47 +177,39 @@ export class Guardian extends pulumi.CustomResource {
  */
 export interface GuardianState {
     /**
-     * List(Resource). Configuration settings for the Duo MFA.
-     * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+     * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      */
     duo?: pulumi.Input<inputs.GuardianDuo>;
     /**
-     * Boolean. Indicates whether email MFA is enabled.
+     * Indicates whether email MFA is enabled.
      */
     email?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether one time password MFA is enabled.
+     * Indicates whether one time password MFA is enabled.
      */
     otp?: pulumi.Input<boolean>;
     /**
-     * List(Resource). Configuration settings for the phone MFA. 
-     * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+     * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
     phone?: pulumi.Input<inputs.GuardianPhone>;
     /**
-     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-     * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+     * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
     policy?: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings for the Push MFA.
-     * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+     * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      */
     push?: pulumi.Input<inputs.GuardianPush>;
     /**
-     * Boolean. Indicates whether recovery code MFA is enabled.
+     * Indicates whether recovery code MFA is enabled.
      */
     recoveryCode?: pulumi.Input<boolean>;
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-     * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Platform.
+     * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
     webauthnPlatform?: pulumi.Input<inputs.GuardianWebauthnPlatform>;
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-     * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Roaming.
+     * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      */
     webauthnRoaming?: pulumi.Input<inputs.GuardianWebauthnRoaming>;
 }
@@ -235,47 +219,39 @@ export interface GuardianState {
  */
 export interface GuardianArgs {
     /**
-     * List(Resource). Configuration settings for the Duo MFA.
-     * If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+     * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      */
     duo?: pulumi.Input<inputs.GuardianDuo>;
     /**
-     * Boolean. Indicates whether email MFA is enabled.
+     * Indicates whether email MFA is enabled.
      */
     email?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether one time password MFA is enabled.
+     * Indicates whether one time password MFA is enabled.
      */
     otp?: pulumi.Input<boolean>;
     /**
-     * List(Resource). Configuration settings for the phone MFA. 
-     * If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+     * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
     phone?: pulumi.Input<inputs.GuardianPhone>;
     /**
-     * String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-     * The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+     * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
     policy: pulumi.Input<string>;
     /**
-     * List(Resource). Configuration settings for the Push MFA.
-     * If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+     * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      */
     push?: pulumi.Input<inputs.GuardianPush>;
     /**
-     * Boolean. Indicates whether recovery code MFA is enabled.
+     * Indicates whether recovery code MFA is enabled.
      */
     recoveryCode?: pulumi.Input<boolean>;
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-     * If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Platform.
+     * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
     webauthnPlatform?: pulumi.Input<inputs.GuardianWebauthnPlatform>;
     /**
-     * List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-     * If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-     * For details, see WebAuthn Roaming.
+     * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      */
     webauthnRoaming?: pulumi.Input<inputs.GuardianWebauthnRoaming>;
 }

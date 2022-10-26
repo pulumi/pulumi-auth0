@@ -16,32 +16,16 @@ public final class ConnectionOptionsPasswordHistoryArgs extends com.pulumi.resou
 
     public static final ConnectionOptionsPasswordHistoryArgs Empty = new ConnectionOptionsPasswordHistoryArgs();
 
-    /**
-     * Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-     * 
-     */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
-    /**
-     * @return Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-     * 
-     */
     public Optional<Output<Boolean>> enable() {
         return Optional.ofNullable(this.enable);
     }
 
-    /**
-     * Indicates the number of passwords to keep in history with a maximum of 24.
-     * 
-     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
-    /**
-     * @return Indicates the number of passwords to keep in history with a maximum of 24.
-     * 
-     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -71,44 +55,20 @@ public final class ConnectionOptionsPasswordHistoryArgs extends com.pulumi.resou
             $ = new ConnectionOptionsPasswordHistoryArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enable Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enable(@Nullable Output<Boolean> enable) {
             $.enable = enable;
             return this;
         }
 
-        /**
-         * @param enable Indicates whether password history is enabled for the connection. When enabled, any existing users in this connection will be unaffected; the system will maintain their password history going forward.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
         }
 
-        /**
-         * @param size Indicates the number of passwords to keep in history with a maximum of 24.
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
-        /**
-         * @param size Indicates the number of passwords to keep in history with a maximum of 24.
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

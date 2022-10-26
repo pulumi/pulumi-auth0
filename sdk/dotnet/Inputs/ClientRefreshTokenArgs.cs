@@ -13,43 +13,43 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientRefreshTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        /// Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
         /// </summary>
         [Input("expirationType", required: true)]
         public Input<string> ExpirationType { get; set; } = null!;
 
         /// <summary>
-        /// Integer. The time in seconds after which inactive refresh tokens will expire.
+        /// The time in seconds after which inactive refresh tokens will expire.
         /// </summary>
         [Input("idleTokenLifetime")]
         public Input<int>? IdleTokenLifetime { get; set; }
 
         /// <summary>
-        /// Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+        /// Whether inactive refresh tokens should remain valid indefinitely.
         /// </summary>
         [Input("infiniteIdleTokenLifetime")]
         public Input<bool>? InfiniteIdleTokenLifetime { get; set; }
 
         /// <summary>
-        /// Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+        /// Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
         /// </summary>
         [Input("infiniteTokenLifetime")]
         public Input<bool>? InfiniteTokenLifetime { get; set; }
 
         /// <summary>
-        /// Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+        /// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
         /// </summary>
         [Input("leeway")]
         public Input<int>? Leeway { get; set; }
 
         /// <summary>
-        /// String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        /// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
         /// </summary>
         [Input("rotationType", required: true)]
         public Input<string> RotationType { get; set; } = null!;
 
         /// <summary>
-        /// Integer. The absolute lifetime of a refresh token in seconds.
+        /// The absolute lifetime of a refresh token in seconds.
         /// </summary>
         [Input("tokenLifetime")]
         public Input<int>? TokenLifetime { get; set; }

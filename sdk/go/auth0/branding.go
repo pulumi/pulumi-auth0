@@ -10,10 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage branding within your Auth0 tenant.
-//
-// Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user
-// expectations.
+// This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
 //
 // ## Example Usage
 //
@@ -22,23 +19,31 @@ import (
 //
 // import (
 //
-//	"fmt"
+//	"io/ioutil"
 //
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewBranding(ctx, "myBrand", &auth0.BrandingArgs{
-//				Colors: &BrandingColorsArgs{
-//					PageBackground: pulumi.String("#000000"),
-//					Primary:        pulumi.String("#0059d6"),
-//				},
 //				LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
+//				Colors: &BrandingColorsArgs{
+//					Primary:        pulumi.String("#0059d6"),
+//					PageBackground: pulumi.String("#000000"),
+//				},
 //				UniversalLogin: &BrandingUniversalLoginArgs{
-//					Body: pulumi.String(fmt.Sprintf("<!DOCTYPE html><html><head>{%v- auth0:head -%v}</head><body>{%v- auth0:widget -%v}</body></html>", "%", "%", "%", "%")),
+//					Body: readFileOrPanic("universal_login_body.html"),
 //				},
 //			})
 //			if err != nil {
@@ -49,20 +54,28 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// As this is not a resource identifiable by an ID within the Auth0 Management API, branding can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
+//
+// ```sh
+//
+//	$ pulumi import auth0:index/branding:Branding my_brand 22f4f21b-017a-319d-92e7-2291c1ca36c4
+//
+// ```
 type Branding struct {
 	pulumi.CustomResourceState
 
-	// List(Resource). Configuration settings for colors for branding. See Colors.
+	// Configuration settings for colors for branding.
 	Colors BrandingColorsPtrOutput `pulumi:"colors"`
-	// String. URL for the favicon.
+	// URL for the favicon.
 	FaviconUrl pulumi.StringOutput `pulumi:"faviconUrl"`
-	// List(Resource). Configuration settings to customize the font. See Font.
+	// Configuration settings to customize the font.
 	Font BrandingFontPtrOutput `pulumi:"font"`
-	// String. URL of logo for branding.
+	// URL of logo for branding.
 	LogoUrl pulumi.StringOutput `pulumi:"logoUrl"`
-	// List(Resource). Configuration settings for Universal Login.
-	// See Universal Login. This capability can only be used if the tenant has
-	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// Configuration settings for Universal Login.
 	UniversalLogin BrandingUniversalLoginPtrOutput `pulumi:"universalLogin"`
 }
 
@@ -95,32 +108,28 @@ func GetBranding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Branding resources.
 type brandingState struct {
-	// List(Resource). Configuration settings for colors for branding. See Colors.
+	// Configuration settings for colors for branding.
 	Colors *BrandingColors `pulumi:"colors"`
-	// String. URL for the favicon.
+	// URL for the favicon.
 	FaviconUrl *string `pulumi:"faviconUrl"`
-	// List(Resource). Configuration settings to customize the font. See Font.
+	// Configuration settings to customize the font.
 	Font *BrandingFont `pulumi:"font"`
-	// String. URL of logo for branding.
+	// URL of logo for branding.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// List(Resource). Configuration settings for Universal Login.
-	// See Universal Login. This capability can only be used if the tenant has
-	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// Configuration settings for Universal Login.
 	UniversalLogin *BrandingUniversalLogin `pulumi:"universalLogin"`
 }
 
 type BrandingState struct {
-	// List(Resource). Configuration settings for colors for branding. See Colors.
+	// Configuration settings for colors for branding.
 	Colors BrandingColorsPtrInput
-	// String. URL for the favicon.
+	// URL for the favicon.
 	FaviconUrl pulumi.StringPtrInput
-	// List(Resource). Configuration settings to customize the font. See Font.
+	// Configuration settings to customize the font.
 	Font BrandingFontPtrInput
-	// String. URL of logo for branding.
+	// URL of logo for branding.
 	LogoUrl pulumi.StringPtrInput
-	// List(Resource). Configuration settings for Universal Login.
-	// See Universal Login. This capability can only be used if the tenant has
-	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// Configuration settings for Universal Login.
 	UniversalLogin BrandingUniversalLoginPtrInput
 }
 
@@ -129,33 +138,29 @@ func (BrandingState) ElementType() reflect.Type {
 }
 
 type brandingArgs struct {
-	// List(Resource). Configuration settings for colors for branding. See Colors.
+	// Configuration settings for colors for branding.
 	Colors *BrandingColors `pulumi:"colors"`
-	// String. URL for the favicon.
+	// URL for the favicon.
 	FaviconUrl *string `pulumi:"faviconUrl"`
-	// List(Resource). Configuration settings to customize the font. See Font.
+	// Configuration settings to customize the font.
 	Font *BrandingFont `pulumi:"font"`
-	// String. URL of logo for branding.
+	// URL of logo for branding.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// List(Resource). Configuration settings for Universal Login.
-	// See Universal Login. This capability can only be used if the tenant has
-	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// Configuration settings for Universal Login.
 	UniversalLogin *BrandingUniversalLogin `pulumi:"universalLogin"`
 }
 
 // The set of arguments for constructing a Branding resource.
 type BrandingArgs struct {
-	// List(Resource). Configuration settings for colors for branding. See Colors.
+	// Configuration settings for colors for branding.
 	Colors BrandingColorsPtrInput
-	// String. URL for the favicon.
+	// URL for the favicon.
 	FaviconUrl pulumi.StringPtrInput
-	// List(Resource). Configuration settings to customize the font. See Font.
+	// Configuration settings to customize the font.
 	Font BrandingFontPtrInput
-	// String. URL of logo for branding.
+	// URL of logo for branding.
 	LogoUrl pulumi.StringPtrInput
-	// List(Resource). Configuration settings for Universal Login.
-	// See Universal Login. This capability can only be used if the tenant has
-	// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+	// Configuration settings for Universal Login.
 	UniversalLogin BrandingUniversalLoginPtrInput
 }
 
@@ -246,29 +251,27 @@ func (o BrandingOutput) ToBrandingOutputWithContext(ctx context.Context) Brandin
 	return o
 }
 
-// List(Resource). Configuration settings for colors for branding. See Colors.
+// Configuration settings for colors for branding.
 func (o BrandingOutput) Colors() BrandingColorsPtrOutput {
 	return o.ApplyT(func(v *Branding) BrandingColorsPtrOutput { return v.Colors }).(BrandingColorsPtrOutput)
 }
 
-// String. URL for the favicon.
+// URL for the favicon.
 func (o BrandingOutput) FaviconUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Branding) pulumi.StringOutput { return v.FaviconUrl }).(pulumi.StringOutput)
 }
 
-// List(Resource). Configuration settings to customize the font. See Font.
+// Configuration settings to customize the font.
 func (o BrandingOutput) Font() BrandingFontPtrOutput {
 	return o.ApplyT(func(v *Branding) BrandingFontPtrOutput { return v.Font }).(BrandingFontPtrOutput)
 }
 
-// String. URL of logo for branding.
+// URL of logo for branding.
 func (o BrandingOutput) LogoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Branding) pulumi.StringOutput { return v.LogoUrl }).(pulumi.StringOutput)
 }
 
-// List(Resource). Configuration settings for Universal Login.
-// See Universal Login. This capability can only be used if the tenant has
-// [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+// Configuration settings for Universal Login.
 func (o BrandingOutput) UniversalLogin() BrandingUniversalLoginPtrOutput {
 	return o.ApplyT(func(v *Branding) BrandingUniversalLoginPtrOutput { return v.UniversalLogin }).(BrandingUniversalLoginPtrOutput)
 }

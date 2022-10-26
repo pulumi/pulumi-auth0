@@ -14,10 +14,6 @@ namespace Pulumi.Auth0.Inputs
     {
         [Input("aws")]
         private InputMap<object>? _aws;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Aws
         {
             get => _aws ?? (_aws = new InputMap<object>());
@@ -26,10 +22,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("azureBlob")]
         private InputMap<object>? _azureBlob;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> AzureBlob
         {
             get => _azureBlob ?? (_azureBlob = new InputMap<object>());
@@ -38,10 +30,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("azureSb")]
         private InputMap<object>? _azureSb;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> AzureSb
         {
             get => _azureSb ?? (_azureSb = new InputMap<object>());
@@ -50,10 +38,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("box")]
         private InputMap<object>? _box;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Box
         {
             get => _box ?? (_box = new InputMap<object>());
@@ -62,10 +46,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("cloudbees")]
         private InputMap<object>? _cloudbees;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Cloudbees
         {
             get => _cloudbees ?? (_cloudbees = new InputMap<object>());
@@ -74,10 +54,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("concur")]
         private InputMap<object>? _concur;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Concur
         {
             get => _concur ?? (_concur = new InputMap<object>());
@@ -86,10 +62,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("dropbox")]
         private InputMap<object>? _dropbox;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Dropbox
         {
             get => _dropbox ?? (_dropbox = new InputMap<object>());
@@ -98,10 +70,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("echosign")]
         private InputMap<object>? _echosign;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Echosign
         {
             get => _echosign ?? (_echosign = new InputMap<object>());
@@ -110,10 +78,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("egnyte")]
         private InputMap<object>? _egnyte;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Egnyte
         {
             get => _egnyte ?? (_egnyte = new InputMap<object>());
@@ -122,10 +86,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("firebase")]
         private InputMap<object>? _firebase;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Firebase
         {
             get => _firebase ?? (_firebase = new InputMap<object>());
@@ -134,10 +94,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("layer")]
         private InputMap<object>? _layer;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Layer
         {
             get => _layer ?? (_layer = new InputMap<object>());
@@ -146,10 +102,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("mscrm")]
         private InputMap<object>? _mscrm;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Mscrm
         {
             get => _mscrm ?? (_mscrm = new InputMap<object>());
@@ -158,10 +110,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("newrelic")]
         private InputMap<object>? _newrelic;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Newrelic
         {
             get => _newrelic ?? (_newrelic = new InputMap<object>());
@@ -170,10 +118,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("office365")]
         private InputMap<object>? _office365;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Office365
         {
             get => _office365 ?? (_office365 = new InputMap<object>());
@@ -182,10 +126,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("rms")]
         private InputMap<object>? _rms;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Rms
         {
             get => _rms ?? (_rms = new InputMap<object>());
@@ -194,10 +134,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("salesforce")]
         private InputMap<object>? _salesforce;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Salesforce
         {
             get => _salesforce ?? (_salesforce = new InputMap<object>());
@@ -206,10 +142,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("salesforceApi")]
         private InputMap<object>? _salesforceApi;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> SalesforceApi
         {
             get => _salesforceApi ?? (_salesforceApi = new InputMap<object>());
@@ -218,10 +150,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("salesforceSandboxApi")]
         private InputMap<object>? _salesforceSandboxApi;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> SalesforceSandboxApi
         {
             get => _salesforceSandboxApi ?? (_salesforceSandboxApi = new InputMap<object>());
@@ -229,17 +157,13 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+        /// Configuration settings for a SAML add-on.
         /// </summary>
         [Input("samlp")]
         public Input<Inputs.ClientAddonsSamlpGetArgs>? Samlp { get; set; }
 
         [Input("sapApi")]
         private InputMap<object>? _sapApi;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> SapApi
         {
             get => _sapApi ?? (_sapApi = new InputMap<object>());
@@ -248,10 +172,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("sentry")]
         private InputMap<object>? _sentry;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Sentry
         {
             get => _sentry ?? (_sentry = new InputMap<object>());
@@ -260,10 +180,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("sharepoint")]
         private InputMap<object>? _sharepoint;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Sharepoint
         {
             get => _sharepoint ?? (_sharepoint = new InputMap<object>());
@@ -272,10 +188,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("slack")]
         private InputMap<object>? _slack;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Slack
         {
             get => _slack ?? (_slack = new InputMap<object>());
@@ -284,10 +196,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("springcm")]
         private InputMap<object>? _springcm;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Springcm
         {
             get => _springcm ?? (_springcm = new InputMap<object>());
@@ -296,10 +204,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("wams")]
         private InputMap<object>? _wams;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Wams
         {
             get => _wams ?? (_wams = new InputMap<object>());
@@ -310,7 +214,7 @@ namespace Pulumi.Auth0.Inputs
         private InputMap<object>? _wsfed;
 
         /// <summary>
-        /// String
+        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
         /// </summary>
         public InputMap<object> Wsfed
         {
@@ -320,10 +224,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("zendesk")]
         private InputMap<object>? _zendesk;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Zendesk
         {
             get => _zendesk ?? (_zendesk = new InputMap<object>());
@@ -332,10 +232,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("zoom")]
         private InputMap<object>? _zoom;
-
-        /// <summary>
-        /// String
-        /// </summary>
         public InputMap<object> Zoom
         {
             get => _zoom ?? (_zoom = new InputMap<object>());

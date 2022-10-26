@@ -34,14 +34,14 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     }
 
     /**
-     * Whether or not breached password detection is active.
+     * Whether brute force attack protections are active.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether brute force attack protections are active.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -64,14 +64,14 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     }
 
     /**
-     * Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+     * Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -79,14 +79,14 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     }
 
     /**
-     * Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
      * 
      */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
      * 
      */
     public Optional<Output<List<String>>> shields() {
@@ -153,7 +153,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Whether or not breached password detection is active.
+         * @param enabled Whether brute force attack protections are active.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Whether or not breached password detection is active.
+         * @param enabled Whether brute force attack protections are active.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param mode Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param mode Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
          * 
          * @return builder
          * 

@@ -25,6 +25,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.Role;
+ * import com.pulumi.auth0.User;
+ * import com.pulumi.auth0.UserArgs;
+ * import com.pulumi.auth0.Organization;
+ * import com.pulumi.auth0.OrganizationArgs;
  * import com.pulumi.auth0.OrganizationMember;
  * import com.pulumi.auth0.OrganizationMemberArgs;
  * import java.util.List;
@@ -40,10 +45,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var acmeAdmin = new OrganizationMember(&#34;acmeAdmin&#34;, OrganizationMemberArgs.builder()        
- *             .organizationId(auth0_organization.acme().id())
- *             .userId(auth0_user.acme_user().id())
- *             .roles(auth0_role.admin().id())
+ *         var reader = new Role(&#34;reader&#34;);
+ * 
+ *         var admin = new Role(&#34;admin&#34;);
+ * 
+ *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .email(&#34;test-user@auth0.com&#34;)
+ *             .connectionName(&#34;Username-Password-Authentication&#34;)
+ *             .emailVerified(true)
+ *             .password(&#34;MyPass123$&#34;)
+ *             .build());
+ * 
+ *         var myOrg = new Organization(&#34;myOrg&#34;, OrganizationArgs.builder()        
+ *             .displayName(&#34;Admin&#34;)
+ *             .build());
+ * 
+ *         var myOrgMember = new OrganizationMember(&#34;myOrgMember&#34;, OrganizationMemberArgs.builder()        
+ *             .organizationId(myOrg.id())
+ *             .userId(user.id())
+ *             .roles(            
+ *                 reader.id(),
+ *                 admin.id())
  *             .build());
  * 
  *     }
@@ -52,52 +74,52 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * This resource can be imported by specifying the organization ID and user ID separated by &#34;:&#34;. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/organizationMember:OrganizationMember acme_admin 11f4a21b-011a-312d-9217-e291caca36c5
+ *  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member &#34;org_XXXXX:auth0|XXXXX&#34;
  * ```
  * 
  */
 @ResourceType(type="auth0:index/organizationMember:OrganizationMember")
 public class OrganizationMember extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the organization
+     * The ID of the organization to assign the member to.
      * 
      */
     @Export(name="organizationId", type=String.class, parameters={})
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization
+     * @return The ID of the organization to assign the member to.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * Set(string). List of role IDs to assign to member.
+     * The role ID(s) to assign to the organization member.
      * 
      */
     @Export(name="roles", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> roles;
 
     /**
-     * @return Set(string). List of role IDs to assign to member.
+     * @return The role ID(s) to assign to the organization member.
      * 
      */
     public Output<Optional<List<String>>> roles() {
         return Codegen.optional(this.roles);
     }
     /**
-     * The user ID of the member
+     * ID of the user to add as an organization member.
      * 
      */
     @Export(name="userId", type=String.class, parameters={})
     private Output<String> userId;
 
     /**
-     * @return The user ID of the member
+     * @return ID of the user to add as an organization member.
      * 
      */
     public Output<String> userId() {

@@ -10,12 +10,35 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 apiToken: Optional[str]
+"""
+Your Auth0 [management api access
+token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+specified, `api_token` will be used over `client_id` + `client_secret` fields.
+"""
+
+audience: Optional[str]
+"""
+Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+"""
 
 clientId: Optional[str]
+"""
+Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+"""
 
 clientSecret: Optional[str]
+"""
+Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+"""
 
 debug: Optional[bool]
+"""
+Indicates whether to turn on debug mode.
+"""
 
 domain: Optional[str]
+"""
+Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+"""
 

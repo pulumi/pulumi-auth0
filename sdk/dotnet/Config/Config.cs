@@ -30,16 +30,35 @@ namespace Pulumi.Auth0
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("auth0");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("auth0");
 
         private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
+        /// <summary>
+        /// Your Auth0 [management api access
+        /// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+        /// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+        /// specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        /// </summary>
         public static string? ApiToken
         {
             get => _apiToken.Get();
             set => _apiToken.Set(value);
         }
 
+        private static readonly __Value<string?> _audience = new __Value<string?>(() => __config.Get("audience"));
+        /// <summary>
+        /// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+        /// </summary>
+        public static string? Audience
+        {
+            get => _audience.Get();
+            set => _audience.Set(value);
+        }
+
         private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
+        /// <summary>
+        /// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+        /// </summary>
         public static string? ClientId
         {
             get => _clientId.Get();
@@ -47,6 +66,9 @@ namespace Pulumi.Auth0
         }
 
         private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret"));
+        /// <summary>
+        /// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+        /// </summary>
         public static string? ClientSecret
         {
             get => _clientSecret.Get();
@@ -54,6 +76,9 @@ namespace Pulumi.Auth0
         }
 
         private static readonly __Value<bool?> _debug = new __Value<bool?>(() => __config.GetBoolean("debug") ?? Utilities.GetEnvBoolean("AUTH0_DEBUG"));
+        /// <summary>
+        /// Indicates whether to turn on debug mode.
+        /// </summary>
         public static bool? Debug
         {
             get => _debug.Get();
@@ -61,6 +86,9 @@ namespace Pulumi.Auth0
         }
 
         private static readonly __Value<string?> _domain = new __Value<string?>(() => __config.Get("domain"));
+        /// <summary>
+        /// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+        /// </summary>
         public static string? Domain
         {
             get => _domain.Get();

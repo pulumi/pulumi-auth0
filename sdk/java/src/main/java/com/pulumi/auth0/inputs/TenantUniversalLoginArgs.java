@@ -16,14 +16,14 @@ public final class TenantUniversalLoginArgs extends com.pulumi.resources.Resourc
     public static final TenantUniversalLoginArgs Empty = new TenantUniversalLoginArgs();
 
     /**
-     * List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+     * Configuration settings for Universal Login colors.
      * 
      */
     @Import(name="colors")
     private @Nullable Output<TenantUniversalLoginColorsArgs> colors;
 
     /**
-     * @return List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+     * @return Configuration settings for Universal Login colors.
      * 
      */
     public Optional<Output<TenantUniversalLoginColorsArgs>> colors() {
@@ -55,7 +55,7 @@ public final class TenantUniversalLoginArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param colors List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+         * @param colors Configuration settings for Universal Login colors.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TenantUniversalLoginArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param colors List(Resource). Configuration settings for Universal Login colors. See Universal Login - Colors.
+         * @param colors Configuration settings for Universal Login colors.
          * 
          * @return builder
          * 

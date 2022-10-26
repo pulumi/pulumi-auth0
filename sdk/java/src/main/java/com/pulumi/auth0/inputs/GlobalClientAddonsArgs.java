@@ -144,9 +144,17 @@ public final class GlobalClientAddonsArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.salesforceSandboxApi);
     }
 
+    /**
+     * Configuration settings for a SAML add-on.
+     * 
+     */
     @Import(name="samlp")
     private @Nullable Output<GlobalClientAddonsSamlpArgs> samlp;
 
+    /**
+     * @return Configuration settings for a SAML add-on.
+     * 
+     */
     public Optional<Output<GlobalClientAddonsSamlpArgs>> samlp() {
         return Optional.ofNullable(this.samlp);
     }
@@ -193,9 +201,17 @@ public final class GlobalClientAddonsArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.wams);
     }
 
+    /**
+     * WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+     * 
+     */
     @Import(name="wsfed")
     private @Nullable Output<Map<String,Object>> wsfed;
 
+    /**
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> wsfed() {
         return Optional.ofNullable(this.wsfed);
     }
@@ -427,11 +443,23 @@ public final class GlobalClientAddonsArgs extends com.pulumi.resources.ResourceA
             return salesforceSandboxApi(Output.of(salesforceSandboxApi));
         }
 
+        /**
+         * @param samlp Configuration settings for a SAML add-on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder samlp(@Nullable Output<GlobalClientAddonsSamlpArgs> samlp) {
             $.samlp = samlp;
             return this;
         }
 
+        /**
+         * @param samlp Configuration settings for a SAML add-on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder samlp(GlobalClientAddonsSamlpArgs samlp) {
             return samlp(Output.of(samlp));
         }
@@ -490,11 +518,23 @@ public final class GlobalClientAddonsArgs extends com.pulumi.resources.ResourceA
             return wams(Output.of(wams));
         }
 
+        /**
+         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+         * 
+         * @return builder
+         * 
+         */
         public Builder wsfed(@Nullable Output<Map<String,Object>> wsfed) {
             $.wsfed = wsfed;
             return this;
         }
 
+        /**
+         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+         * 
+         * @return builder
+         * 
+         */
         public Builder wsfed(Map<String,Object> wsfed) {
             return wsfed(Output.of(wsfed));
         }

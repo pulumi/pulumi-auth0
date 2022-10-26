@@ -21,7 +21,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
      */
     private @Nullable List<String> allowlists;
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether suspicious IP throttling attack protections are active.
      * 
      */
     private @Nullable Boolean enabled;
@@ -36,7 +36,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
      */
     private @Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration;
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
      * 
      */
     private @Nullable List<String> shields;
@@ -50,7 +50,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
         return this.allowlists == null ? List.of() : this.allowlists;
     }
     /**
-     * @return Whether or not breached password detection is active.
+     * @return Whether suspicious IP throttling attack protections are active.
      * 
      */
     public Optional<Boolean> enabled() {
@@ -71,7 +71,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
         return Optional.ofNullable(this.preUserRegistration);
     }
     /**
-     * @return Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block`, `admin_notification`
      * 
      */
     public List<String> shields() {

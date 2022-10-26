@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GuardianPush {
+    /**
+     * @return Configuration for Amazon SNS.
+     * 
+     */
     private @Nullable GuardianPushAmazonSns amazonSns;
+    /**
+     * @return Configuration for the Guardian Custom App.
+     * 
+     */
     private @Nullable GuardianPushCustomApp customApp;
 
     private GuardianPush() {}
+    /**
+     * @return Configuration for Amazon SNS.
+     * 
+     */
     public Optional<GuardianPushAmazonSns> amazonSns() {
         return Optional.ofNullable(this.amazonSns);
     }
+    /**
+     * @return Configuration for the Guardian Custom App.
+     * 
+     */
     public Optional<GuardianPushCustomApp> customApp() {
         return Optional.ofNullable(this.customApp);
     }

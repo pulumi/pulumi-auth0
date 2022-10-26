@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking,
- * and deleting users.
+ * With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
  *
  * ## Example Usage
  *
@@ -19,19 +18,18 @@ import * as utilities from "./utilities";
  *     connectionName: "Username-Password-Authentication",
  *     userId: "12345",
  *     username: "unique_username",
- *     givenName: "Firstname",
- *     familyName: "Lastname",
  *     nickname: "some.nickname",
  *     email: "test@test.com",
  *     emailVerified: true,
  *     password: `passpass$12$12`,
+ *     picture: "https://www.example.com/a-valid-picture-url.jpg",
  *     roles: [admin.id],
  * });
  * ```
  *
  * ## Import
  *
- * auth0_user can be imported using the user ID, e.g.
+ * This resource can be imported using the user ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/user:User user auth0|111111111111111111111111
@@ -66,60 +64,75 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+     * Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      */
     public readonly appMetadata!: pulumi.Output<string | undefined>;
+    /**
+     * Indicates whether the user is blocked or not.
+     */
     public readonly blocked!: pulumi.Output<boolean | undefined>;
     /**
-     * String. Name of the connection from which the user information was sourced.
+     * Name of the connection from which the user information was sourced.
      */
     public readonly connectionName!: pulumi.Output<string>;
     /**
-     * String. Email address of the user.
+     * Email address of the user.
      */
     public readonly email!: pulumi.Output<string | undefined>;
     /**
-     * Boolean. Indicates whether the email address has been verified.
+     * Indicates whether the email address has been verified.
      */
     public readonly emailVerified!: pulumi.Output<boolean | undefined>;
+    /**
+     * Family name of the user.
+     */
     public readonly familyName!: pulumi.Output<string | undefined>;
+    /**
+     * Given name of the user.
+     */
     public readonly givenName!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the user.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * String. Preferred nickname or alias of the user.
+     * Preferred nickname or alias of the user.
      */
     public readonly nickname!: pulumi.Output<string>;
     /**
-     * String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+     * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     public readonly phoneNumber!: pulumi.Output<string | undefined>;
     /**
-     * Boolean. Indicates whether the phone number has been verified.
+     * Indicates whether the phone number has been verified.
      */
     public readonly phoneVerified!: pulumi.Output<boolean | undefined>;
+    /**
+     * Picture of the user.
+     */
     public readonly picture!: pulumi.Output<string>;
     /**
-     * Set(String). Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user.
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
-     * String. ID of the user.
+     * ID of the user.
      */
     public readonly userId!: pulumi.Output<string>;
     /**
-     * String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+     * Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
      */
     public readonly userMetadata!: pulumi.Output<string | undefined>;
     /**
-     * String. Username of the user. Only valid if the connection requires a username.
+     * Username of the user. Only valid if the connection requires a username.
      */
     public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
     public readonly verifyEmail!: pulumi.Output<boolean | undefined>;
 
@@ -168,7 +181,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["givenName"] = args ? args.givenName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nickname"] = args ? args.nickname : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["phoneNumber"] = args ? args.phoneNumber : undefined;
             resourceInputs["phoneVerified"] = args ? args.phoneVerified : undefined;
             resourceInputs["picture"] = args ? args.picture : undefined;
@@ -179,6 +192,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["verifyEmail"] = args ? args.verifyEmail : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -188,60 +203,75 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+     * Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      */
     appMetadata?: pulumi.Input<string>;
+    /**
+     * Indicates whether the user is blocked or not.
+     */
     blocked?: pulumi.Input<boolean>;
     /**
-     * String. Name of the connection from which the user information was sourced.
+     * Name of the connection from which the user information was sourced.
      */
     connectionName?: pulumi.Input<string>;
     /**
-     * String. Email address of the user.
+     * Email address of the user.
      */
     email?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether the email address has been verified.
+     * Indicates whether the email address has been verified.
      */
     emailVerified?: pulumi.Input<boolean>;
+    /**
+     * Family name of the user.
+     */
     familyName?: pulumi.Input<string>;
+    /**
+     * Given name of the user.
+     */
     givenName?: pulumi.Input<string>;
+    /**
+     * Name of the user.
+     */
     name?: pulumi.Input<string>;
     /**
-     * String. Preferred nickname or alias of the user.
+     * Preferred nickname or alias of the user.
      */
     nickname?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
     password?: pulumi.Input<string>;
     /**
-     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+     * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     phoneNumber?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether the phone number has been verified.
+     * Indicates whether the phone number has been verified.
      */
     phoneVerified?: pulumi.Input<boolean>;
+    /**
+     * Picture of the user.
+     */
     picture?: pulumi.Input<string>;
     /**
-     * Set(String). Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * String. ID of the user.
+     * ID of the user.
      */
     userId?: pulumi.Input<string>;
     /**
-     * String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+     * Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
      */
     userMetadata?: pulumi.Input<string>;
     /**
-     * String. Username of the user. Only valid if the connection requires a username.
+     * Username of the user. Only valid if the connection requires a username.
      */
     username?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
     verifyEmail?: pulumi.Input<boolean>;
 }
@@ -251,60 +281,75 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * String, JSON format. Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
+     * Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      */
     appMetadata?: pulumi.Input<string>;
+    /**
+     * Indicates whether the user is blocked or not.
+     */
     blocked?: pulumi.Input<boolean>;
     /**
-     * String. Name of the connection from which the user information was sourced.
+     * Name of the connection from which the user information was sourced.
      */
     connectionName: pulumi.Input<string>;
     /**
-     * String. Email address of the user.
+     * Email address of the user.
      */
     email?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether the email address has been verified.
+     * Indicates whether the email address has been verified.
      */
     emailVerified?: pulumi.Input<boolean>;
+    /**
+     * Family name of the user.
+     */
     familyName?: pulumi.Input<string>;
+    /**
+     * Given name of the user.
+     */
     givenName?: pulumi.Input<string>;
+    /**
+     * Name of the user.
+     */
     name?: pulumi.Input<string>;
     /**
-     * String. Preferred nickname or alias of the user.
+     * Preferred nickname or alias of the user.
      */
     nickname?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
     password?: pulumi.Input<string>;
     /**
-     * String. Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
+     * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     phoneNumber?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether the phone number has been verified.
+     * Indicates whether the phone number has been verified.
      */
     phoneVerified?: pulumi.Input<boolean>;
+    /**
+     * Picture of the user.
+     */
     picture?: pulumi.Input<string>;
     /**
-     * Set(String). Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * String. ID of the user.
+     * ID of the user.
      */
     userId?: pulumi.Input<string>;
     /**
-     * String, JSON format. Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
+     * Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
      */
     userMetadata?: pulumi.Input<string>;
     /**
-     * String. Username of the user. Only valid if the connection requires a username.
+     * Username of the user. Only valid if the connection requires a username.
      */
     username?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
+     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
     verifyEmail?: pulumi.Input<boolean>;
 }

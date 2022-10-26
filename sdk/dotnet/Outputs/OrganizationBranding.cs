@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class OrganizationBranding
     {
         /// <summary>
-        /// Color scheme used to customize the login pages
+        /// Color scheme used to customize the login pages.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Colors;
         /// <summary>
-        /// URL of logo to display on login page
+        /// URL of logo to display on login page.
         /// </summary>
         public readonly string? LogoUrl;
 

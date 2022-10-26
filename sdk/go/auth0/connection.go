@@ -11,13 +11,394 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers
-// (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure
-// and manage connections to be used with your clients and users.
+// With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
+//
+// > The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
+// creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
+//
+// ## Example Usage
+// ### Google OAuth2 Connection
+//
+// > Your Auth0 account may be pre-configured with a `google-oauth2` connection.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "googleOauth2", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					AllowedAudiences: pulumi.StringArray{
+//						pulumi.String("example.com"),
+//						pulumi.String("api.example.com"),
+//					},
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("email"),
+//						pulumi.String("profile"),
+//						pulumi.String("gmail"),
+//						pulumi.String("youtube"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//				},
+//				Strategy: pulumi.String("google-oauth2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Facebook Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "facebook", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("public_profile"),
+//						pulumi.String("email"),
+//						pulumi.String("groups_access_member_info"),
+//						pulumi.String("user_birthday"),
+//					},
+//				},
+//				Strategy: pulumi.String("facebook"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apple Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "apple", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<private-key>"),
+//					KeyId:        pulumi.String("<key-id>"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("email"),
+//						pulumi.String("name"),
+//					},
+//					TeamId: pulumi.String("<team-id>"),
+//				},
+//				Strategy: pulumi.String("apple"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### LinkedIn Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "linkedin", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("basic_profile"),
+//						pulumi.String("profile"),
+//						pulumi.String("email"),
+//					},
+//					StrategyVersion: pulumi.Int(2),
+//				},
+//				Strategy: pulumi.String("linkedin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### GitHub Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "github", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("email"),
+//						pulumi.String("profile"),
+//						pulumi.String("public_repo"),
+//						pulumi.String("repo"),
+//					},
+//				},
+//				Strategy: pulumi.String("github"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### SalesForce Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "salesforce", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					ClientId:         pulumi.String("<client-id>"),
+//					ClientSecret:     pulumi.String("<client-secret>"),
+//					CommunityBaseUrl: pulumi.String("https://salesforce.example.com"),
+//				},
+//				Strategy: pulumi.String("salesforce"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### OAuth2 Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "oauth2", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					AuthorizationEndpoint: pulumi.String("https://auth.example.com/oauth2/authorize"),
+//					ClientId:              pulumi.String("<client-id>"),
+//					ClientSecret:          pulumi.String("<client-secret>"),
+//					PkceEnabled:           pulumi.Bool(true),
+//					Scripts: pulumi.StringMap{
+//						"fetchUserProfile": pulumi.String(fmt.Sprintf("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n      \n")),
+//					},
+//					TokenEndpoint: pulumi.String("https://auth.example.com/oauth2/token"),
+//				},
+//				Strategy: pulumi.String("oauth2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### SMS Connection
+//
+// > To be able to see this in the management dashboard as well, the name of the connection must be set to "sms".
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "sms", &auth0.ConnectionArgs{
+//				IsDomainConnection: pulumi.Bool(false),
+//				Options: &ConnectionOptionsArgs{
+//					BruteForceProtection: pulumi.Bool(true),
+//					DisableSignup:        pulumi.Bool(false),
+//					ForwardRequestInfo:   pulumi.Bool(true),
+//					From:                 pulumi.String("+15555555555"),
+//					GatewayAuthentication: &ConnectionOptionsGatewayAuthenticationArgs{
+//						Audience:            pulumi.String("https://somewhere.com/sms-gateway"),
+//						Method:              pulumi.String("bearer"),
+//						Secret:              pulumi.String("4e2680bb74ec2ae24736476dd37ed6c2"),
+//						SecretBase64Encoded: pulumi.Bool(false),
+//						Subject:             pulumi.String("test.us.auth0.com:sms"),
+//					},
+//					GatewayUrl: pulumi.String("https://somewhere.com/sms-gateway"),
+//					Name:       pulumi.String("sms"),
+//					Provider:   pulumi.String("sms_gateway"),
+//					Syntax:     pulumi.String("md_with_macros"),
+//					Template:   pulumi.String("@@password@@"),
+//					Totp: &ConnectionOptionsTotpArgs{
+//						Length:   pulumi.Int(6),
+//						TimeStep: pulumi.Int(300),
+//					},
+//				},
+//				Strategy: pulumi.String("sms"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Email Connection
+//
+// > To be able to see this in the management dashboard as well, the name of the connection must be set to "email".
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "passwordlessEmail", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					AuthParams: pulumi.StringMap{
+//						"responseType": pulumi.String("code"),
+//						"scope":        pulumi.String("openid email profile offline_access"),
+//					},
+//					BruteForceProtection:  pulumi.Bool(true),
+//					DisableSignup:         pulumi.Bool(false),
+//					From:                  pulumi.String("{{ application.name }} <root@auth0.com>"),
+//					NonPersistentAttrs:    pulumi.StringArray{},
+//					SetUserRootAttributes: pulumi.String{},
+//					Subject:               pulumi.String("Welcome to {{ application.name }}"),
+//					Syntax:                pulumi.String("liquid"),
+//					Template:              pulumi.String("<html>This is the body of the email</html>"),
+//					Totp: &ConnectionOptionsTotpArgs{
+//						Length:   pulumi.Int(6),
+//						TimeStep: pulumi.Int(300),
+//					},
+//				},
+//				Strategy: pulumi.String("email"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### WindowsLive Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "windowslive", &auth0.ConnectionArgs{
+//				Options: &ConnectionOptionsArgs{
+//					ClientId:     pulumi.String("<client-id>"),
+//					ClientSecret: pulumi.String("<client-secret>"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("signin"),
+//						pulumi.String("graph_user"),
+//					},
+//					StrategyVersion: pulumi.Int(2),
+//				},
+//				Strategy: pulumi.String("windowslive"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// Connections can be imported using their id, e.g.
+// Connections can be imported using their ID. # Example
 //
 // ```sh
 //
@@ -27,9 +408,9 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// Name used in login screen
+	// Name used in login screen.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+	// IDs of the clients for which the connection is enabled.
 	EnabledClients pulumi.StringArrayOutput `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
@@ -37,18 +418,16 @@ type Connection struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Configuration settings for connection options. For details, see Options.
+	// Configuration settings for connection options.
 	Options ConnectionOptionsOutput `pulumi:"options"`
-	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayOutput `pulumi:"realms"`
-	// Display connection as a button. Only available for enterprise connections.
+	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton pulumi.BoolPtrOutput `pulumi:"showAsButton"`
-	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-	Strategy pulumi.StringOutput `pulumi:"strategy"`
-	// Version 1 is deprecated, use version 2.
-	StrategyVersion pulumi.StringOutput `pulumi:"strategyVersion"`
-	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-	Validation pulumi.StringMapOutput `pulumi:"validation"`
+	// Type of the connection, which indicates the identity provider.
+	Strategy        pulumi.StringOutput    `pulumi:"strategy"`
+	StrategyVersion pulumi.StringOutput    `pulumi:"strategyVersion"`
+	Validation      pulumi.StringMapOutput `pulumi:"validation"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -83,9 +462,9 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// Name used in login screen
+	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+	// IDs of the clients for which the connection is enabled.
 	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
@@ -93,24 +472,22 @@ type connectionState struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
-	// Configuration settings for connection options. For details, see Options.
+	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
-	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms []string `pulumi:"realms"`
-	// Display connection as a button. Only available for enterprise connections.
+	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton *bool `pulumi:"showAsButton"`
-	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-	Strategy *string `pulumi:"strategy"`
-	// Version 1 is deprecated, use version 2.
-	StrategyVersion *string `pulumi:"strategyVersion"`
-	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-	Validation map[string]string `pulumi:"validation"`
+	// Type of the connection, which indicates the identity provider.
+	Strategy        *string           `pulumi:"strategy"`
+	StrategyVersion *string           `pulumi:"strategyVersion"`
+	Validation      map[string]string `pulumi:"validation"`
 }
 
 type ConnectionState struct {
-	// Name used in login screen
+	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
-	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+	// IDs of the clients for which the connection is enabled.
 	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
@@ -118,18 +495,16 @@ type ConnectionState struct {
 	Metadata pulumi.StringMapInput
 	// Name of the connection.
 	Name pulumi.StringPtrInput
-	// Configuration settings for connection options. For details, see Options.
+	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
-	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayInput
-	// Display connection as a button. Only available for enterprise connections.
+	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton pulumi.BoolPtrInput
-	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-	Strategy pulumi.StringPtrInput
-	// Version 1 is deprecated, use version 2.
+	// Type of the connection, which indicates the identity provider.
+	Strategy        pulumi.StringPtrInput
 	StrategyVersion pulumi.StringPtrInput
-	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-	Validation pulumi.StringMapInput
+	Validation      pulumi.StringMapInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -137,9 +512,9 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// Name used in login screen
+	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+	// IDs of the clients for which the connection is enabled.
 	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
@@ -147,25 +522,23 @@ type connectionArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
-	// Configuration settings for connection options. For details, see Options.
+	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
-	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms []string `pulumi:"realms"`
-	// Display connection as a button. Only available for enterprise connections.
+	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton *bool `pulumi:"showAsButton"`
-	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-	Strategy string `pulumi:"strategy"`
-	// Version 1 is deprecated, use version 2.
-	StrategyVersion *string `pulumi:"strategyVersion"`
-	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-	Validation map[string]string `pulumi:"validation"`
+	// Type of the connection, which indicates the identity provider.
+	Strategy        string            `pulumi:"strategy"`
+	StrategyVersion *string           `pulumi:"strategyVersion"`
+	Validation      map[string]string `pulumi:"validation"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// Name used in login screen
+	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
-	// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+	// IDs of the clients for which the connection is enabled.
 	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
@@ -173,18 +546,16 @@ type ConnectionArgs struct {
 	Metadata pulumi.StringMapInput
 	// Name of the connection.
 	Name pulumi.StringPtrInput
-	// Configuration settings for connection options. For details, see Options.
+	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
-	// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayInput
-	// Display connection as a button. Only available for enterprise connections.
+	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton pulumi.BoolPtrInput
-	// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
-	Strategy pulumi.StringInput
-	// Version 1 is deprecated, use version 2.
+	// Type of the connection, which indicates the identity provider.
+	Strategy        pulumi.StringInput
 	StrategyVersion pulumi.StringPtrInput
-	// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
-	Validation pulumi.StringMapInput
+	Validation      pulumi.StringMapInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {
@@ -274,12 +645,12 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
-// Name used in login screen
+// Name used in login screen.
 func (o ConnectionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// IDs of the clients for which the connection is enabled. If not specified, no clients are enabled.
+// IDs of the clients for which the connection is enabled.
 func (o ConnectionOutput) EnabledClients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.EnabledClients }).(pulumi.StringArrayOutput)
 }
@@ -299,32 +670,30 @@ func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Configuration settings for connection options. For details, see Options.
+// Configuration settings for connection options.
 func (o ConnectionOutput) Options() ConnectionOptionsOutput {
 	return o.ApplyT(func(v *Connection) ConnectionOptionsOutput { return v.Options }).(ConnectionOptionsOutput)
 }
 
-// Defines the realms for which the connection will be used (i.e., email domains). If not specified, the connection name is added as the realm.
+// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 func (o ConnectionOutput) Realms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.Realms }).(pulumi.StringArrayOutput)
 }
 
-// Display connection as a button. Only available for enterprise connections.
+// Display connection as a button. Only available on enterprise connections.
 func (o ConnectionOutput) ShowAsButton() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.ShowAsButton }).(pulumi.BoolPtrOutput)
 }
 
-// Type of the connection, which indicates the identity provider. Options include `ad`, `adfs`, `amazon`, `aol`, `apple`, `auth0`, `auth0-adldap`, `auth0-oidc`, `baidu`, `bitbucket`, `bitly`, `box`, `custom`, `daccount`, `dropbox`, `dwolla`, `email`, `evernote`, `evernote-sandbox`, `exact`, `facebook`, `fitbit`, `flickr`, `github`, `google-apps`, `google-oauth2`, `guardian`, `instagram`, `ip`, `line`, `linkedin`, `miicard`, `oauth1`, `oauth2`, `office365`, `oidc`, `paypal`, `paypal-sandbox`, `pingfederate`, `planningcenter`, `renren`, `salesforce`, `salesforce-community`, `salesforce-sandbox` `samlp`, `sharepoint`, `shopify`, `sms`, `soundcloud`, `thecity`, `thecity-sandbox`, `thirtysevensignals`, `twitter`, `untappd`, `vkontakte`, `waad`, `weibo`, `windowslive`, `wordpress`, `yahoo`, `yammer`, `yandex`.
+// Type of the connection, which indicates the identity provider.
 func (o ConnectionOutput) Strategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Strategy }).(pulumi.StringOutput)
 }
 
-// Version 1 is deprecated, use version 2.
 func (o ConnectionOutput) StrategyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.StrategyVersion }).(pulumi.StringOutput)
 }
 
-// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
 func (o ConnectionOutput) Validation() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Validation }).(pulumi.StringMapOutput)
 }

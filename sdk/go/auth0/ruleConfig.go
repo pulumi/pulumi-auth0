@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
-// authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables
-// that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
+// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
 //
 // ## Example Usage
 //
@@ -33,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
 //				Enabled: pulumi.Bool(true),
-//				Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, user, context);\n}\n\n")),
+//				Script:  pulumi.String(fmt.Sprintf("    function (user, context, callback) {\n      callback(null, user, context);\n    }\n  \n")),
 //			})
 //			if err != nil {
 //				return err
@@ -53,7 +51,7 @@ import (
 //
 // ## Import
 //
-// Existing rule configs can be imported using their key name, e.g.
+// Existing rule configs can be imported using their key name. # Example
 //
 // ```sh
 //
@@ -63,9 +61,9 @@ import (
 type RuleConfig struct {
 	pulumi.CustomResourceState
 
-	// String. Key for a rules configuration variable.
+	// Key for a rules configuration variable.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// String, Case-sensitive. Value for a rules configuration variable.
+	// Value for a rules configuration variable.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -82,6 +80,13 @@ func NewRuleConfig(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource RuleConfig
 	err := ctx.RegisterResource("auth0:index/ruleConfig:RuleConfig", name, args, &resource, opts...)
 	if err != nil {
@@ -104,16 +109,16 @@ func GetRuleConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RuleConfig resources.
 type ruleConfigState struct {
-	// String. Key for a rules configuration variable.
+	// Key for a rules configuration variable.
 	Key *string `pulumi:"key"`
-	// String, Case-sensitive. Value for a rules configuration variable.
+	// Value for a rules configuration variable.
 	Value *string `pulumi:"value"`
 }
 
 type RuleConfigState struct {
-	// String. Key for a rules configuration variable.
+	// Key for a rules configuration variable.
 	Key pulumi.StringPtrInput
-	// String, Case-sensitive. Value for a rules configuration variable.
+	// Value for a rules configuration variable.
 	Value pulumi.StringPtrInput
 }
 
@@ -122,17 +127,17 @@ func (RuleConfigState) ElementType() reflect.Type {
 }
 
 type ruleConfigArgs struct {
-	// String. Key for a rules configuration variable.
+	// Key for a rules configuration variable.
 	Key string `pulumi:"key"`
-	// String, Case-sensitive. Value for a rules configuration variable.
+	// Value for a rules configuration variable.
 	Value string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a RuleConfig resource.
 type RuleConfigArgs struct {
-	// String. Key for a rules configuration variable.
+	// Key for a rules configuration variable.
 	Key pulumi.StringInput
-	// String, Case-sensitive. Value for a rules configuration variable.
+	// Value for a rules configuration variable.
 	Value pulumi.StringInput
 }
 
@@ -223,12 +228,12 @@ func (o RuleConfigOutput) ToRuleConfigOutputWithContext(ctx context.Context) Rul
 	return o
 }
 
-// String. Key for a rules configuration variable.
+// Key for a rules configuration variable.
 func (o RuleConfigOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleConfig) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// String, Case-sensitive. Value for a rules configuration variable.
+// Value for a rules configuration variable.
 func (o RuleConfigOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleConfig) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

@@ -19,14 +19,14 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
     public static final BrandingArgs Empty = new BrandingArgs();
 
     /**
-     * List(Resource). Configuration settings for colors for branding. See Colors.
+     * Configuration settings for colors for branding.
      * 
      */
     @Import(name="colors")
     private @Nullable Output<BrandingColorsArgs> colors;
 
     /**
-     * @return List(Resource). Configuration settings for colors for branding. See Colors.
+     * @return Configuration settings for colors for branding.
      * 
      */
     public Optional<Output<BrandingColorsArgs>> colors() {
@@ -34,14 +34,14 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. URL for the favicon.
+     * URL for the favicon.
      * 
      */
     @Import(name="faviconUrl")
     private @Nullable Output<String> faviconUrl;
 
     /**
-     * @return String. URL for the favicon.
+     * @return URL for the favicon.
      * 
      */
     public Optional<Output<String>> faviconUrl() {
@@ -49,14 +49,14 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings to customize the font. See Font.
+     * Configuration settings to customize the font.
      * 
      */
     @Import(name="font")
     private @Nullable Output<BrandingFontArgs> font;
 
     /**
-     * @return List(Resource). Configuration settings to customize the font. See Font.
+     * @return Configuration settings to customize the font.
      * 
      */
     public Optional<Output<BrandingFontArgs>> font() {
@@ -64,14 +64,14 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. URL of logo for branding.
+     * URL of logo for branding.
      * 
      */
     @Import(name="logoUrl")
     private @Nullable Output<String> logoUrl;
 
     /**
-     * @return String. URL of logo for branding.
+     * @return URL of logo for branding.
      * 
      */
     public Optional<Output<String>> logoUrl() {
@@ -79,18 +79,14 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for Universal Login.
-     * See Universal Login. This capability can only be used if the tenant has
-     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * Configuration settings for Universal Login.
      * 
      */
     @Import(name="universalLogin")
     private @Nullable Output<BrandingUniversalLoginArgs> universalLogin;
 
     /**
-     * @return List(Resource). Configuration settings for Universal Login.
-     * See Universal Login. This capability can only be used if the tenant has
-     * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+     * @return Configuration settings for Universal Login.
      * 
      */
     public Optional<Output<BrandingUniversalLoginArgs>> universalLogin() {
@@ -126,7 +122,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colors List(Resource). Configuration settings for colors for branding. See Colors.
+         * @param colors Configuration settings for colors for branding.
          * 
          * @return builder
          * 
@@ -137,7 +133,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colors List(Resource). Configuration settings for colors for branding. See Colors.
+         * @param colors Configuration settings for colors for branding.
          * 
          * @return builder
          * 
@@ -147,7 +143,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param faviconUrl String. URL for the favicon.
+         * @param faviconUrl URL for the favicon.
          * 
          * @return builder
          * 
@@ -158,7 +154,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param faviconUrl String. URL for the favicon.
+         * @param faviconUrl URL for the favicon.
          * 
          * @return builder
          * 
@@ -168,7 +164,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param font List(Resource). Configuration settings to customize the font. See Font.
+         * @param font Configuration settings to customize the font.
          * 
          * @return builder
          * 
@@ -179,7 +175,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param font List(Resource). Configuration settings to customize the font. See Font.
+         * @param font Configuration settings to customize the font.
          * 
          * @return builder
          * 
@@ -189,7 +185,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logoUrl String. URL of logo for branding.
+         * @param logoUrl URL of logo for branding.
          * 
          * @return builder
          * 
@@ -200,7 +196,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logoUrl String. URL of logo for branding.
+         * @param logoUrl URL of logo for branding.
          * 
          * @return builder
          * 
@@ -210,9 +206,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param universalLogin List(Resource). Configuration settings for Universal Login.
-         * See Universal Login. This capability can only be used if the tenant has
-         * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+         * @param universalLogin Configuration settings for Universal Login.
          * 
          * @return builder
          * 
@@ -223,9 +217,7 @@ public final class BrandingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param universalLogin List(Resource). Configuration settings for Universal Login.
-         * See Universal Login. This capability can only be used if the tenant has
-         * [Custom Domains](https://auth0.com/docs/custom-domains) enabled.
+         * @param universalLogin Configuration settings for Universal Login.
          * 
          * @return builder
          * 

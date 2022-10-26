@@ -17,37 +17,98 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProviderArgs Empty = new ProviderArgs();
 
+    /**
+     * Your Auth0 [management api access
+     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     * 
+     */
     @Import(name="apiToken")
     private @Nullable Output<String> apiToken;
 
+    /**
+     * @return Your Auth0 [management api access
+     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     * 
+     */
     public Optional<Output<String>> apiToken() {
         return Optional.ofNullable(this.apiToken);
     }
 
+    /**
+     * Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+     * 
+     */
+    @Import(name="audience")
+    private @Nullable Output<String> audience;
+
+    /**
+     * @return Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+     * 
+     */
+    public Optional<Output<String>> audience() {
+        return Optional.ofNullable(this.audience);
+    }
+
+    /**
+     * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+     * 
+     */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
+    /**
+     * @return Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+     * 
+     */
     public Optional<Output<String>> clientId() {
         return Optional.ofNullable(this.clientId);
     }
 
+    /**
+     * Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+     * 
+     */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
+    /**
+     * @return Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+     * 
+     */
     public Optional<Output<String>> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
 
+    /**
+     * Indicates whether to turn on debug mode.
+     * 
+     */
     @Import(name="debug", json=true)
     private @Nullable Output<Boolean> debug;
 
+    /**
+     * @return Indicates whether to turn on debug mode.
+     * 
+     */
     public Optional<Output<Boolean>> debug() {
         return Optional.ofNullable(this.debug);
     }
 
+    /**
+     * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+     * 
+     */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
+    /**
+     * @return Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+     * 
+     */
     public Output<String> domain() {
         return this.domain;
     }
@@ -56,6 +117,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProviderArgs(ProviderArgs $) {
         this.apiToken = $.apiToken;
+        this.audience = $.audience;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.debug = $.debug;
@@ -80,47 +142,134 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apiToken Your Auth0 [management api access
+         * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+         * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+         * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiToken(@Nullable Output<String> apiToken) {
             $.apiToken = apiToken;
             return this;
         }
 
+        /**
+         * @param apiToken Your Auth0 [management api access
+         * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+         * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+         * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiToken(String apiToken) {
             return apiToken(Output.of(apiToken));
         }
 
+        /**
+         * @param audience Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audience(@Nullable Output<String> audience) {
+            $.audience = audience;
+            return this;
+        }
+
+        /**
+         * @param audience Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audience(String audience) {
+            return audience(Output.of(audience));
+        }
+
+        /**
+         * @param clientId Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(@Nullable Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param debug Indicates whether to turn on debug mode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder debug(@Nullable Output<Boolean> debug) {
             $.debug = debug;
             return this;
         }
 
+        /**
+         * @param debug Indicates whether to turn on debug mode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder debug(Boolean debug) {
             return debug(Output.of(debug));
         }
 
+        /**
+         * @param domain Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

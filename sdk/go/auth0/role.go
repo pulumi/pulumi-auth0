@@ -10,9 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With this resource, you can create and manage collections of permissions that can be assigned to users, which are
-// otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
-// optionally, users using this resource.
+// With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `ResourceServer`, then associated with roles and optionally, users using this resource.
 //
 // ## Example Usage
 //
@@ -80,7 +78,7 @@ import (
 //
 // ## Import
 //
-// Existing roles can be imported using their id, e.g.
+// Existing roles can be imported using their ID. # Example
 //
 // ```sh
 //
@@ -90,12 +88,11 @@ import (
 type Role struct {
 	pulumi.CustomResourceState
 
-	// String. Description of the role.
+	// Description of the role.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// String. Name for this role.
+	// Name for this role.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-	// For details, see Permissions.
+	// Configuration settings for permissions (scopes) attached to the role.
 	Permissions RolePermissionArrayOutput `pulumi:"permissions"`
 }
 
@@ -131,22 +128,20 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
-	// String. Description of the role.
+	// Description of the role.
 	Description *string `pulumi:"description"`
-	// String. Name for this role.
+	// Name for this role.
 	Name *string `pulumi:"name"`
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-	// For details, see Permissions.
+	// Configuration settings for permissions (scopes) attached to the role.
 	Permissions []RolePermission `pulumi:"permissions"`
 }
 
 type RoleState struct {
-	// String. Description of the role.
+	// Description of the role.
 	Description pulumi.StringPtrInput
-	// String. Name for this role.
+	// Name for this role.
 	Name pulumi.StringPtrInput
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-	// For details, see Permissions.
+	// Configuration settings for permissions (scopes) attached to the role.
 	Permissions RolePermissionArrayInput
 }
 
@@ -155,23 +150,21 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// String. Description of the role.
+	// Description of the role.
 	Description *string `pulumi:"description"`
-	// String. Name for this role.
+	// Name for this role.
 	Name *string `pulumi:"name"`
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-	// For details, see Permissions.
+	// Configuration settings for permissions (scopes) attached to the role.
 	Permissions []RolePermission `pulumi:"permissions"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// String. Description of the role.
+	// Description of the role.
 	Description pulumi.StringPtrInput
-	// String. Name for this role.
+	// Name for this role.
 	Name pulumi.StringPtrInput
-	// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-	// For details, see Permissions.
+	// Configuration settings for permissions (scopes) attached to the role.
 	Permissions RolePermissionArrayInput
 }
 
@@ -262,18 +255,17 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
 }
 
-// String. Description of the role.
+// Description of the role.
 func (o RoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// String. Name for this role.
+// Name for this role.
 func (o RoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-// For details, see Permissions.
+// Configuration settings for permissions (scopes) attached to the role.
 func (o RoleOutput) Permissions() RolePermissionArrayOutput {
 	return o.ApplyT(func(v *Role) RolePermissionArrayOutput { return v.Permissions }).(RolePermissionArrayOutput)
 }

@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
-    /// authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules.
-    /// You can create global variable for use with rules by using the auth0.RuleConfig resource.
+    /// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the `auth0.RuleConfig` resource.
     /// 
     /// ## Example Usage
     /// 
@@ -26,17 +24,11 @@ namespace Pulumi.Auth0
     ///     var myRule = new Auth0.Rule("myRule", new()
     ///     {
     ///         Enabled = true,
-    ///         Script = @"function (user, context, callback) {
-    ///   callback(null, user, context);
-    /// }
-    /// 
+    ///         Script = @"    function (user, context, callback) {
+    ///       callback(null, user, context);
+    ///     }
+    ///   
     /// ",
-    ///     });
-    /// 
-    ///     var myRuleConfig = new Auth0.RuleConfig("myRuleConfig", new()
-    ///     {
-    ///         Key = "foo",
-    ///         Value = "bar",
     ///     });
     /// 
     /// });
@@ -44,7 +36,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Existing rules can be imported using their id, e.g.
+    /// Existing rules can be imported using their ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
@@ -54,25 +46,25 @@ namespace Pulumi.Auth0
     public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean. Indicates whether the rule is enabled.
+        /// Indicates whether the rule is enabled.
         /// </summary>
         [Output("enabled")]
-        public Output<bool?> Enabled { get; private set; } = null!;
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        /// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        /// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         /// </summary>
         [Output("order")]
         public Output<int> Order { get; private set; } = null!;
 
         /// <summary>
-        /// String. Code to be executed when the rule runs.
+        /// Code to be executed when the rule runs.
         /// </summary>
         [Output("script")]
         public Output<string> Script { get; private set; } = null!;
@@ -124,25 +116,25 @@ namespace Pulumi.Auth0
     public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether the rule is enabled.
+        /// Indicates whether the rule is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        /// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        /// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }
 
         /// <summary>
-        /// String. Code to be executed when the rule runs.
+        /// Code to be executed when the rule runs.
         /// </summary>
         [Input("script", required: true)]
         public Input<string> Script { get; set; } = null!;
@@ -156,25 +148,25 @@ namespace Pulumi.Auth0
     public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean. Indicates whether the rule is enabled.
+        /// Indicates whether the rule is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        /// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        /// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }
 
         /// <summary>
-        /// String. Code to be executed when the rule runs.
+        /// Code to be executed when the rule runs.
         /// </summary>
         [Input("script")]
         public Input<string>? Script { get; set; }

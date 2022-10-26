@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputMap<string>? _colors;
 
         /// <summary>
-        /// Color scheme used to customize the login pages
+        /// Color scheme used to customize the login pages.
         /// </summary>
         public InputMap<string> Colors
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// URL of logo to display on login page
+        /// URL of logo to display on login page.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }

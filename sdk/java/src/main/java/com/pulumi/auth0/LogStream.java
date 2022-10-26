@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new LogStream(&#34;example&#34;, LogStreamArgs.builder()        
+ *         var myWebhook = new LogStream(&#34;myWebhook&#34;, LogStreamArgs.builder()        
  *             .filters(            
  *                 Map.ofEntries(
  *                     Map.entry(&#34;name&#34;, &#34;auth.login.fail&#34;),
@@ -53,6 +53,20 @@ import javax.annotation.Nullable;
  *                     Map.entry(&#34;name&#34;, &#34;auth.signup.fail&#34;),
  *                     Map.entry(&#34;type&#34;, &#34;category&#34;)
  *                 ))
+ *             .sink(LogStreamSinkArgs.builder()
+ *                 .httpAuthorization(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
+ *                 .httpContentFormat(&#34;JSONOBJECT&#34;)
+ *                 .httpContentType(&#34;application/json&#34;)
+ *                 .httpCustomHeaders(Map.ofEntries(
+ *                     Map.entry(&#34;header&#34;, &#34;foo&#34;),
+ *                     Map.entry(&#34;value&#34;, &#34;bar&#34;)
+ *                 ))
+ *                 .httpEndpoint(&#34;https://example.com/logs&#34;)
+ *                 .build())
+ *             .type(&#34;http&#34;)
+ *             .build());
+ * 
+ *         var exampleAws = new LogStream(&#34;exampleAws&#34;, LogStreamArgs.builder()        
  *             .sink(LogStreamSinkArgs.builder()
  *                 .awsAccountId(&#34;my_account_id&#34;)
  *                 .awsRegion(&#34;us-east-2&#34;)
@@ -67,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Existing log stream can be imported using log stream id, e.g.
+ * An existing log stream can be imported using its ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
@@ -77,70 +91,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/logStream:LogStream")
 public class LogStream extends com.pulumi.resources.CustomResource {
     /**
-     * Only logs events matching these filters will be delivered by the stream.
+     * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
      * 
      */
     @Export(name="filters", type=List.class, parameters={Map.class})
     private Output</* @Nullable */ List<Map<String,String>>> filters;
 
     /**
-     * @return Only logs events matching these filters will be delivered by the stream.
+     * @return Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
      * 
      */
     public Output<Optional<List<Map<String,String>>>> filters() {
         return Codegen.optional(this.filters);
     }
     /**
-     * Name of the log stream
+     * Name of the log stream.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the log stream
+     * @return Name of the log stream.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     * The sink configuration for the log stream.
      * 
      */
     @Export(name="sink", type=LogStreamSink.class, parameters={})
     private Output<LogStreamSink> sink;
 
     /**
-     * @return List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+     * @return The sink configuration for the log stream.
      * 
      */
     public Output<LogStreamSink> sink() {
         return this.sink;
     }
     /**
-     * The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;
+     * The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;
+     * @return The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The type of log stream. Options are &#34;eventbridge&#34;, &#34;eventgrid&#34;, &#34;http&#34;, &#34;datadog&#34;, &#34;splunk&#34;, &#34;sumo&#34;
+     * Type of the log stream, which indicates the sink provider.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return The type of log stream. Options are &#34;eventbridge&#34;, &#34;eventgrid&#34;, &#34;http&#34;, &#34;datadog&#34;, &#34;splunk&#34;, &#34;sumo&#34;
+     * @return Type of the log stream, which indicates the sink provider.
      * 
      */
     public Output<String> type() {

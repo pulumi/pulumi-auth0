@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class TenantErrorPage {
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the error page.
+     * @return HTML format with supported Liquid syntax. Customized content of the error page.
      * 
      */
     private String html;
     /**
-     * @return Boolean. Indicates whether to show the link to logs as part of the default error page.
+     * @return Indicates whether to show the link to logs as part of the default error page.
      * 
      */
     private Boolean showLogLink;
     /**
-     * @return String. URL to redirect to when an error occurs rather than showing the default error page.
+     * @return URL to redirect to when an error occurs rather than showing the default error page.
      * 
      */
     private String url;
 
     private TenantErrorPage() {}
     /**
-     * @return String, HTML format with supported Liquid syntax. Customized content of the error page.
+     * @return HTML format with supported Liquid syntax. Customized content of the error page.
      * 
      */
     public String html() {
         return this.html;
     }
     /**
-     * @return Boolean. Indicates whether to show the link to logs as part of the default error page.
+     * @return Indicates whether to show the link to logs as part of the default error page.
      * 
      */
     public Boolean showLogLink() {
         return this.showLogLink;
     }
     /**
-     * @return String. URL to redirect to when an error occurs rather than showing the default error page.
+     * @return URL to redirect to when an error occurs rather than showing the default error page.
      * 
      */
     public String url() {

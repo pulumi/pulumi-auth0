@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Allowlists;
         /// <summary>
-        /// Whether or not breached password detection is active.
+        /// Whether brute force attack protections are active.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly int? MaxAttempts;
         /// <summary>
-        /// Determines whether or not IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
+        /// Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` or `count_per_identifier`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// Action to take when a breached password is detected. Possible values: `block`, `user_notification`, `admin_notification`.
+        /// Action to take when a brute force protection threshold is violated. Possible values: `block`, `user_notification`
         /// </summary>
         public readonly ImmutableArray<string> Shields;
 

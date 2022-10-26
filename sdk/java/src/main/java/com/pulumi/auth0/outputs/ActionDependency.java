@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class ActionDependency {
     /**
-     * @return Secret name.
+     * @return Dependency name, e.g. `lodash`.
      * 
      */
     private String name;
     /**
-     * @return Trigger version.
+     * @return Dependency version, e.g. `latest` or `4.17.21`.
      * 
      */
     private String version;
 
     private ActionDependency() {}
     /**
-     * @return Secret name.
+     * @return Dependency name, e.g. `lodash`.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Trigger version.
+     * @return Dependency version, e.g. `latest` or `4.17.21`.
      * 
      */
     public String version() {

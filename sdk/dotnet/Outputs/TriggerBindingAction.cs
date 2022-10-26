@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Trigger ID.
+        /// Action ID.
         /// </summary>
         public readonly string Id;
 

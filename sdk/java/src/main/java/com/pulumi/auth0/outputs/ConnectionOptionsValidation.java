@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsValidation {
-    /**
-     * @return Specifies the `min` and `max` values of username length. `min` and `max` are integers.
-     * 
-     */
     private @Nullable ConnectionOptionsValidationUsername username;
 
     private ConnectionOptionsValidation() {}
-    /**
-     * @return Specifies the `min` and `max` values of username length. `min` and `max` are integers.
-     * 
-     */
     public Optional<ConnectionOptionsValidationUsername> username() {
         return Optional.ofNullable(this.username);
     }

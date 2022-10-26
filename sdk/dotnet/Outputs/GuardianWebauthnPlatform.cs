@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GuardianWebauthnPlatform
     {
         /// <summary>
-        /// Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+        /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         /// </summary>
         public readonly bool? OverrideRelyingParty;
         /// <summary>
-        /// String. The Relying Party should be a suffix of the custom domain.
+        /// The Relying Party should be a suffix of the custom domain.
         /// </summary>
         public readonly string? RelyingPartyIdentifier;
 

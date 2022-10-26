@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
-// into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's
-// authentication workflows through the supported high-volume email service of your choice.
+// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
 //
 // ## Example Usage
 //
@@ -29,11 +27,34 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
+//			_, err := auth0.NewEmail(ctx, "amazonSesEmailProvider", &auth0.EmailArgs{
 //				Credentials: &EmailCredentialsArgs{
 //					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					Region:          pulumi.String("us-east-1"),
 //					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				},
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Enabled:            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewEmail(ctx, "smtpEmailProvider", &auth0.EmailArgs{
+//				Credentials: &EmailCredentialsArgs{
+//					SmtpHost: pulumi.String("your.smtp.host.com"),
+//					SmtpPass: pulumi.String("SMTP Password"),
+//					SmtpPort: pulumi.Int(583),
+//					SmtpUser: pulumi.String("SMTP Username"),
+//				},
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//				Enabled:            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewEmail(ctx, "sendgridEmailProvider", &auth0.EmailArgs{
+//				Credentials: &EmailCredentialsArgs{
+//					ApiKey: pulumi.String("secretAPIKey"),
 //				},
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Enabled:            pulumi.Bool(true),
@@ -49,7 +70,7 @@ import (
 //
 // ## Import
 //
-// As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+// As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
 //
 // ```sh
 //
@@ -59,13 +80,13 @@ import (
 type Email struct {
 	pulumi.CustomResourceState
 
-	// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+	// Configuration settings for the credentials for the email provider.
 	Credentials EmailCredentialsOutput `pulumi:"credentials"`
-	// String. Email address to use as the sender when no other "from" address is specified.
+	// Email address to use as the sender when no other "from" address is specified.
 	DefaultFromAddress pulumi.StringOutput `pulumi:"defaultFromAddress"`
-	// Boolean. Indicates whether or not the email provider is enabled.
+	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -104,24 +125,24 @@ func GetEmail(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Email resources.
 type emailState struct {
-	// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+	// Configuration settings for the credentials for the email provider.
 	Credentials *EmailCredentials `pulumi:"credentials"`
-	// String. Email address to use as the sender when no other "from" address is specified.
+	// Email address to use as the sender when no other "from" address is specified.
 	DefaultFromAddress *string `pulumi:"defaultFromAddress"`
-	// Boolean. Indicates whether or not the email provider is enabled.
+	// Indicates whether the email provider is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name *string `pulumi:"name"`
 }
 
 type EmailState struct {
-	// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+	// Configuration settings for the credentials for the email provider.
 	Credentials EmailCredentialsPtrInput
-	// String. Email address to use as the sender when no other "from" address is specified.
+	// Email address to use as the sender when no other "from" address is specified.
 	DefaultFromAddress pulumi.StringPtrInput
-	// Boolean. Indicates whether or not the email provider is enabled.
+	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrInput
-	// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name pulumi.StringPtrInput
 }
 
@@ -130,25 +151,25 @@ func (EmailState) ElementType() reflect.Type {
 }
 
 type emailArgs struct {
-	// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+	// Configuration settings for the credentials for the email provider.
 	Credentials EmailCredentials `pulumi:"credentials"`
-	// String. Email address to use as the sender when no other "from" address is specified.
+	// Email address to use as the sender when no other "from" address is specified.
 	DefaultFromAddress string `pulumi:"defaultFromAddress"`
-	// Boolean. Indicates whether or not the email provider is enabled.
+	// Indicates whether the email provider is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Email resource.
 type EmailArgs struct {
-	// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+	// Configuration settings for the credentials for the email provider.
 	Credentials EmailCredentialsInput
-	// String. Email address to use as the sender when no other "from" address is specified.
+	// Email address to use as the sender when no other "from" address is specified.
 	DefaultFromAddress pulumi.StringInput
-	// Boolean. Indicates whether or not the email provider is enabled.
+	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrInput
-	// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name pulumi.StringPtrInput
 }
 
@@ -239,22 +260,22 @@ func (o EmailOutput) ToEmailOutputWithContext(ctx context.Context) EmailOutput {
 	return o
 }
 
-// List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+// Configuration settings for the credentials for the email provider.
 func (o EmailOutput) Credentials() EmailCredentialsOutput {
 	return o.ApplyT(func(v *Email) EmailCredentialsOutput { return v.Credentials }).(EmailCredentialsOutput)
 }
 
-// String. Email address to use as the sender when no other "from" address is specified.
+// Email address to use as the sender when no other "from" address is specified.
 func (o EmailOutput) DefaultFromAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Email) pulumi.StringOutput { return v.DefaultFromAddress }).(pulumi.StringOutput)
 }
 
-// Boolean. Indicates whether or not the email provider is enabled.
+// Indicates whether the email provider is enabled.
 func (o EmailOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Email) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 func (o EmailOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Email) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

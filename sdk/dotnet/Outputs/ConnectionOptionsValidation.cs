@@ -13,9 +13,6 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ConnectionOptionsValidation
     {
-        /// <summary>
-        /// Specifies the `min` and `max` values of username length. `min` and `max` are integers.
-        /// </summary>
         public readonly Outputs.ConnectionOptionsValidationUsername? Username;
 
         [OutputConstructor]

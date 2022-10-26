@@ -14,19 +14,19 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientJwtConfiguration
     {
         /// <summary>
-        /// String. Algorithm used to sign JWTs.
+        /// Algorithm used to sign JWTs.
         /// </summary>
         public readonly string? Alg;
         /// <summary>
-        /// Integer. Number of seconds during which the JWT will be valid.
+        /// Number of seconds during which the JWT will be valid.
         /// </summary>
         public readonly int? LifetimeInSeconds;
         /// <summary>
-        /// Map(String). Permissions (scopes) included in JWTs.
+        /// Permissions (scopes) included in JWTs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Scopes;
         /// <summary>
-        /// Boolean. Indicates whether or not the client secret is base64 encoded.
+        /// Indicates whether the client secret is Base64-encoded.
         /// </summary>
         public readonly bool? SecretEncoded;
 

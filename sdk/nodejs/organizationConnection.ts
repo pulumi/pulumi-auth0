@@ -13,19 +13,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const example = new auth0.OrganizationConnection("example", {
+ * const myConnection = new auth0.Connection("myConnection", {strategy: "auth0"});
+ * const myOrganization = new auth0.Organization("myOrganization", {displayName: "My Organization"});
+ * const myOrgConn = new auth0.OrganizationConnection("myOrgConn", {
+ *     organizationId: myOrganization.id,
+ *     connectionId: myConnection.id,
  *     assignMembershipOnLogin: true,
- *     connectionId: "con_XXXXXXXXXX",
- *     organizationId: "org_XXXXXXXXXX",
  * });
  * ```
  *
  * ## Import
  *
- * As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * This resource can be imported by specifying the organization ID and connection ID separated by ":". # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/organizationConnection:OrganizationConnection example 11f4a21b-011a-312d-9217-e291caca36c4
+ *  $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn org_XXXXX:con_XXXXX
  * ```
  */
 export class OrganizationConnection extends pulumi.CustomResource {

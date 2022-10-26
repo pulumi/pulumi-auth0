@@ -20,6 +20,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly string Destination;
         public readonly string DigestAlgorithm;
         public readonly bool IncludeAttributeNameFormat;
+        public readonly string Issuer;
         public readonly int LifetimeInSeconds;
         public readonly ImmutableDictionary<string, object> Logout;
         public readonly bool MapIdentities;
@@ -49,6 +50,8 @@ namespace Pulumi.Auth0.Outputs
             string digestAlgorithm,
 
             bool includeAttributeNameFormat,
+
+            string issuer,
 
             int lifetimeInSeconds,
 
@@ -83,6 +86,7 @@ namespace Pulumi.Auth0.Outputs
             Destination = destination;
             DigestAlgorithm = digestAlgorithm;
             IncludeAttributeNameFormat = includeAttributeNameFormat;
+            Issuer = issuer;
             LifetimeInSeconds = lifetimeInSeconds;
             Logout = logout;
             MapIdentities = mapIdentities;

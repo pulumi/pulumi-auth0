@@ -13,117 +13,39 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientAddons
     {
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Aws;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? AzureBlob;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? AzureSb;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Box;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Cloudbees;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Concur;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Dropbox;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Echosign;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Egnyte;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Firebase;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Layer;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Mscrm;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Newrelic;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Office365;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Rms;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Salesforce;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? SalesforceApi;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? SalesforceSandboxApi;
         /// <summary>
-        /// List(Resource). Configuration settings for a SAML add-on. For details, see SAML.
+        /// Configuration settings for a SAML add-on.
         /// </summary>
         public readonly Outputs.ClientAddonsSamlp? Samlp;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? SapApi;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Sentry;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Sharepoint;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Slack;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Springcm;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Wams;
         /// <summary>
-        /// String
+        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Wsfed;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Zendesk;
-        /// <summary>
-        /// String
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Zoom;
 
         [OutputConstructor]

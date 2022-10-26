@@ -2,63 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Actions are secure, tenant-specific, versioned functions written in Node.js that
- * execute at certain points during the Auth0 runtime. Actions are used to
- * customize and extend Auth0's capabilities with custom logic.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as auth0 from "@pulumi/auth0";
- *
- * const myAction = new auth0.Action("my_action", {
- *     code: `/**
- *  * Handler that will be called during the execution of a PostLogin flow.
- *  *
- *  * @param {Event} event - Details about the user and the context in which they are logging in.
- *  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
- *  *&#47;
- *  exports.onExecutePostLogin = async (event, api) => {
- * 	 console.log(event)
- *  };
- * `,
- *     dependencies: [
- *         {
- *             name: "lodash",
- *             version: "latest",
- *         },
- *         {
- *             name: "request",
- *             version: "latest",
- *         },
- *     ],
- *     deploy: true,
- *     runtime: "node16",
- *     secrets: [
- *         {
- *             name: "FOO",
- *             value: "Foo",
- *         },
- *         {
- *             name: "BAR",
- *             value: "Bar",
- *         },
- *     ],
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
- * });
- * ```
+ * Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
  *
  * ## Import
  *
- * An action can be imported using the action's ID, e.g.
+ * An action can be imported using the action's ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
@@ -103,17 +56,15 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly dependencies!: pulumi.Output<outputs.ActionDependency[] | undefined>;
     /**
-     * Deploying an action will create a new immutable version of the action.
-     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-     * action immediately. Default is `false`.
+     * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      */
     public readonly deploy!: pulumi.Output<boolean | undefined>;
     /**
-     * Secret name.
+     * The name of the action.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The Node runtime. For example `node16`, defaults to `node12`.
+     * The Node runtime, e.g. `node16`. Defaults to `node12`.
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
@@ -121,8 +72,10 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly secrets!: pulumi.Output<outputs.ActionSecret[] | undefined>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target
-     * a single trigger at a time.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+     * [Retrieving the set of triggers available within
+     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+     * trigger versions supported.
      */
     public readonly supportedTriggers!: pulumi.Output<outputs.ActionSupportedTriggers>;
     /**
@@ -186,17 +139,15 @@ export interface ActionState {
      */
     dependencies?: pulumi.Input<pulumi.Input<inputs.ActionDependency>[]>;
     /**
-     * Deploying an action will create a new immutable version of the action.
-     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-     * action immediately. Default is `false`.
+     * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      */
     deploy?: pulumi.Input<boolean>;
     /**
-     * Secret name.
+     * The name of the action.
      */
     name?: pulumi.Input<string>;
     /**
-     * The Node runtime. For example `node16`, defaults to `node12`.
+     * The Node runtime, e.g. `node16`. Defaults to `node12`.
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -204,8 +155,10 @@ export interface ActionState {
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target
-     * a single trigger at a time.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+     * [Retrieving the set of triggers available within
+     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+     * trigger versions supported.
      */
     supportedTriggers?: pulumi.Input<inputs.ActionSupportedTriggers>;
     /**
@@ -227,17 +180,15 @@ export interface ActionArgs {
      */
     dependencies?: pulumi.Input<pulumi.Input<inputs.ActionDependency>[]>;
     /**
-     * Deploying an action will create a new immutable version of the action.
-     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-     * action immediately. Default is `false`.
+     * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      */
     deploy?: pulumi.Input<boolean>;
     /**
-     * Secret name.
+     * The name of the action.
      */
     name?: pulumi.Input<string>;
     /**
-     * The Node runtime. For example `node16`, defaults to `node12`.
+     * The Node runtime, e.g. `node16`. Defaults to `node12`.
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -245,8 +196,10 @@ export interface ActionArgs {
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target
-     * a single trigger at a time.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+     * [Retrieving the set of triggers available within
+     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+     * trigger versions supported.
      */
     supportedTriggers: pulumi.Input<inputs.ActionSupportedTriggers>;
 }

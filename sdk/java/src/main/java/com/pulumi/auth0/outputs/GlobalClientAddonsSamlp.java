@@ -23,6 +23,7 @@ public final class GlobalClientAddonsSamlp {
     private @Nullable String destination;
     private @Nullable String digestAlgorithm;
     private @Nullable Boolean includeAttributeNameFormat;
+    private @Nullable String issuer;
     private @Nullable Integer lifetimeInSeconds;
     private @Nullable Map<String,Object> logout;
     private @Nullable Boolean mapIdentities;
@@ -58,6 +59,9 @@ public final class GlobalClientAddonsSamlp {
     }
     public Optional<Boolean> includeAttributeNameFormat() {
         return Optional.ofNullable(this.includeAttributeNameFormat);
+    }
+    public Optional<String> issuer() {
+        return Optional.ofNullable(this.issuer);
     }
     public Optional<Integer> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
@@ -115,6 +119,7 @@ public final class GlobalClientAddonsSamlp {
         private @Nullable String destination;
         private @Nullable String digestAlgorithm;
         private @Nullable Boolean includeAttributeNameFormat;
+        private @Nullable String issuer;
         private @Nullable Integer lifetimeInSeconds;
         private @Nullable Map<String,Object> logout;
         private @Nullable Boolean mapIdentities;
@@ -138,6 +143,7 @@ public final class GlobalClientAddonsSamlp {
     	      this.destination = defaults.destination;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.includeAttributeNameFormat = defaults.includeAttributeNameFormat;
+    	      this.issuer = defaults.issuer;
     	      this.lifetimeInSeconds = defaults.lifetimeInSeconds;
     	      this.logout = defaults.logout;
     	      this.mapIdentities = defaults.mapIdentities;
@@ -186,6 +192,11 @@ public final class GlobalClientAddonsSamlp {
         @CustomType.Setter
         public Builder includeAttributeNameFormat(@Nullable Boolean includeAttributeNameFormat) {
             this.includeAttributeNameFormat = includeAttributeNameFormat;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issuer(@Nullable String issuer) {
+            this.issuer = issuer;
             return this;
         }
         @CustomType.Setter
@@ -265,6 +276,7 @@ public final class GlobalClientAddonsSamlp {
             o.destination = destination;
             o.digestAlgorithm = digestAlgorithm;
             o.includeAttributeNameFormat = includeAttributeNameFormat;
+            o.issuer = issuer;
             o.lifetimeInSeconds = lifetimeInSeconds;
             o.logout = logout;
             o.mapIdentities = mapIdentities;

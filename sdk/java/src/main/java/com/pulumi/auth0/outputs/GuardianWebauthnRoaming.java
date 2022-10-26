@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GuardianWebauthnRoaming {
     /**
-     * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * @return The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
     private @Nullable Boolean overrideRelyingParty;
     /**
-     * @return String. The Relying Party should be a suffix of the custom domain.
+     * @return The Relying Party should be a suffix of the custom domain.
      * 
      */
     private @Nullable String relyingPartyIdentifier;
     /**
-     * @return String. User verification, one of `discouraged`, `preferred` or `required`.
+     * @return User verification, one of `discouraged`, `preferred` or `required`.
      * 
      */
     private @Nullable String userVerification;
 
     private GuardianWebauthnRoaming() {}
     /**
-     * @return Bool. The Relying Party is the domain for which the WebAuthn keys will be issued, set to true if you are customizing the identifier.
+     * @return The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
     public Optional<Boolean> overrideRelyingParty() {
         return Optional.ofNullable(this.overrideRelyingParty);
     }
     /**
-     * @return String. The Relying Party should be a suffix of the custom domain.
+     * @return The Relying Party should be a suffix of the custom domain.
      * 
      */
     public Optional<String> relyingPartyIdentifier() {
         return Optional.ofNullable(this.relyingPartyIdentifier);
     }
     /**
-     * @return String. User verification, one of `discouraged`, `preferred` or `required`.
+     * @return User verification, one of `discouraged`, `preferred` or `required`.
      * 
      */
     public Optional<String> userVerification() {

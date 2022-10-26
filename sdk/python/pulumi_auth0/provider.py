@@ -16,15 +16,27 @@ class ProviderArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str],
                  api_token: Optional[pulumi.Input[str]] = None,
+                 audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  debug: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+        :param pulumi.Input[str] api_token: Your Auth0 [management api access
+               token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+               the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+               specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        :param pulumi.Input[str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+        :param pulumi.Input[str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+        :param pulumi.Input[str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+        :param pulumi.Input[bool] debug: Indicates whether to turn on debug mode.
         """
         pulumi.set(__self__, "domain", domain)
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -37,6 +49,9 @@ class ProviderArgs:
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
+        """
+        Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+        """
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -46,6 +61,12 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="apiToken")
     def api_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your Auth0 [management api access
+        token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+        the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+        specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        """
         return pulumi.get(self, "api_token")
 
     @api_token.setter
@@ -53,8 +74,23 @@ class ProviderArgs:
         pulumi.set(self, "api_token", value)
 
     @property
+    @pulumi.getter
+    def audience(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+        """
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audience", value)
+
+    @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -64,6 +100,9 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+        """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
@@ -73,6 +112,9 @@ class ProviderArgs:
     @property
     @pulumi.getter
     def debug(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to turn on debug mode.
+        """
         return pulumi.get(self, "debug")
 
     @debug.setter
@@ -86,6 +128,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[str]] = None,
+                 audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  debug: Optional[pulumi.Input[bool]] = None,
@@ -99,6 +142,15 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_token: Your Auth0 [management api access
+               token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+               the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+               specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        :param pulumi.Input[str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+        :param pulumi.Input[str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+        :param pulumi.Input[str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+        :param pulumi.Input[bool] debug: Indicates whether to turn on debug mode.
+        :param pulumi.Input[str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
         ...
     @overload
@@ -128,6 +180,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[str]] = None,
+                 audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  debug: Optional[pulumi.Input[bool]] = None,
@@ -142,6 +195,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["api_token"] = api_token
+            __props__.__dict__["audience"] = audience
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = client_secret
             if debug is None:
@@ -159,20 +213,43 @@ class Provider(pulumi.ProviderResource):
     @property
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        Your Auth0 [management api access
+        token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
+        the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
+        specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        """
         return pulumi.get(self, "api_token")
+
+    @property
+    @pulumi.getter
+    def audience(self) -> pulumi.Output[Optional[str]]:
+        """
+        Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+        """
+        return pulumi.get(self, "audience")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[Optional[str]]:
+        """
+        Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
+        """
+        Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+        """
         return pulumi.get(self, "domain")
 

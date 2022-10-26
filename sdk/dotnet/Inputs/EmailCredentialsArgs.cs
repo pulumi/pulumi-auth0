@@ -12,59 +12,102 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class EmailCredentialsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// String, Case-sensitive. AWS Access Key ID. Used only for AWS.
-        /// </summary>
         [Input("accessKeyId")]
-        public Input<string>? AccessKeyId { get; set; }
+        private Input<string>? _accessKeyId;
 
         /// <summary>
-        /// String, Case-sensitive. API Key for your email service. Will always be encrypted in our database.
+        /// AWS Access Key ID. Used only for AWS.
         /// </summary>
+        public Input<string>? AccessKeyId
+        {
+            get => _accessKeyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
+        private Input<string>? _apiKey;
 
         /// <summary>
-        /// String. API User for your email service.
+        /// API Key for your email service. Will always be encrypted in our database.
+        /// </summary>
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// API User for your email service.
         /// </summary>
         [Input("apiUser")]
         public Input<string>? ApiUser { get; set; }
 
+        /// <summary>
+        /// Domain name.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// String. Default region. Used only for AWS, Mailgun, and SparkPost.
+        /// Default region. Used only for AWS, Mailgun, and SparkPost.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// String, Case-sensitive. AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
-        /// </summary>
         [Input("secretAccessKey")]
-        public Input<string>? SecretAccessKey { get; set; }
+        private Input<string>? _secretAccessKey;
 
         /// <summary>
-        /// String. Hostname or IP address of your SMTP server. Used only for SMTP.
+        /// AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
+        /// </summary>
+        public Input<string>? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Hostname or IP address of your SMTP server. Used only for SMTP.
         /// </summary>
         [Input("smtpHost")]
         public Input<string>? SmtpHost { get; set; }
 
-        /// <summary>
-        /// String, Case-sensitive. SMTP password. Used only for SMTP.
-        /// </summary>
         [Input("smtpPass")]
-        public Input<string>? SmtpPass { get; set; }
+        private Input<string>? _smtpPass;
 
         /// <summary>
-        /// Integer. Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
+        /// SMTP password. Used only for SMTP.
+        /// </summary>
+        public Input<string>? SmtpPass
+        {
+            get => _smtpPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _smtpPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
         /// </summary>
         [Input("smtpPort")]
         public Input<int>? SmtpPort { get; set; }
 
         /// <summary>
-        /// String. SMTP username. Used only for SMTP.
+        /// SMTP username. Used only for SMTP.
         /// </summary>
         [Input("smtpUser")]
         public Input<string>? SmtpUser { get; set; }

@@ -23,14 +23,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error
- * pages, and configuring default tenant behaviors.
+ * With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.
  * 
- * &gt; Auth0 does not currently support creating tenants through the Management API. Therefore, this resource can only
+ * &gt; Creating tenants through the Management API is not currently supported. Therefore, this resource can only
  * manage an existing tenant created through the Auth0 dashboard.
- * 
- * Auth0 does not currently support adding/removing extensions on tenants through their API. The Auth0 dashboard must be
- * used to add/remove extensions.
  * 
  * ## Example Usage
  * ```java
@@ -42,9 +38,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.Tenant;
  * import com.pulumi.auth0.TenantArgs;
  * import com.pulumi.auth0.inputs.TenantChangePasswordArgs;
- * import com.pulumi.auth0.inputs.TenantGuardianMfaPageArgs;
  * import com.pulumi.auth0.inputs.TenantErrorPageArgs;
+ * import com.pulumi.auth0.inputs.TenantFlagsArgs;
+ * import com.pulumi.auth0.inputs.TenantGuardianMfaPageArgs;
  * import com.pulumi.auth0.inputs.TenantSessionCookieArgs;
+ * import com.pulumi.auth0.inputs.TenantUniversalLoginArgs;
+ * import com.pulumi.auth0.inputs.TenantUniversalLoginColorsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,31 +57,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tenant = new Tenant(&#34;tenant&#34;, TenantArgs.builder()        
+ *         var myTenant = new Tenant(&#34;myTenant&#34;, TenantArgs.builder()        
+ *             .allowedLogoutUrls(&#34;http://example.com/logout&#34;)
  *             .changePassword(TenantChangePasswordArgs.builder()
  *                 .enabled(true)
- *                 .html(Files.readString(Paths.get(&#34;./password_reset.html&#34;)))
+ *                 .html(&#34;&lt;html&gt;Change Password&lt;/html&gt;&#34;)
  *                 .build())
- *             .guardianMfaPage(TenantGuardianMfaPageArgs.builder()
- *                 .enabled(true)
- *                 .html(Files.readString(Paths.get(&#34;./guardian_multifactor.html&#34;)))
- *                 .build())
- *             .defaultAudience(&#34;&lt;client_id&gt;&#34;)
- *             .defaultDirectory(&#34;Connection-Name&#34;)
+ *             .defaultRedirectionUri(&#34;https://example.com/login&#34;)
+ *             .enabledLocales(&#34;en&#34;)
  *             .errorPage(TenantErrorPageArgs.builder()
- *                 .html(Files.readString(Paths.get(&#34;./error.html&#34;)))
+ *                 .html(&#34;&lt;html&gt;Error Page&lt;/html&gt;&#34;)
  *                 .showLogLink(true)
- *                 .url(&#34;http://mysite/errors&#34;)
+ *                 .url(&#34;https://example.com/errors&#34;)
+ *                 .build())
+ *             .flags(TenantFlagsArgs.builder()
+ *                 .disableClickjackProtectionHeaders(true)
+ *                 .disableFieldsMapFix(false)
+ *                 .disableManagementApiSmsObfuscation(false)
+ *                 .enablePublicSignupUserExistsError(true)
+ *                 .noDiscloseEnterpriseConnections(false)
+ *                 .universalLogin(true)
+ *                 .useScopeDescriptionsForConsent(true)
  *                 .build())
  *             .friendlyName(&#34;Tenant Name&#34;)
- *             .pictureUrl(&#34;http://mysite/logo.png&#34;)
- *             .supportEmail(&#34;support@mysite&#34;)
- *             .supportUrl(&#34;http://mysite/support&#34;)
- *             .allowedLogoutUrls(&#34;http://mysite/logout&#34;)
- *             .sessionLifetime(46000)
- *             .sandboxVersion(&#34;8&#34;)
+ *             .guardianMfaPage(TenantGuardianMfaPageArgs.builder()
+ *                 .enabled(true)
+ *                 .html(&#34;&lt;html&gt;MFA&lt;/html&gt;&#34;)
+ *                 .build())
+ *             .pictureUrl(&#34;http://example.com/logo.png&#34;)
+ *             .sandboxVersion(&#34;12&#34;)
  *             .sessionCookie(TenantSessionCookieArgs.builder()
  *                 .mode(&#34;non-persistent&#34;)
+ *                 .build())
+ *             .sessionLifetime(8760)
+ *             .supportEmail(&#34;support@example.com&#34;)
+ *             .supportUrl(&#34;http://example.com/support&#34;)
+ *             .universalLogin(TenantUniversalLoginArgs.builder()
+ *                 .colors(TenantUniversalLoginColorsArgs.builder()
+ *                     .pageBackground(&#34;#000000&#34;)
+ *                     .primary(&#34;#0059d6&#34;)
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -92,262 +106,262 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, tenant can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/tenant:Tenant tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
+ *  $ pulumi import auth0:index/tenant:Tenant my_tenant 82f4f21b-017a-319d-92e7-2291c1ca36c4
  * ```
  * 
  */
 @ResourceType(type="auth0:index/tenant:Tenant")
 public class Tenant extends com.pulumi.resources.CustomResource {
     /**
-     * List(String). URLs that Auth0 may redirect to after logout.
+     * URLs that Auth0 may redirect to after logout.
      * 
      */
     @Export(name="allowedLogoutUrls", type=List.class, parameters={String.class})
     private Output<List<String>> allowedLogoutUrls;
 
     /**
-     * @return List(String). URLs that Auth0 may redirect to after logout.
+     * @return URLs that Auth0 may redirect to after logout.
      * 
      */
     public Output<List<String>> allowedLogoutUrls() {
         return this.allowedLogoutUrls;
     }
     /**
-     * List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+     * Configuration settings for change password page.
      * 
      */
     @Export(name="changePassword", type=TenantChangePassword.class, parameters={})
     private Output<TenantChangePassword> changePassword;
 
     /**
-     * @return List(Resource). Configuration settings for change passsword page. For details, see Change Password Page.
+     * @return Configuration settings for change password page.
      * 
      */
     public Output<TenantChangePassword> changePassword() {
         return this.changePassword;
     }
     /**
-     * String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+     * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
      */
     @Export(name="defaultAudience", type=String.class, parameters={})
     private Output<String> defaultAudience;
 
     /**
-     * @return String. API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+     * @return API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      * 
      */
     public Output<String> defaultAudience() {
         return this.defaultAudience;
     }
     /**
-     * String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+     * Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      * 
      */
     @Export(name="defaultDirectory", type=String.class, parameters={})
     private Output<String> defaultDirectory;
 
     /**
-     * @return String. Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+     * @return Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      * 
      */
     public Output<String> defaultDirectory() {
         return this.defaultDirectory;
     }
     /**
-     * String. The default absolute redirection uri, must be https and cannot contain a fragment.
+     * The default absolute redirection URI, must be https and cannot contain a fragment.
      * 
      */
     @Export(name="defaultRedirectionUri", type=String.class, parameters={})
     private Output<String> defaultRedirectionUri;
 
     /**
-     * @return String. The default absolute redirection uri, must be https and cannot contain a fragment.
+     * @return The default absolute redirection URI, must be https and cannot contain a fragment.
      * 
      */
     public Output<String> defaultRedirectionUri() {
         return this.defaultRedirectionUri;
     }
     /**
-     * List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+     * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
     @Export(name="enabledLocales", type=List.class, parameters={String.class})
     private Output<List<String>> enabledLocales;
 
     /**
-     * @return List(String). Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+     * @return Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
     public Output<List<String>> enabledLocales() {
         return this.enabledLocales;
     }
     /**
-     * List(Resource). Configuration settings for error pages. For details, see Error Page.
+     * Configuration settings for error pages.
      * 
      */
     @Export(name="errorPage", type=TenantErrorPage.class, parameters={})
     private Output<TenantErrorPage> errorPage;
 
     /**
-     * @return List(Resource). Configuration settings for error pages. For details, see Error Page.
+     * @return Configuration settings for error pages.
      * 
      */
     public Output<TenantErrorPage> errorPage() {
         return this.errorPage;
     }
     /**
-     * List(Resource). Configuration settings for tenant flags. For details, see Flags.
+     * Configuration settings for tenant flags.
      * 
      */
     @Export(name="flags", type=TenantFlags.class, parameters={})
     private Output<TenantFlags> flags;
 
     /**
-     * @return List(Resource). Configuration settings for tenant flags. For details, see Flags.
+     * @return Configuration settings for tenant flags.
      * 
      */
     public Output<TenantFlags> flags() {
         return this.flags;
     }
     /**
-     * String. Friendly name for the tenant.
+     * Friendly name for the tenant.
      * 
      */
     @Export(name="friendlyName", type=String.class, parameters={})
     private Output<String> friendlyName;
 
     /**
-     * @return String. Friendly name for the tenant.
+     * @return Friendly name for the tenant.
      * 
      */
     public Output<String> friendlyName() {
         return this.friendlyName;
     }
     /**
-     * List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+     * Configuration settings for the Guardian MFA page.
      * 
      */
     @Export(name="guardianMfaPage", type=TenantGuardianMfaPage.class, parameters={})
     private Output<TenantGuardianMfaPage> guardianMfaPage;
 
     /**
-     * @return List(Resource). Configuration settings for the Guardian MFA page. For details, see Guardian MFA Page.
+     * @return Configuration settings for the Guardian MFA page.
      * 
      */
     public Output<TenantGuardianMfaPage> guardianMfaPage() {
         return this.guardianMfaPage;
     }
     /**
-     * Integer. Number of hours during which a session can be inactive before the user must log in again.
+     * Number of hours during which a session can be inactive before the user must log in again.
      * 
      */
     @Export(name="idleSessionLifetime", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> idleSessionLifetime;
 
     /**
-     * @return Integer. Number of hours during which a session can be inactive before the user must log in again.
+     * @return Number of hours during which a session can be inactive before the user must log in again.
      * 
      */
     public Output<Optional<Double>> idleSessionLifetime() {
         return Codegen.optional(this.idleSessionLifetime);
     }
     /**
-     * . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+     * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
     @Export(name="pictureUrl", type=String.class, parameters={})
     private Output<String> pictureUrl;
 
     /**
-     * @return . String URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+     * @return URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
     public Output<String> pictureUrl() {
         return this.pictureUrl;
     }
     /**
-     * String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
+     * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
      */
     @Export(name="sandboxVersion", type=String.class, parameters={})
     private Output<String> sandboxVersion;
 
     /**
-     * @return String. Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
+     * @return Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
      */
     public Output<String> sandboxVersion() {
         return this.sandboxVersion;
     }
     /**
-     * List(Resource). Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property that accepts two values: `&#34;persistent&#34;` or `&#34;non-persistent&#34;`.
+     * Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property.
      * 
      */
     @Export(name="sessionCookie", type=TenantSessionCookie.class, parameters={})
     private Output<TenantSessionCookie> sessionCookie;
 
     /**
-     * @return List(Resource). Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property that accepts two values: `&#34;persistent&#34;` or `&#34;non-persistent&#34;`.
+     * @return Alters behavior of tenant&#39;s session cookie. Contains a single `mode` property.
      * 
      */
     public Output<TenantSessionCookie> sessionCookie() {
         return this.sessionCookie;
     }
     /**
-     * Integer. Number of hours during which a session will stay valid.
+     * Number of hours during which a session will stay valid.
      * 
      */
     @Export(name="sessionLifetime", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> sessionLifetime;
 
     /**
-     * @return Integer. Number of hours during which a session will stay valid.
+     * @return Number of hours during which a session will stay valid.
      * 
      */
     public Output<Optional<Double>> sessionLifetime() {
         return Codegen.optional(this.sessionLifetime);
     }
     /**
-     * String. Support email address for authenticating users.
+     * Support email address for authenticating users.
      * 
      */
     @Export(name="supportEmail", type=String.class, parameters={})
     private Output<String> supportEmail;
 
     /**
-     * @return String. Support email address for authenticating users.
+     * @return Support email address for authenticating users.
      * 
      */
     public Output<String> supportEmail() {
         return this.supportEmail;
     }
     /**
-     * String. Support URL for authenticating users.
+     * Support URL for authenticating users.
      * 
      */
     @Export(name="supportUrl", type=String.class, parameters={})
     private Output<String> supportUrl;
 
     /**
-     * @return String. Support URL for authenticating users.
+     * @return Support URL for authenticating users.
      * 
      */
     public Output<String> supportUrl() {
         return this.supportUrl;
     }
     /**
-     * List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+     * Configuration settings for Universal Login.
      * 
      */
     @Export(name="universalLogin", type=TenantUniversalLogin.class, parameters={})
     private Output<TenantUniversalLogin> universalLogin;
 
     /**
-     * @return List(Resource). Configuration settings for Universal Login. For details, see Universal Login.
+     * @return Configuration settings for Universal Login.
      * 
      */
     public Output<TenantUniversalLogin> universalLogin() {

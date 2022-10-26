@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
-// authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules.
-// You can create global variable for use with rules by using the RuleConfig resource.
+// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the `RuleConfig` resource.
 //
 // ## Example Usage
 //
@@ -33,14 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
 //				Enabled: pulumi.Bool(true),
-//				Script:  pulumi.String(fmt.Sprintf("function (user, context, callback) {\n  callback(null, user, context);\n}\n\n")),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = auth0.NewRuleConfig(ctx, "myRuleConfig", &auth0.RuleConfigArgs{
-//				Key:   pulumi.String("foo"),
-//				Value: pulumi.String("bar"),
+//				Script:  pulumi.String(fmt.Sprintf("    function (user, context, callback) {\n      callback(null, user, context);\n    }\n  \n")),
 //			})
 //			if err != nil {
 //				return err
@@ -53,7 +44,7 @@ import (
 //
 // ## Import
 //
-// Existing rules can be imported using their id, e.g.
+// Existing rules can be imported using their ID. # Example
 //
 // ```sh
 //
@@ -63,13 +54,13 @@ import (
 type Rule struct {
 	pulumi.CustomResourceState
 
-	// Boolean. Indicates whether the rule is enabled.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+	// Indicates whether the rule is enabled.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+	// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
 	Order pulumi.IntOutput `pulumi:"order"`
-	// String. Code to be executed when the rule runs.
+	// Code to be executed when the rule runs.
 	Script pulumi.StringOutput `pulumi:"script"`
 }
 
@@ -105,24 +96,24 @@ func GetRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Rule resources.
 type ruleState struct {
-	// Boolean. Indicates whether the rule is enabled.
+	// Indicates whether the rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+	// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
 	Name *string `pulumi:"name"`
-	// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+	// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
 	Order *int `pulumi:"order"`
-	// String. Code to be executed when the rule runs.
+	// Code to be executed when the rule runs.
 	Script *string `pulumi:"script"`
 }
 
 type RuleState struct {
-	// Boolean. Indicates whether the rule is enabled.
+	// Indicates whether the rule is enabled.
 	Enabled pulumi.BoolPtrInput
-	// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+	// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
 	Name pulumi.StringPtrInput
-	// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+	// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
 	Order pulumi.IntPtrInput
-	// String. Code to be executed when the rule runs.
+	// Code to be executed when the rule runs.
 	Script pulumi.StringPtrInput
 }
 
@@ -131,25 +122,25 @@ func (RuleState) ElementType() reflect.Type {
 }
 
 type ruleArgs struct {
-	// Boolean. Indicates whether the rule is enabled.
+	// Indicates whether the rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+	// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
 	Name *string `pulumi:"name"`
-	// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+	// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
 	Order *int `pulumi:"order"`
-	// String. Code to be executed when the rule runs.
+	// Code to be executed when the rule runs.
 	Script string `pulumi:"script"`
 }
 
 // The set of arguments for constructing a Rule resource.
 type RuleArgs struct {
-	// Boolean. Indicates whether the rule is enabled.
+	// Indicates whether the rule is enabled.
 	Enabled pulumi.BoolPtrInput
-	// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+	// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
 	Name pulumi.StringPtrInput
-	// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+	// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
 	Order pulumi.IntPtrInput
-	// String. Code to be executed when the rule runs.
+	// Code to be executed when the rule runs.
 	Script pulumi.StringInput
 }
 
@@ -240,22 +231,22 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
-// Boolean. Indicates whether the rule is enabled.
-func (o RuleOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Rule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+// Indicates whether the rule is enabled.
+func (o RuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Rule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
 func (o RuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
 func (o RuleOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
 }
 
-// String. Code to be executed when the rule runs.
+// Code to be executed when the rule runs.
 func (o RuleOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
 }

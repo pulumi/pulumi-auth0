@@ -16,14 +16,14 @@ public final class BrandingUniversalLoginArgs extends com.pulumi.resources.Resou
     public static final BrandingUniversalLoginArgs Empty = new BrandingUniversalLoginArgs();
 
     /**
-     * String, body of login pages.
+     * The body of login pages.
      * 
      */
     @Import(name="body")
     private @Nullable Output<String> body;
 
     /**
-     * @return String, body of login pages.
+     * @return The body of login pages.
      * 
      */
     public Optional<Output<String>> body() {
@@ -55,7 +55,7 @@ public final class BrandingUniversalLoginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param body String, body of login pages.
+         * @param body The body of login pages.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class BrandingUniversalLoginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param body String, body of login pages.
+         * @param body The body of login pages.
          * 
          * @return builder
          * 

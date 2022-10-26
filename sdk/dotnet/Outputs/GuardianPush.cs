@@ -13,7 +13,13 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GuardianPush
     {
+        /// <summary>
+        /// Configuration for Amazon SNS.
+        /// </summary>
         public readonly Outputs.GuardianPushAmazonSns? AmazonSns;
+        /// <summary>
+        /// Configuration for the Guardian Custom App.
+        /// </summary>
         public readonly Outputs.GuardianPushCustomApp? CustomApp;
 
         [OutputConstructor]

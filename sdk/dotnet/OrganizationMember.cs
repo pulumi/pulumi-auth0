@@ -21,13 +21,31 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var acmeAdmin = new Auth0.OrganizationMember("acmeAdmin", new()
+    ///     var reader = new Auth0.Role("reader");
+    /// 
+    ///     var admin = new Auth0.Role("admin");
+    /// 
+    ///     var user = new Auth0.User("user", new()
     ///     {
-    ///         OrganizationId = auth0_organization.Acme.Id,
-    ///         UserId = auth0_user.Acme_user.Id,
+    ///         Email = "test-user@auth0.com",
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         EmailVerified = true,
+    ///         Password = "MyPass123$",
+    ///     });
+    /// 
+    ///     var myOrg = new Auth0.Organization("myOrg", new()
+    ///     {
+    ///         DisplayName = "Admin",
+    ///     });
+    /// 
+    ///     var myOrgMember = new Auth0.OrganizationMember("myOrgMember", new()
+    ///     {
+    ///         OrganizationId = myOrg.Id,
+    ///         UserId = user.Id,
     ///         Roles = new[]
     ///         {
-    ///             auth0_role.Admin.Id,
+    ///             reader.Id,
+    ///             admin.Id,
     ///         },
     ///     });
     /// 
@@ -36,29 +54,29 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// This resource can be imported by specifying the organization ID and user ID separated by ":". # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/organizationMember:OrganizationMember acme_admin 11f4a21b-011a-312d-9217-e291caca36c5
+    ///  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX:auth0|XXXXX"
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/organizationMember:OrganizationMember")]
     public partial class OrganizationMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the organization
+        /// The ID of the organization to assign the member to.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Set(string). List of role IDs to assign to member.
+        /// The role ID(s) to assign to the organization member.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
-        /// The user ID of the member
+        /// ID of the user to add as an organization member.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -110,7 +128,7 @@ namespace Pulumi.Auth0
     public sealed class OrganizationMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the organization
+        /// The ID of the organization to assign the member to.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -119,7 +137,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Set(string). List of role IDs to assign to member.
+        /// The role ID(s) to assign to the organization member.
         /// </summary>
         public InputList<string> Roles
         {
@@ -128,7 +146,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The user ID of the member
+        /// ID of the user to add as an organization member.
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -142,7 +160,7 @@ namespace Pulumi.Auth0
     public sealed class OrganizationMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the organization
+        /// The ID of the organization to assign the member to.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -151,7 +169,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Set(string). List of role IDs to assign to member.
+        /// The role ID(s) to assign to the organization member.
         /// </summary>
         public InputList<string> Roles
         {
@@ -160,7 +178,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The user ID of the member
+        /// ID of the user to add as an organization member.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

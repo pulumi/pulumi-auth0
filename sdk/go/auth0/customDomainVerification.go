@@ -11,13 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must
-// configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0.
-// This resource allows for automating the verification part of the process.
+// With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
 //
 // ## Import
 //
-// You can import this resource using the custom domain id, e.g.
+// You can import this resource using the custom domain ID. # Example
 //
 // ```sh
 //
@@ -27,10 +25,12 @@ import (
 type CustomDomainVerification struct {
 	pulumi.CustomResourceState
 
+	// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+	// is `self_managed_certs` and Terraform originally managed the domain's verification.
 	CnameApiKey pulumi.StringOutput `pulumi:"cnameApiKey"`
-	// String. ID of the custom domain resource.
+	// ID of the custom domain resource.
 	CustomDomainId pulumi.StringOutput `pulumi:"customDomainId"`
-	// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	// The DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName pulumi.StringOutput `pulumi:"originDomainName"`
 }
 
@@ -44,6 +44,10 @@ func NewCustomDomainVerification(ctx *pulumi.Context,
 	if args.CustomDomainId == nil {
 		return nil, errors.New("invalid value for required argument 'CustomDomainId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"cnameApiKey",
+	})
+	opts = append(opts, secrets)
 	var resource CustomDomainVerification
 	err := ctx.RegisterResource("auth0:index/customDomainVerification:CustomDomainVerification", name, args, &resource, opts...)
 	if err != nil {
@@ -66,18 +70,22 @@ func GetCustomDomainVerification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomDomainVerification resources.
 type customDomainVerificationState struct {
+	// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+	// is `self_managed_certs` and Terraform originally managed the domain's verification.
 	CnameApiKey *string `pulumi:"cnameApiKey"`
-	// String. ID of the custom domain resource.
+	// ID of the custom domain resource.
 	CustomDomainId *string `pulumi:"customDomainId"`
-	// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	// The DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName *string `pulumi:"originDomainName"`
 }
 
 type CustomDomainVerificationState struct {
+	// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+	// is `self_managed_certs` and Terraform originally managed the domain's verification.
 	CnameApiKey pulumi.StringPtrInput
-	// String. ID of the custom domain resource.
+	// ID of the custom domain resource.
 	CustomDomainId pulumi.StringPtrInput
-	// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	// The DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName pulumi.StringPtrInput
 }
 
@@ -86,13 +94,13 @@ func (CustomDomainVerificationState) ElementType() reflect.Type {
 }
 
 type customDomainVerificationArgs struct {
-	// String. ID of the custom domain resource.
+	// ID of the custom domain resource.
 	CustomDomainId string `pulumi:"customDomainId"`
 }
 
 // The set of arguments for constructing a CustomDomainVerification resource.
 type CustomDomainVerificationArgs struct {
-	// String. ID of the custom domain resource.
+	// ID of the custom domain resource.
 	CustomDomainId pulumi.StringInput
 }
 
@@ -183,16 +191,18 @@ func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutputWithCont
 	return o
 }
 
+// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
+// is `self_managed_certs` and Terraform originally managed the domain's verification.
 func (o CustomDomainVerificationOutput) CnameApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDomainVerification) pulumi.StringOutput { return v.CnameApiKey }).(pulumi.StringOutput)
 }
 
-// String. ID of the custom domain resource.
+// ID of the custom domain resource.
 func (o CustomDomainVerificationOutput) CustomDomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDomainVerification) pulumi.StringOutput { return v.CustomDomainId }).(pulumi.StringOutput)
 }
 
-// String. The DNS name of the Auth0 origin server that handles traffic for the custom domain.
+// The DNS name of the Auth0 origin server that handles traffic for the custom domain.
 func (o CustomDomainVerificationOutput) OriginDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDomainVerification) pulumi.StringOutput { return v.OriginDomainName }).(pulumi.StringOutput)
 }

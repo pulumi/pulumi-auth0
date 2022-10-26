@@ -13,19 +13,31 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const acmeAdmin = new auth0.OrganizationMember("acmeAdmin", {
- *     organizationId: auth0_organization.acme.id,
- *     userId: auth0_user.acme_user.id,
- *     roles: [auth0_role.admin.id],
+ * const reader = new auth0.Role("reader", {});
+ * const admin = new auth0.Role("admin", {});
+ * const user = new auth0.User("user", {
+ *     email: "test-user@auth0.com",
+ *     connectionName: "Username-Password-Authentication",
+ *     emailVerified: true,
+ *     password: `MyPass123$`,
+ * });
+ * const myOrg = new auth0.Organization("myOrg", {displayName: "Admin"});
+ * const myOrgMember = new auth0.OrganizationMember("myOrgMember", {
+ *     organizationId: myOrg.id,
+ *     userId: user.id,
+ *     roles: [
+ *         reader.id,
+ *         admin.id,
+ *     ],
  * });
  * ```
  *
  * ## Import
  *
- * As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * This resource can be imported by specifying the organization ID and user ID separated by ":". # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/organizationMember:OrganizationMember acme_admin 11f4a21b-011a-312d-9217-e291caca36c5
+ *  $ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX:auth0|XXXXX"
  * ```
  */
 export class OrganizationMember extends pulumi.CustomResource {
@@ -57,15 +69,15 @@ export class OrganizationMember extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the organization
+     * The ID of the organization to assign the member to.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * Set(string). List of role IDs to assign to member.
+     * The role ID(s) to assign to the organization member.
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
-     * The user ID of the member
+     * ID of the user to add as an organization member.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -107,15 +119,15 @@ export class OrganizationMember extends pulumi.CustomResource {
  */
 export interface OrganizationMemberState {
     /**
-     * The ID of the organization
+     * The ID of the organization to assign the member to.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Set(string). List of role IDs to assign to member.
+     * The role ID(s) to assign to the organization member.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The user ID of the member
+     * ID of the user to add as an organization member.
      */
     userId?: pulumi.Input<string>;
 }
@@ -125,15 +137,15 @@ export interface OrganizationMemberState {
  */
 export interface OrganizationMemberArgs {
     /**
-     * The ID of the organization
+     * The ID of the organization to assign the member to.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Set(string). List of role IDs to assign to member.
+     * The role ID(s) to assign to the organization member.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The user ID of the member
+     * ID of the user to add as an organization member.
      */
     userId: pulumi.Input<string>;
 }

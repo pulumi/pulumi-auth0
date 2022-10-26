@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CustomDomainVerification {
-    /**
-     * @return List(Map). Verification methods for the domain.
-     * 
-     */
     private @Nullable List<Object> methods;
 
     private CustomDomainVerification() {}
-    /**
-     * @return List(Map). Verification methods for the domain.
-     * 
-     */
     public List<Object> methods() {
         return this.methods == null ? List.of() : this.methods;
     }

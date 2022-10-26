@@ -13,19 +13,19 @@ namespace Pulumi.Auth0.Inputs
     public sealed class TenantErrorPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String, HTML format with supported Liquid syntax. Customized content of the error page.
+        /// HTML format with supported Liquid syntax. Customized content of the error page.
         /// </summary>
         [Input("html", required: true)]
         public Input<string> Html { get; set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether to show the link to logs as part of the default error page.
+        /// Indicates whether to show the link to logs as part of the default error page.
         /// </summary>
         [Input("showLogLink", required: true)]
         public Input<bool> ShowLogLink { get; set; } = null!;
 
         /// <summary>
-        /// String. URL to redirect to when an error occurs rather than showing the default error page.
+        /// URL to redirect to when an error occurs rather than showing the default error page.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

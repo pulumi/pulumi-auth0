@@ -22,7 +22,7 @@ class AttackProtectionArgs:
         """
         The set of arguments for constructing a AttackProtection resource.
         :param pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs'] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
-        :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Safeguards against a single IP address attacking a single user account.
+        :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs'] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         if breached_password_detection is not None:
@@ -48,7 +48,7 @@ class AttackProtectionArgs:
     @pulumi.getter(name="bruteForceProtection")
     def brute_force_protection(self) -> Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']]:
         """
-        Safeguards against a single IP address attacking a single user account.
+        Brute-force protection safeguards against a single IP address attacking a single user account.
         """
         return pulumi.get(self, "brute_force_protection")
 
@@ -78,7 +78,7 @@ class _AttackProtectionState:
         """
         Input properties used for looking up and filtering AttackProtection resources.
         :param pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs'] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
-        :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Safeguards against a single IP address attacking a single user account.
+        :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs'] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         if breached_password_detection is not None:
@@ -104,7 +104,7 @@ class _AttackProtectionState:
     @pulumi.getter(name="bruteForceProtection")
     def brute_force_protection(self) -> Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']]:
         """
-        Safeguards against a single IP address attacking a single user account.
+        Brute-force protection safeguards against a single IP address attacking a single user account.
         """
         return pulumi.get(self, "brute_force_protection")
 
@@ -135,7 +135,7 @@ class AttackProtection(pulumi.CustomResource):
                  suspicious_ip_throttling: Optional[pulumi.Input[pulumi.InputType['AttackProtectionSuspiciousIpThrottlingArgs']]] = None,
                  __props__=None):
         """
-        Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHA
+        Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
 
         ## Example Usage
 
@@ -143,7 +143,7 @@ class AttackProtection(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        attack_protection = auth0.AttackProtection("attackProtection",
+        my_protection = auth0.AttackProtection("myProtection",
             breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
                 admin_notification_frequencies=["daily"],
                 enabled=True,
@@ -183,16 +183,16 @@ class AttackProtection(pulumi.CustomResource):
 
         ## Import
 
-        As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+        As this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
 
         ```sh
-         $ pulumi import auth0:index/attackProtection:AttackProtection default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+         $ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AttackProtectionBreachedPasswordDetectionArgs']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
-        :param pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']] brute_force_protection: Safeguards against a single IP address attacking a single user account.
+        :param pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input[pulumi.InputType['AttackProtectionSuspiciousIpThrottlingArgs']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         ...
@@ -202,7 +202,7 @@ class AttackProtection(pulumi.CustomResource):
                  args: Optional[AttackProtectionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHA
+        Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
 
         ## Example Usage
 
@@ -210,7 +210,7 @@ class AttackProtection(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        attack_protection = auth0.AttackProtection("attackProtection",
+        my_protection = auth0.AttackProtection("myProtection",
             breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(
                 admin_notification_frequencies=["daily"],
                 enabled=True,
@@ -250,10 +250,10 @@ class AttackProtection(pulumi.CustomResource):
 
         ## Import
 
-        As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+        As this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
 
         ```sh
-         $ pulumi import auth0:index/attackProtection:AttackProtection default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+         $ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40
         ```
 
         :param str resource_name: The name of the resource.
@@ -307,7 +307,7 @@ class AttackProtection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AttackProtectionBreachedPasswordDetectionArgs']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
-        :param pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']] brute_force_protection: Safeguards against a single IP address attacking a single user account.
+        :param pulumi.Input[pulumi.InputType['AttackProtectionBruteForceProtectionArgs']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input[pulumi.InputType['AttackProtectionSuspiciousIpThrottlingArgs']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -331,7 +331,7 @@ class AttackProtection(pulumi.CustomResource):
     @pulumi.getter(name="bruteForceProtection")
     def brute_force_protection(self) -> pulumi.Output['outputs.AttackProtectionBruteForceProtection']:
         """
-        Safeguards against a single IP address attacking a single user account.
+        Brute-force protection safeguards against a single IP address attacking a single user account.
         """
         return pulumi.get(self, "brute_force_protection")
 

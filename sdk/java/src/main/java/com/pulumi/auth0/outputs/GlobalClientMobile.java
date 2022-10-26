@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientMobile {
+    /**
+     * @return Configuration settings for Android native apps.
+     * 
+     */
     private @Nullable GlobalClientMobileAndroid android;
+    /**
+     * @return Configuration settings for i0S native apps.
+     * 
+     */
     private @Nullable GlobalClientMobileIos ios;
 
     private GlobalClientMobile() {}
+    /**
+     * @return Configuration settings for Android native apps.
+     * 
+     */
     public Optional<GlobalClientMobileAndroid> android() {
         return Optional.ofNullable(this.android);
     }
+    /**
+     * @return Configuration settings for i0S native apps.
+     * 
+     */
     public Optional<GlobalClientMobileIos> ios() {
         return Optional.ofNullable(this.ios);
     }

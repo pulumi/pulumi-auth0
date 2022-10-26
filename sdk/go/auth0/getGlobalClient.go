@@ -4,285 +4,90 @@
 package auth0
 
 import (
-	"context"
-	"reflect"
-
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a tenant's global Auth0 Application client.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupGlobalClient(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-func LookupGlobalClient(ctx *pulumi.Context, args *LookupGlobalClientArgs, opts ...pulumi.InvokeOption) (*LookupGlobalClientResult, error) {
+func LookupGlobalClient(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupGlobalClientResult, error) {
 	var rv LookupGlobalClientResult
-	err := ctx.Invoke("auth0:index/getGlobalClient:getGlobalClient", args, &rv, opts...)
+	err := ctx.Invoke("auth0:index/getGlobalClient:getGlobalClient", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-// A collection of arguments for invoking getGlobalClient.
-type LookupGlobalClientArgs struct {
-	// String. ID of the client.
-	// * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
-	ClientId *string `pulumi:"clientId"`
-	Name     *string `pulumi:"name"`
-}
-
 // A collection of values returned by getGlobalClient.
 type LookupGlobalClientResult struct {
-	Addons            []GetGlobalClientAddon `pulumi:"addons"`
-	AllowedClients    []string               `pulumi:"allowedClients"`
-	AllowedLogoutUrls []string               `pulumi:"allowedLogoutUrls"`
-	AllowedOrigins    []string               `pulumi:"allowedOrigins"`
-	AppType           string                 `pulumi:"appType"`
-	Callbacks         []string               `pulumi:"callbacks"`
-	// String. ID of the client.
-	// * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
-	ClientId *string `pulumi:"clientId"`
-	// (Optional) Map(String)
-	ClientMetadata  map[string]interface{} `pulumi:"clientMetadata"`
-	ClientSecret    string                 `pulumi:"clientSecret"`
-	CrossOriginAuth bool                   `pulumi:"crossOriginAuth"`
-	CrossOriginLoc  string                 `pulumi:"crossOriginLoc"`
-	// String. Content of the custom login page.
+	// Addons enabled for this client and their associated configurations.
+	Addons []GetGlobalClientAddon `pulumi:"addons"`
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients []string `pulumi:"allowedClients"`
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	AppType string `pulumi:"appType"`
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks []string `pulumi:"callbacks"`
+	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+	ClientAliases []string `pulumi:"clientAliases"`
+	// The ID of the client.
+	ClientId string `pulumi:"clientId"`
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
+	ClientSecret   string                 `pulumi:"clientSecret"`
+	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	CrossOriginAuth bool `pulumi:"crossOriginAuth"`
+	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+	CrossOriginLoc string `pulumi:"crossOriginLoc"`
+	// The content (HTML, CSS, JS) of the custom login page.
 	CustomLoginPage string `pulumi:"customLoginPage"`
-	// Boolean. Indicates whether a custom login page is to be used.
-	CustomLoginPageOn bool              `pulumi:"customLoginPageOn"`
-	Description       string            `pulumi:"description"`
-	EncryptionKey     map[string]string `pulumi:"encryptionKey"`
-	FormTemplate      string            `pulumi:"formTemplate"`
-	GrantTypes        []string          `pulumi:"grantTypes"`
+	// Indicates whether a custom login page is to be used.
+	CustomLoginPageOn bool `pulumi:"customLoginPageOn"`
+	// Description of the purpose of the client.
+	Description string `pulumi:"description"`
+	// Encryption used for WS-Fed responses with this client.
+	EncryptionKey map[string]string `pulumi:"encryptionKey"`
+	// HTML form template to be used for WS-Federation.
+	FormTemplate string `pulumi:"formTemplate"`
+	// Types of grants that this client is authorized to use.
+	GrantTypes []string `pulumi:"grantTypes"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                             string                             `pulumi:"id"`
-	InitiateLoginUri               string                             `pulumi:"initiateLoginUri"`
-	IsFirstParty                   bool                               `pulumi:"isFirstParty"`
-	IsTokenEndpointIpHeaderTrusted bool                               `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	JwtConfigurations              []GetGlobalClientJwtConfiguration  `pulumi:"jwtConfigurations"`
-	LogoUri                        string                             `pulumi:"logoUri"`
-	Mobiles                        []GetGlobalClientMobile            `pulumi:"mobiles"`
-	Name                           *string                            `pulumi:"name"`
-	NativeSocialLogins             []GetGlobalClientNativeSocialLogin `pulumi:"nativeSocialLogins"`
-	OidcConformant                 bool                               `pulumi:"oidcConformant"`
-	OrganizationRequireBehavior    string                             `pulumi:"organizationRequireBehavior"`
-	OrganizationUsage              string                             `pulumi:"organizationUsage"`
-	RefreshTokens                  []GetGlobalClientRefreshToken      `pulumi:"refreshTokens"`
-	SigningKeys                    []map[string]interface{}           `pulumi:"signingKeys"`
-	Sso                            bool                               `pulumi:"sso"`
-	SsoDisabled                    bool                               `pulumi:"ssoDisabled"`
-	TokenEndpointAuthMethod        string                             `pulumi:"tokenEndpointAuthMethod"`
-	WebOrigins                     []string                           `pulumi:"webOrigins"`
-}
-
-func LookupGlobalClientOutput(ctx *pulumi.Context, args LookupGlobalClientOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalClientResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGlobalClientResult, error) {
-			args := v.(LookupGlobalClientArgs)
-			r, err := LookupGlobalClient(ctx, &args, opts...)
-			var s LookupGlobalClientResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
-		}).(LookupGlobalClientResultOutput)
-}
-
-// A collection of arguments for invoking getGlobalClient.
-type LookupGlobalClientOutputArgs struct {
-	// String. ID of the client.
-	// * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
-	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	Name     pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (LookupGlobalClientOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupGlobalClientArgs)(nil)).Elem()
-}
-
-// A collection of values returned by getGlobalClient.
-type LookupGlobalClientResultOutput struct{ *pulumi.OutputState }
-
-func (LookupGlobalClientResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupGlobalClientResult)(nil)).Elem()
-}
-
-func (o LookupGlobalClientResultOutput) ToLookupGlobalClientResultOutput() LookupGlobalClientResultOutput {
-	return o
-}
-
-func (o LookupGlobalClientResultOutput) ToLookupGlobalClientResultOutputWithContext(ctx context.Context) LookupGlobalClientResultOutput {
-	return o
-}
-
-func (o LookupGlobalClientResultOutput) Addons() GetGlobalClientAddonArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []GetGlobalClientAddon { return v.Addons }).(GetGlobalClientAddonArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) AllowedClients() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []string { return v.AllowedClients }).(pulumi.StringArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []string { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) AllowedOrigins() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) AppType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.AppType }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) Callbacks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []string { return v.Callbacks }).(pulumi.StringArrayOutput)
-}
-
-// String. ID of the client.
-// * `clientSecret`<sup>1</sup> - String. Secret for the client; keep this private.
-func (o LookupGlobalClientResultOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-// (Optional) Map(String)
-func (o LookupGlobalClientResultOutput) ClientMetadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) map[string]interface{} { return v.ClientMetadata }).(pulumi.MapOutput)
-}
-
-func (o LookupGlobalClientResultOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.ClientSecret }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) CrossOriginAuth() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) bool { return v.CrossOriginAuth }).(pulumi.BoolOutput)
-}
-
-func (o LookupGlobalClientResultOutput) CrossOriginLoc() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.CrossOriginLoc }).(pulumi.StringOutput)
-}
-
-// String. Content of the custom login page.
-func (o LookupGlobalClientResultOutput) CustomLoginPage() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.CustomLoginPage }).(pulumi.StringOutput)
-}
-
-// Boolean. Indicates whether a custom login page is to be used.
-func (o LookupGlobalClientResultOutput) CustomLoginPageOn() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) bool { return v.CustomLoginPageOn }).(pulumi.BoolOutput)
-}
-
-func (o LookupGlobalClientResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) EncryptionKey() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) map[string]string { return v.EncryptionKey }).(pulumi.StringMapOutput)
-}
-
-func (o LookupGlobalClientResultOutput) FormTemplate() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.FormTemplate }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) GrantTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupGlobalClientResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) InitiateLoginUri() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.InitiateLoginUri }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) IsFirstParty() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
-}
-
-func (o LookupGlobalClientResultOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) bool { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
-}
-
-func (o LookupGlobalClientResultOutput) JwtConfigurations() GetGlobalClientJwtConfigurationArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []GetGlobalClientJwtConfiguration { return v.JwtConfigurations }).(GetGlobalClientJwtConfigurationArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) LogoUri() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.LogoUri }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) Mobiles() GetGlobalClientMobileArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []GetGlobalClientMobile { return v.Mobiles }).(GetGlobalClientMobileArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupGlobalClientResultOutput) NativeSocialLogins() GetGlobalClientNativeSocialLoginArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []GetGlobalClientNativeSocialLogin { return v.NativeSocialLogins }).(GetGlobalClientNativeSocialLoginArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) OidcConformant() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) bool { return v.OidcConformant }).(pulumi.BoolOutput)
-}
-
-func (o LookupGlobalClientResultOutput) OrganizationRequireBehavior() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.OrganizationRequireBehavior }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) OrganizationUsage() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.OrganizationUsage }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) RefreshTokens() GetGlobalClientRefreshTokenArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []GetGlobalClientRefreshToken { return v.RefreshTokens }).(GetGlobalClientRefreshTokenArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) SigningKeys() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []map[string]interface{} { return v.SigningKeys }).(pulumi.MapArrayOutput)
-}
-
-func (o LookupGlobalClientResultOutput) Sso() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) bool { return v.Sso }).(pulumi.BoolOutput)
-}
-
-func (o LookupGlobalClientResultOutput) SsoDisabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) bool { return v.SsoDisabled }).(pulumi.BoolOutput)
-}
-
-func (o LookupGlobalClientResultOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalClientResultOutput) WebOrigins() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupGlobalClientResult) []string { return v.WebOrigins }).(pulumi.StringArrayOutput)
-}
-
-func init() {
-	pulumi.RegisterOutputType(LookupGlobalClientResultOutput{})
+	Id string `pulumi:"id"`
+	// Initiate login URI, must be HTTPS.
+	InitiateLoginUri string `pulumi:"initiateLoginUri"`
+	// Indicates whether this client is a first-party client.
+	IsFirstParty bool `pulumi:"isFirstParty"`
+	// Indicates whether the token endpoint IP header is trusted.
+	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// Configuration settings for the JWTs issued for this client.
+	JwtConfigurations []GetGlobalClientJwtConfiguration `pulumi:"jwtConfigurations"`
+	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+	LogoUri string `pulumi:"logoUri"`
+	// Additional configuration for native mobile apps.
+	Mobiles []GetGlobalClientMobile `pulumi:"mobiles"`
+	// Name of the client.
+	Name string `pulumi:"name"`
+	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
+	NativeSocialLogins []GetGlobalClientNativeSocialLogin `pulumi:"nativeSocialLogins"`
+	// Indicates whether this client will conform to strict OIDC specifications.
+	OidcConformant bool `pulumi:"oidcConformant"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	OrganizationRequireBehavior string `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage string `pulumi:"organizationUsage"`
+	// Configuration settings for the refresh tokens issued for this client.
+	RefreshTokens []GetGlobalClientRefreshToken `pulumi:"refreshTokens"`
+	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+	SigningKeys []map[string]interface{} `pulumi:"signingKeys"`
+	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+	Sso bool `pulumi:"sso"`
+	// Indicates whether or not SSO is disabled.
+	SsoDisabled bool `pulumi:"ssoDisabled"`
+	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins []string `pulumi:"webOrigins"`
 }

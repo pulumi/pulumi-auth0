@@ -23,11 +23,11 @@ class LogStreamArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogStream resource.
-        :param pulumi.Input['LogStreamSinkArgs'] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
-        :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream.
-        :param pulumi.Input[str] name: Name of the log stream
-        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
+        :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[str] name: Name of the log stream.
+        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         """
         pulumi.set(__self__, "sink", sink)
         pulumi.set(__self__, "type", type)
@@ -42,7 +42,7 @@ class LogStreamArgs:
     @pulumi.getter
     def sink(self) -> pulumi.Input['LogStreamSinkArgs']:
         """
-        List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        The sink configuration for the log stream.
         """
         return pulumi.get(self, "sink")
 
@@ -54,7 +54,7 @@ class LogStreamArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        Type of the log stream, which indicates the sink provider.
         """
         return pulumi.get(self, "type")
 
@@ -66,7 +66,7 @@ class LogStreamArgs:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
-        Only logs events matching these filters will be delivered by the stream.
+        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
         """
         return pulumi.get(self, "filters")
 
@@ -78,7 +78,7 @@ class LogStreamArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the log stream
+        Name of the log stream.
         """
         return pulumi.get(self, "name")
 
@@ -90,7 +90,7 @@ class LogStreamArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The current status of the log stream. Options are "active", "paused", "suspended"
+        The current status of the log stream. Options are "active", "paused", "suspended".
         """
         return pulumi.get(self, "status")
 
@@ -109,11 +109,11 @@ class _LogStreamState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogStream resources.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream.
-        :param pulumi.Input[str] name: Name of the log stream
-        :param pulumi.Input['LogStreamSinkArgs'] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
-        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
-        :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[str] name: Name of the log stream.
+        :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
+        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider.
         """
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
@@ -130,7 +130,7 @@ class _LogStreamState:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
-        Only logs events matching these filters will be delivered by the stream.
+        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
         """
         return pulumi.get(self, "filters")
 
@@ -142,7 +142,7 @@ class _LogStreamState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the log stream
+        Name of the log stream.
         """
         return pulumi.get(self, "name")
 
@@ -154,7 +154,7 @@ class _LogStreamState:
     @pulumi.getter
     def sink(self) -> Optional[pulumi.Input['LogStreamSinkArgs']]:
         """
-        List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        The sink configuration for the log stream.
         """
         return pulumi.get(self, "sink")
 
@@ -166,7 +166,7 @@ class _LogStreamState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The current status of the log stream. Options are "active", "paused", "suspended"
+        The current status of the log stream. Options are "active", "paused", "suspended".
         """
         return pulumi.get(self, "status")
 
@@ -178,7 +178,7 @@ class _LogStreamState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        Type of the log stream, which indicates the sink provider.
         """
         return pulumi.get(self, "type")
 
@@ -207,7 +207,8 @@ class LogStream(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        example = auth0.LogStream("example",
+        # This is an example of an http log stream.
+        my_webhook = auth0.LogStream("myWebhook",
             filters=[
                 {
                     "name": "auth.login.fail",
@@ -219,6 +220,19 @@ class LogStream(pulumi.CustomResource):
                 },
             ],
             sink=auth0.LogStreamSinkArgs(
+                http_authorization="AKIAXXXXXXXXXXXXXXXX",
+                http_content_format="JSONOBJECT",
+                http_content_type="application/json",
+                http_custom_headers=[{
+                    "header": "foo",
+                    "value": "bar",
+                }],
+                http_endpoint="https://example.com/logs",
+            ),
+            type="http")
+        # This is an example of an Amazon EventBridge log stream.
+        example_aws = auth0.LogStream("exampleAws",
+            sink=auth0.LogStreamSinkArgs(
                 aws_account_id="my_account_id",
                 aws_region="us-east-2",
             ),
@@ -228,7 +242,7 @@ class LogStream(pulumi.CustomResource):
 
         ## Import
 
-        Existing log stream can be imported using log stream id, e.g.
+        An existing log stream can be imported using its ID. # Example
 
         ```sh
          $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
@@ -236,11 +250,11 @@ class LogStream(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream.
-        :param pulumi.Input[str] name: Name of the log stream
-        :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
-        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
-        :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[str] name: Name of the log stream.
+        :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: The sink configuration for the log stream.
+        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider.
         """
         ...
     @overload
@@ -257,7 +271,8 @@ class LogStream(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        example = auth0.LogStream("example",
+        # This is an example of an http log stream.
+        my_webhook = auth0.LogStream("myWebhook",
             filters=[
                 {
                     "name": "auth.login.fail",
@@ -269,6 +284,19 @@ class LogStream(pulumi.CustomResource):
                 },
             ],
             sink=auth0.LogStreamSinkArgs(
+                http_authorization="AKIAXXXXXXXXXXXXXXXX",
+                http_content_format="JSONOBJECT",
+                http_content_type="application/json",
+                http_custom_headers=[{
+                    "header": "foo",
+                    "value": "bar",
+                }],
+                http_endpoint="https://example.com/logs",
+            ),
+            type="http")
+        # This is an example of an Amazon EventBridge log stream.
+        example_aws = auth0.LogStream("exampleAws",
+            sink=auth0.LogStreamSinkArgs(
                 aws_account_id="my_account_id",
                 aws_region="us-east-2",
             ),
@@ -278,7 +306,7 @@ class LogStream(pulumi.CustomResource):
 
         ## Import
 
-        Existing log stream can be imported using log stream id, e.g.
+        An existing log stream can be imported using its ID. # Example
 
         ```sh
          $ pulumi import auth0:index/logStream:LogStream example lst_XXXXXXXXXXXXXXXX
@@ -344,11 +372,11 @@ class LogStream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream.
-        :param pulumi.Input[str] name: Name of the log stream
-        :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
-        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended"
-        :param pulumi.Input[str] type: The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[str] name: Name of the log stream.
+        :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: The sink configuration for the log stream.
+        :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -365,7 +393,7 @@ class LogStream(pulumi.CustomResource):
     @pulumi.getter
     def filters(self) -> pulumi.Output[Optional[Sequence[Mapping[str, str]]]]:
         """
-        Only logs events matching these filters will be delivered by the stream.
+        Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
         """
         return pulumi.get(self, "filters")
 
@@ -373,7 +401,7 @@ class LogStream(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the log stream
+        Name of the log stream.
         """
         return pulumi.get(self, "name")
 
@@ -381,7 +409,7 @@ class LogStream(pulumi.CustomResource):
     @pulumi.getter
     def sink(self) -> pulumi.Output['outputs.LogStreamSink']:
         """
-        List(Resource) The sink configuration for the log stream. For details, see Sink Configuration.
+        The sink configuration for the log stream.
         """
         return pulumi.get(self, "sink")
 
@@ -389,7 +417,7 @@ class LogStream(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The current status of the log stream. Options are "active", "paused", "suspended"
+        The current status of the log stream. Options are "active", "paused", "suspended".
         """
         return pulumi.get(self, "status")
 
@@ -397,7 +425,7 @@ class LogStream(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of log stream. Options are "eventbridge", "eventgrid", "http", "datadog", "splunk", "sumo"
+        Type of the log stream, which indicates the sink provider.
         """
         return pulumi.get(self, "type")
 

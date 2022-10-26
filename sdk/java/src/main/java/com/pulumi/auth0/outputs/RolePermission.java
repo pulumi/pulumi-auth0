@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class RolePermission {
     /**
-     * @return String. Name of the permission (scope).
+     * @return Name of the permission (scope).
      * 
      */
     private String name;
     /**
-     * @return String. Unique identifier for the resource server.
+     * @return Unique identifier for the resource server.
      * 
      */
     private String resourceServerIdentifier;
 
     private RolePermission() {}
     /**
-     * @return String. Name of the permission (scope).
+     * @return Name of the permission (scope).
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return String. Unique identifier for the resource server.
+     * @return Unique identifier for the resource server.
      * 
      */
     public String resourceServerIdentifier() {

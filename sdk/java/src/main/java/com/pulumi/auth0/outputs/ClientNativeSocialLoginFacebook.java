@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientNativeSocialLoginFacebook {
-    /**
-     * @return Boolean
-     * 
-     */
     private @Nullable Boolean enabled;
 
     private ClientNativeSocialLoginFacebook() {}
-    /**
-     * @return Boolean
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

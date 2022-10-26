@@ -19,9 +19,9 @@ class ClientGrantArgs:
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         The set of arguments for constructing a ClientGrant resource.
-        :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
-        :param pulumi.Input[str] client_id: String. ID of the client for this grant.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
+        :param pulumi.Input[str] audience: Audience or API Identifier for this grant.
+        :param pulumi.Input[str] client_id: ID of the client for this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
         pulumi.set(__self__, "audience", audience)
         pulumi.set(__self__, "client_id", client_id)
@@ -31,7 +31,7 @@ class ClientGrantArgs:
     @pulumi.getter
     def audience(self) -> pulumi.Input[str]:
         """
-        String. Audience or API Identifier for this grant.
+        Audience or API Identifier for this grant.
         """
         return pulumi.get(self, "audience")
 
@@ -43,7 +43,7 @@ class ClientGrantArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Input[str]:
         """
-        String. ID of the client for this grant.
+        ID of the client for this grant.
         """
         return pulumi.get(self, "client_id")
 
@@ -55,7 +55,7 @@ class ClientGrantArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List(String). Permissions (scopes) included in this grant.
+        Permissions (scopes) included in this grant.
         """
         return pulumi.get(self, "scopes")
 
@@ -72,9 +72,9 @@ class _ClientGrantState:
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ClientGrant resources.
-        :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
-        :param pulumi.Input[str] client_id: String. ID of the client for this grant.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
+        :param pulumi.Input[str] audience: Audience or API Identifier for this grant.
+        :param pulumi.Input[str] client_id: ID of the client for this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
@@ -87,7 +87,7 @@ class _ClientGrantState:
     @pulumi.getter
     def audience(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Audience or API Identifier for this grant.
+        Audience or API Identifier for this grant.
         """
         return pulumi.get(self, "audience")
 
@@ -99,7 +99,7 @@ class _ClientGrantState:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        String. ID of the client for this grant.
+        ID of the client for this grant.
         """
         return pulumi.get(self, "client_id")
 
@@ -111,7 +111,7 @@ class _ClientGrantState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List(String). Permissions (scopes) included in this grant.
+        Permissions (scopes) included in this grant.
         """
         return pulumi.get(self, "scopes")
 
@@ -130,9 +130,7 @@ class ClientGrant(pulumi.CustomResource):
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
-        exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
-        This resource allows you to create and manage client grants used with configured Auth0 clients.
+        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
 
         ## Example Usage
 
@@ -140,6 +138,7 @@ class ClientGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
+        # The following example grants a client the "create:foo" permission (scope).
         my_client = auth0.Client("myClient")
         my_resource_server = auth0.ResourceServer("myResourceServer",
             identifier="https://api.example.com/client-grant",
@@ -161,7 +160,7 @@ class ClientGrant(pulumi.CustomResource):
 
         ## Import
 
-        Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
+        Client grants can be imported using the grant ID. # Application -> APIs -> Expand the required API # Example
 
         ```sh
          $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
@@ -169,9 +168,9 @@ class ClientGrant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
-        :param pulumi.Input[str] client_id: String. ID of the client for this grant.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
+        :param pulumi.Input[str] audience: Audience or API Identifier for this grant.
+        :param pulumi.Input[str] client_id: ID of the client for this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
         ...
     @overload
@@ -180,9 +179,7 @@ class ClientGrant(pulumi.CustomResource):
                  args: ClientGrantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
-        exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
-        This resource allows you to create and manage client grants used with configured Auth0 clients.
+        Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
 
         ## Example Usage
 
@@ -190,6 +187,7 @@ class ClientGrant(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
+        # The following example grants a client the "create:foo" permission (scope).
         my_client = auth0.Client("myClient")
         my_resource_server = auth0.ResourceServer("myResourceServer",
             identifier="https://api.example.com/client-grant",
@@ -211,7 +209,7 @@ class ClientGrant(pulumi.CustomResource):
 
         ## Import
 
-        Client grants can be imported using the grant ID (Application -> APIs -> Expand the required API)
+        Client grants can be imported using the grant ID. # Application -> APIs -> Expand the required API # Example
 
         ```sh
          $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
@@ -273,9 +271,9 @@ class ClientGrant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] audience: String. Audience or API Identifier for this grant.
-        :param pulumi.Input[str] client_id: String. ID of the client for this grant.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List(String). Permissions (scopes) included in this grant.
+        :param pulumi.Input[str] audience: Audience or API Identifier for this grant.
+        :param pulumi.Input[str] client_id: ID of the client for this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions (scopes) included in this grant.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -290,7 +288,7 @@ class ClientGrant(pulumi.CustomResource):
     @pulumi.getter
     def audience(self) -> pulumi.Output[str]:
         """
-        String. Audience or API Identifier for this grant.
+        Audience or API Identifier for this grant.
         """
         return pulumi.get(self, "audience")
 
@@ -298,7 +296,7 @@ class ClientGrant(pulumi.CustomResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[str]:
         """
-        String. ID of the client for this grant.
+        ID of the client for this grant.
         """
         return pulumi.get(self, "client_id")
 
@@ -306,7 +304,7 @@ class ClientGrant(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[str]]:
         """
-        List(String). Permissions (scopes) included in this grant.
+        Permissions (scopes) included in this grant.
         """
         return pulumi.get(self, "scopes")
 

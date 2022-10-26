@@ -13,9 +13,6 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientNativeSocialLoginFacebook
     {
-        /// <summary>
-        /// Boolean
-        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

@@ -26,14 +26,14 @@ class ActionArgs:
         """
         The set of arguments for constructing a Action resource.
         :param pulumi.Input[str] code: The source code of the action.
-        :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target
-               a single trigger at a time.
+        :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+               [Retrieving the set of triggers available within
+               actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+               trigger versions supported.
         :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
-        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action.
-               If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-               action immediately. Default is `false`.
-        :param pulumi.Input[str] name: Secret name.
-        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`.
+        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
+        :param pulumi.Input[str] name: The name of the action.
+        :param pulumi.Input[str] runtime: The Node runtime, e.g. `node16`. Defaults to `node12`.
         :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action.
         """
         pulumi.set(__self__, "code", code)
@@ -65,8 +65,10 @@ class ActionArgs:
     @pulumi.getter(name="supportedTriggers")
     def supported_triggers(self) -> pulumi.Input['ActionSupportedTriggersArgs']:
         """
-        List of triggers that this action supports. At this time, an action can only target
-        a single trigger at a time.
+        List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+        [Retrieving the set of triggers available within
+        actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+        trigger versions supported.
         """
         return pulumi.get(self, "supported_triggers")
 
@@ -90,9 +92,7 @@ class ActionArgs:
     @pulumi.getter
     def deploy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploying an action will create a new immutable version of the action.
-        If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-        action immediately. Default is `false`.
+        Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         """
         return pulumi.get(self, "deploy")
 
@@ -104,7 +104,7 @@ class ActionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Secret name.
+        The name of the action.
         """
         return pulumi.get(self, "name")
 
@@ -116,7 +116,7 @@ class ActionArgs:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[str]]:
         """
-        The Node runtime. For example `node16`, defaults to `node12`.
+        The Node runtime, e.g. `node16`. Defaults to `node12`.
         """
         return pulumi.get(self, "runtime")
 
@@ -152,14 +152,14 @@ class _ActionState:
         Input properties used for looking up and filtering Action resources.
         :param pulumi.Input[str] code: The source code of the action.
         :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
-        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action.
-               If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-               action immediately. Default is `false`.
-        :param pulumi.Input[str] name: Secret name.
-        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`.
+        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
+        :param pulumi.Input[str] name: The name of the action.
+        :param pulumi.Input[str] runtime: The Node runtime, e.g. `node16`. Defaults to `node12`.
         :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action.
-        :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target
-               a single trigger at a time.
+        :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+               [Retrieving the set of triggers available within
+               actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+               trigger versions supported.
         :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
         if code is not None:
@@ -207,9 +207,7 @@ class _ActionState:
     @pulumi.getter
     def deploy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Deploying an action will create a new immutable version of the action.
-        If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-        action immediately. Default is `false`.
+        Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         """
         return pulumi.get(self, "deploy")
 
@@ -221,7 +219,7 @@ class _ActionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Secret name.
+        The name of the action.
         """
         return pulumi.get(self, "name")
 
@@ -233,7 +231,7 @@ class _ActionState:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[str]]:
         """
-        The Node runtime. For example `node16`, defaults to `node12`.
+        The Node runtime, e.g. `node16`. Defaults to `node12`.
         """
         return pulumi.get(self, "runtime")
 
@@ -257,8 +255,10 @@ class _ActionState:
     @pulumi.getter(name="supportedTriggers")
     def supported_triggers(self) -> Optional[pulumi.Input['ActionSupportedTriggersArgs']]:
         """
-        List of triggers that this action supports. At this time, an action can only target
-        a single trigger at a time.
+        List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+        [Retrieving the set of triggers available within
+        actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+        trigger versions supported.
         """
         return pulumi.get(self, "supported_triggers")
 
@@ -293,59 +293,11 @@ class Action(pulumi.CustomResource):
                  supported_triggers: Optional[pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']]] = None,
                  __props__=None):
         """
-        Actions are secure, tenant-specific, versioned functions written in Node.js that
-        execute at certain points during the Auth0 runtime. Actions are used to
-        customize and extend Auth0's capabilities with custom logic.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_action = auth0.Action("myAction",
-            code=\"\"\"/**
-         * Handler that will be called during the execution of a PostLogin flow.
-         *
-         * @param {Event} event - Details about the user and the context in which they are logging in.
-         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
-         */
-         exports.onExecutePostLogin = async (event, api) => {
-        	 console.log(event)
-         };
-
-        \"\"\",
-            dependencies=[
-                auth0.ActionDependencyArgs(
-                    name="lodash",
-                    version="latest",
-                ),
-                auth0.ActionDependencyArgs(
-                    name="request",
-                    version="latest",
-                ),
-            ],
-            deploy=True,
-            runtime="node16",
-            secrets=[
-                auth0.ActionSecretArgs(
-                    name="FOO",
-                    value="Foo",
-                ),
-                auth0.ActionSecretArgs(
-                    name="BAR",
-                    value="Bar",
-                ),
-            ],
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v3",
-            ))
-        ```
+        Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
 
         ## Import
 
-        An action can be imported using the action's ID, e.g.
+        An action can be imported using the action's ID. # Example
 
         ```sh
          $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
@@ -357,14 +309,14 @@ class Action(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code: The source code of the action.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
-        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action.
-               If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-               action immediately. Default is `false`.
-        :param pulumi.Input[str] name: Secret name.
-        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`.
+        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
+        :param pulumi.Input[str] name: The name of the action.
+        :param pulumi.Input[str] runtime: The Node runtime, e.g. `node16`. Defaults to `node12`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action.
-        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target
-               a single trigger at a time.
+        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+               [Retrieving the set of triggers available within
+               actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+               trigger versions supported.
         """
         ...
     @overload
@@ -373,59 +325,11 @@ class Action(pulumi.CustomResource):
                  args: ActionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Actions are secure, tenant-specific, versioned functions written in Node.js that
-        execute at certain points during the Auth0 runtime. Actions are used to
-        customize and extend Auth0's capabilities with custom logic.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_auth0 as auth0
-
-        my_action = auth0.Action("myAction",
-            code=\"\"\"/**
-         * Handler that will be called during the execution of a PostLogin flow.
-         *
-         * @param {Event} event - Details about the user and the context in which they are logging in.
-         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
-         */
-         exports.onExecutePostLogin = async (event, api) => {
-        	 console.log(event)
-         };
-
-        \"\"\",
-            dependencies=[
-                auth0.ActionDependencyArgs(
-                    name="lodash",
-                    version="latest",
-                ),
-                auth0.ActionDependencyArgs(
-                    name="request",
-                    version="latest",
-                ),
-            ],
-            deploy=True,
-            runtime="node16",
-            secrets=[
-                auth0.ActionSecretArgs(
-                    name="FOO",
-                    value="Foo",
-                ),
-                auth0.ActionSecretArgs(
-                    name="BAR",
-                    value="Bar",
-                ),
-            ],
-            supported_triggers=auth0.ActionSupportedTriggersArgs(
-                id="post-login",
-                version="v3",
-            ))
-        ```
+        Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
 
         ## Import
 
-        An action can be imported using the action's ID, e.g.
+        An action can be imported using the action's ID. # Example
 
         ```sh
          $ pulumi import auth0:index/action:Action my_action 12f4f21b-017a-319d-92e7-2291c1ca36c4
@@ -503,14 +407,14 @@ class Action(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code: The source code of the action.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionDependencyArgs']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
-        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action.
-               If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-               action immediately. Default is `false`.
-        :param pulumi.Input[str] name: Secret name.
-        :param pulumi.Input[str] runtime: The Node runtime. For example `node16`, defaults to `node12`.
+        :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
+        :param pulumi.Input[str] name: The name of the action.
+        :param pulumi.Input[str] runtime: The Node runtime, e.g. `node16`. Defaults to `node12`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionSecretArgs']]]] secrets: List of secrets that are included in an action or a version of an action.
-        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target
-               a single trigger at a time.
+        :param pulumi.Input[pulumi.InputType['ActionSupportedTriggersArgs']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+               [Retrieving the set of triggers available within
+               actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+               trigger versions supported.
         :param pulumi.Input[str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -547,9 +451,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def deploy(self) -> pulumi.Output[Optional[bool]]:
         """
-        Deploying an action will create a new immutable version of the action.
-        If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-        action immediately. Default is `false`.
+        Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         """
         return pulumi.get(self, "deploy")
 
@@ -557,7 +459,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Secret name.
+        The name of the action.
         """
         return pulumi.get(self, "name")
 
@@ -565,7 +467,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[str]:
         """
-        The Node runtime. For example `node16`, defaults to `node12`.
+        The Node runtime, e.g. `node16`. Defaults to `node12`.
         """
         return pulumi.get(self, "runtime")
 
@@ -581,8 +483,10 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="supportedTriggers")
     def supported_triggers(self) -> pulumi.Output['outputs.ActionSupportedTriggers']:
         """
-        List of triggers that this action supports. At this time, an action can only target
-        a single trigger at a time.
+        List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+        [Retrieving the set of triggers available within
+        actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+        trigger versions supported.
         """
         return pulumi.get(self, "supported_triggers")
 

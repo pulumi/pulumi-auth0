@@ -13,25 +13,10 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class GuardianPushAmazonSns
     {
-        /// <summary>
-        /// String. Your AWS Access Key ID.
-        /// </summary>
         public readonly string AwsAccessKeyId;
-        /// <summary>
-        /// String. Your AWS application's region.
-        /// </summary>
         public readonly string AwsRegion;
-        /// <summary>
-        /// String. Your AWS Secret Access Key.
-        /// </summary>
         public readonly string AwsSecretAccessKey;
-        /// <summary>
-        /// String. The Amazon Resource Name for your Apple Push Notification Service.
-        /// </summary>
         public readonly string SnsApnsPlatformApplicationArn;
-        /// <summary>
-        /// String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-        /// </summary>
         public readonly string SnsGcmPlatformApplicationArn;
 
         [OutputConstructor]

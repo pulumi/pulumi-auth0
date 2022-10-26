@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
- * authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables
- * that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
+ * With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
  *
  * ## Example Usage
  *
@@ -17,10 +15,10 @@ import * as utilities from "./utilities";
  *
  * const myRule = new auth0.Rule("my_rule", {
  *     enabled: true,
- *     script: `function (user, context, callback) {
- *   callback(null, user, context);
- * }
- * `,
+ *     script: `    function (user, context, callback) {
+ *       callback(null, user, context);
+ *     }
+ *   `,
  * });
  * const myRuleConfig = new auth0.RuleConfig("my_rule_config", {
  *     key: "foo",
@@ -30,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Existing rule configs can be imported using their key name, e.g.
+ * Existing rule configs can be imported using their key name. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
@@ -65,11 +63,11 @@ export class RuleConfig extends pulumi.CustomResource {
     }
 
     /**
-     * String. Key for a rules configuration variable.
+     * Key for a rules configuration variable.
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * String, Case-sensitive. Value for a rules configuration variable.
+     * Value for a rules configuration variable.
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -97,9 +95,11 @@ export class RuleConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'value'");
             }
             resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RuleConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -109,11 +109,11 @@ export class RuleConfig extends pulumi.CustomResource {
  */
 export interface RuleConfigState {
     /**
-     * String. Key for a rules configuration variable.
+     * Key for a rules configuration variable.
      */
     key?: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. Value for a rules configuration variable.
+     * Value for a rules configuration variable.
      */
     value?: pulumi.Input<string>;
 }
@@ -123,11 +123,11 @@ export interface RuleConfigState {
  */
 export interface RuleConfigArgs {
     /**
-     * String. Key for a rules configuration variable.
+     * Key for a rules configuration variable.
      */
     key: pulumi.Input<string>;
     /**
-     * String, Case-sensitive. Value for a rules configuration variable.
+     * Value for a rules configuration variable.
      */
     value: pulumi.Input<string>;
 }

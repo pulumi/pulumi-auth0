@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized
-    /// access. With this resource you can configure some options available for MFA.
+    /// Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
     /// 
     /// ## Example Usage
     /// 
@@ -65,7 +64,7 @@ namespace Pulumi.Auth0
     ///             },
     ///         },
     ///         RecoveryCode = true,
-    ///         WebauthnPlatform = ,
+    ///         WebauthnPlatform = null,
     ///         WebauthnRoaming = new Auth0.Inputs.GuardianWebauthnRoamingArgs
     ///         {
     ///             UserVerification = "required",
@@ -77,73 +76,65 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+    /// As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
     /// 
     /// ```sh
-    ///  $ pulumi import auth0:index/guardian:Guardian default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+    ///  $ pulumi import auth0:index/guardian:Guardian my_guardian 24940d4b-4bd4-44e7-894e-f92e4de36a40
     /// ```
     /// </summary>
     [Auth0ResourceType("auth0:index/guardian:Guardian")]
     public partial class Guardian : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List(Resource). Configuration settings for the Duo MFA.
-        /// If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+        /// Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Output("duo")]
         public Output<Outputs.GuardianDuo?> Duo { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether email MFA is enabled.
+        /// Indicates whether email MFA is enabled.
         /// </summary>
         [Output("email")]
         public Output<bool?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether one time password MFA is enabled.
+        /// Indicates whether one time password MFA is enabled.
         /// </summary>
         [Output("otp")]
         public Output<bool?> Otp { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the phone MFA. 
-        /// If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+        /// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Output("phone")]
         public Output<Outputs.GuardianPhone?> Phone { get; private set; } = null!;
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-        /// The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+        /// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the Push MFA.
-        /// If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+        /// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Output("push")]
         public Output<Outputs.GuardianPush?> Push { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether recovery code MFA is enabled.
+        /// Indicates whether recovery code MFA is enabled.
         /// </summary>
         [Output("recoveryCode")]
         public Output<bool?> RecoveryCode { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-        /// If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-        /// For details, see WebAuthn Platform.
+        /// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Output("webauthnPlatform")]
         public Output<Outputs.GuardianWebauthnPlatform?> WebauthnPlatform { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-        /// If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-        /// For details, see WebAuthn Roaming.
+        /// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Output("webauthnRoaming")]
         public Output<Outputs.GuardianWebauthnRoaming?> WebauthnRoaming { get; private set; } = null!;
@@ -195,63 +186,55 @@ namespace Pulumi.Auth0
     public sealed class GuardianArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for the Duo MFA.
-        /// If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+        /// Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("duo")]
         public Input<Inputs.GuardianDuoArgs>? Duo { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether email MFA is enabled.
+        /// Indicates whether email MFA is enabled.
         /// </summary>
         [Input("email")]
         public Input<bool>? Email { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether one time password MFA is enabled.
+        /// Indicates whether one time password MFA is enabled.
         /// </summary>
         [Input("otp")]
         public Input<bool>? Otp { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the phone MFA. 
-        /// If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+        /// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("phone")]
         public Input<Inputs.GuardianPhoneArgs>? Phone { get; set; }
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-        /// The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+        /// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the Push MFA.
-        /// If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+        /// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("push")]
         public Input<Inputs.GuardianPushArgs>? Push { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether recovery code MFA is enabled.
+        /// Indicates whether recovery code MFA is enabled.
         /// </summary>
         [Input("recoveryCode")]
         public Input<bool>? RecoveryCode { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-        /// If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-        /// For details, see WebAuthn Platform.
+        /// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("webauthnPlatform")]
         public Input<Inputs.GuardianWebauthnPlatformArgs>? WebauthnPlatform { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-        /// If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-        /// For details, see WebAuthn Roaming.
+        /// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("webauthnRoaming")]
         public Input<Inputs.GuardianWebauthnRoamingArgs>? WebauthnRoaming { get; set; }
@@ -265,63 +248,55 @@ namespace Pulumi.Auth0
     public sealed class GuardianState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for the Duo MFA.
-        /// If this block is present, Duo MFA will be enabled, and disabled otherwise. For details, see Duo.
+        /// Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("duo")]
         public Input<Inputs.GuardianDuoGetArgs>? Duo { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether email MFA is enabled.
+        /// Indicates whether email MFA is enabled.
         /// </summary>
         [Input("email")]
         public Input<bool>? Email { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether one time password MFA is enabled.
+        /// Indicates whether one time password MFA is enabled.
         /// </summary>
         [Input("otp")]
         public Input<bool>? Otp { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the phone MFA. 
-        /// If this block is present, Phone MFA will be enabled, and disabled otherwise. For details, see Phone.
+        /// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("phone")]
         public Input<Inputs.GuardianPhoneGetArgs>? Phone { get; set; }
 
         /// <summary>
-        /// String. Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
-        /// The option `confidence-score` means the trigger of MFA will be adaptive. See [Auth0 docs](https://auth0.com/docs/mfa/adaptive-mfa).
+        /// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the Push MFA.
-        /// If this block is present, Push MFA will be enabled, and disabled otherwise. For details, see Push.
+        /// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("push")]
         public Input<Inputs.GuardianPushGetArgs>? Push { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether recovery code MFA is enabled.
+        /// Indicates whether recovery code MFA is enabled.
         /// </summary>
         [Input("recoveryCode")]
         public Input<bool>? RecoveryCode { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the WebAuthn with FIDO Device Biometrics MFA.
-        /// If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-        /// For details, see WebAuthn Platform.
+        /// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("webauthnPlatform")]
         public Input<Inputs.GuardianWebauthnPlatformGetArgs>? WebauthnPlatform { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the WebAuthn with FIDO Security Keys MFA.
-        /// If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-        /// For details, see WebAuthn Roaming.
+        /// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         /// </summary>
         [Input("webauthnRoaming")]
         public Input<Inputs.GuardianWebauthnRoamingGetArgs>? WebauthnRoaming { get; set; }

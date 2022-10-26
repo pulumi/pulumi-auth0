@@ -4,11 +4,9 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.OrganizationBrandingArgs;
-import com.pulumi.auth0.inputs.OrganizationConnectionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,16 +18,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     public static final OrganizationState Empty = new OrganizationState();
 
     /**
-     * Defines how to style the login pages. For details, see
-     * Branding
+     * Defines how to style the login pages.
      * 
      */
     @Import(name="branding")
     private @Nullable Output<OrganizationBrandingArgs> branding;
 
     /**
-     * @return Defines how to style the login pages. For details, see
-     * Branding
+     * @return Defines how to style the login pages.
      * 
      */
     public Optional<Output<OrganizationBrandingArgs>> branding() {
@@ -37,39 +33,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connections assigned to the organization. For
-     * details, see Connections
-     * 
-     * @deprecated
-     * Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-     * 
-     */
-    @Deprecated /* Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type. */
-    @Import(name="connections")
-    private @Nullable Output<List<OrganizationConnectionArgs>> connections;
-
-    /**
-     * @return Connections assigned to the organization. For
-     * details, see Connections
-     * 
-     * @deprecated
-     * Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-     * 
-     */
-    @Deprecated /* Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type. */
-    public Optional<Output<List<OrganizationConnectionArgs>>> connections() {
-        return Optional.ofNullable(this.connections);
-    }
-
-    /**
-     * Friendly name of this organization
+     * Friendly name of this organization.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Friendly name of this organization
+     * @return Friendly name of this organization.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -77,16 +48,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata associated with the organization, Maximum of
-     * 10 metadata properties allowed
+     * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
     /**
-     * @return Metadata associated with the organization, Maximum of
-     * 10 metadata properties allowed
+     * @return Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -94,14 +63,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of this organization
+     * The name of this organization.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of this organization
+     * @return The name of this organization.
      * 
      */
     public Optional<Output<String>> name() {
@@ -112,7 +81,6 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
 
     private OrganizationState(OrganizationState $) {
         this.branding = $.branding;
-        this.connections = $.connections;
         this.displayName = $.displayName;
         this.metadata = $.metadata;
         this.name = $.name;
@@ -137,8 +105,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param branding Defines how to style the login pages. For details, see
-         * Branding
+         * @param branding Defines how to style the login pages.
          * 
          * @return builder
          * 
@@ -149,8 +116,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param branding Defines how to style the login pages. For details, see
-         * Branding
+         * @param branding Defines how to style the login pages.
          * 
          * @return builder
          * 
@@ -160,53 +126,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connections Connections assigned to the organization. For
-         * details, see Connections
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-         * 
-         */
-        @Deprecated /* Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type. */
-        public Builder connections(@Nullable Output<List<OrganizationConnectionArgs>> connections) {
-            $.connections = connections;
-            return this;
-        }
-
-        /**
-         * @param connections Connections assigned to the organization. For
-         * details, see Connections
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-         * 
-         */
-        @Deprecated /* Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type. */
-        public Builder connections(List<OrganizationConnectionArgs> connections) {
-            return connections(Output.of(connections));
-        }
-
-        /**
-         * @param connections Connections assigned to the organization. For
-         * details, see Connections
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type.
-         * 
-         */
-        @Deprecated /* Management of organizations through this property has been deprecated in favor of the `auth0_organization_connection` resource and will be deleted in future versions. It is advised to migrate all managed organization connections to the new resource type. */
-        public Builder connections(OrganizationConnectionArgs... connections) {
-            return connections(List.of(connections));
-        }
-
-        /**
-         * @param displayName Friendly name of this organization
+         * @param displayName Friendly name of this organization.
          * 
          * @return builder
          * 
@@ -217,7 +137,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName Friendly name of this organization
+         * @param displayName Friendly name of this organization.
          * 
          * @return builder
          * 
@@ -227,8 +147,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata associated with the organization, Maximum of
-         * 10 metadata properties allowed
+         * @param metadata Metadata associated with the organization. Maximum of 10 metadata properties allowed.
          * 
          * @return builder
          * 
@@ -239,8 +158,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata associated with the organization, Maximum of
-         * 10 metadata properties allowed
+         * @param metadata Metadata associated with the organization. Maximum of 10 metadata properties allowed.
          * 
          * @return builder
          * 
@@ -250,7 +168,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of this organization
+         * @param name The name of this organization.
          * 
          * @return builder
          * 
@@ -261,7 +179,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of this organization
+         * @param name The name of this organization.
          * 
          * @return builder
          * 

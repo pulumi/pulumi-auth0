@@ -19,14 +19,14 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     public static final RoleArgs Empty = new RoleArgs();
 
     /**
-     * String. Description of the role.
+     * Description of the role.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return String. Description of the role.
+     * @return Description of the role.
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,14 +34,14 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Name for this role.
+     * Name for this role.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return String. Name for this role.
+     * @return Name for this role.
      * 
      */
     public Optional<Output<String>> name() {
@@ -49,16 +49,14 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-     * For details, see Permissions.
+     * Configuration settings for permissions (scopes) attached to the role.
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<List<RolePermissionArgs>> permissions;
 
     /**
-     * @return Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-     * For details, see Permissions.
+     * @return Configuration settings for permissions (scopes) attached to the role.
      * 
      */
     public Optional<Output<List<RolePermissionArgs>>> permissions() {
@@ -92,7 +90,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description String. Description of the role.
+         * @param description Description of the role.
          * 
          * @return builder
          * 
@@ -103,7 +101,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description String. Description of the role.
+         * @param description Description of the role.
          * 
          * @return builder
          * 
@@ -113,7 +111,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name String. Name for this role.
+         * @param name Name for this role.
          * 
          * @return builder
          * 
@@ -124,7 +122,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name String. Name for this role.
+         * @param name Name for this role.
          * 
          * @return builder
          * 
@@ -134,8 +132,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permissions Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-         * For details, see Permissions.
+         * @param permissions Configuration settings for permissions (scopes) attached to the role.
          * 
          * @return builder
          * 
@@ -146,8 +143,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permissions Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-         * For details, see Permissions.
+         * @param permissions Configuration settings for permissions (scopes) attached to the role.
          * 
          * @return builder
          * 
@@ -157,8 +153,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permissions Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-         * For details, see Permissions.
+         * @param permissions Configuration settings for permissions (scopes) attached to the role.
          * 
          * @return builder
          * 

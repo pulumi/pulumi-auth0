@@ -17,14 +17,14 @@ public final class ClientMobileArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClientMobileArgs Empty = new ClientMobileArgs();
 
     /**
-     * List(Resource). Configuration settings for Android native apps. For details, see Android.
+     * Configuration settings for Android native apps.
      * 
      */
     @Import(name="android")
     private @Nullable Output<ClientMobileAndroidArgs> android;
 
     /**
-     * @return List(Resource). Configuration settings for Android native apps. For details, see Android.
+     * @return Configuration settings for Android native apps.
      * 
      */
     public Optional<Output<ClientMobileAndroidArgs>> android() {
@@ -32,14 +32,14 @@ public final class ClientMobileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+     * Configuration settings for i0S native apps.
      * 
      */
     @Import(name="ios")
     private @Nullable Output<ClientMobileIosArgs> ios;
 
     /**
-     * @return List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+     * @return Configuration settings for i0S native apps.
      * 
      */
     public Optional<Output<ClientMobileIosArgs>> ios() {
@@ -72,7 +72,7 @@ public final class ClientMobileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param android List(Resource). Configuration settings for Android native apps. For details, see Android.
+         * @param android Configuration settings for Android native apps.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClientMobileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param android List(Resource). Configuration settings for Android native apps. For details, see Android.
+         * @param android Configuration settings for Android native apps.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClientMobileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ios List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+         * @param ios Configuration settings for i0S native apps.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClientMobileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ios List(Resource). Configuration settings for i0S native apps. For details, see iOS.
+         * @param ios Configuration settings for i0S native apps.
          * 
          * @return builder
          * 

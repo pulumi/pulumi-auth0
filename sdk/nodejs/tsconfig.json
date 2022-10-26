@@ -16,6 +16,7 @@
         "action.ts",
         "attackProtection.ts",
         "branding.ts",
+        "brandingTheme.ts",
         "client.ts",
         "clientGrant.ts",
         "config/index.ts",

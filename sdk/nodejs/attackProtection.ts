@@ -2,11 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHA
+ * Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
  *
  * ## Example Usage
  *
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const attackProtection = new auth0.AttackProtection("attack_protection", {
+ * const myProtection = new auth0.AttackProtection("my_protection", {
  *     breachedPasswordDetection: {
  *         adminNotificationFrequencies: ["daily"],
  *         enabled: true,
@@ -55,10 +56,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/attackProtection:AttackProtection default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+ *  $ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40
  * ```
  */
 export class AttackProtection extends pulumi.CustomResource {
@@ -94,7 +95,7 @@ export class AttackProtection extends pulumi.CustomResource {
      */
     public readonly breachedPasswordDetection!: pulumi.Output<outputs.AttackProtectionBreachedPasswordDetection>;
     /**
-     * Safeguards against a single IP address attacking a single user account.
+     * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
     public readonly bruteForceProtection!: pulumi.Output<outputs.AttackProtectionBruteForceProtection>;
     /**
@@ -138,7 +139,7 @@ export interface AttackProtectionState {
      */
     breachedPasswordDetection?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetection>;
     /**
-     * Safeguards against a single IP address attacking a single user account.
+     * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
     bruteForceProtection?: pulumi.Input<inputs.AttackProtectionBruteForceProtection>;
     /**
@@ -156,7 +157,7 @@ export interface AttackProtectionArgs {
      */
     breachedPasswordDetection?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetection>;
     /**
-     * Safeguards against a single IP address attacking a single user account.
+     * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
     bruteForceProtection?: pulumi.Input<inputs.AttackProtectionBruteForceProtection>;
     /**

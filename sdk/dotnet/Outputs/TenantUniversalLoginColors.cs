@@ -13,13 +13,7 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class TenantUniversalLoginColors
     {
-        /// <summary>
-        /// String, Hexadecimal. Background color of login pages.
-        /// </summary>
         public readonly string? PageBackground;
-        /// <summary>
-        /// String, Hexadecimal. Primary button background color.
-        /// </summary>
         public readonly string? Primary;
 
         [OutputConstructor]

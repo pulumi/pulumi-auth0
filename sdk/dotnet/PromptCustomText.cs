@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts
-    /// [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
+    /// With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
     /// 
     /// ## Example Usage
     /// 
@@ -59,7 +58,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the import command and specifying the prompt and language separated by *:* , e.g.
+    /// This resource can be imported by specifying the prompt and language separated by ":". # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/promptCustomText:PromptCustomText example login:en
@@ -69,7 +68,7 @@ namespace Pulumi.Auth0
     public partial class PromptCustomText : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
+        /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
         /// </summary>
         [Output("body")]
         public Output<string> Body { get; private set; } = null!;
@@ -81,7 +80,7 @@ namespace Pulumi.Auth0
         public Output<string> Language { get; private set; } = null!;
 
         /// <summary>
-        /// The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`
+        /// The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`.
         /// </summary>
         [Output("prompt")]
         public Output<string> Prompt { get; private set; } = null!;
@@ -133,7 +132,7 @@ namespace Pulumi.Auth0
     public sealed class PromptCustomTextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
+        /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
         /// </summary>
         [Input("body", required: true)]
         public Input<string> Body { get; set; } = null!;
@@ -145,7 +144,7 @@ namespace Pulumi.Auth0
         public Input<string> Language { get; set; } = null!;
 
         /// <summary>
-        /// The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`
+        /// The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`.
         /// </summary>
         [Input("prompt", required: true)]
         public Input<string> Prompt { get; set; } = null!;
@@ -159,7 +158,7 @@ namespace Pulumi.Auth0
     public sealed class PromptCustomTextState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values)
+        /// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
         /// </summary>
         [Input("body")]
         public Input<string>? Body { get; set; }
@@ -171,7 +170,7 @@ namespace Pulumi.Auth0
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`
+        /// The term `prompt` is used to refer to a specific step in the login flow. Options include `login`, `login-id`, `login-password`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `reset-password`, `consent`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`.
         /// </summary>
         [Input("prompt")]
         public Input<string>? Prompt { get; set; }

@@ -19,14 +19,14 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
     public static final ClientJwtConfigurationArgs Empty = new ClientJwtConfigurationArgs();
 
     /**
-     * String. Algorithm used to sign JWTs.
+     * Algorithm used to sign JWTs.
      * 
      */
     @Import(name="alg")
     private @Nullable Output<String> alg;
 
     /**
-     * @return String. Algorithm used to sign JWTs.
+     * @return Algorithm used to sign JWTs.
      * 
      */
     public Optional<Output<String>> alg() {
@@ -34,14 +34,14 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Integer. Number of seconds during which the JWT will be valid.
+     * Number of seconds during which the JWT will be valid.
      * 
      */
     @Import(name="lifetimeInSeconds")
     private @Nullable Output<Integer> lifetimeInSeconds;
 
     /**
-     * @return Integer. Number of seconds during which the JWT will be valid.
+     * @return Number of seconds during which the JWT will be valid.
      * 
      */
     public Optional<Output<Integer>> lifetimeInSeconds() {
@@ -49,14 +49,14 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Map(String). Permissions (scopes) included in JWTs.
+     * Permissions (scopes) included in JWTs.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<Map<String,String>> scopes;
 
     /**
-     * @return Map(String). Permissions (scopes) included in JWTs.
+     * @return Permissions (scopes) included in JWTs.
      * 
      */
     public Optional<Output<Map<String,String>>> scopes() {
@@ -64,14 +64,14 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Boolean. Indicates whether or not the client secret is base64 encoded.
+     * Indicates whether the client secret is Base64-encoded.
      * 
      */
     @Import(name="secretEncoded")
     private @Nullable Output<Boolean> secretEncoded;
 
     /**
-     * @return Boolean. Indicates whether or not the client secret is base64 encoded.
+     * @return Indicates whether the client secret is Base64-encoded.
      * 
      */
     public Optional<Output<Boolean>> secretEncoded() {
@@ -106,7 +106,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param alg String. Algorithm used to sign JWTs.
+         * @param alg Algorithm used to sign JWTs.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param alg String. Algorithm used to sign JWTs.
+         * @param alg Algorithm used to sign JWTs.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param lifetimeInSeconds Integer. Number of seconds during which the JWT will be valid.
+         * @param lifetimeInSeconds Number of seconds during which the JWT will be valid.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param lifetimeInSeconds Integer. Number of seconds during which the JWT will be valid.
+         * @param lifetimeInSeconds Number of seconds during which the JWT will be valid.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param scopes Map(String). Permissions (scopes) included in JWTs.
+         * @param scopes Permissions (scopes) included in JWTs.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param scopes Map(String). Permissions (scopes) included in JWTs.
+         * @param scopes Permissions (scopes) included in JWTs.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secretEncoded Boolean. Indicates whether or not the client secret is base64 encoded.
+         * @param secretEncoded Indicates whether the client secret is Base64-encoded.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ClientJwtConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secretEncoded Boolean. Indicates whether or not the client secret is base64 encoded.
+         * @param secretEncoded Indicates whether the client secret is Base64-encoded.
          * 
          * @return builder
          * 

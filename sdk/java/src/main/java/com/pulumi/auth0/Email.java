@@ -17,9 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
- * into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0&#39;s
- * authentication workflows through the supported high-volume email service of your choice.
+ * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0&#39;s authentication workflows through the supported high-volume email service of your choice.
  * 
  * ## Example Usage
  * ```java
@@ -44,11 +42,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myEmailProvider = new Email(&#34;myEmailProvider&#34;, EmailArgs.builder()        
+ *         var amazonSesEmailProvider = new Email(&#34;amazonSesEmailProvider&#34;, EmailArgs.builder()        
  *             .credentials(EmailCredentialsArgs.builder()
  *                 .accessKeyId(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
  *                 .region(&#34;us-east-1&#34;)
  *                 .secretAccessKey(&#34;7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;)
+ *                 .build())
+ *             .defaultFromAddress(&#34;accounts@example.com&#34;)
+ *             .enabled(true)
+ *             .build());
+ * 
+ *         var smtpEmailProvider = new Email(&#34;smtpEmailProvider&#34;, EmailArgs.builder()        
+ *             .credentials(EmailCredentialsArgs.builder()
+ *                 .smtpHost(&#34;your.smtp.host.com&#34;)
+ *                 .smtpPass(&#34;SMTP Password&#34;)
+ *                 .smtpPort(583)
+ *                 .smtpUser(&#34;SMTP Username&#34;)
+ *                 .build())
+ *             .defaultFromAddress(&#34;accounts@example.com&#34;)
+ *             .enabled(true)
+ *             .build());
+ * 
+ *         var sendgridEmailProvider = new Email(&#34;sendgridEmailProvider&#34;, EmailArgs.builder()        
+ *             .credentials(EmailCredentialsArgs.builder()
+ *                 .apiKey(&#34;secretAPIKey&#34;)
  *                 .build())
  *             .defaultFromAddress(&#34;accounts@example.com&#34;)
  *             .enabled(true)
@@ -60,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * As this is not a resource identifiable by an ID within the Auth0 Management API, email can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/email:Email my_email_provider b4213dc2-2eed-42c3-9516-c6131a9ce0b0
@@ -70,56 +87,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/email:Email")
 public class Email extends com.pulumi.resources.CustomResource {
     /**
-     * List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+     * Configuration settings for the credentials for the email provider.
      * 
      */
     @Export(name="credentials", type=EmailCredentials.class, parameters={})
     private Output<EmailCredentials> credentials;
 
     /**
-     * @return List(Resource). Configuration settings for the credentials for the email provider. For details, see Credentials.
+     * @return Configuration settings for the credentials for the email provider.
      * 
      */
     public Output<EmailCredentials> credentials() {
         return this.credentials;
     }
     /**
-     * String. Email address to use as the sender when no other &#34;from&#34; address is specified.
+     * Email address to use as the sender when no other &#34;from&#34; address is specified.
      * 
      */
     @Export(name="defaultFromAddress", type=String.class, parameters={})
     private Output<String> defaultFromAddress;
 
     /**
-     * @return String. Email address to use as the sender when no other &#34;from&#34; address is specified.
+     * @return Email address to use as the sender when no other &#34;from&#34; address is specified.
      * 
      */
     public Output<String> defaultFromAddress() {
         return this.defaultFromAddress;
     }
     /**
-     * Boolean. Indicates whether or not the email provider is enabled.
+     * Indicates whether the email provider is enabled.
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Boolean. Indicates whether or not the email provider is enabled.
+     * @return Indicates whether the email provider is enabled.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+     * Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return String. Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+     * @return Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      * 
      */
     public Output<String> name() {

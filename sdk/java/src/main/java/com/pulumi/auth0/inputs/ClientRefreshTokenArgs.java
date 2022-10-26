@@ -18,14 +18,14 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     public static final ClientRefreshTokenArgs Empty = new ClientRefreshTokenArgs();
 
     /**
-     * String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
      * 
      */
     @Import(name="expirationType", required=true)
     private Output<String> expirationType;
 
     /**
-     * @return String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+     * @return Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
      * 
      */
     public Output<String> expirationType() {
@@ -33,14 +33,14 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Integer. The time in seconds after which inactive refresh tokens will expire.
+     * The time in seconds after which inactive refresh tokens will expire.
      * 
      */
     @Import(name="idleTokenLifetime")
     private @Nullable Output<Integer> idleTokenLifetime;
 
     /**
-     * @return Integer. The time in seconds after which inactive refresh tokens will expire.
+     * @return The time in seconds after which inactive refresh tokens will expire.
      * 
      */
     public Optional<Output<Integer>> idleTokenLifetime() {
@@ -48,14 +48,14 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+     * Whether inactive refresh tokens should remain valid indefinitely.
      * 
      */
     @Import(name="infiniteIdleTokenLifetime")
     private @Nullable Output<Boolean> infiniteIdleTokenLifetime;
 
     /**
-     * @return Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+     * @return Whether inactive refresh tokens should remain valid indefinitely.
      * 
      */
     public Optional<Output<Boolean>> infiniteIdleTokenLifetime() {
@@ -63,14 +63,14 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+     * Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
      * 
      */
     @Import(name="infiniteTokenLifetime")
     private @Nullable Output<Boolean> infiniteTokenLifetime;
 
     /**
-     * @return Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+     * @return Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
      * 
      */
     public Optional<Output<Boolean>> infiniteTokenLifetime() {
@@ -78,14 +78,14 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+     * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
      * 
      */
     @Import(name="leeway")
     private @Nullable Output<Integer> leeway;
 
     /**
-     * @return Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+     * @return The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
      * 
      */
     public Optional<Output<Integer>> leeway() {
@@ -93,14 +93,14 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      * 
      */
     @Import(name="rotationType", required=true)
     private Output<String> rotationType;
 
     /**
-     * @return String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+     * @return Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      * 
      */
     public Output<String> rotationType() {
@@ -108,14 +108,14 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Integer. The absolute lifetime of a refresh token in seconds.
+     * The absolute lifetime of a refresh token in seconds.
      * 
      */
     @Import(name="tokenLifetime")
     private @Nullable Output<Integer> tokenLifetime;
 
     /**
-     * @return Integer. The absolute lifetime of a refresh token in seconds.
+     * @return The absolute lifetime of a refresh token in seconds.
      * 
      */
     public Optional<Output<Integer>> tokenLifetime() {
@@ -153,7 +153,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param expirationType String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+         * @param expirationType Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param expirationType String. Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+         * @param expirationType Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param idleTokenLifetime Integer. The time in seconds after which inactive refresh tokens will expire.
+         * @param idleTokenLifetime The time in seconds after which inactive refresh tokens will expire.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param idleTokenLifetime Integer. The time in seconds after which inactive refresh tokens will expire.
+         * @param idleTokenLifetime The time in seconds after which inactive refresh tokens will expire.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param infiniteIdleTokenLifetime Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+         * @param infiniteIdleTokenLifetime Whether inactive refresh tokens should remain valid indefinitely.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param infiniteIdleTokenLifetime Boolean, (Default=false) Whether or not inactive refresh tokens should be remain valid indefinitely.
+         * @param infiniteIdleTokenLifetime Whether inactive refresh tokens should remain valid indefinitely.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param infiniteTokenLifetime Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+         * @param infiniteTokenLifetime Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param infiniteTokenLifetime Boolean, (Default=false) Whether or not refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set
+         * @param infiniteTokenLifetime Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param leeway Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+         * @param leeway The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param leeway Integer. The amount of time in seconds in which a refresh token may be reused without trigging reuse detection.
+         * @param leeway The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rotationType String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+         * @param rotationType Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rotationType String. Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+         * @param rotationType Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tokenLifetime Integer. The absolute lifetime of a refresh token in seconds.
+         * @param tokenLifetime The absolute lifetime of a refresh token in seconds.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tokenLifetime Integer. The absolute lifetime of a refresh token in seconds.
+         * @param tokenLifetime The absolute lifetime of a refresh token in seconds.
          * 
          * @return builder
          * 

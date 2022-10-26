@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/auth0/terraform-provider-auth0/auth0"
+	auth0Shim "github.com/auth0/terraform-provider-auth0/shim"
 	"github.com/pulumi/pulumi-auth0/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -55,7 +55,7 @@ func makeResource(mod string, res string) tokens.Type {
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(auth0.Provider())
+	p := shimv2.NewProvider(auth0Shim.NewProvider())
 
 	prov := tfbridge.ProviderInfo{
 		P:           p,
@@ -114,6 +114,7 @@ func Provider() tfbridge.ProviderInfo {
 			"auth0_attack_protection":          {Tok: makeResource(mainMod, "AttackProtection")},
 			"auth0_organization_connection":    {Tok: makeResource(mainMod, "OrganizationConnection")},
 			"auth0_organization_member":        {Tok: makeResource(mainMod, "OrganizationMember")},
+			"auth0_branding_theme":             {Tok: makeResource(mainMod, "BrandingTheme")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"auth0_client":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getClient")},

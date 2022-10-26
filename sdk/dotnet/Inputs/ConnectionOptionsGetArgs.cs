@@ -30,11 +30,14 @@ namespace Pulumi.Auth0.Inputs
             set => _allowedAudiences = value;
         }
 
+        /// <summary>
+        /// Enable API Access to users.
+        /// </summary>
         [Input("apiEnableUsers")]
         public Input<bool>? ApiEnableUsers { get; set; }
 
         /// <summary>
-        /// Azure AD app ID.
+        /// App ID.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -43,7 +46,7 @@ namespace Pulumi.Auth0.Inputs
         private InputMap<string>? _authParams;
 
         /// <summary>
-        /// Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+        /// Query string parameters to be included as part of the generated passwordless email link.
         /// </summary>
         public InputMap<string> AuthParams
         {
@@ -51,50 +54,67 @@ namespace Pulumi.Auth0.Inputs
             set => _authParams = value;
         }
 
+        /// <summary>
+        /// Authorization endpoint.
+        /// </summary>
         [Input("authorizationEndpoint")]
         public Input<string>? AuthorizationEndpoint { get; set; }
 
         /// <summary>
-        /// Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+        /// Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         /// </summary>
         [Input("bruteForceProtection")]
         public Input<bool>? BruteForceProtection { get; set; }
 
         /// <summary>
-        /// OIDC provider client ID.
+        /// The strategy's client ID.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        /// <summary>
-        /// OIDC provider client secret.
-        /// </summary>
         [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        private Input<string>? _clientSecret;
 
         /// <summary>
-        /// String.
+        /// The strategy's client secret.
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Salesforce community base URL.
         /// </summary>
         [Input("communityBaseUrl")]
         public Input<string>? CommunityBaseUrl { get; set; }
 
         [Input("configuration")]
-        private InputMap<string>? _configuration;
+        private InputMap<object>? _configuration;
 
         /// <summary>
         /// A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         /// </summary>
-        public InputMap<string> Configuration
+        public InputMap<object> Configuration
         {
-            get => _configuration ?? (_configuration = new InputMap<string>());
-            set => _configuration = value;
+            get => _configuration ?? (_configuration = new InputMap<object>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _configuration = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("customScripts")]
         private InputMap<string>? _customScripts;
 
         /// <summary>
-        /// Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+        /// A map of scripts used to integrate with a custom database.
         /// </summary>
         public InputMap<string> CustomScripts
         {
@@ -103,40 +123,43 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// (Boolean) When enabled additional debugging information will be generated.
+        /// When enabled, additional debug information will be generated.
         /// </summary>
         [Input("debug")]
         public Input<bool>? Debug { get; set; }
 
         /// <summary>
-        /// Sign Request Algorithm Digest
+        /// Sign Request Algorithm Digest.
         /// </summary>
         [Input("digestAlgorithm")]
         public Input<string>? DigestAlgorithm { get; set; }
 
+        /// <summary>
+        /// Indicates whether to disable the cache or not.
+        /// </summary>
         [Input("disableCache")]
         public Input<bool>? DisableCache { get; set; }
 
         /// <summary>
-        /// (Boolean) Disables or enables user sign out.
+        /// When enabled, will disable sign out.
         /// </summary>
         [Input("disableSignOut")]
         public Input<bool>? DisableSignOut { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not to allow user sign-ups to your application.
+        /// Indicates whether to allow user sign-ups to your application.
         /// </summary>
         [Input("disableSignup")]
         public Input<bool>? DisableSignup { get; set; }
 
         /// <summary>
-        /// OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+        /// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         /// </summary>
         [Input("discoveryUrl")]
         public Input<string>? DiscoveryUrl { get; set; }
 
         /// <summary>
-        /// Azure AD domain name.
+        /// Domain name.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -145,7 +168,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _domainAliases;
 
         /// <summary>
-        /// List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+        /// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
         /// </summary>
         public InputList<string> DomainAliases
         {
@@ -153,6 +176,9 @@ namespace Pulumi.Auth0.Inputs
             set => _domainAliases = value;
         }
 
+        /// <summary>
+        /// Set to `true` to use a legacy user store.
+        /// </summary>
         [Input("enabledDatabaseCustomization")]
         public Input<bool>? EnabledDatabaseCustomization { get; set; }
 
@@ -163,46 +189,65 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? EntityId { get; set; }
 
         /// <summary>
-        /// SAML Attributes mapping. If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+        /// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         /// </summary>
         [Input("fieldsMap")]
         public Input<string>? FieldsMap { get; set; }
 
+        /// <summary>
+        /// Specifies whether or not request info should be forwarded to sms gateway.
+        /// </summary>
         [Input("forwardRequestInfo")]
         public Input<bool>? ForwardRequestInfo { get; set; }
 
         /// <summary>
-        /// SMS number for the sender. Used when SMS Source is From.
+        /// Address to use as the sender.
         /// </summary>
         [Input("from")]
         public Input<string>? From { get; set; }
 
+        /// <summary>
+        /// Defines the parameters used to generate the auth token for the custom gateway.
+        /// </summary>
         [Input("gatewayAuthentication")]
         public Input<Inputs.ConnectionOptionsGatewayAuthenticationGetArgs>? GatewayAuthentication { get; set; }
 
+        /// <summary>
+        /// Defines a custom sms gateway to use instead of Twilio.
+        /// </summary>
         [Input("gatewayUrl")]
         public Input<string>? GatewayUrl { get; set; }
 
+        /// <summary>
+        /// Icon URL.
+        /// </summary>
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
+        /// <summary>
+        /// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+        /// </summary>
         [Input("identityApi")]
         public Input<string>? IdentityApi { get; set; }
 
         /// <summary>
-        /// Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+        /// Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
         /// </summary>
         [Input("idpInitiated")]
         public Input<Inputs.ConnectionOptionsIdpInitiatedGetArgs>? IdpInitiated { get; set; }
 
         /// <summary>
-        /// Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+        /// Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
         /// </summary>
         [Input("importMode")]
         public Input<bool>? ImportMode { get; set; }
 
         [Input("ips")]
         private InputList<string>? _ips;
+
+        /// <summary>
+        /// A list of IPs.
+        /// </summary>
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());
@@ -210,16 +255,19 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Issuer URL. E.g. `https://auth.example.com`
+        /// Issuer URL, e.g. `https://auth.example.com`.
         /// </summary>
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
+        /// <summary>
+        /// JWKS URI.
+        /// </summary>
         [Input("jwksUri")]
         public Input<string>? JwksUri { get; set; }
 
         /// <summary>
-        /// Key ID.
+        /// Apple Key ID.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
@@ -237,25 +285,25 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? MessagingServiceSid { get; set; }
 
         /// <summary>
-        /// URL of the SAML metadata document.
+        /// The URL of the SAML metadata document.
         /// </summary>
         [Input("metadataUrl")]
         public Input<string>? MetadataUrl { get; set; }
 
         /// <summary>
-        /// XML content for the SAML metadata document.
+        /// The XML content for the SAML metadata document.
         /// </summary>
         [Input("metadataXml")]
         public Input<string>? MetadataXml { get; set; }
 
         /// <summary>
-        /// Configuration settings Options for multifactor authentication. For details, see MFA Options.
+        /// Configuration options for multifactor authentication.
         /// </summary>
         [Input("mfa")]
         public Input<Inputs.ConnectionOptionsMfaGetArgs>? Mfa { get; set; }
 
         /// <summary>
-        /// Name of the connection.
+        /// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -264,7 +312,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _nonPersistentAttrs;
 
         /// <summary>
-        /// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+        /// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
         /// </summary>
         public InputList<string> NonPersistentAttrs
         {
@@ -273,13 +321,13 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Configuration settings for password complexity. For details, see Password Complexity Options.
+        /// Configuration settings for password complexity.
         /// </summary>
         [Input("passwordComplexityOptions")]
         public Input<Inputs.ConnectionOptionsPasswordComplexityOptionsGetArgs>? PasswordComplexityOptions { get; set; }
 
         /// <summary>
-        /// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+        /// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
         /// </summary>
         [Input("passwordDictionary")]
         public Input<Inputs.ConnectionOptionsPasswordDictionaryGetArgs>? PasswordDictionary { get; set; }
@@ -288,7 +336,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<Inputs.ConnectionOptionsPasswordHistoryGetArgs>? _passwordHistories;
 
         /// <summary>
-        /// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+        /// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
         /// </summary>
         public InputList<Inputs.ConnectionOptionsPasswordHistoryGetArgs> PasswordHistories
         {
@@ -297,7 +345,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user's email, or first part of the user's email. For details, see Password No Personal Info.
+        /// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
         /// </summary>
         [Input("passwordNoPersonalInfo")]
         public Input<Inputs.ConnectionOptionsPasswordNoPersonalInfoGetArgs>? PasswordNoPersonalInfo { get; set; }
@@ -309,28 +357,31 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? PasswordPolicy { get; set; }
 
         /// <summary>
-        /// (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+        /// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
         /// </summary>
         [Input("pkceEnabled")]
         public Input<bool>? PkceEnabled { get; set; }
 
         /// <summary>
-        /// The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+        /// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         /// </summary>
         [Input("protocolBinding")]
         public Input<string>? ProtocolBinding { get; set; }
 
+        /// <summary>
+        /// Defines the custom `sms_gateway` provider.
+        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
         /// <summary>
-        /// Template that formats the SAML request
+        /// Template that formats the SAML request.
         /// </summary>
         [Input("requestTemplate")]
         public Input<string>? RequestTemplate { get; set; }
 
         /// <summary>
-        /// Indicates whether or not the user is required to provide a username in addition to an email address.
+        /// Indicates whether the user is required to provide a username in addition to an email address.
         /// </summary>
         [Input("requiresUsername")]
         public Input<bool>? RequiresUsername { get; set; }
@@ -339,7 +390,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Scopes required by the connection. The value must be a list, for example `["openid", "profile", "email"]`.
+        /// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -349,6 +400,10 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("scripts")]
         private InputMap<string>? _scripts;
+
+        /// <summary>
+        /// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        /// </summary>
         public InputMap<string> Scripts
         {
             get => _scripts ?? (_scripts = new InputMap<string>());
@@ -356,13 +411,13 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Determines whether the 'name', 'given_name', 'family_name', 'nickname', and 'picture' attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+        /// Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
         /// </summary>
         [Input("setUserRootAttributes")]
         public Input<string>? SetUserRootAttributes { get; set; }
 
         /// <summary>
-        /// Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+        /// Choose how Auth0 sets the email_verified field in the user profile.
         /// </summary>
         [Input("shouldTrustEmailVerifiedConnection")]
         public Input<string>? ShouldTrustEmailVerifiedConnection { get; set; }
@@ -380,25 +435,25 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? SignOutEndpoint { get; set; }
 
         /// <summary>
-        /// (Boolean) When enabled, the SAML authentication request will be signed.
+        /// When enabled, the SAML authentication request will be signed.
         /// </summary>
         [Input("signSamlRequest")]
         public Input<bool>? SignSamlRequest { get; set; }
 
         /// <summary>
-        /// Sign Request Algorithm
+        /// Sign Request Algorithm.
         /// </summary>
         [Input("signatureAlgorithm")]
         public Input<string>? SignatureAlgorithm { get; set; }
 
         /// <summary>
-        /// The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+        /// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
         /// </summary>
         [Input("signingCert")]
         public Input<string>? SigningCert { get; set; }
 
         /// <summary>
-        /// . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        /// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
         /// </summary>
         [Input("signingKey")]
         public Input<Inputs.ConnectionOptionsSigningKeyGetArgs>? SigningKey { get; set; }
@@ -410,37 +465,43 @@ namespace Pulumi.Auth0.Inputs
         public Input<int>? StrategyVersion { get; set; }
 
         /// <summary>
-        /// String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+        /// Subject line of the email.
         /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 
         /// <summary>
-        /// Syntax of the SMS. Options include `markdown` and `liquid`.
+        /// Syntax of the template body.
         /// </summary>
         [Input("syntax")]
         public Input<string>? Syntax { get; set; }
 
         /// <summary>
-        /// Team ID.
+        /// Apple Team ID.
         /// </summary>
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+        /// Body of the template.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
 
+        /// <summary>
+        /// Tenant domain name.
+        /// </summary>
         [Input("tenantDomain")]
         public Input<string>? TenantDomain { get; set; }
 
+        /// <summary>
+        /// Token endpoint.
+        /// </summary>
         [Input("tokenEndpoint")]
         public Input<string>? TokenEndpoint { get; set; }
 
         /// <summary>
-        /// Configuration options for one-time passwords. For details, see TOTP.
+        /// Configuration options for one-time passwords.
         /// </summary>
         [Input("totp")]
         public Input<Inputs.ConnectionOptionsTotpGetArgs>? Totp { get; set; }
@@ -451,11 +512,21 @@ namespace Pulumi.Auth0.Inputs
         [Input("twilioSid")]
         public Input<string>? TwilioSid { get; set; }
 
+        [Input("twilioToken")]
+        private Input<string>? _twilioToken;
+
         /// <summary>
         /// AuthToken for your Twilio account.
         /// </summary>
-        [Input("twilioToken")]
-        public Input<string>? TwilioToken { get; set; }
+        public Input<string>? TwilioToken
+        {
+            get => _twilioToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _twilioToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Value can be `back_channel` or `front_channel`.
@@ -464,17 +535,26 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+        /// You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         /// </summary>
         [Input("upstreamParams")]
         public Input<string>? UpstreamParams { get; set; }
 
+        /// <summary>
+        /// Indicates whether to use cert auth or not.
+        /// </summary>
         [Input("useCertAuth")]
         public Input<bool>? UseCertAuth { get; set; }
 
+        /// <summary>
+        /// Indicates whether to use Kerberos or not.
+        /// </summary>
         [Input("useKerberos")]
         public Input<bool>? UseKerberos { get; set; }
 
+        /// <summary>
+        /// Whether to use WS-Fed.
+        /// </summary>
         [Input("useWsfed")]
         public Input<bool>? UseWsfed { get; set; }
 
@@ -484,21 +564,27 @@ namespace Pulumi.Auth0.Inputs
         [Input("userIdAttribute")]
         public Input<string>? UserIdAttribute { get; set; }
 
+        /// <summary>
+        /// User info endpoint.
+        /// </summary>
         [Input("userinfoEndpoint")]
         public Input<string>? UserinfoEndpoint { get; set; }
 
         /// <summary>
-        /// Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+        /// Validation of the minimum and maximum values allowed for a user to have as username.
         /// </summary>
         [Input("validation")]
         public Input<Inputs.ConnectionOptionsValidationGetArgs>? Validation { get; set; }
 
         /// <summary>
-        /// Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+        /// Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         /// </summary>
         [Input("waadCommonEndpoint")]
         public Input<bool>? WaadCommonEndpoint { get; set; }
 
+        /// <summary>
+        /// Protocol to use.
+        /// </summary>
         [Input("waadProtocol")]
         public Input<string>? WaadProtocol { get; set; }
 

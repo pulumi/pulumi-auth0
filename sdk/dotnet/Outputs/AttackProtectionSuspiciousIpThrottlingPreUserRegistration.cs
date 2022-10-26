@@ -13,9 +13,6 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class AttackProtectionSuspiciousIpThrottlingPreUserRegistration
     {
-        /// <summary>
-        /// Maximum number of unsuccessful attempts. Only available on public tenants.
-        /// </summary>
         public readonly int? MaxAttempts;
         public readonly int? Rate;
 

@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ResourceServerScope {
     /**
-     * @return String. Description of the permission (scope).
+     * @return Description of the permission (scope).
      * 
      */
     private @Nullable String description;
     /**
-     * @return String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+     * @return Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
      * 
      */
     private String value;
 
     private ResourceServerScope() {}
     /**
-     * @return String. Description of the permission (scope).
+     * @return Description of the permission (scope).
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+     * @return Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
      * 
      */
     public String value() {

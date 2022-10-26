@@ -12,39 +12,30 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class GuardianPhoneOptionsGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// String.
-        /// </summary>
         [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
+        private Input<string>? _authToken;
+        public Input<string>? AuthToken
+        {
+            get => _authToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
-        /// <summary>
-        /// String. This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-        /// </summary>
         [Input("enrollmentMessage")]
         public Input<string>? EnrollmentMessage { get; set; }
 
-        /// <summary>
-        /// String.
-        /// </summary>
         [Input("from")]
         public Input<string>? From { get; set; }
 
-        /// <summary>
-        /// String.
-        /// </summary>
         [Input("messagingServiceSid")]
         public Input<string>? MessagingServiceSid { get; set; }
 
-        /// <summary>
-        /// String.
-        /// </summary>
         [Input("sid")]
         public Input<string>? Sid { get; set; }
 
-        /// <summary>
-        /// String. This message will be sent whenever a user logs in after the enrollment. Supports liquid syntax, see [Auth0 docs](https://auth0.com/docs/mfa/customize-sms-or-voice-messages).
-        /// </summary>
         [Input("verificationMessage")]
         public Input<string>? VerificationMessage { get; set; }
 

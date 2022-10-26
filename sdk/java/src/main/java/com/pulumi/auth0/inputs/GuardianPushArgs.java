@@ -16,16 +16,32 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GuardianPushArgs Empty = new GuardianPushArgs();
 
+    /**
+     * Configuration for Amazon SNS.
+     * 
+     */
     @Import(name="amazonSns")
     private @Nullable Output<GuardianPushAmazonSnsArgs> amazonSns;
 
+    /**
+     * @return Configuration for Amazon SNS.
+     * 
+     */
     public Optional<Output<GuardianPushAmazonSnsArgs>> amazonSns() {
         return Optional.ofNullable(this.amazonSns);
     }
 
+    /**
+     * Configuration for the Guardian Custom App.
+     * 
+     */
     @Import(name="customApp")
     private @Nullable Output<GuardianPushCustomAppArgs> customApp;
 
+    /**
+     * @return Configuration for the Guardian Custom App.
+     * 
+     */
     public Optional<Output<GuardianPushCustomAppArgs>> customApp() {
         return Optional.ofNullable(this.customApp);
     }
@@ -55,20 +71,44 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
             $ = new GuardianPushArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param amazonSns Configuration for Amazon SNS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder amazonSns(@Nullable Output<GuardianPushAmazonSnsArgs> amazonSns) {
             $.amazonSns = amazonSns;
             return this;
         }
 
+        /**
+         * @param amazonSns Configuration for Amazon SNS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder amazonSns(GuardianPushAmazonSnsArgs amazonSns) {
             return amazonSns(Output.of(amazonSns));
         }
 
+        /**
+         * @param customApp Configuration for the Guardian Custom App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customApp(@Nullable Output<GuardianPushCustomAppArgs> customApp) {
             $.customApp = customApp;
             return this;
         }
 
+        /**
+         * @param customApp Configuration for the Guardian Custom App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customApp(GuardianPushCustomAppArgs customApp) {
             return customApp(Output.of(customApp));
         }

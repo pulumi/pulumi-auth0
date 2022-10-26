@@ -9,65 +9,25 @@ import java.util.Objects;
 
 @CustomType
 public final class GuardianPushAmazonSns {
-    /**
-     * @return String. Your AWS Access Key ID.
-     * 
-     */
     private String awsAccessKeyId;
-    /**
-     * @return String. Your AWS application&#39;s region.
-     * 
-     */
     private String awsRegion;
-    /**
-     * @return String. Your AWS Secret Access Key.
-     * 
-     */
     private String awsSecretAccessKey;
-    /**
-     * @return String. The Amazon Resource Name for your Apple Push Notification Service.
-     * 
-     */
     private String snsApnsPlatformApplicationArn;
-    /**
-     * @return String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-     * 
-     */
     private String snsGcmPlatformApplicationArn;
 
     private GuardianPushAmazonSns() {}
-    /**
-     * @return String. Your AWS Access Key ID.
-     * 
-     */
     public String awsAccessKeyId() {
         return this.awsAccessKeyId;
     }
-    /**
-     * @return String. Your AWS application&#39;s region.
-     * 
-     */
     public String awsRegion() {
         return this.awsRegion;
     }
-    /**
-     * @return String. Your AWS Secret Access Key.
-     * 
-     */
     public String awsSecretAccessKey() {
         return this.awsSecretAccessKey;
     }
-    /**
-     * @return String. The Amazon Resource Name for your Apple Push Notification Service.
-     * 
-     */
     public String snsApnsPlatformApplicationArn() {
         return this.snsApnsPlatformApplicationArn;
     }
-    /**
-     * @return String. The Amazon Resource Name for your Firebase Cloud Messaging Service.
-     * 
-     */
     public String snsGcmPlatformApplicationArn() {
         return this.snsGcmPlatformApplicationArn;
     }

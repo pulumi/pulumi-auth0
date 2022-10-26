@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -35,7 +36,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Existing resource servers can be imported using their id, e.g.
+ * Existing resource servers can be imported using their ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
@@ -70,55 +71,55 @@ export class ResourceServer extends pulumi.CustomResource {
     }
 
     /**
-     * Boolean. Indicates whether refresh tokens can be issued for this resource server.
+     * Indicates whether refresh tokens can be issued for this resource server.
      */
     public readonly allowOfflineAccess!: pulumi.Output<boolean | undefined>;
     /**
-     * Boolean. Indicates whether authorization polices are enforced.
+     * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      */
-    public readonly enforcePolicies!: pulumi.Output<boolean | undefined>;
+    public readonly enforcePolicies!: pulumi.Output<boolean>;
     /**
-     * String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      */
-    public readonly identifier!: pulumi.Output<string | undefined>;
+    public readonly identifier!: pulumi.Output<string>;
     /**
-     * String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+     * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Map(String). Used to store additional metadata
+     * Used to store additional metadata.
      */
     public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+     * List of permissions (scopes) used by this resource server.
      */
     public readonly scopes!: pulumi.Output<outputs.ResourceServerScope[] | undefined>;
     /**
-     * String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      */
     public readonly signingAlg!: pulumi.Output<string>;
     /**
-     * String. Secret used to sign tokens when using symmetric algorithms (HS256).
+     * Secret used to sign tokens when using symmetric algorithms (HS256).
      */
     public readonly signingSecret!: pulumi.Output<string>;
     /**
-     * Boolean. Indicates whether to skip user consent for applications flagged as first party.
+     * Indicates whether to skip user consent for applications flagged as first party.
      */
-    public readonly skipConsentForVerifiableFirstPartyClients!: pulumi.Output<boolean | undefined>;
+    public readonly skipConsentForVerifiableFirstPartyClients!: pulumi.Output<boolean>;
     /**
-     * String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+     * Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
      */
     public readonly tokenDialect!: pulumi.Output<string | undefined>;
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+     * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
     public readonly tokenLifetime!: pulumi.Output<number>;
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+     * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
     public readonly tokenLifetimeForWeb!: pulumi.Output<number>;
     /**
-     * String
+     * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
     public readonly verificationLocation!: pulumi.Output<string | undefined>;
 
@@ -129,7 +130,7 @@ export class ResourceServer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ResourceServerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ResourceServerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourceServerArgs | ResourceServerState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -150,6 +151,9 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["verificationLocation"] = state ? state.verificationLocation : undefined;
         } else {
             const args = argsOrState as ResourceServerArgs | undefined;
+            if ((!args || args.identifier === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'identifier'");
+            }
             resourceInputs["allowOfflineAccess"] = args ? args.allowOfflineAccess : undefined;
             resourceInputs["enforcePolicies"] = args ? args.enforcePolicies : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
@@ -174,55 +178,55 @@ export class ResourceServer extends pulumi.CustomResource {
  */
 export interface ResourceServerState {
     /**
-     * Boolean. Indicates whether refresh tokens can be issued for this resource server.
+     * Indicates whether refresh tokens can be issued for this resource server.
      */
     allowOfflineAccess?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether authorization polices are enforced.
+     * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      */
     enforcePolicies?: pulumi.Input<boolean>;
     /**
-     * String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+     * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
     name?: pulumi.Input<string>;
     /**
-     * Map(String). Used to store additional metadata
+     * Used to store additional metadata.
      */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+     * List of permissions (scopes) used by this resource server.
      */
     scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScope>[]>;
     /**
-     * String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      */
     signingAlg?: pulumi.Input<string>;
     /**
-     * String. Secret used to sign tokens when using symmetric algorithms (HS256).
+     * Secret used to sign tokens when using symmetric algorithms (HS256).
      */
     signingSecret?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether to skip user consent for applications flagged as first party.
+     * Indicates whether to skip user consent for applications flagged as first party.
      */
     skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
     /**
-     * String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+     * Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
      */
     tokenDialect?: pulumi.Input<string>;
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+     * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
     tokenLifetime?: pulumi.Input<number>;
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+     * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
     tokenLifetimeForWeb?: pulumi.Input<number>;
     /**
-     * String
+     * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
     verificationLocation?: pulumi.Input<string>;
 }
@@ -232,55 +236,55 @@ export interface ResourceServerState {
  */
 export interface ResourceServerArgs {
     /**
-     * Boolean. Indicates whether refresh tokens can be issued for this resource server.
+     * Indicates whether refresh tokens can be issued for this resource server.
      */
     allowOfflineAccess?: pulumi.Input<boolean>;
     /**
-     * Boolean. Indicates whether authorization polices are enforced.
+     * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      */
     enforcePolicies?: pulumi.Input<boolean>;
     /**
-     * String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
-     * String. Friendly name for the resource server. Cannot include `<` or `>` characters.
+     * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
     name?: pulumi.Input<string>;
     /**
-     * Map(String). Used to store additional metadata
+     * Used to store additional metadata.
      */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+     * List of permissions (scopes) used by this resource server.
      */
     scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScope>[]>;
     /**
-     * String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      */
     signingAlg?: pulumi.Input<string>;
     /**
-     * String. Secret used to sign tokens when using symmetric algorithms (HS256).
+     * Secret used to sign tokens when using symmetric algorithms (HS256).
      */
     signingSecret?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether to skip user consent for applications flagged as first party.
+     * Indicates whether to skip user consent for applications flagged as first party.
      */
     skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
     /**
-     * String. Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz` (includes permissions).
+     * Dialect of access tokens that should be issued for this resource server. Options include `accessToken` or `accessTokenAuthz`. If this setting is set to `accessTokenAuthz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforcePolicies`) is enabled for this API.
      */
     tokenDialect?: pulumi.Input<string>;
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+     * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
     tokenLifetime?: pulumi.Input<number>;
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
+     * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
     tokenLifetimeForWeb?: pulumi.Input<number>;
     /**
-     * String
+     * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
     verificationLocation?: pulumi.Input<string>;
 }

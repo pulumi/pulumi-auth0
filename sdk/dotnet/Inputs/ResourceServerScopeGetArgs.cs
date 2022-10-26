@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ResourceServerScopeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Description of the permission (scope).
+        /// Description of the permission (scope).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// String. Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+        /// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

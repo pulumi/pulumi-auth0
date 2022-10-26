@@ -17,14 +17,14 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     public static final ClientGrantState Empty = new ClientGrantState();
 
     /**
-     * String. Audience or API Identifier for this grant.
+     * Audience or API Identifier for this grant.
      * 
      */
     @Import(name="audience")
     private @Nullable Output<String> audience;
 
     /**
-     * @return String. Audience or API Identifier for this grant.
+     * @return Audience or API Identifier for this grant.
      * 
      */
     public Optional<Output<String>> audience() {
@@ -32,14 +32,14 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. ID of the client for this grant.
+     * ID of the client for this grant.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return String. ID of the client for this grant.
+     * @return ID of the client for this grant.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -47,14 +47,14 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List(String). Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return List(String). Permissions (scopes) included in this grant.
+     * @return Permissions (scopes) included in this grant.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -88,7 +88,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param audience String. Audience or API Identifier for this grant.
+         * @param audience Audience or API Identifier for this grant.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param audience String. Audience or API Identifier for this grant.
+         * @param audience Audience or API Identifier for this grant.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId String. ID of the client for this grant.
+         * @param clientId ID of the client for this grant.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId String. ID of the client for this grant.
+         * @param clientId ID of the client for this grant.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes List(String). Permissions (scopes) included in this grant.
+         * @param scopes Permissions (scopes) included in this grant.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes List(String). Permissions (scopes) included in this grant.
+         * @param scopes Permissions (scopes) included in this grant.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes List(String). Permissions (scopes) included in this grant.
+         * @param scopes Permissions (scopes) included in this grant.
          * 
          * @return builder
          * 

@@ -31,6 +31,9 @@ namespace Pulumi.Auth0.Outputs
         public readonly ImmutableDictionary<string, object>? Salesforce;
         public readonly ImmutableDictionary<string, object>? SalesforceApi;
         public readonly ImmutableDictionary<string, object>? SalesforceSandboxApi;
+        /// <summary>
+        /// Configuration settings for a SAML add-on.
+        /// </summary>
         public readonly Outputs.GlobalClientAddonsSamlp? Samlp;
         public readonly ImmutableDictionary<string, object>? SapApi;
         public readonly ImmutableDictionary<string, object>? Sentry;
@@ -38,6 +41,9 @@ namespace Pulumi.Auth0.Outputs
         public readonly ImmutableDictionary<string, object>? Slack;
         public readonly ImmutableDictionary<string, object>? Springcm;
         public readonly ImmutableDictionary<string, object>? Wams;
+        /// <summary>
+        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in callback and `client_aliases` properties on the client.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Wsfed;
         public readonly ImmutableDictionary<string, object>? Zendesk;
         public readonly ImmutableDictionary<string, object>? Zoom;

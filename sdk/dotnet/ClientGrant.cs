@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
-    /// exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
-    /// This resource allows you to create and manage client grants used with configured Auth0 clients.
+    /// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
     /// 
     /// ## Example Usage
     /// 
@@ -23,6 +21,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // The following example grants a client the "create:foo" permission (scope).
     ///     var myClient = new Auth0.Client("myClient");
     /// 
     ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
@@ -58,7 +57,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Client grants can be imported using the grant ID (Application -&gt; APIs -&gt; Expand the required API)
+    /// Client grants can be imported using the grant ID. # Application -&gt; APIs -&gt; Expand the required API # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
@@ -68,19 +67,19 @@ namespace Pulumi.Auth0
     public partial class ClientGrant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// String. Audience or API Identifier for this grant.
+        /// Audience or API Identifier for this grant.
         /// </summary>
         [Output("audience")]
         public Output<string> Audience { get; private set; } = null!;
 
         /// <summary>
-        /// String. ID of the client for this grant.
+        /// ID of the client for this grant.
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). Permissions (scopes) included in this grant.
+        /// Permissions (scopes) included in this grant.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -132,13 +131,13 @@ namespace Pulumi.Auth0
     public sealed class ClientGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Audience or API Identifier for this grant.
+        /// Audience or API Identifier for this grant.
         /// </summary>
         [Input("audience", required: true)]
         public Input<string> Audience { get; set; } = null!;
 
         /// <summary>
-        /// String. ID of the client for this grant.
+        /// ID of the client for this grant.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
@@ -147,7 +146,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// List(String). Permissions (scopes) included in this grant.
+        /// Permissions (scopes) included in this grant.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -164,13 +163,13 @@ namespace Pulumi.Auth0
     public sealed class ClientGrantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Audience or API Identifier for this grant.
+        /// Audience or API Identifier for this grant.
         /// </summary>
         [Input("audience")]
         public Input<string>? Audience { get; set; }
 
         /// <summary>
-        /// String. ID of the client for this grant.
+        /// ID of the client for this grant.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -179,7 +178,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// List(String). Permissions (scopes) included in this grant.
+        /// Permissions (scopes) included in this grant.
         /// </summary>
         public InputList<string> Scopes
         {

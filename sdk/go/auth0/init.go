@@ -26,6 +26,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AttackProtection{}
 	case "auth0:index/branding:Branding":
 		r = &Branding{}
+	case "auth0:index/brandingTheme:BrandingTheme":
+		r = &BrandingTheme{}
 	case "auth0:index/client:Client":
 		r = &Client{}
 	case "auth0:index/clientGrant:ClientGrant":
@@ -113,6 +115,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/branding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/brandingTheme",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

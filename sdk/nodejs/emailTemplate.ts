@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
- * into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
- * emails sent by Auth0. Used in conjunction with configured email providers.
+ * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
  *
  * ## Example Usage
  *
@@ -33,7 +31,6 @@ import * as utilities from "./utilities";
  *     syntax: "liquid",
  *     urlLifetimeInSeconds: 3600,
  *     enabled: true,
- *     includeEmailInRedirect: true,
  * }, {
  *     dependsOn: [myEmailProvider],
  * });
@@ -41,7 +38,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported using the template name, e.g.
+ * This resource can be imported using the pre-defined template name. # These names are `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, and `user_invitation`. # The names `change_password`, and `password_reset` are also supported for legacy scenarios. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
@@ -76,39 +73,39 @@ export class EmailTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     public readonly body!: pulumi.Output<string>;
     /**
-     * Boolean. Indicates whether the template is enabled.
+     * Indicates whether the template is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     public readonly from!: pulumi.Output<string>;
     /**
-     * Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     * Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      */
     public readonly includeEmailInRedirect!: pulumi.Output<boolean>;
     /**
-     * String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+     * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      */
     public readonly resultUrl!: pulumi.Output<string | undefined>;
     /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     public readonly subject!: pulumi.Output<string>;
     /**
-     * String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+     * Syntax of the template body. You can use either text or HTML with Liquid syntax.
      */
     public readonly syntax!: pulumi.Output<string>;
     /**
-     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
      */
     public readonly template!: pulumi.Output<string>;
     /**
-     * Integer. Number of seconds during which the link within the email will be valid.
+     * Number of seconds during which the link within the email will be valid.
      */
     public readonly urlLifetimeInSeconds!: pulumi.Output<number | undefined>;
 
@@ -174,39 +171,39 @@ export class EmailTemplate extends pulumi.CustomResource {
  */
 export interface EmailTemplateState {
     /**
-     * String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     body?: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether the template is enabled.
+     * Indicates whether the template is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     from?: pulumi.Input<string>;
     /**
-     * Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     * Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      */
     includeEmailInRedirect?: pulumi.Input<boolean>;
     /**
-     * String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+     * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      */
     resultUrl?: pulumi.Input<string>;
     /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     subject?: pulumi.Input<string>;
     /**
-     * String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+     * Syntax of the template body. You can use either text or HTML with Liquid syntax.
      */
     syntax?: pulumi.Input<string>;
     /**
-     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
      */
     template?: pulumi.Input<string>;
     /**
-     * Integer. Number of seconds during which the link within the email will be valid.
+     * Number of seconds during which the link within the email will be valid.
      */
     urlLifetimeInSeconds?: pulumi.Input<number>;
 }
@@ -216,39 +213,39 @@ export interface EmailTemplateState {
  */
 export interface EmailTemplateArgs {
     /**
-     * String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     body: pulumi.Input<string>;
     /**
-     * Boolean. Indicates whether the template is enabled.
+     * Indicates whether the template is enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     from: pulumi.Input<string>;
     /**
-     * Boolean. Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     * Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      */
     includeEmailInRedirect?: pulumi.Input<boolean>;
     /**
-     * String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+     * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      */
     resultUrl?: pulumi.Input<string>;
     /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
     subject: pulumi.Input<string>;
     /**
-     * String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+     * Syntax of the template body. You can use either text or HTML with Liquid syntax.
      */
     syntax: pulumi.Input<string>;
     /**
-     * String. Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
      */
     template: pulumi.Input<string>;
     /**
-     * Integer. Number of seconds during which the link within the email will be valid.
+     * Number of seconds during which the link within the email will be valid.
      */
     urlLifetimeInSeconds?: pulumi.Input<number>;
 }

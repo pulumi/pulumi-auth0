@@ -15,17 +15,9 @@ public final class ClientNativeSocialLoginFacebookArgs extends com.pulumi.resour
 
     public static final ClientNativeSocialLoginFacebookArgs Empty = new ClientNativeSocialLoginFacebookArgs();
 
-    /**
-     * Boolean
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return Boolean
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -54,23 +46,11 @@ public final class ClientNativeSocialLoginFacebookArgs extends com.pulumi.resour
             $ = new ClientNativeSocialLoginFacebookArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled Boolean
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled Boolean
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

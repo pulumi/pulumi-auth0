@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Existing resource servers can be imported using their id, e.g.
+ * Existing resource servers can be imported using their ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server XXXXXXXXXXXXXXXXXXXXXXX
@@ -78,182 +78,182 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/resourceServer:ResourceServer")
 public class ResourceServer extends com.pulumi.resources.CustomResource {
     /**
-     * Boolean. Indicates whether refresh tokens can be issued for this resource server.
+     * Indicates whether refresh tokens can be issued for this resource server.
      * 
      */
     @Export(name="allowOfflineAccess", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowOfflineAccess;
 
     /**
-     * @return Boolean. Indicates whether refresh tokens can be issued for this resource server.
+     * @return Indicates whether refresh tokens can be issued for this resource server.
      * 
      */
     public Output<Optional<Boolean>> allowOfflineAccess() {
         return Codegen.optional(this.allowOfflineAccess);
     }
     /**
-     * Boolean. Indicates whether authorization polices are enforced.
+     * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      * 
      */
     @Export(name="enforcePolicies", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> enforcePolicies;
+    private Output<Boolean> enforcePolicies;
 
     /**
-     * @return Boolean. Indicates whether authorization polices are enforced.
+     * @return If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      * 
      */
-    public Output<Optional<Boolean>> enforcePolicies() {
-        return Codegen.optional(this.enforcePolicies);
+    public Output<Boolean> enforcePolicies() {
+        return this.enforcePolicies;
     }
     /**
-     * String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+     * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      * 
      */
     @Export(name="identifier", type=String.class, parameters={})
-    private Output</* @Nullable */ String> identifier;
+    private Output<String> identifier;
 
     /**
-     * @return String. Unique identifier for the resource server. Used as the audience parameter for authorization calls. Can not be changed once set.
+     * @return Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      * 
      */
-    public Output<Optional<String>> identifier() {
-        return Codegen.optional(this.identifier);
+    public Output<String> identifier() {
+        return this.identifier;
     }
     /**
-     * String. Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+     * Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return String. Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
+     * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Map(String). Used to store additional metadata
+     * Used to store additional metadata.
      * 
      */
     @Export(name="options", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> options;
 
     /**
-     * @return Map(String). Used to store additional metadata
+     * @return Used to store additional metadata.
      * 
      */
     public Output<Optional<Map<String,String>>> options() {
         return Codegen.optional(this.options);
     }
     /**
-     * Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+     * List of permissions (scopes) used by this resource server.
      * 
      */
     @Export(name="scopes", type=List.class, parameters={ResourceServerScope.class})
     private Output</* @Nullable */ List<ResourceServerScope>> scopes;
 
     /**
-     * @return Set(Resource).  List of permissions (scopes) used by this resource server. For details, see Scopes.
+     * @return List of permissions (scopes) used by this resource server.
      * 
      */
     public Output<Optional<List<ResourceServerScope>>> scopes() {
         return Codegen.optional(this.scopes);
     }
     /**
-     * String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      * 
      */
     @Export(name="signingAlg", type=String.class, parameters={})
     private Output<String> signingAlg;
 
     /**
-     * @return String. Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
+     * @return Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
      * 
      */
     public Output<String> signingAlg() {
         return this.signingAlg;
     }
     /**
-     * String. Secret used to sign tokens when using symmetric algorithms (HS256).
+     * Secret used to sign tokens when using symmetric algorithms (HS256).
      * 
      */
     @Export(name="signingSecret", type=String.class, parameters={})
     private Output<String> signingSecret;
 
     /**
-     * @return String. Secret used to sign tokens when using symmetric algorithms (HS256).
+     * @return Secret used to sign tokens when using symmetric algorithms (HS256).
      * 
      */
     public Output<String> signingSecret() {
         return this.signingSecret;
     }
     /**
-     * Boolean. Indicates whether to skip user consent for applications flagged as first party.
+     * Indicates whether to skip user consent for applications flagged as first party.
      * 
      */
     @Export(name="skipConsentForVerifiableFirstPartyClients", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> skipConsentForVerifiableFirstPartyClients;
+    private Output<Boolean> skipConsentForVerifiableFirstPartyClients;
 
     /**
-     * @return Boolean. Indicates whether to skip user consent for applications flagged as first party.
+     * @return Indicates whether to skip user consent for applications flagged as first party.
      * 
      */
-    public Output<Optional<Boolean>> skipConsentForVerifiableFirstPartyClients() {
-        return Codegen.optional(this.skipConsentForVerifiableFirstPartyClients);
+    public Output<Boolean> skipConsentForVerifiableFirstPartyClients() {
+        return this.skipConsentForVerifiableFirstPartyClients;
     }
     /**
-     * String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
+     * Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
      * 
      */
     @Export(name="tokenDialect", type=String.class, parameters={})
     private Output</* @Nullable */ String> tokenDialect;
 
     /**
-     * @return String. Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz` (includes permissions).
+     * @return Dialect of access tokens that should be issued for this resource server. Options include `access_token` or `access_token_authz`. If this setting is set to `access_token_authz`, the Permissions claim will be added to the access token. Only available if RBAC (`enforce_policies`) is enabled for this API.
      * 
      */
     public Output<Optional<String>> tokenDialect() {
         return Codegen.optional(this.tokenDialect);
     }
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+     * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      * 
      */
     @Export(name="tokenLifetime", type=Integer.class, parameters={})
     private Output<Integer> tokenLifetime;
 
     /**
-     * @return Integer. Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+     * @return Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      * 
      */
     public Output<Integer> tokenLifetime() {
         return this.tokenLifetime;
     }
     /**
-     * Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+     * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
      * 
      */
     @Export(name="tokenLifetimeForWeb", type=Integer.class, parameters={})
     private Output<Integer> tokenLifetimeForWeb;
 
     /**
-     * @return Integer. Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+     * @return Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
      * 
      */
     public Output<Integer> tokenLifetimeForWeb() {
         return this.tokenLifetimeForWeb;
     }
     /**
-     * String
+     * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      * 
      */
     @Export(name="verificationLocation", type=String.class, parameters={})
     private Output</* @Nullable */ String> verificationLocation;
 
     /**
-     * @return String
+     * @return URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      * 
      */
     public Output<Optional<String>> verificationLocation() {
@@ -272,7 +272,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ResourceServer(String name, @Nullable ResourceServerArgs args) {
+    public ResourceServer(String name, ResourceServerArgs args) {
         this(name, args, null);
     }
     /**
@@ -281,7 +281,7 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ResourceServer(String name, @Nullable ResourceServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ResourceServer(String name, ResourceServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("auth0:index/resourceServer:ResourceServer", name, args == null ? ResourceServerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

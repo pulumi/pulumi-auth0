@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingColors
     {
         /// <summary>
-        /// String, Hexadecimal. Background color of login pages.
+        /// Background color of login pages in hexadecimal.
         /// </summary>
         public readonly string? PageBackground;
         /// <summary>
-        /// String, Hexadecimal. Primary button background color.
+        /// Primary button background color in hexadecimal.
         /// </summary>
         public readonly string? Primary;
 

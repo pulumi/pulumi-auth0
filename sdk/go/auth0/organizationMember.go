@@ -20,6 +20,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -27,11 +29,35 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewOrganizationMember(ctx, "acmeAdmin", &auth0.OrganizationMemberArgs{
-//				OrganizationId: pulumi.Any(auth0_organization.Acme.Id),
-//				UserId:         pulumi.Any(auth0_user.Acme_user.Id),
+//			reader, err := auth0.NewRole(ctx, "reader", nil)
+//			if err != nil {
+//				return err
+//			}
+//			admin, err := auth0.NewRole(ctx, "admin", nil)
+//			if err != nil {
+//				return err
+//			}
+//			user, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
+//				Email:          pulumi.String("test-user@auth0.com"),
+//				ConnectionName: pulumi.String("Username-Password-Authentication"),
+//				EmailVerified:  pulumi.Bool(true),
+//				Password:       pulumi.String(fmt.Sprintf("MyPass123$")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myOrg, err := auth0.NewOrganization(ctx, "myOrg", &auth0.OrganizationArgs{
+//				DisplayName: pulumi.String("Admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewOrganizationMember(ctx, "myOrgMember", &auth0.OrganizationMemberArgs{
+//				OrganizationId: myOrg.ID(),
+//				UserId:         user.ID(),
 //				Roles: pulumi.StringArray{
-//					pulumi.Any(auth0_role.Admin.Id),
+//					reader.ID(),
+//					admin.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -45,21 +71,21 @@ import (
 //
 // ## Import
 //
-// As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+// This resource can be imported by specifying the organization ID and user ID separated by ":". # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/organizationMember:OrganizationMember acme_admin 11f4a21b-011a-312d-9217-e291caca36c5
+//	$ pulumi import auth0:index/organizationMember:OrganizationMember my_org_member "org_XXXXX:auth0|XXXXX"
 //
 // ```
 type OrganizationMember struct {
 	pulumi.CustomResourceState
 
-	// The ID of the organization
+	// The ID of the organization to assign the member to.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// Set(string). List of role IDs to assign to member.
+	// The role ID(s) to assign to the organization member.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
-	// The user ID of the member
+	// ID of the user to add as an organization member.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -98,20 +124,20 @@ func GetOrganizationMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationMember resources.
 type organizationMemberState struct {
-	// The ID of the organization
+	// The ID of the organization to assign the member to.
 	OrganizationId *string `pulumi:"organizationId"`
-	// Set(string). List of role IDs to assign to member.
+	// The role ID(s) to assign to the organization member.
 	Roles []string `pulumi:"roles"`
-	// The user ID of the member
+	// ID of the user to add as an organization member.
 	UserId *string `pulumi:"userId"`
 }
 
 type OrganizationMemberState struct {
-	// The ID of the organization
+	// The ID of the organization to assign the member to.
 	OrganizationId pulumi.StringPtrInput
-	// Set(string). List of role IDs to assign to member.
+	// The role ID(s) to assign to the organization member.
 	Roles pulumi.StringArrayInput
-	// The user ID of the member
+	// ID of the user to add as an organization member.
 	UserId pulumi.StringPtrInput
 }
 
@@ -120,21 +146,21 @@ func (OrganizationMemberState) ElementType() reflect.Type {
 }
 
 type organizationMemberArgs struct {
-	// The ID of the organization
+	// The ID of the organization to assign the member to.
 	OrganizationId string `pulumi:"organizationId"`
-	// Set(string). List of role IDs to assign to member.
+	// The role ID(s) to assign to the organization member.
 	Roles []string `pulumi:"roles"`
-	// The user ID of the member
+	// ID of the user to add as an organization member.
 	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a OrganizationMember resource.
 type OrganizationMemberArgs struct {
-	// The ID of the organization
+	// The ID of the organization to assign the member to.
 	OrganizationId pulumi.StringInput
-	// Set(string). List of role IDs to assign to member.
+	// The role ID(s) to assign to the organization member.
 	Roles pulumi.StringArrayInput
-	// The user ID of the member
+	// ID of the user to add as an organization member.
 	UserId pulumi.StringInput
 }
 
@@ -225,17 +251,17 @@ func (o OrganizationMemberOutput) ToOrganizationMemberOutputWithContext(ctx cont
 	return o
 }
 
-// The ID of the organization
+// The ID of the organization to assign the member to.
 func (o OrganizationMemberOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationMember) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Set(string). List of role IDs to assign to member.
+// The role ID(s) to assign to the organization member.
 func (o OrganizationMemberOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationMember) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// The user ID of the member
+// ID of the user to add as an organization member.
 func (o OrganizationMemberOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationMember) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

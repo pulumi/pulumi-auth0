@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrganizationBranding {
     /**
-     * @return Color scheme used to customize the login pages
+     * @return Color scheme used to customize the login pages.
      * 
      */
     private @Nullable Map<String,String> colors;
     /**
-     * @return URL of logo to display on login page
+     * @return URL of logo to display on login page.
      * 
      */
     private @Nullable String logoUrl;
 
     private OrganizationBranding() {}
     /**
-     * @return Color scheme used to customize the login pages
+     * @return Color scheme used to customize the login pages.
      * 
      */
     public Map<String,String> colors() {
         return this.colors == null ? Map.of() : this.colors;
     }
     /**
-     * @return URL of logo to display on login page
+     * @return URL of logo to display on login page.
      * 
      */
     public Optional<String> logoUrl() {

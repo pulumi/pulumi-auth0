@@ -16,6 +16,7 @@ import com.pulumi.auth0.outputs.ConnectionOptionsValidation;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -35,35 +36,43 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable List<String> allowedAudiences;
+    /**
+     * @return Enable API Access to users.
+     * 
+     */
     private @Nullable Boolean apiEnableUsers;
     /**
-     * @return Azure AD app ID.
+     * @return App ID.
      * 
      */
     private @Nullable String appId;
     /**
-     * @return Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+     * @return Query string parameters to be included as part of the generated passwordless email link.
      * 
      */
     private @Nullable Map<String,String> authParams;
+    /**
+     * @return Authorization endpoint.
+     * 
+     */
     private @Nullable String authorizationEndpoint;
     /**
-     * @return Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     * @return Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      * 
      */
     private @Nullable Boolean bruteForceProtection;
     /**
-     * @return OIDC provider client ID.
+     * @return The strategy&#39;s client ID.
      * 
      */
     private @Nullable String clientId;
     /**
-     * @return OIDC provider client secret.
+     * @return The strategy&#39;s client secret.
      * 
      */
     private @Nullable String clientSecret;
     /**
-     * @return String.
+     * @return Salesforce community base URL.
      * 
      */
     private @Nullable String communityBaseUrl;
@@ -71,48 +80,56 @@ public final class ConnectionOptions {
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    private @Nullable Map<String,String> configuration;
+    private @Nullable Map<String,Object> configuration;
     /**
-     * @return Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+     * @return A map of scripts used to integrate with a custom database.
      * 
      */
     private @Nullable Map<String,String> customScripts;
     /**
-     * @return (Boolean) When enabled additional debugging information will be generated.
+     * @return When enabled, additional debug information will be generated.
      * 
      */
     private @Nullable Boolean debug;
     /**
-     * @return Sign Request Algorithm Digest
+     * @return Sign Request Algorithm Digest.
      * 
      */
     private @Nullable String digestAlgorithm;
+    /**
+     * @return Indicates whether to disable the cache or not.
+     * 
+     */
     private @Nullable Boolean disableCache;
     /**
-     * @return (Boolean) Disables or enables user sign out.
+     * @return When enabled, will disable sign out.
      * 
      */
     private @Nullable Boolean disableSignOut;
     /**
-     * @return Boolean. Indicates whether or not to allow user sign-ups to your application.
+     * @return Indicates whether to allow user sign-ups to your application.
      * 
      */
     private @Nullable Boolean disableSignup;
     /**
-     * @return OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
      * 
      */
     private @Nullable String discoveryUrl;
     /**
-     * @return Azure AD domain name.
+     * @return Domain name.
      * 
      */
     private @Nullable String domain;
     /**
-     * @return List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+     * @return List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      * 
      */
     private @Nullable List<String> domainAliases;
+    /**
+     * @return Set to `true` to use a legacy user store.
+     * 
+     */
     private @Nullable Boolean enabledDatabaseCustomization;
     /**
      * @return Custom Entity ID for the connection.
@@ -120,39 +137,67 @@ public final class ConnectionOptions {
      */
     private @Nullable String entityId;
     /**
-     * @return SAML Attributes mapping. If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
      */
     private @Nullable String fieldsMap;
+    /**
+     * @return Specifies whether or not request info should be forwarded to sms gateway.
+     * 
+     */
     private @Nullable Boolean forwardRequestInfo;
     /**
-     * @return SMS number for the sender. Used when SMS Source is From.
+     * @return Address to use as the sender.
      * 
      */
     private @Nullable String from;
+    /**
+     * @return Defines the parameters used to generate the auth token for the custom gateway.
+     * 
+     */
     private @Nullable ConnectionOptionsGatewayAuthentication gatewayAuthentication;
+    /**
+     * @return Defines a custom sms gateway to use instead of Twilio.
+     * 
+     */
     private @Nullable String gatewayUrl;
+    /**
+     * @return Icon URL.
+     * 
+     */
     private @Nullable String iconUrl;
+    /**
+     * @return Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+     * 
+     */
     private @Nullable String identityApi;
     /**
-     * @return Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
      * 
      */
     private @Nullable ConnectionOptionsIdpInitiated idpInitiated;
     /**
-     * @return Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+     * @return Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
      * 
      */
     private @Nullable Boolean importMode;
+    /**
+     * @return A list of IPs.
+     * 
+     */
     private @Nullable List<String> ips;
     /**
-     * @return Issuer URL. E.g. `https://auth.example.com`
+     * @return Issuer URL, e.g. `https://auth.example.com`.
      * 
      */
     private @Nullable String issuer;
+    /**
+     * @return JWKS URI.
+     * 
+     */
     private @Nullable String jwksUri;
     /**
-     * @return Key ID.
+     * @return Apple Key ID.
      * 
      */
     private @Nullable String keyId;
@@ -167,47 +212,47 @@ public final class ConnectionOptions {
      */
     private @Nullable String messagingServiceSid;
     /**
-     * @return URL of the SAML metadata document.
+     * @return The URL of the SAML metadata document.
      * 
      */
     private @Nullable String metadataUrl;
     /**
-     * @return XML content for the SAML metadata document.
+     * @return The XML content for the SAML metadata document.
      * 
      */
     private @Nullable String metadataXml;
     /**
-     * @return Configuration settings Options for multifactor authentication. For details, see MFA Options.
+     * @return Configuration options for multifactor authentication.
      * 
      */
     private @Nullable ConnectionOptionsMfa mfa;
     /**
-     * @return Name of the connection.
+     * @return The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      * 
      */
     private @Nullable String name;
     /**
-     * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+     * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      * 
      */
     private @Nullable List<String> nonPersistentAttrs;
     /**
-     * @return Configuration settings for password complexity. For details, see Password Complexity Options.
+     * @return Configuration settings for password complexity.
      * 
      */
     private @Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions;
     /**
-     * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+     * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
      * 
      */
     private @Nullable ConnectionOptionsPasswordDictionary passwordDictionary;
     /**
-     * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+     * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
      * 
      */
     private @Nullable List<ConnectionOptionsPasswordHistory> passwordHistories;
     /**
-     * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user&#39;s email, or first part of the user&#39;s email. For details, see Password No Personal Info.
+     * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user&#39;s `email`, or first part of the user&#39;s `email`.
      * 
      */
     private @Nullable ConnectionOptionsPasswordNoPersonalInfo passwordNoPersonalInfo;
@@ -217,39 +262,47 @@ public final class ConnectionOptions {
      */
     private @Nullable String passwordPolicy;
     /**
-     * @return (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+     * @return Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      * 
      */
     private @Nullable Boolean pkceEnabled;
     /**
-     * @return The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+     * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
     private @Nullable String protocolBinding;
+    /**
+     * @return Defines the custom `sms_gateway` provider.
+     * 
+     */
     private @Nullable String provider;
     /**
-     * @return Template that formats the SAML request
+     * @return Template that formats the SAML request.
      * 
      */
     private @Nullable String requestTemplate;
     /**
-     * @return Indicates whether or not the user is required to provide a username in addition to an email address.
+     * @return Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
     private @Nullable Boolean requiresUsername;
     /**
-     * @return Scopes required by the connection. The value must be a list, for example `[&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`.
+     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
      * 
      */
     private @Nullable List<String> scopes;
+    /**
+     * @return A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+     * 
+     */
     private @Nullable Map<String,String> scripts;
     /**
-     * @return Determines whether the &#39;name&#39;, &#39;given_name&#39;, &#39;family_name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+     * @return Determines whether the &#39;name&#39;, &#39;given*name&#39;, &#39;family*name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using an external IdP. Possible values are &#39;on*each*login&#39; (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), &#39;on*first*login&#39; (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
      * 
      */
     private @Nullable String setUserRootAttributes;
     /**
-     * @return Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+     * @return Choose how Auth0 sets the email_verified field in the user profile.
      * 
      */
     private @Nullable String shouldTrustEmailVerifiedConnection;
@@ -264,22 +317,22 @@ public final class ConnectionOptions {
      */
     private @Nullable String signOutEndpoint;
     /**
-     * @return (Boolean) When enabled, the SAML authentication request will be signed.
+     * @return When enabled, the SAML authentication request will be signed.
      * 
      */
     private @Nullable Boolean signSamlRequest;
     /**
-     * @return Sign Request Algorithm
+     * @return Sign Request Algorithm.
      * 
      */
     private @Nullable String signatureAlgorithm;
     /**
-     * @return The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+     * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      * 
      */
     private @Nullable String signingCert;
     /**
-     * @return . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * @return The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      * 
      */
     private @Nullable ConnectionOptionsSigningKey signingKey;
@@ -289,29 +342,37 @@ public final class ConnectionOptions {
      */
     private @Nullable Integer strategyVersion;
     /**
-     * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Subject line of the email.
      * 
      */
     private @Nullable String subject;
     /**
-     * @return Syntax of the SMS. Options include `markdown` and `liquid`.
+     * @return Syntax of the template body.
      * 
      */
     private @Nullable String syntax;
     /**
-     * @return Team ID.
+     * @return Apple Team ID.
      * 
      */
     private @Nullable String teamId;
     /**
-     * @return Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+     * @return Body of the template.
      * 
      */
     private @Nullable String template;
+    /**
+     * @return Tenant domain name.
+     * 
+     */
     private @Nullable String tenantDomain;
+    /**
+     * @return Token endpoint.
+     * 
+     */
     private @Nullable String tokenEndpoint;
     /**
-     * @return Configuration options for one-time passwords. For details, see TOTP.
+     * @return Configuration options for one-time passwords.
      * 
      */
     private @Nullable ConnectionOptionsTotp totp;
@@ -331,29 +392,49 @@ public final class ConnectionOptions {
      */
     private @Nullable String type;
     /**
-     * @return String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+     * @return You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
      * 
      */
     private @Nullable String upstreamParams;
+    /**
+     * @return Indicates whether to use cert auth or not.
+     * 
+     */
     private @Nullable Boolean useCertAuth;
+    /**
+     * @return Indicates whether to use Kerberos or not.
+     * 
+     */
     private @Nullable Boolean useKerberos;
+    /**
+     * @return Whether to use WS-Fed.
+     * 
+     */
     private @Nullable Boolean useWsfed;
     /**
      * @return Attribute in the SAML token that will be mapped to the user_id property in Auth0.
      * 
      */
     private @Nullable String userIdAttribute;
+    /**
+     * @return User info endpoint.
+     * 
+     */
     private @Nullable String userinfoEndpoint;
     /**
-     * @return Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+     * @return Validation of the minimum and maximum values allowed for a user to have as username.
      * 
      */
     private @Nullable ConnectionOptionsValidation validation;
     /**
-     * @return Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
+     * @return Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
      * 
      */
     private @Nullable Boolean waadCommonEndpoint;
+    /**
+     * @return Protocol to use.
+     * 
+     */
     private @Nullable String waadProtocol;
 
     private ConnectionOptions() {}
@@ -371,49 +452,57 @@ public final class ConnectionOptions {
     public List<String> allowedAudiences() {
         return this.allowedAudiences == null ? List.of() : this.allowedAudiences;
     }
+    /**
+     * @return Enable API Access to users.
+     * 
+     */
     public Optional<Boolean> apiEnableUsers() {
         return Optional.ofNullable(this.apiEnableUsers);
     }
     /**
-     * @return Azure AD app ID.
+     * @return App ID.
      * 
      */
     public Optional<String> appId() {
         return Optional.ofNullable(this.appId);
     }
     /**
-     * @return Map(String). Use this to append or override the link parameters (like `scope`, `redirect_uri`, `protocol`, `response_type`), when you send a link using email.
+     * @return Query string parameters to be included as part of the generated passwordless email link.
      * 
      */
     public Map<String,String> authParams() {
         return this.authParams == null ? Map.of() : this.authParams;
     }
+    /**
+     * @return Authorization endpoint.
+     * 
+     */
     public Optional<String> authorizationEndpoint() {
         return Optional.ofNullable(this.authorizationEndpoint);
     }
     /**
-     * @return Indicates whether or not to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+     * @return Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      * 
      */
     public Optional<Boolean> bruteForceProtection() {
         return Optional.ofNullable(this.bruteForceProtection);
     }
     /**
-     * @return OIDC provider client ID.
+     * @return The strategy&#39;s client ID.
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return OIDC provider client secret.
+     * @return The strategy&#39;s client secret.
      * 
      */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
     /**
-     * @return String.
+     * @return Salesforce community base URL.
      * 
      */
     public Optional<String> communityBaseUrl() {
@@ -423,68 +512,76 @@ public final class ConnectionOptions {
      * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
      * 
      */
-    public Map<String,String> configuration() {
+    public Map<String,Object> configuration() {
         return this.configuration == null ? Map.of() : this.configuration;
     }
     /**
-     * @return Custom database action scripts. For more information, read [Custom Database Action Script Templates](https://auth0.com/docs/connections/database/custom-db/templates).
+     * @return A map of scripts used to integrate with a custom database.
      * 
      */
     public Map<String,String> customScripts() {
         return this.customScripts == null ? Map.of() : this.customScripts;
     }
     /**
-     * @return (Boolean) When enabled additional debugging information will be generated.
+     * @return When enabled, additional debug information will be generated.
      * 
      */
     public Optional<Boolean> debug() {
         return Optional.ofNullable(this.debug);
     }
     /**
-     * @return Sign Request Algorithm Digest
+     * @return Sign Request Algorithm Digest.
      * 
      */
     public Optional<String> digestAlgorithm() {
         return Optional.ofNullable(this.digestAlgorithm);
     }
+    /**
+     * @return Indicates whether to disable the cache or not.
+     * 
+     */
     public Optional<Boolean> disableCache() {
         return Optional.ofNullable(this.disableCache);
     }
     /**
-     * @return (Boolean) Disables or enables user sign out.
+     * @return When enabled, will disable sign out.
      * 
      */
     public Optional<Boolean> disableSignOut() {
         return Optional.ofNullable(this.disableSignOut);
     }
     /**
-     * @return Boolean. Indicates whether or not to allow user sign-ups to your application.
+     * @return Indicates whether to allow user sign-ups to your application.
      * 
      */
     public Optional<Boolean> disableSignup() {
         return Optional.ofNullable(this.disableSignup);
     }
     /**
-     * @return OpenID discovery URL. E.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
      * 
      */
     public Optional<String> discoveryUrl() {
         return Optional.ofNullable(this.discoveryUrl);
     }
     /**
-     * @return Azure AD domain name.
+     * @return Domain name.
      * 
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return List of the domains that can be authenticated using the Identity Provider. Only needed for Identifier First authentication flows.
+     * @return List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      * 
      */
     public List<String> domainAliases() {
         return this.domainAliases == null ? List.of() : this.domainAliases;
     }
+    /**
+     * @return Set to `true` to use a legacy user store.
+     * 
+     */
     public Optional<Boolean> enabledDatabaseCustomization() {
         return Optional.ofNullable(this.enabledDatabaseCustomization);
     }
@@ -496,63 +593,91 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.entityId);
     }
     /**
-     * @return SAML Attributes mapping. If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+     * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
      */
     public Optional<String> fieldsMap() {
         return Optional.ofNullable(this.fieldsMap);
     }
+    /**
+     * @return Specifies whether or not request info should be forwarded to sms gateway.
+     * 
+     */
     public Optional<Boolean> forwardRequestInfo() {
         return Optional.ofNullable(this.forwardRequestInfo);
     }
     /**
-     * @return SMS number for the sender. Used when SMS Source is From.
+     * @return Address to use as the sender.
      * 
      */
     public Optional<String> from() {
         return Optional.ofNullable(this.from);
     }
+    /**
+     * @return Defines the parameters used to generate the auth token for the custom gateway.
+     * 
+     */
     public Optional<ConnectionOptionsGatewayAuthentication> gatewayAuthentication() {
         return Optional.ofNullable(this.gatewayAuthentication);
     }
+    /**
+     * @return Defines a custom sms gateway to use instead of Twilio.
+     * 
+     */
     public Optional<String> gatewayUrl() {
         return Optional.ofNullable(this.gatewayUrl);
     }
+    /**
+     * @return Icon URL.
+     * 
+     */
     public Optional<String> iconUrl() {
         return Optional.ofNullable(this.iconUrl);
     }
+    /**
+     * @return Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+     * 
+     */
     public Optional<String> identityApi() {
         return Optional.ofNullable(this.identityApi);
     }
     /**
-     * @return Configuration Options for IDP Initiated Authentication.  This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`
+     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
      * 
      */
     public Optional<ConnectionOptionsIdpInitiated> idpInitiated() {
         return Optional.ofNullable(this.idpInitiated);
     }
     /**
-     * @return Indicates whether or not you have a legacy user store and want to gradually migrate those users to the Auth0 user store. [Learn more](https://auth0.com/docs/users/guides/configure-automatic-migration).
+     * @return Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
      * 
      */
     public Optional<Boolean> importMode() {
         return Optional.ofNullable(this.importMode);
     }
+    /**
+     * @return A list of IPs.
+     * 
+     */
     public List<String> ips() {
         return this.ips == null ? List.of() : this.ips;
     }
     /**
-     * @return Issuer URL. E.g. `https://auth.example.com`
+     * @return Issuer URL, e.g. `https://auth.example.com`.
      * 
      */
     public Optional<String> issuer() {
         return Optional.ofNullable(this.issuer);
     }
+    /**
+     * @return JWKS URI.
+     * 
+     */
     public Optional<String> jwksUri() {
         return Optional.ofNullable(this.jwksUri);
     }
     /**
-     * @return Key ID.
+     * @return Apple Key ID.
      * 
      */
     public Optional<String> keyId() {
@@ -573,63 +698,63 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.messagingServiceSid);
     }
     /**
-     * @return URL of the SAML metadata document.
+     * @return The URL of the SAML metadata document.
      * 
      */
     public Optional<String> metadataUrl() {
         return Optional.ofNullable(this.metadataUrl);
     }
     /**
-     * @return XML content for the SAML metadata document.
+     * @return The XML content for the SAML metadata document.
      * 
      */
     public Optional<String> metadataXml() {
         return Optional.ofNullable(this.metadataXml);
     }
     /**
-     * @return Configuration settings Options for multifactor authentication. For details, see MFA Options.
+     * @return Configuration options for multifactor authentication.
      * 
      */
     public Optional<ConnectionOptionsMfa> mfa() {
         return Optional.ofNullable(this.mfa);
     }
     /**
-     * @return Name of the connection.
+     * @return The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the denylist. See [here](https://auth0.com/docs/security/denylist-user-attributes) for more info.
+     * @return If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      * 
      */
     public List<String> nonPersistentAttrs() {
         return this.nonPersistentAttrs == null ? List.of() : this.nonPersistentAttrs;
     }
     /**
-     * @return Configuration settings for password complexity. For details, see Password Complexity Options.
+     * @return Configuration settings for password complexity.
      * 
      */
     public Optional<ConnectionOptionsPasswordComplexityOptions> passwordComplexityOptions() {
         return Optional.ofNullable(this.passwordComplexityOptions);
     }
     /**
-     * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary. For details, see Password Dictionary.
+     * @return Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
      * 
      */
     public Optional<ConnectionOptionsPasswordDictionary> passwordDictionary() {
         return Optional.ofNullable(this.passwordDictionary);
     }
     /**
-     * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords. For details, see Password History.
+     * @return Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
      * 
      */
     public List<ConnectionOptionsPasswordHistory> passwordHistories() {
         return this.passwordHistories == null ? List.of() : this.passwordHistories;
     }
     /**
-     * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s name, username, nickname, user_metadata.name, user_metadata.first, user_metadata.last, user&#39;s email, or first part of the user&#39;s email. For details, see Password No Personal Info.
+     * @return Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user&#39;s personal data, including user&#39;s `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user&#39;s `email`, or first part of the user&#39;s `email`.
      * 
      */
     public Optional<ConnectionOptionsPasswordNoPersonalInfo> passwordNoPersonalInfo() {
@@ -643,55 +768,63 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.passwordPolicy);
     }
     /**
-     * @return (Boolean) Enables proof key for code exchange (PKCE) functionality for OAuth2 connections.
+     * @return Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      * 
      */
     public Optional<Boolean> pkceEnabled() {
         return Optional.ofNullable(this.pkceEnabled);
     }
     /**
-     * @return The SAML Response Binding - how the SAML token is received by Auth0 from IdP. Two possible values are `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect` (default) and `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST`
+     * @return The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      * 
      */
     public Optional<String> protocolBinding() {
         return Optional.ofNullable(this.protocolBinding);
     }
+    /**
+     * @return Defines the custom `sms_gateway` provider.
+     * 
+     */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
     /**
-     * @return Template that formats the SAML request
+     * @return Template that formats the SAML request.
      * 
      */
     public Optional<String> requestTemplate() {
         return Optional.ofNullable(this.requestTemplate);
     }
     /**
-     * @return Indicates whether or not the user is required to provide a username in addition to an email address.
+     * @return Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
     public Optional<Boolean> requiresUsername() {
         return Optional.ofNullable(this.requiresUsername);
     }
     /**
-     * @return Scopes required by the connection. The value must be a list, for example `[&#34;openid&#34;, &#34;profile&#34;, &#34;email&#34;]`.
+     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
      * 
      */
     public List<String> scopes() {
         return this.scopes == null ? List.of() : this.scopes;
     }
+    /**
+     * @return A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+     * 
+     */
     public Map<String,String> scripts() {
         return this.scripts == null ? Map.of() : this.scripts;
     }
     /**
-     * @return Determines whether the &#39;name&#39;, &#39;given_name&#39;, &#39;family_name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using the external IdP. Default is `on_each_login` and can be set to `on_first_login`.
+     * @return Determines whether the &#39;name&#39;, &#39;given*name&#39;, &#39;family*name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using an external IdP. Possible values are &#39;on*each*login&#39; (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), &#39;on*first*login&#39; (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
      * 
      */
     public Optional<String> setUserRootAttributes() {
         return Optional.ofNullable(this.setUserRootAttributes);
     }
     /**
-     * @return Determines how Auth0 sets the email_verified field in the user profile. Can either be set to `never_set_emails_as_verified` or `always_set_emails_as_verified`.
+     * @return Choose how Auth0 sets the email_verified field in the user profile.
      * 
      */
     public Optional<String> shouldTrustEmailVerifiedConnection() {
@@ -712,28 +845,28 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.signOutEndpoint);
     }
     /**
-     * @return (Boolean) When enabled, the SAML authentication request will be signed.
+     * @return When enabled, the SAML authentication request will be signed.
      * 
      */
     public Optional<Boolean> signSamlRequest() {
         return Optional.ofNullable(this.signSamlRequest);
     }
     /**
-     * @return Sign Request Algorithm
+     * @return Sign Request Algorithm.
      * 
      */
     public Optional<String> signatureAlgorithm() {
         return Optional.ofNullable(this.signatureAlgorithm);
     }
     /**
-     * @return The X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded
+     * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      * 
      */
     public Optional<String> signingCert() {
         return Optional.ofNullable(this.signingCert);
     }
     /**
-     * @return . The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+     * @return The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      * 
      */
     public Optional<ConnectionOptionsSigningKey> signingKey() {
@@ -747,41 +880,49 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.strategyVersion);
     }
     /**
-     * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Subject line of the email.
      * 
      */
     public Optional<String> subject() {
         return Optional.ofNullable(this.subject);
     }
     /**
-     * @return Syntax of the SMS. Options include `markdown` and `liquid`.
+     * @return Syntax of the template body.
      * 
      */
     public Optional<String> syntax() {
         return Optional.ofNullable(this.syntax);
     }
     /**
-     * @return Team ID.
+     * @return Apple Team ID.
      * 
      */
     public Optional<String> teamId() {
         return Optional.ofNullable(this.teamId);
     }
     /**
-     * @return Template for the SMS. You can use `@@password@@` as a placeholder for the password value.
+     * @return Body of the template.
      * 
      */
     public Optional<String> template() {
         return Optional.ofNullable(this.template);
     }
+    /**
+     * @return Tenant domain name.
+     * 
+     */
     public Optional<String> tenantDomain() {
         return Optional.ofNullable(this.tenantDomain);
     }
+    /**
+     * @return Token endpoint.
+     * 
+     */
     public Optional<String> tokenEndpoint() {
         return Optional.ofNullable(this.tokenEndpoint);
     }
     /**
-     * @return Configuration options for one-time passwords. For details, see TOTP.
+     * @return Configuration options for one-time passwords.
      * 
      */
     public Optional<ConnectionOptionsTotp> totp() {
@@ -809,18 +950,30 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return String (JSON Encoded). You can pass provider-specific parameters to an Identity Provider during authentication. The values can either be static per connection or dynamic per user.
+     * @return You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
      * 
      */
     public Optional<String> upstreamParams() {
         return Optional.ofNullable(this.upstreamParams);
     }
+    /**
+     * @return Indicates whether to use cert auth or not.
+     * 
+     */
     public Optional<Boolean> useCertAuth() {
         return Optional.ofNullable(this.useCertAuth);
     }
+    /**
+     * @return Indicates whether to use Kerberos or not.
+     * 
+     */
     public Optional<Boolean> useKerberos() {
         return Optional.ofNullable(this.useKerberos);
     }
+    /**
+     * @return Whether to use WS-Fed.
+     * 
+     */
     public Optional<Boolean> useWsfed() {
         return Optional.ofNullable(this.useWsfed);
     }
@@ -831,23 +984,31 @@ public final class ConnectionOptions {
     public Optional<String> userIdAttribute() {
         return Optional.ofNullable(this.userIdAttribute);
     }
+    /**
+     * @return User info endpoint.
+     * 
+     */
     public Optional<String> userinfoEndpoint() {
         return Optional.ofNullable(this.userinfoEndpoint);
     }
     /**
-     * @return Validation of the minimum and maximum values allowed for a user to have as username. For details, see Validation.
+     * @return Validation of the minimum and maximum values allowed for a user to have as username.
      * 
      */
     public Optional<ConnectionOptionsValidation> validation() {
         return Optional.ofNullable(this.validation);
     }
     /**
-     * @return Indicates whether or not to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
+     * @return Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you&#39;re using this for a multi-tenant application in Azure AD.
      * 
      */
     public Optional<Boolean> waadCommonEndpoint() {
         return Optional.ofNullable(this.waadCommonEndpoint);
     }
+    /**
+     * @return Protocol to use.
+     * 
+     */
     public Optional<String> waadProtocol() {
         return Optional.ofNullable(this.waadProtocol);
     }
@@ -871,7 +1032,7 @@ public final class ConnectionOptions {
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String communityBaseUrl;
-        private @Nullable Map<String,String> configuration;
+        private @Nullable Map<String,Object> configuration;
         private @Nullable Map<String,String> customScripts;
         private @Nullable Boolean debug;
         private @Nullable String digestAlgorithm;
@@ -1084,7 +1245,7 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
-        public Builder configuration(@Nullable Map<String,String> configuration) {
+        public Builder configuration(@Nullable Map<String,Object> configuration) {
             this.configuration = configuration;
             return this;
         }

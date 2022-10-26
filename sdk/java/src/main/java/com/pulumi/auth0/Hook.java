@@ -13,15 +13,13 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected
- * extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
- * 
- * Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
+ * Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code. Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
  * 
  * ## Example Usage
  * ```java
@@ -49,10 +47,10 @@ import javax.annotation.Nullable;
  *             .dependencies(Map.of(&#34;auth0&#34;, &#34;2.30.0&#34;))
  *             .enabled(true)
  *             .script(&#34;&#34;&#34;
- * function (user, context, callback) {
- *   callback(null, { user });
- * }
- * 
+ *     function (user, context, callback) {
+ *       callback(null, { user });
+ *     }
+ *   
  *             &#34;&#34;&#34;)
  *             .secrets(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .triggerId(&#34;pre-user-registration&#34;)
@@ -64,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A hook can be imported using the hook&#39;s ID, e.g.
+ * A hook can be imported using the hook&#39;s ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/hook:Hook my_hook 00001
@@ -130,30 +128,28 @@ public class Hook extends com.pulumi.resources.CustomResource {
         return this.script;
     }
     /**
-     * Map(String), sets the hook secrets associated with this hook.
-     * If specified, any secrets not listed here will be removed from the hook.
+     * The secrets associated with the hook.
      * 
      */
     @Export(name="secrets", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> secrets;
 
     /**
-     * @return Map(String), sets the hook secrets associated with this hook.
-     * If specified, any secrets not listed here will be removed from the hook.
+     * @return The secrets associated with the hook.
      * 
      */
     public Output<Optional<Map<String,Object>>> secrets() {
         return Codegen.optional(this.secrets);
     }
     /**
-     * Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+     * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      * 
      */
     @Export(name="triggerId", type=String.class, parameters={})
     private Output<String> triggerId;
 
     /**
-     * @return Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+     * @return Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      * 
      */
     public Output<String> triggerId() {
@@ -192,6 +188,9 @@ public class Hook extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secrets"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

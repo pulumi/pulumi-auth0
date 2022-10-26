@@ -18,14 +18,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final RuleArgs Empty = new RuleArgs();
 
     /**
-     * Boolean. Indicates whether the rule is enabled.
+     * Indicates whether the rule is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Boolean. Indicates whether the rule is enabled.
+     * @return Indicates whether the rule is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,14 +33,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+     * Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+     * @return Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      * 
      */
     public Optional<Output<String>> name() {
@@ -48,14 +48,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+     * Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      * 
      */
     @Import(name="order")
     private @Nullable Output<Integer> order;
 
     /**
-     * @return Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+     * @return Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      * 
      */
     public Optional<Output<Integer>> order() {
@@ -63,14 +63,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Code to be executed when the rule runs.
+     * Code to be executed when the rule runs.
      * 
      */
     @Import(name="script", required=true)
     private Output<String> script;
 
     /**
-     * @return String. Code to be executed when the rule runs.
+     * @return Code to be executed when the rule runs.
      * 
      */
     public Output<String> script() {
@@ -105,7 +105,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Boolean. Indicates whether the rule is enabled.
+         * @param enabled Indicates whether the rule is enabled.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Boolean. Indicates whether the rule is enabled.
+         * @param enabled Indicates whether the rule is enabled.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+         * @param name Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+         * @param name Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+         * @param order Order in which the rule executes relative to other rules. Lower-valued rules execute first.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+         * @param order Order in which the rule executes relative to other rules. Lower-valued rules execute first.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param script String. Code to be executed when the rule runs.
+         * @param script Code to be executed when the rule runs.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param script String. Code to be executed when the rule runs.
+         * @param script Code to be executed when the rule runs.
          * 
          * @return builder
          * 

@@ -51,18 +51,14 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deploying an action will create a new immutable version of the action.
-     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-     * action immediately. Default is `false`.
+     * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      * 
      */
     @Import(name="deploy")
     private @Nullable Output<Boolean> deploy;
 
     /**
-     * @return Deploying an action will create a new immutable version of the action.
-     * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-     * action immediately. Default is `false`.
+     * @return Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      * 
      */
     public Optional<Output<Boolean>> deploy() {
@@ -70,14 +66,14 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Secret name.
+     * The name of the action.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Secret name.
+     * @return The name of the action.
      * 
      */
     public Optional<Output<String>> name() {
@@ -85,14 +81,14 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Node runtime. For example `node16`, defaults to `node12`.
+     * The Node runtime, e.g. `node16`. Defaults to `node12`.
      * 
      */
     @Import(name="runtime")
     private @Nullable Output<String> runtime;
 
     /**
-     * @return The Node runtime. For example `node16`, defaults to `node12`.
+     * @return The Node runtime, e.g. `node16`. Defaults to `node12`.
      * 
      */
     public Optional<Output<String>> runtime() {
@@ -115,16 +111,20 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of triggers that this action supports. At this time, an action can only target
-     * a single trigger at a time.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+     * [Retrieving the set of triggers available within
+     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+     * trigger versions supported.
      * 
      */
     @Import(name="supportedTriggers", required=true)
     private Output<ActionSupportedTriggersArgs> supportedTriggers;
 
     /**
-     * @return List of triggers that this action supports. At this time, an action can only target
-     * a single trigger at a time.
+     * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+     * [Retrieving the set of triggers available within
+     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+     * trigger versions supported.
      * 
      */
     public Output<ActionSupportedTriggersArgs> supportedTriggers() {
@@ -214,9 +214,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploy Deploying an action will create a new immutable version of the action.
-         * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-         * action immediately. Default is `false`.
+         * @param deploy Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
          * 
          * @return builder
          * 
@@ -227,9 +225,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploy Deploying an action will create a new immutable version of the action.
-         * If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the
-         * action immediately. Default is `false`.
+         * @param deploy Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
          * 
          * @return builder
          * 
@@ -239,7 +235,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Secret name.
+         * @param name The name of the action.
          * 
          * @return builder
          * 
@@ -250,7 +246,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Secret name.
+         * @param name The name of the action.
          * 
          * @return builder
          * 
@@ -260,7 +256,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The Node runtime. For example `node16`, defaults to `node12`.
+         * @param runtime The Node runtime, e.g. `node16`. Defaults to `node12`.
          * 
          * @return builder
          * 
@@ -271,7 +267,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The Node runtime. For example `node16`, defaults to `node12`.
+         * @param runtime The Node runtime, e.g. `node16`. Defaults to `node12`.
          * 
          * @return builder
          * 
@@ -312,8 +308,10 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target
-         * a single trigger at a time.
+         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+         * [Retrieving the set of triggers available within
+         * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+         * trigger versions supported.
          * 
          * @return builder
          * 
@@ -324,8 +322,10 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target
-         * a single trigger at a time.
+         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
+         * [Retrieving the set of triggers available within
+         * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
+         * trigger versions supported.
          * 
          * @return builder
          * 

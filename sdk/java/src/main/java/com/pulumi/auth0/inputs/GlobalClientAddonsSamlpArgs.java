@@ -69,6 +69,13 @@ public final class GlobalClientAddonsSamlpArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.includeAttributeNameFormat);
     }
 
+    @Import(name="issuer")
+    private @Nullable Output<String> issuer;
+
+    public Optional<Output<String>> issuer() {
+        return Optional.ofNullable(this.issuer);
+    }
+
     @Import(name="lifetimeInSeconds")
     private @Nullable Output<Integer> lifetimeInSeconds;
 
@@ -170,6 +177,7 @@ public final class GlobalClientAddonsSamlpArgs extends com.pulumi.resources.Reso
         this.destination = $.destination;
         this.digestAlgorithm = $.digestAlgorithm;
         this.includeAttributeNameFormat = $.includeAttributeNameFormat;
+        this.issuer = $.issuer;
         this.lifetimeInSeconds = $.lifetimeInSeconds;
         this.logout = $.logout;
         this.mapIdentities = $.mapIdentities;
@@ -264,6 +272,15 @@ public final class GlobalClientAddonsSamlpArgs extends com.pulumi.resources.Reso
 
         public Builder includeAttributeNameFormat(Boolean includeAttributeNameFormat) {
             return includeAttributeNameFormat(Output.of(includeAttributeNameFormat));
+        }
+
+        public Builder issuer(@Nullable Output<String> issuer) {
+            $.issuer = issuer;
+            return this;
+        }
+
+        public Builder issuer(String issuer) {
+            return issuer(Output.of(issuer));
         }
 
         public Builder lifetimeInSeconds(@Nullable Output<Integer> lifetimeInSeconds) {

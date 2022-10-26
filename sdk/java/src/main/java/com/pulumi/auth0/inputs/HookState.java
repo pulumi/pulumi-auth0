@@ -79,16 +79,14 @@ public final class HookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map(String), sets the hook secrets associated with this hook.
-     * If specified, any secrets not listed here will be removed from the hook.
+     * The secrets associated with the hook.
      * 
      */
     @Import(name="secrets")
     private @Nullable Output<Map<String,Object>> secrets;
 
     /**
-     * @return Map(String), sets the hook secrets associated with this hook.
-     * If specified, any secrets not listed here will be removed from the hook.
+     * @return The secrets associated with the hook.
      * 
      */
     public Optional<Output<Map<String,Object>>> secrets() {
@@ -96,14 +94,14 @@ public final class HookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+     * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      * 
      */
     @Import(name="triggerId")
     private @Nullable Output<String> triggerId;
 
     /**
-     * @return Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+     * @return Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      * 
      */
     public Optional<Output<String>> triggerId() {
@@ -224,8 +222,7 @@ public final class HookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secrets Map(String), sets the hook secrets associated with this hook.
-         * If specified, any secrets not listed here will be removed from the hook.
+         * @param secrets The secrets associated with the hook.
          * 
          * @return builder
          * 
@@ -236,8 +233,7 @@ public final class HookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secrets Map(String), sets the hook secrets associated with this hook.
-         * If specified, any secrets not listed here will be removed from the hook.
+         * @param secrets The secrets associated with the hook.
          * 
          * @return builder
          * 
@@ -247,7 +243,7 @@ public final class HookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggerId Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+         * @param triggerId Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
          * 
          * @return builder
          * 
@@ -258,7 +254,7 @@ public final class HookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggerId Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+         * @param triggerId Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
          * 
          * @return builder
          * 

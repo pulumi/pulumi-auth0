@@ -12,18 +12,11 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientMobileAndroidGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// String
-        /// </summary>
         [Input("appPackageName")]
         public Input<string>? AppPackageName { get; set; }
 
         [Input("sha256CertFingerprints")]
         private InputList<string>? _sha256CertFingerprints;
-
-        /// <summary>
-        /// List(String)
-        /// </summary>
         public InputList<string> Sha256CertFingerprints
         {
             get => _sha256CertFingerprints ?? (_sha256CertFingerprints = new InputList<string>());

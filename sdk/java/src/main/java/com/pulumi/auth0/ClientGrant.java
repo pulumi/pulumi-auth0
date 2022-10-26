@@ -15,9 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without
- * exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access.
- * This resource allows you to create and manage client grants used with configured Auth0 clients.
+ * Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
  * 
  * ## Example Usage
  * ```java
@@ -72,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Client grants can be imported using the grant ID (Application -&gt; APIs -&gt; Expand the required API)
+ * Client grants can be imported using the grant ID. # Application -&gt; APIs -&gt; Expand the required API # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant cgr_XXXXXXXXXXXXXXXX
@@ -82,42 +80,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/clientGrant:ClientGrant")
 public class ClientGrant extends com.pulumi.resources.CustomResource {
     /**
-     * String. Audience or API Identifier for this grant.
+     * Audience or API Identifier for this grant.
      * 
      */
     @Export(name="audience", type=String.class, parameters={})
     private Output<String> audience;
 
     /**
-     * @return String. Audience or API Identifier for this grant.
+     * @return Audience or API Identifier for this grant.
      * 
      */
     public Output<String> audience() {
         return this.audience;
     }
     /**
-     * String. ID of the client for this grant.
+     * ID of the client for this grant.
      * 
      */
     @Export(name="clientId", type=String.class, parameters={})
     private Output<String> clientId;
 
     /**
-     * @return String. ID of the client for this grant.
+     * @return ID of the client for this grant.
      * 
      */
     public Output<String> clientId() {
         return this.clientId;
     }
     /**
-     * List(String). Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant.
      * 
      */
     @Export(name="scopes", type=List.class, parameters={String.class})
     private Output<List<String>> scopes;
 
     /**
-     * @return List(String). Permissions (scopes) included in this grant.
+     * @return Permissions (scopes) included in this grant.
      * 
      */
     public Output<List<String>> scopes() {

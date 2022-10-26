@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
-    /// authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables
-    /// that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
+    /// With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
     /// 
     /// ## Example Usage
     /// 
@@ -26,10 +24,10 @@ namespace Pulumi.Auth0
     ///     var myRule = new Auth0.Rule("myRule", new()
     ///     {
     ///         Enabled = true,
-    ///         Script = @"function (user, context, callback) {
-    ///   callback(null, user, context);
-    /// }
-    /// 
+    ///         Script = @"    function (user, context, callback) {
+    ///       callback(null, user, context);
+    ///     }
+    ///   
     /// ",
     ///     });
     /// 
@@ -44,7 +42,7 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// Existing rule configs can be imported using their key name, e.g.
+    /// Existing rule configs can be imported using their key name. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config foo
@@ -54,13 +52,13 @@ namespace Pulumi.Auth0
     public partial class RuleConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// String. Key for a rules configuration variable.
+        /// Key for a rules configuration variable.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// String, Case-sensitive. Value for a rules configuration variable.
+        /// Value for a rules configuration variable.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -88,6 +86,10 @@ namespace Pulumi.Auth0
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -112,16 +114,26 @@ namespace Pulumi.Auth0
     public sealed class RuleConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Key for a rules configuration variable.
+        /// Key for a rules configuration variable.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// String, Case-sensitive. Value for a rules configuration variable.
-        /// </summary>
         [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        private Input<string>? _value;
+
+        /// <summary>
+        /// Value for a rules configuration variable.
+        /// </summary>
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public RuleConfigArgs()
         {
@@ -132,16 +144,26 @@ namespace Pulumi.Auth0
     public sealed class RuleConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. Key for a rules configuration variable.
+        /// Key for a rules configuration variable.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// String, Case-sensitive. Value for a rules configuration variable.
-        /// </summary>
         [Input("value")]
-        public Input<string>? Value { get; set; }
+        private Input<string>? _value;
+
+        /// <summary>
+        /// Value for a rules configuration variable.
+        /// </summary>
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public RuleConfigState()
         {

@@ -12,15 +12,9 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientMobileIosArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// String
-        /// </summary>
         [Input("appBundleIdentifier")]
         public Input<string>? AppBundleIdentifier { get; set; }
 
-        /// <summary>
-        /// String
-        /// </summary>
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 

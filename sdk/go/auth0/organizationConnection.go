@@ -27,10 +27,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewOrganizationConnection(ctx, "example", &auth0.OrganizationConnectionArgs{
+//			myConnection, err := auth0.NewConnection(ctx, "myConnection", &auth0.ConnectionArgs{
+//				Strategy: pulumi.String("auth0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myOrganization, err := auth0.NewOrganization(ctx, "myOrganization", &auth0.OrganizationArgs{
+//				DisplayName: pulumi.String("My Organization"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewOrganizationConnection(ctx, "myOrgConn", &auth0.OrganizationConnectionArgs{
+//				OrganizationId:          myOrganization.ID(),
+//				ConnectionId:            myConnection.ID(),
 //				AssignMembershipOnLogin: pulumi.Bool(true),
-//				ConnectionId:            pulumi.String("con_XXXXXXXXXX"),
-//				OrganizationId:          pulumi.String("org_XXXXXXXXXX"),
 //			})
 //			if err != nil {
 //				return err
@@ -43,11 +55,11 @@ import (
 //
 // ## Import
 //
-// As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+// This resource can be imported by specifying the organization ID and connection ID separated by ":". # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/organizationConnection:OrganizationConnection example 11f4a21b-011a-312d-9217-e291caca36c4
+//	$ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn org_XXXXX:con_XXXXX
 //
 // ```
 type OrganizationConnection struct {

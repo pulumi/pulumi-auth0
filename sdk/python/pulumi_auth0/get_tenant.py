@@ -35,7 +35,7 @@ class GetTenantResult:
     @pulumi.getter
     def domain(self) -> str:
         """
-        String. Your Auth0 domain name.
+        Your Auth0 domain name.
         """
         return pulumi.get(self, "domain")
 
@@ -51,7 +51,7 @@ class GetTenantResult:
     @pulumi.getter(name="managementApiIdentifier")
     def management_api_identifier(self) -> str:
         """
-        String. The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
+        The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
         """
         return pulumi.get(self, "management_api_identifier")
 
@@ -70,15 +70,6 @@ class AwaitableGetTenantResult(GetTenantResult):
 def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenantResult:
     """
     Use this data source to access information about the tenant this provider is configured to access.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_auth0 as auth0
-
-    current = auth0.get_tenant()
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

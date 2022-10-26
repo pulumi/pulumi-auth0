@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BrandingUniversalLogin {
     /**
-     * @return String, body of login pages.
+     * @return The body of login pages.
      * 
      */
     private @Nullable String body;
 
     private BrandingUniversalLogin() {}
     /**
-     * @return String, body of login pages.
+     * @return The body of login pages.
      * 
      */
     public Optional<String> body() {

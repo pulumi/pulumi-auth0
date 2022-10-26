@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,14 +16,29 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     public static final CustomDomainArgs Empty = new CustomDomainArgs();
 
     /**
-     * String. Name of the custom domain.
+     * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * 
+     */
+    @Import(name="customClientIpHeader")
+    private @Nullable Output<String> customClientIpHeader;
+
+    /**
+     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * 
+     */
+    public Optional<Output<String>> customClientIpHeader() {
+        return Optional.ofNullable(this.customClientIpHeader);
+    }
+
+    /**
+     * Name of the custom domain.
      * 
      */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
     /**
-     * @return String. Name of the custom domain.
+     * @return Name of the custom domain.
      * 
      */
     public Output<String> domain() {
@@ -29,14 +46,29 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * 
+     */
+    @Import(name="tlsPolicy")
+    private @Nullable Output<String> tlsPolicy;
+
+    /**
+     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * 
+     */
+    public Optional<Output<String>> tlsPolicy() {
+        return Optional.ofNullable(this.tlsPolicy);
+    }
+
+    /**
+     * Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * @return Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
      * 
      */
     public Output<String> type() {
@@ -46,7 +78,9 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     private CustomDomainArgs() {}
 
     private CustomDomainArgs(CustomDomainArgs $) {
+        this.customClientIpHeader = $.customClientIpHeader;
         this.domain = $.domain;
+        this.tlsPolicy = $.tlsPolicy;
         this.type = $.type;
     }
 
@@ -69,7 +103,28 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain String. Name of the custom domain.
+         * @param customClientIpHeader The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customClientIpHeader(@Nullable Output<String> customClientIpHeader) {
+            $.customClientIpHeader = customClientIpHeader;
+            return this;
+        }
+
+        /**
+         * @param customClientIpHeader The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customClientIpHeader(String customClientIpHeader) {
+            return customClientIpHeader(Output.of(customClientIpHeader));
+        }
+
+        /**
+         * @param domain Name of the custom domain.
          * 
          * @return builder
          * 
@@ -80,7 +135,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain String. Name of the custom domain.
+         * @param domain Name of the custom domain.
          * 
          * @return builder
          * 
@@ -90,7 +145,28 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+         * @param tlsPolicy TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsPolicy(@Nullable Output<String> tlsPolicy) {
+            $.tlsPolicy = tlsPolicy;
+            return this;
+        }
+
+        /**
+         * @param tlsPolicy TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsPolicy(String tlsPolicy) {
+            return tlsPolicy(Output.of(tlsPolicy));
+        }
+
+        /**
+         * @param type Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
          * 
          * @return builder
          * 
@@ -101,7 +177,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type String. Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+         * @param type Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
          * 
          * @return builder
          * 

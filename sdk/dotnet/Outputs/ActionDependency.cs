@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ActionDependency
     {
         /// <summary>
-        /// Secret name.
+        /// Dependency name, e.g. `lodash`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Trigger version.
+        /// Dependency version, e.g. `latest` or `4.17.21`.
         /// </summary>
         public readonly string Version;
 

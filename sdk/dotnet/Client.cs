@@ -10,131 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications. Depending on your plan, you may also configure add-ons to allow your application to call another application's API (such as Firebase and AWS) on behalf of an authenticated user.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Auth0 = Pulumi.Auth0;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myClient = new Auth0.Client("myClient", new()
-    ///     {
-    ///         Addons = new Auth0.Inputs.ClientAddonsArgs
-    ///         {
-    ///             Firebase = 
-    ///             {
-    ///                 { "clientEmail", "john.doe@example.com" },
-    ///                 { "lifetimeInSeconds", 1 },
-    ///                 { "privateKey", "wer" },
-    ///                 { "privateKeyId", "qwreerwerwe" },
-    ///             },
-    ///             Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs
-    ///             {
-    ///                 Audience = "https://example.com/saml",
-    ///                 CreateUpnClaim = false,
-    ///                 MapIdentities = false,
-    ///                 MapUnknownClaimsAsIs = false,
-    ///                 Mappings = 
-    ///                 {
-    ///                     { "email", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" },
-    ///                     { "name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
-    ///                 },
-    ///                 NameIdentifierFormat = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
-    ///                 NameIdentifierProbes = new[]
-    ///                 {
-    ///                     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
-    ///                 },
-    ///                 PassthroughClaimsWithNoMapping = false,
-    ///                 SigningCert = "pemcertificate",
-    ///             },
-    ///         },
-    ///         AllowedClients = new[]
-    ///         {
-    ///             "https://allowed.example.com",
-    ///         },
-    ///         AllowedLogoutUrls = new[]
-    ///         {
-    ///             "https://example.com",
-    ///         },
-    ///         AllowedOrigins = new[]
-    ///         {
-    ///             "https://example.com",
-    ///         },
-    ///         AppType = "non_interactive",
-    ///         Callbacks = new[]
-    ///         {
-    ///             "https://example.com/callback",
-    ///         },
-    ///         ClientMetadata = 
-    ///         {
-    ///             { "foo", "zoo" },
-    ///         },
-    ///         ClientSecretRotationTrigger = 
-    ///         {
-    ///             { "triggered_at", "2018-01-02T23:12:01Z" },
-    ///             { "triggered_by", "auth0" },
-    ///         },
-    ///         CustomLoginPageOn = true,
-    ///         Description = "Test Applications Long Description",
-    ///         GrantTypes = new[]
-    ///         {
-    ///             "authorization_code",
-    ///             "http://auth0.com/oauth/grant-type/password-realm",
-    ///             "implicit",
-    ///             "password",
-    ///             "refresh_token",
-    ///         },
-    ///         InitiateLoginUri = "https://example.com/login",
-    ///         IsFirstParty = true,
-    ///         IsTokenEndpointIpHeaderTrusted = true,
-    ///         JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs
-    ///         {
-    ///             Alg = "RS256",
-    ///             LifetimeInSeconds = 300,
-    ///             Scopes = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             SecretEncoded = true,
-    ///         },
-    ///         Mobile = new Auth0.Inputs.ClientMobileArgs
-    ///         {
-    ///             Ios = new Auth0.Inputs.ClientMobileIosArgs
-    ///             {
-    ///                 AppBundleIdentifier = "com.my.bundle.id",
-    ///                 TeamId = "9JA89QQLNQ",
-    ///             },
-    ///         },
-    ///         OidcConformant = false,
-    ///         OrganizationRequireBehavior = "no_prompt",
-    ///         OrganizationUsage = "deny",
-    ///         RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs
-    ///         {
-    ///             ExpirationType = "expiring",
-    ///             IdleTokenLifetime = 1296000,
-    ///             InfiniteIdleTokenLifetime = true,
-    ///             InfiniteTokenLifetime = false,
-    ///             Leeway = 15,
-    ///             RotationType = "rotating",
-    ///             TokenLifetime = 84600,
-    ///         },
-    ///         TokenEndpointAuthMethod = "client_secret_post",
-    ///         WebOrigins = new[]
-    ///         {
-    ///             "https://example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
     /// 
     /// ## Import
     /// 
-    /// A client can be imported using the client's ID, e.g.
+    /// A client can be imported using the client's ID. # Example
     /// 
     /// ```sh
     ///  $ pulumi import auth0:index/client:Client my_client AaiyAPdpYdesoKnqjj8HJqRn4T5titww
@@ -144,209 +24,218 @@ namespace Pulumi.Auth0
     public partial class Client : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        /// Addons enabled for this client and their associated configurations.
         /// </summary>
         [Output("addons")]
-        public Output<Outputs.ClientAddons?> Addons { get; private set; } = null!;
+        public Output<Outputs.ClientAddons> Addons { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        /// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         /// </summary>
         [Output("allowedClients")]
         public Output<ImmutableArray<string>> AllowedClients { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). URLs that Auth0 may redirect to after logout.
+        /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         [Output("allowedLogoutUrls")]
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        /// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         /// </summary>
         [Output("allowedOrigins")]
         public Output<ImmutableArray<string>> AllowedOrigins { get; private set; } = null!;
 
         /// <summary>
-        /// String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         /// </summary>
         [Output("appType")]
         public Output<string?> AppType { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        /// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         /// </summary>
         [Output("callbacks")]
         public Output<ImmutableArray<string>> Callbacks { get; private set; } = null!;
 
         /// <summary>
-        /// String. ID of the client.
-        /// * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+        /// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        /// </summary>
+        [Output("clientAliases")]
+        public Output<ImmutableArray<string>> ClientAliases { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the client.
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// Map(String)
+        /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
         [Output("clientMetadata")]
         public Output<ImmutableDictionary<string, object>?> ClientMetadata { get; private set; } = null!;
 
+        /// <summary>
+        /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+        /// Terraform client. Otherwise, the attribute will contain an empty string.
+        /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         [Output("clientSecretRotationTrigger")]
         public Output<ImmutableDictionary<string, object>?> ClientSecretRotationTrigger { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
         /// </summary>
         [Output("crossOriginAuth")]
         public Output<bool?> CrossOriginAuth { get; private set; } = null!;
 
         /// <summary>
-        /// String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+        /// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         /// </summary>
         [Output("crossOriginLoc")]
         public Output<string?> CrossOriginLoc { get; private set; } = null!;
 
         /// <summary>
-        /// String. Content of the custom login page.
+        /// The content (HTML, CSS, JS) of the custom login page.
         /// </summary>
         [Output("customLoginPage")]
         public Output<string?> CustomLoginPage { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not a custom login page is to be used.
+        /// Indicates whether a custom login page is to be used.
         /// </summary>
         [Output("customLoginPageOn")]
         public Output<bool> CustomLoginPageOn { get; private set; } = null!;
 
         /// <summary>
-        /// String, (Max length = 140 characters). Description of the purpose of the client.
+        /// Description of the purpose of the client.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Map(String).
+        /// Encryption used for WS-Fed responses with this client.
         /// </summary>
         [Output("encryptionKey")]
         public Output<ImmutableDictionary<string, string>?> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// String. Form template for WS-Federation protocol.
+        /// HTML form template to be used for WS-Federation.
         /// </summary>
         [Output("formTemplate")]
         public Output<string?> FormTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). Types of grants that this client is authorized to use.
+        /// Types of grants that this client is authorized to use.
         /// </summary>
         [Output("grantTypes")]
         public Output<ImmutableArray<string>> GrantTypes { get; private set; } = null!;
 
         /// <summary>
-        /// String. Initiate login uri, must be https.
+        /// Initiate login URI, must be HTTPS.
         /// </summary>
         [Output("initiateLoginUri")]
         public Output<string?> InitiateLoginUri { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not this client is a first-party client.
+        /// Indicates whether this client is a first-party client.
         /// </summary>
         [Output("isFirstParty")]
         public Output<bool> IsFirstParty { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the token endpoint IP header is trusted.
+        /// Indicates whether the token endpoint IP header is trusted.
         /// </summary>
         [Output("isTokenEndpointIpHeaderTrusted")]
         public Output<bool> IsTokenEndpointIpHeaderTrusted { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+        /// Configuration settings for the JWTs issued for this client.
         /// </summary>
         [Output("jwtConfiguration")]
         public Output<Outputs.ClientJwtConfiguration> JwtConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        /// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         /// </summary>
         [Output("logoUri")]
         public Output<string?> LogoUri { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+        /// Additional configuration for native mobile apps.
         /// </summary>
         [Output("mobile")]
         public Output<Outputs.ClientMobile> Mobile { get; private set; } = null!;
 
         /// <summary>
-        /// String. Name of the client.
+        /// Name of the client.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         /// </summary>
         [Output("nativeSocialLogin")]
         public Output<Outputs.ClientNativeSocialLogin> NativeSocialLogin { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        /// Indicates whether this client will conform to strict OIDC specifications.
         /// </summary>
         [Output("oidcConformant")]
         public Output<bool> OidcConformant { get; private set; } = null!;
 
         /// <summary>
-        /// String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         /// </summary>
         [Output("organizationRequireBehavior")]
         public Output<string?> OrganizationRequireBehavior { get; private set; } = null!;
 
         /// <summary>
-        /// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         /// </summary>
         [Output("organizationUsage")]
         public Output<string?> OrganizationUsage { get; private set; } = null!;
 
         /// <summary>
-        /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        /// Configuration settings for the refresh tokens issued for this client.
         /// </summary>
         [Output("refreshToken")]
         public Output<Outputs.ClientRefreshToken> RefreshToken { get; private set; } = null!;
 
         /// <summary>
-        /// List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+        /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         /// </summary>
         [Output("signingKeys")]
         public Output<ImmutableArray<ImmutableDictionary<string, object>>> SigningKeys { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+        /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
         [Output("sso")]
         public Output<bool?> Sso { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean. Indicates whether or not SSO is disabled.
+        /// Indicates whether or not SSO is disabled.
         /// </summary>
         [Output("ssoDisabled")]
         public Output<bool?> SsoDisabled { get; private set; } = null!;
 
         /// <summary>
-        /// String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
         /// </summary>
         [Output("tokenEndpointAuthMethod")]
         public Output<string> TokenEndpointAuthMethod { get; private set; } = null!;
 
         /// <summary>
-        /// List(String). URLs that represent valid web origins for use with web message response mode.
+        /// URLs that represent valid web origins for use with web message response mode.
         /// </summary>
         [Output("webOrigins")]
         public Output<ImmutableArray<string>> WebOrigins { get; private set; } = null!;
@@ -374,6 +263,11 @@ namespace Pulumi.Auth0
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clientSecret",
+                    "signingKeys",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -398,7 +292,7 @@ namespace Pulumi.Auth0
     public sealed class ClientArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        /// Addons enabled for this client and their associated configurations.
         /// </summary>
         [Input("addons")]
         public Input<Inputs.ClientAddonsArgs>? Addons { get; set; }
@@ -407,7 +301,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedClients;
 
         /// <summary>
-        /// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        /// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         /// </summary>
         public InputList<string> AllowedClients
         {
@@ -419,7 +313,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedLogoutUrls;
 
         /// <summary>
-        /// List(String). URLs that Auth0 may redirect to after logout.
+        /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         public InputList<string> AllowedLogoutUrls
         {
@@ -431,7 +325,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedOrigins;
 
         /// <summary>
-        /// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        /// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         /// </summary>
         public InputList<string> AllowedOrigins
         {
@@ -440,7 +334,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -449,7 +343,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _callbacks;
 
         /// <summary>
-        /// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        /// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         /// </summary>
         public InputList<string> Callbacks
         {
@@ -457,11 +351,23 @@ namespace Pulumi.Auth0
             set => _callbacks = value;
         }
 
+        [Input("clientAliases")]
+        private InputList<string>? _clientAliases;
+
+        /// <summary>
+        /// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        /// </summary>
+        public InputList<string> ClientAliases
+        {
+            get => _clientAliases ?? (_clientAliases = new InputList<string>());
+            set => _clientAliases = value;
+        }
+
         [Input("clientMetadata")]
         private InputMap<object>? _clientMetadata;
 
         /// <summary>
-        /// Map(String)
+        /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
         public InputMap<object> ClientMetadata
         {
@@ -473,7 +379,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _clientSecretRotationTrigger;
 
         /// <summary>
-        /// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         public InputMap<object> ClientSecretRotationTrigger
         {
@@ -482,31 +388,31 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
         /// </summary>
         [Input("crossOriginAuth")]
         public Input<bool>? CrossOriginAuth { get; set; }
 
         /// <summary>
-        /// String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+        /// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         /// </summary>
         [Input("crossOriginLoc")]
         public Input<string>? CrossOriginLoc { get; set; }
 
         /// <summary>
-        /// String. Content of the custom login page.
+        /// The content (HTML, CSS, JS) of the custom login page.
         /// </summary>
         [Input("customLoginPage")]
         public Input<string>? CustomLoginPage { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not a custom login page is to be used.
+        /// Indicates whether a custom login page is to be used.
         /// </summary>
         [Input("customLoginPageOn")]
         public Input<bool>? CustomLoginPageOn { get; set; }
 
         /// <summary>
-        /// String, (Max length = 140 characters). Description of the purpose of the client.
+        /// Description of the purpose of the client.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -515,7 +421,7 @@ namespace Pulumi.Auth0
         private InputMap<string>? _encryptionKey;
 
         /// <summary>
-        /// Map(String).
+        /// Encryption used for WS-Fed responses with this client.
         /// </summary>
         public InputMap<string> EncryptionKey
         {
@@ -524,7 +430,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// String. Form template for WS-Federation protocol.
+        /// HTML form template to be used for WS-Federation.
         /// </summary>
         [Input("formTemplate")]
         public Input<string>? FormTemplate { get; set; }
@@ -533,7 +439,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _grantTypes;
 
         /// <summary>
-        /// List(String). Types of grants that this client is authorized to use.
+        /// Types of grants that this client is authorized to use.
         /// </summary>
         public InputList<string> GrantTypes
         {
@@ -542,91 +448,91 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// String. Initiate login uri, must be https.
+        /// Initiate login URI, must be HTTPS.
         /// </summary>
         [Input("initiateLoginUri")]
         public Input<string>? InitiateLoginUri { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not this client is a first-party client.
+        /// Indicates whether this client is a first-party client.
         /// </summary>
         [Input("isFirstParty")]
         public Input<bool>? IsFirstParty { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the token endpoint IP header is trusted.
+        /// Indicates whether the token endpoint IP header is trusted.
         /// </summary>
         [Input("isTokenEndpointIpHeaderTrusted")]
         public Input<bool>? IsTokenEndpointIpHeaderTrusted { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+        /// Configuration settings for the JWTs issued for this client.
         /// </summary>
         [Input("jwtConfiguration")]
         public Input<Inputs.ClientJwtConfigurationArgs>? JwtConfiguration { get; set; }
 
         /// <summary>
-        /// String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        /// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         /// </summary>
         [Input("logoUri")]
         public Input<string>? LogoUri { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+        /// Additional configuration for native mobile apps.
         /// </summary>
         [Input("mobile")]
         public Input<Inputs.ClientMobileArgs>? Mobile { get; set; }
 
         /// <summary>
-        /// String. Name of the client.
+        /// Name of the client.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         /// </summary>
         [Input("nativeSocialLogin")]
         public Input<Inputs.ClientNativeSocialLoginArgs>? NativeSocialLogin { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        /// Indicates whether this client will conform to strict OIDC specifications.
         /// </summary>
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
 
         /// <summary>
-        /// String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         /// </summary>
         [Input("organizationRequireBehavior")]
         public Input<string>? OrganizationRequireBehavior { get; set; }
 
         /// <summary>
-        /// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         /// </summary>
         [Input("organizationUsage")]
         public Input<string>? OrganizationUsage { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        /// Configuration settings for the refresh tokens issued for this client.
         /// </summary>
         [Input("refreshToken")]
         public Input<Inputs.ClientRefreshTokenArgs>? RefreshToken { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+        /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
         [Input("sso")]
         public Input<bool>? Sso { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not SSO is disabled.
+        /// Indicates whether or not SSO is disabled.
         /// </summary>
         [Input("ssoDisabled")]
         public Input<bool>? SsoDisabled { get; set; }
 
         /// <summary>
-        /// String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
         /// </summary>
         [Input("tokenEndpointAuthMethod")]
         public Input<string>? TokenEndpointAuthMethod { get; set; }
@@ -635,7 +541,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _webOrigins;
 
         /// <summary>
-        /// List(String). URLs that represent valid web origins for use with web message response mode.
+        /// URLs that represent valid web origins for use with web message response mode.
         /// </summary>
         public InputList<string> WebOrigins
         {
@@ -653,7 +559,7 @@ namespace Pulumi.Auth0
     public sealed class ClientState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// List(Resource). Configuration settings for add-ons for this client. For details, see Add-ons.
+        /// Addons enabled for this client and their associated configurations.
         /// </summary>
         [Input("addons")]
         public Input<Inputs.ClientAddonsGetArgs>? Addons { get; set; }
@@ -662,7 +568,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedClients;
 
         /// <summary>
-        /// List(String). List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        /// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         /// </summary>
         public InputList<string> AllowedClients
         {
@@ -674,7 +580,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedLogoutUrls;
 
         /// <summary>
-        /// List(String). URLs that Auth0 may redirect to after logout.
+        /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         public InputList<string> AllowedLogoutUrls
         {
@@ -686,7 +592,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedOrigins;
 
         /// <summary>
-        /// List(String). URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        /// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         /// </summary>
         public InputList<string> AllowedOrigins
         {
@@ -695,7 +601,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// String. Type of application the client represents. Options include `native`, `spa`, `regular_web`, `non_interactive`, `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `sso_integration`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -704,7 +610,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _callbacks;
 
         /// <summary>
-        /// List(String). URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        /// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         /// </summary>
         public InputList<string> Callbacks
         {
@@ -712,9 +618,20 @@ namespace Pulumi.Auth0
             set => _callbacks = value;
         }
 
+        [Input("clientAliases")]
+        private InputList<string>? _clientAliases;
+
         /// <summary>
-        /// String. ID of the client.
-        /// * `client_secret`&lt;sup&gt;1&lt;/sup&gt; - String. Secret for the client; keep this private.
+        /// List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        /// </summary>
+        public InputList<string> ClientAliases
+        {
+            get => _clientAliases ?? (_clientAliases = new InputList<string>());
+            set => _clientAliases = value;
+        }
+
+        /// <summary>
+        /// The ID of the client.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -723,7 +640,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _clientMetadata;
 
         /// <summary>
-        /// Map(String)
+        /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
         public InputMap<object> ClientMetadata
         {
@@ -732,13 +649,27 @@ namespace Pulumi.Auth0
         }
 
         [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+        /// Terraform client. Otherwise, the attribute will contain an empty string.
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clientSecretRotationTrigger")]
         private InputMap<object>? _clientSecretRotationTrigger;
 
         /// <summary>
-        /// Map. Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         public InputMap<object> ClientSecretRotationTrigger
         {
@@ -747,31 +678,31 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client can be used to make cross-origin authentication requests.
+        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
         /// </summary>
         [Input("crossOriginAuth")]
         public Input<bool>? CrossOriginAuth { get; set; }
 
         /// <summary>
-        /// String. URL for the location on your site where the cross-origin verification takes place for the cross-origin auth flow. Used when performing auth in your own domain instead of through the Auth0-hosted login page.
+        /// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         /// </summary>
         [Input("crossOriginLoc")]
         public Input<string>? CrossOriginLoc { get; set; }
 
         /// <summary>
-        /// String. Content of the custom login page.
+        /// The content (HTML, CSS, JS) of the custom login page.
         /// </summary>
         [Input("customLoginPage")]
         public Input<string>? CustomLoginPage { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not a custom login page is to be used.
+        /// Indicates whether a custom login page is to be used.
         /// </summary>
         [Input("customLoginPageOn")]
         public Input<bool>? CustomLoginPageOn { get; set; }
 
         /// <summary>
-        /// String, (Max length = 140 characters). Description of the purpose of the client.
+        /// Description of the purpose of the client.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -780,7 +711,7 @@ namespace Pulumi.Auth0
         private InputMap<string>? _encryptionKey;
 
         /// <summary>
-        /// Map(String).
+        /// Encryption used for WS-Fed responses with this client.
         /// </summary>
         public InputMap<string> EncryptionKey
         {
@@ -789,7 +720,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// String. Form template for WS-Federation protocol.
+        /// HTML form template to be used for WS-Federation.
         /// </summary>
         [Input("formTemplate")]
         public Input<string>? FormTemplate { get; set; }
@@ -798,7 +729,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _grantTypes;
 
         /// <summary>
-        /// List(String). Types of grants that this client is authorized to use.
+        /// Types of grants that this client is authorized to use.
         /// </summary>
         public InputList<string> GrantTypes
         {
@@ -807,73 +738,73 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// String. Initiate login uri, must be https.
+        /// Initiate login URI, must be HTTPS.
         /// </summary>
         [Input("initiateLoginUri")]
         public Input<string>? InitiateLoginUri { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not this client is a first-party client.
+        /// Indicates whether this client is a first-party client.
         /// </summary>
         [Input("isFirstParty")]
         public Input<bool>? IsFirstParty { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the token endpoint IP header is trusted.
+        /// Indicates whether the token endpoint IP header is trusted.
         /// </summary>
         [Input("isTokenEndpointIpHeaderTrusted")]
         public Input<bool>? IsTokenEndpointIpHeaderTrusted { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the JWTs issued for this client. For details, see JWT Configuration.
+        /// Configuration settings for the JWTs issued for this client.
         /// </summary>
         [Input("jwtConfiguration")]
         public Input<Inputs.ClientJwtConfigurationGetArgs>? JwtConfiguration { get; set; }
 
         /// <summary>
-        /// String. URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        /// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         /// </summary>
         [Input("logoUri")]
         public Input<string>? LogoUri { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for mobile native applications. For details, see Mobile.
+        /// Additional configuration for native mobile apps.
         /// </summary>
         [Input("mobile")]
         public Input<Inputs.ClientMobileGetArgs>? Mobile { get; set; }
 
         /// <summary>
-        /// String. Name of the client.
+        /// Name of the client.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings to toggle native social login for mobile native applications. For details, see Native Social Login
+        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         /// </summary>
         [Input("nativeSocialLogin")]
         public Input<Inputs.ClientNativeSocialLoginGetArgs>? NativeSocialLogin { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not this client will conform to strict OIDC specifications.
+        /// Indicates whether this client will conform to strict OIDC specifications.
         /// </summary>
         [Input("oidcConformant")]
         public Input<bool>? OidcConformant { get; set; }
 
         /// <summary>
-        /// String. Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         /// </summary>
         [Input("organizationRequireBehavior")]
         public Input<string>? OrganizationRequireBehavior { get; set; }
 
         /// <summary>
-        /// String. Defines how to proceed during an authentication transaction with regards an organization. Can be `deny` (default), `allow` or `require`.
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         /// </summary>
         [Input("organizationUsage")]
         public Input<string>? OrganizationUsage { get; set; }
 
         /// <summary>
-        /// List(Resource). Configuration settings for the refresh tokens issued for this client.  For details, see Refresh Token Configuration.
+        /// Configuration settings for the refresh tokens issued for this client.
         /// </summary>
         [Input("refreshToken")]
         public Input<Inputs.ClientRefreshTokenGetArgs>? RefreshToken { get; set; }
@@ -882,28 +813,32 @@ namespace Pulumi.Auth0
         private InputList<ImmutableDictionary<string, object>>? _signingKeys;
 
         /// <summary>
-        /// List(Map). List containing a map of the public cert of the signing key and the public cert of the signing key in pkcs7.
+        /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         /// </summary>
         public InputList<ImmutableDictionary<string, object>> SigningKeys
         {
             get => _signingKeys ?? (_signingKeys = new InputList<ImmutableDictionary<string, object>>());
-            set => _signingKeys = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<ImmutableDictionary<string, object>>());
+                _signingKeys = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
-        /// Boolean. Indicates whether or not the client should use Auth0 rather than the IdP to perform Single Sign-On (SSO). True = Use Auth0.
+        /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
         [Input("sso")]
         public Input<bool>? Sso { get; set; }
 
         /// <summary>
-        /// Boolean. Indicates whether or not SSO is disabled.
+        /// Indicates whether or not SSO is disabled.
         /// </summary>
         [Input("ssoDisabled")]
         public Input<bool>? SsoDisabled { get; set; }
 
         /// <summary>
-        /// String. Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
         /// </summary>
         [Input("tokenEndpointAuthMethod")]
         public Input<string>? TokenEndpointAuthMethod { get; set; }
@@ -912,7 +847,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _webOrigins;
 
         /// <summary>
-        /// List(String). URLs that represent valid web origins for use with web message response mode.
+        /// URLs that represent valid web origins for use with web message response mode.
         /// </summary>
         public InputList<string> WebOrigins
         {

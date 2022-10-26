@@ -19,9 +19,9 @@ class PromptArgs:
                  webauthn_platform_first_factor: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Prompt resource.
-        :param pulumi.Input[bool] identifier_first: Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        :param pulumi.Input[bool] identifier_first: Indicates whether the identifier first is used when using the new Universal Login experience.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
-        :param pulumi.Input[bool] webauthn_platform_first_factor: Boolean. Determines if the login screen uses identifier and biometrics first.
+        :param pulumi.Input[bool] webauthn_platform_first_factor: Determines if the login screen uses identifier and biometrics first.
         """
         if identifier_first is not None:
             pulumi.set(__self__, "identifier_first", identifier_first)
@@ -34,7 +34,7 @@ class PromptArgs:
     @pulumi.getter(name="identifierFirst")
     def identifier_first(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        Indicates whether the identifier first is used when using the new Universal Login experience.
         """
         return pulumi.get(self, "identifier_first")
 
@@ -58,7 +58,7 @@ class PromptArgs:
     @pulumi.getter(name="webauthnPlatformFirstFactor")
     def webauthn_platform_first_factor(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Determines if the login screen uses identifier and biometrics first.
+        Determines if the login screen uses identifier and biometrics first.
         """
         return pulumi.get(self, "webauthn_platform_first_factor")
 
@@ -75,9 +75,9 @@ class _PromptState:
                  webauthn_platform_first_factor: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Prompt resources.
-        :param pulumi.Input[bool] identifier_first: Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        :param pulumi.Input[bool] identifier_first: Indicates whether the identifier first is used when using the new Universal Login experience.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
-        :param pulumi.Input[bool] webauthn_platform_first_factor: Boolean. Determines if the login screen uses identifier and biometrics first.
+        :param pulumi.Input[bool] webauthn_platform_first_factor: Determines if the login screen uses identifier and biometrics first.
         """
         if identifier_first is not None:
             pulumi.set(__self__, "identifier_first", identifier_first)
@@ -90,7 +90,7 @@ class _PromptState:
     @pulumi.getter(name="identifierFirst")
     def identifier_first(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        Indicates whether the identifier first is used when using the new Universal Login experience.
         """
         return pulumi.get(self, "identifier_first")
 
@@ -114,7 +114,7 @@ class _PromptState:
     @pulumi.getter(name="webauthnPlatformFirstFactor")
     def webauthn_platform_first_factor(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Determines if the login screen uses identifier and biometrics first.
+        Determines if the login screen uses identifier and biometrics first.
         """
         return pulumi.get(self, "webauthn_platform_first_factor")
 
@@ -141,25 +141,25 @@ class Prompt(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        example = auth0.Prompt("example",
+        my_prompt = auth0.Prompt("myPrompt",
             identifier_first=False,
-            universal_login_experience="classic",
+            universal_login_experience="new",
             webauthn_platform_first_factor=True)
         ```
 
         ## Import
 
-        As this is not a resource identifiable by an ID within the Auth0 Management API, prompt can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+        As this is not a resource identifiable by an ID within the Auth0 Management API, prompts can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
 
         ```sh
-         $ pulumi import auth0:index/prompt:Prompt example 22f4f21b-017a-319d-92e7-2291c1ca36c4
+         $ pulumi import auth0:index/prompt:Prompt my_prompt 22f4f21b-017a-319d-92e7-2291c1ca36c4
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] identifier_first: Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        :param pulumi.Input[bool] identifier_first: Indicates whether the identifier first is used when using the new Universal Login experience.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
-        :param pulumi.Input[bool] webauthn_platform_first_factor: Boolean. Determines if the login screen uses identifier and biometrics first.
+        :param pulumi.Input[bool] webauthn_platform_first_factor: Determines if the login screen uses identifier and biometrics first.
         """
         ...
     @overload
@@ -176,18 +176,18 @@ class Prompt(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        example = auth0.Prompt("example",
+        my_prompt = auth0.Prompt("myPrompt",
             identifier_first=False,
-            universal_login_experience="classic",
+            universal_login_experience="new",
             webauthn_platform_first_factor=True)
         ```
 
         ## Import
 
-        As this is not a resource identifiable by an ID within the Auth0 Management API, prompt can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+        As this is not a resource identifiable by an ID within the Auth0 Management API, prompts can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
 
         ```sh
-         $ pulumi import auth0:index/prompt:Prompt example 22f4f21b-017a-319d-92e7-2291c1ca36c4
+         $ pulumi import auth0:index/prompt:Prompt my_prompt 22f4f21b-017a-319d-92e7-2291c1ca36c4
         ```
 
         :param str resource_name: The name of the resource.
@@ -240,9 +240,9 @@ class Prompt(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] identifier_first: Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        :param pulumi.Input[bool] identifier_first: Indicates whether the identifier first is used when using the new Universal Login experience.
         :param pulumi.Input[str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
-        :param pulumi.Input[bool] webauthn_platform_first_factor: Boolean. Determines if the login screen uses identifier and biometrics first.
+        :param pulumi.Input[bool] webauthn_platform_first_factor: Determines if the login screen uses identifier and biometrics first.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -257,13 +257,13 @@ class Prompt(pulumi.CustomResource):
     @pulumi.getter(name="identifierFirst")
     def identifier_first(self) -> pulumi.Output[Optional[bool]]:
         """
-        Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+        Indicates whether the identifier first is used when using the new Universal Login experience.
         """
         return pulumi.get(self, "identifier_first")
 
     @property
     @pulumi.getter(name="universalLoginExperience")
-    def universal_login_experience(self) -> pulumi.Output[Optional[str]]:
+    def universal_login_experience(self) -> pulumi.Output[str]:
         """
         Which login experience to use. Options include `classic` and `new`.
         """
@@ -271,9 +271,9 @@ class Prompt(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webauthnPlatformFirstFactor")
-    def webauthn_platform_first_factor(self) -> pulumi.Output[Optional[bool]]:
+    def webauthn_platform_first_factor(self) -> pulumi.Output[bool]:
         """
-        Boolean. Determines if the login screen uses identifier and biometrics first.
+        Determines if the login screen uses identifier and biometrics first.
         """
         return pulumi.get(self, "webauthn_platform_first_factor")
 

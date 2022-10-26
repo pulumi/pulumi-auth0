@@ -14,14 +14,14 @@ public final class ActionDependencyArgs extends com.pulumi.resources.ResourceArg
     public static final ActionDependencyArgs Empty = new ActionDependencyArgs();
 
     /**
-     * Secret name.
+     * Dependency name, e.g. `lodash`.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Secret name.
+     * @return Dependency name, e.g. `lodash`.
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class ActionDependencyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Trigger version.
+     * Dependency version, e.g. `latest` or `4.17.21`.
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return Trigger version.
+     * @return Dependency version, e.g. `latest` or `4.17.21`.
      * 
      */
     public Output<String> version() {
@@ -69,7 +69,7 @@ public final class ActionDependencyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Secret name.
+         * @param name Dependency name, e.g. `lodash`.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ActionDependencyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Secret name.
+         * @param name Dependency name, e.g. `lodash`.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ActionDependencyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param version Trigger version.
+         * @param version Dependency version, e.g. `latest` or `4.17.21`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ActionDependencyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param version Trigger version.
+         * @param version Dependency version, e.g. `latest` or `4.17.21`.
          * 
          * @return builder
          * 

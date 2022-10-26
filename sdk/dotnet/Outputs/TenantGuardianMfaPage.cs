@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class TenantGuardianMfaPage
     {
         /// <summary>
-        /// Boolean. Indicates whether to use the custom Guardian page.
+        /// Indicates whether to use the custom Guardian page.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// String, HTML format with supported Liquid syntax. Customized content of the Guardian page.
+        /// HTML format with supported Liquid syntax. Customized content of the Guardian page.
         /// </summary>
         public readonly string Html;
 

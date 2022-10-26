@@ -20,10 +20,10 @@ class RuleArgs:
                  order: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Rule resource.
-        :param pulumi.Input[str] script: String. Code to be executed when the rule runs.
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the rule is enabled.
-        :param pulumi.Input[str] name: String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-        :param pulumi.Input[int] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        :param pulumi.Input[str] script: Code to be executed when the rule runs.
+        :param pulumi.Input[bool] enabled: Indicates whether the rule is enabled.
+        :param pulumi.Input[str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        :param pulumi.Input[int] order: Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         """
         pulumi.set(__self__, "script", script)
         if enabled is not None:
@@ -37,7 +37,7 @@ class RuleArgs:
     @pulumi.getter
     def script(self) -> pulumi.Input[str]:
         """
-        String. Code to be executed when the rule runs.
+        Code to be executed when the rule runs.
         """
         return pulumi.get(self, "script")
 
@@ -49,7 +49,7 @@ class RuleArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether the rule is enabled.
+        Indicates whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -61,7 +61,7 @@ class RuleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         """
         return pulumi.get(self, "name")
 
@@ -73,7 +73,7 @@ class RuleArgs:
     @pulumi.getter
     def order(self) -> Optional[pulumi.Input[int]]:
         """
-        Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         """
         return pulumi.get(self, "order")
 
@@ -91,10 +91,10 @@ class _RuleState:
                  script: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the rule is enabled.
-        :param pulumi.Input[str] name: String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-        :param pulumi.Input[int] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
-        :param pulumi.Input[str] script: String. Code to be executed when the rule runs.
+        :param pulumi.Input[bool] enabled: Indicates whether the rule is enabled.
+        :param pulumi.Input[str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        :param pulumi.Input[int] order: Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        :param pulumi.Input[str] script: Code to be executed when the rule runs.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -109,7 +109,7 @@ class _RuleState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Boolean. Indicates whether the rule is enabled.
+        Indicates whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -121,7 +121,7 @@ class _RuleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         """
         return pulumi.get(self, "name")
 
@@ -133,7 +133,7 @@ class _RuleState:
     @pulumi.getter
     def order(self) -> Optional[pulumi.Input[int]]:
         """
-        Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         """
         return pulumi.get(self, "order")
 
@@ -145,7 +145,7 @@ class _RuleState:
     @pulumi.getter
     def script(self) -> Optional[pulumi.Input[str]]:
         """
-        String. Code to be executed when the rule runs.
+        Code to be executed when the rule runs.
         """
         return pulumi.get(self, "script")
 
@@ -165,9 +165,7 @@ class Rule(pulumi.CustomResource):
                  script: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
-        authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules.
-        You can create global variable for use with rules by using the RuleConfig resource.
+        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the `RuleConfig` resource.
 
         ## Example Usage
 
@@ -177,19 +175,16 @@ class Rule(pulumi.CustomResource):
 
         my_rule = auth0.Rule("myRule",
             enabled=True,
-            script=\"\"\"function (user, context, callback) {
-          callback(null, user, context);
-        }
-
+            script=\"\"\"    function (user, context, callback) {
+              callback(null, user, context);
+            }
+          
         \"\"\")
-        my_rule_config = auth0.RuleConfig("myRuleConfig",
-            key="foo",
-            value="bar")
         ```
 
         ## Import
 
-        Existing rules can be imported using their id, e.g.
+        Existing rules can be imported using their ID. # Example
 
         ```sh
          $ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
@@ -197,10 +192,10 @@ class Rule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the rule is enabled.
-        :param pulumi.Input[str] name: String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-        :param pulumi.Input[int] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
-        :param pulumi.Input[str] script: String. Code to be executed when the rule runs.
+        :param pulumi.Input[bool] enabled: Indicates whether the rule is enabled.
+        :param pulumi.Input[str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        :param pulumi.Input[int] order: Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        :param pulumi.Input[str] script: Code to be executed when the rule runs.
         """
         ...
     @overload
@@ -209,9 +204,7 @@ class Rule(pulumi.CustomResource):
                  args: RuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your
-        authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules.
-        You can create global variable for use with rules by using the RuleConfig resource.
+        With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage rules. You can create global variable for use with rules by using the `RuleConfig` resource.
 
         ## Example Usage
 
@@ -221,19 +214,16 @@ class Rule(pulumi.CustomResource):
 
         my_rule = auth0.Rule("myRule",
             enabled=True,
-            script=\"\"\"function (user, context, callback) {
-          callback(null, user, context);
-        }
-
+            script=\"\"\"    function (user, context, callback) {
+              callback(null, user, context);
+            }
+          
         \"\"\")
-        my_rule_config = auth0.RuleConfig("myRuleConfig",
-            key="foo",
-            value="bar")
         ```
 
         ## Import
 
-        Existing rules can be imported using their id, e.g.
+        Existing rules can be imported using their ID. # Example
 
         ```sh
          $ pulumi import auth0:index/rule:Rule my_rule rul_XXXXXXXXXXXXX
@@ -294,10 +284,10 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Boolean. Indicates whether the rule is enabled.
-        :param pulumi.Input[str] name: String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-        :param pulumi.Input[int] order: Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
-        :param pulumi.Input[str] script: String. Code to be executed when the rule runs.
+        :param pulumi.Input[bool] enabled: Indicates whether the rule is enabled.
+        :param pulumi.Input[str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        :param pulumi.Input[int] order: Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        :param pulumi.Input[str] script: Code to be executed when the rule runs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -311,9 +301,9 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[bool]]:
+    def enabled(self) -> pulumi.Output[bool]:
         """
-        Boolean. Indicates whether the rule is enabled.
+        Indicates whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -321,7 +311,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        String. Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         """
         return pulumi.get(self, "name")
 
@@ -329,7 +319,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def order(self) -> pulumi.Output[int]:
         """
-        Integer. Order in which the rule executes relative to other rules. Lower-valued rules execute first.
+        Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         """
         return pulumi.get(self, "order")
 
@@ -337,7 +327,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def script(self) -> pulumi.Output[str]:
         """
-        String. Code to be executed when the rule runs.
+        Code to be executed when the rule runs.
         """
         return pulumi.get(self, "script")
 

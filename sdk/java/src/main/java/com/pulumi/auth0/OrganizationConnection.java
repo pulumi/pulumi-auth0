@@ -25,6 +25,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.Connection;
+ * import com.pulumi.auth0.ConnectionArgs;
+ * import com.pulumi.auth0.Organization;
+ * import com.pulumi.auth0.OrganizationArgs;
  * import com.pulumi.auth0.OrganizationConnection;
  * import com.pulumi.auth0.OrganizationConnectionArgs;
  * import java.util.List;
@@ -40,10 +44,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationConnection(&#34;example&#34;, OrganizationConnectionArgs.builder()        
+ *         var myConnection = new Connection(&#34;myConnection&#34;, ConnectionArgs.builder()        
+ *             .strategy(&#34;auth0&#34;)
+ *             .build());
+ * 
+ *         var myOrganization = new Organization(&#34;myOrganization&#34;, OrganizationArgs.builder()        
+ *             .displayName(&#34;My Organization&#34;)
+ *             .build());
+ * 
+ *         var myOrgConn = new OrganizationConnection(&#34;myOrgConn&#34;, OrganizationConnectionArgs.builder()        
+ *             .organizationId(myOrganization.id())
+ *             .connectionId(myConnection.id())
  *             .assignMembershipOnLogin(true)
- *             .connectionId(&#34;con_XXXXXXXXXX&#34;)
- *             .organizationId(&#34;org_XXXXXXXXXX&#34;)
  *             .build());
  * 
  *     }
@@ -52,10 +64,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As this is not a resource identifiable by an ID within the Auth0 Management API, organization_connection can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+ * This resource can be imported by specifying the organization ID and connection ID separated by &#34;:&#34;. # Example
  * 
  * ```sh
- *  $ pulumi import auth0:index/organizationConnection:OrganizationConnection example 11f4a21b-011a-312d-9217-e291caca36c4
+ *  $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn org_XXXXX:con_XXXXX
  * ```
  * 
  */

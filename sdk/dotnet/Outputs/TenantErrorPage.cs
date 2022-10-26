@@ -14,15 +14,15 @@ namespace Pulumi.Auth0.Outputs
     public sealed class TenantErrorPage
     {
         /// <summary>
-        /// String, HTML format with supported Liquid syntax. Customized content of the error page.
+        /// HTML format with supported Liquid syntax. Customized content of the error page.
         /// </summary>
         public readonly string Html;
         /// <summary>
-        /// Boolean. Indicates whether to show the link to logs as part of the default error page.
+        /// Indicates whether to show the link to logs as part of the default error page.
         /// </summary>
         public readonly bool ShowLogLink;
         /// <summary>
-        /// String. URL to redirect to when an error occurs rather than showing the default error page.
+        /// URL to redirect to when an error occurs rather than showing the default error page.
         /// </summary>
         public readonly string Url;
 

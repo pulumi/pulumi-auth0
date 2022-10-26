@@ -17,9 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can create and manage collections of permissions that can be assigned to users, which are
- * otherwise known as roles. Permissions (scopes) are created on auth0_resource_server, then associated with roles and
- * optionally, users using this resource.
+ * With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `auth0.ResourceServer`, then associated with roles and optionally, users using this resource.
  * 
  * ## Example Usage
  * ```java
@@ -85,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Existing roles can be imported using their id, e.g.
+ * Existing roles can be imported using their ID. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/role:Role my_role XXXXXXXXXXXXXXXXXXXXXXX
@@ -95,44 +93,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/role:Role")
 public class Role extends com.pulumi.resources.CustomResource {
     /**
-     * String. Description of the role.
+     * Description of the role.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
-     * @return String. Description of the role.
+     * @return Description of the role.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * String. Name for this role.
+     * Name for this role.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return String. Name for this role.
+     * @return Name for this role.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-     * For details, see Permissions.
+     * Configuration settings for permissions (scopes) attached to the role.
      * 
      */
     @Export(name="permissions", type=List.class, parameters={RolePermission.class})
     private Output</* @Nullable */ List<RolePermission>> permissions;
 
     /**
-     * @return Set(Resource). Configuration settings for permissions (scopes) attached to the role.
-     * For details, see Permissions.
+     * @return Configuration settings for permissions (scopes) attached to the role.
      * 
      */
     public Output<Optional<List<RolePermission>>> permissions() {

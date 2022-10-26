@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GlobalClientJwtConfiguration {
+    /**
+     * @return Algorithm used to sign JWTs.
+     * 
+     */
     private @Nullable String alg;
+    /**
+     * @return Number of seconds during which the JWT will be valid.
+     * 
+     */
     private @Nullable Integer lifetimeInSeconds;
+    /**
+     * @return Permissions (scopes) included in JWTs.
+     * 
+     */
     private @Nullable Map<String,String> scopes;
+    /**
+     * @return Indicates whether the client secret is Base64-encoded.
+     * 
+     */
     private @Nullable Boolean secretEncoded;
 
     private GlobalClientJwtConfiguration() {}
+    /**
+     * @return Algorithm used to sign JWTs.
+     * 
+     */
     public Optional<String> alg() {
         return Optional.ofNullable(this.alg);
     }
+    /**
+     * @return Number of seconds during which the JWT will be valid.
+     * 
+     */
     public Optional<Integer> lifetimeInSeconds() {
         return Optional.ofNullable(this.lifetimeInSeconds);
     }
+    /**
+     * @return Permissions (scopes) included in JWTs.
+     * 
+     */
     public Map<String,String> scopes() {
         return this.scopes == null ? Map.of() : this.scopes;
     }
+    /**
+     * @return Indicates whether the client secret is Base64-encoded.
+     * 
+     */
     public Optional<Boolean> secretEncoded() {
         return Optional.ofNullable(this.secretEncoded);
     }

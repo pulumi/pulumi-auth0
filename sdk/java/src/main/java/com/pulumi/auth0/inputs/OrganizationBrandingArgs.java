@@ -17,14 +17,14 @@ public final class OrganizationBrandingArgs extends com.pulumi.resources.Resourc
     public static final OrganizationBrandingArgs Empty = new OrganizationBrandingArgs();
 
     /**
-     * Color scheme used to customize the login pages
+     * Color scheme used to customize the login pages.
      * 
      */
     @Import(name="colors")
     private @Nullable Output<Map<String,String>> colors;
 
     /**
-     * @return Color scheme used to customize the login pages
+     * @return Color scheme used to customize the login pages.
      * 
      */
     public Optional<Output<Map<String,String>>> colors() {
@@ -32,14 +32,14 @@ public final class OrganizationBrandingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * URL of logo to display on login page
+     * URL of logo to display on login page.
      * 
      */
     @Import(name="logoUrl")
     private @Nullable Output<String> logoUrl;
 
     /**
-     * @return URL of logo to display on login page
+     * @return URL of logo to display on login page.
      * 
      */
     public Optional<Output<String>> logoUrl() {
@@ -72,7 +72,7 @@ public final class OrganizationBrandingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param colors Color scheme used to customize the login pages
+         * @param colors Color scheme used to customize the login pages.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class OrganizationBrandingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param colors Color scheme used to customize the login pages
+         * @param colors Color scheme used to customize the login pages.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class OrganizationBrandingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param logoUrl URL of logo to display on login page
+         * @param logoUrl URL of logo to display on login page.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class OrganizationBrandingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param logoUrl URL of logo to display on login page
+         * @param logoUrl URL of logo to display on login page.
          * 
          * @return builder
          * 

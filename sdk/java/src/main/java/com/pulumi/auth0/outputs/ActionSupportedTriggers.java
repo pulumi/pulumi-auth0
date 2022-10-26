@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class ActionSupportedTriggers {
     /**
-     * @return Trigger ID.
+     * @return The trigger ID.
      * 
      */
     private String id;
     /**
-     * @return Trigger version.
+     * @return The trigger version. This regulates which `runtime` versions are supported.
      * 
      */
     private String version;
 
     private ActionSupportedTriggers() {}
     /**
-     * @return Trigger ID.
+     * @return The trigger ID.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Trigger version.
+     * @return The trigger version. This regulates which `runtime` versions are supported.
      * 
      */
     public String version() {

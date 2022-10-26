@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingFont
     {
         /// <summary>
-        /// String. URL for the custom font.
+        /// URL for the custom font.
         /// </summary>
         public readonly string? Url;
 

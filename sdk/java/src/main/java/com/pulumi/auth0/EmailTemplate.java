@@ -17,9 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right
- * into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of
- * emails sent by Auth0. Used in conjunction with configured email providers.
+ * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
  * 
  * ## Example Usage
  * ```java
@@ -66,7 +64,6 @@ import javax.annotation.Nullable;
  *             .syntax(&#34;liquid&#34;)
  *             .urlLifetimeInSeconds(3600)
  *             .enabled(true)
- *             .includeEmailInRedirect(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(myEmailProvider)
  *                 .build());
@@ -77,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using the template name, e.g.
+ * This resource can be imported using the pre-defined template name. # These names are `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, and `user_invitation`. # The names `change_password`, and `password_reset` are also supported for legacy scenarios. # Example
  * 
  * ```sh
  *  $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template welcome_email
@@ -87,126 +84,126 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/emailTemplate:EmailTemplate")
 public class EmailTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     @Export(name="body", type=String.class, parameters={})
     private Output<String> body;
 
     /**
-     * @return String. Body of the email template. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     public Output<String> body() {
         return this.body;
     }
     /**
-     * Boolean. Indicates whether the template is enabled.
+     * Indicates whether the template is enabled.
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
     private Output<Boolean> enabled;
 
     /**
-     * @return Boolean. Indicates whether the template is enabled.
+     * @return Indicates whether the template is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     @Export(name="from", type=String.class, parameters={})
     private Output<String> from;
 
     /**
-     * @return String. Email address to use as the sender. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     public Output<String> from() {
         return this.from;
     }
     /**
-     * Boolean. Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     * Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
     @Export(name="includeEmailInRedirect", type=Boolean.class, parameters={})
     private Output<Boolean> includeEmailInRedirect;
 
     /**
-     * @return Boolean. Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to true.
+     * @return Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
     public Output<Boolean> includeEmailInRedirect() {
         return this.includeEmailInRedirect;
     }
     /**
-     * String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+     * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      * 
      */
     @Export(name="resultUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> resultUrl;
 
     /**
-     * @return String. URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/email/templates#configuring-the-redirect-to-url).
+     * @return URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      * 
      */
     public Output<Optional<String>> resultUrl() {
         return Codegen.optional(this.resultUrl);
     }
     /**
-     * String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     @Export(name="subject", type=String.class, parameters={})
     private Output<String> subject;
 
     /**
-     * @return String. Subject line of the email. You can include [common variables](https://auth0.com/docs/email/templates#common-variables).
+     * @return Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      * 
      */
     public Output<String> subject() {
         return this.subject;
     }
     /**
-     * String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+     * Syntax of the template body. You can use either text or HTML with Liquid syntax.
      * 
      */
     @Export(name="syntax", type=String.class, parameters={})
     private Output<String> syntax;
 
     /**
-     * @return String. Syntax of the template body. You can use either text or HTML + Liquid syntax.
+     * @return Syntax of the template body. You can use either text or HTML with Liquid syntax.
      * 
      */
     public Output<String> syntax() {
         return this.syntax;
     }
     /**
-     * String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+     * Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
      * 
      */
     @Export(name="template", type=String.class, parameters={})
     private Output<String> template;
 
     /**
-     * @return String. Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+     * @return Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
      * 
      */
     public Output<String> template() {
         return this.template;
     }
     /**
-     * Integer. Number of seconds during which the link within the email will be valid.
+     * Number of seconds during which the link within the email will be valid.
      * 
      */
     @Export(name="urlLifetimeInSeconds", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> urlLifetimeInSeconds;
 
     /**
-     * @return Integer. Number of seconds during which the link within the email will be valid.
+     * @return Number of seconds during which the link within the email will be valid.
      * 
      */
     public Output<Optional<Integer>> urlLifetimeInSeconds() {

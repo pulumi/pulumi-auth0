@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHA
+// Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
 //
 // ## Example Usage
 //
@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewAttackProtection(ctx, "attackProtection", &auth0.AttackProtectionArgs{
+//			_, err := auth0.NewAttackProtection(ctx, "myProtection", &auth0.AttackProtectionArgs{
 //				BreachedPasswordDetection: &AttackProtectionBreachedPasswordDetectionArgs{
 //					AdminNotificationFrequencies: pulumi.StringArray{
 //						pulumi.String("daily"),
@@ -80,11 +80,11 @@ import (
 //
 // ## Import
 //
-// As this is not a resource identifiable by an ID within the Auth0 Management API, guardian can be imported using a random string. We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) e.g.
+// As this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example
 //
 // ```sh
 //
-//	$ pulumi import auth0:index/attackProtection:AttackProtection default 24940d4b-4bd4-44e7-894e-f92e4de36a40
+//	$ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40
 //
 // ```
 type AttackProtection struct {
@@ -92,7 +92,7 @@ type AttackProtection struct {
 
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection AttackProtectionBreachedPasswordDetectionOutput `pulumi:"breachedPasswordDetection"`
-	// Safeguards against a single IP address attacking a single user account.
+	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection AttackProtectionBruteForceProtectionOutput `pulumi:"bruteForceProtection"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingOutput `pulumi:"suspiciousIpThrottling"`
@@ -129,7 +129,7 @@ func GetAttackProtection(ctx *pulumi.Context,
 type attackProtectionState struct {
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection *AttackProtectionBreachedPasswordDetection `pulumi:"breachedPasswordDetection"`
-	// Safeguards against a single IP address attacking a single user account.
+	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection *AttackProtectionBruteForceProtection `pulumi:"bruteForceProtection"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling *AttackProtectionSuspiciousIpThrottling `pulumi:"suspiciousIpThrottling"`
@@ -138,7 +138,7 @@ type attackProtectionState struct {
 type AttackProtectionState struct {
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection AttackProtectionBreachedPasswordDetectionPtrInput
-	// Safeguards against a single IP address attacking a single user account.
+	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection AttackProtectionBruteForceProtectionPtrInput
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingPtrInput
@@ -151,7 +151,7 @@ func (AttackProtectionState) ElementType() reflect.Type {
 type attackProtectionArgs struct {
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection *AttackProtectionBreachedPasswordDetection `pulumi:"breachedPasswordDetection"`
-	// Safeguards against a single IP address attacking a single user account.
+	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection *AttackProtectionBruteForceProtection `pulumi:"bruteForceProtection"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling *AttackProtectionSuspiciousIpThrottling `pulumi:"suspiciousIpThrottling"`
@@ -161,7 +161,7 @@ type attackProtectionArgs struct {
 type AttackProtectionArgs struct {
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection AttackProtectionBreachedPasswordDetectionPtrInput
-	// Safeguards against a single IP address attacking a single user account.
+	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection AttackProtectionBruteForceProtectionPtrInput
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingPtrInput
@@ -261,7 +261,7 @@ func (o AttackProtectionOutput) BreachedPasswordDetection() AttackProtectionBrea
 	}).(AttackProtectionBreachedPasswordDetectionOutput)
 }
 
-// Safeguards against a single IP address attacking a single user account.
+// Brute-force protection safeguards against a single IP address attacking a single user account.
 func (o AttackProtectionOutput) BruteForceProtection() AttackProtectionBruteForceProtectionOutput {
 	return o.ApplyT(func(v *AttackProtection) AttackProtectionBruteForceProtectionOutput { return v.BruteForceProtection }).(AttackProtectionBruteForceProtectionOutput)
 }

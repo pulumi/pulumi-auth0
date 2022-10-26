@@ -5,10 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected
- * extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code.
- *
- * Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
+ * Hooks are secure, self-contained functions that allow you to customize the behavior of Auth0 when executed for selected extensibility points of the Auth0 platform. Auth0 invokes Hooks during runtime to execute your custom Node.js code. Depending on the extensibility point, you can use Hooks with Database Connections and/or Passwordless Connections.
  *
  * ## Example Usage
  *
@@ -21,10 +18,10 @@ import * as utilities from "./utilities";
  *         auth0: "2.30.0",
  *     },
  *     enabled: true,
- *     script: `function (user, context, callback) {
- *   callback(null, { user });
- * }
- * `,
+ *     script: `    function (user, context, callback) {
+ *       callback(null, { user });
+ *     }
+ *   `,
  *     secrets: {
  *         foo: "bar",
  *     },
@@ -34,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * A hook can be imported using the hook's ID, e.g.
+ * A hook can be imported using the hook's ID. # Example
  *
  * ```sh
  *  $ pulumi import auth0:index/hook:Hook my_hook 00001
@@ -85,12 +82,11 @@ export class Hook extends pulumi.CustomResource {
      */
     public readonly script!: pulumi.Output<string>;
     /**
-     * Map(String), sets the hook secrets associated with this hook. 
-     * If specified, any secrets not listed here will be removed from the hook.
+     * The secrets associated with the hook.
      */
     public readonly secrets!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+     * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */
     public readonly triggerId!: pulumi.Output<string>;
 
@@ -125,10 +121,12 @@ export class Hook extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["script"] = args ? args.script : undefined;
-            resourceInputs["secrets"] = args ? args.secrets : undefined;
+            resourceInputs["secrets"] = args?.secrets ? pulumi.secret(args.secrets) : undefined;
             resourceInputs["triggerId"] = args ? args.triggerId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secrets"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Hook.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -154,12 +152,11 @@ export interface HookState {
      */
     script?: pulumi.Input<string>;
     /**
-     * Map(String), sets the hook secrets associated with this hook. 
-     * If specified, any secrets not listed here will be removed from the hook.
+     * The secrets associated with the hook.
      */
     secrets?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+     * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */
     triggerId?: pulumi.Input<string>;
 }
@@ -185,12 +182,11 @@ export interface HookArgs {
      */
     script: pulumi.Input<string>;
     /**
-     * Map(String), sets the hook secrets associated with this hook. 
-     * If specified, any secrets not listed here will be removed from the hook.
+     * The secrets associated with the hook.
      */
     secrets?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+     * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */
     triggerId: pulumi.Input<string>;
 }

@@ -17,14 +17,14 @@ public final class PromptState extends com.pulumi.resources.ResourceArgs {
     public static final PromptState Empty = new PromptState();
 
     /**
-     * Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+     * Indicates whether the identifier first is used when using the new Universal Login experience.
      * 
      */
     @Import(name="identifierFirst")
     private @Nullable Output<Boolean> identifierFirst;
 
     /**
-     * @return Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+     * @return Indicates whether the identifier first is used when using the new Universal Login experience.
      * 
      */
     public Optional<Output<Boolean>> identifierFirst() {
@@ -47,14 +47,14 @@ public final class PromptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean. Determines if the login screen uses identifier and biometrics first.
+     * Determines if the login screen uses identifier and biometrics first.
      * 
      */
     @Import(name="webauthnPlatformFirstFactor")
     private @Nullable Output<Boolean> webauthnPlatformFirstFactor;
 
     /**
-     * @return Boolean. Determines if the login screen uses identifier and biometrics first.
+     * @return Determines if the login screen uses identifier and biometrics first.
      * 
      */
     public Optional<Output<Boolean>> webauthnPlatformFirstFactor() {
@@ -88,7 +88,7 @@ public final class PromptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifierFirst Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+         * @param identifierFirst Indicates whether the identifier first is used when using the new Universal Login experience.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class PromptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifierFirst Boolean. Indicates whether the identifier first is used when using the new universal login experience.
+         * @param identifierFirst Indicates whether the identifier first is used when using the new Universal Login experience.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class PromptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webauthnPlatformFirstFactor Boolean. Determines if the login screen uses identifier and biometrics first.
+         * @param webauthnPlatformFirstFactor Determines if the login screen uses identifier and biometrics first.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class PromptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webauthnPlatformFirstFactor Boolean. Determines if the login screen uses identifier and biometrics first.
+         * @param webauthnPlatformFirstFactor Determines if the login screen uses identifier and biometrics first.
          * 
          * @return builder
          * 

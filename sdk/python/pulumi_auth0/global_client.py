@@ -22,6 +22,7 @@ class GlobalClientArgs:
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -53,6 +54,43 @@ class GlobalClientArgs:
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a GlobalClient resource.
+        :param pulumi.Input['GlobalClientAddonsArgs'] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        :param pulumi.Input[str] client_id: The ID of the client.
+        :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+               Terraform client. Otherwise, the attribute will contain an empty string.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+        :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
+        :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
+        :param pulumi.Input[str] description: Description of the purpose of the client.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
+        :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
+        :param pulumi.Input[str] initiate_login_uri: Initiate login URI, must be HTTPS.
+        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
+        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted.
+        :param pulumi.Input['GlobalClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
+        :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        :param pulumi.Input['GlobalClientMobileArgs'] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[str] name: Name of the client.
+        :param pulumi.Input['GlobalClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
+        :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        :param pulumi.Input['GlobalClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+        :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
@@ -66,6 +104,8 @@ class GlobalClientArgs:
             pulumi.set(__self__, "app_type", app_type)
         if callbacks is not None:
             pulumi.set(__self__, "callbacks", callbacks)
+        if client_aliases is not None:
+            pulumi.set(__self__, "client_aliases", client_aliases)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_metadata is not None:
@@ -128,6 +168,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input['GlobalClientAddonsArgs']]:
+        """
+        Addons enabled for this client and their associated configurations.
+        """
         return pulumi.get(self, "addons")
 
     @addons.setter
@@ -137,6 +180,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="allowedClients")
     def allowed_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        """
         return pulumi.get(self, "allowed_clients")
 
     @allowed_clients.setter
@@ -146,6 +192,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="allowedLogoutUrls")
     def allowed_logout_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs that Auth0 may redirect to after logout.
+        """
         return pulumi.get(self, "allowed_logout_urls")
 
     @allowed_logout_urls.setter
@@ -155,6 +204,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="allowedOrigins")
     def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
@@ -164,6 +216,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="appType")
     def app_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        """
         return pulumi.get(self, "app_type")
 
     @app_type.setter
@@ -173,6 +228,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter
     def callbacks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        """
         return pulumi.get(self, "callbacks")
 
     @callbacks.setter
@@ -180,8 +238,23 @@ class GlobalClientArgs:
         pulumi.set(self, "callbacks", value)
 
     @property
+    @pulumi.getter(name="clientAliases")
+    def client_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        """
+        return pulumi.get(self, "client_aliases")
+
+    @client_aliases.setter
+    def client_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "client_aliases", value)
+
+    @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client.
+        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -191,6 +264,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="clientMetadata")
     def client_metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        """
         return pulumi.get(self, "client_metadata")
 
     @client_metadata.setter
@@ -200,6 +276,10 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+        Terraform client. Otherwise, the attribute will contain an empty string.
+        """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
@@ -209,6 +289,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
     @client_secret_rotation_trigger.setter
@@ -218,6 +301,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        """
         return pulumi.get(self, "cross_origin_auth")
 
     @cross_origin_auth.setter
@@ -227,6 +313,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="crossOriginLoc")
     def cross_origin_loc(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+        """
         return pulumi.get(self, "cross_origin_loc")
 
     @cross_origin_loc.setter
@@ -236,6 +325,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="customLoginPage")
     def custom_login_page(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content (HTML, CSS, JS) of the custom login page.
+        """
         return pulumi.get(self, "custom_login_page")
 
     @custom_login_page.setter
@@ -245,6 +337,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="customLoginPageOn")
     def custom_login_page_on(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether a custom login page is to be used.
+        """
         return pulumi.get(self, "custom_login_page_on")
 
     @custom_login_page_on.setter
@@ -254,6 +349,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the purpose of the client.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -263,6 +361,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Encryption used for WS-Fed responses with this client.
+        """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
@@ -272,6 +373,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="formTemplate")
     def form_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTML form template to be used for WS-Federation.
+        """
         return pulumi.get(self, "form_template")
 
     @form_template.setter
@@ -281,6 +385,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="grantTypes")
     def grant_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types of grants that this client is authorized to use.
+        """
         return pulumi.get(self, "grant_types")
 
     @grant_types.setter
@@ -290,6 +397,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initiate login URI, must be HTTPS.
+        """
         return pulumi.get(self, "initiate_login_uri")
 
     @initiate_login_uri.setter
@@ -299,6 +409,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this client is a first-party client.
+        """
         return pulumi.get(self, "is_first_party")
 
     @is_first_party.setter
@@ -308,6 +421,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
     def is_token_endpoint_ip_header_trusted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the token endpoint IP header is trusted.
+        """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
     @is_token_endpoint_ip_header_trusted.setter
@@ -317,6 +433,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="jwtConfiguration")
     def jwt_configuration(self) -> Optional[pulumi.Input['GlobalClientJwtConfigurationArgs']]:
+        """
+        Configuration settings for the JWTs issued for this client.
+        """
         return pulumi.get(self, "jwt_configuration")
 
     @jwt_configuration.setter
@@ -326,6 +445,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="logoUri")
     def logo_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        """
         return pulumi.get(self, "logo_uri")
 
     @logo_uri.setter
@@ -335,6 +457,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter
     def mobile(self) -> Optional[pulumi.Input['GlobalClientMobileArgs']]:
+        """
+        Additional configuration for native mobile apps.
+        """
         return pulumi.get(self, "mobile")
 
     @mobile.setter
@@ -344,6 +469,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the client.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -353,6 +481,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="nativeSocialLogin")
     def native_social_login(self) -> Optional[pulumi.Input['GlobalClientNativeSocialLoginArgs']]:
+        """
+        Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        """
         return pulumi.get(self, "native_social_login")
 
     @native_social_login.setter
@@ -362,6 +493,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="oidcConformant")
     def oidc_conformant(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this client will conform to strict OIDC specifications.
+        """
         return pulumi.get(self, "oidc_conformant")
 
     @oidc_conformant.setter
@@ -371,6 +505,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="organizationRequireBehavior")
     def organization_require_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        """
         return pulumi.get(self, "organization_require_behavior")
 
     @organization_require_behavior.setter
@@ -380,6 +517,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="organizationUsage")
     def organization_usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
         return pulumi.get(self, "organization_usage")
 
     @organization_usage.setter
@@ -389,6 +529,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> Optional[pulumi.Input['GlobalClientRefreshTokenArgs']]:
+        """
+        Configuration settings for the refresh tokens issued for this client.
+        """
         return pulumi.get(self, "refresh_token")
 
     @refresh_token.setter
@@ -398,6 +541,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="signingKeys")
     def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        """
         return pulumi.get(self, "signing_keys")
 
     @signing_keys.setter
@@ -407,6 +553,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter
     def sso(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+        """
         return pulumi.get(self, "sso")
 
     @sso.setter
@@ -416,6 +565,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="ssoDisabled")
     def sso_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not SSO is disabled.
+        """
         return pulumi.get(self, "sso_disabled")
 
     @sso_disabled.setter
@@ -425,6 +577,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        """
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @token_endpoint_auth_method.setter
@@ -434,6 +589,9 @@ class GlobalClientArgs:
     @property
     @pulumi.getter(name="webOrigins")
     def web_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs that represent valid web origins for use with web message response mode.
+        """
         return pulumi.get(self, "web_origins")
 
     @web_origins.setter
@@ -450,6 +608,7 @@ class _GlobalClientState:
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -481,6 +640,43 @@ class _GlobalClientState:
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering GlobalClient resources.
+        :param pulumi.Input['GlobalClientAddonsArgs'] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        :param pulumi.Input[str] client_id: The ID of the client.
+        :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+               Terraform client. Otherwise, the attribute will contain an empty string.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+        :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
+        :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
+        :param pulumi.Input[str] description: Description of the purpose of the client.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
+        :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
+        :param pulumi.Input[str] initiate_login_uri: Initiate login URI, must be HTTPS.
+        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
+        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted.
+        :param pulumi.Input['GlobalClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
+        :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        :param pulumi.Input['GlobalClientMobileArgs'] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[str] name: Name of the client.
+        :param pulumi.Input['GlobalClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
+        :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        :param pulumi.Input['GlobalClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+        :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
@@ -494,6 +690,8 @@ class _GlobalClientState:
             pulumi.set(__self__, "app_type", app_type)
         if callbacks is not None:
             pulumi.set(__self__, "callbacks", callbacks)
+        if client_aliases is not None:
+            pulumi.set(__self__, "client_aliases", client_aliases)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_metadata is not None:
@@ -556,6 +754,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter
     def addons(self) -> Optional[pulumi.Input['GlobalClientAddonsArgs']]:
+        """
+        Addons enabled for this client and their associated configurations.
+        """
         return pulumi.get(self, "addons")
 
     @addons.setter
@@ -565,6 +766,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="allowedClients")
     def allowed_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        """
         return pulumi.get(self, "allowed_clients")
 
     @allowed_clients.setter
@@ -574,6 +778,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="allowedLogoutUrls")
     def allowed_logout_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs that Auth0 may redirect to after logout.
+        """
         return pulumi.get(self, "allowed_logout_urls")
 
     @allowed_logout_urls.setter
@@ -583,6 +790,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="allowedOrigins")
     def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
@@ -592,6 +802,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="appType")
     def app_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        """
         return pulumi.get(self, "app_type")
 
     @app_type.setter
@@ -601,6 +814,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter
     def callbacks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        """
         return pulumi.get(self, "callbacks")
 
     @callbacks.setter
@@ -608,8 +824,23 @@ class _GlobalClientState:
         pulumi.set(self, "callbacks", value)
 
     @property
+    @pulumi.getter(name="clientAliases")
+    def client_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        """
+        return pulumi.get(self, "client_aliases")
+
+    @client_aliases.setter
+    def client_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "client_aliases", value)
+
+    @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client.
+        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -619,6 +850,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="clientMetadata")
     def client_metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        """
         return pulumi.get(self, "client_metadata")
 
     @client_metadata.setter
@@ -628,6 +862,10 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+        Terraform client. Otherwise, the attribute will contain an empty string.
+        """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
@@ -637,6 +875,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
     @client_secret_rotation_trigger.setter
@@ -646,6 +887,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        """
         return pulumi.get(self, "cross_origin_auth")
 
     @cross_origin_auth.setter
@@ -655,6 +899,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="crossOriginLoc")
     def cross_origin_loc(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+        """
         return pulumi.get(self, "cross_origin_loc")
 
     @cross_origin_loc.setter
@@ -664,6 +911,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="customLoginPage")
     def custom_login_page(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content (HTML, CSS, JS) of the custom login page.
+        """
         return pulumi.get(self, "custom_login_page")
 
     @custom_login_page.setter
@@ -673,6 +923,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="customLoginPageOn")
     def custom_login_page_on(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether a custom login page is to be used.
+        """
         return pulumi.get(self, "custom_login_page_on")
 
     @custom_login_page_on.setter
@@ -682,6 +935,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the purpose of the client.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -691,6 +947,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Encryption used for WS-Fed responses with this client.
+        """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
@@ -700,6 +959,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="formTemplate")
     def form_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTML form template to be used for WS-Federation.
+        """
         return pulumi.get(self, "form_template")
 
     @form_template.setter
@@ -709,6 +971,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="grantTypes")
     def grant_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types of grants that this client is authorized to use.
+        """
         return pulumi.get(self, "grant_types")
 
     @grant_types.setter
@@ -718,6 +983,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initiate login URI, must be HTTPS.
+        """
         return pulumi.get(self, "initiate_login_uri")
 
     @initiate_login_uri.setter
@@ -727,6 +995,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this client is a first-party client.
+        """
         return pulumi.get(self, "is_first_party")
 
     @is_first_party.setter
@@ -736,6 +1007,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
     def is_token_endpoint_ip_header_trusted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the token endpoint IP header is trusted.
+        """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
     @is_token_endpoint_ip_header_trusted.setter
@@ -745,6 +1019,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="jwtConfiguration")
     def jwt_configuration(self) -> Optional[pulumi.Input['GlobalClientJwtConfigurationArgs']]:
+        """
+        Configuration settings for the JWTs issued for this client.
+        """
         return pulumi.get(self, "jwt_configuration")
 
     @jwt_configuration.setter
@@ -754,6 +1031,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="logoUri")
     def logo_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        """
         return pulumi.get(self, "logo_uri")
 
     @logo_uri.setter
@@ -763,6 +1043,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter
     def mobile(self) -> Optional[pulumi.Input['GlobalClientMobileArgs']]:
+        """
+        Additional configuration for native mobile apps.
+        """
         return pulumi.get(self, "mobile")
 
     @mobile.setter
@@ -772,6 +1055,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the client.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -781,6 +1067,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="nativeSocialLogin")
     def native_social_login(self) -> Optional[pulumi.Input['GlobalClientNativeSocialLoginArgs']]:
+        """
+        Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        """
         return pulumi.get(self, "native_social_login")
 
     @native_social_login.setter
@@ -790,6 +1079,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="oidcConformant")
     def oidc_conformant(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this client will conform to strict OIDC specifications.
+        """
         return pulumi.get(self, "oidc_conformant")
 
     @oidc_conformant.setter
@@ -799,6 +1091,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="organizationRequireBehavior")
     def organization_require_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        """
         return pulumi.get(self, "organization_require_behavior")
 
     @organization_require_behavior.setter
@@ -808,6 +1103,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="organizationUsage")
     def organization_usage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
         return pulumi.get(self, "organization_usage")
 
     @organization_usage.setter
@@ -817,6 +1115,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> Optional[pulumi.Input['GlobalClientRefreshTokenArgs']]:
+        """
+        Configuration settings for the refresh tokens issued for this client.
+        """
         return pulumi.get(self, "refresh_token")
 
     @refresh_token.setter
@@ -826,6 +1127,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="signingKeys")
     def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        """
         return pulumi.get(self, "signing_keys")
 
     @signing_keys.setter
@@ -835,6 +1139,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter
     def sso(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+        """
         return pulumi.get(self, "sso")
 
     @sso.setter
@@ -844,6 +1151,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="ssoDisabled")
     def sso_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not SSO is disabled.
+        """
         return pulumi.get(self, "sso_disabled")
 
     @sso_disabled.setter
@@ -853,6 +1163,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        """
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @token_endpoint_auth_method.setter
@@ -862,6 +1175,9 @@ class _GlobalClientState:
     @property
     @pulumi.getter(name="webOrigins")
     def web_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs that represent valid web origins for use with web message response mode.
+        """
         return pulumi.get(self, "web_origins")
 
     @web_origins.setter
@@ -880,6 +1196,7 @@ class GlobalClient(pulumi.CustomResource):
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -934,7 +1251,7 @@ class GlobalClient(pulumi.CustomResource):
 
         ## Import
 
-        The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
+        The auth0_global_client can be imported using the global client's ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`. # Example
 
         ```sh
          $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
@@ -942,6 +1259,43 @@ class GlobalClient(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        :param pulumi.Input[str] client_id: The ID of the client.
+        :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+               Terraform client. Otherwise, the attribute will contain an empty string.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+        :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
+        :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
+        :param pulumi.Input[str] description: Description of the purpose of the client.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
+        :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
+        :param pulumi.Input[str] initiate_login_uri: Initiate login URI, must be HTTPS.
+        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
+        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted.
+        :param pulumi.Input[pulumi.InputType['GlobalClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
+        :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        :param pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[str] name: Name of the client.
+        :param pulumi.Input[pulumi.InputType['GlobalClientNativeSocialLoginArgs']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
+        :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        :param pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+        :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         ...
     @overload
@@ -973,7 +1327,7 @@ class GlobalClient(pulumi.CustomResource):
 
         ## Import
 
-        The auth0_global_client can be imported using the client's ID. You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`.
+        The auth0_global_client can be imported using the global client's ID. # You can find the ID of the global client by going to the [API Explorer](https://auth0.com/docs/api/management/v2#!/Clients/get_clients) and fetching the clients that have `"global"true`. # Example
 
         ```sh
          $ pulumi import auth0:index/globalClient:GlobalClient global XaiyAXXXYdXXXXnqjj8HXXXXXT5titww
@@ -1000,6 +1354,7 @@ class GlobalClient(pulumi.CustomResource):
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_type: Optional[pulumi.Input[str]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -1044,9 +1399,10 @@ class GlobalClient(pulumi.CustomResource):
             __props__.__dict__["allowed_origins"] = allowed_origins
             __props__.__dict__["app_type"] = app_type
             __props__.__dict__["callbacks"] = callbacks
+            __props__.__dict__["client_aliases"] = client_aliases
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_metadata"] = client_metadata
-            __props__.__dict__["client_secret"] = client_secret
+            __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
             __props__.__dict__["client_secret_rotation_trigger"] = client_secret_rotation_trigger
             __props__.__dict__["cross_origin_auth"] = cross_origin_auth
             __props__.__dict__["cross_origin_loc"] = cross_origin_loc
@@ -1068,11 +1424,13 @@ class GlobalClient(pulumi.CustomResource):
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
-            __props__.__dict__["signing_keys"] = signing_keys
+            __props__.__dict__["signing_keys"] = None if signing_keys is None else pulumi.Output.secret(signing_keys)
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
             __props__.__dict__["token_endpoint_auth_method"] = token_endpoint_auth_method
             __props__.__dict__["web_origins"] = web_origins
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret", "signingKeys"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GlobalClient, __self__).__init__(
             'auth0:index/globalClient:GlobalClient',
             resource_name,
@@ -1089,6 +1447,7 @@ class GlobalClient(pulumi.CustomResource):
             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             app_type: Optional[pulumi.Input[str]] = None,
             callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             client_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             client_secret: Optional[pulumi.Input[str]] = None,
@@ -1125,6 +1484,43 @@ class GlobalClient(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GlobalClientAddonsArgs']] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        :param pulumi.Input[str] client_id: The ID of the client.
+        :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+               Terraform client. Otherwise, the attribute will contain an empty string.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+        :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
+        :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
+        :param pulumi.Input[str] description: Description of the purpose of the client.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
+        :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
+        :param pulumi.Input[str] initiate_login_uri: Initiate login URI, must be HTTPS.
+        :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
+        :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted.
+        :param pulumi.Input[pulumi.InputType['GlobalClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
+        :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        :param pulumi.Input[pulumi.InputType['GlobalClientMobileArgs']] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[str] name: Name of the client.
+        :param pulumi.Input[pulumi.InputType['GlobalClientNativeSocialLoginArgs']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
+        :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        :param pulumi.Input[pulumi.InputType['GlobalClientRefreshTokenArgs']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        :param pulumi.Input[bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+        :param pulumi.Input[bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1136,6 +1532,7 @@ class GlobalClient(pulumi.CustomResource):
         __props__.__dict__["allowed_origins"] = allowed_origins
         __props__.__dict__["app_type"] = app_type
         __props__.__dict__["callbacks"] = callbacks
+        __props__.__dict__["client_aliases"] = client_aliases
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_metadata"] = client_metadata
         __props__.__dict__["client_secret"] = client_secret
@@ -1170,175 +1567,289 @@ class GlobalClient(pulumi.CustomResource):
     @property
     @pulumi.getter
     def addons(self) -> pulumi.Output['outputs.GlobalClientAddons']:
+        """
+        Addons enabled for this client and their associated configurations.
+        """
         return pulumi.get(self, "addons")
 
     @property
     @pulumi.getter(name="allowedClients")
     def allowed_clients(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+        """
         return pulumi.get(self, "allowed_clients")
 
     @property
     @pulumi.getter(name="allowedLogoutUrls")
     def allowed_logout_urls(self) -> pulumi.Output[Sequence[str]]:
+        """
+        URLs that Auth0 may redirect to after logout.
+        """
         return pulumi.get(self, "allowed_logout_urls")
 
     @property
     @pulumi.getter(name="allowedOrigins")
     def allowed_origins(self) -> pulumi.Output[Sequence[str]]:
+        """
+        URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        """
         return pulumi.get(self, "allowed_origins")
 
     @property
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Output[str]:
+        """
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        """
         return pulumi.get(self, "app_type")
 
     @property
     @pulumi.getter
     def callbacks(self) -> pulumi.Output[Sequence[str]]:
+        """
+        URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+        """
         return pulumi.get(self, "callbacks")
+
+    @property
+    @pulumi.getter(name="clientAliases")
+    def client_aliases(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        """
+        return pulumi.get(self, "client_aliases")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the client.
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="clientMetadata")
     def client_metadata(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        """
         return pulumi.get(self, "client_metadata")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[str]:
+        """
+        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
+        Terraform client. Otherwise, the attribute will contain an empty string.
+        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
     @property
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> pulumi.Output[bool]:
+        """
+        Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        """
         return pulumi.get(self, "cross_origin_auth")
 
     @property
     @pulumi.getter(name="crossOriginLoc")
     def cross_origin_loc(self) -> pulumi.Output[str]:
+        """
+        URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
+        """
         return pulumi.get(self, "cross_origin_loc")
 
     @property
     @pulumi.getter(name="customLoginPage")
     def custom_login_page(self) -> pulumi.Output[str]:
+        """
+        The content (HTML, CSS, JS) of the custom login page.
+        """
         return pulumi.get(self, "custom_login_page")
 
     @property
     @pulumi.getter(name="customLoginPageOn")
     def custom_login_page_on(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether a custom login page is to be used.
+        """
         return pulumi.get(self, "custom_login_page_on")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        Description of the purpose of the client.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Encryption used for WS-Fed responses with this client.
+        """
         return pulumi.get(self, "encryption_key")
 
     @property
     @pulumi.getter(name="formTemplate")
     def form_template(self) -> pulumi.Output[str]:
+        """
+        HTML form template to be used for WS-Federation.
+        """
         return pulumi.get(self, "form_template")
 
     @property
     @pulumi.getter(name="grantTypes")
     def grant_types(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Types of grants that this client is authorized to use.
+        """
         return pulumi.get(self, "grant_types")
 
     @property
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> pulumi.Output[str]:
+        """
+        Initiate login URI, must be HTTPS.
+        """
         return pulumi.get(self, "initiate_login_uri")
 
     @property
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether this client is a first-party client.
+        """
         return pulumi.get(self, "is_first_party")
 
     @property
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
     def is_token_endpoint_ip_header_trusted(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the token endpoint IP header is trusted.
+        """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
     @property
     @pulumi.getter(name="jwtConfiguration")
     def jwt_configuration(self) -> pulumi.Output['outputs.GlobalClientJwtConfiguration']:
+        """
+        Configuration settings for the JWTs issued for this client.
+        """
         return pulumi.get(self, "jwt_configuration")
 
     @property
     @pulumi.getter(name="logoUri")
     def logo_uri(self) -> pulumi.Output[str]:
+        """
+        URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
+        """
         return pulumi.get(self, "logo_uri")
 
     @property
     @pulumi.getter
     def mobile(self) -> pulumi.Output['outputs.GlobalClientMobile']:
+        """
+        Additional configuration for native mobile apps.
+        """
         return pulumi.get(self, "mobile")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of the client.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nativeSocialLogin")
     def native_social_login(self) -> pulumi.Output['outputs.GlobalClientNativeSocialLogin']:
+        """
+        Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        """
         return pulumi.get(self, "native_social_login")
 
     @property
     @pulumi.getter(name="oidcConformant")
     def oidc_conformant(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether this client will conform to strict OIDC specifications.
+        """
         return pulumi.get(self, "oidc_conformant")
 
     @property
     @pulumi.getter(name="organizationRequireBehavior")
     def organization_require_behavior(self) -> pulumi.Output[str]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        """
         return pulumi.get(self, "organization_require_behavior")
 
     @property
     @pulumi.getter(name="organizationUsage")
     def organization_usage(self) -> pulumi.Output[str]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
         return pulumi.get(self, "organization_usage")
 
     @property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> pulumi.Output['outputs.GlobalClientRefreshToken']:
+        """
+        Configuration settings for the refresh tokens issued for this client.
+        """
         return pulumi.get(self, "refresh_token")
 
     @property
     @pulumi.getter(name="signingKeys")
     def signing_keys(self) -> pulumi.Output[Sequence[Mapping[str, Any]]]:
+        """
+        List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        """
         return pulumi.get(self, "signing_keys")
 
     @property
     @pulumi.getter
     def sso(self) -> pulumi.Output[bool]:
+        """
+        Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
+        """
         return pulumi.get(self, "sso")
 
     @property
     @pulumi.getter(name="ssoDisabled")
     def sso_disabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether or not SSO is disabled.
+        """
         return pulumi.get(self, "sso_disabled")
 
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> pulumi.Output[str]:
+        """
+        Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        """
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @property
     @pulumi.getter(name="webOrigins")
     def web_origins(self) -> pulumi.Output[Sequence[str]]:
+        """
+        URLs that represent valid web origins for use with web message response mode.
+        """
         return pulumi.get(self, "web_origins")
 
