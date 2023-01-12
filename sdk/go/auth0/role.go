@@ -34,8 +34,8 @@ import (
 //				TokenLifetime: pulumi.Int(86400),
 //				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
 //				EnforcePolicies: pulumi.Bool(true),
-//				Scopes: ResourceServerScopeArray{
-//					&ResourceServerScopeArgs{
+//				Scopes: auth0.ResourceServerScopeArray{
+//					&auth0.ResourceServerScopeArgs{
 //						Value:       pulumi.String("read:something"),
 //						Description: pulumi.String("read something"),
 //					},
@@ -46,8 +46,8 @@ import (
 //			}
 //			myRole, err := auth0.NewRole(ctx, "myRole", &auth0.RoleArgs{
 //				Description: pulumi.String("Role Description..."),
-//				Permissions: RolePermissionArray{
-//					&RolePermissionArgs{
+//				Permissions: auth0.RolePermissionArray{
+//					&auth0.RolePermissionArgs{
 //						ResourceServerIdentifier: myResourceServer.Identifier,
 //						Name:                     pulumi.String("read:something"),
 //					},

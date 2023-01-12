@@ -22,6 +22,7 @@
         "config/index.ts",
         "config/vars.ts",
         "connection.ts",
+        "connectionClient.ts",
         "customDomain.ts",
         "customDomainVerification.ts",
         "email.ts",

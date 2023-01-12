@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GuardianPhone
     {
         /// <summary>
+        /// Indicates whether Phone MFA is enabled.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
         /// </summary>
         public readonly ImmutableArray<string> MessageTypes;
@@ -24,16 +28,19 @@ namespace Pulumi.Auth0.Outputs
         /// <summary>
         /// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
         /// </summary>
-        public readonly string Provider;
+        public readonly string? Provider;
 
         [OutputConstructor]
         private GuardianPhone(
+            bool enabled,
+
             ImmutableArray<string> messageTypes,
 
             Outputs.GuardianPhoneOptions? options,
 
-            string provider)
+            string? provider)
         {
+            Enabled = enabled;
             MessageTypes = messageTypes;
             Options = options;
             Provider = provider;

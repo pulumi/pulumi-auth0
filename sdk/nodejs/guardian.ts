@@ -15,8 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myGuardian = new auth0.Guardian("my_guardian", {
+ * const myGuardian = new auth0.Guardian("myGuardian", {
  *     duo: {
+ *         enabled: true,
  *         hostname: "api-hostname",
  *         integrationKey: "someKey",
  *         secretKey: "someSecret",
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     email: true,
  *     otp: true,
  *     phone: {
+ *         enabled: true,
  *         messageTypes: [
  *             "sms",
  *             "voice",
@@ -48,10 +50,15 @@ import * as utilities from "./utilities";
  *             appleAppLink: "https://itunes.apple.com/us/app/my-app/id123121",
  *             googleAppLink: "https://play.google.com/store/apps/details?id=com.my.app",
  *         },
+ *         enabled: true,
+ *         provider: "sns",
  *     },
  *     recoveryCode: true,
- *     webauthnPlatform: {}, // This will enable it. Removing this block will disable it.
+ *     webauthnPlatform: {
+ *         enabled: true,
+ *     },
  *     webauthnRoaming: {
+ *         enabled: true,
  *         userVerification: "required",
  *     },
  * });
@@ -96,7 +103,7 @@ export class Guardian extends pulumi.CustomResource {
     /**
      * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      */
-    public readonly duo!: pulumi.Output<outputs.GuardianDuo | undefined>;
+    public readonly duo!: pulumi.Output<outputs.GuardianDuo>;
     /**
      * Indicates whether email MFA is enabled.
      */
@@ -108,7 +115,7 @@ export class Guardian extends pulumi.CustomResource {
     /**
      * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
-    public readonly phone!: pulumi.Output<outputs.GuardianPhone | undefined>;
+    public readonly phone!: pulumi.Output<outputs.GuardianPhone>;
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
@@ -116,7 +123,7 @@ export class Guardian extends pulumi.CustomResource {
     /**
      * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      */
-    public readonly push!: pulumi.Output<outputs.GuardianPush | undefined>;
+    public readonly push!: pulumi.Output<outputs.GuardianPush>;
     /**
      * Indicates whether recovery code MFA is enabled.
      */
@@ -124,11 +131,11 @@ export class Guardian extends pulumi.CustomResource {
     /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
-    public readonly webauthnPlatform!: pulumi.Output<outputs.GuardianWebauthnPlatform | undefined>;
+    public readonly webauthnPlatform!: pulumi.Output<outputs.GuardianWebauthnPlatform>;
     /**
      * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      */
-    public readonly webauthnRoaming!: pulumi.Output<outputs.GuardianWebauthnRoaming | undefined>;
+    public readonly webauthnRoaming!: pulumi.Output<outputs.GuardianWebauthnRoaming>;
 
     /**
      * Create a Guardian resource with the given unique name, arguments, and options.

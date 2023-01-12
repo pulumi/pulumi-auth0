@@ -33,7 +33,7 @@ import (
 //				AllowedLogoutUrls: pulumi.StringArray{
 //					pulumi.String("http://example.com/logout"),
 //				},
-//				ChangePassword: &TenantChangePasswordArgs{
+//				ChangePassword: &auth0.TenantChangePasswordArgs{
 //					Enabled: pulumi.Bool(true),
 //					Html:    pulumi.String("<html>Change Password</html>"),
 //				},
@@ -41,12 +41,12 @@ import (
 //				EnabledLocales: pulumi.StringArray{
 //					pulumi.String("en"),
 //				},
-//				ErrorPage: &TenantErrorPageArgs{
+//				ErrorPage: &auth0.TenantErrorPageArgs{
 //					Html:        pulumi.String("<html>Error Page</html>"),
 //					ShowLogLink: pulumi.Bool(true),
 //					Url:         pulumi.String("https://example.com/errors"),
 //				},
-//				Flags: &TenantFlagsArgs{
+//				Flags: &auth0.TenantFlagsArgs{
 //					DisableClickjackProtectionHeaders:  pulumi.Bool(true),
 //					DisableFieldsMapFix:                pulumi.Bool(false),
 //					DisableManagementApiSmsObfuscation: pulumi.Bool(false),
@@ -56,20 +56,20 @@ import (
 //					UseScopeDescriptionsForConsent:     pulumi.Bool(true),
 //				},
 //				FriendlyName: pulumi.String("Tenant Name"),
-//				GuardianMfaPage: &TenantGuardianMfaPageArgs{
+//				GuardianMfaPage: &auth0.TenantGuardianMfaPageArgs{
 //					Enabled: pulumi.Bool(true),
 //					Html:    pulumi.String("<html>MFA</html>"),
 //				},
 //				PictureUrl:     pulumi.String("http://example.com/logo.png"),
 //				SandboxVersion: pulumi.String("12"),
-//				SessionCookie: &TenantSessionCookieArgs{
+//				SessionCookie: &auth0.TenantSessionCookieArgs{
 //					Mode: pulumi.String("non-persistent"),
 //				},
 //				SessionLifetime: pulumi.Float64(8760),
 //				SupportEmail:    pulumi.String("support@example.com"),
 //				SupportUrl:      pulumi.String("http://example.com/support"),
-//				UniversalLogin: &TenantUniversalLoginArgs{
-//					Colors: &TenantUniversalLoginColorsArgs{
+//				UniversalLogin: &auth0.TenantUniversalLoginArgs{
+//					Colors: &auth0.TenantUniversalLoginColorsArgs{
 //						PageBackground: pulumi.String("#000000"),
 //						Primary:        pulumi.String("#0059d6"),
 //					},

@@ -24,6 +24,18 @@ namespace Pulumi.Auth0.Inputs
         [Input("customApp")]
         public Input<Inputs.GuardianPushCustomAppGetArgs>? CustomApp { get; set; }
 
+        /// <summary>
+        /// Indicates whether Push MFA is enabled.
+        /// </summary>
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        /// <summary>
+        /// Provider to use, one of `guardian`, `sns`.
+        /// </summary>
+        [Input("provider")]
+        public Input<string>? Provider { get; set; }
+
         public GuardianPushGetArgs()
         {
         }

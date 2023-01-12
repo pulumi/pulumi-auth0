@@ -57,6 +57,9 @@ __all__ = [
     'ConnectionOptionsValidationUsername',
     'CustomDomainVerification',
     'EmailCredentials',
+    'EmailSettings',
+    'EmailSettingsHeaders',
+    'EmailSettingsMessage',
     'GlobalClientAddons',
     'GlobalClientAddonsSamlp',
     'GlobalClientJwtConfiguration',
@@ -3848,6 +3851,117 @@ class EmailCredentials(dict):
 
 
 @pulumi.output_type
+class EmailSettings(dict):
+    def __init__(__self__, *,
+                 headers: Optional['outputs.EmailSettingsHeaders'] = None,
+                 message: Optional['outputs.EmailSettingsMessage'] = None):
+        """
+        :param 'EmailSettingsHeadersArgs' headers: Headers settings for the `smtp` email provider.
+        :param 'EmailSettingsMessageArgs' message: Message settings for the `mandrill` or `ses` email provider.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional['outputs.EmailSettingsHeaders']:
+        """
+        Headers settings for the `smtp` email provider.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional['outputs.EmailSettingsMessage']:
+        """
+        Message settings for the `mandrill` or `ses` email provider.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class EmailSettingsHeaders(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "xMcViewContentLink":
+            suggest = "x_mc_view_content_link"
+        elif key == "xSesConfigurationSet":
+            suggest = "x_ses_configuration_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EmailSettingsHeaders. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EmailSettingsHeaders.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EmailSettingsHeaders.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 x_mc_view_content_link: Optional[str] = None,
+                 x_ses_configuration_set: Optional[str] = None):
+        if x_mc_view_content_link is not None:
+            pulumi.set(__self__, "x_mc_view_content_link", x_mc_view_content_link)
+        if x_ses_configuration_set is not None:
+            pulumi.set(__self__, "x_ses_configuration_set", x_ses_configuration_set)
+
+    @property
+    @pulumi.getter(name="xMcViewContentLink")
+    def x_mc_view_content_link(self) -> Optional[str]:
+        return pulumi.get(self, "x_mc_view_content_link")
+
+    @property
+    @pulumi.getter(name="xSesConfigurationSet")
+    def x_ses_configuration_set(self) -> Optional[str]:
+        return pulumi.get(self, "x_ses_configuration_set")
+
+
+@pulumi.output_type
+class EmailSettingsMessage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configurationSetName":
+            suggest = "configuration_set_name"
+        elif key == "viewContentLink":
+            suggest = "view_content_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EmailSettingsMessage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EmailSettingsMessage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EmailSettingsMessage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 configuration_set_name: Optional[str] = None,
+                 view_content_link: Optional[bool] = None):
+        if configuration_set_name is not None:
+            pulumi.set(__self__, "configuration_set_name", configuration_set_name)
+        if view_content_link is not None:
+            pulumi.set(__self__, "view_content_link", view_content_link)
+
+    @property
+    @pulumi.getter(name="configurationSetName")
+    def configuration_set_name(self) -> Optional[str]:
+        return pulumi.get(self, "configuration_set_name")
+
+    @property
+    @pulumi.getter(name="viewContentLink")
+    def view_content_link(self) -> Optional[bool]:
+        return pulumi.get(self, "view_content_link")
+
+
+@pulumi.output_type
 class GlobalClientAddons(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4697,21 +4811,35 @@ class GuardianDuo(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 hostname: str,
-                 integration_key: str,
-                 secret_key: str):
+                 enabled: bool,
+                 hostname: Optional[str] = None,
+                 integration_key: Optional[str] = None,
+                 secret_key: Optional[str] = None):
         """
+        :param bool enabled: Indicates whether Duo MFA is enabled.
         :param str hostname: Duo API Hostname, see the Duo documentation for more details on Duo setup.
         :param str integration_key: Duo client ID, see the Duo documentation for more details on Duo setup.
         :param str secret_key: Duo client secret, see the Duo documentation for more details on Duo setup.
         """
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "integration_key", integration_key)
-        pulumi.set(__self__, "secret_key", secret_key)
+        pulumi.set(__self__, "enabled", enabled)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if integration_key is not None:
+            pulumi.set(__self__, "integration_key", integration_key)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter
-    def hostname(self) -> str:
+    def enabled(self) -> bool:
+        """
+        Indicates whether Duo MFA is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
         """
         Duo API Hostname, see the Duo documentation for more details on Duo setup.
         """
@@ -4719,7 +4847,7 @@ class GuardianDuo(dict):
 
     @property
     @pulumi.getter(name="integrationKey")
-    def integration_key(self) -> str:
+    def integration_key(self) -> Optional[str]:
         """
         Duo client ID, see the Duo documentation for more details on Duo setup.
         """
@@ -4727,7 +4855,7 @@ class GuardianDuo(dict):
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
+    def secret_key(self) -> Optional[str]:
         """
         Duo client secret, see the Duo documentation for more details on Duo setup.
         """
@@ -4754,34 +4882,39 @@ class GuardianPhone(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 message_types: Sequence[str],
-                 provider: str,
-                 options: Optional['outputs.GuardianPhoneOptions'] = None):
+                 enabled: bool,
+                 message_types: Optional[Sequence[str]] = None,
+                 options: Optional['outputs.GuardianPhoneOptions'] = None,
+                 provider: Optional[str] = None):
         """
+        :param bool enabled: Indicates whether Phone MFA is enabled.
         :param Sequence[str] message_types: Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
-        :param str provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
         :param 'GuardianPhoneOptionsArgs' options: Options for the various providers.
+        :param str provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
         """
-        pulumi.set(__self__, "message_types", message_types)
-        pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "enabled", enabled)
+        if message_types is not None:
+            pulumi.set(__self__, "message_types", message_types)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether Phone MFA is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="messageTypes")
-    def message_types(self) -> Sequence[str]:
+    def message_types(self) -> Optional[Sequence[str]]:
         """
         Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
         """
         return pulumi.get(self, "message_types")
-
-    @property
-    @pulumi.getter
-    def provider(self) -> str:
-        """
-        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
-        """
-        return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter
@@ -4790,6 +4923,14 @@ class GuardianPhone(dict):
         Options for the various providers.
         """
         return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[str]:
+        """
+        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        """
+        return pulumi.get(self, "provider")
 
 
 @pulumi.output_type
@@ -4892,16 +5033,31 @@ class GuardianPush(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enabled: bool,
                  amazon_sns: Optional['outputs.GuardianPushAmazonSns'] = None,
-                 custom_app: Optional['outputs.GuardianPushCustomApp'] = None):
+                 custom_app: Optional['outputs.GuardianPushCustomApp'] = None,
+                 provider: Optional[str] = None):
         """
+        :param bool enabled: Indicates whether Push MFA is enabled.
         :param 'GuardianPushAmazonSnsArgs' amazon_sns: Configuration for Amazon SNS.
         :param 'GuardianPushCustomAppArgs' custom_app: Configuration for the Guardian Custom App.
+        :param str provider: Provider to use, one of `guardian`, `sns`.
         """
+        pulumi.set(__self__, "enabled", enabled)
         if amazon_sns is not None:
             pulumi.set(__self__, "amazon_sns", amazon_sns)
         if custom_app is not None:
             pulumi.set(__self__, "custom_app", custom_app)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether Push MFA is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="amazonSns")
@@ -4918,6 +5074,14 @@ class GuardianPush(dict):
         Configuration for the Guardian Custom App.
         """
         return pulumi.get(self, "custom_app")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[str]:
+        """
+        Provider to use, one of `guardian`, `sns`.
+        """
+        return pulumi.get(self, "provider")
 
 
 @pulumi.output_type
@@ -5057,16 +5221,27 @@ class GuardianWebauthnPlatform(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enabled: bool,
                  override_relying_party: Optional[bool] = None,
                  relying_party_identifier: Optional[str] = None):
         """
+        :param bool enabled: Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
         :param bool override_relying_party: The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         :param str relying_party_identifier: The Relying Party should be a suffix of the custom domain.
         """
+        pulumi.set(__self__, "enabled", enabled)
         if override_relying_party is not None:
             pulumi.set(__self__, "override_relying_party", override_relying_party)
         if relying_party_identifier is not None:
             pulumi.set(__self__, "relying_party_identifier", relying_party_identifier)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="overrideRelyingParty")
@@ -5109,20 +5284,31 @@ class GuardianWebauthnRoaming(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enabled: bool,
                  override_relying_party: Optional[bool] = None,
                  relying_party_identifier: Optional[str] = None,
                  user_verification: Optional[str] = None):
         """
+        :param bool enabled: Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
         :param bool override_relying_party: The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         :param str relying_party_identifier: The Relying Party should be a suffix of the custom domain.
         :param str user_verification: User verification, one of `discouraged`, `preferred` or `required`.
         """
+        pulumi.set(__self__, "enabled", enabled)
         if override_relying_party is not None:
             pulumi.set(__self__, "override_relying_party", override_relying_party)
         if relying_party_identifier is not None:
             pulumi.set(__self__, "relying_party_identifier", relying_party_identifier)
         if user_verification is not None:
             pulumi.set(__self__, "user_verification", user_verification)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="overrideRelyingParty")
@@ -5182,6 +5368,14 @@ class LogStreamSink(dict):
             suggest = "http_custom_headers"
         elif key == "httpEndpoint":
             suggest = "http_endpoint"
+        elif key == "mixpanelProjectId":
+            suggest = "mixpanel_project_id"
+        elif key == "mixpanelRegion":
+            suggest = "mixpanel_region"
+        elif key == "mixpanelServiceAccountPassword":
+            suggest = "mixpanel_service_account_password"
+        elif key == "mixpanelServiceAccountUsername":
+            suggest = "mixpanel_service_account_username"
         elif key == "splunkDomain":
             suggest = "splunk_domain"
         elif key == "splunkPort":
@@ -5219,6 +5413,10 @@ class LogStreamSink(dict):
                  http_content_type: Optional[str] = None,
                  http_custom_headers: Optional[Sequence[Mapping[str, str]]] = None,
                  http_endpoint: Optional[str] = None,
+                 mixpanel_project_id: Optional[str] = None,
+                 mixpanel_region: Optional[str] = None,
+                 mixpanel_service_account_password: Optional[str] = None,
+                 mixpanel_service_account_username: Optional[str] = None,
                  splunk_domain: Optional[str] = None,
                  splunk_port: Optional[str] = None,
                  splunk_secure: Optional[bool] = None,
@@ -5239,6 +5437,10 @@ class LogStreamSink(dict):
         :param str http_content_type: The "Content-Type" header to send over HTTP. Common value is "application/json".
         :param Sequence[Mapping[str, str]] http_custom_headers: Additional HTTP headers to be included as part of the HTTP request.
         :param str http_endpoint: The HTTP endpoint to send streaming logs.
+        :param str mixpanel_project_id: The Mixpanel project ID, found on the Project Settings page.
+        :param str mixpanel_region: The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+        :param str mixpanel_service_account_password: The Mixpanel Service Account password.
+        :param str mixpanel_service_account_username: The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
         :param str splunk_domain: The Splunk domain name.
         :param str splunk_port: The Splunk port.
         :param bool splunk_secure: This toggle should be turned off when using self-signed certificates.
@@ -5273,6 +5475,14 @@ class LogStreamSink(dict):
             pulumi.set(__self__, "http_custom_headers", http_custom_headers)
         if http_endpoint is not None:
             pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if mixpanel_project_id is not None:
+            pulumi.set(__self__, "mixpanel_project_id", mixpanel_project_id)
+        if mixpanel_region is not None:
+            pulumi.set(__self__, "mixpanel_region", mixpanel_region)
+        if mixpanel_service_account_password is not None:
+            pulumi.set(__self__, "mixpanel_service_account_password", mixpanel_service_account_password)
+        if mixpanel_service_account_username is not None:
+            pulumi.set(__self__, "mixpanel_service_account_username", mixpanel_service_account_username)
         if splunk_domain is not None:
             pulumi.set(__self__, "splunk_domain", splunk_domain)
         if splunk_port is not None:
@@ -5395,6 +5605,38 @@ class LogStreamSink(dict):
         The HTTP endpoint to send streaming logs.
         """
         return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="mixpanelProjectId")
+    def mixpanel_project_id(self) -> Optional[str]:
+        """
+        The Mixpanel project ID, found on the Project Settings page.
+        """
+        return pulumi.get(self, "mixpanel_project_id")
+
+    @property
+    @pulumi.getter(name="mixpanelRegion")
+    def mixpanel_region(self) -> Optional[str]:
+        """
+        The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+        """
+        return pulumi.get(self, "mixpanel_region")
+
+    @property
+    @pulumi.getter(name="mixpanelServiceAccountPassword")
+    def mixpanel_service_account_password(self) -> Optional[str]:
+        """
+        The Mixpanel Service Account password.
+        """
+        return pulumi.get(self, "mixpanel_service_account_password")
+
+    @property
+    @pulumi.getter(name="mixpanelServiceAccountUsername")
+    def mixpanel_service_account_username(self) -> Optional[str]:
+        """
+        The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+        """
+        return pulumi.get(self, "mixpanel_service_account_username")
 
     @property
     @pulumi.getter(name="splunkDomain")

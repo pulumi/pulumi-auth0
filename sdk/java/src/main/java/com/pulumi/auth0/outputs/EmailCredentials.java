@@ -25,7 +25,11 @@ public final class EmailCredentials {
     /**
      * @return API User for your email service.
      * 
+     * @deprecated
+     * This field is not accepted by the API any more so it will be removed soon.
+     * 
      */
+    @Deprecated /* This field is not accepted by the API any more so it will be removed soon. */
     private @Nullable String apiUser;
     /**
      * @return Domain name.
@@ -81,7 +85,11 @@ public final class EmailCredentials {
     /**
      * @return API User for your email service.
      * 
+     * @deprecated
+     * This field is not accepted by the API any more so it will be removed soon.
+     * 
      */
+    @Deprecated /* This field is not accepted by the API any more so it will be removed soon. */
     public Optional<String> apiUser() {
         return Optional.ofNullable(this.apiUser);
     }

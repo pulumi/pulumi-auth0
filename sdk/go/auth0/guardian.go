@@ -28,42 +28,49 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewGuardian(ctx, "myGuardian", &auth0.GuardianArgs{
-//				Duo: &GuardianDuoArgs{
+//				Duo: &auth0.GuardianDuoArgs{
+//					Enabled:        pulumi.Bool(true),
 //					Hostname:       pulumi.String("api-hostname"),
 //					IntegrationKey: pulumi.String("someKey"),
 //					SecretKey:      pulumi.String("someSecret"),
 //				},
 //				Email: pulumi.Bool(true),
 //				Otp:   pulumi.Bool(true),
-//				Phone: &GuardianPhoneArgs{
+//				Phone: &auth0.GuardianPhoneArgs{
+//					Enabled: pulumi.Bool(true),
 //					MessageTypes: pulumi.StringArray{
 //						pulumi.String("sms"),
 //						pulumi.String("voice"),
 //					},
-//					Options: &GuardianPhoneOptionsArgs{
+//					Options: &auth0.GuardianPhoneOptionsArgs{
 //						EnrollmentMessage:   pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment."),
 //						VerificationMessage: pulumi.String("{{code}} is your verification code for {{tenant.friendly_name}}."),
 //					},
 //					Provider: pulumi.String("auth0"),
 //				},
 //				Policy: pulumi.String("all-applications"),
-//				Push: &GuardianPushArgs{
-//					AmazonSns: &GuardianPushAmazonSnsArgs{
+//				Push: &auth0.GuardianPushArgs{
+//					AmazonSns: &auth0.GuardianPushAmazonSnsArgs{
 //						AwsAccessKeyId:                pulumi.String("test1"),
 //						AwsRegion:                     pulumi.String("us-west-1"),
 //						AwsSecretAccessKey:            pulumi.String("secretKey"),
 //						SnsApnsPlatformApplicationArn: pulumi.String("test_arn"),
 //						SnsGcmPlatformApplicationArn:  pulumi.String("test_arn"),
 //					},
-//					CustomApp: &GuardianPushCustomAppArgs{
+//					CustomApp: &auth0.GuardianPushCustomAppArgs{
 //						AppName:       pulumi.String("CustomApp"),
 //						AppleAppLink:  pulumi.String("https://itunes.apple.com/us/app/my-app/id123121"),
 //						GoogleAppLink: pulumi.String("https://play.google.com/store/apps/details?id=com.my.app"),
 //					},
+//					Enabled:  pulumi.Bool(true),
+//					Provider: pulumi.String("sns"),
 //				},
-//				RecoveryCode:     pulumi.Bool(true),
-//				WebauthnPlatform: nil,
-//				WebauthnRoaming: &GuardianWebauthnRoamingArgs{
+//				RecoveryCode: pulumi.Bool(true),
+//				WebauthnPlatform: &auth0.GuardianWebauthnPlatformArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//				WebauthnRoaming: &auth0.GuardianWebauthnRoamingArgs{
+//					Enabled:          pulumi.Bool(true),
 //					UserVerification: pulumi.String("required"),
 //				},
 //			})
@@ -89,23 +96,23 @@ type Guardian struct {
 	pulumi.CustomResourceState
 
 	// Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
-	Duo GuardianDuoPtrOutput `pulumi:"duo"`
+	Duo GuardianDuoOutput `pulumi:"duo"`
 	// Indicates whether email MFA is enabled.
 	Email pulumi.BoolPtrOutput `pulumi:"email"`
 	// Indicates whether one time password MFA is enabled.
 	Otp pulumi.BoolPtrOutput `pulumi:"otp"`
 	// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
-	Phone GuardianPhonePtrOutput `pulumi:"phone"`
+	Phone GuardianPhoneOutput `pulumi:"phone"`
 	// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
 	Policy pulumi.StringOutput `pulumi:"policy"`
 	// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
-	Push GuardianPushPtrOutput `pulumi:"push"`
+	Push GuardianPushOutput `pulumi:"push"`
 	// Indicates whether recovery code MFA is enabled.
 	RecoveryCode pulumi.BoolPtrOutput `pulumi:"recoveryCode"`
 	// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-	WebauthnPlatform GuardianWebauthnPlatformPtrOutput `pulumi:"webauthnPlatform"`
+	WebauthnPlatform GuardianWebauthnPlatformOutput `pulumi:"webauthnPlatform"`
 	// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-	WebauthnRoaming GuardianWebauthnRoamingPtrOutput `pulumi:"webauthnRoaming"`
+	WebauthnRoaming GuardianWebauthnRoamingOutput `pulumi:"webauthnRoaming"`
 }
 
 // NewGuardian registers a new resource with the given unique name, arguments, and options.
@@ -316,8 +323,8 @@ func (o GuardianOutput) ToGuardianOutputWithContext(ctx context.Context) Guardia
 }
 
 // Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
-func (o GuardianOutput) Duo() GuardianDuoPtrOutput {
-	return o.ApplyT(func(v *Guardian) GuardianDuoPtrOutput { return v.Duo }).(GuardianDuoPtrOutput)
+func (o GuardianOutput) Duo() GuardianDuoOutput {
+	return o.ApplyT(func(v *Guardian) GuardianDuoOutput { return v.Duo }).(GuardianDuoOutput)
 }
 
 // Indicates whether email MFA is enabled.
@@ -331,8 +338,8 @@ func (o GuardianOutput) Otp() pulumi.BoolPtrOutput {
 }
 
 // Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
-func (o GuardianOutput) Phone() GuardianPhonePtrOutput {
-	return o.ApplyT(func(v *Guardian) GuardianPhonePtrOutput { return v.Phone }).(GuardianPhonePtrOutput)
+func (o GuardianOutput) Phone() GuardianPhoneOutput {
+	return o.ApplyT(func(v *Guardian) GuardianPhoneOutput { return v.Phone }).(GuardianPhoneOutput)
 }
 
 // Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
@@ -341,8 +348,8 @@ func (o GuardianOutput) Policy() pulumi.StringOutput {
 }
 
 // Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
-func (o GuardianOutput) Push() GuardianPushPtrOutput {
-	return o.ApplyT(func(v *Guardian) GuardianPushPtrOutput { return v.Push }).(GuardianPushPtrOutput)
+func (o GuardianOutput) Push() GuardianPushOutput {
+	return o.ApplyT(func(v *Guardian) GuardianPushOutput { return v.Push }).(GuardianPushOutput)
 }
 
 // Indicates whether recovery code MFA is enabled.
@@ -351,13 +358,13 @@ func (o GuardianOutput) RecoveryCode() pulumi.BoolPtrOutput {
 }
 
 // Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
-func (o GuardianOutput) WebauthnPlatform() GuardianWebauthnPlatformPtrOutput {
-	return o.ApplyT(func(v *Guardian) GuardianWebauthnPlatformPtrOutput { return v.WebauthnPlatform }).(GuardianWebauthnPlatformPtrOutput)
+func (o GuardianOutput) WebauthnPlatform() GuardianWebauthnPlatformOutput {
+	return o.ApplyT(func(v *Guardian) GuardianWebauthnPlatformOutput { return v.WebauthnPlatform }).(GuardianWebauthnPlatformOutput)
 }
 
 // Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
-func (o GuardianOutput) WebauthnRoaming() GuardianWebauthnRoamingPtrOutput {
-	return o.ApplyT(func(v *Guardian) GuardianWebauthnRoamingPtrOutput { return v.WebauthnRoaming }).(GuardianWebauthnRoamingPtrOutput)
+func (o GuardianOutput) WebauthnRoaming() GuardianWebauthnRoamingOutput {
+	return o.ApplyT(func(v *Guardian) GuardianWebauthnRoamingOutput { return v.WebauthnRoaming }).(GuardianWebauthnRoamingOutput)
 }
 
 type GuardianArrayOutput struct{ *pulumi.OutputState }

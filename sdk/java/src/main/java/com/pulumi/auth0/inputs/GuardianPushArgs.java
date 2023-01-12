@@ -7,6 +7,8 @@ import com.pulumi.auth0.inputs.GuardianPushAmazonSnsArgs;
 import com.pulumi.auth0.inputs.GuardianPushCustomAppArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,11 +48,43 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.customApp);
     }
 
+    /**
+     * Indicates whether Push MFA is enabled.
+     * 
+     */
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether Push MFA is enabled.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    /**
+     * Provider to use, one of `guardian`, `sns`.
+     * 
+     */
+    @Import(name="provider")
+    private @Nullable Output<String> provider;
+
+    /**
+     * @return Provider to use, one of `guardian`, `sns`.
+     * 
+     */
+    public Optional<Output<String>> provider() {
+        return Optional.ofNullable(this.provider);
+    }
+
     private GuardianPushArgs() {}
 
     private GuardianPushArgs(GuardianPushArgs $) {
         this.amazonSns = $.amazonSns;
         this.customApp = $.customApp;
+        this.enabled = $.enabled;
+        this.provider = $.provider;
     }
 
     public static Builder builder() {
@@ -113,7 +147,50 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
             return customApp(Output.of(customApp));
         }
 
+        /**
+         * @param enabled Indicates whether Push MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Indicates whether Push MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param provider Provider to use, one of `guardian`, `sns`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provider(@Nullable Output<String> provider) {
+            $.provider = provider;
+            return this;
+        }
+
+        /**
+         * @param provider Provider to use, one of `guardian`, `sns`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provider(String provider) {
+            return provider(Output.of(provider));
+        }
+
         public GuardianPushArgs build() {
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

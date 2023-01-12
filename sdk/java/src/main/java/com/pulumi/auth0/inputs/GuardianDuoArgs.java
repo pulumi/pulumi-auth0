@@ -5,8 +5,11 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,53 +17,69 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
     public static final GuardianDuoArgs Empty = new GuardianDuoArgs();
 
     /**
+     * Indicates whether Duo MFA is enabled.
+     * 
+     */
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether Duo MFA is enabled.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    /**
      * Duo API Hostname, see the Duo documentation for more details on Duo setup.
      * 
      */
-    @Import(name="hostname", required=true)
-    private Output<String> hostname;
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
 
     /**
      * @return Duo API Hostname, see the Duo documentation for more details on Duo setup.
      * 
      */
-    public Output<String> hostname() {
-        return this.hostname;
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
     }
 
     /**
      * Duo client ID, see the Duo documentation for more details on Duo setup.
      * 
      */
-    @Import(name="integrationKey", required=true)
-    private Output<String> integrationKey;
+    @Import(name="integrationKey")
+    private @Nullable Output<String> integrationKey;
 
     /**
      * @return Duo client ID, see the Duo documentation for more details on Duo setup.
      * 
      */
-    public Output<String> integrationKey() {
-        return this.integrationKey;
+    public Optional<Output<String>> integrationKey() {
+        return Optional.ofNullable(this.integrationKey);
     }
 
     /**
      * Duo client secret, see the Duo documentation for more details on Duo setup.
      * 
      */
-    @Import(name="secretKey", required=true)
-    private Output<String> secretKey;
+    @Import(name="secretKey")
+    private @Nullable Output<String> secretKey;
 
     /**
      * @return Duo client secret, see the Duo documentation for more details on Duo setup.
      * 
      */
-    public Output<String> secretKey() {
-        return this.secretKey;
+    public Optional<Output<String>> secretKey() {
+        return Optional.ofNullable(this.secretKey);
     }
 
     private GuardianDuoArgs() {}
 
     private GuardianDuoArgs(GuardianDuoArgs $) {
+        this.enabled = $.enabled;
         this.hostname = $.hostname;
         this.integrationKey = $.integrationKey;
         this.secretKey = $.secretKey;
@@ -85,12 +104,33 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enabled Indicates whether Duo MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Indicates whether Duo MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
          * @param hostname Duo API Hostname, see the Duo documentation for more details on Duo setup.
          * 
          * @return builder
          * 
          */
-        public Builder hostname(Output<String> hostname) {
+        public Builder hostname(@Nullable Output<String> hostname) {
             $.hostname = hostname;
             return this;
         }
@@ -111,7 +151,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder integrationKey(Output<String> integrationKey) {
+        public Builder integrationKey(@Nullable Output<String> integrationKey) {
             $.integrationKey = integrationKey;
             return this;
         }
@@ -132,7 +172,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder secretKey(Output<String> secretKey) {
+        public Builder secretKey(@Nullable Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
@@ -148,9 +188,7 @@ public final class GuardianDuoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GuardianDuoArgs build() {
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.integrationKey = Objects.requireNonNull($.integrationKey, "expected parameter 'integrationKey' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

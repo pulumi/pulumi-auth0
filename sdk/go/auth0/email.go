@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewEmail(ctx, "amazonSesEmailProvider", &auth0.EmailArgs{
-//				Credentials: &EmailCredentialsArgs{
+//				Credentials: &auth0.EmailCredentialsArgs{
 //					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					Region:          pulumi.String("us-east-1"),
 //					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewEmail(ctx, "smtpEmailProvider", &auth0.EmailArgs{
-//				Credentials: &EmailCredentialsArgs{
+//				Credentials: &auth0.EmailCredentialsArgs{
 //					SmtpHost: pulumi.String("your.smtp.host.com"),
 //					SmtpPass: pulumi.String("SMTP Password"),
 //					SmtpPort: pulumi.Int(583),
@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewEmail(ctx, "sendgridEmailProvider", &auth0.EmailArgs{
-//				Credentials: &EmailCredentialsArgs{
+//				Credentials: &auth0.EmailCredentialsArgs{
 //					ApiKey: pulumi.String("secretAPIKey"),
 //				},
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
@@ -88,6 +88,8 @@ type Email struct {
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Specific email provider settings.
+	Settings EmailSettingsOutput `pulumi:"settings"`
 }
 
 // NewEmail registers a new resource with the given unique name, arguments, and options.
@@ -133,6 +135,8 @@ type emailState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name *string `pulumi:"name"`
+	// Specific email provider settings.
+	Settings *EmailSettings `pulumi:"settings"`
 }
 
 type EmailState struct {
@@ -144,6 +148,8 @@ type EmailState struct {
 	Enabled pulumi.BoolPtrInput
 	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name pulumi.StringPtrInput
+	// Specific email provider settings.
+	Settings EmailSettingsPtrInput
 }
 
 func (EmailState) ElementType() reflect.Type {
@@ -159,6 +165,8 @@ type emailArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name *string `pulumi:"name"`
+	// Specific email provider settings.
+	Settings *EmailSettings `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a Email resource.
@@ -171,6 +179,8 @@ type EmailArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 	Name pulumi.StringPtrInput
+	// Specific email provider settings.
+	Settings EmailSettingsPtrInput
 }
 
 func (EmailArgs) ElementType() reflect.Type {
@@ -278,6 +288,11 @@ func (o EmailOutput) Enabled() pulumi.BoolPtrOutput {
 // Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
 func (o EmailOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Email) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specific email provider settings.
+func (o EmailOutput) Settings() EmailSettingsOutput {
+	return o.ApplyT(func(v *Email) EmailSettingsOutput { return v.Settings }).(EmailSettingsOutput)
 }
 
 type EmailArrayOutput struct{ *pulumi.OutputState }

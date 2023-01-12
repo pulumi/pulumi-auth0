@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GuardianWebauthnRoaming {
     /**
+     * @return Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+     * 
+     */
+    private Boolean enabled;
+    /**
      * @return The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
@@ -29,6 +34,13 @@ public final class GuardianWebauthnRoaming {
     private @Nullable String userVerification;
 
     private GuardianWebauthnRoaming() {}
+    /**
+     * @return Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
+    }
     /**
      * @return The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
@@ -60,17 +72,24 @@ public final class GuardianWebauthnRoaming {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enabled;
         private @Nullable Boolean overrideRelyingParty;
         private @Nullable String relyingPartyIdentifier;
         private @Nullable String userVerification;
         public Builder() {}
         public Builder(GuardianWebauthnRoaming defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.overrideRelyingParty = defaults.overrideRelyingParty;
     	      this.relyingPartyIdentifier = defaults.relyingPartyIdentifier;
     	      this.userVerification = defaults.userVerification;
         }
 
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            this.enabled = Objects.requireNonNull(enabled);
+            return this;
+        }
         @CustomType.Setter
         public Builder overrideRelyingParty(@Nullable Boolean overrideRelyingParty) {
             this.overrideRelyingParty = overrideRelyingParty;
@@ -88,6 +107,7 @@ public final class GuardianWebauthnRoaming {
         }
         public GuardianWebauthnRoaming build() {
             final var o = new GuardianWebauthnRoaming();
+            o.enabled = enabled;
             o.overrideRelyingParty = overrideRelyingParty;
             o.relyingPartyIdentifier = relyingPartyIdentifier;
             o.userVerification = userVerification;

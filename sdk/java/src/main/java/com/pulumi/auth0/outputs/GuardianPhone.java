@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GuardianPhoneOptions;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,10 +15,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GuardianPhone {
     /**
+     * @return Indicates whether Phone MFA is enabled.
+     * 
+     */
+    private Boolean enabled;
+    /**
      * @return Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      * 
      */
-    private List<String> messageTypes;
+    private @Nullable List<String> messageTypes;
     /**
      * @return Options for the various providers.
      * 
@@ -27,15 +33,22 @@ public final class GuardianPhone {
      * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
-    private String provider;
+    private @Nullable String provider;
 
     private GuardianPhone() {}
+    /**
+     * @return Indicates whether Phone MFA is enabled.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
+    }
     /**
      * @return Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      * 
      */
     public List<String> messageTypes() {
-        return this.messageTypes;
+        return this.messageTypes == null ? List.of() : this.messageTypes;
     }
     /**
      * @return Options for the various providers.
@@ -48,8 +61,8 @@ public final class GuardianPhone {
      * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
-    public String provider() {
-        return this.provider;
+    public Optional<String> provider() {
+        return Optional.ofNullable(this.provider);
     }
 
     public static Builder builder() {
@@ -61,20 +74,27 @@ public final class GuardianPhone {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> messageTypes;
+        private Boolean enabled;
+        private @Nullable List<String> messageTypes;
         private @Nullable GuardianPhoneOptions options;
-        private String provider;
+        private @Nullable String provider;
         public Builder() {}
         public Builder(GuardianPhone defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.messageTypes = defaults.messageTypes;
     	      this.options = defaults.options;
     	      this.provider = defaults.provider;
         }
 
         @CustomType.Setter
-        public Builder messageTypes(List<String> messageTypes) {
-            this.messageTypes = Objects.requireNonNull(messageTypes);
+        public Builder enabled(Boolean enabled) {
+            this.enabled = Objects.requireNonNull(enabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder messageTypes(@Nullable List<String> messageTypes) {
+            this.messageTypes = messageTypes;
             return this;
         }
         public Builder messageTypes(String... messageTypes) {
@@ -86,12 +106,13 @@ public final class GuardianPhone {
             return this;
         }
         @CustomType.Setter
-        public Builder provider(String provider) {
-            this.provider = Objects.requireNonNull(provider);
+        public Builder provider(@Nullable String provider) {
+            this.provider = provider;
             return this;
         }
         public GuardianPhone build() {
             final var o = new GuardianPhone();
+            o.enabled = enabled;
             o.messageTypes = messageTypes;
             o.options = options;
             o.provider = provider;

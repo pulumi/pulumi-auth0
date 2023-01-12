@@ -13,6 +13,12 @@ namespace Pulumi.Auth0.Inputs
     public sealed class GuardianWebauthnPlatformGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+        /// </summary>
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        /// <summary>
         /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         /// </summary>
         [Input("overrideRelyingParty")]

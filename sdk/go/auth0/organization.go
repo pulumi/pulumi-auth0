@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewOrganization(ctx, "myOrganization", &auth0.OrganizationArgs{
-//				Branding: &OrganizationBrandingArgs{
+//				Branding: &auth0.OrganizationBrandingArgs{
 //					Colors: pulumi.StringMap{
 //						"pageBackground": pulumi.String("#e1e1e1"),
 //						"primary":        pulumi.String("#f2f2f2"),

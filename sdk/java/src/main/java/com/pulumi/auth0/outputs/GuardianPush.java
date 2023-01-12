@@ -6,6 +6,8 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GuardianPushAmazonSns;
 import com.pulumi.auth0.outputs.GuardianPushCustomApp;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,6 +24,16 @@ public final class GuardianPush {
      * 
      */
     private @Nullable GuardianPushCustomApp customApp;
+    /**
+     * @return Indicates whether Push MFA is enabled.
+     * 
+     */
+    private Boolean enabled;
+    /**
+     * @return Provider to use, one of `guardian`, `sns`.
+     * 
+     */
+    private @Nullable String provider;
 
     private GuardianPush() {}
     /**
@@ -38,6 +50,20 @@ public final class GuardianPush {
     public Optional<GuardianPushCustomApp> customApp() {
         return Optional.ofNullable(this.customApp);
     }
+    /**
+     * @return Indicates whether Push MFA is enabled.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
+    }
+    /**
+     * @return Provider to use, one of `guardian`, `sns`.
+     * 
+     */
+    public Optional<String> provider() {
+        return Optional.ofNullable(this.provider);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +76,15 @@ public final class GuardianPush {
     public static final class Builder {
         private @Nullable GuardianPushAmazonSns amazonSns;
         private @Nullable GuardianPushCustomApp customApp;
+        private Boolean enabled;
+        private @Nullable String provider;
         public Builder() {}
         public Builder(GuardianPush defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.amazonSns = defaults.amazonSns;
     	      this.customApp = defaults.customApp;
+    	      this.enabled = defaults.enabled;
+    	      this.provider = defaults.provider;
         }
 
         @CustomType.Setter
@@ -67,10 +97,22 @@ public final class GuardianPush {
             this.customApp = customApp;
             return this;
         }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            this.enabled = Objects.requireNonNull(enabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provider(@Nullable String provider) {
+            this.provider = provider;
+            return this;
+        }
         public GuardianPush build() {
             final var o = new GuardianPush();
             o.amazonSns = amazonSns;
             o.customApp = customApp;
+            o.enabled = enabled;
+            o.provider = provider;
             return o;
         }
     }

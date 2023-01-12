@@ -14,26 +14,33 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GuardianDuo
     {
         /// <summary>
+        /// Indicates whether Duo MFA is enabled.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// Duo API Hostname, see the Duo documentation for more details on Duo setup.
         /// </summary>
-        public readonly string Hostname;
+        public readonly string? Hostname;
         /// <summary>
         /// Duo client ID, see the Duo documentation for more details on Duo setup.
         /// </summary>
-        public readonly string IntegrationKey;
+        public readonly string? IntegrationKey;
         /// <summary>
         /// Duo client secret, see the Duo documentation for more details on Duo setup.
         /// </summary>
-        public readonly string SecretKey;
+        public readonly string? SecretKey;
 
         [OutputConstructor]
         private GuardianDuo(
-            string hostname,
+            bool enabled,
 
-            string integrationKey,
+            string? hostname,
 
-            string secretKey)
+            string? integrationKey,
+
+            string? secretKey)
         {
+            Enabled = enabled;
             Hostname = hostname;
             IntegrationKey = integrationKey;
             SecretKey = secretKey;

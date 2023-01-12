@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewBrandingTheme(ctx, "myTheme", &auth0.BrandingThemeArgs{
-//				Borders: &BrandingThemeBordersArgs{
+//				Borders: &auth0.BrandingThemeBordersArgs{
 //					ButtonBorderRadius: pulumi.Float64(1),
 //					ButtonBorderWeight: pulumi.Float64(1),
 //					ButtonsStyle:       pulumi.String("pill"),
@@ -39,7 +39,7 @@ import (
 //					WidgetBorderWeight: pulumi.Float64(1),
 //					WidgetCornerRadius: pulumi.Float64(3),
 //				},
-//				Colors: &BrandingThemeColorsArgs{
+//				Colors: &auth0.BrandingThemeColorsArgs{
 //					BodyText:                pulumi.String("#FF00CC"),
 //					Error:                   pulumi.String("#FF00CC"),
 //					Header:                  pulumi.String("#FF00CC"),
@@ -57,41 +57,41 @@ import (
 //					WidgetBackground:        pulumi.String("#FF00CC"),
 //					WidgetBorder:            pulumi.String("#FF00CC"),
 //				},
-//				Fonts: &BrandingThemeFontsArgs{
-//					BodyText: &BrandingThemeFontsBodyTextArgs{
+//				Fonts: &auth0.BrandingThemeFontsArgs{
+//					BodyText: &auth0.BrandingThemeFontsBodyTextArgs{
 //						Bold: pulumi.Bool(false),
 //						Size: pulumi.Float64(100),
 //					},
-//					ButtonsText: &BrandingThemeFontsButtonsTextArgs{
+//					ButtonsText: &auth0.BrandingThemeFontsButtonsTextArgs{
 //						Bold: pulumi.Bool(false),
 //						Size: pulumi.Float64(100),
 //					},
 //					FontUrl: pulumi.String("https://google.com/font.woff"),
-//					InputLabels: &BrandingThemeFontsInputLabelsArgs{
+//					InputLabels: &auth0.BrandingThemeFontsInputLabelsArgs{
 //						Bold: pulumi.Bool(false),
 //						Size: pulumi.Float64(100),
 //					},
-//					Links: &BrandingThemeFontsLinksArgs{
+//					Links: &auth0.BrandingThemeFontsLinksArgs{
 //						Bold: pulumi.Bool(false),
 //						Size: pulumi.Float64(100),
 //					},
 //					LinksStyle:        pulumi.String("normal"),
 //					ReferenceTextSize: pulumi.Float64(12),
-//					Subtitle: &BrandingThemeFontsSubtitleArgs{
+//					Subtitle: &auth0.BrandingThemeFontsSubtitleArgs{
 //						Bold: pulumi.Bool(false),
 //						Size: pulumi.Float64(100),
 //					},
-//					Title: &BrandingThemeFontsTitleArgs{
+//					Title: &auth0.BrandingThemeFontsTitleArgs{
 //						Bold: pulumi.Bool(false),
 //						Size: pulumi.Float64(100),
 //					},
 //				},
-//				PageBackground: &BrandingThemePageBackgroundArgs{
+//				PageBackground: &auth0.BrandingThemePageBackgroundArgs{
 //					BackgroundColor:    pulumi.String("#000000"),
 //					BackgroundImageUrl: pulumi.String("https://google.com/background.png"),
 //					PageLayout:         pulumi.String("center"),
 //				},
-//				Widget: &BrandingThemeWidgetArgs{
+//				Widget: &auth0.BrandingThemeWidgetArgs{
 //					HeaderTextAlignment: pulumi.String("center"),
 //					LogoHeight:          pulumi.Float64(55),
 //					LogoPosition:        pulumi.String("center"),

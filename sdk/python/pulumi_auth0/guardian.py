@@ -342,6 +342,7 @@ class Guardian(pulumi.CustomResource):
 
         my_guardian = auth0.Guardian("myGuardian",
             duo=auth0.GuardianDuoArgs(
+                enabled=True,
                 hostname="api-hostname",
                 integration_key="someKey",
                 secret_key="someSecret",
@@ -349,6 +350,7 @@ class Guardian(pulumi.CustomResource):
             email=True,
             otp=True,
             phone=auth0.GuardianPhoneArgs(
+                enabled=True,
                 message_types=[
                     "sms",
                     "voice",
@@ -373,10 +375,15 @@ class Guardian(pulumi.CustomResource):
                     apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
                     google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
                 ),
+                enabled=True,
+                provider="sns",
             ),
             recovery_code=True,
-            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(),
+            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
+                enabled=True,
+            ),
             webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
+                enabled=True,
                 user_verification="required",
             ))
         ```
@@ -418,6 +425,7 @@ class Guardian(pulumi.CustomResource):
 
         my_guardian = auth0.Guardian("myGuardian",
             duo=auth0.GuardianDuoArgs(
+                enabled=True,
                 hostname="api-hostname",
                 integration_key="someKey",
                 secret_key="someSecret",
@@ -425,6 +433,7 @@ class Guardian(pulumi.CustomResource):
             email=True,
             otp=True,
             phone=auth0.GuardianPhoneArgs(
+                enabled=True,
                 message_types=[
                     "sms",
                     "voice",
@@ -449,10 +458,15 @@ class Guardian(pulumi.CustomResource):
                     apple_app_link="https://itunes.apple.com/us/app/my-app/id123121",
                     google_app_link="https://play.google.com/store/apps/details?id=com.my.app",
                 ),
+                enabled=True,
+                provider="sns",
             ),
             recovery_code=True,
-            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(),
+            webauthn_platform=auth0.GuardianWebauthnPlatformArgs(
+                enabled=True,
+            ),
             webauthn_roaming=auth0.GuardianWebauthnRoamingArgs(
+                enabled=True,
                 user_verification="required",
             ))
         ```
@@ -562,7 +576,7 @@ class Guardian(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def duo(self) -> pulumi.Output[Optional['outputs.GuardianDuo']]:
+    def duo(self) -> pulumi.Output['outputs.GuardianDuo']:
         """
         Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         """
@@ -586,7 +600,7 @@ class Guardian(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def phone(self) -> pulumi.Output[Optional['outputs.GuardianPhone']]:
+    def phone(self) -> pulumi.Output['outputs.GuardianPhone']:
         """
         Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         """
@@ -602,7 +616,7 @@ class Guardian(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def push(self) -> pulumi.Output[Optional['outputs.GuardianPush']]:
+    def push(self) -> pulumi.Output['outputs.GuardianPush']:
         """
         Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         """
@@ -618,7 +632,7 @@ class Guardian(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webauthnPlatform")
-    def webauthn_platform(self) -> pulumi.Output[Optional['outputs.GuardianWebauthnPlatform']]:
+    def webauthn_platform(self) -> pulumi.Output['outputs.GuardianWebauthnPlatform']:
         """
         Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         """
@@ -626,7 +640,7 @@ class Guardian(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webauthnRoaming")
-    def webauthn_roaming(self) -> pulumi.Output[Optional['outputs.GuardianWebauthnRoaming']]:
+    def webauthn_roaming(self) -> pulumi.Output['outputs.GuardianWebauthnRoaming']:
         """
         Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """

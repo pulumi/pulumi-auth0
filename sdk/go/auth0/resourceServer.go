@@ -30,12 +30,12 @@ import (
 //			_, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
 //				AllowOfflineAccess: pulumi.Bool(true),
 //				Identifier:         pulumi.String("https://api.example.com"),
-//				Scopes: ResourceServerScopeArray{
-//					&ResourceServerScopeArgs{
+//				Scopes: auth0.ResourceServerScopeArray{
+//					&auth0.ResourceServerScopeArgs{
 //						Description: pulumi.String("Create foos"),
 //						Value:       pulumi.String("create:foo"),
 //					},
-//					&ResourceServerScopeArgs{
+//					&auth0.ResourceServerScopeArgs{
 //						Description: pulumi.String("Create bars"),
 //						Value:       pulumi.String("create:bar"),
 //					},

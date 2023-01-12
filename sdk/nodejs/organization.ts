@@ -21,10 +21,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myOrganization = new auth0.Organization("my_organization", {
+ * const myOrganization = new auth0.Organization("myOrganization", {
  *     branding: {
  *         colors: {
- *             page_background: "#e1e1e1",
+ *             pageBackground: "#e1e1e1",
  *             primary: "#f2f2f2",
  *         },
  *         logoUrl: "https://example.com/assets/icons/icon.png",

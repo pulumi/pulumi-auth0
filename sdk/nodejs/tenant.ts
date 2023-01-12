@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myTenant = new auth0.Tenant("my_tenant", {
+ * const myTenant = new auth0.Tenant("myTenant", {
  *     allowedLogoutUrls: ["http://example.com/logout"],
  *     changePassword: {
  *         enabled: true,

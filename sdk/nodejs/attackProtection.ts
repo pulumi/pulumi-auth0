@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myProtection = new auth0.AttackProtection("my_protection", {
+ * const myProtection = new auth0.AttackProtection("myProtection", {
  *     breachedPasswordDetection: {
  *         adminNotificationFrequencies: ["daily"],
  *         enabled: true,

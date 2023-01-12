@@ -13,15 +13,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myTenant = pulumi.output(auth0.getTenant());
+ * const myTenant = auth0.getTenant({});
  * ```
  */
 export function getTenant(opts?: pulumi.InvokeOptions): Promise<GetTenantResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getTenant:getTenant", {
     }, opts);
 }

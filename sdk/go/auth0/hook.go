@@ -89,7 +89,7 @@ func NewHook(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'TriggerId'")
 	}
 	if args.Secrets != nil {
-		args.Secrets = pulumi.ToSecret(args.Secrets).(pulumi.MapOutput)
+		args.Secrets = pulumi.ToSecret(args.Secrets).(pulumi.MapInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secrets",

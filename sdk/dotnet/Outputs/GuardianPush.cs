@@ -21,15 +21,29 @@ namespace Pulumi.Auth0.Outputs
         /// Configuration for the Guardian Custom App.
         /// </summary>
         public readonly Outputs.GuardianPushCustomApp? CustomApp;
+        /// <summary>
+        /// Indicates whether Push MFA is enabled.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
+        /// Provider to use, one of `guardian`, `sns`.
+        /// </summary>
+        public readonly string? Provider;
 
         [OutputConstructor]
         private GuardianPush(
             Outputs.GuardianPushAmazonSns? amazonSns,
 
-            Outputs.GuardianPushCustomApp? customApp)
+            Outputs.GuardianPushCustomApp? customApp,
+
+            bool enabled,
+
+            string? provider)
         {
             AmazonSns = amazonSns;
             CustomApp = customApp;
+            Enabled = enabled;
+            Provider = provider;
         }
     }
 }

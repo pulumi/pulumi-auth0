@@ -9705,6 +9705,8 @@ type EmailCredentials struct {
 	// API Key for your email service. Will always be encrypted in our database.
 	ApiKey *string `pulumi:"apiKey"`
 	// API User for your email service.
+	//
+	// Deprecated: This field is not accepted by the API any more so it will be removed soon.
 	ApiUser *string `pulumi:"apiUser"`
 	// Domain name.
 	Domain *string `pulumi:"domain"`
@@ -9739,6 +9741,8 @@ type EmailCredentialsArgs struct {
 	// API Key for your email service. Will always be encrypted in our database.
 	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
 	// API User for your email service.
+	//
+	// Deprecated: This field is not accepted by the API any more so it will be removed soon.
 	ApiUser pulumi.StringPtrInput `pulumi:"apiUser"`
 	// Domain name.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
@@ -9844,6 +9848,8 @@ func (o EmailCredentialsOutput) ApiKey() pulumi.StringPtrOutput {
 }
 
 // API User for your email service.
+//
+// Deprecated: This field is not accepted by the API any more so it will be removed soon.
 func (o EmailCredentialsOutput) ApiUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailCredentials) *string { return v.ApiUser }).(pulumi.StringPtrOutput)
 }
@@ -9928,6 +9934,8 @@ func (o EmailCredentialsPtrOutput) ApiKey() pulumi.StringPtrOutput {
 }
 
 // API User for your email service.
+//
+// Deprecated: This field is not accepted by the API any more so it will be removed soon.
 func (o EmailCredentialsPtrOutput) ApiUser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailCredentials) *string {
 		if v == nil {
@@ -10005,6 +10013,458 @@ func (o EmailCredentialsPtrOutput) SmtpUser() pulumi.StringPtrOutput {
 		}
 		return v.SmtpUser
 	}).(pulumi.StringPtrOutput)
+}
+
+type EmailSettings struct {
+	// Headers settings for the `smtp` email provider.
+	Headers *EmailSettingsHeaders `pulumi:"headers"`
+	// Message settings for the `mandrill` or `ses` email provider.
+	Message *EmailSettingsMessage `pulumi:"message"`
+}
+
+// EmailSettingsInput is an input type that accepts EmailSettingsArgs and EmailSettingsOutput values.
+// You can construct a concrete instance of `EmailSettingsInput` via:
+//
+//	EmailSettingsArgs{...}
+type EmailSettingsInput interface {
+	pulumi.Input
+
+	ToEmailSettingsOutput() EmailSettingsOutput
+	ToEmailSettingsOutputWithContext(context.Context) EmailSettingsOutput
+}
+
+type EmailSettingsArgs struct {
+	// Headers settings for the `smtp` email provider.
+	Headers EmailSettingsHeadersPtrInput `pulumi:"headers"`
+	// Message settings for the `mandrill` or `ses` email provider.
+	Message EmailSettingsMessagePtrInput `pulumi:"message"`
+}
+
+func (EmailSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSettings)(nil)).Elem()
+}
+
+func (i EmailSettingsArgs) ToEmailSettingsOutput() EmailSettingsOutput {
+	return i.ToEmailSettingsOutputWithContext(context.Background())
+}
+
+func (i EmailSettingsArgs) ToEmailSettingsOutputWithContext(ctx context.Context) EmailSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsOutput)
+}
+
+func (i EmailSettingsArgs) ToEmailSettingsPtrOutput() EmailSettingsPtrOutput {
+	return i.ToEmailSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EmailSettingsArgs) ToEmailSettingsPtrOutputWithContext(ctx context.Context) EmailSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsOutput).ToEmailSettingsPtrOutputWithContext(ctx)
+}
+
+// EmailSettingsPtrInput is an input type that accepts EmailSettingsArgs, EmailSettingsPtr and EmailSettingsPtrOutput values.
+// You can construct a concrete instance of `EmailSettingsPtrInput` via:
+//
+//	        EmailSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmailSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEmailSettingsPtrOutput() EmailSettingsPtrOutput
+	ToEmailSettingsPtrOutputWithContext(context.Context) EmailSettingsPtrOutput
+}
+
+type emailSettingsPtrType EmailSettingsArgs
+
+func EmailSettingsPtr(v *EmailSettingsArgs) EmailSettingsPtrInput {
+	return (*emailSettingsPtrType)(v)
+}
+
+func (*emailSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSettings)(nil)).Elem()
+}
+
+func (i *emailSettingsPtrType) ToEmailSettingsPtrOutput() EmailSettingsPtrOutput {
+	return i.ToEmailSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *emailSettingsPtrType) ToEmailSettingsPtrOutputWithContext(ctx context.Context) EmailSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsPtrOutput)
+}
+
+type EmailSettingsOutput struct{ *pulumi.OutputState }
+
+func (EmailSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSettings)(nil)).Elem()
+}
+
+func (o EmailSettingsOutput) ToEmailSettingsOutput() EmailSettingsOutput {
+	return o
+}
+
+func (o EmailSettingsOutput) ToEmailSettingsOutputWithContext(ctx context.Context) EmailSettingsOutput {
+	return o
+}
+
+func (o EmailSettingsOutput) ToEmailSettingsPtrOutput() EmailSettingsPtrOutput {
+	return o.ToEmailSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EmailSettingsOutput) ToEmailSettingsPtrOutputWithContext(ctx context.Context) EmailSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailSettings) *EmailSettings {
+		return &v
+	}).(EmailSettingsPtrOutput)
+}
+
+// Headers settings for the `smtp` email provider.
+func (o EmailSettingsOutput) Headers() EmailSettingsHeadersPtrOutput {
+	return o.ApplyT(func(v EmailSettings) *EmailSettingsHeaders { return v.Headers }).(EmailSettingsHeadersPtrOutput)
+}
+
+// Message settings for the `mandrill` or `ses` email provider.
+func (o EmailSettingsOutput) Message() EmailSettingsMessagePtrOutput {
+	return o.ApplyT(func(v EmailSettings) *EmailSettingsMessage { return v.Message }).(EmailSettingsMessagePtrOutput)
+}
+
+type EmailSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EmailSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSettings)(nil)).Elem()
+}
+
+func (o EmailSettingsPtrOutput) ToEmailSettingsPtrOutput() EmailSettingsPtrOutput {
+	return o
+}
+
+func (o EmailSettingsPtrOutput) ToEmailSettingsPtrOutputWithContext(ctx context.Context) EmailSettingsPtrOutput {
+	return o
+}
+
+func (o EmailSettingsPtrOutput) Elem() EmailSettingsOutput {
+	return o.ApplyT(func(v *EmailSettings) EmailSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EmailSettings
+		return ret
+	}).(EmailSettingsOutput)
+}
+
+// Headers settings for the `smtp` email provider.
+func (o EmailSettingsPtrOutput) Headers() EmailSettingsHeadersPtrOutput {
+	return o.ApplyT(func(v *EmailSettings) *EmailSettingsHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(EmailSettingsHeadersPtrOutput)
+}
+
+// Message settings for the `mandrill` or `ses` email provider.
+func (o EmailSettingsPtrOutput) Message() EmailSettingsMessagePtrOutput {
+	return o.ApplyT(func(v *EmailSettings) *EmailSettingsMessage {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(EmailSettingsMessagePtrOutput)
+}
+
+type EmailSettingsHeaders struct {
+	XMcViewContentLink   *string `pulumi:"xMcViewContentLink"`
+	XSesConfigurationSet *string `pulumi:"xSesConfigurationSet"`
+}
+
+// EmailSettingsHeadersInput is an input type that accepts EmailSettingsHeadersArgs and EmailSettingsHeadersOutput values.
+// You can construct a concrete instance of `EmailSettingsHeadersInput` via:
+//
+//	EmailSettingsHeadersArgs{...}
+type EmailSettingsHeadersInput interface {
+	pulumi.Input
+
+	ToEmailSettingsHeadersOutput() EmailSettingsHeadersOutput
+	ToEmailSettingsHeadersOutputWithContext(context.Context) EmailSettingsHeadersOutput
+}
+
+type EmailSettingsHeadersArgs struct {
+	XMcViewContentLink   pulumi.StringPtrInput `pulumi:"xMcViewContentLink"`
+	XSesConfigurationSet pulumi.StringPtrInput `pulumi:"xSesConfigurationSet"`
+}
+
+func (EmailSettingsHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSettingsHeaders)(nil)).Elem()
+}
+
+func (i EmailSettingsHeadersArgs) ToEmailSettingsHeadersOutput() EmailSettingsHeadersOutput {
+	return i.ToEmailSettingsHeadersOutputWithContext(context.Background())
+}
+
+func (i EmailSettingsHeadersArgs) ToEmailSettingsHeadersOutputWithContext(ctx context.Context) EmailSettingsHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsHeadersOutput)
+}
+
+func (i EmailSettingsHeadersArgs) ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput {
+	return i.ToEmailSettingsHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i EmailSettingsHeadersArgs) ToEmailSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailSettingsHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsHeadersOutput).ToEmailSettingsHeadersPtrOutputWithContext(ctx)
+}
+
+// EmailSettingsHeadersPtrInput is an input type that accepts EmailSettingsHeadersArgs, EmailSettingsHeadersPtr and EmailSettingsHeadersPtrOutput values.
+// You can construct a concrete instance of `EmailSettingsHeadersPtrInput` via:
+//
+//	        EmailSettingsHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmailSettingsHeadersPtrInput interface {
+	pulumi.Input
+
+	ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput
+	ToEmailSettingsHeadersPtrOutputWithContext(context.Context) EmailSettingsHeadersPtrOutput
+}
+
+type emailSettingsHeadersPtrType EmailSettingsHeadersArgs
+
+func EmailSettingsHeadersPtr(v *EmailSettingsHeadersArgs) EmailSettingsHeadersPtrInput {
+	return (*emailSettingsHeadersPtrType)(v)
+}
+
+func (*emailSettingsHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSettingsHeaders)(nil)).Elem()
+}
+
+func (i *emailSettingsHeadersPtrType) ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput {
+	return i.ToEmailSettingsHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *emailSettingsHeadersPtrType) ToEmailSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailSettingsHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsHeadersPtrOutput)
+}
+
+type EmailSettingsHeadersOutput struct{ *pulumi.OutputState }
+
+func (EmailSettingsHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSettingsHeaders)(nil)).Elem()
+}
+
+func (o EmailSettingsHeadersOutput) ToEmailSettingsHeadersOutput() EmailSettingsHeadersOutput {
+	return o
+}
+
+func (o EmailSettingsHeadersOutput) ToEmailSettingsHeadersOutputWithContext(ctx context.Context) EmailSettingsHeadersOutput {
+	return o
+}
+
+func (o EmailSettingsHeadersOutput) ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput {
+	return o.ToEmailSettingsHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o EmailSettingsHeadersOutput) ToEmailSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailSettingsHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailSettingsHeaders) *EmailSettingsHeaders {
+		return &v
+	}).(EmailSettingsHeadersPtrOutput)
+}
+
+func (o EmailSettingsHeadersOutput) XMcViewContentLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailSettingsHeaders) *string { return v.XMcViewContentLink }).(pulumi.StringPtrOutput)
+}
+
+func (o EmailSettingsHeadersOutput) XSesConfigurationSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailSettingsHeaders) *string { return v.XSesConfigurationSet }).(pulumi.StringPtrOutput)
+}
+
+type EmailSettingsHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (EmailSettingsHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSettingsHeaders)(nil)).Elem()
+}
+
+func (o EmailSettingsHeadersPtrOutput) ToEmailSettingsHeadersPtrOutput() EmailSettingsHeadersPtrOutput {
+	return o
+}
+
+func (o EmailSettingsHeadersPtrOutput) ToEmailSettingsHeadersPtrOutputWithContext(ctx context.Context) EmailSettingsHeadersPtrOutput {
+	return o
+}
+
+func (o EmailSettingsHeadersPtrOutput) Elem() EmailSettingsHeadersOutput {
+	return o.ApplyT(func(v *EmailSettingsHeaders) EmailSettingsHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret EmailSettingsHeaders
+		return ret
+	}).(EmailSettingsHeadersOutput)
+}
+
+func (o EmailSettingsHeadersPtrOutput) XMcViewContentLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSettingsHeaders) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XMcViewContentLink
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EmailSettingsHeadersPtrOutput) XSesConfigurationSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSettingsHeaders) *string {
+		if v == nil {
+			return nil
+		}
+		return v.XSesConfigurationSet
+	}).(pulumi.StringPtrOutput)
+}
+
+type EmailSettingsMessage struct {
+	ConfigurationSetName *string `pulumi:"configurationSetName"`
+	ViewContentLink      *bool   `pulumi:"viewContentLink"`
+}
+
+// EmailSettingsMessageInput is an input type that accepts EmailSettingsMessageArgs and EmailSettingsMessageOutput values.
+// You can construct a concrete instance of `EmailSettingsMessageInput` via:
+//
+//	EmailSettingsMessageArgs{...}
+type EmailSettingsMessageInput interface {
+	pulumi.Input
+
+	ToEmailSettingsMessageOutput() EmailSettingsMessageOutput
+	ToEmailSettingsMessageOutputWithContext(context.Context) EmailSettingsMessageOutput
+}
+
+type EmailSettingsMessageArgs struct {
+	ConfigurationSetName pulumi.StringPtrInput `pulumi:"configurationSetName"`
+	ViewContentLink      pulumi.BoolPtrInput   `pulumi:"viewContentLink"`
+}
+
+func (EmailSettingsMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSettingsMessage)(nil)).Elem()
+}
+
+func (i EmailSettingsMessageArgs) ToEmailSettingsMessageOutput() EmailSettingsMessageOutput {
+	return i.ToEmailSettingsMessageOutputWithContext(context.Background())
+}
+
+func (i EmailSettingsMessageArgs) ToEmailSettingsMessageOutputWithContext(ctx context.Context) EmailSettingsMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsMessageOutput)
+}
+
+func (i EmailSettingsMessageArgs) ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput {
+	return i.ToEmailSettingsMessagePtrOutputWithContext(context.Background())
+}
+
+func (i EmailSettingsMessageArgs) ToEmailSettingsMessagePtrOutputWithContext(ctx context.Context) EmailSettingsMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsMessageOutput).ToEmailSettingsMessagePtrOutputWithContext(ctx)
+}
+
+// EmailSettingsMessagePtrInput is an input type that accepts EmailSettingsMessageArgs, EmailSettingsMessagePtr and EmailSettingsMessagePtrOutput values.
+// You can construct a concrete instance of `EmailSettingsMessagePtrInput` via:
+//
+//	        EmailSettingsMessageArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmailSettingsMessagePtrInput interface {
+	pulumi.Input
+
+	ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput
+	ToEmailSettingsMessagePtrOutputWithContext(context.Context) EmailSettingsMessagePtrOutput
+}
+
+type emailSettingsMessagePtrType EmailSettingsMessageArgs
+
+func EmailSettingsMessagePtr(v *EmailSettingsMessageArgs) EmailSettingsMessagePtrInput {
+	return (*emailSettingsMessagePtrType)(v)
+}
+
+func (*emailSettingsMessagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSettingsMessage)(nil)).Elem()
+}
+
+func (i *emailSettingsMessagePtrType) ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput {
+	return i.ToEmailSettingsMessagePtrOutputWithContext(context.Background())
+}
+
+func (i *emailSettingsMessagePtrType) ToEmailSettingsMessagePtrOutputWithContext(ctx context.Context) EmailSettingsMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSettingsMessagePtrOutput)
+}
+
+type EmailSettingsMessageOutput struct{ *pulumi.OutputState }
+
+func (EmailSettingsMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSettingsMessage)(nil)).Elem()
+}
+
+func (o EmailSettingsMessageOutput) ToEmailSettingsMessageOutput() EmailSettingsMessageOutput {
+	return o
+}
+
+func (o EmailSettingsMessageOutput) ToEmailSettingsMessageOutputWithContext(ctx context.Context) EmailSettingsMessageOutput {
+	return o
+}
+
+func (o EmailSettingsMessageOutput) ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput {
+	return o.ToEmailSettingsMessagePtrOutputWithContext(context.Background())
+}
+
+func (o EmailSettingsMessageOutput) ToEmailSettingsMessagePtrOutputWithContext(ctx context.Context) EmailSettingsMessagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailSettingsMessage) *EmailSettingsMessage {
+		return &v
+	}).(EmailSettingsMessagePtrOutput)
+}
+
+func (o EmailSettingsMessageOutput) ConfigurationSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailSettingsMessage) *string { return v.ConfigurationSetName }).(pulumi.StringPtrOutput)
+}
+
+func (o EmailSettingsMessageOutput) ViewContentLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EmailSettingsMessage) *bool { return v.ViewContentLink }).(pulumi.BoolPtrOutput)
+}
+
+type EmailSettingsMessagePtrOutput struct{ *pulumi.OutputState }
+
+func (EmailSettingsMessagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSettingsMessage)(nil)).Elem()
+}
+
+func (o EmailSettingsMessagePtrOutput) ToEmailSettingsMessagePtrOutput() EmailSettingsMessagePtrOutput {
+	return o
+}
+
+func (o EmailSettingsMessagePtrOutput) ToEmailSettingsMessagePtrOutputWithContext(ctx context.Context) EmailSettingsMessagePtrOutput {
+	return o
+}
+
+func (o EmailSettingsMessagePtrOutput) Elem() EmailSettingsMessageOutput {
+	return o.ApplyT(func(v *EmailSettingsMessage) EmailSettingsMessage {
+		if v != nil {
+			return *v
+		}
+		var ret EmailSettingsMessage
+		return ret
+	}).(EmailSettingsMessageOutput)
+}
+
+func (o EmailSettingsMessagePtrOutput) ConfigurationSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSettingsMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationSetName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EmailSettingsMessagePtrOutput) ViewContentLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EmailSettingsMessage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ViewContentLink
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GlobalClientAddons struct {
@@ -12298,12 +12758,14 @@ func (o GlobalClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 }
 
 type GuardianDuo struct {
+	// Indicates whether Duo MFA is enabled.
+	Enabled bool `pulumi:"enabled"`
 	// Duo API Hostname, see the Duo documentation for more details on Duo setup.
-	Hostname string `pulumi:"hostname"`
+	Hostname *string `pulumi:"hostname"`
 	// Duo client ID, see the Duo documentation for more details on Duo setup.
-	IntegrationKey string `pulumi:"integrationKey"`
+	IntegrationKey *string `pulumi:"integrationKey"`
 	// Duo client secret, see the Duo documentation for more details on Duo setup.
-	SecretKey string `pulumi:"secretKey"`
+	SecretKey *string `pulumi:"secretKey"`
 }
 
 // GuardianDuoInput is an input type that accepts GuardianDuoArgs and GuardianDuoOutput values.
@@ -12318,12 +12780,14 @@ type GuardianDuoInput interface {
 }
 
 type GuardianDuoArgs struct {
+	// Indicates whether Duo MFA is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Duo API Hostname, see the Duo documentation for more details on Duo setup.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Duo client ID, see the Duo documentation for more details on Duo setup.
-	IntegrationKey pulumi.StringInput `pulumi:"integrationKey"`
+	IntegrationKey pulumi.StringPtrInput `pulumi:"integrationKey"`
 	// Duo client secret, see the Duo documentation for more details on Duo setup.
-	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
 func (GuardianDuoArgs) ElementType() reflect.Type {
@@ -12403,19 +12867,24 @@ func (o GuardianDuoOutput) ToGuardianDuoPtrOutputWithContext(ctx context.Context
 	}).(GuardianDuoPtrOutput)
 }
 
+// Indicates whether Duo MFA is enabled.
+func (o GuardianDuoOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GuardianDuo) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // Duo API Hostname, see the Duo documentation for more details on Duo setup.
-func (o GuardianDuoOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GuardianDuo) string { return v.Hostname }).(pulumi.StringOutput)
+func (o GuardianDuoOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianDuo) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
 // Duo client ID, see the Duo documentation for more details on Duo setup.
-func (o GuardianDuoOutput) IntegrationKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GuardianDuo) string { return v.IntegrationKey }).(pulumi.StringOutput)
+func (o GuardianDuoOutput) IntegrationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianDuo) *string { return v.IntegrationKey }).(pulumi.StringPtrOutput)
 }
 
 // Duo client secret, see the Duo documentation for more details on Duo setup.
-func (o GuardianDuoOutput) SecretKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GuardianDuo) string { return v.SecretKey }).(pulumi.StringOutput)
+func (o GuardianDuoOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianDuo) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
 type GuardianDuoPtrOutput struct{ *pulumi.OutputState }
@@ -12442,13 +12911,23 @@ func (o GuardianDuoPtrOutput) Elem() GuardianDuoOutput {
 	}).(GuardianDuoOutput)
 }
 
+// Indicates whether Duo MFA is enabled.
+func (o GuardianDuoPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianDuo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Duo API Hostname, see the Duo documentation for more details on Duo setup.
 func (o GuardianDuoPtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianDuo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Hostname
+		return v.Hostname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12458,7 +12937,7 @@ func (o GuardianDuoPtrOutput) IntegrationKey() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.IntegrationKey
+		return v.IntegrationKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12468,17 +12947,19 @@ func (o GuardianDuoPtrOutput) SecretKey() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.SecretKey
+		return v.SecretKey
 	}).(pulumi.StringPtrOutput)
 }
 
 type GuardianPhone struct {
+	// Indicates whether Phone MFA is enabled.
+	Enabled bool `pulumi:"enabled"`
 	// Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
 	MessageTypes []string `pulumi:"messageTypes"`
 	// Options for the various providers.
 	Options *GuardianPhoneOptions `pulumi:"options"`
 	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
-	Provider string `pulumi:"provider"`
+	Provider *string `pulumi:"provider"`
 }
 
 // GuardianPhoneInput is an input type that accepts GuardianPhoneArgs and GuardianPhoneOutput values.
@@ -12493,12 +12974,14 @@ type GuardianPhoneInput interface {
 }
 
 type GuardianPhoneArgs struct {
+	// Indicates whether Phone MFA is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
 	MessageTypes pulumi.StringArrayInput `pulumi:"messageTypes"`
 	// Options for the various providers.
 	Options GuardianPhoneOptionsPtrInput `pulumi:"options"`
 	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
-	Provider pulumi.StringInput `pulumi:"provider"`
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
 func (GuardianPhoneArgs) ElementType() reflect.Type {
@@ -12578,6 +13061,11 @@ func (o GuardianPhoneOutput) ToGuardianPhonePtrOutputWithContext(ctx context.Con
 	}).(GuardianPhonePtrOutput)
 }
 
+// Indicates whether Phone MFA is enabled.
+func (o GuardianPhoneOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GuardianPhone) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
 func (o GuardianPhoneOutput) MessageTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuardianPhone) []string { return v.MessageTypes }).(pulumi.StringArrayOutput)
@@ -12589,8 +13077,8 @@ func (o GuardianPhoneOutput) Options() GuardianPhoneOptionsPtrOutput {
 }
 
 // Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
-func (o GuardianPhoneOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func(v GuardianPhone) string { return v.Provider }).(pulumi.StringOutput)
+func (o GuardianPhoneOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPhone) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
 type GuardianPhonePtrOutput struct{ *pulumi.OutputState }
@@ -12615,6 +13103,16 @@ func (o GuardianPhonePtrOutput) Elem() GuardianPhoneOutput {
 		var ret GuardianPhone
 		return ret
 	}).(GuardianPhoneOutput)
+}
+
+// Indicates whether Phone MFA is enabled.
+func (o GuardianPhonePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianPhone) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
@@ -12643,7 +13141,7 @@ func (o GuardianPhonePtrOutput) Provider() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Provider
+		return v.Provider
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12860,6 +13358,10 @@ type GuardianPush struct {
 	AmazonSns *GuardianPushAmazonSns `pulumi:"amazonSns"`
 	// Configuration for the Guardian Custom App.
 	CustomApp *GuardianPushCustomApp `pulumi:"customApp"`
+	// Indicates whether Push MFA is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Provider to use, one of `guardian`, `sns`.
+	Provider *string `pulumi:"provider"`
 }
 
 // GuardianPushInput is an input type that accepts GuardianPushArgs and GuardianPushOutput values.
@@ -12878,6 +13380,10 @@ type GuardianPushArgs struct {
 	AmazonSns GuardianPushAmazonSnsPtrInput `pulumi:"amazonSns"`
 	// Configuration for the Guardian Custom App.
 	CustomApp GuardianPushCustomAppPtrInput `pulumi:"customApp"`
+	// Indicates whether Push MFA is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Provider to use, one of `guardian`, `sns`.
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
 func (GuardianPushArgs) ElementType() reflect.Type {
@@ -12967,6 +13473,16 @@ func (o GuardianPushOutput) CustomApp() GuardianPushCustomAppPtrOutput {
 	return o.ApplyT(func(v GuardianPush) *GuardianPushCustomApp { return v.CustomApp }).(GuardianPushCustomAppPtrOutput)
 }
 
+// Indicates whether Push MFA is enabled.
+func (o GuardianPushOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GuardianPush) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Provider to use, one of `guardian`, `sns`.
+func (o GuardianPushOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardianPush) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
 type GuardianPushPtrOutput struct{ *pulumi.OutputState }
 
 func (GuardianPushPtrOutput) ElementType() reflect.Type {
@@ -13009,6 +13525,26 @@ func (o GuardianPushPtrOutput) CustomApp() GuardianPushCustomAppPtrOutput {
 		}
 		return v.CustomApp
 	}).(GuardianPushCustomAppPtrOutput)
+}
+
+// Indicates whether Push MFA is enabled.
+func (o GuardianPushPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianPush) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Provider to use, one of `guardian`, `sns`.
+func (o GuardianPushPtrOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPush) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Provider
+	}).(pulumi.StringPtrOutput)
 }
 
 type GuardianPushAmazonSns struct {
@@ -13368,6 +13904,8 @@ func (o GuardianPushCustomAppPtrOutput) GoogleAppLink() pulumi.StringPtrOutput {
 }
 
 type GuardianWebauthnPlatform struct {
+	// Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+	Enabled bool `pulumi:"enabled"`
 	// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
 	OverrideRelyingParty *bool `pulumi:"overrideRelyingParty"`
 	// The Relying Party should be a suffix of the custom domain.
@@ -13386,6 +13924,8 @@ type GuardianWebauthnPlatformInput interface {
 }
 
 type GuardianWebauthnPlatformArgs struct {
+	// Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
 	OverrideRelyingParty pulumi.BoolPtrInput `pulumi:"overrideRelyingParty"`
 	// The Relying Party should be a suffix of the custom domain.
@@ -13469,6 +14009,11 @@ func (o GuardianWebauthnPlatformOutput) ToGuardianWebauthnPlatformPtrOutputWithC
 	}).(GuardianWebauthnPlatformPtrOutput)
 }
 
+// Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+func (o GuardianWebauthnPlatformOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GuardianWebauthnPlatform) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
 func (o GuardianWebauthnPlatformOutput) OverrideRelyingParty() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GuardianWebauthnPlatform) *bool { return v.OverrideRelyingParty }).(pulumi.BoolPtrOutput)
@@ -13503,6 +14048,16 @@ func (o GuardianWebauthnPlatformPtrOutput) Elem() GuardianWebauthnPlatformOutput
 	}).(GuardianWebauthnPlatformOutput)
 }
 
+// Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+func (o GuardianWebauthnPlatformPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianWebauthnPlatform) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
 func (o GuardianWebauthnPlatformPtrOutput) OverrideRelyingParty() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GuardianWebauthnPlatform) *bool {
@@ -13524,6 +14079,8 @@ func (o GuardianWebauthnPlatformPtrOutput) RelyingPartyIdentifier() pulumi.Strin
 }
 
 type GuardianWebauthnRoaming struct {
+	// Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+	Enabled bool `pulumi:"enabled"`
 	// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
 	OverrideRelyingParty *bool `pulumi:"overrideRelyingParty"`
 	// The Relying Party should be a suffix of the custom domain.
@@ -13544,6 +14101,8 @@ type GuardianWebauthnRoamingInput interface {
 }
 
 type GuardianWebauthnRoamingArgs struct {
+	// Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
 	OverrideRelyingParty pulumi.BoolPtrInput `pulumi:"overrideRelyingParty"`
 	// The Relying Party should be a suffix of the custom domain.
@@ -13629,6 +14188,11 @@ func (o GuardianWebauthnRoamingOutput) ToGuardianWebauthnRoamingPtrOutputWithCon
 	}).(GuardianWebauthnRoamingPtrOutput)
 }
 
+// Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+func (o GuardianWebauthnRoamingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GuardianWebauthnRoaming) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
 func (o GuardianWebauthnRoamingOutput) OverrideRelyingParty() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GuardianWebauthnRoaming) *bool { return v.OverrideRelyingParty }).(pulumi.BoolPtrOutput)
@@ -13666,6 +14230,16 @@ func (o GuardianWebauthnRoamingPtrOutput) Elem() GuardianWebauthnRoamingOutput {
 		var ret GuardianWebauthnRoaming
 		return ret
 	}).(GuardianWebauthnRoamingOutput)
+}
+
+// Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+func (o GuardianWebauthnRoamingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianWebauthnRoaming) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
@@ -13727,6 +14301,14 @@ type LogStreamSink struct {
 	HttpCustomHeaders []map[string]string `pulumi:"httpCustomHeaders"`
 	// The HTTP endpoint to send streaming logs.
 	HttpEndpoint *string `pulumi:"httpEndpoint"`
+	// The Mixpanel project ID, found on the Project Settings page.
+	MixpanelProjectId *string `pulumi:"mixpanelProjectId"`
+	// The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+	MixpanelRegion *string `pulumi:"mixpanelRegion"`
+	// The Mixpanel Service Account password.
+	MixpanelServiceAccountPassword *string `pulumi:"mixpanelServiceAccountPassword"`
+	// The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+	MixpanelServiceAccountUsername *string `pulumi:"mixpanelServiceAccountUsername"`
 	// The Splunk domain name.
 	SplunkDomain *string `pulumi:"splunkDomain"`
 	// The Splunk port.
@@ -13779,6 +14361,14 @@ type LogStreamSinkArgs struct {
 	HttpCustomHeaders pulumi.StringMapArrayInput `pulumi:"httpCustomHeaders"`
 	// The HTTP endpoint to send streaming logs.
 	HttpEndpoint pulumi.StringPtrInput `pulumi:"httpEndpoint"`
+	// The Mixpanel project ID, found on the Project Settings page.
+	MixpanelProjectId pulumi.StringPtrInput `pulumi:"mixpanelProjectId"`
+	// The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+	MixpanelRegion pulumi.StringPtrInput `pulumi:"mixpanelRegion"`
+	// The Mixpanel Service Account password.
+	MixpanelServiceAccountPassword pulumi.StringPtrInput `pulumi:"mixpanelServiceAccountPassword"`
+	// The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+	MixpanelServiceAccountUsername pulumi.StringPtrInput `pulumi:"mixpanelServiceAccountUsername"`
 	// The Splunk domain name.
 	SplunkDomain pulumi.StringPtrInput `pulumi:"splunkDomain"`
 	// The Splunk port.
@@ -13936,6 +14526,26 @@ func (o LogStreamSinkOutput) HttpCustomHeaders() pulumi.StringMapArrayOutput {
 // The HTTP endpoint to send streaming logs.
 func (o LogStreamSinkOutput) HttpEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.HttpEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The Mixpanel project ID, found on the Project Settings page.
+func (o LogStreamSinkOutput) MixpanelProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.MixpanelProjectId }).(pulumi.StringPtrOutput)
+}
+
+// The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+func (o LogStreamSinkOutput) MixpanelRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.MixpanelRegion }).(pulumi.StringPtrOutput)
+}
+
+// The Mixpanel Service Account password.
+func (o LogStreamSinkOutput) MixpanelServiceAccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.MixpanelServiceAccountPassword }).(pulumi.StringPtrOutput)
+}
+
+// The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+func (o LogStreamSinkOutput) MixpanelServiceAccountUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.MixpanelServiceAccountUsername }).(pulumi.StringPtrOutput)
 }
 
 // The Splunk domain name.
@@ -14124,6 +14734,46 @@ func (o LogStreamSinkPtrOutput) HttpEndpoint() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.HttpEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Mixpanel project ID, found on the Project Settings page.
+func (o LogStreamSinkPtrOutput) MixpanelProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MixpanelProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+func (o LogStreamSinkPtrOutput) MixpanelRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MixpanelRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Mixpanel Service Account password.
+func (o LogStreamSinkPtrOutput) MixpanelServiceAccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MixpanelServiceAccountPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+func (o LogStreamSinkPtrOutput) MixpanelServiceAccountUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MixpanelServiceAccountUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18791,6 +19441,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeArrayInput)(nil)).Elem(), CustomDomainVerificationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsInput)(nil)).Elem(), EmailCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailCredentialsPtrInput)(nil)).Elem(), EmailCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsInput)(nil)).Elem(), EmailSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsPtrInput)(nil)).Elem(), EmailSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsHeadersInput)(nil)).Elem(), EmailSettingsHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsHeadersPtrInput)(nil)).Elem(), EmailSettingsHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsMessageInput)(nil)).Elem(), EmailSettingsMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSettingsMessagePtrInput)(nil)).Elem(), EmailSettingsMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsInput)(nil)).Elem(), GlobalClientAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsPtrInput)(nil)).Elem(), GlobalClientAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalClientAddonsSamlpInput)(nil)).Elem(), GlobalClientAddonsSamlpArgs{})
@@ -18983,6 +19639,12 @@ func init() {
 	pulumi.RegisterOutputType(CustomDomainVerificationTypeArrayOutput{})
 	pulumi.RegisterOutputType(EmailCredentialsOutput{})
 	pulumi.RegisterOutputType(EmailCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(EmailSettingsOutput{})
+	pulumi.RegisterOutputType(EmailSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EmailSettingsHeadersOutput{})
+	pulumi.RegisterOutputType(EmailSettingsHeadersPtrOutput{})
+	pulumi.RegisterOutputType(EmailSettingsMessageOutput{})
+	pulumi.RegisterOutputType(EmailSettingsMessagePtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientAddonsOutput{})
 	pulumi.RegisterOutputType(GlobalClientAddonsPtrOutput{})
 	pulumi.RegisterOutputType(GlobalClientAddonsSamlpOutput{})

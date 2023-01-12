@@ -4,6 +4,7 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.EmailCredentialsArgs;
+import com.pulumi.auth0.inputs.EmailSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -77,6 +78,21 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Specific email provider settings.
+     * 
+     */
+    @Import(name="settings")
+    private @Nullable Output<EmailSettingsArgs> settings;
+
+    /**
+     * @return Specific email provider settings.
+     * 
+     */
+    public Optional<Output<EmailSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
+    }
+
     private EmailState() {}
 
     private EmailState(EmailState $) {
@@ -84,6 +100,7 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
         this.defaultFromAddress = $.defaultFromAddress;
         this.enabled = $.enabled;
         this.name = $.name;
+        this.settings = $.settings;
     }
 
     public static Builder builder() {
@@ -186,6 +203,27 @@ public final class EmailState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param settings Specific email provider settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(@Nullable Output<EmailSettingsArgs> settings) {
+            $.settings = settings;
+            return this;
+        }
+
+        /**
+         * @param settings Specific email provider settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(EmailSettingsArgs settings) {
+            return settings(Output.of(settings));
         }
 
         public EmailState build() {

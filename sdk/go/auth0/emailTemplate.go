@@ -30,7 +30,7 @@ import (
 //			myEmailProvider, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
 //				Enabled:            pulumi.Bool(true),
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
-//				Credentials: &EmailCredentialsArgs{
+//				Credentials: &auth0.EmailCredentialsArgs{
 //					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //					Region:          pulumi.String("us-east-1"),

@@ -57,6 +57,9 @@ import javax.annotation.Nullable;
  *                     &#34;api.example.com&#34;)
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
  *                 .scopes(                
  *                     &#34;email&#34;,
  *                     &#34;profile&#34;,
@@ -97,11 +100,15 @@ import javax.annotation.Nullable;
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
  *                 .scopes(                
  *                     &#34;public_profile&#34;,
  *                     &#34;email&#34;,
  *                     &#34;groups_access_member_info&#34;,
  *                     &#34;user_birthday&#34;)
+ *                 .setUserRootAttributes(&#34;on_each_login&#34;)
  *                 .build())
  *             .strategy(&#34;facebook&#34;)
  *             .build());
@@ -135,11 +142,19 @@ import javax.annotation.Nullable;
  *         var apple = new Connection(&#34;apple&#34;, ConnectionArgs.builder()        
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
- *                 .clientSecret(&#34;&lt;private-key&gt;&#34;)
+ *                 .clientSecret(&#34;&#34;&#34;
+ * -----BEGIN PRIVATE KEY-----
+ * MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+ * -----END PRIVATE KEY-----
+ *                 &#34;&#34;&#34;)
  *                 .keyId(&#34;&lt;key-id&gt;&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
  *                 .scopes(                
  *                     &#34;email&#34;,
  *                     &#34;name&#34;)
+ *                 .setUserRootAttributes(&#34;on_first_login&#34;)
  *                 .teamId(&#34;&lt;team-id&gt;&#34;)
  *                 .build())
  *             .strategy(&#34;apple&#34;)
@@ -175,10 +190,14 @@ import javax.annotation.Nullable;
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
  *                 .scopes(                
  *                     &#34;basic_profile&#34;,
  *                     &#34;profile&#34;,
  *                     &#34;email&#34;)
+ *                 .setUserRootAttributes(&#34;on_each_login&#34;)
  *                 .strategyVersion(2)
  *                 .build())
  *             .strategy(&#34;linkedin&#34;)
@@ -214,11 +233,15 @@ import javax.annotation.Nullable;
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
  *                 .scopes(                
  *                     &#34;email&#34;,
  *                     &#34;profile&#34;,
  *                     &#34;public_repo&#34;,
  *                     &#34;repo&#34;)
+ *                 .setUserRootAttributes(&#34;on_each_login&#34;)
  *                 .build())
  *             .strategy(&#34;github&#34;)
  *             .build());
@@ -254,6 +277,13 @@ import javax.annotation.Nullable;
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
  *                 .communityBaseUrl(&#34;https://salesforce.example.com&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
+ *                 .scopes(                
+ *                     &#34;openid&#34;,
+ *                     &#34;email&#34;)
+ *                 .setUserRootAttributes(&#34;on_first_login&#34;)
  *                 .build())
  *             .strategy(&#34;salesforce&#34;)
  *             .build());
@@ -262,6 +292,8 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### OAuth2 Connection
+ * 
+ * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
  * ```java
  * package generated_program;
  * 
@@ -289,13 +321,22 @@ import javax.annotation.Nullable;
  *                 .authorizationEndpoint(&#34;https://auth.example.com/oauth2/authorize&#34;)
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .iconUrl(&#34;https://auth.example.com/assets/logo.png&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
  *                 .pkceEnabled(true)
+ *                 .scopes(                
+ *                     &#34;basic_profile&#34;,
+ *                     &#34;profile&#34;,
+ *                     &#34;email&#34;)
  *                 .scripts(Map.of(&#34;fetchUserProfile&#34;, &#34;&#34;&#34;
  *         function fetchUserProfile(accessToken, context, callback) {
  *           return callback(new Error(&#34;Whoops!&#34;));
  *         }
  *       
  *                 &#34;&#34;&#34;))
+ *                 .setUserRootAttributes(&#34;on_each_login&#34;)
  *                 .tokenEndpoint(&#34;https://auth.example.com/oauth2/token&#34;)
  *                 .build())
  *             .strategy(&#34;oauth2&#34;)
@@ -396,8 +437,9 @@ import javax.annotation.Nullable;
  *                 .bruteForceProtection(true)
  *                 .disableSignup(false)
  *                 .from(&#34;{{ application.name }} &lt;root@auth0.com&gt;&#34;)
+ *                 .name(&#34;email&#34;)
  *                 .nonPersistentAttrs()
- *                 .setUserRootAttributes()
+ *                 .setUserRootAttributes(&#34;on_each_login&#34;)
  *                 .subject(&#34;Welcome to {{ application.name }}&#34;)
  *                 .syntax(&#34;liquid&#34;)
  *                 .template(&#34;&lt;html&gt;This is the body of the email&lt;/html&gt;&#34;)
@@ -439,12 +481,69 @@ import javax.annotation.Nullable;
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
  *                 .scopes(                
  *                     &#34;signin&#34;,
  *                     &#34;graph_user&#34;)
+ *                 .setUserRootAttributes(&#34;on_first_login&#34;)
  *                 .strategyVersion(2)
  *                 .build())
  *             .strategy(&#34;windowslive&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### OIDC Connection
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.Connection;
+ * import com.pulumi.auth0.ConnectionArgs;
+ * import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var oidc = new Connection(&#34;oidc&#34;, ConnectionArgs.builder()        
+ *             .displayName(&#34;OIDC Connection&#34;)
+ *             .options(ConnectionOptionsArgs.builder()
+ *                 .authorizationEndpoint(&#34;https://www.paypal.com/signin/authorize&#34;)
+ *                 .clientId(&#34;1234567&#34;)
+ *                 .clientSecret(&#34;1234567&#34;)
+ *                 .discoveryUrl(&#34;https://www.paypalobjects.com/.well-known/openid-configuration&#34;)
+ *                 .domainAliases(&#34;example.com&#34;)
+ *                 .iconUrl(&#34;https://example.com/assets/logo.png&#34;)
+ *                 .issuer(&#34;https://www.paypalobjects.com&#34;)
+ *                 .jwksUri(&#34;https://api.paypal.com/v1/oauth2/certs&#34;)
+ *                 .nonPersistentAttrs(                
+ *                     &#34;ethnicity&#34;,
+ *                     &#34;gender&#34;)
+ *                 .scopes(                
+ *                     &#34;openid&#34;,
+ *                     &#34;email&#34;)
+ *                 .setUserRootAttributes(&#34;on_first_login&#34;)
+ *                 .tenantDomain(&#34;&#34;)
+ *                 .tokenEndpoint(&#34;https://api.paypal.com/v1/oauth2/token&#34;)
+ *                 .type(&#34;front_channel&#34;)
+ *                 .userinfoEndpoint(&#34;https://api.paypal.com/v1/oauth2/token/userinfo&#34;)
+ *                 .build())
+ *             .showAsButton(false)
+ *             .strategy(&#34;oidc&#34;)
  *             .build());
  * 
  *     }
@@ -475,20 +574,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
-    }
-    /**
-     * IDs of the clients for which the connection is enabled.
-     * 
-     */
-    @Export(name="enabledClients", type=List.class, parameters={String.class})
-    private Output<List<String>> enabledClients;
-
-    /**
-     * @return IDs of the clients for which the connection is enabled.
-     * 
-     */
-    public Output<List<String>> enabledClients() {
-        return this.enabledClients;
     }
     /**
      * Indicates whether the connection is domain level.

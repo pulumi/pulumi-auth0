@@ -12,6 +12,7 @@ from .branding_theme import *
 from .client import *
 from .client_grant import *
 from .connection import *
+from .connection_client import *
 from .custom_domain import *
 from .custom_domain_verification import *
 from .email import *
@@ -103,6 +104,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/connectionClient",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/connectionClient:ConnectionClient": "ConnectionClient"
   }
  },
  {

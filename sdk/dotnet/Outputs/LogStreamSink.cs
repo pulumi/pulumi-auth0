@@ -70,6 +70,22 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? HttpEndpoint;
         /// <summary>
+        /// The Mixpanel project ID, found on the Project Settings page.
+        /// </summary>
+        public readonly string? MixpanelProjectId;
+        /// <summary>
+        /// The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+        /// </summary>
+        public readonly string? MixpanelRegion;
+        /// <summary>
+        /// The Mixpanel Service Account password.
+        /// </summary>
+        public readonly string? MixpanelServiceAccountPassword;
+        /// <summary>
+        /// The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+        /// </summary>
+        public readonly string? MixpanelServiceAccountUsername;
+        /// <summary>
         /// The Splunk domain name.
         /// </summary>
         public readonly string? SplunkDomain;
@@ -120,6 +136,14 @@ namespace Pulumi.Auth0.Outputs
 
             string? httpEndpoint,
 
+            string? mixpanelProjectId,
+
+            string? mixpanelRegion,
+
+            string? mixpanelServiceAccountPassword,
+
+            string? mixpanelServiceAccountUsername,
+
             string? splunkDomain,
 
             string? splunkPort,
@@ -144,6 +168,10 @@ namespace Pulumi.Auth0.Outputs
             HttpContentType = httpContentType;
             HttpCustomHeaders = httpCustomHeaders;
             HttpEndpoint = httpEndpoint;
+            MixpanelProjectId = mixpanelProjectId;
+            MixpanelRegion = mixpanelRegion;
+            MixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
+            MixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
             SplunkDomain = splunkDomain;
             SplunkPort = splunkPort;
             SplunkSecure = splunkSecure;

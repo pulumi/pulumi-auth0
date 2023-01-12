@@ -123,6 +123,40 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
+        /// The Mixpanel project ID, found on the Project Settings page.
+        /// </summary>
+        [Input("mixpanelProjectId")]
+        public Input<string>? MixpanelProjectId { get; set; }
+
+        /// <summary>
+        /// The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+        /// </summary>
+        [Input("mixpanelRegion")]
+        public Input<string>? MixpanelRegion { get; set; }
+
+        [Input("mixpanelServiceAccountPassword")]
+        private Input<string>? _mixpanelServiceAccountPassword;
+
+        /// <summary>
+        /// The Mixpanel Service Account password.
+        /// </summary>
+        public Input<string>? MixpanelServiceAccountPassword
+        {
+            get => _mixpanelServiceAccountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _mixpanelServiceAccountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+        /// </summary>
+        [Input("mixpanelServiceAccountUsername")]
+        public Input<string>? MixpanelServiceAccountUsername { get; set; }
+
+        /// <summary>
         /// The Splunk domain name.
         /// </summary>
         [Input("splunkDomain")]

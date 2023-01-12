@@ -40,6 +40,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { ConnectionClientArgs, ConnectionClientState } from "./connectionClient";
+export type ConnectionClient = import("./connectionClient").ConnectionClient;
+export const ConnectionClient: typeof import("./connectionClient").ConnectionClient = null as any;
+utilities.lazyLoad(exports, ["ConnectionClient"], () => require("./connectionClient"));
+
 export { CustomDomainArgs, CustomDomainState } from "./customDomain";
 export type CustomDomain = import("./customDomain").CustomDomain;
 export const CustomDomain: typeof import("./customDomain").CustomDomain = null as any;
@@ -186,6 +191,8 @@ const _module = {
                 return new ClientGrant(name, <any>undefined, { urn })
             case "auth0:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "auth0:index/connectionClient:ConnectionClient":
+                return new ConnectionClient(name, <any>undefined, { urn })
             case "auth0:index/customDomain:CustomDomain":
                 return new CustomDomain(name, <any>undefined, { urn })
             case "auth0:index/customDomainVerification:CustomDomainVerification":
@@ -238,6 +245,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/brandingTheme", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomain", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomainVerification", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/email", _module)

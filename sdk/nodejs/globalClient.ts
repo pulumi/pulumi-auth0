@@ -23,8 +23,8 @@ import * as utilities from "./utilities";
  *         I should probably have a login form here
  *     </body>
  * </html>
+ *
  * `,
- *     // Auth0 Universal Login - Custom Login Page
  *     customLoginPageOn: true,
  * });
  * ```

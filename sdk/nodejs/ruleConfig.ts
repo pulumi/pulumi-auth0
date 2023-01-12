@@ -13,14 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myRule = new auth0.Rule("my_rule", {
+ * const myRule = new auth0.Rule("myRule", {
  *     enabled: true,
  *     script: `    function (user, context, callback) {
  *       callback(null, user, context);
  *     }
- *   `,
+ *   
+ * `,
  * });
- * const myRuleConfig = new auth0.RuleConfig("my_rule_config", {
+ * const myRuleConfig = new auth0.RuleConfig("myRuleConfig", {
  *     key: "foo",
  *     value: "bar",
  * });

@@ -85,6 +85,26 @@ public final class LogStreamSink {
      */
     private @Nullable String httpEndpoint;
     /**
+     * @return The Mixpanel project ID, found on the Project Settings page.
+     * 
+     */
+    private @Nullable String mixpanelProjectId;
+    /**
+     * @return The Mixpanel region. Options are [&#34;us&#34;, &#34;eu&#34;]. EU is required for customers with EU data residency requirements.
+     * 
+     */
+    private @Nullable String mixpanelRegion;
+    /**
+     * @return The Mixpanel Service Account password.
+     * 
+     */
+    private @Nullable String mixpanelServiceAccountPassword;
+    /**
+     * @return The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+     * 
+     */
+    private @Nullable String mixpanelServiceAccountUsername;
+    /**
      * @return The Splunk domain name.
      * 
      */
@@ -210,6 +230,34 @@ public final class LogStreamSink {
         return Optional.ofNullable(this.httpEndpoint);
     }
     /**
+     * @return The Mixpanel project ID, found on the Project Settings page.
+     * 
+     */
+    public Optional<String> mixpanelProjectId() {
+        return Optional.ofNullable(this.mixpanelProjectId);
+    }
+    /**
+     * @return The Mixpanel region. Options are [&#34;us&#34;, &#34;eu&#34;]. EU is required for customers with EU data residency requirements.
+     * 
+     */
+    public Optional<String> mixpanelRegion() {
+        return Optional.ofNullable(this.mixpanelRegion);
+    }
+    /**
+     * @return The Mixpanel Service Account password.
+     * 
+     */
+    public Optional<String> mixpanelServiceAccountPassword() {
+        return Optional.ofNullable(this.mixpanelServiceAccountPassword);
+    }
+    /**
+     * @return The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+     * 
+     */
+    public Optional<String> mixpanelServiceAccountUsername() {
+        return Optional.ofNullable(this.mixpanelServiceAccountUsername);
+    }
+    /**
      * @return The Splunk domain name.
      * 
      */
@@ -268,6 +316,10 @@ public final class LogStreamSink {
         private @Nullable String httpContentType;
         private @Nullable List<Map<String,String>> httpCustomHeaders;
         private @Nullable String httpEndpoint;
+        private @Nullable String mixpanelProjectId;
+        private @Nullable String mixpanelRegion;
+        private @Nullable String mixpanelServiceAccountPassword;
+        private @Nullable String mixpanelServiceAccountUsername;
         private @Nullable String splunkDomain;
         private @Nullable String splunkPort;
         private @Nullable Boolean splunkSecure;
@@ -290,6 +342,10 @@ public final class LogStreamSink {
     	      this.httpContentType = defaults.httpContentType;
     	      this.httpCustomHeaders = defaults.httpCustomHeaders;
     	      this.httpEndpoint = defaults.httpEndpoint;
+    	      this.mixpanelProjectId = defaults.mixpanelProjectId;
+    	      this.mixpanelRegion = defaults.mixpanelRegion;
+    	      this.mixpanelServiceAccountPassword = defaults.mixpanelServiceAccountPassword;
+    	      this.mixpanelServiceAccountUsername = defaults.mixpanelServiceAccountUsername;
     	      this.splunkDomain = defaults.splunkDomain;
     	      this.splunkPort = defaults.splunkPort;
     	      this.splunkSecure = defaults.splunkSecure;
@@ -368,6 +424,26 @@ public final class LogStreamSink {
             return this;
         }
         @CustomType.Setter
+        public Builder mixpanelProjectId(@Nullable String mixpanelProjectId) {
+            this.mixpanelProjectId = mixpanelProjectId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mixpanelRegion(@Nullable String mixpanelRegion) {
+            this.mixpanelRegion = mixpanelRegion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mixpanelServiceAccountPassword(@Nullable String mixpanelServiceAccountPassword) {
+            this.mixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mixpanelServiceAccountUsername(@Nullable String mixpanelServiceAccountUsername) {
+            this.mixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
+            return this;
+        }
+        @CustomType.Setter
         public Builder splunkDomain(@Nullable String splunkDomain) {
             this.splunkDomain = splunkDomain;
             return this;
@@ -408,6 +484,10 @@ public final class LogStreamSink {
             o.httpContentType = httpContentType;
             o.httpCustomHeaders = httpCustomHeaders;
             o.httpEndpoint = httpEndpoint;
+            o.mixpanelProjectId = mixpanelProjectId;
+            o.mixpanelRegion = mixpanelRegion;
+            o.mixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
+            o.mixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
             o.splunkDomain = splunkDomain;
             o.splunkPort = splunkPort;
             o.splunkSecure = splunkSecure;
