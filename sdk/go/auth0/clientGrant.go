@@ -33,12 +33,12 @@ import (
 //			}
 //			myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
 //				Identifier: pulumi.String("https://api.example.com/client-grant"),
-//				Scopes: ResourceServerScopeArray{
-//					&ResourceServerScopeArgs{
+//				Scopes: auth0.ResourceServerScopeArray{
+//					&auth0.ResourceServerScopeArgs{
 //						Value:       pulumi.String("create:foo"),
 //						Description: pulumi.String("Create foos"),
 //					},
-//					&ResourceServerScopeArgs{
+//					&auth0.ResourceServerScopeArgs{
 //						Value:       pulumi.String("create:bar"),
 //						Description: pulumi.String("Create bars"),
 //					},

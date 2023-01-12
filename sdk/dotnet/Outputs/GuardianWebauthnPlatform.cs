@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GuardianWebauthnPlatform
     {
         /// <summary>
+        /// Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         /// </summary>
         public readonly bool? OverrideRelyingParty;
@@ -24,10 +28,13 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private GuardianWebauthnPlatform(
+            bool enabled,
+
             bool? overrideRelyingParty,
 
             string? relyingPartyIdentifier)
         {
+            Enabled = enabled;
             OverrideRelyingParty = overrideRelyingParty;
             RelyingPartyIdentifier = relyingPartyIdentifier;
         }

@@ -7,6 +7,7 @@ import com.pulumi.auth0.EmailArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.EmailState;
 import com.pulumi.auth0.outputs.EmailCredentials;
+import com.pulumi.auth0.outputs.EmailSettings;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -141,6 +142,20 @@ public class Email extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Specific email provider settings.
+     * 
+     */
+    @Export(name="settings", type=EmailSettings.class, parameters={})
+    private Output<EmailSettings> settings;
+
+    /**
+     * @return Specific email provider settings.
+     * 
+     */
+    public Output<EmailSettings> settings() {
+        return this.settings;
     }
 
     /**

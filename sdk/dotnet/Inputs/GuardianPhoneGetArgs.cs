@@ -12,7 +12,13 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class GuardianPhoneGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("messageTypes", required: true)]
+        /// <summary>
+        /// Indicates whether Phone MFA is enabled.
+        /// </summary>
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        [Input("messageTypes")]
         private InputList<string>? _messageTypes;
 
         /// <summary>
@@ -33,8 +39,8 @@ namespace Pulumi.Auth0.Inputs
         /// <summary>
         /// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
         /// </summary>
-        [Input("provider", required: true)]
-        public Input<string> Provider { get; set; } = null!;
+        [Input("provider")]
+        public Input<string>? Provider { get; set; }
 
         public GuardianPhoneGetArgs()
         {

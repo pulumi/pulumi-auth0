@@ -34,13 +34,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "googleOauth2", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					AllowedAudiences: pulumi.StringArray{
 //						pulumi.String("example.com"),
 //						pulumi.String("api.example.com"),
 //					},
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("email"),
 //						pulumi.String("profile"),
@@ -74,15 +78,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "facebook", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("public_profile"),
 //						pulumi.String("email"),
 //						pulumi.String("groups_access_member_info"),
 //						pulumi.String("user_birthday"),
 //					},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
 //				},
 //				Strategy: pulumi.String("facebook"),
 //			})
@@ -101,6 +110,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -109,15 +120,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "apple", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
-//					ClientSecret: pulumi.String("<private-key>"),
+//					ClientSecret: pulumi.String(fmt.Sprintf("-----BEGIN PRIVATE KEY-----\nMIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA\n-----END PRIVATE KEY-----\n")),
 //					KeyId:        pulumi.String("<key-id>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("email"),
 //						pulumi.String("name"),
 //					},
-//					TeamId: pulumi.String("<team-id>"),
+//					SetUserRootAttributes: pulumi.String("on_first_login"),
+//					TeamId:                pulumi.String("<team-id>"),
 //				},
 //				Strategy: pulumi.String("apple"),
 //			})
@@ -144,15 +160,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "linkedin", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("basic_profile"),
 //						pulumi.String("profile"),
 //						pulumi.String("email"),
 //					},
-//					StrategyVersion: pulumi.Int(2),
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//					StrategyVersion:       pulumi.Int(2),
 //				},
 //				Strategy: pulumi.String("linkedin"),
 //			})
@@ -179,15 +200,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "github", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("email"),
 //						pulumi.String("profile"),
 //						pulumi.String("public_repo"),
 //						pulumi.String("repo"),
 //					},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
 //				},
 //				Strategy: pulumi.String("github"),
 //			})
@@ -214,10 +240,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "salesforce", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:         pulumi.String("<client-id>"),
 //					ClientSecret:     pulumi.String("<client-secret>"),
 //					CommunityBaseUrl: pulumi.String("https://salesforce.example.com"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("openid"),
+//						pulumi.String("email"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_first_login"),
 //				},
 //				Strategy: pulumi.String("salesforce"),
 //			})
@@ -230,6 +265,8 @@ import (
 //
 // ```
 // ### OAuth2 Connection
+//
+// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
 //
 // ```go
 // package main
@@ -246,15 +283,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "oauth2", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					AuthorizationEndpoint: pulumi.String("https://auth.example.com/oauth2/authorize"),
 //					ClientId:              pulumi.String("<client-id>"),
 //					ClientSecret:          pulumi.String("<client-secret>"),
-//					PkceEnabled:           pulumi.Bool(true),
+//					IconUrl:               pulumi.String("https://auth.example.com/assets/logo.png"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					PkceEnabled: pulumi.Bool(true),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("basic_profile"),
+//						pulumi.String("profile"),
+//						pulumi.String("email"),
+//					},
 //					Scripts: pulumi.StringMap{
 //						"fetchUserProfile": pulumi.String(fmt.Sprintf("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n      \n")),
 //					},
-//					TokenEndpoint: pulumi.String("https://auth.example.com/oauth2/token"),
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
+//					TokenEndpoint:         pulumi.String("https://auth.example.com/oauth2/token"),
 //				},
 //				Strategy: pulumi.String("oauth2"),
 //			})
@@ -284,12 +332,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "sms", &auth0.ConnectionArgs{
 //				IsDomainConnection: pulumi.Bool(false),
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					BruteForceProtection: pulumi.Bool(true),
 //					DisableSignup:        pulumi.Bool(false),
 //					ForwardRequestInfo:   pulumi.Bool(true),
 //					From:                 pulumi.String("+15555555555"),
-//					GatewayAuthentication: &ConnectionOptionsGatewayAuthenticationArgs{
+//					GatewayAuthentication: &auth0.ConnectionOptionsGatewayAuthenticationArgs{
 //						Audience:            pulumi.String("https://somewhere.com/sms-gateway"),
 //						Method:              pulumi.String("bearer"),
 //						Secret:              pulumi.String("4e2680bb74ec2ae24736476dd37ed6c2"),
@@ -301,7 +349,7 @@ import (
 //					Provider:   pulumi.String("sms_gateway"),
 //					Syntax:     pulumi.String("md_with_macros"),
 //					Template:   pulumi.String("@@password@@"),
-//					Totp: &ConnectionOptionsTotpArgs{
+//					Totp: &auth0.ConnectionOptionsTotpArgs{
 //						Length:   pulumi.Int(6),
 //						TimeStep: pulumi.Int(300),
 //					},
@@ -333,7 +381,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "passwordlessEmail", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					AuthParams: pulumi.StringMap{
 //						"responseType": pulumi.String("code"),
 //						"scope":        pulumi.String("openid email profile offline_access"),
@@ -341,12 +389,13 @@ import (
 //					BruteForceProtection:  pulumi.Bool(true),
 //					DisableSignup:         pulumi.Bool(false),
 //					From:                  pulumi.String("{{ application.name }} <root@auth0.com>"),
+//					Name:                  pulumi.String("email"),
 //					NonPersistentAttrs:    pulumi.StringArray{},
-//					SetUserRootAttributes: pulumi.String{},
+//					SetUserRootAttributes: pulumi.String("on_each_login"),
 //					Subject:               pulumi.String("Welcome to {{ application.name }}"),
 //					Syntax:                pulumi.String("liquid"),
 //					Template:              pulumi.String("<html>This is the body of the email</html>"),
-//					Totp: &ConnectionOptionsTotpArgs{
+//					Totp: &auth0.ConnectionOptionsTotpArgs{
 //						Length:   pulumi.Int(6),
 //						TimeStep: pulumi.Int(300),
 //					},
@@ -376,16 +425,73 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "windowslive", &auth0.ConnectionArgs{
-//				Options: &ConnectionOptionsArgs{
+//				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("signin"),
 //						pulumi.String("graph_user"),
 //					},
-//					StrategyVersion: pulumi.Int(2),
+//					SetUserRootAttributes: pulumi.String("on_first_login"),
+//					StrategyVersion:       pulumi.Int(2),
 //				},
 //				Strategy: pulumi.String("windowslive"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### OIDC Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewConnection(ctx, "oidc", &auth0.ConnectionArgs{
+//				DisplayName: pulumi.String("OIDC Connection"),
+//				Options: &auth0.ConnectionOptionsArgs{
+//					AuthorizationEndpoint: pulumi.String("https://www.paypal.com/signin/authorize"),
+//					ClientId:              pulumi.String("1234567"),
+//					ClientSecret:          pulumi.String("1234567"),
+//					DiscoveryUrl:          pulumi.String("https://www.paypalobjects.com/.well-known/openid-configuration"),
+//					DomainAliases: pulumi.StringArray{
+//						pulumi.String("example.com"),
+//					},
+//					IconUrl: pulumi.String("https://example.com/assets/logo.png"),
+//					Issuer:  pulumi.String("https://www.paypalobjects.com"),
+//					JwksUri: pulumi.String("https://api.paypal.com/v1/oauth2/certs"),
+//					NonPersistentAttrs: pulumi.StringArray{
+//						pulumi.String("ethnicity"),
+//						pulumi.String("gender"),
+//					},
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("openid"),
+//						pulumi.String("email"),
+//					},
+//					SetUserRootAttributes: pulumi.String("on_first_login"),
+//					TenantDomain:          pulumi.String(""),
+//					TokenEndpoint:         pulumi.String("https://api.paypal.com/v1/oauth2/token"),
+//					Type:                  pulumi.String("front_channel"),
+//					UserinfoEndpoint:      pulumi.String("https://api.paypal.com/v1/oauth2/token/userinfo"),
+//				},
+//				ShowAsButton: pulumi.Bool(false),
+//				Strategy:     pulumi.String("oidc"),
 //			})
 //			if err != nil {
 //				return err
@@ -410,8 +516,6 @@ type Connection struct {
 
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled.
-	EnabledClients pulumi.StringArrayOutput `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
@@ -464,8 +568,6 @@ func GetConnection(ctx *pulumi.Context,
 type connectionState struct {
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled.
-	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
@@ -487,8 +589,6 @@ type connectionState struct {
 type ConnectionState struct {
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
-	// IDs of the clients for which the connection is enabled.
-	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
@@ -514,8 +614,6 @@ func (ConnectionState) ElementType() reflect.Type {
 type connectionArgs struct {
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled.
-	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
@@ -538,8 +636,6 @@ type connectionArgs struct {
 type ConnectionArgs struct {
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
-	// IDs of the clients for which the connection is enabled.
-	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
@@ -648,11 +744,6 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 // Name used in login screen.
 func (o ConnectionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// IDs of the clients for which the connection is enabled.
-func (o ConnectionOutput) EnabledClients() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.EnabledClients }).(pulumi.StringArrayOutput)
 }
 
 // Indicates whether the connection is domain level.

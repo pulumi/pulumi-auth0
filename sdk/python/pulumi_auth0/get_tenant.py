@@ -70,6 +70,15 @@ class AwaitableGetTenantResult(GetTenantResult):
 def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenantResult:
     """
     Use this data source to access information about the tenant this provider is configured to access.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_tenant = auth0.get_tenant()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -19,13 +19,15 @@ class EmailArgs:
                  credentials: pulumi.Input['EmailCredentialsArgs'],
                  default_from_address: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input['EmailSettingsArgs']] = None):
         """
         The set of arguments for constructing a Email resource.
         :param pulumi.Input['EmailCredentialsArgs'] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[bool] enabled: Indicates whether the email provider is enabled.
         :param pulumi.Input[str] name: Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        :param pulumi.Input['EmailSettingsArgs'] settings: Specific email provider settings.
         """
         pulumi.set(__self__, "credentials", credentials)
         pulumi.set(__self__, "default_from_address", default_from_address)
@@ -33,6 +35,8 @@ class EmailArgs:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
 
     @property
     @pulumi.getter
@@ -82,6 +86,18 @@ class EmailArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['EmailSettingsArgs']]:
+        """
+        Specific email provider settings.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['EmailSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
 
 @pulumi.input_type
 class _EmailState:
@@ -89,13 +105,15 @@ class _EmailState:
                  credentials: Optional[pulumi.Input['EmailCredentialsArgs']] = None,
                  default_from_address: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input['EmailSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering Email resources.
         :param pulumi.Input['EmailCredentialsArgs'] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[bool] enabled: Indicates whether the email provider is enabled.
         :param pulumi.Input[str] name: Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        :param pulumi.Input['EmailSettingsArgs'] settings: Specific email provider settings.
         """
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
@@ -105,6 +123,8 @@ class _EmailState:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
 
     @property
     @pulumi.getter
@@ -154,6 +174,18 @@ class _EmailState:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['EmailSettingsArgs']]:
+        """
+        Specific email provider settings.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['EmailSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
 
 class Email(pulumi.CustomResource):
     @overload
@@ -164,6 +196,7 @@ class Email(pulumi.CustomResource):
                  default_from_address: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input[pulumi.InputType['EmailSettingsArgs']]] = None,
                  __props__=None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
@@ -216,6 +249,7 @@ class Email(pulumi.CustomResource):
         :param pulumi.Input[str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[bool] enabled: Indicates whether the email provider is enabled.
         :param pulumi.Input[str] name: Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        :param pulumi.Input[pulumi.InputType['EmailSettingsArgs']] settings: Specific email provider settings.
         """
         ...
     @overload
@@ -287,6 +321,7 @@ class Email(pulumi.CustomResource):
                  default_from_address: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input[pulumi.InputType['EmailSettingsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,6 +339,7 @@ class Email(pulumi.CustomResource):
             __props__.__dict__["default_from_address"] = default_from_address
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["name"] = name
+            __props__.__dict__["settings"] = settings
         super(Email, __self__).__init__(
             'auth0:index/email:Email',
             resource_name,
@@ -317,7 +353,8 @@ class Email(pulumi.CustomResource):
             credentials: Optional[pulumi.Input[pulumi.InputType['EmailCredentialsArgs']]] = None,
             default_from_address: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'Email':
+            name: Optional[pulumi.Input[str]] = None,
+            settings: Optional[pulumi.Input[pulumi.InputType['EmailSettingsArgs']]] = None) -> 'Email':
         """
         Get an existing Email resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -329,6 +366,7 @@ class Email(pulumi.CustomResource):
         :param pulumi.Input[str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[bool] enabled: Indicates whether the email provider is enabled.
         :param pulumi.Input[str] name: Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        :param pulumi.Input[pulumi.InputType['EmailSettingsArgs']] settings: Specific email provider settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,6 +376,7 @@ class Email(pulumi.CustomResource):
         __props__.__dict__["default_from_address"] = default_from_address
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["name"] = name
+        __props__.__dict__["settings"] = settings
         return Email(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -371,4 +410,12 @@ class Email(pulumi.CustomResource):
         Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> pulumi.Output['outputs.EmailSettings']:
+        """
+        Specific email provider settings.
+        """
+        return pulumi.get(self, "settings")
 

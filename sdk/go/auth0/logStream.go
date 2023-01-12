@@ -38,7 +38,7 @@ import (
 //						"type": pulumi.String("category"),
 //					},
 //				},
-//				Sink: &LogStreamSinkArgs{
+//				Sink: &auth0.LogStreamSinkArgs{
 //					HttpAuthorization: pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					HttpContentFormat: pulumi.String("JSONOBJECT"),
 //					HttpContentType:   pulumi.String("application/json"),
@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewLogStream(ctx, "exampleAws", &auth0.LogStreamArgs{
-//				Sink: &LogStreamSinkArgs{
+//				Sink: &auth0.LogStreamSinkArgs{
 //					AwsAccountId: pulumi.String("my_account_id"),
 //					AwsRegion:    pulumi.String("us-east-2"),
 //				},

@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myGuardian = new Guardian(&#34;myGuardian&#34;, GuardianArgs.builder()        
  *             .duo(GuardianDuoArgs.builder()
+ *                 .enabled(true)
  *                 .hostname(&#34;api-hostname&#34;)
  *                 .integrationKey(&#34;someKey&#34;)
  *                 .secretKey(&#34;someSecret&#34;)
@@ -62,6 +63,7 @@ import javax.annotation.Nullable;
  *             .email(true)
  *             .otp(true)
  *             .phone(GuardianPhoneArgs.builder()
+ *                 .enabled(true)
  *                 .messageTypes(                
  *                     &#34;sms&#34;,
  *                     &#34;voice&#34;)
@@ -85,10 +87,15 @@ import javax.annotation.Nullable;
  *                     .appleAppLink(&#34;https://itunes.apple.com/us/app/my-app/id123121&#34;)
  *                     .googleAppLink(&#34;https://play.google.com/store/apps/details?id=com.my.app&#34;)
  *                     .build())
+ *                 .enabled(true)
+ *                 .provider(&#34;sns&#34;)
  *                 .build())
  *             .recoveryCode(true)
- *             .webauthnPlatform()
+ *             .webauthnPlatform(GuardianWebauthnPlatformArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
  *             .webauthnRoaming(GuardianWebauthnRoamingArgs.builder()
+ *                 .enabled(true)
  *                 .userVerification(&#34;required&#34;)
  *                 .build())
  *             .build());
@@ -113,14 +120,14 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="duo", type=GuardianDuo.class, parameters={})
-    private Output</* @Nullable */ GuardianDuo> duo;
+    private Output<GuardianDuo> duo;
 
     /**
      * @return Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      * 
      */
-    public Output<Optional<GuardianDuo>> duo() {
-        return Codegen.optional(this.duo);
+    public Output<GuardianDuo> duo() {
+        return this.duo;
     }
     /**
      * Indicates whether email MFA is enabled.
@@ -155,14 +162,14 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="phone", type=GuardianPhone.class, parameters={})
-    private Output</* @Nullable */ GuardianPhone> phone;
+    private Output<GuardianPhone> phone;
 
     /**
      * @return Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      * 
      */
-    public Output<Optional<GuardianPhone>> phone() {
-        return Codegen.optional(this.phone);
+    public Output<GuardianPhone> phone() {
+        return this.phone;
     }
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
@@ -183,14 +190,14 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="push", type=GuardianPush.class, parameters={})
-    private Output</* @Nullable */ GuardianPush> push;
+    private Output<GuardianPush> push;
 
     /**
      * @return Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      * 
      */
-    public Output<Optional<GuardianPush>> push() {
-        return Codegen.optional(this.push);
+    public Output<GuardianPush> push() {
+        return this.push;
     }
     /**
      * Indicates whether recovery code MFA is enabled.
@@ -211,28 +218,28 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="webauthnPlatform", type=GuardianWebauthnPlatform.class, parameters={})
-    private Output</* @Nullable */ GuardianWebauthnPlatform> webauthnPlatform;
+    private Output<GuardianWebauthnPlatform> webauthnPlatform;
 
     /**
      * @return Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      * 
      */
-    public Output<Optional<GuardianWebauthnPlatform>> webauthnPlatform() {
-        return Codegen.optional(this.webauthnPlatform);
+    public Output<GuardianWebauthnPlatform> webauthnPlatform() {
+        return this.webauthnPlatform;
     }
     /**
      * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      * 
      */
     @Export(name="webauthnRoaming", type=GuardianWebauthnRoaming.class, parameters={})
-    private Output</* @Nullable */ GuardianWebauthnRoaming> webauthnRoaming;
+    private Output<GuardianWebauthnRoaming> webauthnRoaming;
 
     /**
      * @return Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      * 
      */
-    public Output<Optional<GuardianWebauthnRoaming>> webauthnRoaming() {
-        return Codegen.optional(this.webauthnRoaming);
+    public Output<GuardianWebauthnRoaming> webauthnRoaming() {
+        return this.webauthnRoaming;
     }
 
     /**

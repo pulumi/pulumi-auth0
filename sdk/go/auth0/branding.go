@@ -38,11 +38,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewBranding(ctx, "myBrand", &auth0.BrandingArgs{
 //				LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
-//				Colors: &BrandingColorsArgs{
+//				Colors: &auth0.BrandingColorsArgs{
 //					Primary:        pulumi.String("#0059d6"),
 //					PageBackground: pulumi.String("#000000"),
 //				},
-//				UniversalLogin: &BrandingUniversalLoginArgs{
+//				UniversalLogin: &auth0.BrandingUniversalLoginArgs{
 //					Body: readFileOrPanic("universal_login_body.html"),
 //				},
 //			})

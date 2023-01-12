@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * // This is an example of an http log stream.
- * const myWebhook = new auth0.LogStream("my_webhook", {
+ * const myWebhook = new auth0.LogStream("myWebhook", {
  *     filters: [
  *         {
  *             name: "auth.login.fail",
@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *     type: "http",
  * });
  * // This is an example of an Amazon EventBridge log stream.
- * const exampleAws = new auth0.LogStream("example_aws", {
+ * const exampleAws = new auth0.LogStream("exampleAws", {
  *     sink: {
  *         awsAccountId: "my_account_id",
  *         awsRegion: "us-east-2",

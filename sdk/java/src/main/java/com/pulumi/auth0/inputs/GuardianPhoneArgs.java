@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.auth0.inputs.GuardianPhoneOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,18 +19,33 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
     public static final GuardianPhoneArgs Empty = new GuardianPhoneArgs();
 
     /**
+     * Indicates whether Phone MFA is enabled.
+     * 
+     */
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether Phone MFA is enabled.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    /**
      * Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      * 
      */
-    @Import(name="messageTypes", required=true)
-    private Output<List<String>> messageTypes;
+    @Import(name="messageTypes")
+    private @Nullable Output<List<String>> messageTypes;
 
     /**
      * @return Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      * 
      */
-    public Output<List<String>> messageTypes() {
-        return this.messageTypes;
+    public Optional<Output<List<String>>> messageTypes() {
+        return Optional.ofNullable(this.messageTypes);
     }
 
     /**
@@ -51,20 +67,21 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
      * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
-    @Import(name="provider", required=true)
-    private Output<String> provider;
+    @Import(name="provider")
+    private @Nullable Output<String> provider;
 
     /**
      * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      * 
      */
-    public Output<String> provider() {
-        return this.provider;
+    public Optional<Output<String>> provider() {
+        return Optional.ofNullable(this.provider);
     }
 
     private GuardianPhoneArgs() {}
 
     private GuardianPhoneArgs(GuardianPhoneArgs $) {
+        this.enabled = $.enabled;
         this.messageTypes = $.messageTypes;
         this.options = $.options;
         this.provider = $.provider;
@@ -89,12 +106,33 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enabled Indicates whether Phone MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Indicates whether Phone MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
          * @param messageTypes Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
          * 
          * @return builder
          * 
          */
-        public Builder messageTypes(Output<List<String>> messageTypes) {
+        public Builder messageTypes(@Nullable Output<List<String>> messageTypes) {
             $.messageTypes = messageTypes;
             return this;
         }
@@ -146,7 +184,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder provider(Output<String> provider) {
+        public Builder provider(@Nullable Output<String> provider) {
             $.provider = provider;
             return this;
         }
@@ -162,8 +200,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GuardianPhoneArgs build() {
-            $.messageTypes = Objects.requireNonNull($.messageTypes, "expected parameter 'messageTypes' to be non-null");
-            $.provider = Objects.requireNonNull($.provider, "expected parameter 'provider' to be non-null");
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

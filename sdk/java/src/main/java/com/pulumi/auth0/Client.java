@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
  * With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 

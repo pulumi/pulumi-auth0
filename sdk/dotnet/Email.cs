@@ -97,6 +97,12 @@ namespace Pulumi.Auth0
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Specific email provider settings.
+        /// </summary>
+        [Output("settings")]
+        public Output<Outputs.EmailSettings> Settings { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Email resource with the given unique name, arguments, and options.
@@ -167,6 +173,12 @@ namespace Pulumi.Auth0
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Specific email provider settings.
+        /// </summary>
+        [Input("settings")]
+        public Input<Inputs.EmailSettingsArgs>? Settings { get; set; }
+
         public EmailArgs()
         {
         }
@@ -198,6 +210,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Specific email provider settings.
+        /// </summary>
+        [Input("settings")]
+        public Input<Inputs.EmailSettingsGetArgs>? Settings { get; set; }
 
         public EmailState()
         {

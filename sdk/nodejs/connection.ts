@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const googleOauth2 = new auth0.Connection("google_oauth2", {
+ * const googleOauth2 = new auth0.Connection("googleOauth2", {
  *     options: {
  *         allowedAudiences: [
  *             "example.com",
@@ -29,6 +29,10 @@ import * as utilities from "./utilities";
  *         ],
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *         scopes: [
  *             "email",
  *             "profile",
@@ -50,12 +54,17 @@ import * as utilities from "./utilities";
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *         scopes: [
  *             "public_profile",
  *             "email",
  *             "groups_access_member_info",
  *             "user_birthday",
  *         ],
+ *         setUserRootAttributes: "on_each_login",
  *     },
  *     strategy: "facebook",
  * });
@@ -69,12 +78,20 @@ import * as utilities from "./utilities";
  * const apple = new auth0.Connection("apple", {
  *     options: {
  *         clientId: "<client-id>",
- *         clientSecret: "<private-key>",
+ *         clientSecret: `-----BEGIN PRIVATE KEY-----
+ * MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+ * -----END PRIVATE KEY-----
+ * `,
  *         keyId: "<key-id>",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *         scopes: [
  *             "email",
  *             "name",
  *         ],
+ *         setUserRootAttributes: "on_first_login",
  *         teamId: "<team-id>",
  *     },
  *     strategy: "apple",
@@ -90,11 +107,16 @@ import * as utilities from "./utilities";
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *         scopes: [
  *             "basic_profile",
  *             "profile",
  *             "email",
  *         ],
+ *         setUserRootAttributes: "on_each_login",
  *         strategyVersion: 2,
  *     },
  *     strategy: "linkedin",
@@ -110,12 +132,17 @@ import * as utilities from "./utilities";
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *         scopes: [
  *             "email",
  *             "profile",
  *             "public_repo",
  *             "repo",
  *         ],
+ *         setUserRootAttributes: "on_each_login",
  *     },
  *     strategy: "github",
  * });
@@ -131,11 +158,22 @@ import * as utilities from "./utilities";
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
  *         communityBaseUrl: "https://salesforce.example.com",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
+ *         scopes: [
+ *             "openid",
+ *             "email",
+ *         ],
+ *         setUserRootAttributes: "on_first_login",
  *     },
  *     strategy: "salesforce",
  * });
  * ```
  * ### OAuth2 Connection
+ *
+ * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -146,13 +184,25 @@ import * as utilities from "./utilities";
  *         authorizationEndpoint: "https://auth.example.com/oauth2/authorize",
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
+ *         iconUrl: "https://auth.example.com/assets/logo.png",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *         pkceEnabled: true,
+ *         scopes: [
+ *             "basic_profile",
+ *             "profile",
+ *             "email",
+ *         ],
  *         scripts: {
  *             fetchUserProfile: `        function fetchUserProfile(accessToken, context, callback) {
  *           return callback(new Error("Whoops!"));
  *         }
- *       `,
+ *       
+ * `,
  *         },
+ *         setUserRootAttributes: "on_each_login",
  *         tokenEndpoint: "https://auth.example.com/oauth2/token",
  *     },
  *     strategy: "oauth2",
@@ -201,17 +251,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const passwordlessEmail = new auth0.Connection("passwordless_email", {
+ * const passwordlessEmail = new auth0.Connection("passwordlessEmail", {
  *     options: {
  *         authParams: {
- *             response_type: "code",
+ *             responseType: "code",
  *             scope: "openid email profile offline_access",
  *         },
  *         bruteForceProtection: true,
  *         disableSignup: false,
  *         from: "{{ application.name }} <root@auth0.com>",
+ *         name: "email",
  *         nonPersistentAttrs: [],
- *         setUserRootAttributes: [],
+ *         setUserRootAttributes: "on_each_login",
  *         subject: "Welcome to {{ application.name }}",
  *         syntax: "liquid",
  *         template: "<html>This is the body of the email</html>",
@@ -233,13 +284,53 @@ import * as utilities from "./utilities";
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
  *         scopes: [
  *             "signin",
  *             "graph_user",
  *         ],
+ *         setUserRootAttributes: "on_first_login",
  *         strategyVersion: 2,
  *     },
  *     strategy: "windowslive",
+ * });
+ * ```
+ * ### OIDC Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const oidc = new auth0.Connection("oidc", {
+ *     displayName: "OIDC Connection",
+ *     options: {
+ *         authorizationEndpoint: "https://www.paypal.com/signin/authorize",
+ *         clientId: "1234567",
+ *         clientSecret: "1234567",
+ *         discoveryUrl: "https://www.paypalobjects.com/.well-known/openid-configuration",
+ *         domainAliases: ["example.com"],
+ *         iconUrl: "https://example.com/assets/logo.png",
+ *         issuer: "https://www.paypalobjects.com",
+ *         jwksUri: "https://api.paypal.com/v1/oauth2/certs",
+ *         nonPersistentAttrs: [
+ *             "ethnicity",
+ *             "gender",
+ *         ],
+ *         scopes: [
+ *             "openid",
+ *             "email",
+ *         ],
+ *         setUserRootAttributes: "on_first_login",
+ *         tenantDomain: "",
+ *         tokenEndpoint: "https://api.paypal.com/v1/oauth2/token",
+ *         type: "front_channel",
+ *         userinfoEndpoint: "https://api.paypal.com/v1/oauth2/token/userinfo",
+ *     },
+ *     showAsButton: false,
+ *     strategy: "oidc",
  * });
  * ```
  *
@@ -283,10 +374,6 @@ export class Connection extends pulumi.CustomResource {
      * Name used in login screen.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
-    /**
-     * IDs of the clients for which the connection is enabled.
-     */
-    public readonly enabledClients!: pulumi.Output<string[]>;
     /**
      * Indicates whether the connection is domain level.
      */
@@ -332,7 +419,6 @@ export class Connection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enabledClients"] = state ? state.enabledClients : undefined;
             resourceInputs["isDomainConnection"] = state ? state.isDomainConnection : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -348,7 +434,6 @@ export class Connection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'strategy'");
             }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enabledClients"] = args ? args.enabledClients : undefined;
             resourceInputs["isDomainConnection"] = args ? args.isDomainConnection : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -372,10 +457,6 @@ export interface ConnectionState {
      * Name used in login screen.
      */
     displayName?: pulumi.Input<string>;
-    /**
-     * IDs of the clients for which the connection is enabled.
-     */
-    enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether the connection is domain level.
      */
@@ -416,10 +497,6 @@ export interface ConnectionArgs {
      * Name used in login screen.
      */
     displayName?: pulumi.Input<string>;
-    /**
-     * IDs of the clients for which the connection is enabled.
-     */
-    enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether the connection is domain level.
      */

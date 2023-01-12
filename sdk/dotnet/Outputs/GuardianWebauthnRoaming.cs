@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GuardianWebauthnRoaming
     {
         /// <summary>
+        /// Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
         /// </summary>
         public readonly bool? OverrideRelyingParty;
@@ -28,12 +32,15 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private GuardianWebauthnRoaming(
+            bool enabled,
+
             bool? overrideRelyingParty,
 
             string? relyingPartyIdentifier,
 
             string? userVerification)
         {
+            Enabled = enabled;
             OverrideRelyingParty = overrideRelyingParty;
             RelyingPartyIdentifier = relyingPartyIdentifier;
             UserVerification = userVerification;

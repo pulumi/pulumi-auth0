@@ -148,10 +148,10 @@ func NewGlobalClient(ctx *pulumi.Context,
 	}
 
 	if args.ClientSecret != nil {
-		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrOutput)
+		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrInput)
 	}
 	if args.SigningKeys != nil {
-		args.SigningKeys = pulumi.ToSecret(args.SigningKeys).(pulumi.MapArrayOutput)
+		args.SigningKeys = pulumi.ToSecret(args.SigningKeys).(pulumi.MapArrayInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"clientSecret",

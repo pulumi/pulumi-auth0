@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * // This is an example on how to set up the email provider with Amazon SES.
- * const amazonSesEmailProvider = new auth0.Email("amazon_ses_email_provider", {
+ * const amazonSesEmailProvider = new auth0.Email("amazonSesEmailProvider", {
  *     credentials: {
  *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
  *         region: "us-east-1",
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     enabled: true,
  * });
  * // This is an example on how to set up the email provider with SMTP.
- * const smtpEmailProvider = new auth0.Email("smtp_email_provider", {
+ * const smtpEmailProvider = new auth0.Email("smtpEmailProvider", {
  *     credentials: {
  *         smtpHost: "your.smtp.host.com",
  *         smtpPass: "SMTP Password",
@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *     enabled: true,
  * });
  * // This is an example on how to set up the email provider with Sendgrid.
- * const sendgridEmailProvider = new auth0.Email("sendgrid_email_provider", {
+ * const sendgridEmailProvider = new auth0.Email("sendgridEmailProvider", {
  *     credentials: {
  *         apiKey: "secretAPIKey",
  *     },
@@ -98,6 +98,10 @@ export class Email extends pulumi.CustomResource {
      * Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Specific email provider settings.
+     */
+    public readonly settings!: pulumi.Output<outputs.EmailSettings>;
 
     /**
      * Create a Email resource with the given unique name, arguments, and options.
@@ -116,6 +120,7 @@ export class Email extends pulumi.CustomResource {
             resourceInputs["defaultFromAddress"] = state ? state.defaultFromAddress : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
         } else {
             const args = argsOrState as EmailArgs | undefined;
             if ((!args || args.credentials === undefined) && !opts.urn) {
@@ -128,6 +133,7 @@ export class Email extends pulumi.CustomResource {
             resourceInputs["defaultFromAddress"] = args ? args.defaultFromAddress : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["settings"] = args ? args.settings : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Email.__pulumiType, name, resourceInputs, opts);
@@ -154,6 +160,10 @@ export interface EmailState {
      * Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Specific email provider settings.
+     */
+    settings?: pulumi.Input<inputs.EmailSettings>;
 }
 
 /**
@@ -176,4 +186,8 @@ export interface EmailArgs {
      * Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Specific email provider settings.
+     */
+    settings?: pulumi.Input<inputs.EmailSettings>;
 }

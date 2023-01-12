@@ -32,7 +32,7 @@ import (
 //			actionFoo, err := auth0.NewAction(ctx, "actionFoo", &auth0.ActionArgs{
 //				Code:   pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"foo\");\n};\"\n")),
 //				Deploy: pulumi.Bool(true),
-//				SupportedTriggers: &ActionSupportedTriggersArgs{
+//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),
 //					Version: pulumi.String("v3"),
 //				},
@@ -43,7 +43,7 @@ import (
 //			actionBar, err := auth0.NewAction(ctx, "actionBar", &auth0.ActionArgs{
 //				Code:   pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"bar\");\n};\"\n")),
 //				Deploy: pulumi.Bool(true),
-//				SupportedTriggers: &ActionSupportedTriggersArgs{
+//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),
 //					Version: pulumi.String("v3"),
 //				},
@@ -53,12 +53,12 @@ import (
 //			}
 //			_, err = auth0.NewTriggerBinding(ctx, "loginFlow", &auth0.TriggerBindingArgs{
 //				Trigger: pulumi.String("post-login"),
-//				Actions: TriggerBindingActionArray{
-//					&TriggerBindingActionArgs{
+//				Actions: auth0.TriggerBindingActionArray{
+//					&auth0.TriggerBindingActionArgs{
 //						Id:          actionFoo.ID(),
 //						DisplayName: actionFoo.Name,
 //					},
-//					&TriggerBindingActionArgs{
+//					&auth0.TriggerBindingActionArgs{
 //						Id:          actionBar.ID(),
 //						DisplayName: actionBar.Name,
 //					},

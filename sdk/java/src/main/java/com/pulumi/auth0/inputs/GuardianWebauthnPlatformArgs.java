@@ -17,6 +17,21 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
     public static final GuardianWebauthnPlatformArgs Empty = new GuardianWebauthnPlatformArgs();
 
     /**
+     * Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+     * 
+     */
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    /**
      * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
@@ -49,6 +64,7 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
     private GuardianWebauthnPlatformArgs() {}
 
     private GuardianWebauthnPlatformArgs(GuardianWebauthnPlatformArgs $) {
+        this.enabled = $.enabled;
         this.overrideRelyingParty = $.overrideRelyingParty;
         this.relyingPartyIdentifier = $.relyingPartyIdentifier;
     }
@@ -69,6 +85,27 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
 
         public Builder(GuardianWebauthnPlatformArgs defaults) {
             $ = new GuardianWebauthnPlatformArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enabled Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**
@@ -114,6 +151,7 @@ public final class GuardianWebauthnPlatformArgs extends com.pulumi.resources.Res
         }
 
         public GuardianWebauthnPlatformArgs build() {
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

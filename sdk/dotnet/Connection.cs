@@ -38,6 +38,11 @@ namespace Pulumi.Auth0
     ///             },
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "email",
@@ -67,6 +72,11 @@ namespace Pulumi.Auth0
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "public_profile",
@@ -74,6 +84,7 @@ namespace Pulumi.Auth0
     ///                 "groups_access_member_info",
     ///                 "user_birthday",
     ///             },
+    ///             SetUserRootAttributes = "on_each_login",
     ///         },
     ///         Strategy = "facebook",
     ///     });
@@ -94,13 +105,22 @@ namespace Pulumi.Auth0
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
-    ///             ClientSecret = "&lt;private-key&gt;",
+    ///             ClientSecret = @"-----BEGIN PRIVATE KEY-----
+    /// MIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA
+    /// -----END PRIVATE KEY-----
+    /// ",
     ///             KeyId = "&lt;key-id&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "email",
     ///                 "name",
     ///             },
+    ///             SetUserRootAttributes = "on_first_login",
     ///             TeamId = "&lt;team-id&gt;",
     ///         },
     ///         Strategy = "apple",
@@ -123,12 +143,18 @@ namespace Pulumi.Auth0
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "basic_profile",
     ///                 "profile",
     ///                 "email",
     ///             },
+    ///             SetUserRootAttributes = "on_each_login",
     ///             StrategyVersion = 2,
     ///         },
     ///         Strategy = "linkedin",
@@ -151,6 +177,11 @@ namespace Pulumi.Auth0
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "email",
@@ -158,6 +189,7 @@ namespace Pulumi.Auth0
     ///                 "public_repo",
     ///                 "repo",
     ///             },
+    ///             SetUserRootAttributes = "on_each_login",
     ///         },
     ///         Strategy = "github",
     ///     });
@@ -180,6 +212,17 @@ namespace Pulumi.Auth0
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
     ///             CommunityBaseUrl = "https://salesforce.example.com",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "openid",
+    ///                 "email",
+    ///             },
+    ///             SetUserRootAttributes = "on_first_login",
     ///         },
     ///         Strategy = "salesforce",
     ///     });
@@ -187,6 +230,8 @@ namespace Pulumi.Auth0
     /// });
     /// ```
     /// ### OAuth2 Connection
+    /// 
+    /// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -202,7 +247,19 @@ namespace Pulumi.Auth0
     ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             IconUrl = "https://auth.example.com/assets/logo.png",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///             PkceEnabled = true,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "basic_profile",
+    ///                 "profile",
+    ///                 "email",
+    ///             },
     ///             Scripts = 
     ///             {
     ///                 { "fetchUserProfile", @"        function fetchUserProfile(accessToken, context, callback) {
@@ -211,6 +268,7 @@ namespace Pulumi.Auth0
     ///       
     /// " },
     ///             },
+    ///             SetUserRootAttributes = "on_each_login",
     ///             TokenEndpoint = "https://auth.example.com/oauth2/token",
     ///         },
     ///         Strategy = "oauth2",
@@ -285,8 +343,9 @@ namespace Pulumi.Auth0
     ///             BruteForceProtection = true,
     ///             DisableSignup = false,
     ///             From = "{{ application.name }} &lt;root@auth0.com&gt;",
+    ///             Name = "email",
     ///             NonPersistentAttrs = new[] {},
-    ///             SetUserRootAttributes = new[] {},
+    ///             SetUserRootAttributes = "on_each_login",
     ///             Subject = "Welcome to {{ application.name }}",
     ///             Syntax = "liquid",
     ///             Template = "&lt;html&gt;This is the body of the email&lt;/html&gt;",
@@ -316,14 +375,67 @@ namespace Pulumi.Auth0
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
     ///             Scopes = new[]
     ///             {
     ///                 "signin",
     ///                 "graph_user",
     ///             },
+    ///             SetUserRootAttributes = "on_first_login",
     ///             StrategyVersion = 2,
     ///         },
     ///         Strategy = "windowslive",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### OIDC Connection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var oidc = new Auth0.Connection("oidc", new()
+    ///     {
+    ///         DisplayName = "OIDC Connection",
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             AuthorizationEndpoint = "https://www.paypal.com/signin/authorize",
+    ///             ClientId = "1234567",
+    ///             ClientSecret = "1234567",
+    ///             DiscoveryUrl = "https://www.paypalobjects.com/.well-known/openid-configuration",
+    ///             DomainAliases = new[]
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///             IconUrl = "https://example.com/assets/logo.png",
+    ///             Issuer = "https://www.paypalobjects.com",
+    ///             JwksUri = "https://api.paypal.com/v1/oauth2/certs",
+    ///             NonPersistentAttrs = new[]
+    ///             {
+    ///                 "ethnicity",
+    ///                 "gender",
+    ///             },
+    ///             Scopes = new[]
+    ///             {
+    ///                 "openid",
+    ///                 "email",
+    ///             },
+    ///             SetUserRootAttributes = "on_first_login",
+    ///             TenantDomain = "",
+    ///             TokenEndpoint = "https://api.paypal.com/v1/oauth2/token",
+    ///             Type = "front_channel",
+    ///             UserinfoEndpoint = "https://api.paypal.com/v1/oauth2/token/userinfo",
+    ///         },
+    ///         ShowAsButton = false,
+    ///         Strategy = "oidc",
     ///     });
     /// 
     /// });
@@ -345,12 +457,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
-
-        /// <summary>
-        /// IDs of the clients for which the connection is enabled.
-        /// </summary>
-        [Output("enabledClients")]
-        public Output<ImmutableArray<string>> EnabledClients { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the connection is domain level.
@@ -452,18 +558,6 @@ namespace Pulumi.Auth0
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("enabledClients")]
-        private InputList<string>? _enabledClients;
-
-        /// <summary>
-        /// IDs of the clients for which the connection is enabled.
-        /// </summary>
-        public InputList<string> EnabledClients
-        {
-            get => _enabledClients ?? (_enabledClients = new InputList<string>());
-            set => _enabledClients = value;
-        }
-
         /// <summary>
         /// Indicates whether the connection is domain level.
         /// </summary>
@@ -542,18 +636,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        [Input("enabledClients")]
-        private InputList<string>? _enabledClients;
-
-        /// <summary>
-        /// IDs of the clients for which the connection is enabled.
-        /// </summary>
-        public InputList<string> EnabledClients
-        {
-            get => _enabledClients ?? (_enabledClients = new InputList<string>());
-            set => _enabledClients = value;
-        }
 
         /// <summary>
         /// Indicates whether the connection is domain level.

@@ -906,6 +906,8 @@ export interface EmailCredentials {
     apiKey?: string;
     /**
      * API User for your email service.
+     *
+     * @deprecated This field is not accepted by the API any more so it will be removed soon.
      */
     apiUser?: string;
     /**
@@ -936,6 +938,27 @@ export interface EmailCredentials {
      * SMTP username. Used only for SMTP.
      */
     smtpUser?: string;
+}
+
+export interface EmailSettings {
+    /**
+     * Headers settings for the `smtp` email provider.
+     */
+    headers?: outputs.EmailSettingsHeaders;
+    /**
+     * Message settings for the `mandrill` or `ses` email provider.
+     */
+    message?: outputs.EmailSettingsMessage;
+}
+
+export interface EmailSettingsHeaders {
+    xMcViewContentLink?: string;
+    xSesConfigurationSet?: string;
+}
+
+export interface EmailSettingsMessage {
+    configurationSetName?: string;
+    viewContentLink?: boolean;
 }
 
 export interface GetClientAddon {
@@ -1285,24 +1308,32 @@ export interface GlobalClientRefreshToken {
 
 export interface GuardianDuo {
     /**
+     * Indicates whether Duo MFA is enabled.
+     */
+    enabled: boolean;
+    /**
      * Duo API Hostname, see the Duo documentation for more details on Duo setup.
      */
-    hostname: string;
+    hostname?: string;
     /**
      * Duo client ID, see the Duo documentation for more details on Duo setup.
      */
-    integrationKey: string;
+    integrationKey?: string;
     /**
      * Duo client secret, see the Duo documentation for more details on Duo setup.
      */
-    secretKey: string;
+    secretKey?: string;
 }
 
 export interface GuardianPhone {
     /**
+     * Indicates whether Phone MFA is enabled.
+     */
+    enabled: boolean;
+    /**
      * Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      */
-    messageTypes: string[];
+    messageTypes?: string[];
     /**
      * Options for the various providers.
      */
@@ -1310,7 +1341,7 @@ export interface GuardianPhone {
     /**
      * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      */
-    provider: string;
+    provider?: string;
 }
 
 export interface GuardianPhoneOptions {
@@ -1326,11 +1357,19 @@ export interface GuardianPush {
     /**
      * Configuration for Amazon SNS.
      */
-    amazonSns?: outputs.GuardianPushAmazonSns;
+    amazonSns: outputs.GuardianPushAmazonSns;
     /**
      * Configuration for the Guardian Custom App.
      */
-    customApp?: outputs.GuardianPushCustomApp;
+    customApp: outputs.GuardianPushCustomApp;
+    /**
+     * Indicates whether Push MFA is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Provider to use, one of `guardian`, `sns`.
+     */
+    provider?: string;
 }
 
 export interface GuardianPushAmazonSns {
@@ -1349,6 +1388,10 @@ export interface GuardianPushCustomApp {
 
 export interface GuardianWebauthnPlatform {
     /**
+     * Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+     */
+    enabled: boolean;
+    /**
      * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      */
     overrideRelyingParty: boolean;
@@ -1359,6 +1402,10 @@ export interface GuardianWebauthnPlatform {
 }
 
 export interface GuardianWebauthnRoaming {
+    /**
+     * Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+     */
+    enabled: boolean;
     /**
      * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      */
@@ -1430,6 +1477,22 @@ export interface LogStreamSink {
      * The HTTP endpoint to send streaming logs.
      */
     httpEndpoint?: string;
+    /**
+     * The Mixpanel project ID, found on the Project Settings page.
+     */
+    mixpanelProjectId?: string;
+    /**
+     * The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+     */
+    mixpanelRegion?: string;
+    /**
+     * The Mixpanel Service Account password.
+     */
+    mixpanelServiceAccountPassword?: string;
+    /**
+     * The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+     */
+    mixpanelServiceAccountUsername?: string;
     /**
      * The Splunk domain name.
      */

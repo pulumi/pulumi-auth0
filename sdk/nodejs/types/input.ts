@@ -906,6 +906,8 @@ export interface EmailCredentials {
     apiKey?: pulumi.Input<string>;
     /**
      * API User for your email service.
+     *
+     * @deprecated This field is not accepted by the API any more so it will be removed soon.
      */
     apiUser?: pulumi.Input<string>;
     /**
@@ -936,6 +938,27 @@ export interface EmailCredentials {
      * SMTP username. Used only for SMTP.
      */
     smtpUser?: pulumi.Input<string>;
+}
+
+export interface EmailSettings {
+    /**
+     * Headers settings for the `smtp` email provider.
+     */
+    headers?: pulumi.Input<inputs.EmailSettingsHeaders>;
+    /**
+     * Message settings for the `mandrill` or `ses` email provider.
+     */
+    message?: pulumi.Input<inputs.EmailSettingsMessage>;
+}
+
+export interface EmailSettingsHeaders {
+    xMcViewContentLink?: pulumi.Input<string>;
+    xSesConfigurationSet?: pulumi.Input<string>;
+}
+
+export interface EmailSettingsMessage {
+    configurationSetName?: pulumi.Input<string>;
+    viewContentLink?: pulumi.Input<boolean>;
 }
 
 export interface GlobalClientAddons {
@@ -1085,24 +1108,32 @@ export interface GlobalClientRefreshToken {
 
 export interface GuardianDuo {
     /**
+     * Indicates whether Duo MFA is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
      * Duo API Hostname, see the Duo documentation for more details on Duo setup.
      */
-    hostname: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * Duo client ID, see the Duo documentation for more details on Duo setup.
      */
-    integrationKey: pulumi.Input<string>;
+    integrationKey?: pulumi.Input<string>;
     /**
      * Duo client secret, see the Duo documentation for more details on Duo setup.
      */
-    secretKey: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
 }
 
 export interface GuardianPhone {
     /**
+     * Indicates whether Phone MFA is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
      * Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      */
-    messageTypes: pulumi.Input<pulumi.Input<string>[]>;
+    messageTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Options for the various providers.
      */
@@ -1110,7 +1141,7 @@ export interface GuardianPhone {
     /**
      * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
      */
-    provider: pulumi.Input<string>;
+    provider?: pulumi.Input<string>;
 }
 
 export interface GuardianPhoneOptions {
@@ -1131,6 +1162,14 @@ export interface GuardianPush {
      * Configuration for the Guardian Custom App.
      */
     customApp?: pulumi.Input<inputs.GuardianPushCustomApp>;
+    /**
+     * Indicates whether Push MFA is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Provider to use, one of `guardian`, `sns`.
+     */
+    provider?: pulumi.Input<string>;
 }
 
 export interface GuardianPushAmazonSns {
@@ -1149,6 +1188,10 @@ export interface GuardianPushCustomApp {
 
 export interface GuardianWebauthnPlatform {
     /**
+     * Indicates whether WebAuthn with FIDO Device Biometrics MFA is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
      * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      */
     overrideRelyingParty?: pulumi.Input<boolean>;
@@ -1159,6 +1202,10 @@ export interface GuardianWebauthnPlatform {
 }
 
 export interface GuardianWebauthnRoaming {
+    /**
+     * Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
     /**
      * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      */
@@ -1230,6 +1277,22 @@ export interface LogStreamSink {
      * The HTTP endpoint to send streaming logs.
      */
     httpEndpoint?: pulumi.Input<string>;
+    /**
+     * The Mixpanel project ID, found on the Project Settings page.
+     */
+    mixpanelProjectId?: pulumi.Input<string>;
+    /**
+     * The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
+     */
+    mixpanelRegion?: pulumi.Input<string>;
+    /**
+     * The Mixpanel Service Account password.
+     */
+    mixpanelServiceAccountPassword?: pulumi.Input<string>;
+    /**
+     * The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+     */
+    mixpanelServiceAccountUsername?: pulumi.Input<string>;
     /**
      * The Splunk domain name.
      */

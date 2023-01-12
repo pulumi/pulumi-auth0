@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
+ * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
  *     allowOfflineAccess: true,
  *     identifier: "https://api.example.com",
  *     scopes: [

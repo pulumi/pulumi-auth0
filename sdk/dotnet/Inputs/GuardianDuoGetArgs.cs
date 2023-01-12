@@ -13,18 +13,24 @@ namespace Pulumi.Auth0.Inputs
     public sealed class GuardianDuoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates whether Duo MFA is enabled.
+        /// </summary>
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        /// <summary>
         /// Duo API Hostname, see the Duo documentation for more details on Duo setup.
         /// </summary>
-        [Input("hostname", required: true)]
-        public Input<string> Hostname { get; set; } = null!;
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Duo client ID, see the Duo documentation for more details on Duo setup.
         /// </summary>
-        [Input("integrationKey", required: true)]
-        public Input<string> IntegrationKey { get; set; } = null!;
+        [Input("integrationKey")]
+        public Input<string>? IntegrationKey { get; set; }
 
-        [Input("secretKey", required: true)]
+        [Input("secretKey")]
         private Input<string>? _secretKey;
 
         /// <summary>

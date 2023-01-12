@@ -229,6 +229,66 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Mixpanel project ID, found on the Project Settings page.
+     * 
+     */
+    @Import(name="mixpanelProjectId")
+    private @Nullable Output<String> mixpanelProjectId;
+
+    /**
+     * @return The Mixpanel project ID, found on the Project Settings page.
+     * 
+     */
+    public Optional<Output<String>> mixpanelProjectId() {
+        return Optional.ofNullable(this.mixpanelProjectId);
+    }
+
+    /**
+     * The Mixpanel region. Options are [&#34;us&#34;, &#34;eu&#34;]. EU is required for customers with EU data residency requirements.
+     * 
+     */
+    @Import(name="mixpanelRegion")
+    private @Nullable Output<String> mixpanelRegion;
+
+    /**
+     * @return The Mixpanel region. Options are [&#34;us&#34;, &#34;eu&#34;]. EU is required for customers with EU data residency requirements.
+     * 
+     */
+    public Optional<Output<String>> mixpanelRegion() {
+        return Optional.ofNullable(this.mixpanelRegion);
+    }
+
+    /**
+     * The Mixpanel Service Account password.
+     * 
+     */
+    @Import(name="mixpanelServiceAccountPassword")
+    private @Nullable Output<String> mixpanelServiceAccountPassword;
+
+    /**
+     * @return The Mixpanel Service Account password.
+     * 
+     */
+    public Optional<Output<String>> mixpanelServiceAccountPassword() {
+        return Optional.ofNullable(this.mixpanelServiceAccountPassword);
+    }
+
+    /**
+     * The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+     * 
+     */
+    @Import(name="mixpanelServiceAccountUsername")
+    private @Nullable Output<String> mixpanelServiceAccountUsername;
+
+    /**
+     * @return The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+     * 
+     */
+    public Optional<Output<String>> mixpanelServiceAccountUsername() {
+        return Optional.ofNullable(this.mixpanelServiceAccountUsername);
+    }
+
+    /**
      * The Splunk domain name.
      * 
      */
@@ -320,6 +380,10 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
         this.httpContentType = $.httpContentType;
         this.httpCustomHeaders = $.httpCustomHeaders;
         this.httpEndpoint = $.httpEndpoint;
+        this.mixpanelProjectId = $.mixpanelProjectId;
+        this.mixpanelRegion = $.mixpanelRegion;
+        this.mixpanelServiceAccountPassword = $.mixpanelServiceAccountPassword;
+        this.mixpanelServiceAccountUsername = $.mixpanelServiceAccountUsername;
         this.splunkDomain = $.splunkDomain;
         this.splunkPort = $.splunkPort;
         this.splunkSecure = $.splunkSecure;
@@ -647,6 +711,90 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder httpEndpoint(String httpEndpoint) {
             return httpEndpoint(Output.of(httpEndpoint));
+        }
+
+        /**
+         * @param mixpanelProjectId The Mixpanel project ID, found on the Project Settings page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mixpanelProjectId(@Nullable Output<String> mixpanelProjectId) {
+            $.mixpanelProjectId = mixpanelProjectId;
+            return this;
+        }
+
+        /**
+         * @param mixpanelProjectId The Mixpanel project ID, found on the Project Settings page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mixpanelProjectId(String mixpanelProjectId) {
+            return mixpanelProjectId(Output.of(mixpanelProjectId));
+        }
+
+        /**
+         * @param mixpanelRegion The Mixpanel region. Options are [&#34;us&#34;, &#34;eu&#34;]. EU is required for customers with EU data residency requirements.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mixpanelRegion(@Nullable Output<String> mixpanelRegion) {
+            $.mixpanelRegion = mixpanelRegion;
+            return this;
+        }
+
+        /**
+         * @param mixpanelRegion The Mixpanel region. Options are [&#34;us&#34;, &#34;eu&#34;]. EU is required for customers with EU data residency requirements.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mixpanelRegion(String mixpanelRegion) {
+            return mixpanelRegion(Output.of(mixpanelRegion));
+        }
+
+        /**
+         * @param mixpanelServiceAccountPassword The Mixpanel Service Account password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mixpanelServiceAccountPassword(@Nullable Output<String> mixpanelServiceAccountPassword) {
+            $.mixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
+            return this;
+        }
+
+        /**
+         * @param mixpanelServiceAccountPassword The Mixpanel Service Account password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mixpanelServiceAccountPassword(String mixpanelServiceAccountPassword) {
+            return mixpanelServiceAccountPassword(Output.of(mixpanelServiceAccountPassword));
+        }
+
+        /**
+         * @param mixpanelServiceAccountUsername The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mixpanelServiceAccountUsername(@Nullable Output<String> mixpanelServiceAccountUsername) {
+            $.mixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
+            return this;
+        }
+
+        /**
+         * @param mixpanelServiceAccountUsername The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mixpanelServiceAccountUsername(String mixpanelServiceAccountUsername) {
+            return mixpanelServiceAccountUsername(Output.of(mixpanelServiceAccountUsername));
         }
 
         /**

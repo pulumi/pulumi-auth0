@@ -49,14 +49,22 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     /**
      * API User for your email service.
      * 
+     * @deprecated
+     * This field is not accepted by the API any more so it will be removed soon.
+     * 
      */
+    @Deprecated /* This field is not accepted by the API any more so it will be removed soon. */
     @Import(name="apiUser")
     private @Nullable Output<String> apiUser;
 
     /**
      * @return API User for your email service.
      * 
+     * @deprecated
+     * This field is not accepted by the API any more so it will be removed soon.
+     * 
      */
+    @Deprecated /* This field is not accepted by the API any more so it will be removed soon. */
     public Optional<Output<String>> apiUser() {
         return Optional.ofNullable(this.apiUser);
     }
@@ -246,7 +254,11 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is not accepted by the API any more so it will be removed soon.
+         * 
          */
+        @Deprecated /* This field is not accepted by the API any more so it will be removed soon. */
         public Builder apiUser(@Nullable Output<String> apiUser) {
             $.apiUser = apiUser;
             return this;
@@ -257,7 +269,11 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is not accepted by the API any more so it will be removed soon.
+         * 
          */
+        @Deprecated /* This field is not accepted by the API any more so it will be removed soon. */
         public Builder apiUser(String apiUser) {
             return apiUser(Output.of(apiUser));
         }

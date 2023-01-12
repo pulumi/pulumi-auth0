@@ -15,23 +15,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * // An Auth0 Client loaded using its name.
- * const some_client_by_name = pulumi.output(auth0.getClient({
+ * const some-client-by-name = auth0.getClient({
  *     name: "Name of my Application",
- * }));
- * // An Auth0 Client loaded using its ID.
- * const some_client_by_id = pulumi.output(auth0.getClient({
+ * });
+ * const some-client-by-id = auth0.getClient({
  *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
- * }));
+ * });
  * ```
  */
 export function getClient(args?: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getClient:getClient", {
         "clientId": args.clientId,
         "name": args.name,
@@ -198,9 +193,25 @@ export interface GetClientResult {
      */
     readonly webOrigins: string[];
 }
-
+/**
+ * Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const some-client-by-name = auth0.getClient({
+ *     name: "Name of my Application",
+ * });
+ * const some-client-by-id = auth0.getClient({
+ *     clientId: "abcdefghkijklmnopqrstuvwxyz0123456789",
+ * });
+ * ```
+ */
 export function getClientOutput(args?: GetClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientResult> {
-    return pulumi.output(args).apply(a => getClient(a, opts))
+    return pulumi.output(args).apply((a: any) => getClient(a, opts))
 }
 
 /**

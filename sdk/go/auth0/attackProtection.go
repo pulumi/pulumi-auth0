@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewAttackProtection(ctx, "myProtection", &auth0.AttackProtectionArgs{
-//				BreachedPasswordDetection: &AttackProtectionBreachedPasswordDetectionArgs{
+//				BreachedPasswordDetection: &auth0.AttackProtectionBreachedPasswordDetectionArgs{
 //					AdminNotificationFrequencies: pulumi.StringArray{
 //						pulumi.String("daily"),
 //					},
@@ -38,7 +38,7 @@ import (
 //						pulumi.String("block"),
 //					},
 //				},
-//				BruteForceProtection: &AttackProtectionBruteForceProtectionArgs{
+//				BruteForceProtection: &auth0.AttackProtectionBruteForceProtectionArgs{
 //					Allowlists: pulumi.StringArray{
 //						pulumi.String("127.0.0.1"),
 //					},
@@ -50,16 +50,16 @@ import (
 //						pulumi.String("user_notification"),
 //					},
 //				},
-//				SuspiciousIpThrottling: &AttackProtectionSuspiciousIpThrottlingArgs{
+//				SuspiciousIpThrottling: &auth0.AttackProtectionSuspiciousIpThrottlingArgs{
 //					Allowlists: pulumi.StringArray{
 //						pulumi.String("192.168.1.1"),
 //					},
 //					Enabled: pulumi.Bool(true),
-//					PreLogin: &AttackProtectionSuspiciousIpThrottlingPreLoginArgs{
+//					PreLogin: &auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs{
 //						MaxAttempts: pulumi.Int(100),
 //						Rate:        pulumi.Int(864000),
 //					},
-//					PreUserRegistration: &AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{
+//					PreUserRegistration: &auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{
 //						MaxAttempts: pulumi.Int(50),
 //						Rate:        pulumi.Int(1200),
 //					},

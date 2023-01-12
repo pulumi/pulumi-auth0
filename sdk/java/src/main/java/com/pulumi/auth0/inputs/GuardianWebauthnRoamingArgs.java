@@ -17,6 +17,21 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
     public static final GuardianWebauthnRoamingArgs Empty = new GuardianWebauthnRoamingArgs();
 
     /**
+     * Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+     * 
+     */
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    /**
      * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      * 
      */
@@ -64,6 +79,7 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
     private GuardianWebauthnRoamingArgs() {}
 
     private GuardianWebauthnRoamingArgs(GuardianWebauthnRoamingArgs $) {
+        this.enabled = $.enabled;
         this.overrideRelyingParty = $.overrideRelyingParty;
         this.relyingPartyIdentifier = $.relyingPartyIdentifier;
         this.userVerification = $.userVerification;
@@ -85,6 +101,27 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
 
         public Builder(GuardianWebauthnRoamingArgs defaults) {
             $ = new GuardianWebauthnRoamingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enabled Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Indicates whether WebAuthn with FIDO Security Keys MFA is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**
@@ -151,6 +188,7 @@ public final class GuardianWebauthnRoamingArgs extends com.pulumi.resources.Reso
         }
 
         public GuardianWebauthnRoamingArgs build() {
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

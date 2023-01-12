@@ -15,15 +15,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const global = pulumi.output(auth0.getGlobalClient());
+ * const global = auth0.getGlobalClient({});
  * ```
  */
 export function getGlobalClient(opts?: pulumi.InvokeOptions): Promise<GetGlobalClientResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getGlobalClient:getGlobalClient", {
     }, opts);
 }
