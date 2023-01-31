@@ -40,7 +40,7 @@ class TenantArgs:
         :param pulumi.Input['TenantChangePasswordArgs'] change_password: Configuration settings for change password page.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
-        :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI, must be https and cannot contain a fragment.
+        :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration settings for error pages.
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
@@ -144,7 +144,7 @@ class TenantArgs:
     @pulumi.getter(name="defaultRedirectionUri")
     def default_redirection_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The default absolute redirection URI, must be https and cannot contain a fragment.
+        The default absolute redirection URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "default_redirection_uri")
 
@@ -336,7 +336,7 @@ class _TenantState:
         :param pulumi.Input['TenantChangePasswordArgs'] change_password: Configuration settings for change password page.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
-        :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI, must be https and cannot contain a fragment.
+        :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration settings for error pages.
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
@@ -440,7 +440,7 @@ class _TenantState:
     @pulumi.getter(name="defaultRedirectionUri")
     def default_redirection_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The default absolute redirection URI, must be https and cannot contain a fragment.
+        The default absolute redirection URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "default_redirection_uri")
 
@@ -698,7 +698,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TenantChangePasswordArgs']] change_password: Configuration settings for change password page.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
-        :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI, must be https and cannot contain a fragment.
+        :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[pulumi.InputType['TenantErrorPageArgs']] error_page: Configuration settings for error pages.
         :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: Configuration settings for tenant flags.
@@ -881,7 +881,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TenantChangePasswordArgs']] change_password: Configuration settings for change password page.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
-        :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI, must be https and cannot contain a fragment.
+        :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[pulumi.InputType['TenantErrorPageArgs']] error_page: Configuration settings for error pages.
         :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: Configuration settings for tenant flags.
@@ -956,7 +956,7 @@ class Tenant(pulumi.CustomResource):
     @pulumi.getter(name="defaultRedirectionUri")
     def default_redirection_uri(self) -> pulumi.Output[str]:
         """
-        The default absolute redirection URI, must be https and cannot contain a fragment.
+        The default absolute redirection URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "default_redirection_uri")
 

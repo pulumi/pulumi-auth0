@@ -39,14 +39,14 @@ class UserArgs:
         :param pulumi.Input[bool] blocked: Indicates whether the user is blocked or not.
         :param pulumi.Input[str] email: Email address of the user.
         :param pulumi.Input[bool] email_verified: Indicates whether the email address has been verified.
-        :param pulumi.Input[str] family_name: Family name of the user.
-        :param pulumi.Input[str] given_name: Given name of the user.
-        :param pulumi.Input[str] name: Name of the user.
-        :param pulumi.Input[str] nickname: Preferred nickname or alias of the user.
+        :param pulumi.Input[str] family_name: Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] given_name: Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
         :param pulumi.Input[str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Indicates whether the phone number has been verified.
-        :param pulumi.Input[str] picture: Picture of the user.
+        :param pulumi.Input[str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: ID of the user.
         :param pulumi.Input[str] user_metadata: Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -153,7 +153,7 @@ class UserArgs:
     @pulumi.getter(name="familyName")
     def family_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Family name of the user.
+        Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "family_name")
 
@@ -165,7 +165,7 @@ class UserArgs:
     @pulumi.getter(name="givenName")
     def given_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Given name of the user.
+        Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "given_name")
 
@@ -177,7 +177,7 @@ class UserArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user.
+        Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "name")
 
@@ -189,7 +189,7 @@ class UserArgs:
     @pulumi.getter
     def nickname(self) -> Optional[pulumi.Input[str]]:
         """
-        Preferred nickname or alias of the user.
+        Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "nickname")
 
@@ -237,7 +237,7 @@ class UserArgs:
     @pulumi.getter
     def picture(self) -> Optional[pulumi.Input[str]]:
         """
-        Picture of the user.
+        Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "picture")
 
@@ -334,14 +334,14 @@ class _UserState:
         :param pulumi.Input[str] connection_name: Name of the connection from which the user information was sourced.
         :param pulumi.Input[str] email: Email address of the user.
         :param pulumi.Input[bool] email_verified: Indicates whether the email address has been verified.
-        :param pulumi.Input[str] family_name: Family name of the user.
-        :param pulumi.Input[str] given_name: Given name of the user.
-        :param pulumi.Input[str] name: Name of the user.
-        :param pulumi.Input[str] nickname: Preferred nickname or alias of the user.
+        :param pulumi.Input[str] family_name: Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] given_name: Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
         :param pulumi.Input[str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Indicates whether the phone number has been verified.
-        :param pulumi.Input[str] picture: Picture of the user.
+        :param pulumi.Input[str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: ID of the user.
         :param pulumi.Input[str] user_metadata: Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -449,7 +449,7 @@ class _UserState:
     @pulumi.getter(name="familyName")
     def family_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Family name of the user.
+        Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "family_name")
 
@@ -461,7 +461,7 @@ class _UserState:
     @pulumi.getter(name="givenName")
     def given_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Given name of the user.
+        Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "given_name")
 
@@ -473,7 +473,7 @@ class _UserState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the user.
+        Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "name")
 
@@ -485,7 +485,7 @@ class _UserState:
     @pulumi.getter
     def nickname(self) -> Optional[pulumi.Input[str]]:
         """
-        Preferred nickname or alias of the user.
+        Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "nickname")
 
@@ -533,7 +533,7 @@ class _UserState:
     @pulumi.getter
     def picture(self) -> Optional[pulumi.Input[str]]:
         """
-        Picture of the user.
+        Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "picture")
 
@@ -663,14 +663,14 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] connection_name: Name of the connection from which the user information was sourced.
         :param pulumi.Input[str] email: Email address of the user.
         :param pulumi.Input[bool] email_verified: Indicates whether the email address has been verified.
-        :param pulumi.Input[str] family_name: Family name of the user.
-        :param pulumi.Input[str] given_name: Given name of the user.
-        :param pulumi.Input[str] name: Name of the user.
-        :param pulumi.Input[str] nickname: Preferred nickname or alias of the user.
+        :param pulumi.Input[str] family_name: Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] given_name: Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
         :param pulumi.Input[str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Indicates whether the phone number has been verified.
-        :param pulumi.Input[str] picture: Picture of the user.
+        :param pulumi.Input[str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: ID of the user.
         :param pulumi.Input[str] user_metadata: Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -817,14 +817,14 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] connection_name: Name of the connection from which the user information was sourced.
         :param pulumi.Input[str] email: Email address of the user.
         :param pulumi.Input[bool] email_verified: Indicates whether the email address has been verified.
-        :param pulumi.Input[str] family_name: Family name of the user.
-        :param pulumi.Input[str] given_name: Given name of the user.
-        :param pulumi.Input[str] name: Name of the user.
-        :param pulumi.Input[str] nickname: Preferred nickname or alias of the user.
+        :param pulumi.Input[str] family_name: Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] given_name: Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        :param pulumi.Input[str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
         :param pulumi.Input[str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[bool] phone_verified: Indicates whether the phone number has been verified.
-        :param pulumi.Input[str] picture: Picture of the user.
+        :param pulumi.Input[str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Set of IDs of roles assigned to the user.
         :param pulumi.Input[str] user_id: ID of the user.
         :param pulumi.Input[str] user_metadata: Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -899,7 +899,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="familyName")
     def family_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Family name of the user.
+        Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "family_name")
 
@@ -907,7 +907,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="givenName")
     def given_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Given name of the user.
+        Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "given_name")
 
@@ -915,7 +915,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the user.
+        Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "name")
 
@@ -923,7 +923,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def nickname(self) -> pulumi.Output[str]:
         """
-        Preferred nickname or alias of the user.
+        Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "nickname")
 
@@ -955,7 +955,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def picture(self) -> pulumi.Output[str]:
         """
-        Picture of the user.
+        Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "picture")
 

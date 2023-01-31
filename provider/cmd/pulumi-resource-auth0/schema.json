@@ -199,6 +199,15 @@
                         }
                     }
                 },
+                "preUserRegistration": {
+                    "$ref": "#/types/auth0:index/AttackProtectionBreachedPasswordDetectionPreUserRegistration:AttackProtectionBreachedPasswordDetectionPreUserRegistration",
+                    "description": "Configuration options that apply before every user registration attempt. Only available on public tenants.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "shields": {
                     "type": "array",
                     "items": {
@@ -218,6 +227,30 @@
                     "requiredOutputs": [
                         "adminNotificationFrequencies",
                         "method",
+                        "preUserRegistration",
+                        "shields"
+                    ]
+                }
+            }
+        },
+        "auth0:index/AttackProtectionBreachedPasswordDetectionPreUserRegistration:AttackProtectionBreachedPasswordDetectionPreUserRegistration": {
+            "properties": {
+                "shields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
                         "shields"
                     ]
                 }
@@ -1876,7 +1909,7 @@
             "properties": {
                 "adfsServer": {
                     "type": "string",
-                    "description": "ADFS Metadata source.\n",
+                    "description": "ADFS URL where to fetch the metadata source.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2071,6 +2104,15 @@
                         }
                     }
                 },
+                "enableScriptContext": {
+                    "type": "boolean",
+                    "description": "Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "enabledDatabaseCustomization": {
                     "type": "boolean",
                     "description": "Set to `true` to use a legacy user store.\n",
@@ -2083,6 +2125,15 @@
                 "entityId": {
                     "type": "string",
                     "description": "Custom Entity ID for the connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fedMetadataXml": {
+                    "type": "string",
+                    "description": "Federation Metadata for the ADFS connection.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2651,8 +2702,11 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "allowedAudiences",
+                        "authorizationEndpoint",
                         "domainAliases",
                         "ips",
+                        "issuer",
+                        "jwksUri",
                         "mfa",
                         "nonPersistentAttrs",
                         "passwordComplexityOptions",
@@ -2662,7 +2716,9 @@
                         "passwordPolicy",
                         "scopes",
                         "setUserRootAttributes",
-                        "strategyVersion"
+                        "strategyVersion",
+                        "tokenEndpoint",
+                        "userinfoEndpoint"
                     ]
                 }
             }
@@ -3944,7 +4000,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.\n",
+                    "description": "Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4429,6 +4485,16 @@
                             "mapCase": false
                         }
                     }
+                },
+                "segmentWriteKey": {
+                    "type": "string",
+                    "description": "The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "secret": true
                 },
                 "splunkDomain": {
                     "type": "string",
@@ -6786,7 +6852,7 @@
                 },
                 "runtime": {
                     "type": "string",
-                    "description": "The Node runtime, e.g. `node16`. Defaults to `node12`.\n"
+                    "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.\n"
                 },
                 "secrets": {
                     "type": "array",
@@ -6833,7 +6899,7 @@
                 },
                 "runtime": {
                     "type": "string",
-                    "description": "The Node runtime, e.g. `node16`. Defaults to `node12`.\n"
+                    "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.\n"
                 },
                 "secrets": {
                     "type": "array",
@@ -6875,7 +6941,7 @@
                     },
                     "runtime": {
                         "type": "string",
-                        "description": "The Node runtime, e.g. `node16`. Defaults to `node12`.\n"
+                        "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.\n"
                     },
                     "secrets": {
                         "type": "array",
@@ -6897,7 +6963,7 @@
             }
         },
         "auth0:index/attackProtection:AttackProtection": {
-            "description": "Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myProtection = new auth0.AttackProtection(\"myProtection\", {\n    breachedPasswordDetection: {\n        adminNotificationFrequencies: [\"daily\"],\n        enabled: true,\n        method: \"standard\",\n        shields: [\n            \"admin_notification\",\n            \"block\",\n        ],\n    },\n    bruteForceProtection: {\n        allowlists: [\"127.0.0.1\"],\n        enabled: true,\n        maxAttempts: 5,\n        mode: \"count_per_identifier_and_ip\",\n        shields: [\n            \"block\",\n            \"user_notification\",\n        ],\n    },\n    suspiciousIpThrottling: {\n        allowlists: [\"192.168.1.1\"],\n        enabled: true,\n        preLogin: {\n            maxAttempts: 100,\n            rate: 864000,\n        },\n        preUserRegistration: {\n            maxAttempts: 50,\n            rate: 1200,\n        },\n        shields: [\n            \"admin_notification\",\n            \"block\",\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_protection = auth0.AttackProtection(\"myProtection\",\n    breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(\n        admin_notification_frequencies=[\"daily\"],\n        enabled=True,\n        method=\"standard\",\n        shields=[\n            \"admin_notification\",\n            \"block\",\n        ],\n    ),\n    brute_force_protection=auth0.AttackProtectionBruteForceProtectionArgs(\n        allowlists=[\"127.0.0.1\"],\n        enabled=True,\n        max_attempts=5,\n        mode=\"count_per_identifier_and_ip\",\n        shields=[\n            \"block\",\n            \"user_notification\",\n        ],\n    ),\n    suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(\n        allowlists=[\"192.168.1.1\"],\n        enabled=True,\n        pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(\n            max_attempts=100,\n            rate=864000,\n        ),\n        pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(\n            max_attempts=50,\n            rate=1200,\n        ),\n        shields=[\n            \"admin_notification\",\n            \"block\",\n        ],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProtection = new Auth0.AttackProtection(\"myProtection\", new()\n    {\n        BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs\n        {\n            AdminNotificationFrequencies = new[]\n            {\n                \"daily\",\n            },\n            Enabled = true,\n            Method = \"standard\",\n            Shields = new[]\n            {\n                \"admin_notification\",\n                \"block\",\n            },\n        },\n        BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs\n        {\n            Allowlists = new[]\n            {\n                \"127.0.0.1\",\n            },\n            Enabled = true,\n            MaxAttempts = 5,\n            Mode = \"count_per_identifier_and_ip\",\n            Shields = new[]\n            {\n                \"block\",\n                \"user_notification\",\n            },\n        },\n        SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs\n        {\n            Allowlists = new[]\n            {\n                \"192.168.1.1\",\n            },\n            Enabled = true,\n            PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs\n            {\n                MaxAttempts = 100,\n                Rate = 864000,\n            },\n            PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs\n            {\n                MaxAttempts = 50,\n                Rate = 1200,\n            },\n            Shields = new[]\n            {\n                \"admin_notification\",\n                \"block\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewAttackProtection(ctx, \"myProtection\", \u0026auth0.AttackProtectionArgs{\n\t\t\tBreachedPasswordDetection: \u0026auth0.AttackProtectionBreachedPasswordDetectionArgs{\n\t\t\t\tAdminNotificationFrequencies: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"daily\"),\n\t\t\t\t},\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tMethod:  pulumi.String(\"standard\"),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBruteForceProtection: \u0026auth0.AttackProtectionBruteForceProtectionArgs{\n\t\t\t\tAllowlists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"127.0.0.1\"),\n\t\t\t\t},\n\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\tMaxAttempts: pulumi.Int(5),\n\t\t\t\tMode:        pulumi.String(\"count_per_identifier_and_ip\"),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t\tpulumi.String(\"user_notification\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSuspiciousIpThrottling: \u0026auth0.AttackProtectionSuspiciousIpThrottlingArgs{\n\t\t\t\tAllowlists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"192.168.1.1\"),\n\t\t\t\t},\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tPreLogin: \u0026auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs{\n\t\t\t\t\tMaxAttempts: pulumi.Int(100),\n\t\t\t\t\tRate:        pulumi.Int(864000),\n\t\t\t\t},\n\t\t\t\tPreUserRegistration: \u0026auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{\n\t\t\t\t\tMaxAttempts: pulumi.Int(50),\n\t\t\t\t\tRate:        pulumi.Int(1200),\n\t\t\t\t},\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.AttackProtection;\nimport com.pulumi.auth0.AttackProtectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myProtection = new AttackProtection(\"myProtection\", AttackProtectionArgs.builder()        \n            .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()\n                .adminNotificationFrequencies(\"daily\")\n                .enabled(true)\n                .method(\"standard\")\n                .shields(                \n                    \"admin_notification\",\n                    \"block\")\n                .build())\n            .bruteForceProtection(AttackProtectionBruteForceProtectionArgs.builder()\n                .allowlists(\"127.0.0.1\")\n                .enabled(true)\n                .maxAttempts(5)\n                .mode(\"count_per_identifier_and_ip\")\n                .shields(                \n                    \"block\",\n                    \"user_notification\")\n                .build())\n            .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()\n                .allowlists(\"192.168.1.1\")\n                .enabled(true)\n                .preLogin(AttackProtectionSuspiciousIpThrottlingPreLoginArgs.builder()\n                    .maxAttempts(100)\n                    .rate(864000)\n                    .build())\n                .preUserRegistration(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs.builder()\n                    .maxAttempts(50)\n                    .rate(1200)\n                    .build())\n                .shields(                \n                    \"admin_notification\",\n                    \"block\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myProtection:\n    type: auth0:AttackProtection\n    properties:\n      breachedPasswordDetection:\n        adminNotificationFrequencies:\n          - daily\n        enabled: true\n        method: standard\n        shields:\n          - admin_notification\n          - block\n      bruteForceProtection:\n        allowlists:\n          - 127.0.0.1\n        enabled: true\n        maxAttempts: 5\n        mode: count_per_identifier_and_ip\n        shields:\n          - block\n          - user_notification\n      suspiciousIpThrottling:\n        allowlists:\n          - 192.168.1.1\n        enabled: true\n        preLogin:\n          maxAttempts: 100\n          rate: 864000\n        preUserRegistration:\n          maxAttempts: 50\n          rate: 1200\n        shields:\n          - admin_notification\n          - block\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example\n\n```sh\n $ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40\n```\n\n ",
+            "description": "Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myProtection = new auth0.AttackProtection(\"myProtection\", {\n    breachedPasswordDetection: {\n        adminNotificationFrequencies: [\"daily\"],\n        enabled: true,\n        method: \"standard\",\n        preUserRegistration: {\n            shields: [\"block\"],\n        },\n        shields: [\n            \"admin_notification\",\n            \"block\",\n        ],\n    },\n    bruteForceProtection: {\n        allowlists: [\"127.0.0.1\"],\n        enabled: true,\n        maxAttempts: 5,\n        mode: \"count_per_identifier_and_ip\",\n        shields: [\n            \"block\",\n            \"user_notification\",\n        ],\n    },\n    suspiciousIpThrottling: {\n        allowlists: [\"192.168.1.1\"],\n        enabled: true,\n        preLogin: {\n            maxAttempts: 100,\n            rate: 864000,\n        },\n        preUserRegistration: {\n            maxAttempts: 50,\n            rate: 1200,\n        },\n        shields: [\n            \"admin_notification\",\n            \"block\",\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_protection = auth0.AttackProtection(\"myProtection\",\n    breached_password_detection=auth0.AttackProtectionBreachedPasswordDetectionArgs(\n        admin_notification_frequencies=[\"daily\"],\n        enabled=True,\n        method=\"standard\",\n        pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(\n            shields=[\"block\"],\n        ),\n        shields=[\n            \"admin_notification\",\n            \"block\",\n        ],\n    ),\n    brute_force_protection=auth0.AttackProtectionBruteForceProtectionArgs(\n        allowlists=[\"127.0.0.1\"],\n        enabled=True,\n        max_attempts=5,\n        mode=\"count_per_identifier_and_ip\",\n        shields=[\n            \"block\",\n            \"user_notification\",\n        ],\n    ),\n    suspicious_ip_throttling=auth0.AttackProtectionSuspiciousIpThrottlingArgs(\n        allowlists=[\"192.168.1.1\"],\n        enabled=True,\n        pre_login=auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs(\n            max_attempts=100,\n            rate=864000,\n        ),\n        pre_user_registration=auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs(\n            max_attempts=50,\n            rate=1200,\n        ),\n        shields=[\n            \"admin_notification\",\n            \"block\",\n        ],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProtection = new Auth0.AttackProtection(\"myProtection\", new()\n    {\n        BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs\n        {\n            AdminNotificationFrequencies = new[]\n            {\n                \"daily\",\n            },\n            Enabled = true,\n            Method = \"standard\",\n            PreUserRegistration = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs\n            {\n                Shields = new[]\n                {\n                    \"block\",\n                },\n            },\n            Shields = new[]\n            {\n                \"admin_notification\",\n                \"block\",\n            },\n        },\n        BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs\n        {\n            Allowlists = new[]\n            {\n                \"127.0.0.1\",\n            },\n            Enabled = true,\n            MaxAttempts = 5,\n            Mode = \"count_per_identifier_and_ip\",\n            Shields = new[]\n            {\n                \"block\",\n                \"user_notification\",\n            },\n        },\n        SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs\n        {\n            Allowlists = new[]\n            {\n                \"192.168.1.1\",\n            },\n            Enabled = true,\n            PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs\n            {\n                MaxAttempts = 100,\n                Rate = 864000,\n            },\n            PreUserRegistration = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs\n            {\n                MaxAttempts = 50,\n                Rate = 1200,\n            },\n            Shields = new[]\n            {\n                \"admin_notification\",\n                \"block\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewAttackProtection(ctx, \"myProtection\", \u0026auth0.AttackProtectionArgs{\n\t\t\tBreachedPasswordDetection: \u0026auth0.AttackProtectionBreachedPasswordDetectionArgs{\n\t\t\t\tAdminNotificationFrequencies: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"daily\"),\n\t\t\t\t},\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tMethod:  pulumi.String(\"standard\"),\n\t\t\t\tPreUserRegistration: \u0026auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{\n\t\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBruteForceProtection: \u0026auth0.AttackProtectionBruteForceProtectionArgs{\n\t\t\t\tAllowlists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"127.0.0.1\"),\n\t\t\t\t},\n\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\tMaxAttempts: pulumi.Int(5),\n\t\t\t\tMode:        pulumi.String(\"count_per_identifier_and_ip\"),\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t\tpulumi.String(\"user_notification\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSuspiciousIpThrottling: \u0026auth0.AttackProtectionSuspiciousIpThrottlingArgs{\n\t\t\t\tAllowlists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"192.168.1.1\"),\n\t\t\t\t},\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tPreLogin: \u0026auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs{\n\t\t\t\t\tMaxAttempts: pulumi.Int(100),\n\t\t\t\t\tRate:        pulumi.Int(864000),\n\t\t\t\t},\n\t\t\t\tPreUserRegistration: \u0026auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{\n\t\t\t\t\tMaxAttempts: pulumi.Int(50),\n\t\t\t\t\tRate:        pulumi.Int(1200),\n\t\t\t\t},\n\t\t\t\tShields: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"admin_notification\"),\n\t\t\t\t\tpulumi.String(\"block\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.AttackProtection;\nimport com.pulumi.auth0.AttackProtectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs;\nimport com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myProtection = new AttackProtection(\"myProtection\", AttackProtectionArgs.builder()        \n            .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()\n                .adminNotificationFrequencies(\"daily\")\n                .enabled(true)\n                .method(\"standard\")\n                .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()\n                    .shields(\"block\")\n                    .build())\n                .shields(                \n                    \"admin_notification\",\n                    \"block\")\n                .build())\n            .bruteForceProtection(AttackProtectionBruteForceProtectionArgs.builder()\n                .allowlists(\"127.0.0.1\")\n                .enabled(true)\n                .maxAttempts(5)\n                .mode(\"count_per_identifier_and_ip\")\n                .shields(                \n                    \"block\",\n                    \"user_notification\")\n                .build())\n            .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()\n                .allowlists(\"192.168.1.1\")\n                .enabled(true)\n                .preLogin(AttackProtectionSuspiciousIpThrottlingPreLoginArgs.builder()\n                    .maxAttempts(100)\n                    .rate(864000)\n                    .build())\n                .preUserRegistration(AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs.builder()\n                    .maxAttempts(50)\n                    .rate(1200)\n                    .build())\n                .shields(                \n                    \"admin_notification\",\n                    \"block\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myProtection:\n    type: auth0:AttackProtection\n    properties:\n      breachedPasswordDetection:\n        adminNotificationFrequencies:\n          - daily\n        enabled: true\n        method: standard\n        preUserRegistration:\n          shields:\n            - block\n        shields:\n          - admin_notification\n          - block\n      bruteForceProtection:\n        allowlists:\n          - 127.0.0.1\n        enabled: true\n        maxAttempts: 5\n        mode: count_per_identifier_and_ip\n        shields:\n          - block\n          - user_notification\n      suspiciousIpThrottling:\n        allowlists:\n          - 192.168.1.1\n        enabled: true\n        preLogin:\n          maxAttempts: 100\n          rate: 864000\n        preUserRegistration:\n          maxAttempts: 50\n          rate: 1200\n        shields:\n          - admin_notification\n          - block\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API, attack_protection can be imported using a random string. # We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4) # Example\n\n```sh\n $ pulumi import auth0:index/attackProtection:AttackProtection my_protection 24940d4b-4bd4-44e7-894e-f92e4de36a40\n```\n\n ",
             "properties": {
                 "breachedPasswordDetection": {
                     "$ref": "#/types/auth0:index/AttackProtectionBreachedPasswordDetection:AttackProtectionBreachedPasswordDetection",
@@ -7178,11 +7244,11 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
+                    "description": "Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
                 },
                 "crossOriginAuth": {
                     "type": "boolean",
-                    "description": "Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).\n"
+                    "description": "Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.\n"
                 },
                 "crossOriginLoc": {
                     "type": "string",
@@ -7221,7 +7287,7 @@
                 },
                 "initiateLoginUri": {
                     "type": "string",
-                    "description": "Initiate login URI, must be HTTPS.\n"
+                    "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
                 },
                 "isFirstParty": {
                     "type": "boolean",
@@ -7372,11 +7438,11 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
+                    "description": "Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
                 },
                 "crossOriginAuth": {
                     "type": "boolean",
-                    "description": "Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).\n"
+                    "description": "Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.\n"
                 },
                 "crossOriginLoc": {
                     "type": "string",
@@ -7415,7 +7481,7 @@
                 },
                 "initiateLoginUri": {
                     "type": "string",
-                    "description": "Initiate login URI, must be HTTPS.\n"
+                    "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
                 },
                 "isFirstParty": {
                     "type": "boolean",
@@ -7548,11 +7614,11 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
+                        "description": "Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
                     },
                     "crossOriginAuth": {
                         "type": "boolean",
-                        "description": "Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).\n"
+                        "description": "Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.\n"
                     },
                     "crossOriginLoc": {
                         "type": "string",
@@ -7591,7 +7657,7 @@
                     },
                     "initiateLoginUri": {
                         "type": "string",
-                        "description": "Initiate login URI, must be HTTPS.\n"
+                        "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
                     },
                     "isFirstParty": {
                         "type": "boolean",
@@ -8436,11 +8502,11 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
+                    "description": "Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
                 },
                 "crossOriginAuth": {
                     "type": "boolean",
-                    "description": "Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).\n"
+                    "description": "Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.\n"
                 },
                 "crossOriginLoc": {
                     "type": "string",
@@ -8478,7 +8544,7 @@
                 },
                 "initiateLoginUri": {
                     "type": "string",
-                    "description": "Initiate login URI, must be HTTPS.\n"
+                    "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
                 },
                 "isFirstParty": {
                     "type": "boolean",
@@ -8657,11 +8723,11 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
+                    "description": "Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
                 },
                 "crossOriginAuth": {
                     "type": "boolean",
-                    "description": "Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).\n"
+                    "description": "Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.\n"
                 },
                 "crossOriginLoc": {
                     "type": "string",
@@ -8699,7 +8765,7 @@
                 },
                 "initiateLoginUri": {
                     "type": "string",
-                    "description": "Initiate login URI, must be HTTPS.\n"
+                    "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
                 },
                 "isFirstParty": {
                     "type": "boolean",
@@ -8843,11 +8909,11 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
+                        "description": "Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).\n"
                     },
                     "crossOriginAuth": {
                         "type": "boolean",
-                        "description": "Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).\n"
+                        "description": "Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.\n"
                     },
                     "crossOriginLoc": {
                         "type": "string",
@@ -8885,7 +8951,7 @@
                     },
                     "initiateLoginUri": {
                         "type": "string",
-                        "description": "Initiate login URI, must be HTTPS.\n"
+                        "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
                     },
                     "isFirstParty": {
                         "type": "boolean",
@@ -10056,7 +10122,7 @@
                 },
                 "defaultRedirectionUri": {
                     "type": "string",
-                    "description": "The default absolute redirection URI, must be https and cannot contain a fragment.\n"
+                    "description": "The default absolute redirection URI. Must be HTTPS or an empty string.\n"
                 },
                 "enabledLocales": {
                     "type": "array",
@@ -10154,7 +10220,7 @@
                 },
                 "defaultRedirectionUri": {
                     "type": "string",
-                    "description": "The default absolute redirection URI, must be https and cannot contain a fragment.\n"
+                    "description": "The default absolute redirection URI. Must be HTTPS or an empty string.\n"
                 },
                 "enabledLocales": {
                     "type": "array",
@@ -10236,7 +10302,7 @@
                     },
                     "defaultRedirectionUri": {
                         "type": "string",
-                        "description": "The default absolute redirection URI, must be https and cannot contain a fragment.\n"
+                        "description": "The default absolute redirection URI. Must be HTTPS or an empty string.\n"
                     },
                     "enabledLocales": {
                         "type": "array",
@@ -10378,19 +10444,19 @@
                 },
                 "familyName": {
                     "type": "string",
-                    "description": "Family name of the user.\n"
+                    "description": "Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "givenName": {
                     "type": "string",
-                    "description": "Given name of the user.\n"
+                    "description": "Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the user.\n"
+                    "description": "Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "nickname": {
                     "type": "string",
-                    "description": "Preferred nickname or alias of the user.\n"
+                    "description": "Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "password": {
                     "type": "string",
@@ -10407,7 +10473,7 @@
                 },
                 "picture": {
                     "type": "string",
-                    "description": "Picture of the user.\n"
+                    "description": "Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "roles": {
                     "type": "array",
@@ -10463,19 +10529,19 @@
                 },
                 "familyName": {
                     "type": "string",
-                    "description": "Family name of the user.\n"
+                    "description": "Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "givenName": {
                     "type": "string",
-                    "description": "Given name of the user.\n"
+                    "description": "Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the user.\n"
+                    "description": "Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "nickname": {
                     "type": "string",
-                    "description": "Preferred nickname or alias of the user.\n"
+                    "description": "Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "password": {
                     "type": "string",
@@ -10492,7 +10558,7 @@
                 },
                 "picture": {
                     "type": "string",
-                    "description": "Picture of the user.\n"
+                    "description": "Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                 },
                 "roles": {
                     "type": "array",
@@ -10546,19 +10612,19 @@
                     },
                     "familyName": {
                         "type": "string",
-                        "description": "Family name of the user.\n"
+                        "description": "Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                     },
                     "givenName": {
                         "type": "string",
-                        "description": "Given name of the user.\n"
+                        "description": "Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the user.\n"
+                        "description": "Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                     },
                     "nickname": {
                         "type": "string",
-                        "description": "Preferred nickname or alias of the user.\n"
+                        "description": "Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                     },
                     "password": {
                         "type": "string",
@@ -10575,7 +10641,7 @@
                     },
                     "picture": {
                         "type": "string",
-                        "description": "Picture of the user.\n"
+                        "description": "Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).\n"
                     },
                     "roles": {
                         "type": "array",
@@ -10687,7 +10753,7 @@
                     },
                     "crossOriginAuth": {
                         "type": "boolean",
-                        "description": "Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).\n"
+                        "description": "Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.\n"
                     },
                     "crossOriginLoc": {
                         "type": "string",
@@ -10729,7 +10795,7 @@
                     },
                     "initiateLoginUri": {
                         "type": "string",
-                        "description": "Initiate login URI, must be HTTPS.\n"
+                        "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
                     },
                     "isFirstParty": {
                         "type": "boolean",
@@ -10923,7 +10989,7 @@
                     },
                     "crossOriginAuth": {
                         "type": "boolean",
-                        "description": "Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).\n"
+                        "description": "Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.\n"
                     },
                     "crossOriginLoc": {
                         "type": "string",
@@ -10965,7 +11031,7 @@
                     },
                     "initiateLoginUri": {
                         "type": "string",
-                        "description": "Initiate login URI, must be HTTPS.\n"
+                        "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
                     },
                     "isFirstParty": {
                         "type": "boolean",

@@ -93,14 +93,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Family name of the user.
+     * Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     @Import(name="familyName")
     private @Nullable Output<String> familyName;
 
     /**
-     * @return Family name of the user.
+     * @return Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     public Optional<Output<String>> familyName() {
@@ -108,14 +108,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Given name of the user.
+     * Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     @Import(name="givenName")
     private @Nullable Output<String> givenName;
 
     /**
-     * @return Given name of the user.
+     * @return Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     public Optional<Output<String>> givenName() {
@@ -123,14 +123,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the user.
+     * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the user.
+     * @return Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     public Optional<Output<String>> name() {
@@ -138,14 +138,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Preferred nickname or alias of the user.
+     * Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     @Import(name="nickname")
     private @Nullable Output<String> nickname;
 
     /**
-     * @return Preferred nickname or alias of the user.
+     * @return Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     public Optional<Output<String>> nickname() {
@@ -198,14 +198,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Picture of the user.
+     * Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     @Import(name="picture")
     private @Nullable Output<String> picture;
 
     /**
-     * @return Picture of the user.
+     * @return Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      * 
      */
     public Optional<Output<String>> picture() {
@@ -434,7 +434,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param familyName Family name of the user.
+         * @param familyName Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param familyName Family name of the user.
+         * @param familyName Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param givenName Given name of the user.
+         * @param givenName Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param givenName Given name of the user.
+         * @param givenName Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the user.
+         * @param name Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the user.
+         * @param name Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nickname Preferred nickname or alias of the user.
+         * @param nickname Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nickname Preferred nickname or alias of the user.
+         * @param nickname Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -581,7 +581,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param picture Picture of the user.
+         * @param picture Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param picture Picture of the user.
+         * @param picture Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled &#39;Sync user profile attributes at each login&#39;. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
          * 
          * @return builder
          * 

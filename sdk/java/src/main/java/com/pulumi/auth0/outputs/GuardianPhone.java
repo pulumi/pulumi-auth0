@@ -30,7 +30,7 @@ public final class GuardianPhone {
      */
     private @Nullable GuardianPhoneOptions options;
     /**
-     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
      * 
      */
     private @Nullable String provider;
@@ -58,7 +58,7 @@ public final class GuardianPhone {
         return Optional.ofNullable(this.options);
     }
     /**
-     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
      * 
      */
     public Optional<String> provider() {

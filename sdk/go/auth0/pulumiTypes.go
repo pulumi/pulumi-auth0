@@ -385,6 +385,8 @@ type AttackProtectionBreachedPasswordDetection struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
 	Method *string `pulumi:"method"`
+	// Configuration options that apply before every user registration attempt. Only available on public tenants.
+	PreUserRegistration *AttackProtectionBreachedPasswordDetectionPreUserRegistration `pulumi:"preUserRegistration"`
 	// Action to take when a breached password is detected.
 	Shields []string `pulumi:"shields"`
 }
@@ -407,6 +409,8 @@ type AttackProtectionBreachedPasswordDetectionArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Configuration options that apply before every user registration attempt. Only available on public tenants.
+	PreUserRegistration AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput `pulumi:"preUserRegistration"`
 	// Action to take when a breached password is detected.
 	Shields pulumi.StringArrayInput `pulumi:"shields"`
 }
@@ -503,6 +507,13 @@ func (o AttackProtectionBreachedPasswordDetectionOutput) Method() pulumi.StringP
 	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
+// Configuration options that apply before every user registration attempt. Only available on public tenants.
+func (o AttackProtectionBreachedPasswordDetectionOutput) PreUserRegistration() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) *AttackProtectionBreachedPasswordDetectionPreUserRegistration {
+		return v.PreUserRegistration
+	}).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput)
+}
+
 // Action to take when a breached password is detected.
 func (o AttackProtectionBreachedPasswordDetectionOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetection) []string { return v.Shields }).(pulumi.StringArrayOutput)
@@ -562,9 +573,152 @@ func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Method() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration options that apply before every user registration attempt. Only available on public tenants.
+func (o AttackProtectionBreachedPasswordDetectionPtrOutput) PreUserRegistration() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) *AttackProtectionBreachedPasswordDetectionPreUserRegistration {
+		if v == nil {
+			return nil
+		}
+		return v.PreUserRegistration
+	}).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput)
+}
+
 // Action to take when a breached password is detected.
 func (o AttackProtectionBreachedPasswordDetectionPtrOutput) Shields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetection) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Shields
+	}).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionBreachedPasswordDetectionPreUserRegistration struct {
+	Shields []string `pulumi:"shields"`
+}
+
+// AttackProtectionBreachedPasswordDetectionPreUserRegistrationInput is an input type that accepts AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs and AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput values.
+// You can construct a concrete instance of `AttackProtectionBreachedPasswordDetectionPreUserRegistrationInput` via:
+//
+//	AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{...}
+type AttackProtectionBreachedPasswordDetectionPreUserRegistrationInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput() AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput
+	ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutputWithContext(context.Context) AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput
+}
+
+type AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs struct {
+	Shields pulumi.StringArrayInput `pulumi:"shields"`
+}
+
+func (AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreUserRegistration)(nil)).Elem()
+}
+
+func (i AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput() AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput)
+}
+
+func (i AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput).ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput is an input type that accepts AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs, AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtr and AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput` via:
+//
+//	        AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput
+	ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(context.Context) AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput
+}
+
+type attackProtectionBreachedPasswordDetectionPreUserRegistrationPtrType AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs
+
+func AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtr(v *AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput {
+	return (*attackProtectionBreachedPasswordDetectionPreUserRegistrationPtrType)(v)
+}
+
+func (*attackProtectionBreachedPasswordDetectionPreUserRegistrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBreachedPasswordDetectionPreUserRegistration)(nil)).Elem()
+}
+
+func (i *attackProtectionBreachedPasswordDetectionPreUserRegistrationPtrType) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return i.ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionBreachedPasswordDetectionPreUserRegistrationPtrType) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput)
+}
+
+type AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreUserRegistration)(nil)).Elem()
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput() AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return o.ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionBreachedPasswordDetectionPreUserRegistration) *AttackProtectionBreachedPasswordDetectionPreUserRegistration {
+		return &v
+	}).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput)
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionBreachedPasswordDetectionPreUserRegistration) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBreachedPasswordDetectionPreUserRegistration)(nil)).Elem()
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput() AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput) ToAttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutputWithContext(ctx context.Context) AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput) Elem() AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetectionPreUserRegistration) AttackProtectionBreachedPasswordDetectionPreUserRegistration {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionBreachedPasswordDetectionPreUserRegistration
+		return ret
+	}).(AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput)
+}
+
+func (o AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionBreachedPasswordDetectionPreUserRegistration) []string {
 		if v == nil {
 			return nil
 		}
@@ -6333,7 +6487,7 @@ func (o ClientRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
 }
 
 type ConnectionOptions struct {
-	// ADFS Metadata source.
+	// ADFS URL where to fetch the metadata source.
 	AdfsServer *string `pulumi:"adfsServer"`
 	// List of allowed audiences.
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
@@ -6373,10 +6527,14 @@ type ConnectionOptions struct {
 	Domain *string `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases []string `pulumi:"domainAliases"`
+	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+	EnableScriptContext *bool `pulumi:"enableScriptContext"`
 	// Set to `true` to use a legacy user store.
 	EnabledDatabaseCustomization *bool `pulumi:"enabledDatabaseCustomization"`
 	// Custom Entity ID for the connection.
 	EntityId *string `pulumi:"entityId"`
+	// Federation Metadata for the ADFS connection.
+	FedMetadataXml *string `pulumi:"fedMetadataXml"`
 	// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap *string `pulumi:"fieldsMap"`
 	// Specifies whether or not request info should be forwarded to sms gateway.
@@ -6511,7 +6669,7 @@ type ConnectionOptionsInput interface {
 }
 
 type ConnectionOptionsArgs struct {
-	// ADFS Metadata source.
+	// ADFS URL where to fetch the metadata source.
 	AdfsServer pulumi.StringPtrInput `pulumi:"adfsServer"`
 	// List of allowed audiences.
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
@@ -6551,10 +6709,14 @@ type ConnectionOptionsArgs struct {
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
+	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+	EnableScriptContext pulumi.BoolPtrInput `pulumi:"enableScriptContext"`
 	// Set to `true` to use a legacy user store.
 	EnabledDatabaseCustomization pulumi.BoolPtrInput `pulumi:"enabledDatabaseCustomization"`
 	// Custom Entity ID for the connection.
 	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+	// Federation Metadata for the ADFS connection.
+	FedMetadataXml pulumi.StringPtrInput `pulumi:"fedMetadataXml"`
 	// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap pulumi.StringPtrInput `pulumi:"fieldsMap"`
 	// Specifies whether or not request info should be forwarded to sms gateway.
@@ -6754,7 +6916,7 @@ func (o ConnectionOptionsOutput) ToConnectionOptionsPtrOutputWithContext(ctx con
 	}).(ConnectionOptionsPtrOutput)
 }
 
-// ADFS Metadata source.
+// ADFS URL where to fetch the metadata source.
 func (o ConnectionOptionsOutput) AdfsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AdfsServer }).(pulumi.StringPtrOutput)
 }
@@ -6854,6 +7016,11 @@ func (o ConnectionOptionsOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
 }
 
+// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+func (o ConnectionOptionsOutput) EnableScriptContext() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.EnableScriptContext }).(pulumi.BoolPtrOutput)
+}
+
 // Set to `true` to use a legacy user store.
 func (o ConnectionOptionsOutput) EnabledDatabaseCustomization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.EnabledDatabaseCustomization }).(pulumi.BoolPtrOutput)
@@ -6862,6 +7029,11 @@ func (o ConnectionOptionsOutput) EnabledDatabaseCustomization() pulumi.BoolPtrOu
 // Custom Entity ID for the connection.
 func (o ConnectionOptionsOutput) EntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+// Federation Metadata for the ADFS connection.
+func (o ConnectionOptionsOutput) FedMetadataXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.FedMetadataXml }).(pulumi.StringPtrOutput)
 }
 
 // If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
@@ -7190,7 +7362,7 @@ func (o ConnectionOptionsPtrOutput) Elem() ConnectionOptionsOutput {
 	}).(ConnectionOptionsOutput)
 }
 
-// ADFS Metadata source.
+// ADFS URL where to fetch the metadata source.
 func (o ConnectionOptionsPtrOutput) AdfsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -7390,6 +7562,16 @@ func (o ConnectionOptionsPtrOutput) DomainAliases() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+func (o ConnectionOptionsPtrOutput) EnableScriptContext() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableScriptContext
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Set to `true` to use a legacy user store.
 func (o ConnectionOptionsPtrOutput) EnabledDatabaseCustomization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
@@ -7407,6 +7589,16 @@ func (o ConnectionOptionsPtrOutput) EntityId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Federation Metadata for the ADFS connection.
+func (o ConnectionOptionsPtrOutput) FedMetadataXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FedMetadataXml
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12958,7 +13150,7 @@ type GuardianPhone struct {
 	MessageTypes []string `pulumi:"messageTypes"`
 	// Options for the various providers.
 	Options *GuardianPhoneOptions `pulumi:"options"`
-	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
 	Provider *string `pulumi:"provider"`
 }
 
@@ -12980,7 +13172,7 @@ type GuardianPhoneArgs struct {
 	MessageTypes pulumi.StringArrayInput `pulumi:"messageTypes"`
 	// Options for the various providers.
 	Options GuardianPhoneOptionsPtrInput `pulumi:"options"`
-	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
@@ -13076,7 +13268,7 @@ func (o GuardianPhoneOutput) Options() GuardianPhoneOptionsPtrOutput {
 	return o.ApplyT(func(v GuardianPhone) *GuardianPhoneOptions { return v.Options }).(GuardianPhoneOptionsPtrOutput)
 }
 
-// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
 func (o GuardianPhoneOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPhone) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -13135,7 +13327,7 @@ func (o GuardianPhonePtrOutput) Options() GuardianPhoneOptionsPtrOutput {
 	}).(GuardianPhoneOptionsPtrOutput)
 }
 
-// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
 func (o GuardianPhonePtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPhone) *string {
 		if v == nil {
@@ -14309,6 +14501,8 @@ type LogStreamSink struct {
 	MixpanelServiceAccountPassword *string `pulumi:"mixpanelServiceAccountPassword"`
 	// The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
 	MixpanelServiceAccountUsername *string `pulumi:"mixpanelServiceAccountUsername"`
+	// The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+	SegmentWriteKey *string `pulumi:"segmentWriteKey"`
 	// The Splunk domain name.
 	SplunkDomain *string `pulumi:"splunkDomain"`
 	// The Splunk port.
@@ -14369,6 +14563,8 @@ type LogStreamSinkArgs struct {
 	MixpanelServiceAccountPassword pulumi.StringPtrInput `pulumi:"mixpanelServiceAccountPassword"`
 	// The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
 	MixpanelServiceAccountUsername pulumi.StringPtrInput `pulumi:"mixpanelServiceAccountUsername"`
+	// The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+	SegmentWriteKey pulumi.StringPtrInput `pulumi:"segmentWriteKey"`
 	// The Splunk domain name.
 	SplunkDomain pulumi.StringPtrInput `pulumi:"splunkDomain"`
 	// The Splunk port.
@@ -14546,6 +14742,11 @@ func (o LogStreamSinkOutput) MixpanelServiceAccountPassword() pulumi.StringPtrOu
 // The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
 func (o LogStreamSinkOutput) MixpanelServiceAccountUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.MixpanelServiceAccountUsername }).(pulumi.StringPtrOutput)
+}
+
+// The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+func (o LogStreamSinkOutput) SegmentWriteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.SegmentWriteKey }).(pulumi.StringPtrOutput)
 }
 
 // The Splunk domain name.
@@ -14774,6 +14975,16 @@ func (o LogStreamSinkPtrOutput) MixpanelServiceAccountUsername() pulumi.StringPt
 			return nil
 		}
 		return v.MixpanelServiceAccountUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+func (o LogStreamSinkPtrOutput) SegmentWriteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentWriteKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19357,6 +19568,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersPtrInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPtrInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreUserRegistrationInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBruteForceProtectionInput)(nil)).Elem(), AttackProtectionBruteForceProtectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBruteForceProtectionPtrInput)(nil)).Elem(), AttackProtectionBruteForceProtectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingArgs{})
@@ -19555,6 +19768,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionSupportedTriggersPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBruteForceProtectionOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBruteForceProtectionPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingOutput{})

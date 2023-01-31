@@ -220,28 +220,28 @@ public class GlobalClient extends com.pulumi.resources.CustomResource {
         return this.clientSecret;
     }
     /**
-     * Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+     * Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      * 
      */
     @Export(name="clientSecretRotationTrigger", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> clientSecretRotationTrigger;
 
     /**
-     * @return Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+     * @return Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      * 
      */
     public Output<Optional<Map<String,Object>>> clientSecretRotationTrigger() {
         return Codegen.optional(this.clientSecretRotationTrigger);
     }
     /**
-     * Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
      * 
      */
     @Export(name="crossOriginAuth", type=Boolean.class, parameters={})
     private Output<Boolean> crossOriginAuth;
 
     /**
-     * @return Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
      * 
      */
     public Output<Boolean> crossOriginAuth() {
@@ -346,14 +346,14 @@ public class GlobalClient extends com.pulumi.resources.CustomResource {
         return this.grantTypes;
     }
     /**
-     * Initiate login URI, must be HTTPS.
+     * Initiate login URI. Must be HTTPS or an empty string.
      * 
      */
     @Export(name="initiateLoginUri", type=String.class, parameters={})
     private Output<String> initiateLoginUri;
 
     /**
-     * @return Initiate login URI, must be HTTPS.
+     * @return Initiate login URI. Must be HTTPS or an empty string.
      * 
      */
     public Output<String> initiateLoginUri() {

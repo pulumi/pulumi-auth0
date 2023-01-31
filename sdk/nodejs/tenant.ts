@@ -115,7 +115,7 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly defaultDirectory!: pulumi.Output<string>;
     /**
-     * The default absolute redirection URI, must be https and cannot contain a fragment.
+     * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
     public readonly defaultRedirectionUri!: pulumi.Output<string>;
     /**
@@ -249,7 +249,7 @@ export interface TenantState {
      */
     defaultDirectory?: pulumi.Input<string>;
     /**
-     * The default absolute redirection URI, must be https and cannot contain a fragment.
+     * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
     defaultRedirectionUri?: pulumi.Input<string>;
     /**
@@ -327,7 +327,7 @@ export interface TenantArgs {
      */
     defaultDirectory?: pulumi.Input<string>;
     /**
-     * The default absolute redirection URI, must be https and cannot contain a fragment.
+     * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
     defaultRedirectionUri?: pulumi.Input<string>;
     /**

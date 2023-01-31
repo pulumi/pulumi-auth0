@@ -114,13 +114,13 @@ namespace Pulumi.Auth0
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         [Output("clientSecretRotationTrigger")]
         public Output<ImmutableDictionary<string, object>?> ClientSecretRotationTrigger { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         /// </summary>
         [Output("crossOriginAuth")]
         public Output<bool> CrossOriginAuth { get; private set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> GrantTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Initiate login URI, must be HTTPS.
+        /// Initiate login URI. Must be HTTPS or an empty string.
         /// </summary>
         [Output("initiateLoginUri")]
         public Output<string> InitiateLoginUri { get; private set; } = null!;
@@ -431,7 +431,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _clientSecretRotationTrigger;
 
         /// <summary>
-        /// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         public InputMap<object> ClientSecretRotationTrigger
         {
@@ -440,7 +440,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         /// </summary>
         [Input("crossOriginAuth")]
         public Input<bool>? CrossOriginAuth { get; set; }
@@ -500,7 +500,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Initiate login URI, must be HTTPS.
+        /// Initiate login URI. Must be HTTPS or an empty string.
         /// </summary>
         [Input("initiateLoginUri")]
         public Input<string>? InitiateLoginUri { get; set; }
@@ -736,7 +736,7 @@ namespace Pulumi.Auth0
         private InputMap<object>? _clientSecretRotationTrigger;
 
         /// <summary>
-        /// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         /// </summary>
         public InputMap<object> ClientSecretRotationTrigger
         {
@@ -745,7 +745,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         /// </summary>
         [Input("crossOriginAuth")]
         public Input<bool>? CrossOriginAuth { get; set; }
@@ -805,7 +805,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Initiate login URI, must be HTTPS.
+        /// Initiate login URI. Must be HTTPS or an empty string.
         /// </summary>
         [Input("initiateLoginUri")]
         public Input<string>? InitiateLoginUri { get; set; }

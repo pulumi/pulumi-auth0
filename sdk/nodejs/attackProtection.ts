@@ -20,6 +20,9 @@ import * as utilities from "./utilities";
  *         adminNotificationFrequencies: ["daily"],
  *         enabled: true,
  *         method: "standard",
+ *         preUserRegistration: {
+ *             shields: ["block"],
+ *         },
  *         shields: [
  *             "admin_notification",
  *             "block",

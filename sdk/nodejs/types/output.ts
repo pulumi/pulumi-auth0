@@ -52,8 +52,16 @@ export interface AttackProtectionBreachedPasswordDetection {
      */
     method: string;
     /**
+     * Configuration options that apply before every user registration attempt. Only available on public tenants.
+     */
+    preUserRegistration: outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration;
+    /**
      * Action to take when a breached password is detected.
      */
+    shields: string[];
+}
+
+export interface AttackProtectionBreachedPasswordDetectionPreUserRegistration {
     shields: string[];
 }
 
@@ -506,7 +514,7 @@ export interface ClientRefreshToken {
 
 export interface ConnectionOptions {
     /**
-     * ADFS Metadata source.
+     * ADFS URL where to fetch the metadata source.
      */
     adfsServer?: string;
     /**
@@ -528,7 +536,7 @@ export interface ConnectionOptions {
     /**
      * Authorization endpoint.
      */
-    authorizationEndpoint?: string;
+    authorizationEndpoint: string;
     /**
      * Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      */
@@ -586,6 +594,10 @@ export interface ConnectionOptions {
      */
     domainAliases: string[];
     /**
+     * Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     */
+    enableScriptContext?: boolean;
+    /**
      * Set to `true` to use a legacy user store.
      */
     enabledDatabaseCustomization?: boolean;
@@ -593,6 +605,10 @@ export interface ConnectionOptions {
      * Custom Entity ID for the connection.
      */
     entityId?: string;
+    /**
+     * Federation Metadata for the ADFS connection.
+     */
+    fedMetadataXml?: string;
     /**
      * If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
@@ -636,11 +652,11 @@ export interface ConnectionOptions {
     /**
      * Issuer URL, e.g. `https://auth.example.com`.
      */
-    issuer?: string;
+    issuer: string;
     /**
      * JWKS URI.
      */
-    jwksUri?: string;
+    jwksUri: string;
     /**
      * Apple Key ID.
      */
@@ -780,7 +796,7 @@ export interface ConnectionOptions {
     /**
      * Token endpoint.
      */
-    tokenEndpoint?: string;
+    tokenEndpoint: string;
     /**
      * Configuration options for one-time passwords.
      */
@@ -820,7 +836,7 @@ export interface ConnectionOptions {
     /**
      * User info endpoint.
      */
-    userinfoEndpoint?: string;
+    userinfoEndpoint: string;
     /**
      * Validation of the minimum and maximum values allowed for a user to have as username.
      */
@@ -1339,7 +1355,7 @@ export interface GuardianPhone {
      */
     options: outputs.GuardianPhoneOptions;
     /**
-     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
      */
     provider?: string;
 }
@@ -1493,6 +1509,10 @@ export interface LogStreamSink {
      * The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
      */
     mixpanelServiceAccountUsername?: string;
+    /**
+     * The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+     */
+    segmentWriteKey?: string;
     /**
      * The Splunk domain name.
      */

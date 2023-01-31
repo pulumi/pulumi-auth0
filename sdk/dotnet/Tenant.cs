@@ -120,7 +120,7 @@ namespace Pulumi.Auth0
         public Output<string> DefaultDirectory { get; private set; } = null!;
 
         /// <summary>
-        /// The default absolute redirection URI, must be https and cannot contain a fragment.
+        /// The default absolute redirection URI. Must be HTTPS or an empty string.
         /// </summary>
         [Output("defaultRedirectionUri")]
         public Output<string> DefaultRedirectionUri { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.Auth0
         public Input<string>? DefaultDirectory { get; set; }
 
         /// <summary>
-        /// The default absolute redirection URI, must be https and cannot contain a fragment.
+        /// The default absolute redirection URI. Must be HTTPS or an empty string.
         /// </summary>
         [Input("defaultRedirectionUri")]
         public Input<string>? DefaultRedirectionUri { get; set; }
@@ -408,7 +408,7 @@ namespace Pulumi.Auth0
         public Input<string>? DefaultDirectory { get; set; }
 
         /// <summary>
-        /// The default absolute redirection URI, must be https and cannot contain a fragment.
+        /// The default absolute redirection URI. Must be HTTPS or an empty string.
         /// </summary>
         [Input("defaultRedirectionUri")]
         public Input<string>? DefaultRedirectionUri { get; set; }
