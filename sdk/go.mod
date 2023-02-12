@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-auth0/sdk/v2
 
-go 1.17
+go 1.19
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
