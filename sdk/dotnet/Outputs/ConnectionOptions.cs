@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ConnectionOptions
     {
         /// <summary>
-        /// ADFS Metadata source.
+        /// ADFS URL where to fetch the metadata source.
         /// </summary>
         public readonly string? AdfsServer;
         /// <summary>
@@ -94,6 +94,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DomainAliases;
         /// <summary>
+        /// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+        /// </summary>
+        public readonly bool? EnableScriptContext;
+        /// <summary>
         /// Set to `true` to use a legacy user store.
         /// </summary>
         public readonly bool? EnabledDatabaseCustomization;
@@ -101,6 +105,10 @@ namespace Pulumi.Auth0.Outputs
         /// Custom Entity ID for the connection.
         /// </summary>
         public readonly string? EntityId;
+        /// <summary>
+        /// Federation Metadata for the ADFS connection.
+        /// </summary>
+        public readonly string? FedMetadataXml;
         /// <summary>
         /// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         /// </summary>
@@ -384,9 +392,13 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<string> domainAliases,
 
+            bool? enableScriptContext,
+
             bool? enabledDatabaseCustomization,
 
             string? entityId,
+
+            string? fedMetadataXml,
 
             string? fieldsMap,
 
@@ -528,8 +540,10 @@ namespace Pulumi.Auth0.Outputs
             DiscoveryUrl = discoveryUrl;
             Domain = domain;
             DomainAliases = domainAliases;
+            EnableScriptContext = enableScriptContext;
             EnabledDatabaseCustomization = enabledDatabaseCustomization;
             EntityId = entityId;
+            FedMetadataXml = fedMetadataXml;
             FieldsMap = fieldsMap;
             ForwardRequestInfo = forwardRequestInfo;
             From = from;

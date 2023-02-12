@@ -156,6 +156,22 @@ namespace Pulumi.Auth0.Inputs
         [Input("mixpanelServiceAccountUsername")]
         public Input<string>? MixpanelServiceAccountUsername { get; set; }
 
+        [Input("segmentWriteKey")]
+        private Input<string>? _segmentWriteKey;
+
+        /// <summary>
+        /// The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+        /// </summary>
+        public Input<string>? SegmentWriteKey
+        {
+            get => _segmentWriteKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _segmentWriteKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The Splunk domain name.
         /// </summary>

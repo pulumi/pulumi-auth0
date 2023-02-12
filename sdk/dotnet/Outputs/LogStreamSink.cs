@@ -86,6 +86,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? MixpanelServiceAccountUsername;
         /// <summary>
+        /// The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+        /// </summary>
+        public readonly string? SegmentWriteKey;
+        /// <summary>
         /// The Splunk domain name.
         /// </summary>
         public readonly string? SplunkDomain;
@@ -144,6 +148,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? mixpanelServiceAccountUsername,
 
+            string? segmentWriteKey,
+
             string? splunkDomain,
 
             string? splunkPort,
@@ -172,6 +178,7 @@ namespace Pulumi.Auth0.Outputs
             MixpanelRegion = mixpanelRegion;
             MixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
             MixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
+            SegmentWriteKey = segmentWriteKey;
             SplunkDomain = splunkDomain;
             SplunkPort = splunkPort;
             SplunkSecure = splunkSecure;

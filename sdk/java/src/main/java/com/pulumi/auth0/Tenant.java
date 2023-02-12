@@ -172,14 +172,14 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.defaultDirectory;
     }
     /**
-     * The default absolute redirection URI, must be https and cannot contain a fragment.
+     * The default absolute redirection URI. Must be HTTPS or an empty string.
      * 
      */
     @Export(name="defaultRedirectionUri", type=String.class, parameters={})
     private Output<String> defaultRedirectionUri;
 
     /**
-     * @return The default absolute redirection URI, must be https and cannot contain a fragment.
+     * @return The default absolute redirection URI. Must be HTTPS or an empty string.
      * 
      */
     public Output<String> defaultRedirectionUri() {

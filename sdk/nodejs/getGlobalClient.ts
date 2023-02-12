@@ -67,7 +67,7 @@ export interface GetGlobalClientResult {
     readonly clientMetadata: {[key: string]: any};
     readonly clientSecret: string;
     /**
-     * Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
      */
     readonly crossOriginAuth: boolean;
     /**
@@ -103,7 +103,7 @@ export interface GetGlobalClientResult {
      */
     readonly id: string;
     /**
-     * Initiate login URI, must be HTTPS.
+     * Initiate login URI. Must be HTTPS or an empty string.
      */
     readonly initiateLoginUri: string;
     /**

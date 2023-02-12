@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ConnectionOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ADFS Metadata source.
+        /// ADFS URL where to fetch the metadata source.
         /// </summary>
         [Input("adfsServer")]
         public Input<string>? AdfsServer { get; set; }
@@ -177,6 +177,12 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
+        /// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+        /// </summary>
+        [Input("enableScriptContext")]
+        public Input<bool>? EnableScriptContext { get; set; }
+
+        /// <summary>
         /// Set to `true` to use a legacy user store.
         /// </summary>
         [Input("enabledDatabaseCustomization")]
@@ -187,6 +193,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("entityId")]
         public Input<string>? EntityId { get; set; }
+
+        /// <summary>
+        /// Federation Metadata for the ADFS connection.
+        /// </summary>
+        [Input("fedMetadataXml")]
+        public Input<string>? FedMetadataXml { get; set; }
 
         /// <summary>
         /// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.

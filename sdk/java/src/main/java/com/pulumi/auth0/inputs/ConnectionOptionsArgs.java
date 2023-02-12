@@ -31,14 +31,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     public static final ConnectionOptionsArgs Empty = new ConnectionOptionsArgs();
 
     /**
-     * ADFS Metadata source.
+     * ADFS URL where to fetch the metadata source.
      * 
      */
     @Import(name="adfsServer")
     private @Nullable Output<String> adfsServer;
 
     /**
-     * @return ADFS Metadata source.
+     * @return ADFS URL where to fetch the metadata source.
      * 
      */
     public Optional<Output<String>> adfsServer() {
@@ -331,6 +331,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     * 
+     */
+    @Import(name="enableScriptContext")
+    private @Nullable Output<Boolean> enableScriptContext;
+
+    /**
+     * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     * 
+     */
+    public Optional<Output<Boolean>> enableScriptContext() {
+        return Optional.ofNullable(this.enableScriptContext);
+    }
+
+    /**
      * Set to `true` to use a legacy user store.
      * 
      */
@@ -358,6 +373,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> entityId() {
         return Optional.ofNullable(this.entityId);
+    }
+
+    /**
+     * Federation Metadata for the ADFS connection.
+     * 
+     */
+    @Import(name="fedMetadataXml")
+    private @Nullable Output<String> fedMetadataXml;
+
+    /**
+     * @return Federation Metadata for the ADFS connection.
+     * 
+     */
+    public Optional<Output<String>> fedMetadataXml() {
+        return Optional.ofNullable(this.fedMetadataXml);
     }
 
     /**
@@ -1283,8 +1313,10 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.discoveryUrl = $.discoveryUrl;
         this.domain = $.domain;
         this.domainAliases = $.domainAliases;
+        this.enableScriptContext = $.enableScriptContext;
         this.enabledDatabaseCustomization = $.enabledDatabaseCustomization;
         this.entityId = $.entityId;
+        this.fedMetadataXml = $.fedMetadataXml;
         this.fieldsMap = $.fieldsMap;
         this.forwardRequestInfo = $.forwardRequestInfo;
         this.from = $.from;
@@ -1366,7 +1398,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param adfsServer ADFS Metadata source.
+         * @param adfsServer ADFS URL where to fetch the metadata source.
          * 
          * @return builder
          * 
@@ -1377,7 +1409,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param adfsServer ADFS Metadata source.
+         * @param adfsServer ADFS URL where to fetch the metadata source.
          * 
          * @return builder
          * 
@@ -1806,6 +1838,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param enableScriptContext Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableScriptContext(@Nullable Output<Boolean> enableScriptContext) {
+            $.enableScriptContext = enableScriptContext;
+            return this;
+        }
+
+        /**
+         * @param enableScriptContext Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableScriptContext(Boolean enableScriptContext) {
+            return enableScriptContext(Output.of(enableScriptContext));
+        }
+
+        /**
          * @param enabledDatabaseCustomization Set to `true` to use a legacy user store.
          * 
          * @return builder
@@ -1845,6 +1898,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder entityId(String entityId) {
             return entityId(Output.of(entityId));
+        }
+
+        /**
+         * @param fedMetadataXml Federation Metadata for the ADFS connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fedMetadataXml(@Nullable Output<String> fedMetadataXml) {
+            $.fedMetadataXml = fedMetadataXml;
+            return this;
+        }
+
+        /**
+         * @param fedMetadataXml Federation Metadata for the ADFS connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fedMetadataXml(String fedMetadataXml) {
+            return fedMetadataXml(Output.of(fedMetadataXml));
         }
 
         /**

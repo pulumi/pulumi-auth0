@@ -33,6 +33,11 @@ import (
 //					},
 //					Enabled: pulumi.Bool(true),
 //					Method:  pulumi.String("standard"),
+//					PreUserRegistration: &auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{
+//						Shields: pulumi.StringArray{
+//							pulumi.String("block"),
+//						},
+//					},
 //					Shields: pulumi.StringArray{
 //						pulumi.String("admin_notification"),
 //						pulumi.String("block"),

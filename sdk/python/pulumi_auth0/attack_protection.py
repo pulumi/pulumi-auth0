@@ -148,6 +148,9 @@ class AttackProtection(pulumi.CustomResource):
                 admin_notification_frequencies=["daily"],
                 enabled=True,
                 method="standard",
+                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
+                    shields=["block"],
+                ),
                 shields=[
                     "admin_notification",
                     "block",
@@ -215,6 +218,9 @@ class AttackProtection(pulumi.CustomResource):
                 admin_notification_frequencies=["daily"],
                 enabled=True,
                 method="standard",
+                pre_user_registration=auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs(
+                    shields=["block"],
+                ),
                 shields=[
                     "admin_notification",
                     "block",

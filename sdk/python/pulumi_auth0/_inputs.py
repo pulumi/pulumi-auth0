@@ -14,6 +14,7 @@ __all__ = [
     'ActionSecretArgs',
     'ActionSupportedTriggersArgs',
     'AttackProtectionBreachedPasswordDetectionArgs',
+    'AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs',
     'AttackProtectionBruteForceProtectionArgs',
     'AttackProtectionSuspiciousIpThrottlingArgs',
     'AttackProtectionSuspiciousIpThrottlingPreLoginArgs',
@@ -208,11 +209,13 @@ class AttackProtectionBreachedPasswordDetectionArgs:
                  admin_notification_frequencies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  method: Optional[pulumi.Input[str]] = None,
+                 pre_user_registration: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs']] = None,
                  shields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] admin_notification_frequencies: When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         :param pulumi.Input[bool] enabled: Whether breached password detection is active.
         :param pulumi.Input[str] method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        :param pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs'] pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] shields: Action to take when a breached password is detected.
         """
         if admin_notification_frequencies is not None:
@@ -221,6 +224,8 @@ class AttackProtectionBreachedPasswordDetectionArgs:
             pulumi.set(__self__, "enabled", enabled)
         if method is not None:
             pulumi.set(__self__, "method", method)
+        if pre_user_registration is not None:
+            pulumi.set(__self__, "pre_user_registration", pre_user_registration)
         if shields is not None:
             pulumi.set(__self__, "shields", shields)
 
@@ -261,11 +266,40 @@ class AttackProtectionBreachedPasswordDetectionArgs:
         pulumi.set(self, "method", value)
 
     @property
+    @pulumi.getter(name="preUserRegistration")
+    def pre_user_registration(self) -> Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs']]:
+        """
+        Configuration options that apply before every user registration attempt. Only available on public tenants.
+        """
+        return pulumi.get(self, "pre_user_registration")
+
+    @pre_user_registration.setter
+    def pre_user_registration(self, value: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs']]):
+        pulumi.set(self, "pre_user_registration", value)
+
+    @property
     @pulumi.getter
     def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Action to take when a breached password is detected.
         """
+        return pulumi.get(self, "shields")
+
+    @shields.setter
+    def shields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "shields", value)
+
+
+@pulumi.input_type
+class AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs:
+    def __init__(__self__, *,
+                 shields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "shields")
 
     @shields.setter
@@ -2428,8 +2462,10 @@ class ConnectionOptionsArgs:
                  discovery_url: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  domain_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_script_context: Optional[pulumi.Input[bool]] = None,
                  enabled_database_customization: Optional[pulumi.Input[bool]] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
+                 fed_metadata_xml: Optional[pulumi.Input[str]] = None,
                  fields_map: Optional[pulumi.Input[str]] = None,
                  forward_request_info: Optional[pulumi.Input[bool]] = None,
                  from_: Optional[pulumi.Input[str]] = None,
@@ -2491,7 +2527,7 @@ class ConnectionOptionsArgs:
                  waad_common_endpoint: Optional[pulumi.Input[bool]] = None,
                  waad_protocol: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] adfs_server: ADFS Metadata source.
+        :param pulumi.Input[str] adfs_server: ADFS URL where to fetch the metadata source.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_audiences: List of allowed audiences.
         :param pulumi.Input[bool] api_enable_users: Enable API Access to users.
         :param pulumi.Input[str] app_id: App ID.
@@ -2511,8 +2547,10 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[str] discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param pulumi.Input[str] domain: Domain name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        :param pulumi.Input[bool] enable_script_context: Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         :param pulumi.Input[bool] enabled_database_customization: Set to `true` to use a legacy user store.
         :param pulumi.Input[str] entity_id: Custom Entity ID for the connection.
+        :param pulumi.Input[str] fed_metadata_xml: Federation Metadata for the ADFS connection.
         :param pulumi.Input[str] fields_map: If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         :param pulumi.Input[bool] forward_request_info: Specifies whether or not request info should be forwarded to sms gateway.
         :param pulumi.Input[str] from_: Address to use as the sender.
@@ -2614,10 +2652,14 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "domain", domain)
         if domain_aliases is not None:
             pulumi.set(__self__, "domain_aliases", domain_aliases)
+        if enable_script_context is not None:
+            pulumi.set(__self__, "enable_script_context", enable_script_context)
         if enabled_database_customization is not None:
             pulumi.set(__self__, "enabled_database_customization", enabled_database_customization)
         if entity_id is not None:
             pulumi.set(__self__, "entity_id", entity_id)
+        if fed_metadata_xml is not None:
+            pulumi.set(__self__, "fed_metadata_xml", fed_metadata_xml)
         if fields_map is not None:
             pulumi.set(__self__, "fields_map", fields_map)
         if forward_request_info is not None:
@@ -2743,7 +2785,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="adfsServer")
     def adfs_server(self) -> Optional[pulumi.Input[str]]:
         """
-        ADFS Metadata source.
+        ADFS URL where to fetch the metadata source.
         """
         return pulumi.get(self, "adfs_server")
 
@@ -2980,6 +3022,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "domain_aliases", value)
 
     @property
+    @pulumi.getter(name="enableScriptContext")
+    def enable_script_context(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+        """
+        return pulumi.get(self, "enable_script_context")
+
+    @enable_script_context.setter
+    def enable_script_context(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_script_context", value)
+
+    @property
     @pulumi.getter(name="enabledDatabaseCustomization")
     def enabled_database_customization(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -3002,6 +3056,18 @@ class ConnectionOptionsArgs:
     @entity_id.setter
     def entity_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "entity_id", value)
+
+    @property
+    @pulumi.getter(name="fedMetadataXml")
+    def fed_metadata_xml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Federation Metadata for the ADFS connection.
+        """
+        return pulumi.get(self, "fed_metadata_xml")
+
+    @fed_metadata_xml.setter
+    def fed_metadata_xml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fed_metadata_xml", value)
 
     @property
     @pulumi.getter(name="fieldsMap")
@@ -5374,7 +5440,7 @@ class GuardianPhoneArgs:
         :param pulumi.Input[bool] enabled: Indicates whether Phone MFA is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] message_types: Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
         :param pulumi.Input['GuardianPhoneOptionsArgs'] options: Options for the various providers.
-        :param pulumi.Input[str] provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        :param pulumi.Input[str] provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
         """
         pulumi.set(__self__, "enabled", enabled)
         if message_types is not None:
@@ -5424,7 +5490,7 @@ class GuardianPhoneArgs:
     @pulumi.getter
     def provider(self) -> Optional[pulumi.Input[str]]:
         """
-        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
         """
         return pulumi.get(self, "provider")
 
@@ -5826,6 +5892,7 @@ class LogStreamSinkArgs:
                  mixpanel_region: Optional[pulumi.Input[str]] = None,
                  mixpanel_service_account_password: Optional[pulumi.Input[str]] = None,
                  mixpanel_service_account_username: Optional[pulumi.Input[str]] = None,
+                 segment_write_key: Optional[pulumi.Input[str]] = None,
                  splunk_domain: Optional[pulumi.Input[str]] = None,
                  splunk_port: Optional[pulumi.Input[str]] = None,
                  splunk_secure: Optional[pulumi.Input[bool]] = None,
@@ -5850,6 +5917,7 @@ class LogStreamSinkArgs:
         :param pulumi.Input[str] mixpanel_region: The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
         :param pulumi.Input[str] mixpanel_service_account_password: The Mixpanel Service Account password.
         :param pulumi.Input[str] mixpanel_service_account_username: The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+        :param pulumi.Input[str] segment_write_key: The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
         :param pulumi.Input[str] splunk_domain: The Splunk domain name.
         :param pulumi.Input[str] splunk_port: The Splunk port.
         :param pulumi.Input[bool] splunk_secure: This toggle should be turned off when using self-signed certificates.
@@ -5892,6 +5960,8 @@ class LogStreamSinkArgs:
             pulumi.set(__self__, "mixpanel_service_account_password", mixpanel_service_account_password)
         if mixpanel_service_account_username is not None:
             pulumi.set(__self__, "mixpanel_service_account_username", mixpanel_service_account_username)
+        if segment_write_key is not None:
+            pulumi.set(__self__, "segment_write_key", segment_write_key)
         if splunk_domain is not None:
             pulumi.set(__self__, "splunk_domain", splunk_domain)
         if splunk_port is not None:
@@ -6118,6 +6188,18 @@ class LogStreamSinkArgs:
     @mixpanel_service_account_username.setter
     def mixpanel_service_account_username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mixpanel_service_account_username", value)
+
+    @property
+    @pulumi.getter(name="segmentWriteKey")
+    def segment_write_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+        """
+        return pulumi.get(self, "segment_write_key")
+
+    @segment_write_key.setter
+    def segment_write_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "segment_write_key", value)
 
     @property
     @pulumi.getter(name="splunkDomain")

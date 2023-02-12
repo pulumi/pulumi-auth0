@@ -45,9 +45,9 @@ type Client struct {
 	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
 	// Terraform client. Otherwise, the attribute will contain an empty string.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
-	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger pulumi.MapOutput `pulumi:"clientSecretRotationTrigger"`
-	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth pulumi.BoolPtrOutput `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
 	CrossOriginLoc pulumi.StringPtrOutput `pulumi:"crossOriginLoc"`
@@ -63,7 +63,7 @@ type Client struct {
 	FormTemplate pulumi.StringPtrOutput `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayOutput `pulumi:"grantTypes"`
-	// Initiate login URI, must be HTTPS.
+	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri pulumi.StringPtrOutput `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty pulumi.BoolOutput `pulumi:"isFirstParty"`
@@ -157,9 +157,9 @@ type clientState struct {
 	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
 	// Terraform client. Otherwise, the attribute will contain an empty string.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
-	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
 	CrossOriginLoc *string `pulumi:"crossOriginLoc"`
@@ -175,7 +175,7 @@ type clientState struct {
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
-	// Initiate login URI, must be HTTPS.
+	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
@@ -233,9 +233,9 @@ type ClientState struct {
 	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
 	// Terraform client. Otherwise, the attribute will contain an empty string.
 	ClientSecret pulumi.StringPtrInput
-	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger pulumi.MapInput
-	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth pulumi.BoolPtrInput
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
 	CrossOriginLoc pulumi.StringPtrInput
@@ -251,7 +251,7 @@ type ClientState struct {
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput
-	// Initiate login URI, must be HTTPS.
+	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri pulumi.StringPtrInput
 	// Indicates whether this client is a first-party client.
 	IsFirstParty pulumi.BoolPtrInput
@@ -308,9 +308,9 @@ type clientArgs struct {
 	ClientAliases []string `pulumi:"clientAliases"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
-	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
-	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
 	CrossOriginLoc *string `pulumi:"crossOriginLoc"`
@@ -326,7 +326,7 @@ type clientArgs struct {
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
-	// Initiate login URI, must be HTTPS.
+	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
@@ -378,9 +378,9 @@ type ClientArgs struct {
 	ClientAliases pulumi.StringArrayInput
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.MapInput
-	// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 	ClientSecretRotationTrigger pulumi.MapInput
-	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth pulumi.BoolPtrInput
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
 	CrossOriginLoc pulumi.StringPtrInput
@@ -396,7 +396,7 @@ type ClientArgs struct {
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput
-	// Initiate login URI, must be HTTPS.
+	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri pulumi.StringPtrInput
 	// Indicates whether this client is a first-party client.
 	IsFirstParty pulumi.BoolPtrInput
@@ -568,12 +568,12 @@ func (o ClientOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-// Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
 func (o ClientOutput) ClientSecretRotationTrigger() pulumi.MapOutput {
 	return o.ApplyT(func(v *Client) pulumi.MapOutput { return v.ClientSecretRotationTrigger }).(pulumi.MapOutput)
 }
 
-// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 func (o ClientOutput) CrossOriginAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.CrossOriginAuth }).(pulumi.BoolPtrOutput)
 }
@@ -613,7 +613,7 @@ func (o ClientOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
 
-// Initiate login URI, must be HTTPS.
+// Initiate login URI. Must be HTTPS or an empty string.
 func (o ClientOutput) InitiateLoginUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.InitiateLoginUri }).(pulumi.StringPtrOutput)
 }

@@ -59,8 +59,8 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
-        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
@@ -68,7 +68,7 @@ class ClientArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
-        :param pulumi.Input[str] initiate_login_uri: Initiate login URI, must be HTTPS.
+        :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
@@ -254,7 +254,7 @@ class ClientArgs:
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
@@ -266,7 +266,7 @@ class ClientArgs:
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         """
         return pulumi.get(self, "cross_origin_auth")
 
@@ -362,7 +362,7 @@ class ClientArgs:
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Initiate login URI, must be HTTPS.
+        Initiate login URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "initiate_login_uri")
 
@@ -603,8 +603,8 @@ class _ClientState:
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
                Terraform client. Otherwise, the attribute will contain an empty string.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
-        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
@@ -612,7 +612,7 @@ class _ClientState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
-        :param pulumi.Input[str] initiate_login_uri: Initiate login URI, must be HTTPS.
+        :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
@@ -830,7 +830,7 @@ class _ClientState:
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
@@ -842,7 +842,7 @@ class _ClientState:
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         """
         return pulumi.get(self, "cross_origin_auth")
 
@@ -938,7 +938,7 @@ class _ClientState:
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Initiate login URI, must be HTTPS.
+        Initiate login URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "initiate_login_uri")
 
@@ -1199,8 +1199,8 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
-        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
@@ -1208,7 +1208,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
-        :param pulumi.Input[str] initiate_login_uri: Initiate login URI, must be HTTPS.
+        :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted.
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
@@ -1403,8 +1403,8 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
                Terraform client. Otherwise, the attribute will contain an empty string.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
-        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
         :param pulumi.Input[bool] custom_login_page_on: Indicates whether a custom login page is to be used.
@@ -1412,7 +1412,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: Types of grants that this client is authorized to use.
-        :param pulumi.Input[str] initiate_login_uri: Initiate login URI, must be HTTPS.
+        :param pulumi.Input[str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
         :param pulumi.Input[bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted.
         :param pulumi.Input[pulumi.InputType['ClientJwtConfigurationArgs']] jwt_configuration: Configuration settings for the JWTs issued for this client.
@@ -1557,7 +1557,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
@@ -1565,7 +1565,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         """
         return pulumi.get(self, "cross_origin_auth")
 
@@ -1629,7 +1629,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> pulumi.Output[Optional[str]]:
         """
-        Initiate login URI, must be HTTPS.
+        Initiate login URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "initiate_login_uri")
 

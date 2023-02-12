@@ -105,6 +105,11 @@ public final class LogStreamSink {
      */
     private @Nullable String mixpanelServiceAccountUsername;
     /**
+     * @return The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+     * 
+     */
+    private @Nullable String segmentWriteKey;
+    /**
      * @return The Splunk domain name.
      * 
      */
@@ -258,6 +263,13 @@ public final class LogStreamSink {
         return Optional.ofNullable(this.mixpanelServiceAccountUsername);
     }
     /**
+     * @return The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+     * 
+     */
+    public Optional<String> segmentWriteKey() {
+        return Optional.ofNullable(this.segmentWriteKey);
+    }
+    /**
      * @return The Splunk domain name.
      * 
      */
@@ -320,6 +332,7 @@ public final class LogStreamSink {
         private @Nullable String mixpanelRegion;
         private @Nullable String mixpanelServiceAccountPassword;
         private @Nullable String mixpanelServiceAccountUsername;
+        private @Nullable String segmentWriteKey;
         private @Nullable String splunkDomain;
         private @Nullable String splunkPort;
         private @Nullable Boolean splunkSecure;
@@ -346,6 +359,7 @@ public final class LogStreamSink {
     	      this.mixpanelRegion = defaults.mixpanelRegion;
     	      this.mixpanelServiceAccountPassword = defaults.mixpanelServiceAccountPassword;
     	      this.mixpanelServiceAccountUsername = defaults.mixpanelServiceAccountUsername;
+    	      this.segmentWriteKey = defaults.segmentWriteKey;
     	      this.splunkDomain = defaults.splunkDomain;
     	      this.splunkPort = defaults.splunkPort;
     	      this.splunkSecure = defaults.splunkSecure;
@@ -444,6 +458,11 @@ public final class LogStreamSink {
             return this;
         }
         @CustomType.Setter
+        public Builder segmentWriteKey(@Nullable String segmentWriteKey) {
+            this.segmentWriteKey = segmentWriteKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder splunkDomain(@Nullable String splunkDomain) {
             this.splunkDomain = splunkDomain;
             return this;
@@ -488,6 +507,7 @@ public final class LogStreamSink {
             o.mixpanelRegion = mixpanelRegion;
             o.mixpanelServiceAccountPassword = mixpanelServiceAccountPassword;
             o.mixpanelServiceAccountUsername = mixpanelServiceAccountUsername;
+            o.segmentWriteKey = segmentWriteKey;
             o.splunkDomain = splunkDomain;
             o.splunkPort = splunkPort;
             o.splunkSecure = splunkSecure;
