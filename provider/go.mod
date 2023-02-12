@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-auth0/provider/v2
 
-go 1.18
+go 1.19
 
 replace (
 	cloud.google.com/go/storage => cloud.google.com/go/storage v1.15.0

@@ -155,6 +155,9 @@ jobs:
       with:
         path: ci-scripts
         repository: pulumi/scripts
+    - name: Mark repo as safe directory
+      run: git config --global --add safe.directory /__w/pulumi-${{ env.PROVIDER
+        }}/pulumi-${{ env.PROVIDER }}
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
@@ -192,6 +195,9 @@ jobs:
       with:
         path: ci-scripts
         repository: pulumi/scripts
+    - name: Mark repo as safe directory
+      run: git config --global --add safe.directory /__w/pulumi-${{ env.PROVIDER
+        }}/pulumi-${{ env.PROVIDER }}
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
