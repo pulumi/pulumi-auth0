@@ -146,14 +146,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+     * Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      * 
      */
     @Import(name="clientSecretRotationTrigger")
     private @Nullable Output<Map<String,Object>> clientSecretRotationTrigger;
 
     /**
-     * @return Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+     * @return Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
      * 
      */
     public Optional<Output<Map<String,Object>>> clientSecretRotationTrigger() {
@@ -161,14 +161,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
      * 
      */
     @Import(name="crossOriginAuth")
     private @Nullable Output<Boolean> crossOriginAuth;
 
     /**
-     * @return Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
      * 
      */
     public Optional<Output<Boolean>> crossOriginAuth() {
@@ -281,14 +281,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Initiate login URI, must be HTTPS.
+     * Initiate login URI. Must be HTTPS or an empty string.
      * 
      */
     @Import(name="initiateLoginUri")
     private @Nullable Output<String> initiateLoginUri;
 
     /**
-     * @return Initiate login URI, must be HTTPS.
+     * @return Initiate login URI. Must be HTTPS or an empty string.
      * 
      */
     public Optional<Output<String>> initiateLoginUri() {
@@ -795,7 +795,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientSecretRotationTrigger Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+         * @param clientSecretRotationTrigger Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
          * 
          * @return builder
          * 
@@ -806,7 +806,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientSecretRotationTrigger Custom metadata for the rotation. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+         * @param clientSecretRotationTrigger Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
          * 
          * @return builder
          * 
@@ -827,7 +827,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+         * @param crossOriginAuth Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
          * 
          * @return builder
          * 
@@ -994,7 +994,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initiateLoginUri Initiate login URI, must be HTTPS.
+         * @param initiateLoginUri Initiate login URI. Must be HTTPS or an empty string.
          * 
          * @return builder
          * 
@@ -1005,7 +1005,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initiateLoginUri Initiate login URI, must be HTTPS.
+         * @param initiateLoginUri Initiate login URI. Must be HTTPS or an empty string.
          * 
          * @return builder
          * 

@@ -104,7 +104,7 @@ type Tenant struct {
 	DefaultAudience pulumi.StringOutput `pulumi:"defaultAudience"`
 	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory pulumi.StringOutput `pulumi:"defaultDirectory"`
-	// The default absolute redirection URI, must be https and cannot contain a fragment.
+	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringOutput `pulumi:"defaultRedirectionUri"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayOutput `pulumi:"enabledLocales"`
@@ -171,7 +171,7 @@ type tenantState struct {
 	DefaultAudience *string `pulumi:"defaultAudience"`
 	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory *string `pulumi:"defaultDirectory"`
-	// The default absolute redirection URI, must be https and cannot contain a fragment.
+	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri *string `pulumi:"defaultRedirectionUri"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
@@ -210,7 +210,7 @@ type TenantState struct {
 	DefaultAudience pulumi.StringPtrInput
 	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory pulumi.StringPtrInput
-	// The default absolute redirection URI, must be https and cannot contain a fragment.
+	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
@@ -253,7 +253,7 @@ type tenantArgs struct {
 	DefaultAudience *string `pulumi:"defaultAudience"`
 	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory *string `pulumi:"defaultDirectory"`
-	// The default absolute redirection URI, must be https and cannot contain a fragment.
+	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri *string `pulumi:"defaultRedirectionUri"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
@@ -293,7 +293,7 @@ type TenantArgs struct {
 	DefaultAudience pulumi.StringPtrInput
 	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory pulumi.StringPtrInput
-	// The default absolute redirection URI, must be https and cannot contain a fragment.
+	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
@@ -430,7 +430,7 @@ func (o TenantOutput) DefaultDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DefaultDirectory }).(pulumi.StringOutput)
 }
 
-// The default absolute redirection URI, must be https and cannot contain a fragment.
+// The default absolute redirection URI. Must be HTTPS or an empty string.
 func (o TenantOutput) DefaultRedirectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DefaultRedirectionUri }).(pulumi.StringOutput)
 }

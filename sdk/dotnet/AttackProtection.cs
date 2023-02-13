@@ -31,6 +31,13 @@ namespace Pulumi.Auth0
     ///             },
     ///             Enabled = true,
     ///             Method = "standard",
+    ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs
+    ///             {
+    ///                 Shields = new[]
+    ///                 {
+    ///                     "block",
+    ///                 },
+    ///             },
     ///             Shields = new[]
     ///             {
     ///                 "admin_notification",

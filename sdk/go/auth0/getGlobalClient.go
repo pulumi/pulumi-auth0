@@ -62,7 +62,7 @@ type LookupGlobalClientResult struct {
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
 	ClientSecret   string                 `pulumi:"clientSecret"`
-	// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth bool `pulumi:"crossOriginAuth"`
 	// URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
 	CrossOriginLoc string `pulumi:"crossOriginLoc"`
@@ -80,7 +80,7 @@ type LookupGlobalClientResult struct {
 	GrantTypes []string `pulumi:"grantTypes"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Initiate login URI, must be HTTPS.
+	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty bool `pulumi:"isFirstParty"`

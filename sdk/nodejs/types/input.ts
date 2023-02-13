@@ -52,8 +52,16 @@ export interface AttackProtectionBreachedPasswordDetection {
      */
     method?: pulumi.Input<string>;
     /**
+     * Configuration options that apply before every user registration attempt. Only available on public tenants.
+     */
+    preUserRegistration?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration>;
+    /**
      * Action to take when a breached password is detected.
      */
+    shields?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AttackProtectionBreachedPasswordDetectionPreUserRegistration {
     shields?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -506,7 +514,7 @@ export interface ClientRefreshToken {
 
 export interface ConnectionOptions {
     /**
-     * ADFS Metadata source.
+     * ADFS URL where to fetch the metadata source.
      */
     adfsServer?: pulumi.Input<string>;
     /**
@@ -586,6 +594,10 @@ export interface ConnectionOptions {
      */
     domainAliases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     */
+    enableScriptContext?: pulumi.Input<boolean>;
+    /**
      * Set to `true` to use a legacy user store.
      */
     enabledDatabaseCustomization?: pulumi.Input<boolean>;
@@ -593,6 +605,10 @@ export interface ConnectionOptions {
      * Custom Entity ID for the connection.
      */
     entityId?: pulumi.Input<string>;
+    /**
+     * Federation Metadata for the ADFS connection.
+     */
+    fedMetadataXml?: pulumi.Input<string>;
     /**
      * If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
@@ -1139,7 +1155,7 @@ export interface GuardianPhone {
      */
     options?: pulumi.Input<inputs.GuardianPhoneOptions>;
     /**
-     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
      */
     provider?: pulumi.Input<string>;
 }
@@ -1293,6 +1309,10 @@ export interface LogStreamSink {
      * The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
      */
     mixpanelServiceAccountUsername?: pulumi.Input<string>;
+    /**
+     * The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+     */
+    segmentWriteKey?: pulumi.Input<string>;
     /**
      * The Splunk domain name.
      */

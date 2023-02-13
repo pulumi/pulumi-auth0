@@ -67,7 +67,7 @@ public final class GetClientResult {
     private Map<String,Object> clientMetadata;
     private String clientSecret;
     /**
-     * @return Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
      * 
      */
     private Boolean crossOriginAuth;
@@ -112,7 +112,7 @@ public final class GetClientResult {
      */
     private String id;
     /**
-     * @return Initiate login URI, must be HTTPS.
+     * @return Initiate login URI. Must be HTTPS or an empty string.
      * 
      */
     private String initiateLoginUri;
@@ -265,7 +265,7 @@ public final class GetClientResult {
         return this.clientSecret;
     }
     /**
-     * @return Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+     * @return Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
      * 
      */
     public Boolean crossOriginAuth() {
@@ -328,7 +328,7 @@ public final class GetClientResult {
         return this.id;
     }
     /**
-     * @return Initiate login URI, must be HTTPS.
+     * @return Initiate login URI. Must be HTTPS or an empty string.
      * 
      */
     public String initiateLoginUri() {

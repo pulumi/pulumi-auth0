@@ -36,6 +36,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("method")]
         public Input<string>? Method { get; set; }
 
+        /// <summary>
+        /// Configuration options that apply before every user registration attempt. Only available on public tenants.
+        /// </summary>
+        [Input("preUserRegistration")]
+        public Input<Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs>? PreUserRegistration { get; set; }
+
         [Input("shields")]
         private InputList<string>? _shields;
 

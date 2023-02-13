@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -63,6 +64,21 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
     }
 
     /**
+     * Configuration options that apply before every user registration attempt. Only available on public tenants.
+     * 
+     */
+    @Import(name="preUserRegistration")
+    private @Nullable Output<AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs> preUserRegistration;
+
+    /**
+     * @return Configuration options that apply before every user registration attempt. Only available on public tenants.
+     * 
+     */
+    public Optional<Output<AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs>> preUserRegistration() {
+        return Optional.ofNullable(this.preUserRegistration);
+    }
+
+    /**
      * Action to take when a breached password is detected.
      * 
      */
@@ -83,6 +99,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         this.adminNotificationFrequencies = $.adminNotificationFrequencies;
         this.enabled = $.enabled;
         this.method = $.method;
+        this.preUserRegistration = $.preUserRegistration;
         this.shields = $.shields;
     }
 
@@ -175,6 +192,27 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
          */
         public Builder method(String method) {
             return method(Output.of(method));
+        }
+
+        /**
+         * @param preUserRegistration Configuration options that apply before every user registration attempt. Only available on public tenants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preUserRegistration(@Nullable Output<AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs> preUserRegistration) {
+            $.preUserRegistration = preUserRegistration;
+            return this;
+        }
+
+        /**
+         * @param preUserRegistration Configuration options that apply before every user registration attempt. Only available on public tenants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs preUserRegistration) {
+            return preUserRegistration(Output.of(preUserRegistration));
         }
 
         /**

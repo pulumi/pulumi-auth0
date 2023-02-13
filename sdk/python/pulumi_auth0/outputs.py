@@ -15,6 +15,7 @@ __all__ = [
     'ActionSecret',
     'ActionSupportedTriggers',
     'AttackProtectionBreachedPasswordDetection',
+    'AttackProtectionBreachedPasswordDetectionPreUserRegistration',
     'AttackProtectionBruteForceProtection',
     'AttackProtectionSuspiciousIpThrottling',
     'AttackProtectionSuspiciousIpThrottlingPreLogin',
@@ -206,6 +207,8 @@ class AttackProtectionBreachedPasswordDetection(dict):
         suggest = None
         if key == "adminNotificationFrequencies":
             suggest = "admin_notification_frequencies"
+        elif key == "preUserRegistration":
+            suggest = "pre_user_registration"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AttackProtectionBreachedPasswordDetection. Access the value via the '{suggest}' property getter instead.")
@@ -222,11 +225,13 @@ class AttackProtectionBreachedPasswordDetection(dict):
                  admin_notification_frequencies: Optional[Sequence[str]] = None,
                  enabled: Optional[bool] = None,
                  method: Optional[str] = None,
+                 pre_user_registration: Optional['outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration'] = None,
                  shields: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] admin_notification_frequencies: When "admin_notification" is enabled, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
         :param bool enabled: Whether breached password detection is active.
         :param str method: The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        :param 'AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs' pre_user_registration: Configuration options that apply before every user registration attempt. Only available on public tenants.
         :param Sequence[str] shields: Action to take when a breached password is detected.
         """
         if admin_notification_frequencies is not None:
@@ -235,6 +240,8 @@ class AttackProtectionBreachedPasswordDetection(dict):
             pulumi.set(__self__, "enabled", enabled)
         if method is not None:
             pulumi.set(__self__, "method", method)
+        if pre_user_registration is not None:
+            pulumi.set(__self__, "pre_user_registration", pre_user_registration)
         if shields is not None:
             pulumi.set(__self__, "shields", shields)
 
@@ -263,11 +270,32 @@ class AttackProtectionBreachedPasswordDetection(dict):
         return pulumi.get(self, "method")
 
     @property
+    @pulumi.getter(name="preUserRegistration")
+    def pre_user_registration(self) -> Optional['outputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration']:
+        """
+        Configuration options that apply before every user registration attempt. Only available on public tenants.
+        """
+        return pulumi.get(self, "pre_user_registration")
+
+    @property
     @pulumi.getter
     def shields(self) -> Optional[Sequence[str]]:
         """
         Action to take when a breached password is detected.
         """
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class AttackProtectionBreachedPasswordDetectionPreUserRegistration(dict):
+    def __init__(__self__, *,
+                 shields: Optional[Sequence[str]] = None):
+        if shields is not None:
+            pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "shields")
 
 
@@ -2254,10 +2282,14 @@ class ConnectionOptions(dict):
             suggest = "discovery_url"
         elif key == "domainAliases":
             suggest = "domain_aliases"
+        elif key == "enableScriptContext":
+            suggest = "enable_script_context"
         elif key == "enabledDatabaseCustomization":
             suggest = "enabled_database_customization"
         elif key == "entityId":
             suggest = "entity_id"
+        elif key == "fedMetadataXml":
+            suggest = "fed_metadata_xml"
         elif key == "fieldsMap":
             suggest = "fields_map"
         elif key == "forwardRequestInfo":
@@ -2385,8 +2417,10 @@ class ConnectionOptions(dict):
                  discovery_url: Optional[str] = None,
                  domain: Optional[str] = None,
                  domain_aliases: Optional[Sequence[str]] = None,
+                 enable_script_context: Optional[bool] = None,
                  enabled_database_customization: Optional[bool] = None,
                  entity_id: Optional[str] = None,
+                 fed_metadata_xml: Optional[str] = None,
                  fields_map: Optional[str] = None,
                  forward_request_info: Optional[bool] = None,
                  from_: Optional[str] = None,
@@ -2448,7 +2482,7 @@ class ConnectionOptions(dict):
                  waad_common_endpoint: Optional[bool] = None,
                  waad_protocol: Optional[str] = None):
         """
-        :param str adfs_server: ADFS Metadata source.
+        :param str adfs_server: ADFS URL where to fetch the metadata source.
         :param Sequence[str] allowed_audiences: List of allowed audiences.
         :param bool api_enable_users: Enable API Access to users.
         :param str app_id: App ID.
@@ -2468,8 +2502,10 @@ class ConnectionOptions(dict):
         :param str discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param str domain: Domain name.
         :param Sequence[str] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        :param bool enable_script_context: Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         :param bool enabled_database_customization: Set to `true` to use a legacy user store.
         :param str entity_id: Custom Entity ID for the connection.
+        :param str fed_metadata_xml: Federation Metadata for the ADFS connection.
         :param str fields_map: If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         :param bool forward_request_info: Specifies whether or not request info should be forwarded to sms gateway.
         :param str from_: Address to use as the sender.
@@ -2571,10 +2607,14 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "domain", domain)
         if domain_aliases is not None:
             pulumi.set(__self__, "domain_aliases", domain_aliases)
+        if enable_script_context is not None:
+            pulumi.set(__self__, "enable_script_context", enable_script_context)
         if enabled_database_customization is not None:
             pulumi.set(__self__, "enabled_database_customization", enabled_database_customization)
         if entity_id is not None:
             pulumi.set(__self__, "entity_id", entity_id)
+        if fed_metadata_xml is not None:
+            pulumi.set(__self__, "fed_metadata_xml", fed_metadata_xml)
         if fields_map is not None:
             pulumi.set(__self__, "fields_map", fields_map)
         if forward_request_info is not None:
@@ -2700,7 +2740,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="adfsServer")
     def adfs_server(self) -> Optional[str]:
         """
-        ADFS Metadata source.
+        ADFS URL where to fetch the metadata source.
         """
         return pulumi.get(self, "adfs_server")
 
@@ -2857,6 +2897,14 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "domain_aliases")
 
     @property
+    @pulumi.getter(name="enableScriptContext")
+    def enable_script_context(self) -> Optional[bool]:
+        """
+        Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+        """
+        return pulumi.get(self, "enable_script_context")
+
+    @property
     @pulumi.getter(name="enabledDatabaseCustomization")
     def enabled_database_customization(self) -> Optional[bool]:
         """
@@ -2871,6 +2919,14 @@ class ConnectionOptions(dict):
         Custom Entity ID for the connection.
         """
         return pulumi.get(self, "entity_id")
+
+    @property
+    @pulumi.getter(name="fedMetadataXml")
+    def fed_metadata_xml(self) -> Optional[str]:
+        """
+        Federation Metadata for the ADFS connection.
+        """
+        return pulumi.get(self, "fed_metadata_xml")
 
     @property
     @pulumi.getter(name="fieldsMap")
@@ -4890,7 +4946,7 @@ class GuardianPhone(dict):
         :param bool enabled: Indicates whether Phone MFA is enabled.
         :param Sequence[str] message_types: Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
         :param 'GuardianPhoneOptionsArgs' options: Options for the various providers.
-        :param str provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        :param str provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
         """
         pulumi.set(__self__, "enabled", enabled)
         if message_types is not None:
@@ -4928,7 +4984,7 @@ class GuardianPhone(dict):
     @pulumi.getter
     def provider(self) -> Optional[str]:
         """
-        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
         """
         return pulumi.get(self, "provider")
 
@@ -5376,6 +5432,8 @@ class LogStreamSink(dict):
             suggest = "mixpanel_service_account_password"
         elif key == "mixpanelServiceAccountUsername":
             suggest = "mixpanel_service_account_username"
+        elif key == "segmentWriteKey":
+            suggest = "segment_write_key"
         elif key == "splunkDomain":
             suggest = "splunk_domain"
         elif key == "splunkPort":
@@ -5417,6 +5475,7 @@ class LogStreamSink(dict):
                  mixpanel_region: Optional[str] = None,
                  mixpanel_service_account_password: Optional[str] = None,
                  mixpanel_service_account_username: Optional[str] = None,
+                 segment_write_key: Optional[str] = None,
                  splunk_domain: Optional[str] = None,
                  splunk_port: Optional[str] = None,
                  splunk_secure: Optional[bool] = None,
@@ -5441,6 +5500,7 @@ class LogStreamSink(dict):
         :param str mixpanel_region: The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
         :param str mixpanel_service_account_password: The Mixpanel Service Account password.
         :param str mixpanel_service_account_username: The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
+        :param str segment_write_key: The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
         :param str splunk_domain: The Splunk domain name.
         :param str splunk_port: The Splunk port.
         :param bool splunk_secure: This toggle should be turned off when using self-signed certificates.
@@ -5483,6 +5543,8 @@ class LogStreamSink(dict):
             pulumi.set(__self__, "mixpanel_service_account_password", mixpanel_service_account_password)
         if mixpanel_service_account_username is not None:
             pulumi.set(__self__, "mixpanel_service_account_username", mixpanel_service_account_username)
+        if segment_write_key is not None:
+            pulumi.set(__self__, "segment_write_key", segment_write_key)
         if splunk_domain is not None:
             pulumi.set(__self__, "splunk_domain", splunk_domain)
         if splunk_port is not None:
@@ -5637,6 +5699,14 @@ class LogStreamSink(dict):
         The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
         """
         return pulumi.get(self, "mixpanel_service_account_username")
+
+    @property
+    @pulumi.getter(name="segmentWriteKey")
+    def segment_write_key(self) -> Optional[str]:
+        """
+        The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+        """
+        return pulumi.get(self, "segment_write_key")
 
     @property
     @pulumi.getter(name="splunkDomain")

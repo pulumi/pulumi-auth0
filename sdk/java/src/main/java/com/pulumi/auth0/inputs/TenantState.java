@@ -84,14 +84,14 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The default absolute redirection URI, must be https and cannot contain a fragment.
+     * The default absolute redirection URI. Must be HTTPS or an empty string.
      * 
      */
     @Import(name="defaultRedirectionUri")
     private @Nullable Output<String> defaultRedirectionUri;
 
     /**
-     * @return The default absolute redirection URI, must be https and cannot contain a fragment.
+     * @return The default absolute redirection URI. Must be HTTPS or an empty string.
      * 
      */
     public Optional<Output<String>> defaultRedirectionUri() {
@@ -429,7 +429,7 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRedirectionUri The default absolute redirection URI, must be https and cannot contain a fragment.
+         * @param defaultRedirectionUri The default absolute redirection URI. Must be HTTPS or an empty string.
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRedirectionUri The default absolute redirection URI, must be https and cannot contain a fragment.
+         * @param defaultRedirectionUri The default absolute redirection URI. Must be HTTPS or an empty string.
          * 
          * @return builder
          * 

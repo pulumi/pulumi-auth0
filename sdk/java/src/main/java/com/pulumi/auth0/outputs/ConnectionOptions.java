@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionOptions {
     /**
-     * @return ADFS Metadata source.
+     * @return ADFS URL where to fetch the metadata source.
      * 
      */
     private @Nullable String adfsServer;
@@ -127,6 +127,11 @@ public final class ConnectionOptions {
      */
     private @Nullable List<String> domainAliases;
     /**
+     * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     * 
+     */
+    private @Nullable Boolean enableScriptContext;
+    /**
      * @return Set to `true` to use a legacy user store.
      * 
      */
@@ -136,6 +141,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable String entityId;
+    /**
+     * @return Federation Metadata for the ADFS connection.
+     * 
+     */
+    private @Nullable String fedMetadataXml;
     /**
      * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
@@ -439,7 +449,7 @@ public final class ConnectionOptions {
 
     private ConnectionOptions() {}
     /**
-     * @return ADFS Metadata source.
+     * @return ADFS URL where to fetch the metadata source.
      * 
      */
     public Optional<String> adfsServer() {
@@ -579,6 +589,13 @@ public final class ConnectionOptions {
         return this.domainAliases == null ? List.of() : this.domainAliases;
     }
     /**
+     * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+     * 
+     */
+    public Optional<Boolean> enableScriptContext() {
+        return Optional.ofNullable(this.enableScriptContext);
+    }
+    /**
      * @return Set to `true` to use a legacy user store.
      * 
      */
@@ -591,6 +608,13 @@ public final class ConnectionOptions {
      */
     public Optional<String> entityId() {
         return Optional.ofNullable(this.entityId);
+    }
+    /**
+     * @return Federation Metadata for the ADFS connection.
+     * 
+     */
+    public Optional<String> fedMetadataXml() {
+        return Optional.ofNullable(this.fedMetadataXml);
     }
     /**
      * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
@@ -1042,8 +1066,10 @@ public final class ConnectionOptions {
         private @Nullable String discoveryUrl;
         private @Nullable String domain;
         private @Nullable List<String> domainAliases;
+        private @Nullable Boolean enableScriptContext;
         private @Nullable Boolean enabledDatabaseCustomization;
         private @Nullable String entityId;
+        private @Nullable String fedMetadataXml;
         private @Nullable String fieldsMap;
         private @Nullable Boolean forwardRequestInfo;
         private @Nullable String from;
@@ -1127,8 +1153,10 @@ public final class ConnectionOptions {
     	      this.discoveryUrl = defaults.discoveryUrl;
     	      this.domain = defaults.domain;
     	      this.domainAliases = defaults.domainAliases;
+    	      this.enableScriptContext = defaults.enableScriptContext;
     	      this.enabledDatabaseCustomization = defaults.enabledDatabaseCustomization;
     	      this.entityId = defaults.entityId;
+    	      this.fedMetadataXml = defaults.fedMetadataXml;
     	      this.fieldsMap = defaults.fieldsMap;
     	      this.forwardRequestInfo = defaults.forwardRequestInfo;
     	      this.from = defaults.from;
@@ -1298,6 +1326,11 @@ public final class ConnectionOptions {
             return domainAliases(List.of(domainAliases));
         }
         @CustomType.Setter
+        public Builder enableScriptContext(@Nullable Boolean enableScriptContext) {
+            this.enableScriptContext = enableScriptContext;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enabledDatabaseCustomization(@Nullable Boolean enabledDatabaseCustomization) {
             this.enabledDatabaseCustomization = enabledDatabaseCustomization;
             return this;
@@ -1305,6 +1338,11 @@ public final class ConnectionOptions {
         @CustomType.Setter
         public Builder entityId(@Nullable String entityId) {
             this.entityId = entityId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fedMetadataXml(@Nullable String fedMetadataXml) {
+            this.fedMetadataXml = fedMetadataXml;
             return this;
         }
         @CustomType.Setter
@@ -1641,8 +1679,10 @@ public final class ConnectionOptions {
             o.discoveryUrl = discoveryUrl;
             o.domain = domain;
             o.domainAliases = domainAliases;
+            o.enableScriptContext = enableScriptContext;
             o.enabledDatabaseCustomization = enabledDatabaseCustomization;
             o.entityId = entityId;
+            o.fedMetadataXml = fedMetadataXml;
             o.fieldsMap = fieldsMap;
             o.forwardRequestInfo = forwardRequestInfo;
             o.from = from;

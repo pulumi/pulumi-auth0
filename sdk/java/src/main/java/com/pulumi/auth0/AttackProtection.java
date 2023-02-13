@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.AttackProtection;
  * import com.pulumi.auth0.AttackProtectionArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs;
@@ -50,6 +51,9 @@ import javax.annotation.Nullable;
  *                 .adminNotificationFrequencies(&#34;daily&#34;)
  *                 .enabled(true)
  *                 .method(&#34;standard&#34;)
+ *                 .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()
+ *                     .shields(&#34;block&#34;)
+ *                     .build())
  *                 .shields(                
  *                     &#34;admin_notification&#34;,
  *                     &#34;block&#34;)

@@ -78,7 +78,7 @@ namespace Pulumi.Auth0
         public readonly ImmutableDictionary<string, object> ClientMetadata;
         public readonly string ClientSecret;
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         /// </summary>
         public readonly bool CrossOriginAuth;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Initiate login URI, must be HTTPS.
+        /// Initiate login URI. Must be HTTPS or an empty string.
         /// </summary>
         public readonly string InitiateLoginUri;
         /// <summary>

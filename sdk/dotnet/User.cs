@@ -87,25 +87,25 @@ namespace Pulumi.Auth0
         public Output<bool?> EmailVerified { get; private set; } = null!;
 
         /// <summary>
-        /// Family name of the user.
+        /// Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Output("familyName")]
         public Output<string?> FamilyName { get; private set; } = null!;
 
         /// <summary>
-        /// Given name of the user.
+        /// Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Output("givenName")]
         public Output<string?> GivenName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Preferred nickname or alias of the user.
+        /// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Output("nickname")]
         public Output<string> Nickname { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Auth0
         public Output<bool?> PhoneVerified { get; private set; } = null!;
 
         /// <summary>
-        /// Picture of the user.
+        /// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Output("picture")]
         public Output<string> Picture { get; private set; } = null!;
@@ -245,25 +245,25 @@ namespace Pulumi.Auth0
         public Input<bool>? EmailVerified { get; set; }
 
         /// <summary>
-        /// Family name of the user.
+        /// Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("familyName")]
         public Input<string>? FamilyName { get; set; }
 
         /// <summary>
-        /// Given name of the user.
+        /// Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("givenName")]
         public Input<string>? GivenName { get; set; }
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Preferred nickname or alias of the user.
+        /// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("nickname")]
         public Input<string>? Nickname { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.Auth0
         public Input<bool>? PhoneVerified { get; set; }
 
         /// <summary>
-        /// Picture of the user.
+        /// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("picture")]
         public Input<string>? Picture { get; set; }
@@ -377,25 +377,25 @@ namespace Pulumi.Auth0
         public Input<bool>? EmailVerified { get; set; }
 
         /// <summary>
-        /// Family name of the user.
+        /// Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("familyName")]
         public Input<string>? FamilyName { get; set; }
 
         /// <summary>
-        /// Given name of the user.
+        /// Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("givenName")]
         public Input<string>? GivenName { get; set; }
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Preferred nickname or alias of the user.
+        /// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("nickname")]
         public Input<string>? Nickname { get; set; }
@@ -429,7 +429,7 @@ namespace Pulumi.Auth0
         public Input<bool>? PhoneVerified { get; set; }
 
         /// <summary>
-        /// Picture of the user.
+        /// Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         /// </summary>
         [Input("picture")]
         public Input<string>? Picture { get; set; }

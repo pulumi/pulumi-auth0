@@ -289,6 +289,21 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+     * 
+     */
+    @Import(name="segmentWriteKey")
+    private @Nullable Output<String> segmentWriteKey;
+
+    /**
+     * @return The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+     * 
+     */
+    public Optional<Output<String>> segmentWriteKey() {
+        return Optional.ofNullable(this.segmentWriteKey);
+    }
+
+    /**
      * The Splunk domain name.
      * 
      */
@@ -384,6 +399,7 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
         this.mixpanelRegion = $.mixpanelRegion;
         this.mixpanelServiceAccountPassword = $.mixpanelServiceAccountPassword;
         this.mixpanelServiceAccountUsername = $.mixpanelServiceAccountUsername;
+        this.segmentWriteKey = $.segmentWriteKey;
         this.splunkDomain = $.splunkDomain;
         this.splunkPort = $.splunkPort;
         this.splunkSecure = $.splunkSecure;
@@ -795,6 +811,27 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mixpanelServiceAccountUsername(String mixpanelServiceAccountUsername) {
             return mixpanelServiceAccountUsername(Output.of(mixpanelServiceAccountUsername));
+        }
+
+        /**
+         * @param segmentWriteKey The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segmentWriteKey(@Nullable Output<String> segmentWriteKey) {
+            $.segmentWriteKey = segmentWriteKey;
+            return this;
+        }
+
+        /**
+         * @param segmentWriteKey The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segmentWriteKey(String segmentWriteKey) {
+            return segmentWriteKey(Output.of(segmentWriteKey));
         }
 
         /**

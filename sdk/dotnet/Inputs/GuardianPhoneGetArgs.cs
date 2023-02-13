@@ -37,7 +37,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.GuardianPhoneOptionsGetArgs>? Options { get; set; }
 
         /// <summary>
-        /// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+        /// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }

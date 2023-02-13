@@ -212,7 +212,7 @@ class GetGlobalClientResult:
     @pulumi.getter(name="crossOriginAuth")
     def cross_origin_auth(self) -> bool:
         """
-        Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         """
         return pulumi.get(self, "cross_origin_auth")
 
@@ -284,7 +284,7 @@ class GetGlobalClientResult:
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> str:
         """
-        Initiate login URI, must be HTTPS.
+        Initiate login URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "initiate_login_uri")
 

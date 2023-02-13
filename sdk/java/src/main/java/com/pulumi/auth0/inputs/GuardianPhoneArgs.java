@@ -64,14 +64,14 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
      * 
      */
     public Optional<Output<String>> provider() {
@@ -179,7 +179,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`.
+         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
          * 
          * @return builder
          * 
