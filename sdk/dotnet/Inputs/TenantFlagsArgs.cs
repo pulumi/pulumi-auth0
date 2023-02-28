@@ -133,7 +133,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? RevokeRefreshTokenGrant { get; set; }
 
         /// <summary>
-        /// Indicates whether the tenant uses Universal Login.
+        /// Indicates whether the New Universal Login Experience is enabled.
         /// </summary>
         [Input("universalLogin")]
         public Input<bool>? UniversalLogin { get; set; }

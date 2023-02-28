@@ -110,8 +110,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -122,7 +120,7 @@ import (
 //			_, err := auth0.NewConnection(ctx, "apple", &auth0.ConnectionArgs{
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
-//					ClientSecret: pulumi.String(fmt.Sprintf("-----BEGIN PRIVATE KEY-----\nMIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA\n-----END PRIVATE KEY-----\n")),
+//					ClientSecret: pulumi.String("-----BEGIN PRIVATE KEY-----\nMIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA\n-----END PRIVATE KEY-----\n"),
 //					KeyId:        pulumi.String("<key-id>"),
 //					NonPersistentAttrs: pulumi.StringArray{
 //						pulumi.String("ethnicity"),
@@ -273,8 +271,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -299,7 +295,7 @@ import (
 //						pulumi.String("email"),
 //					},
 //					Scripts: pulumi.StringMap{
-//						"fetchUserProfile": pulumi.String(fmt.Sprintf("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n      \n")),
+//						"fetchUserProfile": pulumi.String("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n      \n"),
 //					},
 //					SetUserRootAttributes: pulumi.String("on_each_login"),
 //					TokenEndpoint:         pulumi.String("https://auth.example.com/oauth2/token"),
@@ -516,6 +512,8 @@ type Connection struct {
 
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// IDs of the clients for which the connection is enabled.
+	EnabledClients pulumi.StringArrayOutput `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
@@ -529,9 +527,7 @@ type Connection struct {
 	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton pulumi.BoolPtrOutput `pulumi:"showAsButton"`
 	// Type of the connection, which indicates the identity provider.
-	Strategy        pulumi.StringOutput    `pulumi:"strategy"`
-	StrategyVersion pulumi.StringOutput    `pulumi:"strategyVersion"`
-	Validation      pulumi.StringMapOutput `pulumi:"validation"`
+	Strategy pulumi.StringOutput `pulumi:"strategy"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -568,6 +564,8 @@ func GetConnection(ctx *pulumi.Context,
 type connectionState struct {
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
+	// IDs of the clients for which the connection is enabled.
+	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
@@ -581,14 +579,14 @@ type connectionState struct {
 	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton *bool `pulumi:"showAsButton"`
 	// Type of the connection, which indicates the identity provider.
-	Strategy        *string           `pulumi:"strategy"`
-	StrategyVersion *string           `pulumi:"strategyVersion"`
-	Validation      map[string]string `pulumi:"validation"`
+	Strategy *string `pulumi:"strategy"`
 }
 
 type ConnectionState struct {
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
+	// IDs of the clients for which the connection is enabled.
+	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
@@ -602,9 +600,7 @@ type ConnectionState struct {
 	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton pulumi.BoolPtrInput
 	// Type of the connection, which indicates the identity provider.
-	Strategy        pulumi.StringPtrInput
-	StrategyVersion pulumi.StringPtrInput
-	Validation      pulumi.StringMapInput
+	Strategy pulumi.StringPtrInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -627,9 +623,7 @@ type connectionArgs struct {
 	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton *bool `pulumi:"showAsButton"`
 	// Type of the connection, which indicates the identity provider.
-	Strategy        string            `pulumi:"strategy"`
-	StrategyVersion *string           `pulumi:"strategyVersion"`
-	Validation      map[string]string `pulumi:"validation"`
+	Strategy string `pulumi:"strategy"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -649,9 +643,7 @@ type ConnectionArgs struct {
 	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton pulumi.BoolPtrInput
 	// Type of the connection, which indicates the identity provider.
-	Strategy        pulumi.StringInput
-	StrategyVersion pulumi.StringPtrInput
-	Validation      pulumi.StringMapInput
+	Strategy pulumi.StringInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {
@@ -746,6 +738,11 @@ func (o ConnectionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// IDs of the clients for which the connection is enabled.
+func (o ConnectionOutput) EnabledClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.EnabledClients }).(pulumi.StringArrayOutput)
+}
+
 // Indicates whether the connection is domain level.
 func (o ConnectionOutput) IsDomainConnection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.IsDomainConnection }).(pulumi.BoolOutput)
@@ -779,14 +776,6 @@ func (o ConnectionOutput) ShowAsButton() pulumi.BoolPtrOutput {
 // Type of the connection, which indicates the identity provider.
 func (o ConnectionOutput) Strategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Strategy }).(pulumi.StringOutput)
-}
-
-func (o ConnectionOutput) StrategyVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.StrategyVersion }).(pulumi.StringOutput)
-}
-
-func (o ConnectionOutput) Validation() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Validation }).(pulumi.StringMapOutput)
 }
 
 type ConnectionArrayOutput struct{ *pulumi.OutputState }

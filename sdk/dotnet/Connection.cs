@@ -459,6 +459,12 @@ namespace Pulumi.Auth0
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// IDs of the clients for which the connection is enabled.
+        /// </summary>
+        [Output("enabledClients")]
+        public Output<ImmutableArray<string>> EnabledClients { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether the connection is domain level.
         /// </summary>
         [Output("isDomainConnection")]
@@ -499,12 +505,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
-
-        [Output("strategyVersion")]
-        public Output<string> StrategyVersion { get; private set; } = null!;
-
-        [Output("validation")]
-        public Output<ImmutableDictionary<string, string>?> Validation { get; private set; } = null!;
 
 
         /// <summary>
@@ -612,17 +612,6 @@ namespace Pulumi.Auth0
         [Input("strategy", required: true)]
         public Input<string> Strategy { get; set; } = null!;
 
-        [Input("strategyVersion")]
-        public Input<string>? StrategyVersion { get; set; }
-
-        [Input("validation")]
-        private InputMap<string>? _validation;
-        public InputMap<string> Validation
-        {
-            get => _validation ?? (_validation = new InputMap<string>());
-            set => _validation = value;
-        }
-
         public ConnectionArgs()
         {
         }
@@ -636,6 +625,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("enabledClients")]
+        private InputList<string>? _enabledClients;
+
+        /// <summary>
+        /// IDs of the clients for which the connection is enabled.
+        /// </summary>
+        public InputList<string> EnabledClients
+        {
+            get => _enabledClients ?? (_enabledClients = new InputList<string>());
+            set => _enabledClients = value;
+        }
 
         /// <summary>
         /// Indicates whether the connection is domain level.
@@ -690,17 +691,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
-
-        [Input("strategyVersion")]
-        public Input<string>? StrategyVersion { get; set; }
-
-        [Input("validation")]
-        private InputMap<string>? _validation;
-        public InputMap<string> Validation
-        {
-            get => _validation ?? (_validation = new InputMap<string>());
-            set => _validation = value;
-        }
 
         public ConnectionState()
         {

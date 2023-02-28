@@ -977,6 +977,146 @@ export interface EmailSettingsMessage {
     viewContentLink?: boolean;
 }
 
+export interface GetAttackProtectionBreachedPasswordDetection {
+    adminNotificationFrequencies: string[];
+    enabled: boolean;
+    method: string;
+    preUserRegistrations: outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistration[];
+    shields: string[];
+}
+
+export interface GetAttackProtectionBreachedPasswordDetectionPreUserRegistration {
+    shields: string[];
+}
+
+export interface GetAttackProtectionBruteForceProtection {
+    allowlists: string[];
+    enabled: boolean;
+    maxAttempts: number;
+    mode: string;
+    shields: string[];
+}
+
+export interface GetAttackProtectionSuspiciousIpThrottling {
+    allowlists: string[];
+    enabled: boolean;
+    preLogins: outputs.GetAttackProtectionSuspiciousIpThrottlingPreLogin[];
+    preUserRegistrations: outputs.GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration[];
+    shields: string[];
+}
+
+export interface GetAttackProtectionSuspiciousIpThrottlingPreLogin {
+    maxAttempts: number;
+    rate: number;
+}
+
+export interface GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+    maxAttempts: number;
+    rate: number;
+}
+
+export interface GetBrandingColor {
+    pageBackground: string;
+    primary: string;
+}
+
+export interface GetBrandingFont {
+    url: string;
+}
+
+export interface GetBrandingThemeBorder {
+    buttonBorderRadius: number;
+    buttonBorderWeight: number;
+    buttonsStyle: string;
+    inputBorderRadius: number;
+    inputBorderWeight: number;
+    inputsStyle: string;
+    showWidgetShadow: boolean;
+    widgetBorderWeight: number;
+    widgetCornerRadius: number;
+}
+
+export interface GetBrandingThemeColor {
+    baseFocusColor: string;
+    baseHoverColor: string;
+    bodyText: string;
+    error: string;
+    header: string;
+    icons: string;
+    inputBackground: string;
+    inputBorder: string;
+    inputFilledText: string;
+    inputLabelsPlaceholders: string;
+    linksFocusedComponents: string;
+    primaryButton: string;
+    primaryButtonLabel: string;
+    secondaryButtonBorder: string;
+    secondaryButtonLabel: string;
+    success: string;
+    widgetBackground: string;
+    widgetBorder: string;
+}
+
+export interface GetBrandingThemeFont {
+    bodyTexts: outputs.GetBrandingThemeFontBodyText[];
+    buttonsTexts: outputs.GetBrandingThemeFontButtonsText[];
+    fontUrl: string;
+    inputLabels: outputs.GetBrandingThemeFontInputLabel[];
+    links: outputs.GetBrandingThemeFontLink[];
+    linksStyle: string;
+    referenceTextSize: number;
+    subtitles: outputs.GetBrandingThemeFontSubtitle[];
+    titles: outputs.GetBrandingThemeFontTitle[];
+}
+
+export interface GetBrandingThemeFontBodyText {
+    bold: boolean;
+    size: number;
+}
+
+export interface GetBrandingThemeFontButtonsText {
+    bold: boolean;
+    size: number;
+}
+
+export interface GetBrandingThemeFontInputLabel {
+    bold: boolean;
+    size: number;
+}
+
+export interface GetBrandingThemeFontLink {
+    bold: boolean;
+    size: number;
+}
+
+export interface GetBrandingThemeFontSubtitle {
+    bold: boolean;
+    size: number;
+}
+
+export interface GetBrandingThemeFontTitle {
+    bold: boolean;
+    size: number;
+}
+
+export interface GetBrandingThemePageBackground {
+    backgroundColor: string;
+    backgroundImageUrl: string;
+    pageLayout: string;
+}
+
+export interface GetBrandingThemeWidget {
+    headerTextAlignment: string;
+    logoHeight: number;
+    logoPosition: string;
+    logoUrl: string;
+    socialButtonsLayout: string;
+}
+
+export interface GetBrandingUniversalLogin {
+    body: string;
+}
+
 export interface GetClientAddon {
     aws: {[key: string]: any};
     azureBlob: {[key: string]: any};
@@ -1077,6 +1217,152 @@ export interface GetClientRefreshToken {
     tokenLifetime: number;
 }
 
+export interface GetConnectionOption {
+    adfsServer: string;
+    allowedAudiences: string[];
+    apiEnableUsers: boolean;
+    appId: string;
+    authParams: {[key: string]: string};
+    authorizationEndpoint: string;
+    bruteForceProtection: boolean;
+    clientId: string;
+    clientSecret: string;
+    communityBaseUrl: string;
+    configuration: {[key: string]: any};
+    customScripts: {[key: string]: string};
+    debug: boolean;
+    digestAlgorithm: string;
+    disableCache: boolean;
+    disableSignOut: boolean;
+    disableSignup: boolean;
+    discoveryUrl: string;
+    domain: string;
+    domainAliases: string[];
+    enableScriptContext: boolean;
+    enabledDatabaseCustomization: boolean;
+    entityId: string;
+    fedMetadataXml: string;
+    fieldsMap: string;
+    forwardRequestInfo: boolean;
+    from: string;
+    gatewayAuthentications: outputs.GetConnectionOptionGatewayAuthentication[];
+    gatewayUrl: string;
+    iconUrl: string;
+    identityApi: string;
+    idpInitiateds: outputs.GetConnectionOptionIdpInitiated[];
+    importMode: boolean;
+    ips: string[];
+    issuer: string;
+    jwksUri: string;
+    keyId: string;
+    maxGroupsToRetrieve: string;
+    messagingServiceSid: string;
+    metadataUrl: string;
+    metadataXml: string;
+    mfas: outputs.GetConnectionOptionMfa[];
+    /**
+     * The name of the connection. If not provided, `connectionId` must be set.
+     */
+    name: string;
+    nonPersistentAttrs: string[];
+    passwordComplexityOptions: outputs.GetConnectionOptionPasswordComplexityOption[];
+    passwordDictionaries: outputs.GetConnectionOptionPasswordDictionary[];
+    passwordHistories: outputs.GetConnectionOptionPasswordHistory[];
+    passwordNoPersonalInfos: outputs.GetConnectionOptionPasswordNoPersonalInfo[];
+    passwordPolicy: string;
+    pkceEnabled: boolean;
+    protocolBinding: string;
+    provider: string;
+    requestTemplate: string;
+    requiresUsername: boolean;
+    scopes: string[];
+    scripts: {[key: string]: string};
+    setUserRootAttributes: string;
+    shouldTrustEmailVerifiedConnection: string;
+    signInEndpoint: string;
+    signOutEndpoint: string;
+    signSamlRequest: boolean;
+    signatureAlgorithm: string;
+    signingCert: string;
+    signingKeys: outputs.GetConnectionOptionSigningKey[];
+    strategyVersion: number;
+    subject: string;
+    syntax: string;
+    teamId: string;
+    template: string;
+    tenantDomain: string;
+    tokenEndpoint: string;
+    totps: outputs.GetConnectionOptionTotp[];
+    twilioSid: string;
+    twilioToken: string;
+    type: string;
+    upstreamParams: string;
+    useCertAuth: boolean;
+    useKerberos: boolean;
+    useWsfed: boolean;
+    userIdAttribute: string;
+    userinfoEndpoint: string;
+    validations: outputs.GetConnectionOptionValidation[];
+    waadCommonEndpoint: boolean;
+    waadProtocol: string;
+}
+
+export interface GetConnectionOptionGatewayAuthentication {
+    audience: string;
+    method: string;
+    secret: string;
+    secretBase64Encoded: boolean;
+    subject: string;
+}
+
+export interface GetConnectionOptionIdpInitiated {
+    clientAuthorizeQuery: string;
+    clientId: string;
+    clientProtocol: string;
+}
+
+export interface GetConnectionOptionMfa {
+    active: boolean;
+    returnEnrollSettings: boolean;
+}
+
+export interface GetConnectionOptionPasswordComplexityOption {
+    minLength: number;
+}
+
+export interface GetConnectionOptionPasswordDictionary {
+    dictionaries: string[];
+    enable: boolean;
+}
+
+export interface GetConnectionOptionPasswordHistory {
+    enable: boolean;
+    size: number;
+}
+
+export interface GetConnectionOptionPasswordNoPersonalInfo {
+    enable: boolean;
+}
+
+export interface GetConnectionOptionSigningKey {
+    cert: string;
+    key: string;
+}
+
+export interface GetConnectionOptionTotp {
+    length: number;
+    timeStep: number;
+}
+
+export interface GetConnectionOptionValidation {
+    usernames: outputs.GetConnectionOptionValidationUsername[];
+}
+
+export interface GetConnectionOptionValidationUsername {
+    max: number;
+    min: number;
+}
+
 export interface GetGlobalClientAddon {
     aws: {[key: string]: any};
     azureBlob: {[key: string]: any};
@@ -1175,6 +1461,86 @@ export interface GetGlobalClientRefreshToken {
     leeway: number;
     rotationType: string;
     tokenLifetime: number;
+}
+
+export interface GetOrganizationBranding {
+    colors: {[key: string]: string};
+    logoUrl: string;
+}
+
+export interface GetOrganizationConnection {
+    assignMembershipOnLogin: boolean;
+    connectionId: string;
+}
+
+export interface GetResourceServerScope {
+    description: string;
+    value: string;
+}
+
+export interface GetRolePermission {
+    /**
+     * The name of the role. If not provided, `roleId` must be set.
+     */
+    name: string;
+    resourceServerIdentifier: string;
+}
+
+export interface GetTenantChangePassword {
+    enabled: boolean;
+    html: string;
+}
+
+export interface GetTenantErrorPage {
+    html: string;
+    showLogLink: boolean;
+    url: string;
+}
+
+export interface GetTenantFlag {
+    allowLegacyDelegationGrantTypes: boolean;
+    allowLegacyRoGrantTypes: boolean;
+    allowLegacyTokeninfoEndpoint: boolean;
+    dashboardInsightsView: boolean;
+    dashboardLogStreamsNext: boolean;
+    disableClickjackProtectionHeaders: boolean;
+    disableFieldsMapFix: boolean;
+    disableManagementApiSmsObfuscation: boolean;
+    enableAdfsWaadEmailVerification: boolean;
+    enableApisSection: boolean;
+    enableClientConnections: boolean;
+    enableCustomDomainInEmails: boolean;
+    enableDynamicClientRegistration: boolean;
+    enableIdtokenApi2: boolean;
+    enableLegacyLogsSearchV2: boolean;
+    enableLegacyProfile: boolean;
+    enablePipeline2: boolean;
+    enablePublicSignupUserExistsError: boolean;
+    noDiscloseEnterpriseConnections: boolean;
+    revokeRefreshTokenGrant: boolean;
+    /**
+     * Configuration settings for Universal Login.
+     */
+    universalLogin: boolean;
+    useScopeDescriptionsForConsent: boolean;
+}
+
+export interface GetTenantGuardianMfaPage {
+    enabled: boolean;
+    html: string;
+}
+
+export interface GetTenantSessionCooky {
+    mode: string;
+}
+
+export interface GetTenantUniversalLogin {
+    colors: outputs.GetTenantUniversalLoginColor[];
+}
+
+export interface GetTenantUniversalLoginColor {
+    pageBackground: string;
+    primary: string;
 }
 
 export interface GlobalClientAddons {
@@ -1676,7 +2042,9 @@ export interface TenantFlags {
      */
     revokeRefreshTokenGrant: boolean;
     /**
-     * Indicates whether the tenant uses Universal Login.
+     * Indicates whether the New Universal Login Experience is enabled.
+     *
+     * @deprecated This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
      */
     universalLogin: boolean;
     /**

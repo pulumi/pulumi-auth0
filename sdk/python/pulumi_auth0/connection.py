@@ -23,9 +23,7 @@ class ConnectionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 show_as_button: Optional[pulumi.Input[bool]] = None,
-                 strategy_version: Optional[pulumi.Input[str]] = None,
-                 validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 show_as_button: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
@@ -52,10 +50,6 @@ class ConnectionArgs:
             pulumi.set(__self__, "realms", realms)
         if show_as_button is not None:
             pulumi.set(__self__, "show_as_button", show_as_button)
-        if strategy_version is not None:
-            pulumi.set(__self__, "strategy_version", strategy_version)
-        if validation is not None:
-            pulumi.set(__self__, "validation", validation)
 
     @property
     @pulumi.getter
@@ -153,41 +147,23 @@ class ConnectionArgs:
     def show_as_button(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "show_as_button", value)
 
-    @property
-    @pulumi.getter(name="strategyVersion")
-    def strategy_version(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "strategy_version")
-
-    @strategy_version.setter
-    def strategy_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "strategy_version", value)
-
-    @property
-    @pulumi.getter
-    def validation(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        return pulumi.get(self, "validation")
-
-    @validation.setter
-    def validation(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "validation", value)
-
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  show_as_button: Optional[pulumi.Input[bool]] = None,
-                 strategy: Optional[pulumi.Input[str]] = None,
-                 strategy_version: Optional[pulumi.Input[str]] = None,
-                 validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 strategy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[str] display_name: Name used in login screen.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
@@ -198,6 +174,8 @@ class _ConnectionState:
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if enabled_clients is not None:
+            pulumi.set(__self__, "enabled_clients", enabled_clients)
         if is_domain_connection is not None:
             pulumi.set(__self__, "is_domain_connection", is_domain_connection)
         if metadata is not None:
@@ -212,10 +190,6 @@ class _ConnectionState:
             pulumi.set(__self__, "show_as_button", show_as_button)
         if strategy is not None:
             pulumi.set(__self__, "strategy", strategy)
-        if strategy_version is not None:
-            pulumi.set(__self__, "strategy_version", strategy_version)
-        if validation is not None:
-            pulumi.set(__self__, "validation", validation)
 
     @property
     @pulumi.getter(name="displayName")
@@ -228,6 +202,18 @@ class _ConnectionState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="enabledClients")
+    def enabled_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IDs of the clients for which the connection is enabled.
+        """
+        return pulumi.get(self, "enabled_clients")
+
+    @enabled_clients.setter
+    def enabled_clients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enabled_clients", value)
 
     @property
     @pulumi.getter(name="isDomainConnection")
@@ -313,24 +299,6 @@ class _ConnectionState:
     def strategy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "strategy", value)
 
-    @property
-    @pulumi.getter(name="strategyVersion")
-    def strategy_version(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "strategy_version")
-
-    @strategy_version.setter
-    def strategy_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "strategy_version", value)
-
-    @property
-    @pulumi.getter
-    def validation(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        return pulumi.get(self, "validation")
-
-    @validation.setter
-    def validation(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "validation", value)
-
 
 class Connection(pulumi.CustomResource):
     @overload
@@ -345,8 +313,6 @@ class Connection(pulumi.CustomResource):
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  show_as_button: Optional[pulumi.Input[bool]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
-                 strategy_version: Optional[pulumi.Input[str]] = None,
-                 validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
@@ -1038,8 +1004,6 @@ class Connection(pulumi.CustomResource):
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  show_as_button: Optional[pulumi.Input[bool]] = None,
                  strategy: Optional[pulumi.Input[str]] = None,
-                 strategy_version: Optional[pulumi.Input[str]] = None,
-                 validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1059,8 +1023,7 @@ class Connection(pulumi.CustomResource):
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy
-            __props__.__dict__["strategy_version"] = strategy_version
-            __props__.__dict__["validation"] = validation
+            __props__.__dict__["enabled_clients"] = None
         super(Connection, __self__).__init__(
             'auth0:index/connection:Connection',
             resource_name,
@@ -1072,15 +1035,14 @@ class Connection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            enabled_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_domain_connection: Optional[pulumi.Input[bool]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']]] = None,
             realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             show_as_button: Optional[pulumi.Input[bool]] = None,
-            strategy: Optional[pulumi.Input[str]] = None,
-            strategy_version: Optional[pulumi.Input[str]] = None,
-            validation: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Connection':
+            strategy: Optional[pulumi.Input[str]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1089,6 +1051,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used in login screen.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
         :param pulumi.Input[str] name: Name of the connection.
@@ -1102,6 +1065,7 @@ class Connection(pulumi.CustomResource):
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["enabled_clients"] = enabled_clients
         __props__.__dict__["is_domain_connection"] = is_domain_connection
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
@@ -1109,8 +1073,6 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["realms"] = realms
         __props__.__dict__["show_as_button"] = show_as_button
         __props__.__dict__["strategy"] = strategy
-        __props__.__dict__["strategy_version"] = strategy_version
-        __props__.__dict__["validation"] = validation
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1120,6 +1082,14 @@ class Connection(pulumi.CustomResource):
         Name used in login screen.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="enabledClients")
+    def enabled_clients(self) -> pulumi.Output[Sequence[str]]:
+        """
+        IDs of the clients for which the connection is enabled.
+        """
+        return pulumi.get(self, "enabled_clients")
 
     @property
     @pulumi.getter(name="isDomainConnection")
@@ -1176,14 +1146,4 @@ class Connection(pulumi.CustomResource):
         Type of the connection, which indicates the identity provider.
         """
         return pulumi.get(self, "strategy")
-
-    @property
-    @pulumi.getter(name="strategyVersion")
-    def strategy_version(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "strategy_version")
-
-    @property
-    @pulumi.getter
-    def validation(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        return pulumi.get(self, "validation")
 

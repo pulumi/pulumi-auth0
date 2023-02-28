@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves a tenant's global Auth0 Application client.
+// Retrieve a tenant's global Auth0 application client.
 //
 // ## Example Usage
 //

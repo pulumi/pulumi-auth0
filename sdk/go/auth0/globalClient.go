@@ -19,8 +19,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -32,16 +30,7 @@ import (
 //				Callbacks: pulumi.StringArray{
 //					pulumi.String("http://somehostname.com/a/callback"),
 //				},
-//				CustomLoginPage: pulumi.String(fmt.Sprintf(`<html>
-//	    <head><title>My Custom Login Page</title></head>
-//	    <body>
-//	        I should probably have a login form here
-//	    </body>
-//
-// </html>
-//
-// `)),
-//
+//				CustomLoginPage:   pulumi.String("<html>\n    <head><title>My Custom Login Page</title></head>\n    <body>\n        I should probably have a login form here\n    </body>\n</html>\n\n"),
 //				CustomLoginPageOn: pulumi.Bool(true),
 //			})
 //			if err != nil {

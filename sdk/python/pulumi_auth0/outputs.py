@@ -91,6 +91,26 @@ __all__ = [
     'TenantUniversalLogin',
     'TenantUniversalLoginColors',
     'TriggerBindingAction',
+    'GetAttackProtectionBreachedPasswordDetectionResult',
+    'GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult',
+    'GetAttackProtectionBruteForceProtectionResult',
+    'GetAttackProtectionSuspiciousIpThrottlingResult',
+    'GetAttackProtectionSuspiciousIpThrottlingPreLoginResult',
+    'GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult',
+    'GetBrandingColorResult',
+    'GetBrandingFontResult',
+    'GetBrandingThemeBorderResult',
+    'GetBrandingThemeColorResult',
+    'GetBrandingThemeFontResult',
+    'GetBrandingThemeFontBodyTextResult',
+    'GetBrandingThemeFontButtonsTextResult',
+    'GetBrandingThemeFontInputLabelResult',
+    'GetBrandingThemeFontLinkResult',
+    'GetBrandingThemeFontSubtitleResult',
+    'GetBrandingThemeFontTitleResult',
+    'GetBrandingThemePageBackgroundResult',
+    'GetBrandingThemeWidgetResult',
+    'GetBrandingUniversalLoginResult',
     'GetClientAddonResult',
     'GetClientAddonSamlpResult',
     'GetClientJwtConfigurationResult',
@@ -101,6 +121,18 @@ __all__ = [
     'GetClientNativeSocialLoginAppleResult',
     'GetClientNativeSocialLoginFacebookResult',
     'GetClientRefreshTokenResult',
+    'GetConnectionOptionResult',
+    'GetConnectionOptionGatewayAuthenticationResult',
+    'GetConnectionOptionIdpInitiatedResult',
+    'GetConnectionOptionMfaResult',
+    'GetConnectionOptionPasswordComplexityOptionResult',
+    'GetConnectionOptionPasswordDictionaryResult',
+    'GetConnectionOptionPasswordHistoryResult',
+    'GetConnectionOptionPasswordNoPersonalInfoResult',
+    'GetConnectionOptionSigningKeyResult',
+    'GetConnectionOptionTotpResult',
+    'GetConnectionOptionValidationResult',
+    'GetConnectionOptionValidationUsernameResult',
     'GetGlobalClientAddonResult',
     'GetGlobalClientAddonSamlpResult',
     'GetGlobalClientJwtConfigurationResult',
@@ -111,6 +143,17 @@ __all__ = [
     'GetGlobalClientNativeSocialLoginAppleResult',
     'GetGlobalClientNativeSocialLoginFacebookResult',
     'GetGlobalClientRefreshTokenResult',
+    'GetOrganizationBrandingResult',
+    'GetOrganizationConnectionResult',
+    'GetResourceServerScopeResult',
+    'GetRolePermissionResult',
+    'GetTenantChangePasswordResult',
+    'GetTenantErrorPageResult',
+    'GetTenantFlagResult',
+    'GetTenantGuardianMfaPageResult',
+    'GetTenantSessionCookyResult',
+    'GetTenantUniversalLoginResult',
+    'GetTenantUniversalLoginColorResult',
 ]
 
 @pulumi.output_type
@@ -6064,7 +6107,7 @@ class TenantFlags(dict):
         :param bool enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
         :param bool no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
         :param bool revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
-        :param bool universal_login: Indicates whether the tenant uses Universal Login.
+        :param bool universal_login: Indicates whether the New Universal Login Experience is enabled.
         :param bool use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
         """
         if allow_legacy_delegation_grant_types is not None:
@@ -6276,7 +6319,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[bool]:
         """
-        Indicates whether the tenant uses Universal Login.
+        Indicates whether the New Universal Login Experience is enabled.
         """
         return pulumi.get(self, "universal_login")
 
@@ -6438,6 +6481,666 @@ class TriggerBindingAction(dict):
         Action ID.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetAttackProtectionBreachedPasswordDetectionResult(dict):
+    def __init__(__self__, *,
+                 admin_notification_frequencies: Sequence[str],
+                 enabled: bool,
+                 method: str,
+                 pre_user_registrations: Sequence['outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult'],
+                 shields: Sequence[str]):
+        pulumi.set(__self__, "admin_notification_frequencies", admin_notification_frequencies)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "pre_user_registrations", pre_user_registrations)
+        pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter(name="adminNotificationFrequencies")
+    def admin_notification_frequencies(self) -> Sequence[str]:
+        return pulumi.get(self, "admin_notification_frequencies")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def method(self) -> str:
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter(name="preUserRegistrations")
+    def pre_user_registrations(self) -> Sequence['outputs.GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult']:
+        return pulumi.get(self, "pre_user_registrations")
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Sequence[str]:
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult(dict):
+    def __init__(__self__, *,
+                 shields: Sequence[str]):
+        pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Sequence[str]:
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class GetAttackProtectionBruteForceProtectionResult(dict):
+    def __init__(__self__, *,
+                 allowlists: Sequence[str],
+                 enabled: bool,
+                 max_attempts: int,
+                 mode: str,
+                 shields: Sequence[str]):
+        pulumi.set(__self__, "allowlists", allowlists)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "max_attempts", max_attempts)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def allowlists(self) -> Sequence[str]:
+        return pulumi.get(self, "allowlists")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> int:
+        return pulumi.get(self, "max_attempts")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Sequence[str]:
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class GetAttackProtectionSuspiciousIpThrottlingResult(dict):
+    def __init__(__self__, *,
+                 allowlists: Sequence[str],
+                 enabled: bool,
+                 pre_logins: Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingPreLoginResult'],
+                 pre_user_registrations: Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult'],
+                 shields: Sequence[str]):
+        pulumi.set(__self__, "allowlists", allowlists)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "pre_logins", pre_logins)
+        pulumi.set(__self__, "pre_user_registrations", pre_user_registrations)
+        pulumi.set(__self__, "shields", shields)
+
+    @property
+    @pulumi.getter
+    def allowlists(self) -> Sequence[str]:
+        return pulumi.get(self, "allowlists")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="preLogins")
+    def pre_logins(self) -> Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingPreLoginResult']:
+        return pulumi.get(self, "pre_logins")
+
+    @property
+    @pulumi.getter(name="preUserRegistrations")
+    def pre_user_registrations(self) -> Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult']:
+        return pulumi.get(self, "pre_user_registrations")
+
+    @property
+    @pulumi.getter
+    def shields(self) -> Sequence[str]:
+        return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class GetAttackProtectionSuspiciousIpThrottlingPreLoginResult(dict):
+    def __init__(__self__, *,
+                 max_attempts: int,
+                 rate: int):
+        pulumi.set(__self__, "max_attempts", max_attempts)
+        pulumi.set(__self__, "rate", rate)
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> int:
+        return pulumi.get(self, "max_attempts")
+
+    @property
+    @pulumi.getter
+    def rate(self) -> int:
+        return pulumi.get(self, "rate")
+
+
+@pulumi.output_type
+class GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult(dict):
+    def __init__(__self__, *,
+                 max_attempts: int,
+                 rate: int):
+        pulumi.set(__self__, "max_attempts", max_attempts)
+        pulumi.set(__self__, "rate", rate)
+
+    @property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> int:
+        return pulumi.get(self, "max_attempts")
+
+    @property
+    @pulumi.getter
+    def rate(self) -> int:
+        return pulumi.get(self, "rate")
+
+
+@pulumi.output_type
+class GetBrandingColorResult(dict):
+    def __init__(__self__, *,
+                 page_background: str,
+                 primary: str):
+        pulumi.set(__self__, "page_background", page_background)
+        pulumi.set(__self__, "primary", primary)
+
+    @property
+    @pulumi.getter(name="pageBackground")
+    def page_background(self) -> str:
+        return pulumi.get(self, "page_background")
+
+    @property
+    @pulumi.getter
+    def primary(self) -> str:
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class GetBrandingFontResult(dict):
+    def __init__(__self__, *,
+                 url: str):
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetBrandingThemeBorderResult(dict):
+    def __init__(__self__, *,
+                 button_border_radius: float,
+                 button_border_weight: float,
+                 buttons_style: str,
+                 input_border_radius: float,
+                 input_border_weight: float,
+                 inputs_style: str,
+                 show_widget_shadow: bool,
+                 widget_border_weight: float,
+                 widget_corner_radius: float):
+        pulumi.set(__self__, "button_border_radius", button_border_radius)
+        pulumi.set(__self__, "button_border_weight", button_border_weight)
+        pulumi.set(__self__, "buttons_style", buttons_style)
+        pulumi.set(__self__, "input_border_radius", input_border_radius)
+        pulumi.set(__self__, "input_border_weight", input_border_weight)
+        pulumi.set(__self__, "inputs_style", inputs_style)
+        pulumi.set(__self__, "show_widget_shadow", show_widget_shadow)
+        pulumi.set(__self__, "widget_border_weight", widget_border_weight)
+        pulumi.set(__self__, "widget_corner_radius", widget_corner_radius)
+
+    @property
+    @pulumi.getter(name="buttonBorderRadius")
+    def button_border_radius(self) -> float:
+        return pulumi.get(self, "button_border_radius")
+
+    @property
+    @pulumi.getter(name="buttonBorderWeight")
+    def button_border_weight(self) -> float:
+        return pulumi.get(self, "button_border_weight")
+
+    @property
+    @pulumi.getter(name="buttonsStyle")
+    def buttons_style(self) -> str:
+        return pulumi.get(self, "buttons_style")
+
+    @property
+    @pulumi.getter(name="inputBorderRadius")
+    def input_border_radius(self) -> float:
+        return pulumi.get(self, "input_border_radius")
+
+    @property
+    @pulumi.getter(name="inputBorderWeight")
+    def input_border_weight(self) -> float:
+        return pulumi.get(self, "input_border_weight")
+
+    @property
+    @pulumi.getter(name="inputsStyle")
+    def inputs_style(self) -> str:
+        return pulumi.get(self, "inputs_style")
+
+    @property
+    @pulumi.getter(name="showWidgetShadow")
+    def show_widget_shadow(self) -> bool:
+        return pulumi.get(self, "show_widget_shadow")
+
+    @property
+    @pulumi.getter(name="widgetBorderWeight")
+    def widget_border_weight(self) -> float:
+        return pulumi.get(self, "widget_border_weight")
+
+    @property
+    @pulumi.getter(name="widgetCornerRadius")
+    def widget_corner_radius(self) -> float:
+        return pulumi.get(self, "widget_corner_radius")
+
+
+@pulumi.output_type
+class GetBrandingThemeColorResult(dict):
+    def __init__(__self__, *,
+                 base_focus_color: str,
+                 base_hover_color: str,
+                 body_text: str,
+                 error: str,
+                 header: str,
+                 icons: str,
+                 input_background: str,
+                 input_border: str,
+                 input_filled_text: str,
+                 input_labels_placeholders: str,
+                 links_focused_components: str,
+                 primary_button: str,
+                 primary_button_label: str,
+                 secondary_button_border: str,
+                 secondary_button_label: str,
+                 success: str,
+                 widget_background: str,
+                 widget_border: str):
+        pulumi.set(__self__, "base_focus_color", base_focus_color)
+        pulumi.set(__self__, "base_hover_color", base_hover_color)
+        pulumi.set(__self__, "body_text", body_text)
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "header", header)
+        pulumi.set(__self__, "icons", icons)
+        pulumi.set(__self__, "input_background", input_background)
+        pulumi.set(__self__, "input_border", input_border)
+        pulumi.set(__self__, "input_filled_text", input_filled_text)
+        pulumi.set(__self__, "input_labels_placeholders", input_labels_placeholders)
+        pulumi.set(__self__, "links_focused_components", links_focused_components)
+        pulumi.set(__self__, "primary_button", primary_button)
+        pulumi.set(__self__, "primary_button_label", primary_button_label)
+        pulumi.set(__self__, "secondary_button_border", secondary_button_border)
+        pulumi.set(__self__, "secondary_button_label", secondary_button_label)
+        pulumi.set(__self__, "success", success)
+        pulumi.set(__self__, "widget_background", widget_background)
+        pulumi.set(__self__, "widget_border", widget_border)
+
+    @property
+    @pulumi.getter(name="baseFocusColor")
+    def base_focus_color(self) -> str:
+        return pulumi.get(self, "base_focus_color")
+
+    @property
+    @pulumi.getter(name="baseHoverColor")
+    def base_hover_color(self) -> str:
+        return pulumi.get(self, "base_hover_color")
+
+    @property
+    @pulumi.getter(name="bodyText")
+    def body_text(self) -> str:
+        return pulumi.get(self, "body_text")
+
+    @property
+    @pulumi.getter
+    def error(self) -> str:
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def header(self) -> str:
+        return pulumi.get(self, "header")
+
+    @property
+    @pulumi.getter
+    def icons(self) -> str:
+        return pulumi.get(self, "icons")
+
+    @property
+    @pulumi.getter(name="inputBackground")
+    def input_background(self) -> str:
+        return pulumi.get(self, "input_background")
+
+    @property
+    @pulumi.getter(name="inputBorder")
+    def input_border(self) -> str:
+        return pulumi.get(self, "input_border")
+
+    @property
+    @pulumi.getter(name="inputFilledText")
+    def input_filled_text(self) -> str:
+        return pulumi.get(self, "input_filled_text")
+
+    @property
+    @pulumi.getter(name="inputLabelsPlaceholders")
+    def input_labels_placeholders(self) -> str:
+        return pulumi.get(self, "input_labels_placeholders")
+
+    @property
+    @pulumi.getter(name="linksFocusedComponents")
+    def links_focused_components(self) -> str:
+        return pulumi.get(self, "links_focused_components")
+
+    @property
+    @pulumi.getter(name="primaryButton")
+    def primary_button(self) -> str:
+        return pulumi.get(self, "primary_button")
+
+    @property
+    @pulumi.getter(name="primaryButtonLabel")
+    def primary_button_label(self) -> str:
+        return pulumi.get(self, "primary_button_label")
+
+    @property
+    @pulumi.getter(name="secondaryButtonBorder")
+    def secondary_button_border(self) -> str:
+        return pulumi.get(self, "secondary_button_border")
+
+    @property
+    @pulumi.getter(name="secondaryButtonLabel")
+    def secondary_button_label(self) -> str:
+        return pulumi.get(self, "secondary_button_label")
+
+    @property
+    @pulumi.getter
+    def success(self) -> str:
+        return pulumi.get(self, "success")
+
+    @property
+    @pulumi.getter(name="widgetBackground")
+    def widget_background(self) -> str:
+        return pulumi.get(self, "widget_background")
+
+    @property
+    @pulumi.getter(name="widgetBorder")
+    def widget_border(self) -> str:
+        return pulumi.get(self, "widget_border")
+
+
+@pulumi.output_type
+class GetBrandingThemeFontResult(dict):
+    def __init__(__self__, *,
+                 body_texts: Sequence['outputs.GetBrandingThemeFontBodyTextResult'],
+                 buttons_texts: Sequence['outputs.GetBrandingThemeFontButtonsTextResult'],
+                 font_url: str,
+                 input_labels: Sequence['outputs.GetBrandingThemeFontInputLabelResult'],
+                 links: Sequence['outputs.GetBrandingThemeFontLinkResult'],
+                 links_style: str,
+                 reference_text_size: float,
+                 subtitles: Sequence['outputs.GetBrandingThemeFontSubtitleResult'],
+                 titles: Sequence['outputs.GetBrandingThemeFontTitleResult']):
+        pulumi.set(__self__, "body_texts", body_texts)
+        pulumi.set(__self__, "buttons_texts", buttons_texts)
+        pulumi.set(__self__, "font_url", font_url)
+        pulumi.set(__self__, "input_labels", input_labels)
+        pulumi.set(__self__, "links", links)
+        pulumi.set(__self__, "links_style", links_style)
+        pulumi.set(__self__, "reference_text_size", reference_text_size)
+        pulumi.set(__self__, "subtitles", subtitles)
+        pulumi.set(__self__, "titles", titles)
+
+    @property
+    @pulumi.getter(name="bodyTexts")
+    def body_texts(self) -> Sequence['outputs.GetBrandingThemeFontBodyTextResult']:
+        return pulumi.get(self, "body_texts")
+
+    @property
+    @pulumi.getter(name="buttonsTexts")
+    def buttons_texts(self) -> Sequence['outputs.GetBrandingThemeFontButtonsTextResult']:
+        return pulumi.get(self, "buttons_texts")
+
+    @property
+    @pulumi.getter(name="fontUrl")
+    def font_url(self) -> str:
+        return pulumi.get(self, "font_url")
+
+    @property
+    @pulumi.getter(name="inputLabels")
+    def input_labels(self) -> Sequence['outputs.GetBrandingThemeFontInputLabelResult']:
+        return pulumi.get(self, "input_labels")
+
+    @property
+    @pulumi.getter
+    def links(self) -> Sequence['outputs.GetBrandingThemeFontLinkResult']:
+        return pulumi.get(self, "links")
+
+    @property
+    @pulumi.getter(name="linksStyle")
+    def links_style(self) -> str:
+        return pulumi.get(self, "links_style")
+
+    @property
+    @pulumi.getter(name="referenceTextSize")
+    def reference_text_size(self) -> float:
+        return pulumi.get(self, "reference_text_size")
+
+    @property
+    @pulumi.getter
+    def subtitles(self) -> Sequence['outputs.GetBrandingThemeFontSubtitleResult']:
+        return pulumi.get(self, "subtitles")
+
+    @property
+    @pulumi.getter
+    def titles(self) -> Sequence['outputs.GetBrandingThemeFontTitleResult']:
+        return pulumi.get(self, "titles")
+
+
+@pulumi.output_type
+class GetBrandingThemeFontBodyTextResult(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetBrandingThemeFontButtonsTextResult(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetBrandingThemeFontInputLabelResult(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetBrandingThemeFontLinkResult(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetBrandingThemeFontSubtitleResult(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetBrandingThemeFontTitleResult(dict):
+    def __init__(__self__, *,
+                 bold: bool,
+                 size: float):
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter
+    def size(self) -> float:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetBrandingThemePageBackgroundResult(dict):
+    def __init__(__self__, *,
+                 background_color: str,
+                 background_image_url: str,
+                 page_layout: str):
+        pulumi.set(__self__, "background_color", background_color)
+        pulumi.set(__self__, "background_image_url", background_image_url)
+        pulumi.set(__self__, "page_layout", page_layout)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> str:
+        return pulumi.get(self, "background_color")
+
+    @property
+    @pulumi.getter(name="backgroundImageUrl")
+    def background_image_url(self) -> str:
+        return pulumi.get(self, "background_image_url")
+
+    @property
+    @pulumi.getter(name="pageLayout")
+    def page_layout(self) -> str:
+        return pulumi.get(self, "page_layout")
+
+
+@pulumi.output_type
+class GetBrandingThemeWidgetResult(dict):
+    def __init__(__self__, *,
+                 header_text_alignment: str,
+                 logo_height: float,
+                 logo_position: str,
+                 logo_url: str,
+                 social_buttons_layout: str):
+        pulumi.set(__self__, "header_text_alignment", header_text_alignment)
+        pulumi.set(__self__, "logo_height", logo_height)
+        pulumi.set(__self__, "logo_position", logo_position)
+        pulumi.set(__self__, "logo_url", logo_url)
+        pulumi.set(__self__, "social_buttons_layout", social_buttons_layout)
+
+    @property
+    @pulumi.getter(name="headerTextAlignment")
+    def header_text_alignment(self) -> str:
+        return pulumi.get(self, "header_text_alignment")
+
+    @property
+    @pulumi.getter(name="logoHeight")
+    def logo_height(self) -> float:
+        return pulumi.get(self, "logo_height")
+
+    @property
+    @pulumi.getter(name="logoPosition")
+    def logo_position(self) -> str:
+        return pulumi.get(self, "logo_position")
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> str:
+        return pulumi.get(self, "logo_url")
+
+    @property
+    @pulumi.getter(name="socialButtonsLayout")
+    def social_buttons_layout(self) -> str:
+        return pulumi.get(self, "social_buttons_layout")
+
+
+@pulumi.output_type
+class GetBrandingUniversalLoginResult(dict):
+    def __init__(__self__, *,
+                 body: str):
+        pulumi.set(__self__, "body", body)
+
+    @property
+    @pulumi.getter
+    def body(self) -> str:
+        return pulumi.get(self, "body")
 
 
 @pulumi.output_type
@@ -6981,6 +7684,821 @@ class GetClientRefreshTokenResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionOptionResult(dict):
+    def __init__(__self__, *,
+                 adfs_server: str,
+                 allowed_audiences: Sequence[str],
+                 api_enable_users: bool,
+                 app_id: str,
+                 auth_params: Mapping[str, str],
+                 authorization_endpoint: str,
+                 brute_force_protection: bool,
+                 client_id: str,
+                 client_secret: str,
+                 community_base_url: str,
+                 configuration: Mapping[str, Any],
+                 custom_scripts: Mapping[str, str],
+                 debug: bool,
+                 digest_algorithm: str,
+                 disable_cache: bool,
+                 disable_sign_out: bool,
+                 disable_signup: bool,
+                 discovery_url: str,
+                 domain: str,
+                 domain_aliases: Sequence[str],
+                 enable_script_context: bool,
+                 enabled_database_customization: bool,
+                 entity_id: str,
+                 fed_metadata_xml: str,
+                 fields_map: str,
+                 forward_request_info: bool,
+                 from_: str,
+                 gateway_authentications: Sequence['outputs.GetConnectionOptionGatewayAuthenticationResult'],
+                 gateway_url: str,
+                 icon_url: str,
+                 identity_api: str,
+                 idp_initiateds: Sequence['outputs.GetConnectionOptionIdpInitiatedResult'],
+                 import_mode: bool,
+                 ips: Sequence[str],
+                 issuer: str,
+                 jwks_uri: str,
+                 key_id: str,
+                 max_groups_to_retrieve: str,
+                 messaging_service_sid: str,
+                 metadata_url: str,
+                 metadata_xml: str,
+                 mfas: Sequence['outputs.GetConnectionOptionMfaResult'],
+                 name: str,
+                 non_persistent_attrs: Sequence[str],
+                 password_complexity_options: Sequence['outputs.GetConnectionOptionPasswordComplexityOptionResult'],
+                 password_dictionaries: Sequence['outputs.GetConnectionOptionPasswordDictionaryResult'],
+                 password_histories: Sequence['outputs.GetConnectionOptionPasswordHistoryResult'],
+                 password_no_personal_infos: Sequence['outputs.GetConnectionOptionPasswordNoPersonalInfoResult'],
+                 password_policy: str,
+                 pkce_enabled: bool,
+                 protocol_binding: str,
+                 provider: str,
+                 request_template: str,
+                 requires_username: bool,
+                 scopes: Sequence[str],
+                 scripts: Mapping[str, str],
+                 set_user_root_attributes: str,
+                 should_trust_email_verified_connection: str,
+                 sign_in_endpoint: str,
+                 sign_out_endpoint: str,
+                 sign_saml_request: bool,
+                 signature_algorithm: str,
+                 signing_cert: str,
+                 signing_keys: Sequence['outputs.GetConnectionOptionSigningKeyResult'],
+                 strategy_version: int,
+                 subject: str,
+                 syntax: str,
+                 team_id: str,
+                 template: str,
+                 tenant_domain: str,
+                 token_endpoint: str,
+                 totps: Sequence['outputs.GetConnectionOptionTotpResult'],
+                 twilio_sid: str,
+                 twilio_token: str,
+                 type: str,
+                 upstream_params: str,
+                 use_cert_auth: bool,
+                 use_kerberos: bool,
+                 use_wsfed: bool,
+                 user_id_attribute: str,
+                 userinfo_endpoint: str,
+                 validations: Sequence['outputs.GetConnectionOptionValidationResult'],
+                 waad_common_endpoint: bool,
+                 waad_protocol: str):
+        """
+        :param str name: The name of the connection. If not provided, `connection_id` must be set.
+        """
+        pulumi.set(__self__, "adfs_server", adfs_server)
+        pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        pulumi.set(__self__, "api_enable_users", api_enable_users)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "auth_params", auth_params)
+        pulumi.set(__self__, "authorization_endpoint", authorization_endpoint)
+        pulumi.set(__self__, "brute_force_protection", brute_force_protection)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "community_base_url", community_base_url)
+        pulumi.set(__self__, "configuration", configuration)
+        pulumi.set(__self__, "custom_scripts", custom_scripts)
+        pulumi.set(__self__, "debug", debug)
+        pulumi.set(__self__, "digest_algorithm", digest_algorithm)
+        pulumi.set(__self__, "disable_cache", disable_cache)
+        pulumi.set(__self__, "disable_sign_out", disable_sign_out)
+        pulumi.set(__self__, "disable_signup", disable_signup)
+        pulumi.set(__self__, "discovery_url", discovery_url)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "domain_aliases", domain_aliases)
+        pulumi.set(__self__, "enable_script_context", enable_script_context)
+        pulumi.set(__self__, "enabled_database_customization", enabled_database_customization)
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "fed_metadata_xml", fed_metadata_xml)
+        pulumi.set(__self__, "fields_map", fields_map)
+        pulumi.set(__self__, "forward_request_info", forward_request_info)
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "gateway_authentications", gateway_authentications)
+        pulumi.set(__self__, "gateway_url", gateway_url)
+        pulumi.set(__self__, "icon_url", icon_url)
+        pulumi.set(__self__, "identity_api", identity_api)
+        pulumi.set(__self__, "idp_initiateds", idp_initiateds)
+        pulumi.set(__self__, "import_mode", import_mode)
+        pulumi.set(__self__, "ips", ips)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "jwks_uri", jwks_uri)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "max_groups_to_retrieve", max_groups_to_retrieve)
+        pulumi.set(__self__, "messaging_service_sid", messaging_service_sid)
+        pulumi.set(__self__, "metadata_url", metadata_url)
+        pulumi.set(__self__, "metadata_xml", metadata_xml)
+        pulumi.set(__self__, "mfas", mfas)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "non_persistent_attrs", non_persistent_attrs)
+        pulumi.set(__self__, "password_complexity_options", password_complexity_options)
+        pulumi.set(__self__, "password_dictionaries", password_dictionaries)
+        pulumi.set(__self__, "password_histories", password_histories)
+        pulumi.set(__self__, "password_no_personal_infos", password_no_personal_infos)
+        pulumi.set(__self__, "password_policy", password_policy)
+        pulumi.set(__self__, "pkce_enabled", pkce_enabled)
+        pulumi.set(__self__, "protocol_binding", protocol_binding)
+        pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "request_template", request_template)
+        pulumi.set(__self__, "requires_username", requires_username)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "scripts", scripts)
+        pulumi.set(__self__, "set_user_root_attributes", set_user_root_attributes)
+        pulumi.set(__self__, "should_trust_email_verified_connection", should_trust_email_verified_connection)
+        pulumi.set(__self__, "sign_in_endpoint", sign_in_endpoint)
+        pulumi.set(__self__, "sign_out_endpoint", sign_out_endpoint)
+        pulumi.set(__self__, "sign_saml_request", sign_saml_request)
+        pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        pulumi.set(__self__, "signing_cert", signing_cert)
+        pulumi.set(__self__, "signing_keys", signing_keys)
+        pulumi.set(__self__, "strategy_version", strategy_version)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "syntax", syntax)
+        pulumi.set(__self__, "team_id", team_id)
+        pulumi.set(__self__, "template", template)
+        pulumi.set(__self__, "tenant_domain", tenant_domain)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        pulumi.set(__self__, "totps", totps)
+        pulumi.set(__self__, "twilio_sid", twilio_sid)
+        pulumi.set(__self__, "twilio_token", twilio_token)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "upstream_params", upstream_params)
+        pulumi.set(__self__, "use_cert_auth", use_cert_auth)
+        pulumi.set(__self__, "use_kerberos", use_kerberos)
+        pulumi.set(__self__, "use_wsfed", use_wsfed)
+        pulumi.set(__self__, "user_id_attribute", user_id_attribute)
+        pulumi.set(__self__, "userinfo_endpoint", userinfo_endpoint)
+        pulumi.set(__self__, "validations", validations)
+        pulumi.set(__self__, "waad_common_endpoint", waad_common_endpoint)
+        pulumi.set(__self__, "waad_protocol", waad_protocol)
+
+    @property
+    @pulumi.getter(name="adfsServer")
+    def adfs_server(self) -> str:
+        return pulumi.get(self, "adfs_server")
+
+    @property
+    @pulumi.getter(name="allowedAudiences")
+    def allowed_audiences(self) -> Sequence[str]:
+        return pulumi.get(self, "allowed_audiences")
+
+    @property
+    @pulumi.getter(name="apiEnableUsers")
+    def api_enable_users(self) -> bool:
+        return pulumi.get(self, "api_enable_users")
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> str:
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="authParams")
+    def auth_params(self) -> Mapping[str, str]:
+        return pulumi.get(self, "auth_params")
+
+    @property
+    @pulumi.getter(name="authorizationEndpoint")
+    def authorization_endpoint(self) -> str:
+        return pulumi.get(self, "authorization_endpoint")
+
+    @property
+    @pulumi.getter(name="bruteForceProtection")
+    def brute_force_protection(self) -> bool:
+        return pulumi.get(self, "brute_force_protection")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="communityBaseUrl")
+    def community_base_url(self) -> str:
+        return pulumi.get(self, "community_base_url")
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "configuration")
+
+    @property
+    @pulumi.getter(name="customScripts")
+    def custom_scripts(self) -> Mapping[str, str]:
+        return pulumi.get(self, "custom_scripts")
+
+    @property
+    @pulumi.getter
+    def debug(self) -> bool:
+        return pulumi.get(self, "debug")
+
+    @property
+    @pulumi.getter(name="digestAlgorithm")
+    def digest_algorithm(self) -> str:
+        return pulumi.get(self, "digest_algorithm")
+
+    @property
+    @pulumi.getter(name="disableCache")
+    def disable_cache(self) -> bool:
+        return pulumi.get(self, "disable_cache")
+
+    @property
+    @pulumi.getter(name="disableSignOut")
+    def disable_sign_out(self) -> bool:
+        return pulumi.get(self, "disable_sign_out")
+
+    @property
+    @pulumi.getter(name="disableSignup")
+    def disable_signup(self) -> bool:
+        return pulumi.get(self, "disable_signup")
+
+    @property
+    @pulumi.getter(name="discoveryUrl")
+    def discovery_url(self) -> str:
+        return pulumi.get(self, "discovery_url")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="domainAliases")
+    def domain_aliases(self) -> Sequence[str]:
+        return pulumi.get(self, "domain_aliases")
+
+    @property
+    @pulumi.getter(name="enableScriptContext")
+    def enable_script_context(self) -> bool:
+        return pulumi.get(self, "enable_script_context")
+
+    @property
+    @pulumi.getter(name="enabledDatabaseCustomization")
+    def enabled_database_customization(self) -> bool:
+        return pulumi.get(self, "enabled_database_customization")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> str:
+        return pulumi.get(self, "entity_id")
+
+    @property
+    @pulumi.getter(name="fedMetadataXml")
+    def fed_metadata_xml(self) -> str:
+        return pulumi.get(self, "fed_metadata_xml")
+
+    @property
+    @pulumi.getter(name="fieldsMap")
+    def fields_map(self) -> str:
+        return pulumi.get(self, "fields_map")
+
+    @property
+    @pulumi.getter(name="forwardRequestInfo")
+    def forward_request_info(self) -> bool:
+        return pulumi.get(self, "forward_request_info")
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> str:
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter(name="gatewayAuthentications")
+    def gateway_authentications(self) -> Sequence['outputs.GetConnectionOptionGatewayAuthenticationResult']:
+        return pulumi.get(self, "gateway_authentications")
+
+    @property
+    @pulumi.getter(name="gatewayUrl")
+    def gateway_url(self) -> str:
+        return pulumi.get(self, "gateway_url")
+
+    @property
+    @pulumi.getter(name="iconUrl")
+    def icon_url(self) -> str:
+        return pulumi.get(self, "icon_url")
+
+    @property
+    @pulumi.getter(name="identityApi")
+    def identity_api(self) -> str:
+        return pulumi.get(self, "identity_api")
+
+    @property
+    @pulumi.getter(name="idpInitiateds")
+    def idp_initiateds(self) -> Sequence['outputs.GetConnectionOptionIdpInitiatedResult']:
+        return pulumi.get(self, "idp_initiateds")
+
+    @property
+    @pulumi.getter(name="importMode")
+    def import_mode(self) -> bool:
+        return pulumi.get(self, "import_mode")
+
+    @property
+    @pulumi.getter
+    def ips(self) -> Sequence[str]:
+        return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="jwksUri")
+    def jwks_uri(self) -> str:
+        return pulumi.get(self, "jwks_uri")
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> str:
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="maxGroupsToRetrieve")
+    def max_groups_to_retrieve(self) -> str:
+        return pulumi.get(self, "max_groups_to_retrieve")
+
+    @property
+    @pulumi.getter(name="messagingServiceSid")
+    def messaging_service_sid(self) -> str:
+        return pulumi.get(self, "messaging_service_sid")
+
+    @property
+    @pulumi.getter(name="metadataUrl")
+    def metadata_url(self) -> str:
+        return pulumi.get(self, "metadata_url")
+
+    @property
+    @pulumi.getter(name="metadataXml")
+    def metadata_xml(self) -> str:
+        return pulumi.get(self, "metadata_xml")
+
+    @property
+    @pulumi.getter
+    def mfas(self) -> Sequence['outputs.GetConnectionOptionMfaResult']:
+        return pulumi.get(self, "mfas")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the connection. If not provided, `connection_id` must be set.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nonPersistentAttrs")
+    def non_persistent_attrs(self) -> Sequence[str]:
+        return pulumi.get(self, "non_persistent_attrs")
+
+    @property
+    @pulumi.getter(name="passwordComplexityOptions")
+    def password_complexity_options(self) -> Sequence['outputs.GetConnectionOptionPasswordComplexityOptionResult']:
+        return pulumi.get(self, "password_complexity_options")
+
+    @property
+    @pulumi.getter(name="passwordDictionaries")
+    def password_dictionaries(self) -> Sequence['outputs.GetConnectionOptionPasswordDictionaryResult']:
+        return pulumi.get(self, "password_dictionaries")
+
+    @property
+    @pulumi.getter(name="passwordHistories")
+    def password_histories(self) -> Sequence['outputs.GetConnectionOptionPasswordHistoryResult']:
+        return pulumi.get(self, "password_histories")
+
+    @property
+    @pulumi.getter(name="passwordNoPersonalInfos")
+    def password_no_personal_infos(self) -> Sequence['outputs.GetConnectionOptionPasswordNoPersonalInfoResult']:
+        return pulumi.get(self, "password_no_personal_infos")
+
+    @property
+    @pulumi.getter(name="passwordPolicy")
+    def password_policy(self) -> str:
+        return pulumi.get(self, "password_policy")
+
+    @property
+    @pulumi.getter(name="pkceEnabled")
+    def pkce_enabled(self) -> bool:
+        return pulumi.get(self, "pkce_enabled")
+
+    @property
+    @pulumi.getter(name="protocolBinding")
+    def protocol_binding(self) -> str:
+        return pulumi.get(self, "protocol_binding")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> str:
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter(name="requestTemplate")
+    def request_template(self) -> str:
+        return pulumi.get(self, "request_template")
+
+    @property
+    @pulumi.getter(name="requiresUsername")
+    def requires_username(self) -> bool:
+        return pulumi.get(self, "requires_username")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
+    def scripts(self) -> Mapping[str, str]:
+        return pulumi.get(self, "scripts")
+
+    @property
+    @pulumi.getter(name="setUserRootAttributes")
+    def set_user_root_attributes(self) -> str:
+        return pulumi.get(self, "set_user_root_attributes")
+
+    @property
+    @pulumi.getter(name="shouldTrustEmailVerifiedConnection")
+    def should_trust_email_verified_connection(self) -> str:
+        return pulumi.get(self, "should_trust_email_verified_connection")
+
+    @property
+    @pulumi.getter(name="signInEndpoint")
+    def sign_in_endpoint(self) -> str:
+        return pulumi.get(self, "sign_in_endpoint")
+
+    @property
+    @pulumi.getter(name="signOutEndpoint")
+    def sign_out_endpoint(self) -> str:
+        return pulumi.get(self, "sign_out_endpoint")
+
+    @property
+    @pulumi.getter(name="signSamlRequest")
+    def sign_saml_request(self) -> bool:
+        return pulumi.get(self, "sign_saml_request")
+
+    @property
+    @pulumi.getter(name="signatureAlgorithm")
+    def signature_algorithm(self) -> str:
+        return pulumi.get(self, "signature_algorithm")
+
+    @property
+    @pulumi.getter(name="signingCert")
+    def signing_cert(self) -> str:
+        return pulumi.get(self, "signing_cert")
+
+    @property
+    @pulumi.getter(name="signingKeys")
+    def signing_keys(self) -> Sequence['outputs.GetConnectionOptionSigningKeyResult']:
+        return pulumi.get(self, "signing_keys")
+
+    @property
+    @pulumi.getter(name="strategyVersion")
+    def strategy_version(self) -> int:
+        return pulumi.get(self, "strategy_version")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> str:
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter
+    def syntax(self) -> str:
+        return pulumi.get(self, "syntax")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        return pulumi.get(self, "team_id")
+
+    @property
+    @pulumi.getter
+    def template(self) -> str:
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter(name="tenantDomain")
+    def tenant_domain(self) -> str:
+        return pulumi.get(self, "tenant_domain")
+
+    @property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> str:
+        return pulumi.get(self, "token_endpoint")
+
+    @property
+    @pulumi.getter
+    def totps(self) -> Sequence['outputs.GetConnectionOptionTotpResult']:
+        return pulumi.get(self, "totps")
+
+    @property
+    @pulumi.getter(name="twilioSid")
+    def twilio_sid(self) -> str:
+        return pulumi.get(self, "twilio_sid")
+
+    @property
+    @pulumi.getter(name="twilioToken")
+    def twilio_token(self) -> str:
+        return pulumi.get(self, "twilio_token")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="upstreamParams")
+    def upstream_params(self) -> str:
+        return pulumi.get(self, "upstream_params")
+
+    @property
+    @pulumi.getter(name="useCertAuth")
+    def use_cert_auth(self) -> bool:
+        return pulumi.get(self, "use_cert_auth")
+
+    @property
+    @pulumi.getter(name="useKerberos")
+    def use_kerberos(self) -> bool:
+        return pulumi.get(self, "use_kerberos")
+
+    @property
+    @pulumi.getter(name="useWsfed")
+    def use_wsfed(self) -> bool:
+        return pulumi.get(self, "use_wsfed")
+
+    @property
+    @pulumi.getter(name="userIdAttribute")
+    def user_id_attribute(self) -> str:
+        return pulumi.get(self, "user_id_attribute")
+
+    @property
+    @pulumi.getter(name="userinfoEndpoint")
+    def userinfo_endpoint(self) -> str:
+        return pulumi.get(self, "userinfo_endpoint")
+
+    @property
+    @pulumi.getter
+    def validations(self) -> Sequence['outputs.GetConnectionOptionValidationResult']:
+        return pulumi.get(self, "validations")
+
+    @property
+    @pulumi.getter(name="waadCommonEndpoint")
+    def waad_common_endpoint(self) -> bool:
+        return pulumi.get(self, "waad_common_endpoint")
+
+    @property
+    @pulumi.getter(name="waadProtocol")
+    def waad_protocol(self) -> str:
+        return pulumi.get(self, "waad_protocol")
+
+
+@pulumi.output_type
+class GetConnectionOptionGatewayAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 audience: str,
+                 method: str,
+                 secret: str,
+                 secret_base64_encoded: bool,
+                 subject: str):
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "secret_base64_encoded", secret_base64_encoded)
+        pulumi.set(__self__, "subject", subject)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> str:
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter
+    def method(self) -> str:
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="secretBase64Encoded")
+    def secret_base64_encoded(self) -> bool:
+        return pulumi.get(self, "secret_base64_encoded")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> str:
+        return pulumi.get(self, "subject")
+
+
+@pulumi.output_type
+class GetConnectionOptionIdpInitiatedResult(dict):
+    def __init__(__self__, *,
+                 client_authorize_query: str,
+                 client_id: str,
+                 client_protocol: str):
+        pulumi.set(__self__, "client_authorize_query", client_authorize_query)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_protocol", client_protocol)
+
+    @property
+    @pulumi.getter(name="clientAuthorizeQuery")
+    def client_authorize_query(self) -> str:
+        return pulumi.get(self, "client_authorize_query")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientProtocol")
+    def client_protocol(self) -> str:
+        return pulumi.get(self, "client_protocol")
+
+
+@pulumi.output_type
+class GetConnectionOptionMfaResult(dict):
+    def __init__(__self__, *,
+                 active: bool,
+                 return_enroll_settings: bool):
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "return_enroll_settings", return_enroll_settings)
+
+    @property
+    @pulumi.getter
+    def active(self) -> bool:
+        return pulumi.get(self, "active")
+
+    @property
+    @pulumi.getter(name="returnEnrollSettings")
+    def return_enroll_settings(self) -> bool:
+        return pulumi.get(self, "return_enroll_settings")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasswordComplexityOptionResult(dict):
+    def __init__(__self__, *,
+                 min_length: int):
+        pulumi.set(__self__, "min_length", min_length)
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> int:
+        return pulumi.get(self, "min_length")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasswordDictionaryResult(dict):
+    def __init__(__self__, *,
+                 dictionaries: Sequence[str],
+                 enable: bool):
+        pulumi.set(__self__, "dictionaries", dictionaries)
+        pulumi.set(__self__, "enable", enable)
+
+    @property
+    @pulumi.getter
+    def dictionaries(self) -> Sequence[str]:
+        return pulumi.get(self, "dictionaries")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        return pulumi.get(self, "enable")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasswordHistoryResult(dict):
+    def __init__(__self__, *,
+                 enable: bool,
+                 size: int):
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasswordNoPersonalInfoResult(dict):
+    def __init__(__self__, *,
+                 enable: bool):
+        pulumi.set(__self__, "enable", enable)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        return pulumi.get(self, "enable")
+
+
+@pulumi.output_type
+class GetConnectionOptionSigningKeyResult(dict):
+    def __init__(__self__, *,
+                 cert: str,
+                 key: str):
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> str:
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class GetConnectionOptionTotpResult(dict):
+    def __init__(__self__, *,
+                 length: int,
+                 time_step: int):
+        pulumi.set(__self__, "length", length)
+        pulumi.set(__self__, "time_step", time_step)
+
+    @property
+    @pulumi.getter
+    def length(self) -> int:
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter(name="timeStep")
+    def time_step(self) -> int:
+        return pulumi.get(self, "time_step")
+
+
+@pulumi.output_type
+class GetConnectionOptionValidationResult(dict):
+    def __init__(__self__, *,
+                 usernames: Sequence['outputs.GetConnectionOptionValidationUsernameResult']):
+        pulumi.set(__self__, "usernames", usernames)
+
+    @property
+    @pulumi.getter
+    def usernames(self) -> Sequence['outputs.GetConnectionOptionValidationUsernameResult']:
+        return pulumi.get(self, "usernames")
+
+
+@pulumi.output_type
+class GetConnectionOptionValidationUsernameResult(dict):
+    def __init__(__self__, *,
+                 max: int,
+                 min: int):
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> int:
+        return pulumi.get(self, "max")
+
+    @property
+    @pulumi.getter
+    def min(self) -> int:
+        return pulumi.get(self, "min")
+
+
+@pulumi.output_type
 class GetGlobalClientAddonResult(dict):
     def __init__(__self__, *,
                  aws: Mapping[str, Any],
@@ -7518,5 +9036,359 @@ class GetGlobalClientRefreshTokenResult(dict):
     @pulumi.getter(name="tokenLifetime")
     def token_lifetime(self) -> int:
         return pulumi.get(self, "token_lifetime")
+
+
+@pulumi.output_type
+class GetOrganizationBrandingResult(dict):
+    def __init__(__self__, *,
+                 colors: Mapping[str, str],
+                 logo_url: str):
+        pulumi.set(__self__, "colors", colors)
+        pulumi.set(__self__, "logo_url", logo_url)
+
+    @property
+    @pulumi.getter
+    def colors(self) -> Mapping[str, str]:
+        return pulumi.get(self, "colors")
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> str:
+        return pulumi.get(self, "logo_url")
+
+
+@pulumi.output_type
+class GetOrganizationConnectionResult(dict):
+    def __init__(__self__, *,
+                 assign_membership_on_login: bool,
+                 connection_id: str):
+        pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+        pulumi.set(__self__, "connection_id", connection_id)
+
+    @property
+    @pulumi.getter(name="assignMembershipOnLogin")
+    def assign_membership_on_login(self) -> bool:
+        return pulumi.get(self, "assign_membership_on_login")
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> str:
+        return pulumi.get(self, "connection_id")
+
+
+@pulumi.output_type
+class GetResourceServerScopeResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 value: str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRolePermissionResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 resource_server_identifier: str):
+        """
+        :param str name: The name of the role. If not provided, `role_id` must be set.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the role. If not provided, `role_id` must be set.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> str:
+        return pulumi.get(self, "resource_server_identifier")
+
+
+@pulumi.output_type
+class GetTenantChangePasswordResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 html: str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def html(self) -> str:
+        return pulumi.get(self, "html")
+
+
+@pulumi.output_type
+class GetTenantErrorPageResult(dict):
+    def __init__(__self__, *,
+                 html: str,
+                 show_log_link: bool,
+                 url: str):
+        pulumi.set(__self__, "html", html)
+        pulumi.set(__self__, "show_log_link", show_log_link)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def html(self) -> str:
+        return pulumi.get(self, "html")
+
+    @property
+    @pulumi.getter(name="showLogLink")
+    def show_log_link(self) -> bool:
+        return pulumi.get(self, "show_log_link")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetTenantFlagResult(dict):
+    def __init__(__self__, *,
+                 allow_legacy_delegation_grant_types: bool,
+                 allow_legacy_ro_grant_types: bool,
+                 allow_legacy_tokeninfo_endpoint: bool,
+                 dashboard_insights_view: bool,
+                 dashboard_log_streams_next: bool,
+                 disable_clickjack_protection_headers: bool,
+                 disable_fields_map_fix: bool,
+                 disable_management_api_sms_obfuscation: bool,
+                 enable_adfs_waad_email_verification: bool,
+                 enable_apis_section: bool,
+                 enable_client_connections: bool,
+                 enable_custom_domain_in_emails: bool,
+                 enable_dynamic_client_registration: bool,
+                 enable_idtoken_api2: bool,
+                 enable_legacy_logs_search_v2: bool,
+                 enable_legacy_profile: bool,
+                 enable_pipeline2: bool,
+                 enable_public_signup_user_exists_error: bool,
+                 no_disclose_enterprise_connections: bool,
+                 revoke_refresh_token_grant: bool,
+                 universal_login: bool,
+                 use_scope_descriptions_for_consent: bool):
+        """
+        :param bool universal_login: Configuration settings for Universal Login.
+        """
+        pulumi.set(__self__, "allow_legacy_delegation_grant_types", allow_legacy_delegation_grant_types)
+        pulumi.set(__self__, "allow_legacy_ro_grant_types", allow_legacy_ro_grant_types)
+        pulumi.set(__self__, "allow_legacy_tokeninfo_endpoint", allow_legacy_tokeninfo_endpoint)
+        pulumi.set(__self__, "dashboard_insights_view", dashboard_insights_view)
+        pulumi.set(__self__, "dashboard_log_streams_next", dashboard_log_streams_next)
+        pulumi.set(__self__, "disable_clickjack_protection_headers", disable_clickjack_protection_headers)
+        pulumi.set(__self__, "disable_fields_map_fix", disable_fields_map_fix)
+        pulumi.set(__self__, "disable_management_api_sms_obfuscation", disable_management_api_sms_obfuscation)
+        pulumi.set(__self__, "enable_adfs_waad_email_verification", enable_adfs_waad_email_verification)
+        pulumi.set(__self__, "enable_apis_section", enable_apis_section)
+        pulumi.set(__self__, "enable_client_connections", enable_client_connections)
+        pulumi.set(__self__, "enable_custom_domain_in_emails", enable_custom_domain_in_emails)
+        pulumi.set(__self__, "enable_dynamic_client_registration", enable_dynamic_client_registration)
+        pulumi.set(__self__, "enable_idtoken_api2", enable_idtoken_api2)
+        pulumi.set(__self__, "enable_legacy_logs_search_v2", enable_legacy_logs_search_v2)
+        pulumi.set(__self__, "enable_legacy_profile", enable_legacy_profile)
+        pulumi.set(__self__, "enable_pipeline2", enable_pipeline2)
+        pulumi.set(__self__, "enable_public_signup_user_exists_error", enable_public_signup_user_exists_error)
+        pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
+        pulumi.set(__self__, "revoke_refresh_token_grant", revoke_refresh_token_grant)
+        pulumi.set(__self__, "universal_login", universal_login)
+        pulumi.set(__self__, "use_scope_descriptions_for_consent", use_scope_descriptions_for_consent)
+
+    @property
+    @pulumi.getter(name="allowLegacyDelegationGrantTypes")
+    def allow_legacy_delegation_grant_types(self) -> bool:
+        return pulumi.get(self, "allow_legacy_delegation_grant_types")
+
+    @property
+    @pulumi.getter(name="allowLegacyRoGrantTypes")
+    def allow_legacy_ro_grant_types(self) -> bool:
+        return pulumi.get(self, "allow_legacy_ro_grant_types")
+
+    @property
+    @pulumi.getter(name="allowLegacyTokeninfoEndpoint")
+    def allow_legacy_tokeninfo_endpoint(self) -> bool:
+        return pulumi.get(self, "allow_legacy_tokeninfo_endpoint")
+
+    @property
+    @pulumi.getter(name="dashboardInsightsView")
+    def dashboard_insights_view(self) -> bool:
+        return pulumi.get(self, "dashboard_insights_view")
+
+    @property
+    @pulumi.getter(name="dashboardLogStreamsNext")
+    def dashboard_log_streams_next(self) -> bool:
+        return pulumi.get(self, "dashboard_log_streams_next")
+
+    @property
+    @pulumi.getter(name="disableClickjackProtectionHeaders")
+    def disable_clickjack_protection_headers(self) -> bool:
+        return pulumi.get(self, "disable_clickjack_protection_headers")
+
+    @property
+    @pulumi.getter(name="disableFieldsMapFix")
+    def disable_fields_map_fix(self) -> bool:
+        return pulumi.get(self, "disable_fields_map_fix")
+
+    @property
+    @pulumi.getter(name="disableManagementApiSmsObfuscation")
+    def disable_management_api_sms_obfuscation(self) -> bool:
+        return pulumi.get(self, "disable_management_api_sms_obfuscation")
+
+    @property
+    @pulumi.getter(name="enableAdfsWaadEmailVerification")
+    def enable_adfs_waad_email_verification(self) -> bool:
+        return pulumi.get(self, "enable_adfs_waad_email_verification")
+
+    @property
+    @pulumi.getter(name="enableApisSection")
+    def enable_apis_section(self) -> bool:
+        return pulumi.get(self, "enable_apis_section")
+
+    @property
+    @pulumi.getter(name="enableClientConnections")
+    def enable_client_connections(self) -> bool:
+        return pulumi.get(self, "enable_client_connections")
+
+    @property
+    @pulumi.getter(name="enableCustomDomainInEmails")
+    def enable_custom_domain_in_emails(self) -> bool:
+        return pulumi.get(self, "enable_custom_domain_in_emails")
+
+    @property
+    @pulumi.getter(name="enableDynamicClientRegistration")
+    def enable_dynamic_client_registration(self) -> bool:
+        return pulumi.get(self, "enable_dynamic_client_registration")
+
+    @property
+    @pulumi.getter(name="enableIdtokenApi2")
+    def enable_idtoken_api2(self) -> bool:
+        return pulumi.get(self, "enable_idtoken_api2")
+
+    @property
+    @pulumi.getter(name="enableLegacyLogsSearchV2")
+    def enable_legacy_logs_search_v2(self) -> bool:
+        return pulumi.get(self, "enable_legacy_logs_search_v2")
+
+    @property
+    @pulumi.getter(name="enableLegacyProfile")
+    def enable_legacy_profile(self) -> bool:
+        return pulumi.get(self, "enable_legacy_profile")
+
+    @property
+    @pulumi.getter(name="enablePipeline2")
+    def enable_pipeline2(self) -> bool:
+        return pulumi.get(self, "enable_pipeline2")
+
+    @property
+    @pulumi.getter(name="enablePublicSignupUserExistsError")
+    def enable_public_signup_user_exists_error(self) -> bool:
+        return pulumi.get(self, "enable_public_signup_user_exists_error")
+
+    @property
+    @pulumi.getter(name="noDiscloseEnterpriseConnections")
+    def no_disclose_enterprise_connections(self) -> bool:
+        return pulumi.get(self, "no_disclose_enterprise_connections")
+
+    @property
+    @pulumi.getter(name="revokeRefreshTokenGrant")
+    def revoke_refresh_token_grant(self) -> bool:
+        return pulumi.get(self, "revoke_refresh_token_grant")
+
+    @property
+    @pulumi.getter(name="universalLogin")
+    def universal_login(self) -> bool:
+        """
+        Configuration settings for Universal Login.
+        """
+        return pulumi.get(self, "universal_login")
+
+    @property
+    @pulumi.getter(name="useScopeDescriptionsForConsent")
+    def use_scope_descriptions_for_consent(self) -> bool:
+        return pulumi.get(self, "use_scope_descriptions_for_consent")
+
+
+@pulumi.output_type
+class GetTenantGuardianMfaPageResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 html: str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def html(self) -> str:
+        return pulumi.get(self, "html")
+
+
+@pulumi.output_type
+class GetTenantSessionCookyResult(dict):
+    def __init__(__self__, *,
+                 mode: str):
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class GetTenantUniversalLoginResult(dict):
+    def __init__(__self__, *,
+                 colors: Sequence['outputs.GetTenantUniversalLoginColorResult']):
+        pulumi.set(__self__, "colors", colors)
+
+    @property
+    @pulumi.getter
+    def colors(self) -> Sequence['outputs.GetTenantUniversalLoginColorResult']:
+        return pulumi.get(self, "colors")
+
+
+@pulumi.output_type
+class GetTenantUniversalLoginColorResult(dict):
+    def __init__(__self__, *,
+                 page_background: str,
+                 primary: str):
+        pulumi.set(__self__, "page_background", page_background)
+        pulumi.set(__self__, "primary", primary)
+
+    @property
+    @pulumi.getter(name="pageBackground")
+    def page_background(self) -> str:
+        return pulumi.get(self, "page_background")
+
+    @property
+    @pulumi.getter
+    def primary(self) -> str:
+        return pulumi.get(self, "primary")
 
 

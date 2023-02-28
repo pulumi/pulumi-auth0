@@ -1476,7 +1476,9 @@ export interface TenantFlags {
      */
     revokeRefreshTokenGrant?: pulumi.Input<boolean>;
     /**
-     * Indicates whether the tenant uses Universal Login.
+     * Indicates whether the New Universal Login Experience is enabled.
+     *
+     * @deprecated This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
      */
     universalLogin?: pulumi.Input<boolean>;
     /**

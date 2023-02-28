@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetClient
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
+        /// Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -44,7 +44,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
+        /// Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -42,7 +40,7 @@ import (
 //				Nickname:       pulumi.String("some.nickname"),
 //				Email:          pulumi.String("test@test.com"),
 //				EmailVerified:  pulumi.Bool(true),
-//				Password:       pulumi.String(fmt.Sprintf("passpass$12$12")),
+//				Password:       pulumi.String("passpass$12$12"),
 //				Picture:        pulumi.String("https://www.example.com/a-valid-picture-url.jpg"),
 //				Roles: pulumi.StringArray{
 //					admin.ID(),

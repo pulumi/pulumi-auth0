@@ -112,9 +112,13 @@ public final class TenantFlags {
      */
     private @Nullable Boolean revokeRefreshTokenGrant;
     /**
-     * @return Indicates whether the tenant uses Universal Login.
+     * @return Indicates whether the New Universal Login Experience is enabled.
+     * 
+     * @deprecated
+     * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
      * 
      */
+    @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
     private @Nullable Boolean universalLogin;
     /**
      * @return Indicates whether to use scope descriptions for consent.
@@ -264,9 +268,13 @@ public final class TenantFlags {
         return Optional.ofNullable(this.revokeRefreshTokenGrant);
     }
     /**
-     * @return Indicates whether the tenant uses Universal Login.
+     * @return Indicates whether the New Universal Login Experience is enabled.
+     * 
+     * @deprecated
+     * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
      * 
      */
+    @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
     public Optional<Boolean> universalLogin() {
         return Optional.ofNullable(this.universalLogin);
     }

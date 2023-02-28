@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     nickname: "some.nickname",
  *     email: "test@test.com",
  *     emailVerified: true,
- *     password: `passpass$12$12`,
+ *     password: "passpass$12$12",
  *     picture: "https://www.example.com/a-valid-picture-url.jpg",
  *     roles: [admin.id],
  * });

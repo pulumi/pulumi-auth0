@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     email: "test-user@auth0.com",
  *     connectionName: "Username-Password-Authentication",
  *     emailVerified: true,
- *     password: `MyPass123$`,
+ *     password: "MyPass123$",
  * });
  * const myOrg = new auth0.Organization("myOrg", {displayName: "Admin"});
  * const myOrgMember = new auth0.OrganizationMember("myOrgMember", {

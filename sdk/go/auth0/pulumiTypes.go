@@ -15778,7 +15778,9 @@ type TenantFlags struct {
 	NoDiscloseEnterpriseConnections *bool `pulumi:"noDiscloseEnterpriseConnections"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant *bool `pulumi:"revokeRefreshTokenGrant"`
-	// Indicates whether the tenant uses Universal Login.
+	// Indicates whether the New Universal Login Experience is enabled.
+	//
+	// Deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
 	UniversalLogin *bool `pulumi:"universalLogin"`
 	// Indicates whether to use scope descriptions for consent.
 	UseScopeDescriptionsForConsent *bool `pulumi:"useScopeDescriptionsForConsent"`
@@ -15836,7 +15838,9 @@ type TenantFlagsArgs struct {
 	NoDiscloseEnterpriseConnections pulumi.BoolPtrInput `pulumi:"noDiscloseEnterpriseConnections"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
 	RevokeRefreshTokenGrant pulumi.BoolPtrInput `pulumi:"revokeRefreshTokenGrant"`
-	// Indicates whether the tenant uses Universal Login.
+	// Indicates whether the New Universal Login Experience is enabled.
+	//
+	// Deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
 	UniversalLogin pulumi.BoolPtrInput `pulumi:"universalLogin"`
 	// Indicates whether to use scope descriptions for consent.
 	UseScopeDescriptionsForConsent pulumi.BoolPtrInput `pulumi:"useScopeDescriptionsForConsent"`
@@ -16019,7 +16023,9 @@ func (o TenantFlagsOutput) RevokeRefreshTokenGrant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.RevokeRefreshTokenGrant }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether the tenant uses Universal Login.
+// Indicates whether the New Universal Login Experience is enabled.
+//
+// Deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
 func (o TenantFlagsOutput) UniversalLogin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.UniversalLogin }).(pulumi.BoolPtrOutput)
 }
@@ -16253,7 +16259,9 @@ func (o TenantFlagsPtrOutput) RevokeRefreshTokenGrant() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether the tenant uses Universal Login.
+// Indicates whether the New Universal Login Experience is enabled.
+//
+// Deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
 func (o TenantFlagsPtrOutput) UniversalLogin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -16955,6 +16963,2252 @@ func (o TriggerBindingActionArrayOutput) Index(i pulumi.IntInput) TriggerBinding
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBindingAction {
 		return vs[0].([]TriggerBindingAction)[vs[1].(int)]
 	}).(TriggerBindingActionOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetection struct {
+	AdminNotificationFrequencies []string                                                          `pulumi:"adminNotificationFrequencies"`
+	Enabled                      bool                                                              `pulumi:"enabled"`
+	Method                       string                                                            `pulumi:"method"`
+	PreUserRegistrations         []GetAttackProtectionBreachedPasswordDetectionPreUserRegistration `pulumi:"preUserRegistrations"`
+	Shields                      []string                                                          `pulumi:"shields"`
+}
+
+// GetAttackProtectionBreachedPasswordDetectionInput is an input type that accepts GetAttackProtectionBreachedPasswordDetectionArgs and GetAttackProtectionBreachedPasswordDetectionOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBreachedPasswordDetectionInput` via:
+//
+//	GetAttackProtectionBreachedPasswordDetectionArgs{...}
+type GetAttackProtectionBreachedPasswordDetectionInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBreachedPasswordDetectionOutput() GetAttackProtectionBreachedPasswordDetectionOutput
+	ToGetAttackProtectionBreachedPasswordDetectionOutputWithContext(context.Context) GetAttackProtectionBreachedPasswordDetectionOutput
+}
+
+type GetAttackProtectionBreachedPasswordDetectionArgs struct {
+	AdminNotificationFrequencies pulumi.StringArrayInput                                                   `pulumi:"adminNotificationFrequencies"`
+	Enabled                      pulumi.BoolInput                                                          `pulumi:"enabled"`
+	Method                       pulumi.StringInput                                                        `pulumi:"method"`
+	PreUserRegistrations         GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayInput `pulumi:"preUserRegistrations"`
+	Shields                      pulumi.StringArrayInput                                                   `pulumi:"shields"`
+}
+
+func (GetAttackProtectionBreachedPasswordDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetection)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionArgs) ToGetAttackProtectionBreachedPasswordDetectionOutput() GetAttackProtectionBreachedPasswordDetectionOutput {
+	return i.ToGetAttackProtectionBreachedPasswordDetectionOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionArgs) ToGetAttackProtectionBreachedPasswordDetectionOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBreachedPasswordDetectionOutput)
+}
+
+// GetAttackProtectionBreachedPasswordDetectionArrayInput is an input type that accepts GetAttackProtectionBreachedPasswordDetectionArray and GetAttackProtectionBreachedPasswordDetectionArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBreachedPasswordDetectionArrayInput` via:
+//
+//	GetAttackProtectionBreachedPasswordDetectionArray{ GetAttackProtectionBreachedPasswordDetectionArgs{...} }
+type GetAttackProtectionBreachedPasswordDetectionArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBreachedPasswordDetectionArrayOutput() GetAttackProtectionBreachedPasswordDetectionArrayOutput
+	ToGetAttackProtectionBreachedPasswordDetectionArrayOutputWithContext(context.Context) GetAttackProtectionBreachedPasswordDetectionArrayOutput
+}
+
+type GetAttackProtectionBreachedPasswordDetectionArray []GetAttackProtectionBreachedPasswordDetectionInput
+
+func (GetAttackProtectionBreachedPasswordDetectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBreachedPasswordDetection)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionArray) ToGetAttackProtectionBreachedPasswordDetectionArrayOutput() GetAttackProtectionBreachedPasswordDetectionArrayOutput {
+	return i.ToGetAttackProtectionBreachedPasswordDetectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionArray) ToGetAttackProtectionBreachedPasswordDetectionArrayOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBreachedPasswordDetectionArrayOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetectionOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBreachedPasswordDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetection)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionOutput) ToGetAttackProtectionBreachedPasswordDetectionOutput() GetAttackProtectionBreachedPasswordDetectionOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionOutput) ToGetAttackProtectionBreachedPasswordDetectionOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionOutput) AdminNotificationFrequencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetection) []string { return v.AdminNotificationFrequencies }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetection) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetection) string { return v.Method }).(pulumi.StringOutput)
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionOutput) PreUserRegistrations() GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetection) []GetAttackProtectionBreachedPasswordDetectionPreUserRegistration {
+		return v.PreUserRegistrations
+	}).(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput)
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetection) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBreachedPasswordDetectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBreachedPasswordDetection)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionArrayOutput) ToGetAttackProtectionBreachedPasswordDetectionArrayOutput() GetAttackProtectionBreachedPasswordDetectionArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionArrayOutput) ToGetAttackProtectionBreachedPasswordDetectionArrayOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionBreachedPasswordDetectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionBreachedPasswordDetection {
+		return vs[0].([]GetAttackProtectionBreachedPasswordDetection)[vs[1].(int)]
+	}).(GetAttackProtectionBreachedPasswordDetectionOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreUserRegistration struct {
+	Shields []string `pulumi:"shields"`
+}
+
+// GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationInput is an input type that accepts GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs and GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationInput` via:
+//
+//	GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{...}
+type GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput() GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput
+	ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutputWithContext(context.Context) GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs struct {
+	Shields pulumi.StringArrayInput `pulumi:"shields"`
+}
+
+func (GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistration)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput() GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return i.ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs) ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput)
+}
+
+// GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayInput is an input type that accepts GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray and GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayInput` via:
+//
+//	GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray{ GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{...} }
+type GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput() GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput
+	ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutputWithContext(context.Context) GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray []GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationInput
+
+func (GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBreachedPasswordDetectionPreUserRegistration)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray) ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput() GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput {
+	return i.ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray) ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistration)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput() GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBreachedPasswordDetectionPreUserRegistration) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBreachedPasswordDetectionPreUserRegistration)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput) ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput() GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput) ToGetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutputWithContext(ctx context.Context) GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionBreachedPasswordDetectionPreUserRegistration {
+		return vs[0].([]GetAttackProtectionBreachedPasswordDetectionPreUserRegistration)[vs[1].(int)]
+	}).(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput)
+}
+
+type GetAttackProtectionBruteForceProtection struct {
+	Allowlists  []string `pulumi:"allowlists"`
+	Enabled     bool     `pulumi:"enabled"`
+	MaxAttempts int      `pulumi:"maxAttempts"`
+	Mode        string   `pulumi:"mode"`
+	Shields     []string `pulumi:"shields"`
+}
+
+// GetAttackProtectionBruteForceProtectionInput is an input type that accepts GetAttackProtectionBruteForceProtectionArgs and GetAttackProtectionBruteForceProtectionOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBruteForceProtectionInput` via:
+//
+//	GetAttackProtectionBruteForceProtectionArgs{...}
+type GetAttackProtectionBruteForceProtectionInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBruteForceProtectionOutput() GetAttackProtectionBruteForceProtectionOutput
+	ToGetAttackProtectionBruteForceProtectionOutputWithContext(context.Context) GetAttackProtectionBruteForceProtectionOutput
+}
+
+type GetAttackProtectionBruteForceProtectionArgs struct {
+	Allowlists  pulumi.StringArrayInput `pulumi:"allowlists"`
+	Enabled     pulumi.BoolInput        `pulumi:"enabled"`
+	MaxAttempts pulumi.IntInput         `pulumi:"maxAttempts"`
+	Mode        pulumi.StringInput      `pulumi:"mode"`
+	Shields     pulumi.StringArrayInput `pulumi:"shields"`
+}
+
+func (GetAttackProtectionBruteForceProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBruteForceProtection)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBruteForceProtectionArgs) ToGetAttackProtectionBruteForceProtectionOutput() GetAttackProtectionBruteForceProtectionOutput {
+	return i.ToGetAttackProtectionBruteForceProtectionOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBruteForceProtectionArgs) ToGetAttackProtectionBruteForceProtectionOutputWithContext(ctx context.Context) GetAttackProtectionBruteForceProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBruteForceProtectionOutput)
+}
+
+// GetAttackProtectionBruteForceProtectionArrayInput is an input type that accepts GetAttackProtectionBruteForceProtectionArray and GetAttackProtectionBruteForceProtectionArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBruteForceProtectionArrayInput` via:
+//
+//	GetAttackProtectionBruteForceProtectionArray{ GetAttackProtectionBruteForceProtectionArgs{...} }
+type GetAttackProtectionBruteForceProtectionArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBruteForceProtectionArrayOutput() GetAttackProtectionBruteForceProtectionArrayOutput
+	ToGetAttackProtectionBruteForceProtectionArrayOutputWithContext(context.Context) GetAttackProtectionBruteForceProtectionArrayOutput
+}
+
+type GetAttackProtectionBruteForceProtectionArray []GetAttackProtectionBruteForceProtectionInput
+
+func (GetAttackProtectionBruteForceProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBruteForceProtection)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBruteForceProtectionArray) ToGetAttackProtectionBruteForceProtectionArrayOutput() GetAttackProtectionBruteForceProtectionArrayOutput {
+	return i.ToGetAttackProtectionBruteForceProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBruteForceProtectionArray) ToGetAttackProtectionBruteForceProtectionArrayOutputWithContext(ctx context.Context) GetAttackProtectionBruteForceProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBruteForceProtectionArrayOutput)
+}
+
+type GetAttackProtectionBruteForceProtectionOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBruteForceProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBruteForceProtection)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBruteForceProtectionOutput) ToGetAttackProtectionBruteForceProtectionOutput() GetAttackProtectionBruteForceProtectionOutput {
+	return o
+}
+
+func (o GetAttackProtectionBruteForceProtectionOutput) ToGetAttackProtectionBruteForceProtectionOutputWithContext(ctx context.Context) GetAttackProtectionBruteForceProtectionOutput {
+	return o
+}
+
+func (o GetAttackProtectionBruteForceProtectionOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBruteForceProtection) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAttackProtectionBruteForceProtectionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAttackProtectionBruteForceProtection) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetAttackProtectionBruteForceProtectionOutput) MaxAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAttackProtectionBruteForceProtection) int { return v.MaxAttempts }).(pulumi.IntOutput)
+}
+
+func (o GetAttackProtectionBruteForceProtectionOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionBruteForceProtection) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetAttackProtectionBruteForceProtectionOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBruteForceProtection) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type GetAttackProtectionBruteForceProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBruteForceProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBruteForceProtection)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBruteForceProtectionArrayOutput) ToGetAttackProtectionBruteForceProtectionArrayOutput() GetAttackProtectionBruteForceProtectionArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBruteForceProtectionArrayOutput) ToGetAttackProtectionBruteForceProtectionArrayOutputWithContext(ctx context.Context) GetAttackProtectionBruteForceProtectionArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBruteForceProtectionArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionBruteForceProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionBruteForceProtection {
+		return vs[0].([]GetAttackProtectionBruteForceProtection)[vs[1].(int)]
+	}).(GetAttackProtectionBruteForceProtectionOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottling struct {
+	Allowlists           []string                                                       `pulumi:"allowlists"`
+	Enabled              bool                                                           `pulumi:"enabled"`
+	PreLogins            []GetAttackProtectionSuspiciousIpThrottlingPreLogin            `pulumi:"preLogins"`
+	PreUserRegistrations []GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration `pulumi:"preUserRegistrations"`
+	Shields              []string                                                       `pulumi:"shields"`
+}
+
+// GetAttackProtectionSuspiciousIpThrottlingInput is an input type that accepts GetAttackProtectionSuspiciousIpThrottlingArgs and GetAttackProtectionSuspiciousIpThrottlingOutput values.
+// You can construct a concrete instance of `GetAttackProtectionSuspiciousIpThrottlingInput` via:
+//
+//	GetAttackProtectionSuspiciousIpThrottlingArgs{...}
+type GetAttackProtectionSuspiciousIpThrottlingInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionSuspiciousIpThrottlingOutput() GetAttackProtectionSuspiciousIpThrottlingOutput
+	ToGetAttackProtectionSuspiciousIpThrottlingOutputWithContext(context.Context) GetAttackProtectionSuspiciousIpThrottlingOutput
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingArgs struct {
+	Allowlists           pulumi.StringArrayInput                                                `pulumi:"allowlists"`
+	Enabled              pulumi.BoolInput                                                       `pulumi:"enabled"`
+	PreLogins            GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayInput            `pulumi:"preLogins"`
+	PreUserRegistrations GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayInput `pulumi:"preUserRegistrations"`
+	Shields              pulumi.StringArrayInput                                                `pulumi:"shields"`
+}
+
+func (GetAttackProtectionSuspiciousIpThrottlingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottling)(nil)).Elem()
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingArgs) ToGetAttackProtectionSuspiciousIpThrottlingOutput() GetAttackProtectionSuspiciousIpThrottlingOutput {
+	return i.ToGetAttackProtectionSuspiciousIpThrottlingOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingArgs) ToGetAttackProtectionSuspiciousIpThrottlingOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionSuspiciousIpThrottlingOutput)
+}
+
+// GetAttackProtectionSuspiciousIpThrottlingArrayInput is an input type that accepts GetAttackProtectionSuspiciousIpThrottlingArray and GetAttackProtectionSuspiciousIpThrottlingArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionSuspiciousIpThrottlingArrayInput` via:
+//
+//	GetAttackProtectionSuspiciousIpThrottlingArray{ GetAttackProtectionSuspiciousIpThrottlingArgs{...} }
+type GetAttackProtectionSuspiciousIpThrottlingArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionSuspiciousIpThrottlingArrayOutput() GetAttackProtectionSuspiciousIpThrottlingArrayOutput
+	ToGetAttackProtectionSuspiciousIpThrottlingArrayOutputWithContext(context.Context) GetAttackProtectionSuspiciousIpThrottlingArrayOutput
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingArray []GetAttackProtectionSuspiciousIpThrottlingInput
+
+func (GetAttackProtectionSuspiciousIpThrottlingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionSuspiciousIpThrottling)(nil)).Elem()
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingArray) ToGetAttackProtectionSuspiciousIpThrottlingArrayOutput() GetAttackProtectionSuspiciousIpThrottlingArrayOutput {
+	return i.ToGetAttackProtectionSuspiciousIpThrottlingArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingArray) ToGetAttackProtectionSuspiciousIpThrottlingArrayOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionSuspiciousIpThrottlingArrayOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionSuspiciousIpThrottlingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottling)(nil)).Elem()
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingOutput) ToGetAttackProtectionSuspiciousIpThrottlingOutput() GetAttackProtectionSuspiciousIpThrottlingOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingOutput) ToGetAttackProtectionSuspiciousIpThrottlingOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottling) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottling) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingOutput) PreLogins() GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottling) []GetAttackProtectionSuspiciousIpThrottlingPreLogin {
+		return v.PreLogins
+	}).(GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput)
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingOutput) PreUserRegistrations() GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottling) []GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+		return v.PreUserRegistrations
+	}).(GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput)
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingOutput) Shields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottling) []string { return v.Shields }).(pulumi.StringArrayOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionSuspiciousIpThrottlingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionSuspiciousIpThrottling)(nil)).Elem()
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingArrayOutput) ToGetAttackProtectionSuspiciousIpThrottlingArrayOutput() GetAttackProtectionSuspiciousIpThrottlingArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingArrayOutput) ToGetAttackProtectionSuspiciousIpThrottlingArrayOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionSuspiciousIpThrottlingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionSuspiciousIpThrottling {
+		return vs[0].([]GetAttackProtectionSuspiciousIpThrottling)[vs[1].(int)]
+	}).(GetAttackProtectionSuspiciousIpThrottlingOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreLogin struct {
+	MaxAttempts int `pulumi:"maxAttempts"`
+	Rate        int `pulumi:"rate"`
+}
+
+// GetAttackProtectionSuspiciousIpThrottlingPreLoginInput is an input type that accepts GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs and GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput values.
+// You can construct a concrete instance of `GetAttackProtectionSuspiciousIpThrottlingPreLoginInput` via:
+//
+//	GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs{...}
+type GetAttackProtectionSuspiciousIpThrottlingPreLoginInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionSuspiciousIpThrottlingPreLoginOutput() GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput
+	ToGetAttackProtectionSuspiciousIpThrottlingPreLoginOutputWithContext(context.Context) GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs struct {
+	MaxAttempts pulumi.IntInput `pulumi:"maxAttempts"`
+	Rate        pulumi.IntInput `pulumi:"rate"`
+}
+
+func (GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreLogin)(nil)).Elem()
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs) ToGetAttackProtectionSuspiciousIpThrottlingPreLoginOutput() GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return i.ToGetAttackProtectionSuspiciousIpThrottlingPreLoginOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs) ToGetAttackProtectionSuspiciousIpThrottlingPreLoginOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput)
+}
+
+// GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayInput is an input type that accepts GetAttackProtectionSuspiciousIpThrottlingPreLoginArray and GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayInput` via:
+//
+//	GetAttackProtectionSuspiciousIpThrottlingPreLoginArray{ GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs{...} }
+type GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput() GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput
+	ToGetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutputWithContext(context.Context) GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreLoginArray []GetAttackProtectionSuspiciousIpThrottlingPreLoginInput
+
+func (GetAttackProtectionSuspiciousIpThrottlingPreLoginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionSuspiciousIpThrottlingPreLogin)(nil)).Elem()
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingPreLoginArray) ToGetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput() GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput {
+	return i.ToGetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingPreLoginArray) ToGetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreLogin)(nil)).Elem()
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput) ToGetAttackProtectionSuspiciousIpThrottlingPreLoginOutput() GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput) ToGetAttackProtectionSuspiciousIpThrottlingPreLoginOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput) MaxAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottlingPreLogin) int { return v.MaxAttempts }).(pulumi.IntOutput)
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput) Rate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottlingPreLogin) int { return v.Rate }).(pulumi.IntOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionSuspiciousIpThrottlingPreLogin)(nil)).Elem()
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput) ToGetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput() GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput) ToGetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionSuspiciousIpThrottlingPreLogin {
+		return vs[0].([]GetAttackProtectionSuspiciousIpThrottlingPreLogin)[vs[1].(int)]
+	}).(GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration struct {
+	MaxAttempts int `pulumi:"maxAttempts"`
+	Rate        int `pulumi:"rate"`
+}
+
+// GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput is an input type that accepts GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs and GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput values.
+// You can construct a concrete instance of `GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput` via:
+//
+//	GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{...}
+type GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput() GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput
+	ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutputWithContext(context.Context) GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs struct {
+	MaxAttempts pulumi.IntInput `pulumi:"maxAttempts"`
+	Rate        pulumi.IntInput `pulumi:"rate"`
+}
+
+func (GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration)(nil)).Elem()
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput() GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return i.ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs) ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput)
+}
+
+// GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayInput is an input type that accepts GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArray and GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayInput` via:
+//
+//	GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArray{ GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{...} }
+type GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput() GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput
+	ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutputWithContext(context.Context) GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArray []GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput
+
+func (GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration)(nil)).Elem()
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArray) ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput() GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput {
+	return i.ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArray) ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration)(nil)).Elem()
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput() GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) MaxAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration) int { return v.MaxAttempts }).(pulumi.IntOutput)
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput) Rate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration) int { return v.Rate }).(pulumi.IntOutput)
+}
+
+type GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration)(nil)).Elem()
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput) ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput() GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput) ToGetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutputWithContext(ctx context.Context) GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration {
+		return vs[0].([]GetAttackProtectionSuspiciousIpThrottlingPreUserRegistration)[vs[1].(int)]
+	}).(GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput)
+}
+
+type GetBrandingColor struct {
+	PageBackground string `pulumi:"pageBackground"`
+	Primary        string `pulumi:"primary"`
+}
+
+// GetBrandingColorInput is an input type that accepts GetBrandingColorArgs and GetBrandingColorOutput values.
+// You can construct a concrete instance of `GetBrandingColorInput` via:
+//
+//	GetBrandingColorArgs{...}
+type GetBrandingColorInput interface {
+	pulumi.Input
+
+	ToGetBrandingColorOutput() GetBrandingColorOutput
+	ToGetBrandingColorOutputWithContext(context.Context) GetBrandingColorOutput
+}
+
+type GetBrandingColorArgs struct {
+	PageBackground pulumi.StringInput `pulumi:"pageBackground"`
+	Primary        pulumi.StringInput `pulumi:"primary"`
+}
+
+func (GetBrandingColorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingColor)(nil)).Elem()
+}
+
+func (i GetBrandingColorArgs) ToGetBrandingColorOutput() GetBrandingColorOutput {
+	return i.ToGetBrandingColorOutputWithContext(context.Background())
+}
+
+func (i GetBrandingColorArgs) ToGetBrandingColorOutputWithContext(ctx context.Context) GetBrandingColorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingColorOutput)
+}
+
+// GetBrandingColorArrayInput is an input type that accepts GetBrandingColorArray and GetBrandingColorArrayOutput values.
+// You can construct a concrete instance of `GetBrandingColorArrayInput` via:
+//
+//	GetBrandingColorArray{ GetBrandingColorArgs{...} }
+type GetBrandingColorArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingColorArrayOutput() GetBrandingColorArrayOutput
+	ToGetBrandingColorArrayOutputWithContext(context.Context) GetBrandingColorArrayOutput
+}
+
+type GetBrandingColorArray []GetBrandingColorInput
+
+func (GetBrandingColorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingColor)(nil)).Elem()
+}
+
+func (i GetBrandingColorArray) ToGetBrandingColorArrayOutput() GetBrandingColorArrayOutput {
+	return i.ToGetBrandingColorArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingColorArray) ToGetBrandingColorArrayOutputWithContext(ctx context.Context) GetBrandingColorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingColorArrayOutput)
+}
+
+type GetBrandingColorOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingColorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingColor)(nil)).Elem()
+}
+
+func (o GetBrandingColorOutput) ToGetBrandingColorOutput() GetBrandingColorOutput {
+	return o
+}
+
+func (o GetBrandingColorOutput) ToGetBrandingColorOutputWithContext(ctx context.Context) GetBrandingColorOutput {
+	return o
+}
+
+func (o GetBrandingColorOutput) PageBackground() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingColor) string { return v.PageBackground }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingColorOutput) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingColor) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+type GetBrandingColorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingColorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingColor)(nil)).Elem()
+}
+
+func (o GetBrandingColorArrayOutput) ToGetBrandingColorArrayOutput() GetBrandingColorArrayOutput {
+	return o
+}
+
+func (o GetBrandingColorArrayOutput) ToGetBrandingColorArrayOutputWithContext(ctx context.Context) GetBrandingColorArrayOutput {
+	return o
+}
+
+func (o GetBrandingColorArrayOutput) Index(i pulumi.IntInput) GetBrandingColorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingColor {
+		return vs[0].([]GetBrandingColor)[vs[1].(int)]
+	}).(GetBrandingColorOutput)
+}
+
+type GetBrandingFont struct {
+	Url string `pulumi:"url"`
+}
+
+// GetBrandingFontInput is an input type that accepts GetBrandingFontArgs and GetBrandingFontOutput values.
+// You can construct a concrete instance of `GetBrandingFontInput` via:
+//
+//	GetBrandingFontArgs{...}
+type GetBrandingFontInput interface {
+	pulumi.Input
+
+	ToGetBrandingFontOutput() GetBrandingFontOutput
+	ToGetBrandingFontOutputWithContext(context.Context) GetBrandingFontOutput
+}
+
+type GetBrandingFontArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetBrandingFontArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingFont)(nil)).Elem()
+}
+
+func (i GetBrandingFontArgs) ToGetBrandingFontOutput() GetBrandingFontOutput {
+	return i.ToGetBrandingFontOutputWithContext(context.Background())
+}
+
+func (i GetBrandingFontArgs) ToGetBrandingFontOutputWithContext(ctx context.Context) GetBrandingFontOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingFontOutput)
+}
+
+// GetBrandingFontArrayInput is an input type that accepts GetBrandingFontArray and GetBrandingFontArrayOutput values.
+// You can construct a concrete instance of `GetBrandingFontArrayInput` via:
+//
+//	GetBrandingFontArray{ GetBrandingFontArgs{...} }
+type GetBrandingFontArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingFontArrayOutput() GetBrandingFontArrayOutput
+	ToGetBrandingFontArrayOutputWithContext(context.Context) GetBrandingFontArrayOutput
+}
+
+type GetBrandingFontArray []GetBrandingFontInput
+
+func (GetBrandingFontArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingFont)(nil)).Elem()
+}
+
+func (i GetBrandingFontArray) ToGetBrandingFontArrayOutput() GetBrandingFontArrayOutput {
+	return i.ToGetBrandingFontArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingFontArray) ToGetBrandingFontArrayOutputWithContext(ctx context.Context) GetBrandingFontArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingFontArrayOutput)
+}
+
+type GetBrandingFontOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingFontOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingFont)(nil)).Elem()
+}
+
+func (o GetBrandingFontOutput) ToGetBrandingFontOutput() GetBrandingFontOutput {
+	return o
+}
+
+func (o GetBrandingFontOutput) ToGetBrandingFontOutputWithContext(ctx context.Context) GetBrandingFontOutput {
+	return o
+}
+
+func (o GetBrandingFontOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingFont) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetBrandingFontArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingFontArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingFont)(nil)).Elem()
+}
+
+func (o GetBrandingFontArrayOutput) ToGetBrandingFontArrayOutput() GetBrandingFontArrayOutput {
+	return o
+}
+
+func (o GetBrandingFontArrayOutput) ToGetBrandingFontArrayOutputWithContext(ctx context.Context) GetBrandingFontArrayOutput {
+	return o
+}
+
+func (o GetBrandingFontArrayOutput) Index(i pulumi.IntInput) GetBrandingFontOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingFont {
+		return vs[0].([]GetBrandingFont)[vs[1].(int)]
+	}).(GetBrandingFontOutput)
+}
+
+type GetBrandingThemeBorder struct {
+	ButtonBorderRadius float64 `pulumi:"buttonBorderRadius"`
+	ButtonBorderWeight float64 `pulumi:"buttonBorderWeight"`
+	ButtonsStyle       string  `pulumi:"buttonsStyle"`
+	InputBorderRadius  float64 `pulumi:"inputBorderRadius"`
+	InputBorderWeight  float64 `pulumi:"inputBorderWeight"`
+	InputsStyle        string  `pulumi:"inputsStyle"`
+	ShowWidgetShadow   bool    `pulumi:"showWidgetShadow"`
+	WidgetBorderWeight float64 `pulumi:"widgetBorderWeight"`
+	WidgetCornerRadius float64 `pulumi:"widgetCornerRadius"`
+}
+
+// GetBrandingThemeBorderInput is an input type that accepts GetBrandingThemeBorderArgs and GetBrandingThemeBorderOutput values.
+// You can construct a concrete instance of `GetBrandingThemeBorderInput` via:
+//
+//	GetBrandingThemeBorderArgs{...}
+type GetBrandingThemeBorderInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeBorderOutput() GetBrandingThemeBorderOutput
+	ToGetBrandingThemeBorderOutputWithContext(context.Context) GetBrandingThemeBorderOutput
+}
+
+type GetBrandingThemeBorderArgs struct {
+	ButtonBorderRadius pulumi.Float64Input `pulumi:"buttonBorderRadius"`
+	ButtonBorderWeight pulumi.Float64Input `pulumi:"buttonBorderWeight"`
+	ButtonsStyle       pulumi.StringInput  `pulumi:"buttonsStyle"`
+	InputBorderRadius  pulumi.Float64Input `pulumi:"inputBorderRadius"`
+	InputBorderWeight  pulumi.Float64Input `pulumi:"inputBorderWeight"`
+	InputsStyle        pulumi.StringInput  `pulumi:"inputsStyle"`
+	ShowWidgetShadow   pulumi.BoolInput    `pulumi:"showWidgetShadow"`
+	WidgetBorderWeight pulumi.Float64Input `pulumi:"widgetBorderWeight"`
+	WidgetCornerRadius pulumi.Float64Input `pulumi:"widgetCornerRadius"`
+}
+
+func (GetBrandingThemeBorderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeBorder)(nil)).Elem()
+}
+
+func (i GetBrandingThemeBorderArgs) ToGetBrandingThemeBorderOutput() GetBrandingThemeBorderOutput {
+	return i.ToGetBrandingThemeBorderOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeBorderArgs) ToGetBrandingThemeBorderOutputWithContext(ctx context.Context) GetBrandingThemeBorderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeBorderOutput)
+}
+
+// GetBrandingThemeBorderArrayInput is an input type that accepts GetBrandingThemeBorderArray and GetBrandingThemeBorderArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeBorderArrayInput` via:
+//
+//	GetBrandingThemeBorderArray{ GetBrandingThemeBorderArgs{...} }
+type GetBrandingThemeBorderArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeBorderArrayOutput() GetBrandingThemeBorderArrayOutput
+	ToGetBrandingThemeBorderArrayOutputWithContext(context.Context) GetBrandingThemeBorderArrayOutput
+}
+
+type GetBrandingThemeBorderArray []GetBrandingThemeBorderInput
+
+func (GetBrandingThemeBorderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeBorder)(nil)).Elem()
+}
+
+func (i GetBrandingThemeBorderArray) ToGetBrandingThemeBorderArrayOutput() GetBrandingThemeBorderArrayOutput {
+	return i.ToGetBrandingThemeBorderArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeBorderArray) ToGetBrandingThemeBorderArrayOutputWithContext(ctx context.Context) GetBrandingThemeBorderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeBorderArrayOutput)
+}
+
+type GetBrandingThemeBorderOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeBorderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeBorder)(nil)).Elem()
+}
+
+func (o GetBrandingThemeBorderOutput) ToGetBrandingThemeBorderOutput() GetBrandingThemeBorderOutput {
+	return o
+}
+
+func (o GetBrandingThemeBorderOutput) ToGetBrandingThemeBorderOutputWithContext(ctx context.Context) GetBrandingThemeBorderOutput {
+	return o
+}
+
+func (o GetBrandingThemeBorderOutput) ButtonBorderRadius() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeBorder) float64 { return v.ButtonBorderRadius }).(pulumi.Float64Output)
+}
+
+func (o GetBrandingThemeBorderOutput) ButtonBorderWeight() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeBorder) float64 { return v.ButtonBorderWeight }).(pulumi.Float64Output)
+}
+
+func (o GetBrandingThemeBorderOutput) ButtonsStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeBorder) string { return v.ButtonsStyle }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeBorderOutput) InputBorderRadius() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeBorder) float64 { return v.InputBorderRadius }).(pulumi.Float64Output)
+}
+
+func (o GetBrandingThemeBorderOutput) InputBorderWeight() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeBorder) float64 { return v.InputBorderWeight }).(pulumi.Float64Output)
+}
+
+func (o GetBrandingThemeBorderOutput) InputsStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeBorder) string { return v.InputsStyle }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeBorderOutput) ShowWidgetShadow() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrandingThemeBorder) bool { return v.ShowWidgetShadow }).(pulumi.BoolOutput)
+}
+
+func (o GetBrandingThemeBorderOutput) WidgetBorderWeight() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeBorder) float64 { return v.WidgetBorderWeight }).(pulumi.Float64Output)
+}
+
+func (o GetBrandingThemeBorderOutput) WidgetCornerRadius() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeBorder) float64 { return v.WidgetCornerRadius }).(pulumi.Float64Output)
+}
+
+type GetBrandingThemeBorderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeBorderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeBorder)(nil)).Elem()
+}
+
+func (o GetBrandingThemeBorderArrayOutput) ToGetBrandingThemeBorderArrayOutput() GetBrandingThemeBorderArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeBorderArrayOutput) ToGetBrandingThemeBorderArrayOutputWithContext(ctx context.Context) GetBrandingThemeBorderArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeBorderArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeBorderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeBorder {
+		return vs[0].([]GetBrandingThemeBorder)[vs[1].(int)]
+	}).(GetBrandingThemeBorderOutput)
+}
+
+type GetBrandingThemeColor struct {
+	BaseFocusColor          string `pulumi:"baseFocusColor"`
+	BaseHoverColor          string `pulumi:"baseHoverColor"`
+	BodyText                string `pulumi:"bodyText"`
+	Error                   string `pulumi:"error"`
+	Header                  string `pulumi:"header"`
+	Icons                   string `pulumi:"icons"`
+	InputBackground         string `pulumi:"inputBackground"`
+	InputBorder             string `pulumi:"inputBorder"`
+	InputFilledText         string `pulumi:"inputFilledText"`
+	InputLabelsPlaceholders string `pulumi:"inputLabelsPlaceholders"`
+	LinksFocusedComponents  string `pulumi:"linksFocusedComponents"`
+	PrimaryButton           string `pulumi:"primaryButton"`
+	PrimaryButtonLabel      string `pulumi:"primaryButtonLabel"`
+	SecondaryButtonBorder   string `pulumi:"secondaryButtonBorder"`
+	SecondaryButtonLabel    string `pulumi:"secondaryButtonLabel"`
+	Success                 string `pulumi:"success"`
+	WidgetBackground        string `pulumi:"widgetBackground"`
+	WidgetBorder            string `pulumi:"widgetBorder"`
+}
+
+// GetBrandingThemeColorInput is an input type that accepts GetBrandingThemeColorArgs and GetBrandingThemeColorOutput values.
+// You can construct a concrete instance of `GetBrandingThemeColorInput` via:
+//
+//	GetBrandingThemeColorArgs{...}
+type GetBrandingThemeColorInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeColorOutput() GetBrandingThemeColorOutput
+	ToGetBrandingThemeColorOutputWithContext(context.Context) GetBrandingThemeColorOutput
+}
+
+type GetBrandingThemeColorArgs struct {
+	BaseFocusColor          pulumi.StringInput `pulumi:"baseFocusColor"`
+	BaseHoverColor          pulumi.StringInput `pulumi:"baseHoverColor"`
+	BodyText                pulumi.StringInput `pulumi:"bodyText"`
+	Error                   pulumi.StringInput `pulumi:"error"`
+	Header                  pulumi.StringInput `pulumi:"header"`
+	Icons                   pulumi.StringInput `pulumi:"icons"`
+	InputBackground         pulumi.StringInput `pulumi:"inputBackground"`
+	InputBorder             pulumi.StringInput `pulumi:"inputBorder"`
+	InputFilledText         pulumi.StringInput `pulumi:"inputFilledText"`
+	InputLabelsPlaceholders pulumi.StringInput `pulumi:"inputLabelsPlaceholders"`
+	LinksFocusedComponents  pulumi.StringInput `pulumi:"linksFocusedComponents"`
+	PrimaryButton           pulumi.StringInput `pulumi:"primaryButton"`
+	PrimaryButtonLabel      pulumi.StringInput `pulumi:"primaryButtonLabel"`
+	SecondaryButtonBorder   pulumi.StringInput `pulumi:"secondaryButtonBorder"`
+	SecondaryButtonLabel    pulumi.StringInput `pulumi:"secondaryButtonLabel"`
+	Success                 pulumi.StringInput `pulumi:"success"`
+	WidgetBackground        pulumi.StringInput `pulumi:"widgetBackground"`
+	WidgetBorder            pulumi.StringInput `pulumi:"widgetBorder"`
+}
+
+func (GetBrandingThemeColorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeColor)(nil)).Elem()
+}
+
+func (i GetBrandingThemeColorArgs) ToGetBrandingThemeColorOutput() GetBrandingThemeColorOutput {
+	return i.ToGetBrandingThemeColorOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeColorArgs) ToGetBrandingThemeColorOutputWithContext(ctx context.Context) GetBrandingThemeColorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeColorOutput)
+}
+
+// GetBrandingThemeColorArrayInput is an input type that accepts GetBrandingThemeColorArray and GetBrandingThemeColorArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeColorArrayInput` via:
+//
+//	GetBrandingThemeColorArray{ GetBrandingThemeColorArgs{...} }
+type GetBrandingThemeColorArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeColorArrayOutput() GetBrandingThemeColorArrayOutput
+	ToGetBrandingThemeColorArrayOutputWithContext(context.Context) GetBrandingThemeColorArrayOutput
+}
+
+type GetBrandingThemeColorArray []GetBrandingThemeColorInput
+
+func (GetBrandingThemeColorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeColor)(nil)).Elem()
+}
+
+func (i GetBrandingThemeColorArray) ToGetBrandingThemeColorArrayOutput() GetBrandingThemeColorArrayOutput {
+	return i.ToGetBrandingThemeColorArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeColorArray) ToGetBrandingThemeColorArrayOutputWithContext(ctx context.Context) GetBrandingThemeColorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeColorArrayOutput)
+}
+
+type GetBrandingThemeColorOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeColorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeColor)(nil)).Elem()
+}
+
+func (o GetBrandingThemeColorOutput) ToGetBrandingThemeColorOutput() GetBrandingThemeColorOutput {
+	return o
+}
+
+func (o GetBrandingThemeColorOutput) ToGetBrandingThemeColorOutputWithContext(ctx context.Context) GetBrandingThemeColorOutput {
+	return o
+}
+
+func (o GetBrandingThemeColorOutput) BaseFocusColor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.BaseFocusColor }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) BaseHoverColor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.BaseHoverColor }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) BodyText() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.BodyText }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) Error() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.Error }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.Header }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) Icons() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.Icons }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) InputBackground() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.InputBackground }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) InputBorder() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.InputBorder }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) InputFilledText() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.InputFilledText }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) InputLabelsPlaceholders() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.InputLabelsPlaceholders }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) LinksFocusedComponents() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.LinksFocusedComponents }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) PrimaryButton() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.PrimaryButton }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) PrimaryButtonLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.PrimaryButtonLabel }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) SecondaryButtonBorder() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.SecondaryButtonBorder }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) SecondaryButtonLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.SecondaryButtonLabel }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) Success() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.Success }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) WidgetBackground() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.WidgetBackground }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeColorOutput) WidgetBorder() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeColor) string { return v.WidgetBorder }).(pulumi.StringOutput)
+}
+
+type GetBrandingThemeColorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeColorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeColor)(nil)).Elem()
+}
+
+func (o GetBrandingThemeColorArrayOutput) ToGetBrandingThemeColorArrayOutput() GetBrandingThemeColorArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeColorArrayOutput) ToGetBrandingThemeColorArrayOutputWithContext(ctx context.Context) GetBrandingThemeColorArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeColorArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeColorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeColor {
+		return vs[0].([]GetBrandingThemeColor)[vs[1].(int)]
+	}).(GetBrandingThemeColorOutput)
+}
+
+type GetBrandingThemeFont struct {
+	BodyTexts         []GetBrandingThemeFontBodyText    `pulumi:"bodyTexts"`
+	ButtonsTexts      []GetBrandingThemeFontButtonsText `pulumi:"buttonsTexts"`
+	FontUrl           string                            `pulumi:"fontUrl"`
+	InputLabels       []GetBrandingThemeFontInputLabel  `pulumi:"inputLabels"`
+	Links             []GetBrandingThemeFontLink        `pulumi:"links"`
+	LinksStyle        string                            `pulumi:"linksStyle"`
+	ReferenceTextSize float64                           `pulumi:"referenceTextSize"`
+	Subtitles         []GetBrandingThemeFontSubtitle    `pulumi:"subtitles"`
+	Titles            []GetBrandingThemeFontTitle       `pulumi:"titles"`
+}
+
+// GetBrandingThemeFontInput is an input type that accepts GetBrandingThemeFontArgs and GetBrandingThemeFontOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontInput` via:
+//
+//	GetBrandingThemeFontArgs{...}
+type GetBrandingThemeFontInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontOutput() GetBrandingThemeFontOutput
+	ToGetBrandingThemeFontOutputWithContext(context.Context) GetBrandingThemeFontOutput
+}
+
+type GetBrandingThemeFontArgs struct {
+	BodyTexts         GetBrandingThemeFontBodyTextArrayInput    `pulumi:"bodyTexts"`
+	ButtonsTexts      GetBrandingThemeFontButtonsTextArrayInput `pulumi:"buttonsTexts"`
+	FontUrl           pulumi.StringInput                        `pulumi:"fontUrl"`
+	InputLabels       GetBrandingThemeFontInputLabelArrayInput  `pulumi:"inputLabels"`
+	Links             GetBrandingThemeFontLinkArrayInput        `pulumi:"links"`
+	LinksStyle        pulumi.StringInput                        `pulumi:"linksStyle"`
+	ReferenceTextSize pulumi.Float64Input                       `pulumi:"referenceTextSize"`
+	Subtitles         GetBrandingThemeFontSubtitleArrayInput    `pulumi:"subtitles"`
+	Titles            GetBrandingThemeFontTitleArrayInput       `pulumi:"titles"`
+}
+
+func (GetBrandingThemeFontArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFont)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontArgs) ToGetBrandingThemeFontOutput() GetBrandingThemeFontOutput {
+	return i.ToGetBrandingThemeFontOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontArgs) ToGetBrandingThemeFontOutputWithContext(ctx context.Context) GetBrandingThemeFontOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontOutput)
+}
+
+// GetBrandingThemeFontArrayInput is an input type that accepts GetBrandingThemeFontArray and GetBrandingThemeFontArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontArrayInput` via:
+//
+//	GetBrandingThemeFontArray{ GetBrandingThemeFontArgs{...} }
+type GetBrandingThemeFontArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontArrayOutput() GetBrandingThemeFontArrayOutput
+	ToGetBrandingThemeFontArrayOutputWithContext(context.Context) GetBrandingThemeFontArrayOutput
+}
+
+type GetBrandingThemeFontArray []GetBrandingThemeFontInput
+
+func (GetBrandingThemeFontArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFont)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontArray) ToGetBrandingThemeFontArrayOutput() GetBrandingThemeFontArrayOutput {
+	return i.ToGetBrandingThemeFontArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontArray) ToGetBrandingThemeFontArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontArrayOutput)
+}
+
+type GetBrandingThemeFontOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFont)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontOutput) ToGetBrandingThemeFontOutput() GetBrandingThemeFontOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontOutput) ToGetBrandingThemeFontOutputWithContext(ctx context.Context) GetBrandingThemeFontOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontOutput) BodyTexts() GetBrandingThemeFontBodyTextArrayOutput {
+	return o.ApplyT(func(v GetBrandingThemeFont) []GetBrandingThemeFontBodyText { return v.BodyTexts }).(GetBrandingThemeFontBodyTextArrayOutput)
+}
+
+func (o GetBrandingThemeFontOutput) ButtonsTexts() GetBrandingThemeFontButtonsTextArrayOutput {
+	return o.ApplyT(func(v GetBrandingThemeFont) []GetBrandingThemeFontButtonsText { return v.ButtonsTexts }).(GetBrandingThemeFontButtonsTextArrayOutput)
+}
+
+func (o GetBrandingThemeFontOutput) FontUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeFont) string { return v.FontUrl }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeFontOutput) InputLabels() GetBrandingThemeFontInputLabelArrayOutput {
+	return o.ApplyT(func(v GetBrandingThemeFont) []GetBrandingThemeFontInputLabel { return v.InputLabels }).(GetBrandingThemeFontInputLabelArrayOutput)
+}
+
+func (o GetBrandingThemeFontOutput) Links() GetBrandingThemeFontLinkArrayOutput {
+	return o.ApplyT(func(v GetBrandingThemeFont) []GetBrandingThemeFontLink { return v.Links }).(GetBrandingThemeFontLinkArrayOutput)
+}
+
+func (o GetBrandingThemeFontOutput) LinksStyle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeFont) string { return v.LinksStyle }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeFontOutput) ReferenceTextSize() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeFont) float64 { return v.ReferenceTextSize }).(pulumi.Float64Output)
+}
+
+func (o GetBrandingThemeFontOutput) Subtitles() GetBrandingThemeFontSubtitleArrayOutput {
+	return o.ApplyT(func(v GetBrandingThemeFont) []GetBrandingThemeFontSubtitle { return v.Subtitles }).(GetBrandingThemeFontSubtitleArrayOutput)
+}
+
+func (o GetBrandingThemeFontOutput) Titles() GetBrandingThemeFontTitleArrayOutput {
+	return o.ApplyT(func(v GetBrandingThemeFont) []GetBrandingThemeFontTitle { return v.Titles }).(GetBrandingThemeFontTitleArrayOutput)
+}
+
+type GetBrandingThemeFontArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFont)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontArrayOutput) ToGetBrandingThemeFontArrayOutput() GetBrandingThemeFontArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontArrayOutput) ToGetBrandingThemeFontArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeFontOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeFont {
+		return vs[0].([]GetBrandingThemeFont)[vs[1].(int)]
+	}).(GetBrandingThemeFontOutput)
+}
+
+type GetBrandingThemeFontBodyText struct {
+	Bold bool    `pulumi:"bold"`
+	Size float64 `pulumi:"size"`
+}
+
+// GetBrandingThemeFontBodyTextInput is an input type that accepts GetBrandingThemeFontBodyTextArgs and GetBrandingThemeFontBodyTextOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontBodyTextInput` via:
+//
+//	GetBrandingThemeFontBodyTextArgs{...}
+type GetBrandingThemeFontBodyTextInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontBodyTextOutput() GetBrandingThemeFontBodyTextOutput
+	ToGetBrandingThemeFontBodyTextOutputWithContext(context.Context) GetBrandingThemeFontBodyTextOutput
+}
+
+type GetBrandingThemeFontBodyTextArgs struct {
+	Bold pulumi.BoolInput    `pulumi:"bold"`
+	Size pulumi.Float64Input `pulumi:"size"`
+}
+
+func (GetBrandingThemeFontBodyTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontBodyText)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontBodyTextArgs) ToGetBrandingThemeFontBodyTextOutput() GetBrandingThemeFontBodyTextOutput {
+	return i.ToGetBrandingThemeFontBodyTextOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontBodyTextArgs) ToGetBrandingThemeFontBodyTextOutputWithContext(ctx context.Context) GetBrandingThemeFontBodyTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontBodyTextOutput)
+}
+
+// GetBrandingThemeFontBodyTextArrayInput is an input type that accepts GetBrandingThemeFontBodyTextArray and GetBrandingThemeFontBodyTextArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontBodyTextArrayInput` via:
+//
+//	GetBrandingThemeFontBodyTextArray{ GetBrandingThemeFontBodyTextArgs{...} }
+type GetBrandingThemeFontBodyTextArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontBodyTextArrayOutput() GetBrandingThemeFontBodyTextArrayOutput
+	ToGetBrandingThemeFontBodyTextArrayOutputWithContext(context.Context) GetBrandingThemeFontBodyTextArrayOutput
+}
+
+type GetBrandingThemeFontBodyTextArray []GetBrandingThemeFontBodyTextInput
+
+func (GetBrandingThemeFontBodyTextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontBodyText)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontBodyTextArray) ToGetBrandingThemeFontBodyTextArrayOutput() GetBrandingThemeFontBodyTextArrayOutput {
+	return i.ToGetBrandingThemeFontBodyTextArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontBodyTextArray) ToGetBrandingThemeFontBodyTextArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontBodyTextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontBodyTextArrayOutput)
+}
+
+type GetBrandingThemeFontBodyTextOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontBodyTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontBodyText)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontBodyTextOutput) ToGetBrandingThemeFontBodyTextOutput() GetBrandingThemeFontBodyTextOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontBodyTextOutput) ToGetBrandingThemeFontBodyTextOutputWithContext(ctx context.Context) GetBrandingThemeFontBodyTextOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontBodyTextOutput) Bold() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrandingThemeFontBodyText) bool { return v.Bold }).(pulumi.BoolOutput)
+}
+
+func (o GetBrandingThemeFontBodyTextOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeFontBodyText) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+type GetBrandingThemeFontBodyTextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontBodyTextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontBodyText)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontBodyTextArrayOutput) ToGetBrandingThemeFontBodyTextArrayOutput() GetBrandingThemeFontBodyTextArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontBodyTextArrayOutput) ToGetBrandingThemeFontBodyTextArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontBodyTextArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontBodyTextArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeFontBodyTextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeFontBodyText {
+		return vs[0].([]GetBrandingThemeFontBodyText)[vs[1].(int)]
+	}).(GetBrandingThemeFontBodyTextOutput)
+}
+
+type GetBrandingThemeFontButtonsText struct {
+	Bold bool    `pulumi:"bold"`
+	Size float64 `pulumi:"size"`
+}
+
+// GetBrandingThemeFontButtonsTextInput is an input type that accepts GetBrandingThemeFontButtonsTextArgs and GetBrandingThemeFontButtonsTextOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontButtonsTextInput` via:
+//
+//	GetBrandingThemeFontButtonsTextArgs{...}
+type GetBrandingThemeFontButtonsTextInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontButtonsTextOutput() GetBrandingThemeFontButtonsTextOutput
+	ToGetBrandingThemeFontButtonsTextOutputWithContext(context.Context) GetBrandingThemeFontButtonsTextOutput
+}
+
+type GetBrandingThemeFontButtonsTextArgs struct {
+	Bold pulumi.BoolInput    `pulumi:"bold"`
+	Size pulumi.Float64Input `pulumi:"size"`
+}
+
+func (GetBrandingThemeFontButtonsTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontButtonsText)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontButtonsTextArgs) ToGetBrandingThemeFontButtonsTextOutput() GetBrandingThemeFontButtonsTextOutput {
+	return i.ToGetBrandingThemeFontButtonsTextOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontButtonsTextArgs) ToGetBrandingThemeFontButtonsTextOutputWithContext(ctx context.Context) GetBrandingThemeFontButtonsTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontButtonsTextOutput)
+}
+
+// GetBrandingThemeFontButtonsTextArrayInput is an input type that accepts GetBrandingThemeFontButtonsTextArray and GetBrandingThemeFontButtonsTextArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontButtonsTextArrayInput` via:
+//
+//	GetBrandingThemeFontButtonsTextArray{ GetBrandingThemeFontButtonsTextArgs{...} }
+type GetBrandingThemeFontButtonsTextArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontButtonsTextArrayOutput() GetBrandingThemeFontButtonsTextArrayOutput
+	ToGetBrandingThemeFontButtonsTextArrayOutputWithContext(context.Context) GetBrandingThemeFontButtonsTextArrayOutput
+}
+
+type GetBrandingThemeFontButtonsTextArray []GetBrandingThemeFontButtonsTextInput
+
+func (GetBrandingThemeFontButtonsTextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontButtonsText)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontButtonsTextArray) ToGetBrandingThemeFontButtonsTextArrayOutput() GetBrandingThemeFontButtonsTextArrayOutput {
+	return i.ToGetBrandingThemeFontButtonsTextArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontButtonsTextArray) ToGetBrandingThemeFontButtonsTextArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontButtonsTextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontButtonsTextArrayOutput)
+}
+
+type GetBrandingThemeFontButtonsTextOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontButtonsTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontButtonsText)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontButtonsTextOutput) ToGetBrandingThemeFontButtonsTextOutput() GetBrandingThemeFontButtonsTextOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontButtonsTextOutput) ToGetBrandingThemeFontButtonsTextOutputWithContext(ctx context.Context) GetBrandingThemeFontButtonsTextOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontButtonsTextOutput) Bold() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrandingThemeFontButtonsText) bool { return v.Bold }).(pulumi.BoolOutput)
+}
+
+func (o GetBrandingThemeFontButtonsTextOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeFontButtonsText) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+type GetBrandingThemeFontButtonsTextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontButtonsTextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontButtonsText)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontButtonsTextArrayOutput) ToGetBrandingThemeFontButtonsTextArrayOutput() GetBrandingThemeFontButtonsTextArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontButtonsTextArrayOutput) ToGetBrandingThemeFontButtonsTextArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontButtonsTextArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontButtonsTextArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeFontButtonsTextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeFontButtonsText {
+		return vs[0].([]GetBrandingThemeFontButtonsText)[vs[1].(int)]
+	}).(GetBrandingThemeFontButtonsTextOutput)
+}
+
+type GetBrandingThemeFontInputLabel struct {
+	Bold bool    `pulumi:"bold"`
+	Size float64 `pulumi:"size"`
+}
+
+// GetBrandingThemeFontInputLabelInput is an input type that accepts GetBrandingThemeFontInputLabelArgs and GetBrandingThemeFontInputLabelOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontInputLabelInput` via:
+//
+//	GetBrandingThemeFontInputLabelArgs{...}
+type GetBrandingThemeFontInputLabelInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontInputLabelOutput() GetBrandingThemeFontInputLabelOutput
+	ToGetBrandingThemeFontInputLabelOutputWithContext(context.Context) GetBrandingThemeFontInputLabelOutput
+}
+
+type GetBrandingThemeFontInputLabelArgs struct {
+	Bold pulumi.BoolInput    `pulumi:"bold"`
+	Size pulumi.Float64Input `pulumi:"size"`
+}
+
+func (GetBrandingThemeFontInputLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontInputLabel)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontInputLabelArgs) ToGetBrandingThemeFontInputLabelOutput() GetBrandingThemeFontInputLabelOutput {
+	return i.ToGetBrandingThemeFontInputLabelOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontInputLabelArgs) ToGetBrandingThemeFontInputLabelOutputWithContext(ctx context.Context) GetBrandingThemeFontInputLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontInputLabelOutput)
+}
+
+// GetBrandingThemeFontInputLabelArrayInput is an input type that accepts GetBrandingThemeFontInputLabelArray and GetBrandingThemeFontInputLabelArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontInputLabelArrayInput` via:
+//
+//	GetBrandingThemeFontInputLabelArray{ GetBrandingThemeFontInputLabelArgs{...} }
+type GetBrandingThemeFontInputLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontInputLabelArrayOutput() GetBrandingThemeFontInputLabelArrayOutput
+	ToGetBrandingThemeFontInputLabelArrayOutputWithContext(context.Context) GetBrandingThemeFontInputLabelArrayOutput
+}
+
+type GetBrandingThemeFontInputLabelArray []GetBrandingThemeFontInputLabelInput
+
+func (GetBrandingThemeFontInputLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontInputLabel)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontInputLabelArray) ToGetBrandingThemeFontInputLabelArrayOutput() GetBrandingThemeFontInputLabelArrayOutput {
+	return i.ToGetBrandingThemeFontInputLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontInputLabelArray) ToGetBrandingThemeFontInputLabelArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontInputLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontInputLabelArrayOutput)
+}
+
+type GetBrandingThemeFontInputLabelOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontInputLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontInputLabel)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontInputLabelOutput) ToGetBrandingThemeFontInputLabelOutput() GetBrandingThemeFontInputLabelOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontInputLabelOutput) ToGetBrandingThemeFontInputLabelOutputWithContext(ctx context.Context) GetBrandingThemeFontInputLabelOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontInputLabelOutput) Bold() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrandingThemeFontInputLabel) bool { return v.Bold }).(pulumi.BoolOutput)
+}
+
+func (o GetBrandingThemeFontInputLabelOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeFontInputLabel) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+type GetBrandingThemeFontInputLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontInputLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontInputLabel)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontInputLabelArrayOutput) ToGetBrandingThemeFontInputLabelArrayOutput() GetBrandingThemeFontInputLabelArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontInputLabelArrayOutput) ToGetBrandingThemeFontInputLabelArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontInputLabelArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontInputLabelArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeFontInputLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeFontInputLabel {
+		return vs[0].([]GetBrandingThemeFontInputLabel)[vs[1].(int)]
+	}).(GetBrandingThemeFontInputLabelOutput)
+}
+
+type GetBrandingThemeFontLink struct {
+	Bold bool    `pulumi:"bold"`
+	Size float64 `pulumi:"size"`
+}
+
+// GetBrandingThemeFontLinkInput is an input type that accepts GetBrandingThemeFontLinkArgs and GetBrandingThemeFontLinkOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontLinkInput` via:
+//
+//	GetBrandingThemeFontLinkArgs{...}
+type GetBrandingThemeFontLinkInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontLinkOutput() GetBrandingThemeFontLinkOutput
+	ToGetBrandingThemeFontLinkOutputWithContext(context.Context) GetBrandingThemeFontLinkOutput
+}
+
+type GetBrandingThemeFontLinkArgs struct {
+	Bold pulumi.BoolInput    `pulumi:"bold"`
+	Size pulumi.Float64Input `pulumi:"size"`
+}
+
+func (GetBrandingThemeFontLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontLink)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontLinkArgs) ToGetBrandingThemeFontLinkOutput() GetBrandingThemeFontLinkOutput {
+	return i.ToGetBrandingThemeFontLinkOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontLinkArgs) ToGetBrandingThemeFontLinkOutputWithContext(ctx context.Context) GetBrandingThemeFontLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontLinkOutput)
+}
+
+// GetBrandingThemeFontLinkArrayInput is an input type that accepts GetBrandingThemeFontLinkArray and GetBrandingThemeFontLinkArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontLinkArrayInput` via:
+//
+//	GetBrandingThemeFontLinkArray{ GetBrandingThemeFontLinkArgs{...} }
+type GetBrandingThemeFontLinkArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontLinkArrayOutput() GetBrandingThemeFontLinkArrayOutput
+	ToGetBrandingThemeFontLinkArrayOutputWithContext(context.Context) GetBrandingThemeFontLinkArrayOutput
+}
+
+type GetBrandingThemeFontLinkArray []GetBrandingThemeFontLinkInput
+
+func (GetBrandingThemeFontLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontLink)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontLinkArray) ToGetBrandingThemeFontLinkArrayOutput() GetBrandingThemeFontLinkArrayOutput {
+	return i.ToGetBrandingThemeFontLinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontLinkArray) ToGetBrandingThemeFontLinkArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontLinkArrayOutput)
+}
+
+type GetBrandingThemeFontLinkOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontLink)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontLinkOutput) ToGetBrandingThemeFontLinkOutput() GetBrandingThemeFontLinkOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontLinkOutput) ToGetBrandingThemeFontLinkOutputWithContext(ctx context.Context) GetBrandingThemeFontLinkOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontLinkOutput) Bold() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrandingThemeFontLink) bool { return v.Bold }).(pulumi.BoolOutput)
+}
+
+func (o GetBrandingThemeFontLinkOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeFontLink) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+type GetBrandingThemeFontLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontLink)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontLinkArrayOutput) ToGetBrandingThemeFontLinkArrayOutput() GetBrandingThemeFontLinkArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontLinkArrayOutput) ToGetBrandingThemeFontLinkArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontLinkArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontLinkArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeFontLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeFontLink {
+		return vs[0].([]GetBrandingThemeFontLink)[vs[1].(int)]
+	}).(GetBrandingThemeFontLinkOutput)
+}
+
+type GetBrandingThemeFontSubtitle struct {
+	Bold bool    `pulumi:"bold"`
+	Size float64 `pulumi:"size"`
+}
+
+// GetBrandingThemeFontSubtitleInput is an input type that accepts GetBrandingThemeFontSubtitleArgs and GetBrandingThemeFontSubtitleOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontSubtitleInput` via:
+//
+//	GetBrandingThemeFontSubtitleArgs{...}
+type GetBrandingThemeFontSubtitleInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontSubtitleOutput() GetBrandingThemeFontSubtitleOutput
+	ToGetBrandingThemeFontSubtitleOutputWithContext(context.Context) GetBrandingThemeFontSubtitleOutput
+}
+
+type GetBrandingThemeFontSubtitleArgs struct {
+	Bold pulumi.BoolInput    `pulumi:"bold"`
+	Size pulumi.Float64Input `pulumi:"size"`
+}
+
+func (GetBrandingThemeFontSubtitleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontSubtitle)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontSubtitleArgs) ToGetBrandingThemeFontSubtitleOutput() GetBrandingThemeFontSubtitleOutput {
+	return i.ToGetBrandingThemeFontSubtitleOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontSubtitleArgs) ToGetBrandingThemeFontSubtitleOutputWithContext(ctx context.Context) GetBrandingThemeFontSubtitleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontSubtitleOutput)
+}
+
+// GetBrandingThemeFontSubtitleArrayInput is an input type that accepts GetBrandingThemeFontSubtitleArray and GetBrandingThemeFontSubtitleArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontSubtitleArrayInput` via:
+//
+//	GetBrandingThemeFontSubtitleArray{ GetBrandingThemeFontSubtitleArgs{...} }
+type GetBrandingThemeFontSubtitleArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontSubtitleArrayOutput() GetBrandingThemeFontSubtitleArrayOutput
+	ToGetBrandingThemeFontSubtitleArrayOutputWithContext(context.Context) GetBrandingThemeFontSubtitleArrayOutput
+}
+
+type GetBrandingThemeFontSubtitleArray []GetBrandingThemeFontSubtitleInput
+
+func (GetBrandingThemeFontSubtitleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontSubtitle)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontSubtitleArray) ToGetBrandingThemeFontSubtitleArrayOutput() GetBrandingThemeFontSubtitleArrayOutput {
+	return i.ToGetBrandingThemeFontSubtitleArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontSubtitleArray) ToGetBrandingThemeFontSubtitleArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontSubtitleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontSubtitleArrayOutput)
+}
+
+type GetBrandingThemeFontSubtitleOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontSubtitleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontSubtitle)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontSubtitleOutput) ToGetBrandingThemeFontSubtitleOutput() GetBrandingThemeFontSubtitleOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontSubtitleOutput) ToGetBrandingThemeFontSubtitleOutputWithContext(ctx context.Context) GetBrandingThemeFontSubtitleOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontSubtitleOutput) Bold() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrandingThemeFontSubtitle) bool { return v.Bold }).(pulumi.BoolOutput)
+}
+
+func (o GetBrandingThemeFontSubtitleOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeFontSubtitle) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+type GetBrandingThemeFontSubtitleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontSubtitleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontSubtitle)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontSubtitleArrayOutput) ToGetBrandingThemeFontSubtitleArrayOutput() GetBrandingThemeFontSubtitleArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontSubtitleArrayOutput) ToGetBrandingThemeFontSubtitleArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontSubtitleArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontSubtitleArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeFontSubtitleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeFontSubtitle {
+		return vs[0].([]GetBrandingThemeFontSubtitle)[vs[1].(int)]
+	}).(GetBrandingThemeFontSubtitleOutput)
+}
+
+type GetBrandingThemeFontTitle struct {
+	Bold bool    `pulumi:"bold"`
+	Size float64 `pulumi:"size"`
+}
+
+// GetBrandingThemeFontTitleInput is an input type that accepts GetBrandingThemeFontTitleArgs and GetBrandingThemeFontTitleOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontTitleInput` via:
+//
+//	GetBrandingThemeFontTitleArgs{...}
+type GetBrandingThemeFontTitleInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontTitleOutput() GetBrandingThemeFontTitleOutput
+	ToGetBrandingThemeFontTitleOutputWithContext(context.Context) GetBrandingThemeFontTitleOutput
+}
+
+type GetBrandingThemeFontTitleArgs struct {
+	Bold pulumi.BoolInput    `pulumi:"bold"`
+	Size pulumi.Float64Input `pulumi:"size"`
+}
+
+func (GetBrandingThemeFontTitleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontTitle)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontTitleArgs) ToGetBrandingThemeFontTitleOutput() GetBrandingThemeFontTitleOutput {
+	return i.ToGetBrandingThemeFontTitleOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontTitleArgs) ToGetBrandingThemeFontTitleOutputWithContext(ctx context.Context) GetBrandingThemeFontTitleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontTitleOutput)
+}
+
+// GetBrandingThemeFontTitleArrayInput is an input type that accepts GetBrandingThemeFontTitleArray and GetBrandingThemeFontTitleArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeFontTitleArrayInput` via:
+//
+//	GetBrandingThemeFontTitleArray{ GetBrandingThemeFontTitleArgs{...} }
+type GetBrandingThemeFontTitleArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeFontTitleArrayOutput() GetBrandingThemeFontTitleArrayOutput
+	ToGetBrandingThemeFontTitleArrayOutputWithContext(context.Context) GetBrandingThemeFontTitleArrayOutput
+}
+
+type GetBrandingThemeFontTitleArray []GetBrandingThemeFontTitleInput
+
+func (GetBrandingThemeFontTitleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontTitle)(nil)).Elem()
+}
+
+func (i GetBrandingThemeFontTitleArray) ToGetBrandingThemeFontTitleArrayOutput() GetBrandingThemeFontTitleArrayOutput {
+	return i.ToGetBrandingThemeFontTitleArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeFontTitleArray) ToGetBrandingThemeFontTitleArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontTitleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeFontTitleArrayOutput)
+}
+
+type GetBrandingThemeFontTitleOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontTitleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeFontTitle)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontTitleOutput) ToGetBrandingThemeFontTitleOutput() GetBrandingThemeFontTitleOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontTitleOutput) ToGetBrandingThemeFontTitleOutputWithContext(ctx context.Context) GetBrandingThemeFontTitleOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontTitleOutput) Bold() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrandingThemeFontTitle) bool { return v.Bold }).(pulumi.BoolOutput)
+}
+
+func (o GetBrandingThemeFontTitleOutput) Size() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeFontTitle) float64 { return v.Size }).(pulumi.Float64Output)
+}
+
+type GetBrandingThemeFontTitleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeFontTitleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeFontTitle)(nil)).Elem()
+}
+
+func (o GetBrandingThemeFontTitleArrayOutput) ToGetBrandingThemeFontTitleArrayOutput() GetBrandingThemeFontTitleArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontTitleArrayOutput) ToGetBrandingThemeFontTitleArrayOutputWithContext(ctx context.Context) GetBrandingThemeFontTitleArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeFontTitleArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeFontTitleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeFontTitle {
+		return vs[0].([]GetBrandingThemeFontTitle)[vs[1].(int)]
+	}).(GetBrandingThemeFontTitleOutput)
+}
+
+type GetBrandingThemePageBackground struct {
+	BackgroundColor    string `pulumi:"backgroundColor"`
+	BackgroundImageUrl string `pulumi:"backgroundImageUrl"`
+	PageLayout         string `pulumi:"pageLayout"`
+}
+
+// GetBrandingThemePageBackgroundInput is an input type that accepts GetBrandingThemePageBackgroundArgs and GetBrandingThemePageBackgroundOutput values.
+// You can construct a concrete instance of `GetBrandingThemePageBackgroundInput` via:
+//
+//	GetBrandingThemePageBackgroundArgs{...}
+type GetBrandingThemePageBackgroundInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemePageBackgroundOutput() GetBrandingThemePageBackgroundOutput
+	ToGetBrandingThemePageBackgroundOutputWithContext(context.Context) GetBrandingThemePageBackgroundOutput
+}
+
+type GetBrandingThemePageBackgroundArgs struct {
+	BackgroundColor    pulumi.StringInput `pulumi:"backgroundColor"`
+	BackgroundImageUrl pulumi.StringInput `pulumi:"backgroundImageUrl"`
+	PageLayout         pulumi.StringInput `pulumi:"pageLayout"`
+}
+
+func (GetBrandingThemePageBackgroundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemePageBackground)(nil)).Elem()
+}
+
+func (i GetBrandingThemePageBackgroundArgs) ToGetBrandingThemePageBackgroundOutput() GetBrandingThemePageBackgroundOutput {
+	return i.ToGetBrandingThemePageBackgroundOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemePageBackgroundArgs) ToGetBrandingThemePageBackgroundOutputWithContext(ctx context.Context) GetBrandingThemePageBackgroundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemePageBackgroundOutput)
+}
+
+// GetBrandingThemePageBackgroundArrayInput is an input type that accepts GetBrandingThemePageBackgroundArray and GetBrandingThemePageBackgroundArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemePageBackgroundArrayInput` via:
+//
+//	GetBrandingThemePageBackgroundArray{ GetBrandingThemePageBackgroundArgs{...} }
+type GetBrandingThemePageBackgroundArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemePageBackgroundArrayOutput() GetBrandingThemePageBackgroundArrayOutput
+	ToGetBrandingThemePageBackgroundArrayOutputWithContext(context.Context) GetBrandingThemePageBackgroundArrayOutput
+}
+
+type GetBrandingThemePageBackgroundArray []GetBrandingThemePageBackgroundInput
+
+func (GetBrandingThemePageBackgroundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemePageBackground)(nil)).Elem()
+}
+
+func (i GetBrandingThemePageBackgroundArray) ToGetBrandingThemePageBackgroundArrayOutput() GetBrandingThemePageBackgroundArrayOutput {
+	return i.ToGetBrandingThemePageBackgroundArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemePageBackgroundArray) ToGetBrandingThemePageBackgroundArrayOutputWithContext(ctx context.Context) GetBrandingThemePageBackgroundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemePageBackgroundArrayOutput)
+}
+
+type GetBrandingThemePageBackgroundOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemePageBackgroundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemePageBackground)(nil)).Elem()
+}
+
+func (o GetBrandingThemePageBackgroundOutput) ToGetBrandingThemePageBackgroundOutput() GetBrandingThemePageBackgroundOutput {
+	return o
+}
+
+func (o GetBrandingThemePageBackgroundOutput) ToGetBrandingThemePageBackgroundOutputWithContext(ctx context.Context) GetBrandingThemePageBackgroundOutput {
+	return o
+}
+
+func (o GetBrandingThemePageBackgroundOutput) BackgroundColor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemePageBackground) string { return v.BackgroundColor }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemePageBackgroundOutput) BackgroundImageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemePageBackground) string { return v.BackgroundImageUrl }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemePageBackgroundOutput) PageLayout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemePageBackground) string { return v.PageLayout }).(pulumi.StringOutput)
+}
+
+type GetBrandingThemePageBackgroundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemePageBackgroundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemePageBackground)(nil)).Elem()
+}
+
+func (o GetBrandingThemePageBackgroundArrayOutput) ToGetBrandingThemePageBackgroundArrayOutput() GetBrandingThemePageBackgroundArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemePageBackgroundArrayOutput) ToGetBrandingThemePageBackgroundArrayOutputWithContext(ctx context.Context) GetBrandingThemePageBackgroundArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemePageBackgroundArrayOutput) Index(i pulumi.IntInput) GetBrandingThemePageBackgroundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemePageBackground {
+		return vs[0].([]GetBrandingThemePageBackground)[vs[1].(int)]
+	}).(GetBrandingThemePageBackgroundOutput)
+}
+
+type GetBrandingThemeWidget struct {
+	HeaderTextAlignment string  `pulumi:"headerTextAlignment"`
+	LogoHeight          float64 `pulumi:"logoHeight"`
+	LogoPosition        string  `pulumi:"logoPosition"`
+	LogoUrl             string  `pulumi:"logoUrl"`
+	SocialButtonsLayout string  `pulumi:"socialButtonsLayout"`
+}
+
+// GetBrandingThemeWidgetInput is an input type that accepts GetBrandingThemeWidgetArgs and GetBrandingThemeWidgetOutput values.
+// You can construct a concrete instance of `GetBrandingThemeWidgetInput` via:
+//
+//	GetBrandingThemeWidgetArgs{...}
+type GetBrandingThemeWidgetInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeWidgetOutput() GetBrandingThemeWidgetOutput
+	ToGetBrandingThemeWidgetOutputWithContext(context.Context) GetBrandingThemeWidgetOutput
+}
+
+type GetBrandingThemeWidgetArgs struct {
+	HeaderTextAlignment pulumi.StringInput  `pulumi:"headerTextAlignment"`
+	LogoHeight          pulumi.Float64Input `pulumi:"logoHeight"`
+	LogoPosition        pulumi.StringInput  `pulumi:"logoPosition"`
+	LogoUrl             pulumi.StringInput  `pulumi:"logoUrl"`
+	SocialButtonsLayout pulumi.StringInput  `pulumi:"socialButtonsLayout"`
+}
+
+func (GetBrandingThemeWidgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeWidget)(nil)).Elem()
+}
+
+func (i GetBrandingThemeWidgetArgs) ToGetBrandingThemeWidgetOutput() GetBrandingThemeWidgetOutput {
+	return i.ToGetBrandingThemeWidgetOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeWidgetArgs) ToGetBrandingThemeWidgetOutputWithContext(ctx context.Context) GetBrandingThemeWidgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeWidgetOutput)
+}
+
+// GetBrandingThemeWidgetArrayInput is an input type that accepts GetBrandingThemeWidgetArray and GetBrandingThemeWidgetArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeWidgetArrayInput` via:
+//
+//	GetBrandingThemeWidgetArray{ GetBrandingThemeWidgetArgs{...} }
+type GetBrandingThemeWidgetArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeWidgetArrayOutput() GetBrandingThemeWidgetArrayOutput
+	ToGetBrandingThemeWidgetArrayOutputWithContext(context.Context) GetBrandingThemeWidgetArrayOutput
+}
+
+type GetBrandingThemeWidgetArray []GetBrandingThemeWidgetInput
+
+func (GetBrandingThemeWidgetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeWidget)(nil)).Elem()
+}
+
+func (i GetBrandingThemeWidgetArray) ToGetBrandingThemeWidgetArrayOutput() GetBrandingThemeWidgetArrayOutput {
+	return i.ToGetBrandingThemeWidgetArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeWidgetArray) ToGetBrandingThemeWidgetArrayOutputWithContext(ctx context.Context) GetBrandingThemeWidgetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeWidgetArrayOutput)
+}
+
+type GetBrandingThemeWidgetOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeWidgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeWidget)(nil)).Elem()
+}
+
+func (o GetBrandingThemeWidgetOutput) ToGetBrandingThemeWidgetOutput() GetBrandingThemeWidgetOutput {
+	return o
+}
+
+func (o GetBrandingThemeWidgetOutput) ToGetBrandingThemeWidgetOutputWithContext(ctx context.Context) GetBrandingThemeWidgetOutput {
+	return o
+}
+
+func (o GetBrandingThemeWidgetOutput) HeaderTextAlignment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeWidget) string { return v.HeaderTextAlignment }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeWidgetOutput) LogoHeight() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBrandingThemeWidget) float64 { return v.LogoHeight }).(pulumi.Float64Output)
+}
+
+func (o GetBrandingThemeWidgetOutput) LogoPosition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeWidget) string { return v.LogoPosition }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeWidgetOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeWidget) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+func (o GetBrandingThemeWidgetOutput) SocialButtonsLayout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeWidget) string { return v.SocialButtonsLayout }).(pulumi.StringOutput)
+}
+
+type GetBrandingThemeWidgetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeWidgetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeWidget)(nil)).Elem()
+}
+
+func (o GetBrandingThemeWidgetArrayOutput) ToGetBrandingThemeWidgetArrayOutput() GetBrandingThemeWidgetArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeWidgetArrayOutput) ToGetBrandingThemeWidgetArrayOutputWithContext(ctx context.Context) GetBrandingThemeWidgetArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeWidgetArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeWidgetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeWidget {
+		return vs[0].([]GetBrandingThemeWidget)[vs[1].(int)]
+	}).(GetBrandingThemeWidgetOutput)
+}
+
+type GetBrandingUniversalLogin struct {
+	Body string `pulumi:"body"`
+}
+
+// GetBrandingUniversalLoginInput is an input type that accepts GetBrandingUniversalLoginArgs and GetBrandingUniversalLoginOutput values.
+// You can construct a concrete instance of `GetBrandingUniversalLoginInput` via:
+//
+//	GetBrandingUniversalLoginArgs{...}
+type GetBrandingUniversalLoginInput interface {
+	pulumi.Input
+
+	ToGetBrandingUniversalLoginOutput() GetBrandingUniversalLoginOutput
+	ToGetBrandingUniversalLoginOutputWithContext(context.Context) GetBrandingUniversalLoginOutput
+}
+
+type GetBrandingUniversalLoginArgs struct {
+	Body pulumi.StringInput `pulumi:"body"`
+}
+
+func (GetBrandingUniversalLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingUniversalLogin)(nil)).Elem()
+}
+
+func (i GetBrandingUniversalLoginArgs) ToGetBrandingUniversalLoginOutput() GetBrandingUniversalLoginOutput {
+	return i.ToGetBrandingUniversalLoginOutputWithContext(context.Background())
+}
+
+func (i GetBrandingUniversalLoginArgs) ToGetBrandingUniversalLoginOutputWithContext(ctx context.Context) GetBrandingUniversalLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingUniversalLoginOutput)
+}
+
+// GetBrandingUniversalLoginArrayInput is an input type that accepts GetBrandingUniversalLoginArray and GetBrandingUniversalLoginArrayOutput values.
+// You can construct a concrete instance of `GetBrandingUniversalLoginArrayInput` via:
+//
+//	GetBrandingUniversalLoginArray{ GetBrandingUniversalLoginArgs{...} }
+type GetBrandingUniversalLoginArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingUniversalLoginArrayOutput() GetBrandingUniversalLoginArrayOutput
+	ToGetBrandingUniversalLoginArrayOutputWithContext(context.Context) GetBrandingUniversalLoginArrayOutput
+}
+
+type GetBrandingUniversalLoginArray []GetBrandingUniversalLoginInput
+
+func (GetBrandingUniversalLoginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingUniversalLogin)(nil)).Elem()
+}
+
+func (i GetBrandingUniversalLoginArray) ToGetBrandingUniversalLoginArrayOutput() GetBrandingUniversalLoginArrayOutput {
+	return i.ToGetBrandingUniversalLoginArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingUniversalLoginArray) ToGetBrandingUniversalLoginArrayOutputWithContext(ctx context.Context) GetBrandingUniversalLoginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingUniversalLoginArrayOutput)
+}
+
+type GetBrandingUniversalLoginOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingUniversalLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingUniversalLogin)(nil)).Elem()
+}
+
+func (o GetBrandingUniversalLoginOutput) ToGetBrandingUniversalLoginOutput() GetBrandingUniversalLoginOutput {
+	return o
+}
+
+func (o GetBrandingUniversalLoginOutput) ToGetBrandingUniversalLoginOutputWithContext(ctx context.Context) GetBrandingUniversalLoginOutput {
+	return o
+}
+
+func (o GetBrandingUniversalLoginOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingUniversalLogin) string { return v.Body }).(pulumi.StringOutput)
+}
+
+type GetBrandingUniversalLoginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingUniversalLoginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingUniversalLogin)(nil)).Elem()
+}
+
+func (o GetBrandingUniversalLoginArrayOutput) ToGetBrandingUniversalLoginArrayOutput() GetBrandingUniversalLoginArrayOutput {
+	return o
+}
+
+func (o GetBrandingUniversalLoginArrayOutput) ToGetBrandingUniversalLoginArrayOutputWithContext(ctx context.Context) GetBrandingUniversalLoginArrayOutput {
+	return o
+}
+
+func (o GetBrandingUniversalLoginArrayOutput) Index(i pulumi.IntInput) GetBrandingUniversalLoginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingUniversalLogin {
+		return vs[0].([]GetBrandingUniversalLogin)[vs[1].(int)]
+	}).(GetBrandingUniversalLoginOutput)
 }
 
 type GetClientAddon struct {
@@ -18255,6 +20509,1713 @@ func (o GetClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetClientRefr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientRefreshToken {
 		return vs[0].([]GetClientRefreshToken)[vs[1].(int)]
 	}).(GetClientRefreshTokenOutput)
+}
+
+type GetConnectionOption struct {
+	AdfsServer                   string                                     `pulumi:"adfsServer"`
+	AllowedAudiences             []string                                   `pulumi:"allowedAudiences"`
+	ApiEnableUsers               bool                                       `pulumi:"apiEnableUsers"`
+	AppId                        string                                     `pulumi:"appId"`
+	AuthParams                   map[string]string                          `pulumi:"authParams"`
+	AuthorizationEndpoint        string                                     `pulumi:"authorizationEndpoint"`
+	BruteForceProtection         bool                                       `pulumi:"bruteForceProtection"`
+	ClientId                     string                                     `pulumi:"clientId"`
+	ClientSecret                 string                                     `pulumi:"clientSecret"`
+	CommunityBaseUrl             string                                     `pulumi:"communityBaseUrl"`
+	Configuration                map[string]interface{}                     `pulumi:"configuration"`
+	CustomScripts                map[string]string                          `pulumi:"customScripts"`
+	Debug                        bool                                       `pulumi:"debug"`
+	DigestAlgorithm              string                                     `pulumi:"digestAlgorithm"`
+	DisableCache                 bool                                       `pulumi:"disableCache"`
+	DisableSignOut               bool                                       `pulumi:"disableSignOut"`
+	DisableSignup                bool                                       `pulumi:"disableSignup"`
+	DiscoveryUrl                 string                                     `pulumi:"discoveryUrl"`
+	Domain                       string                                     `pulumi:"domain"`
+	DomainAliases                []string                                   `pulumi:"domainAliases"`
+	EnableScriptContext          bool                                       `pulumi:"enableScriptContext"`
+	EnabledDatabaseCustomization bool                                       `pulumi:"enabledDatabaseCustomization"`
+	EntityId                     string                                     `pulumi:"entityId"`
+	FedMetadataXml               string                                     `pulumi:"fedMetadataXml"`
+	FieldsMap                    string                                     `pulumi:"fieldsMap"`
+	ForwardRequestInfo           bool                                       `pulumi:"forwardRequestInfo"`
+	From                         string                                     `pulumi:"from"`
+	GatewayAuthentications       []GetConnectionOptionGatewayAuthentication `pulumi:"gatewayAuthentications"`
+	GatewayUrl                   string                                     `pulumi:"gatewayUrl"`
+	IconUrl                      string                                     `pulumi:"iconUrl"`
+	IdentityApi                  string                                     `pulumi:"identityApi"`
+	IdpInitiateds                []GetConnectionOptionIdpInitiated          `pulumi:"idpInitiateds"`
+	ImportMode                   bool                                       `pulumi:"importMode"`
+	Ips                          []string                                   `pulumi:"ips"`
+	Issuer                       string                                     `pulumi:"issuer"`
+	JwksUri                      string                                     `pulumi:"jwksUri"`
+	KeyId                        string                                     `pulumi:"keyId"`
+	MaxGroupsToRetrieve          string                                     `pulumi:"maxGroupsToRetrieve"`
+	MessagingServiceSid          string                                     `pulumi:"messagingServiceSid"`
+	MetadataUrl                  string                                     `pulumi:"metadataUrl"`
+	MetadataXml                  string                                     `pulumi:"metadataXml"`
+	Mfas                         []GetConnectionOptionMfa                   `pulumi:"mfas"`
+	// The name of the connection. If not provided, `connectionId` must be set.
+	Name                               string                                        `pulumi:"name"`
+	NonPersistentAttrs                 []string                                      `pulumi:"nonPersistentAttrs"`
+	PasswordComplexityOptions          []GetConnectionOptionPasswordComplexityOption `pulumi:"passwordComplexityOptions"`
+	PasswordDictionaries               []GetConnectionOptionPasswordDictionary       `pulumi:"passwordDictionaries"`
+	PasswordHistories                  []GetConnectionOptionPasswordHistory          `pulumi:"passwordHistories"`
+	PasswordNoPersonalInfos            []GetConnectionOptionPasswordNoPersonalInfo   `pulumi:"passwordNoPersonalInfos"`
+	PasswordPolicy                     string                                        `pulumi:"passwordPolicy"`
+	PkceEnabled                        bool                                          `pulumi:"pkceEnabled"`
+	ProtocolBinding                    string                                        `pulumi:"protocolBinding"`
+	Provider                           string                                        `pulumi:"provider"`
+	RequestTemplate                    string                                        `pulumi:"requestTemplate"`
+	RequiresUsername                   bool                                          `pulumi:"requiresUsername"`
+	Scopes                             []string                                      `pulumi:"scopes"`
+	Scripts                            map[string]string                             `pulumi:"scripts"`
+	SetUserRootAttributes              string                                        `pulumi:"setUserRootAttributes"`
+	ShouldTrustEmailVerifiedConnection string                                        `pulumi:"shouldTrustEmailVerifiedConnection"`
+	SignInEndpoint                     string                                        `pulumi:"signInEndpoint"`
+	SignOutEndpoint                    string                                        `pulumi:"signOutEndpoint"`
+	SignSamlRequest                    bool                                          `pulumi:"signSamlRequest"`
+	SignatureAlgorithm                 string                                        `pulumi:"signatureAlgorithm"`
+	SigningCert                        string                                        `pulumi:"signingCert"`
+	SigningKeys                        []GetConnectionOptionSigningKey               `pulumi:"signingKeys"`
+	StrategyVersion                    int                                           `pulumi:"strategyVersion"`
+	Subject                            string                                        `pulumi:"subject"`
+	Syntax                             string                                        `pulumi:"syntax"`
+	TeamId                             string                                        `pulumi:"teamId"`
+	Template                           string                                        `pulumi:"template"`
+	TenantDomain                       string                                        `pulumi:"tenantDomain"`
+	TokenEndpoint                      string                                        `pulumi:"tokenEndpoint"`
+	Totps                              []GetConnectionOptionTotp                     `pulumi:"totps"`
+	TwilioSid                          string                                        `pulumi:"twilioSid"`
+	TwilioToken                        string                                        `pulumi:"twilioToken"`
+	Type                               string                                        `pulumi:"type"`
+	UpstreamParams                     string                                        `pulumi:"upstreamParams"`
+	UseCertAuth                        bool                                          `pulumi:"useCertAuth"`
+	UseKerberos                        bool                                          `pulumi:"useKerberos"`
+	UseWsfed                           bool                                          `pulumi:"useWsfed"`
+	UserIdAttribute                    string                                        `pulumi:"userIdAttribute"`
+	UserinfoEndpoint                   string                                        `pulumi:"userinfoEndpoint"`
+	Validations                        []GetConnectionOptionValidation               `pulumi:"validations"`
+	WaadCommonEndpoint                 bool                                          `pulumi:"waadCommonEndpoint"`
+	WaadProtocol                       string                                        `pulumi:"waadProtocol"`
+}
+
+// GetConnectionOptionInput is an input type that accepts GetConnectionOptionArgs and GetConnectionOptionOutput values.
+// You can construct a concrete instance of `GetConnectionOptionInput` via:
+//
+//	GetConnectionOptionArgs{...}
+type GetConnectionOptionInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionOutput() GetConnectionOptionOutput
+	ToGetConnectionOptionOutputWithContext(context.Context) GetConnectionOptionOutput
+}
+
+type GetConnectionOptionArgs struct {
+	AdfsServer                   pulumi.StringInput                                 `pulumi:"adfsServer"`
+	AllowedAudiences             pulumi.StringArrayInput                            `pulumi:"allowedAudiences"`
+	ApiEnableUsers               pulumi.BoolInput                                   `pulumi:"apiEnableUsers"`
+	AppId                        pulumi.StringInput                                 `pulumi:"appId"`
+	AuthParams                   pulumi.StringMapInput                              `pulumi:"authParams"`
+	AuthorizationEndpoint        pulumi.StringInput                                 `pulumi:"authorizationEndpoint"`
+	BruteForceProtection         pulumi.BoolInput                                   `pulumi:"bruteForceProtection"`
+	ClientId                     pulumi.StringInput                                 `pulumi:"clientId"`
+	ClientSecret                 pulumi.StringInput                                 `pulumi:"clientSecret"`
+	CommunityBaseUrl             pulumi.StringInput                                 `pulumi:"communityBaseUrl"`
+	Configuration                pulumi.MapInput                                    `pulumi:"configuration"`
+	CustomScripts                pulumi.StringMapInput                              `pulumi:"customScripts"`
+	Debug                        pulumi.BoolInput                                   `pulumi:"debug"`
+	DigestAlgorithm              pulumi.StringInput                                 `pulumi:"digestAlgorithm"`
+	DisableCache                 pulumi.BoolInput                                   `pulumi:"disableCache"`
+	DisableSignOut               pulumi.BoolInput                                   `pulumi:"disableSignOut"`
+	DisableSignup                pulumi.BoolInput                                   `pulumi:"disableSignup"`
+	DiscoveryUrl                 pulumi.StringInput                                 `pulumi:"discoveryUrl"`
+	Domain                       pulumi.StringInput                                 `pulumi:"domain"`
+	DomainAliases                pulumi.StringArrayInput                            `pulumi:"domainAliases"`
+	EnableScriptContext          pulumi.BoolInput                                   `pulumi:"enableScriptContext"`
+	EnabledDatabaseCustomization pulumi.BoolInput                                   `pulumi:"enabledDatabaseCustomization"`
+	EntityId                     pulumi.StringInput                                 `pulumi:"entityId"`
+	FedMetadataXml               pulumi.StringInput                                 `pulumi:"fedMetadataXml"`
+	FieldsMap                    pulumi.StringInput                                 `pulumi:"fieldsMap"`
+	ForwardRequestInfo           pulumi.BoolInput                                   `pulumi:"forwardRequestInfo"`
+	From                         pulumi.StringInput                                 `pulumi:"from"`
+	GatewayAuthentications       GetConnectionOptionGatewayAuthenticationArrayInput `pulumi:"gatewayAuthentications"`
+	GatewayUrl                   pulumi.StringInput                                 `pulumi:"gatewayUrl"`
+	IconUrl                      pulumi.StringInput                                 `pulumi:"iconUrl"`
+	IdentityApi                  pulumi.StringInput                                 `pulumi:"identityApi"`
+	IdpInitiateds                GetConnectionOptionIdpInitiatedArrayInput          `pulumi:"idpInitiateds"`
+	ImportMode                   pulumi.BoolInput                                   `pulumi:"importMode"`
+	Ips                          pulumi.StringArrayInput                            `pulumi:"ips"`
+	Issuer                       pulumi.StringInput                                 `pulumi:"issuer"`
+	JwksUri                      pulumi.StringInput                                 `pulumi:"jwksUri"`
+	KeyId                        pulumi.StringInput                                 `pulumi:"keyId"`
+	MaxGroupsToRetrieve          pulumi.StringInput                                 `pulumi:"maxGroupsToRetrieve"`
+	MessagingServiceSid          pulumi.StringInput                                 `pulumi:"messagingServiceSid"`
+	MetadataUrl                  pulumi.StringInput                                 `pulumi:"metadataUrl"`
+	MetadataXml                  pulumi.StringInput                                 `pulumi:"metadataXml"`
+	Mfas                         GetConnectionOptionMfaArrayInput                   `pulumi:"mfas"`
+	// The name of the connection. If not provided, `connectionId` must be set.
+	Name                               pulumi.StringInput                                    `pulumi:"name"`
+	NonPersistentAttrs                 pulumi.StringArrayInput                               `pulumi:"nonPersistentAttrs"`
+	PasswordComplexityOptions          GetConnectionOptionPasswordComplexityOptionArrayInput `pulumi:"passwordComplexityOptions"`
+	PasswordDictionaries               GetConnectionOptionPasswordDictionaryArrayInput       `pulumi:"passwordDictionaries"`
+	PasswordHistories                  GetConnectionOptionPasswordHistoryArrayInput          `pulumi:"passwordHistories"`
+	PasswordNoPersonalInfos            GetConnectionOptionPasswordNoPersonalInfoArrayInput   `pulumi:"passwordNoPersonalInfos"`
+	PasswordPolicy                     pulumi.StringInput                                    `pulumi:"passwordPolicy"`
+	PkceEnabled                        pulumi.BoolInput                                      `pulumi:"pkceEnabled"`
+	ProtocolBinding                    pulumi.StringInput                                    `pulumi:"protocolBinding"`
+	Provider                           pulumi.StringInput                                    `pulumi:"provider"`
+	RequestTemplate                    pulumi.StringInput                                    `pulumi:"requestTemplate"`
+	RequiresUsername                   pulumi.BoolInput                                      `pulumi:"requiresUsername"`
+	Scopes                             pulumi.StringArrayInput                               `pulumi:"scopes"`
+	Scripts                            pulumi.StringMapInput                                 `pulumi:"scripts"`
+	SetUserRootAttributes              pulumi.StringInput                                    `pulumi:"setUserRootAttributes"`
+	ShouldTrustEmailVerifiedConnection pulumi.StringInput                                    `pulumi:"shouldTrustEmailVerifiedConnection"`
+	SignInEndpoint                     pulumi.StringInput                                    `pulumi:"signInEndpoint"`
+	SignOutEndpoint                    pulumi.StringInput                                    `pulumi:"signOutEndpoint"`
+	SignSamlRequest                    pulumi.BoolInput                                      `pulumi:"signSamlRequest"`
+	SignatureAlgorithm                 pulumi.StringInput                                    `pulumi:"signatureAlgorithm"`
+	SigningCert                        pulumi.StringInput                                    `pulumi:"signingCert"`
+	SigningKeys                        GetConnectionOptionSigningKeyArrayInput               `pulumi:"signingKeys"`
+	StrategyVersion                    pulumi.IntInput                                       `pulumi:"strategyVersion"`
+	Subject                            pulumi.StringInput                                    `pulumi:"subject"`
+	Syntax                             pulumi.StringInput                                    `pulumi:"syntax"`
+	TeamId                             pulumi.StringInput                                    `pulumi:"teamId"`
+	Template                           pulumi.StringInput                                    `pulumi:"template"`
+	TenantDomain                       pulumi.StringInput                                    `pulumi:"tenantDomain"`
+	TokenEndpoint                      pulumi.StringInput                                    `pulumi:"tokenEndpoint"`
+	Totps                              GetConnectionOptionTotpArrayInput                     `pulumi:"totps"`
+	TwilioSid                          pulumi.StringInput                                    `pulumi:"twilioSid"`
+	TwilioToken                        pulumi.StringInput                                    `pulumi:"twilioToken"`
+	Type                               pulumi.StringInput                                    `pulumi:"type"`
+	UpstreamParams                     pulumi.StringInput                                    `pulumi:"upstreamParams"`
+	UseCertAuth                        pulumi.BoolInput                                      `pulumi:"useCertAuth"`
+	UseKerberos                        pulumi.BoolInput                                      `pulumi:"useKerberos"`
+	UseWsfed                           pulumi.BoolInput                                      `pulumi:"useWsfed"`
+	UserIdAttribute                    pulumi.StringInput                                    `pulumi:"userIdAttribute"`
+	UserinfoEndpoint                   pulumi.StringInput                                    `pulumi:"userinfoEndpoint"`
+	Validations                        GetConnectionOptionValidationArrayInput               `pulumi:"validations"`
+	WaadCommonEndpoint                 pulumi.BoolInput                                      `pulumi:"waadCommonEndpoint"`
+	WaadProtocol                       pulumi.StringInput                                    `pulumi:"waadProtocol"`
+}
+
+func (GetConnectionOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionArgs) ToGetConnectionOptionOutput() GetConnectionOptionOutput {
+	return i.ToGetConnectionOptionOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionArgs) ToGetConnectionOptionOutputWithContext(ctx context.Context) GetConnectionOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionOutput)
+}
+
+// GetConnectionOptionArrayInput is an input type that accepts GetConnectionOptionArray and GetConnectionOptionArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionArrayInput` via:
+//
+//	GetConnectionOptionArray{ GetConnectionOptionArgs{...} }
+type GetConnectionOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionArrayOutput() GetConnectionOptionArrayOutput
+	ToGetConnectionOptionArrayOutputWithContext(context.Context) GetConnectionOptionArrayOutput
+}
+
+type GetConnectionOptionArray []GetConnectionOptionInput
+
+func (GetConnectionOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionArray) ToGetConnectionOptionArrayOutput() GetConnectionOptionArrayOutput {
+	return i.ToGetConnectionOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionArray) ToGetConnectionOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionArrayOutput)
+}
+
+type GetConnectionOptionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionOutput) ToGetConnectionOptionOutput() GetConnectionOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionOutput) ToGetConnectionOptionOutputWithContext(ctx context.Context) GetConnectionOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionOutput) AdfsServer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.AdfsServer }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) AllowedAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) ApiEnableUsers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.ApiEnableUsers }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) AuthParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.AuthParams }).(pulumi.StringMapOutput)
+}
+
+func (o GetConnectionOptionOutput) AuthorizationEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.AuthorizationEndpoint }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) BruteForceProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.BruteForceProtection }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) CommunityBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.CommunityBaseUrl }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Configuration() pulumi.MapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]interface{} { return v.Configuration }).(pulumi.MapOutput)
+}
+
+func (o GetConnectionOptionOutput) CustomScripts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.CustomScripts }).(pulumi.StringMapOutput)
+}
+
+func (o GetConnectionOptionOutput) Debug() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.Debug }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) DigestAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) DisableCache() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableCache }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) DisableSignOut() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableSignOut }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) DisableSignup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableSignup }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) DiscoveryUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.DiscoveryUrl }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) DomainAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) EnableScriptContext() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.EnableScriptContext }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) EnabledDatabaseCustomization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.EnabledDatabaseCustomization }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) FedMetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.FedMetadataXml }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) FieldsMap() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.FieldsMap }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) ForwardRequestInfo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.ForwardRequestInfo }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) From() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.From }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) GatewayAuthentications() GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionGatewayAuthentication {
+		return v.GatewayAuthentications
+	}).(GetConnectionOptionGatewayAuthenticationArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) GatewayUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.GatewayUrl }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) IconUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.IconUrl }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) IdentityApi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.IdentityApi }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) IdpInitiateds() GetConnectionOptionIdpInitiatedArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionIdpInitiated { return v.IdpInitiateds }).(GetConnectionOptionIdpInitiatedArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) ImportMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.ImportMode }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) JwksUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.JwksUri }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) MaxGroupsToRetrieve() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.MaxGroupsToRetrieve }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) MessagingServiceSid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.MessagingServiceSid }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) MetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.MetadataUrl }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) MetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.MetadataXml }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Mfas() GetConnectionOptionMfaArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionMfa { return v.Mfas }).(GetConnectionOptionMfaArrayOutput)
+}
+
+// The name of the connection. If not provided, `connectionId` must be set.
+func (o GetConnectionOptionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) NonPersistentAttrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.NonPersistentAttrs }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) PasswordComplexityOptions() GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordComplexityOption {
+		return v.PasswordComplexityOptions
+	}).(GetConnectionOptionPasswordComplexityOptionArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) PasswordDictionaries() GetConnectionOptionPasswordDictionaryArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordDictionary { return v.PasswordDictionaries }).(GetConnectionOptionPasswordDictionaryArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) PasswordHistories() GetConnectionOptionPasswordHistoryArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordHistory { return v.PasswordHistories }).(GetConnectionOptionPasswordHistoryArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) PasswordNoPersonalInfos() GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordNoPersonalInfo {
+		return v.PasswordNoPersonalInfos
+	}).(GetConnectionOptionPasswordNoPersonalInfoArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) PasswordPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.PasswordPolicy }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) PkceEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.PkceEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) ProtocolBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ProtocolBinding }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) RequestTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.RequestTemplate }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) RequiresUsername() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.RequiresUsername }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) Scripts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
+}
+
+func (o GetConnectionOptionOutput) SetUserRootAttributes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SetUserRootAttributes }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) ShouldTrustEmailVerifiedConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ShouldTrustEmailVerifiedConnection }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) SignInEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SignInEndpoint }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) SignOutEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SignOutEndpoint }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) SignSamlRequest() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.SignSamlRequest }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) SignatureAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) SigningCert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SigningCert }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) SigningKeys() GetConnectionOptionSigningKeyArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionSigningKey { return v.SigningKeys }).(GetConnectionOptionSigningKeyArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) StrategyVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOption) int { return v.StrategyVersion }).(pulumi.IntOutput)
+}
+
+func (o GetConnectionOptionOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Syntax }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Template() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Template }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) TenantDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TenantDomain }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) TokenEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Totps() GetConnectionOptionTotpArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionTotp { return v.Totps }).(GetConnectionOptionTotpArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) TwilioSid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TwilioSid }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) TwilioToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TwilioToken }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) UpstreamParams() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.UpstreamParams }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) UseCertAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseCertAuth }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) UseKerberos() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseKerberos }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) UseWsfed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseWsfed }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) UserIdAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.UserIdAttribute }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) UserinfoEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.UserinfoEndpoint }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) Validations() GetConnectionOptionValidationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionValidation { return v.Validations }).(GetConnectionOptionValidationArrayOutput)
+}
+
+func (o GetConnectionOptionOutput) WaadCommonEndpoint() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.WaadCommonEndpoint }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionOutput) WaadProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.WaadProtocol }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionArrayOutput) ToGetConnectionOptionArrayOutput() GetConnectionOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionArrayOutput) ToGetConnectionOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOption {
+		return vs[0].([]GetConnectionOption)[vs[1].(int)]
+	}).(GetConnectionOptionOutput)
+}
+
+type GetConnectionOptionGatewayAuthentication struct {
+	Audience            string `pulumi:"audience"`
+	Method              string `pulumi:"method"`
+	Secret              string `pulumi:"secret"`
+	SecretBase64Encoded bool   `pulumi:"secretBase64Encoded"`
+	Subject             string `pulumi:"subject"`
+}
+
+// GetConnectionOptionGatewayAuthenticationInput is an input type that accepts GetConnectionOptionGatewayAuthenticationArgs and GetConnectionOptionGatewayAuthenticationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionGatewayAuthenticationInput` via:
+//
+//	GetConnectionOptionGatewayAuthenticationArgs{...}
+type GetConnectionOptionGatewayAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionGatewayAuthenticationOutput() GetConnectionOptionGatewayAuthenticationOutput
+	ToGetConnectionOptionGatewayAuthenticationOutputWithContext(context.Context) GetConnectionOptionGatewayAuthenticationOutput
+}
+
+type GetConnectionOptionGatewayAuthenticationArgs struct {
+	Audience            pulumi.StringInput `pulumi:"audience"`
+	Method              pulumi.StringInput `pulumi:"method"`
+	Secret              pulumi.StringInput `pulumi:"secret"`
+	SecretBase64Encoded pulumi.BoolInput   `pulumi:"secretBase64Encoded"`
+	Subject             pulumi.StringInput `pulumi:"subject"`
+}
+
+func (GetConnectionOptionGatewayAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionGatewayAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectionOptionGatewayAuthenticationArgs) ToGetConnectionOptionGatewayAuthenticationOutput() GetConnectionOptionGatewayAuthenticationOutput {
+	return i.ToGetConnectionOptionGatewayAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionGatewayAuthenticationArgs) ToGetConnectionOptionGatewayAuthenticationOutputWithContext(ctx context.Context) GetConnectionOptionGatewayAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionGatewayAuthenticationOutput)
+}
+
+// GetConnectionOptionGatewayAuthenticationArrayInput is an input type that accepts GetConnectionOptionGatewayAuthenticationArray and GetConnectionOptionGatewayAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionGatewayAuthenticationArrayInput` via:
+//
+//	GetConnectionOptionGatewayAuthenticationArray{ GetConnectionOptionGatewayAuthenticationArgs{...} }
+type GetConnectionOptionGatewayAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionGatewayAuthenticationArrayOutput() GetConnectionOptionGatewayAuthenticationArrayOutput
+	ToGetConnectionOptionGatewayAuthenticationArrayOutputWithContext(context.Context) GetConnectionOptionGatewayAuthenticationArrayOutput
+}
+
+type GetConnectionOptionGatewayAuthenticationArray []GetConnectionOptionGatewayAuthenticationInput
+
+func (GetConnectionOptionGatewayAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionGatewayAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectionOptionGatewayAuthenticationArray) ToGetConnectionOptionGatewayAuthenticationArrayOutput() GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return i.ToGetConnectionOptionGatewayAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionGatewayAuthenticationArray) ToGetConnectionOptionGatewayAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionGatewayAuthenticationArrayOutput)
+}
+
+type GetConnectionOptionGatewayAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionGatewayAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionGatewayAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) ToGetConnectionOptionGatewayAuthenticationOutput() GetConnectionOptionGatewayAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) ToGetConnectionOptionGatewayAuthenticationOutputWithContext(ctx context.Context) GetConnectionOptionGatewayAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) SecretBase64Encoded() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) bool { return v.SecretBase64Encoded }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionGatewayAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionGatewayAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionGatewayAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectionOptionGatewayAuthenticationArrayOutput) ToGetConnectionOptionGatewayAuthenticationArrayOutput() GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionGatewayAuthenticationArrayOutput) ToGetConnectionOptionGatewayAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionGatewayAuthenticationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionGatewayAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionGatewayAuthentication {
+		return vs[0].([]GetConnectionOptionGatewayAuthentication)[vs[1].(int)]
+	}).(GetConnectionOptionGatewayAuthenticationOutput)
+}
+
+type GetConnectionOptionIdpInitiated struct {
+	ClientAuthorizeQuery string `pulumi:"clientAuthorizeQuery"`
+	ClientId             string `pulumi:"clientId"`
+	ClientProtocol       string `pulumi:"clientProtocol"`
+}
+
+// GetConnectionOptionIdpInitiatedInput is an input type that accepts GetConnectionOptionIdpInitiatedArgs and GetConnectionOptionIdpInitiatedOutput values.
+// You can construct a concrete instance of `GetConnectionOptionIdpInitiatedInput` via:
+//
+//	GetConnectionOptionIdpInitiatedArgs{...}
+type GetConnectionOptionIdpInitiatedInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionIdpInitiatedOutput() GetConnectionOptionIdpInitiatedOutput
+	ToGetConnectionOptionIdpInitiatedOutputWithContext(context.Context) GetConnectionOptionIdpInitiatedOutput
+}
+
+type GetConnectionOptionIdpInitiatedArgs struct {
+	ClientAuthorizeQuery pulumi.StringInput `pulumi:"clientAuthorizeQuery"`
+	ClientId             pulumi.StringInput `pulumi:"clientId"`
+	ClientProtocol       pulumi.StringInput `pulumi:"clientProtocol"`
+}
+
+func (GetConnectionOptionIdpInitiatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionIdpInitiated)(nil)).Elem()
+}
+
+func (i GetConnectionOptionIdpInitiatedArgs) ToGetConnectionOptionIdpInitiatedOutput() GetConnectionOptionIdpInitiatedOutput {
+	return i.ToGetConnectionOptionIdpInitiatedOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionIdpInitiatedArgs) ToGetConnectionOptionIdpInitiatedOutputWithContext(ctx context.Context) GetConnectionOptionIdpInitiatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionIdpInitiatedOutput)
+}
+
+// GetConnectionOptionIdpInitiatedArrayInput is an input type that accepts GetConnectionOptionIdpInitiatedArray and GetConnectionOptionIdpInitiatedArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionIdpInitiatedArrayInput` via:
+//
+//	GetConnectionOptionIdpInitiatedArray{ GetConnectionOptionIdpInitiatedArgs{...} }
+type GetConnectionOptionIdpInitiatedArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionIdpInitiatedArrayOutput() GetConnectionOptionIdpInitiatedArrayOutput
+	ToGetConnectionOptionIdpInitiatedArrayOutputWithContext(context.Context) GetConnectionOptionIdpInitiatedArrayOutput
+}
+
+type GetConnectionOptionIdpInitiatedArray []GetConnectionOptionIdpInitiatedInput
+
+func (GetConnectionOptionIdpInitiatedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionIdpInitiated)(nil)).Elem()
+}
+
+func (i GetConnectionOptionIdpInitiatedArray) ToGetConnectionOptionIdpInitiatedArrayOutput() GetConnectionOptionIdpInitiatedArrayOutput {
+	return i.ToGetConnectionOptionIdpInitiatedArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionIdpInitiatedArray) ToGetConnectionOptionIdpInitiatedArrayOutputWithContext(ctx context.Context) GetConnectionOptionIdpInitiatedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionIdpInitiatedArrayOutput)
+}
+
+type GetConnectionOptionIdpInitiatedOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionIdpInitiatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionIdpInitiated)(nil)).Elem()
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ToGetConnectionOptionIdpInitiatedOutput() GetConnectionOptionIdpInitiatedOutput {
+	return o
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ToGetConnectionOptionIdpInitiatedOutputWithContext(ctx context.Context) GetConnectionOptionIdpInitiatedOutput {
+	return o
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ClientAuthorizeQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) string { return v.ClientAuthorizeQuery }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ClientProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) string { return v.ClientProtocol }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionIdpInitiatedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionIdpInitiatedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionIdpInitiated)(nil)).Elem()
+}
+
+func (o GetConnectionOptionIdpInitiatedArrayOutput) ToGetConnectionOptionIdpInitiatedArrayOutput() GetConnectionOptionIdpInitiatedArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionIdpInitiatedArrayOutput) ToGetConnectionOptionIdpInitiatedArrayOutputWithContext(ctx context.Context) GetConnectionOptionIdpInitiatedArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionIdpInitiatedArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionIdpInitiatedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionIdpInitiated {
+		return vs[0].([]GetConnectionOptionIdpInitiated)[vs[1].(int)]
+	}).(GetConnectionOptionIdpInitiatedOutput)
+}
+
+type GetConnectionOptionMfa struct {
+	Active               bool `pulumi:"active"`
+	ReturnEnrollSettings bool `pulumi:"returnEnrollSettings"`
+}
+
+// GetConnectionOptionMfaInput is an input type that accepts GetConnectionOptionMfaArgs and GetConnectionOptionMfaOutput values.
+// You can construct a concrete instance of `GetConnectionOptionMfaInput` via:
+//
+//	GetConnectionOptionMfaArgs{...}
+type GetConnectionOptionMfaInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionMfaOutput() GetConnectionOptionMfaOutput
+	ToGetConnectionOptionMfaOutputWithContext(context.Context) GetConnectionOptionMfaOutput
+}
+
+type GetConnectionOptionMfaArgs struct {
+	Active               pulumi.BoolInput `pulumi:"active"`
+	ReturnEnrollSettings pulumi.BoolInput `pulumi:"returnEnrollSettings"`
+}
+
+func (GetConnectionOptionMfaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionMfa)(nil)).Elem()
+}
+
+func (i GetConnectionOptionMfaArgs) ToGetConnectionOptionMfaOutput() GetConnectionOptionMfaOutput {
+	return i.ToGetConnectionOptionMfaOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionMfaArgs) ToGetConnectionOptionMfaOutputWithContext(ctx context.Context) GetConnectionOptionMfaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionMfaOutput)
+}
+
+// GetConnectionOptionMfaArrayInput is an input type that accepts GetConnectionOptionMfaArray and GetConnectionOptionMfaArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionMfaArrayInput` via:
+//
+//	GetConnectionOptionMfaArray{ GetConnectionOptionMfaArgs{...} }
+type GetConnectionOptionMfaArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionMfaArrayOutput() GetConnectionOptionMfaArrayOutput
+	ToGetConnectionOptionMfaArrayOutputWithContext(context.Context) GetConnectionOptionMfaArrayOutput
+}
+
+type GetConnectionOptionMfaArray []GetConnectionOptionMfaInput
+
+func (GetConnectionOptionMfaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionMfa)(nil)).Elem()
+}
+
+func (i GetConnectionOptionMfaArray) ToGetConnectionOptionMfaArrayOutput() GetConnectionOptionMfaArrayOutput {
+	return i.ToGetConnectionOptionMfaArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionMfaArray) ToGetConnectionOptionMfaArrayOutputWithContext(ctx context.Context) GetConnectionOptionMfaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionMfaArrayOutput)
+}
+
+type GetConnectionOptionMfaOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionMfaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionMfa)(nil)).Elem()
+}
+
+func (o GetConnectionOptionMfaOutput) ToGetConnectionOptionMfaOutput() GetConnectionOptionMfaOutput {
+	return o
+}
+
+func (o GetConnectionOptionMfaOutput) ToGetConnectionOptionMfaOutputWithContext(ctx context.Context) GetConnectionOptionMfaOutput {
+	return o
+}
+
+func (o GetConnectionOptionMfaOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionMfa) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionMfaOutput) ReturnEnrollSettings() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionMfa) bool { return v.ReturnEnrollSettings }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionMfaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionMfaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionMfa)(nil)).Elem()
+}
+
+func (o GetConnectionOptionMfaArrayOutput) ToGetConnectionOptionMfaArrayOutput() GetConnectionOptionMfaArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionMfaArrayOutput) ToGetConnectionOptionMfaArrayOutputWithContext(ctx context.Context) GetConnectionOptionMfaArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionMfaArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionMfaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionMfa {
+		return vs[0].([]GetConnectionOptionMfa)[vs[1].(int)]
+	}).(GetConnectionOptionMfaOutput)
+}
+
+type GetConnectionOptionPasswordComplexityOption struct {
+	MinLength int `pulumi:"minLength"`
+}
+
+// GetConnectionOptionPasswordComplexityOptionInput is an input type that accepts GetConnectionOptionPasswordComplexityOptionArgs and GetConnectionOptionPasswordComplexityOptionOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordComplexityOptionInput` via:
+//
+//	GetConnectionOptionPasswordComplexityOptionArgs{...}
+type GetConnectionOptionPasswordComplexityOptionInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordComplexityOptionOutput() GetConnectionOptionPasswordComplexityOptionOutput
+	ToGetConnectionOptionPasswordComplexityOptionOutputWithContext(context.Context) GetConnectionOptionPasswordComplexityOptionOutput
+}
+
+type GetConnectionOptionPasswordComplexityOptionArgs struct {
+	MinLength pulumi.IntInput `pulumi:"minLength"`
+}
+
+func (GetConnectionOptionPasswordComplexityOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordComplexityOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordComplexityOptionArgs) ToGetConnectionOptionPasswordComplexityOptionOutput() GetConnectionOptionPasswordComplexityOptionOutput {
+	return i.ToGetConnectionOptionPasswordComplexityOptionOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordComplexityOptionArgs) ToGetConnectionOptionPasswordComplexityOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasswordComplexityOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordComplexityOptionOutput)
+}
+
+// GetConnectionOptionPasswordComplexityOptionArrayInput is an input type that accepts GetConnectionOptionPasswordComplexityOptionArray and GetConnectionOptionPasswordComplexityOptionArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordComplexityOptionArrayInput` via:
+//
+//	GetConnectionOptionPasswordComplexityOptionArray{ GetConnectionOptionPasswordComplexityOptionArgs{...} }
+type GetConnectionOptionPasswordComplexityOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordComplexityOptionArrayOutput() GetConnectionOptionPasswordComplexityOptionArrayOutput
+	ToGetConnectionOptionPasswordComplexityOptionArrayOutputWithContext(context.Context) GetConnectionOptionPasswordComplexityOptionArrayOutput
+}
+
+type GetConnectionOptionPasswordComplexityOptionArray []GetConnectionOptionPasswordComplexityOptionInput
+
+func (GetConnectionOptionPasswordComplexityOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordComplexityOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordComplexityOptionArray) ToGetConnectionOptionPasswordComplexityOptionArrayOutput() GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return i.ToGetConnectionOptionPasswordComplexityOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordComplexityOptionArray) ToGetConnectionOptionPasswordComplexityOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordComplexityOptionArrayOutput)
+}
+
+type GetConnectionOptionPasswordComplexityOptionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordComplexityOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordComplexityOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionOutput) ToGetConnectionOptionPasswordComplexityOptionOutput() GetConnectionOptionPasswordComplexityOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionOutput) ToGetConnectionOptionPasswordComplexityOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasswordComplexityOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordComplexityOption) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionPasswordComplexityOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordComplexityOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordComplexityOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionArrayOutput) ToGetConnectionOptionPasswordComplexityOptionArrayOutput() GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionArrayOutput) ToGetConnectionOptionPasswordComplexityOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordComplexityOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordComplexityOption {
+		return vs[0].([]GetConnectionOptionPasswordComplexityOption)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordComplexityOptionOutput)
+}
+
+type GetConnectionOptionPasswordDictionary struct {
+	Dictionaries []string `pulumi:"dictionaries"`
+	Enable       bool     `pulumi:"enable"`
+}
+
+// GetConnectionOptionPasswordDictionaryInput is an input type that accepts GetConnectionOptionPasswordDictionaryArgs and GetConnectionOptionPasswordDictionaryOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordDictionaryInput` via:
+//
+//	GetConnectionOptionPasswordDictionaryArgs{...}
+type GetConnectionOptionPasswordDictionaryInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordDictionaryOutput() GetConnectionOptionPasswordDictionaryOutput
+	ToGetConnectionOptionPasswordDictionaryOutputWithContext(context.Context) GetConnectionOptionPasswordDictionaryOutput
+}
+
+type GetConnectionOptionPasswordDictionaryArgs struct {
+	Dictionaries pulumi.StringArrayInput `pulumi:"dictionaries"`
+	Enable       pulumi.BoolInput        `pulumi:"enable"`
+}
+
+func (GetConnectionOptionPasswordDictionaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordDictionary)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordDictionaryArgs) ToGetConnectionOptionPasswordDictionaryOutput() GetConnectionOptionPasswordDictionaryOutput {
+	return i.ToGetConnectionOptionPasswordDictionaryOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordDictionaryArgs) ToGetConnectionOptionPasswordDictionaryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordDictionaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordDictionaryOutput)
+}
+
+// GetConnectionOptionPasswordDictionaryArrayInput is an input type that accepts GetConnectionOptionPasswordDictionaryArray and GetConnectionOptionPasswordDictionaryArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordDictionaryArrayInput` via:
+//
+//	GetConnectionOptionPasswordDictionaryArray{ GetConnectionOptionPasswordDictionaryArgs{...} }
+type GetConnectionOptionPasswordDictionaryArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordDictionaryArrayOutput() GetConnectionOptionPasswordDictionaryArrayOutput
+	ToGetConnectionOptionPasswordDictionaryArrayOutputWithContext(context.Context) GetConnectionOptionPasswordDictionaryArrayOutput
+}
+
+type GetConnectionOptionPasswordDictionaryArray []GetConnectionOptionPasswordDictionaryInput
+
+func (GetConnectionOptionPasswordDictionaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordDictionary)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordDictionaryArray) ToGetConnectionOptionPasswordDictionaryArrayOutput() GetConnectionOptionPasswordDictionaryArrayOutput {
+	return i.ToGetConnectionOptionPasswordDictionaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordDictionaryArray) ToGetConnectionOptionPasswordDictionaryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordDictionaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordDictionaryArrayOutput)
+}
+
+type GetConnectionOptionPasswordDictionaryOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordDictionaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordDictionary)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordDictionaryOutput) ToGetConnectionOptionPasswordDictionaryOutput() GetConnectionOptionPasswordDictionaryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordDictionaryOutput) ToGetConnectionOptionPasswordDictionaryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordDictionaryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordDictionaryOutput) Dictionaries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordDictionary) []string { return v.Dictionaries }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConnectionOptionPasswordDictionaryOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordDictionary) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionPasswordDictionaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordDictionaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordDictionary)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordDictionaryArrayOutput) ToGetConnectionOptionPasswordDictionaryArrayOutput() GetConnectionOptionPasswordDictionaryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordDictionaryArrayOutput) ToGetConnectionOptionPasswordDictionaryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordDictionaryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordDictionaryArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordDictionaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordDictionary {
+		return vs[0].([]GetConnectionOptionPasswordDictionary)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordDictionaryOutput)
+}
+
+type GetConnectionOptionPasswordHistory struct {
+	Enable bool `pulumi:"enable"`
+	Size   int  `pulumi:"size"`
+}
+
+// GetConnectionOptionPasswordHistoryInput is an input type that accepts GetConnectionOptionPasswordHistoryArgs and GetConnectionOptionPasswordHistoryOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordHistoryInput` via:
+//
+//	GetConnectionOptionPasswordHistoryArgs{...}
+type GetConnectionOptionPasswordHistoryInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordHistoryOutput() GetConnectionOptionPasswordHistoryOutput
+	ToGetConnectionOptionPasswordHistoryOutputWithContext(context.Context) GetConnectionOptionPasswordHistoryOutput
+}
+
+type GetConnectionOptionPasswordHistoryArgs struct {
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	Size   pulumi.IntInput  `pulumi:"size"`
+}
+
+func (GetConnectionOptionPasswordHistoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordHistory)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordHistoryArgs) ToGetConnectionOptionPasswordHistoryOutput() GetConnectionOptionPasswordHistoryOutput {
+	return i.ToGetConnectionOptionPasswordHistoryOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordHistoryArgs) ToGetConnectionOptionPasswordHistoryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordHistoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordHistoryOutput)
+}
+
+// GetConnectionOptionPasswordHistoryArrayInput is an input type that accepts GetConnectionOptionPasswordHistoryArray and GetConnectionOptionPasswordHistoryArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordHistoryArrayInput` via:
+//
+//	GetConnectionOptionPasswordHistoryArray{ GetConnectionOptionPasswordHistoryArgs{...} }
+type GetConnectionOptionPasswordHistoryArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordHistoryArrayOutput() GetConnectionOptionPasswordHistoryArrayOutput
+	ToGetConnectionOptionPasswordHistoryArrayOutputWithContext(context.Context) GetConnectionOptionPasswordHistoryArrayOutput
+}
+
+type GetConnectionOptionPasswordHistoryArray []GetConnectionOptionPasswordHistoryInput
+
+func (GetConnectionOptionPasswordHistoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordHistory)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordHistoryArray) ToGetConnectionOptionPasswordHistoryArrayOutput() GetConnectionOptionPasswordHistoryArrayOutput {
+	return i.ToGetConnectionOptionPasswordHistoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordHistoryArray) ToGetConnectionOptionPasswordHistoryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordHistoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordHistoryArrayOutput)
+}
+
+type GetConnectionOptionPasswordHistoryOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordHistoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordHistory)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordHistoryOutput) ToGetConnectionOptionPasswordHistoryOutput() GetConnectionOptionPasswordHistoryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordHistoryOutput) ToGetConnectionOptionPasswordHistoryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordHistoryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordHistoryOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordHistory) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionPasswordHistoryOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordHistory) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionPasswordHistoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordHistoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordHistory)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordHistoryArrayOutput) ToGetConnectionOptionPasswordHistoryArrayOutput() GetConnectionOptionPasswordHistoryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordHistoryArrayOutput) ToGetConnectionOptionPasswordHistoryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordHistoryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordHistoryArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordHistoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordHistory {
+		return vs[0].([]GetConnectionOptionPasswordHistory)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordHistoryOutput)
+}
+
+type GetConnectionOptionPasswordNoPersonalInfo struct {
+	Enable bool `pulumi:"enable"`
+}
+
+// GetConnectionOptionPasswordNoPersonalInfoInput is an input type that accepts GetConnectionOptionPasswordNoPersonalInfoArgs and GetConnectionOptionPasswordNoPersonalInfoOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordNoPersonalInfoInput` via:
+//
+//	GetConnectionOptionPasswordNoPersonalInfoArgs{...}
+type GetConnectionOptionPasswordNoPersonalInfoInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordNoPersonalInfoOutput() GetConnectionOptionPasswordNoPersonalInfoOutput
+	ToGetConnectionOptionPasswordNoPersonalInfoOutputWithContext(context.Context) GetConnectionOptionPasswordNoPersonalInfoOutput
+}
+
+type GetConnectionOptionPasswordNoPersonalInfoArgs struct {
+	Enable pulumi.BoolInput `pulumi:"enable"`
+}
+
+func (GetConnectionOptionPasswordNoPersonalInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordNoPersonalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordNoPersonalInfoArgs) ToGetConnectionOptionPasswordNoPersonalInfoOutput() GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return i.ToGetConnectionOptionPasswordNoPersonalInfoOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordNoPersonalInfoArgs) ToGetConnectionOptionPasswordNoPersonalInfoOutputWithContext(ctx context.Context) GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordNoPersonalInfoOutput)
+}
+
+// GetConnectionOptionPasswordNoPersonalInfoArrayInput is an input type that accepts GetConnectionOptionPasswordNoPersonalInfoArray and GetConnectionOptionPasswordNoPersonalInfoArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordNoPersonalInfoArrayInput` via:
+//
+//	GetConnectionOptionPasswordNoPersonalInfoArray{ GetConnectionOptionPasswordNoPersonalInfoArgs{...} }
+type GetConnectionOptionPasswordNoPersonalInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordNoPersonalInfoArrayOutput() GetConnectionOptionPasswordNoPersonalInfoArrayOutput
+	ToGetConnectionOptionPasswordNoPersonalInfoArrayOutputWithContext(context.Context) GetConnectionOptionPasswordNoPersonalInfoArrayOutput
+}
+
+type GetConnectionOptionPasswordNoPersonalInfoArray []GetConnectionOptionPasswordNoPersonalInfoInput
+
+func (GetConnectionOptionPasswordNoPersonalInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordNoPersonalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordNoPersonalInfoArray) ToGetConnectionOptionPasswordNoPersonalInfoArrayOutput() GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return i.ToGetConnectionOptionPasswordNoPersonalInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordNoPersonalInfoArray) ToGetConnectionOptionPasswordNoPersonalInfoArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordNoPersonalInfoArrayOutput)
+}
+
+type GetConnectionOptionPasswordNoPersonalInfoOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordNoPersonalInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordNoPersonalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoOutput) ToGetConnectionOptionPasswordNoPersonalInfoOutput() GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoOutput) ToGetConnectionOptionPasswordNoPersonalInfoOutputWithContext(ctx context.Context) GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordNoPersonalInfo) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionPasswordNoPersonalInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordNoPersonalInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordNoPersonalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoArrayOutput) ToGetConnectionOptionPasswordNoPersonalInfoArrayOutput() GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoArrayOutput) ToGetConnectionOptionPasswordNoPersonalInfoArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordNoPersonalInfo {
+		return vs[0].([]GetConnectionOptionPasswordNoPersonalInfo)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordNoPersonalInfoOutput)
+}
+
+type GetConnectionOptionSigningKey struct {
+	Cert string `pulumi:"cert"`
+	Key  string `pulumi:"key"`
+}
+
+// GetConnectionOptionSigningKeyInput is an input type that accepts GetConnectionOptionSigningKeyArgs and GetConnectionOptionSigningKeyOutput values.
+// You can construct a concrete instance of `GetConnectionOptionSigningKeyInput` via:
+//
+//	GetConnectionOptionSigningKeyArgs{...}
+type GetConnectionOptionSigningKeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionSigningKeyOutput() GetConnectionOptionSigningKeyOutput
+	ToGetConnectionOptionSigningKeyOutputWithContext(context.Context) GetConnectionOptionSigningKeyOutput
+}
+
+type GetConnectionOptionSigningKeyArgs struct {
+	Cert pulumi.StringInput `pulumi:"cert"`
+	Key  pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetConnectionOptionSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionSigningKey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionSigningKeyArgs) ToGetConnectionOptionSigningKeyOutput() GetConnectionOptionSigningKeyOutput {
+	return i.ToGetConnectionOptionSigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionSigningKeyArgs) ToGetConnectionOptionSigningKeyOutputWithContext(ctx context.Context) GetConnectionOptionSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionSigningKeyOutput)
+}
+
+// GetConnectionOptionSigningKeyArrayInput is an input type that accepts GetConnectionOptionSigningKeyArray and GetConnectionOptionSigningKeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionSigningKeyArrayInput` via:
+//
+//	GetConnectionOptionSigningKeyArray{ GetConnectionOptionSigningKeyArgs{...} }
+type GetConnectionOptionSigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionSigningKeyArrayOutput() GetConnectionOptionSigningKeyArrayOutput
+	ToGetConnectionOptionSigningKeyArrayOutputWithContext(context.Context) GetConnectionOptionSigningKeyArrayOutput
+}
+
+type GetConnectionOptionSigningKeyArray []GetConnectionOptionSigningKeyInput
+
+func (GetConnectionOptionSigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionSigningKey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionSigningKeyArray) ToGetConnectionOptionSigningKeyArrayOutput() GetConnectionOptionSigningKeyArrayOutput {
+	return i.ToGetConnectionOptionSigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionSigningKeyArray) ToGetConnectionOptionSigningKeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionSigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionSigningKeyArrayOutput)
+}
+
+type GetConnectionOptionSigningKeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionSigningKey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionSigningKeyOutput) ToGetConnectionOptionSigningKeyOutput() GetConnectionOptionSigningKeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionSigningKeyOutput) ToGetConnectionOptionSigningKeyOutputWithContext(ctx context.Context) GetConnectionOptionSigningKeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionSigningKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionSigningKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionSigningKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionSigningKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionSigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionSigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionSigningKey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionSigningKeyArrayOutput) ToGetConnectionOptionSigningKeyArrayOutput() GetConnectionOptionSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionSigningKeyArrayOutput) ToGetConnectionOptionSigningKeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionSigningKeyArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionSigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionSigningKey {
+		return vs[0].([]GetConnectionOptionSigningKey)[vs[1].(int)]
+	}).(GetConnectionOptionSigningKeyOutput)
+}
+
+type GetConnectionOptionTotp struct {
+	Length   int `pulumi:"length"`
+	TimeStep int `pulumi:"timeStep"`
+}
+
+// GetConnectionOptionTotpInput is an input type that accepts GetConnectionOptionTotpArgs and GetConnectionOptionTotpOutput values.
+// You can construct a concrete instance of `GetConnectionOptionTotpInput` via:
+//
+//	GetConnectionOptionTotpArgs{...}
+type GetConnectionOptionTotpInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionTotpOutput() GetConnectionOptionTotpOutput
+	ToGetConnectionOptionTotpOutputWithContext(context.Context) GetConnectionOptionTotpOutput
+}
+
+type GetConnectionOptionTotpArgs struct {
+	Length   pulumi.IntInput `pulumi:"length"`
+	TimeStep pulumi.IntInput `pulumi:"timeStep"`
+}
+
+func (GetConnectionOptionTotpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionTotp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionTotpArgs) ToGetConnectionOptionTotpOutput() GetConnectionOptionTotpOutput {
+	return i.ToGetConnectionOptionTotpOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionTotpArgs) ToGetConnectionOptionTotpOutputWithContext(ctx context.Context) GetConnectionOptionTotpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionTotpOutput)
+}
+
+// GetConnectionOptionTotpArrayInput is an input type that accepts GetConnectionOptionTotpArray and GetConnectionOptionTotpArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionTotpArrayInput` via:
+//
+//	GetConnectionOptionTotpArray{ GetConnectionOptionTotpArgs{...} }
+type GetConnectionOptionTotpArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionTotpArrayOutput() GetConnectionOptionTotpArrayOutput
+	ToGetConnectionOptionTotpArrayOutputWithContext(context.Context) GetConnectionOptionTotpArrayOutput
+}
+
+type GetConnectionOptionTotpArray []GetConnectionOptionTotpInput
+
+func (GetConnectionOptionTotpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionTotp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionTotpArray) ToGetConnectionOptionTotpArrayOutput() GetConnectionOptionTotpArrayOutput {
+	return i.ToGetConnectionOptionTotpArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionTotpArray) ToGetConnectionOptionTotpArrayOutputWithContext(ctx context.Context) GetConnectionOptionTotpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionTotpArrayOutput)
+}
+
+type GetConnectionOptionTotpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionTotpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionTotp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionTotpOutput) ToGetConnectionOptionTotpOutput() GetConnectionOptionTotpOutput {
+	return o
+}
+
+func (o GetConnectionOptionTotpOutput) ToGetConnectionOptionTotpOutputWithContext(ctx context.Context) GetConnectionOptionTotpOutput {
+	return o
+}
+
+func (o GetConnectionOptionTotpOutput) Length() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionTotp) int { return v.Length }).(pulumi.IntOutput)
+}
+
+func (o GetConnectionOptionTotpOutput) TimeStep() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionTotp) int { return v.TimeStep }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionTotpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionTotpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionTotp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionTotpArrayOutput) ToGetConnectionOptionTotpArrayOutput() GetConnectionOptionTotpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionTotpArrayOutput) ToGetConnectionOptionTotpArrayOutputWithContext(ctx context.Context) GetConnectionOptionTotpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionTotpArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionTotpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionTotp {
+		return vs[0].([]GetConnectionOptionTotp)[vs[1].(int)]
+	}).(GetConnectionOptionTotpOutput)
+}
+
+type GetConnectionOptionValidation struct {
+	Usernames []GetConnectionOptionValidationUsername `pulumi:"usernames"`
+}
+
+// GetConnectionOptionValidationInput is an input type that accepts GetConnectionOptionValidationArgs and GetConnectionOptionValidationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionValidationInput` via:
+//
+//	GetConnectionOptionValidationArgs{...}
+type GetConnectionOptionValidationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionValidationOutput() GetConnectionOptionValidationOutput
+	ToGetConnectionOptionValidationOutputWithContext(context.Context) GetConnectionOptionValidationOutput
+}
+
+type GetConnectionOptionValidationArgs struct {
+	Usernames GetConnectionOptionValidationUsernameArrayInput `pulumi:"usernames"`
+}
+
+func (GetConnectionOptionValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionValidation)(nil)).Elem()
+}
+
+func (i GetConnectionOptionValidationArgs) ToGetConnectionOptionValidationOutput() GetConnectionOptionValidationOutput {
+	return i.ToGetConnectionOptionValidationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionValidationArgs) ToGetConnectionOptionValidationOutputWithContext(ctx context.Context) GetConnectionOptionValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionValidationOutput)
+}
+
+// GetConnectionOptionValidationArrayInput is an input type that accepts GetConnectionOptionValidationArray and GetConnectionOptionValidationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionValidationArrayInput` via:
+//
+//	GetConnectionOptionValidationArray{ GetConnectionOptionValidationArgs{...} }
+type GetConnectionOptionValidationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionValidationArrayOutput() GetConnectionOptionValidationArrayOutput
+	ToGetConnectionOptionValidationArrayOutputWithContext(context.Context) GetConnectionOptionValidationArrayOutput
+}
+
+type GetConnectionOptionValidationArray []GetConnectionOptionValidationInput
+
+func (GetConnectionOptionValidationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionValidation)(nil)).Elem()
+}
+
+func (i GetConnectionOptionValidationArray) ToGetConnectionOptionValidationArrayOutput() GetConnectionOptionValidationArrayOutput {
+	return i.ToGetConnectionOptionValidationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionValidationArray) ToGetConnectionOptionValidationArrayOutputWithContext(ctx context.Context) GetConnectionOptionValidationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionValidationArrayOutput)
+}
+
+type GetConnectionOptionValidationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionValidation)(nil)).Elem()
+}
+
+func (o GetConnectionOptionValidationOutput) ToGetConnectionOptionValidationOutput() GetConnectionOptionValidationOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationOutput) ToGetConnectionOptionValidationOutputWithContext(ctx context.Context) GetConnectionOptionValidationOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationOutput) Usernames() GetConnectionOptionValidationUsernameArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionValidation) []GetConnectionOptionValidationUsername { return v.Usernames }).(GetConnectionOptionValidationUsernameArrayOutput)
+}
+
+type GetConnectionOptionValidationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionValidationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionValidation)(nil)).Elem()
+}
+
+func (o GetConnectionOptionValidationArrayOutput) ToGetConnectionOptionValidationArrayOutput() GetConnectionOptionValidationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationArrayOutput) ToGetConnectionOptionValidationArrayOutputWithContext(ctx context.Context) GetConnectionOptionValidationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionValidationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionValidation {
+		return vs[0].([]GetConnectionOptionValidation)[vs[1].(int)]
+	}).(GetConnectionOptionValidationOutput)
+}
+
+type GetConnectionOptionValidationUsername struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+// GetConnectionOptionValidationUsernameInput is an input type that accepts GetConnectionOptionValidationUsernameArgs and GetConnectionOptionValidationUsernameOutput values.
+// You can construct a concrete instance of `GetConnectionOptionValidationUsernameInput` via:
+//
+//	GetConnectionOptionValidationUsernameArgs{...}
+type GetConnectionOptionValidationUsernameInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionValidationUsernameOutput() GetConnectionOptionValidationUsernameOutput
+	ToGetConnectionOptionValidationUsernameOutputWithContext(context.Context) GetConnectionOptionValidationUsernameOutput
+}
+
+type GetConnectionOptionValidationUsernameArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetConnectionOptionValidationUsernameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionValidationUsername)(nil)).Elem()
+}
+
+func (i GetConnectionOptionValidationUsernameArgs) ToGetConnectionOptionValidationUsernameOutput() GetConnectionOptionValidationUsernameOutput {
+	return i.ToGetConnectionOptionValidationUsernameOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionValidationUsernameArgs) ToGetConnectionOptionValidationUsernameOutputWithContext(ctx context.Context) GetConnectionOptionValidationUsernameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionValidationUsernameOutput)
+}
+
+// GetConnectionOptionValidationUsernameArrayInput is an input type that accepts GetConnectionOptionValidationUsernameArray and GetConnectionOptionValidationUsernameArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionValidationUsernameArrayInput` via:
+//
+//	GetConnectionOptionValidationUsernameArray{ GetConnectionOptionValidationUsernameArgs{...} }
+type GetConnectionOptionValidationUsernameArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionValidationUsernameArrayOutput() GetConnectionOptionValidationUsernameArrayOutput
+	ToGetConnectionOptionValidationUsernameArrayOutputWithContext(context.Context) GetConnectionOptionValidationUsernameArrayOutput
+}
+
+type GetConnectionOptionValidationUsernameArray []GetConnectionOptionValidationUsernameInput
+
+func (GetConnectionOptionValidationUsernameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionValidationUsername)(nil)).Elem()
+}
+
+func (i GetConnectionOptionValidationUsernameArray) ToGetConnectionOptionValidationUsernameArrayOutput() GetConnectionOptionValidationUsernameArrayOutput {
+	return i.ToGetConnectionOptionValidationUsernameArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionValidationUsernameArray) ToGetConnectionOptionValidationUsernameArrayOutputWithContext(ctx context.Context) GetConnectionOptionValidationUsernameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionValidationUsernameArrayOutput)
+}
+
+type GetConnectionOptionValidationUsernameOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionValidationUsernameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionValidationUsername)(nil)).Elem()
+}
+
+func (o GetConnectionOptionValidationUsernameOutput) ToGetConnectionOptionValidationUsernameOutput() GetConnectionOptionValidationUsernameOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationUsernameOutput) ToGetConnectionOptionValidationUsernameOutputWithContext(ctx context.Context) GetConnectionOptionValidationUsernameOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationUsernameOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionValidationUsername) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o GetConnectionOptionValidationUsernameOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionValidationUsername) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionValidationUsernameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionValidationUsernameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionValidationUsername)(nil)).Elem()
+}
+
+func (o GetConnectionOptionValidationUsernameArrayOutput) ToGetConnectionOptionValidationUsernameArrayOutput() GetConnectionOptionValidationUsernameArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationUsernameArrayOutput) ToGetConnectionOptionValidationUsernameArrayOutputWithContext(ctx context.Context) GetConnectionOptionValidationUsernameArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationUsernameArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionValidationUsernameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionValidationUsername {
+		return vs[0].([]GetConnectionOptionValidationUsername)[vs[1].(int)]
+	}).(GetConnectionOptionValidationUsernameOutput)
 }
 
 type GetGlobalClientAddon struct {
@@ -19559,6 +23520,1226 @@ func (o GetGlobalClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetGlob
 	}).(GetGlobalClientRefreshTokenOutput)
 }
 
+type GetOrganizationBranding struct {
+	Colors  map[string]string `pulumi:"colors"`
+	LogoUrl string            `pulumi:"logoUrl"`
+}
+
+// GetOrganizationBrandingInput is an input type that accepts GetOrganizationBrandingArgs and GetOrganizationBrandingOutput values.
+// You can construct a concrete instance of `GetOrganizationBrandingInput` via:
+//
+//	GetOrganizationBrandingArgs{...}
+type GetOrganizationBrandingInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBrandingOutput() GetOrganizationBrandingOutput
+	ToGetOrganizationBrandingOutputWithContext(context.Context) GetOrganizationBrandingOutput
+}
+
+type GetOrganizationBrandingArgs struct {
+	Colors  pulumi.StringMapInput `pulumi:"colors"`
+	LogoUrl pulumi.StringInput    `pulumi:"logoUrl"`
+}
+
+func (GetOrganizationBrandingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBranding)(nil)).Elem()
+}
+
+func (i GetOrganizationBrandingArgs) ToGetOrganizationBrandingOutput() GetOrganizationBrandingOutput {
+	return i.ToGetOrganizationBrandingOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBrandingArgs) ToGetOrganizationBrandingOutputWithContext(ctx context.Context) GetOrganizationBrandingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBrandingOutput)
+}
+
+// GetOrganizationBrandingArrayInput is an input type that accepts GetOrganizationBrandingArray and GetOrganizationBrandingArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBrandingArrayInput` via:
+//
+//	GetOrganizationBrandingArray{ GetOrganizationBrandingArgs{...} }
+type GetOrganizationBrandingArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBrandingArrayOutput() GetOrganizationBrandingArrayOutput
+	ToGetOrganizationBrandingArrayOutputWithContext(context.Context) GetOrganizationBrandingArrayOutput
+}
+
+type GetOrganizationBrandingArray []GetOrganizationBrandingInput
+
+func (GetOrganizationBrandingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBranding)(nil)).Elem()
+}
+
+func (i GetOrganizationBrandingArray) ToGetOrganizationBrandingArrayOutput() GetOrganizationBrandingArrayOutput {
+	return i.ToGetOrganizationBrandingArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBrandingArray) ToGetOrganizationBrandingArrayOutputWithContext(ctx context.Context) GetOrganizationBrandingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBrandingArrayOutput)
+}
+
+type GetOrganizationBrandingOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBrandingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBranding)(nil)).Elem()
+}
+
+func (o GetOrganizationBrandingOutput) ToGetOrganizationBrandingOutput() GetOrganizationBrandingOutput {
+	return o
+}
+
+func (o GetOrganizationBrandingOutput) ToGetOrganizationBrandingOutputWithContext(ctx context.Context) GetOrganizationBrandingOutput {
+	return o
+}
+
+func (o GetOrganizationBrandingOutput) Colors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOrganizationBranding) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
+}
+
+func (o GetOrganizationBrandingOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBranding) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBrandingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBrandingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBranding)(nil)).Elem()
+}
+
+func (o GetOrganizationBrandingArrayOutput) ToGetOrganizationBrandingArrayOutput() GetOrganizationBrandingArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBrandingArrayOutput) ToGetOrganizationBrandingArrayOutputWithContext(ctx context.Context) GetOrganizationBrandingArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBrandingArrayOutput) Index(i pulumi.IntInput) GetOrganizationBrandingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBranding {
+		return vs[0].([]GetOrganizationBranding)[vs[1].(int)]
+	}).(GetOrganizationBrandingOutput)
+}
+
+type GetOrganizationConnectionType struct {
+	AssignMembershipOnLogin bool   `pulumi:"assignMembershipOnLogin"`
+	ConnectionId            string `pulumi:"connectionId"`
+}
+
+// GetOrganizationConnectionTypeInput is an input type that accepts GetOrganizationConnectionTypeArgs and GetOrganizationConnectionTypeOutput values.
+// You can construct a concrete instance of `GetOrganizationConnectionTypeInput` via:
+//
+//	GetOrganizationConnectionTypeArgs{...}
+type GetOrganizationConnectionTypeInput interface {
+	pulumi.Input
+
+	ToGetOrganizationConnectionTypeOutput() GetOrganizationConnectionTypeOutput
+	ToGetOrganizationConnectionTypeOutputWithContext(context.Context) GetOrganizationConnectionTypeOutput
+}
+
+type GetOrganizationConnectionTypeArgs struct {
+	AssignMembershipOnLogin pulumi.BoolInput   `pulumi:"assignMembershipOnLogin"`
+	ConnectionId            pulumi.StringInput `pulumi:"connectionId"`
+}
+
+func (GetOrganizationConnectionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationConnectionType)(nil)).Elem()
+}
+
+func (i GetOrganizationConnectionTypeArgs) ToGetOrganizationConnectionTypeOutput() GetOrganizationConnectionTypeOutput {
+	return i.ToGetOrganizationConnectionTypeOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationConnectionTypeArgs) ToGetOrganizationConnectionTypeOutputWithContext(ctx context.Context) GetOrganizationConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationConnectionTypeOutput)
+}
+
+// GetOrganizationConnectionTypeArrayInput is an input type that accepts GetOrganizationConnectionTypeArray and GetOrganizationConnectionTypeArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationConnectionTypeArrayInput` via:
+//
+//	GetOrganizationConnectionTypeArray{ GetOrganizationConnectionTypeArgs{...} }
+type GetOrganizationConnectionTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationConnectionTypeArrayOutput() GetOrganizationConnectionTypeArrayOutput
+	ToGetOrganizationConnectionTypeArrayOutputWithContext(context.Context) GetOrganizationConnectionTypeArrayOutput
+}
+
+type GetOrganizationConnectionTypeArray []GetOrganizationConnectionTypeInput
+
+func (GetOrganizationConnectionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationConnectionType)(nil)).Elem()
+}
+
+func (i GetOrganizationConnectionTypeArray) ToGetOrganizationConnectionTypeArrayOutput() GetOrganizationConnectionTypeArrayOutput {
+	return i.ToGetOrganizationConnectionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationConnectionTypeArray) ToGetOrganizationConnectionTypeArrayOutputWithContext(ctx context.Context) GetOrganizationConnectionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationConnectionTypeArrayOutput)
+}
+
+type GetOrganizationConnectionTypeOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationConnectionType)(nil)).Elem()
+}
+
+func (o GetOrganizationConnectionTypeOutput) ToGetOrganizationConnectionTypeOutput() GetOrganizationConnectionTypeOutput {
+	return o
+}
+
+func (o GetOrganizationConnectionTypeOutput) ToGetOrganizationConnectionTypeOutputWithContext(ctx context.Context) GetOrganizationConnectionTypeOutput {
+	return o
+}
+
+func (o GetOrganizationConnectionTypeOutput) AssignMembershipOnLogin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.AssignMembershipOnLogin }).(pulumi.BoolOutput)
+}
+
+func (o GetOrganizationConnectionTypeOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+type GetOrganizationConnectionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationConnectionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationConnectionType)(nil)).Elem()
+}
+
+func (o GetOrganizationConnectionTypeArrayOutput) ToGetOrganizationConnectionTypeArrayOutput() GetOrganizationConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetOrganizationConnectionTypeArrayOutput) ToGetOrganizationConnectionTypeArrayOutputWithContext(ctx context.Context) GetOrganizationConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetOrganizationConnectionTypeArrayOutput) Index(i pulumi.IntInput) GetOrganizationConnectionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationConnectionType {
+		return vs[0].([]GetOrganizationConnectionType)[vs[1].(int)]
+	}).(GetOrganizationConnectionTypeOutput)
+}
+
+type GetResourceServerScope struct {
+	Description string `pulumi:"description"`
+	Value       string `pulumi:"value"`
+}
+
+// GetResourceServerScopeInput is an input type that accepts GetResourceServerScopeArgs and GetResourceServerScopeOutput values.
+// You can construct a concrete instance of `GetResourceServerScopeInput` via:
+//
+//	GetResourceServerScopeArgs{...}
+type GetResourceServerScopeInput interface {
+	pulumi.Input
+
+	ToGetResourceServerScopeOutput() GetResourceServerScopeOutput
+	ToGetResourceServerScopeOutputWithContext(context.Context) GetResourceServerScopeOutput
+}
+
+type GetResourceServerScopeArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	Value       pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetResourceServerScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerScope)(nil)).Elem()
+}
+
+func (i GetResourceServerScopeArgs) ToGetResourceServerScopeOutput() GetResourceServerScopeOutput {
+	return i.ToGetResourceServerScopeOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerScopeArgs) ToGetResourceServerScopeOutputWithContext(ctx context.Context) GetResourceServerScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeOutput)
+}
+
+// GetResourceServerScopeArrayInput is an input type that accepts GetResourceServerScopeArray and GetResourceServerScopeArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerScopeArrayInput` via:
+//
+//	GetResourceServerScopeArray{ GetResourceServerScopeArgs{...} }
+type GetResourceServerScopeArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerScopeArrayOutput() GetResourceServerScopeArrayOutput
+	ToGetResourceServerScopeArrayOutputWithContext(context.Context) GetResourceServerScopeArrayOutput
+}
+
+type GetResourceServerScopeArray []GetResourceServerScopeInput
+
+func (GetResourceServerScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerScope)(nil)).Elem()
+}
+
+func (i GetResourceServerScopeArray) ToGetResourceServerScopeArrayOutput() GetResourceServerScopeArrayOutput {
+	return i.ToGetResourceServerScopeArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerScopeArray) ToGetResourceServerScopeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeArrayOutput)
+}
+
+type GetResourceServerScopeOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerScope)(nil)).Elem()
+}
+
+func (o GetResourceServerScopeOutput) ToGetResourceServerScopeOutput() GetResourceServerScopeOutput {
+	return o
+}
+
+func (o GetResourceServerScopeOutput) ToGetResourceServerScopeOutputWithContext(ctx context.Context) GetResourceServerScopeOutput {
+	return o
+}
+
+func (o GetResourceServerScopeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerScope) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetResourceServerScopeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerScope) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetResourceServerScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerScope)(nil)).Elem()
+}
+
+func (o GetResourceServerScopeArrayOutput) ToGetResourceServerScopeArrayOutput() GetResourceServerScopeArrayOutput {
+	return o
+}
+
+func (o GetResourceServerScopeArrayOutput) ToGetResourceServerScopeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeArrayOutput {
+	return o
+}
+
+func (o GetResourceServerScopeArrayOutput) Index(i pulumi.IntInput) GetResourceServerScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerScope {
+		return vs[0].([]GetResourceServerScope)[vs[1].(int)]
+	}).(GetResourceServerScopeOutput)
+}
+
+type GetRolePermission struct {
+	// The name of the role. If not provided, `roleId` must be set.
+	Name                     string `pulumi:"name"`
+	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
+}
+
+// GetRolePermissionInput is an input type that accepts GetRolePermissionArgs and GetRolePermissionOutput values.
+// You can construct a concrete instance of `GetRolePermissionInput` via:
+//
+//	GetRolePermissionArgs{...}
+type GetRolePermissionInput interface {
+	pulumi.Input
+
+	ToGetRolePermissionOutput() GetRolePermissionOutput
+	ToGetRolePermissionOutputWithContext(context.Context) GetRolePermissionOutput
+}
+
+type GetRolePermissionArgs struct {
+	// The name of the role. If not provided, `roleId` must be set.
+	Name                     pulumi.StringInput `pulumi:"name"`
+	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
+}
+
+func (GetRolePermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolePermission)(nil)).Elem()
+}
+
+func (i GetRolePermissionArgs) ToGetRolePermissionOutput() GetRolePermissionOutput {
+	return i.ToGetRolePermissionOutputWithContext(context.Background())
+}
+
+func (i GetRolePermissionArgs) ToGetRolePermissionOutputWithContext(ctx context.Context) GetRolePermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionOutput)
+}
+
+// GetRolePermissionArrayInput is an input type that accepts GetRolePermissionArray and GetRolePermissionArrayOutput values.
+// You can construct a concrete instance of `GetRolePermissionArrayInput` via:
+//
+//	GetRolePermissionArray{ GetRolePermissionArgs{...} }
+type GetRolePermissionArrayInput interface {
+	pulumi.Input
+
+	ToGetRolePermissionArrayOutput() GetRolePermissionArrayOutput
+	ToGetRolePermissionArrayOutputWithContext(context.Context) GetRolePermissionArrayOutput
+}
+
+type GetRolePermissionArray []GetRolePermissionInput
+
+func (GetRolePermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolePermission)(nil)).Elem()
+}
+
+func (i GetRolePermissionArray) ToGetRolePermissionArrayOutput() GetRolePermissionArrayOutput {
+	return i.ToGetRolePermissionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRolePermissionArray) ToGetRolePermissionArrayOutputWithContext(ctx context.Context) GetRolePermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionArrayOutput)
+}
+
+type GetRolePermissionOutput struct{ *pulumi.OutputState }
+
+func (GetRolePermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolePermission)(nil)).Elem()
+}
+
+func (o GetRolePermissionOutput) ToGetRolePermissionOutput() GetRolePermissionOutput {
+	return o
+}
+
+func (o GetRolePermissionOutput) ToGetRolePermissionOutputWithContext(ctx context.Context) GetRolePermissionOutput {
+	return o
+}
+
+// The name of the role. If not provided, `roleId` must be set.
+func (o GetRolePermissionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermission) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRolePermissionOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermission) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
+}
+
+type GetRolePermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRolePermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolePermission)(nil)).Elem()
+}
+
+func (o GetRolePermissionArrayOutput) ToGetRolePermissionArrayOutput() GetRolePermissionArrayOutput {
+	return o
+}
+
+func (o GetRolePermissionArrayOutput) ToGetRolePermissionArrayOutputWithContext(ctx context.Context) GetRolePermissionArrayOutput {
+	return o
+}
+
+func (o GetRolePermissionArrayOutput) Index(i pulumi.IntInput) GetRolePermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolePermission {
+		return vs[0].([]GetRolePermission)[vs[1].(int)]
+	}).(GetRolePermissionOutput)
+}
+
+type GetTenantChangePassword struct {
+	Enabled bool   `pulumi:"enabled"`
+	Html    string `pulumi:"html"`
+}
+
+// GetTenantChangePasswordInput is an input type that accepts GetTenantChangePasswordArgs and GetTenantChangePasswordOutput values.
+// You can construct a concrete instance of `GetTenantChangePasswordInput` via:
+//
+//	GetTenantChangePasswordArgs{...}
+type GetTenantChangePasswordInput interface {
+	pulumi.Input
+
+	ToGetTenantChangePasswordOutput() GetTenantChangePasswordOutput
+	ToGetTenantChangePasswordOutputWithContext(context.Context) GetTenantChangePasswordOutput
+}
+
+type GetTenantChangePasswordArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Html    pulumi.StringInput `pulumi:"html"`
+}
+
+func (GetTenantChangePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantChangePassword)(nil)).Elem()
+}
+
+func (i GetTenantChangePasswordArgs) ToGetTenantChangePasswordOutput() GetTenantChangePasswordOutput {
+	return i.ToGetTenantChangePasswordOutputWithContext(context.Background())
+}
+
+func (i GetTenantChangePasswordArgs) ToGetTenantChangePasswordOutputWithContext(ctx context.Context) GetTenantChangePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantChangePasswordOutput)
+}
+
+// GetTenantChangePasswordArrayInput is an input type that accepts GetTenantChangePasswordArray and GetTenantChangePasswordArrayOutput values.
+// You can construct a concrete instance of `GetTenantChangePasswordArrayInput` via:
+//
+//	GetTenantChangePasswordArray{ GetTenantChangePasswordArgs{...} }
+type GetTenantChangePasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantChangePasswordArrayOutput() GetTenantChangePasswordArrayOutput
+	ToGetTenantChangePasswordArrayOutputWithContext(context.Context) GetTenantChangePasswordArrayOutput
+}
+
+type GetTenantChangePasswordArray []GetTenantChangePasswordInput
+
+func (GetTenantChangePasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantChangePassword)(nil)).Elem()
+}
+
+func (i GetTenantChangePasswordArray) ToGetTenantChangePasswordArrayOutput() GetTenantChangePasswordArrayOutput {
+	return i.ToGetTenantChangePasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantChangePasswordArray) ToGetTenantChangePasswordArrayOutputWithContext(ctx context.Context) GetTenantChangePasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantChangePasswordArrayOutput)
+}
+
+type GetTenantChangePasswordOutput struct{ *pulumi.OutputState }
+
+func (GetTenantChangePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantChangePassword)(nil)).Elem()
+}
+
+func (o GetTenantChangePasswordOutput) ToGetTenantChangePasswordOutput() GetTenantChangePasswordOutput {
+	return o
+}
+
+func (o GetTenantChangePasswordOutput) ToGetTenantChangePasswordOutputWithContext(ctx context.Context) GetTenantChangePasswordOutput {
+	return o
+}
+
+func (o GetTenantChangePasswordOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantChangePassword) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantChangePasswordOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantChangePassword) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type GetTenantChangePasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantChangePasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantChangePassword)(nil)).Elem()
+}
+
+func (o GetTenantChangePasswordArrayOutput) ToGetTenantChangePasswordArrayOutput() GetTenantChangePasswordArrayOutput {
+	return o
+}
+
+func (o GetTenantChangePasswordArrayOutput) ToGetTenantChangePasswordArrayOutputWithContext(ctx context.Context) GetTenantChangePasswordArrayOutput {
+	return o
+}
+
+func (o GetTenantChangePasswordArrayOutput) Index(i pulumi.IntInput) GetTenantChangePasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantChangePassword {
+		return vs[0].([]GetTenantChangePassword)[vs[1].(int)]
+	}).(GetTenantChangePasswordOutput)
+}
+
+type GetTenantErrorPage struct {
+	Html        string `pulumi:"html"`
+	ShowLogLink bool   `pulumi:"showLogLink"`
+	Url         string `pulumi:"url"`
+}
+
+// GetTenantErrorPageInput is an input type that accepts GetTenantErrorPageArgs and GetTenantErrorPageOutput values.
+// You can construct a concrete instance of `GetTenantErrorPageInput` via:
+//
+//	GetTenantErrorPageArgs{...}
+type GetTenantErrorPageInput interface {
+	pulumi.Input
+
+	ToGetTenantErrorPageOutput() GetTenantErrorPageOutput
+	ToGetTenantErrorPageOutputWithContext(context.Context) GetTenantErrorPageOutput
+}
+
+type GetTenantErrorPageArgs struct {
+	Html        pulumi.StringInput `pulumi:"html"`
+	ShowLogLink pulumi.BoolInput   `pulumi:"showLogLink"`
+	Url         pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetTenantErrorPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantErrorPage)(nil)).Elem()
+}
+
+func (i GetTenantErrorPageArgs) ToGetTenantErrorPageOutput() GetTenantErrorPageOutput {
+	return i.ToGetTenantErrorPageOutputWithContext(context.Background())
+}
+
+func (i GetTenantErrorPageArgs) ToGetTenantErrorPageOutputWithContext(ctx context.Context) GetTenantErrorPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantErrorPageOutput)
+}
+
+// GetTenantErrorPageArrayInput is an input type that accepts GetTenantErrorPageArray and GetTenantErrorPageArrayOutput values.
+// You can construct a concrete instance of `GetTenantErrorPageArrayInput` via:
+//
+//	GetTenantErrorPageArray{ GetTenantErrorPageArgs{...} }
+type GetTenantErrorPageArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput
+	ToGetTenantErrorPageArrayOutputWithContext(context.Context) GetTenantErrorPageArrayOutput
+}
+
+type GetTenantErrorPageArray []GetTenantErrorPageInput
+
+func (GetTenantErrorPageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantErrorPage)(nil)).Elem()
+}
+
+func (i GetTenantErrorPageArray) ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput {
+	return i.ToGetTenantErrorPageArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantErrorPageArray) ToGetTenantErrorPageArrayOutputWithContext(ctx context.Context) GetTenantErrorPageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantErrorPageArrayOutput)
+}
+
+type GetTenantErrorPageOutput struct{ *pulumi.OutputState }
+
+func (GetTenantErrorPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantErrorPage)(nil)).Elem()
+}
+
+func (o GetTenantErrorPageOutput) ToGetTenantErrorPageOutput() GetTenantErrorPageOutput {
+	return o
+}
+
+func (o GetTenantErrorPageOutput) ToGetTenantErrorPageOutputWithContext(ctx context.Context) GetTenantErrorPageOutput {
+	return o
+}
+
+func (o GetTenantErrorPageOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) string { return v.Html }).(pulumi.StringOutput)
+}
+
+func (o GetTenantErrorPageOutput) ShowLogLink() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantErrorPageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetTenantErrorPageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantErrorPageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantErrorPage)(nil)).Elem()
+}
+
+func (o GetTenantErrorPageArrayOutput) ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput {
+	return o
+}
+
+func (o GetTenantErrorPageArrayOutput) ToGetTenantErrorPageArrayOutputWithContext(ctx context.Context) GetTenantErrorPageArrayOutput {
+	return o
+}
+
+func (o GetTenantErrorPageArrayOutput) Index(i pulumi.IntInput) GetTenantErrorPageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantErrorPage {
+		return vs[0].([]GetTenantErrorPage)[vs[1].(int)]
+	}).(GetTenantErrorPageOutput)
+}
+
+type GetTenantFlag struct {
+	AllowLegacyDelegationGrantTypes    bool `pulumi:"allowLegacyDelegationGrantTypes"`
+	AllowLegacyRoGrantTypes            bool `pulumi:"allowLegacyRoGrantTypes"`
+	AllowLegacyTokeninfoEndpoint       bool `pulumi:"allowLegacyTokeninfoEndpoint"`
+	DashboardInsightsView              bool `pulumi:"dashboardInsightsView"`
+	DashboardLogStreamsNext            bool `pulumi:"dashboardLogStreamsNext"`
+	DisableClickjackProtectionHeaders  bool `pulumi:"disableClickjackProtectionHeaders"`
+	DisableFieldsMapFix                bool `pulumi:"disableFieldsMapFix"`
+	DisableManagementApiSmsObfuscation bool `pulumi:"disableManagementApiSmsObfuscation"`
+	EnableAdfsWaadEmailVerification    bool `pulumi:"enableAdfsWaadEmailVerification"`
+	EnableApisSection                  bool `pulumi:"enableApisSection"`
+	EnableClientConnections            bool `pulumi:"enableClientConnections"`
+	EnableCustomDomainInEmails         bool `pulumi:"enableCustomDomainInEmails"`
+	EnableDynamicClientRegistration    bool `pulumi:"enableDynamicClientRegistration"`
+	EnableIdtokenApi2                  bool `pulumi:"enableIdtokenApi2"`
+	EnableLegacyLogsSearchV2           bool `pulumi:"enableLegacyLogsSearchV2"`
+	EnableLegacyProfile                bool `pulumi:"enableLegacyProfile"`
+	EnablePipeline2                    bool `pulumi:"enablePipeline2"`
+	EnablePublicSignupUserExistsError  bool `pulumi:"enablePublicSignupUserExistsError"`
+	NoDiscloseEnterpriseConnections    bool `pulumi:"noDiscloseEnterpriseConnections"`
+	RevokeRefreshTokenGrant            bool `pulumi:"revokeRefreshTokenGrant"`
+	// Configuration settings for Universal Login.
+	UniversalLogin                 bool `pulumi:"universalLogin"`
+	UseScopeDescriptionsForConsent bool `pulumi:"useScopeDescriptionsForConsent"`
+}
+
+// GetTenantFlagInput is an input type that accepts GetTenantFlagArgs and GetTenantFlagOutput values.
+// You can construct a concrete instance of `GetTenantFlagInput` via:
+//
+//	GetTenantFlagArgs{...}
+type GetTenantFlagInput interface {
+	pulumi.Input
+
+	ToGetTenantFlagOutput() GetTenantFlagOutput
+	ToGetTenantFlagOutputWithContext(context.Context) GetTenantFlagOutput
+}
+
+type GetTenantFlagArgs struct {
+	AllowLegacyDelegationGrantTypes    pulumi.BoolInput `pulumi:"allowLegacyDelegationGrantTypes"`
+	AllowLegacyRoGrantTypes            pulumi.BoolInput `pulumi:"allowLegacyRoGrantTypes"`
+	AllowLegacyTokeninfoEndpoint       pulumi.BoolInput `pulumi:"allowLegacyTokeninfoEndpoint"`
+	DashboardInsightsView              pulumi.BoolInput `pulumi:"dashboardInsightsView"`
+	DashboardLogStreamsNext            pulumi.BoolInput `pulumi:"dashboardLogStreamsNext"`
+	DisableClickjackProtectionHeaders  pulumi.BoolInput `pulumi:"disableClickjackProtectionHeaders"`
+	DisableFieldsMapFix                pulumi.BoolInput `pulumi:"disableFieldsMapFix"`
+	DisableManagementApiSmsObfuscation pulumi.BoolInput `pulumi:"disableManagementApiSmsObfuscation"`
+	EnableAdfsWaadEmailVerification    pulumi.BoolInput `pulumi:"enableAdfsWaadEmailVerification"`
+	EnableApisSection                  pulumi.BoolInput `pulumi:"enableApisSection"`
+	EnableClientConnections            pulumi.BoolInput `pulumi:"enableClientConnections"`
+	EnableCustomDomainInEmails         pulumi.BoolInput `pulumi:"enableCustomDomainInEmails"`
+	EnableDynamicClientRegistration    pulumi.BoolInput `pulumi:"enableDynamicClientRegistration"`
+	EnableIdtokenApi2                  pulumi.BoolInput `pulumi:"enableIdtokenApi2"`
+	EnableLegacyLogsSearchV2           pulumi.BoolInput `pulumi:"enableLegacyLogsSearchV2"`
+	EnableLegacyProfile                pulumi.BoolInput `pulumi:"enableLegacyProfile"`
+	EnablePipeline2                    pulumi.BoolInput `pulumi:"enablePipeline2"`
+	EnablePublicSignupUserExistsError  pulumi.BoolInput `pulumi:"enablePublicSignupUserExistsError"`
+	NoDiscloseEnterpriseConnections    pulumi.BoolInput `pulumi:"noDiscloseEnterpriseConnections"`
+	RevokeRefreshTokenGrant            pulumi.BoolInput `pulumi:"revokeRefreshTokenGrant"`
+	// Configuration settings for Universal Login.
+	UniversalLogin                 pulumi.BoolInput `pulumi:"universalLogin"`
+	UseScopeDescriptionsForConsent pulumi.BoolInput `pulumi:"useScopeDescriptionsForConsent"`
+}
+
+func (GetTenantFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantFlag)(nil)).Elem()
+}
+
+func (i GetTenantFlagArgs) ToGetTenantFlagOutput() GetTenantFlagOutput {
+	return i.ToGetTenantFlagOutputWithContext(context.Background())
+}
+
+func (i GetTenantFlagArgs) ToGetTenantFlagOutputWithContext(ctx context.Context) GetTenantFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantFlagOutput)
+}
+
+// GetTenantFlagArrayInput is an input type that accepts GetTenantFlagArray and GetTenantFlagArrayOutput values.
+// You can construct a concrete instance of `GetTenantFlagArrayInput` via:
+//
+//	GetTenantFlagArray{ GetTenantFlagArgs{...} }
+type GetTenantFlagArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantFlagArrayOutput() GetTenantFlagArrayOutput
+	ToGetTenantFlagArrayOutputWithContext(context.Context) GetTenantFlagArrayOutput
+}
+
+type GetTenantFlagArray []GetTenantFlagInput
+
+func (GetTenantFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantFlag)(nil)).Elem()
+}
+
+func (i GetTenantFlagArray) ToGetTenantFlagArrayOutput() GetTenantFlagArrayOutput {
+	return i.ToGetTenantFlagArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantFlagArray) ToGetTenantFlagArrayOutputWithContext(ctx context.Context) GetTenantFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantFlagArrayOutput)
+}
+
+type GetTenantFlagOutput struct{ *pulumi.OutputState }
+
+func (GetTenantFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantFlag)(nil)).Elem()
+}
+
+func (o GetTenantFlagOutput) ToGetTenantFlagOutput() GetTenantFlagOutput {
+	return o
+}
+
+func (o GetTenantFlagOutput) ToGetTenantFlagOutputWithContext(ctx context.Context) GetTenantFlagOutput {
+	return o
+}
+
+func (o GetTenantFlagOutput) AllowLegacyDelegationGrantTypes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.AllowLegacyDelegationGrantTypes }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) AllowLegacyRoGrantTypes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.AllowLegacyRoGrantTypes }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) AllowLegacyTokeninfoEndpoint() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.AllowLegacyTokeninfoEndpoint }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) DashboardInsightsView() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DashboardInsightsView }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) DashboardLogStreamsNext() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DashboardLogStreamsNext }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) DisableClickjackProtectionHeaders() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DisableClickjackProtectionHeaders }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) DisableFieldsMapFix() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DisableFieldsMapFix }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) DisableManagementApiSmsObfuscation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DisableManagementApiSmsObfuscation }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnableAdfsWaadEmailVerification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableAdfsWaadEmailVerification }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnableApisSection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableApisSection }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnableClientConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableClientConnections }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnableCustomDomainInEmails() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableCustomDomainInEmails }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnableDynamicClientRegistration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableDynamicClientRegistration }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnableIdtokenApi2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableIdtokenApi2 }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnableLegacyLogsSearchV2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableLegacyLogsSearchV2 }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnableLegacyProfile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableLegacyProfile }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnablePipeline2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnablePipeline2 }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) EnablePublicSignupUserExistsError() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) NoDiscloseEnterpriseConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) RevokeRefreshTokenGrant() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.RevokeRefreshTokenGrant }).(pulumi.BoolOutput)
+}
+
+// Configuration settings for Universal Login.
+func (o GetTenantFlagOutput) UniversalLogin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.UniversalLogin }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) UseScopeDescriptionsForConsent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.UseScopeDescriptionsForConsent }).(pulumi.BoolOutput)
+}
+
+type GetTenantFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantFlag)(nil)).Elem()
+}
+
+func (o GetTenantFlagArrayOutput) ToGetTenantFlagArrayOutput() GetTenantFlagArrayOutput {
+	return o
+}
+
+func (o GetTenantFlagArrayOutput) ToGetTenantFlagArrayOutputWithContext(ctx context.Context) GetTenantFlagArrayOutput {
+	return o
+}
+
+func (o GetTenantFlagArrayOutput) Index(i pulumi.IntInput) GetTenantFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantFlag {
+		return vs[0].([]GetTenantFlag)[vs[1].(int)]
+	}).(GetTenantFlagOutput)
+}
+
+type GetTenantGuardianMfaPage struct {
+	Enabled bool   `pulumi:"enabled"`
+	Html    string `pulumi:"html"`
+}
+
+// GetTenantGuardianMfaPageInput is an input type that accepts GetTenantGuardianMfaPageArgs and GetTenantGuardianMfaPageOutput values.
+// You can construct a concrete instance of `GetTenantGuardianMfaPageInput` via:
+//
+//	GetTenantGuardianMfaPageArgs{...}
+type GetTenantGuardianMfaPageInput interface {
+	pulumi.Input
+
+	ToGetTenantGuardianMfaPageOutput() GetTenantGuardianMfaPageOutput
+	ToGetTenantGuardianMfaPageOutputWithContext(context.Context) GetTenantGuardianMfaPageOutput
+}
+
+type GetTenantGuardianMfaPageArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	Html    pulumi.StringInput `pulumi:"html"`
+}
+
+func (GetTenantGuardianMfaPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantGuardianMfaPage)(nil)).Elem()
+}
+
+func (i GetTenantGuardianMfaPageArgs) ToGetTenantGuardianMfaPageOutput() GetTenantGuardianMfaPageOutput {
+	return i.ToGetTenantGuardianMfaPageOutputWithContext(context.Background())
+}
+
+func (i GetTenantGuardianMfaPageArgs) ToGetTenantGuardianMfaPageOutputWithContext(ctx context.Context) GetTenantGuardianMfaPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantGuardianMfaPageOutput)
+}
+
+// GetTenantGuardianMfaPageArrayInput is an input type that accepts GetTenantGuardianMfaPageArray and GetTenantGuardianMfaPageArrayOutput values.
+// You can construct a concrete instance of `GetTenantGuardianMfaPageArrayInput` via:
+//
+//	GetTenantGuardianMfaPageArray{ GetTenantGuardianMfaPageArgs{...} }
+type GetTenantGuardianMfaPageArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantGuardianMfaPageArrayOutput() GetTenantGuardianMfaPageArrayOutput
+	ToGetTenantGuardianMfaPageArrayOutputWithContext(context.Context) GetTenantGuardianMfaPageArrayOutput
+}
+
+type GetTenantGuardianMfaPageArray []GetTenantGuardianMfaPageInput
+
+func (GetTenantGuardianMfaPageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantGuardianMfaPage)(nil)).Elem()
+}
+
+func (i GetTenantGuardianMfaPageArray) ToGetTenantGuardianMfaPageArrayOutput() GetTenantGuardianMfaPageArrayOutput {
+	return i.ToGetTenantGuardianMfaPageArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantGuardianMfaPageArray) ToGetTenantGuardianMfaPageArrayOutputWithContext(ctx context.Context) GetTenantGuardianMfaPageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantGuardianMfaPageArrayOutput)
+}
+
+type GetTenantGuardianMfaPageOutput struct{ *pulumi.OutputState }
+
+func (GetTenantGuardianMfaPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantGuardianMfaPage)(nil)).Elem()
+}
+
+func (o GetTenantGuardianMfaPageOutput) ToGetTenantGuardianMfaPageOutput() GetTenantGuardianMfaPageOutput {
+	return o
+}
+
+func (o GetTenantGuardianMfaPageOutput) ToGetTenantGuardianMfaPageOutputWithContext(ctx context.Context) GetTenantGuardianMfaPageOutput {
+	return o
+}
+
+func (o GetTenantGuardianMfaPageOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantGuardianMfaPage) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantGuardianMfaPageOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantGuardianMfaPage) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type GetTenantGuardianMfaPageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantGuardianMfaPageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantGuardianMfaPage)(nil)).Elem()
+}
+
+func (o GetTenantGuardianMfaPageArrayOutput) ToGetTenantGuardianMfaPageArrayOutput() GetTenantGuardianMfaPageArrayOutput {
+	return o
+}
+
+func (o GetTenantGuardianMfaPageArrayOutput) ToGetTenantGuardianMfaPageArrayOutputWithContext(ctx context.Context) GetTenantGuardianMfaPageArrayOutput {
+	return o
+}
+
+func (o GetTenantGuardianMfaPageArrayOutput) Index(i pulumi.IntInput) GetTenantGuardianMfaPageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantGuardianMfaPage {
+		return vs[0].([]GetTenantGuardianMfaPage)[vs[1].(int)]
+	}).(GetTenantGuardianMfaPageOutput)
+}
+
+type GetTenantSessionCooky struct {
+	Mode string `pulumi:"mode"`
+}
+
+// GetTenantSessionCookyInput is an input type that accepts GetTenantSessionCookyArgs and GetTenantSessionCookyOutput values.
+// You can construct a concrete instance of `GetTenantSessionCookyInput` via:
+//
+//	GetTenantSessionCookyArgs{...}
+type GetTenantSessionCookyInput interface {
+	pulumi.Input
+
+	ToGetTenantSessionCookyOutput() GetTenantSessionCookyOutput
+	ToGetTenantSessionCookyOutputWithContext(context.Context) GetTenantSessionCookyOutput
+}
+
+type GetTenantSessionCookyArgs struct {
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetTenantSessionCookyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSessionCooky)(nil)).Elem()
+}
+
+func (i GetTenantSessionCookyArgs) ToGetTenantSessionCookyOutput() GetTenantSessionCookyOutput {
+	return i.ToGetTenantSessionCookyOutputWithContext(context.Background())
+}
+
+func (i GetTenantSessionCookyArgs) ToGetTenantSessionCookyOutputWithContext(ctx context.Context) GetTenantSessionCookyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionCookyOutput)
+}
+
+// GetTenantSessionCookyArrayInput is an input type that accepts GetTenantSessionCookyArray and GetTenantSessionCookyArrayOutput values.
+// You can construct a concrete instance of `GetTenantSessionCookyArrayInput` via:
+//
+//	GetTenantSessionCookyArray{ GetTenantSessionCookyArgs{...} }
+type GetTenantSessionCookyArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantSessionCookyArrayOutput() GetTenantSessionCookyArrayOutput
+	ToGetTenantSessionCookyArrayOutputWithContext(context.Context) GetTenantSessionCookyArrayOutput
+}
+
+type GetTenantSessionCookyArray []GetTenantSessionCookyInput
+
+func (GetTenantSessionCookyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSessionCooky)(nil)).Elem()
+}
+
+func (i GetTenantSessionCookyArray) ToGetTenantSessionCookyArrayOutput() GetTenantSessionCookyArrayOutput {
+	return i.ToGetTenantSessionCookyArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantSessionCookyArray) ToGetTenantSessionCookyArrayOutputWithContext(ctx context.Context) GetTenantSessionCookyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionCookyArrayOutput)
+}
+
+type GetTenantSessionCookyOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionCookyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSessionCooky)(nil)).Elem()
+}
+
+func (o GetTenantSessionCookyOutput) ToGetTenantSessionCookyOutput() GetTenantSessionCookyOutput {
+	return o
+}
+
+func (o GetTenantSessionCookyOutput) ToGetTenantSessionCookyOutputWithContext(ctx context.Context) GetTenantSessionCookyOutput {
+	return o
+}
+
+func (o GetTenantSessionCookyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantSessionCooky) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetTenantSessionCookyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionCookyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSessionCooky)(nil)).Elem()
+}
+
+func (o GetTenantSessionCookyArrayOutput) ToGetTenantSessionCookyArrayOutput() GetTenantSessionCookyArrayOutput {
+	return o
+}
+
+func (o GetTenantSessionCookyArrayOutput) ToGetTenantSessionCookyArrayOutputWithContext(ctx context.Context) GetTenantSessionCookyArrayOutput {
+	return o
+}
+
+func (o GetTenantSessionCookyArrayOutput) Index(i pulumi.IntInput) GetTenantSessionCookyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantSessionCooky {
+		return vs[0].([]GetTenantSessionCooky)[vs[1].(int)]
+	}).(GetTenantSessionCookyOutput)
+}
+
+type GetTenantUniversalLogin struct {
+	Colors []GetTenantUniversalLoginColor `pulumi:"colors"`
+}
+
+// GetTenantUniversalLoginInput is an input type that accepts GetTenantUniversalLoginArgs and GetTenantUniversalLoginOutput values.
+// You can construct a concrete instance of `GetTenantUniversalLoginInput` via:
+//
+//	GetTenantUniversalLoginArgs{...}
+type GetTenantUniversalLoginInput interface {
+	pulumi.Input
+
+	ToGetTenantUniversalLoginOutput() GetTenantUniversalLoginOutput
+	ToGetTenantUniversalLoginOutputWithContext(context.Context) GetTenantUniversalLoginOutput
+}
+
+type GetTenantUniversalLoginArgs struct {
+	Colors GetTenantUniversalLoginColorArrayInput `pulumi:"colors"`
+}
+
+func (GetTenantUniversalLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantUniversalLogin)(nil)).Elem()
+}
+
+func (i GetTenantUniversalLoginArgs) ToGetTenantUniversalLoginOutput() GetTenantUniversalLoginOutput {
+	return i.ToGetTenantUniversalLoginOutputWithContext(context.Background())
+}
+
+func (i GetTenantUniversalLoginArgs) ToGetTenantUniversalLoginOutputWithContext(ctx context.Context) GetTenantUniversalLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantUniversalLoginOutput)
+}
+
+// GetTenantUniversalLoginArrayInput is an input type that accepts GetTenantUniversalLoginArray and GetTenantUniversalLoginArrayOutput values.
+// You can construct a concrete instance of `GetTenantUniversalLoginArrayInput` via:
+//
+//	GetTenantUniversalLoginArray{ GetTenantUniversalLoginArgs{...} }
+type GetTenantUniversalLoginArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantUniversalLoginArrayOutput() GetTenantUniversalLoginArrayOutput
+	ToGetTenantUniversalLoginArrayOutputWithContext(context.Context) GetTenantUniversalLoginArrayOutput
+}
+
+type GetTenantUniversalLoginArray []GetTenantUniversalLoginInput
+
+func (GetTenantUniversalLoginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantUniversalLogin)(nil)).Elem()
+}
+
+func (i GetTenantUniversalLoginArray) ToGetTenantUniversalLoginArrayOutput() GetTenantUniversalLoginArrayOutput {
+	return i.ToGetTenantUniversalLoginArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantUniversalLoginArray) ToGetTenantUniversalLoginArrayOutputWithContext(ctx context.Context) GetTenantUniversalLoginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantUniversalLoginArrayOutput)
+}
+
+type GetTenantUniversalLoginOutput struct{ *pulumi.OutputState }
+
+func (GetTenantUniversalLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantUniversalLogin)(nil)).Elem()
+}
+
+func (o GetTenantUniversalLoginOutput) ToGetTenantUniversalLoginOutput() GetTenantUniversalLoginOutput {
+	return o
+}
+
+func (o GetTenantUniversalLoginOutput) ToGetTenantUniversalLoginOutputWithContext(ctx context.Context) GetTenantUniversalLoginOutput {
+	return o
+}
+
+func (o GetTenantUniversalLoginOutput) Colors() GetTenantUniversalLoginColorArrayOutput {
+	return o.ApplyT(func(v GetTenantUniversalLogin) []GetTenantUniversalLoginColor { return v.Colors }).(GetTenantUniversalLoginColorArrayOutput)
+}
+
+type GetTenantUniversalLoginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantUniversalLoginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantUniversalLogin)(nil)).Elem()
+}
+
+func (o GetTenantUniversalLoginArrayOutput) ToGetTenantUniversalLoginArrayOutput() GetTenantUniversalLoginArrayOutput {
+	return o
+}
+
+func (o GetTenantUniversalLoginArrayOutput) ToGetTenantUniversalLoginArrayOutputWithContext(ctx context.Context) GetTenantUniversalLoginArrayOutput {
+	return o
+}
+
+func (o GetTenantUniversalLoginArrayOutput) Index(i pulumi.IntInput) GetTenantUniversalLoginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantUniversalLogin {
+		return vs[0].([]GetTenantUniversalLogin)[vs[1].(int)]
+	}).(GetTenantUniversalLoginOutput)
+}
+
+type GetTenantUniversalLoginColor struct {
+	PageBackground string `pulumi:"pageBackground"`
+	Primary        string `pulumi:"primary"`
+}
+
+// GetTenantUniversalLoginColorInput is an input type that accepts GetTenantUniversalLoginColorArgs and GetTenantUniversalLoginColorOutput values.
+// You can construct a concrete instance of `GetTenantUniversalLoginColorInput` via:
+//
+//	GetTenantUniversalLoginColorArgs{...}
+type GetTenantUniversalLoginColorInput interface {
+	pulumi.Input
+
+	ToGetTenantUniversalLoginColorOutput() GetTenantUniversalLoginColorOutput
+	ToGetTenantUniversalLoginColorOutputWithContext(context.Context) GetTenantUniversalLoginColorOutput
+}
+
+type GetTenantUniversalLoginColorArgs struct {
+	PageBackground pulumi.StringInput `pulumi:"pageBackground"`
+	Primary        pulumi.StringInput `pulumi:"primary"`
+}
+
+func (GetTenantUniversalLoginColorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantUniversalLoginColor)(nil)).Elem()
+}
+
+func (i GetTenantUniversalLoginColorArgs) ToGetTenantUniversalLoginColorOutput() GetTenantUniversalLoginColorOutput {
+	return i.ToGetTenantUniversalLoginColorOutputWithContext(context.Background())
+}
+
+func (i GetTenantUniversalLoginColorArgs) ToGetTenantUniversalLoginColorOutputWithContext(ctx context.Context) GetTenantUniversalLoginColorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantUniversalLoginColorOutput)
+}
+
+// GetTenantUniversalLoginColorArrayInput is an input type that accepts GetTenantUniversalLoginColorArray and GetTenantUniversalLoginColorArrayOutput values.
+// You can construct a concrete instance of `GetTenantUniversalLoginColorArrayInput` via:
+//
+//	GetTenantUniversalLoginColorArray{ GetTenantUniversalLoginColorArgs{...} }
+type GetTenantUniversalLoginColorArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantUniversalLoginColorArrayOutput() GetTenantUniversalLoginColorArrayOutput
+	ToGetTenantUniversalLoginColorArrayOutputWithContext(context.Context) GetTenantUniversalLoginColorArrayOutput
+}
+
+type GetTenantUniversalLoginColorArray []GetTenantUniversalLoginColorInput
+
+func (GetTenantUniversalLoginColorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantUniversalLoginColor)(nil)).Elem()
+}
+
+func (i GetTenantUniversalLoginColorArray) ToGetTenantUniversalLoginColorArrayOutput() GetTenantUniversalLoginColorArrayOutput {
+	return i.ToGetTenantUniversalLoginColorArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantUniversalLoginColorArray) ToGetTenantUniversalLoginColorArrayOutputWithContext(ctx context.Context) GetTenantUniversalLoginColorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantUniversalLoginColorArrayOutput)
+}
+
+type GetTenantUniversalLoginColorOutput struct{ *pulumi.OutputState }
+
+func (GetTenantUniversalLoginColorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantUniversalLoginColor)(nil)).Elem()
+}
+
+func (o GetTenantUniversalLoginColorOutput) ToGetTenantUniversalLoginColorOutput() GetTenantUniversalLoginColorOutput {
+	return o
+}
+
+func (o GetTenantUniversalLoginColorOutput) ToGetTenantUniversalLoginColorOutputWithContext(ctx context.Context) GetTenantUniversalLoginColorOutput {
+	return o
+}
+
+func (o GetTenantUniversalLoginColorOutput) PageBackground() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantUniversalLoginColor) string { return v.PageBackground }).(pulumi.StringOutput)
+}
+
+func (o GetTenantUniversalLoginColorOutput) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantUniversalLoginColor) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+type GetTenantUniversalLoginColorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantUniversalLoginColorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantUniversalLoginColor)(nil)).Elem()
+}
+
+func (o GetTenantUniversalLoginColorArrayOutput) ToGetTenantUniversalLoginColorArrayOutput() GetTenantUniversalLoginColorArrayOutput {
+	return o
+}
+
+func (o GetTenantUniversalLoginColorArrayOutput) ToGetTenantUniversalLoginColorArrayOutputWithContext(ctx context.Context) GetTenantUniversalLoginColorArrayOutput {
+	return o
+}
+
+func (o GetTenantUniversalLoginColorArrayOutput) Index(i pulumi.IntInput) GetTenantUniversalLoginColorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantUniversalLoginColor {
+		return vs[0].([]GetTenantUniversalLoginColor)[vs[1].(int)]
+	}).(GetTenantUniversalLoginColorOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -19720,6 +24901,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsPtrInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionInput)(nil)).Elem(), TriggerBindingActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionArrayInput)(nil)).Elem(), TriggerBindingActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBruteForceProtectionInput)(nil)).Elem(), GetAttackProtectionBruteForceProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBruteForceProtectionArrayInput)(nil)).Elem(), GetAttackProtectionBruteForceProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingArrayInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreLoginInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingPreLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingColorInput)(nil)).Elem(), GetBrandingColorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingColorArrayInput)(nil)).Elem(), GetBrandingColorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingFontInput)(nil)).Elem(), GetBrandingFontArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingFontArrayInput)(nil)).Elem(), GetBrandingFontArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeBorderInput)(nil)).Elem(), GetBrandingThemeBorderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeBorderArrayInput)(nil)).Elem(), GetBrandingThemeBorderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeColorInput)(nil)).Elem(), GetBrandingThemeColorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeColorArrayInput)(nil)).Elem(), GetBrandingThemeColorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontInput)(nil)).Elem(), GetBrandingThemeFontArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontArrayInput)(nil)).Elem(), GetBrandingThemeFontArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontBodyTextInput)(nil)).Elem(), GetBrandingThemeFontBodyTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontBodyTextArrayInput)(nil)).Elem(), GetBrandingThemeFontBodyTextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontButtonsTextInput)(nil)).Elem(), GetBrandingThemeFontButtonsTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontButtonsTextArrayInput)(nil)).Elem(), GetBrandingThemeFontButtonsTextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontInputLabelInput)(nil)).Elem(), GetBrandingThemeFontInputLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontInputLabelArrayInput)(nil)).Elem(), GetBrandingThemeFontInputLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontLinkInput)(nil)).Elem(), GetBrandingThemeFontLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontLinkArrayInput)(nil)).Elem(), GetBrandingThemeFontLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontSubtitleInput)(nil)).Elem(), GetBrandingThemeFontSubtitleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontSubtitleArrayInput)(nil)).Elem(), GetBrandingThemeFontSubtitleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontTitleInput)(nil)).Elem(), GetBrandingThemeFontTitleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontTitleArrayInput)(nil)).Elem(), GetBrandingThemeFontTitleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemePageBackgroundInput)(nil)).Elem(), GetBrandingThemePageBackgroundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemePageBackgroundArrayInput)(nil)).Elem(), GetBrandingThemePageBackgroundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeWidgetInput)(nil)).Elem(), GetBrandingThemeWidgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeWidgetArrayInput)(nil)).Elem(), GetBrandingThemeWidgetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingUniversalLoginInput)(nil)).Elem(), GetBrandingUniversalLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingUniversalLoginArrayInput)(nil)).Elem(), GetBrandingUniversalLoginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonInput)(nil)).Elem(), GetClientAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonArrayInput)(nil)).Elem(), GetClientAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientAddonSamlpInput)(nil)).Elem(), GetClientAddonSamlpArgs{})
@@ -19740,6 +24961,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginFacebookArrayInput)(nil)).Elem(), GetClientNativeSocialLoginFacebookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenInput)(nil)).Elem(), GetClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenArrayInput)(nil)).Elem(), GetClientRefreshTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationArrayInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionIdpInitiatedInput)(nil)).Elem(), GetConnectionOptionIdpInitiatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionIdpInitiatedArrayInput)(nil)).Elem(), GetConnectionOptionIdpInitiatedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionMfaInput)(nil)).Elem(), GetConnectionOptionMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionMfaArrayInput)(nil)).Elem(), GetConnectionOptionMfaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordComplexityOptionInput)(nil)).Elem(), GetConnectionOptionPasswordComplexityOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordComplexityOptionArrayInput)(nil)).Elem(), GetConnectionOptionPasswordComplexityOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordDictionaryInput)(nil)).Elem(), GetConnectionOptionPasswordDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordDictionaryArrayInput)(nil)).Elem(), GetConnectionOptionPasswordDictionaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordHistoryInput)(nil)).Elem(), GetConnectionOptionPasswordHistoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordHistoryArrayInput)(nil)).Elem(), GetConnectionOptionPasswordHistoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordNoPersonalInfoInput)(nil)).Elem(), GetConnectionOptionPasswordNoPersonalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordNoPersonalInfoArrayInput)(nil)).Elem(), GetConnectionOptionPasswordNoPersonalInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionSigningKeyInput)(nil)).Elem(), GetConnectionOptionSigningKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionSigningKeyArrayInput)(nil)).Elem(), GetConnectionOptionSigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionTotpInput)(nil)).Elem(), GetConnectionOptionTotpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionTotpArrayInput)(nil)).Elem(), GetConnectionOptionTotpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationInput)(nil)).Elem(), GetConnectionOptionValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationArrayInput)(nil)).Elem(), GetConnectionOptionValidationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameArrayInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonInput)(nil)).Elem(), GetGlobalClientAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonArrayInput)(nil)).Elem(), GetGlobalClientAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpInput)(nil)).Elem(), GetGlobalClientAddonSamlpArgs{})
@@ -19760,6 +25005,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientNativeSocialLoginFacebookArrayInput)(nil)).Elem(), GetGlobalClientNativeSocialLoginFacebookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientRefreshTokenInput)(nil)).Elem(), GetGlobalClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientRefreshTokenArrayInput)(nil)).Elem(), GetGlobalClientRefreshTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingInput)(nil)).Elem(), GetOrganizationBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingArrayInput)(nil)).Elem(), GetOrganizationBrandingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeInput)(nil)).Elem(), GetOrganizationConnectionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeArrayInput)(nil)).Elem(), GetOrganizationConnectionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeInput)(nil)).Elem(), GetResourceServerScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeArrayInput)(nil)).Elem(), GetResourceServerScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionInput)(nil)).Elem(), GetRolePermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionArrayInput)(nil)).Elem(), GetRolePermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantChangePasswordInput)(nil)).Elem(), GetTenantChangePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantChangePasswordArrayInput)(nil)).Elem(), GetTenantChangePasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageInput)(nil)).Elem(), GetTenantErrorPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageArrayInput)(nil)).Elem(), GetTenantErrorPageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagInput)(nil)).Elem(), GetTenantFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagArrayInput)(nil)).Elem(), GetTenantFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantGuardianMfaPageInput)(nil)).Elem(), GetTenantGuardianMfaPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantGuardianMfaPageArrayInput)(nil)).Elem(), GetTenantGuardianMfaPageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyInput)(nil)).Elem(), GetTenantSessionCookyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyArrayInput)(nil)).Elem(), GetTenantSessionCookyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginInput)(nil)).Elem(), GetTenantUniversalLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginArrayInput)(nil)).Elem(), GetTenantUniversalLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginColorInput)(nil)).Elem(), GetTenantUniversalLoginColorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginColorArrayInput)(nil)).Elem(), GetTenantUniversalLoginColorArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionSecretOutput{})
@@ -19920,6 +25187,46 @@ func init() {
 	pulumi.RegisterOutputType(TenantUniversalLoginColorsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBindingActionOutput{})
 	pulumi.RegisterOutputType(TriggerBindingActionArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBruteForceProtectionOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBruteForceProtectionArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingPreLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingColorOutput{})
+	pulumi.RegisterOutputType(GetBrandingColorArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingFontOutput{})
+	pulumi.RegisterOutputType(GetBrandingFontArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeBorderOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeBorderArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeColorOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeColorArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontBodyTextOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontBodyTextArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontButtonsTextOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontButtonsTextArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontInputLabelOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontInputLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontLinkOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontLinkArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontSubtitleOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontSubtitleArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontTitleOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeFontTitleArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemePageBackgroundOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemePageBackgroundArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeWidgetOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeWidgetArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingUniversalLoginOutput{})
+	pulumi.RegisterOutputType(GetBrandingUniversalLoginArrayOutput{})
 	pulumi.RegisterOutputType(GetClientAddonOutput{})
 	pulumi.RegisterOutputType(GetClientAddonArrayOutput{})
 	pulumi.RegisterOutputType(GetClientAddonSamlpOutput{})
@@ -19940,6 +25247,30 @@ func init() {
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginFacebookArrayOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionIdpInitiatedOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionIdpInitiatedArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionMfaOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionMfaArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordComplexityOptionOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordComplexityOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordDictionaryOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordDictionaryArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordHistoryOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordHistoryArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordNoPersonalInfoOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordNoPersonalInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionSigningKeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionTotpOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionTotpArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionValidationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionValidationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientAddonOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientAddonArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpOutput{})
@@ -19960,4 +25291,26 @@ func init() {
 	pulumi.RegisterOutputType(GetGlobalClientNativeSocialLoginFacebookArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientRefreshTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBrandingOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBrandingArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationConnectionTypeOutput{})
+	pulumi.RegisterOutputType(GetOrganizationConnectionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerScopeOutput{})
+	pulumi.RegisterOutputType(GetResourceServerScopeArrayOutput{})
+	pulumi.RegisterOutputType(GetRolePermissionOutput{})
+	pulumi.RegisterOutputType(GetRolePermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantChangePasswordOutput{})
+	pulumi.RegisterOutputType(GetTenantChangePasswordArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantErrorPageOutput{})
+	pulumi.RegisterOutputType(GetTenantErrorPageArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantFlagOutput{})
+	pulumi.RegisterOutputType(GetTenantFlagArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantGuardianMfaPageOutput{})
+	pulumi.RegisterOutputType(GetTenantGuardianMfaPageArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionCookyOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionCookyArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantUniversalLoginOutput{})
+	pulumi.RegisterOutputType(GetTenantUniversalLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantUniversalLoginColorOutput{})
+	pulumi.RegisterOutputType(GetTenantUniversalLoginColorArrayOutput{})
 }

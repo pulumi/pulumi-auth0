@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *     connectionName: "Username-Password-Authentication",
  *     userId: "auth0|1234567890",
  *     email: "test@test.com",
- *     password: `passpass$12$12`,
+ *     password: "passpass$12$12",
  *     nickname: "testnick",
  *     username: "testnick",
  *     roles: [myRole.id],

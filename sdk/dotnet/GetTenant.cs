@@ -41,29 +41,155 @@ namespace Pulumi.Auth0
     public sealed class GetTenantResult
     {
         /// <summary>
+        /// URLs that Auth0 may redirect to after logout.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedLogoutUrls;
+        /// <summary>
+        /// Configuration settings for change password page.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantChangePasswordResult> ChangePasswords;
+        /// <summary>
+        /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+        /// </summary>
+        public readonly string DefaultAudience;
+        /// <summary>
+        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        /// </summary>
+        public readonly string DefaultDirectory;
+        /// <summary>
+        /// The default absolute redirection URI. Must be HTTPS or an empty string.
+        /// </summary>
+        public readonly string DefaultRedirectionUri;
+        /// <summary>
         /// Your Auth0 domain name.
         /// </summary>
         public readonly string Domain;
+        /// <summary>
+        /// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        /// </summary>
+        public readonly ImmutableArray<string> EnabledLocales;
+        /// <summary>
+        /// Configuration settings for error pages.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantErrorPageResult> ErrorPages;
+        /// <summary>
+        /// Configuration settings for tenant flags.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantFlagResult> Flags;
+        /// <summary>
+        /// Friendly name for the tenant.
+        /// </summary>
+        public readonly string FriendlyName;
+        /// <summary>
+        /// Configuration settings for the Guardian MFA page.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantGuardianMfaPageResult> GuardianMfaPages;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Number of hours during which a session can be inactive before the user must log in again.
+        /// </summary>
+        public readonly double IdleSessionLifetime;
+        /// <summary>
         /// The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
         /// </summary>
         public readonly string ManagementApiIdentifier;
+        /// <summary>
+        /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+        /// </summary>
+        public readonly string PictureUrl;
+        /// <summary>
+        /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
+        /// </summary>
+        public readonly string SandboxVersion;
+        /// <summary>
+        /// Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantSessionCookyResult> SessionCookies;
+        /// <summary>
+        /// Number of hours during which a session will stay valid.
+        /// </summary>
+        public readonly double SessionLifetime;
+        /// <summary>
+        /// Support email address for authenticating users.
+        /// </summary>
+        public readonly string SupportEmail;
+        /// <summary>
+        /// Support URL for authenticating users.
+        /// </summary>
+        public readonly string SupportUrl;
+        /// <summary>
+        /// Configuration settings for Universal Login.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantUniversalLoginResult> UniversalLogins;
 
         [OutputConstructor]
         private GetTenantResult(
+            ImmutableArray<string> allowedLogoutUrls,
+
+            ImmutableArray<Outputs.GetTenantChangePasswordResult> changePasswords,
+
+            string defaultAudience,
+
+            string defaultDirectory,
+
+            string defaultRedirectionUri,
+
             string domain,
+
+            ImmutableArray<string> enabledLocales,
+
+            ImmutableArray<Outputs.GetTenantErrorPageResult> errorPages,
+
+            ImmutableArray<Outputs.GetTenantFlagResult> flags,
+
+            string friendlyName,
+
+            ImmutableArray<Outputs.GetTenantGuardianMfaPageResult> guardianMfaPages,
 
             string id,
 
-            string managementApiIdentifier)
+            double idleSessionLifetime,
+
+            string managementApiIdentifier,
+
+            string pictureUrl,
+
+            string sandboxVersion,
+
+            ImmutableArray<Outputs.GetTenantSessionCookyResult> sessionCookies,
+
+            double sessionLifetime,
+
+            string supportEmail,
+
+            string supportUrl,
+
+            ImmutableArray<Outputs.GetTenantUniversalLoginResult> universalLogins)
         {
+            AllowedLogoutUrls = allowedLogoutUrls;
+            ChangePasswords = changePasswords;
+            DefaultAudience = defaultAudience;
+            DefaultDirectory = defaultDirectory;
+            DefaultRedirectionUri = defaultRedirectionUri;
             Domain = domain;
+            EnabledLocales = enabledLocales;
+            ErrorPages = errorPages;
+            Flags = flags;
+            FriendlyName = friendlyName;
+            GuardianMfaPages = guardianMfaPages;
             Id = id;
+            IdleSessionLifetime = idleSessionLifetime;
             ManagementApiIdentifier = managementApiIdentifier;
+            PictureUrl = pictureUrl;
+            SandboxVersion = sandboxVersion;
+            SessionCookies = sessionCookies;
+            SessionLifetime = sessionLifetime;
+            SupportEmail = supportEmail;
+            SupportUrl = supportUrl;
+            UniversalLogins = universalLogins;
         }
     }
 }
