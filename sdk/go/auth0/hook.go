@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -34,7 +32,7 @@ import (
 //					"auth0": pulumi.Any("2.30.0"),
 //				},
 //				Enabled: pulumi.Bool(true),
-//				Script:  pulumi.String(fmt.Sprintf("    function (user, context, callback) {\n      callback(null, { user });\n    }\n  \n")),
+//				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, { user });\n    }\n  \n"),
 //				Secrets: pulumi.AnyMap{
 //					"foo": pulumi.Any("bar"),
 //				},

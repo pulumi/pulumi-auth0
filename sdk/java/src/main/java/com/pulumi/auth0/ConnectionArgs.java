@@ -139,20 +139,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         return this.strategy;
     }
 
-    @Import(name="strategyVersion")
-    private @Nullable Output<String> strategyVersion;
-
-    public Optional<Output<String>> strategyVersion() {
-        return Optional.ofNullable(this.strategyVersion);
-    }
-
-    @Import(name="validation")
-    private @Nullable Output<Map<String,String>> validation;
-
-    public Optional<Output<Map<String,String>>> validation() {
-        return Optional.ofNullable(this.validation);
-    }
-
     private ConnectionArgs() {}
 
     private ConnectionArgs(ConnectionArgs $) {
@@ -164,8 +150,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.realms = $.realms;
         this.showAsButton = $.showAsButton;
         this.strategy = $.strategy;
-        this.strategyVersion = $.strategyVersion;
-        this.validation = $.validation;
     }
 
     public static Builder builder() {
@@ -362,24 +346,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder strategy(String strategy) {
             return strategy(Output.of(strategy));
-        }
-
-        public Builder strategyVersion(@Nullable Output<String> strategyVersion) {
-            $.strategyVersion = strategyVersion;
-            return this;
-        }
-
-        public Builder strategyVersion(String strategyVersion) {
-            return strategyVersion(Output.of(strategyVersion));
-        }
-
-        public Builder validation(@Nullable Output<Map<String,String>> validation) {
-            $.validation = validation;
-            return this;
-        }
-
-        public Builder validation(Map<String,String> validation) {
-            return validation(Output.of(validation));
         }
 
         public ConnectionArgs build() {

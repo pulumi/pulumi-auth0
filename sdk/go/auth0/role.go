@@ -19,8 +19,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -60,7 +58,7 @@ import (
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
 //				UserId:         pulumi.String("auth0|1234567890"),
 //				Email:          pulumi.String("test@test.com"),
-//				Password:       pulumi.String(fmt.Sprintf("passpass$12$12")),
+//				Password:       pulumi.String("passpass$12$12"),
 //				Nickname:       pulumi.String("testnick"),
 //				Username:       pulumi.String("testnick"),
 //				Roles: pulumi.StringArray{

@@ -375,6 +375,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * IDs of the clients for which the connection is enabled.
+     */
+    public /*out*/ readonly enabledClients!: pulumi.Output<string[]>;
+    /**
      * Indicates whether the connection is domain level.
      */
     public readonly isDomainConnection!: pulumi.Output<boolean>;
@@ -402,8 +406,6 @@ export class Connection extends pulumi.CustomResource {
      * Type of the connection, which indicates the identity provider.
      */
     public readonly strategy!: pulumi.Output<string>;
-    public readonly strategyVersion!: pulumi.Output<string>;
-    public readonly validation!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -419,6 +421,7 @@ export class Connection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enabledClients"] = state ? state.enabledClients : undefined;
             resourceInputs["isDomainConnection"] = state ? state.isDomainConnection : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -426,8 +429,6 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["realms"] = state ? state.realms : undefined;
             resourceInputs["showAsButton"] = state ? state.showAsButton : undefined;
             resourceInputs["strategy"] = state ? state.strategy : undefined;
-            resourceInputs["strategyVersion"] = state ? state.strategyVersion : undefined;
-            resourceInputs["validation"] = state ? state.validation : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if ((!args || args.strategy === undefined) && !opts.urn) {
@@ -441,8 +442,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["realms"] = args ? args.realms : undefined;
             resourceInputs["showAsButton"] = args ? args.showAsButton : undefined;
             resourceInputs["strategy"] = args ? args.strategy : undefined;
-            resourceInputs["strategyVersion"] = args ? args.strategyVersion : undefined;
-            resourceInputs["validation"] = args ? args.validation : undefined;
+            resourceInputs["enabledClients"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Connection.__pulumiType, name, resourceInputs, opts);
@@ -457,6 +457,10 @@ export interface ConnectionState {
      * Name used in login screen.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * IDs of the clients for which the connection is enabled.
+     */
+    enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether the connection is domain level.
      */
@@ -485,8 +489,6 @@ export interface ConnectionState {
      * Type of the connection, which indicates the identity provider.
      */
     strategy?: pulumi.Input<string>;
-    strategyVersion?: pulumi.Input<string>;
-    validation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -525,6 +527,4 @@ export interface ConnectionArgs {
      * Type of the connection, which indicates the identity provider.
      */
     strategy: pulumi.Input<string>;
-    strategyVersion?: pulumi.Input<string>;
-    validation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -576,6 +576,20 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * IDs of the clients for which the connection is enabled.
+     * 
+     */
+    @Export(name="enabledClients", type=List.class, parameters={String.class})
+    private Output<List<String>> enabledClients;
+
+    /**
+     * @return IDs of the clients for which the connection is enabled.
+     * 
+     */
+    public Output<List<String>> enabledClients() {
+        return this.enabledClients;
+    }
+    /**
      * Indicates whether the connection is domain level.
      * 
      */
@@ -672,18 +686,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> strategy() {
         return this.strategy;
-    }
-    @Export(name="strategyVersion", type=String.class, parameters={})
-    private Output<String> strategyVersion;
-
-    public Output<String> strategyVersion() {
-        return this.strategyVersion;
-    }
-    @Export(name="validation", type=Map.class, parameters={String.class, String.class})
-    private Output</* @Nullable */ Map<String,String>> validation;
-
-    public Output<Optional<Map<String,String>>> validation() {
-        return Codegen.optional(this.validation);
     }
 
     /**

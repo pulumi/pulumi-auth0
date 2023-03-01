@@ -6511,7 +6511,7 @@ class TenantFlagsArgs:
         :param pulumi.Input[bool] enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
         :param pulumi.Input[bool] no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
         :param pulumi.Input[bool] revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
-        :param pulumi.Input[bool] universal_login: Indicates whether the tenant uses Universal Login.
+        :param pulumi.Input[bool] universal_login: Indicates whether the New Universal Login Experience is enabled.
         :param pulumi.Input[bool] use_scope_descriptions_for_consent: Indicates whether to use scope descriptions for consent.
         """
         if allow_legacy_delegation_grant_types is not None:
@@ -6554,6 +6554,9 @@ class TenantFlagsArgs:
             pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
         if revoke_refresh_token_grant is not None:
             pulumi.set(__self__, "revoke_refresh_token_grant", revoke_refresh_token_grant)
+        if universal_login is not None:
+            warnings.warn("""This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""", DeprecationWarning)
+            pulumi.log.warn("""universal_login is deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""")
         if universal_login is not None:
             pulumi.set(__self__, "universal_login", universal_login)
         if use_scope_descriptions_for_consent is not None:
@@ -6803,7 +6806,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the tenant uses Universal Login.
+        Indicates whether the New Universal Login Experience is enabled.
         """
         return pulumi.get(self, "universal_login")
 

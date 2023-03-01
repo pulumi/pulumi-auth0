@@ -466,7 +466,7 @@ def get_client(client_id: Optional[str] = None,
                name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientResult:
     """
-    Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
+    Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
 
     ## Example Usage
 
@@ -532,7 +532,7 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
                       name: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientResult]:
     """
-    Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
+    Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
 
     ## Example Usage
 

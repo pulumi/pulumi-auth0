@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Retrieves a tenant's global Auth0 Application client.
+ * Retrieve a tenant's global Auth0 application client.
  *
  * ## Example Usage
  *

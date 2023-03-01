@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			actionFoo, err := auth0.NewAction(ctx, "actionFoo", &auth0.ActionArgs{
-//				Code:   pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"foo\");\n};\"\n")),
+//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"foo\");\n};\"\n"),
 //				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),
@@ -41,7 +39,7 @@ import (
 //				return err
 //			}
 //			actionBar, err := auth0.NewAction(ctx, "actionBar", &auth0.ActionArgs{
-//				Code:   pulumi.String(fmt.Sprintf("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"bar\");\n};\"\n")),
+//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"bar\");\n};\"\n"),
 //				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),

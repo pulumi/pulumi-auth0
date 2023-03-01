@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
+// Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
 //
 // ## Example Usage
 //

@@ -6,9 +6,27 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.GetClientArgs;
 import com.pulumi.auth0.inputs.GetClientPlainArgs;
+import com.pulumi.auth0.inputs.GetConnectionArgs;
+import com.pulumi.auth0.inputs.GetConnectionPlainArgs;
+import com.pulumi.auth0.inputs.GetOrganizationArgs;
+import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
+import com.pulumi.auth0.inputs.GetResourceServerArgs;
+import com.pulumi.auth0.inputs.GetResourceServerPlainArgs;
+import com.pulumi.auth0.inputs.GetRoleArgs;
+import com.pulumi.auth0.inputs.GetRolePlainArgs;
+import com.pulumi.auth0.inputs.GetUserArgs;
+import com.pulumi.auth0.inputs.GetUserPlainArgs;
+import com.pulumi.auth0.outputs.GetAttackProtectionResult;
+import com.pulumi.auth0.outputs.GetBrandingResult;
+import com.pulumi.auth0.outputs.GetBrandingThemeResult;
 import com.pulumi.auth0.outputs.GetClientResult;
+import com.pulumi.auth0.outputs.GetConnectionResult;
 import com.pulumi.auth0.outputs.GetGlobalClientResult;
+import com.pulumi.auth0.outputs.GetOrganizationResult;
+import com.pulumi.auth0.outputs.GetResourceServerResult;
+import com.pulumi.auth0.outputs.GetRoleResult;
 import com.pulumi.auth0.outputs.GetTenantResult;
+import com.pulumi.auth0.outputs.GetUserResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -18,7 +36,619 @@ import java.util.concurrent.CompletableFuture;
 
 public final class Auth0Functions {
     /**
-     * Data source to retrieve a specific Auth0 Application client by &#39;client_id&#39; or &#39;name&#39;.
+     * Use this data source to access information about the tenant&#39;s attack protection settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myProtection = Auth0Functions.getAttackProtection();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAttackProtectionResult> getAttackProtection() {
+        return getAttackProtection(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s attack protection settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myProtection = Auth0Functions.getAttackProtection();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAttackProtectionResult> getAttackProtectionPlain() {
+        return getAttackProtectionPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s attack protection settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myProtection = Auth0Functions.getAttackProtection();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAttackProtectionResult> getAttackProtection(InvokeArgs args) {
+        return getAttackProtection(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s attack protection settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myProtection = Auth0Functions.getAttackProtection();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAttackProtectionResult> getAttackProtectionPlain(InvokeArgs args) {
+        return getAttackProtectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s attack protection settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myProtection = Auth0Functions.getAttackProtection();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAttackProtectionResult> getAttackProtection(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getAttackProtection:getAttackProtection", TypeShape.of(GetAttackProtectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s attack protection settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myProtection = Auth0Functions.getAttackProtection();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAttackProtectionResult> getAttackProtectionPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getAttackProtection:getAttackProtection", TypeShape.of(GetAttackProtectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBranding = Auth0Functions.getBranding();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBrandingResult> getBranding() {
+        return getBranding(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBranding = Auth0Functions.getBranding();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBrandingResult> getBrandingPlain() {
+        return getBrandingPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBranding = Auth0Functions.getBranding();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBrandingResult> getBranding(InvokeArgs args) {
+        return getBranding(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBranding = Auth0Functions.getBranding();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBrandingResult> getBrandingPlain(InvokeArgs args) {
+        return getBrandingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBranding = Auth0Functions.getBranding();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBrandingResult> getBranding(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getBranding:getBranding", TypeShape.of(GetBrandingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBranding = Auth0Functions.getBranding();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBrandingResult> getBrandingPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getBranding:getBranding", TypeShape.of(GetBrandingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding theme settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBrandingThemeResult> getBrandingTheme() {
+        return getBrandingTheme(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding theme settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBrandingThemeResult> getBrandingThemePlain() {
+        return getBrandingThemePlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding theme settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBrandingThemeResult> getBrandingTheme(InvokeArgs args) {
+        return getBrandingTheme(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding theme settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBrandingThemeResult> getBrandingThemePlain(InvokeArgs args) {
+        return getBrandingThemePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding theme settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBrandingThemeResult> getBrandingTheme(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getBrandingTheme:getBrandingTheme", TypeShape.of(GetBrandingThemeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access information about the tenant&#39;s branding theme settings.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myBrandingTheme = Auth0Functions.getBrandingTheme();
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBrandingThemeResult> getBrandingThemePlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getBrandingTheme:getBrandingTheme", TypeShape.of(GetBrandingThemeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
      * ```java
@@ -59,7 +689,7 @@ public final class Auth0Functions {
         return getClient(GetClientArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 Application client by &#39;client_id&#39; or &#39;name&#39;.
+     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
      * ```java
@@ -100,7 +730,7 @@ public final class Auth0Functions {
         return getClientPlain(GetClientPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 Application client by &#39;client_id&#39; or &#39;name&#39;.
+     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
      * ```java
@@ -141,7 +771,7 @@ public final class Auth0Functions {
         return getClient(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 Application client by &#39;client_id&#39; or &#39;name&#39;.
+     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
      * ```java
@@ -182,7 +812,7 @@ public final class Auth0Functions {
         return getClientPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 Application client by &#39;client_id&#39; or &#39;name&#39;.
+     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
      * ```java
@@ -223,7 +853,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 Application client by &#39;client_id&#39; or &#39;name&#39;.
+     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
      * 
      * ## Example Usage
      * ```java
@@ -264,7 +894,253 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves a tenant&#39;s global Auth0 Application client.
+     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .build());
+     * 
+     *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetConnectionResult> getConnection() {
+        return getConnection(GetConnectionArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .build());
+     * 
+     *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetConnectionResult> getConnectionPlain() {
+        return getConnectionPlain(GetConnectionPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .build());
+     * 
+     *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetConnectionResult> getConnection(GetConnectionArgs args) {
+        return getConnection(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .build());
+     * 
+     *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args) {
+        return getConnectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .build());
+     * 
+     *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-connection-by-name = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .name(&#34;Acceptance-Test-Connection-{{.testName}}&#34;)
+     *             .build());
+     * 
+     *         final var some-connection-by-id = Auth0Functions.getConnection(GetConnectionArgs.builder()
+     *             .connectionId(&#34;con_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve a tenant&#39;s global Auth0 application client.
      * 
      * ## Example Usage
      * ```java
@@ -298,7 +1174,7 @@ public final class Auth0Functions {
         return getGlobalClient(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieves a tenant&#39;s global Auth0 Application client.
+     * Retrieve a tenant&#39;s global Auth0 application client.
      * 
      * ## Example Usage
      * ```java
@@ -332,7 +1208,7 @@ public final class Auth0Functions {
         return getGlobalClientPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieves a tenant&#39;s global Auth0 Application client.
+     * Retrieve a tenant&#39;s global Auth0 application client.
      * 
      * ## Example Usage
      * ```java
@@ -366,7 +1242,7 @@ public final class Auth0Functions {
         return getGlobalClient(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves a tenant&#39;s global Auth0 Application client.
+     * Retrieve a tenant&#39;s global Auth0 application client.
      * 
      * ## Example Usage
      * ```java
@@ -400,7 +1276,7 @@ public final class Auth0Functions {
         return getGlobalClientPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves a tenant&#39;s global Auth0 Application client.
+     * Retrieve a tenant&#39;s global Auth0 application client.
      * 
      * ## Example Usage
      * ```java
@@ -434,7 +1310,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getGlobalClient:getGlobalClient", TypeShape.of(GetGlobalClientResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves a tenant&#39;s global Auth0 Application client.
+     * Retrieve a tenant&#39;s global Auth0 application client.
      * 
      * ## Example Usage
      * ```java
@@ -466,6 +1342,744 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetGlobalClientResult> getGlobalClientPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getGlobalClient:getGlobalClient", TypeShape.of(GetGlobalClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;my-org&#34;)
+     *             .build());
+     * 
+     *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization() {
+        return getOrganization(GetOrganizationArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;my-org&#34;)
+     *             .build());
+     * 
+     *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOrganizationResult> getOrganizationPlain() {
+        return getOrganizationPlain(GetOrganizationPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;my-org&#34;)
+     *             .build());
+     * 
+     *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args) {
+        return getOrganization(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;my-org&#34;)
+     *             .build());
+     * 
+     *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args) {
+        return getOrganizationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;my-org&#34;)
+     *             .build());
+     * 
+     *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-organization-by-name = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .name(&#34;my-org&#34;)
+     *             .build());
+     * 
+     *         final var some-organization-by-id = Auth0Functions.getOrganization(GetOrganizationArgs.builder()
+     *             .organizationId(&#34;org_abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetResourceServerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .build());
+     * 
+     *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetResourceServerResult> getResourceServer() {
+        return getResourceServer(GetResourceServerArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetResourceServerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .build());
+     * 
+     *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetResourceServerResult> getResourceServerPlain() {
+        return getResourceServerPlain(GetResourceServerPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetResourceServerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .build());
+     * 
+     *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetResourceServerResult> getResourceServer(GetResourceServerArgs args) {
+        return getResourceServer(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetResourceServerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .build());
+     * 
+     *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetResourceServerResult> getResourceServerPlain(GetResourceServerPlainArgs args) {
+        return getResourceServerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetResourceServerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .build());
+     * 
+     *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetResourceServerResult> getResourceServer(GetResourceServerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getResourceServer:getResourceServer", TypeShape.of(GetResourceServerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetResourceServerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-resource-server-by-identifier = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .identifier(&#34;https://my-api.com/v1&#34;)
+     *             .build());
+     * 
+     *         final var some-resource-server-by-id = Auth0Functions.getResourceServer(GetResourceServerArgs.builder()
+     *             .resourceServerId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetResourceServerResult> getResourceServerPlain(GetResourceServerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getResourceServer:getResourceServer", TypeShape.of(GetResourceServerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name(&#34;my-role&#34;)
+     *             .build());
+     * 
+     *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRoleResult> getRole() {
+        return getRole(GetRoleArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name(&#34;my-role&#34;)
+     *             .build());
+     * 
+     *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRoleResult> getRolePlain() {
+        return getRolePlain(GetRolePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name(&#34;my-role&#34;)
+     *             .build());
+     * 
+     *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRoleResult> getRole(GetRoleArgs args) {
+        return getRole(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name(&#34;my-role&#34;)
+     *             .build());
+     * 
+     *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args) {
+        return getRolePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name(&#34;my-role&#34;)
+     *             .build());
+     * 
+     *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRoleResult> getRole(GetRoleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var some-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name(&#34;my-role&#34;)
+     *             .build());
+     * 
+     *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .roleId(&#34;abcdefghkijklmnopqrstuvwxyz0123456789&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access information about the tenant this provider is configured to access.
@@ -670,5 +2284,153 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetTenantResult> getTenantPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getTenant:getTenant", TypeShape.of(GetTenantResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 user by `user_id`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
+     *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetUserResult> getUser(GetUserArgs args) {
+        return getUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 user by `user_id`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
+     *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
+        return getUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 user by `user_id`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
+     *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 user by `user_id`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUser = Auth0Functions.getUser(GetUserArgs.builder()
+     *             .userId(&#34;auth0|34fdr23fdsfdfsf&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
 }

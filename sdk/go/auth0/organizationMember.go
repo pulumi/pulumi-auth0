@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -41,7 +39,7 @@ import (
 //				Email:          pulumi.String("test-user@auth0.com"),
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
 //				EmailVerified:  pulumi.Bool(true),
-//				Password:       pulumi.String(fmt.Sprintf("MyPass123$")),
+//				Password:       pulumi.String("MyPass123$"),
 //			})
 //			if err != nil {
 //				return err

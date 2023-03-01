@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetGlobalClient
     {
         /// <summary>
-        /// Retrieves a tenant's global Auth0 Application client.
+        /// Retrieve a tenant's global Auth0 application client.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

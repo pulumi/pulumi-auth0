@@ -65,18 +65,55 @@ export type EmailTemplate = import("./emailTemplate").EmailTemplate;
 export const EmailTemplate: typeof import("./emailTemplate").EmailTemplate = null as any;
 utilities.lazyLoad(exports, ["EmailTemplate"], () => require("./emailTemplate"));
 
+export { GetAttackProtectionResult } from "./getAttackProtection";
+export const getAttackProtection: typeof import("./getAttackProtection").getAttackProtection = null as any;
+utilities.lazyLoad(exports, ["getAttackProtection"], () => require("./getAttackProtection"));
+
+export { GetBrandingResult } from "./getBranding";
+export const getBranding: typeof import("./getBranding").getBranding = null as any;
+utilities.lazyLoad(exports, ["getBranding"], () => require("./getBranding"));
+
+export { GetBrandingThemeResult } from "./getBrandingTheme";
+export const getBrandingTheme: typeof import("./getBrandingTheme").getBrandingTheme = null as any;
+utilities.lazyLoad(exports, ["getBrandingTheme"], () => require("./getBrandingTheme"));
+
 export { GetClientArgs, GetClientResult, GetClientOutputArgs } from "./getClient";
 export const getClient: typeof import("./getClient").getClient = null as any;
 export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
 utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
 
+export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
+export const getConnection: typeof import("./getConnection").getConnection = null as any;
+export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
+
 export { GetGlobalClientResult } from "./getGlobalClient";
 export const getGlobalClient: typeof import("./getGlobalClient").getGlobalClient = null as any;
 utilities.lazyLoad(exports, ["getGlobalClient"], () => require("./getGlobalClient"));
 
+export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
+export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
+export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
+
+export { GetResourceServerArgs, GetResourceServerResult, GetResourceServerOutputArgs } from "./getResourceServer";
+export const getResourceServer: typeof import("./getResourceServer").getResourceServer = null as any;
+export const getResourceServerOutput: typeof import("./getResourceServer").getResourceServerOutput = null as any;
+utilities.lazyLoad(exports, ["getResourceServer","getResourceServerOutput"], () => require("./getResourceServer"));
+
+export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
+export const getRole: typeof import("./getRole").getRole = null as any;
+export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
+
 export { GetTenantResult } from "./getTenant";
 export const getTenant: typeof import("./getTenant").getTenant = null as any;
 utilities.lazyLoad(exports, ["getTenant"], () => require("./getTenant"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
 export { GlobalClientArgs, GlobalClientState } from "./globalClient";
 export type GlobalClient = import("./globalClient").GlobalClient;

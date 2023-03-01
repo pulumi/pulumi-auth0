@@ -94,7 +94,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? RevokeRefreshTokenGrant;
         /// <summary>
-        /// Indicates whether the tenant uses Universal Login.
+        /// Indicates whether the New Universal Login Experience is enabled.
         /// </summary>
         public readonly bool? UniversalLogin;
         /// <summary>

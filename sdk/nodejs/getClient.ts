@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
+ * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
  *
  * ## Example Usage
  *
@@ -194,7 +194,7 @@ export interface GetClientResult {
     readonly webOrigins: string[];
 }
 /**
- * Data source to retrieve a specific Auth0 Application client by 'client_id' or 'name'.
+ * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
  *
  * ## Example Usage
  *

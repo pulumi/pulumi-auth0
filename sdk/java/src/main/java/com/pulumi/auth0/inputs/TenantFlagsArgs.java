@@ -316,16 +316,24 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the tenant uses Universal Login.
+     * Indicates whether the New Universal Login Experience is enabled.
+     * 
+     * @deprecated
+     * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
      * 
      */
+    @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
     @Import(name="universalLogin")
     private @Nullable Output<Boolean> universalLogin;
 
     /**
-     * @return Indicates whether the tenant uses Universal Login.
+     * @return Indicates whether the New Universal Login Experience is enabled.
+     * 
+     * @deprecated
+     * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
      * 
      */
+    @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
     public Optional<Output<Boolean>> universalLogin() {
         return Optional.ofNullable(this.universalLogin);
     }
@@ -811,22 +819,30 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param universalLogin Indicates whether the tenant uses Universal Login.
+         * @param universalLogin Indicates whether the New Universal Login Experience is enabled.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
         public Builder universalLogin(@Nullable Output<Boolean> universalLogin) {
             $.universalLogin = universalLogin;
             return this;
         }
 
         /**
-         * @param universalLogin Indicates whether the tenant uses Universal Login.
+         * @param universalLogin Indicates whether the New Universal Login Experience is enabled.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead. */
         public Builder universalLogin(Boolean universalLogin) {
             return universalLogin(Output.of(universalLogin));
         }

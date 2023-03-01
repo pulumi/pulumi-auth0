@@ -43,10 +43,46 @@ func LookupTenant(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupTena
 
 // A collection of values returned by getTenant.
 type LookupTenantResult struct {
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// Configuration settings for change password page.
+	ChangePasswords []GetTenantChangePassword `pulumi:"changePasswords"`
+	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
+	DefaultAudience string `pulumi:"defaultAudience"`
+	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+	DefaultDirectory string `pulumi:"defaultDirectory"`
+	// The default absolute redirection URI. Must be HTTPS or an empty string.
+	DefaultRedirectionUri string `pulumi:"defaultRedirectionUri"`
 	// Your Auth0 domain name.
 	Domain string `pulumi:"domain"`
+	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+	EnabledLocales []string `pulumi:"enabledLocales"`
+	// Configuration settings for error pages.
+	ErrorPages []GetTenantErrorPage `pulumi:"errorPages"`
+	// Configuration settings for tenant flags.
+	Flags []GetTenantFlag `pulumi:"flags"`
+	// Friendly name for the tenant.
+	FriendlyName string `pulumi:"friendlyName"`
+	// Configuration settings for the Guardian MFA page.
+	GuardianMfaPages []GetTenantGuardianMfaPage `pulumi:"guardianMfaPages"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Number of hours during which a session can be inactive before the user must log in again.
+	IdleSessionLifetime float64 `pulumi:"idleSessionLifetime"`
 	// The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
 	ManagementApiIdentifier string `pulumi:"managementApiIdentifier"`
+	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
+	PictureUrl string `pulumi:"pictureUrl"`
+	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
+	SandboxVersion string `pulumi:"sandboxVersion"`
+	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
+	SessionCookies []GetTenantSessionCooky `pulumi:"sessionCookies"`
+	// Number of hours during which a session will stay valid.
+	SessionLifetime float64 `pulumi:"sessionLifetime"`
+	// Support email address for authenticating users.
+	SupportEmail string `pulumi:"supportEmail"`
+	// Support URL for authenticating users.
+	SupportUrl string `pulumi:"supportUrl"`
+	// Configuration settings for Universal Login.
+	UniversalLogins []GetTenantUniversalLogin `pulumi:"universalLogins"`
 }

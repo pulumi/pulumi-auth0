@@ -17,13 +17,14 @@ package auth0
 import (
 	"fmt"
 	"path/filepath"
-	"unicode"
 
 	auth0Shim "github.com/auth0/terraform-provider-auth0/shim"
 	"github.com/pulumi/pulumi-auth0/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -34,22 +35,11 @@ const (
 	mainMod = "index" // the y module
 )
 
-// makeMember manufactures a type token for the package and the given module and type.
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
-
-// makeType manufactures a type token for the package and the given module and type.
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
 // makeResource manufactures a standard resource token given a module and resource name.  It
 // automatically uses the main package and names the file by simply lower casing the resource's
 // first character.
 func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
+	return tfbridge.MakeResource(mainPkg, mod, res)
 }
 
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
@@ -82,16 +72,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"auth0_client_grant":      {Tok: makeResource(mainMod, "ClientGrant")},
-			"auth0_global_client":     {Tok: makeResource(mainMod, "GlobalClient")},
-			"auth0_connection":        {Tok: makeResource(mainMod, "Connection")},
-			"auth0_connection_client": {Tok: makeResource(mainMod, "ConnectionClient")},
-			"auth0_custom_domain":     {Tok: makeResource(mainMod, "CustomDomain")},
-			"auth0_email":             {Tok: makeResource(mainMod, "Email")},
-			"auth0_email_template":    {Tok: makeResource(mainMod, "EmailTemplate")},
-			"auth0_hook":              {Tok: makeResource(mainMod, "Hook")},
-			"auth0_prompt":            {Tok: makeResource(mainMod, "Prompt")},
-			"auth0_resource_server":   {Tok: makeResource(mainMod, "ResourceServer")},
 			"auth0_role": {
 				Tok: makeResource(mainMod, "Role"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -100,27 +80,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"auth0_rule":                       {Tok: makeResource(mainMod, "Rule")},
-			"auth0_rule_config":                {Tok: makeResource(mainMod, "RuleConfig")},
-			"auth0_tenant":                     {Tok: makeResource(mainMod, "Tenant")},
-			"auth0_user":                       {Tok: makeResource(mainMod, "User")},
-			"auth0_log_stream":                 {Tok: makeResource(mainMod, "LogStream")},
-			"auth0_guardian":                   {Tok: makeResource(mainMod, "Guardian")},
-			"auth0_action":                     {Tok: makeResource(mainMod, "Action")},
-			"auth0_branding":                   {Tok: makeResource(mainMod, "Branding")},
-			"auth0_custom_domain_verification": {Tok: makeResource(mainMod, "CustomDomainVerification")},
-			"auth0_organization":               {Tok: makeResource(mainMod, "Organization")},
-			"auth0_trigger_binding":            {Tok: makeResource(mainMod, "TriggerBinding")},
-			"auth0_prompt_custom_text":         {Tok: makeResource(mainMod, "PromptCustomText")},
-			"auth0_attack_protection":          {Tok: makeResource(mainMod, "AttackProtection")},
-			"auth0_organization_connection":    {Tok: makeResource(mainMod, "OrganizationConnection")},
-			"auth0_organization_member":        {Tok: makeResource(mainMod, "OrganizationMember")},
-			"auth0_branding_theme":             {Tok: makeResource(mainMod, "BrandingTheme")},
-		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"auth0_client":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getClient")},
-			"auth0_global_client": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGlobalClient")},
-			"auth0_tenant":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTenant")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -152,6 +111,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	err := x.ComputeDefaults(&prov, x.TokensSingleModule("auth0_", mainMod,
+		x.MakeStandardToken(mainPkg)))
+	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")
 
