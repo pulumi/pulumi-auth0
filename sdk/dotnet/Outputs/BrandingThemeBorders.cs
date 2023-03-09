@@ -14,61 +14,61 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingThemeBorders
     {
         /// <summary>
-        /// Button border radius. Value needs to be between `1` and `10`.
+        /// Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
         /// </summary>
-        public readonly double ButtonBorderRadius;
+        public readonly double? ButtonBorderRadius;
         /// <summary>
-        /// Button border weight. Value needs to be between `0` and `10`.
+        /// Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
         /// </summary>
-        public readonly double ButtonBorderWeight;
+        public readonly double? ButtonBorderWeight;
         /// <summary>
-        /// Buttons style. Available options: `pill`, `rounded`, `sharp`.
+        /// Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
         /// </summary>
-        public readonly string ButtonsStyle;
+        public readonly string? ButtonsStyle;
         /// <summary>
-        /// Input border radius. Value needs to be between `0` and `10`.
+        /// Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
         /// </summary>
-        public readonly double InputBorderRadius;
+        public readonly double? InputBorderRadius;
         /// <summary>
-        /// Input border weight. Value needs to be between `0` and `3`.
+        /// Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
         /// </summary>
-        public readonly double InputBorderWeight;
+        public readonly double? InputBorderWeight;
         /// <summary>
-        /// Inputs style. Available options: `pill`, `rounded`, `sharp`.
+        /// Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
         /// </summary>
-        public readonly string InputsStyle;
+        public readonly string? InputsStyle;
         /// <summary>
-        /// Show widget shadow.
+        /// Show widget shadow. Defaults to `true`.
         /// </summary>
-        public readonly bool ShowWidgetShadow;
+        public readonly bool? ShowWidgetShadow;
         /// <summary>
-        /// Widget border weight. Value needs to be between `0` and `10`.
+        /// Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
         /// </summary>
-        public readonly double WidgetBorderWeight;
+        public readonly double? WidgetBorderWeight;
         /// <summary>
-        /// Widget corner radius. Value needs to be between `0` and `50`.
+        /// Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
         /// </summary>
-        public readonly double WidgetCornerRadius;
+        public readonly double? WidgetCornerRadius;
 
         [OutputConstructor]
         private BrandingThemeBorders(
-            double buttonBorderRadius,
+            double? buttonBorderRadius,
 
-            double buttonBorderWeight,
+            double? buttonBorderWeight,
 
-            string buttonsStyle,
+            string? buttonsStyle,
 
-            double inputBorderRadius,
+            double? inputBorderRadius,
 
-            double inputBorderWeight,
+            double? inputBorderWeight,
 
-            string inputsStyle,
+            string? inputsStyle,
 
-            bool showWidgetShadow,
+            bool? showWidgetShadow,
 
-            double widgetBorderWeight,
+            double? widgetBorderWeight,
 
-            double widgetCornerRadius)
+            double? widgetCornerRadius)
         {
             ButtonBorderRadius = buttonBorderRadius;
             ButtonBorderWeight = buttonBorderWeight;

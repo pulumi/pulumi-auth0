@@ -92,7 +92,7 @@ type LogStream struct {
 	Sink LogStreamSinkOutput `pulumi:"sink"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Type of the log stream, which indicates the sink provider.
+	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -139,7 +139,7 @@ type logStreamState struct {
 	Sink *LogStreamSink `pulumi:"sink"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status *string `pulumi:"status"`
-	// Type of the log stream, which indicates the sink provider.
+	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
 	Type *string `pulumi:"type"`
 }
 
@@ -152,7 +152,7 @@ type LogStreamState struct {
 	Sink LogStreamSinkPtrInput
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status pulumi.StringPtrInput
-	// Type of the log stream, which indicates the sink provider.
+	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
 	Type pulumi.StringPtrInput
 }
 
@@ -169,7 +169,7 @@ type logStreamArgs struct {
 	Sink LogStreamSink `pulumi:"sink"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status *string `pulumi:"status"`
-	// Type of the log stream, which indicates the sink provider.
+	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
 	Type string `pulumi:"type"`
 }
 
@@ -183,7 +183,7 @@ type LogStreamArgs struct {
 	Sink LogStreamSinkInput
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status pulumi.StringPtrInput
-	// Type of the log stream, which indicates the sink provider.
+	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
 	Type pulumi.StringInput
 }
 
@@ -294,7 +294,7 @@ func (o LogStreamOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogStream) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Type of the log stream, which indicates the sink provider.
+// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
 func (o LogStreamOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogStream) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

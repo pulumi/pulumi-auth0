@@ -197,6 +197,7 @@ class BrandingTheme(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
+        # An example of a fully configured auth0_branding_theme.
         my_theme = auth0.BrandingTheme("myTheme",
             borders=auth0.BrandingThemeBordersArgs(
                 button_border_radius=1,
@@ -297,6 +298,7 @@ class BrandingTheme(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
+        # An example of a fully configured auth0_branding_theme.
         my_theme = auth0.BrandingTheme("myTheme",
             borders=auth0.BrandingThemeBordersArgs(
                 button_border_radius=1,

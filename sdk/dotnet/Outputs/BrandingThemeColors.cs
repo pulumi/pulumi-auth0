@@ -14,77 +14,77 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingThemeColors
     {
         /// <summary>
-        /// Base focus color.
+        /// Base focus color. Defaults to `#635dff`.
         /// </summary>
         public readonly string? BaseFocusColor;
         /// <summary>
-        /// Base hover color.
+        /// Base hover color. Defaults to `#000000`.
         /// </summary>
         public readonly string? BaseHoverColor;
         /// <summary>
-        /// Body text.
+        /// Body text. Defaults to `#1e212a`.
         /// </summary>
-        public readonly string BodyText;
+        public readonly string? BodyText;
         /// <summary>
-        /// Error.
+        /// Error. Defaults to `#d03c38`.
         /// </summary>
-        public readonly string Error;
+        public readonly string? Error;
         /// <summary>
-        /// Header.
+        /// Header. Defaults to `#1e212a`.
         /// </summary>
-        public readonly string Header;
+        public readonly string? Header;
         /// <summary>
-        /// Icons.
+        /// Icons. Defaults to `#65676e`.
         /// </summary>
-        public readonly string Icons;
+        public readonly string? Icons;
         /// <summary>
-        /// Input background.
+        /// Input background. Defaults to `#ffffff`.
         /// </summary>
-        public readonly string InputBackground;
+        public readonly string? InputBackground;
         /// <summary>
-        /// Input border.
+        /// Input border. Defaults to `#c9cace`.
         /// </summary>
-        public readonly string InputBorder;
+        public readonly string? InputBorder;
         /// <summary>
-        /// Input filled text.
+        /// Input filled text. Defaults to `#000000`.
         /// </summary>
-        public readonly string InputFilledText;
+        public readonly string? InputFilledText;
         /// <summary>
-        /// Input labels &amp; placeholders.
+        /// Input labels &amp; placeholders. Defaults to `#65676e`.
         /// </summary>
-        public readonly string InputLabelsPlaceholders;
+        public readonly string? InputLabelsPlaceholders;
         /// <summary>
-        /// Links &amp; focused components.
+        /// Links &amp; focused components. Defaults to `#635dff`.
         /// </summary>
-        public readonly string LinksFocusedComponents;
+        public readonly string? LinksFocusedComponents;
         /// <summary>
-        /// Primary button.
+        /// Primary button. Defaults to `#635dff`.
         /// </summary>
-        public readonly string PrimaryButton;
+        public readonly string? PrimaryButton;
         /// <summary>
-        /// Primary button label.
+        /// Primary button label. Defaults to `#ffffff`.
         /// </summary>
-        public readonly string PrimaryButtonLabel;
+        public readonly string? PrimaryButtonLabel;
         /// <summary>
-        /// Secondary button border.
+        /// Secondary button border. Defaults to `#c9cace`.
         /// </summary>
-        public readonly string SecondaryButtonBorder;
+        public readonly string? SecondaryButtonBorder;
         /// <summary>
-        /// Secondary button label.
+        /// Secondary button label. Defaults to `#1e212a`.
         /// </summary>
-        public readonly string SecondaryButtonLabel;
+        public readonly string? SecondaryButtonLabel;
         /// <summary>
-        /// Success.
+        /// Success. Defaults to `#13a688`.
         /// </summary>
-        public readonly string Success;
+        public readonly string? Success;
         /// <summary>
-        /// Widget background.
+        /// Widget background. Defaults to `#ffffff`.
         /// </summary>
-        public readonly string WidgetBackground;
+        public readonly string? WidgetBackground;
         /// <summary>
-        /// Widget border.
+        /// Widget border. Defaults to `#c9cace`.
         /// </summary>
-        public readonly string WidgetBorder;
+        public readonly string? WidgetBorder;
 
         [OutputConstructor]
         private BrandingThemeColors(
@@ -92,37 +92,37 @@ namespace Pulumi.Auth0.Outputs
 
             string? baseHoverColor,
 
-            string bodyText,
+            string? bodyText,
 
-            string error,
+            string? error,
 
-            string header,
+            string? header,
 
-            string icons,
+            string? icons,
 
-            string inputBackground,
+            string? inputBackground,
 
-            string inputBorder,
+            string? inputBorder,
 
-            string inputFilledText,
+            string? inputFilledText,
 
-            string inputLabelsPlaceholders,
+            string? inputLabelsPlaceholders,
 
-            string linksFocusedComponents,
+            string? linksFocusedComponents,
 
-            string primaryButton,
+            string? primaryButton,
 
-            string primaryButtonLabel,
+            string? primaryButtonLabel,
 
-            string secondaryButtonBorder,
+            string? secondaryButtonBorder,
 
-            string secondaryButtonLabel,
+            string? secondaryButtonLabel,
 
-            string success,
+            string? success,
 
-            string widgetBackground,
+            string? widgetBackground,
 
-            string widgetBorder)
+            string? widgetBorder)
         {
             BaseFocusColor = baseFocusColor;
             BaseHoverColor = baseHoverColor;

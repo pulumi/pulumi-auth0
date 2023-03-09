@@ -147,14 +147,14 @@ public class LogStream extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Type of the log stream, which indicates the sink provider.
+     * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
-     * @return Type of the log stream, which indicates the sink provider.
+     * @return Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      * 
      */
     public Output<String> type() {

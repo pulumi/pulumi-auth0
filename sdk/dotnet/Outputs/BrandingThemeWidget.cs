@@ -14,37 +14,37 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingThemeWidget
     {
         /// <summary>
-        /// Header text alignment. Available options: `center`, `left`, `right`.
+        /// Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
         /// </summary>
-        public readonly string HeaderTextAlignment;
+        public readonly string? HeaderTextAlignment;
         /// <summary>
-        /// Logo height. Value needs to be between `1` and `100`.
+        /// Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
         /// </summary>
-        public readonly double LogoHeight;
+        public readonly double? LogoHeight;
         /// <summary>
-        /// Logo position. Available options: `center`, `left`, `right`, `none`.
+        /// Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
         /// </summary>
-        public readonly string LogoPosition;
+        public readonly string? LogoPosition;
         /// <summary>
-        /// Logo url.
+        /// Logo url. Defaults to an empty string.
         /// </summary>
-        public readonly string LogoUrl;
+        public readonly string? LogoUrl;
         /// <summary>
-        /// Social buttons layout.  Available options: `bottom`, `top`.
+        /// Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
         /// </summary>
-        public readonly string SocialButtonsLayout;
+        public readonly string? SocialButtonsLayout;
 
         [OutputConstructor]
         private BrandingThemeWidget(
-            string headerTextAlignment,
+            string? headerTextAlignment,
 
-            double logoHeight,
+            double? logoHeight,
 
-            string logoPosition,
+            string? logoPosition,
 
-            string logoUrl,
+            string? logoUrl,
 
-            string socialButtonsLayout)
+            string? socialButtonsLayout)
         {
             HeaderTextAlignment = headerTextAlignment;
             LogoHeight = logoHeight;

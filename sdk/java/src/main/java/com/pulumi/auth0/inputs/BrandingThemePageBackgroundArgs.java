@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BrandingThemePageBackgroundArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,48 +16,48 @@ public final class BrandingThemePageBackgroundArgs extends com.pulumi.resources.
     public static final BrandingThemePageBackgroundArgs Empty = new BrandingThemePageBackgroundArgs();
 
     /**
-     * Background color.
+     * Background color. Defaults to `#000000`.
      * 
      */
-    @Import(name="backgroundColor", required=true)
-    private Output<String> backgroundColor;
+    @Import(name="backgroundColor")
+    private @Nullable Output<String> backgroundColor;
 
     /**
-     * @return Background color.
+     * @return Background color. Defaults to `#000000`.
      * 
      */
-    public Output<String> backgroundColor() {
-        return this.backgroundColor;
+    public Optional<Output<String>> backgroundColor() {
+        return Optional.ofNullable(this.backgroundColor);
     }
 
     /**
-     * Background image url.
+     * Background image url. Defaults to an empty string.
      * 
      */
-    @Import(name="backgroundImageUrl", required=true)
-    private Output<String> backgroundImageUrl;
+    @Import(name="backgroundImageUrl")
+    private @Nullable Output<String> backgroundImageUrl;
 
     /**
-     * @return Background image url.
+     * @return Background image url. Defaults to an empty string.
      * 
      */
-    public Output<String> backgroundImageUrl() {
-        return this.backgroundImageUrl;
+    public Optional<Output<String>> backgroundImageUrl() {
+        return Optional.ofNullable(this.backgroundImageUrl);
     }
 
     /**
-     * Page layout. Available options: `center`, `left`, `right`.
+     * Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
      * 
      */
-    @Import(name="pageLayout", required=true)
-    private Output<String> pageLayout;
+    @Import(name="pageLayout")
+    private @Nullable Output<String> pageLayout;
 
     /**
-     * @return Page layout. Available options: `center`, `left`, `right`.
+     * @return Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
      * 
      */
-    public Output<String> pageLayout() {
-        return this.pageLayout;
+    public Optional<Output<String>> pageLayout() {
+        return Optional.ofNullable(this.pageLayout);
     }
 
     private BrandingThemePageBackgroundArgs() {}
@@ -85,18 +87,18 @@ public final class BrandingThemePageBackgroundArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param backgroundColor Background color.
+         * @param backgroundColor Background color. Defaults to `#000000`.
          * 
          * @return builder
          * 
          */
-        public Builder backgroundColor(Output<String> backgroundColor) {
+        public Builder backgroundColor(@Nullable Output<String> backgroundColor) {
             $.backgroundColor = backgroundColor;
             return this;
         }
 
         /**
-         * @param backgroundColor Background color.
+         * @param backgroundColor Background color. Defaults to `#000000`.
          * 
          * @return builder
          * 
@@ -106,18 +108,18 @@ public final class BrandingThemePageBackgroundArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param backgroundImageUrl Background image url.
+         * @param backgroundImageUrl Background image url. Defaults to an empty string.
          * 
          * @return builder
          * 
          */
-        public Builder backgroundImageUrl(Output<String> backgroundImageUrl) {
+        public Builder backgroundImageUrl(@Nullable Output<String> backgroundImageUrl) {
             $.backgroundImageUrl = backgroundImageUrl;
             return this;
         }
 
         /**
-         * @param backgroundImageUrl Background image url.
+         * @param backgroundImageUrl Background image url. Defaults to an empty string.
          * 
          * @return builder
          * 
@@ -127,18 +129,18 @@ public final class BrandingThemePageBackgroundArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pageLayout Page layout. Available options: `center`, `left`, `right`.
+         * @param pageLayout Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
          * 
          * @return builder
          * 
          */
-        public Builder pageLayout(Output<String> pageLayout) {
+        public Builder pageLayout(@Nullable Output<String> pageLayout) {
             $.pageLayout = pageLayout;
             return this;
         }
 
         /**
-         * @param pageLayout Page layout. Available options: `center`, `left`, `right`.
+         * @param pageLayout Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
          * 
          * @return builder
          * 
@@ -148,9 +150,6 @@ public final class BrandingThemePageBackgroundArgs extends com.pulumi.resources.
         }
 
         public BrandingThemePageBackgroundArgs build() {
-            $.backgroundColor = Objects.requireNonNull($.backgroundColor, "expected parameter 'backgroundColor' to be non-null");
-            $.backgroundImageUrl = Objects.requireNonNull($.backgroundImageUrl, "expected parameter 'backgroundImageUrl' to be non-null");
-            $.pageLayout = Objects.requireNonNull($.pageLayout, "expected parameter 'pageLayout' to be non-null");
             return $;
         }
     }

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
+ * // An example of a fully configured auth0_branding_theme.
  * const myTheme = new auth0.BrandingTheme("myTheme", {
  *     borders: {
  *         buttonBorderRadius: 1,

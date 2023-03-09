@@ -13,6 +13,8 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class BrandingThemeFonts {
@@ -27,10 +29,10 @@ public final class BrandingThemeFonts {
      */
     private BrandingThemeFontsButtonsText buttonsText;
     /**
-     * @return Font URL.
+     * @return Font URL. Defaults to an empty string.
      * 
      */
-    private String fontUrl;
+    private @Nullable String fontUrl;
     /**
      * @return Input labels.
      * 
@@ -42,15 +44,15 @@ public final class BrandingThemeFonts {
      */
     private BrandingThemeFontsLinks links;
     /**
-     * @return Links style.
+     * @return Links style. Defaults to `normal`.
      * 
      */
-    private String linksStyle;
+    private @Nullable String linksStyle;
     /**
-     * @return Reference text size. Value needs to be between `12` and `24`.
+     * @return Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
      * 
      */
-    private Double referenceTextSize;
+    private @Nullable Double referenceTextSize;
     /**
      * @return Subtitle.
      * 
@@ -78,11 +80,11 @@ public final class BrandingThemeFonts {
         return this.buttonsText;
     }
     /**
-     * @return Font URL.
+     * @return Font URL. Defaults to an empty string.
      * 
      */
-    public String fontUrl() {
-        return this.fontUrl;
+    public Optional<String> fontUrl() {
+        return Optional.ofNullable(this.fontUrl);
     }
     /**
      * @return Input labels.
@@ -99,18 +101,18 @@ public final class BrandingThemeFonts {
         return this.links;
     }
     /**
-     * @return Links style.
+     * @return Links style. Defaults to `normal`.
      * 
      */
-    public String linksStyle() {
-        return this.linksStyle;
+    public Optional<String> linksStyle() {
+        return Optional.ofNullable(this.linksStyle);
     }
     /**
-     * @return Reference text size. Value needs to be between `12` and `24`.
+     * @return Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
      * 
      */
-    public Double referenceTextSize() {
-        return this.referenceTextSize;
+    public Optional<Double> referenceTextSize() {
+        return Optional.ofNullable(this.referenceTextSize);
     }
     /**
      * @return Subtitle.
@@ -138,11 +140,11 @@ public final class BrandingThemeFonts {
     public static final class Builder {
         private BrandingThemeFontsBodyText bodyText;
         private BrandingThemeFontsButtonsText buttonsText;
-        private String fontUrl;
+        private @Nullable String fontUrl;
         private BrandingThemeFontsInputLabels inputLabels;
         private BrandingThemeFontsLinks links;
-        private String linksStyle;
-        private Double referenceTextSize;
+        private @Nullable String linksStyle;
+        private @Nullable Double referenceTextSize;
         private BrandingThemeFontsSubtitle subtitle;
         private BrandingThemeFontsTitle title;
         public Builder() {}
@@ -170,8 +172,8 @@ public final class BrandingThemeFonts {
             return this;
         }
         @CustomType.Setter
-        public Builder fontUrl(String fontUrl) {
-            this.fontUrl = Objects.requireNonNull(fontUrl);
+        public Builder fontUrl(@Nullable String fontUrl) {
+            this.fontUrl = fontUrl;
             return this;
         }
         @CustomType.Setter
@@ -185,13 +187,13 @@ public final class BrandingThemeFonts {
             return this;
         }
         @CustomType.Setter
-        public Builder linksStyle(String linksStyle) {
-            this.linksStyle = Objects.requireNonNull(linksStyle);
+        public Builder linksStyle(@Nullable String linksStyle) {
+            this.linksStyle = linksStyle;
             return this;
         }
         @CustomType.Setter
-        public Builder referenceTextSize(Double referenceTextSize) {
-            this.referenceTextSize = Objects.requireNonNull(referenceTextSize);
+        public Builder referenceTextSize(@Nullable Double referenceTextSize) {
+            this.referenceTextSize = referenceTextSize;
             return this;
         }
         @CustomType.Setter

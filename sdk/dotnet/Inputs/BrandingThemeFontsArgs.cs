@@ -25,10 +25,10 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.BrandingThemeFontsButtonsTextArgs> ButtonsText { get; set; } = null!;
 
         /// <summary>
-        /// Font URL.
+        /// Font URL. Defaults to an empty string.
         /// </summary>
-        [Input("fontUrl", required: true)]
-        public Input<string> FontUrl { get; set; } = null!;
+        [Input("fontUrl")]
+        public Input<string>? FontUrl { get; set; }
 
         /// <summary>
         /// Input labels.
@@ -43,16 +43,16 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.BrandingThemeFontsLinksArgs> Links { get; set; } = null!;
 
         /// <summary>
-        /// Links style.
+        /// Links style. Defaults to `normal`.
         /// </summary>
-        [Input("linksStyle", required: true)]
-        public Input<string> LinksStyle { get; set; } = null!;
+        [Input("linksStyle")]
+        public Input<string>? LinksStyle { get; set; }
 
         /// <summary>
-        /// Reference text size. Value needs to be between `12` and `24`.
+        /// Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
         /// </summary>
-        [Input("referenceTextSize", required: true)]
-        public Input<double> ReferenceTextSize { get; set; } = null!;
+        [Input("referenceTextSize")]
+        public Input<double>? ReferenceTextSize { get; set; }
 
         /// <summary>
         /// Subtitle.

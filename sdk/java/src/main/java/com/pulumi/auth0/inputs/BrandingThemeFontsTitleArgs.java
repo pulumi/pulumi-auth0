@@ -8,24 +8,26 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BrandingThemeFontsTitleArgs Empty = new BrandingThemeFontsTitleArgs();
 
-    @Import(name="bold", required=true)
-    private Output<Boolean> bold;
+    @Import(name="bold")
+    private @Nullable Output<Boolean> bold;
 
-    public Output<Boolean> bold() {
-        return this.bold;
+    public Optional<Output<Boolean>> bold() {
+        return Optional.ofNullable(this.bold);
     }
 
-    @Import(name="size", required=true)
-    private Output<Double> size;
+    @Import(name="size")
+    private @Nullable Output<Double> size;
 
-    public Output<Double> size() {
-        return this.size;
+    public Optional<Output<Double>> size() {
+        return Optional.ofNullable(this.size);
     }
 
     private BrandingThemeFontsTitleArgs() {}
@@ -53,7 +55,7 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
             $ = new BrandingThemeFontsTitleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder bold(Output<Boolean> bold) {
+        public Builder bold(@Nullable Output<Boolean> bold) {
             $.bold = bold;
             return this;
         }
@@ -62,7 +64,7 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
             return bold(Output.of(bold));
         }
 
-        public Builder size(Output<Double> size) {
+        public Builder size(@Nullable Output<Double> size) {
             $.size = size;
             return this;
         }
@@ -72,8 +74,6 @@ public final class BrandingThemeFontsTitleArgs extends com.pulumi.resources.Reso
         }
 
         public BrandingThemeFontsTitleArgs build() {
-            $.bold = Objects.requireNonNull($.bold, "expected parameter 'bold' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
             return $;
         }
     }

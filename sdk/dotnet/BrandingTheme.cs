@@ -21,6 +21,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // An example of a fully configured auth0_branding_theme.
     ///     var myTheme = new Auth0.BrandingTheme("myTheme", new()
     ///     {
     ///         Borders = new Auth0.Inputs.BrandingThemeBordersArgs

@@ -141,116 +141,116 @@ export interface BrandingFont {
 
 export interface BrandingThemeBorders {
     /**
-     * Button border radius. Value needs to be between `1` and `10`.
+     * Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
      */
-    buttonBorderRadius: number;
+    buttonBorderRadius?: number;
     /**
-     * Button border weight. Value needs to be between `0` and `10`.
+     * Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
      */
-    buttonBorderWeight: number;
+    buttonBorderWeight?: number;
     /**
-     * Buttons style. Available options: `pill`, `rounded`, `sharp`.
+     * Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      */
-    buttonsStyle: string;
+    buttonsStyle?: string;
     /**
-     * Input border radius. Value needs to be between `0` and `10`.
+     * Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
      */
-    inputBorderRadius: number;
+    inputBorderRadius?: number;
     /**
-     * Input border weight. Value needs to be between `0` and `3`.
+     * Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
      */
-    inputBorderWeight: number;
+    inputBorderWeight?: number;
     /**
-     * Inputs style. Available options: `pill`, `rounded`, `sharp`.
+     * Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      */
-    inputsStyle: string;
+    inputsStyle?: string;
     /**
-     * Show widget shadow.
+     * Show widget shadow. Defaults to `true`.
      */
-    showWidgetShadow: boolean;
+    showWidgetShadow?: boolean;
     /**
-     * Widget border weight. Value needs to be between `0` and `10`.
+     * Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
      */
-    widgetBorderWeight: number;
+    widgetBorderWeight?: number;
     /**
-     * Widget corner radius. Value needs to be between `0` and `50`.
+     * Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
      */
-    widgetCornerRadius: number;
+    widgetCornerRadius?: number;
 }
 
 export interface BrandingThemeColors {
     /**
-     * Base focus color.
+     * Base focus color. Defaults to `#635dff`.
      */
     baseFocusColor?: string;
     /**
-     * Base hover color.
+     * Base hover color. Defaults to `#000000`.
      */
     baseHoverColor?: string;
     /**
-     * Body text.
+     * Body text. Defaults to `#1e212a`.
      */
-    bodyText: string;
+    bodyText?: string;
     /**
-     * Error.
+     * Error. Defaults to `#d03c38`.
      */
-    error: string;
+    error?: string;
     /**
-     * Header.
+     * Header. Defaults to `#1e212a`.
      */
-    header: string;
+    header?: string;
     /**
-     * Icons.
+     * Icons. Defaults to `#65676e`.
      */
-    icons: string;
+    icons?: string;
     /**
-     * Input background.
+     * Input background. Defaults to `#ffffff`.
      */
-    inputBackground: string;
+    inputBackground?: string;
     /**
-     * Input border.
+     * Input border. Defaults to `#c9cace`.
      */
-    inputBorder: string;
+    inputBorder?: string;
     /**
-     * Input filled text.
+     * Input filled text. Defaults to `#000000`.
      */
-    inputFilledText: string;
+    inputFilledText?: string;
     /**
-     * Input labels & placeholders.
+     * Input labels & placeholders. Defaults to `#65676e`.
      */
-    inputLabelsPlaceholders: string;
+    inputLabelsPlaceholders?: string;
     /**
-     * Links & focused components.
+     * Links & focused components. Defaults to `#635dff`.
      */
-    linksFocusedComponents: string;
+    linksFocusedComponents?: string;
     /**
-     * Primary button.
+     * Primary button. Defaults to `#635dff`.
      */
-    primaryButton: string;
+    primaryButton?: string;
     /**
-     * Primary button label.
+     * Primary button label. Defaults to `#ffffff`.
      */
-    primaryButtonLabel: string;
+    primaryButtonLabel?: string;
     /**
-     * Secondary button border.
+     * Secondary button border. Defaults to `#c9cace`.
      */
-    secondaryButtonBorder: string;
+    secondaryButtonBorder?: string;
     /**
-     * Secondary button label.
+     * Secondary button label. Defaults to `#1e212a`.
      */
-    secondaryButtonLabel: string;
+    secondaryButtonLabel?: string;
     /**
-     * Success.
+     * Success. Defaults to `#13a688`.
      */
-    success: string;
+    success?: string;
     /**
-     * Widget background.
+     * Widget background. Defaults to `#ffffff`.
      */
-    widgetBackground: string;
+    widgetBackground?: string;
     /**
-     * Widget border.
+     * Widget border. Defaults to `#c9cace`.
      */
-    widgetBorder: string;
+    widgetBorder?: string;
 }
 
 export interface BrandingThemeFonts {
@@ -263,9 +263,9 @@ export interface BrandingThemeFonts {
      */
     buttonsText: outputs.BrandingThemeFontsButtonsText;
     /**
-     * Font URL.
+     * Font URL. Defaults to an empty string.
      */
-    fontUrl: string;
+    fontUrl?: string;
     /**
      * Input labels.
      */
@@ -275,13 +275,13 @@ export interface BrandingThemeFonts {
      */
     links: outputs.BrandingThemeFontsLinks;
     /**
-     * Links style.
+     * Links style. Defaults to `normal`.
      */
-    linksStyle: string;
+    linksStyle?: string;
     /**
-     * Reference text size. Value needs to be between `12` and `24`.
+     * Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
      */
-    referenceTextSize: number;
+    referenceTextSize?: number;
     /**
      * Subtitle.
      */
@@ -293,71 +293,71 @@ export interface BrandingThemeFonts {
 }
 
 export interface BrandingThemeFontsBodyText {
-    bold: boolean;
-    size: number;
+    bold?: boolean;
+    size?: number;
 }
 
 export interface BrandingThemeFontsButtonsText {
-    bold: boolean;
-    size: number;
+    bold?: boolean;
+    size?: number;
 }
 
 export interface BrandingThemeFontsInputLabels {
-    bold: boolean;
-    size: number;
+    bold?: boolean;
+    size?: number;
 }
 
 export interface BrandingThemeFontsLinks {
-    bold: boolean;
-    size: number;
+    bold?: boolean;
+    size?: number;
 }
 
 export interface BrandingThemeFontsSubtitle {
-    bold: boolean;
-    size: number;
+    bold?: boolean;
+    size?: number;
 }
 
 export interface BrandingThemeFontsTitle {
-    bold: boolean;
-    size: number;
+    bold?: boolean;
+    size?: number;
 }
 
 export interface BrandingThemePageBackground {
     /**
-     * Background color.
+     * Background color. Defaults to `#000000`.
      */
-    backgroundColor: string;
+    backgroundColor?: string;
     /**
-     * Background image url.
+     * Background image url. Defaults to an empty string.
      */
-    backgroundImageUrl: string;
+    backgroundImageUrl?: string;
     /**
-     * Page layout. Available options: `center`, `left`, `right`.
+     * Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
      */
-    pageLayout: string;
+    pageLayout?: string;
 }
 
 export interface BrandingThemeWidget {
     /**
-     * Header text alignment. Available options: `center`, `left`, `right`.
+     * Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
      */
-    headerTextAlignment: string;
+    headerTextAlignment?: string;
     /**
-     * Logo height. Value needs to be between `1` and `100`.
+     * Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
      */
-    logoHeight: number;
+    logoHeight?: number;
     /**
-     * Logo position. Available options: `center`, `left`, `right`, `none`.
+     * Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
      */
-    logoPosition: string;
+    logoPosition?: string;
     /**
-     * Logo url.
+     * Logo url. Defaults to an empty string.
      */
-    logoUrl: string;
+    logoUrl?: string;
     /**
-     * Social buttons layout.  Available options: `bottom`, `top`.
+     * Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
      */
-    socialButtonsLayout: string;
+    socialButtonsLayout?: string;
 }
 
 export interface BrandingUniversalLogin {

@@ -141,116 +141,116 @@ export interface BrandingFont {
 
 export interface BrandingThemeBorders {
     /**
-     * Button border radius. Value needs to be between `1` and `10`.
+     * Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
      */
-    buttonBorderRadius: pulumi.Input<number>;
+    buttonBorderRadius?: pulumi.Input<number>;
     /**
-     * Button border weight. Value needs to be between `0` and `10`.
+     * Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
      */
-    buttonBorderWeight: pulumi.Input<number>;
+    buttonBorderWeight?: pulumi.Input<number>;
     /**
-     * Buttons style. Available options: `pill`, `rounded`, `sharp`.
+     * Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      */
-    buttonsStyle: pulumi.Input<string>;
+    buttonsStyle?: pulumi.Input<string>;
     /**
-     * Input border radius. Value needs to be between `0` and `10`.
+     * Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
      */
-    inputBorderRadius: pulumi.Input<number>;
+    inputBorderRadius?: pulumi.Input<number>;
     /**
-     * Input border weight. Value needs to be between `0` and `3`.
+     * Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
      */
-    inputBorderWeight: pulumi.Input<number>;
+    inputBorderWeight?: pulumi.Input<number>;
     /**
-     * Inputs style. Available options: `pill`, `rounded`, `sharp`.
+     * Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      */
-    inputsStyle: pulumi.Input<string>;
+    inputsStyle?: pulumi.Input<string>;
     /**
-     * Show widget shadow.
+     * Show widget shadow. Defaults to `true`.
      */
-    showWidgetShadow: pulumi.Input<boolean>;
+    showWidgetShadow?: pulumi.Input<boolean>;
     /**
-     * Widget border weight. Value needs to be between `0` and `10`.
+     * Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
      */
-    widgetBorderWeight: pulumi.Input<number>;
+    widgetBorderWeight?: pulumi.Input<number>;
     /**
-     * Widget corner radius. Value needs to be between `0` and `50`.
+     * Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
      */
-    widgetCornerRadius: pulumi.Input<number>;
+    widgetCornerRadius?: pulumi.Input<number>;
 }
 
 export interface BrandingThemeColors {
     /**
-     * Base focus color.
+     * Base focus color. Defaults to `#635dff`.
      */
     baseFocusColor?: pulumi.Input<string>;
     /**
-     * Base hover color.
+     * Base hover color. Defaults to `#000000`.
      */
     baseHoverColor?: pulumi.Input<string>;
     /**
-     * Body text.
+     * Body text. Defaults to `#1e212a`.
      */
-    bodyText: pulumi.Input<string>;
+    bodyText?: pulumi.Input<string>;
     /**
-     * Error.
+     * Error. Defaults to `#d03c38`.
      */
-    error: pulumi.Input<string>;
+    error?: pulumi.Input<string>;
     /**
-     * Header.
+     * Header. Defaults to `#1e212a`.
      */
-    header: pulumi.Input<string>;
+    header?: pulumi.Input<string>;
     /**
-     * Icons.
+     * Icons. Defaults to `#65676e`.
      */
-    icons: pulumi.Input<string>;
+    icons?: pulumi.Input<string>;
     /**
-     * Input background.
+     * Input background. Defaults to `#ffffff`.
      */
-    inputBackground: pulumi.Input<string>;
+    inputBackground?: pulumi.Input<string>;
     /**
-     * Input border.
+     * Input border. Defaults to `#c9cace`.
      */
-    inputBorder: pulumi.Input<string>;
+    inputBorder?: pulumi.Input<string>;
     /**
-     * Input filled text.
+     * Input filled text. Defaults to `#000000`.
      */
-    inputFilledText: pulumi.Input<string>;
+    inputFilledText?: pulumi.Input<string>;
     /**
-     * Input labels & placeholders.
+     * Input labels & placeholders. Defaults to `#65676e`.
      */
-    inputLabelsPlaceholders: pulumi.Input<string>;
+    inputLabelsPlaceholders?: pulumi.Input<string>;
     /**
-     * Links & focused components.
+     * Links & focused components. Defaults to `#635dff`.
      */
-    linksFocusedComponents: pulumi.Input<string>;
+    linksFocusedComponents?: pulumi.Input<string>;
     /**
-     * Primary button.
+     * Primary button. Defaults to `#635dff`.
      */
-    primaryButton: pulumi.Input<string>;
+    primaryButton?: pulumi.Input<string>;
     /**
-     * Primary button label.
+     * Primary button label. Defaults to `#ffffff`.
      */
-    primaryButtonLabel: pulumi.Input<string>;
+    primaryButtonLabel?: pulumi.Input<string>;
     /**
-     * Secondary button border.
+     * Secondary button border. Defaults to `#c9cace`.
      */
-    secondaryButtonBorder: pulumi.Input<string>;
+    secondaryButtonBorder?: pulumi.Input<string>;
     /**
-     * Secondary button label.
+     * Secondary button label. Defaults to `#1e212a`.
      */
-    secondaryButtonLabel: pulumi.Input<string>;
+    secondaryButtonLabel?: pulumi.Input<string>;
     /**
-     * Success.
+     * Success. Defaults to `#13a688`.
      */
-    success: pulumi.Input<string>;
+    success?: pulumi.Input<string>;
     /**
-     * Widget background.
+     * Widget background. Defaults to `#ffffff`.
      */
-    widgetBackground: pulumi.Input<string>;
+    widgetBackground?: pulumi.Input<string>;
     /**
-     * Widget border.
+     * Widget border. Defaults to `#c9cace`.
      */
-    widgetBorder: pulumi.Input<string>;
+    widgetBorder?: pulumi.Input<string>;
 }
 
 export interface BrandingThemeFonts {
@@ -263,9 +263,9 @@ export interface BrandingThemeFonts {
      */
     buttonsText: pulumi.Input<inputs.BrandingThemeFontsButtonsText>;
     /**
-     * Font URL.
+     * Font URL. Defaults to an empty string.
      */
-    fontUrl: pulumi.Input<string>;
+    fontUrl?: pulumi.Input<string>;
     /**
      * Input labels.
      */
@@ -275,13 +275,13 @@ export interface BrandingThemeFonts {
      */
     links: pulumi.Input<inputs.BrandingThemeFontsLinks>;
     /**
-     * Links style.
+     * Links style. Defaults to `normal`.
      */
-    linksStyle: pulumi.Input<string>;
+    linksStyle?: pulumi.Input<string>;
     /**
-     * Reference text size. Value needs to be between `12` and `24`.
+     * Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
      */
-    referenceTextSize: pulumi.Input<number>;
+    referenceTextSize?: pulumi.Input<number>;
     /**
      * Subtitle.
      */
@@ -293,71 +293,71 @@ export interface BrandingThemeFonts {
 }
 
 export interface BrandingThemeFontsBodyText {
-    bold: pulumi.Input<boolean>;
-    size: pulumi.Input<number>;
+    bold?: pulumi.Input<boolean>;
+    size?: pulumi.Input<number>;
 }
 
 export interface BrandingThemeFontsButtonsText {
-    bold: pulumi.Input<boolean>;
-    size: pulumi.Input<number>;
+    bold?: pulumi.Input<boolean>;
+    size?: pulumi.Input<number>;
 }
 
 export interface BrandingThemeFontsInputLabels {
-    bold: pulumi.Input<boolean>;
-    size: pulumi.Input<number>;
+    bold?: pulumi.Input<boolean>;
+    size?: pulumi.Input<number>;
 }
 
 export interface BrandingThemeFontsLinks {
-    bold: pulumi.Input<boolean>;
-    size: pulumi.Input<number>;
+    bold?: pulumi.Input<boolean>;
+    size?: pulumi.Input<number>;
 }
 
 export interface BrandingThemeFontsSubtitle {
-    bold: pulumi.Input<boolean>;
-    size: pulumi.Input<number>;
+    bold?: pulumi.Input<boolean>;
+    size?: pulumi.Input<number>;
 }
 
 export interface BrandingThemeFontsTitle {
-    bold: pulumi.Input<boolean>;
-    size: pulumi.Input<number>;
+    bold?: pulumi.Input<boolean>;
+    size?: pulumi.Input<number>;
 }
 
 export interface BrandingThemePageBackground {
     /**
-     * Background color.
+     * Background color. Defaults to `#000000`.
      */
-    backgroundColor: pulumi.Input<string>;
+    backgroundColor?: pulumi.Input<string>;
     /**
-     * Background image url.
+     * Background image url. Defaults to an empty string.
      */
-    backgroundImageUrl: pulumi.Input<string>;
+    backgroundImageUrl?: pulumi.Input<string>;
     /**
-     * Page layout. Available options: `center`, `left`, `right`.
+     * Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
      */
-    pageLayout: pulumi.Input<string>;
+    pageLayout?: pulumi.Input<string>;
 }
 
 export interface BrandingThemeWidget {
     /**
-     * Header text alignment. Available options: `center`, `left`, `right`.
+     * Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
      */
-    headerTextAlignment: pulumi.Input<string>;
+    headerTextAlignment?: pulumi.Input<string>;
     /**
-     * Logo height. Value needs to be between `1` and `100`.
+     * Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
      */
-    logoHeight: pulumi.Input<number>;
+    logoHeight?: pulumi.Input<number>;
     /**
-     * Logo position. Available options: `center`, `left`, `right`, `none`.
+     * Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
      */
-    logoPosition: pulumi.Input<string>;
+    logoPosition?: pulumi.Input<string>;
     /**
-     * Logo url.
+     * Logo url. Defaults to an empty string.
      */
-    logoUrl: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string>;
     /**
-     * Social buttons layout.  Available options: `bottom`, `top`.
+     * Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
      */
-    socialButtonsLayout: pulumi.Input<string>;
+    socialButtonsLayout?: pulumi.Input<string>;
 }
 
 export interface BrandingUniversalLogin {

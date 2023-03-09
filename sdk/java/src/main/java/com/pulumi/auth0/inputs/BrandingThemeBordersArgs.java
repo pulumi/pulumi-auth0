@@ -9,6 +9,8 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BrandingThemeBordersArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,138 +18,138 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
     public static final BrandingThemeBordersArgs Empty = new BrandingThemeBordersArgs();
 
     /**
-     * Button border radius. Value needs to be between `1` and `10`.
+     * Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
      * 
      */
-    @Import(name="buttonBorderRadius", required=true)
-    private Output<Double> buttonBorderRadius;
+    @Import(name="buttonBorderRadius")
+    private @Nullable Output<Double> buttonBorderRadius;
 
     /**
-     * @return Button border radius. Value needs to be between `1` and `10`.
+     * @return Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
      * 
      */
-    public Output<Double> buttonBorderRadius() {
-        return this.buttonBorderRadius;
+    public Optional<Output<Double>> buttonBorderRadius() {
+        return Optional.ofNullable(this.buttonBorderRadius);
     }
 
     /**
-     * Button border weight. Value needs to be between `0` and `10`.
+     * Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
      * 
      */
-    @Import(name="buttonBorderWeight", required=true)
-    private Output<Double> buttonBorderWeight;
+    @Import(name="buttonBorderWeight")
+    private @Nullable Output<Double> buttonBorderWeight;
 
     /**
-     * @return Button border weight. Value needs to be between `0` and `10`.
+     * @return Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
      * 
      */
-    public Output<Double> buttonBorderWeight() {
-        return this.buttonBorderWeight;
+    public Optional<Output<Double>> buttonBorderWeight() {
+        return Optional.ofNullable(this.buttonBorderWeight);
     }
 
     /**
-     * Buttons style. Available options: `pill`, `rounded`, `sharp`.
+     * Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      * 
      */
-    @Import(name="buttonsStyle", required=true)
-    private Output<String> buttonsStyle;
+    @Import(name="buttonsStyle")
+    private @Nullable Output<String> buttonsStyle;
 
     /**
-     * @return Buttons style. Available options: `pill`, `rounded`, `sharp`.
+     * @return Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      * 
      */
-    public Output<String> buttonsStyle() {
-        return this.buttonsStyle;
+    public Optional<Output<String>> buttonsStyle() {
+        return Optional.ofNullable(this.buttonsStyle);
     }
 
     /**
-     * Input border radius. Value needs to be between `0` and `10`.
+     * Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
      * 
      */
-    @Import(name="inputBorderRadius", required=true)
-    private Output<Double> inputBorderRadius;
+    @Import(name="inputBorderRadius")
+    private @Nullable Output<Double> inputBorderRadius;
 
     /**
-     * @return Input border radius. Value needs to be between `0` and `10`.
+     * @return Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
      * 
      */
-    public Output<Double> inputBorderRadius() {
-        return this.inputBorderRadius;
+    public Optional<Output<Double>> inputBorderRadius() {
+        return Optional.ofNullable(this.inputBorderRadius);
     }
 
     /**
-     * Input border weight. Value needs to be between `0` and `3`.
+     * Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
      * 
      */
-    @Import(name="inputBorderWeight", required=true)
-    private Output<Double> inputBorderWeight;
+    @Import(name="inputBorderWeight")
+    private @Nullable Output<Double> inputBorderWeight;
 
     /**
-     * @return Input border weight. Value needs to be between `0` and `3`.
+     * @return Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
      * 
      */
-    public Output<Double> inputBorderWeight() {
-        return this.inputBorderWeight;
+    public Optional<Output<Double>> inputBorderWeight() {
+        return Optional.ofNullable(this.inputBorderWeight);
     }
 
     /**
-     * Inputs style. Available options: `pill`, `rounded`, `sharp`.
+     * Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      * 
      */
-    @Import(name="inputsStyle", required=true)
-    private Output<String> inputsStyle;
+    @Import(name="inputsStyle")
+    private @Nullable Output<String> inputsStyle;
 
     /**
-     * @return Inputs style. Available options: `pill`, `rounded`, `sharp`.
+     * @return Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      * 
      */
-    public Output<String> inputsStyle() {
-        return this.inputsStyle;
+    public Optional<Output<String>> inputsStyle() {
+        return Optional.ofNullable(this.inputsStyle);
     }
 
     /**
-     * Show widget shadow.
+     * Show widget shadow. Defaults to `true`.
      * 
      */
-    @Import(name="showWidgetShadow", required=true)
-    private Output<Boolean> showWidgetShadow;
+    @Import(name="showWidgetShadow")
+    private @Nullable Output<Boolean> showWidgetShadow;
 
     /**
-     * @return Show widget shadow.
+     * @return Show widget shadow. Defaults to `true`.
      * 
      */
-    public Output<Boolean> showWidgetShadow() {
-        return this.showWidgetShadow;
+    public Optional<Output<Boolean>> showWidgetShadow() {
+        return Optional.ofNullable(this.showWidgetShadow);
     }
 
     /**
-     * Widget border weight. Value needs to be between `0` and `10`.
+     * Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
      * 
      */
-    @Import(name="widgetBorderWeight", required=true)
-    private Output<Double> widgetBorderWeight;
+    @Import(name="widgetBorderWeight")
+    private @Nullable Output<Double> widgetBorderWeight;
 
     /**
-     * @return Widget border weight. Value needs to be between `0` and `10`.
+     * @return Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
      * 
      */
-    public Output<Double> widgetBorderWeight() {
-        return this.widgetBorderWeight;
+    public Optional<Output<Double>> widgetBorderWeight() {
+        return Optional.ofNullable(this.widgetBorderWeight);
     }
 
     /**
-     * Widget corner radius. Value needs to be between `0` and `50`.
+     * Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
      * 
      */
-    @Import(name="widgetCornerRadius", required=true)
-    private Output<Double> widgetCornerRadius;
+    @Import(name="widgetCornerRadius")
+    private @Nullable Output<Double> widgetCornerRadius;
 
     /**
-     * @return Widget corner radius. Value needs to be between `0` and `50`.
+     * @return Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
      * 
      */
-    public Output<Double> widgetCornerRadius() {
-        return this.widgetCornerRadius;
+    public Optional<Output<Double>> widgetCornerRadius() {
+        return Optional.ofNullable(this.widgetCornerRadius);
     }
 
     private BrandingThemeBordersArgs() {}
@@ -183,18 +185,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param buttonBorderRadius Button border radius. Value needs to be between `1` and `10`.
+         * @param buttonBorderRadius Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
          * 
          * @return builder
          * 
          */
-        public Builder buttonBorderRadius(Output<Double> buttonBorderRadius) {
+        public Builder buttonBorderRadius(@Nullable Output<Double> buttonBorderRadius) {
             $.buttonBorderRadius = buttonBorderRadius;
             return this;
         }
 
         /**
-         * @param buttonBorderRadius Button border radius. Value needs to be between `1` and `10`.
+         * @param buttonBorderRadius Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
          * 
          * @return builder
          * 
@@ -204,18 +206,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param buttonBorderWeight Button border weight. Value needs to be between `0` and `10`.
+         * @param buttonBorderWeight Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
          * 
          * @return builder
          * 
          */
-        public Builder buttonBorderWeight(Output<Double> buttonBorderWeight) {
+        public Builder buttonBorderWeight(@Nullable Output<Double> buttonBorderWeight) {
             $.buttonBorderWeight = buttonBorderWeight;
             return this;
         }
 
         /**
-         * @param buttonBorderWeight Button border weight. Value needs to be between `0` and `10`.
+         * @param buttonBorderWeight Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
          * 
          * @return builder
          * 
@@ -225,18 +227,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param buttonsStyle Buttons style. Available options: `pill`, `rounded`, `sharp`.
+         * @param buttonsStyle Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
          * 
          * @return builder
          * 
          */
-        public Builder buttonsStyle(Output<String> buttonsStyle) {
+        public Builder buttonsStyle(@Nullable Output<String> buttonsStyle) {
             $.buttonsStyle = buttonsStyle;
             return this;
         }
 
         /**
-         * @param buttonsStyle Buttons style. Available options: `pill`, `rounded`, `sharp`.
+         * @param buttonsStyle Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
          * 
          * @return builder
          * 
@@ -246,18 +248,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inputBorderRadius Input border radius. Value needs to be between `0` and `10`.
+         * @param inputBorderRadius Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
          * 
          * @return builder
          * 
          */
-        public Builder inputBorderRadius(Output<Double> inputBorderRadius) {
+        public Builder inputBorderRadius(@Nullable Output<Double> inputBorderRadius) {
             $.inputBorderRadius = inputBorderRadius;
             return this;
         }
 
         /**
-         * @param inputBorderRadius Input border radius. Value needs to be between `0` and `10`.
+         * @param inputBorderRadius Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
          * 
          * @return builder
          * 
@@ -267,18 +269,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inputBorderWeight Input border weight. Value needs to be between `0` and `3`.
+         * @param inputBorderWeight Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
          * 
          * @return builder
          * 
          */
-        public Builder inputBorderWeight(Output<Double> inputBorderWeight) {
+        public Builder inputBorderWeight(@Nullable Output<Double> inputBorderWeight) {
             $.inputBorderWeight = inputBorderWeight;
             return this;
         }
 
         /**
-         * @param inputBorderWeight Input border weight. Value needs to be between `0` and `3`.
+         * @param inputBorderWeight Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
          * 
          * @return builder
          * 
@@ -288,18 +290,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inputsStyle Inputs style. Available options: `pill`, `rounded`, `sharp`.
+         * @param inputsStyle Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
          * 
          * @return builder
          * 
          */
-        public Builder inputsStyle(Output<String> inputsStyle) {
+        public Builder inputsStyle(@Nullable Output<String> inputsStyle) {
             $.inputsStyle = inputsStyle;
             return this;
         }
 
         /**
-         * @param inputsStyle Inputs style. Available options: `pill`, `rounded`, `sharp`.
+         * @param inputsStyle Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
          * 
          * @return builder
          * 
@@ -309,18 +311,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param showWidgetShadow Show widget shadow.
+         * @param showWidgetShadow Show widget shadow. Defaults to `true`.
          * 
          * @return builder
          * 
          */
-        public Builder showWidgetShadow(Output<Boolean> showWidgetShadow) {
+        public Builder showWidgetShadow(@Nullable Output<Boolean> showWidgetShadow) {
             $.showWidgetShadow = showWidgetShadow;
             return this;
         }
 
         /**
-         * @param showWidgetShadow Show widget shadow.
+         * @param showWidgetShadow Show widget shadow. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -330,18 +332,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param widgetBorderWeight Widget border weight. Value needs to be between `0` and `10`.
+         * @param widgetBorderWeight Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
          * 
          * @return builder
          * 
          */
-        public Builder widgetBorderWeight(Output<Double> widgetBorderWeight) {
+        public Builder widgetBorderWeight(@Nullable Output<Double> widgetBorderWeight) {
             $.widgetBorderWeight = widgetBorderWeight;
             return this;
         }
 
         /**
-         * @param widgetBorderWeight Widget border weight. Value needs to be between `0` and `10`.
+         * @param widgetBorderWeight Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
          * 
          * @return builder
          * 
@@ -351,18 +353,18 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param widgetCornerRadius Widget corner radius. Value needs to be between `0` and `50`.
+         * @param widgetCornerRadius Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
          * 
          * @return builder
          * 
          */
-        public Builder widgetCornerRadius(Output<Double> widgetCornerRadius) {
+        public Builder widgetCornerRadius(@Nullable Output<Double> widgetCornerRadius) {
             $.widgetCornerRadius = widgetCornerRadius;
             return this;
         }
 
         /**
-         * @param widgetCornerRadius Widget corner radius. Value needs to be between `0` and `50`.
+         * @param widgetCornerRadius Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
          * 
          * @return builder
          * 
@@ -372,15 +374,6 @@ public final class BrandingThemeBordersArgs extends com.pulumi.resources.Resourc
         }
 
         public BrandingThemeBordersArgs build() {
-            $.buttonBorderRadius = Objects.requireNonNull($.buttonBorderRadius, "expected parameter 'buttonBorderRadius' to be non-null");
-            $.buttonBorderWeight = Objects.requireNonNull($.buttonBorderWeight, "expected parameter 'buttonBorderWeight' to be non-null");
-            $.buttonsStyle = Objects.requireNonNull($.buttonsStyle, "expected parameter 'buttonsStyle' to be non-null");
-            $.inputBorderRadius = Objects.requireNonNull($.inputBorderRadius, "expected parameter 'inputBorderRadius' to be non-null");
-            $.inputBorderWeight = Objects.requireNonNull($.inputBorderWeight, "expected parameter 'inputBorderWeight' to be non-null");
-            $.inputsStyle = Objects.requireNonNull($.inputsStyle, "expected parameter 'inputsStyle' to be non-null");
-            $.showWidgetShadow = Objects.requireNonNull($.showWidgetShadow, "expected parameter 'showWidgetShadow' to be non-null");
-            $.widgetBorderWeight = Objects.requireNonNull($.widgetBorderWeight, "expected parameter 'widgetBorderWeight' to be non-null");
-            $.widgetCornerRadius = Objects.requireNonNull($.widgetCornerRadius, "expected parameter 'widgetCornerRadius' to be non-null");
             return $;
         }
     }
