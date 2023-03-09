@@ -502,7 +502,7 @@
             "properties": {
                 "buttonBorderRadius": {
                     "type": "number",
-                    "description": "Button border radius. Value needs to be between `1` and `10`.\n",
+                    "description": "Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -511,7 +511,7 @@
                 },
                 "buttonBorderWeight": {
                     "type": "number",
-                    "description": "Button border weight. Value needs to be between `0` and `10`.\n",
+                    "description": "Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -520,7 +520,7 @@
                 },
                 "buttonsStyle": {
                     "type": "string",
-                    "description": "Buttons style. Available options: `pill`, `rounded`, `sharp`.\n",
+                    "description": "Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -529,7 +529,7 @@
                 },
                 "inputBorderRadius": {
                     "type": "number",
-                    "description": "Input border radius. Value needs to be between `0` and `10`.\n",
+                    "description": "Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -538,7 +538,7 @@
                 },
                 "inputBorderWeight": {
                     "type": "number",
-                    "description": "Input border weight. Value needs to be between `0` and `3`.\n",
+                    "description": "Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -547,7 +547,7 @@
                 },
                 "inputsStyle": {
                     "type": "string",
-                    "description": "Inputs style. Available options: `pill`, `rounded`, `sharp`.\n",
+                    "description": "Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -556,7 +556,7 @@
                 },
                 "showWidgetShadow": {
                     "type": "boolean",
-                    "description": "Show widget shadow.\n",
+                    "description": "Show widget shadow. Defaults to `true`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -565,7 +565,7 @@
                 },
                 "widgetBorderWeight": {
                     "type": "number",
-                    "description": "Widget border weight. Value needs to be between `0` and `10`.\n",
+                    "description": "Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -574,7 +574,7 @@
                 },
                 "widgetCornerRadius": {
                     "type": "number",
-                    "description": "Widget corner radius. Value needs to be between `0` and `50`.\n",
+                    "description": "Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -582,24 +582,13 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "buttonBorderRadius",
-                "buttonBorderWeight",
-                "buttonsStyle",
-                "inputBorderRadius",
-                "inputBorderWeight",
-                "inputsStyle",
-                "showWidgetShadow",
-                "widgetBorderWeight",
-                "widgetCornerRadius"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemeColors:BrandingThemeColors": {
             "properties": {
                 "baseFocusColor": {
                     "type": "string",
-                    "description": "Base focus color.\n",
+                    "description": "Base focus color. Defaults to `#635dff`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -608,7 +597,7 @@
                 },
                 "baseHoverColor": {
                     "type": "string",
-                    "description": "Base hover color.\n",
+                    "description": "Base hover color. Defaults to `#000000`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -617,7 +606,7 @@
                 },
                 "bodyText": {
                     "type": "string",
-                    "description": "Body text.\n",
+                    "description": "Body text. Defaults to `#1e212a`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -626,7 +615,7 @@
                 },
                 "error": {
                     "type": "string",
-                    "description": "Error.\n",
+                    "description": "Error. Defaults to `#d03c38`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -635,7 +624,7 @@
                 },
                 "header": {
                     "type": "string",
-                    "description": "Header.\n",
+                    "description": "Header. Defaults to `#1e212a`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -644,7 +633,7 @@
                 },
                 "icons": {
                     "type": "string",
-                    "description": "Icons.\n",
+                    "description": "Icons. Defaults to `#65676e`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -653,7 +642,7 @@
                 },
                 "inputBackground": {
                     "type": "string",
-                    "description": "Input background.\n",
+                    "description": "Input background. Defaults to `#ffffff`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -662,7 +651,7 @@
                 },
                 "inputBorder": {
                     "type": "string",
-                    "description": "Input border.\n",
+                    "description": "Input border. Defaults to `#c9cace`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -671,7 +660,7 @@
                 },
                 "inputFilledText": {
                     "type": "string",
-                    "description": "Input filled text.\n",
+                    "description": "Input filled text. Defaults to `#000000`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -680,7 +669,7 @@
                 },
                 "inputLabelsPlaceholders": {
                     "type": "string",
-                    "description": "Input labels \u0026 placeholders.\n",
+                    "description": "Input labels \u0026 placeholders. Defaults to `#65676e`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -689,7 +678,7 @@
                 },
                 "linksFocusedComponents": {
                     "type": "string",
-                    "description": "Links \u0026 focused components.\n",
+                    "description": "Links \u0026 focused components. Defaults to `#635dff`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -698,7 +687,7 @@
                 },
                 "primaryButton": {
                     "type": "string",
-                    "description": "Primary button.\n",
+                    "description": "Primary button. Defaults to `#635dff`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -707,7 +696,7 @@
                 },
                 "primaryButtonLabel": {
                     "type": "string",
-                    "description": "Primary button label.\n",
+                    "description": "Primary button label. Defaults to `#ffffff`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -716,7 +705,7 @@
                 },
                 "secondaryButtonBorder": {
                     "type": "string",
-                    "description": "Secondary button border.\n",
+                    "description": "Secondary button border. Defaults to `#c9cace`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -725,7 +714,7 @@
                 },
                 "secondaryButtonLabel": {
                     "type": "string",
-                    "description": "Secondary button label.\n",
+                    "description": "Secondary button label. Defaults to `#1e212a`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -734,7 +723,7 @@
                 },
                 "success": {
                     "type": "string",
-                    "description": "Success.\n",
+                    "description": "Success. Defaults to `#13a688`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -743,7 +732,7 @@
                 },
                 "widgetBackground": {
                     "type": "string",
-                    "description": "Widget background.\n",
+                    "description": "Widget background. Defaults to `#ffffff`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -752,7 +741,7 @@
                 },
                 "widgetBorder": {
                     "type": "string",
-                    "description": "Widget border.\n",
+                    "description": "Widget border. Defaults to `#c9cace`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -760,25 +749,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "bodyText",
-                "error",
-                "header",
-                "icons",
-                "inputBackground",
-                "inputBorder",
-                "inputFilledText",
-                "inputLabelsPlaceholders",
-                "linksFocusedComponents",
-                "primaryButton",
-                "primaryButtonLabel",
-                "secondaryButtonBorder",
-                "secondaryButtonLabel",
-                "success",
-                "widgetBackground",
-                "widgetBorder"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemeFonts:BrandingThemeFonts": {
             "properties": {
@@ -802,7 +773,7 @@
                 },
                 "fontUrl": {
                     "type": "string",
-                    "description": "Font URL.\n",
+                    "description": "Font URL. Defaults to an empty string.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -829,7 +800,7 @@
                 },
                 "linksStyle": {
                     "type": "string",
-                    "description": "Links style.\n",
+                    "description": "Links style. Defaults to `normal`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -838,7 +809,7 @@
                 },
                 "referenceTextSize": {
                     "type": "number",
-                    "description": "Reference text size. Value needs to be between `12` and `24`.\n",
+                    "description": "Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -868,11 +839,8 @@
             "required": [
                 "bodyText",
                 "buttonsText",
-                "fontUrl",
                 "inputLabels",
                 "links",
-                "linksStyle",
-                "referenceTextSize",
                 "subtitle",
                 "title"
             ]
@@ -896,11 +864,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "bold",
-                "size"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemeFontsButtonsText:BrandingThemeFontsButtonsText": {
             "properties": {
@@ -921,11 +885,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "bold",
-                "size"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemeFontsInputLabels:BrandingThemeFontsInputLabels": {
             "properties": {
@@ -946,11 +906,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "bold",
-                "size"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemeFontsLinks:BrandingThemeFontsLinks": {
             "properties": {
@@ -971,11 +927,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "bold",
-                "size"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemeFontsSubtitle:BrandingThemeFontsSubtitle": {
             "properties": {
@@ -996,11 +948,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "bold",
-                "size"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemeFontsTitle:BrandingThemeFontsTitle": {
             "properties": {
@@ -1021,17 +969,13 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "bold",
-                "size"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemePageBackground:BrandingThemePageBackground": {
             "properties": {
                 "backgroundColor": {
                     "type": "string",
-                    "description": "Background color.\n",
+                    "description": "Background color. Defaults to `#000000`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1040,7 +984,7 @@
                 },
                 "backgroundImageUrl": {
                     "type": "string",
-                    "description": "Background image url.\n",
+                    "description": "Background image url. Defaults to an empty string.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1049,7 +993,7 @@
                 },
                 "pageLayout": {
                     "type": "string",
-                    "description": "Page layout. Available options: `center`, `left`, `right`.\n",
+                    "description": "Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1057,18 +1001,13 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "backgroundColor",
-                "backgroundImageUrl",
-                "pageLayout"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingThemeWidget:BrandingThemeWidget": {
             "properties": {
                 "headerTextAlignment": {
                     "type": "string",
-                    "description": "Header text alignment. Available options: `center`, `left`, `right`.\n",
+                    "description": "Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1077,7 +1016,7 @@
                 },
                 "logoHeight": {
                     "type": "number",
-                    "description": "Logo height. Value needs to be between `1` and `100`.\n",
+                    "description": "Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1086,7 +1025,7 @@
                 },
                 "logoPosition": {
                     "type": "string",
-                    "description": "Logo position. Available options: `center`, `left`, `right`, `none`.\n",
+                    "description": "Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1095,7 +1034,7 @@
                 },
                 "logoUrl": {
                     "type": "string",
-                    "description": "Logo url.\n",
+                    "description": "Logo url. Defaults to an empty string.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1104,7 +1043,7 @@
                 },
                 "socialButtonsLayout": {
                     "type": "string",
-                    "description": "Social buttons layout.  Available options: `bottom`, `top`.\n",
+                    "description": "Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1112,14 +1051,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "headerTextAlignment",
-                "logoHeight",
-                "logoPosition",
-                "logoUrl",
-                "socialButtonsLayout"
-            ]
+            "type": "object"
         },
         "auth0:index/BrandingUniversalLogin:BrandingUniversalLogin": {
             "properties": {
@@ -9783,7 +9715,7 @@
             }
         },
         "auth0:index/brandingTheme:BrandingTheme": {
-            "description": "This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myTheme = new auth0.BrandingTheme(\"myTheme\", {\n    borders: {\n        buttonBorderRadius: 1,\n        buttonBorderWeight: 1,\n        buttonsStyle: \"pill\",\n        inputBorderRadius: 3,\n        inputBorderWeight: 1,\n        inputsStyle: \"pill\",\n        showWidgetShadow: false,\n        widgetBorderWeight: 1,\n        widgetCornerRadius: 3,\n    },\n    colors: {\n        bodyText: \"#FF00CC\",\n        error: \"#FF00CC\",\n        header: \"#FF00CC\",\n        icons: \"#FF00CC\",\n        inputBackground: \"#FF00CC\",\n        inputBorder: \"#FF00CC\",\n        inputFilledText: \"#FF00CC\",\n        inputLabelsPlaceholders: \"#FF00CC\",\n        linksFocusedComponents: \"#FF00CC\",\n        primaryButton: \"#FF00CC\",\n        primaryButtonLabel: \"#FF00CC\",\n        secondaryButtonBorder: \"#FF00CC\",\n        secondaryButtonLabel: \"#FF00CC\",\n        success: \"#FF00CC\",\n        widgetBackground: \"#FF00CC\",\n        widgetBorder: \"#FF00CC\",\n    },\n    fonts: {\n        bodyText: {\n            bold: false,\n            size: 100,\n        },\n        buttonsText: {\n            bold: false,\n            size: 100,\n        },\n        fontUrl: \"https://google.com/font.woff\",\n        inputLabels: {\n            bold: false,\n            size: 100,\n        },\n        links: {\n            bold: false,\n            size: 100,\n        },\n        linksStyle: \"normal\",\n        referenceTextSize: 12,\n        subtitle: {\n            bold: false,\n            size: 100,\n        },\n        title: {\n            bold: false,\n            size: 100,\n        },\n    },\n    pageBackground: {\n        backgroundColor: \"#000000\",\n        backgroundImageUrl: \"https://google.com/background.png\",\n        pageLayout: \"center\",\n    },\n    widget: {\n        headerTextAlignment: \"center\",\n        logoHeight: 55,\n        logoPosition: \"center\",\n        logoUrl: \"https://google.com/logo.png\",\n        socialButtonsLayout: \"top\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_theme = auth0.BrandingTheme(\"myTheme\",\n    borders=auth0.BrandingThemeBordersArgs(\n        button_border_radius=1,\n        button_border_weight=1,\n        buttons_style=\"pill\",\n        input_border_radius=3,\n        input_border_weight=1,\n        inputs_style=\"pill\",\n        show_widget_shadow=False,\n        widget_border_weight=1,\n        widget_corner_radius=3,\n    ),\n    colors=auth0.BrandingThemeColorsArgs(\n        body_text=\"#FF00CC\",\n        error=\"#FF00CC\",\n        header=\"#FF00CC\",\n        icons=\"#FF00CC\",\n        input_background=\"#FF00CC\",\n        input_border=\"#FF00CC\",\n        input_filled_text=\"#FF00CC\",\n        input_labels_placeholders=\"#FF00CC\",\n        links_focused_components=\"#FF00CC\",\n        primary_button=\"#FF00CC\",\n        primary_button_label=\"#FF00CC\",\n        secondary_button_border=\"#FF00CC\",\n        secondary_button_label=\"#FF00CC\",\n        success=\"#FF00CC\",\n        widget_background=\"#FF00CC\",\n        widget_border=\"#FF00CC\",\n    ),\n    fonts=auth0.BrandingThemeFontsArgs(\n        body_text=auth0.BrandingThemeFontsBodyTextArgs(\n            bold=False,\n            size=100,\n        ),\n        buttons_text=auth0.BrandingThemeFontsButtonsTextArgs(\n            bold=False,\n            size=100,\n        ),\n        font_url=\"https://google.com/font.woff\",\n        input_labels=auth0.BrandingThemeFontsInputLabelsArgs(\n            bold=False,\n            size=100,\n        ),\n        links=auth0.BrandingThemeFontsLinksArgs(\n            bold=False,\n            size=100,\n        ),\n        links_style=\"normal\",\n        reference_text_size=12,\n        subtitle=auth0.BrandingThemeFontsSubtitleArgs(\n            bold=False,\n            size=100,\n        ),\n        title=auth0.BrandingThemeFontsTitleArgs(\n            bold=False,\n            size=100,\n        ),\n    ),\n    page_background=auth0.BrandingThemePageBackgroundArgs(\n        background_color=\"#000000\",\n        background_image_url=\"https://google.com/background.png\",\n        page_layout=\"center\",\n    ),\n    widget=auth0.BrandingThemeWidgetArgs(\n        header_text_alignment=\"center\",\n        logo_height=55,\n        logo_position=\"center\",\n        logo_url=\"https://google.com/logo.png\",\n        social_buttons_layout=\"top\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTheme = new Auth0.BrandingTheme(\"myTheme\", new()\n    {\n        Borders = new Auth0.Inputs.BrandingThemeBordersArgs\n        {\n            ButtonBorderRadius = 1,\n            ButtonBorderWeight = 1,\n            ButtonsStyle = \"pill\",\n            InputBorderRadius = 3,\n            InputBorderWeight = 1,\n            InputsStyle = \"pill\",\n            ShowWidgetShadow = false,\n            WidgetBorderWeight = 1,\n            WidgetCornerRadius = 3,\n        },\n        Colors = new Auth0.Inputs.BrandingThemeColorsArgs\n        {\n            BodyText = \"#FF00CC\",\n            Error = \"#FF00CC\",\n            Header = \"#FF00CC\",\n            Icons = \"#FF00CC\",\n            InputBackground = \"#FF00CC\",\n            InputBorder = \"#FF00CC\",\n            InputFilledText = \"#FF00CC\",\n            InputLabelsPlaceholders = \"#FF00CC\",\n            LinksFocusedComponents = \"#FF00CC\",\n            PrimaryButton = \"#FF00CC\",\n            PrimaryButtonLabel = \"#FF00CC\",\n            SecondaryButtonBorder = \"#FF00CC\",\n            SecondaryButtonLabel = \"#FF00CC\",\n            Success = \"#FF00CC\",\n            WidgetBackground = \"#FF00CC\",\n            WidgetBorder = \"#FF00CC\",\n        },\n        Fonts = new Auth0.Inputs.BrandingThemeFontsArgs\n        {\n            BodyText = new Auth0.Inputs.BrandingThemeFontsBodyTextArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            ButtonsText = new Auth0.Inputs.BrandingThemeFontsButtonsTextArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            FontUrl = \"https://google.com/font.woff\",\n            InputLabels = new Auth0.Inputs.BrandingThemeFontsInputLabelsArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            Links = new Auth0.Inputs.BrandingThemeFontsLinksArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            LinksStyle = \"normal\",\n            ReferenceTextSize = 12,\n            Subtitle = new Auth0.Inputs.BrandingThemeFontsSubtitleArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            Title = new Auth0.Inputs.BrandingThemeFontsTitleArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n        },\n        PageBackground = new Auth0.Inputs.BrandingThemePageBackgroundArgs\n        {\n            BackgroundColor = \"#000000\",\n            BackgroundImageUrl = \"https://google.com/background.png\",\n            PageLayout = \"center\",\n        },\n        Widget = new Auth0.Inputs.BrandingThemeWidgetArgs\n        {\n            HeaderTextAlignment = \"center\",\n            LogoHeight = 55,\n            LogoPosition = \"center\",\n            LogoUrl = \"https://google.com/logo.png\",\n            SocialButtonsLayout = \"top\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewBrandingTheme(ctx, \"myTheme\", \u0026auth0.BrandingThemeArgs{\n\t\t\tBorders: \u0026auth0.BrandingThemeBordersArgs{\n\t\t\t\tButtonBorderRadius: pulumi.Float64(1),\n\t\t\t\tButtonBorderWeight: pulumi.Float64(1),\n\t\t\t\tButtonsStyle:       pulumi.String(\"pill\"),\n\t\t\t\tInputBorderRadius:  pulumi.Float64(3),\n\t\t\t\tInputBorderWeight:  pulumi.Float64(1),\n\t\t\t\tInputsStyle:        pulumi.String(\"pill\"),\n\t\t\t\tShowWidgetShadow:   pulumi.Bool(false),\n\t\t\t\tWidgetBorderWeight: pulumi.Float64(1),\n\t\t\t\tWidgetCornerRadius: pulumi.Float64(3),\n\t\t\t},\n\t\t\tColors: \u0026auth0.BrandingThemeColorsArgs{\n\t\t\t\tBodyText:                pulumi.String(\"#FF00CC\"),\n\t\t\t\tError:                   pulumi.String(\"#FF00CC\"),\n\t\t\t\tHeader:                  pulumi.String(\"#FF00CC\"),\n\t\t\t\tIcons:                   pulumi.String(\"#FF00CC\"),\n\t\t\t\tInputBackground:         pulumi.String(\"#FF00CC\"),\n\t\t\t\tInputBorder:             pulumi.String(\"#FF00CC\"),\n\t\t\t\tInputFilledText:         pulumi.String(\"#FF00CC\"),\n\t\t\t\tInputLabelsPlaceholders: pulumi.String(\"#FF00CC\"),\n\t\t\t\tLinksFocusedComponents:  pulumi.String(\"#FF00CC\"),\n\t\t\t\tPrimaryButton:           pulumi.String(\"#FF00CC\"),\n\t\t\t\tPrimaryButtonLabel:      pulumi.String(\"#FF00CC\"),\n\t\t\t\tSecondaryButtonBorder:   pulumi.String(\"#FF00CC\"),\n\t\t\t\tSecondaryButtonLabel:    pulumi.String(\"#FF00CC\"),\n\t\t\t\tSuccess:                 pulumi.String(\"#FF00CC\"),\n\t\t\t\tWidgetBackground:        pulumi.String(\"#FF00CC\"),\n\t\t\t\tWidgetBorder:            pulumi.String(\"#FF00CC\"),\n\t\t\t},\n\t\t\tFonts: \u0026auth0.BrandingThemeFontsArgs{\n\t\t\t\tBodyText: \u0026auth0.BrandingThemeFontsBodyTextArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tButtonsText: \u0026auth0.BrandingThemeFontsButtonsTextArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tFontUrl: pulumi.String(\"https://google.com/font.woff\"),\n\t\t\t\tInputLabels: \u0026auth0.BrandingThemeFontsInputLabelsArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tLinks: \u0026auth0.BrandingThemeFontsLinksArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tLinksStyle:        pulumi.String(\"normal\"),\n\t\t\t\tReferenceTextSize: pulumi.Float64(12),\n\t\t\t\tSubtitle: \u0026auth0.BrandingThemeFontsSubtitleArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tTitle: \u0026auth0.BrandingThemeFontsTitleArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t},\n\t\t\tPageBackground: \u0026auth0.BrandingThemePageBackgroundArgs{\n\t\t\t\tBackgroundColor:    pulumi.String(\"#000000\"),\n\t\t\t\tBackgroundImageUrl: pulumi.String(\"https://google.com/background.png\"),\n\t\t\t\tPageLayout:         pulumi.String(\"center\"),\n\t\t\t},\n\t\t\tWidget: \u0026auth0.BrandingThemeWidgetArgs{\n\t\t\t\tHeaderTextAlignment: pulumi.String(\"center\"),\n\t\t\t\tLogoHeight:          pulumi.Float64(55),\n\t\t\t\tLogoPosition:        pulumi.String(\"center\"),\n\t\t\t\tLogoUrl:             pulumi.String(\"https://google.com/logo.png\"),\n\t\t\t\tSocialButtonsLayout: pulumi.String(\"top\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.BrandingTheme;\nimport com.pulumi.auth0.BrandingThemeArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeBordersArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeColorsArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsBodyTextArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsButtonsTextArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsInputLabelsArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsLinksArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsSubtitleArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsTitleArgs;\nimport com.pulumi.auth0.inputs.BrandingThemePageBackgroundArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeWidgetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTheme = new BrandingTheme(\"myTheme\", BrandingThemeArgs.builder()        \n            .borders(BrandingThemeBordersArgs.builder()\n                .buttonBorderRadius(1)\n                .buttonBorderWeight(1)\n                .buttonsStyle(\"pill\")\n                .inputBorderRadius(3)\n                .inputBorderWeight(1)\n                .inputsStyle(\"pill\")\n                .showWidgetShadow(false)\n                .widgetBorderWeight(1)\n                .widgetCornerRadius(3)\n                .build())\n            .colors(BrandingThemeColorsArgs.builder()\n                .bodyText(\"#FF00CC\")\n                .error(\"#FF00CC\")\n                .header(\"#FF00CC\")\n                .icons(\"#FF00CC\")\n                .inputBackground(\"#FF00CC\")\n                .inputBorder(\"#FF00CC\")\n                .inputFilledText(\"#FF00CC\")\n                .inputLabelsPlaceholders(\"#FF00CC\")\n                .linksFocusedComponents(\"#FF00CC\")\n                .primaryButton(\"#FF00CC\")\n                .primaryButtonLabel(\"#FF00CC\")\n                .secondaryButtonBorder(\"#FF00CC\")\n                .secondaryButtonLabel(\"#FF00CC\")\n                .success(\"#FF00CC\")\n                .widgetBackground(\"#FF00CC\")\n                .widgetBorder(\"#FF00CC\")\n                .build())\n            .fonts(BrandingThemeFontsArgs.builder()\n                .bodyText(BrandingThemeFontsBodyTextArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .buttonsText(BrandingThemeFontsButtonsTextArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .fontUrl(\"https://google.com/font.woff\")\n                .inputLabels(BrandingThemeFontsInputLabelsArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .links(BrandingThemeFontsLinksArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .linksStyle(\"normal\")\n                .referenceTextSize(12)\n                .subtitle(BrandingThemeFontsSubtitleArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .title(BrandingThemeFontsTitleArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .build())\n            .pageBackground(BrandingThemePageBackgroundArgs.builder()\n                .backgroundColor(\"#000000\")\n                .backgroundImageUrl(\"https://google.com/background.png\")\n                .pageLayout(\"center\")\n                .build())\n            .widget(BrandingThemeWidgetArgs.builder()\n                .headerTextAlignment(\"center\")\n                .logoHeight(55)\n                .logoPosition(\"center\")\n                .logoUrl(\"https://google.com/logo.png\")\n                .socialButtonsLayout(\"top\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTheme:\n    type: auth0:BrandingTheme\n    properties:\n      borders:\n        buttonBorderRadius: 1\n        buttonBorderWeight: 1\n        buttonsStyle: pill\n        inputBorderRadius: 3\n        inputBorderWeight: 1\n        inputsStyle: pill\n        showWidgetShadow: false\n        widgetBorderWeight: 1\n        widgetCornerRadius: 3\n      colors:\n        bodyText: '#FF00CC'\n        error: '#FF00CC'\n        header: '#FF00CC'\n        icons: '#FF00CC'\n        inputBackground: '#FF00CC'\n        inputBorder: '#FF00CC'\n        inputFilledText: '#FF00CC'\n        inputLabelsPlaceholders: '#FF00CC'\n        linksFocusedComponents: '#FF00CC'\n        primaryButton: '#FF00CC'\n        primaryButtonLabel: '#FF00CC'\n        secondaryButtonBorder: '#FF00CC'\n        secondaryButtonLabel: '#FF00CC'\n        success: '#FF00CC'\n        widgetBackground: '#FF00CC'\n        widgetBorder: '#FF00CC'\n      fonts:\n        bodyText:\n          bold: false\n          size: 100\n        buttonsText:\n          bold: false\n          size: 100\n        fontUrl: https://google.com/font.woff\n        inputLabels:\n          bold: false\n          size: 100\n        links:\n          bold: false\n          size: 100\n        linksStyle: normal\n        referenceTextSize: 12\n        subtitle:\n          bold: false\n          size: 100\n        title:\n          bold: false\n          size: 100\n      pageBackground:\n        backgroundColor: '#000000'\n        backgroundImageUrl: https://google.com/background.png\n        pageLayout: center\n      widget:\n        headerTextAlignment: center\n        logoHeight: 55\n        logoPosition: center\n        logoUrl: https://google.com/logo.png\n        socialButtonsLayout: top\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nBranding Themes can be imported using their ID. # Example\n\n```sh\n $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme XXXXXXXXXXXXXXXXXXXX\n```\n\n ",
+            "description": "This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// An example of a fully configured auth0_branding_theme.\nconst myTheme = new auth0.BrandingTheme(\"myTheme\", {\n    borders: {\n        buttonBorderRadius: 1,\n        buttonBorderWeight: 1,\n        buttonsStyle: \"pill\",\n        inputBorderRadius: 3,\n        inputBorderWeight: 1,\n        inputsStyle: \"pill\",\n        showWidgetShadow: false,\n        widgetBorderWeight: 1,\n        widgetCornerRadius: 3,\n    },\n    colors: {\n        bodyText: \"#FF00CC\",\n        error: \"#FF00CC\",\n        header: \"#FF00CC\",\n        icons: \"#FF00CC\",\n        inputBackground: \"#FF00CC\",\n        inputBorder: \"#FF00CC\",\n        inputFilledText: \"#FF00CC\",\n        inputLabelsPlaceholders: \"#FF00CC\",\n        linksFocusedComponents: \"#FF00CC\",\n        primaryButton: \"#FF00CC\",\n        primaryButtonLabel: \"#FF00CC\",\n        secondaryButtonBorder: \"#FF00CC\",\n        secondaryButtonLabel: \"#FF00CC\",\n        success: \"#FF00CC\",\n        widgetBackground: \"#FF00CC\",\n        widgetBorder: \"#FF00CC\",\n    },\n    fonts: {\n        bodyText: {\n            bold: false,\n            size: 100,\n        },\n        buttonsText: {\n            bold: false,\n            size: 100,\n        },\n        fontUrl: \"https://google.com/font.woff\",\n        inputLabels: {\n            bold: false,\n            size: 100,\n        },\n        links: {\n            bold: false,\n            size: 100,\n        },\n        linksStyle: \"normal\",\n        referenceTextSize: 12,\n        subtitle: {\n            bold: false,\n            size: 100,\n        },\n        title: {\n            bold: false,\n            size: 100,\n        },\n    },\n    pageBackground: {\n        backgroundColor: \"#000000\",\n        backgroundImageUrl: \"https://google.com/background.png\",\n        pageLayout: \"center\",\n    },\n    widget: {\n        headerTextAlignment: \"center\",\n        logoHeight: 55,\n        logoPosition: \"center\",\n        logoUrl: \"https://google.com/logo.png\",\n        socialButtonsLayout: \"top\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# An example of a fully configured auth0_branding_theme.\nmy_theme = auth0.BrandingTheme(\"myTheme\",\n    borders=auth0.BrandingThemeBordersArgs(\n        button_border_radius=1,\n        button_border_weight=1,\n        buttons_style=\"pill\",\n        input_border_radius=3,\n        input_border_weight=1,\n        inputs_style=\"pill\",\n        show_widget_shadow=False,\n        widget_border_weight=1,\n        widget_corner_radius=3,\n    ),\n    colors=auth0.BrandingThemeColorsArgs(\n        body_text=\"#FF00CC\",\n        error=\"#FF00CC\",\n        header=\"#FF00CC\",\n        icons=\"#FF00CC\",\n        input_background=\"#FF00CC\",\n        input_border=\"#FF00CC\",\n        input_filled_text=\"#FF00CC\",\n        input_labels_placeholders=\"#FF00CC\",\n        links_focused_components=\"#FF00CC\",\n        primary_button=\"#FF00CC\",\n        primary_button_label=\"#FF00CC\",\n        secondary_button_border=\"#FF00CC\",\n        secondary_button_label=\"#FF00CC\",\n        success=\"#FF00CC\",\n        widget_background=\"#FF00CC\",\n        widget_border=\"#FF00CC\",\n    ),\n    fonts=auth0.BrandingThemeFontsArgs(\n        body_text=auth0.BrandingThemeFontsBodyTextArgs(\n            bold=False,\n            size=100,\n        ),\n        buttons_text=auth0.BrandingThemeFontsButtonsTextArgs(\n            bold=False,\n            size=100,\n        ),\n        font_url=\"https://google.com/font.woff\",\n        input_labels=auth0.BrandingThemeFontsInputLabelsArgs(\n            bold=False,\n            size=100,\n        ),\n        links=auth0.BrandingThemeFontsLinksArgs(\n            bold=False,\n            size=100,\n        ),\n        links_style=\"normal\",\n        reference_text_size=12,\n        subtitle=auth0.BrandingThemeFontsSubtitleArgs(\n            bold=False,\n            size=100,\n        ),\n        title=auth0.BrandingThemeFontsTitleArgs(\n            bold=False,\n            size=100,\n        ),\n    ),\n    page_background=auth0.BrandingThemePageBackgroundArgs(\n        background_color=\"#000000\",\n        background_image_url=\"https://google.com/background.png\",\n        page_layout=\"center\",\n    ),\n    widget=auth0.BrandingThemeWidgetArgs(\n        header_text_alignment=\"center\",\n        logo_height=55,\n        logo_position=\"center\",\n        logo_url=\"https://google.com/logo.png\",\n        social_buttons_layout=\"top\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // An example of a fully configured auth0_branding_theme.\n    var myTheme = new Auth0.BrandingTheme(\"myTheme\", new()\n    {\n        Borders = new Auth0.Inputs.BrandingThemeBordersArgs\n        {\n            ButtonBorderRadius = 1,\n            ButtonBorderWeight = 1,\n            ButtonsStyle = \"pill\",\n            InputBorderRadius = 3,\n            InputBorderWeight = 1,\n            InputsStyle = \"pill\",\n            ShowWidgetShadow = false,\n            WidgetBorderWeight = 1,\n            WidgetCornerRadius = 3,\n        },\n        Colors = new Auth0.Inputs.BrandingThemeColorsArgs\n        {\n            BodyText = \"#FF00CC\",\n            Error = \"#FF00CC\",\n            Header = \"#FF00CC\",\n            Icons = \"#FF00CC\",\n            InputBackground = \"#FF00CC\",\n            InputBorder = \"#FF00CC\",\n            InputFilledText = \"#FF00CC\",\n            InputLabelsPlaceholders = \"#FF00CC\",\n            LinksFocusedComponents = \"#FF00CC\",\n            PrimaryButton = \"#FF00CC\",\n            PrimaryButtonLabel = \"#FF00CC\",\n            SecondaryButtonBorder = \"#FF00CC\",\n            SecondaryButtonLabel = \"#FF00CC\",\n            Success = \"#FF00CC\",\n            WidgetBackground = \"#FF00CC\",\n            WidgetBorder = \"#FF00CC\",\n        },\n        Fonts = new Auth0.Inputs.BrandingThemeFontsArgs\n        {\n            BodyText = new Auth0.Inputs.BrandingThemeFontsBodyTextArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            ButtonsText = new Auth0.Inputs.BrandingThemeFontsButtonsTextArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            FontUrl = \"https://google.com/font.woff\",\n            InputLabels = new Auth0.Inputs.BrandingThemeFontsInputLabelsArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            Links = new Auth0.Inputs.BrandingThemeFontsLinksArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            LinksStyle = \"normal\",\n            ReferenceTextSize = 12,\n            Subtitle = new Auth0.Inputs.BrandingThemeFontsSubtitleArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n            Title = new Auth0.Inputs.BrandingThemeFontsTitleArgs\n            {\n                Bold = false,\n                Size = 100,\n            },\n        },\n        PageBackground = new Auth0.Inputs.BrandingThemePageBackgroundArgs\n        {\n            BackgroundColor = \"#000000\",\n            BackgroundImageUrl = \"https://google.com/background.png\",\n            PageLayout = \"center\",\n        },\n        Widget = new Auth0.Inputs.BrandingThemeWidgetArgs\n        {\n            HeaderTextAlignment = \"center\",\n            LogoHeight = 55,\n            LogoPosition = \"center\",\n            LogoUrl = \"https://google.com/logo.png\",\n            SocialButtonsLayout = \"top\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewBrandingTheme(ctx, \"myTheme\", \u0026auth0.BrandingThemeArgs{\n\t\t\tBorders: \u0026auth0.BrandingThemeBordersArgs{\n\t\t\t\tButtonBorderRadius: pulumi.Float64(1),\n\t\t\t\tButtonBorderWeight: pulumi.Float64(1),\n\t\t\t\tButtonsStyle:       pulumi.String(\"pill\"),\n\t\t\t\tInputBorderRadius:  pulumi.Float64(3),\n\t\t\t\tInputBorderWeight:  pulumi.Float64(1),\n\t\t\t\tInputsStyle:        pulumi.String(\"pill\"),\n\t\t\t\tShowWidgetShadow:   pulumi.Bool(false),\n\t\t\t\tWidgetBorderWeight: pulumi.Float64(1),\n\t\t\t\tWidgetCornerRadius: pulumi.Float64(3),\n\t\t\t},\n\t\t\tColors: \u0026auth0.BrandingThemeColorsArgs{\n\t\t\t\tBodyText:                pulumi.String(\"#FF00CC\"),\n\t\t\t\tError:                   pulumi.String(\"#FF00CC\"),\n\t\t\t\tHeader:                  pulumi.String(\"#FF00CC\"),\n\t\t\t\tIcons:                   pulumi.String(\"#FF00CC\"),\n\t\t\t\tInputBackground:         pulumi.String(\"#FF00CC\"),\n\t\t\t\tInputBorder:             pulumi.String(\"#FF00CC\"),\n\t\t\t\tInputFilledText:         pulumi.String(\"#FF00CC\"),\n\t\t\t\tInputLabelsPlaceholders: pulumi.String(\"#FF00CC\"),\n\t\t\t\tLinksFocusedComponents:  pulumi.String(\"#FF00CC\"),\n\t\t\t\tPrimaryButton:           pulumi.String(\"#FF00CC\"),\n\t\t\t\tPrimaryButtonLabel:      pulumi.String(\"#FF00CC\"),\n\t\t\t\tSecondaryButtonBorder:   pulumi.String(\"#FF00CC\"),\n\t\t\t\tSecondaryButtonLabel:    pulumi.String(\"#FF00CC\"),\n\t\t\t\tSuccess:                 pulumi.String(\"#FF00CC\"),\n\t\t\t\tWidgetBackground:        pulumi.String(\"#FF00CC\"),\n\t\t\t\tWidgetBorder:            pulumi.String(\"#FF00CC\"),\n\t\t\t},\n\t\t\tFonts: \u0026auth0.BrandingThemeFontsArgs{\n\t\t\t\tBodyText: \u0026auth0.BrandingThemeFontsBodyTextArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tButtonsText: \u0026auth0.BrandingThemeFontsButtonsTextArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tFontUrl: pulumi.String(\"https://google.com/font.woff\"),\n\t\t\t\tInputLabels: \u0026auth0.BrandingThemeFontsInputLabelsArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tLinks: \u0026auth0.BrandingThemeFontsLinksArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tLinksStyle:        pulumi.String(\"normal\"),\n\t\t\t\tReferenceTextSize: pulumi.Float64(12),\n\t\t\t\tSubtitle: \u0026auth0.BrandingThemeFontsSubtitleArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t\tTitle: \u0026auth0.BrandingThemeFontsTitleArgs{\n\t\t\t\t\tBold: pulumi.Bool(false),\n\t\t\t\t\tSize: pulumi.Float64(100),\n\t\t\t\t},\n\t\t\t},\n\t\t\tPageBackground: \u0026auth0.BrandingThemePageBackgroundArgs{\n\t\t\t\tBackgroundColor:    pulumi.String(\"#000000\"),\n\t\t\t\tBackgroundImageUrl: pulumi.String(\"https://google.com/background.png\"),\n\t\t\t\tPageLayout:         pulumi.String(\"center\"),\n\t\t\t},\n\t\t\tWidget: \u0026auth0.BrandingThemeWidgetArgs{\n\t\t\t\tHeaderTextAlignment: pulumi.String(\"center\"),\n\t\t\t\tLogoHeight:          pulumi.Float64(55),\n\t\t\t\tLogoPosition:        pulumi.String(\"center\"),\n\t\t\t\tLogoUrl:             pulumi.String(\"https://google.com/logo.png\"),\n\t\t\t\tSocialButtonsLayout: pulumi.String(\"top\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.BrandingTheme;\nimport com.pulumi.auth0.BrandingThemeArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeBordersArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeColorsArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsBodyTextArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsButtonsTextArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsInputLabelsArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsLinksArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsSubtitleArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeFontsTitleArgs;\nimport com.pulumi.auth0.inputs.BrandingThemePageBackgroundArgs;\nimport com.pulumi.auth0.inputs.BrandingThemeWidgetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTheme = new BrandingTheme(\"myTheme\", BrandingThemeArgs.builder()        \n            .borders(BrandingThemeBordersArgs.builder()\n                .buttonBorderRadius(1)\n                .buttonBorderWeight(1)\n                .buttonsStyle(\"pill\")\n                .inputBorderRadius(3)\n                .inputBorderWeight(1)\n                .inputsStyle(\"pill\")\n                .showWidgetShadow(false)\n                .widgetBorderWeight(1)\n                .widgetCornerRadius(3)\n                .build())\n            .colors(BrandingThemeColorsArgs.builder()\n                .bodyText(\"#FF00CC\")\n                .error(\"#FF00CC\")\n                .header(\"#FF00CC\")\n                .icons(\"#FF00CC\")\n                .inputBackground(\"#FF00CC\")\n                .inputBorder(\"#FF00CC\")\n                .inputFilledText(\"#FF00CC\")\n                .inputLabelsPlaceholders(\"#FF00CC\")\n                .linksFocusedComponents(\"#FF00CC\")\n                .primaryButton(\"#FF00CC\")\n                .primaryButtonLabel(\"#FF00CC\")\n                .secondaryButtonBorder(\"#FF00CC\")\n                .secondaryButtonLabel(\"#FF00CC\")\n                .success(\"#FF00CC\")\n                .widgetBackground(\"#FF00CC\")\n                .widgetBorder(\"#FF00CC\")\n                .build())\n            .fonts(BrandingThemeFontsArgs.builder()\n                .bodyText(BrandingThemeFontsBodyTextArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .buttonsText(BrandingThemeFontsButtonsTextArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .fontUrl(\"https://google.com/font.woff\")\n                .inputLabels(BrandingThemeFontsInputLabelsArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .links(BrandingThemeFontsLinksArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .linksStyle(\"normal\")\n                .referenceTextSize(12)\n                .subtitle(BrandingThemeFontsSubtitleArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .title(BrandingThemeFontsTitleArgs.builder()\n                    .bold(false)\n                    .size(100)\n                    .build())\n                .build())\n            .pageBackground(BrandingThemePageBackgroundArgs.builder()\n                .backgroundColor(\"#000000\")\n                .backgroundImageUrl(\"https://google.com/background.png\")\n                .pageLayout(\"center\")\n                .build())\n            .widget(BrandingThemeWidgetArgs.builder()\n                .headerTextAlignment(\"center\")\n                .logoHeight(55)\n                .logoPosition(\"center\")\n                .logoUrl(\"https://google.com/logo.png\")\n                .socialButtonsLayout(\"top\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # An example of a fully configured auth0_branding_theme.\n  myTheme:\n    type: auth0:BrandingTheme\n    properties:\n      borders:\n        buttonBorderRadius: 1\n        buttonBorderWeight: 1\n        buttonsStyle: pill\n        inputBorderRadius: 3\n        inputBorderWeight: 1\n        inputsStyle: pill\n        showWidgetShadow: false\n        widgetBorderWeight: 1\n        widgetCornerRadius: 3\n      colors:\n        bodyText: '#FF00CC'\n        error: '#FF00CC'\n        header: '#FF00CC'\n        icons: '#FF00CC'\n        inputBackground: '#FF00CC'\n        inputBorder: '#FF00CC'\n        inputFilledText: '#FF00CC'\n        inputLabelsPlaceholders: '#FF00CC'\n        linksFocusedComponents: '#FF00CC'\n        primaryButton: '#FF00CC'\n        primaryButtonLabel: '#FF00CC'\n        secondaryButtonBorder: '#FF00CC'\n        secondaryButtonLabel: '#FF00CC'\n        success: '#FF00CC'\n        widgetBackground: '#FF00CC'\n        widgetBorder: '#FF00CC'\n      fonts:\n        bodyText:\n          bold: false\n          size: 100\n        buttonsText:\n          bold: false\n          size: 100\n        fontUrl: https://google.com/font.woff\n        inputLabels:\n          bold: false\n          size: 100\n        links:\n          bold: false\n          size: 100\n        linksStyle: normal\n        referenceTextSize: 12\n        subtitle:\n          bold: false\n          size: 100\n        title:\n          bold: false\n          size: 100\n      pageBackground:\n        backgroundColor: '#000000'\n        backgroundImageUrl: https://google.com/background.png\n        pageLayout: center\n      widget:\n        headerTextAlignment: center\n        logoHeight: 55\n        logoPosition: center\n        logoUrl: https://google.com/logo.png\n        socialButtonsLayout: top\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nBranding Themes can be imported using their ID. # Example\n\n```sh\n $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme XXXXXXXXXXXXXXXXXXXX\n```\n\n ",
             "properties": {
                 "borders": {
                     "$ref": "#/types/auth0:index/BrandingThemeBorders:BrandingThemeBorders"
@@ -10722,7 +10654,7 @@
             }
         },
         "auth0:index/customDomain:CustomDomain": {
-            "description": "With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myCustomDomain = new auth0.CustomDomain(\"myCustomDomain\", {\n    domain: \"auth.example.com\",\n    type: \"auth0_managed_certs\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_custom_domain = auth0.CustomDomain(\"myCustomDomain\",\n    domain=\"auth.example.com\",\n    type=\"auth0_managed_certs\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myCustomDomain = new Auth0.CustomDomain(\"myCustomDomain\", new()\n    {\n        Domain = \"auth.example.com\",\n        Type = \"auth0_managed_certs\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewCustomDomain(ctx, \"myCustomDomain\", \u0026auth0.CustomDomainArgs{\n\t\t\tDomain: pulumi.String(\"auth.example.com\"),\n\t\t\tType:   pulumi.String(\"auth0_managed_certs\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.CustomDomain;\nimport com.pulumi.auth0.CustomDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myCustomDomain = new CustomDomain(\"myCustomDomain\", CustomDomainArgs.builder()        \n            .domain(\"auth.example.com\")\n            .type(\"auth0_managed_certs\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myCustomDomain:\n    type: auth0:CustomDomain\n    properties:\n      domain: auth.example.com\n      type: auth0_managed_certs\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCustom domains can be imported using their ID. # Example\n\n```sh\n $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX\n```\n\n ",
+            "description": "With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myCustomDomain = new auth0.CustomDomain(\"myCustomDomain\", {\n    domain: \"auth.example.com\",\n    type: \"auth0_managed_certs\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_custom_domain = auth0.CustomDomain(\"myCustomDomain\",\n    domain=\"auth.example.com\",\n    type=\"auth0_managed_certs\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myCustomDomain = new Auth0.CustomDomain(\"myCustomDomain\", new()\n    {\n        Domain = \"auth.example.com\",\n        Type = \"auth0_managed_certs\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewCustomDomain(ctx, \"myCustomDomain\", \u0026auth0.CustomDomainArgs{\n\t\t\tDomain: pulumi.String(\"auth.example.com\"),\n\t\t\tType:   pulumi.String(\"auth0_managed_certs\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.CustomDomain;\nimport com.pulumi.auth0.CustomDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myCustomDomain = new CustomDomain(\"myCustomDomain\", CustomDomainArgs.builder()        \n            .domain(\"auth.example.com\")\n            .type(\"auth0_managed_certs\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myCustomDomain:\n    type: auth0:CustomDomain\n    properties:\n      domain: auth.example.com\n      type: auth0_managed_certs\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCustom domains can be imported using their ID. # You can find existing custom domain IDs using the Auth0 Management API. https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains # Example\n\n```sh\n $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain cd_XXXXXXXXXXXXXXXX\n```\n\n ",
             "properties": {
                 "customClientIpHeader": {
                     "type": "string",
@@ -11984,7 +11916,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the log stream, which indicates the sink provider.\n"
+                    "description": "Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.\n"
                 }
             },
             "required": [
@@ -12018,7 +11950,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the log stream, which indicates the sink provider.\n",
+                    "description": "Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -12053,7 +11985,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of the log stream, which indicates the sink provider.\n",
+                        "description": "Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -12341,7 +12273,7 @@
                 },
                 "prompt": {
                     "type": "string",
-                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.\n"
+                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
                 }
             },
             "required": [
@@ -12360,7 +12292,7 @@
                 },
                 "prompt": {
                     "type": "string",
-                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.\n"
+                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
                 }
             },
             "requiredInputs": [
@@ -12381,7 +12313,7 @@
                     },
                     "prompt": {
                         "type": "string",
-                        "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.\n"
+                        "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.\n"
                     }
                 },
                 "type": "object"
