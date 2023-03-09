@@ -22,9 +22,9 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly Outputs.BrandingThemeFontsButtonsText ButtonsText;
         /// <summary>
-        /// Font URL.
+        /// Font URL. Defaults to an empty string.
         /// </summary>
-        public readonly string FontUrl;
+        public readonly string? FontUrl;
         /// <summary>
         /// Input labels.
         /// </summary>
@@ -34,13 +34,13 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly Outputs.BrandingThemeFontsLinks Links;
         /// <summary>
-        /// Links style.
+        /// Links style. Defaults to `normal`.
         /// </summary>
-        public readonly string LinksStyle;
+        public readonly string? LinksStyle;
         /// <summary>
-        /// Reference text size. Value needs to be between `12` and `24`.
+        /// Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
         /// </summary>
-        public readonly double ReferenceTextSize;
+        public readonly double? ReferenceTextSize;
         /// <summary>
         /// Subtitle.
         /// </summary>
@@ -56,15 +56,15 @@ namespace Pulumi.Auth0.Outputs
 
             Outputs.BrandingThemeFontsButtonsText buttonsText,
 
-            string fontUrl,
+            string? fontUrl,
 
             Outputs.BrandingThemeFontsInputLabels inputLabels,
 
             Outputs.BrandingThemeFontsLinks links,
 
-            string linksStyle,
+            string? linksStyle,
 
-            double referenceTextSize,
+            double? referenceTextSize,
 
             Outputs.BrandingThemeFontsSubtitle subtitle,
 

@@ -8,118 +8,120 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class BrandingThemeBorders {
     /**
-     * @return Button border radius. Value needs to be between `1` and `10`.
+     * @return Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
      * 
      */
-    private Double buttonBorderRadius;
+    private @Nullable Double buttonBorderRadius;
     /**
-     * @return Button border weight. Value needs to be between `0` and `10`.
+     * @return Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
      * 
      */
-    private Double buttonBorderWeight;
+    private @Nullable Double buttonBorderWeight;
     /**
-     * @return Buttons style. Available options: `pill`, `rounded`, `sharp`.
+     * @return Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      * 
      */
-    private String buttonsStyle;
+    private @Nullable String buttonsStyle;
     /**
-     * @return Input border radius. Value needs to be between `0` and `10`.
+     * @return Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
      * 
      */
-    private Double inputBorderRadius;
+    private @Nullable Double inputBorderRadius;
     /**
-     * @return Input border weight. Value needs to be between `0` and `3`.
+     * @return Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
      * 
      */
-    private Double inputBorderWeight;
+    private @Nullable Double inputBorderWeight;
     /**
-     * @return Inputs style. Available options: `pill`, `rounded`, `sharp`.
+     * @return Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      * 
      */
-    private String inputsStyle;
+    private @Nullable String inputsStyle;
     /**
-     * @return Show widget shadow.
+     * @return Show widget shadow. Defaults to `true`.
      * 
      */
-    private Boolean showWidgetShadow;
+    private @Nullable Boolean showWidgetShadow;
     /**
-     * @return Widget border weight. Value needs to be between `0` and `10`.
+     * @return Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
      * 
      */
-    private Double widgetBorderWeight;
+    private @Nullable Double widgetBorderWeight;
     /**
-     * @return Widget corner radius. Value needs to be between `0` and `50`.
+     * @return Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
      * 
      */
-    private Double widgetCornerRadius;
+    private @Nullable Double widgetCornerRadius;
 
     private BrandingThemeBorders() {}
     /**
-     * @return Button border radius. Value needs to be between `1` and `10`.
+     * @return Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
      * 
      */
-    public Double buttonBorderRadius() {
-        return this.buttonBorderRadius;
+    public Optional<Double> buttonBorderRadius() {
+        return Optional.ofNullable(this.buttonBorderRadius);
     }
     /**
-     * @return Button border weight. Value needs to be between `0` and `10`.
+     * @return Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
      * 
      */
-    public Double buttonBorderWeight() {
-        return this.buttonBorderWeight;
+    public Optional<Double> buttonBorderWeight() {
+        return Optional.ofNullable(this.buttonBorderWeight);
     }
     /**
-     * @return Buttons style. Available options: `pill`, `rounded`, `sharp`.
+     * @return Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      * 
      */
-    public String buttonsStyle() {
-        return this.buttonsStyle;
+    public Optional<String> buttonsStyle() {
+        return Optional.ofNullable(this.buttonsStyle);
     }
     /**
-     * @return Input border radius. Value needs to be between `0` and `10`.
+     * @return Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
      * 
      */
-    public Double inputBorderRadius() {
-        return this.inputBorderRadius;
+    public Optional<Double> inputBorderRadius() {
+        return Optional.ofNullable(this.inputBorderRadius);
     }
     /**
-     * @return Input border weight. Value needs to be between `0` and `3`.
+     * @return Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
      * 
      */
-    public Double inputBorderWeight() {
-        return this.inputBorderWeight;
+    public Optional<Double> inputBorderWeight() {
+        return Optional.ofNullable(this.inputBorderWeight);
     }
     /**
-     * @return Inputs style. Available options: `pill`, `rounded`, `sharp`.
+     * @return Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      * 
      */
-    public String inputsStyle() {
-        return this.inputsStyle;
+    public Optional<String> inputsStyle() {
+        return Optional.ofNullable(this.inputsStyle);
     }
     /**
-     * @return Show widget shadow.
+     * @return Show widget shadow. Defaults to `true`.
      * 
      */
-    public Boolean showWidgetShadow() {
-        return this.showWidgetShadow;
+    public Optional<Boolean> showWidgetShadow() {
+        return Optional.ofNullable(this.showWidgetShadow);
     }
     /**
-     * @return Widget border weight. Value needs to be between `0` and `10`.
+     * @return Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
      * 
      */
-    public Double widgetBorderWeight() {
-        return this.widgetBorderWeight;
+    public Optional<Double> widgetBorderWeight() {
+        return Optional.ofNullable(this.widgetBorderWeight);
     }
     /**
-     * @return Widget corner radius. Value needs to be between `0` and `50`.
+     * @return Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
      * 
      */
-    public Double widgetCornerRadius() {
-        return this.widgetCornerRadius;
+    public Optional<Double> widgetCornerRadius() {
+        return Optional.ofNullable(this.widgetCornerRadius);
     }
 
     public static Builder builder() {
@@ -131,15 +133,15 @@ public final class BrandingThemeBorders {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Double buttonBorderRadius;
-        private Double buttonBorderWeight;
-        private String buttonsStyle;
-        private Double inputBorderRadius;
-        private Double inputBorderWeight;
-        private String inputsStyle;
-        private Boolean showWidgetShadow;
-        private Double widgetBorderWeight;
-        private Double widgetCornerRadius;
+        private @Nullable Double buttonBorderRadius;
+        private @Nullable Double buttonBorderWeight;
+        private @Nullable String buttonsStyle;
+        private @Nullable Double inputBorderRadius;
+        private @Nullable Double inputBorderWeight;
+        private @Nullable String inputsStyle;
+        private @Nullable Boolean showWidgetShadow;
+        private @Nullable Double widgetBorderWeight;
+        private @Nullable Double widgetCornerRadius;
         public Builder() {}
         public Builder(BrandingThemeBorders defaults) {
     	      Objects.requireNonNull(defaults);
@@ -155,48 +157,48 @@ public final class BrandingThemeBorders {
         }
 
         @CustomType.Setter
-        public Builder buttonBorderRadius(Double buttonBorderRadius) {
-            this.buttonBorderRadius = Objects.requireNonNull(buttonBorderRadius);
+        public Builder buttonBorderRadius(@Nullable Double buttonBorderRadius) {
+            this.buttonBorderRadius = buttonBorderRadius;
             return this;
         }
         @CustomType.Setter
-        public Builder buttonBorderWeight(Double buttonBorderWeight) {
-            this.buttonBorderWeight = Objects.requireNonNull(buttonBorderWeight);
+        public Builder buttonBorderWeight(@Nullable Double buttonBorderWeight) {
+            this.buttonBorderWeight = buttonBorderWeight;
             return this;
         }
         @CustomType.Setter
-        public Builder buttonsStyle(String buttonsStyle) {
-            this.buttonsStyle = Objects.requireNonNull(buttonsStyle);
+        public Builder buttonsStyle(@Nullable String buttonsStyle) {
+            this.buttonsStyle = buttonsStyle;
             return this;
         }
         @CustomType.Setter
-        public Builder inputBorderRadius(Double inputBorderRadius) {
-            this.inputBorderRadius = Objects.requireNonNull(inputBorderRadius);
+        public Builder inputBorderRadius(@Nullable Double inputBorderRadius) {
+            this.inputBorderRadius = inputBorderRadius;
             return this;
         }
         @CustomType.Setter
-        public Builder inputBorderWeight(Double inputBorderWeight) {
-            this.inputBorderWeight = Objects.requireNonNull(inputBorderWeight);
+        public Builder inputBorderWeight(@Nullable Double inputBorderWeight) {
+            this.inputBorderWeight = inputBorderWeight;
             return this;
         }
         @CustomType.Setter
-        public Builder inputsStyle(String inputsStyle) {
-            this.inputsStyle = Objects.requireNonNull(inputsStyle);
+        public Builder inputsStyle(@Nullable String inputsStyle) {
+            this.inputsStyle = inputsStyle;
             return this;
         }
         @CustomType.Setter
-        public Builder showWidgetShadow(Boolean showWidgetShadow) {
-            this.showWidgetShadow = Objects.requireNonNull(showWidgetShadow);
+        public Builder showWidgetShadow(@Nullable Boolean showWidgetShadow) {
+            this.showWidgetShadow = showWidgetShadow;
             return this;
         }
         @CustomType.Setter
-        public Builder widgetBorderWeight(Double widgetBorderWeight) {
-            this.widgetBorderWeight = Objects.requireNonNull(widgetBorderWeight);
+        public Builder widgetBorderWeight(@Nullable Double widgetBorderWeight) {
+            this.widgetBorderWeight = widgetBorderWeight;
             return this;
         }
         @CustomType.Setter
-        public Builder widgetCornerRadius(Double widgetCornerRadius) {
-            this.widgetCornerRadius = Objects.requireNonNull(widgetCornerRadius);
+        public Builder widgetCornerRadius(@Nullable Double widgetCornerRadius) {
+            this.widgetCornerRadius = widgetCornerRadius;
             return this;
         }
         public BrandingThemeBorders build() {

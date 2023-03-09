@@ -13,22 +13,22 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingThemePageBackgroundArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Background color.
+        /// Background color. Defaults to `#000000`.
         /// </summary>
-        [Input("backgroundColor", required: true)]
-        public Input<string> BackgroundColor { get; set; } = null!;
+        [Input("backgroundColor")]
+        public Input<string>? BackgroundColor { get; set; }
 
         /// <summary>
-        /// Background image url.
+        /// Background image url. Defaults to an empty string.
         /// </summary>
-        [Input("backgroundImageUrl", required: true)]
-        public Input<string> BackgroundImageUrl { get; set; } = null!;
+        [Input("backgroundImageUrl")]
+        public Input<string>? BackgroundImageUrl { get; set; }
 
         /// <summary>
-        /// Page layout. Available options: `center`, `left`, `right`.
+        /// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
         /// </summary>
-        [Input("pageLayout", required: true)]
-        public Input<string> PageLayout { get; set; } = null!;
+        [Input("pageLayout")]
+        public Input<string>? PageLayout { get; set; }
 
         public BrandingThemePageBackgroundArgs()
         {

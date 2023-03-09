@@ -1746,24 +1746,24 @@ func (o BrandingFontPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type BrandingThemeBorders struct {
-	// Button border radius. Value needs to be between `1` and `10`.
-	ButtonBorderRadius float64 `pulumi:"buttonBorderRadius"`
-	// Button border weight. Value needs to be between `0` and `10`.
-	ButtonBorderWeight float64 `pulumi:"buttonBorderWeight"`
-	// Buttons style. Available options: `pill`, `rounded`, `sharp`.
-	ButtonsStyle string `pulumi:"buttonsStyle"`
-	// Input border radius. Value needs to be between `0` and `10`.
-	InputBorderRadius float64 `pulumi:"inputBorderRadius"`
-	// Input border weight. Value needs to be between `0` and `3`.
-	InputBorderWeight float64 `pulumi:"inputBorderWeight"`
-	// Inputs style. Available options: `pill`, `rounded`, `sharp`.
-	InputsStyle string `pulumi:"inputsStyle"`
-	// Show widget shadow.
-	ShowWidgetShadow bool `pulumi:"showWidgetShadow"`
-	// Widget border weight. Value needs to be between `0` and `10`.
-	WidgetBorderWeight float64 `pulumi:"widgetBorderWeight"`
-	// Widget corner radius. Value needs to be between `0` and `50`.
-	WidgetCornerRadius float64 `pulumi:"widgetCornerRadius"`
+	// Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
+	ButtonBorderRadius *float64 `pulumi:"buttonBorderRadius"`
+	// Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
+	ButtonBorderWeight *float64 `pulumi:"buttonBorderWeight"`
+	// Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+	ButtonsStyle *string `pulumi:"buttonsStyle"`
+	// Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
+	InputBorderRadius *float64 `pulumi:"inputBorderRadius"`
+	// Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
+	InputBorderWeight *float64 `pulumi:"inputBorderWeight"`
+	// Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+	InputsStyle *string `pulumi:"inputsStyle"`
+	// Show widget shadow. Defaults to `true`.
+	ShowWidgetShadow *bool `pulumi:"showWidgetShadow"`
+	// Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
+	WidgetBorderWeight *float64 `pulumi:"widgetBorderWeight"`
+	// Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
+	WidgetCornerRadius *float64 `pulumi:"widgetCornerRadius"`
 }
 
 // BrandingThemeBordersInput is an input type that accepts BrandingThemeBordersArgs and BrandingThemeBordersOutput values.
@@ -1778,24 +1778,24 @@ type BrandingThemeBordersInput interface {
 }
 
 type BrandingThemeBordersArgs struct {
-	// Button border radius. Value needs to be between `1` and `10`.
-	ButtonBorderRadius pulumi.Float64Input `pulumi:"buttonBorderRadius"`
-	// Button border weight. Value needs to be between `0` and `10`.
-	ButtonBorderWeight pulumi.Float64Input `pulumi:"buttonBorderWeight"`
-	// Buttons style. Available options: `pill`, `rounded`, `sharp`.
-	ButtonsStyle pulumi.StringInput `pulumi:"buttonsStyle"`
-	// Input border radius. Value needs to be between `0` and `10`.
-	InputBorderRadius pulumi.Float64Input `pulumi:"inputBorderRadius"`
-	// Input border weight. Value needs to be between `0` and `3`.
-	InputBorderWeight pulumi.Float64Input `pulumi:"inputBorderWeight"`
-	// Inputs style. Available options: `pill`, `rounded`, `sharp`.
-	InputsStyle pulumi.StringInput `pulumi:"inputsStyle"`
-	// Show widget shadow.
-	ShowWidgetShadow pulumi.BoolInput `pulumi:"showWidgetShadow"`
-	// Widget border weight. Value needs to be between `0` and `10`.
-	WidgetBorderWeight pulumi.Float64Input `pulumi:"widgetBorderWeight"`
-	// Widget corner radius. Value needs to be between `0` and `50`.
-	WidgetCornerRadius pulumi.Float64Input `pulumi:"widgetCornerRadius"`
+	// Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
+	ButtonBorderRadius pulumi.Float64PtrInput `pulumi:"buttonBorderRadius"`
+	// Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
+	ButtonBorderWeight pulumi.Float64PtrInput `pulumi:"buttonBorderWeight"`
+	// Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+	ButtonsStyle pulumi.StringPtrInput `pulumi:"buttonsStyle"`
+	// Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
+	InputBorderRadius pulumi.Float64PtrInput `pulumi:"inputBorderRadius"`
+	// Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
+	InputBorderWeight pulumi.Float64PtrInput `pulumi:"inputBorderWeight"`
+	// Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+	InputsStyle pulumi.StringPtrInput `pulumi:"inputsStyle"`
+	// Show widget shadow. Defaults to `true`.
+	ShowWidgetShadow pulumi.BoolPtrInput `pulumi:"showWidgetShadow"`
+	// Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
+	WidgetBorderWeight pulumi.Float64PtrInput `pulumi:"widgetBorderWeight"`
+	// Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
+	WidgetCornerRadius pulumi.Float64PtrInput `pulumi:"widgetCornerRadius"`
 }
 
 func (BrandingThemeBordersArgs) ElementType() reflect.Type {
@@ -1875,49 +1875,49 @@ func (o BrandingThemeBordersOutput) ToBrandingThemeBordersPtrOutputWithContext(c
 	}).(BrandingThemeBordersPtrOutput)
 }
 
-// Button border radius. Value needs to be between `1` and `10`.
-func (o BrandingThemeBordersOutput) ButtonBorderRadius() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeBorders) float64 { return v.ButtonBorderRadius }).(pulumi.Float64Output)
+// Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
+func (o BrandingThemeBordersOutput) ButtonBorderRadius() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *float64 { return v.ButtonBorderRadius }).(pulumi.Float64PtrOutput)
 }
 
-// Button border weight. Value needs to be between `0` and `10`.
-func (o BrandingThemeBordersOutput) ButtonBorderWeight() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeBorders) float64 { return v.ButtonBorderWeight }).(pulumi.Float64Output)
+// Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
+func (o BrandingThemeBordersOutput) ButtonBorderWeight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *float64 { return v.ButtonBorderWeight }).(pulumi.Float64PtrOutput)
 }
 
-// Buttons style. Available options: `pill`, `rounded`, `sharp`.
-func (o BrandingThemeBordersOutput) ButtonsStyle() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeBorders) string { return v.ButtonsStyle }).(pulumi.StringOutput)
+// Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+func (o BrandingThemeBordersOutput) ButtonsStyle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *string { return v.ButtonsStyle }).(pulumi.StringPtrOutput)
 }
 
-// Input border radius. Value needs to be between `0` and `10`.
-func (o BrandingThemeBordersOutput) InputBorderRadius() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeBorders) float64 { return v.InputBorderRadius }).(pulumi.Float64Output)
+// Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
+func (o BrandingThemeBordersOutput) InputBorderRadius() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *float64 { return v.InputBorderRadius }).(pulumi.Float64PtrOutput)
 }
 
-// Input border weight. Value needs to be between `0` and `3`.
-func (o BrandingThemeBordersOutput) InputBorderWeight() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeBorders) float64 { return v.InputBorderWeight }).(pulumi.Float64Output)
+// Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
+func (o BrandingThemeBordersOutput) InputBorderWeight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *float64 { return v.InputBorderWeight }).(pulumi.Float64PtrOutput)
 }
 
-// Inputs style. Available options: `pill`, `rounded`, `sharp`.
-func (o BrandingThemeBordersOutput) InputsStyle() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeBorders) string { return v.InputsStyle }).(pulumi.StringOutput)
+// Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+func (o BrandingThemeBordersOutput) InputsStyle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *string { return v.InputsStyle }).(pulumi.StringPtrOutput)
 }
 
-// Show widget shadow.
-func (o BrandingThemeBordersOutput) ShowWidgetShadow() pulumi.BoolOutput {
-	return o.ApplyT(func(v BrandingThemeBorders) bool { return v.ShowWidgetShadow }).(pulumi.BoolOutput)
+// Show widget shadow. Defaults to `true`.
+func (o BrandingThemeBordersOutput) ShowWidgetShadow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *bool { return v.ShowWidgetShadow }).(pulumi.BoolPtrOutput)
 }
 
-// Widget border weight. Value needs to be between `0` and `10`.
-func (o BrandingThemeBordersOutput) WidgetBorderWeight() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeBorders) float64 { return v.WidgetBorderWeight }).(pulumi.Float64Output)
+// Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
+func (o BrandingThemeBordersOutput) WidgetBorderWeight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *float64 { return v.WidgetBorderWeight }).(pulumi.Float64PtrOutput)
 }
 
-// Widget corner radius. Value needs to be between `0` and `50`.
-func (o BrandingThemeBordersOutput) WidgetCornerRadius() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeBorders) float64 { return v.WidgetCornerRadius }).(pulumi.Float64Output)
+// Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
+func (o BrandingThemeBordersOutput) WidgetCornerRadius() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeBorders) *float64 { return v.WidgetCornerRadius }).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeBordersPtrOutput struct{ *pulumi.OutputState }
@@ -1944,133 +1944,133 @@ func (o BrandingThemeBordersPtrOutput) Elem() BrandingThemeBordersOutput {
 	}).(BrandingThemeBordersOutput)
 }
 
-// Button border radius. Value needs to be between `1` and `10`.
+// Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
 func (o BrandingThemeBordersPtrOutput) ButtonBorderRadius() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.ButtonBorderRadius
+		return v.ButtonBorderRadius
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Button border weight. Value needs to be between `0` and `10`.
+// Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
 func (o BrandingThemeBordersPtrOutput) ButtonBorderWeight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.ButtonBorderWeight
+		return v.ButtonBorderWeight
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Buttons style. Available options: `pill`, `rounded`, `sharp`.
+// Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
 func (o BrandingThemeBordersPtrOutput) ButtonsStyle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ButtonsStyle
+		return v.ButtonsStyle
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input border radius. Value needs to be between `0` and `10`.
+// Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
 func (o BrandingThemeBordersPtrOutput) InputBorderRadius() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.InputBorderRadius
+		return v.InputBorderRadius
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Input border weight. Value needs to be between `0` and `3`.
+// Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
 func (o BrandingThemeBordersPtrOutput) InputBorderWeight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.InputBorderWeight
+		return v.InputBorderWeight
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Inputs style. Available options: `pill`, `rounded`, `sharp`.
+// Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
 func (o BrandingThemeBordersPtrOutput) InputsStyle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.InputsStyle
+		return v.InputsStyle
 	}).(pulumi.StringPtrOutput)
 }
 
-// Show widget shadow.
+// Show widget shadow. Defaults to `true`.
 func (o BrandingThemeBordersPtrOutput) ShowWidgetShadow() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.ShowWidgetShadow
+		return v.ShowWidgetShadow
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Widget border weight. Value needs to be between `0` and `10`.
+// Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
 func (o BrandingThemeBordersPtrOutput) WidgetBorderWeight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.WidgetBorderWeight
+		return v.WidgetBorderWeight
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Widget corner radius. Value needs to be between `0` and `50`.
+// Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
 func (o BrandingThemeBordersPtrOutput) WidgetCornerRadius() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeBorders) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.WidgetCornerRadius
+		return v.WidgetCornerRadius
 	}).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeColors struct {
-	// Base focus color.
+	// Base focus color. Defaults to `#635dff`.
 	BaseFocusColor *string `pulumi:"baseFocusColor"`
-	// Base hover color.
+	// Base hover color. Defaults to `#000000`.
 	BaseHoverColor *string `pulumi:"baseHoverColor"`
-	// Body text.
-	BodyText string `pulumi:"bodyText"`
-	// Error.
-	Error string `pulumi:"error"`
-	// Header.
-	Header string `pulumi:"header"`
-	// Icons.
-	Icons string `pulumi:"icons"`
-	// Input background.
-	InputBackground string `pulumi:"inputBackground"`
-	// Input border.
-	InputBorder string `pulumi:"inputBorder"`
-	// Input filled text.
-	InputFilledText string `pulumi:"inputFilledText"`
-	// Input labels & placeholders.
-	InputLabelsPlaceholders string `pulumi:"inputLabelsPlaceholders"`
-	// Links & focused components.
-	LinksFocusedComponents string `pulumi:"linksFocusedComponents"`
-	// Primary button.
-	PrimaryButton string `pulumi:"primaryButton"`
-	// Primary button label.
-	PrimaryButtonLabel string `pulumi:"primaryButtonLabel"`
-	// Secondary button border.
-	SecondaryButtonBorder string `pulumi:"secondaryButtonBorder"`
-	// Secondary button label.
-	SecondaryButtonLabel string `pulumi:"secondaryButtonLabel"`
-	// Success.
-	Success string `pulumi:"success"`
-	// Widget background.
-	WidgetBackground string `pulumi:"widgetBackground"`
-	// Widget border.
-	WidgetBorder string `pulumi:"widgetBorder"`
+	// Body text. Defaults to `#1e212a`.
+	BodyText *string `pulumi:"bodyText"`
+	// Error. Defaults to `#d03c38`.
+	Error *string `pulumi:"error"`
+	// Header. Defaults to `#1e212a`.
+	Header *string `pulumi:"header"`
+	// Icons. Defaults to `#65676e`.
+	Icons *string `pulumi:"icons"`
+	// Input background. Defaults to `#ffffff`.
+	InputBackground *string `pulumi:"inputBackground"`
+	// Input border. Defaults to `#c9cace`.
+	InputBorder *string `pulumi:"inputBorder"`
+	// Input filled text. Defaults to `#000000`.
+	InputFilledText *string `pulumi:"inputFilledText"`
+	// Input labels & placeholders. Defaults to `#65676e`.
+	InputLabelsPlaceholders *string `pulumi:"inputLabelsPlaceholders"`
+	// Links & focused components. Defaults to `#635dff`.
+	LinksFocusedComponents *string `pulumi:"linksFocusedComponents"`
+	// Primary button. Defaults to `#635dff`.
+	PrimaryButton *string `pulumi:"primaryButton"`
+	// Primary button label. Defaults to `#ffffff`.
+	PrimaryButtonLabel *string `pulumi:"primaryButtonLabel"`
+	// Secondary button border. Defaults to `#c9cace`.
+	SecondaryButtonBorder *string `pulumi:"secondaryButtonBorder"`
+	// Secondary button label. Defaults to `#1e212a`.
+	SecondaryButtonLabel *string `pulumi:"secondaryButtonLabel"`
+	// Success. Defaults to `#13a688`.
+	Success *string `pulumi:"success"`
+	// Widget background. Defaults to `#ffffff`.
+	WidgetBackground *string `pulumi:"widgetBackground"`
+	// Widget border. Defaults to `#c9cace`.
+	WidgetBorder *string `pulumi:"widgetBorder"`
 }
 
 // BrandingThemeColorsInput is an input type that accepts BrandingThemeColorsArgs and BrandingThemeColorsOutput values.
@@ -2085,42 +2085,42 @@ type BrandingThemeColorsInput interface {
 }
 
 type BrandingThemeColorsArgs struct {
-	// Base focus color.
+	// Base focus color. Defaults to `#635dff`.
 	BaseFocusColor pulumi.StringPtrInput `pulumi:"baseFocusColor"`
-	// Base hover color.
+	// Base hover color. Defaults to `#000000`.
 	BaseHoverColor pulumi.StringPtrInput `pulumi:"baseHoverColor"`
-	// Body text.
-	BodyText pulumi.StringInput `pulumi:"bodyText"`
-	// Error.
-	Error pulumi.StringInput `pulumi:"error"`
-	// Header.
-	Header pulumi.StringInput `pulumi:"header"`
-	// Icons.
-	Icons pulumi.StringInput `pulumi:"icons"`
-	// Input background.
-	InputBackground pulumi.StringInput `pulumi:"inputBackground"`
-	// Input border.
-	InputBorder pulumi.StringInput `pulumi:"inputBorder"`
-	// Input filled text.
-	InputFilledText pulumi.StringInput `pulumi:"inputFilledText"`
-	// Input labels & placeholders.
-	InputLabelsPlaceholders pulumi.StringInput `pulumi:"inputLabelsPlaceholders"`
-	// Links & focused components.
-	LinksFocusedComponents pulumi.StringInput `pulumi:"linksFocusedComponents"`
-	// Primary button.
-	PrimaryButton pulumi.StringInput `pulumi:"primaryButton"`
-	// Primary button label.
-	PrimaryButtonLabel pulumi.StringInput `pulumi:"primaryButtonLabel"`
-	// Secondary button border.
-	SecondaryButtonBorder pulumi.StringInput `pulumi:"secondaryButtonBorder"`
-	// Secondary button label.
-	SecondaryButtonLabel pulumi.StringInput `pulumi:"secondaryButtonLabel"`
-	// Success.
-	Success pulumi.StringInput `pulumi:"success"`
-	// Widget background.
-	WidgetBackground pulumi.StringInput `pulumi:"widgetBackground"`
-	// Widget border.
-	WidgetBorder pulumi.StringInput `pulumi:"widgetBorder"`
+	// Body text. Defaults to `#1e212a`.
+	BodyText pulumi.StringPtrInput `pulumi:"bodyText"`
+	// Error. Defaults to `#d03c38`.
+	Error pulumi.StringPtrInput `pulumi:"error"`
+	// Header. Defaults to `#1e212a`.
+	Header pulumi.StringPtrInput `pulumi:"header"`
+	// Icons. Defaults to `#65676e`.
+	Icons pulumi.StringPtrInput `pulumi:"icons"`
+	// Input background. Defaults to `#ffffff`.
+	InputBackground pulumi.StringPtrInput `pulumi:"inputBackground"`
+	// Input border. Defaults to `#c9cace`.
+	InputBorder pulumi.StringPtrInput `pulumi:"inputBorder"`
+	// Input filled text. Defaults to `#000000`.
+	InputFilledText pulumi.StringPtrInput `pulumi:"inputFilledText"`
+	// Input labels & placeholders. Defaults to `#65676e`.
+	InputLabelsPlaceholders pulumi.StringPtrInput `pulumi:"inputLabelsPlaceholders"`
+	// Links & focused components. Defaults to `#635dff`.
+	LinksFocusedComponents pulumi.StringPtrInput `pulumi:"linksFocusedComponents"`
+	// Primary button. Defaults to `#635dff`.
+	PrimaryButton pulumi.StringPtrInput `pulumi:"primaryButton"`
+	// Primary button label. Defaults to `#ffffff`.
+	PrimaryButtonLabel pulumi.StringPtrInput `pulumi:"primaryButtonLabel"`
+	// Secondary button border. Defaults to `#c9cace`.
+	SecondaryButtonBorder pulumi.StringPtrInput `pulumi:"secondaryButtonBorder"`
+	// Secondary button label. Defaults to `#1e212a`.
+	SecondaryButtonLabel pulumi.StringPtrInput `pulumi:"secondaryButtonLabel"`
+	// Success. Defaults to `#13a688`.
+	Success pulumi.StringPtrInput `pulumi:"success"`
+	// Widget background. Defaults to `#ffffff`.
+	WidgetBackground pulumi.StringPtrInput `pulumi:"widgetBackground"`
+	// Widget border. Defaults to `#c9cace`.
+	WidgetBorder pulumi.StringPtrInput `pulumi:"widgetBorder"`
 }
 
 func (BrandingThemeColorsArgs) ElementType() reflect.Type {
@@ -2200,94 +2200,94 @@ func (o BrandingThemeColorsOutput) ToBrandingThemeColorsPtrOutputWithContext(ctx
 	}).(BrandingThemeColorsPtrOutput)
 }
 
-// Base focus color.
+// Base focus color. Defaults to `#635dff`.
 func (o BrandingThemeColorsOutput) BaseFocusColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BrandingThemeColors) *string { return v.BaseFocusColor }).(pulumi.StringPtrOutput)
 }
 
-// Base hover color.
+// Base hover color. Defaults to `#000000`.
 func (o BrandingThemeColorsOutput) BaseHoverColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BrandingThemeColors) *string { return v.BaseHoverColor }).(pulumi.StringPtrOutput)
 }
 
-// Body text.
-func (o BrandingThemeColorsOutput) BodyText() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.BodyText }).(pulumi.StringOutput)
+// Body text. Defaults to `#1e212a`.
+func (o BrandingThemeColorsOutput) BodyText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.BodyText }).(pulumi.StringPtrOutput)
 }
 
-// Error.
-func (o BrandingThemeColorsOutput) Error() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.Error }).(pulumi.StringOutput)
+// Error. Defaults to `#d03c38`.
+func (o BrandingThemeColorsOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.Error }).(pulumi.StringPtrOutput)
 }
 
-// Header.
-func (o BrandingThemeColorsOutput) Header() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.Header }).(pulumi.StringOutput)
+// Header. Defaults to `#1e212a`.
+func (o BrandingThemeColorsOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.Header }).(pulumi.StringPtrOutput)
 }
 
-// Icons.
-func (o BrandingThemeColorsOutput) Icons() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.Icons }).(pulumi.StringOutput)
+// Icons. Defaults to `#65676e`.
+func (o BrandingThemeColorsOutput) Icons() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.Icons }).(pulumi.StringPtrOutput)
 }
 
-// Input background.
-func (o BrandingThemeColorsOutput) InputBackground() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.InputBackground }).(pulumi.StringOutput)
+// Input background. Defaults to `#ffffff`.
+func (o BrandingThemeColorsOutput) InputBackground() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.InputBackground }).(pulumi.StringPtrOutput)
 }
 
-// Input border.
-func (o BrandingThemeColorsOutput) InputBorder() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.InputBorder }).(pulumi.StringOutput)
+// Input border. Defaults to `#c9cace`.
+func (o BrandingThemeColorsOutput) InputBorder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.InputBorder }).(pulumi.StringPtrOutput)
 }
 
-// Input filled text.
-func (o BrandingThemeColorsOutput) InputFilledText() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.InputFilledText }).(pulumi.StringOutput)
+// Input filled text. Defaults to `#000000`.
+func (o BrandingThemeColorsOutput) InputFilledText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.InputFilledText }).(pulumi.StringPtrOutput)
 }
 
-// Input labels & placeholders.
-func (o BrandingThemeColorsOutput) InputLabelsPlaceholders() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.InputLabelsPlaceholders }).(pulumi.StringOutput)
+// Input labels & placeholders. Defaults to `#65676e`.
+func (o BrandingThemeColorsOutput) InputLabelsPlaceholders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.InputLabelsPlaceholders }).(pulumi.StringPtrOutput)
 }
 
-// Links & focused components.
-func (o BrandingThemeColorsOutput) LinksFocusedComponents() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.LinksFocusedComponents }).(pulumi.StringOutput)
+// Links & focused components. Defaults to `#635dff`.
+func (o BrandingThemeColorsOutput) LinksFocusedComponents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.LinksFocusedComponents }).(pulumi.StringPtrOutput)
 }
 
-// Primary button.
-func (o BrandingThemeColorsOutput) PrimaryButton() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.PrimaryButton }).(pulumi.StringOutput)
+// Primary button. Defaults to `#635dff`.
+func (o BrandingThemeColorsOutput) PrimaryButton() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.PrimaryButton }).(pulumi.StringPtrOutput)
 }
 
-// Primary button label.
-func (o BrandingThemeColorsOutput) PrimaryButtonLabel() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.PrimaryButtonLabel }).(pulumi.StringOutput)
+// Primary button label. Defaults to `#ffffff`.
+func (o BrandingThemeColorsOutput) PrimaryButtonLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.PrimaryButtonLabel }).(pulumi.StringPtrOutput)
 }
 
-// Secondary button border.
-func (o BrandingThemeColorsOutput) SecondaryButtonBorder() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.SecondaryButtonBorder }).(pulumi.StringOutput)
+// Secondary button border. Defaults to `#c9cace`.
+func (o BrandingThemeColorsOutput) SecondaryButtonBorder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.SecondaryButtonBorder }).(pulumi.StringPtrOutput)
 }
 
-// Secondary button label.
-func (o BrandingThemeColorsOutput) SecondaryButtonLabel() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.SecondaryButtonLabel }).(pulumi.StringOutput)
+// Secondary button label. Defaults to `#1e212a`.
+func (o BrandingThemeColorsOutput) SecondaryButtonLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.SecondaryButtonLabel }).(pulumi.StringPtrOutput)
 }
 
-// Success.
-func (o BrandingThemeColorsOutput) Success() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.Success }).(pulumi.StringOutput)
+// Success. Defaults to `#13a688`.
+func (o BrandingThemeColorsOutput) Success() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.Success }).(pulumi.StringPtrOutput)
 }
 
-// Widget background.
-func (o BrandingThemeColorsOutput) WidgetBackground() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.WidgetBackground }).(pulumi.StringOutput)
+// Widget background. Defaults to `#ffffff`.
+func (o BrandingThemeColorsOutput) WidgetBackground() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.WidgetBackground }).(pulumi.StringPtrOutput)
 }
 
-// Widget border.
-func (o BrandingThemeColorsOutput) WidgetBorder() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeColors) string { return v.WidgetBorder }).(pulumi.StringOutput)
+// Widget border. Defaults to `#c9cace`.
+func (o BrandingThemeColorsOutput) WidgetBorder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeColors) *string { return v.WidgetBorder }).(pulumi.StringPtrOutput)
 }
 
 type BrandingThemeColorsPtrOutput struct{ *pulumi.OutputState }
@@ -2314,7 +2314,7 @@ func (o BrandingThemeColorsPtrOutput) Elem() BrandingThemeColorsOutput {
 	}).(BrandingThemeColorsOutput)
 }
 
-// Base focus color.
+// Base focus color. Defaults to `#635dff`.
 func (o BrandingThemeColorsPtrOutput) BaseFocusColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
@@ -2324,7 +2324,7 @@ func (o BrandingThemeColorsPtrOutput) BaseFocusColor() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Base hover color.
+// Base hover color. Defaults to `#000000`.
 func (o BrandingThemeColorsPtrOutput) BaseHoverColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
@@ -2334,163 +2334,163 @@ func (o BrandingThemeColorsPtrOutput) BaseHoverColor() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Body text.
+// Body text. Defaults to `#1e212a`.
 func (o BrandingThemeColorsPtrOutput) BodyText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.BodyText
+		return v.BodyText
 	}).(pulumi.StringPtrOutput)
 }
 
-// Error.
+// Error. Defaults to `#d03c38`.
 func (o BrandingThemeColorsPtrOutput) Error() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Error
+		return v.Error
 	}).(pulumi.StringPtrOutput)
 }
 
-// Header.
+// Header. Defaults to `#1e212a`.
 func (o BrandingThemeColorsPtrOutput) Header() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Header
+		return v.Header
 	}).(pulumi.StringPtrOutput)
 }
 
-// Icons.
+// Icons. Defaults to `#65676e`.
 func (o BrandingThemeColorsPtrOutput) Icons() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Icons
+		return v.Icons
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input background.
+// Input background. Defaults to `#ffffff`.
 func (o BrandingThemeColorsPtrOutput) InputBackground() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.InputBackground
+		return v.InputBackground
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input border.
+// Input border. Defaults to `#c9cace`.
 func (o BrandingThemeColorsPtrOutput) InputBorder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.InputBorder
+		return v.InputBorder
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input filled text.
+// Input filled text. Defaults to `#000000`.
 func (o BrandingThemeColorsPtrOutput) InputFilledText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.InputFilledText
+		return v.InputFilledText
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input labels & placeholders.
+// Input labels & placeholders. Defaults to `#65676e`.
 func (o BrandingThemeColorsPtrOutput) InputLabelsPlaceholders() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.InputLabelsPlaceholders
+		return v.InputLabelsPlaceholders
 	}).(pulumi.StringPtrOutput)
 }
 
-// Links & focused components.
+// Links & focused components. Defaults to `#635dff`.
 func (o BrandingThemeColorsPtrOutput) LinksFocusedComponents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.LinksFocusedComponents
+		return v.LinksFocusedComponents
 	}).(pulumi.StringPtrOutput)
 }
 
-// Primary button.
+// Primary button. Defaults to `#635dff`.
 func (o BrandingThemeColorsPtrOutput) PrimaryButton() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PrimaryButton
+		return v.PrimaryButton
 	}).(pulumi.StringPtrOutput)
 }
 
-// Primary button label.
+// Primary button label. Defaults to `#ffffff`.
 func (o BrandingThemeColorsPtrOutput) PrimaryButtonLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PrimaryButtonLabel
+		return v.PrimaryButtonLabel
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary button border.
+// Secondary button border. Defaults to `#c9cace`.
 func (o BrandingThemeColorsPtrOutput) SecondaryButtonBorder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.SecondaryButtonBorder
+		return v.SecondaryButtonBorder
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secondary button label.
+// Secondary button label. Defaults to `#1e212a`.
 func (o BrandingThemeColorsPtrOutput) SecondaryButtonLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.SecondaryButtonLabel
+		return v.SecondaryButtonLabel
 	}).(pulumi.StringPtrOutput)
 }
 
-// Success.
+// Success. Defaults to `#13a688`.
 func (o BrandingThemeColorsPtrOutput) Success() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Success
+		return v.Success
 	}).(pulumi.StringPtrOutput)
 }
 
-// Widget background.
+// Widget background. Defaults to `#ffffff`.
 func (o BrandingThemeColorsPtrOutput) WidgetBackground() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.WidgetBackground
+		return v.WidgetBackground
 	}).(pulumi.StringPtrOutput)
 }
 
-// Widget border.
+// Widget border. Defaults to `#c9cace`.
 func (o BrandingThemeColorsPtrOutput) WidgetBorder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeColors) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.WidgetBorder
+		return v.WidgetBorder
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2499,16 +2499,16 @@ type BrandingThemeFonts struct {
 	BodyText BrandingThemeFontsBodyText `pulumi:"bodyText"`
 	// Buttons text.
 	ButtonsText BrandingThemeFontsButtonsText `pulumi:"buttonsText"`
-	// Font URL.
-	FontUrl string `pulumi:"fontUrl"`
+	// Font URL. Defaults to an empty string.
+	FontUrl *string `pulumi:"fontUrl"`
 	// Input labels.
 	InputLabels BrandingThemeFontsInputLabels `pulumi:"inputLabels"`
 	// Links.
 	Links BrandingThemeFontsLinks `pulumi:"links"`
-	// Links style.
-	LinksStyle string `pulumi:"linksStyle"`
-	// Reference text size. Value needs to be between `12` and `24`.
-	ReferenceTextSize float64 `pulumi:"referenceTextSize"`
+	// Links style. Defaults to `normal`.
+	LinksStyle *string `pulumi:"linksStyle"`
+	// Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+	ReferenceTextSize *float64 `pulumi:"referenceTextSize"`
 	// Subtitle.
 	Subtitle BrandingThemeFontsSubtitle `pulumi:"subtitle"`
 	// Title.
@@ -2531,16 +2531,16 @@ type BrandingThemeFontsArgs struct {
 	BodyText BrandingThemeFontsBodyTextInput `pulumi:"bodyText"`
 	// Buttons text.
 	ButtonsText BrandingThemeFontsButtonsTextInput `pulumi:"buttonsText"`
-	// Font URL.
-	FontUrl pulumi.StringInput `pulumi:"fontUrl"`
+	// Font URL. Defaults to an empty string.
+	FontUrl pulumi.StringPtrInput `pulumi:"fontUrl"`
 	// Input labels.
 	InputLabels BrandingThemeFontsInputLabelsInput `pulumi:"inputLabels"`
 	// Links.
 	Links BrandingThemeFontsLinksInput `pulumi:"links"`
-	// Links style.
-	LinksStyle pulumi.StringInput `pulumi:"linksStyle"`
-	// Reference text size. Value needs to be between `12` and `24`.
-	ReferenceTextSize pulumi.Float64Input `pulumi:"referenceTextSize"`
+	// Links style. Defaults to `normal`.
+	LinksStyle pulumi.StringPtrInput `pulumi:"linksStyle"`
+	// Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+	ReferenceTextSize pulumi.Float64PtrInput `pulumi:"referenceTextSize"`
 	// Subtitle.
 	Subtitle BrandingThemeFontsSubtitleInput `pulumi:"subtitle"`
 	// Title.
@@ -2634,9 +2634,9 @@ func (o BrandingThemeFontsOutput) ButtonsText() BrandingThemeFontsButtonsTextOut
 	return o.ApplyT(func(v BrandingThemeFonts) BrandingThemeFontsButtonsText { return v.ButtonsText }).(BrandingThemeFontsButtonsTextOutput)
 }
 
-// Font URL.
-func (o BrandingThemeFontsOutput) FontUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeFonts) string { return v.FontUrl }).(pulumi.StringOutput)
+// Font URL. Defaults to an empty string.
+func (o BrandingThemeFontsOutput) FontUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeFonts) *string { return v.FontUrl }).(pulumi.StringPtrOutput)
 }
 
 // Input labels.
@@ -2649,14 +2649,14 @@ func (o BrandingThemeFontsOutput) Links() BrandingThemeFontsLinksOutput {
 	return o.ApplyT(func(v BrandingThemeFonts) BrandingThemeFontsLinks { return v.Links }).(BrandingThemeFontsLinksOutput)
 }
 
-// Links style.
-func (o BrandingThemeFontsOutput) LinksStyle() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeFonts) string { return v.LinksStyle }).(pulumi.StringOutput)
+// Links style. Defaults to `normal`.
+func (o BrandingThemeFontsOutput) LinksStyle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeFonts) *string { return v.LinksStyle }).(pulumi.StringPtrOutput)
 }
 
-// Reference text size. Value needs to be between `12` and `24`.
-func (o BrandingThemeFontsOutput) ReferenceTextSize() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeFonts) float64 { return v.ReferenceTextSize }).(pulumi.Float64Output)
+// Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+func (o BrandingThemeFontsOutput) ReferenceTextSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeFonts) *float64 { return v.ReferenceTextSize }).(pulumi.Float64PtrOutput)
 }
 
 // Subtitle.
@@ -2713,13 +2713,13 @@ func (o BrandingThemeFontsPtrOutput) ButtonsText() BrandingThemeFontsButtonsText
 	}).(BrandingThemeFontsButtonsTextPtrOutput)
 }
 
-// Font URL.
+// Font URL. Defaults to an empty string.
 func (o BrandingThemeFontsPtrOutput) FontUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFonts) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.FontUrl
+		return v.FontUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2743,23 +2743,23 @@ func (o BrandingThemeFontsPtrOutput) Links() BrandingThemeFontsLinksPtrOutput {
 	}).(BrandingThemeFontsLinksPtrOutput)
 }
 
-// Links style.
+// Links style. Defaults to `normal`.
 func (o BrandingThemeFontsPtrOutput) LinksStyle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFonts) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.LinksStyle
+		return v.LinksStyle
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reference text size. Value needs to be between `12` and `24`.
+// Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
 func (o BrandingThemeFontsPtrOutput) ReferenceTextSize() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeFonts) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.ReferenceTextSize
+		return v.ReferenceTextSize
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -2784,8 +2784,8 @@ func (o BrandingThemeFontsPtrOutput) Title() BrandingThemeFontsTitlePtrOutput {
 }
 
 type BrandingThemeFontsBodyText struct {
-	Bold bool    `pulumi:"bold"`
-	Size float64 `pulumi:"size"`
+	Bold *bool    `pulumi:"bold"`
+	Size *float64 `pulumi:"size"`
 }
 
 // BrandingThemeFontsBodyTextInput is an input type that accepts BrandingThemeFontsBodyTextArgs and BrandingThemeFontsBodyTextOutput values.
@@ -2800,8 +2800,8 @@ type BrandingThemeFontsBodyTextInput interface {
 }
 
 type BrandingThemeFontsBodyTextArgs struct {
-	Bold pulumi.BoolInput    `pulumi:"bold"`
-	Size pulumi.Float64Input `pulumi:"size"`
+	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
 func (BrandingThemeFontsBodyTextArgs) ElementType() reflect.Type {
@@ -2881,12 +2881,12 @@ func (o BrandingThemeFontsBodyTextOutput) ToBrandingThemeFontsBodyTextPtrOutputW
 	}).(BrandingThemeFontsBodyTextPtrOutput)
 }
 
-func (o BrandingThemeFontsBodyTextOutput) Bold() pulumi.BoolOutput {
-	return o.ApplyT(func(v BrandingThemeFontsBodyText) bool { return v.Bold }).(pulumi.BoolOutput)
+func (o BrandingThemeFontsBodyTextOutput) Bold() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsBodyText) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
-func (o BrandingThemeFontsBodyTextOutput) Size() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeFontsBodyText) float64 { return v.Size }).(pulumi.Float64Output)
+func (o BrandingThemeFontsBodyTextOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsBodyText) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsBodyTextPtrOutput struct{ *pulumi.OutputState }
@@ -2918,7 +2918,7 @@ func (o BrandingThemeFontsBodyTextPtrOutput) Bold() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Bold
+		return v.Bold
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2927,13 +2927,13 @@ func (o BrandingThemeFontsBodyTextPtrOutput) Size() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Size
+		return v.Size
 	}).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsButtonsText struct {
-	Bold bool    `pulumi:"bold"`
-	Size float64 `pulumi:"size"`
+	Bold *bool    `pulumi:"bold"`
+	Size *float64 `pulumi:"size"`
 }
 
 // BrandingThemeFontsButtonsTextInput is an input type that accepts BrandingThemeFontsButtonsTextArgs and BrandingThemeFontsButtonsTextOutput values.
@@ -2948,8 +2948,8 @@ type BrandingThemeFontsButtonsTextInput interface {
 }
 
 type BrandingThemeFontsButtonsTextArgs struct {
-	Bold pulumi.BoolInput    `pulumi:"bold"`
-	Size pulumi.Float64Input `pulumi:"size"`
+	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
 func (BrandingThemeFontsButtonsTextArgs) ElementType() reflect.Type {
@@ -3029,12 +3029,12 @@ func (o BrandingThemeFontsButtonsTextOutput) ToBrandingThemeFontsButtonsTextPtrO
 	}).(BrandingThemeFontsButtonsTextPtrOutput)
 }
 
-func (o BrandingThemeFontsButtonsTextOutput) Bold() pulumi.BoolOutput {
-	return o.ApplyT(func(v BrandingThemeFontsButtonsText) bool { return v.Bold }).(pulumi.BoolOutput)
+func (o BrandingThemeFontsButtonsTextOutput) Bold() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsButtonsText) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
-func (o BrandingThemeFontsButtonsTextOutput) Size() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeFontsButtonsText) float64 { return v.Size }).(pulumi.Float64Output)
+func (o BrandingThemeFontsButtonsTextOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsButtonsText) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsButtonsTextPtrOutput struct{ *pulumi.OutputState }
@@ -3066,7 +3066,7 @@ func (o BrandingThemeFontsButtonsTextPtrOutput) Bold() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Bold
+		return v.Bold
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -3075,13 +3075,13 @@ func (o BrandingThemeFontsButtonsTextPtrOutput) Size() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Size
+		return v.Size
 	}).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsInputLabels struct {
-	Bold bool    `pulumi:"bold"`
-	Size float64 `pulumi:"size"`
+	Bold *bool    `pulumi:"bold"`
+	Size *float64 `pulumi:"size"`
 }
 
 // BrandingThemeFontsInputLabelsInput is an input type that accepts BrandingThemeFontsInputLabelsArgs and BrandingThemeFontsInputLabelsOutput values.
@@ -3096,8 +3096,8 @@ type BrandingThemeFontsInputLabelsInput interface {
 }
 
 type BrandingThemeFontsInputLabelsArgs struct {
-	Bold pulumi.BoolInput    `pulumi:"bold"`
-	Size pulumi.Float64Input `pulumi:"size"`
+	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
 func (BrandingThemeFontsInputLabelsArgs) ElementType() reflect.Type {
@@ -3177,12 +3177,12 @@ func (o BrandingThemeFontsInputLabelsOutput) ToBrandingThemeFontsInputLabelsPtrO
 	}).(BrandingThemeFontsInputLabelsPtrOutput)
 }
 
-func (o BrandingThemeFontsInputLabelsOutput) Bold() pulumi.BoolOutput {
-	return o.ApplyT(func(v BrandingThemeFontsInputLabels) bool { return v.Bold }).(pulumi.BoolOutput)
+func (o BrandingThemeFontsInputLabelsOutput) Bold() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsInputLabels) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
-func (o BrandingThemeFontsInputLabelsOutput) Size() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeFontsInputLabels) float64 { return v.Size }).(pulumi.Float64Output)
+func (o BrandingThemeFontsInputLabelsOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsInputLabels) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsInputLabelsPtrOutput struct{ *pulumi.OutputState }
@@ -3214,7 +3214,7 @@ func (o BrandingThemeFontsInputLabelsPtrOutput) Bold() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Bold
+		return v.Bold
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -3223,13 +3223,13 @@ func (o BrandingThemeFontsInputLabelsPtrOutput) Size() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Size
+		return v.Size
 	}).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsLinks struct {
-	Bold bool    `pulumi:"bold"`
-	Size float64 `pulumi:"size"`
+	Bold *bool    `pulumi:"bold"`
+	Size *float64 `pulumi:"size"`
 }
 
 // BrandingThemeFontsLinksInput is an input type that accepts BrandingThemeFontsLinksArgs and BrandingThemeFontsLinksOutput values.
@@ -3244,8 +3244,8 @@ type BrandingThemeFontsLinksInput interface {
 }
 
 type BrandingThemeFontsLinksArgs struct {
-	Bold pulumi.BoolInput    `pulumi:"bold"`
-	Size pulumi.Float64Input `pulumi:"size"`
+	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
 func (BrandingThemeFontsLinksArgs) ElementType() reflect.Type {
@@ -3325,12 +3325,12 @@ func (o BrandingThemeFontsLinksOutput) ToBrandingThemeFontsLinksPtrOutputWithCon
 	}).(BrandingThemeFontsLinksPtrOutput)
 }
 
-func (o BrandingThemeFontsLinksOutput) Bold() pulumi.BoolOutput {
-	return o.ApplyT(func(v BrandingThemeFontsLinks) bool { return v.Bold }).(pulumi.BoolOutput)
+func (o BrandingThemeFontsLinksOutput) Bold() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsLinks) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
-func (o BrandingThemeFontsLinksOutput) Size() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeFontsLinks) float64 { return v.Size }).(pulumi.Float64Output)
+func (o BrandingThemeFontsLinksOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsLinks) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsLinksPtrOutput struct{ *pulumi.OutputState }
@@ -3362,7 +3362,7 @@ func (o BrandingThemeFontsLinksPtrOutput) Bold() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Bold
+		return v.Bold
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -3371,13 +3371,13 @@ func (o BrandingThemeFontsLinksPtrOutput) Size() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Size
+		return v.Size
 	}).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsSubtitle struct {
-	Bold bool    `pulumi:"bold"`
-	Size float64 `pulumi:"size"`
+	Bold *bool    `pulumi:"bold"`
+	Size *float64 `pulumi:"size"`
 }
 
 // BrandingThemeFontsSubtitleInput is an input type that accepts BrandingThemeFontsSubtitleArgs and BrandingThemeFontsSubtitleOutput values.
@@ -3392,8 +3392,8 @@ type BrandingThemeFontsSubtitleInput interface {
 }
 
 type BrandingThemeFontsSubtitleArgs struct {
-	Bold pulumi.BoolInput    `pulumi:"bold"`
-	Size pulumi.Float64Input `pulumi:"size"`
+	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
 func (BrandingThemeFontsSubtitleArgs) ElementType() reflect.Type {
@@ -3473,12 +3473,12 @@ func (o BrandingThemeFontsSubtitleOutput) ToBrandingThemeFontsSubtitlePtrOutputW
 	}).(BrandingThemeFontsSubtitlePtrOutput)
 }
 
-func (o BrandingThemeFontsSubtitleOutput) Bold() pulumi.BoolOutput {
-	return o.ApplyT(func(v BrandingThemeFontsSubtitle) bool { return v.Bold }).(pulumi.BoolOutput)
+func (o BrandingThemeFontsSubtitleOutput) Bold() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsSubtitle) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
-func (o BrandingThemeFontsSubtitleOutput) Size() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeFontsSubtitle) float64 { return v.Size }).(pulumi.Float64Output)
+func (o BrandingThemeFontsSubtitleOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsSubtitle) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsSubtitlePtrOutput struct{ *pulumi.OutputState }
@@ -3510,7 +3510,7 @@ func (o BrandingThemeFontsSubtitlePtrOutput) Bold() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Bold
+		return v.Bold
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -3519,13 +3519,13 @@ func (o BrandingThemeFontsSubtitlePtrOutput) Size() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Size
+		return v.Size
 	}).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsTitle struct {
-	Bold bool    `pulumi:"bold"`
-	Size float64 `pulumi:"size"`
+	Bold *bool    `pulumi:"bold"`
+	Size *float64 `pulumi:"size"`
 }
 
 // BrandingThemeFontsTitleInput is an input type that accepts BrandingThemeFontsTitleArgs and BrandingThemeFontsTitleOutput values.
@@ -3540,8 +3540,8 @@ type BrandingThemeFontsTitleInput interface {
 }
 
 type BrandingThemeFontsTitleArgs struct {
-	Bold pulumi.BoolInput    `pulumi:"bold"`
-	Size pulumi.Float64Input `pulumi:"size"`
+	Bold pulumi.BoolPtrInput    `pulumi:"bold"`
+	Size pulumi.Float64PtrInput `pulumi:"size"`
 }
 
 func (BrandingThemeFontsTitleArgs) ElementType() reflect.Type {
@@ -3621,12 +3621,12 @@ func (o BrandingThemeFontsTitleOutput) ToBrandingThemeFontsTitlePtrOutputWithCon
 	}).(BrandingThemeFontsTitlePtrOutput)
 }
 
-func (o BrandingThemeFontsTitleOutput) Bold() pulumi.BoolOutput {
-	return o.ApplyT(func(v BrandingThemeFontsTitle) bool { return v.Bold }).(pulumi.BoolOutput)
+func (o BrandingThemeFontsTitleOutput) Bold() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsTitle) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
 }
 
-func (o BrandingThemeFontsTitleOutput) Size() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeFontsTitle) float64 { return v.Size }).(pulumi.Float64Output)
+func (o BrandingThemeFontsTitleOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeFontsTitle) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemeFontsTitlePtrOutput struct{ *pulumi.OutputState }
@@ -3658,7 +3658,7 @@ func (o BrandingThemeFontsTitlePtrOutput) Bold() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Bold
+		return v.Bold
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -3667,17 +3667,17 @@ func (o BrandingThemeFontsTitlePtrOutput) Size() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Size
+		return v.Size
 	}).(pulumi.Float64PtrOutput)
 }
 
 type BrandingThemePageBackground struct {
-	// Background color.
-	BackgroundColor string `pulumi:"backgroundColor"`
-	// Background image url.
-	BackgroundImageUrl string `pulumi:"backgroundImageUrl"`
-	// Page layout. Available options: `center`, `left`, `right`.
-	PageLayout string `pulumi:"pageLayout"`
+	// Background color. Defaults to `#000000`.
+	BackgroundColor *string `pulumi:"backgroundColor"`
+	// Background image url. Defaults to an empty string.
+	BackgroundImageUrl *string `pulumi:"backgroundImageUrl"`
+	// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+	PageLayout *string `pulumi:"pageLayout"`
 }
 
 // BrandingThemePageBackgroundInput is an input type that accepts BrandingThemePageBackgroundArgs and BrandingThemePageBackgroundOutput values.
@@ -3692,12 +3692,12 @@ type BrandingThemePageBackgroundInput interface {
 }
 
 type BrandingThemePageBackgroundArgs struct {
-	// Background color.
-	BackgroundColor pulumi.StringInput `pulumi:"backgroundColor"`
-	// Background image url.
-	BackgroundImageUrl pulumi.StringInput `pulumi:"backgroundImageUrl"`
-	// Page layout. Available options: `center`, `left`, `right`.
-	PageLayout pulumi.StringInput `pulumi:"pageLayout"`
+	// Background color. Defaults to `#000000`.
+	BackgroundColor pulumi.StringPtrInput `pulumi:"backgroundColor"`
+	// Background image url. Defaults to an empty string.
+	BackgroundImageUrl pulumi.StringPtrInput `pulumi:"backgroundImageUrl"`
+	// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+	PageLayout pulumi.StringPtrInput `pulumi:"pageLayout"`
 }
 
 func (BrandingThemePageBackgroundArgs) ElementType() reflect.Type {
@@ -3777,19 +3777,19 @@ func (o BrandingThemePageBackgroundOutput) ToBrandingThemePageBackgroundPtrOutpu
 	}).(BrandingThemePageBackgroundPtrOutput)
 }
 
-// Background color.
-func (o BrandingThemePageBackgroundOutput) BackgroundColor() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemePageBackground) string { return v.BackgroundColor }).(pulumi.StringOutput)
+// Background color. Defaults to `#000000`.
+func (o BrandingThemePageBackgroundOutput) BackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemePageBackground) *string { return v.BackgroundColor }).(pulumi.StringPtrOutput)
 }
 
-// Background image url.
-func (o BrandingThemePageBackgroundOutput) BackgroundImageUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemePageBackground) string { return v.BackgroundImageUrl }).(pulumi.StringOutput)
+// Background image url. Defaults to an empty string.
+func (o BrandingThemePageBackgroundOutput) BackgroundImageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemePageBackground) *string { return v.BackgroundImageUrl }).(pulumi.StringPtrOutput)
 }
 
-// Page layout. Available options: `center`, `left`, `right`.
-func (o BrandingThemePageBackgroundOutput) PageLayout() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemePageBackground) string { return v.PageLayout }).(pulumi.StringOutput)
+// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+func (o BrandingThemePageBackgroundOutput) PageLayout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemePageBackground) *string { return v.PageLayout }).(pulumi.StringPtrOutput)
 }
 
 type BrandingThemePageBackgroundPtrOutput struct{ *pulumi.OutputState }
@@ -3816,47 +3816,47 @@ func (o BrandingThemePageBackgroundPtrOutput) Elem() BrandingThemePageBackground
 	}).(BrandingThemePageBackgroundOutput)
 }
 
-// Background color.
+// Background color. Defaults to `#000000`.
 func (o BrandingThemePageBackgroundPtrOutput) BackgroundColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemePageBackground) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.BackgroundColor
+		return v.BackgroundColor
 	}).(pulumi.StringPtrOutput)
 }
 
-// Background image url.
+// Background image url. Defaults to an empty string.
 func (o BrandingThemePageBackgroundPtrOutput) BackgroundImageUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemePageBackground) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.BackgroundImageUrl
+		return v.BackgroundImageUrl
 	}).(pulumi.StringPtrOutput)
 }
 
-// Page layout. Available options: `center`, `left`, `right`.
+// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
 func (o BrandingThemePageBackgroundPtrOutput) PageLayout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemePageBackground) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PageLayout
+		return v.PageLayout
 	}).(pulumi.StringPtrOutput)
 }
 
 type BrandingThemeWidget struct {
-	// Header text alignment. Available options: `center`, `left`, `right`.
-	HeaderTextAlignment string `pulumi:"headerTextAlignment"`
-	// Logo height. Value needs to be between `1` and `100`.
-	LogoHeight float64 `pulumi:"logoHeight"`
-	// Logo position. Available options: `center`, `left`, `right`, `none`.
-	LogoPosition string `pulumi:"logoPosition"`
-	// Logo url.
-	LogoUrl string `pulumi:"logoUrl"`
-	// Social buttons layout.  Available options: `bottom`, `top`.
-	SocialButtonsLayout string `pulumi:"socialButtonsLayout"`
+	// Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+	HeaderTextAlignment *string `pulumi:"headerTextAlignment"`
+	// Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
+	LogoHeight *float64 `pulumi:"logoHeight"`
+	// Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+	LogoPosition *string `pulumi:"logoPosition"`
+	// Logo url. Defaults to an empty string.
+	LogoUrl *string `pulumi:"logoUrl"`
+	// Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+	SocialButtonsLayout *string `pulumi:"socialButtonsLayout"`
 }
 
 // BrandingThemeWidgetInput is an input type that accepts BrandingThemeWidgetArgs and BrandingThemeWidgetOutput values.
@@ -3871,16 +3871,16 @@ type BrandingThemeWidgetInput interface {
 }
 
 type BrandingThemeWidgetArgs struct {
-	// Header text alignment. Available options: `center`, `left`, `right`.
-	HeaderTextAlignment pulumi.StringInput `pulumi:"headerTextAlignment"`
-	// Logo height. Value needs to be between `1` and `100`.
-	LogoHeight pulumi.Float64Input `pulumi:"logoHeight"`
-	// Logo position. Available options: `center`, `left`, `right`, `none`.
-	LogoPosition pulumi.StringInput `pulumi:"logoPosition"`
-	// Logo url.
-	LogoUrl pulumi.StringInput `pulumi:"logoUrl"`
-	// Social buttons layout.  Available options: `bottom`, `top`.
-	SocialButtonsLayout pulumi.StringInput `pulumi:"socialButtonsLayout"`
+	// Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+	HeaderTextAlignment pulumi.StringPtrInput `pulumi:"headerTextAlignment"`
+	// Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
+	LogoHeight pulumi.Float64PtrInput `pulumi:"logoHeight"`
+	// Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+	LogoPosition pulumi.StringPtrInput `pulumi:"logoPosition"`
+	// Logo url. Defaults to an empty string.
+	LogoUrl pulumi.StringPtrInput `pulumi:"logoUrl"`
+	// Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+	SocialButtonsLayout pulumi.StringPtrInput `pulumi:"socialButtonsLayout"`
 }
 
 func (BrandingThemeWidgetArgs) ElementType() reflect.Type {
@@ -3960,29 +3960,29 @@ func (o BrandingThemeWidgetOutput) ToBrandingThemeWidgetPtrOutputWithContext(ctx
 	}).(BrandingThemeWidgetPtrOutput)
 }
 
-// Header text alignment. Available options: `center`, `left`, `right`.
-func (o BrandingThemeWidgetOutput) HeaderTextAlignment() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeWidget) string { return v.HeaderTextAlignment }).(pulumi.StringOutput)
+// Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+func (o BrandingThemeWidgetOutput) HeaderTextAlignment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeWidget) *string { return v.HeaderTextAlignment }).(pulumi.StringPtrOutput)
 }
 
-// Logo height. Value needs to be between `1` and `100`.
-func (o BrandingThemeWidgetOutput) LogoHeight() pulumi.Float64Output {
-	return o.ApplyT(func(v BrandingThemeWidget) float64 { return v.LogoHeight }).(pulumi.Float64Output)
+// Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
+func (o BrandingThemeWidgetOutput) LogoHeight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BrandingThemeWidget) *float64 { return v.LogoHeight }).(pulumi.Float64PtrOutput)
 }
 
-// Logo position. Available options: `center`, `left`, `right`, `none`.
-func (o BrandingThemeWidgetOutput) LogoPosition() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeWidget) string { return v.LogoPosition }).(pulumi.StringOutput)
+// Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+func (o BrandingThemeWidgetOutput) LogoPosition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeWidget) *string { return v.LogoPosition }).(pulumi.StringPtrOutput)
 }
 
-// Logo url.
-func (o BrandingThemeWidgetOutput) LogoUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeWidget) string { return v.LogoUrl }).(pulumi.StringOutput)
+// Logo url. Defaults to an empty string.
+func (o BrandingThemeWidgetOutput) LogoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeWidget) *string { return v.LogoUrl }).(pulumi.StringPtrOutput)
 }
 
-// Social buttons layout.  Available options: `bottom`, `top`.
-func (o BrandingThemeWidgetOutput) SocialButtonsLayout() pulumi.StringOutput {
-	return o.ApplyT(func(v BrandingThemeWidget) string { return v.SocialButtonsLayout }).(pulumi.StringOutput)
+// Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+func (o BrandingThemeWidgetOutput) SocialButtonsLayout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingThemeWidget) *string { return v.SocialButtonsLayout }).(pulumi.StringPtrOutput)
 }
 
 type BrandingThemeWidgetPtrOutput struct{ *pulumi.OutputState }
@@ -4009,53 +4009,53 @@ func (o BrandingThemeWidgetPtrOutput) Elem() BrandingThemeWidgetOutput {
 	}).(BrandingThemeWidgetOutput)
 }
 
-// Header text alignment. Available options: `center`, `left`, `right`.
+// Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
 func (o BrandingThemeWidgetPtrOutput) HeaderTextAlignment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeWidget) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.HeaderTextAlignment
+		return v.HeaderTextAlignment
 	}).(pulumi.StringPtrOutput)
 }
 
-// Logo height. Value needs to be between `1` and `100`.
+// Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
 func (o BrandingThemeWidgetPtrOutput) LogoHeight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BrandingThemeWidget) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.LogoHeight
+		return v.LogoHeight
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Logo position. Available options: `center`, `left`, `right`, `none`.
+// Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
 func (o BrandingThemeWidgetPtrOutput) LogoPosition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeWidget) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.LogoPosition
+		return v.LogoPosition
 	}).(pulumi.StringPtrOutput)
 }
 
-// Logo url.
+// Logo url. Defaults to an empty string.
 func (o BrandingThemeWidgetPtrOutput) LogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeWidget) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.LogoUrl
+		return v.LogoUrl
 	}).(pulumi.StringPtrOutput)
 }
 
-// Social buttons layout.  Available options: `bottom`, `top`.
+// Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
 func (o BrandingThemeWidgetPtrOutput) SocialButtonsLayout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingThemeWidget) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.SocialButtonsLayout
+		return v.SocialButtonsLayout
 	}).(pulumi.StringPtrOutput)
 }
 

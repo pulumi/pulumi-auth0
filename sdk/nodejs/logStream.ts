@@ -103,7 +103,7 @@ export class LogStream extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * Type of the log stream, which indicates the sink provider.
+     * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -165,7 +165,7 @@ export interface LogStreamState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Type of the log stream, which indicates the sink provider.
+     * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      */
     type?: pulumi.Input<string>;
 }
@@ -191,7 +191,7 @@ export interface LogStreamArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * Type of the log stream, which indicates the sink provider.
+     * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      */
     type: pulumi.Input<string>;
 }

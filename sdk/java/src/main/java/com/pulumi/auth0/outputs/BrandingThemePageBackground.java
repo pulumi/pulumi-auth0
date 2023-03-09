@@ -6,46 +6,48 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class BrandingThemePageBackground {
     /**
-     * @return Background color.
+     * @return Background color. Defaults to `#000000`.
      * 
      */
-    private String backgroundColor;
+    private @Nullable String backgroundColor;
     /**
-     * @return Background image url.
+     * @return Background image url. Defaults to an empty string.
      * 
      */
-    private String backgroundImageUrl;
+    private @Nullable String backgroundImageUrl;
     /**
-     * @return Page layout. Available options: `center`, `left`, `right`.
+     * @return Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
      * 
      */
-    private String pageLayout;
+    private @Nullable String pageLayout;
 
     private BrandingThemePageBackground() {}
     /**
-     * @return Background color.
+     * @return Background color. Defaults to `#000000`.
      * 
      */
-    public String backgroundColor() {
-        return this.backgroundColor;
+    public Optional<String> backgroundColor() {
+        return Optional.ofNullable(this.backgroundColor);
     }
     /**
-     * @return Background image url.
+     * @return Background image url. Defaults to an empty string.
      * 
      */
-    public String backgroundImageUrl() {
-        return this.backgroundImageUrl;
+    public Optional<String> backgroundImageUrl() {
+        return Optional.ofNullable(this.backgroundImageUrl);
     }
     /**
-     * @return Page layout. Available options: `center`, `left`, `right`.
+     * @return Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
      * 
      */
-    public String pageLayout() {
-        return this.pageLayout;
+    public Optional<String> pageLayout() {
+        return Optional.ofNullable(this.pageLayout);
     }
 
     public static Builder builder() {
@@ -57,9 +59,9 @@ public final class BrandingThemePageBackground {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String backgroundColor;
-        private String backgroundImageUrl;
-        private String pageLayout;
+        private @Nullable String backgroundColor;
+        private @Nullable String backgroundImageUrl;
+        private @Nullable String pageLayout;
         public Builder() {}
         public Builder(BrandingThemePageBackground defaults) {
     	      Objects.requireNonNull(defaults);
@@ -69,18 +71,18 @@ public final class BrandingThemePageBackground {
         }
 
         @CustomType.Setter
-        public Builder backgroundColor(String backgroundColor) {
-            this.backgroundColor = Objects.requireNonNull(backgroundColor);
+        public Builder backgroundColor(@Nullable String backgroundColor) {
+            this.backgroundColor = backgroundColor;
             return this;
         }
         @CustomType.Setter
-        public Builder backgroundImageUrl(String backgroundImageUrl) {
-            this.backgroundImageUrl = Objects.requireNonNull(backgroundImageUrl);
+        public Builder backgroundImageUrl(@Nullable String backgroundImageUrl) {
+            this.backgroundImageUrl = backgroundImageUrl;
             return this;
         }
         @CustomType.Setter
-        public Builder pageLayout(String pageLayout) {
-            this.pageLayout = Objects.requireNonNull(pageLayout);
+        public Builder pageLayout(@Nullable String pageLayout) {
+            this.pageLayout = pageLayout;
             return this;
         }
         public BrandingThemePageBackground build() {

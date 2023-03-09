@@ -13,34 +13,34 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingThemeWidgetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Header text alignment. Available options: `center`, `left`, `right`.
+        /// Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
         /// </summary>
-        [Input("headerTextAlignment", required: true)]
-        public Input<string> HeaderTextAlignment { get; set; } = null!;
+        [Input("headerTextAlignment")]
+        public Input<string>? HeaderTextAlignment { get; set; }
 
         /// <summary>
-        /// Logo height. Value needs to be between `1` and `100`.
+        /// Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
         /// </summary>
-        [Input("logoHeight", required: true)]
-        public Input<double> LogoHeight { get; set; } = null!;
+        [Input("logoHeight")]
+        public Input<double>? LogoHeight { get; set; }
 
         /// <summary>
-        /// Logo position. Available options: `center`, `left`, `right`, `none`.
+        /// Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
         /// </summary>
-        [Input("logoPosition", required: true)]
-        public Input<string> LogoPosition { get; set; } = null!;
+        [Input("logoPosition")]
+        public Input<string>? LogoPosition { get; set; }
 
         /// <summary>
-        /// Logo url.
+        /// Logo url. Defaults to an empty string.
         /// </summary>
-        [Input("logoUrl", required: true)]
-        public Input<string> LogoUrl { get; set; } = null!;
+        [Input("logoUrl")]
+        public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// Social buttons layout.  Available options: `bottom`, `top`.
+        /// Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
         /// </summary>
-        [Input("socialButtonsLayout", required: true)]
-        public Input<string> SocialButtonsLayout { get; set; } = null!;
+        [Input("socialButtonsLayout")]
+        public Input<string>? SocialButtonsLayout { get; set; }
 
         public BrandingThemeWidgetGetArgs()
         {

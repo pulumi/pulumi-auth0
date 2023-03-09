@@ -24,7 +24,7 @@ class LogStreamArgs:
         """
         The set of arguments for constructing a LogStream resource.
         :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
-        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider.
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
@@ -54,7 +54,7 @@ class LogStreamArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type of the log stream, which indicates the sink provider.
+        Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
         return pulumi.get(self, "type")
 
@@ -113,7 +113,7 @@ class _LogStreamState:
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
-        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider.
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
@@ -178,7 +178,7 @@ class _LogStreamState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the log stream, which indicates the sink provider.
+        Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
         return pulumi.get(self, "type")
 
@@ -254,7 +254,7 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
-        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider.
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
         ...
     @overload
@@ -376,7 +376,7 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[pulumi.InputType['LogStreamSinkArgs']] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
-        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider.
+        :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -425,7 +425,7 @@ class LogStream(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of the log stream, which indicates the sink provider.
+        Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
         return pulumi.get(self, "type")
 

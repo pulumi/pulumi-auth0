@@ -7,70 +7,72 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class BrandingThemeWidget {
     /**
-     * @return Header text alignment. Available options: `center`, `left`, `right`.
+     * @return Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
      * 
      */
-    private String headerTextAlignment;
+    private @Nullable String headerTextAlignment;
     /**
-     * @return Logo height. Value needs to be between `1` and `100`.
+     * @return Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
      * 
      */
-    private Double logoHeight;
+    private @Nullable Double logoHeight;
     /**
-     * @return Logo position. Available options: `center`, `left`, `right`, `none`.
+     * @return Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
      * 
      */
-    private String logoPosition;
+    private @Nullable String logoPosition;
     /**
-     * @return Logo url.
+     * @return Logo url. Defaults to an empty string.
      * 
      */
-    private String logoUrl;
+    private @Nullable String logoUrl;
     /**
-     * @return Social buttons layout.  Available options: `bottom`, `top`.
+     * @return Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
      * 
      */
-    private String socialButtonsLayout;
+    private @Nullable String socialButtonsLayout;
 
     private BrandingThemeWidget() {}
     /**
-     * @return Header text alignment. Available options: `center`, `left`, `right`.
+     * @return Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
      * 
      */
-    public String headerTextAlignment() {
-        return this.headerTextAlignment;
+    public Optional<String> headerTextAlignment() {
+        return Optional.ofNullable(this.headerTextAlignment);
     }
     /**
-     * @return Logo height. Value needs to be between `1` and `100`.
+     * @return Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
      * 
      */
-    public Double logoHeight() {
-        return this.logoHeight;
+    public Optional<Double> logoHeight() {
+        return Optional.ofNullable(this.logoHeight);
     }
     /**
-     * @return Logo position. Available options: `center`, `left`, `right`, `none`.
+     * @return Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
      * 
      */
-    public String logoPosition() {
-        return this.logoPosition;
+    public Optional<String> logoPosition() {
+        return Optional.ofNullable(this.logoPosition);
     }
     /**
-     * @return Logo url.
+     * @return Logo url. Defaults to an empty string.
      * 
      */
-    public String logoUrl() {
-        return this.logoUrl;
+    public Optional<String> logoUrl() {
+        return Optional.ofNullable(this.logoUrl);
     }
     /**
-     * @return Social buttons layout.  Available options: `bottom`, `top`.
+     * @return Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
      * 
      */
-    public String socialButtonsLayout() {
-        return this.socialButtonsLayout;
+    public Optional<String> socialButtonsLayout() {
+        return Optional.ofNullable(this.socialButtonsLayout);
     }
 
     public static Builder builder() {
@@ -82,11 +84,11 @@ public final class BrandingThemeWidget {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String headerTextAlignment;
-        private Double logoHeight;
-        private String logoPosition;
-        private String logoUrl;
-        private String socialButtonsLayout;
+        private @Nullable String headerTextAlignment;
+        private @Nullable Double logoHeight;
+        private @Nullable String logoPosition;
+        private @Nullable String logoUrl;
+        private @Nullable String socialButtonsLayout;
         public Builder() {}
         public Builder(BrandingThemeWidget defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,28 +100,28 @@ public final class BrandingThemeWidget {
         }
 
         @CustomType.Setter
-        public Builder headerTextAlignment(String headerTextAlignment) {
-            this.headerTextAlignment = Objects.requireNonNull(headerTextAlignment);
+        public Builder headerTextAlignment(@Nullable String headerTextAlignment) {
+            this.headerTextAlignment = headerTextAlignment;
             return this;
         }
         @CustomType.Setter
-        public Builder logoHeight(Double logoHeight) {
-            this.logoHeight = Objects.requireNonNull(logoHeight);
+        public Builder logoHeight(@Nullable Double logoHeight) {
+            this.logoHeight = logoHeight;
             return this;
         }
         @CustomType.Setter
-        public Builder logoPosition(String logoPosition) {
-            this.logoPosition = Objects.requireNonNull(logoPosition);
+        public Builder logoPosition(@Nullable String logoPosition) {
+            this.logoPosition = logoPosition;
             return this;
         }
         @CustomType.Setter
-        public Builder logoUrl(String logoUrl) {
-            this.logoUrl = Objects.requireNonNull(logoUrl);
+        public Builder logoUrl(@Nullable String logoUrl) {
+            this.logoUrl = logoUrl;
             return this;
         }
         @CustomType.Setter
-        public Builder socialButtonsLayout(String socialButtonsLayout) {
-            this.socialButtonsLayout = Objects.requireNonNull(socialButtonsLayout);
+        public Builder socialButtonsLayout(@Nullable String socialButtonsLayout) {
+            this.socialButtonsLayout = socialButtonsLayout;
             return this;
         }
         public BrandingThemeWidget build() {

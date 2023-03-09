@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BrandingThemeWidgetArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,78 +17,78 @@ public final class BrandingThemeWidgetArgs extends com.pulumi.resources.Resource
     public static final BrandingThemeWidgetArgs Empty = new BrandingThemeWidgetArgs();
 
     /**
-     * Header text alignment. Available options: `center`, `left`, `right`.
+     * Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
      * 
      */
-    @Import(name="headerTextAlignment", required=true)
-    private Output<String> headerTextAlignment;
+    @Import(name="headerTextAlignment")
+    private @Nullable Output<String> headerTextAlignment;
 
     /**
-     * @return Header text alignment. Available options: `center`, `left`, `right`.
+     * @return Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
      * 
      */
-    public Output<String> headerTextAlignment() {
-        return this.headerTextAlignment;
+    public Optional<Output<String>> headerTextAlignment() {
+        return Optional.ofNullable(this.headerTextAlignment);
     }
 
     /**
-     * Logo height. Value needs to be between `1` and `100`.
+     * Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
      * 
      */
-    @Import(name="logoHeight", required=true)
-    private Output<Double> logoHeight;
+    @Import(name="logoHeight")
+    private @Nullable Output<Double> logoHeight;
 
     /**
-     * @return Logo height. Value needs to be between `1` and `100`.
+     * @return Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
      * 
      */
-    public Output<Double> logoHeight() {
-        return this.logoHeight;
+    public Optional<Output<Double>> logoHeight() {
+        return Optional.ofNullable(this.logoHeight);
     }
 
     /**
-     * Logo position. Available options: `center`, `left`, `right`, `none`.
+     * Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
      * 
      */
-    @Import(name="logoPosition", required=true)
-    private Output<String> logoPosition;
+    @Import(name="logoPosition")
+    private @Nullable Output<String> logoPosition;
 
     /**
-     * @return Logo position. Available options: `center`, `left`, `right`, `none`.
+     * @return Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
      * 
      */
-    public Output<String> logoPosition() {
-        return this.logoPosition;
+    public Optional<Output<String>> logoPosition() {
+        return Optional.ofNullable(this.logoPosition);
     }
 
     /**
-     * Logo url.
+     * Logo url. Defaults to an empty string.
      * 
      */
-    @Import(name="logoUrl", required=true)
-    private Output<String> logoUrl;
+    @Import(name="logoUrl")
+    private @Nullable Output<String> logoUrl;
 
     /**
-     * @return Logo url.
+     * @return Logo url. Defaults to an empty string.
      * 
      */
-    public Output<String> logoUrl() {
-        return this.logoUrl;
+    public Optional<Output<String>> logoUrl() {
+        return Optional.ofNullable(this.logoUrl);
     }
 
     /**
-     * Social buttons layout.  Available options: `bottom`, `top`.
+     * Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
      * 
      */
-    @Import(name="socialButtonsLayout", required=true)
-    private Output<String> socialButtonsLayout;
+    @Import(name="socialButtonsLayout")
+    private @Nullable Output<String> socialButtonsLayout;
 
     /**
-     * @return Social buttons layout.  Available options: `bottom`, `top`.
+     * @return Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
      * 
      */
-    public Output<String> socialButtonsLayout() {
-        return this.socialButtonsLayout;
+    public Optional<Output<String>> socialButtonsLayout() {
+        return Optional.ofNullable(this.socialButtonsLayout);
     }
 
     private BrandingThemeWidgetArgs() {}
@@ -118,18 +120,18 @@ public final class BrandingThemeWidgetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param headerTextAlignment Header text alignment. Available options: `center`, `left`, `right`.
+         * @param headerTextAlignment Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
          * 
          * @return builder
          * 
          */
-        public Builder headerTextAlignment(Output<String> headerTextAlignment) {
+        public Builder headerTextAlignment(@Nullable Output<String> headerTextAlignment) {
             $.headerTextAlignment = headerTextAlignment;
             return this;
         }
 
         /**
-         * @param headerTextAlignment Header text alignment. Available options: `center`, `left`, `right`.
+         * @param headerTextAlignment Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
          * 
          * @return builder
          * 
@@ -139,18 +141,18 @@ public final class BrandingThemeWidgetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param logoHeight Logo height. Value needs to be between `1` and `100`.
+         * @param logoHeight Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
          * 
          * @return builder
          * 
          */
-        public Builder logoHeight(Output<Double> logoHeight) {
+        public Builder logoHeight(@Nullable Output<Double> logoHeight) {
             $.logoHeight = logoHeight;
             return this;
         }
 
         /**
-         * @param logoHeight Logo height. Value needs to be between `1` and `100`.
+         * @param logoHeight Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
          * 
          * @return builder
          * 
@@ -160,18 +162,18 @@ public final class BrandingThemeWidgetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param logoPosition Logo position. Available options: `center`, `left`, `right`, `none`.
+         * @param logoPosition Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
          * 
          * @return builder
          * 
          */
-        public Builder logoPosition(Output<String> logoPosition) {
+        public Builder logoPosition(@Nullable Output<String> logoPosition) {
             $.logoPosition = logoPosition;
             return this;
         }
 
         /**
-         * @param logoPosition Logo position. Available options: `center`, `left`, `right`, `none`.
+         * @param logoPosition Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
          * 
          * @return builder
          * 
@@ -181,18 +183,18 @@ public final class BrandingThemeWidgetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param logoUrl Logo url.
+         * @param logoUrl Logo url. Defaults to an empty string.
          * 
          * @return builder
          * 
          */
-        public Builder logoUrl(Output<String> logoUrl) {
+        public Builder logoUrl(@Nullable Output<String> logoUrl) {
             $.logoUrl = logoUrl;
             return this;
         }
 
         /**
-         * @param logoUrl Logo url.
+         * @param logoUrl Logo url. Defaults to an empty string.
          * 
          * @return builder
          * 
@@ -202,18 +204,18 @@ public final class BrandingThemeWidgetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param socialButtonsLayout Social buttons layout.  Available options: `bottom`, `top`.
+         * @param socialButtonsLayout Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
          * 
          * @return builder
          * 
          */
-        public Builder socialButtonsLayout(Output<String> socialButtonsLayout) {
+        public Builder socialButtonsLayout(@Nullable Output<String> socialButtonsLayout) {
             $.socialButtonsLayout = socialButtonsLayout;
             return this;
         }
 
         /**
-         * @param socialButtonsLayout Social buttons layout.  Available options: `bottom`, `top`.
+         * @param socialButtonsLayout Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
          * 
          * @return builder
          * 
@@ -223,11 +225,6 @@ public final class BrandingThemeWidgetArgs extends com.pulumi.resources.Resource
         }
 
         public BrandingThemeWidgetArgs build() {
-            $.headerTextAlignment = Objects.requireNonNull($.headerTextAlignment, "expected parameter 'headerTextAlignment' to be non-null");
-            $.logoHeight = Objects.requireNonNull($.logoHeight, "expected parameter 'logoHeight' to be non-null");
-            $.logoPosition = Objects.requireNonNull($.logoPosition, "expected parameter 'logoPosition' to be non-null");
-            $.logoUrl = Objects.requireNonNull($.logoUrl, "expected parameter 'logoUrl' to be non-null");
-            $.socialButtonsLayout = Objects.requireNonNull($.socialButtonsLayout, "expected parameter 'socialButtonsLayout' to be non-null");
             return $;
         }
     }

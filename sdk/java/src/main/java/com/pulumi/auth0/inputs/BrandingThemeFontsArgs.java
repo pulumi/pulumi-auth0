@@ -14,6 +14,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class BrandingThemeFontsArgs extends com.pulumi.resources.ResourceArgs {
@@ -51,18 +53,18 @@ public final class BrandingThemeFontsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Font URL.
+     * Font URL. Defaults to an empty string.
      * 
      */
-    @Import(name="fontUrl", required=true)
-    private Output<String> fontUrl;
+    @Import(name="fontUrl")
+    private @Nullable Output<String> fontUrl;
 
     /**
-     * @return Font URL.
+     * @return Font URL. Defaults to an empty string.
      * 
      */
-    public Output<String> fontUrl() {
-        return this.fontUrl;
+    public Optional<Output<String>> fontUrl() {
+        return Optional.ofNullable(this.fontUrl);
     }
 
     /**
@@ -96,33 +98,33 @@ public final class BrandingThemeFontsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Links style.
+     * Links style. Defaults to `normal`.
      * 
      */
-    @Import(name="linksStyle", required=true)
-    private Output<String> linksStyle;
+    @Import(name="linksStyle")
+    private @Nullable Output<String> linksStyle;
 
     /**
-     * @return Links style.
+     * @return Links style. Defaults to `normal`.
      * 
      */
-    public Output<String> linksStyle() {
-        return this.linksStyle;
+    public Optional<Output<String>> linksStyle() {
+        return Optional.ofNullable(this.linksStyle);
     }
 
     /**
-     * Reference text size. Value needs to be between `12` and `24`.
+     * Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
      * 
      */
-    @Import(name="referenceTextSize", required=true)
-    private Output<Double> referenceTextSize;
+    @Import(name="referenceTextSize")
+    private @Nullable Output<Double> referenceTextSize;
 
     /**
-     * @return Reference text size. Value needs to be between `12` and `24`.
+     * @return Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
      * 
      */
-    public Output<Double> referenceTextSize() {
-        return this.referenceTextSize;
+    public Optional<Output<Double>> referenceTextSize() {
+        return Optional.ofNullable(this.referenceTextSize);
     }
 
     /**
@@ -230,18 +232,18 @@ public final class BrandingThemeFontsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fontUrl Font URL.
+         * @param fontUrl Font URL. Defaults to an empty string.
          * 
          * @return builder
          * 
          */
-        public Builder fontUrl(Output<String> fontUrl) {
+        public Builder fontUrl(@Nullable Output<String> fontUrl) {
             $.fontUrl = fontUrl;
             return this;
         }
 
         /**
-         * @param fontUrl Font URL.
+         * @param fontUrl Font URL. Defaults to an empty string.
          * 
          * @return builder
          * 
@@ -293,18 +295,18 @@ public final class BrandingThemeFontsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param linksStyle Links style.
+         * @param linksStyle Links style. Defaults to `normal`.
          * 
          * @return builder
          * 
          */
-        public Builder linksStyle(Output<String> linksStyle) {
+        public Builder linksStyle(@Nullable Output<String> linksStyle) {
             $.linksStyle = linksStyle;
             return this;
         }
 
         /**
-         * @param linksStyle Links style.
+         * @param linksStyle Links style. Defaults to `normal`.
          * 
          * @return builder
          * 
@@ -314,18 +316,18 @@ public final class BrandingThemeFontsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param referenceTextSize Reference text size. Value needs to be between `12` and `24`.
+         * @param referenceTextSize Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
          * 
          * @return builder
          * 
          */
-        public Builder referenceTextSize(Output<Double> referenceTextSize) {
+        public Builder referenceTextSize(@Nullable Output<Double> referenceTextSize) {
             $.referenceTextSize = referenceTextSize;
             return this;
         }
 
         /**
-         * @param referenceTextSize Reference text size. Value needs to be between `12` and `24`.
+         * @param referenceTextSize Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
          * 
          * @return builder
          * 
@@ -379,11 +381,8 @@ public final class BrandingThemeFontsArgs extends com.pulumi.resources.ResourceA
         public BrandingThemeFontsArgs build() {
             $.bodyText = Objects.requireNonNull($.bodyText, "expected parameter 'bodyText' to be non-null");
             $.buttonsText = Objects.requireNonNull($.buttonsText, "expected parameter 'buttonsText' to be non-null");
-            $.fontUrl = Objects.requireNonNull($.fontUrl, "expected parameter 'fontUrl' to be non-null");
             $.inputLabels = Objects.requireNonNull($.inputLabels, "expected parameter 'inputLabels' to be non-null");
             $.links = Objects.requireNonNull($.links, "expected parameter 'links' to be non-null");
-            $.linksStyle = Objects.requireNonNull($.linksStyle, "expected parameter 'linksStyle' to be non-null");
-            $.referenceTextSize = Objects.requireNonNull($.referenceTextSize, "expected parameter 'referenceTextSize' to be non-null");
             $.subtitle = Objects.requireNonNull($.subtitle, "expected parameter 'subtitle' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

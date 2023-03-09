@@ -12,11 +12,11 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class BrandingThemeFontsInputLabelsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("bold", required: true)]
-        public Input<bool> Bold { get; set; } = null!;
+        [Input("bold")]
+        public Input<bool>? Bold { get; set; }
 
-        [Input("size", required: true)]
-        public Input<double> Size { get; set; } = null!;
+        [Input("size")]
+        public Input<double>? Size { get; set; }
 
         public BrandingThemeFontsInputLabelsArgs()
         {

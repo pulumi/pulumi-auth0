@@ -691,105 +691,114 @@ class BrandingThemeBorders(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 button_border_radius: float,
-                 button_border_weight: float,
-                 buttons_style: str,
-                 input_border_radius: float,
-                 input_border_weight: float,
-                 inputs_style: str,
-                 show_widget_shadow: bool,
-                 widget_border_weight: float,
-                 widget_corner_radius: float):
+                 button_border_radius: Optional[float] = None,
+                 button_border_weight: Optional[float] = None,
+                 buttons_style: Optional[str] = None,
+                 input_border_radius: Optional[float] = None,
+                 input_border_weight: Optional[float] = None,
+                 inputs_style: Optional[str] = None,
+                 show_widget_shadow: Optional[bool] = None,
+                 widget_border_weight: Optional[float] = None,
+                 widget_corner_radius: Optional[float] = None):
         """
-        :param float button_border_radius: Button border radius. Value needs to be between `1` and `10`.
-        :param float button_border_weight: Button border weight. Value needs to be between `0` and `10`.
-        :param str buttons_style: Buttons style. Available options: `pill`, `rounded`, `sharp`.
-        :param float input_border_radius: Input border radius. Value needs to be between `0` and `10`.
-        :param float input_border_weight: Input border weight. Value needs to be between `0` and `3`.
-        :param str inputs_style: Inputs style. Available options: `pill`, `rounded`, `sharp`.
-        :param bool show_widget_shadow: Show widget shadow.
-        :param float widget_border_weight: Widget border weight. Value needs to be between `0` and `10`.
-        :param float widget_corner_radius: Widget corner radius. Value needs to be between `0` and `50`.
+        :param float button_border_radius: Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
+        :param float button_border_weight: Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
+        :param str buttons_style: Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+        :param float input_border_radius: Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
+        :param float input_border_weight: Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
+        :param str inputs_style: Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+        :param bool show_widget_shadow: Show widget shadow. Defaults to `true`.
+        :param float widget_border_weight: Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
+        :param float widget_corner_radius: Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
         """
-        pulumi.set(__self__, "button_border_radius", button_border_radius)
-        pulumi.set(__self__, "button_border_weight", button_border_weight)
-        pulumi.set(__self__, "buttons_style", buttons_style)
-        pulumi.set(__self__, "input_border_radius", input_border_radius)
-        pulumi.set(__self__, "input_border_weight", input_border_weight)
-        pulumi.set(__self__, "inputs_style", inputs_style)
-        pulumi.set(__self__, "show_widget_shadow", show_widget_shadow)
-        pulumi.set(__self__, "widget_border_weight", widget_border_weight)
-        pulumi.set(__self__, "widget_corner_radius", widget_corner_radius)
+        if button_border_radius is not None:
+            pulumi.set(__self__, "button_border_radius", button_border_radius)
+        if button_border_weight is not None:
+            pulumi.set(__self__, "button_border_weight", button_border_weight)
+        if buttons_style is not None:
+            pulumi.set(__self__, "buttons_style", buttons_style)
+        if input_border_radius is not None:
+            pulumi.set(__self__, "input_border_radius", input_border_radius)
+        if input_border_weight is not None:
+            pulumi.set(__self__, "input_border_weight", input_border_weight)
+        if inputs_style is not None:
+            pulumi.set(__self__, "inputs_style", inputs_style)
+        if show_widget_shadow is not None:
+            pulumi.set(__self__, "show_widget_shadow", show_widget_shadow)
+        if widget_border_weight is not None:
+            pulumi.set(__self__, "widget_border_weight", widget_border_weight)
+        if widget_corner_radius is not None:
+            pulumi.set(__self__, "widget_corner_radius", widget_corner_radius)
 
     @property
     @pulumi.getter(name="buttonBorderRadius")
-    def button_border_radius(self) -> float:
+    def button_border_radius(self) -> Optional[float]:
         """
-        Button border radius. Value needs to be between `1` and `10`.
+        Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
         """
         return pulumi.get(self, "button_border_radius")
 
     @property
     @pulumi.getter(name="buttonBorderWeight")
-    def button_border_weight(self) -> float:
+    def button_border_weight(self) -> Optional[float]:
         """
-        Button border weight. Value needs to be between `0` and `10`.
+        Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
         """
         return pulumi.get(self, "button_border_weight")
 
     @property
     @pulumi.getter(name="buttonsStyle")
-    def buttons_style(self) -> str:
+    def buttons_style(self) -> Optional[str]:
         """
-        Buttons style. Available options: `pill`, `rounded`, `sharp`.
+        Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
         """
         return pulumi.get(self, "buttons_style")
 
     @property
     @pulumi.getter(name="inputBorderRadius")
-    def input_border_radius(self) -> float:
+    def input_border_radius(self) -> Optional[float]:
         """
-        Input border radius. Value needs to be between `0` and `10`.
+        Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
         """
         return pulumi.get(self, "input_border_radius")
 
     @property
     @pulumi.getter(name="inputBorderWeight")
-    def input_border_weight(self) -> float:
+    def input_border_weight(self) -> Optional[float]:
         """
-        Input border weight. Value needs to be between `0` and `3`.
+        Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
         """
         return pulumi.get(self, "input_border_weight")
 
     @property
     @pulumi.getter(name="inputsStyle")
-    def inputs_style(self) -> str:
+    def inputs_style(self) -> Optional[str]:
         """
-        Inputs style. Available options: `pill`, `rounded`, `sharp`.
+        Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
         """
         return pulumi.get(self, "inputs_style")
 
     @property
     @pulumi.getter(name="showWidgetShadow")
-    def show_widget_shadow(self) -> bool:
+    def show_widget_shadow(self) -> Optional[bool]:
         """
-        Show widget shadow.
+        Show widget shadow. Defaults to `true`.
         """
         return pulumi.get(self, "show_widget_shadow")
 
     @property
     @pulumi.getter(name="widgetBorderWeight")
-    def widget_border_weight(self) -> float:
+    def widget_border_weight(self) -> Optional[float]:
         """
-        Widget border weight. Value needs to be between `0` and `10`.
+        Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
         """
         return pulumi.get(self, "widget_border_weight")
 
     @property
     @pulumi.getter(name="widgetCornerRadius")
-    def widget_corner_radius(self) -> float:
+    def widget_corner_radius(self) -> Optional[float]:
         """
-        Widget corner radius. Value needs to be between `0` and `50`.
+        Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
         """
         return pulumi.get(self, "widget_corner_radius")
 
@@ -799,7 +808,11 @@ class BrandingThemeColors(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bodyText":
+        if key == "baseFocusColor":
+            suggest = "base_focus_color"
+        elif key == "baseHoverColor":
+            suggest = "base_hover_color"
+        elif key == "bodyText":
             suggest = "body_text"
         elif key == "inputBackground":
             suggest = "input_background"
@@ -823,10 +836,6 @@ class BrandingThemeColors(dict):
             suggest = "widget_background"
         elif key == "widgetBorder":
             suggest = "widget_border"
-        elif key == "baseFocusColor":
-            suggest = "base_focus_color"
-        elif key == "baseHoverColor":
-            suggest = "base_hover_color"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in BrandingThemeColors. Access the value via the '{suggest}' property getter instead.")
@@ -840,198 +849,86 @@ class BrandingThemeColors(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 body_text: str,
-                 error: str,
-                 header: str,
-                 icons: str,
-                 input_background: str,
-                 input_border: str,
-                 input_filled_text: str,
-                 input_labels_placeholders: str,
-                 links_focused_components: str,
-                 primary_button: str,
-                 primary_button_label: str,
-                 secondary_button_border: str,
-                 secondary_button_label: str,
-                 success: str,
-                 widget_background: str,
-                 widget_border: str,
                  base_focus_color: Optional[str] = None,
-                 base_hover_color: Optional[str] = None):
+                 base_hover_color: Optional[str] = None,
+                 body_text: Optional[str] = None,
+                 error: Optional[str] = None,
+                 header: Optional[str] = None,
+                 icons: Optional[str] = None,
+                 input_background: Optional[str] = None,
+                 input_border: Optional[str] = None,
+                 input_filled_text: Optional[str] = None,
+                 input_labels_placeholders: Optional[str] = None,
+                 links_focused_components: Optional[str] = None,
+                 primary_button: Optional[str] = None,
+                 primary_button_label: Optional[str] = None,
+                 secondary_button_border: Optional[str] = None,
+                 secondary_button_label: Optional[str] = None,
+                 success: Optional[str] = None,
+                 widget_background: Optional[str] = None,
+                 widget_border: Optional[str] = None):
         """
-        :param str body_text: Body text.
-        :param str error: Error.
-        :param str header: Header.
-        :param str icons: Icons.
-        :param str input_background: Input background.
-        :param str input_border: Input border.
-        :param str input_filled_text: Input filled text.
-        :param str input_labels_placeholders: Input labels & placeholders.
-        :param str links_focused_components: Links & focused components.
-        :param str primary_button: Primary button.
-        :param str primary_button_label: Primary button label.
-        :param str secondary_button_border: Secondary button border.
-        :param str secondary_button_label: Secondary button label.
-        :param str success: Success.
-        :param str widget_background: Widget background.
-        :param str widget_border: Widget border.
-        :param str base_focus_color: Base focus color.
-        :param str base_hover_color: Base hover color.
+        :param str base_focus_color: Base focus color. Defaults to `#635dff`.
+        :param str base_hover_color: Base hover color. Defaults to `#000000`.
+        :param str body_text: Body text. Defaults to `#1e212a`.
+        :param str error: Error. Defaults to `#d03c38`.
+        :param str header: Header. Defaults to `#1e212a`.
+        :param str icons: Icons. Defaults to `#65676e`.
+        :param str input_background: Input background. Defaults to `#ffffff`.
+        :param str input_border: Input border. Defaults to `#c9cace`.
+        :param str input_filled_text: Input filled text. Defaults to `#000000`.
+        :param str input_labels_placeholders: Input labels & placeholders. Defaults to `#65676e`.
+        :param str links_focused_components: Links & focused components. Defaults to `#635dff`.
+        :param str primary_button: Primary button. Defaults to `#635dff`.
+        :param str primary_button_label: Primary button label. Defaults to `#ffffff`.
+        :param str secondary_button_border: Secondary button border. Defaults to `#c9cace`.
+        :param str secondary_button_label: Secondary button label. Defaults to `#1e212a`.
+        :param str success: Success. Defaults to `#13a688`.
+        :param str widget_background: Widget background. Defaults to `#ffffff`.
+        :param str widget_border: Widget border. Defaults to `#c9cace`.
         """
-        pulumi.set(__self__, "body_text", body_text)
-        pulumi.set(__self__, "error", error)
-        pulumi.set(__self__, "header", header)
-        pulumi.set(__self__, "icons", icons)
-        pulumi.set(__self__, "input_background", input_background)
-        pulumi.set(__self__, "input_border", input_border)
-        pulumi.set(__self__, "input_filled_text", input_filled_text)
-        pulumi.set(__self__, "input_labels_placeholders", input_labels_placeholders)
-        pulumi.set(__self__, "links_focused_components", links_focused_components)
-        pulumi.set(__self__, "primary_button", primary_button)
-        pulumi.set(__self__, "primary_button_label", primary_button_label)
-        pulumi.set(__self__, "secondary_button_border", secondary_button_border)
-        pulumi.set(__self__, "secondary_button_label", secondary_button_label)
-        pulumi.set(__self__, "success", success)
-        pulumi.set(__self__, "widget_background", widget_background)
-        pulumi.set(__self__, "widget_border", widget_border)
         if base_focus_color is not None:
             pulumi.set(__self__, "base_focus_color", base_focus_color)
         if base_hover_color is not None:
             pulumi.set(__self__, "base_hover_color", base_hover_color)
-
-    @property
-    @pulumi.getter(name="bodyText")
-    def body_text(self) -> str:
-        """
-        Body text.
-        """
-        return pulumi.get(self, "body_text")
-
-    @property
-    @pulumi.getter
-    def error(self) -> str:
-        """
-        Error.
-        """
-        return pulumi.get(self, "error")
-
-    @property
-    @pulumi.getter
-    def header(self) -> str:
-        """
-        Header.
-        """
-        return pulumi.get(self, "header")
-
-    @property
-    @pulumi.getter
-    def icons(self) -> str:
-        """
-        Icons.
-        """
-        return pulumi.get(self, "icons")
-
-    @property
-    @pulumi.getter(name="inputBackground")
-    def input_background(self) -> str:
-        """
-        Input background.
-        """
-        return pulumi.get(self, "input_background")
-
-    @property
-    @pulumi.getter(name="inputBorder")
-    def input_border(self) -> str:
-        """
-        Input border.
-        """
-        return pulumi.get(self, "input_border")
-
-    @property
-    @pulumi.getter(name="inputFilledText")
-    def input_filled_text(self) -> str:
-        """
-        Input filled text.
-        """
-        return pulumi.get(self, "input_filled_text")
-
-    @property
-    @pulumi.getter(name="inputLabelsPlaceholders")
-    def input_labels_placeholders(self) -> str:
-        """
-        Input labels & placeholders.
-        """
-        return pulumi.get(self, "input_labels_placeholders")
-
-    @property
-    @pulumi.getter(name="linksFocusedComponents")
-    def links_focused_components(self) -> str:
-        """
-        Links & focused components.
-        """
-        return pulumi.get(self, "links_focused_components")
-
-    @property
-    @pulumi.getter(name="primaryButton")
-    def primary_button(self) -> str:
-        """
-        Primary button.
-        """
-        return pulumi.get(self, "primary_button")
-
-    @property
-    @pulumi.getter(name="primaryButtonLabel")
-    def primary_button_label(self) -> str:
-        """
-        Primary button label.
-        """
-        return pulumi.get(self, "primary_button_label")
-
-    @property
-    @pulumi.getter(name="secondaryButtonBorder")
-    def secondary_button_border(self) -> str:
-        """
-        Secondary button border.
-        """
-        return pulumi.get(self, "secondary_button_border")
-
-    @property
-    @pulumi.getter(name="secondaryButtonLabel")
-    def secondary_button_label(self) -> str:
-        """
-        Secondary button label.
-        """
-        return pulumi.get(self, "secondary_button_label")
-
-    @property
-    @pulumi.getter
-    def success(self) -> str:
-        """
-        Success.
-        """
-        return pulumi.get(self, "success")
-
-    @property
-    @pulumi.getter(name="widgetBackground")
-    def widget_background(self) -> str:
-        """
-        Widget background.
-        """
-        return pulumi.get(self, "widget_background")
-
-    @property
-    @pulumi.getter(name="widgetBorder")
-    def widget_border(self) -> str:
-        """
-        Widget border.
-        """
-        return pulumi.get(self, "widget_border")
+        if body_text is not None:
+            pulumi.set(__self__, "body_text", body_text)
+        if error is not None:
+            pulumi.set(__self__, "error", error)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if icons is not None:
+            pulumi.set(__self__, "icons", icons)
+        if input_background is not None:
+            pulumi.set(__self__, "input_background", input_background)
+        if input_border is not None:
+            pulumi.set(__self__, "input_border", input_border)
+        if input_filled_text is not None:
+            pulumi.set(__self__, "input_filled_text", input_filled_text)
+        if input_labels_placeholders is not None:
+            pulumi.set(__self__, "input_labels_placeholders", input_labels_placeholders)
+        if links_focused_components is not None:
+            pulumi.set(__self__, "links_focused_components", links_focused_components)
+        if primary_button is not None:
+            pulumi.set(__self__, "primary_button", primary_button)
+        if primary_button_label is not None:
+            pulumi.set(__self__, "primary_button_label", primary_button_label)
+        if secondary_button_border is not None:
+            pulumi.set(__self__, "secondary_button_border", secondary_button_border)
+        if secondary_button_label is not None:
+            pulumi.set(__self__, "secondary_button_label", secondary_button_label)
+        if success is not None:
+            pulumi.set(__self__, "success", success)
+        if widget_background is not None:
+            pulumi.set(__self__, "widget_background", widget_background)
+        if widget_border is not None:
+            pulumi.set(__self__, "widget_border", widget_border)
 
     @property
     @pulumi.getter(name="baseFocusColor")
     def base_focus_color(self) -> Optional[str]:
         """
-        Base focus color.
+        Base focus color. Defaults to `#635dff`.
         """
         return pulumi.get(self, "base_focus_color")
 
@@ -1039,9 +936,137 @@ class BrandingThemeColors(dict):
     @pulumi.getter(name="baseHoverColor")
     def base_hover_color(self) -> Optional[str]:
         """
-        Base hover color.
+        Base hover color. Defaults to `#000000`.
         """
         return pulumi.get(self, "base_hover_color")
+
+    @property
+    @pulumi.getter(name="bodyText")
+    def body_text(self) -> Optional[str]:
+        """
+        Body text. Defaults to `#1e212a`.
+        """
+        return pulumi.get(self, "body_text")
+
+    @property
+    @pulumi.getter
+    def error(self) -> Optional[str]:
+        """
+        Error. Defaults to `#d03c38`.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def header(self) -> Optional[str]:
+        """
+        Header. Defaults to `#1e212a`.
+        """
+        return pulumi.get(self, "header")
+
+    @property
+    @pulumi.getter
+    def icons(self) -> Optional[str]:
+        """
+        Icons. Defaults to `#65676e`.
+        """
+        return pulumi.get(self, "icons")
+
+    @property
+    @pulumi.getter(name="inputBackground")
+    def input_background(self) -> Optional[str]:
+        """
+        Input background. Defaults to `#ffffff`.
+        """
+        return pulumi.get(self, "input_background")
+
+    @property
+    @pulumi.getter(name="inputBorder")
+    def input_border(self) -> Optional[str]:
+        """
+        Input border. Defaults to `#c9cace`.
+        """
+        return pulumi.get(self, "input_border")
+
+    @property
+    @pulumi.getter(name="inputFilledText")
+    def input_filled_text(self) -> Optional[str]:
+        """
+        Input filled text. Defaults to `#000000`.
+        """
+        return pulumi.get(self, "input_filled_text")
+
+    @property
+    @pulumi.getter(name="inputLabelsPlaceholders")
+    def input_labels_placeholders(self) -> Optional[str]:
+        """
+        Input labels & placeholders. Defaults to `#65676e`.
+        """
+        return pulumi.get(self, "input_labels_placeholders")
+
+    @property
+    @pulumi.getter(name="linksFocusedComponents")
+    def links_focused_components(self) -> Optional[str]:
+        """
+        Links & focused components. Defaults to `#635dff`.
+        """
+        return pulumi.get(self, "links_focused_components")
+
+    @property
+    @pulumi.getter(name="primaryButton")
+    def primary_button(self) -> Optional[str]:
+        """
+        Primary button. Defaults to `#635dff`.
+        """
+        return pulumi.get(self, "primary_button")
+
+    @property
+    @pulumi.getter(name="primaryButtonLabel")
+    def primary_button_label(self) -> Optional[str]:
+        """
+        Primary button label. Defaults to `#ffffff`.
+        """
+        return pulumi.get(self, "primary_button_label")
+
+    @property
+    @pulumi.getter(name="secondaryButtonBorder")
+    def secondary_button_border(self) -> Optional[str]:
+        """
+        Secondary button border. Defaults to `#c9cace`.
+        """
+        return pulumi.get(self, "secondary_button_border")
+
+    @property
+    @pulumi.getter(name="secondaryButtonLabel")
+    def secondary_button_label(self) -> Optional[str]:
+        """
+        Secondary button label. Defaults to `#1e212a`.
+        """
+        return pulumi.get(self, "secondary_button_label")
+
+    @property
+    @pulumi.getter
+    def success(self) -> Optional[str]:
+        """
+        Success. Defaults to `#13a688`.
+        """
+        return pulumi.get(self, "success")
+
+    @property
+    @pulumi.getter(name="widgetBackground")
+    def widget_background(self) -> Optional[str]:
+        """
+        Widget background. Defaults to `#ffffff`.
+        """
+        return pulumi.get(self, "widget_background")
+
+    @property
+    @pulumi.getter(name="widgetBorder")
+    def widget_border(self) -> Optional[str]:
+        """
+        Widget border. Defaults to `#c9cace`.
+        """
+        return pulumi.get(self, "widget_border")
 
 
 @pulumi.output_type
@@ -1053,10 +1078,10 @@ class BrandingThemeFonts(dict):
             suggest = "body_text"
         elif key == "buttonsText":
             suggest = "buttons_text"
-        elif key == "fontUrl":
-            suggest = "font_url"
         elif key == "inputLabels":
             suggest = "input_labels"
+        elif key == "fontUrl":
+            suggest = "font_url"
         elif key == "linksStyle":
             suggest = "links_style"
         elif key == "referenceTextSize":
@@ -1076,33 +1101,36 @@ class BrandingThemeFonts(dict):
     def __init__(__self__, *,
                  body_text: 'outputs.BrandingThemeFontsBodyText',
                  buttons_text: 'outputs.BrandingThemeFontsButtonsText',
-                 font_url: str,
                  input_labels: 'outputs.BrandingThemeFontsInputLabels',
                  links: 'outputs.BrandingThemeFontsLinks',
-                 links_style: str,
-                 reference_text_size: float,
                  subtitle: 'outputs.BrandingThemeFontsSubtitle',
-                 title: 'outputs.BrandingThemeFontsTitle'):
+                 title: 'outputs.BrandingThemeFontsTitle',
+                 font_url: Optional[str] = None,
+                 links_style: Optional[str] = None,
+                 reference_text_size: Optional[float] = None):
         """
         :param 'BrandingThemeFontsBodyTextArgs' body_text: Body text.
         :param 'BrandingThemeFontsButtonsTextArgs' buttons_text: Buttons text.
-        :param str font_url: Font URL.
         :param 'BrandingThemeFontsInputLabelsArgs' input_labels: Input labels.
         :param 'BrandingThemeFontsLinksArgs' links: Links.
-        :param str links_style: Links style.
-        :param float reference_text_size: Reference text size. Value needs to be between `12` and `24`.
         :param 'BrandingThemeFontsSubtitleArgs' subtitle: Subtitle.
         :param 'BrandingThemeFontsTitleArgs' title: Title.
+        :param str font_url: Font URL. Defaults to an empty string.
+        :param str links_style: Links style. Defaults to `normal`.
+        :param float reference_text_size: Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
         """
         pulumi.set(__self__, "body_text", body_text)
         pulumi.set(__self__, "buttons_text", buttons_text)
-        pulumi.set(__self__, "font_url", font_url)
         pulumi.set(__self__, "input_labels", input_labels)
         pulumi.set(__self__, "links", links)
-        pulumi.set(__self__, "links_style", links_style)
-        pulumi.set(__self__, "reference_text_size", reference_text_size)
         pulumi.set(__self__, "subtitle", subtitle)
         pulumi.set(__self__, "title", title)
+        if font_url is not None:
+            pulumi.set(__self__, "font_url", font_url)
+        if links_style is not None:
+            pulumi.set(__self__, "links_style", links_style)
+        if reference_text_size is not None:
+            pulumi.set(__self__, "reference_text_size", reference_text_size)
 
     @property
     @pulumi.getter(name="bodyText")
@@ -1121,14 +1149,6 @@ class BrandingThemeFonts(dict):
         return pulumi.get(self, "buttons_text")
 
     @property
-    @pulumi.getter(name="fontUrl")
-    def font_url(self) -> str:
-        """
-        Font URL.
-        """
-        return pulumi.get(self, "font_url")
-
-    @property
     @pulumi.getter(name="inputLabels")
     def input_labels(self) -> 'outputs.BrandingThemeFontsInputLabels':
         """
@@ -1143,22 +1163,6 @@ class BrandingThemeFonts(dict):
         Links.
         """
         return pulumi.get(self, "links")
-
-    @property
-    @pulumi.getter(name="linksStyle")
-    def links_style(self) -> str:
-        """
-        Links style.
-        """
-        return pulumi.get(self, "links_style")
-
-    @property
-    @pulumi.getter(name="referenceTextSize")
-    def reference_text_size(self) -> float:
-        """
-        Reference text size. Value needs to be between `12` and `24`.
-        """
-        return pulumi.get(self, "reference_text_size")
 
     @property
     @pulumi.getter
@@ -1176,118 +1180,154 @@ class BrandingThemeFonts(dict):
         """
         return pulumi.get(self, "title")
 
+    @property
+    @pulumi.getter(name="fontUrl")
+    def font_url(self) -> Optional[str]:
+        """
+        Font URL. Defaults to an empty string.
+        """
+        return pulumi.get(self, "font_url")
+
+    @property
+    @pulumi.getter(name="linksStyle")
+    def links_style(self) -> Optional[str]:
+        """
+        Links style. Defaults to `normal`.
+        """
+        return pulumi.get(self, "links_style")
+
+    @property
+    @pulumi.getter(name="referenceTextSize")
+    def reference_text_size(self) -> Optional[float]:
+        """
+        Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
+        """
+        return pulumi.get(self, "reference_text_size")
+
 
 @pulumi.output_type
 class BrandingThemeFontsBodyText(dict):
     def __init__(__self__, *,
-                 bold: bool,
-                 size: float):
-        pulumi.set(__self__, "bold", bold)
-        pulumi.set(__self__, "size", size)
+                 bold: Optional[bool] = None,
+                 size: Optional[float] = None):
+        if bold is not None:
+            pulumi.set(__self__, "bold", bold)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
-    def bold(self) -> bool:
+    def bold(self) -> Optional[bool]:
         return pulumi.get(self, "bold")
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> Optional[float]:
         return pulumi.get(self, "size")
 
 
 @pulumi.output_type
 class BrandingThemeFontsButtonsText(dict):
     def __init__(__self__, *,
-                 bold: bool,
-                 size: float):
-        pulumi.set(__self__, "bold", bold)
-        pulumi.set(__self__, "size", size)
+                 bold: Optional[bool] = None,
+                 size: Optional[float] = None):
+        if bold is not None:
+            pulumi.set(__self__, "bold", bold)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
-    def bold(self) -> bool:
+    def bold(self) -> Optional[bool]:
         return pulumi.get(self, "bold")
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> Optional[float]:
         return pulumi.get(self, "size")
 
 
 @pulumi.output_type
 class BrandingThemeFontsInputLabels(dict):
     def __init__(__self__, *,
-                 bold: bool,
-                 size: float):
-        pulumi.set(__self__, "bold", bold)
-        pulumi.set(__self__, "size", size)
+                 bold: Optional[bool] = None,
+                 size: Optional[float] = None):
+        if bold is not None:
+            pulumi.set(__self__, "bold", bold)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
-    def bold(self) -> bool:
+    def bold(self) -> Optional[bool]:
         return pulumi.get(self, "bold")
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> Optional[float]:
         return pulumi.get(self, "size")
 
 
 @pulumi.output_type
 class BrandingThemeFontsLinks(dict):
     def __init__(__self__, *,
-                 bold: bool,
-                 size: float):
-        pulumi.set(__self__, "bold", bold)
-        pulumi.set(__self__, "size", size)
+                 bold: Optional[bool] = None,
+                 size: Optional[float] = None):
+        if bold is not None:
+            pulumi.set(__self__, "bold", bold)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
-    def bold(self) -> bool:
+    def bold(self) -> Optional[bool]:
         return pulumi.get(self, "bold")
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> Optional[float]:
         return pulumi.get(self, "size")
 
 
 @pulumi.output_type
 class BrandingThemeFontsSubtitle(dict):
     def __init__(__self__, *,
-                 bold: bool,
-                 size: float):
-        pulumi.set(__self__, "bold", bold)
-        pulumi.set(__self__, "size", size)
+                 bold: Optional[bool] = None,
+                 size: Optional[float] = None):
+        if bold is not None:
+            pulumi.set(__self__, "bold", bold)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
-    def bold(self) -> bool:
+    def bold(self) -> Optional[bool]:
         return pulumi.get(self, "bold")
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> Optional[float]:
         return pulumi.get(self, "size")
 
 
 @pulumi.output_type
 class BrandingThemeFontsTitle(dict):
     def __init__(__self__, *,
-                 bold: bool,
-                 size: float):
-        pulumi.set(__self__, "bold", bold)
-        pulumi.set(__self__, "size", size)
+                 bold: Optional[bool] = None,
+                 size: Optional[float] = None):
+        if bold is not None:
+            pulumi.set(__self__, "bold", bold)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
-    def bold(self) -> bool:
+    def bold(self) -> Optional[bool]:
         return pulumi.get(self, "bold")
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> Optional[float]:
         return pulumi.get(self, "size")
 
 
@@ -1315,39 +1355,42 @@ class BrandingThemePageBackground(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 background_color: str,
-                 background_image_url: str,
-                 page_layout: str):
+                 background_color: Optional[str] = None,
+                 background_image_url: Optional[str] = None,
+                 page_layout: Optional[str] = None):
         """
-        :param str background_color: Background color.
-        :param str background_image_url: Background image url.
-        :param str page_layout: Page layout. Available options: `center`, `left`, `right`.
+        :param str background_color: Background color. Defaults to `#000000`.
+        :param str background_image_url: Background image url. Defaults to an empty string.
+        :param str page_layout: Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
         """
-        pulumi.set(__self__, "background_color", background_color)
-        pulumi.set(__self__, "background_image_url", background_image_url)
-        pulumi.set(__self__, "page_layout", page_layout)
+        if background_color is not None:
+            pulumi.set(__self__, "background_color", background_color)
+        if background_image_url is not None:
+            pulumi.set(__self__, "background_image_url", background_image_url)
+        if page_layout is not None:
+            pulumi.set(__self__, "page_layout", page_layout)
 
     @property
     @pulumi.getter(name="backgroundColor")
-    def background_color(self) -> str:
+    def background_color(self) -> Optional[str]:
         """
-        Background color.
+        Background color. Defaults to `#000000`.
         """
         return pulumi.get(self, "background_color")
 
     @property
     @pulumi.getter(name="backgroundImageUrl")
-    def background_image_url(self) -> str:
+    def background_image_url(self) -> Optional[str]:
         """
-        Background image url.
+        Background image url. Defaults to an empty string.
         """
         return pulumi.get(self, "background_image_url")
 
     @property
     @pulumi.getter(name="pageLayout")
-    def page_layout(self) -> str:
+    def page_layout(self) -> Optional[str]:
         """
-        Page layout. Available options: `center`, `left`, `right`.
+        Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
         """
         return pulumi.get(self, "page_layout")
 
@@ -1380,61 +1423,66 @@ class BrandingThemeWidget(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 header_text_alignment: str,
-                 logo_height: float,
-                 logo_position: str,
-                 logo_url: str,
-                 social_buttons_layout: str):
+                 header_text_alignment: Optional[str] = None,
+                 logo_height: Optional[float] = None,
+                 logo_position: Optional[str] = None,
+                 logo_url: Optional[str] = None,
+                 social_buttons_layout: Optional[str] = None):
         """
-        :param str header_text_alignment: Header text alignment. Available options: `center`, `left`, `right`.
-        :param float logo_height: Logo height. Value needs to be between `1` and `100`.
-        :param str logo_position: Logo position. Available options: `center`, `left`, `right`, `none`.
-        :param str logo_url: Logo url.
-        :param str social_buttons_layout: Social buttons layout.  Available options: `bottom`, `top`.
+        :param str header_text_alignment: Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+        :param float logo_height: Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
+        :param str logo_position: Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+        :param str logo_url: Logo url. Defaults to an empty string.
+        :param str social_buttons_layout: Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
         """
-        pulumi.set(__self__, "header_text_alignment", header_text_alignment)
-        pulumi.set(__self__, "logo_height", logo_height)
-        pulumi.set(__self__, "logo_position", logo_position)
-        pulumi.set(__self__, "logo_url", logo_url)
-        pulumi.set(__self__, "social_buttons_layout", social_buttons_layout)
+        if header_text_alignment is not None:
+            pulumi.set(__self__, "header_text_alignment", header_text_alignment)
+        if logo_height is not None:
+            pulumi.set(__self__, "logo_height", logo_height)
+        if logo_position is not None:
+            pulumi.set(__self__, "logo_position", logo_position)
+        if logo_url is not None:
+            pulumi.set(__self__, "logo_url", logo_url)
+        if social_buttons_layout is not None:
+            pulumi.set(__self__, "social_buttons_layout", social_buttons_layout)
 
     @property
     @pulumi.getter(name="headerTextAlignment")
-    def header_text_alignment(self) -> str:
+    def header_text_alignment(self) -> Optional[str]:
         """
-        Header text alignment. Available options: `center`, `left`, `right`.
+        Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
         """
         return pulumi.get(self, "header_text_alignment")
 
     @property
     @pulumi.getter(name="logoHeight")
-    def logo_height(self) -> float:
+    def logo_height(self) -> Optional[float]:
         """
-        Logo height. Value needs to be between `1` and `100`.
+        Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
         """
         return pulumi.get(self, "logo_height")
 
     @property
     @pulumi.getter(name="logoPosition")
-    def logo_position(self) -> str:
+    def logo_position(self) -> Optional[str]:
         """
-        Logo position. Available options: `center`, `left`, `right`, `none`.
+        Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
         """
         return pulumi.get(self, "logo_position")
 
     @property
     @pulumi.getter(name="logoUrl")
-    def logo_url(self) -> str:
+    def logo_url(self) -> Optional[str]:
         """
-        Logo url.
+        Logo url. Defaults to an empty string.
         """
         return pulumi.get(self, "logo_url")
 
     @property
     @pulumi.getter(name="socialButtonsLayout")
-    def social_buttons_layout(self) -> str:
+    def social_buttons_layout(self) -> Optional[str]:
         """
-        Social buttons layout.  Available options: `bottom`, `top`.
+        Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
         """
         return pulumi.get(self, "social_buttons_layout")
 

@@ -13,14 +13,14 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class BrandingThemeFontsLinks
     {
-        public readonly bool Bold;
-        public readonly double Size;
+        public readonly bool? Bold;
+        public readonly double? Size;
 
         [OutputConstructor]
         private BrandingThemeFontsLinks(
-            bool bold,
+            bool? bold,
 
-            double size)
+            double? size)
         {
             Bold = bold;
             Size = size;

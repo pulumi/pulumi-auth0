@@ -12,222 +12,222 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BrandingThemeColors {
     /**
-     * @return Base focus color.
+     * @return Base focus color. Defaults to `#635dff`.
      * 
      */
     private @Nullable String baseFocusColor;
     /**
-     * @return Base hover color.
+     * @return Base hover color. Defaults to `#000000`.
      * 
      */
     private @Nullable String baseHoverColor;
     /**
-     * @return Body text.
+     * @return Body text. Defaults to `#1e212a`.
      * 
      */
-    private String bodyText;
+    private @Nullable String bodyText;
     /**
-     * @return Error.
+     * @return Error. Defaults to `#d03c38`.
      * 
      */
-    private String error;
+    private @Nullable String error;
     /**
-     * @return Header.
+     * @return Header. Defaults to `#1e212a`.
      * 
      */
-    private String header;
+    private @Nullable String header;
     /**
-     * @return Icons.
+     * @return Icons. Defaults to `#65676e`.
      * 
      */
-    private String icons;
+    private @Nullable String icons;
     /**
-     * @return Input background.
+     * @return Input background. Defaults to `#ffffff`.
      * 
      */
-    private String inputBackground;
+    private @Nullable String inputBackground;
     /**
-     * @return Input border.
+     * @return Input border. Defaults to `#c9cace`.
      * 
      */
-    private String inputBorder;
+    private @Nullable String inputBorder;
     /**
-     * @return Input filled text.
+     * @return Input filled text. Defaults to `#000000`.
      * 
      */
-    private String inputFilledText;
+    private @Nullable String inputFilledText;
     /**
-     * @return Input labels &amp; placeholders.
+     * @return Input labels &amp; placeholders. Defaults to `#65676e`.
      * 
      */
-    private String inputLabelsPlaceholders;
+    private @Nullable String inputLabelsPlaceholders;
     /**
-     * @return Links &amp; focused components.
+     * @return Links &amp; focused components. Defaults to `#635dff`.
      * 
      */
-    private String linksFocusedComponents;
+    private @Nullable String linksFocusedComponents;
     /**
-     * @return Primary button.
+     * @return Primary button. Defaults to `#635dff`.
      * 
      */
-    private String primaryButton;
+    private @Nullable String primaryButton;
     /**
-     * @return Primary button label.
+     * @return Primary button label. Defaults to `#ffffff`.
      * 
      */
-    private String primaryButtonLabel;
+    private @Nullable String primaryButtonLabel;
     /**
-     * @return Secondary button border.
+     * @return Secondary button border. Defaults to `#c9cace`.
      * 
      */
-    private String secondaryButtonBorder;
+    private @Nullable String secondaryButtonBorder;
     /**
-     * @return Secondary button label.
+     * @return Secondary button label. Defaults to `#1e212a`.
      * 
      */
-    private String secondaryButtonLabel;
+    private @Nullable String secondaryButtonLabel;
     /**
-     * @return Success.
+     * @return Success. Defaults to `#13a688`.
      * 
      */
-    private String success;
+    private @Nullable String success;
     /**
-     * @return Widget background.
+     * @return Widget background. Defaults to `#ffffff`.
      * 
      */
-    private String widgetBackground;
+    private @Nullable String widgetBackground;
     /**
-     * @return Widget border.
+     * @return Widget border. Defaults to `#c9cace`.
      * 
      */
-    private String widgetBorder;
+    private @Nullable String widgetBorder;
 
     private BrandingThemeColors() {}
     /**
-     * @return Base focus color.
+     * @return Base focus color. Defaults to `#635dff`.
      * 
      */
     public Optional<String> baseFocusColor() {
         return Optional.ofNullable(this.baseFocusColor);
     }
     /**
-     * @return Base hover color.
+     * @return Base hover color. Defaults to `#000000`.
      * 
      */
     public Optional<String> baseHoverColor() {
         return Optional.ofNullable(this.baseHoverColor);
     }
     /**
-     * @return Body text.
+     * @return Body text. Defaults to `#1e212a`.
      * 
      */
-    public String bodyText() {
-        return this.bodyText;
+    public Optional<String> bodyText() {
+        return Optional.ofNullable(this.bodyText);
     }
     /**
-     * @return Error.
+     * @return Error. Defaults to `#d03c38`.
      * 
      */
-    public String error() {
-        return this.error;
+    public Optional<String> error() {
+        return Optional.ofNullable(this.error);
     }
     /**
-     * @return Header.
+     * @return Header. Defaults to `#1e212a`.
      * 
      */
-    public String header() {
-        return this.header;
+    public Optional<String> header() {
+        return Optional.ofNullable(this.header);
     }
     /**
-     * @return Icons.
+     * @return Icons. Defaults to `#65676e`.
      * 
      */
-    public String icons() {
-        return this.icons;
+    public Optional<String> icons() {
+        return Optional.ofNullable(this.icons);
     }
     /**
-     * @return Input background.
+     * @return Input background. Defaults to `#ffffff`.
      * 
      */
-    public String inputBackground() {
-        return this.inputBackground;
+    public Optional<String> inputBackground() {
+        return Optional.ofNullable(this.inputBackground);
     }
     /**
-     * @return Input border.
+     * @return Input border. Defaults to `#c9cace`.
      * 
      */
-    public String inputBorder() {
-        return this.inputBorder;
+    public Optional<String> inputBorder() {
+        return Optional.ofNullable(this.inputBorder);
     }
     /**
-     * @return Input filled text.
+     * @return Input filled text. Defaults to `#000000`.
      * 
      */
-    public String inputFilledText() {
-        return this.inputFilledText;
+    public Optional<String> inputFilledText() {
+        return Optional.ofNullable(this.inputFilledText);
     }
     /**
-     * @return Input labels &amp; placeholders.
+     * @return Input labels &amp; placeholders. Defaults to `#65676e`.
      * 
      */
-    public String inputLabelsPlaceholders() {
-        return this.inputLabelsPlaceholders;
+    public Optional<String> inputLabelsPlaceholders() {
+        return Optional.ofNullable(this.inputLabelsPlaceholders);
     }
     /**
-     * @return Links &amp; focused components.
+     * @return Links &amp; focused components. Defaults to `#635dff`.
      * 
      */
-    public String linksFocusedComponents() {
-        return this.linksFocusedComponents;
+    public Optional<String> linksFocusedComponents() {
+        return Optional.ofNullable(this.linksFocusedComponents);
     }
     /**
-     * @return Primary button.
+     * @return Primary button. Defaults to `#635dff`.
      * 
      */
-    public String primaryButton() {
-        return this.primaryButton;
+    public Optional<String> primaryButton() {
+        return Optional.ofNullable(this.primaryButton);
     }
     /**
-     * @return Primary button label.
+     * @return Primary button label. Defaults to `#ffffff`.
      * 
      */
-    public String primaryButtonLabel() {
-        return this.primaryButtonLabel;
+    public Optional<String> primaryButtonLabel() {
+        return Optional.ofNullable(this.primaryButtonLabel);
     }
     /**
-     * @return Secondary button border.
+     * @return Secondary button border. Defaults to `#c9cace`.
      * 
      */
-    public String secondaryButtonBorder() {
-        return this.secondaryButtonBorder;
+    public Optional<String> secondaryButtonBorder() {
+        return Optional.ofNullable(this.secondaryButtonBorder);
     }
     /**
-     * @return Secondary button label.
+     * @return Secondary button label. Defaults to `#1e212a`.
      * 
      */
-    public String secondaryButtonLabel() {
-        return this.secondaryButtonLabel;
+    public Optional<String> secondaryButtonLabel() {
+        return Optional.ofNullable(this.secondaryButtonLabel);
     }
     /**
-     * @return Success.
+     * @return Success. Defaults to `#13a688`.
      * 
      */
-    public String success() {
-        return this.success;
+    public Optional<String> success() {
+        return Optional.ofNullable(this.success);
     }
     /**
-     * @return Widget background.
+     * @return Widget background. Defaults to `#ffffff`.
      * 
      */
-    public String widgetBackground() {
-        return this.widgetBackground;
+    public Optional<String> widgetBackground() {
+        return Optional.ofNullable(this.widgetBackground);
     }
     /**
-     * @return Widget border.
+     * @return Widget border. Defaults to `#c9cace`.
      * 
      */
-    public String widgetBorder() {
-        return this.widgetBorder;
+    public Optional<String> widgetBorder() {
+        return Optional.ofNullable(this.widgetBorder);
     }
 
     public static Builder builder() {
@@ -241,22 +241,22 @@ public final class BrandingThemeColors {
     public static final class Builder {
         private @Nullable String baseFocusColor;
         private @Nullable String baseHoverColor;
-        private String bodyText;
-        private String error;
-        private String header;
-        private String icons;
-        private String inputBackground;
-        private String inputBorder;
-        private String inputFilledText;
-        private String inputLabelsPlaceholders;
-        private String linksFocusedComponents;
-        private String primaryButton;
-        private String primaryButtonLabel;
-        private String secondaryButtonBorder;
-        private String secondaryButtonLabel;
-        private String success;
-        private String widgetBackground;
-        private String widgetBorder;
+        private @Nullable String bodyText;
+        private @Nullable String error;
+        private @Nullable String header;
+        private @Nullable String icons;
+        private @Nullable String inputBackground;
+        private @Nullable String inputBorder;
+        private @Nullable String inputFilledText;
+        private @Nullable String inputLabelsPlaceholders;
+        private @Nullable String linksFocusedComponents;
+        private @Nullable String primaryButton;
+        private @Nullable String primaryButtonLabel;
+        private @Nullable String secondaryButtonBorder;
+        private @Nullable String secondaryButtonLabel;
+        private @Nullable String success;
+        private @Nullable String widgetBackground;
+        private @Nullable String widgetBorder;
         public Builder() {}
         public Builder(BrandingThemeColors defaults) {
     	      Objects.requireNonNull(defaults);
@@ -291,83 +291,83 @@ public final class BrandingThemeColors {
             return this;
         }
         @CustomType.Setter
-        public Builder bodyText(String bodyText) {
-            this.bodyText = Objects.requireNonNull(bodyText);
+        public Builder bodyText(@Nullable String bodyText) {
+            this.bodyText = bodyText;
             return this;
         }
         @CustomType.Setter
-        public Builder error(String error) {
-            this.error = Objects.requireNonNull(error);
+        public Builder error(@Nullable String error) {
+            this.error = error;
             return this;
         }
         @CustomType.Setter
-        public Builder header(String header) {
-            this.header = Objects.requireNonNull(header);
+        public Builder header(@Nullable String header) {
+            this.header = header;
             return this;
         }
         @CustomType.Setter
-        public Builder icons(String icons) {
-            this.icons = Objects.requireNonNull(icons);
+        public Builder icons(@Nullable String icons) {
+            this.icons = icons;
             return this;
         }
         @CustomType.Setter
-        public Builder inputBackground(String inputBackground) {
-            this.inputBackground = Objects.requireNonNull(inputBackground);
+        public Builder inputBackground(@Nullable String inputBackground) {
+            this.inputBackground = inputBackground;
             return this;
         }
         @CustomType.Setter
-        public Builder inputBorder(String inputBorder) {
-            this.inputBorder = Objects.requireNonNull(inputBorder);
+        public Builder inputBorder(@Nullable String inputBorder) {
+            this.inputBorder = inputBorder;
             return this;
         }
         @CustomType.Setter
-        public Builder inputFilledText(String inputFilledText) {
-            this.inputFilledText = Objects.requireNonNull(inputFilledText);
+        public Builder inputFilledText(@Nullable String inputFilledText) {
+            this.inputFilledText = inputFilledText;
             return this;
         }
         @CustomType.Setter
-        public Builder inputLabelsPlaceholders(String inputLabelsPlaceholders) {
-            this.inputLabelsPlaceholders = Objects.requireNonNull(inputLabelsPlaceholders);
+        public Builder inputLabelsPlaceholders(@Nullable String inputLabelsPlaceholders) {
+            this.inputLabelsPlaceholders = inputLabelsPlaceholders;
             return this;
         }
         @CustomType.Setter
-        public Builder linksFocusedComponents(String linksFocusedComponents) {
-            this.linksFocusedComponents = Objects.requireNonNull(linksFocusedComponents);
+        public Builder linksFocusedComponents(@Nullable String linksFocusedComponents) {
+            this.linksFocusedComponents = linksFocusedComponents;
             return this;
         }
         @CustomType.Setter
-        public Builder primaryButton(String primaryButton) {
-            this.primaryButton = Objects.requireNonNull(primaryButton);
+        public Builder primaryButton(@Nullable String primaryButton) {
+            this.primaryButton = primaryButton;
             return this;
         }
         @CustomType.Setter
-        public Builder primaryButtonLabel(String primaryButtonLabel) {
-            this.primaryButtonLabel = Objects.requireNonNull(primaryButtonLabel);
+        public Builder primaryButtonLabel(@Nullable String primaryButtonLabel) {
+            this.primaryButtonLabel = primaryButtonLabel;
             return this;
         }
         @CustomType.Setter
-        public Builder secondaryButtonBorder(String secondaryButtonBorder) {
-            this.secondaryButtonBorder = Objects.requireNonNull(secondaryButtonBorder);
+        public Builder secondaryButtonBorder(@Nullable String secondaryButtonBorder) {
+            this.secondaryButtonBorder = secondaryButtonBorder;
             return this;
         }
         @CustomType.Setter
-        public Builder secondaryButtonLabel(String secondaryButtonLabel) {
-            this.secondaryButtonLabel = Objects.requireNonNull(secondaryButtonLabel);
+        public Builder secondaryButtonLabel(@Nullable String secondaryButtonLabel) {
+            this.secondaryButtonLabel = secondaryButtonLabel;
             return this;
         }
         @CustomType.Setter
-        public Builder success(String success) {
-            this.success = Objects.requireNonNull(success);
+        public Builder success(@Nullable String success) {
+            this.success = success;
             return this;
         }
         @CustomType.Setter
-        public Builder widgetBackground(String widgetBackground) {
-            this.widgetBackground = Objects.requireNonNull(widgetBackground);
+        public Builder widgetBackground(@Nullable String widgetBackground) {
+            this.widgetBackground = widgetBackground;
             return this;
         }
         @CustomType.Setter
-        public Builder widgetBorder(String widgetBorder) {
-            this.widgetBorder = Objects.requireNonNull(widgetBorder);
+        public Builder widgetBorder(@Nullable String widgetBorder) {
+            this.widgetBorder = widgetBorder;
             return this;
         }
         public BrandingThemeColors build() {

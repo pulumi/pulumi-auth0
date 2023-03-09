@@ -13,112 +13,112 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingThemeColorsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Base focus color.
+        /// Base focus color. Defaults to `#635dff`.
         /// </summary>
         [Input("baseFocusColor")]
         public Input<string>? BaseFocusColor { get; set; }
 
         /// <summary>
-        /// Base hover color.
+        /// Base hover color. Defaults to `#000000`.
         /// </summary>
         [Input("baseHoverColor")]
         public Input<string>? BaseHoverColor { get; set; }
 
         /// <summary>
-        /// Body text.
+        /// Body text. Defaults to `#1e212a`.
         /// </summary>
-        [Input("bodyText", required: true)]
-        public Input<string> BodyText { get; set; } = null!;
+        [Input("bodyText")]
+        public Input<string>? BodyText { get; set; }
 
         /// <summary>
-        /// Error.
+        /// Error. Defaults to `#d03c38`.
         /// </summary>
-        [Input("error", required: true)]
-        public Input<string> Error { get; set; } = null!;
+        [Input("error")]
+        public Input<string>? Error { get; set; }
 
         /// <summary>
-        /// Header.
+        /// Header. Defaults to `#1e212a`.
         /// </summary>
-        [Input("header", required: true)]
-        public Input<string> Header { get; set; } = null!;
+        [Input("header")]
+        public Input<string>? Header { get; set; }
 
         /// <summary>
-        /// Icons.
+        /// Icons. Defaults to `#65676e`.
         /// </summary>
-        [Input("icons", required: true)]
-        public Input<string> Icons { get; set; } = null!;
+        [Input("icons")]
+        public Input<string>? Icons { get; set; }
 
         /// <summary>
-        /// Input background.
+        /// Input background. Defaults to `#ffffff`.
         /// </summary>
-        [Input("inputBackground", required: true)]
-        public Input<string> InputBackground { get; set; } = null!;
+        [Input("inputBackground")]
+        public Input<string>? InputBackground { get; set; }
 
         /// <summary>
-        /// Input border.
+        /// Input border. Defaults to `#c9cace`.
         /// </summary>
-        [Input("inputBorder", required: true)]
-        public Input<string> InputBorder { get; set; } = null!;
+        [Input("inputBorder")]
+        public Input<string>? InputBorder { get; set; }
 
         /// <summary>
-        /// Input filled text.
+        /// Input filled text. Defaults to `#000000`.
         /// </summary>
-        [Input("inputFilledText", required: true)]
-        public Input<string> InputFilledText { get; set; } = null!;
+        [Input("inputFilledText")]
+        public Input<string>? InputFilledText { get; set; }
 
         /// <summary>
-        /// Input labels &amp; placeholders.
+        /// Input labels &amp; placeholders. Defaults to `#65676e`.
         /// </summary>
-        [Input("inputLabelsPlaceholders", required: true)]
-        public Input<string> InputLabelsPlaceholders { get; set; } = null!;
+        [Input("inputLabelsPlaceholders")]
+        public Input<string>? InputLabelsPlaceholders { get; set; }
 
         /// <summary>
-        /// Links &amp; focused components.
+        /// Links &amp; focused components. Defaults to `#635dff`.
         /// </summary>
-        [Input("linksFocusedComponents", required: true)]
-        public Input<string> LinksFocusedComponents { get; set; } = null!;
+        [Input("linksFocusedComponents")]
+        public Input<string>? LinksFocusedComponents { get; set; }
 
         /// <summary>
-        /// Primary button.
+        /// Primary button. Defaults to `#635dff`.
         /// </summary>
-        [Input("primaryButton", required: true)]
-        public Input<string> PrimaryButton { get; set; } = null!;
+        [Input("primaryButton")]
+        public Input<string>? PrimaryButton { get; set; }
 
         /// <summary>
-        /// Primary button label.
+        /// Primary button label. Defaults to `#ffffff`.
         /// </summary>
-        [Input("primaryButtonLabel", required: true)]
-        public Input<string> PrimaryButtonLabel { get; set; } = null!;
+        [Input("primaryButtonLabel")]
+        public Input<string>? PrimaryButtonLabel { get; set; }
 
         /// <summary>
-        /// Secondary button border.
+        /// Secondary button border. Defaults to `#c9cace`.
         /// </summary>
-        [Input("secondaryButtonBorder", required: true)]
-        public Input<string> SecondaryButtonBorder { get; set; } = null!;
+        [Input("secondaryButtonBorder")]
+        public Input<string>? SecondaryButtonBorder { get; set; }
 
         /// <summary>
-        /// Secondary button label.
+        /// Secondary button label. Defaults to `#1e212a`.
         /// </summary>
-        [Input("secondaryButtonLabel", required: true)]
-        public Input<string> SecondaryButtonLabel { get; set; } = null!;
+        [Input("secondaryButtonLabel")]
+        public Input<string>? SecondaryButtonLabel { get; set; }
 
         /// <summary>
-        /// Success.
+        /// Success. Defaults to `#13a688`.
         /// </summary>
-        [Input("success", required: true)]
-        public Input<string> Success { get; set; } = null!;
+        [Input("success")]
+        public Input<string>? Success { get; set; }
 
         /// <summary>
-        /// Widget background.
+        /// Widget background. Defaults to `#ffffff`.
         /// </summary>
-        [Input("widgetBackground", required: true)]
-        public Input<string> WidgetBackground { get; set; } = null!;
+        [Input("widgetBackground")]
+        public Input<string>? WidgetBackground { get; set; }
 
         /// <summary>
-        /// Widget border.
+        /// Widget border. Defaults to `#c9cace`.
         /// </summary>
-        [Input("widgetBorder", required: true)]
-        public Input<string> WidgetBorder { get; set; } = null!;
+        [Input("widgetBorder")]
+        public Input<string>? WidgetBorder { get; set; }
 
         public BrandingThemeColorsGetArgs()
         {

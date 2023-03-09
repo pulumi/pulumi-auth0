@@ -13,58 +13,58 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingThemeBordersGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Button border radius. Value needs to be between `1` and `10`.
+        /// Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
         /// </summary>
-        [Input("buttonBorderRadius", required: true)]
-        public Input<double> ButtonBorderRadius { get; set; } = null!;
+        [Input("buttonBorderRadius")]
+        public Input<double>? ButtonBorderRadius { get; set; }
 
         /// <summary>
-        /// Button border weight. Value needs to be between `0` and `10`.
+        /// Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
         /// </summary>
-        [Input("buttonBorderWeight", required: true)]
-        public Input<double> ButtonBorderWeight { get; set; } = null!;
+        [Input("buttonBorderWeight")]
+        public Input<double>? ButtonBorderWeight { get; set; }
 
         /// <summary>
-        /// Buttons style. Available options: `pill`, `rounded`, `sharp`.
+        /// Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
         /// </summary>
-        [Input("buttonsStyle", required: true)]
-        public Input<string> ButtonsStyle { get; set; } = null!;
+        [Input("buttonsStyle")]
+        public Input<string>? ButtonsStyle { get; set; }
 
         /// <summary>
-        /// Input border radius. Value needs to be between `0` and `10`.
+        /// Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
         /// </summary>
-        [Input("inputBorderRadius", required: true)]
-        public Input<double> InputBorderRadius { get; set; } = null!;
+        [Input("inputBorderRadius")]
+        public Input<double>? InputBorderRadius { get; set; }
 
         /// <summary>
-        /// Input border weight. Value needs to be between `0` and `3`.
+        /// Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
         /// </summary>
-        [Input("inputBorderWeight", required: true)]
-        public Input<double> InputBorderWeight { get; set; } = null!;
+        [Input("inputBorderWeight")]
+        public Input<double>? InputBorderWeight { get; set; }
 
         /// <summary>
-        /// Inputs style. Available options: `pill`, `rounded`, `sharp`.
+        /// Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
         /// </summary>
-        [Input("inputsStyle", required: true)]
-        public Input<string> InputsStyle { get; set; } = null!;
+        [Input("inputsStyle")]
+        public Input<string>? InputsStyle { get; set; }
 
         /// <summary>
-        /// Show widget shadow.
+        /// Show widget shadow. Defaults to `true`.
         /// </summary>
-        [Input("showWidgetShadow", required: true)]
-        public Input<bool> ShowWidgetShadow { get; set; } = null!;
+        [Input("showWidgetShadow")]
+        public Input<bool>? ShowWidgetShadow { get; set; }
 
         /// <summary>
-        /// Widget border weight. Value needs to be between `0` and `10`.
+        /// Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
         /// </summary>
-        [Input("widgetBorderWeight", required: true)]
-        public Input<double> WidgetBorderWeight { get; set; } = null!;
+        [Input("widgetBorderWeight")]
+        public Input<double>? WidgetBorderWeight { get; set; }
 
         /// <summary>
-        /// Widget corner radius. Value needs to be between `0` and `50`.
+        /// Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
         /// </summary>
-        [Input("widgetCornerRadius", required: true)]
-        public Input<double> WidgetCornerRadius { get; set; } = null!;
+        [Input("widgetCornerRadius")]
+        public Input<double>? WidgetCornerRadius { get; set; }
 
         public BrandingThemeBordersGetArgs()
         {

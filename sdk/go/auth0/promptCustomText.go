@@ -86,7 +86,7 @@ type PromptCustomText struct {
 	Body pulumi.StringOutput `pulumi:"body"`
 	// Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
 	Language pulumi.StringOutput `pulumi:"language"`
-	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.
+	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
 	Prompt pulumi.StringOutput `pulumi:"prompt"`
 }
 
@@ -132,7 +132,7 @@ type promptCustomTextState struct {
 	Body *string `pulumi:"body"`
 	// Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
 	Language *string `pulumi:"language"`
-	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.
+	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
 	Prompt *string `pulumi:"prompt"`
 }
 
@@ -141,7 +141,7 @@ type PromptCustomTextState struct {
 	Body pulumi.StringPtrInput
 	// Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
 	Language pulumi.StringPtrInput
-	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.
+	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
 	Prompt pulumi.StringPtrInput
 }
 
@@ -154,7 +154,7 @@ type promptCustomTextArgs struct {
 	Body string `pulumi:"body"`
 	// Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
 	Language string `pulumi:"language"`
-	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.
+	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
 	Prompt string `pulumi:"prompt"`
 }
 
@@ -164,7 +164,7 @@ type PromptCustomTextArgs struct {
 	Body pulumi.StringInput
 	// Language of the custom text. Options include: `ar`, `bg`, `bs`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fi`, `fr`, `fr-CA`, `fr-FR`, `he`, `hi`, `hr`, `hu`, `id`, `is`, `it`, `ja`, `ko`, `lt`, `lv`, `nb`, `nl`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `sr`, `sv`, `th`, `tr`, `uk`, `vi`, `zh-CN`, `zh-TW`.
 	Language pulumi.StringInput
-	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.
+	// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
 	Prompt pulumi.StringInput
 }
 
@@ -265,7 +265,7 @@ func (o PromptCustomTextOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v *PromptCustomText) pulumi.StringOutput { return v.Language }).(pulumi.StringOutput)
 }
 
-// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`.
+// The term `prompt` is used to refer to a specific step in the login flow. Options include: `common`, `consent`, `device-flow`, `email-otp-challenge`, `email-verification`, `invitation`, `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `logout`, `mfa`, `mfa-email`, `mfa-otp`, `mfa-phone`, `mfa-push`, `mfa-recovery-code`, `mfa-sms`, `mfa-voice`, `mfa-webauthn`, `organizations`, `reset-password`, `signup`, `signup-id`, `signup-password`, `status`.
 func (o PromptCustomTextOutput) Prompt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PromptCustomText) pulumi.StringOutput { return v.Prompt }).(pulumi.StringOutput)
 }

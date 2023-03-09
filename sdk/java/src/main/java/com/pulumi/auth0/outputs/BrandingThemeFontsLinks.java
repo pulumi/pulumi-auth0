@@ -7,18 +7,20 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class BrandingThemeFontsLinks {
-    private Boolean bold;
-    private Double size;
+    private @Nullable Boolean bold;
+    private @Nullable Double size;
 
     private BrandingThemeFontsLinks() {}
-    public Boolean bold() {
-        return this.bold;
+    public Optional<Boolean> bold() {
+        return Optional.ofNullable(this.bold);
     }
-    public Double size() {
-        return this.size;
+    public Optional<Double> size() {
+        return Optional.ofNullable(this.size);
     }
 
     public static Builder builder() {
@@ -30,8 +32,8 @@ public final class BrandingThemeFontsLinks {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean bold;
-        private Double size;
+        private @Nullable Boolean bold;
+        private @Nullable Double size;
         public Builder() {}
         public Builder(BrandingThemeFontsLinks defaults) {
     	      Objects.requireNonNull(defaults);
@@ -40,13 +42,13 @@ public final class BrandingThemeFontsLinks {
         }
 
         @CustomType.Setter
-        public Builder bold(Boolean bold) {
-            this.bold = Objects.requireNonNull(bold);
+        public Builder bold(@Nullable Boolean bold) {
+            this.bold = bold;
             return this;
         }
         @CustomType.Setter
-        public Builder size(Double size) {
-            this.size = Objects.requireNonNull(size);
+        public Builder size(@Nullable Double size) {
+            this.size = size;
             return this;
         }
         public BrandingThemeFontsLinks build() {

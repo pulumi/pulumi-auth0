@@ -79,14 +79,14 @@ public final class LogStreamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the log stream, which indicates the sink provider.
+     * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the log stream, which indicates the sink provider.
+     * @return Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -216,7 +216,7 @@ public final class LogStreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the log stream, which indicates the sink provider.
+         * @param type Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class LogStreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the log stream, which indicates the sink provider.
+         * @param type Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
          * 
          * @return builder
          * 

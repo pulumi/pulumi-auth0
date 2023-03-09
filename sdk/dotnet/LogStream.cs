@@ -106,7 +106,7 @@ namespace Pulumi.Auth0
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider.
+        /// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.Auth0
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider.
+        /// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.Auth0
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider.
+        /// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

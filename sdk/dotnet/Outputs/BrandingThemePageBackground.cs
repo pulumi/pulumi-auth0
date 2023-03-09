@@ -14,25 +14,25 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingThemePageBackground
     {
         /// <summary>
-        /// Background color.
+        /// Background color. Defaults to `#000000`.
         /// </summary>
-        public readonly string BackgroundColor;
+        public readonly string? BackgroundColor;
         /// <summary>
-        /// Background image url.
+        /// Background image url. Defaults to an empty string.
         /// </summary>
-        public readonly string BackgroundImageUrl;
+        public readonly string? BackgroundImageUrl;
         /// <summary>
-        /// Page layout. Available options: `center`, `left`, `right`.
+        /// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
         /// </summary>
-        public readonly string PageLayout;
+        public readonly string? PageLayout;
 
         [OutputConstructor]
         private BrandingThemePageBackground(
-            string backgroundColor,
+            string? backgroundColor,
 
-            string backgroundImageUrl,
+            string? backgroundImageUrl,
 
-            string pageLayout)
+            string? pageLayout)
         {
             BackgroundColor = backgroundColor;
             BackgroundImageUrl = backgroundImageUrl;

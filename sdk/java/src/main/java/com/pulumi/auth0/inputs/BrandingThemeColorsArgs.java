@@ -16,14 +16,14 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
     public static final BrandingThemeColorsArgs Empty = new BrandingThemeColorsArgs();
 
     /**
-     * Base focus color.
+     * Base focus color. Defaults to `#635dff`.
      * 
      */
     @Import(name="baseFocusColor")
     private @Nullable Output<String> baseFocusColor;
 
     /**
-     * @return Base focus color.
+     * @return Base focus color. Defaults to `#635dff`.
      * 
      */
     public Optional<Output<String>> baseFocusColor() {
@@ -31,14 +31,14 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Base hover color.
+     * Base hover color. Defaults to `#000000`.
      * 
      */
     @Import(name="baseHoverColor")
     private @Nullable Output<String> baseHoverColor;
 
     /**
-     * @return Base hover color.
+     * @return Base hover color. Defaults to `#000000`.
      * 
      */
     public Optional<Output<String>> baseHoverColor() {
@@ -46,243 +46,243 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Body text.
+     * Body text. Defaults to `#1e212a`.
      * 
      */
-    @Import(name="bodyText", required=true)
-    private Output<String> bodyText;
+    @Import(name="bodyText")
+    private @Nullable Output<String> bodyText;
 
     /**
-     * @return Body text.
+     * @return Body text. Defaults to `#1e212a`.
      * 
      */
-    public Output<String> bodyText() {
-        return this.bodyText;
+    public Optional<Output<String>> bodyText() {
+        return Optional.ofNullable(this.bodyText);
     }
 
     /**
-     * Error.
+     * Error. Defaults to `#d03c38`.
      * 
      */
-    @Import(name="error", required=true)
-    private Output<String> error;
+    @Import(name="error")
+    private @Nullable Output<String> error;
 
     /**
-     * @return Error.
+     * @return Error. Defaults to `#d03c38`.
      * 
      */
-    public Output<String> error() {
-        return this.error;
+    public Optional<Output<String>> error() {
+        return Optional.ofNullable(this.error);
     }
 
     /**
-     * Header.
+     * Header. Defaults to `#1e212a`.
      * 
      */
-    @Import(name="header", required=true)
-    private Output<String> header;
+    @Import(name="header")
+    private @Nullable Output<String> header;
 
     /**
-     * @return Header.
+     * @return Header. Defaults to `#1e212a`.
      * 
      */
-    public Output<String> header() {
-        return this.header;
+    public Optional<Output<String>> header() {
+        return Optional.ofNullable(this.header);
     }
 
     /**
-     * Icons.
+     * Icons. Defaults to `#65676e`.
      * 
      */
-    @Import(name="icons", required=true)
-    private Output<String> icons;
+    @Import(name="icons")
+    private @Nullable Output<String> icons;
 
     /**
-     * @return Icons.
+     * @return Icons. Defaults to `#65676e`.
      * 
      */
-    public Output<String> icons() {
-        return this.icons;
+    public Optional<Output<String>> icons() {
+        return Optional.ofNullable(this.icons);
     }
 
     /**
-     * Input background.
+     * Input background. Defaults to `#ffffff`.
      * 
      */
-    @Import(name="inputBackground", required=true)
-    private Output<String> inputBackground;
+    @Import(name="inputBackground")
+    private @Nullable Output<String> inputBackground;
 
     /**
-     * @return Input background.
+     * @return Input background. Defaults to `#ffffff`.
      * 
      */
-    public Output<String> inputBackground() {
-        return this.inputBackground;
+    public Optional<Output<String>> inputBackground() {
+        return Optional.ofNullable(this.inputBackground);
     }
 
     /**
-     * Input border.
+     * Input border. Defaults to `#c9cace`.
      * 
      */
-    @Import(name="inputBorder", required=true)
-    private Output<String> inputBorder;
+    @Import(name="inputBorder")
+    private @Nullable Output<String> inputBorder;
 
     /**
-     * @return Input border.
+     * @return Input border. Defaults to `#c9cace`.
      * 
      */
-    public Output<String> inputBorder() {
-        return this.inputBorder;
+    public Optional<Output<String>> inputBorder() {
+        return Optional.ofNullable(this.inputBorder);
     }
 
     /**
-     * Input filled text.
+     * Input filled text. Defaults to `#000000`.
      * 
      */
-    @Import(name="inputFilledText", required=true)
-    private Output<String> inputFilledText;
+    @Import(name="inputFilledText")
+    private @Nullable Output<String> inputFilledText;
 
     /**
-     * @return Input filled text.
+     * @return Input filled text. Defaults to `#000000`.
      * 
      */
-    public Output<String> inputFilledText() {
-        return this.inputFilledText;
+    public Optional<Output<String>> inputFilledText() {
+        return Optional.ofNullable(this.inputFilledText);
     }
 
     /**
-     * Input labels &amp; placeholders.
+     * Input labels &amp; placeholders. Defaults to `#65676e`.
      * 
      */
-    @Import(name="inputLabelsPlaceholders", required=true)
-    private Output<String> inputLabelsPlaceholders;
+    @Import(name="inputLabelsPlaceholders")
+    private @Nullable Output<String> inputLabelsPlaceholders;
 
     /**
-     * @return Input labels &amp; placeholders.
+     * @return Input labels &amp; placeholders. Defaults to `#65676e`.
      * 
      */
-    public Output<String> inputLabelsPlaceholders() {
-        return this.inputLabelsPlaceholders;
+    public Optional<Output<String>> inputLabelsPlaceholders() {
+        return Optional.ofNullable(this.inputLabelsPlaceholders);
     }
 
     /**
-     * Links &amp; focused components.
+     * Links &amp; focused components. Defaults to `#635dff`.
      * 
      */
-    @Import(name="linksFocusedComponents", required=true)
-    private Output<String> linksFocusedComponents;
+    @Import(name="linksFocusedComponents")
+    private @Nullable Output<String> linksFocusedComponents;
 
     /**
-     * @return Links &amp; focused components.
+     * @return Links &amp; focused components. Defaults to `#635dff`.
      * 
      */
-    public Output<String> linksFocusedComponents() {
-        return this.linksFocusedComponents;
+    public Optional<Output<String>> linksFocusedComponents() {
+        return Optional.ofNullable(this.linksFocusedComponents);
     }
 
     /**
-     * Primary button.
+     * Primary button. Defaults to `#635dff`.
      * 
      */
-    @Import(name="primaryButton", required=true)
-    private Output<String> primaryButton;
+    @Import(name="primaryButton")
+    private @Nullable Output<String> primaryButton;
 
     /**
-     * @return Primary button.
+     * @return Primary button. Defaults to `#635dff`.
      * 
      */
-    public Output<String> primaryButton() {
-        return this.primaryButton;
+    public Optional<Output<String>> primaryButton() {
+        return Optional.ofNullable(this.primaryButton);
     }
 
     /**
-     * Primary button label.
+     * Primary button label. Defaults to `#ffffff`.
      * 
      */
-    @Import(name="primaryButtonLabel", required=true)
-    private Output<String> primaryButtonLabel;
+    @Import(name="primaryButtonLabel")
+    private @Nullable Output<String> primaryButtonLabel;
 
     /**
-     * @return Primary button label.
+     * @return Primary button label. Defaults to `#ffffff`.
      * 
      */
-    public Output<String> primaryButtonLabel() {
-        return this.primaryButtonLabel;
+    public Optional<Output<String>> primaryButtonLabel() {
+        return Optional.ofNullable(this.primaryButtonLabel);
     }
 
     /**
-     * Secondary button border.
+     * Secondary button border. Defaults to `#c9cace`.
      * 
      */
-    @Import(name="secondaryButtonBorder", required=true)
-    private Output<String> secondaryButtonBorder;
+    @Import(name="secondaryButtonBorder")
+    private @Nullable Output<String> secondaryButtonBorder;
 
     /**
-     * @return Secondary button border.
+     * @return Secondary button border. Defaults to `#c9cace`.
      * 
      */
-    public Output<String> secondaryButtonBorder() {
-        return this.secondaryButtonBorder;
+    public Optional<Output<String>> secondaryButtonBorder() {
+        return Optional.ofNullable(this.secondaryButtonBorder);
     }
 
     /**
-     * Secondary button label.
+     * Secondary button label. Defaults to `#1e212a`.
      * 
      */
-    @Import(name="secondaryButtonLabel", required=true)
-    private Output<String> secondaryButtonLabel;
+    @Import(name="secondaryButtonLabel")
+    private @Nullable Output<String> secondaryButtonLabel;
 
     /**
-     * @return Secondary button label.
+     * @return Secondary button label. Defaults to `#1e212a`.
      * 
      */
-    public Output<String> secondaryButtonLabel() {
-        return this.secondaryButtonLabel;
+    public Optional<Output<String>> secondaryButtonLabel() {
+        return Optional.ofNullable(this.secondaryButtonLabel);
     }
 
     /**
-     * Success.
+     * Success. Defaults to `#13a688`.
      * 
      */
-    @Import(name="success", required=true)
-    private Output<String> success;
+    @Import(name="success")
+    private @Nullable Output<String> success;
 
     /**
-     * @return Success.
+     * @return Success. Defaults to `#13a688`.
      * 
      */
-    public Output<String> success() {
-        return this.success;
+    public Optional<Output<String>> success() {
+        return Optional.ofNullable(this.success);
     }
 
     /**
-     * Widget background.
+     * Widget background. Defaults to `#ffffff`.
      * 
      */
-    @Import(name="widgetBackground", required=true)
-    private Output<String> widgetBackground;
+    @Import(name="widgetBackground")
+    private @Nullable Output<String> widgetBackground;
 
     /**
-     * @return Widget background.
+     * @return Widget background. Defaults to `#ffffff`.
      * 
      */
-    public Output<String> widgetBackground() {
-        return this.widgetBackground;
+    public Optional<Output<String>> widgetBackground() {
+        return Optional.ofNullable(this.widgetBackground);
     }
 
     /**
-     * Widget border.
+     * Widget border. Defaults to `#c9cace`.
      * 
      */
-    @Import(name="widgetBorder", required=true)
-    private Output<String> widgetBorder;
+    @Import(name="widgetBorder")
+    private @Nullable Output<String> widgetBorder;
 
     /**
-     * @return Widget border.
+     * @return Widget border. Defaults to `#c9cace`.
      * 
      */
-    public Output<String> widgetBorder() {
-        return this.widgetBorder;
+    public Optional<Output<String>> widgetBorder() {
+        return Optional.ofNullable(this.widgetBorder);
     }
 
     private BrandingThemeColorsArgs() {}
@@ -327,7 +327,7 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param baseFocusColor Base focus color.
+         * @param baseFocusColor Base focus color. Defaults to `#635dff`.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param baseFocusColor Base focus color.
+         * @param baseFocusColor Base focus color. Defaults to `#635dff`.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param baseHoverColor Base hover color.
+         * @param baseHoverColor Base hover color. Defaults to `#000000`.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param baseHoverColor Base hover color.
+         * @param baseHoverColor Base hover color. Defaults to `#000000`.
          * 
          * @return builder
          * 
@@ -369,18 +369,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bodyText Body text.
+         * @param bodyText Body text. Defaults to `#1e212a`.
          * 
          * @return builder
          * 
          */
-        public Builder bodyText(Output<String> bodyText) {
+        public Builder bodyText(@Nullable Output<String> bodyText) {
             $.bodyText = bodyText;
             return this;
         }
 
         /**
-         * @param bodyText Body text.
+         * @param bodyText Body text. Defaults to `#1e212a`.
          * 
          * @return builder
          * 
@@ -390,18 +390,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param error Error.
+         * @param error Error. Defaults to `#d03c38`.
          * 
          * @return builder
          * 
          */
-        public Builder error(Output<String> error) {
+        public Builder error(@Nullable Output<String> error) {
             $.error = error;
             return this;
         }
 
         /**
-         * @param error Error.
+         * @param error Error. Defaults to `#d03c38`.
          * 
          * @return builder
          * 
@@ -411,18 +411,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param header Header.
+         * @param header Header. Defaults to `#1e212a`.
          * 
          * @return builder
          * 
          */
-        public Builder header(Output<String> header) {
+        public Builder header(@Nullable Output<String> header) {
             $.header = header;
             return this;
         }
 
         /**
-         * @param header Header.
+         * @param header Header. Defaults to `#1e212a`.
          * 
          * @return builder
          * 
@@ -432,18 +432,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param icons Icons.
+         * @param icons Icons. Defaults to `#65676e`.
          * 
          * @return builder
          * 
          */
-        public Builder icons(Output<String> icons) {
+        public Builder icons(@Nullable Output<String> icons) {
             $.icons = icons;
             return this;
         }
 
         /**
-         * @param icons Icons.
+         * @param icons Icons. Defaults to `#65676e`.
          * 
          * @return builder
          * 
@@ -453,18 +453,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputBackground Input background.
+         * @param inputBackground Input background. Defaults to `#ffffff`.
          * 
          * @return builder
          * 
          */
-        public Builder inputBackground(Output<String> inputBackground) {
+        public Builder inputBackground(@Nullable Output<String> inputBackground) {
             $.inputBackground = inputBackground;
             return this;
         }
 
         /**
-         * @param inputBackground Input background.
+         * @param inputBackground Input background. Defaults to `#ffffff`.
          * 
          * @return builder
          * 
@@ -474,18 +474,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputBorder Input border.
+         * @param inputBorder Input border. Defaults to `#c9cace`.
          * 
          * @return builder
          * 
          */
-        public Builder inputBorder(Output<String> inputBorder) {
+        public Builder inputBorder(@Nullable Output<String> inputBorder) {
             $.inputBorder = inputBorder;
             return this;
         }
 
         /**
-         * @param inputBorder Input border.
+         * @param inputBorder Input border. Defaults to `#c9cace`.
          * 
          * @return builder
          * 
@@ -495,18 +495,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputFilledText Input filled text.
+         * @param inputFilledText Input filled text. Defaults to `#000000`.
          * 
          * @return builder
          * 
          */
-        public Builder inputFilledText(Output<String> inputFilledText) {
+        public Builder inputFilledText(@Nullable Output<String> inputFilledText) {
             $.inputFilledText = inputFilledText;
             return this;
         }
 
         /**
-         * @param inputFilledText Input filled text.
+         * @param inputFilledText Input filled text. Defaults to `#000000`.
          * 
          * @return builder
          * 
@@ -516,18 +516,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputLabelsPlaceholders Input labels &amp; placeholders.
+         * @param inputLabelsPlaceholders Input labels &amp; placeholders. Defaults to `#65676e`.
          * 
          * @return builder
          * 
          */
-        public Builder inputLabelsPlaceholders(Output<String> inputLabelsPlaceholders) {
+        public Builder inputLabelsPlaceholders(@Nullable Output<String> inputLabelsPlaceholders) {
             $.inputLabelsPlaceholders = inputLabelsPlaceholders;
             return this;
         }
 
         /**
-         * @param inputLabelsPlaceholders Input labels &amp; placeholders.
+         * @param inputLabelsPlaceholders Input labels &amp; placeholders. Defaults to `#65676e`.
          * 
          * @return builder
          * 
@@ -537,18 +537,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param linksFocusedComponents Links &amp; focused components.
+         * @param linksFocusedComponents Links &amp; focused components. Defaults to `#635dff`.
          * 
          * @return builder
          * 
          */
-        public Builder linksFocusedComponents(Output<String> linksFocusedComponents) {
+        public Builder linksFocusedComponents(@Nullable Output<String> linksFocusedComponents) {
             $.linksFocusedComponents = linksFocusedComponents;
             return this;
         }
 
         /**
-         * @param linksFocusedComponents Links &amp; focused components.
+         * @param linksFocusedComponents Links &amp; focused components. Defaults to `#635dff`.
          * 
          * @return builder
          * 
@@ -558,18 +558,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param primaryButton Primary button.
+         * @param primaryButton Primary button. Defaults to `#635dff`.
          * 
          * @return builder
          * 
          */
-        public Builder primaryButton(Output<String> primaryButton) {
+        public Builder primaryButton(@Nullable Output<String> primaryButton) {
             $.primaryButton = primaryButton;
             return this;
         }
 
         /**
-         * @param primaryButton Primary button.
+         * @param primaryButton Primary button. Defaults to `#635dff`.
          * 
          * @return builder
          * 
@@ -579,18 +579,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param primaryButtonLabel Primary button label.
+         * @param primaryButtonLabel Primary button label. Defaults to `#ffffff`.
          * 
          * @return builder
          * 
          */
-        public Builder primaryButtonLabel(Output<String> primaryButtonLabel) {
+        public Builder primaryButtonLabel(@Nullable Output<String> primaryButtonLabel) {
             $.primaryButtonLabel = primaryButtonLabel;
             return this;
         }
 
         /**
-         * @param primaryButtonLabel Primary button label.
+         * @param primaryButtonLabel Primary button label. Defaults to `#ffffff`.
          * 
          * @return builder
          * 
@@ -600,18 +600,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param secondaryButtonBorder Secondary button border.
+         * @param secondaryButtonBorder Secondary button border. Defaults to `#c9cace`.
          * 
          * @return builder
          * 
          */
-        public Builder secondaryButtonBorder(Output<String> secondaryButtonBorder) {
+        public Builder secondaryButtonBorder(@Nullable Output<String> secondaryButtonBorder) {
             $.secondaryButtonBorder = secondaryButtonBorder;
             return this;
         }
 
         /**
-         * @param secondaryButtonBorder Secondary button border.
+         * @param secondaryButtonBorder Secondary button border. Defaults to `#c9cace`.
          * 
          * @return builder
          * 
@@ -621,18 +621,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param secondaryButtonLabel Secondary button label.
+         * @param secondaryButtonLabel Secondary button label. Defaults to `#1e212a`.
          * 
          * @return builder
          * 
          */
-        public Builder secondaryButtonLabel(Output<String> secondaryButtonLabel) {
+        public Builder secondaryButtonLabel(@Nullable Output<String> secondaryButtonLabel) {
             $.secondaryButtonLabel = secondaryButtonLabel;
             return this;
         }
 
         /**
-         * @param secondaryButtonLabel Secondary button label.
+         * @param secondaryButtonLabel Secondary button label. Defaults to `#1e212a`.
          * 
          * @return builder
          * 
@@ -642,18 +642,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param success Success.
+         * @param success Success. Defaults to `#13a688`.
          * 
          * @return builder
          * 
          */
-        public Builder success(Output<String> success) {
+        public Builder success(@Nullable Output<String> success) {
             $.success = success;
             return this;
         }
 
         /**
-         * @param success Success.
+         * @param success Success. Defaults to `#13a688`.
          * 
          * @return builder
          * 
@@ -663,18 +663,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param widgetBackground Widget background.
+         * @param widgetBackground Widget background. Defaults to `#ffffff`.
          * 
          * @return builder
          * 
          */
-        public Builder widgetBackground(Output<String> widgetBackground) {
+        public Builder widgetBackground(@Nullable Output<String> widgetBackground) {
             $.widgetBackground = widgetBackground;
             return this;
         }
 
         /**
-         * @param widgetBackground Widget background.
+         * @param widgetBackground Widget background. Defaults to `#ffffff`.
          * 
          * @return builder
          * 
@@ -684,18 +684,18 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param widgetBorder Widget border.
+         * @param widgetBorder Widget border. Defaults to `#c9cace`.
          * 
          * @return builder
          * 
          */
-        public Builder widgetBorder(Output<String> widgetBorder) {
+        public Builder widgetBorder(@Nullable Output<String> widgetBorder) {
             $.widgetBorder = widgetBorder;
             return this;
         }
 
         /**
-         * @param widgetBorder Widget border.
+         * @param widgetBorder Widget border. Defaults to `#c9cace`.
          * 
          * @return builder
          * 
@@ -705,22 +705,6 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         }
 
         public BrandingThemeColorsArgs build() {
-            $.bodyText = Objects.requireNonNull($.bodyText, "expected parameter 'bodyText' to be non-null");
-            $.error = Objects.requireNonNull($.error, "expected parameter 'error' to be non-null");
-            $.header = Objects.requireNonNull($.header, "expected parameter 'header' to be non-null");
-            $.icons = Objects.requireNonNull($.icons, "expected parameter 'icons' to be non-null");
-            $.inputBackground = Objects.requireNonNull($.inputBackground, "expected parameter 'inputBackground' to be non-null");
-            $.inputBorder = Objects.requireNonNull($.inputBorder, "expected parameter 'inputBorder' to be non-null");
-            $.inputFilledText = Objects.requireNonNull($.inputFilledText, "expected parameter 'inputFilledText' to be non-null");
-            $.inputLabelsPlaceholders = Objects.requireNonNull($.inputLabelsPlaceholders, "expected parameter 'inputLabelsPlaceholders' to be non-null");
-            $.linksFocusedComponents = Objects.requireNonNull($.linksFocusedComponents, "expected parameter 'linksFocusedComponents' to be non-null");
-            $.primaryButton = Objects.requireNonNull($.primaryButton, "expected parameter 'primaryButton' to be non-null");
-            $.primaryButtonLabel = Objects.requireNonNull($.primaryButtonLabel, "expected parameter 'primaryButtonLabel' to be non-null");
-            $.secondaryButtonBorder = Objects.requireNonNull($.secondaryButtonBorder, "expected parameter 'secondaryButtonBorder' to be non-null");
-            $.secondaryButtonLabel = Objects.requireNonNull($.secondaryButtonLabel, "expected parameter 'secondaryButtonLabel' to be non-null");
-            $.success = Objects.requireNonNull($.success, "expected parameter 'success' to be non-null");
-            $.widgetBackground = Objects.requireNonNull($.widgetBackground, "expected parameter 'widgetBackground' to be non-null");
-            $.widgetBorder = Objects.requireNonNull($.widgetBorder, "expected parameter 'widgetBorder' to be non-null");
             return $;
         }
     }
