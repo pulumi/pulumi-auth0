@@ -256,6 +256,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Indicates whether to remove the forgot password link within the New Universal Login.
+     * 
+     */
+    @Import(name="disableSelfServiceChangePassword")
+    private @Nullable Output<Boolean> disableSelfServiceChangePassword;
+
+    /**
+     * @return Indicates whether to remove the forgot password link within the New Universal Login.
+     * 
+     */
+    public Optional<Output<Boolean>> disableSelfServiceChangePassword() {
+        return Optional.ofNullable(this.disableSelfServiceChangePassword);
+    }
+
+    /**
      * When enabled, will disable sign out.
      * 
      */
@@ -763,6 +778,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> passwordPolicy() {
         return Optional.ofNullable(this.passwordPolicy);
+    }
+
+    /**
+     * Ping Federate Server URL.
+     * 
+     */
+    @Import(name="pingFederateBaseUrl")
+    private @Nullable Output<String> pingFederateBaseUrl;
+
+    /**
+     * @return Ping Federate Server URL.
+     * 
+     */
+    public Optional<Output<String>> pingFederateBaseUrl() {
+        return Optional.ofNullable(this.pingFederateBaseUrl);
     }
 
     /**
@@ -1308,6 +1338,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.debug = $.debug;
         this.digestAlgorithm = $.digestAlgorithm;
         this.disableCache = $.disableCache;
+        this.disableSelfServiceChangePassword = $.disableSelfServiceChangePassword;
         this.disableSignOut = $.disableSignOut;
         this.disableSignup = $.disableSignup;
         this.discoveryUrl = $.discoveryUrl;
@@ -1342,6 +1373,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.passwordHistories = $.passwordHistories;
         this.passwordNoPersonalInfo = $.passwordNoPersonalInfo;
         this.passwordPolicy = $.passwordPolicy;
+        this.pingFederateBaseUrl = $.pingFederateBaseUrl;
         this.pkceEnabled = $.pkceEnabled;
         this.protocolBinding = $.protocolBinding;
         this.provider = $.provider;
@@ -1720,6 +1752,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder disableCache(Boolean disableCache) {
             return disableCache(Output.of(disableCache));
+        }
+
+        /**
+         * @param disableSelfServiceChangePassword Indicates whether to remove the forgot password link within the New Universal Login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableSelfServiceChangePassword(@Nullable Output<Boolean> disableSelfServiceChangePassword) {
+            $.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
+            return this;
+        }
+
+        /**
+         * @param disableSelfServiceChangePassword Indicates whether to remove the forgot password link within the New Universal Login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableSelfServiceChangePassword(Boolean disableSelfServiceChangePassword) {
+            return disableSelfServiceChangePassword(Output.of(disableSelfServiceChangePassword));
         }
 
         /**
@@ -2474,6 +2527,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder passwordPolicy(String passwordPolicy) {
             return passwordPolicy(Output.of(passwordPolicy));
+        }
+
+        /**
+         * @param pingFederateBaseUrl Ping Federate Server URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pingFederateBaseUrl(@Nullable Output<String> pingFederateBaseUrl) {
+            $.pingFederateBaseUrl = pingFederateBaseUrl;
+            return this;
+        }
+
+        /**
+         * @param pingFederateBaseUrl Ping Federate Server URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pingFederateBaseUrl(String pingFederateBaseUrl) {
+            return pingFederateBaseUrl(Output.of(pingFederateBaseUrl));
         }
 
         /**

@@ -106,7 +106,7 @@ func NewClient(ctx *pulumi.Context,
 		args = &ClientArgs{}
 	}
 
-	if isZero(args.Description) {
+	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{

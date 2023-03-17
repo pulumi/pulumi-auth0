@@ -87,6 +87,10 @@ export const getConnection: typeof import("./getConnection").getConnection = nul
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 
+export { GetCustomDomainResult } from "./getCustomDomain";
+export const getCustomDomain: typeof import("./getCustomDomain").getCustomDomain = null as any;
+utilities.lazyLoad(exports, ["getCustomDomain"], () => require("./getCustomDomain"));
+
 export { GetGlobalClientResult } from "./getGlobalClient";
 export const getGlobalClient: typeof import("./getGlobalClient").getGlobalClient = null as any;
 utilities.lazyLoad(exports, ["getGlobalClient"], () => require("./getGlobalClient"));

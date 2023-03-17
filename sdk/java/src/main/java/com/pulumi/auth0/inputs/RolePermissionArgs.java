@@ -14,14 +14,14 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
     public static final RolePermissionArgs Empty = new RolePermissionArgs();
 
     /**
-     * Name of the permission (scope).
+     * Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the permission (scope).
+     * @return Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      * 
      */
     public Output<String> name() {
@@ -69,7 +69,7 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the permission (scope).
+         * @param name Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the permission (scope).
+         * @param name Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
          * 
          * @return builder
          * 

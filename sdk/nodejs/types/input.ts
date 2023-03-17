@@ -574,6 +574,10 @@ export interface ConnectionOptions {
      */
     disableCache?: pulumi.Input<boolean>;
     /**
+     * Indicates whether to remove the forgot password link within the New Universal Login.
+     */
+    disableSelfServiceChangePassword?: pulumi.Input<boolean>;
+    /**
      * When enabled, will disable sign out.
      */
     disableSignOut?: pulumi.Input<boolean>;
@@ -709,6 +713,10 @@ export interface ConnectionOptions {
      * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
     passwordPolicy?: pulumi.Input<string>;
+    /**
+     * Ping Federate Server URL.
+     */
+    pingFederateBaseUrl?: pulumi.Input<string>;
     /**
      * Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      */
@@ -1359,7 +1367,7 @@ export interface ResourceServerScope {
 
 export interface RolePermission {
     /**
-     * Name of the permission (scope).
+     * Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      */
     name: pulumi.Input<string>;
     /**

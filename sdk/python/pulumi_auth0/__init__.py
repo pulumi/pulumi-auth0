@@ -22,6 +22,7 @@ from .get_branding import *
 from .get_branding_theme import *
 from .get_client import *
 from .get_connection import *
+from .get_custom_domain import *
 from .get_global_client import *
 from .get_organization import *
 from .get_resource_server import *

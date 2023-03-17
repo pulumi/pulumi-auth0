@@ -101,7 +101,7 @@ func NewRole(ctx *pulumi.Context,
 		args = &RoleArgs{}
 	}
 
-	if isZero(args.Description) {
+	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
 	var resource Role

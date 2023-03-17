@@ -133,6 +133,7 @@ __all__ = [
     'GetConnectionOptionTotpResult',
     'GetConnectionOptionValidationResult',
     'GetConnectionOptionValidationUsernameResult',
+    'GetCustomDomainVerificationResult',
     'GetGlobalClientAddonResult',
     'GetGlobalClientAddonSamlpResult',
     'GetGlobalClientJwtConfigurationResult',
@@ -2365,6 +2366,8 @@ class ConnectionOptions(dict):
             suggest = "digest_algorithm"
         elif key == "disableCache":
             suggest = "disable_cache"
+        elif key == "disableSelfServiceChangePassword":
+            suggest = "disable_self_service_change_password"
         elif key == "disableSignOut":
             suggest = "disable_sign_out"
         elif key == "disableSignup":
@@ -2423,6 +2426,8 @@ class ConnectionOptions(dict):
             suggest = "password_no_personal_info"
         elif key == "passwordPolicy":
             suggest = "password_policy"
+        elif key == "pingFederateBaseUrl":
+            suggest = "ping_federate_base_url"
         elif key == "pkceEnabled":
             suggest = "pkce_enabled"
         elif key == "protocolBinding":
@@ -2503,6 +2508,7 @@ class ConnectionOptions(dict):
                  debug: Optional[bool] = None,
                  digest_algorithm: Optional[str] = None,
                  disable_cache: Optional[bool] = None,
+                 disable_self_service_change_password: Optional[bool] = None,
                  disable_sign_out: Optional[bool] = None,
                  disable_signup: Optional[bool] = None,
                  discovery_url: Optional[str] = None,
@@ -2537,6 +2543,7 @@ class ConnectionOptions(dict):
                  password_histories: Optional[Sequence['outputs.ConnectionOptionsPasswordHistory']] = None,
                  password_no_personal_info: Optional['outputs.ConnectionOptionsPasswordNoPersonalInfo'] = None,
                  password_policy: Optional[str] = None,
+                 ping_federate_base_url: Optional[str] = None,
                  pkce_enabled: Optional[bool] = None,
                  protocol_binding: Optional[str] = None,
                  provider: Optional[str] = None,
@@ -2588,6 +2595,7 @@ class ConnectionOptions(dict):
         :param bool debug: When enabled, additional debug information will be generated.
         :param str digest_algorithm: Sign Request Algorithm Digest.
         :param bool disable_cache: Indicates whether to disable the cache or not.
+        :param bool disable_self_service_change_password: Indicates whether to remove the forgot password link within the New Universal Login.
         :param bool disable_sign_out: When enabled, will disable sign out.
         :param bool disable_signup: Indicates whether to allow user sign-ups to your application.
         :param str discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
@@ -2622,6 +2630,7 @@ class ConnectionOptions(dict):
         :param Sequence['ConnectionOptionsPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
         :param 'ConnectionOptionsPasswordNoPersonalInfoArgs' password_no_personal_info: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
         :param str password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+        :param str ping_federate_base_url: Ping Federate Server URL.
         :param bool pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
         :param str protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param str provider: Defines the custom `sms_gateway` provider.
@@ -2688,6 +2697,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         if disable_cache is not None:
             pulumi.set(__self__, "disable_cache", disable_cache)
+        if disable_self_service_change_password is not None:
+            pulumi.set(__self__, "disable_self_service_change_password", disable_self_service_change_password)
         if disable_sign_out is not None:
             pulumi.set(__self__, "disable_sign_out", disable_sign_out)
         if disable_signup is not None:
@@ -2756,6 +2767,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "password_no_personal_info", password_no_personal_info)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
+        if ping_federate_base_url is not None:
+            pulumi.set(__self__, "ping_federate_base_url", ping_federate_base_url)
         if pkce_enabled is not None:
             pulumi.set(__self__, "pkce_enabled", pkce_enabled)
         if protocol_binding is not None:
@@ -2946,6 +2959,14 @@ class ConnectionOptions(dict):
         Indicates whether to disable the cache or not.
         """
         return pulumi.get(self, "disable_cache")
+
+    @property
+    @pulumi.getter(name="disableSelfServiceChangePassword")
+    def disable_self_service_change_password(self) -> Optional[bool]:
+        """
+        Indicates whether to remove the forgot password link within the New Universal Login.
+        """
+        return pulumi.get(self, "disable_self_service_change_password")
 
     @property
     @pulumi.getter(name="disableSignOut")
@@ -3218,6 +3239,14 @@ class ConnectionOptions(dict):
         Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         """
         return pulumi.get(self, "password_policy")
+
+    @property
+    @pulumi.getter(name="pingFederateBaseUrl")
+    def ping_federate_base_url(self) -> Optional[str]:
+        """
+        Ping Federate Server URL.
+        """
+        return pulumi.get(self, "ping_federate_base_url")
 
     @property
     @pulumi.getter(name="pkceEnabled")
@@ -5941,7 +5970,7 @@ class RolePermission(dict):
                  name: str,
                  resource_server_identifier: str):
         """
-        :param str name: Name of the permission (scope).
+        :param str name: Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
         :param str resource_server_identifier: Unique identifier for the resource server.
         """
         pulumi.set(__self__, "name", name)
@@ -5951,7 +5980,7 @@ class RolePermission(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the permission (scope).
+        Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
         """
         return pulumi.get(self, "name")
 
@@ -7749,6 +7778,7 @@ class GetConnectionOptionResult(dict):
                  debug: bool,
                  digest_algorithm: str,
                  disable_cache: bool,
+                 disable_self_service_change_password: bool,
                  disable_sign_out: bool,
                  disable_signup: bool,
                  discovery_url: str,
@@ -7783,6 +7813,7 @@ class GetConnectionOptionResult(dict):
                  password_histories: Sequence['outputs.GetConnectionOptionPasswordHistoryResult'],
                  password_no_personal_infos: Sequence['outputs.GetConnectionOptionPasswordNoPersonalInfoResult'],
                  password_policy: str,
+                 ping_federate_base_url: str,
                  pkce_enabled: bool,
                  protocol_binding: str,
                  provider: str,
@@ -7836,6 +7867,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "debug", debug)
         pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         pulumi.set(__self__, "disable_cache", disable_cache)
+        pulumi.set(__self__, "disable_self_service_change_password", disable_self_service_change_password)
         pulumi.set(__self__, "disable_sign_out", disable_sign_out)
         pulumi.set(__self__, "disable_signup", disable_signup)
         pulumi.set(__self__, "discovery_url", discovery_url)
@@ -7870,6 +7902,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "password_histories", password_histories)
         pulumi.set(__self__, "password_no_personal_infos", password_no_personal_infos)
         pulumi.set(__self__, "password_policy", password_policy)
+        pulumi.set(__self__, "ping_federate_base_url", ping_federate_base_url)
         pulumi.set(__self__, "pkce_enabled", pkce_enabled)
         pulumi.set(__self__, "protocol_binding", protocol_binding)
         pulumi.set(__self__, "provider", provider)
@@ -7980,6 +8013,11 @@ class GetConnectionOptionResult(dict):
     @pulumi.getter(name="disableCache")
     def disable_cache(self) -> bool:
         return pulumi.get(self, "disable_cache")
+
+    @property
+    @pulumi.getter(name="disableSelfServiceChangePassword")
+    def disable_self_service_change_password(self) -> bool:
+        return pulumi.get(self, "disable_self_service_change_password")
 
     @property
     @pulumi.getter(name="disableSignOut")
@@ -8153,6 +8191,11 @@ class GetConnectionOptionResult(dict):
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> str:
         return pulumi.get(self, "password_policy")
+
+    @property
+    @pulumi.getter(name="pingFederateBaseUrl")
+    def ping_federate_base_url(self) -> str:
+        return pulumi.get(self, "ping_federate_base_url")
 
     @property
     @pulumi.getter(name="pkceEnabled")
@@ -8544,6 +8587,18 @@ class GetConnectionOptionValidationUsernameResult(dict):
     @pulumi.getter
     def min(self) -> int:
         return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class GetCustomDomainVerificationResult(dict):
+    def __init__(__self__, *,
+                 methods: Sequence[Any]):
+        pulumi.set(__self__, "methods", methods)
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Sequence[Any]:
+        return pulumi.get(self, "methods")
 
 
 @pulumi.output_type

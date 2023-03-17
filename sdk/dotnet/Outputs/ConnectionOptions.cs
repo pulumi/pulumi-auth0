@@ -74,6 +74,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? DisableCache;
         /// <summary>
+        /// Indicates whether to remove the forgot password link within the New Universal Login.
+        /// </summary>
+        public readonly bool? DisableSelfServiceChangePassword;
+        /// <summary>
         /// When enabled, will disable sign out.
         /// </summary>
         public readonly bool? DisableSignOut;
@@ -209,6 +213,10 @@ namespace Pulumi.Auth0.Outputs
         /// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         /// </summary>
         public readonly string? PasswordPolicy;
+        /// <summary>
+        /// Ping Federate Server URL.
+        /// </summary>
+        public readonly string? PingFederateBaseUrl;
         /// <summary>
         /// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
         /// </summary>
@@ -382,6 +390,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool? disableCache,
 
+            bool? disableSelfServiceChangePassword,
+
             bool? disableSignOut,
 
             bool? disableSignup,
@@ -449,6 +459,8 @@ namespace Pulumi.Auth0.Outputs
             Outputs.ConnectionOptionsPasswordNoPersonalInfo? passwordNoPersonalInfo,
 
             string? passwordPolicy,
+
+            string? pingFederateBaseUrl,
 
             bool? pkceEnabled,
 
@@ -535,6 +547,7 @@ namespace Pulumi.Auth0.Outputs
             Debug = debug;
             DigestAlgorithm = digestAlgorithm;
             DisableCache = disableCache;
+            DisableSelfServiceChangePassword = disableSelfServiceChangePassword;
             DisableSignOut = disableSignOut;
             DisableSignup = disableSignup;
             DiscoveryUrl = discoveryUrl;
@@ -569,6 +582,7 @@ namespace Pulumi.Auth0.Outputs
             PasswordHistories = passwordHistories;
             PasswordNoPersonalInfo = passwordNoPersonalInfo;
             PasswordPolicy = passwordPolicy;
+            PingFederateBaseUrl = pingFederateBaseUrl;
             PkceEnabled = pkceEnabled;
             ProtocolBinding = protocolBinding;
             Provider = provider;

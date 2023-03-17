@@ -574,6 +574,10 @@ export interface ConnectionOptions {
      */
     disableCache?: boolean;
     /**
+     * Indicates whether to remove the forgot password link within the New Universal Login.
+     */
+    disableSelfServiceChangePassword?: boolean;
+    /**
      * When enabled, will disable sign out.
      */
     disableSignOut?: boolean;
@@ -709,6 +713,10 @@ export interface ConnectionOptions {
      * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
     passwordPolicy: string;
+    /**
+     * Ping Federate Server URL.
+     */
+    pingFederateBaseUrl?: string;
     /**
      * Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      */
@@ -1233,6 +1241,7 @@ export interface GetConnectionOption {
     debug: boolean;
     digestAlgorithm: string;
     disableCache: boolean;
+    disableSelfServiceChangePassword: boolean;
     disableSignOut: boolean;
     disableSignup: boolean;
     discoveryUrl: string;
@@ -1270,6 +1279,7 @@ export interface GetConnectionOption {
     passwordHistories: outputs.GetConnectionOptionPasswordHistory[];
     passwordNoPersonalInfos: outputs.GetConnectionOptionPasswordNoPersonalInfo[];
     passwordPolicy: string;
+    pingFederateBaseUrl: string;
     pkceEnabled: boolean;
     protocolBinding: string;
     provider: string;
@@ -1361,6 +1371,10 @@ export interface GetConnectionOptionValidation {
 export interface GetConnectionOptionValidationUsername {
     max: number;
     min: number;
+}
+
+export interface GetCustomDomainVerification {
+    methods: any[];
 }
 
 export interface GetGlobalClientAddon {
@@ -1925,7 +1939,7 @@ export interface ResourceServerScope {
 
 export interface RolePermission {
     /**
-     * Name of the permission (scope).
+     * Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      */
     name: string;
     /**
