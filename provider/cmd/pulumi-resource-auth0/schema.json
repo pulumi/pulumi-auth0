@@ -1988,6 +1988,15 @@
                         }
                     }
                 },
+                "disableSelfServiceChangePassword": {
+                    "type": "boolean",
+                    "description": "Indicates whether to remove the forgot password link within the New Universal Login.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "disableSignOut": {
                     "type": "boolean",
                     "description": "When enabled, will disable sign out.\n",
@@ -2300,6 +2309,15 @@
                 "passwordPolicy": {
                     "type": "string",
                     "description": "Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pingFederateBaseUrl": {
+                    "type": "string",
+                    "description": "Ping Federate Server URL.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4541,7 +4559,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the permission (scope).\n",
+                    "description": "Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6974,6 +6992,14 @@
                         }
                     }
                 },
+                "disableSelfServiceChangePassword": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "disableSignOut": {
                     "type": "boolean",
                     "language": {
@@ -7270,6 +7296,14 @@
                     }
                 },
                 "passwordPolicy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pingFederateBaseUrl": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -7590,6 +7624,7 @@
                 "debug",
                 "digestAlgorithm",
                 "disableCache",
+                "disableSelfServiceChangePassword",
                 "disableSignOut",
                 "disableSignup",
                 "discoveryUrl",
@@ -7624,6 +7659,7 @@
                 "passwordHistories",
                 "passwordNoPersonalInfos",
                 "passwordPolicy",
+                "pingFederateBaseUrl",
                 "pkceEnabled",
                 "protocolBinding",
                 "provider",
@@ -8004,6 +8040,30 @@
             "required": [
                 "max",
                 "min"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getCustomDomainVerification:getCustomDomainVerification": {
+            "properties": {
+                "methods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "methods"
             ],
             "language": {
                 "nodejs": {
@@ -13762,6 +13822,65 @@
                     "realms",
                     "showAsButton",
                     "strategy",
+                    "id"
+                ]
+            }
+        },
+        "auth0:index/getCustomDomain:getCustomDomain": {
+            "description": "Data source to retrieve the custom domain configuration.\n",
+            "outputs": {
+                "description": "A collection of values returned by getCustomDomain.\n",
+                "properties": {
+                    "customClientIpHeader": {
+                        "type": "string",
+                        "description": "The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.\n"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "Name of the custom domain.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "originDomainName": {
+                        "type": "string",
+                        "description": "Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.\n"
+                    },
+                    "primary": {
+                        "type": "boolean",
+                        "description": "Indicates whether this is a primary domain.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.\n"
+                    },
+                    "tlsPolicy": {
+                        "type": "string",
+                        "description": "TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.\n"
+                    },
+                    "verifications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getCustomDomainVerification:getCustomDomainVerification"
+                        },
+                        "description": "Configuration settings for verification.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "customClientIpHeader",
+                    "domain",
+                    "originDomainName",
+                    "primary",
+                    "status",
+                    "tlsPolicy",
+                    "type",
+                    "verifications",
                     "id"
                 ]
             }
