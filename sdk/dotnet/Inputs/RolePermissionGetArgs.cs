@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class RolePermissionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the permission (scope).
+        /// Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

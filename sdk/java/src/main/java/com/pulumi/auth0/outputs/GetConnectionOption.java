@@ -39,6 +39,7 @@ public final class GetConnectionOption {
     private Boolean debug;
     private String digestAlgorithm;
     private Boolean disableCache;
+    private Boolean disableSelfServiceChangePassword;
     private Boolean disableSignOut;
     private Boolean disableSignup;
     private String discoveryUrl;
@@ -77,6 +78,7 @@ public final class GetConnectionOption {
     private List<GetConnectionOptionPasswordHistory> passwordHistories;
     private List<GetConnectionOptionPasswordNoPersonalInfo> passwordNoPersonalInfos;
     private String passwordPolicy;
+    private String pingFederateBaseUrl;
     private Boolean pkceEnabled;
     private String protocolBinding;
     private String provider;
@@ -158,6 +160,9 @@ public final class GetConnectionOption {
     }
     public Boolean disableCache() {
         return this.disableCache;
+    }
+    public Boolean disableSelfServiceChangePassword() {
+        return this.disableSelfServiceChangePassword;
     }
     public Boolean disableSignOut() {
         return this.disableSignOut;
@@ -264,6 +269,9 @@ public final class GetConnectionOption {
     }
     public String passwordPolicy() {
         return this.passwordPolicy;
+    }
+    public String pingFederateBaseUrl() {
+        return this.pingFederateBaseUrl;
     }
     public Boolean pkceEnabled() {
         return this.pkceEnabled;
@@ -395,6 +403,7 @@ public final class GetConnectionOption {
         private Boolean debug;
         private String digestAlgorithm;
         private Boolean disableCache;
+        private Boolean disableSelfServiceChangePassword;
         private Boolean disableSignOut;
         private Boolean disableSignup;
         private String discoveryUrl;
@@ -429,6 +438,7 @@ public final class GetConnectionOption {
         private List<GetConnectionOptionPasswordHistory> passwordHistories;
         private List<GetConnectionOptionPasswordNoPersonalInfo> passwordNoPersonalInfos;
         private String passwordPolicy;
+        private String pingFederateBaseUrl;
         private Boolean pkceEnabled;
         private String protocolBinding;
         private String provider;
@@ -482,6 +492,7 @@ public final class GetConnectionOption {
     	      this.debug = defaults.debug;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.disableCache = defaults.disableCache;
+    	      this.disableSelfServiceChangePassword = defaults.disableSelfServiceChangePassword;
     	      this.disableSignOut = defaults.disableSignOut;
     	      this.disableSignup = defaults.disableSignup;
     	      this.discoveryUrl = defaults.discoveryUrl;
@@ -516,6 +527,7 @@ public final class GetConnectionOption {
     	      this.passwordHistories = defaults.passwordHistories;
     	      this.passwordNoPersonalInfos = defaults.passwordNoPersonalInfos;
     	      this.passwordPolicy = defaults.passwordPolicy;
+    	      this.pingFederateBaseUrl = defaults.pingFederateBaseUrl;
     	      this.pkceEnabled = defaults.pkceEnabled;
     	      this.protocolBinding = defaults.protocolBinding;
     	      this.provider = defaults.provider;
@@ -629,6 +641,11 @@ public final class GetConnectionOption {
         @CustomType.Setter
         public Builder disableCache(Boolean disableCache) {
             this.disableCache = Objects.requireNonNull(disableCache);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableSelfServiceChangePassword(Boolean disableSelfServiceChangePassword) {
+            this.disableSelfServiceChangePassword = Objects.requireNonNull(disableSelfServiceChangePassword);
             return this;
         }
         @CustomType.Setter
@@ -829,6 +846,11 @@ public final class GetConnectionOption {
         @CustomType.Setter
         public Builder passwordPolicy(String passwordPolicy) {
             this.passwordPolicy = Objects.requireNonNull(passwordPolicy);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pingFederateBaseUrl(String pingFederateBaseUrl) {
+            this.pingFederateBaseUrl = Objects.requireNonNull(pingFederateBaseUrl);
             return this;
         }
         @CustomType.Setter
@@ -1035,6 +1057,7 @@ public final class GetConnectionOption {
             o.debug = debug;
             o.digestAlgorithm = digestAlgorithm;
             o.disableCache = disableCache;
+            o.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
             o.disableSignOut = disableSignOut;
             o.disableSignup = disableSignup;
             o.discoveryUrl = discoveryUrl;
@@ -1069,6 +1092,7 @@ public final class GetConnectionOption {
             o.passwordHistories = passwordHistories;
             o.passwordNoPersonalInfos = passwordNoPersonalInfos;
             o.passwordPolicy = passwordPolicy;
+            o.pingFederateBaseUrl = pingFederateBaseUrl;
             o.pkceEnabled = pkceEnabled;
             o.protocolBinding = protocolBinding;
             o.provider = provider;

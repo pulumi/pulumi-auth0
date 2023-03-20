@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,7 +43,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Domain == nil {
 		return nil, errors.New("invalid value for required argument 'Domain'")
 	}
-	if isZero(args.Debug) {
+	if args.Debug == nil {
 		args.Debug = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "AUTH0_DEBUG").(bool))
 	}
 	var resource Provider

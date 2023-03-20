@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class RolePermission {
     /**
-     * @return Name of the permission (scope).
+     * @return Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      * 
      */
     private String name;
@@ -22,7 +22,7 @@ public final class RolePermission {
 
     private RolePermission() {}
     /**
-     * @return Name of the permission (scope).
+     * @return Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      * 
      */
     public String name() {

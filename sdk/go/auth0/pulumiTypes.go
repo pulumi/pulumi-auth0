@@ -6517,6 +6517,8 @@ type ConnectionOptions struct {
 	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
 	// Indicates whether to disable the cache or not.
 	DisableCache *bool `pulumi:"disableCache"`
+	// Indicates whether to remove the forgot password link within the New Universal Login.
+	DisableSelfServiceChangePassword *bool `pulumi:"disableSelfServiceChangePassword"`
 	// When enabled, will disable sign out.
 	DisableSignOut *bool `pulumi:"disableSignOut"`
 	// Indicates whether to allow user sign-ups to your application.
@@ -6585,6 +6587,8 @@ type ConnectionOptions struct {
 	PasswordNoPersonalInfo *ConnectionOptionsPasswordNoPersonalInfo `pulumi:"passwordNoPersonalInfo"`
 	// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 	PasswordPolicy *string `pulumi:"passwordPolicy"`
+	// Ping Federate Server URL.
+	PingFederateBaseUrl *string `pulumi:"pingFederateBaseUrl"`
 	// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
 	PkceEnabled *bool `pulumi:"pkceEnabled"`
 	// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
@@ -6699,6 +6703,8 @@ type ConnectionOptionsArgs struct {
 	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
 	// Indicates whether to disable the cache or not.
 	DisableCache pulumi.BoolPtrInput `pulumi:"disableCache"`
+	// Indicates whether to remove the forgot password link within the New Universal Login.
+	DisableSelfServiceChangePassword pulumi.BoolPtrInput `pulumi:"disableSelfServiceChangePassword"`
 	// When enabled, will disable sign out.
 	DisableSignOut pulumi.BoolPtrInput `pulumi:"disableSignOut"`
 	// Indicates whether to allow user sign-ups to your application.
@@ -6767,6 +6773,8 @@ type ConnectionOptionsArgs struct {
 	PasswordNoPersonalInfo ConnectionOptionsPasswordNoPersonalInfoPtrInput `pulumi:"passwordNoPersonalInfo"`
 	// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 	PasswordPolicy pulumi.StringPtrInput `pulumi:"passwordPolicy"`
+	// Ping Federate Server URL.
+	PingFederateBaseUrl pulumi.StringPtrInput `pulumi:"pingFederateBaseUrl"`
 	// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
 	PkceEnabled pulumi.BoolPtrInput `pulumi:"pkceEnabled"`
 	// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
@@ -6991,6 +6999,11 @@ func (o ConnectionOptionsOutput) DisableCache() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableCache }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to remove the forgot password link within the New Universal Login.
+func (o ConnectionOptionsOutput) DisableSelfServiceChangePassword() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableSelfServiceChangePassword }).(pulumi.BoolPtrOutput)
+}
+
 // When enabled, will disable sign out.
 func (o ConnectionOptionsOutput) DisableSignOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableSignOut }).(pulumi.BoolPtrOutput)
@@ -7161,6 +7174,11 @@ func (o ConnectionOptionsOutput) PasswordNoPersonalInfo() ConnectionOptionsPassw
 // Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
 func (o ConnectionOptionsOutput) PasswordPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.PasswordPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Ping Federate Server URL.
+func (o ConnectionOptionsOutput) PingFederateBaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.PingFederateBaseUrl }).(pulumi.StringPtrOutput)
 }
 
 // Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
@@ -7512,6 +7530,16 @@ func (o ConnectionOptionsPtrOutput) DisableCache() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to remove the forgot password link within the New Universal Login.
+func (o ConnectionOptionsPtrOutput) DisableSelfServiceChangePassword() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableSelfServiceChangePassword
+	}).(pulumi.BoolPtrOutput)
+}
+
 // When enabled, will disable sign out.
 func (o ConnectionOptionsPtrOutput) DisableSignOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
@@ -7849,6 +7877,16 @@ func (o ConnectionOptionsPtrOutput) PasswordPolicy() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PasswordPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ping Federate Server URL.
+func (o ConnectionOptionsPtrOutput) PingFederateBaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PingFederateBaseUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15301,7 +15339,7 @@ func (o ResourceServerScopeArrayOutput) Index(i pulumi.IntInput) ResourceServerS
 }
 
 type RolePermission struct {
-	// Name of the permission (scope).
+	// Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
 	Name string `pulumi:"name"`
 	// Unique identifier for the resource server.
 	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
@@ -15319,7 +15357,7 @@ type RolePermissionInput interface {
 }
 
 type RolePermissionArgs struct {
-	// Name of the permission (scope).
+	// Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Unique identifier for the resource server.
 	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
@@ -15376,7 +15414,7 @@ func (o RolePermissionOutput) ToRolePermissionOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Name of the permission (scope).
+// Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
 func (o RolePermissionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RolePermission) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -20512,48 +20550,49 @@ func (o GetClientRefreshTokenArrayOutput) Index(i pulumi.IntInput) GetClientRefr
 }
 
 type GetConnectionOption struct {
-	AdfsServer                   string                                     `pulumi:"adfsServer"`
-	AllowedAudiences             []string                                   `pulumi:"allowedAudiences"`
-	ApiEnableUsers               bool                                       `pulumi:"apiEnableUsers"`
-	AppId                        string                                     `pulumi:"appId"`
-	AuthParams                   map[string]string                          `pulumi:"authParams"`
-	AuthorizationEndpoint        string                                     `pulumi:"authorizationEndpoint"`
-	BruteForceProtection         bool                                       `pulumi:"bruteForceProtection"`
-	ClientId                     string                                     `pulumi:"clientId"`
-	ClientSecret                 string                                     `pulumi:"clientSecret"`
-	CommunityBaseUrl             string                                     `pulumi:"communityBaseUrl"`
-	Configuration                map[string]interface{}                     `pulumi:"configuration"`
-	CustomScripts                map[string]string                          `pulumi:"customScripts"`
-	Debug                        bool                                       `pulumi:"debug"`
-	DigestAlgorithm              string                                     `pulumi:"digestAlgorithm"`
-	DisableCache                 bool                                       `pulumi:"disableCache"`
-	DisableSignOut               bool                                       `pulumi:"disableSignOut"`
-	DisableSignup                bool                                       `pulumi:"disableSignup"`
-	DiscoveryUrl                 string                                     `pulumi:"discoveryUrl"`
-	Domain                       string                                     `pulumi:"domain"`
-	DomainAliases                []string                                   `pulumi:"domainAliases"`
-	EnableScriptContext          bool                                       `pulumi:"enableScriptContext"`
-	EnabledDatabaseCustomization bool                                       `pulumi:"enabledDatabaseCustomization"`
-	EntityId                     string                                     `pulumi:"entityId"`
-	FedMetadataXml               string                                     `pulumi:"fedMetadataXml"`
-	FieldsMap                    string                                     `pulumi:"fieldsMap"`
-	ForwardRequestInfo           bool                                       `pulumi:"forwardRequestInfo"`
-	From                         string                                     `pulumi:"from"`
-	GatewayAuthentications       []GetConnectionOptionGatewayAuthentication `pulumi:"gatewayAuthentications"`
-	GatewayUrl                   string                                     `pulumi:"gatewayUrl"`
-	IconUrl                      string                                     `pulumi:"iconUrl"`
-	IdentityApi                  string                                     `pulumi:"identityApi"`
-	IdpInitiateds                []GetConnectionOptionIdpInitiated          `pulumi:"idpInitiateds"`
-	ImportMode                   bool                                       `pulumi:"importMode"`
-	Ips                          []string                                   `pulumi:"ips"`
-	Issuer                       string                                     `pulumi:"issuer"`
-	JwksUri                      string                                     `pulumi:"jwksUri"`
-	KeyId                        string                                     `pulumi:"keyId"`
-	MaxGroupsToRetrieve          string                                     `pulumi:"maxGroupsToRetrieve"`
-	MessagingServiceSid          string                                     `pulumi:"messagingServiceSid"`
-	MetadataUrl                  string                                     `pulumi:"metadataUrl"`
-	MetadataXml                  string                                     `pulumi:"metadataXml"`
-	Mfas                         []GetConnectionOptionMfa                   `pulumi:"mfas"`
+	AdfsServer                       string                                     `pulumi:"adfsServer"`
+	AllowedAudiences                 []string                                   `pulumi:"allowedAudiences"`
+	ApiEnableUsers                   bool                                       `pulumi:"apiEnableUsers"`
+	AppId                            string                                     `pulumi:"appId"`
+	AuthParams                       map[string]string                          `pulumi:"authParams"`
+	AuthorizationEndpoint            string                                     `pulumi:"authorizationEndpoint"`
+	BruteForceProtection             bool                                       `pulumi:"bruteForceProtection"`
+	ClientId                         string                                     `pulumi:"clientId"`
+	ClientSecret                     string                                     `pulumi:"clientSecret"`
+	CommunityBaseUrl                 string                                     `pulumi:"communityBaseUrl"`
+	Configuration                    map[string]interface{}                     `pulumi:"configuration"`
+	CustomScripts                    map[string]string                          `pulumi:"customScripts"`
+	Debug                            bool                                       `pulumi:"debug"`
+	DigestAlgorithm                  string                                     `pulumi:"digestAlgorithm"`
+	DisableCache                     bool                                       `pulumi:"disableCache"`
+	DisableSelfServiceChangePassword bool                                       `pulumi:"disableSelfServiceChangePassword"`
+	DisableSignOut                   bool                                       `pulumi:"disableSignOut"`
+	DisableSignup                    bool                                       `pulumi:"disableSignup"`
+	DiscoveryUrl                     string                                     `pulumi:"discoveryUrl"`
+	Domain                           string                                     `pulumi:"domain"`
+	DomainAliases                    []string                                   `pulumi:"domainAliases"`
+	EnableScriptContext              bool                                       `pulumi:"enableScriptContext"`
+	EnabledDatabaseCustomization     bool                                       `pulumi:"enabledDatabaseCustomization"`
+	EntityId                         string                                     `pulumi:"entityId"`
+	FedMetadataXml                   string                                     `pulumi:"fedMetadataXml"`
+	FieldsMap                        string                                     `pulumi:"fieldsMap"`
+	ForwardRequestInfo               bool                                       `pulumi:"forwardRequestInfo"`
+	From                             string                                     `pulumi:"from"`
+	GatewayAuthentications           []GetConnectionOptionGatewayAuthentication `pulumi:"gatewayAuthentications"`
+	GatewayUrl                       string                                     `pulumi:"gatewayUrl"`
+	IconUrl                          string                                     `pulumi:"iconUrl"`
+	IdentityApi                      string                                     `pulumi:"identityApi"`
+	IdpInitiateds                    []GetConnectionOptionIdpInitiated          `pulumi:"idpInitiateds"`
+	ImportMode                       bool                                       `pulumi:"importMode"`
+	Ips                              []string                                   `pulumi:"ips"`
+	Issuer                           string                                     `pulumi:"issuer"`
+	JwksUri                          string                                     `pulumi:"jwksUri"`
+	KeyId                            string                                     `pulumi:"keyId"`
+	MaxGroupsToRetrieve              string                                     `pulumi:"maxGroupsToRetrieve"`
+	MessagingServiceSid              string                                     `pulumi:"messagingServiceSid"`
+	MetadataUrl                      string                                     `pulumi:"metadataUrl"`
+	MetadataXml                      string                                     `pulumi:"metadataXml"`
+	Mfas                             []GetConnectionOptionMfa                   `pulumi:"mfas"`
 	// The name of the connection. If not provided, `connectionId` must be set.
 	Name                               string                                        `pulumi:"name"`
 	NonPersistentAttrs                 []string                                      `pulumi:"nonPersistentAttrs"`
@@ -20562,6 +20601,7 @@ type GetConnectionOption struct {
 	PasswordHistories                  []GetConnectionOptionPasswordHistory          `pulumi:"passwordHistories"`
 	PasswordNoPersonalInfos            []GetConnectionOptionPasswordNoPersonalInfo   `pulumi:"passwordNoPersonalInfos"`
 	PasswordPolicy                     string                                        `pulumi:"passwordPolicy"`
+	PingFederateBaseUrl                string                                        `pulumi:"pingFederateBaseUrl"`
 	PkceEnabled                        bool                                          `pulumi:"pkceEnabled"`
 	ProtocolBinding                    string                                        `pulumi:"protocolBinding"`
 	Provider                           string                                        `pulumi:"provider"`
@@ -20611,48 +20651,49 @@ type GetConnectionOptionInput interface {
 }
 
 type GetConnectionOptionArgs struct {
-	AdfsServer                   pulumi.StringInput                                 `pulumi:"adfsServer"`
-	AllowedAudiences             pulumi.StringArrayInput                            `pulumi:"allowedAudiences"`
-	ApiEnableUsers               pulumi.BoolInput                                   `pulumi:"apiEnableUsers"`
-	AppId                        pulumi.StringInput                                 `pulumi:"appId"`
-	AuthParams                   pulumi.StringMapInput                              `pulumi:"authParams"`
-	AuthorizationEndpoint        pulumi.StringInput                                 `pulumi:"authorizationEndpoint"`
-	BruteForceProtection         pulumi.BoolInput                                   `pulumi:"bruteForceProtection"`
-	ClientId                     pulumi.StringInput                                 `pulumi:"clientId"`
-	ClientSecret                 pulumi.StringInput                                 `pulumi:"clientSecret"`
-	CommunityBaseUrl             pulumi.StringInput                                 `pulumi:"communityBaseUrl"`
-	Configuration                pulumi.MapInput                                    `pulumi:"configuration"`
-	CustomScripts                pulumi.StringMapInput                              `pulumi:"customScripts"`
-	Debug                        pulumi.BoolInput                                   `pulumi:"debug"`
-	DigestAlgorithm              pulumi.StringInput                                 `pulumi:"digestAlgorithm"`
-	DisableCache                 pulumi.BoolInput                                   `pulumi:"disableCache"`
-	DisableSignOut               pulumi.BoolInput                                   `pulumi:"disableSignOut"`
-	DisableSignup                pulumi.BoolInput                                   `pulumi:"disableSignup"`
-	DiscoveryUrl                 pulumi.StringInput                                 `pulumi:"discoveryUrl"`
-	Domain                       pulumi.StringInput                                 `pulumi:"domain"`
-	DomainAliases                pulumi.StringArrayInput                            `pulumi:"domainAliases"`
-	EnableScriptContext          pulumi.BoolInput                                   `pulumi:"enableScriptContext"`
-	EnabledDatabaseCustomization pulumi.BoolInput                                   `pulumi:"enabledDatabaseCustomization"`
-	EntityId                     pulumi.StringInput                                 `pulumi:"entityId"`
-	FedMetadataXml               pulumi.StringInput                                 `pulumi:"fedMetadataXml"`
-	FieldsMap                    pulumi.StringInput                                 `pulumi:"fieldsMap"`
-	ForwardRequestInfo           pulumi.BoolInput                                   `pulumi:"forwardRequestInfo"`
-	From                         pulumi.StringInput                                 `pulumi:"from"`
-	GatewayAuthentications       GetConnectionOptionGatewayAuthenticationArrayInput `pulumi:"gatewayAuthentications"`
-	GatewayUrl                   pulumi.StringInput                                 `pulumi:"gatewayUrl"`
-	IconUrl                      pulumi.StringInput                                 `pulumi:"iconUrl"`
-	IdentityApi                  pulumi.StringInput                                 `pulumi:"identityApi"`
-	IdpInitiateds                GetConnectionOptionIdpInitiatedArrayInput          `pulumi:"idpInitiateds"`
-	ImportMode                   pulumi.BoolInput                                   `pulumi:"importMode"`
-	Ips                          pulumi.StringArrayInput                            `pulumi:"ips"`
-	Issuer                       pulumi.StringInput                                 `pulumi:"issuer"`
-	JwksUri                      pulumi.StringInput                                 `pulumi:"jwksUri"`
-	KeyId                        pulumi.StringInput                                 `pulumi:"keyId"`
-	MaxGroupsToRetrieve          pulumi.StringInput                                 `pulumi:"maxGroupsToRetrieve"`
-	MessagingServiceSid          pulumi.StringInput                                 `pulumi:"messagingServiceSid"`
-	MetadataUrl                  pulumi.StringInput                                 `pulumi:"metadataUrl"`
-	MetadataXml                  pulumi.StringInput                                 `pulumi:"metadataXml"`
-	Mfas                         GetConnectionOptionMfaArrayInput                   `pulumi:"mfas"`
+	AdfsServer                       pulumi.StringInput                                 `pulumi:"adfsServer"`
+	AllowedAudiences                 pulumi.StringArrayInput                            `pulumi:"allowedAudiences"`
+	ApiEnableUsers                   pulumi.BoolInput                                   `pulumi:"apiEnableUsers"`
+	AppId                            pulumi.StringInput                                 `pulumi:"appId"`
+	AuthParams                       pulumi.StringMapInput                              `pulumi:"authParams"`
+	AuthorizationEndpoint            pulumi.StringInput                                 `pulumi:"authorizationEndpoint"`
+	BruteForceProtection             pulumi.BoolInput                                   `pulumi:"bruteForceProtection"`
+	ClientId                         pulumi.StringInput                                 `pulumi:"clientId"`
+	ClientSecret                     pulumi.StringInput                                 `pulumi:"clientSecret"`
+	CommunityBaseUrl                 pulumi.StringInput                                 `pulumi:"communityBaseUrl"`
+	Configuration                    pulumi.MapInput                                    `pulumi:"configuration"`
+	CustomScripts                    pulumi.StringMapInput                              `pulumi:"customScripts"`
+	Debug                            pulumi.BoolInput                                   `pulumi:"debug"`
+	DigestAlgorithm                  pulumi.StringInput                                 `pulumi:"digestAlgorithm"`
+	DisableCache                     pulumi.BoolInput                                   `pulumi:"disableCache"`
+	DisableSelfServiceChangePassword pulumi.BoolInput                                   `pulumi:"disableSelfServiceChangePassword"`
+	DisableSignOut                   pulumi.BoolInput                                   `pulumi:"disableSignOut"`
+	DisableSignup                    pulumi.BoolInput                                   `pulumi:"disableSignup"`
+	DiscoveryUrl                     pulumi.StringInput                                 `pulumi:"discoveryUrl"`
+	Domain                           pulumi.StringInput                                 `pulumi:"domain"`
+	DomainAliases                    pulumi.StringArrayInput                            `pulumi:"domainAliases"`
+	EnableScriptContext              pulumi.BoolInput                                   `pulumi:"enableScriptContext"`
+	EnabledDatabaseCustomization     pulumi.BoolInput                                   `pulumi:"enabledDatabaseCustomization"`
+	EntityId                         pulumi.StringInput                                 `pulumi:"entityId"`
+	FedMetadataXml                   pulumi.StringInput                                 `pulumi:"fedMetadataXml"`
+	FieldsMap                        pulumi.StringInput                                 `pulumi:"fieldsMap"`
+	ForwardRequestInfo               pulumi.BoolInput                                   `pulumi:"forwardRequestInfo"`
+	From                             pulumi.StringInput                                 `pulumi:"from"`
+	GatewayAuthentications           GetConnectionOptionGatewayAuthenticationArrayInput `pulumi:"gatewayAuthentications"`
+	GatewayUrl                       pulumi.StringInput                                 `pulumi:"gatewayUrl"`
+	IconUrl                          pulumi.StringInput                                 `pulumi:"iconUrl"`
+	IdentityApi                      pulumi.StringInput                                 `pulumi:"identityApi"`
+	IdpInitiateds                    GetConnectionOptionIdpInitiatedArrayInput          `pulumi:"idpInitiateds"`
+	ImportMode                       pulumi.BoolInput                                   `pulumi:"importMode"`
+	Ips                              pulumi.StringArrayInput                            `pulumi:"ips"`
+	Issuer                           pulumi.StringInput                                 `pulumi:"issuer"`
+	JwksUri                          pulumi.StringInput                                 `pulumi:"jwksUri"`
+	KeyId                            pulumi.StringInput                                 `pulumi:"keyId"`
+	MaxGroupsToRetrieve              pulumi.StringInput                                 `pulumi:"maxGroupsToRetrieve"`
+	MessagingServiceSid              pulumi.StringInput                                 `pulumi:"messagingServiceSid"`
+	MetadataUrl                      pulumi.StringInput                                 `pulumi:"metadataUrl"`
+	MetadataXml                      pulumi.StringInput                                 `pulumi:"metadataXml"`
+	Mfas                             GetConnectionOptionMfaArrayInput                   `pulumi:"mfas"`
 	// The name of the connection. If not provided, `connectionId` must be set.
 	Name                               pulumi.StringInput                                    `pulumi:"name"`
 	NonPersistentAttrs                 pulumi.StringArrayInput                               `pulumi:"nonPersistentAttrs"`
@@ -20661,6 +20702,7 @@ type GetConnectionOptionArgs struct {
 	PasswordHistories                  GetConnectionOptionPasswordHistoryArrayInput          `pulumi:"passwordHistories"`
 	PasswordNoPersonalInfos            GetConnectionOptionPasswordNoPersonalInfoArrayInput   `pulumi:"passwordNoPersonalInfos"`
 	PasswordPolicy                     pulumi.StringInput                                    `pulumi:"passwordPolicy"`
+	PingFederateBaseUrl                pulumi.StringInput                                    `pulumi:"pingFederateBaseUrl"`
 	PkceEnabled                        pulumi.BoolInput                                      `pulumi:"pkceEnabled"`
 	ProtocolBinding                    pulumi.StringInput                                    `pulumi:"protocolBinding"`
 	Provider                           pulumi.StringInput                                    `pulumi:"provider"`
@@ -20809,6 +20851,10 @@ func (o GetConnectionOptionOutput) DisableCache() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableCache }).(pulumi.BoolOutput)
 }
 
+func (o GetConnectionOptionOutput) DisableSelfServiceChangePassword() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableSelfServiceChangePassword }).(pulumi.BoolOutput)
+}
+
 func (o GetConnectionOptionOutput) DisableSignOut() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableSignOut }).(pulumi.BoolOutput)
 }
@@ -20950,6 +20996,10 @@ func (o GetConnectionOptionOutput) PasswordNoPersonalInfos() GetConnectionOption
 
 func (o GetConnectionOptionOutput) PasswordPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.PasswordPolicy }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionOutput) PingFederateBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.PingFederateBaseUrl }).(pulumi.StringOutput)
 }
 
 func (o GetConnectionOptionOutput) PkceEnabled() pulumi.BoolOutput {
@@ -22216,6 +22266,100 @@ func (o GetConnectionOptionValidationUsernameArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionValidationUsername {
 		return vs[0].([]GetConnectionOptionValidationUsername)[vs[1].(int)]
 	}).(GetConnectionOptionValidationUsernameOutput)
+}
+
+type GetCustomDomainVerificationType struct {
+	Methods []interface{} `pulumi:"methods"`
+}
+
+// GetCustomDomainVerificationTypeInput is an input type that accepts GetCustomDomainVerificationTypeArgs and GetCustomDomainVerificationTypeOutput values.
+// You can construct a concrete instance of `GetCustomDomainVerificationTypeInput` via:
+//
+//	GetCustomDomainVerificationTypeArgs{...}
+type GetCustomDomainVerificationTypeInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainVerificationTypeOutput() GetCustomDomainVerificationTypeOutput
+	ToGetCustomDomainVerificationTypeOutputWithContext(context.Context) GetCustomDomainVerificationTypeOutput
+}
+
+type GetCustomDomainVerificationTypeArgs struct {
+	Methods pulumi.ArrayInput `pulumi:"methods"`
+}
+
+func (GetCustomDomainVerificationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainVerificationType)(nil)).Elem()
+}
+
+func (i GetCustomDomainVerificationTypeArgs) ToGetCustomDomainVerificationTypeOutput() GetCustomDomainVerificationTypeOutput {
+	return i.ToGetCustomDomainVerificationTypeOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainVerificationTypeArgs) ToGetCustomDomainVerificationTypeOutputWithContext(ctx context.Context) GetCustomDomainVerificationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainVerificationTypeOutput)
+}
+
+// GetCustomDomainVerificationTypeArrayInput is an input type that accepts GetCustomDomainVerificationTypeArray and GetCustomDomainVerificationTypeArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainVerificationTypeArrayInput` via:
+//
+//	GetCustomDomainVerificationTypeArray{ GetCustomDomainVerificationTypeArgs{...} }
+type GetCustomDomainVerificationTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainVerificationTypeArrayOutput() GetCustomDomainVerificationTypeArrayOutput
+	ToGetCustomDomainVerificationTypeArrayOutputWithContext(context.Context) GetCustomDomainVerificationTypeArrayOutput
+}
+
+type GetCustomDomainVerificationTypeArray []GetCustomDomainVerificationTypeInput
+
+func (GetCustomDomainVerificationTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainVerificationType)(nil)).Elem()
+}
+
+func (i GetCustomDomainVerificationTypeArray) ToGetCustomDomainVerificationTypeArrayOutput() GetCustomDomainVerificationTypeArrayOutput {
+	return i.ToGetCustomDomainVerificationTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainVerificationTypeArray) ToGetCustomDomainVerificationTypeArrayOutputWithContext(ctx context.Context) GetCustomDomainVerificationTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainVerificationTypeArrayOutput)
+}
+
+type GetCustomDomainVerificationTypeOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainVerificationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainVerificationType)(nil)).Elem()
+}
+
+func (o GetCustomDomainVerificationTypeOutput) ToGetCustomDomainVerificationTypeOutput() GetCustomDomainVerificationTypeOutput {
+	return o
+}
+
+func (o GetCustomDomainVerificationTypeOutput) ToGetCustomDomainVerificationTypeOutputWithContext(ctx context.Context) GetCustomDomainVerificationTypeOutput {
+	return o
+}
+
+func (o GetCustomDomainVerificationTypeOutput) Methods() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainVerificationType) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
+}
+
+type GetCustomDomainVerificationTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainVerificationTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainVerificationType)(nil)).Elem()
+}
+
+func (o GetCustomDomainVerificationTypeArrayOutput) ToGetCustomDomainVerificationTypeArrayOutput() GetCustomDomainVerificationTypeArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainVerificationTypeArrayOutput) ToGetCustomDomainVerificationTypeArrayOutputWithContext(ctx context.Context) GetCustomDomainVerificationTypeArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainVerificationTypeArrayOutput) Index(i pulumi.IntInput) GetCustomDomainVerificationTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainVerificationType {
+		return vs[0].([]GetCustomDomainVerificationType)[vs[1].(int)]
+	}).(GetCustomDomainVerificationTypeOutput)
 }
 
 type GetGlobalClientAddon struct {
@@ -24985,6 +25129,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationArrayInput)(nil)).Elem(), GetConnectionOptionValidationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameArrayInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonInput)(nil)).Elem(), GetGlobalClientAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonArrayInput)(nil)).Elem(), GetGlobalClientAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalClientAddonSamlpInput)(nil)).Elem(), GetGlobalClientAddonSamlpArgs{})
@@ -25271,6 +25417,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionValidationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientAddonOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientAddonArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalClientAddonSamlpOutput{})

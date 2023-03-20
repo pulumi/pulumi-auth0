@@ -2505,6 +2505,7 @@ class ConnectionOptionsArgs:
                  debug: Optional[pulumi.Input[bool]] = None,
                  digest_algorithm: Optional[pulumi.Input[str]] = None,
                  disable_cache: Optional[pulumi.Input[bool]] = None,
+                 disable_self_service_change_password: Optional[pulumi.Input[bool]] = None,
                  disable_sign_out: Optional[pulumi.Input[bool]] = None,
                  disable_signup: Optional[pulumi.Input[bool]] = None,
                  discovery_url: Optional[pulumi.Input[str]] = None,
@@ -2539,6 +2540,7 @@ class ConnectionOptionsArgs:
                  password_histories: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]] = None,
                  password_no_personal_info: Optional[pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgs']] = None,
                  password_policy: Optional[pulumi.Input[str]] = None,
+                 ping_federate_base_url: Optional[pulumi.Input[str]] = None,
                  pkce_enabled: Optional[pulumi.Input[bool]] = None,
                  protocol_binding: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
@@ -2590,6 +2592,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[bool] debug: When enabled, additional debug information will be generated.
         :param pulumi.Input[str] digest_algorithm: Sign Request Algorithm Digest.
         :param pulumi.Input[bool] disable_cache: Indicates whether to disable the cache or not.
+        :param pulumi.Input[bool] disable_self_service_change_password: Indicates whether to remove the forgot password link within the New Universal Login.
         :param pulumi.Input[bool] disable_sign_out: When enabled, will disable sign out.
         :param pulumi.Input[bool] disable_signup: Indicates whether to allow user sign-ups to your application.
         :param pulumi.Input[str] discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
@@ -2624,6 +2627,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
         :param pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgs'] password_no_personal_info: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
         :param pulumi.Input[str] password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+        :param pulumi.Input[str] ping_federate_base_url: Ping Federate Server URL.
         :param pulumi.Input[bool] pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
         :param pulumi.Input[str] protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param pulumi.Input[str] provider: Defines the custom `sms_gateway` provider.
@@ -2690,6 +2694,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         if disable_cache is not None:
             pulumi.set(__self__, "disable_cache", disable_cache)
+        if disable_self_service_change_password is not None:
+            pulumi.set(__self__, "disable_self_service_change_password", disable_self_service_change_password)
         if disable_sign_out is not None:
             pulumi.set(__self__, "disable_sign_out", disable_sign_out)
         if disable_signup is not None:
@@ -2758,6 +2764,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "password_no_personal_info", password_no_personal_info)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
+        if ping_federate_base_url is not None:
+            pulumi.set(__self__, "ping_federate_base_url", ping_federate_base_url)
         if pkce_enabled is not None:
             pulumi.set(__self__, "pkce_enabled", pkce_enabled)
         if protocol_binding is not None:
@@ -3008,6 +3016,18 @@ class ConnectionOptionsArgs:
     @disable_cache.setter
     def disable_cache(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_cache", value)
+
+    @property
+    @pulumi.getter(name="disableSelfServiceChangePassword")
+    def disable_self_service_change_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to remove the forgot password link within the New Universal Login.
+        """
+        return pulumi.get(self, "disable_self_service_change_password")
+
+    @disable_self_service_change_password.setter
+    def disable_self_service_change_password(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_self_service_change_password", value)
 
     @property
     @pulumi.getter(name="disableSignOut")
@@ -3416,6 +3436,18 @@ class ConnectionOptionsArgs:
     @password_policy.setter
     def password_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password_policy", value)
+
+    @property
+    @pulumi.getter(name="pingFederateBaseUrl")
+    def ping_federate_base_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ping Federate Server URL.
+        """
+        return pulumi.get(self, "ping_federate_base_url")
+
+    @ping_federate_base_url.setter
+    def ping_federate_base_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ping_federate_base_url", value)
 
     @property
     @pulumi.getter(name="pkceEnabled")
@@ -6393,7 +6425,7 @@ class RolePermissionArgs:
                  name: pulumi.Input[str],
                  resource_server_identifier: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the permission (scope).
+        :param pulumi.Input[str] name: Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
         :param pulumi.Input[str] resource_server_identifier: Unique identifier for the resource server.
         """
         pulumi.set(__self__, "name", name)
@@ -6403,7 +6435,7 @@ class RolePermissionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the permission (scope).
+        Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
         """
         return pulumi.get(self, "name")
 

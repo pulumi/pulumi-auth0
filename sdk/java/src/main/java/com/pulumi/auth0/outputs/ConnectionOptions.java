@@ -102,6 +102,11 @@ public final class ConnectionOptions {
      */
     private @Nullable Boolean disableCache;
     /**
+     * @return Indicates whether to remove the forgot password link within the New Universal Login.
+     * 
+     */
+    private @Nullable Boolean disableSelfServiceChangePassword;
+    /**
      * @return When enabled, will disable sign out.
      * 
      */
@@ -271,6 +276,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable String passwordPolicy;
+    /**
+     * @return Ping Federate Server URL.
+     * 
+     */
+    private @Nullable String pingFederateBaseUrl;
     /**
      * @return Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      * 
@@ -554,6 +564,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.disableCache);
     }
     /**
+     * @return Indicates whether to remove the forgot password link within the New Universal Login.
+     * 
+     */
+    public Optional<Boolean> disableSelfServiceChangePassword() {
+        return Optional.ofNullable(this.disableSelfServiceChangePassword);
+    }
+    /**
      * @return When enabled, will disable sign out.
      * 
      */
@@ -790,6 +807,13 @@ public final class ConnectionOptions {
      */
     public Optional<String> passwordPolicy() {
         return Optional.ofNullable(this.passwordPolicy);
+    }
+    /**
+     * @return Ping Federate Server URL.
+     * 
+     */
+    public Optional<String> pingFederateBaseUrl() {
+        return Optional.ofNullable(this.pingFederateBaseUrl);
     }
     /**
      * @return Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
@@ -1061,6 +1085,7 @@ public final class ConnectionOptions {
         private @Nullable Boolean debug;
         private @Nullable String digestAlgorithm;
         private @Nullable Boolean disableCache;
+        private @Nullable Boolean disableSelfServiceChangePassword;
         private @Nullable Boolean disableSignOut;
         private @Nullable Boolean disableSignup;
         private @Nullable String discoveryUrl;
@@ -1095,6 +1120,7 @@ public final class ConnectionOptions {
         private @Nullable List<ConnectionOptionsPasswordHistory> passwordHistories;
         private @Nullable ConnectionOptionsPasswordNoPersonalInfo passwordNoPersonalInfo;
         private @Nullable String passwordPolicy;
+        private @Nullable String pingFederateBaseUrl;
         private @Nullable Boolean pkceEnabled;
         private @Nullable String protocolBinding;
         private @Nullable String provider;
@@ -1148,6 +1174,7 @@ public final class ConnectionOptions {
     	      this.debug = defaults.debug;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.disableCache = defaults.disableCache;
+    	      this.disableSelfServiceChangePassword = defaults.disableSelfServiceChangePassword;
     	      this.disableSignOut = defaults.disableSignOut;
     	      this.disableSignup = defaults.disableSignup;
     	      this.discoveryUrl = defaults.discoveryUrl;
@@ -1182,6 +1209,7 @@ public final class ConnectionOptions {
     	      this.passwordHistories = defaults.passwordHistories;
     	      this.passwordNoPersonalInfo = defaults.passwordNoPersonalInfo;
     	      this.passwordPolicy = defaults.passwordPolicy;
+    	      this.pingFederateBaseUrl = defaults.pingFederateBaseUrl;
     	      this.pkceEnabled = defaults.pkceEnabled;
     	      this.protocolBinding = defaults.protocolBinding;
     	      this.provider = defaults.provider;
@@ -1295,6 +1323,11 @@ public final class ConnectionOptions {
         @CustomType.Setter
         public Builder disableCache(@Nullable Boolean disableCache) {
             this.disableCache = disableCache;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableSelfServiceChangePassword(@Nullable Boolean disableSelfServiceChangePassword) {
+            this.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
             return this;
         }
         @CustomType.Setter
@@ -1477,6 +1510,11 @@ public final class ConnectionOptions {
         @CustomType.Setter
         public Builder passwordPolicy(@Nullable String passwordPolicy) {
             this.passwordPolicy = passwordPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pingFederateBaseUrl(@Nullable String pingFederateBaseUrl) {
+            this.pingFederateBaseUrl = pingFederateBaseUrl;
             return this;
         }
         @CustomType.Setter
@@ -1674,6 +1712,7 @@ public final class ConnectionOptions {
             o.debug = debug;
             o.digestAlgorithm = digestAlgorithm;
             o.disableCache = disableCache;
+            o.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
             o.disableSignOut = disableSignOut;
             o.disableSignup = disableSignup;
             o.discoveryUrl = discoveryUrl;
@@ -1708,6 +1747,7 @@ public final class ConnectionOptions {
             o.passwordHistories = passwordHistories;
             o.passwordNoPersonalInfo = passwordNoPersonalInfo;
             o.passwordPolicy = passwordPolicy;
+            o.pingFederateBaseUrl = pingFederateBaseUrl;
             o.pkceEnabled = pkceEnabled;
             o.protocolBinding = protocolBinding;
             o.provider = provider;

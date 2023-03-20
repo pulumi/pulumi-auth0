@@ -32,6 +32,7 @@
         "getBrandingTheme.ts",
         "getClient.ts",
         "getConnection.ts",
+        "getCustomDomain.ts",
         "getGlobalClient.ts",
         "getOrganization.ts",
         "getResourceServer.ts",

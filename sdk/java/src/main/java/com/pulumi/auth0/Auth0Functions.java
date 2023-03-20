@@ -21,6 +21,7 @@ import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
+import com.pulumi.auth0.outputs.GetCustomDomainResult;
 import com.pulumi.auth0.outputs.GetGlobalClientResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetResourceServerResult;
@@ -1138,6 +1139,48 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the custom domain configuration.
+     * 
+     */
+    public static Output<GetCustomDomainResult> getCustomDomain() {
+        return getCustomDomain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the custom domain configuration.
+     * 
+     */
+    public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain() {
+        return getCustomDomainPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the custom domain configuration.
+     * 
+     */
+    public static Output<GetCustomDomainResult> getCustomDomain(InvokeArgs args) {
+        return getCustomDomain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the custom domain configuration.
+     * 
+     */
+    public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain(InvokeArgs args) {
+        return getCustomDomainPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the custom domain configuration.
+     * 
+     */
+    public static Output<GetCustomDomainResult> getCustomDomain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the custom domain configuration.
+     * 
+     */
+    public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieve a tenant&#39;s global Auth0 application client.

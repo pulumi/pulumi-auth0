@@ -28,6 +28,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly bool Debug;
         public readonly string DigestAlgorithm;
         public readonly bool DisableCache;
+        public readonly bool DisableSelfServiceChangePassword;
         public readonly bool DisableSignOut;
         public readonly bool DisableSignup;
         public readonly string DiscoveryUrl;
@@ -65,6 +66,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly ImmutableArray<Outputs.GetConnectionOptionPasswordHistoryResult> PasswordHistories;
         public readonly ImmutableArray<Outputs.GetConnectionOptionPasswordNoPersonalInfoResult> PasswordNoPersonalInfos;
         public readonly string PasswordPolicy;
+        public readonly string PingFederateBaseUrl;
         public readonly bool PkceEnabled;
         public readonly string ProtocolBinding;
         public readonly string Provider;
@@ -133,6 +135,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool disableCache,
 
+            bool disableSelfServiceChangePassword,
+
             bool disableSignOut,
 
             bool disableSignup,
@@ -200,6 +204,8 @@ namespace Pulumi.Auth0.Outputs
             ImmutableArray<Outputs.GetConnectionOptionPasswordNoPersonalInfoResult> passwordNoPersonalInfos,
 
             string passwordPolicy,
+
+            string pingFederateBaseUrl,
 
             bool pkceEnabled,
 
@@ -286,6 +292,7 @@ namespace Pulumi.Auth0.Outputs
             Debug = debug;
             DigestAlgorithm = digestAlgorithm;
             DisableCache = disableCache;
+            DisableSelfServiceChangePassword = disableSelfServiceChangePassword;
             DisableSignOut = disableSignOut;
             DisableSignup = disableSignup;
             DiscoveryUrl = discoveryUrl;
@@ -320,6 +327,7 @@ namespace Pulumi.Auth0.Outputs
             PasswordHistories = passwordHistories;
             PasswordNoPersonalInfos = passwordNoPersonalInfos;
             PasswordPolicy = passwordPolicy;
+            PingFederateBaseUrl = pingFederateBaseUrl;
             PkceEnabled = pkceEnabled;
             ProtocolBinding = protocolBinding;
             Provider = provider;

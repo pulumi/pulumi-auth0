@@ -141,6 +141,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? DisableCache { get; set; }
 
         /// <summary>
+        /// Indicates whether to remove the forgot password link within the New Universal Login.
+        /// </summary>
+        [Input("disableSelfServiceChangePassword")]
+        public Input<bool>? DisableSelfServiceChangePassword { get; set; }
+
+        /// <summary>
         /// When enabled, will disable sign out.
         /// </summary>
         [Input("disableSignOut")]
@@ -367,6 +373,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("passwordPolicy")]
         public Input<string>? PasswordPolicy { get; set; }
+
+        /// <summary>
+        /// Ping Federate Server URL.
+        /// </summary>
+        [Input("pingFederateBaseUrl")]
+        public Input<string>? PingFederateBaseUrl { get; set; }
 
         /// <summary>
         /// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
