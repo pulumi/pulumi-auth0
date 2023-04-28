@@ -67,15 +67,15 @@ public final class EmailArgs extends com.pulumi.resources.ResourceArgs {
      * Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -190,7 +190,7 @@ public final class EmailArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -229,6 +229,7 @@ public final class EmailArgs extends com.pulumi.resources.ResourceArgs {
         public EmailArgs build() {
             $.credentials = Objects.requireNonNull($.credentials, "expected parameter 'credentials' to be non-null");
             $.defaultFromAddress = Objects.requireNonNull($.defaultFromAddress, "expected parameter 'defaultFromAddress' to be non-null");
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

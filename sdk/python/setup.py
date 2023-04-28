@@ -38,6 +38,7 @@ def readme():
 
 
 setup(name='pulumi_auth0',
+      python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing auth0 cloud resources.",
       long_description=readme(),

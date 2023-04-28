@@ -17,33 +17,32 @@ __all__ = ['ActionArgs', 'Action']
 class ActionArgs:
     def __init__(__self__, *,
                  code: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  supported_triggers: pulumi.Input['ActionSupportedTriggersArgs'],
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
                  deploy: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None):
         """
         The set of arguments for constructing a Action resource.
         :param pulumi.Input[str] code: The source code of the action.
+        :param pulumi.Input[str] name: The name of the action.
         :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
                [Retrieving the set of triggers available within
                actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
                trigger versions supported.
         :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
-        :param pulumi.Input[str] name: The name of the action.
         :param pulumi.Input[str] runtime: The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
         :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action.
         """
         pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "supported_triggers", supported_triggers)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
         if deploy is not None:
             pulumi.set(__self__, "deploy", deploy)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
         if secrets is not None:
@@ -60,6 +59,18 @@ class ActionArgs:
     @code.setter
     def code(self, value: pulumi.Input[str]):
         pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the action.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="supportedTriggers")
@@ -99,18 +110,6 @@ class ActionArgs:
     @deploy.setter
     def deploy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deploy", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the action.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -373,6 +372,8 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["code"] = code
             __props__.__dict__["dependencies"] = dependencies
             __props__.__dict__["deploy"] = deploy
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["secrets"] = secrets

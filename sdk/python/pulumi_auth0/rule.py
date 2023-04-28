@@ -14,24 +14,35 @@ __all__ = ['RuleArgs', 'Rule']
 @pulumi.input_type
 class RuleArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  script: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Rule resource.
+        :param pulumi.Input[str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         :param pulumi.Input[str] script: Code to be executed when the rule runs.
         :param pulumi.Input[bool] enabled: Indicates whether the rule is enabled.
-        :param pulumi.Input[str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         :param pulumi.Input[int] order: Order in which the rule executes relative to other rules. Lower-valued rules execute first.
         """
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "script", script)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if order is not None:
             pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -56,18 +67,6 @@ class RuleArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -175,6 +174,7 @@ class Rule(pulumi.CustomResource):
 
         my_rule = auth0.Rule("myRule",
             enabled=True,
+            name="empty-rule",
             script=\"\"\"    function (user, context, callback) {
               callback(null, user, context);
             }
@@ -214,6 +214,7 @@ class Rule(pulumi.CustomResource):
 
         my_rule = auth0.Rule("myRule",
             enabled=True,
+            name="empty-rule",
             script=\"\"\"    function (user, context, callback) {
               callback(null, user, context);
             }
@@ -258,6 +259,8 @@ class Rule(pulumi.CustomResource):
             __props__ = RuleArgs.__new__(RuleArgs)
 
             __props__.__dict__["enabled"] = enabled
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["order"] = order
             if script is None and not opts.urn:

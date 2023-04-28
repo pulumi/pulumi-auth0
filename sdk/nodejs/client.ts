@@ -198,7 +198,7 @@ export class Client extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ClientArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ClientArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientArgs | ClientState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -242,6 +242,9 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["webOrigins"] = state ? state.webOrigins : undefined;
         } else {
             const args = argsOrState as ClientArgs | undefined;
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             resourceInputs["addons"] = args ? args.addons : undefined;
             resourceInputs["allowedClients"] = args ? args.allowedClients : undefined;
             resourceInputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
@@ -536,7 +539,7 @@ export interface ClientArgs {
     /**
      * Name of the client.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      */

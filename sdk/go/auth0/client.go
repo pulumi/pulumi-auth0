@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,9 +104,12 @@ type Client struct {
 func NewClient(ctx *pulumi.Context,
 	name string, args *ClientArgs, opts ...pulumi.ResourceOption) (*Client, error) {
 	if args == nil {
-		args = &ClientArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
@@ -339,7 +343,7 @@ type clientArgs struct {
 	// Additional configuration for native mobile apps.
 	Mobile *ClientMobile `pulumi:"mobile"`
 	// Name of the client.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 	NativeSocialLogin *ClientNativeSocialLogin `pulumi:"nativeSocialLogin"`
 	// Indicates whether this client will conform to strict OIDC specifications.
@@ -409,7 +413,7 @@ type ClientArgs struct {
 	// Additional configuration for native mobile apps.
 	Mobile ClientMobilePtrInput
 	// Name of the client.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 	NativeSocialLogin ClientNativeSocialLoginPtrInput
 	// Indicates whether this client will conform to strict OIDC specifications.

@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myRule = new Rule(&#34;myRule&#34;, RuleArgs.builder()        
  *             .enabled(true)
+ *             .name(&#34;empty-rule&#34;)
  *             .script(&#34;&#34;&#34;
  *     function (user, context, callback) {
  *       callback(null, user, context);

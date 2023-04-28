@@ -13,10 +13,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myConn = new auth0.Connection("myConn", {strategy: "auth0"});
+ * const myConn = new auth0.Connection("myConn", {
+ *     name: "My-Auth0-Connection",
+ *     strategy: "auth0",
+ * });
  * // Avoid using the enabled_clients = [...],
  * // if using the auth0_connection_client resource.
- * const myClient = new auth0.Client("myClient", {});
+ * const myClient = new auth0.Client("myClient", {name: "My-Auth0-Client"});
  * const myConnClientAssoc = new auth0.ConnectionClient("myConnClientAssoc", {
  *     connectionId: myConn.id,
  *     clientId: myClient.id,

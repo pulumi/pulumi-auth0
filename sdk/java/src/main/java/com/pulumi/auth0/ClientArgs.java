@@ -374,15 +374,15 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      * Name of the client.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return Name of the client.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -1125,7 +1125,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -1341,6 +1341,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
 
         public ClientArgs build() {
             $.description = Codegen.stringProp("description").output().arg($.description).def("Managed by Pulumi").getNullable();
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

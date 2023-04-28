@@ -149,8 +149,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// The name of the action.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.

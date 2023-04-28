@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
+//				Name:          pulumi.String("My Resource Server (Managed by Terraform)"),
 //				Identifier:    pulumi.String("my-resource-server-identifier"),
 //				SigningAlg:    pulumi.String("RS256"),
 //				TokenLifetime: pulumi.Int(86400),
@@ -43,6 +45,7 @@ import (
 //				return err
 //			}
 //			myRole, err := auth0.NewRole(ctx, "myRole", &auth0.RoleArgs{
+//				Name:        pulumi.String("My Role - (Managed by Terraform)"),
 //				Description: pulumi.String("Role Description..."),
 //				Permissions: auth0.RolePermissionArray{
 //					&auth0.RolePermissionArgs{
@@ -98,9 +101,12 @@ type Role struct {
 func NewRole(ctx *pulumi.Context,
 	name string, args *RoleArgs, opts ...pulumi.ResourceOption) (*Role, error) {
 	if args == nil {
-		args = &RoleArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
@@ -151,7 +157,7 @@ type roleArgs struct {
 	// Description of the role.
 	Description *string `pulumi:"description"`
 	// Name for this role.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Configuration settings for permissions (scopes) attached to the role.
 	Permissions []RolePermission `pulumi:"permissions"`
 }
@@ -161,7 +167,7 @@ type RoleArgs struct {
 	// Description of the role.
 	Description pulumi.StringPtrInput
 	// Name for this role.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// Configuration settings for permissions (scopes) attached to the role.
 	Permissions RolePermissionArrayInput
 }

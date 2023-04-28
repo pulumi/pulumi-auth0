@@ -635,11 +635,14 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        admin = auth0.Role("admin", description="Administrator")
+        admin = auth0.Role("admin",
+            name="admin",
+            description="Administrator")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             user_id="12345",
             username="unique_username",
+            name="Firstname Lastname",
             nickname="some.nickname",
             email="test@test.com",
             email_verified=True,
@@ -692,11 +695,14 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        admin = auth0.Role("admin", description="Administrator")
+        admin = auth0.Role("admin",
+            name="admin",
+            description="Administrator")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             user_id="12345",
             username="unique_username",
+            name="Firstname Lastname",
             nickname="some.nickname",
             email="test@test.com",
             email_verified=True,

@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
  *     allowOfflineAccess: true,
  *     identifier: "https://api.example.com",
+ *     name: "Example Resource Server (Managed by Terraform)",
  *     scopes: [
  *         {
  *             description: "Create foos",
@@ -85,7 +86,7 @@ export class ResourceServer extends pulumi.CustomResource {
     /**
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
     /**
      * Used to store additional metadata.
      */

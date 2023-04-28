@@ -34,6 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "googleOauth2", &auth0.ConnectionArgs{
+//				Name: pulumi.String("Google-OAuth2-Connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					AllowedAudiences: pulumi.StringArray{
 //						pulumi.String("example.com"),
@@ -78,6 +79,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "facebook", &auth0.ConnectionArgs{
+//				Name: pulumi.String("Facebook-Connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
@@ -118,6 +120,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "apple", &auth0.ConnectionArgs{
+//				Name: pulumi.String("Apple-Connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("-----BEGIN PRIVATE KEY-----\nMIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA\n-----END PRIVATE KEY-----\n"),
@@ -158,6 +161,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "linkedin", &auth0.ConnectionArgs{
+//				Name: pulumi.String("Linkedin-Connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
@@ -198,6 +202,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "github", &auth0.ConnectionArgs{
+//				Name: pulumi.String("GitHub-Connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
@@ -238,6 +243,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "salesforce", &auth0.ConnectionArgs{
+//				Name: pulumi.String("Salesforce-Connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:         pulumi.String("<client-id>"),
 //					ClientSecret:     pulumi.String("<client-secret>"),
@@ -279,6 +285,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "oauth2", &auth0.ConnectionArgs{
+//				Name: pulumi.String("OAuth2-Connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					AuthorizationEndpoint: pulumi.String("https://auth.example.com/oauth2/authorize"),
 //					ClientId:              pulumi.String("<client-id>"),
@@ -328,6 +335,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "sms", &auth0.ConnectionArgs{
 //				IsDomainConnection: pulumi.Bool(false),
+//				Name:               pulumi.String("custom-sms-gateway"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					BruteForceProtection: pulumi.Bool(true),
 //					DisableSignup:        pulumi.Bool(false),
@@ -377,6 +385,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "passwordlessEmail", &auth0.ConnectionArgs{
+//				Name: pulumi.String("email"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					AuthParams: pulumi.StringMap{
 //						"responseType": pulumi.String("code"),
@@ -421,6 +430,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "windowslive", &auth0.ConnectionArgs{
+//				Name: pulumi.String("Windowslive-Connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
@@ -461,6 +471,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewConnection(ctx, "oidc", &auth0.ConnectionArgs{
 //				DisplayName: pulumi.String("OIDC Connection"),
+//				Name:        pulumi.String("oidc-connection"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					AuthorizationEndpoint: pulumi.String("https://www.paypal.com/signin/authorize"),
 //					ClientId:              pulumi.String("1234567"),
@@ -537,6 +548,9 @@ func NewConnection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Strategy == nil {
 		return nil, errors.New("invalid value for required argument 'Strategy'")
 	}
@@ -615,7 +629,7 @@ type connectionArgs struct {
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Name of the connection.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
 	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
@@ -635,7 +649,7 @@ type ConnectionArgs struct {
 	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
 	Metadata pulumi.StringMapInput
 	// Name of the connection.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
 	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.

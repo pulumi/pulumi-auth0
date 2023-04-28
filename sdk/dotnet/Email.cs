@@ -16,6 +16,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -32,6 +33,7 @@ namespace Pulumi.Auth0
     ///         },
     ///         DefaultFromAddress = "accounts@example.com",
     ///         Enabled = true,
+    ///         Name = "ses",
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with SMTP.
@@ -46,6 +48,7 @@ namespace Pulumi.Auth0
     ///         },
     ///         DefaultFromAddress = "accounts@example.com",
     ///         Enabled = true,
+    ///         Name = "smtp",
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with Sendgrid.
@@ -57,6 +60,7 @@ namespace Pulumi.Auth0
     ///         },
     ///         DefaultFromAddress = "accounts@example.com",
     ///         Enabled = true,
+    ///         Name = "sendgrid",
     ///     });
     /// 
     /// });
@@ -170,8 +174,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Specific email provider settings.

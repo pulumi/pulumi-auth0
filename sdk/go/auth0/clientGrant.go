@@ -27,11 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myClient, err := auth0.NewClient(ctx, "myClient", nil)
+//			myClient, err := auth0.NewClient(ctx, "myClient", &auth0.ClientArgs{
+//				Name: pulumi.String("Example Application - Client Grant (Managed by Terraform)"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			myResourceServer, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
+//				Name:       pulumi.String("Example Resource Server - Client Grant (Managed by Terraform)"),
 //				Identifier: pulumi.String("https://api.example.com/client-grant"),
 //				Scopes: auth0.ResourceServerScopeArray{
 //					&auth0.ResourceServerScopeArgs{

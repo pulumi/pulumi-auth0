@@ -16,6 +16,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -23,6 +24,7 @@ namespace Pulumi.Auth0
     /// {
     ///     var admin = new Auth0.Role("admin", new()
     ///     {
+    ///         Name = "admin",
     ///         Description = "Administrator",
     ///     });
     /// 
@@ -31,6 +33,7 @@ namespace Pulumi.Auth0
     ///         ConnectionName = "Username-Password-Authentication",
     ///         UserId = "12345",
     ///         Username = "unique_username",
+    ///         Name = "Firstname Lastname",
     ///         Nickname = "some.nickname",
     ///         Email = "test@test.com",
     ///         EmailVerified = true,

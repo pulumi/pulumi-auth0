@@ -27,6 +27,7 @@ import * as utilities from "./utilities";
  *             type: "category",
  *         },
  *     ],
+ *     name: "HTTP log stream",
  *     sink: {
  *         httpAuthorization: "AKIAXXXXXXXXXXXXXXXX",
  *         httpContentFormat: "JSONOBJECT",
@@ -41,6 +42,7 @@ import * as utilities from "./utilities";
  * });
  * // This is an example of an Amazon EventBridge log stream.
  * const exampleAws = new auth0.LogStream("exampleAws", {
+ *     name: "AWS Eventbridge",
  *     sink: {
  *         awsAccountId: "my_account_id",
  *         awsRegion: "us-east-2",
@@ -127,6 +129,9 @@ export class LogStream extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LogStreamArgs | undefined;
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.sink === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sink'");
             }
@@ -181,7 +186,7 @@ export interface LogStreamArgs {
     /**
      * Name of the log stream.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The sink configuration for the log stream.
      */

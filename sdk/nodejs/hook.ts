@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *         auth0: "2.30.0",
  *     },
  *     enabled: true,
+ *     name: "My Pre User Registration Hook",
  *     script: `    function (user, context, callback) {
  *       callback(null, { user });
  *     }
@@ -112,6 +113,9 @@ export class Hook extends pulumi.CustomResource {
             resourceInputs["triggerId"] = state ? state.triggerId : undefined;
         } else {
             const args = argsOrState as HookArgs | undefined;
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.script === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
@@ -177,7 +181,7 @@ export interface HookArgs {
     /**
      * Name of this hook.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Code to be executed when this hook runs.
      */

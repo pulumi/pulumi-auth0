@@ -16,6 +16,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -25,6 +26,7 @@ namespace Pulumi.Auth0
     ///     {
     ///         AllowOfflineAccess = true,
     ///         Identifier = "https://api.example.com",
+    ///         Name = "Example Resource Server (Managed by Terraform)",
     ///         Scopes = new[]
     ///         {
     ///             new Auth0.Inputs.ResourceServerScopeArgs
@@ -79,7 +81,7 @@ namespace Pulumi.Auth0
         /// Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
         /// Used to store additional metadata.

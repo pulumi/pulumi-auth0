@@ -29,6 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
 //				Enabled: pulumi.Bool(true),
+//				Name:    pulumi.String("empty-rule"),
 //				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, user, context);\n    }\n  \n"),
 //			})
 //			if err != nil {
@@ -69,6 +70,9 @@ func NewRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Script == nil {
 		return nil, errors.New("invalid value for required argument 'Script'")
 	}
@@ -123,7 +127,7 @@ type ruleArgs struct {
 	// Indicates whether the rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
 	Order *int `pulumi:"order"`
 	// Code to be executed when the rule runs.
@@ -135,7 +139,7 @@ type RuleArgs struct {
 	// Indicates whether the rule is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// Order in which the rule executes relative to other rules. Lower-valued rules execute first.
 	Order pulumi.IntPtrInput
 	// Code to be executed when the rule runs.

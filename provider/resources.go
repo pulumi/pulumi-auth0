@@ -16,6 +16,8 @@ package auth0
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 
 	auth0Shim "github.com/auth0/terraform-provider-auth0/shim"
@@ -109,14 +111,19 @@ func Provider() tfbridge.ProviderInfo {
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("auth0_", mainMod,
 		x.MakeStandardToken(mainPkg)))
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "failed to apply default token strategy")
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-auth0/bridge-metadata.json
+var metadata []byte

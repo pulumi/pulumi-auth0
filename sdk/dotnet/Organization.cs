@@ -22,6 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -39,6 +40,7 @@ namespace Pulumi.Auth0
     ///             LogoUrl = "https://example.com/assets/icons/icon.png",
     ///         },
     ///         DisplayName = "Auth0 Inc.",
+    ///         Name = "auth0-inc",
     ///     });
     /// 
     /// });
@@ -87,7 +89,7 @@ namespace Pulumi.Auth0
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Organization(string name, OrganizationArgs? args = null, CustomResourceOptions? options = null)
+        public Organization(string name, OrganizationArgs args, CustomResourceOptions? options = null)
             : base("auth0:index/organization:Organization", name, args ?? new OrganizationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -152,8 +154,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// The name of this organization.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public OrganizationArgs()
         {
