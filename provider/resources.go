@@ -116,7 +116,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("auth0_", mainMod,
 		x.MakeStandardToken(mainPkg)))
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "failed to apply default token strategy")
 	err = x.AutoAliasing(&prov, prov.GetMetadata())
 	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
