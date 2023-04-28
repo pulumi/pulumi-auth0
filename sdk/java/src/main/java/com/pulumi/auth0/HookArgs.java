@@ -52,15 +52,15 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
      * Name of this hook.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return Name of this hook.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -185,7 +185,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -264,6 +264,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HookArgs build() {
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
             $.triggerId = Objects.requireNonNull($.triggerId, "expected parameter 'triggerId' to be non-null");
             return $;

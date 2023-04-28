@@ -16,6 +16,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -23,11 +24,13 @@ namespace Pulumi.Auth0
     /// {
     ///     var myConnection = new Auth0.Connection("myConnection", new()
     ///     {
+    ///         Name = "My Connection",
     ///         Strategy = "auth0",
     ///     });
     /// 
     ///     var myOrganization = new Auth0.Organization("myOrganization", new()
     ///     {
+    ///         Name = "my-organization",
     ///         DisplayName = "My Organization",
     ///     });
     /// 

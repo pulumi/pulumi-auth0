@@ -109,6 +109,9 @@ export class Action extends pulumi.CustomResource {
             if ((!args || args.code === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'code'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.supportedTriggers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'supportedTriggers'");
             }
@@ -186,7 +189,7 @@ export interface ActionArgs {
     /**
      * The name of the action.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
      */

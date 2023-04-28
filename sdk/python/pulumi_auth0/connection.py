@@ -16,25 +16,26 @@ __all__ = ['ConnectionArgs', 'Connection']
 @pulumi.input_type
 class ConnectionArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  strategy: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  is_domain_connection: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
                  realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  show_as_button: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
+        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
-        :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         """
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "strategy", strategy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -42,14 +43,24 @@ class ConnectionArgs:
             pulumi.set(__self__, "is_domain_connection", is_domain_connection)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
         if realms is not None:
             pulumi.set(__self__, "realms", realms)
         if show_as_button is not None:
             pulumi.set(__self__, "show_as_button", show_as_button)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the connection.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -98,18 +109,6 @@ class ConnectionArgs:
     @metadata.setter
     def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the connection.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -330,6 +329,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         google_oauth2 = auth0.Connection("googleOauth2",
+            name="Google-OAuth2-Connection",
             options=auth0.ConnectionOptionsArgs(
                 allowed_audiences=[
                     "example.com",
@@ -358,6 +358,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         facebook = auth0.Connection("facebook",
+            name="Facebook-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -382,6 +383,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         apple = auth0.Connection("apple",
+            name="Apple-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
@@ -409,6 +411,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         linkedin = auth0.Connection("linkedin",
+            name="Linkedin-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -433,6 +436,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         github = auth0.Connection("github",
+            name="GitHub-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -457,6 +461,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         salesforce = auth0.Connection("salesforce",
+            name="Salesforce-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -482,6 +487,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         oauth2 = auth0.Connection("oauth2",
+            name="OAuth2-Connection",
             options=auth0.ConnectionOptionsArgs(
                 authorization_endpoint="https://auth.example.com/oauth2/authorize",
                 client_id="<client-id>",
@@ -519,6 +525,7 @@ class Connection(pulumi.CustomResource):
 
         sms = auth0.Connection("sms",
             is_domain_connection=False,
+            name="custom-sms-gateway",
             options=auth0.ConnectionOptionsArgs(
                 brute_force_protection=True,
                 disable_signup=False,
@@ -552,6 +559,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         passwordless_email = auth0.Connection("passwordlessEmail",
+            name="email",
             options=auth0.ConnectionOptionsArgs(
                 auth_params={
                     "responseType": "code",
@@ -580,6 +588,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         windowslive = auth0.Connection("windowslive",
+            name="Windowslive-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -604,6 +613,7 @@ class Connection(pulumi.CustomResource):
 
         oidc = auth0.Connection("oidc",
             display_name="OIDC Connection",
+            name="oidc-connection",
             options=auth0.ConnectionOptionsArgs(
                 authorization_endpoint="https://www.paypal.com/signin/authorize",
                 client_id="1234567",
@@ -672,6 +682,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         google_oauth2 = auth0.Connection("googleOauth2",
+            name="Google-OAuth2-Connection",
             options=auth0.ConnectionOptionsArgs(
                 allowed_audiences=[
                     "example.com",
@@ -700,6 +711,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         facebook = auth0.Connection("facebook",
+            name="Facebook-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -724,6 +736,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         apple = auth0.Connection("apple",
+            name="Apple-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret=\"\"\"-----BEGIN PRIVATE KEY-----
@@ -751,6 +764,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         linkedin = auth0.Connection("linkedin",
+            name="Linkedin-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -775,6 +789,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         github = auth0.Connection("github",
+            name="GitHub-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -799,6 +814,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         salesforce = auth0.Connection("salesforce",
+            name="Salesforce-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -824,6 +840,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         oauth2 = auth0.Connection("oauth2",
+            name="OAuth2-Connection",
             options=auth0.ConnectionOptionsArgs(
                 authorization_endpoint="https://auth.example.com/oauth2/authorize",
                 client_id="<client-id>",
@@ -861,6 +878,7 @@ class Connection(pulumi.CustomResource):
 
         sms = auth0.Connection("sms",
             is_domain_connection=False,
+            name="custom-sms-gateway",
             options=auth0.ConnectionOptionsArgs(
                 brute_force_protection=True,
                 disable_signup=False,
@@ -894,6 +912,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         passwordless_email = auth0.Connection("passwordlessEmail",
+            name="email",
             options=auth0.ConnectionOptionsArgs(
                 auth_params={
                     "responseType": "code",
@@ -922,6 +941,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         windowslive = auth0.Connection("windowslive",
+            name="Windowslive-Connection",
             options=auth0.ConnectionOptionsArgs(
                 client_id="<client-id>",
                 client_secret="<client-secret>",
@@ -946,6 +966,7 @@ class Connection(pulumi.CustomResource):
 
         oidc = auth0.Connection("oidc",
             display_name="OIDC Connection",
+            name="oidc-connection",
             options=auth0.ConnectionOptionsArgs(
                 authorization_endpoint="https://www.paypal.com/signin/authorize",
                 client_id="1234567",
@@ -1016,6 +1037,8 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["is_domain_connection"] = is_domain_connection
             __props__.__dict__["metadata"] = metadata
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = options
             __props__.__dict__["realms"] = realms

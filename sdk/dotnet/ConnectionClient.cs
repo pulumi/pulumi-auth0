@@ -16,6 +16,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -23,12 +24,16 @@ namespace Pulumi.Auth0
     /// {
     ///     var myConn = new Auth0.Connection("myConn", new()
     ///     {
+    ///         Name = "My-Auth0-Connection",
     ///         Strategy = "auth0",
     ///     });
     /// 
     ///     // Avoid using the enabled_clients = [...],
     ///     // if using the auth0_connection_client resource.
-    ///     var myClient = new Auth0.Client("myClient");
+    ///     var myClient = new Auth0.Client("myClient", new()
+    ///     {
+    ///         Name = "My-Auth0-Client",
+    ///     });
     /// 
     ///     var myConnClientAssoc = new Auth0.ConnectionClient("myConnClientAssoc", new()
     ///     {

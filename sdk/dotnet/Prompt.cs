@@ -16,6 +16,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 

@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var googleOauth2 = new Connection(&#34;googleOauth2&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;Google-OAuth2-Connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .allowedAudiences(                
  *                     &#34;example.com&#34;,
@@ -97,6 +98,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var facebook = new Connection(&#34;facebook&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;Facebook-Connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
@@ -140,6 +142,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var apple = new Connection(&#34;apple&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;Apple-Connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&#34;&#34;
@@ -187,6 +190,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var linkedin = new Connection(&#34;linkedin&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;Linkedin-Connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
@@ -230,6 +234,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var github = new Connection(&#34;github&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;GitHub-Connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
@@ -273,6 +278,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var salesforce = new Connection(&#34;salesforce&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;Salesforce-Connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
@@ -317,6 +323,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var oauth2 = new Connection(&#34;oauth2&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;OAuth2-Connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .authorizationEndpoint(&#34;https://auth.example.com/oauth2/authorize&#34;)
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
@@ -374,6 +381,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var sms = new Connection(&#34;sms&#34;, ConnectionArgs.builder()        
  *             .isDomainConnection(false)
+ *             .name(&#34;custom-sms-gateway&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .bruteForceProtection(true)
  *                 .disableSignup(false)
@@ -429,6 +437,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var passwordlessEmail = new Connection(&#34;passwordlessEmail&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;email&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .authParams(Map.ofEntries(
  *                     Map.entry(&#34;responseType&#34;, &#34;code&#34;),
@@ -478,6 +487,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var windowslive = new Connection(&#34;windowslive&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;Windowslive-Connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(&#34;&lt;client-id&gt;&#34;)
  *                 .clientSecret(&#34;&lt;client-secret&gt;&#34;)
@@ -521,6 +531,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var oidc = new Connection(&#34;oidc&#34;, ConnectionArgs.builder()        
  *             .displayName(&#34;OIDC Connection&#34;)
+ *             .name(&#34;oidc-connection&#34;)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .authorizationEndpoint(&#34;https://www.paypal.com/signin/authorize&#34;)
  *                 .clientId(&#34;1234567&#34;)

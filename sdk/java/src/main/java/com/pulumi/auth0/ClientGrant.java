@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Client;
+ * import com.pulumi.auth0.ClientArgs;
  * import com.pulumi.auth0.ResourceServer;
  * import com.pulumi.auth0.ResourceServerArgs;
  * import com.pulumi.auth0.inputs.ResourceServerScopeArgs;
@@ -43,9 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myClient = new Client(&#34;myClient&#34;);
+ *         var myClient = new Client(&#34;myClient&#34;, ClientArgs.builder()        
+ *             .name(&#34;Example Application - Client Grant (Managed by Terraform)&#34;)
+ *             .build());
  * 
  *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
+ *             .name(&#34;Example Resource Server - Client Grant (Managed by Terraform)&#34;)
  *             .identifier(&#34;https://api.example.com/client-grant&#34;)
  *             .scopes(            
  *                 ResourceServerScopeArgs.builder()

@@ -58,6 +58,9 @@ func NewAction(ctx *pulumi.Context,
 	if args.Code == nil {
 		return nil, errors.New("invalid value for required argument 'Code'")
 	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.SupportedTriggers == nil {
 		return nil, errors.New("invalid value for required argument 'SupportedTriggers'")
 	}
@@ -138,7 +141,7 @@ type actionArgs struct {
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy *bool `pulumi:"deploy"`
 	// The name of the action.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
 	Runtime *string `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action.
@@ -159,7 +162,7 @@ type ActionArgs struct {
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy pulumi.BoolPtrInput
 	// The name of the action.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
 	Runtime pulumi.StringPtrInput
 	// List of secrets that are included in an action or a version of an action.

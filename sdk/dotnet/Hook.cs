@@ -16,6 +16,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -28,6 +29,7 @@ namespace Pulumi.Auth0
     ///             { "auth0", "2.30.0" },
     ///         },
     ///         Enabled = true,
+    ///         Name = "My Pre User Registration Hook",
     ///         Script = @"    function (user, context, callback) {
     ///       callback(null, { user });
     ///     }
@@ -161,8 +163,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name of this hook.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Code to be executed when this hook runs.

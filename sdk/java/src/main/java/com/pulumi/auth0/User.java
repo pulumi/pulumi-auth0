@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var admin = new Role(&#34;admin&#34;, RoleArgs.builder()        
+ *             .name(&#34;admin&#34;)
  *             .description(&#34;Administrator&#34;)
  *             .build());
  * 
@@ -51,6 +52,7 @@ import javax.annotation.Nullable;
  *             .connectionName(&#34;Username-Password-Authentication&#34;)
  *             .userId(&#34;12345&#34;)
  *             .username(&#34;unique_username&#34;)
+ *             .name(&#34;Firstname Lastname&#34;)
  *             .nickname(&#34;some.nickname&#34;)
  *             .email(&#34;test@test.com&#34;)
  *             .emailVerified(true)

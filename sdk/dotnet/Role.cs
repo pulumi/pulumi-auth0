@@ -16,6 +16,7 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
@@ -23,6 +24,7 @@ namespace Pulumi.Auth0
     /// {
     ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
     ///     {
+    ///         Name = "My Resource Server (Managed by Terraform)",
     ///         Identifier = "my-resource-server-identifier",
     ///         SigningAlg = "RS256",
     ///         TokenLifetime = 86400,
@@ -40,6 +42,7 @@ namespace Pulumi.Auth0
     /// 
     ///     var myRole = new Auth0.Role("myRole", new()
     ///     {
+    ///         Name = "My Role - (Managed by Terraform)",
     ///         Description = "Role Description...",
     ///         Permissions = new[]
     ///         {
@@ -105,7 +108,7 @@ namespace Pulumi.Auth0
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Role(string name, RoleArgs? args = null, CustomResourceOptions? options = null)
+        public Role(string name, RoleArgs args, CustomResourceOptions? options = null)
             : base("auth0:index/role:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -152,8 +155,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name for this role.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("permissions")]
         private InputList<Inputs.RolePermissionArgs>? _permissions;

@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
+ *             .name(&#34;My Resource Server (Managed by Terraform)&#34;)
  *             .identifier(&#34;my-resource-server-identifier&#34;)
  *             .signingAlg(&#34;RS256&#34;)
  *             .tokenLifetime(86400)
@@ -60,6 +61,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myRole = new Role(&#34;myRole&#34;, RoleArgs.builder()        
+ *             .name(&#34;My Role - (Managed by Terraform)&#34;)
  *             .description(&#34;Role Description...&#34;)
  *             .permissions(RolePermissionArgs.builder()
  *                 .resourceServerIdentifier(myResourceServer.identifier())
@@ -147,7 +149,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Role(String name, @Nullable RoleArgs args) {
+    public Role(String name, RoleArgs args) {
         this(name, args, null);
     }
     /**
@@ -156,7 +158,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Role(String name, @Nullable RoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Role(String name, RoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("auth0:index/role:Role", name, args == null ? RoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

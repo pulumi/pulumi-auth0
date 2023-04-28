@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //					LogoUrl: pulumi.String("https://example.com/assets/icons/icon.png"),
 //				},
 //				DisplayName: pulumi.String("Auth0 Inc."),
+//				Name:        pulumi.String("auth0-inc"),
 //			})
 //			if err != nil {
 //				return err
@@ -77,9 +79,12 @@ type Organization struct {
 func NewOrganization(ctx *pulumi.Context,
 	name string, args *OrganizationArgs, opts ...pulumi.ResourceOption) (*Organization, error) {
 	if args == nil {
-		args = &OrganizationArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	var resource Organization
 	err := ctx.RegisterResource("auth0:index/organization:Organization", name, args, &resource, opts...)
 	if err != nil {
@@ -135,7 +140,7 @@ type organizationArgs struct {
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of this organization.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Organization resource.
@@ -147,7 +152,7 @@ type OrganizationArgs struct {
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata pulumi.StringMapInput
 	// The name of this organization.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 }
 
 func (OrganizationArgs) ElementType() reflect.Type {

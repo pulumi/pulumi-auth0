@@ -16,14 +16,21 @@ namespace Pulumi.Auth0
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var reader = new Auth0.Role("reader");
+    ///     var reader = new Auth0.Role("reader", new()
+    ///     {
+    ///         Name = "Reader",
+    ///     });
     /// 
-    ///     var admin = new Auth0.Role("admin");
+    ///     var admin = new Auth0.Role("admin", new()
+    ///     {
+    ///         Name = "Admin",
+    ///     });
     /// 
     ///     var user = new Auth0.User("user", new()
     ///     {
@@ -35,6 +42,7 @@ namespace Pulumi.Auth0
     /// 
     ///     var myOrg = new Auth0.Organization("myOrg", new()
     ///     {
+    ///         Name = "org-admin",
     ///         DisplayName = "Admin",
     ///     });
     /// 

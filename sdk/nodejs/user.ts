@@ -13,11 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const admin = new auth0.Role("admin", {description: "Administrator"});
+ * const admin = new auth0.Role("admin", {
+ *     name: "admin",
+ *     description: "Administrator",
+ * });
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
  *     userId: "12345",
  *     username: "unique_username",
+ *     name: "Firstname Lastname",
  *     nickname: "some.nickname",
  *     email: "test@test.com",
  *     emailVerified: true,

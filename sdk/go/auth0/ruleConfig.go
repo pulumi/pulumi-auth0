@@ -29,6 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewRule(ctx, "myRule", &auth0.RuleArgs{
 //				Enabled: pulumi.Bool(true),
+//				Name:    pulumi.String("empty-rule"),
 //				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, user, context);\n    }\n  \n"),
 //			})
 //			if err != nil {

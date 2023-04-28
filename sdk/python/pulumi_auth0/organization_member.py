@@ -139,14 +139,16 @@ class OrganizationMember(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        reader = auth0.Role("reader")
-        admin = auth0.Role("admin")
+        reader = auth0.Role("reader", name="Reader")
+        admin = auth0.Role("admin", name="Admin")
         user = auth0.User("user",
             email="test-user@auth0.com",
             connection_name="Username-Password-Authentication",
             email_verified=True,
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Admin")
+        my_org = auth0.Organization("myOrg",
+            name="org-admin",
+            display_name="Admin")
         my_org_member = auth0.OrganizationMember("myOrgMember",
             organization_id=my_org.id,
             user_id=user.id,
@@ -185,14 +187,16 @@ class OrganizationMember(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        reader = auth0.Role("reader")
-        admin = auth0.Role("admin")
+        reader = auth0.Role("reader", name="Reader")
+        admin = auth0.Role("admin", name="Admin")
         user = auth0.User("user",
             email="test-user@auth0.com",
             connection_name="Username-Password-Authentication",
             email_verified=True,
             password="MyPass123$")
-        my_org = auth0.Organization("myOrg", display_name="Admin")
+        my_org = auth0.Organization("myOrg",
+            name="org-admin",
+            display_name="Admin")
         my_org_member = auth0.OrganizationMember("myOrgMember",
             organization_id=my_org.id,
             user_id=user.id,

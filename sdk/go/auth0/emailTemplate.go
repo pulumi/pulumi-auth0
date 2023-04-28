@@ -28,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myEmailProvider, err := auth0.NewEmail(ctx, "myEmailProvider", &auth0.EmailArgs{
+//				Name:               pulumi.String("ses"),
 //				Enabled:            pulumi.Bool(true),
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials: &auth0.EmailCredentialsArgs{

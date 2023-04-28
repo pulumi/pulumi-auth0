@@ -248,7 +248,7 @@ namespace Pulumi.Auth0
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Client(string name, ClientArgs? args = null, CustomResourceOptions? options = null)
+        public Client(string name, ClientArgs args, CustomResourceOptions? options = null)
             : base("auth0:index/client:Client", name, args ?? new ClientArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -486,8 +486,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name of the client.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.

@@ -28,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
+//				Name:        pulumi.String("admin"),
 //				Description: pulumi.String("Administrator"),
 //			})
 //			if err != nil {
@@ -37,6 +38,7 @@ import (
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
 //				UserId:         pulumi.String("12345"),
 //				Username:       pulumi.String("unique_username"),
+//				Name:           pulumi.String("Firstname Lastname"),
 //				Nickname:       pulumi.String("some.nickname"),
 //				Email:          pulumi.String("test@test.com"),
 //				EmailVerified:  pulumi.Bool(true),

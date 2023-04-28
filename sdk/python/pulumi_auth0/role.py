@@ -16,23 +16,34 @@ __all__ = ['RoleArgs', 'Role']
 @pulumi.input_type
 class RoleArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]] = None):
         """
         The set of arguments for constructing a Role resource.
-        :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] name: Name for this role.
+        :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Configuration settings for permissions (scopes) attached to the role.
         """
+        pulumi.set(__self__, "name", name)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if permissions is not None:
             pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name for this role.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -45,18 +56,6 @@ class RoleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name for this role.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -148,6 +147,7 @@ class Role(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_resource_server = auth0.ResourceServer("myResourceServer",
+            name="My Resource Server (Managed by Terraform)",
             identifier="my-resource-server-identifier",
             signing_alg="RS256",
             token_lifetime=86400,
@@ -158,6 +158,7 @@ class Role(pulumi.CustomResource):
                 description="read something",
             )])
         my_role = auth0.Role("myRole",
+            name="My Role - (Managed by Terraform)",
             description="Role Description...",
             permissions=[auth0.RolePermissionArgs(
                 resource_server_identifier=my_resource_server.identifier,
@@ -191,7 +192,7 @@ class Role(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[RoleArgs] = None,
+                 args: RoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `ResourceServer`, then associated with roles and optionally, users using this resource.
@@ -203,6 +204,7 @@ class Role(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_resource_server = auth0.ResourceServer("myResourceServer",
+            name="My Resource Server (Managed by Terraform)",
             identifier="my-resource-server-identifier",
             signing_alg="RS256",
             token_lifetime=86400,
@@ -213,6 +215,7 @@ class Role(pulumi.CustomResource):
                 description="read something",
             )])
         my_role = auth0.Role("myRole",
+            name="My Role - (Managed by Terraform)",
             description="Role Description...",
             permissions=[auth0.RolePermissionArgs(
                 resource_server_identifier=my_resource_server.identifier,
@@ -266,6 +269,8 @@ class Role(pulumi.CustomResource):
             if description is None:
                 description = 'Managed by Pulumi'
             __props__.__dict__["description"] = description
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["permissions"] = permissions
         super(Role, __self__).__init__(

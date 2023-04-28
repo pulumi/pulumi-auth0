@@ -26,6 +26,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Role;
+ * import com.pulumi.auth0.RoleArgs;
  * import com.pulumi.auth0.User;
  * import com.pulumi.auth0.UserArgs;
  * import com.pulumi.auth0.Organization;
@@ -45,9 +46,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reader = new Role(&#34;reader&#34;);
+ *         var reader = new Role(&#34;reader&#34;, RoleArgs.builder()        
+ *             .name(&#34;Reader&#34;)
+ *             .build());
  * 
- *         var admin = new Role(&#34;admin&#34;);
+ *         var admin = new Role(&#34;admin&#34;, RoleArgs.builder()        
+ *             .name(&#34;Admin&#34;)
+ *             .build());
  * 
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
  *             .email(&#34;test-user@auth0.com&#34;)
@@ -57,6 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myOrg = new Organization(&#34;myOrg&#34;, OrganizationArgs.builder()        
+ *             .name(&#34;org-admin&#34;)
  *             .displayName(&#34;Admin&#34;)
  *             .build());
  * 

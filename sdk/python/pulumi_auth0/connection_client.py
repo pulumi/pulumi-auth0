@@ -138,10 +138,12 @@ class ConnectionClient(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_conn = auth0.Connection("myConn", strategy="auth0")
+        my_conn = auth0.Connection("myConn",
+            name="My-Auth0-Connection",
+            strategy="auth0")
         # Avoid using the enabled_clients = [...],
         # if using the auth0_connection_client resource.
-        my_client = auth0.Client("myClient")
+        my_client = auth0.Client("myClient", name="My-Auth0-Client")
         my_conn_client_assoc = auth0.ConnectionClient("myConnClientAssoc",
             connection_id=my_conn.id,
             client_id=my_client.id)
@@ -175,10 +177,12 @@ class ConnectionClient(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_conn = auth0.Connection("myConn", strategy="auth0")
+        my_conn = auth0.Connection("myConn",
+            name="My-Auth0-Connection",
+            strategy="auth0")
         # Avoid using the enabled_clients = [...],
         # if using the auth0_connection_client resource.
-        my_client = auth0.Client("myClient")
+        my_client = auth0.Client("myClient", name="My-Auth0-Client")
         my_conn_client_assoc = auth0.ConnectionClient("myConnClientAssoc",
             connection_id=my_conn.id,
             client_id=my_client.id)

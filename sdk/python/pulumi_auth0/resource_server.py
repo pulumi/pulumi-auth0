@@ -475,6 +475,7 @@ class ResourceServer(pulumi.CustomResource):
         my_resource_server = auth0.ResourceServer("myResourceServer",
             allow_offline_access=True,
             identifier="https://api.example.com",
+            name="Example Resource Server (Managed by Terraform)",
             scopes=[
                 auth0.ResourceServerScopeArgs(
                     description="Create foos",
@@ -532,6 +533,7 @@ class ResourceServer(pulumi.CustomResource):
         my_resource_server = auth0.ResourceServer("myResourceServer",
             allow_offline_access=True,
             identifier="https://api.example.com",
+            name="Example Resource Server (Managed by Terraform)",
             scopes=[
                 auth0.ResourceServerScopeArgs(
                     description="Create foos",
@@ -696,7 +698,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[str]:
+    def name(self) -> pulumi.Output[Optional[str]]:
         """
         Friendly name for the resource server. Cannot include `<` or `>` characters.
         """

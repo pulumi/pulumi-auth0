@@ -109,6 +109,7 @@ class TriggerBinding(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         action_foo = auth0.Action("actionFoo",
+            name="Test Trigger Binding Foo",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log("foo");
         };"
@@ -119,6 +120,7 @@ class TriggerBinding(pulumi.CustomResource):
                 version="v3",
             ))
         action_bar = auth0.Action("actionBar",
+            name="Test Trigger Binding Bar",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log("bar");
         };"
@@ -171,6 +173,7 @@ class TriggerBinding(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         action_foo = auth0.Action("actionFoo",
+            name="Test Trigger Binding Foo",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log("foo");
         };"
@@ -181,6 +184,7 @@ class TriggerBinding(pulumi.CustomResource):
                 version="v3",
             ))
         action_bar = auth0.Action("actionBar",
+            name="Test Trigger Binding Bar",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log("bar");
         };"

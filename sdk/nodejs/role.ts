@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
+ *     name: "My Resource Server (Managed by Terraform)",
  *     identifier: "my-resource-server-identifier",
  *     signingAlg: "RS256",
  *     tokenLifetime: 86400,
@@ -27,6 +28,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * const myRole = new auth0.Role("myRole", {
+ *     name: "My Role - (Managed by Terraform)",
  *     description: "Role Description...",
  *     permissions: [{
  *         resourceServerIdentifier: myResourceServer.identifier,
@@ -100,7 +102,7 @@ export class Role extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: RoleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: RoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleArgs | RoleState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -111,6 +113,9 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["permissions"] = state ? state.permissions : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             resourceInputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["permissions"] = args ? args.permissions : undefined;
@@ -149,7 +154,7 @@ export interface RoleArgs {
     /**
      * Name for this role.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Configuration settings for permissions (scopes) attached to the role.
      */
