@@ -31,6 +31,7 @@ namespace Pulumi.Auth0.Outputs
         public readonly bool EnableLegacyProfile;
         public readonly bool EnablePipeline2;
         public readonly bool EnablePublicSignupUserExistsError;
+        public readonly bool MfaShowFactorListOnEnrollment;
         public readonly bool NoDiscloseEnterpriseConnections;
         public readonly bool RevokeRefreshTokenGrant;
         /// <summary>
@@ -77,6 +78,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool enablePublicSignupUserExistsError,
 
+            bool mfaShowFactorListOnEnrollment,
+
             bool noDiscloseEnterpriseConnections,
 
             bool revokeRefreshTokenGrant,
@@ -103,6 +106,7 @@ namespace Pulumi.Auth0.Outputs
             EnableLegacyProfile = enableLegacyProfile;
             EnablePipeline2 = enablePipeline2;
             EnablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            MfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             NoDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             RevokeRefreshTokenGrant = revokeRefreshTokenGrant;
             UniversalLogin = universalLogin;

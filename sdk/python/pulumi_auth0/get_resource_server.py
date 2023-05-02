@@ -22,7 +22,7 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, allow_offline_access=None, enforce_policies=None, id=None, identifier=None, name=None, options=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, token_dialect=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, allow_offline_access=None, enforce_policies=None, id=None, identifier=None, name=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, token_dialect=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
         if allow_offline_access and not isinstance(allow_offline_access, bool):
             raise TypeError("Expected argument 'allow_offline_access' to be a bool")
         pulumi.set(__self__, "allow_offline_access", allow_offline_access)
@@ -38,9 +38,6 @@ class GetResourceServerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if options and not isinstance(options, dict):
-            raise TypeError("Expected argument 'options' to be a dict")
-        pulumi.set(__self__, "options", options)
         if resource_server_id and not isinstance(resource_server_id, str):
             raise TypeError("Expected argument 'resource_server_id' to be a str")
         pulumi.set(__self__, "resource_server_id", resource_server_id)
@@ -108,14 +105,6 @@ class GetResourceServerResult:
         Friendly name for the resource server. Cannot include `<` or `>` characters.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def options(self) -> Mapping[str, str]:
-        """
-        Used to store additional metadata.
-        """
-        return pulumi.get(self, "options")
 
     @property
     @pulumi.getter(name="resourceServerId")
@@ -201,7 +190,6 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
             id=self.id,
             identifier=self.identifier,
             name=self.name,
-            options=self.options,
             resource_server_id=self.resource_server_id,
             scopes=self.scopes,
             signing_alg=self.signing_alg,
@@ -245,7 +233,6 @@ def get_resource_server(identifier: Optional[str] = None,
         id=__ret__.id,
         identifier=__ret__.identifier,
         name=__ret__.name,
-        options=__ret__.options,
         resource_server_id=__ret__.resource_server_id,
         scopes=__ret__.scopes,
         signing_alg=__ret__.signing_alg,

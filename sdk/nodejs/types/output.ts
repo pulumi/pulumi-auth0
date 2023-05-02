@@ -756,11 +756,11 @@ export interface ConnectionOptions {
     /**
      * SAML single login URL for the connection.
      */
-    signInEndpoint?: string;
+    signInEndpoint: string;
     /**
      * SAML single logout URL for the connection.
      */
-    signOutEndpoint?: string;
+    signOutEndpoint: string;
     /**
      * When enabled, the SAML authentication request will be signed.
      */
@@ -772,7 +772,7 @@ export interface ConnectionOptions {
     /**
      * X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      */
-    signingCert?: string;
+    signingCert: string;
     /**
      * The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      */
@@ -1530,6 +1530,7 @@ export interface GetTenantFlag {
     enableLegacyProfile: boolean;
     enablePipeline2: boolean;
     enablePublicSignupUserExistsError: boolean;
+    mfaShowFactorListOnEnrollment: boolean;
     noDiscloseEnterpriseConnections: boolean;
     revokeRefreshTokenGrant: boolean;
     /**
@@ -1759,11 +1760,19 @@ export interface GuardianPush {
      */
     customApp: outputs.GuardianPushCustomApp;
     /**
+     * Configuration for the Apple Push Notification service (APNs) settings.
+     */
+    directApns: outputs.GuardianPushDirectApns;
+    /**
+     * Configuration for Firebase Cloud Messaging (FCM) settings.
+     */
+    directFcm: outputs.GuardianPushDirectFcm;
+    /**
      * Indicates whether Push MFA is enabled.
      */
     enabled: boolean;
     /**
-     * Provider to use, one of `guardian`, `sns`.
+     * Provider to use, one of `direct`, `guardian`, `sns`.
      */
     provider?: string;
 }
@@ -1780,6 +1789,17 @@ export interface GuardianPushCustomApp {
     appName?: string;
     appleAppLink?: string;
     googleAppLink?: string;
+}
+
+export interface GuardianPushDirectApns {
+    bundleId: string;
+    enabled: boolean;
+    p12: string;
+    sandbox: boolean;
+}
+
+export interface GuardianPushDirectFcm {
+    serverKey: string;
 }
 
 export interface GuardianWebauthnPlatform {
@@ -2047,6 +2067,10 @@ export interface TenantFlags {
      * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      */
     enablePublicSignupUserExistsError: boolean;
+    /**
+     * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     */
+    mfaShowFactorListOnEnrollment: boolean;
     /**
      * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      */

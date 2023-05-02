@@ -286,6 +286,21 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     * 
+     */
+    @Import(name="mfaShowFactorListOnEnrollment")
+    private @Nullable Output<Boolean> mfaShowFactorListOnEnrollment;
+
+    /**
+     * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     * 
+     */
+    public Optional<Output<Boolean>> mfaShowFactorListOnEnrollment() {
+        return Optional.ofNullable(this.mfaShowFactorListOnEnrollment);
+    }
+
+    /**
      * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      * 
      */
@@ -374,6 +389,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         this.enableLegacyProfile = $.enableLegacyProfile;
         this.enablePipeline2 = $.enablePipeline2;
         this.enablePublicSignupUserExistsError = $.enablePublicSignupUserExistsError;
+        this.mfaShowFactorListOnEnrollment = $.mfaShowFactorListOnEnrollment;
         this.noDiscloseEnterpriseConnections = $.noDiscloseEnterpriseConnections;
         this.revokeRefreshTokenGrant = $.revokeRefreshTokenGrant;
         this.universalLogin = $.universalLogin;
@@ -774,6 +790,27 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enablePublicSignupUserExistsError(Boolean enablePublicSignupUserExistsError) {
             return enablePublicSignupUserExistsError(Output.of(enablePublicSignupUserExistsError));
+        }
+
+        /**
+         * @param mfaShowFactorListOnEnrollment Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaShowFactorListOnEnrollment(@Nullable Output<Boolean> mfaShowFactorListOnEnrollment) {
+            $.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
+            return this;
+        }
+
+        /**
+         * @param mfaShowFactorListOnEnrollment Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaShowFactorListOnEnrollment(Boolean mfaShowFactorListOnEnrollment) {
+            return mfaShowFactorListOnEnrollment(Output.of(mfaShowFactorListOnEnrollment));
         }
 
         /**

@@ -144,10 +144,6 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Used to store additional metadata.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string> Options;
-        /// <summary>
         /// The ID of the resource server. If not provided, `identifier` must be set.
         /// </summary>
         public readonly string? ResourceServerId;
@@ -196,8 +192,6 @@ namespace Pulumi.Auth0
 
             string name,
 
-            ImmutableDictionary<string, string> options,
-
             string? resourceServerId,
 
             ImmutableArray<Outputs.GetResourceServerScopeResult> scopes,
@@ -221,7 +215,6 @@ namespace Pulumi.Auth0
             Id = id;
             Identifier = identifier;
             Name = name;
-            Options = options;
             ResourceServerId = resourceServerId;
             Scopes = scopes;
             SigningAlg = signingAlg;

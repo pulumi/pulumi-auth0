@@ -1456,6 +1456,9 @@
                         "passwordPolicy",
                         "scopes",
                         "setUserRootAttributes",
+                        "signInEndpoint",
+                        "signOutEndpoint",
+                        "signingCert",
                         "strategyVersion",
                         "tokenEndpoint",
                         "userinfoEndpoint"
@@ -2205,13 +2208,21 @@
                     "$ref": "#/types/auth0:index/GuardianPushCustomApp:GuardianPushCustomApp",
                     "description": "Configuration for the Guardian Custom App.\n"
                 },
+                "directApns": {
+                    "$ref": "#/types/auth0:index/GuardianPushDirectApns:GuardianPushDirectApns",
+                    "description": "Configuration for the Apple Push Notification service (APNs) settings.\n"
+                },
+                "directFcm": {
+                    "$ref": "#/types/auth0:index/GuardianPushDirectFcm:GuardianPushDirectFcm",
+                    "description": "Configuration for Firebase Cloud Messaging (FCM) settings.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Indicates whether Push MFA is enabled.\n"
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Provider to use, one of `guardian`, `sns`.\n"
+                    "description": "Provider to use, one of `direct`, `guardian`, `sns`.\n"
                 }
             },
             "type": "object",
@@ -2223,6 +2234,8 @@
                     "requiredOutputs": [
                         "amazonSns",
                         "customApp",
+                        "directApns",
+                        "directFcm",
                         "enabled"
                     ]
                 }
@@ -2269,6 +2282,51 @@
                 }
             },
             "type": "object"
+        },
+        "auth0:index/GuardianPushDirectApns:GuardianPushDirectApns": {
+            "properties": {
+                "bundleId": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "p12": {
+                    "type": "string",
+                    "secret": true
+                },
+                "sandbox": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bundleId",
+                "p12",
+                "sandbox"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bundleId",
+                        "enabled",
+                        "p12",
+                        "sandbox"
+                    ]
+                }
+            }
+        },
+        "auth0:index/GuardianPushDirectFcm:GuardianPushDirectFcm": {
+            "properties": {
+                "serverKey": {
+                    "type": "string",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "serverKey"
+            ]
         },
         "auth0:index/GuardianWebauthnPlatform:GuardianWebauthnPlatform": {
             "properties": {
@@ -2620,6 +2678,10 @@
                     "type": "boolean",
                     "description": "Indicates whether the public sign up process shows a `user_exists` error if the user already exists.\n"
                 },
+                "mfaShowFactorListOnEnrollment": {
+                    "type": "boolean",
+                    "description": "Used to allow users to pick which factor to enroll with from the list of available MFA factors.\n"
+                },
                 "noDiscloseEnterpriseConnections": {
                     "type": "boolean",
                     "description": "Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.\n"
@@ -2660,6 +2722,7 @@
                         "enableLegacyProfile",
                         "enablePipeline2",
                         "enablePublicSignupUserExistsError",
+                        "mfaShowFactorListOnEnrollment",
                         "noDiscloseEnterpriseConnections",
                         "revokeRefreshTokenGrant",
                         "universalLogin",
@@ -5216,6 +5279,9 @@
                 "enablePublicSignupUserExistsError": {
                     "type": "boolean"
                 },
+                "mfaShowFactorListOnEnrollment": {
+                    "type": "boolean"
+                },
                 "noDiscloseEnterpriseConnections": {
                     "type": "boolean"
                 },
@@ -5250,6 +5316,7 @@
                 "enableLegacyProfile",
                 "enablePipeline2",
                 "enablePublicSignupUserExistsError",
+                "mfaShowFactorListOnEnrollment",
                 "noDiscloseEnterpriseConnections",
                 "revokeRefreshTokenGrant",
                 "universalLogin",
@@ -8304,13 +8371,6 @@
                     "type": "string",
                     "description": "Friendly name for the resource server. Cannot include `\u003c` or `\u003e` characters.\n"
                 },
-                "options": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Used to store additional metadata.\n"
-                },
                 "scopes": {
                     "type": "array",
                     "items": {
@@ -8374,13 +8434,6 @@
                     "type": "string",
                     "description": "Friendly name for the resource server. Cannot include `\u003c` or `\u003e` characters.\n"
                 },
-                "options": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Used to store additional metadata.\n"
-                },
                 "scopes": {
                     "type": "array",
                     "items": {
@@ -8439,13 +8492,6 @@
                     "name": {
                         "type": "string",
                         "description": "Friendly name for the resource server. Cannot include `\u003c` or `\u003e` characters.\n"
-                    },
-                    "options": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "Used to store additional metadata.\n"
                     },
                     "scopes": {
                         "type": "array",
@@ -10137,13 +10183,6 @@
                         "type": "string",
                         "description": "Friendly name for the resource server. Cannot include `\u003c` or `\u003e` characters.\n"
                     },
-                    "options": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "Used to store additional metadata.\n"
-                    },
                     "resourceServerId": {
                         "type": "string",
                         "description": "The ID of the resource server. If not provided, `identifier` must be set.\n"
@@ -10189,7 +10228,6 @@
                     "allowOfflineAccess",
                     "enforcePolicies",
                     "name",
-                    "options",
                     "scopes",
                     "signingAlg",
                     "signingSecret",

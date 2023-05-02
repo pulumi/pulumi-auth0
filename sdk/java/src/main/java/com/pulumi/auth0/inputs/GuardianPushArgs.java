@@ -5,6 +5,8 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.GuardianPushAmazonSnsArgs;
 import com.pulumi.auth0.inputs.GuardianPushCustomAppArgs;
+import com.pulumi.auth0.inputs.GuardianPushDirectApnsArgs;
+import com.pulumi.auth0.inputs.GuardianPushDirectFcmArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -49,6 +51,36 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for the Apple Push Notification service (APNs) settings.
+     * 
+     */
+    @Import(name="directApns")
+    private @Nullable Output<GuardianPushDirectApnsArgs> directApns;
+
+    /**
+     * @return Configuration for the Apple Push Notification service (APNs) settings.
+     * 
+     */
+    public Optional<Output<GuardianPushDirectApnsArgs>> directApns() {
+        return Optional.ofNullable(this.directApns);
+    }
+
+    /**
+     * Configuration for Firebase Cloud Messaging (FCM) settings.
+     * 
+     */
+    @Import(name="directFcm")
+    private @Nullable Output<GuardianPushDirectFcmArgs> directFcm;
+
+    /**
+     * @return Configuration for Firebase Cloud Messaging (FCM) settings.
+     * 
+     */
+    public Optional<Output<GuardianPushDirectFcmArgs>> directFcm() {
+        return Optional.ofNullable(this.directFcm);
+    }
+
+    /**
      * Indicates whether Push MFA is enabled.
      * 
      */
@@ -64,14 +96,14 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provider to use, one of `guardian`, `sns`.
+     * Provider to use, one of `direct`, `guardian`, `sns`.
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return Provider to use, one of `guardian`, `sns`.
+     * @return Provider to use, one of `direct`, `guardian`, `sns`.
      * 
      */
     public Optional<Output<String>> provider() {
@@ -83,6 +115,8 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
     private GuardianPushArgs(GuardianPushArgs $) {
         this.amazonSns = $.amazonSns;
         this.customApp = $.customApp;
+        this.directApns = $.directApns;
+        this.directFcm = $.directFcm;
         this.enabled = $.enabled;
         this.provider = $.provider;
     }
@@ -148,6 +182,48 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param directApns Configuration for the Apple Push Notification service (APNs) settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directApns(@Nullable Output<GuardianPushDirectApnsArgs> directApns) {
+            $.directApns = directApns;
+            return this;
+        }
+
+        /**
+         * @param directApns Configuration for the Apple Push Notification service (APNs) settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directApns(GuardianPushDirectApnsArgs directApns) {
+            return directApns(Output.of(directApns));
+        }
+
+        /**
+         * @param directFcm Configuration for Firebase Cloud Messaging (FCM) settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directFcm(@Nullable Output<GuardianPushDirectFcmArgs> directFcm) {
+            $.directFcm = directFcm;
+            return this;
+        }
+
+        /**
+         * @param directFcm Configuration for Firebase Cloud Messaging (FCM) settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directFcm(GuardianPushDirectFcmArgs directFcm) {
+            return directFcm(Output.of(directFcm));
+        }
+
+        /**
          * @param enabled Indicates whether Push MFA is enabled.
          * 
          * @return builder
@@ -169,7 +245,7 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provider Provider to use, one of `guardian`, `sns`.
+         * @param provider Provider to use, one of `direct`, `guardian`, `sns`.
          * 
          * @return builder
          * 
@@ -180,7 +256,7 @@ public final class GuardianPushArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provider Provider to use, one of `guardian`, `sns`.
+         * @param provider Provider to use, one of `direct`, `guardian`, `sns`.
          * 
          * @return builder
          * 

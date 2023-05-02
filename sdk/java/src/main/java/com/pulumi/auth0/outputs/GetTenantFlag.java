@@ -27,6 +27,7 @@ public final class GetTenantFlag {
     private Boolean enableLegacyProfile;
     private Boolean enablePipeline2;
     private Boolean enablePublicSignupUserExistsError;
+    private Boolean mfaShowFactorListOnEnrollment;
     private Boolean noDiscloseEnterpriseConnections;
     private Boolean revokeRefreshTokenGrant;
     /**
@@ -91,6 +92,9 @@ public final class GetTenantFlag {
     public Boolean enablePublicSignupUserExistsError() {
         return this.enablePublicSignupUserExistsError;
     }
+    public Boolean mfaShowFactorListOnEnrollment() {
+        return this.mfaShowFactorListOnEnrollment;
+    }
     public Boolean noDiscloseEnterpriseConnections() {
         return this.noDiscloseEnterpriseConnections;
     }
@@ -135,6 +139,7 @@ public final class GetTenantFlag {
         private Boolean enableLegacyProfile;
         private Boolean enablePipeline2;
         private Boolean enablePublicSignupUserExistsError;
+        private Boolean mfaShowFactorListOnEnrollment;
         private Boolean noDiscloseEnterpriseConnections;
         private Boolean revokeRefreshTokenGrant;
         private Boolean universalLogin;
@@ -160,6 +165,7 @@ public final class GetTenantFlag {
     	      this.enableLegacyProfile = defaults.enableLegacyProfile;
     	      this.enablePipeline2 = defaults.enablePipeline2;
     	      this.enablePublicSignupUserExistsError = defaults.enablePublicSignupUserExistsError;
+    	      this.mfaShowFactorListOnEnrollment = defaults.mfaShowFactorListOnEnrollment;
     	      this.noDiscloseEnterpriseConnections = defaults.noDiscloseEnterpriseConnections;
     	      this.revokeRefreshTokenGrant = defaults.revokeRefreshTokenGrant;
     	      this.universalLogin = defaults.universalLogin;
@@ -257,6 +263,11 @@ public final class GetTenantFlag {
             return this;
         }
         @CustomType.Setter
+        public Builder mfaShowFactorListOnEnrollment(Boolean mfaShowFactorListOnEnrollment) {
+            this.mfaShowFactorListOnEnrollment = Objects.requireNonNull(mfaShowFactorListOnEnrollment);
+            return this;
+        }
+        @CustomType.Setter
         public Builder noDiscloseEnterpriseConnections(Boolean noDiscloseEnterpriseConnections) {
             this.noDiscloseEnterpriseConnections = Objects.requireNonNull(noDiscloseEnterpriseConnections);
             return this;
@@ -296,6 +307,7 @@ public final class GetTenantFlag {
             o.enableLegacyProfile = enableLegacyProfile;
             o.enablePipeline2 = enablePipeline2;
             o.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            o.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             o.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             o.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
             o.universalLogin = universalLogin;

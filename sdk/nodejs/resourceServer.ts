@@ -88,10 +88,6 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * Used to store additional metadata.
-     */
-    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
      * List of permissions (scopes) used by this resource server.
      */
     public readonly scopes!: pulumi.Output<outputs.ResourceServerScope[] | undefined>;
@@ -141,7 +137,6 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["enforcePolicies"] = state ? state.enforcePolicies : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["scopes"] = state ? state.scopes : undefined;
             resourceInputs["signingAlg"] = state ? state.signingAlg : undefined;
             resourceInputs["signingSecret"] = state ? state.signingSecret : undefined;
@@ -159,7 +154,6 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["enforcePolicies"] = args ? args.enforcePolicies : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["signingAlg"] = args ? args.signingAlg : undefined;
             resourceInputs["signingSecret"] = args ? args.signingSecret : undefined;
@@ -194,10 +188,6 @@ export interface ResourceServerState {
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Used to store additional metadata.
-     */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * List of permissions (scopes) used by this resource server.
      */
@@ -252,10 +242,6 @@ export interface ResourceServerArgs {
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Used to store additional metadata.
-     */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * List of permissions (scopes) used by this resource server.
      */

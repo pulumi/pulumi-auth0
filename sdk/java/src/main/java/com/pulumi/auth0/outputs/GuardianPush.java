@@ -5,6 +5,8 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GuardianPushAmazonSns;
 import com.pulumi.auth0.outputs.GuardianPushCustomApp;
+import com.pulumi.auth0.outputs.GuardianPushDirectApns;
+import com.pulumi.auth0.outputs.GuardianPushDirectFcm;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -25,12 +27,22 @@ public final class GuardianPush {
      */
     private @Nullable GuardianPushCustomApp customApp;
     /**
+     * @return Configuration for the Apple Push Notification service (APNs) settings.
+     * 
+     */
+    private @Nullable GuardianPushDirectApns directApns;
+    /**
+     * @return Configuration for Firebase Cloud Messaging (FCM) settings.
+     * 
+     */
+    private @Nullable GuardianPushDirectFcm directFcm;
+    /**
      * @return Indicates whether Push MFA is enabled.
      * 
      */
     private Boolean enabled;
     /**
-     * @return Provider to use, one of `guardian`, `sns`.
+     * @return Provider to use, one of `direct`, `guardian`, `sns`.
      * 
      */
     private @Nullable String provider;
@@ -51,6 +63,20 @@ public final class GuardianPush {
         return Optional.ofNullable(this.customApp);
     }
     /**
+     * @return Configuration for the Apple Push Notification service (APNs) settings.
+     * 
+     */
+    public Optional<GuardianPushDirectApns> directApns() {
+        return Optional.ofNullable(this.directApns);
+    }
+    /**
+     * @return Configuration for Firebase Cloud Messaging (FCM) settings.
+     * 
+     */
+    public Optional<GuardianPushDirectFcm> directFcm() {
+        return Optional.ofNullable(this.directFcm);
+    }
+    /**
      * @return Indicates whether Push MFA is enabled.
      * 
      */
@@ -58,7 +84,7 @@ public final class GuardianPush {
         return this.enabled;
     }
     /**
-     * @return Provider to use, one of `guardian`, `sns`.
+     * @return Provider to use, one of `direct`, `guardian`, `sns`.
      * 
      */
     public Optional<String> provider() {
@@ -76,6 +102,8 @@ public final class GuardianPush {
     public static final class Builder {
         private @Nullable GuardianPushAmazonSns amazonSns;
         private @Nullable GuardianPushCustomApp customApp;
+        private @Nullable GuardianPushDirectApns directApns;
+        private @Nullable GuardianPushDirectFcm directFcm;
         private Boolean enabled;
         private @Nullable String provider;
         public Builder() {}
@@ -83,6 +111,8 @@ public final class GuardianPush {
     	      Objects.requireNonNull(defaults);
     	      this.amazonSns = defaults.amazonSns;
     	      this.customApp = defaults.customApp;
+    	      this.directApns = defaults.directApns;
+    	      this.directFcm = defaults.directFcm;
     	      this.enabled = defaults.enabled;
     	      this.provider = defaults.provider;
         }
@@ -95,6 +125,16 @@ public final class GuardianPush {
         @CustomType.Setter
         public Builder customApp(@Nullable GuardianPushCustomApp customApp) {
             this.customApp = customApp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder directApns(@Nullable GuardianPushDirectApns directApns) {
+            this.directApns = directApns;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder directFcm(@Nullable GuardianPushDirectFcm directFcm) {
+            this.directFcm = directFcm;
             return this;
         }
         @CustomType.Setter
@@ -111,6 +151,8 @@ public final class GuardianPush {
             final var o = new GuardianPush();
             o.amazonSns = amazonSns;
             o.customApp = customApp;
+            o.directApns = directApns;
+            o.directFcm = directFcm;
             o.enabled = enabled;
             o.provider = provider;
             return o;

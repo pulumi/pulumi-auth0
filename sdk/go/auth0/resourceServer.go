@@ -74,8 +74,6 @@ type ResourceServer struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// Used to store additional metadata.
-	Options pulumi.StringMapOutput `pulumi:"options"`
 	// List of permissions (scopes) used by this resource server.
 	Scopes ResourceServerScopeArrayOutput `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
@@ -134,8 +132,6 @@ type resourceServerState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
-	// Used to store additional metadata.
-	Options map[string]string `pulumi:"options"`
 	// List of permissions (scopes) used by this resource server.
 	Scopes []ResourceServerScope `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
@@ -163,8 +159,6 @@ type ResourceServerState struct {
 	Identifier pulumi.StringPtrInput
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
-	// Used to store additional metadata.
-	Options pulumi.StringMapInput
 	// List of permissions (scopes) used by this resource server.
 	Scopes ResourceServerScopeArrayInput
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
@@ -196,8 +190,6 @@ type resourceServerArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
-	// Used to store additional metadata.
-	Options map[string]string `pulumi:"options"`
 	// List of permissions (scopes) used by this resource server.
 	Scopes []ResourceServerScope `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
@@ -226,8 +218,6 @@ type ResourceServerArgs struct {
 	Identifier pulumi.StringInput
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
-	// Used to store additional metadata.
-	Options pulumi.StringMapInput
 	// List of permissions (scopes) used by this resource server.
 	Scopes ResourceServerScopeArrayInput
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
@@ -351,11 +341,6 @@ func (o ResourceServerOutput) Identifier() pulumi.StringOutput {
 // Friendly name for the resource server. Cannot include `<` or `>` characters.
 func (o ResourceServerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Used to store additional metadata.
-func (o ResourceServerOutput) Options() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ResourceServer) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
 }
 
 // List of permissions (scopes) used by this resource server.

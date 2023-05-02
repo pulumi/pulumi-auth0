@@ -10,7 +10,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -78,21 +77,6 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
-    }
-
-    /**
-     * Used to store additional metadata.
-     * 
-     */
-    @Import(name="options")
-    private @Nullable Output<Map<String,String>> options;
-
-    /**
-     * @return Used to store additional metadata.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> options() {
-        return Optional.ofNullable(this.options);
     }
 
     /**
@@ -222,7 +206,6 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         this.enforcePolicies = $.enforcePolicies;
         this.identifier = $.identifier;
         this.name = $.name;
-        this.options = $.options;
         this.scopes = $.scopes;
         this.signingAlg = $.signingAlg;
         this.signingSecret = $.signingSecret;
@@ -333,27 +316,6 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param options Used to store additional metadata.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder options(@Nullable Output<Map<String,String>> options) {
-            $.options = options;
-            return this;
-        }
-
-        /**
-         * @param options Used to store additional metadata.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder options(Map<String,String> options) {
-            return options(Output.of(options));
         }
 
         /**

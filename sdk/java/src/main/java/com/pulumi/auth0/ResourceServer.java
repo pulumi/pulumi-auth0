@@ -15,7 +15,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -133,20 +132,6 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
-    }
-    /**
-     * Used to store additional metadata.
-     * 
-     */
-    @Export(name="options", type=Map.class, parameters={String.class, String.class})
-    private Output</* @Nullable */ Map<String,String>> options;
-
-    /**
-     * @return Used to store additional metadata.
-     * 
-     */
-    public Output<Optional<Map<String,String>>> options() {
-        return Codegen.optional(this.options);
     }
     /**
      * List of permissions (scopes) used by this resource server.

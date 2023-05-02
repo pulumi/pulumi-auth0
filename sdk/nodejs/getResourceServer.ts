@@ -72,10 +72,6 @@ export interface GetResourceServerResult {
      */
     readonly name: string;
     /**
-     * Used to store additional metadata.
-     */
-    readonly options: {[key: string]: string};
-    /**
      * The ID of the resource server. If not provided, `identifier` must be set.
      */
     readonly resourceServerId?: string;
