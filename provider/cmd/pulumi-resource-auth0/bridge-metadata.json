@@ -1108,6 +1108,25 @@
                                         }
                                     }
                                 },
+                                "direct_apns": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "bundle_id": {},
+                                            "enabled": {},
+                                            "p12": {},
+                                            "sandbox": {}
+                                        }
+                                    }
+                                },
+                                "direct_fcm": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "server_key": {}
+                                        }
+                                    }
+                                },
                                 "enabled": {},
                                 "provider": {}
                             }
@@ -1371,6 +1390,7 @@
                                 "enable_legacy_profile": {},
                                 "enable_pipeline2": {},
                                 "enable_public_signup_user_exists_error": {},
+                                "mfa_show_factor_list_on_enrollment": {},
                                 "no_disclose_enterprise_connections": {},
                                 "revoke_refresh_token_grant": {},
                                 "universal_login": {},
@@ -1826,7 +1846,9 @@
             },
             "auth0:index/GuardianPush:GuardianPush": {
                 "amazonSns": "amazon_sns",
-                "customApp": "custom_app"
+                "customApp": "custom_app",
+                "directApns": "direct_apns",
+                "directFcm": "direct_fcm"
             },
             "auth0:index/GuardianPushAmazonSns:GuardianPushAmazonSns": {
                 "awsAccessKeyId": "aws_access_key_id",
@@ -1839,6 +1861,12 @@
                 "appName": "app_name",
                 "appleAppLink": "apple_app_link",
                 "googleAppLink": "google_app_link"
+            },
+            "auth0:index/GuardianPushDirectApns:GuardianPushDirectApns": {
+                "bundleId": "bundle_id"
+            },
+            "auth0:index/GuardianPushDirectFcm:GuardianPushDirectFcm": {
+                "serverKey": "server_key"
             },
             "auth0:index/GuardianWebauthnPlatform:GuardianWebauthnPlatform": {
                 "overrideRelyingParty": "override_relying_party",
@@ -1903,6 +1931,7 @@
                 "enableLegacyProfile": "enable_legacy_profile",
                 "enablePipeline2": "enable_pipeline2",
                 "enablePublicSignupUserExistsError": "enable_public_signup_user_exists_error",
+                "mfaShowFactorListOnEnrollment": "mfa_show_factor_list_on_enrollment",
                 "noDiscloseEnterpriseConnections": "no_disclose_enterprise_connections",
                 "revokeRefreshTokenGrant": "revoke_refresh_token_grant",
                 "universalLogin": "universal_login",
@@ -2432,6 +2461,7 @@
                 "enableLegacyProfile": "enable_legacy_profile",
                 "enablePipeline2": "enable_pipeline2",
                 "enablePublicSignupUserExistsError": "enable_public_signup_user_exists_error",
+                "mfaShowFactorListOnEnrollment": "mfa_show_factor_list_on_enrollment",
                 "noDiscloseEnterpriseConnections": "no_disclose_enterprise_connections",
                 "revokeRefreshTokenGrant": "revoke_refresh_token_grant",
                 "universalLogin": "universal_login",
