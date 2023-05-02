@@ -102,6 +102,11 @@ public final class TenantFlags {
      */
     private @Nullable Boolean enablePublicSignupUserExistsError;
     /**
+     * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     * 
+     */
+    private @Nullable Boolean mfaShowFactorListOnEnrollment;
+    /**
      * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      * 
      */
@@ -254,6 +259,13 @@ public final class TenantFlags {
         return Optional.ofNullable(this.enablePublicSignupUserExistsError);
     }
     /**
+     * @return Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     * 
+     */
+    public Optional<Boolean> mfaShowFactorListOnEnrollment() {
+        return Optional.ofNullable(this.mfaShowFactorListOnEnrollment);
+    }
+    /**
      * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      * 
      */
@@ -313,6 +325,7 @@ public final class TenantFlags {
         private @Nullable Boolean enableLegacyProfile;
         private @Nullable Boolean enablePipeline2;
         private @Nullable Boolean enablePublicSignupUserExistsError;
+        private @Nullable Boolean mfaShowFactorListOnEnrollment;
         private @Nullable Boolean noDiscloseEnterpriseConnections;
         private @Nullable Boolean revokeRefreshTokenGrant;
         private @Nullable Boolean universalLogin;
@@ -338,6 +351,7 @@ public final class TenantFlags {
     	      this.enableLegacyProfile = defaults.enableLegacyProfile;
     	      this.enablePipeline2 = defaults.enablePipeline2;
     	      this.enablePublicSignupUserExistsError = defaults.enablePublicSignupUserExistsError;
+    	      this.mfaShowFactorListOnEnrollment = defaults.mfaShowFactorListOnEnrollment;
     	      this.noDiscloseEnterpriseConnections = defaults.noDiscloseEnterpriseConnections;
     	      this.revokeRefreshTokenGrant = defaults.revokeRefreshTokenGrant;
     	      this.universalLogin = defaults.universalLogin;
@@ -435,6 +449,11 @@ public final class TenantFlags {
             return this;
         }
         @CustomType.Setter
+        public Builder mfaShowFactorListOnEnrollment(@Nullable Boolean mfaShowFactorListOnEnrollment) {
+            this.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
+            return this;
+        }
+        @CustomType.Setter
         public Builder noDiscloseEnterpriseConnections(@Nullable Boolean noDiscloseEnterpriseConnections) {
             this.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             return this;
@@ -474,6 +493,7 @@ public final class TenantFlags {
             o.enableLegacyProfile = enableLegacyProfile;
             o.enablePipeline2 = enablePipeline2;
             o.enablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            o.mfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             o.noDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             o.revokeRefreshTokenGrant = revokeRefreshTokenGrant;
             o.universalLogin = universalLogin;

@@ -13588,9 +13588,13 @@ type GuardianPush struct {
 	AmazonSns *GuardianPushAmazonSns `pulumi:"amazonSns"`
 	// Configuration for the Guardian Custom App.
 	CustomApp *GuardianPushCustomApp `pulumi:"customApp"`
+	// Configuration for the Apple Push Notification service (APNs) settings.
+	DirectApns *GuardianPushDirectApns `pulumi:"directApns"`
+	// Configuration for Firebase Cloud Messaging (FCM) settings.
+	DirectFcm *GuardianPushDirectFcm `pulumi:"directFcm"`
 	// Indicates whether Push MFA is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// Provider to use, one of `guardian`, `sns`.
+	// Provider to use, one of `direct`, `guardian`, `sns`.
 	Provider *string `pulumi:"provider"`
 }
 
@@ -13610,9 +13614,13 @@ type GuardianPushArgs struct {
 	AmazonSns GuardianPushAmazonSnsPtrInput `pulumi:"amazonSns"`
 	// Configuration for the Guardian Custom App.
 	CustomApp GuardianPushCustomAppPtrInput `pulumi:"customApp"`
+	// Configuration for the Apple Push Notification service (APNs) settings.
+	DirectApns GuardianPushDirectApnsPtrInput `pulumi:"directApns"`
+	// Configuration for Firebase Cloud Messaging (FCM) settings.
+	DirectFcm GuardianPushDirectFcmPtrInput `pulumi:"directFcm"`
 	// Indicates whether Push MFA is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Provider to use, one of `guardian`, `sns`.
+	// Provider to use, one of `direct`, `guardian`, `sns`.
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
@@ -13703,12 +13711,22 @@ func (o GuardianPushOutput) CustomApp() GuardianPushCustomAppPtrOutput {
 	return o.ApplyT(func(v GuardianPush) *GuardianPushCustomApp { return v.CustomApp }).(GuardianPushCustomAppPtrOutput)
 }
 
+// Configuration for the Apple Push Notification service (APNs) settings.
+func (o GuardianPushOutput) DirectApns() GuardianPushDirectApnsPtrOutput {
+	return o.ApplyT(func(v GuardianPush) *GuardianPushDirectApns { return v.DirectApns }).(GuardianPushDirectApnsPtrOutput)
+}
+
+// Configuration for Firebase Cloud Messaging (FCM) settings.
+func (o GuardianPushOutput) DirectFcm() GuardianPushDirectFcmPtrOutput {
+	return o.ApplyT(func(v GuardianPush) *GuardianPushDirectFcm { return v.DirectFcm }).(GuardianPushDirectFcmPtrOutput)
+}
+
 // Indicates whether Push MFA is enabled.
 func (o GuardianPushOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GuardianPush) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Provider to use, one of `guardian`, `sns`.
+// Provider to use, one of `direct`, `guardian`, `sns`.
 func (o GuardianPushOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPush) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -13757,6 +13775,26 @@ func (o GuardianPushPtrOutput) CustomApp() GuardianPushCustomAppPtrOutput {
 	}).(GuardianPushCustomAppPtrOutput)
 }
 
+// Configuration for the Apple Push Notification service (APNs) settings.
+func (o GuardianPushPtrOutput) DirectApns() GuardianPushDirectApnsPtrOutput {
+	return o.ApplyT(func(v *GuardianPush) *GuardianPushDirectApns {
+		if v == nil {
+			return nil
+		}
+		return v.DirectApns
+	}).(GuardianPushDirectApnsPtrOutput)
+}
+
+// Configuration for Firebase Cloud Messaging (FCM) settings.
+func (o GuardianPushPtrOutput) DirectFcm() GuardianPushDirectFcmPtrOutput {
+	return o.ApplyT(func(v *GuardianPush) *GuardianPushDirectFcm {
+		if v == nil {
+			return nil
+		}
+		return v.DirectFcm
+	}).(GuardianPushDirectFcmPtrOutput)
+}
+
 // Indicates whether Push MFA is enabled.
 func (o GuardianPushPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GuardianPush) *bool {
@@ -13767,7 +13805,7 @@ func (o GuardianPushPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Provider to use, one of `guardian`, `sns`.
+// Provider to use, one of `direct`, `guardian`, `sns`.
 func (o GuardianPushPtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPush) *string {
 		if v == nil {
@@ -14130,6 +14168,317 @@ func (o GuardianPushCustomAppPtrOutput) GoogleAppLink() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.GoogleAppLink
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuardianPushDirectApns struct {
+	BundleId string `pulumi:"bundleId"`
+	Enabled  *bool  `pulumi:"enabled"`
+	P12      string `pulumi:"p12"`
+	Sandbox  bool   `pulumi:"sandbox"`
+}
+
+// GuardianPushDirectApnsInput is an input type that accepts GuardianPushDirectApnsArgs and GuardianPushDirectApnsOutput values.
+// You can construct a concrete instance of `GuardianPushDirectApnsInput` via:
+//
+//	GuardianPushDirectApnsArgs{...}
+type GuardianPushDirectApnsInput interface {
+	pulumi.Input
+
+	ToGuardianPushDirectApnsOutput() GuardianPushDirectApnsOutput
+	ToGuardianPushDirectApnsOutputWithContext(context.Context) GuardianPushDirectApnsOutput
+}
+
+type GuardianPushDirectApnsArgs struct {
+	BundleId pulumi.StringInput  `pulumi:"bundleId"`
+	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
+	P12      pulumi.StringInput  `pulumi:"p12"`
+	Sandbox  pulumi.BoolInput    `pulumi:"sandbox"`
+}
+
+func (GuardianPushDirectApnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPushDirectApns)(nil)).Elem()
+}
+
+func (i GuardianPushDirectApnsArgs) ToGuardianPushDirectApnsOutput() GuardianPushDirectApnsOutput {
+	return i.ToGuardianPushDirectApnsOutputWithContext(context.Background())
+}
+
+func (i GuardianPushDirectApnsArgs) ToGuardianPushDirectApnsOutputWithContext(ctx context.Context) GuardianPushDirectApnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushDirectApnsOutput)
+}
+
+func (i GuardianPushDirectApnsArgs) ToGuardianPushDirectApnsPtrOutput() GuardianPushDirectApnsPtrOutput {
+	return i.ToGuardianPushDirectApnsPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianPushDirectApnsArgs) ToGuardianPushDirectApnsPtrOutputWithContext(ctx context.Context) GuardianPushDirectApnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushDirectApnsOutput).ToGuardianPushDirectApnsPtrOutputWithContext(ctx)
+}
+
+// GuardianPushDirectApnsPtrInput is an input type that accepts GuardianPushDirectApnsArgs, GuardianPushDirectApnsPtr and GuardianPushDirectApnsPtrOutput values.
+// You can construct a concrete instance of `GuardianPushDirectApnsPtrInput` via:
+//
+//	        GuardianPushDirectApnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardianPushDirectApnsPtrInput interface {
+	pulumi.Input
+
+	ToGuardianPushDirectApnsPtrOutput() GuardianPushDirectApnsPtrOutput
+	ToGuardianPushDirectApnsPtrOutputWithContext(context.Context) GuardianPushDirectApnsPtrOutput
+}
+
+type guardianPushDirectApnsPtrType GuardianPushDirectApnsArgs
+
+func GuardianPushDirectApnsPtr(v *GuardianPushDirectApnsArgs) GuardianPushDirectApnsPtrInput {
+	return (*guardianPushDirectApnsPtrType)(v)
+}
+
+func (*guardianPushDirectApnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPushDirectApns)(nil)).Elem()
+}
+
+func (i *guardianPushDirectApnsPtrType) ToGuardianPushDirectApnsPtrOutput() GuardianPushDirectApnsPtrOutput {
+	return i.ToGuardianPushDirectApnsPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianPushDirectApnsPtrType) ToGuardianPushDirectApnsPtrOutputWithContext(ctx context.Context) GuardianPushDirectApnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushDirectApnsPtrOutput)
+}
+
+type GuardianPushDirectApnsOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushDirectApnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPushDirectApns)(nil)).Elem()
+}
+
+func (o GuardianPushDirectApnsOutput) ToGuardianPushDirectApnsOutput() GuardianPushDirectApnsOutput {
+	return o
+}
+
+func (o GuardianPushDirectApnsOutput) ToGuardianPushDirectApnsOutputWithContext(ctx context.Context) GuardianPushDirectApnsOutput {
+	return o
+}
+
+func (o GuardianPushDirectApnsOutput) ToGuardianPushDirectApnsPtrOutput() GuardianPushDirectApnsPtrOutput {
+	return o.ToGuardianPushDirectApnsPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianPushDirectApnsOutput) ToGuardianPushDirectApnsPtrOutputWithContext(ctx context.Context) GuardianPushDirectApnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianPushDirectApns) *GuardianPushDirectApns {
+		return &v
+	}).(GuardianPushDirectApnsPtrOutput)
+}
+
+func (o GuardianPushDirectApnsOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPushDirectApns) string { return v.BundleId }).(pulumi.StringOutput)
+}
+
+func (o GuardianPushDirectApnsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuardianPushDirectApns) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GuardianPushDirectApnsOutput) P12() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPushDirectApns) string { return v.P12 }).(pulumi.StringOutput)
+}
+
+func (o GuardianPushDirectApnsOutput) Sandbox() pulumi.BoolOutput {
+	return o.ApplyT(func(v GuardianPushDirectApns) bool { return v.Sandbox }).(pulumi.BoolOutput)
+}
+
+type GuardianPushDirectApnsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushDirectApnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPushDirectApns)(nil)).Elem()
+}
+
+func (o GuardianPushDirectApnsPtrOutput) ToGuardianPushDirectApnsPtrOutput() GuardianPushDirectApnsPtrOutput {
+	return o
+}
+
+func (o GuardianPushDirectApnsPtrOutput) ToGuardianPushDirectApnsPtrOutputWithContext(ctx context.Context) GuardianPushDirectApnsPtrOutput {
+	return o
+}
+
+func (o GuardianPushDirectApnsPtrOutput) Elem() GuardianPushDirectApnsOutput {
+	return o.ApplyT(func(v *GuardianPushDirectApns) GuardianPushDirectApns {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianPushDirectApns
+		return ret
+	}).(GuardianPushDirectApnsOutput)
+}
+
+func (o GuardianPushDirectApnsPtrOutput) BundleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushDirectApns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BundleId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuardianPushDirectApnsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianPushDirectApns) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GuardianPushDirectApnsPtrOutput) P12() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushDirectApns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.P12
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GuardianPushDirectApnsPtrOutput) Sandbox() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuardianPushDirectApns) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Sandbox
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GuardianPushDirectFcm struct {
+	ServerKey string `pulumi:"serverKey"`
+}
+
+// GuardianPushDirectFcmInput is an input type that accepts GuardianPushDirectFcmArgs and GuardianPushDirectFcmOutput values.
+// You can construct a concrete instance of `GuardianPushDirectFcmInput` via:
+//
+//	GuardianPushDirectFcmArgs{...}
+type GuardianPushDirectFcmInput interface {
+	pulumi.Input
+
+	ToGuardianPushDirectFcmOutput() GuardianPushDirectFcmOutput
+	ToGuardianPushDirectFcmOutputWithContext(context.Context) GuardianPushDirectFcmOutput
+}
+
+type GuardianPushDirectFcmArgs struct {
+	ServerKey pulumi.StringInput `pulumi:"serverKey"`
+}
+
+func (GuardianPushDirectFcmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPushDirectFcm)(nil)).Elem()
+}
+
+func (i GuardianPushDirectFcmArgs) ToGuardianPushDirectFcmOutput() GuardianPushDirectFcmOutput {
+	return i.ToGuardianPushDirectFcmOutputWithContext(context.Background())
+}
+
+func (i GuardianPushDirectFcmArgs) ToGuardianPushDirectFcmOutputWithContext(ctx context.Context) GuardianPushDirectFcmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushDirectFcmOutput)
+}
+
+func (i GuardianPushDirectFcmArgs) ToGuardianPushDirectFcmPtrOutput() GuardianPushDirectFcmPtrOutput {
+	return i.ToGuardianPushDirectFcmPtrOutputWithContext(context.Background())
+}
+
+func (i GuardianPushDirectFcmArgs) ToGuardianPushDirectFcmPtrOutputWithContext(ctx context.Context) GuardianPushDirectFcmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushDirectFcmOutput).ToGuardianPushDirectFcmPtrOutputWithContext(ctx)
+}
+
+// GuardianPushDirectFcmPtrInput is an input type that accepts GuardianPushDirectFcmArgs, GuardianPushDirectFcmPtr and GuardianPushDirectFcmPtrOutput values.
+// You can construct a concrete instance of `GuardianPushDirectFcmPtrInput` via:
+//
+//	        GuardianPushDirectFcmArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuardianPushDirectFcmPtrInput interface {
+	pulumi.Input
+
+	ToGuardianPushDirectFcmPtrOutput() GuardianPushDirectFcmPtrOutput
+	ToGuardianPushDirectFcmPtrOutputWithContext(context.Context) GuardianPushDirectFcmPtrOutput
+}
+
+type guardianPushDirectFcmPtrType GuardianPushDirectFcmArgs
+
+func GuardianPushDirectFcmPtr(v *GuardianPushDirectFcmArgs) GuardianPushDirectFcmPtrInput {
+	return (*guardianPushDirectFcmPtrType)(v)
+}
+
+func (*guardianPushDirectFcmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPushDirectFcm)(nil)).Elem()
+}
+
+func (i *guardianPushDirectFcmPtrType) ToGuardianPushDirectFcmPtrOutput() GuardianPushDirectFcmPtrOutput {
+	return i.ToGuardianPushDirectFcmPtrOutputWithContext(context.Background())
+}
+
+func (i *guardianPushDirectFcmPtrType) ToGuardianPushDirectFcmPtrOutputWithContext(ctx context.Context) GuardianPushDirectFcmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuardianPushDirectFcmPtrOutput)
+}
+
+type GuardianPushDirectFcmOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushDirectFcmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuardianPushDirectFcm)(nil)).Elem()
+}
+
+func (o GuardianPushDirectFcmOutput) ToGuardianPushDirectFcmOutput() GuardianPushDirectFcmOutput {
+	return o
+}
+
+func (o GuardianPushDirectFcmOutput) ToGuardianPushDirectFcmOutputWithContext(ctx context.Context) GuardianPushDirectFcmOutput {
+	return o
+}
+
+func (o GuardianPushDirectFcmOutput) ToGuardianPushDirectFcmPtrOutput() GuardianPushDirectFcmPtrOutput {
+	return o.ToGuardianPushDirectFcmPtrOutputWithContext(context.Background())
+}
+
+func (o GuardianPushDirectFcmOutput) ToGuardianPushDirectFcmPtrOutputWithContext(ctx context.Context) GuardianPushDirectFcmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardianPushDirectFcm) *GuardianPushDirectFcm {
+		return &v
+	}).(GuardianPushDirectFcmPtrOutput)
+}
+
+func (o GuardianPushDirectFcmOutput) ServerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GuardianPushDirectFcm) string { return v.ServerKey }).(pulumi.StringOutput)
+}
+
+type GuardianPushDirectFcmPtrOutput struct{ *pulumi.OutputState }
+
+func (GuardianPushDirectFcmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuardianPushDirectFcm)(nil)).Elem()
+}
+
+func (o GuardianPushDirectFcmPtrOutput) ToGuardianPushDirectFcmPtrOutput() GuardianPushDirectFcmPtrOutput {
+	return o
+}
+
+func (o GuardianPushDirectFcmPtrOutput) ToGuardianPushDirectFcmPtrOutputWithContext(ctx context.Context) GuardianPushDirectFcmPtrOutput {
+	return o
+}
+
+func (o GuardianPushDirectFcmPtrOutput) Elem() GuardianPushDirectFcmOutput {
+	return o.ApplyT(func(v *GuardianPushDirectFcm) GuardianPushDirectFcm {
+		if v != nil {
+			return *v
+		}
+		var ret GuardianPushDirectFcm
+		return ret
+	}).(GuardianPushDirectFcmOutput)
+}
+
+func (o GuardianPushDirectFcmPtrOutput) ServerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardianPushDirectFcm) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15812,6 +16161,8 @@ type TenantFlags struct {
 	EnablePipeline2 *bool `pulumi:"enablePipeline2"`
 	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
 	EnablePublicSignupUserExistsError *bool `pulumi:"enablePublicSignupUserExistsError"`
+	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+	MfaShowFactorListOnEnrollment *bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections *bool `pulumi:"noDiscloseEnterpriseConnections"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
@@ -15872,6 +16223,8 @@ type TenantFlagsArgs struct {
 	EnablePipeline2 pulumi.BoolPtrInput `pulumi:"enablePipeline2"`
 	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
 	EnablePublicSignupUserExistsError pulumi.BoolPtrInput `pulumi:"enablePublicSignupUserExistsError"`
+	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+	MfaShowFactorListOnEnrollment pulumi.BoolPtrInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
 	NoDiscloseEnterpriseConnections pulumi.BoolPtrInput `pulumi:"noDiscloseEnterpriseConnections"`
 	// Delete underlying grant when a refresh token is revoked via the Authentication API.
@@ -16049,6 +16402,11 @@ func (o TenantFlagsOutput) EnablePipeline2() pulumi.BoolPtrOutput {
 // Indicates whether the public sign up process shows a `userExists` error if the user already exists.
 func (o TenantFlagsOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolPtrOutput)
+}
+
+// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+func (o TenantFlagsOutput) MfaShowFactorListOnEnrollment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantFlags) *bool { return v.MfaShowFactorListOnEnrollment }).(pulumi.BoolPtrOutput)
 }
 
 // Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
@@ -16274,6 +16632,16 @@ func (o TenantFlagsPtrOutput) EnablePublicSignupUserExistsError() pulumi.BoolPtr
 			return nil
 		}
 		return v.EnablePublicSignupUserExistsError
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+func (o TenantFlagsPtrOutput) MfaShowFactorListOnEnrollment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantFlags) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MfaShowFactorListOnEnrollment
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -24292,6 +24660,7 @@ type GetTenantFlag struct {
 	EnableLegacyProfile                bool `pulumi:"enableLegacyProfile"`
 	EnablePipeline2                    bool `pulumi:"enablePipeline2"`
 	EnablePublicSignupUserExistsError  bool `pulumi:"enablePublicSignupUserExistsError"`
+	MfaShowFactorListOnEnrollment      bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	NoDiscloseEnterpriseConnections    bool `pulumi:"noDiscloseEnterpriseConnections"`
 	RevokeRefreshTokenGrant            bool `pulumi:"revokeRefreshTokenGrant"`
 	// Configuration settings for Universal Login.
@@ -24329,6 +24698,7 @@ type GetTenantFlagArgs struct {
 	EnableLegacyProfile                pulumi.BoolInput `pulumi:"enableLegacyProfile"`
 	EnablePipeline2                    pulumi.BoolInput `pulumi:"enablePipeline2"`
 	EnablePublicSignupUserExistsError  pulumi.BoolInput `pulumi:"enablePublicSignupUserExistsError"`
+	MfaShowFactorListOnEnrollment      pulumi.BoolInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	NoDiscloseEnterpriseConnections    pulumi.BoolInput `pulumi:"noDiscloseEnterpriseConnections"`
 	RevokeRefreshTokenGrant            pulumi.BoolInput `pulumi:"revokeRefreshTokenGrant"`
 	// Configuration settings for Universal Login.
@@ -24457,6 +24827,10 @@ func (o GetTenantFlagOutput) EnablePipeline2() pulumi.BoolOutput {
 
 func (o GetTenantFlagOutput) EnablePublicSignupUserExistsError() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolOutput)
+}
+
+func (o GetTenantFlagOutput) MfaShowFactorListOnEnrollment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.MfaShowFactorListOnEnrollment }).(pulumi.BoolOutput)
 }
 
 func (o GetTenantFlagOutput) NoDiscloseEnterpriseConnections() pulumi.BoolOutput {
@@ -25017,6 +25391,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushAmazonSnsPtrInput)(nil)).Elem(), GuardianPushAmazonSnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushCustomAppInput)(nil)).Elem(), GuardianPushCustomAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushCustomAppPtrInput)(nil)).Elem(), GuardianPushCustomAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushDirectApnsInput)(nil)).Elem(), GuardianPushDirectApnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushDirectApnsPtrInput)(nil)).Elem(), GuardianPushDirectApnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushDirectFcmInput)(nil)).Elem(), GuardianPushDirectFcmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuardianPushDirectFcmPtrInput)(nil)).Elem(), GuardianPushDirectFcmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnPlatformInput)(nil)).Elem(), GuardianWebauthnPlatformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnPlatformPtrInput)(nil)).Elem(), GuardianWebauthnPlatformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnRoamingInput)(nil)).Elem(), GuardianWebauthnRoamingArgs{})
@@ -25305,6 +25683,10 @@ func init() {
 	pulumi.RegisterOutputType(GuardianPushAmazonSnsPtrOutput{})
 	pulumi.RegisterOutputType(GuardianPushCustomAppOutput{})
 	pulumi.RegisterOutputType(GuardianPushCustomAppPtrOutput{})
+	pulumi.RegisterOutputType(GuardianPushDirectApnsOutput{})
+	pulumi.RegisterOutputType(GuardianPushDirectApnsPtrOutput{})
+	pulumi.RegisterOutputType(GuardianPushDirectFcmOutput{})
+	pulumi.RegisterOutputType(GuardianPushDirectFcmPtrOutput{})
 	pulumi.RegisterOutputType(GuardianWebauthnPlatformOutput{})
 	pulumi.RegisterOutputType(GuardianWebauthnPlatformPtrOutput{})
 	pulumi.RegisterOutputType(GuardianWebauthnRoamingOutput{})

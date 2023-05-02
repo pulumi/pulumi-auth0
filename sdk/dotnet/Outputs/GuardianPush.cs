@@ -22,11 +22,19 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly Outputs.GuardianPushCustomApp? CustomApp;
         /// <summary>
+        /// Configuration for the Apple Push Notification service (APNs) settings.
+        /// </summary>
+        public readonly Outputs.GuardianPushDirectApns? DirectApns;
+        /// <summary>
+        /// Configuration for Firebase Cloud Messaging (FCM) settings.
+        /// </summary>
+        public readonly Outputs.GuardianPushDirectFcm? DirectFcm;
+        /// <summary>
         /// Indicates whether Push MFA is enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Provider to use, one of `guardian`, `sns`.
+        /// Provider to use, one of `direct`, `guardian`, `sns`.
         /// </summary>
         public readonly string? Provider;
 
@@ -36,12 +44,18 @@ namespace Pulumi.Auth0.Outputs
 
             Outputs.GuardianPushCustomApp? customApp,
 
+            Outputs.GuardianPushDirectApns? directApns,
+
+            Outputs.GuardianPushDirectFcm? directFcm,
+
             bool enabled,
 
             string? provider)
         {
             AmazonSns = amazonSns;
             CustomApp = customApp;
+            DirectApns = directApns;
+            DirectFcm = directFcm;
             Enabled = enabled;
             Provider = provider;
         }

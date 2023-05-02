@@ -77,6 +77,8 @@ __all__ = [
     'GuardianPush',
     'GuardianPushAmazonSns',
     'GuardianPushCustomApp',
+    'GuardianPushDirectApns',
+    'GuardianPushDirectFcm',
     'GuardianWebauthnPlatform',
     'GuardianWebauthnRoaming',
     'LogStreamSink',
@@ -5196,6 +5198,10 @@ class GuardianPush(dict):
             suggest = "amazon_sns"
         elif key == "customApp":
             suggest = "custom_app"
+        elif key == "directApns":
+            suggest = "direct_apns"
+        elif key == "directFcm":
+            suggest = "direct_fcm"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GuardianPush. Access the value via the '{suggest}' property getter instead.")
@@ -5212,18 +5218,26 @@ class GuardianPush(dict):
                  enabled: bool,
                  amazon_sns: Optional['outputs.GuardianPushAmazonSns'] = None,
                  custom_app: Optional['outputs.GuardianPushCustomApp'] = None,
+                 direct_apns: Optional['outputs.GuardianPushDirectApns'] = None,
+                 direct_fcm: Optional['outputs.GuardianPushDirectFcm'] = None,
                  provider: Optional[str] = None):
         """
         :param bool enabled: Indicates whether Push MFA is enabled.
         :param 'GuardianPushAmazonSnsArgs' amazon_sns: Configuration for Amazon SNS.
         :param 'GuardianPushCustomAppArgs' custom_app: Configuration for the Guardian Custom App.
-        :param str provider: Provider to use, one of `guardian`, `sns`.
+        :param 'GuardianPushDirectApnsArgs' direct_apns: Configuration for the Apple Push Notification service (APNs) settings.
+        :param 'GuardianPushDirectFcmArgs' direct_fcm: Configuration for Firebase Cloud Messaging (FCM) settings.
+        :param str provider: Provider to use, one of `direct`, `guardian`, `sns`.
         """
         pulumi.set(__self__, "enabled", enabled)
         if amazon_sns is not None:
             pulumi.set(__self__, "amazon_sns", amazon_sns)
         if custom_app is not None:
             pulumi.set(__self__, "custom_app", custom_app)
+        if direct_apns is not None:
+            pulumi.set(__self__, "direct_apns", direct_apns)
+        if direct_fcm is not None:
+            pulumi.set(__self__, "direct_fcm", direct_fcm)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
 
@@ -5252,10 +5266,26 @@ class GuardianPush(dict):
         return pulumi.get(self, "custom_app")
 
     @property
+    @pulumi.getter(name="directApns")
+    def direct_apns(self) -> Optional['outputs.GuardianPushDirectApns']:
+        """
+        Configuration for the Apple Push Notification service (APNs) settings.
+        """
+        return pulumi.get(self, "direct_apns")
+
+    @property
+    @pulumi.getter(name="directFcm")
+    def direct_fcm(self) -> Optional['outputs.GuardianPushDirectFcm']:
+        """
+        Configuration for Firebase Cloud Messaging (FCM) settings.
+        """
+        return pulumi.get(self, "direct_fcm")
+
+    @property
     @pulumi.getter
     def provider(self) -> Optional[str]:
         """
-        Provider to use, one of `guardian`, `sns`.
+        Provider to use, one of `direct`, `guardian`, `sns`.
         """
         return pulumi.get(self, "provider")
 
@@ -5373,6 +5403,86 @@ class GuardianPushCustomApp(dict):
     @pulumi.getter(name="googleAppLink")
     def google_app_link(self) -> Optional[str]:
         return pulumi.get(self, "google_app_link")
+
+
+@pulumi.output_type
+class GuardianPushDirectApns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bundleId":
+            suggest = "bundle_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardianPushDirectApns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardianPushDirectApns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardianPushDirectApns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bundle_id: str,
+                 p12: str,
+                 sandbox: bool,
+                 enabled: Optional[bool] = None):
+        pulumi.set(__self__, "bundle_id", bundle_id)
+        pulumi.set(__self__, "p12", p12)
+        pulumi.set(__self__, "sandbox", sandbox)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="bundleId")
+    def bundle_id(self) -> str:
+        return pulumi.get(self, "bundle_id")
+
+    @property
+    @pulumi.getter
+    def p12(self) -> str:
+        return pulumi.get(self, "p12")
+
+    @property
+    @pulumi.getter
+    def sandbox(self) -> bool:
+        return pulumi.get(self, "sandbox")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GuardianPushDirectFcm(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverKey":
+            suggest = "server_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuardianPushDirectFcm. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuardianPushDirectFcm.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuardianPushDirectFcm.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_key: str):
+        pulumi.set(__self__, "server_key", server_key)
+
+    @property
+    @pulumi.getter(name="serverKey")
+    def server_key(self) -> str:
+        return pulumi.get(self, "server_key")
 
 
 @pulumi.output_type
@@ -6120,6 +6230,8 @@ class TenantFlags(dict):
             suggest = "enable_pipeline2"
         elif key == "enablePublicSignupUserExistsError":
             suggest = "enable_public_signup_user_exists_error"
+        elif key == "mfaShowFactorListOnEnrollment":
+            suggest = "mfa_show_factor_list_on_enrollment"
         elif key == "noDiscloseEnterpriseConnections":
             suggest = "no_disclose_enterprise_connections"
         elif key == "revokeRefreshTokenGrant":
@@ -6159,6 +6271,7 @@ class TenantFlags(dict):
                  enable_legacy_profile: Optional[bool] = None,
                  enable_pipeline2: Optional[bool] = None,
                  enable_public_signup_user_exists_error: Optional[bool] = None,
+                 mfa_show_factor_list_on_enrollment: Optional[bool] = None,
                  no_disclose_enterprise_connections: Optional[bool] = None,
                  revoke_refresh_token_grant: Optional[bool] = None,
                  universal_login: Optional[bool] = None,
@@ -6182,6 +6295,7 @@ class TenantFlags(dict):
         :param bool enable_legacy_profile: Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
         :param bool enable_pipeline2: Indicates whether advanced API Authorization scenarios are enabled.
         :param bool enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        :param bool mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         :param bool no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
         :param bool revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
         :param bool universal_login: Indicates whether the New Universal Login Experience is enabled.
@@ -6223,6 +6337,8 @@ class TenantFlags(dict):
             pulumi.set(__self__, "enable_pipeline2", enable_pipeline2)
         if enable_public_signup_user_exists_error is not None:
             pulumi.set(__self__, "enable_public_signup_user_exists_error", enable_public_signup_user_exists_error)
+        if mfa_show_factor_list_on_enrollment is not None:
+            pulumi.set(__self__, "mfa_show_factor_list_on_enrollment", mfa_show_factor_list_on_enrollment)
         if no_disclose_enterprise_connections is not None:
             pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
         if revoke_refresh_token_grant is not None:
@@ -6375,6 +6491,14 @@ class TenantFlags(dict):
         Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
         """
         return pulumi.get(self, "enable_public_signup_user_exists_error")
+
+    @property
+    @pulumi.getter(name="mfaShowFactorListOnEnrollment")
+    def mfa_show_factor_list_on_enrollment(self) -> Optional[bool]:
+        """
+        Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+        """
+        return pulumi.get(self, "mfa_show_factor_list_on_enrollment")
 
     @property
     @pulumi.getter(name="noDiscloseEnterpriseConnections")
@@ -9289,6 +9413,7 @@ class GetTenantFlagResult(dict):
                  enable_legacy_profile: bool,
                  enable_pipeline2: bool,
                  enable_public_signup_user_exists_error: bool,
+                 mfa_show_factor_list_on_enrollment: bool,
                  no_disclose_enterprise_connections: bool,
                  revoke_refresh_token_grant: bool,
                  universal_login: bool,
@@ -9314,6 +9439,7 @@ class GetTenantFlagResult(dict):
         pulumi.set(__self__, "enable_legacy_profile", enable_legacy_profile)
         pulumi.set(__self__, "enable_pipeline2", enable_pipeline2)
         pulumi.set(__self__, "enable_public_signup_user_exists_error", enable_public_signup_user_exists_error)
+        pulumi.set(__self__, "mfa_show_factor_list_on_enrollment", mfa_show_factor_list_on_enrollment)
         pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
         pulumi.set(__self__, "revoke_refresh_token_grant", revoke_refresh_token_grant)
         pulumi.set(__self__, "universal_login", universal_login)
@@ -9408,6 +9534,11 @@ class GetTenantFlagResult(dict):
     @pulumi.getter(name="enablePublicSignupUserExistsError")
     def enable_public_signup_user_exists_error(self) -> bool:
         return pulumi.get(self, "enable_public_signup_user_exists_error")
+
+    @property
+    @pulumi.getter(name="mfaShowFactorListOnEnrollment")
+    def mfa_show_factor_list_on_enrollment(self) -> bool:
+        return pulumi.get(self, "mfa_show_factor_list_on_enrollment")
 
     @property
     @pulumi.getter(name="noDiscloseEnterpriseConnections")

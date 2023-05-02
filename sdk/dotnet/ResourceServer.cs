@@ -84,12 +84,6 @@ namespace Pulumi.Auth0
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Used to store additional metadata.
-        /// </summary>
-        [Output("options")]
-        public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
-
-        /// <summary>
         /// List of permissions (scopes) used by this resource server.
         /// </summary>
         [Output("scopes")]
@@ -207,18 +201,6 @@ namespace Pulumi.Auth0
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("options")]
-        private InputMap<string>? _options;
-
-        /// <summary>
-        /// Used to store additional metadata.
-        /// </summary>
-        public InputMap<string> Options
-        {
-            get => _options ?? (_options = new InputMap<string>());
-            set => _options = value;
-        }
-
         [Input("scopes")]
         private InputList<Inputs.ResourceServerScopeArgs>? _scopes;
 
@@ -304,18 +286,6 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("options")]
-        private InputMap<string>? _options;
-
-        /// <summary>
-        /// Used to store additional metadata.
-        /// </summary>
-        public InputMap<string> Options
-        {
-            get => _options ?? (_options = new InputMap<string>());
-            set => _options = value;
-        }
 
         [Input("scopes")]
         private InputList<Inputs.ResourceServerScopeGetArgs>? _scopes;

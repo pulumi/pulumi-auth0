@@ -72,8 +72,6 @@ type LookupResourceServerResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name string `pulumi:"name"`
-	// Used to store additional metadata.
-	Options map[string]string `pulumi:"options"`
 	// The ID of the resource server. If not provided, `identifier` must be set.
 	ResourceServerId *string `pulumi:"resourceServerId"`
 	// List of permissions (scopes) used by this resource server.
@@ -157,11 +155,6 @@ func (o LookupResourceServerResultOutput) Identifier() pulumi.StringPtrOutput {
 // Friendly name for the resource server. Cannot include `<` or `>` characters.
 func (o LookupResourceServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Used to store additional metadata.
-func (o LookupResourceServerResultOutput) Options() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupResourceServerResult) map[string]string { return v.Options }).(pulumi.StringMapOutput)
 }
 
 // The ID of the resource server. If not provided, `identifier` must be set.

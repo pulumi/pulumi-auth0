@@ -76,6 +76,8 @@ __all__ = [
     'GuardianPushArgs',
     'GuardianPushAmazonSnsArgs',
     'GuardianPushCustomAppArgs',
+    'GuardianPushDirectApnsArgs',
+    'GuardianPushDirectFcmArgs',
     'GuardianWebauthnPlatformArgs',
     'GuardianWebauthnRoamingArgs',
     'LogStreamSinkArgs',
@@ -5662,18 +5664,26 @@ class GuardianPushArgs:
                  enabled: pulumi.Input[bool],
                  amazon_sns: Optional[pulumi.Input['GuardianPushAmazonSnsArgs']] = None,
                  custom_app: Optional[pulumi.Input['GuardianPushCustomAppArgs']] = None,
+                 direct_apns: Optional[pulumi.Input['GuardianPushDirectApnsArgs']] = None,
+                 direct_fcm: Optional[pulumi.Input['GuardianPushDirectFcmArgs']] = None,
                  provider: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Indicates whether Push MFA is enabled.
         :param pulumi.Input['GuardianPushAmazonSnsArgs'] amazon_sns: Configuration for Amazon SNS.
         :param pulumi.Input['GuardianPushCustomAppArgs'] custom_app: Configuration for the Guardian Custom App.
-        :param pulumi.Input[str] provider: Provider to use, one of `guardian`, `sns`.
+        :param pulumi.Input['GuardianPushDirectApnsArgs'] direct_apns: Configuration for the Apple Push Notification service (APNs) settings.
+        :param pulumi.Input['GuardianPushDirectFcmArgs'] direct_fcm: Configuration for Firebase Cloud Messaging (FCM) settings.
+        :param pulumi.Input[str] provider: Provider to use, one of `direct`, `guardian`, `sns`.
         """
         pulumi.set(__self__, "enabled", enabled)
         if amazon_sns is not None:
             pulumi.set(__self__, "amazon_sns", amazon_sns)
         if custom_app is not None:
             pulumi.set(__self__, "custom_app", custom_app)
+        if direct_apns is not None:
+            pulumi.set(__self__, "direct_apns", direct_apns)
+        if direct_fcm is not None:
+            pulumi.set(__self__, "direct_fcm", direct_fcm)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
 
@@ -5714,10 +5724,34 @@ class GuardianPushArgs:
         pulumi.set(self, "custom_app", value)
 
     @property
+    @pulumi.getter(name="directApns")
+    def direct_apns(self) -> Optional[pulumi.Input['GuardianPushDirectApnsArgs']]:
+        """
+        Configuration for the Apple Push Notification service (APNs) settings.
+        """
+        return pulumi.get(self, "direct_apns")
+
+    @direct_apns.setter
+    def direct_apns(self, value: Optional[pulumi.Input['GuardianPushDirectApnsArgs']]):
+        pulumi.set(self, "direct_apns", value)
+
+    @property
+    @pulumi.getter(name="directFcm")
+    def direct_fcm(self) -> Optional[pulumi.Input['GuardianPushDirectFcmArgs']]:
+        """
+        Configuration for Firebase Cloud Messaging (FCM) settings.
+        """
+        return pulumi.get(self, "direct_fcm")
+
+    @direct_fcm.setter
+    def direct_fcm(self, value: Optional[pulumi.Input['GuardianPushDirectFcmArgs']]):
+        pulumi.set(self, "direct_fcm", value)
+
+    @property
     @pulumi.getter
     def provider(self) -> Optional[pulumi.Input[str]]:
         """
-        Provider to use, one of `guardian`, `sns`.
+        Provider to use, one of `direct`, `guardian`, `sns`.
         """
         return pulumi.get(self, "provider")
 
@@ -5825,6 +5859,72 @@ class GuardianPushCustomAppArgs:
     @google_app_link.setter
     def google_app_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "google_app_link", value)
+
+
+@pulumi.input_type
+class GuardianPushDirectApnsArgs:
+    def __init__(__self__, *,
+                 bundle_id: pulumi.Input[str],
+                 p12: pulumi.Input[str],
+                 sandbox: pulumi.Input[bool],
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "bundle_id", bundle_id)
+        pulumi.set(__self__, "p12", p12)
+        pulumi.set(__self__, "sandbox", sandbox)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="bundleId")
+    def bundle_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "bundle_id")
+
+    @bundle_id.setter
+    def bundle_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bundle_id", value)
+
+    @property
+    @pulumi.getter
+    def p12(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "p12")
+
+    @p12.setter
+    def p12(self, value: pulumi.Input[str]):
+        pulumi.set(self, "p12", value)
+
+    @property
+    @pulumi.getter
+    def sandbox(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "sandbox")
+
+    @sandbox.setter
+    def sandbox(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "sandbox", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class GuardianPushDirectFcmArgs:
+    def __init__(__self__, *,
+                 server_key: pulumi.Input[str]):
+        pulumi.set(__self__, "server_key", server_key)
+
+    @property
+    @pulumi.getter(name="serverKey")
+    def server_key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "server_key")
+
+    @server_key.setter
+    def server_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_key", value)
 
 
 @pulumi.input_type
@@ -6566,6 +6666,7 @@ class TenantFlagsArgs:
                  enable_legacy_profile: Optional[pulumi.Input[bool]] = None,
                  enable_pipeline2: Optional[pulumi.Input[bool]] = None,
                  enable_public_signup_user_exists_error: Optional[pulumi.Input[bool]] = None,
+                 mfa_show_factor_list_on_enrollment: Optional[pulumi.Input[bool]] = None,
                  no_disclose_enterprise_connections: Optional[pulumi.Input[bool]] = None,
                  revoke_refresh_token_grant: Optional[pulumi.Input[bool]] = None,
                  universal_login: Optional[pulumi.Input[bool]] = None,
@@ -6589,6 +6690,7 @@ class TenantFlagsArgs:
         :param pulumi.Input[bool] enable_legacy_profile: Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
         :param pulumi.Input[bool] enable_pipeline2: Indicates whether advanced API Authorization scenarios are enabled.
         :param pulumi.Input[bool] enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        :param pulumi.Input[bool] mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
         :param pulumi.Input[bool] no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
         :param pulumi.Input[bool] revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
         :param pulumi.Input[bool] universal_login: Indicates whether the New Universal Login Experience is enabled.
@@ -6630,6 +6732,8 @@ class TenantFlagsArgs:
             pulumi.set(__self__, "enable_pipeline2", enable_pipeline2)
         if enable_public_signup_user_exists_error is not None:
             pulumi.set(__self__, "enable_public_signup_user_exists_error", enable_public_signup_user_exists_error)
+        if mfa_show_factor_list_on_enrollment is not None:
+            pulumi.set(__self__, "mfa_show_factor_list_on_enrollment", mfa_show_factor_list_on_enrollment)
         if no_disclose_enterprise_connections is not None:
             pulumi.set(__self__, "no_disclose_enterprise_connections", no_disclose_enterprise_connections)
         if revoke_refresh_token_grant is not None:
@@ -6857,6 +6961,18 @@ class TenantFlagsArgs:
     @enable_public_signup_user_exists_error.setter
     def enable_public_signup_user_exists_error(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_public_signup_user_exists_error", value)
+
+    @property
+    @pulumi.getter(name="mfaShowFactorListOnEnrollment")
+    def mfa_show_factor_list_on_enrollment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+        """
+        return pulumi.get(self, "mfa_show_factor_list_on_enrollment")
+
+    @mfa_show_factor_list_on_enrollment.setter
+    def mfa_show_factor_list_on_enrollment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mfa_show_factor_list_on_enrollment", value)
 
     @property
     @pulumi.getter(name="noDiscloseEnterpriseConnections")

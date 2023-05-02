@@ -20,7 +20,6 @@ class ResourceServerArgs:
                  allow_offline_access: Optional[pulumi.Input[bool]] = None,
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]]] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
@@ -35,7 +34,6 @@ class ResourceServerArgs:
         :param pulumi.Input[bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Used to store additional metadata.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]] scopes: List of permissions (scopes) used by this resource server.
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -52,8 +50,6 @@ class ResourceServerArgs:
             pulumi.set(__self__, "enforce_policies", enforce_policies)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if options is not None:
-            pulumi.set(__self__, "options", options)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if signing_alg is not None:
@@ -118,18 +114,6 @@ class ResourceServerArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Used to store additional metadata.
-        """
-        return pulumi.get(self, "options")
-
-    @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "options", value)
 
     @property
     @pulumi.getter
@@ -235,7 +219,6 @@ class _ResourceServerState:
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]]] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
@@ -250,7 +233,6 @@ class _ResourceServerState:
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Used to store additional metadata.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]] scopes: List of permissions (scopes) used by this resource server.
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -268,8 +250,6 @@ class _ResourceServerState:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if options is not None:
-            pulumi.set(__self__, "options", options)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if signing_alg is not None:
@@ -334,18 +314,6 @@ class _ResourceServerState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Used to store additional metadata.
-        """
-        return pulumi.get(self, "options")
-
-    @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "options", value)
 
     @property
     @pulumi.getter
@@ -453,7 +421,6 @@ class ResourceServer(pulumi.CustomResource):
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]]] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
@@ -505,7 +472,6 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Used to store additional metadata.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: List of permissions (scopes) used by this resource server.
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -576,7 +542,6 @@ class ResourceServer(pulumi.CustomResource):
                  enforce_policies: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]]] = None,
                  signing_alg: Optional[pulumi.Input[str]] = None,
                  signing_secret: Optional[pulumi.Input[str]] = None,
@@ -600,7 +565,6 @@ class ResourceServer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
-            __props__.__dict__["options"] = options
             __props__.__dict__["scopes"] = scopes
             __props__.__dict__["signing_alg"] = signing_alg
             __props__.__dict__["signing_secret"] = signing_secret
@@ -623,7 +587,6 @@ class ResourceServer(pulumi.CustomResource):
             enforce_policies: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]]] = None,
             signing_alg: Optional[pulumi.Input[str]] = None,
             signing_secret: Optional[pulumi.Input[str]] = None,
@@ -643,7 +606,6 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Used to store additional metadata.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: List of permissions (scopes) used by this resource server.
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -661,7 +623,6 @@ class ResourceServer(pulumi.CustomResource):
         __props__.__dict__["enforce_policies"] = enforce_policies
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
-        __props__.__dict__["options"] = options
         __props__.__dict__["scopes"] = scopes
         __props__.__dict__["signing_alg"] = signing_alg
         __props__.__dict__["signing_secret"] = signing_secret
@@ -703,14 +664,6 @@ class ResourceServer(pulumi.CustomResource):
         Friendly name for the resource server. Cannot include `<` or `>` characters.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Used to store additional metadata.
-        """
-        return pulumi.get(self, "options")
 
     @property
     @pulumi.getter

@@ -121,6 +121,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? EnablePublicSignupUserExistsError { get; set; }
 
         /// <summary>
+        /// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+        /// </summary>
+        [Input("mfaShowFactorListOnEnrollment")]
+        public Input<bool>? MfaShowFactorListOnEnrollment { get; set; }
+
+        /// <summary>
         /// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
         /// </summary>
         [Input("noDiscloseEnterpriseConnections")]

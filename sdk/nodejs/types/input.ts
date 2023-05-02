@@ -1187,11 +1187,19 @@ export interface GuardianPush {
      */
     customApp?: pulumi.Input<inputs.GuardianPushCustomApp>;
     /**
+     * Configuration for the Apple Push Notification service (APNs) settings.
+     */
+    directApns?: pulumi.Input<inputs.GuardianPushDirectApns>;
+    /**
+     * Configuration for Firebase Cloud Messaging (FCM) settings.
+     */
+    directFcm?: pulumi.Input<inputs.GuardianPushDirectFcm>;
+    /**
      * Indicates whether Push MFA is enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Provider to use, one of `guardian`, `sns`.
+     * Provider to use, one of `direct`, `guardian`, `sns`.
      */
     provider?: pulumi.Input<string>;
 }
@@ -1208,6 +1216,17 @@ export interface GuardianPushCustomApp {
     appName?: pulumi.Input<string>;
     appleAppLink?: pulumi.Input<string>;
     googleAppLink?: pulumi.Input<string>;
+}
+
+export interface GuardianPushDirectApns {
+    bundleId: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    p12: pulumi.Input<string>;
+    sandbox: pulumi.Input<boolean>;
+}
+
+export interface GuardianPushDirectFcm {
+    serverKey: pulumi.Input<string>;
 }
 
 export interface GuardianWebauthnPlatform {
@@ -1475,6 +1494,10 @@ export interface TenantFlags {
      * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      */
     enablePublicSignupUserExistsError?: pulumi.Input<boolean>;
+    /**
+     * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+     */
+    mfaShowFactorListOnEnrollment?: pulumi.Input<boolean>;
     /**
      * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      */

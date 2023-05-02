@@ -86,6 +86,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? EnablePublicSignupUserExistsError;
         /// <summary>
+        /// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+        /// </summary>
+        public readonly bool? MfaShowFactorListOnEnrollment;
+        /// <summary>
         /// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
         /// </summary>
         public readonly bool? NoDiscloseEnterpriseConnections;
@@ -140,6 +144,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool? enablePublicSignupUserExistsError,
 
+            bool? mfaShowFactorListOnEnrollment,
+
             bool? noDiscloseEnterpriseConnections,
 
             bool? revokeRefreshTokenGrant,
@@ -166,6 +172,7 @@ namespace Pulumi.Auth0.Outputs
             EnableLegacyProfile = enableLegacyProfile;
             EnablePipeline2 = enablePipeline2;
             EnablePublicSignupUserExistsError = enablePublicSignupUserExistsError;
+            MfaShowFactorListOnEnrollment = mfaShowFactorListOnEnrollment;
             NoDiscloseEnterpriseConnections = noDiscloseEnterpriseConnections;
             RevokeRefreshTokenGrant = revokeRefreshTokenGrant;
             UniversalLogin = universalLogin;

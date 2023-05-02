@@ -9,7 +9,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -41,11 +40,6 @@ public final class GetResourceServerResult {
      * 
      */
     private String name;
-    /**
-     * @return Used to store additional metadata.
-     * 
-     */
-    private Map<String,String> options;
     /**
      * @return The ID of the resource server. If not provided, `identifier` must be set.
      * 
@@ -129,13 +123,6 @@ public final class GetResourceServerResult {
         return this.name;
     }
     /**
-     * @return Used to store additional metadata.
-     * 
-     */
-    public Map<String,String> options() {
-        return this.options;
-    }
-    /**
      * @return The ID of the resource server. If not provided, `identifier` must be set.
      * 
      */
@@ -213,7 +200,6 @@ public final class GetResourceServerResult {
         private String id;
         private @Nullable String identifier;
         private String name;
-        private Map<String,String> options;
         private @Nullable String resourceServerId;
         private List<GetResourceServerScope> scopes;
         private String signingAlg;
@@ -231,7 +217,6 @@ public final class GetResourceServerResult {
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
-    	      this.options = defaults.options;
     	      this.resourceServerId = defaults.resourceServerId;
     	      this.scopes = defaults.scopes;
     	      this.signingAlg = defaults.signingAlg;
@@ -266,11 +251,6 @@ public final class GetResourceServerResult {
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder options(Map<String,String> options) {
-            this.options = Objects.requireNonNull(options);
             return this;
         }
         @CustomType.Setter
@@ -328,7 +308,6 @@ public final class GetResourceServerResult {
             o.id = id;
             o.identifier = identifier;
             o.name = name;
-            o.options = options;
             o.resourceServerId = resourceServerId;
             o.scopes = scopes;
             o.signingAlg = signingAlg;
