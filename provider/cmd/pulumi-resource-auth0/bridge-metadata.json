@@ -463,6 +463,9 @@
                             }
                         }
                     },
+                    "oidc_backchannel_logout_urls": {
+                        "maxItemsOne": false
+                    },
                     "oidc_conformant": {},
                     "organization_require_behavior": {},
                     "organization_usage": {},
@@ -740,6 +743,14 @@
                     "strategy": {}
                 }
             },
+            "auth0_connection_clients": {
+                "current": "auth0:index/connectionClients:ConnectionClients",
+                "fields": {
+                    "enabled_clients": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_custom_domain": {
                 "current": "auth0:index/customDomain:CustomDomain",
                 "fields": {
@@ -1008,6 +1019,9 @@
                                 }
                             }
                         }
+                    },
+                    "oidc_backchannel_logout_urls": {
+                        "maxItemsOne": false
                     },
                     "oidc_conformant": {},
                     "organization_require_behavior": {},
@@ -1319,6 +1333,17 @@
                     }
                 }
             },
+            "auth0_role_permission": {
+                "current": "auth0:index/rolePermission:RolePermission"
+            },
+            "auth0_role_permissions": {
+                "current": "auth0:index/rolePermissions:RolePermissions",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_rule": {
                 "current": "auth0:index/rule:Rule",
                 "fields": {
@@ -1468,6 +1493,9 @@
                     "name": {},
                     "nickname": {},
                     "password": {},
+                    "permissions": {
+                        "maxItemsOne": false
+                    },
                     "phone_number": {},
                     "phone_verified": {},
                     "picture": {},
@@ -1479,6 +1507,28 @@
                     "user_metadata": {},
                     "username": {},
                     "verify_email": {}
+                }
+            },
+            "auth0_user_permission": {
+                "current": "auth0:index/userPermission:UserPermission"
+            },
+            "auth0_user_permissions": {
+                "current": "auth0:index/userPermissions:UserPermissions",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_user_role": {
+                "current": "auth0:index/userRole:UserRole"
+            },
+            "auth0_user_roles": {
+                "current": "auth0:index/userRoles:UserRoles",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
                 }
             }
         },
@@ -1531,6 +1581,7 @@
             "auth0:index/clientGrant:ClientGrant": "auth0_client_grant",
             "auth0:index/connection:Connection": "auth0_connection",
             "auth0:index/connectionClient:ConnectionClient": "auth0_connection_client",
+            "auth0:index/connectionClients:ConnectionClients": "auth0_connection_clients",
             "auth0:index/customDomain:CustomDomain": "auth0_custom_domain",
             "auth0:index/customDomainVerification:CustomDomainVerification": "auth0_custom_domain_verification",
             "auth0:index/email:Email": "auth0_email",
@@ -1546,11 +1597,17 @@
             "auth0:index/promptCustomText:PromptCustomText": "auth0_prompt_custom_text",
             "auth0:index/resourceServer:ResourceServer": "auth0_resource_server",
             "auth0:index/role:Role": "auth0_role",
+            "auth0:index/rolePermission:RolePermission": "auth0_role_permission",
+            "auth0:index/rolePermissions:RolePermissions": "auth0_role_permissions",
             "auth0:index/rule:Rule": "auth0_rule",
             "auth0:index/ruleConfig:RuleConfig": "auth0_rule_config",
             "auth0:index/tenant:Tenant": "auth0_tenant",
             "auth0:index/triggerBinding:TriggerBinding": "auth0_trigger_binding",
-            "auth0:index/user:User": "auth0_user"
+            "auth0:index/user:User": "auth0_user",
+            "auth0:index/userPermission:UserPermission": "auth0_user_permission",
+            "auth0:index/userPermissions:UserPermissions": "auth0_user_permissions",
+            "auth0:index/userRole:UserRole": "auth0_user_role",
+            "auth0:index/userRoles:UserRoles": "auth0_user_roles"
         },
         "functions": {
             "auth0:index/getAttackProtection:getAttackProtection": "auth0_attack_protection",
@@ -1907,7 +1964,12 @@
                 "logoUrl": "logo_url"
             },
             "auth0:index/RolePermission:RolePermission": {
-                "resourceServerIdentifier": "resource_server_identifier"
+                "resourceServerIdentifier": "resource_server_identifier",
+                "resourceServerName": "resource_server_name"
+            },
+            "auth0:index/RolePermissionsPermission:RolePermissionsPermission": {
+                "resourceServerIdentifier": "resource_server_identifier",
+                "resourceServerName": "resource_server_name"
             },
             "auth0:index/TenantErrorPage:TenantErrorPage": {
                 "showLogLink": "show_log_link"
@@ -1942,6 +2004,14 @@
             },
             "auth0:index/TriggerBindingAction:TriggerBindingAction": {
                 "displayName": "display_name"
+            },
+            "auth0:index/UserPermission:UserPermission": {
+                "resourceServerIdentifier": "resource_server_identifier",
+                "resourceServerName": "resource_server_name"
+            },
+            "auth0:index/UserPermissionsPermission:UserPermissionsPermission": {
+                "resourceServerIdentifier": "resource_server_identifier",
+                "resourceServerName": "resource_server_name"
             },
             "auth0:index/action:Action": {
                 "supportedTriggers": "supported_triggers",
@@ -1984,6 +2054,7 @@
                 "jwtConfiguration": "jwt_configuration",
                 "logoUri": "logo_uri",
                 "nativeSocialLogin": "native_social_login",
+                "oidcBackchannelLogoutUrls": "oidc_backchannel_logout_urls",
                 "oidcConformant": "oidc_conformant",
                 "organizationRequireBehavior": "organization_require_behavior",
                 "organizationUsage": "organization_usage",
@@ -2006,6 +2077,10 @@
             "auth0:index/connectionClient:ConnectionClient": {
                 "clientId": "client_id",
                 "connectionId": "connection_id"
+            },
+            "auth0:index/connectionClients:ConnectionClients": {
+                "connectionId": "connection_id",
+                "enabledClients": "enabled_clients"
             },
             "auth0:index/customDomain:CustomDomain": {
                 "customClientIpHeader": "custom_client_ip_header",
@@ -2136,6 +2211,7 @@
                 "logoUri": "logo_uri",
                 "mobiles": "mobile",
                 "nativeSocialLogins": "native_social_login",
+                "oidcBackchannelLogoutUrls": "oidc_backchannel_logout_urls",
                 "oidcConformant": "oidc_conformant",
                 "organizationRequireBehavior": "organization_require_behavior",
                 "organizationUsage": "organization_usage",
@@ -2329,6 +2405,7 @@
                 "logoUri": "logo_uri",
                 "mobiles": "mobile",
                 "nativeSocialLogins": "native_social_login",
+                "oidcBackchannelLogoutUrls": "oidc_backchannel_logout_urls",
                 "oidcConformant": "oidc_conformant",
                 "organizationRequireBehavior": "organization_require_behavior",
                 "organizationUsage": "organization_usage",
@@ -2417,7 +2494,8 @@
                 "roleId": "role_id"
             },
             "auth0:index/getRolePermission:getRolePermission": {
-                "resourceServerIdentifier": "resource_server_identifier"
+                "resourceServerIdentifier": "resource_server_identifier",
+                "resourceServerName": "resource_server_name"
             },
             "auth0:index/getTenant:getTenant": {
                 "allowedLogoutUrls": "allowed_logout_urls",
@@ -2482,6 +2560,10 @@
                 "userMetadata": "user_metadata",
                 "verifyEmail": "verify_email"
             },
+            "auth0:index/getUserPermission:getUserPermission": {
+                "resourceServerIdentifier": "resource_server_identifier",
+                "resourceServerName": "resource_server_name"
+            },
             "auth0:index/globalClient:GlobalClient": {
                 "allowedClients": "allowed_clients",
                 "allowedLogoutUrls": "allowed_logout_urls",
@@ -2505,6 +2587,7 @@
                 "jwtConfiguration": "jwt_configuration",
                 "logoUri": "logo_uri",
                 "nativeSocialLogin": "native_social_login",
+                "oidcBackchannelLogoutUrls": "oidc_backchannel_logout_urls",
                 "oidcConformant": "oidc_conformant",
                 "organizationRequireBehavior": "organization_require_behavior",
                 "organizationUsage": "organization_usage",
@@ -2550,6 +2633,14 @@
                 "tokenLifetimeForWeb": "token_lifetime_for_web",
                 "verificationLocation": "verification_location"
             },
+            "auth0:index/rolePermission:RolePermission": {
+                "resourceServerIdentifier": "resource_server_identifier",
+                "resourceServerName": "resource_server_name",
+                "roleId": "role_id"
+            },
+            "auth0:index/rolePermissions:RolePermissions": {
+                "roleId": "role_id"
+            },
             "auth0:index/tenant:Tenant": {
                 "allowedLogoutUrls": "allowed_logout_urls",
                 "changePassword": "change_password",
@@ -2580,6 +2671,23 @@
                 "userId": "user_id",
                 "userMetadata": "user_metadata",
                 "verifyEmail": "verify_email"
+            },
+            "auth0:index/userPermission:UserPermission": {
+                "resourceServerIdentifier": "resource_server_identifier",
+                "resourceServerName": "resource_server_name",
+                "userId": "user_id"
+            },
+            "auth0:index/userPermissions:UserPermissions": {
+                "userId": "user_id"
+            },
+            "auth0:index/userRole:UserRole": {
+                "roleDescription": "role_description",
+                "roleId": "role_id",
+                "roleName": "role_name",
+                "userId": "user_id"
+            },
+            "auth0:index/userRoles:UserRoles": {
+                "userId": "user_id"
             },
             "auth0:index:Provider": {
                 "apiToken": "api_token",
