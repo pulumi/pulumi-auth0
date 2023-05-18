@@ -24,7 +24,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var admin = new Auth0.Role("admin", new()
     ///     {
-    ///         Name = "admin",
     ///         Description = "Administrator",
     ///     });
     /// 
@@ -33,7 +32,6 @@ namespace Pulumi.Auth0
     ///         ConnectionName = "Username-Password-Authentication",
     ///         UserId = "12345",
     ///         Username = "unique_username",
-    ///         Name = "Firstname Lastname",
     ///         Nickname = "some.nickname",
     ///         Email = "test@test.com",
     ///         EmailVerified = true,
@@ -118,6 +116,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// List of API permissions granted to the user.
+        /// </summary>
+        [Output("permissions")]
+        public Output<ImmutableArray<Outputs.UserPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
@@ -311,6 +315,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Set of IDs of roles assigned to the user.
         /// </summary>
+        [Obsolete(@"Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.")]
         public InputList<string> Roles
         {
             get => _roles ?? (_roles = new InputList<string>());
@@ -419,6 +424,18 @@ namespace Pulumi.Auth0
             }
         }
 
+        [Input("permissions")]
+        private InputList<Inputs.UserPermissionGetArgs>? _permissions;
+
+        /// <summary>
+        /// List of API permissions granted to the user.
+        /// </summary>
+        public InputList<Inputs.UserPermissionGetArgs> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<Inputs.UserPermissionGetArgs>());
+            set => _permissions = value;
+        }
+
         /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         /// </summary>
@@ -443,6 +460,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Set of IDs of roles assigned to the user.
         /// </summary>
+        [Obsolete(@"Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.")]
         public InputList<string> Roles
         {
             get => _roles ?? (_roles = new InputList<string>());

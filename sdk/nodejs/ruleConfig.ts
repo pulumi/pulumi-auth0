@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * const myRule = new auth0.Rule("myRule", {
  *     enabled: true,
- *     name: "empty-rule",
  *     script: `    function (user, context, callback) {
  *       callback(null, user, context);
  *     }

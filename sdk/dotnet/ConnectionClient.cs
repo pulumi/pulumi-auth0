@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can manage enabled clients on a connection.
+    /// With this resource, you can enable a single client on a connection.
+    /// 
+    /// !&gt; To prevent issues, avoid using this resource together with the `auth0.ConnectionClients` resource.
     /// 
     /// ## Example Usage
     /// 
@@ -24,17 +26,13 @@ namespace Pulumi.Auth0
     /// {
     ///     var myConn = new Auth0.Connection("myConn", new()
     ///     {
-    ///         Name = "My-Auth0-Connection",
     ///         Strategy = "auth0",
     ///     });
     /// 
-    ///     // Avoid using the enabled_clients = [...],
-    ///     // if using the auth0_connection_client resource.
-    ///     var myClient = new Auth0.Client("myClient", new()
-    ///     {
-    ///         Name = "My-Auth0-Client",
-    ///     });
+    ///     var myClient = new Auth0.Client("myClient");
     /// 
+    ///     // One connection to one client association.
+    ///     // To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
     ///     var myConnClientAssoc = new Auth0.ConnectionClient("myConnClientAssoc", new()
     ///     {
     ///         ConnectionId = myConn.Id,

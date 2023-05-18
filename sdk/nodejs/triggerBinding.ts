@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const actionFoo = new auth0.Action("actionFoo", {
- *     name: "Test Trigger Binding Foo",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
  *   console.log("foo");
  * };"
@@ -28,7 +27,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const actionBar = new auth0.Action("actionBar", {
- *     name: "Test Trigger Binding Bar",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
  *   console.log("bar");
  * };"

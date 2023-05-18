@@ -108,7 +108,6 @@ class RuleConfig(pulumi.CustomResource):
 
         my_rule = auth0.Rule("myRule",
             enabled=True,
-            name="empty-rule",
             script=\"\"\"    function (user, context, callback) {
               callback(null, user, context);
             }
@@ -149,7 +148,6 @@ class RuleConfig(pulumi.CustomResource):
 
         my_rule = auth0.Rule("myRule",
             enabled=True,
-            name="empty-rule",
             script=\"\"\"    function (user, context, callback) {
               callback(null, user, context);
             }

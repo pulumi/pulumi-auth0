@@ -38,7 +38,6 @@ namespace Pulumi.Auth0
     ///                 { "type", "category" },
     ///             },
     ///         },
-    ///         Name = "HTTP log stream",
     ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
     ///         {
     ///             HttpAuthorization = "AKIAXXXXXXXXXXXXXXXX",
@@ -60,7 +59,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of an Amazon EventBridge log stream.
     ///     var exampleAws = new Auth0.LogStream("exampleAws", new()
     ///     {
-    ///         Name = "AWS Eventbridge",
     ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
     ///         {
     ///             AwsAccountId = "my_account_id",
@@ -175,8 +173,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name of the log stream.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The sink configuration for the log stream.

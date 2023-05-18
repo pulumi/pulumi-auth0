@@ -45,6 +45,11 @@ export type ConnectionClient = import("./connectionClient").ConnectionClient;
 export const ConnectionClient: typeof import("./connectionClient").ConnectionClient = null as any;
 utilities.lazyLoad(exports, ["ConnectionClient"], () => require("./connectionClient"));
 
+export { ConnectionClientsArgs, ConnectionClientsState } from "./connectionClients";
+export type ConnectionClients = import("./connectionClients").ConnectionClients;
+export const ConnectionClients: typeof import("./connectionClients").ConnectionClients = null as any;
+utilities.lazyLoad(exports, ["ConnectionClients"], () => require("./connectionClients"));
+
 export { CustomDomainArgs, CustomDomainState } from "./customDomain";
 export type CustomDomain = import("./customDomain").CustomDomain;
 export const CustomDomain: typeof import("./customDomain").CustomDomain = null as any;
@@ -179,6 +184,16 @@ export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
 
+export { RolePermissionArgs, RolePermissionState } from "./rolePermission";
+export type RolePermission = import("./rolePermission").RolePermission;
+export const RolePermission: typeof import("./rolePermission").RolePermission = null as any;
+utilities.lazyLoad(exports, ["RolePermission"], () => require("./rolePermission"));
+
+export { RolePermissionsArgs, RolePermissionsState } from "./rolePermissions";
+export type RolePermissions = import("./rolePermissions").RolePermissions;
+export const RolePermissions: typeof import("./rolePermissions").RolePermissions = null as any;
+utilities.lazyLoad(exports, ["RolePermissions"], () => require("./rolePermissions"));
+
 export { RuleArgs, RuleState } from "./rule";
 export type Rule = import("./rule").Rule;
 export const Rule: typeof import("./rule").Rule = null as any;
@@ -203,6 +218,26 @@ export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserPermissionArgs, UserPermissionState } from "./userPermission";
+export type UserPermission = import("./userPermission").UserPermission;
+export const UserPermission: typeof import("./userPermission").UserPermission = null as any;
+utilities.lazyLoad(exports, ["UserPermission"], () => require("./userPermission"));
+
+export { UserPermissionsArgs, UserPermissionsState } from "./userPermissions";
+export type UserPermissions = import("./userPermissions").UserPermissions;
+export const UserPermissions: typeof import("./userPermissions").UserPermissions = null as any;
+utilities.lazyLoad(exports, ["UserPermissions"], () => require("./userPermissions"));
+
+export { UserRoleArgs, UserRoleState } from "./userRole";
+export type UserRole = import("./userRole").UserRole;
+export const UserRole: typeof import("./userRole").UserRole = null as any;
+utilities.lazyLoad(exports, ["UserRole"], () => require("./userRole"));
+
+export { UserRolesArgs, UserRolesState } from "./userRoles";
+export type UserRoles = import("./userRoles").UserRoles;
+export const UserRoles: typeof import("./userRoles").UserRoles = null as any;
+utilities.lazyLoad(exports, ["UserRoles"], () => require("./userRoles"));
 
 
 // Export sub-modules:
@@ -234,6 +269,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "auth0:index/connectionClient:ConnectionClient":
                 return new ConnectionClient(name, <any>undefined, { urn })
+            case "auth0:index/connectionClients:ConnectionClients":
+                return new ConnectionClients(name, <any>undefined, { urn })
             case "auth0:index/customDomain:CustomDomain":
                 return new CustomDomain(name, <any>undefined, { urn })
             case "auth0:index/customDomainVerification:CustomDomainVerification":
@@ -264,6 +301,10 @@ const _module = {
                 return new ResourceServer(name, <any>undefined, { urn })
             case "auth0:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "auth0:index/rolePermission:RolePermission":
+                return new RolePermission(name, <any>undefined, { urn })
+            case "auth0:index/rolePermissions:RolePermissions":
+                return new RolePermissions(name, <any>undefined, { urn })
             case "auth0:index/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
             case "auth0:index/ruleConfig:RuleConfig":
@@ -274,6 +315,14 @@ const _module = {
                 return new TriggerBinding(name, <any>undefined, { urn })
             case "auth0:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "auth0:index/userPermission:UserPermission":
+                return new UserPermission(name, <any>undefined, { urn })
+            case "auth0:index/userPermissions:UserPermissions":
+                return new UserPermissions(name, <any>undefined, { urn })
+            case "auth0:index/userRole:UserRole":
+                return new UserRole(name, <any>undefined, { urn })
+            case "auth0:index/userRoles:UserRoles":
+                return new UserRoles(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -287,6 +336,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/connectionClients", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomain", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomainVerification", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/email", _module)
@@ -302,11 +352,17 @@ pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/role", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/rolePermission", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/rolePermissions", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rule", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerBinding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/user", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/userPermission", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/userPermissions", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/userRole", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/userRoles", _module)
 pulumi.runtime.registerResourcePackage("auth0", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

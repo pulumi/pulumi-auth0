@@ -14,42 +14,31 @@ __all__ = ['HookArgs', 'Hook']
 @pulumi.input_type
 class HookArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  script: pulumi.Input[str],
                  trigger_id: pulumi.Input[str],
                  dependencies: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  secrets: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Hook resource.
-        :param pulumi.Input[str] name: Name of this hook.
         :param pulumi.Input[str] script: Code to be executed when this hook runs.
         :param pulumi.Input[str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         :param pulumi.Input[Mapping[str, Any]] dependencies: Dependencies of this hook used by the WebTask server.
         :param pulumi.Input[bool] enabled: Whether the hook is enabled, or disabled.
+        :param pulumi.Input[str] name: Name of this hook.
         :param pulumi.Input[Mapping[str, Any]] secrets: The secrets associated with the hook.
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "script", script)
         pulumi.set(__self__, "trigger_id", trigger_id)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if secrets is not None:
             pulumi.set(__self__, "secrets", secrets)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of this hook.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -98,6 +87,18 @@ class HookArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of this hook.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -242,7 +243,6 @@ class Hook(pulumi.CustomResource):
                 "auth0": "2.30.0",
             },
             enabled=True,
-            name="My Pre User Registration Hook",
             script=\"\"\"    function (user, context, callback) {
               callback(null, { user });
             }
@@ -291,7 +291,6 @@ class Hook(pulumi.CustomResource):
                 "auth0": "2.30.0",
             },
             enabled=True,
-            name="My Pre User Registration Hook",
             script=\"\"\"    function (user, context, callback) {
               callback(null, { user });
             }
@@ -343,8 +342,6 @@ class Hook(pulumi.CustomResource):
 
             __props__.__dict__["dependencies"] = dependencies
             __props__.__dict__["enabled"] = enabled
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if script is None and not opts.urn:
                 raise TypeError("Missing required property 'script'")

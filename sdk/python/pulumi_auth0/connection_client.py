@@ -130,7 +130,9 @@ class ConnectionClient(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With this resource, you can manage enabled clients on a connection.
+        With this resource, you can enable a single client on a connection.
+
+        !> To prevent issues, avoid using this resource together with the `ConnectionClients` resource.
 
         ## Example Usage
 
@@ -138,12 +140,10 @@ class ConnectionClient(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_conn = auth0.Connection("myConn",
-            name="My-Auth0-Connection",
-            strategy="auth0")
-        # Avoid using the enabled_clients = [...],
-        # if using the auth0_connection_client resource.
-        my_client = auth0.Client("myClient", name="My-Auth0-Client")
+        my_conn = auth0.Connection("myConn", strategy="auth0")
+        my_client = auth0.Client("myClient")
+        # One connection to one client association.
+        # To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
         my_conn_client_assoc = auth0.ConnectionClient("myConnClientAssoc",
             connection_id=my_conn.id,
             client_id=my_client.id)
@@ -169,7 +169,9 @@ class ConnectionClient(pulumi.CustomResource):
                  args: ConnectionClientArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource, you can manage enabled clients on a connection.
+        With this resource, you can enable a single client on a connection.
+
+        !> To prevent issues, avoid using this resource together with the `ConnectionClients` resource.
 
         ## Example Usage
 
@@ -177,12 +179,10 @@ class ConnectionClient(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_conn = auth0.Connection("myConn",
-            name="My-Auth0-Connection",
-            strategy="auth0")
-        # Avoid using the enabled_clients = [...],
-        # if using the auth0_connection_client resource.
-        my_client = auth0.Client("myClient", name="My-Auth0-Client")
+        my_conn = auth0.Connection("myConn", strategy="auth0")
+        my_client = auth0.Client("myClient")
+        # One connection to one client association.
+        # To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
         my_conn_client_assoc = auth0.ConnectionClient("myConnClientAssoc",
             connection_id=my_conn.id,
             client_id=my_client.id)

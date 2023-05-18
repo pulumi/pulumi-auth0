@@ -14,7 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can manage enabled clients on a connection.
+ * With this resource, you can enable a single client on a connection.
+ * 
+ * !&gt; To prevent issues, avoid using this resource together with the `auth0.ConnectionClients` resource.
  * 
  * ## Example Usage
  * ```java
@@ -26,7 +28,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.Connection;
  * import com.pulumi.auth0.ConnectionArgs;
  * import com.pulumi.auth0.Client;
- * import com.pulumi.auth0.ClientArgs;
  * import com.pulumi.auth0.ConnectionClient;
  * import com.pulumi.auth0.ConnectionClientArgs;
  * import java.util.List;
@@ -43,13 +44,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myConn = new Connection(&#34;myConn&#34;, ConnectionArgs.builder()        
- *             .name(&#34;My-Auth0-Connection&#34;)
  *             .strategy(&#34;auth0&#34;)
  *             .build());
  * 
- *         var myClient = new Client(&#34;myClient&#34;, ClientArgs.builder()        
- *             .name(&#34;My-Auth0-Client&#34;)
- *             .build());
+ *         var myClient = new Client(&#34;myClient&#34;);
  * 
  *         var myConnClientAssoc = new ConnectionClient(&#34;myConnClientAssoc&#34;, ConnectionClientArgs.builder()        
  *             .connectionId(myConn.id())

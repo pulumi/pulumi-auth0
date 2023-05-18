@@ -171,12 +171,8 @@ class OrganizationConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_connection = auth0.Connection("myConnection",
-            name="My Connection",
-            strategy="auth0")
-        my_organization = auth0.Organization("myOrganization",
-            name="my-organization",
-            display_name="My Organization")
+        my_connection = auth0.Connection("myConnection", strategy="auth0")
+        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
         my_org_conn = auth0.OrganizationConnection("myOrgConn",
             organization_id=my_organization.id,
             connection_id=my_connection.id,
@@ -212,12 +208,8 @@ class OrganizationConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_auth0 as auth0
 
-        my_connection = auth0.Connection("myConnection",
-            name="My Connection",
-            strategy="auth0")
-        my_organization = auth0.Organization("myOrganization",
-            name="my-organization",
-            display_name="My Organization")
+        my_connection = auth0.Connection("myConnection", strategy="auth0")
+        my_organization = auth0.Organization("myOrganization", display_name="My Organization")
         my_org_conn = auth0.OrganizationConnection("myOrgConn",
             organization_id=my_organization.id,
             connection_id=my_connection.id,

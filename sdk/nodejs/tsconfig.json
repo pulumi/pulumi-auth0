@@ -23,6 +23,7 @@
         "config/vars.ts",
         "connection.ts",
         "connectionClient.ts",
+        "connectionClients.ts",
         "customDomain.ts",
         "customDomainVerification.ts",
         "email.ts",
@@ -52,6 +53,8 @@
         "provider.ts",
         "resourceServer.ts",
         "role.ts",
+        "rolePermission.ts",
+        "rolePermissions.ts",
         "rule.ts",
         "ruleConfig.ts",
         "tenant.ts",
@@ -60,6 +63,10 @@
         "types/input.ts",
         "types/output.ts",
         "user.ts",
+        "userPermission.ts",
+        "userPermissions.ts",
+        "userRole.ts",
+        "userRoles.ts",
         "utilities.ts"
     ]
 }

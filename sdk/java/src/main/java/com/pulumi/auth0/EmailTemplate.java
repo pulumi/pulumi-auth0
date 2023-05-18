@@ -46,7 +46,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myEmailProvider = new Email(&#34;myEmailProvider&#34;, EmailArgs.builder()        
- *             .name(&#34;ses&#34;)
  *             .enabled(true)
  *             .defaultFromAddress(&#34;accounts@example.com&#34;)
  *             .credentials(EmailCredentialsArgs.builder()

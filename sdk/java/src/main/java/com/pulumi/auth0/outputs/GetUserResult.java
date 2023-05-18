@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetUserPermission;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -66,6 +67,11 @@ public final class GetUserResult {
      * 
      */
     private String password;
+    /**
+     * @return List of API permissions granted to the user.
+     * 
+     */
+    private List<GetUserPermission> permissions;
     /**
      * @return Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
@@ -186,6 +192,13 @@ public final class GetUserResult {
         return this.password;
     }
     /**
+     * @return List of API permissions granted to the user.
+     * 
+     */
+    public List<GetUserPermission> permissions() {
+        return this.permissions;
+    }
+    /**
      * @return Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      * 
      */
@@ -262,6 +275,7 @@ public final class GetUserResult {
         private String name;
         private String nickname;
         private String password;
+        private List<GetUserPermission> permissions;
         private String phoneNumber;
         private Boolean phoneVerified;
         private String picture;
@@ -284,6 +298,7 @@ public final class GetUserResult {
     	      this.name = defaults.name;
     	      this.nickname = defaults.nickname;
     	      this.password = defaults.password;
+    	      this.permissions = defaults.permissions;
     	      this.phoneNumber = defaults.phoneNumber;
     	      this.phoneVerified = defaults.phoneVerified;
     	      this.picture = defaults.picture;
@@ -350,6 +365,14 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder permissions(List<GetUserPermission> permissions) {
+            this.permissions = Objects.requireNonNull(permissions);
+            return this;
+        }
+        public Builder permissions(GetUserPermission... permissions) {
+            return permissions(List.of(permissions));
+        }
+        @CustomType.Setter
         public Builder phoneNumber(String phoneNumber) {
             this.phoneNumber = Objects.requireNonNull(phoneNumber);
             return this;
@@ -405,6 +428,7 @@ public final class GetUserResult {
             o.name = name;
             o.nickname = nickname;
             o.password = password;
+            o.permissions = permissions;
             o.phoneNumber = phoneNumber;
             o.phoneVerified = phoneVerified;
             o.picture = picture;

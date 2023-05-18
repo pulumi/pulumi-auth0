@@ -53,7 +53,6 @@ import javax.annotation.Nullable;
  *                     Map.entry(&#34;name&#34;, &#34;auth.signup.fail&#34;),
  *                     Map.entry(&#34;type&#34;, &#34;category&#34;)
  *                 ))
- *             .name(&#34;HTTP log stream&#34;)
  *             .sink(LogStreamSinkArgs.builder()
  *                 .httpAuthorization(&#34;AKIAXXXXXXXXXXXXXXXX&#34;)
  *                 .httpContentFormat(&#34;JSONOBJECT&#34;)
@@ -68,7 +67,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAws = new LogStream(&#34;exampleAws&#34;, LogStreamArgs.builder()        
- *             .name(&#34;AWS Eventbridge&#34;)
  *             .sink(LogStreamSinkArgs.builder()
  *                 .awsAccountId(&#34;my_account_id&#34;)
  *                 .awsRegion(&#34;us-east-2&#34;)

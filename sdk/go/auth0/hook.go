@@ -32,7 +32,6 @@ import (
 //					"auth0": pulumi.Any("2.30.0"),
 //				},
 //				Enabled: pulumi.Bool(true),
-//				Name:    pulumi.String("My Pre User Registration Hook"),
 //				Script:  pulumi.String("    function (user, context, callback) {\n      callback(null, { user });\n    }\n  \n"),
 //				Secrets: pulumi.AnyMap{
 //					"foo": pulumi.Any("bar"),
@@ -81,9 +80,6 @@ func NewHook(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Script == nil {
 		return nil, errors.New("invalid value for required argument 'Script'")
 	}
@@ -158,7 +154,7 @@ type hookArgs struct {
 	// Whether the hook is enabled, or disabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of this hook.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Code to be executed when this hook runs.
 	Script string `pulumi:"script"`
 	// The secrets associated with the hook.
@@ -174,7 +170,7 @@ type HookArgs struct {
 	// Whether the hook is enabled, or disabled.
 	Enabled pulumi.BoolPtrInput
 	// Name of this hook.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Code to be executed when this hook runs.
 	Script pulumi.StringInput
 	// The secrets associated with the hook.

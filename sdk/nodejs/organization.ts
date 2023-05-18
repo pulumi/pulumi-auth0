@@ -30,7 +30,6 @@ import * as utilities from "./utilities";
  *         logoUrl: "https://example.com/assets/icons/icon.png",
  *     },
  *     displayName: "Auth0 Inc.",
- *     name: "auth0-inc",
  * });
  * ```
  *
@@ -94,7 +93,7 @@ export class Organization extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: OrganizationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: OrganizationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationArgs | OrganizationState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -106,9 +105,6 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             resourceInputs["branding"] = args ? args.branding : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
@@ -160,5 +156,5 @@ export interface OrganizationArgs {
     /**
      * The name of this organization.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

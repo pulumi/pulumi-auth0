@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,15 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const admin = new auth0.Role("admin", {
- *     name: "admin",
- *     description: "Administrator",
- * });
+ * const admin = new auth0.Role("admin", {description: "Administrator"});
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
  *     userId: "12345",
  *     username: "unique_username",
- *     name: "Firstname Lastname",
  *     nickname: "some.nickname",
  *     email: "test@test.com",
  *     emailVerified: true,
@@ -108,6 +106,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
+     * List of API permissions granted to the user.
+     */
+    public /*out*/ readonly permissions!: pulumi.Output<outputs.UserPermission[]>;
+    /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     public readonly phoneNumber!: pulumi.Output<string | undefined>;
@@ -121,6 +123,8 @@ export class User extends pulumi.CustomResource {
     public readonly picture!: pulumi.Output<string>;
     /**
      * Set of IDs of roles assigned to the user.
+     *
+     * @deprecated Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
@@ -163,6 +167,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nickname"] = state ? state.nickname : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
             resourceInputs["phoneNumber"] = state ? state.phoneNumber : undefined;
             resourceInputs["phoneVerified"] = state ? state.phoneVerified : undefined;
             resourceInputs["picture"] = state ? state.picture : undefined;
@@ -194,6 +199,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["userMetadata"] = args ? args.userMetadata : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
             resourceInputs["verifyEmail"] = args ? args.verifyEmail : undefined;
+            resourceInputs["permissions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
@@ -247,6 +253,10 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     /**
+     * List of API permissions granted to the user.
+     */
+    permissions?: pulumi.Input<pulumi.Input<inputs.UserPermission>[]>;
+    /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
     phoneNumber?: pulumi.Input<string>;
@@ -260,6 +270,8 @@ export interface UserState {
     picture?: pulumi.Input<string>;
     /**
      * Set of IDs of roles assigned to the user.
+     *
+     * @deprecated Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -338,6 +350,8 @@ export interface UserArgs {
     picture?: pulumi.Input<string>;
     /**
      * Set of IDs of roles assigned to the user.
+     *
+     * @deprecated Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -84,6 +86,10 @@ export interface GetUserResult {
      * Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
     readonly password: string;
+    /**
+     * List of API permissions granted to the user.
+     */
+    readonly permissions: outputs.GetUserPermission[];
     /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */

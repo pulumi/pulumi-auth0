@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * const myRule = new auth0.Rule("myRule", {
  *     enabled: true,
- *     name: "empty-rule",
  *     script: `    function (user, context, callback) {
  *       callback(null, user, context);
  *     }
@@ -96,9 +95,6 @@ export class Rule extends pulumi.CustomResource {
             resourceInputs["script"] = state ? state.script : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.script === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
@@ -145,7 +141,7 @@ export interface RuleArgs {
     /**
      * Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      */

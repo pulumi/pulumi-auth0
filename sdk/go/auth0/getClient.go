@@ -115,6 +115,8 @@ type LookupClientResult struct {
 	Name *string `pulumi:"name"`
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 	NativeSocialLogins []GetClientNativeSocialLogin `pulumi:"nativeSocialLogins"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	OidcBackchannelLogoutUrls []string `pulumi:"oidcBackchannelLogoutUrls"`
 	// Indicates whether this client will conform to strict OIDC specifications.
 	OidcConformant bool `pulumi:"oidcConformant"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
@@ -307,6 +309,11 @@ func (o LookupClientResultOutput) Name() pulumi.StringPtrOutput {
 // Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
 func (o LookupClientResultOutput) NativeSocialLogins() GetClientNativeSocialLoginArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []GetClientNativeSocialLogin { return v.NativeSocialLogins }).(GetClientNativeSocialLoginArrayOutput)
+}
+
+// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+func (o LookupClientResultOutput) OidcBackchannelLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []string { return v.OidcBackchannelLogoutUrls }).(pulumi.StringArrayOutput)
 }
 
 // Indicates whether this client will conform to strict OIDC specifications.

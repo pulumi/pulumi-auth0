@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class RolePermission
     {
         /// <summary>
+        /// Description of the permission.
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
         /// Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
         /// </summary>
         public readonly string Name;
@@ -21,15 +25,25 @@ namespace Pulumi.Auth0.Outputs
         /// Unique identifier for the resource server.
         /// </summary>
         public readonly string ResourceServerIdentifier;
+        /// <summary>
+        /// Name of resource server that the permission is associated with.
+        /// </summary>
+        public readonly string? ResourceServerName;
 
         [OutputConstructor]
         private RolePermission(
+            string? description,
+
             string name,
 
-            string resourceServerIdentifier)
+            string resourceServerIdentifier,
+
+            string? resourceServerName)
         {
+            Description = description;
             Name = name;
             ResourceServerIdentifier = resourceServerIdentifier;
+            ResourceServerName = resourceServerName;
         }
     }
 }

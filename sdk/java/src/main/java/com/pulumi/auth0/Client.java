@@ -107,7 +107,6 @@ import javax.annotation.Nullable;
  *                     .teamId(&#34;9JA89QQLNQ&#34;)
  *                     .build())
  *                 .build())
- *             .name(&#34;Application - Acceptance Test&#34;)
  *             .oidcConformant(false)
  *             .refreshToken(ClientRefreshTokenArgs.builder()
  *                 .expirationType(&#34;expiring&#34;)
@@ -515,6 +514,20 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.nativeSocialLogin;
     }
     /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    @Export(name="oidcBackchannelLogoutUrls", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> oidcBackchannelLogoutUrls;
+
+    /**
+     * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    public Output<Optional<List<String>>> oidcBackchannelLogoutUrls() {
+        return Codegen.optional(this.oidcBackchannelLogoutUrls);
+    }
+    /**
      * Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
@@ -653,7 +666,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Client(String name, ClientArgs args) {
+    public Client(String name, @Nullable ClientArgs args) {
         this(name, args, null);
     }
     /**
@@ -662,7 +675,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Client(String name, ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Client(String name, @Nullable ClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("auth0:index/client:Client", name, args == null ? ClientArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

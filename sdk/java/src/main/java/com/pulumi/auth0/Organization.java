@@ -57,7 +57,6 @@ import javax.annotation.Nullable;
  *                 .logoUrl(&#34;https://example.com/assets/icons/icon.png&#34;)
  *                 .build())
  *             .displayName(&#34;Auth0 Inc.&#34;)
- *             .name(&#34;auth0-inc&#34;)
  *             .build());
  * 
  *     }
@@ -144,7 +143,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Organization(String name, OrganizationArgs args) {
+    public Organization(String name, @Nullable OrganizationArgs args) {
         this(name, args, null);
     }
     /**
@@ -153,7 +152,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Organization(String name, OrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Organization(String name, @Nullable OrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("auth0:index/organization:Organization", name, args == null ? OrganizationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

@@ -10,13 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class GetRolePermission {
     /**
+     * @return Description of the role.
+     * 
+     */
+    private String description;
+    /**
      * @return The name of the role. If not provided, `role_id` must be set.
      * 
      */
     private String name;
     private String resourceServerIdentifier;
+    private String resourceServerName;
 
     private GetRolePermission() {}
+    /**
+     * @return Description of the role.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
     /**
      * @return The name of the role. If not provided, `role_id` must be set.
      * 
@@ -26,6 +39,9 @@ public final class GetRolePermission {
     }
     public String resourceServerIdentifier() {
         return this.resourceServerIdentifier;
+    }
+    public String resourceServerName() {
+        return this.resourceServerName;
     }
 
     public static Builder builder() {
@@ -37,15 +53,24 @@ public final class GetRolePermission {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String description;
         private String name;
         private String resourceServerIdentifier;
+        private String resourceServerName;
         public Builder() {}
         public Builder(GetRolePermission defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.name = defaults.name;
     	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
+    	      this.resourceServerName = defaults.resourceServerName;
         }
 
+        @CustomType.Setter
+        public Builder description(String description) {
+            this.description = Objects.requireNonNull(description);
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
@@ -56,10 +81,17 @@ public final class GetRolePermission {
             this.resourceServerIdentifier = Objects.requireNonNull(resourceServerIdentifier);
             return this;
         }
+        @CustomType.Setter
+        public Builder resourceServerName(String resourceServerName) {
+            this.resourceServerName = Objects.requireNonNull(resourceServerName);
+            return this;
+        }
         public GetRolePermission build() {
             final var o = new GetRolePermission();
+            o.description = description;
             o.name = name;
             o.resourceServerIdentifier = resourceServerIdentifier;
+            o.resourceServerName = resourceServerName;
             return o;
         }
     }

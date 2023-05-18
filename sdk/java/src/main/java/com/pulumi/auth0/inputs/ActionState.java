@@ -111,20 +111,14 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
     @Import(name="supportedTriggers")
     private @Nullable Output<ActionSupportedTriggersArgs> supportedTriggers;
 
     /**
-     * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
     public Optional<Output<ActionSupportedTriggersArgs>> supportedTriggers() {
@@ -324,10 +318,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-         * [Retrieving the set of triggers available within
-         * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-         * trigger versions supported.
+         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
          * 
          * @return builder
          * 
@@ -338,10 +329,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-         * [Retrieving the set of triggers available within
-         * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-         * trigger versions supported.
+         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
          * 
          * @return builder
          * 

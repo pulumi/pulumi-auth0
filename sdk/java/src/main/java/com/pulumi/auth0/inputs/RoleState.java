@@ -51,14 +51,22 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     /**
      * Configuration settings for permissions (scopes) attached to the role.
      * 
+     * @deprecated
+     * Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * 
      */
+    @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
     @Import(name="permissions")
     private @Nullable Output<List<RolePermissionArgs>> permissions;
 
     /**
      * @return Configuration settings for permissions (scopes) attached to the role.
      * 
+     * @deprecated
+     * Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * 
      */
+    @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
     public Optional<Output<List<RolePermissionArgs>>> permissions() {
         return Optional.ofNullable(this.permissions);
     }
@@ -136,7 +144,11 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+         * 
          */
+        @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
         public Builder permissions(@Nullable Output<List<RolePermissionArgs>> permissions) {
             $.permissions = permissions;
             return this;
@@ -147,7 +159,11 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+         * 
          */
+        @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
         public Builder permissions(List<RolePermissionArgs> permissions) {
             return permissions(Output.of(permissions));
         }
@@ -157,7 +173,11 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+         * 
          */
+        @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
         public Builder permissions(RolePermissionArgs... permissions) {
             return permissions(List.of(permissions));
         }

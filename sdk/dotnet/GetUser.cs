@@ -146,6 +146,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Password;
         /// <summary>
+        /// List of API permissions granted to the user.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUserPermissionResult> Permissions;
+        /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         /// </summary>
         public readonly string PhoneNumber;
@@ -202,6 +206,8 @@ namespace Pulumi.Auth0
 
             string password,
 
+            ImmutableArray<Outputs.GetUserPermissionResult> permissions,
+
             string phoneNumber,
 
             bool phoneVerified,
@@ -229,6 +235,7 @@ namespace Pulumi.Auth0
             Name = name;
             Nickname = nickname;
             Password = password;
+            Permissions = permissions;
             PhoneNumber = phoneNumber;
             PhoneVerified = phoneVerified;
             Picture = picture;

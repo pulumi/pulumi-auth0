@@ -7,11 +7,28 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RolePermissionArgs Empty = new RolePermissionArgs();
+
+    /**
+     * Description of the permission.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Description of the permission.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
 
     /**
      * Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
@@ -43,11 +60,28 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
         return this.resourceServerIdentifier;
     }
 
+    /**
+     * Name of resource server that the permission is associated with.
+     * 
+     */
+    @Import(name="resourceServerName")
+    private @Nullable Output<String> resourceServerName;
+
+    /**
+     * @return Name of resource server that the permission is associated with.
+     * 
+     */
+    public Optional<Output<String>> resourceServerName() {
+        return Optional.ofNullable(this.resourceServerName);
+    }
+
     private RolePermissionArgs() {}
 
     private RolePermissionArgs(RolePermissionArgs $) {
+        this.description = $.description;
         this.name = $.name;
         this.resourceServerIdentifier = $.resourceServerIdentifier;
+        this.resourceServerName = $.resourceServerName;
     }
 
     public static Builder builder() {
@@ -66,6 +100,27 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(RolePermissionArgs defaults) {
             $ = new RolePermissionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description Description of the permission.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description of the permission.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -108,6 +163,27 @@ public final class RolePermissionArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder resourceServerIdentifier(String resourceServerIdentifier) {
             return resourceServerIdentifier(Output.of(resourceServerIdentifier));
+        }
+
+        /**
+         * @param resourceServerName Name of resource server that the permission is associated with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceServerName(@Nullable Output<String> resourceServerName) {
+            $.resourceServerName = resourceServerName;
+            return this;
+        }
+
+        /**
+         * @param resourceServerName Name of resource server that the permission is associated with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceServerName(String resourceServerName) {
+            return resourceServerName(Output.of(resourceServerName));
         }
 
         public RolePermissionArgs build() {

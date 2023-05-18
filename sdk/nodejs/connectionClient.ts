@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can manage enabled clients on a connection.
+ * With this resource, you can enable a single client on a connection.
+ *
+ * !> To prevent issues, avoid using this resource together with the `auth0.ConnectionClients` resource.
  *
  * ## Example Usage
  *
@@ -13,13 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myConn = new auth0.Connection("myConn", {
- *     name: "My-Auth0-Connection",
- *     strategy: "auth0",
- * });
- * // Avoid using the enabled_clients = [...],
- * // if using the auth0_connection_client resource.
- * const myClient = new auth0.Client("myClient", {name: "My-Auth0-Client"});
+ * const myConn = new auth0.Connection("myConn", {strategy: "auth0"});
+ * const myClient = new auth0.Client("myClient", {});
+ * // One connection to one client association.
+ * // To prevent issues, avoid using this resource together with the `auth0_connection_clients` resource.
  * const myConnClientAssoc = new auth0.ConnectionClient("myConnClientAssoc", {
  *     connectionId: myConn.id,
  *     clientId: myClient.id,

@@ -14,9 +14,8 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * // The following example grants a client the "create:foo" permission (scope).
- * const myClient = new auth0.Client("myClient", {name: "Example Application - Client Grant (Managed by Terraform)"});
+ * const myClient = new auth0.Client("myClient", {});
  * const myResourceServer = new auth0.ResourceServer("myResourceServer", {
- *     name: "Example Resource Server - Client Grant (Managed by Terraform)",
  *     identifier: "https://api.example.com/client-grant",
  *     scopes: [
  *         {

@@ -13,6 +13,7 @@ from .client import *
 from .client_grant import *
 from .connection import *
 from .connection_client import *
+from .connection_clients import *
 from .custom_domain import *
 from .custom_domain_verification import *
 from .email import *
@@ -41,11 +42,17 @@ from .prompt_custom_text import *
 from .provider import *
 from .resource_server import *
 from .role import *
+from .role_permission import *
+from .role_permissions import *
 from .rule import *
 from .rule_config import *
 from .tenant import *
 from .trigger_binding import *
 from .user import *
+from .user_permission import *
+from .user_permissions import *
+from .user_role import *
+from .user_roles import *
 from ._inputs import *
 from . import outputs
 
@@ -121,6 +128,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/connectionClient:ConnectionClient": "ConnectionClient"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/connectionClients",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/connectionClients:ConnectionClients": "ConnectionClients"
   }
  },
  {
@@ -245,6 +260,22 @@ _utilities.register(
  },
  {
   "pkg": "auth0",
+  "mod": "index/rolePermission",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/rolePermission:RolePermission": "RolePermission"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/rolePermissions",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/rolePermissions:RolePermissions": "RolePermissions"
+  }
+ },
+ {
+  "pkg": "auth0",
   "mod": "index/rule",
   "fqn": "pulumi_auth0",
   "classes": {
@@ -281,6 +312,38 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/user:User": "User"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/userPermission",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/userPermission:UserPermission": "UserPermission"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/userPermissions",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/userPermissions:UserPermissions": "UserPermissions"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/userRole",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/userRole:UserRole": "UserRole"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/userRoles",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/userRoles:UserRoles": "UserRoles"
   }
  }
 ]

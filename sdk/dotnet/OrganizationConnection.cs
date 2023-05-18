@@ -24,13 +24,11 @@ namespace Pulumi.Auth0
     /// {
     ///     var myConnection = new Auth0.Connection("myConnection", new()
     ///     {
-    ///         Name = "My Connection",
     ///         Strategy = "auth0",
     ///     });
     /// 
     ///     var myOrganization = new Auth0.Organization("myOrganization", new()
     ///     {
-    ///         Name = "my-organization",
     ///         DisplayName = "My Organization",
     ///     });
     /// 

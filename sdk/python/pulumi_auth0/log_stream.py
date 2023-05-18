@@ -16,38 +16,27 @@ __all__ = ['LogStreamArgs', 'LogStream']
 @pulumi.input_type
 class LogStreamArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  sink: pulumi.Input['LogStreamSinkArgs'],
                  type: pulumi.Input[str],
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogStream resource.
-        :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
         :param pulumi.Input[str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
+        :param pulumi.Input[str] name: Name of the log stream.
         :param pulumi.Input[str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "sink", sink)
         pulumi.set(__self__, "type", type)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if status is not None:
             pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of the log stream.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -84,6 +73,18 @@ class LogStreamArgs:
     @filters.setter
     def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "filters", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the log stream.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -218,7 +219,6 @@ class LogStream(pulumi.CustomResource):
                     "type": "category",
                 },
             ],
-            name="HTTP log stream",
             sink=auth0.LogStreamSinkArgs(
                 http_authorization="AKIAXXXXXXXXXXXXXXXX",
                 http_content_format="JSONOBJECT",
@@ -232,7 +232,6 @@ class LogStream(pulumi.CustomResource):
             type="http")
         # This is an example of an Amazon EventBridge log stream.
         example_aws = auth0.LogStream("exampleAws",
-            name="AWS Eventbridge",
             sink=auth0.LogStreamSinkArgs(
                 aws_account_id="my_account_id",
                 aws_region="us-east-2",
@@ -284,7 +283,6 @@ class LogStream(pulumi.CustomResource):
                     "type": "category",
                 },
             ],
-            name="HTTP log stream",
             sink=auth0.LogStreamSinkArgs(
                 http_authorization="AKIAXXXXXXXXXXXXXXXX",
                 http_content_format="JSONOBJECT",
@@ -298,7 +296,6 @@ class LogStream(pulumi.CustomResource):
             type="http")
         # This is an example of an Amazon EventBridge log stream.
         example_aws = auth0.LogStream("exampleAws",
-            name="AWS Eventbridge",
             sink=auth0.LogStreamSinkArgs(
                 aws_account_id="my_account_id",
                 aws_region="us-east-2",
@@ -345,8 +342,6 @@ class LogStream(pulumi.CustomResource):
             __props__ = LogStreamArgs.__new__(LogStreamArgs)
 
             __props__.__dict__["filters"] = filters
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if sink is None and not opts.urn:
                 raise TypeError("Missing required property 'sink'")

@@ -27,15 +27,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			reader, err := auth0.NewRole(ctx, "reader", &auth0.RoleArgs{
-//				Name: pulumi.String("Reader"),
-//			})
+//			reader, err := auth0.NewRole(ctx, "reader", nil)
 //			if err != nil {
 //				return err
 //			}
-//			admin, err := auth0.NewRole(ctx, "admin", &auth0.RoleArgs{
-//				Name: pulumi.String("Admin"),
-//			})
+//			admin, err := auth0.NewRole(ctx, "admin", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -49,7 +45,6 @@ import (
 //				return err
 //			}
 //			myOrg, err := auth0.NewOrganization(ctx, "myOrg", &auth0.OrganizationArgs{
-//				Name:        pulumi.String("org-admin"),
 //				DisplayName: pulumi.String("Admin"),
 //			})
 //			if err != nil {

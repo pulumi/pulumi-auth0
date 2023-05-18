@@ -23,14 +23,10 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // The following example grants a client the "create:foo" permission (scope).
-    ///     var myClient = new Auth0.Client("myClient", new()
-    ///     {
-    ///         Name = "Example Application - Client Grant (Managed by Terraform)",
-    ///     });
+    ///     var myClient = new Auth0.Client("myClient");
     /// 
     ///     var myResourceServer = new Auth0.ResourceServer("myResourceServer", new()
     ///     {
-    ///         Name = "Example Resource Server - Client Grant (Managed by Terraform)",
     ///         Identifier = "https://api.example.com/client-grant",
     ///         Scopes = new[]
     ///         {

@@ -147,6 +147,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGlobalClientNativeSocialLoginResult> NativeSocialLogins;
         /// <summary>
+        /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> OidcBackchannelLogoutUrls;
+        /// <summary>
         /// Indicates whether this client will conform to strict OIDC specifications.
         /// </summary>
         public readonly bool OidcConformant;
@@ -239,6 +243,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetGlobalClientNativeSocialLoginResult> nativeSocialLogins,
 
+            ImmutableArray<string> oidcBackchannelLogoutUrls,
+
             bool oidcConformant,
 
             string organizationRequireBehavior,
@@ -284,6 +290,7 @@ namespace Pulumi.Auth0
             Mobiles = mobiles;
             Name = name;
             NativeSocialLogins = nativeSocialLogins;
+            OidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             OidcConformant = oidcConformant;
             OrganizationRequireBehavior = organizationRequireBehavior;
             OrganizationUsage = organizationUsage;

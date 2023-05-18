@@ -38,7 +38,6 @@ import (
 //						"type": pulumi.String("category"),
 //					},
 //				},
-//				Name: pulumi.String("HTTP log stream"),
 //				Sink: &auth0.LogStreamSinkArgs{
 //					HttpAuthorization: pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					HttpContentFormat: pulumi.String("JSONOBJECT"),
@@ -57,7 +56,6 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewLogStream(ctx, "exampleAws", &auth0.LogStreamArgs{
-//				Name: pulumi.String("AWS Eventbridge"),
 //				Sink: &auth0.LogStreamSinkArgs{
 //					AwsAccountId: pulumi.String("my_account_id"),
 //					AwsRegion:    pulumi.String("us-east-2"),
@@ -105,9 +103,6 @@ func NewLogStream(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Sink == nil {
 		return nil, errors.New("invalid value for required argument 'Sink'")
 	}
@@ -169,7 +164,7 @@ type logStreamArgs struct {
 	// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
 	Filters []map[string]string `pulumi:"filters"`
 	// Name of the log stream.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// The sink configuration for the log stream.
 	Sink LogStreamSink `pulumi:"sink"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
@@ -183,7 +178,7 @@ type LogStreamArgs struct {
 	// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered.
 	Filters pulumi.StringMapArrayInput
 	// Name of the log stream.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// The sink configuration for the log stream.
 	Sink LogStreamSinkInput
 	// The current status of the log stream. Options are "active", "paused", "suspended".

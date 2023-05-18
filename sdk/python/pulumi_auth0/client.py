@@ -16,7 +16,6 @@ __all__ = ['ClientArgs', 'Client']
 @pulumi.input_type
 class ClientArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  addons: Optional[pulumi.Input['ClientAddonsArgs']] = None,
                  allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -40,7 +39,9 @@ class ClientArgs:
                  jwt_configuration: Optional[pulumi.Input['ClientJwtConfigurationArgs']] = None,
                  logo_uri: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
+                 oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -51,7 +52,6 @@ class ClientArgs:
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Client resource.
-        :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input['ClientAddonsArgs'] addons: Addons enabled for this client and their associated configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
@@ -75,7 +75,9 @@ class ClientArgs:
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -85,7 +87,6 @@ class ClientArgs:
         :param pulumi.Input[str] token_endpoint_auth_method: Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
-        pulumi.set(__self__, "name", name)
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
         if allowed_clients is not None:
@@ -134,8 +135,12 @@ class ClientArgs:
             pulumi.set(__self__, "logo_uri", logo_uri)
         if mobile is not None:
             pulumi.set(__self__, "mobile", mobile)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if native_social_login is not None:
             pulumi.set(__self__, "native_social_login", native_social_login)
+        if oidc_backchannel_logout_urls is not None:
+            pulumi.set(__self__, "oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_require_behavior is not None:
@@ -152,18 +157,6 @@ class ClientArgs:
             pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
         if web_origins is not None:
             pulumi.set(__self__, "web_origins", web_origins)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of the client.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -442,6 +435,18 @@ class ClientArgs:
         pulumi.set(self, "mobile", value)
 
     @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the client.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="nativeSocialLogin")
     def native_social_login(self) -> Optional[pulumi.Input['ClientNativeSocialLoginArgs']]:
         """
@@ -452,6 +457,18 @@ class ClientArgs:
     @native_social_login.setter
     def native_social_login(self, value: Optional[pulumi.Input['ClientNativeSocialLoginArgs']]):
         pulumi.set(self, "native_social_login", value)
+
+    @property
+    @pulumi.getter(name="oidcBackchannelLogoutUrls")
+    def oidc_backchannel_logout_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        return pulumi.get(self, "oidc_backchannel_logout_urls")
+
+    @oidc_backchannel_logout_urls.setter
+    def oidc_backchannel_logout_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "oidc_backchannel_logout_urls", value)
 
     @property
     @pulumi.getter(name="oidcConformant")
@@ -580,6 +597,7 @@ class _ClientState:
                  mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
+                 oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -619,6 +637,7 @@ class _ClientState:
         :param pulumi.Input['ClientMobileArgs'] mobile: Additional configuration for native mobile apps.
         :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -685,6 +704,8 @@ class _ClientState:
             pulumi.set(__self__, "name", name)
         if native_social_login is not None:
             pulumi.set(__self__, "native_social_login", native_social_login)
+        if oidc_backchannel_logout_urls is not None:
+            pulumi.set(__self__, "oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
         if oidc_conformant is not None:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_require_behavior is not None:
@@ -1030,6 +1051,18 @@ class _ClientState:
         pulumi.set(self, "native_social_login", value)
 
     @property
+    @pulumi.getter(name="oidcBackchannelLogoutUrls")
+    def oidc_backchannel_logout_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        return pulumi.get(self, "oidc_backchannel_logout_urls")
+
+    @oidc_backchannel_logout_urls.setter
+    def oidc_backchannel_logout_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "oidc_backchannel_logout_urls", value)
+
+    @property
     @pulumi.getter(name="oidcConformant")
     def oidc_conformant(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1168,6 +1201,7 @@ class Client(pulumi.CustomResource):
                  mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
+                 oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -1215,6 +1249,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: Additional configuration for native mobile apps.
         :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -1228,7 +1263,7 @@ class Client(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ClientArgs,
+                 args: Optional[ClientArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
@@ -1281,6 +1316,7 @@ class Client(pulumi.CustomResource):
                  mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
+                 oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[bool]] = None,
                  organization_require_behavior: Optional[pulumi.Input[str]] = None,
                  organization_usage: Optional[pulumi.Input[str]] = None,
@@ -1323,10 +1359,9 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["jwt_configuration"] = jwt_configuration
             __props__.__dict__["logo_uri"] = logo_uri
             __props__.__dict__["mobile"] = mobile
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["native_social_login"] = native_social_login
+            __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
@@ -1377,6 +1412,7 @@ class Client(pulumi.CustomResource):
             mobile: Optional[pulumi.Input[pulumi.InputType['ClientMobileArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             native_social_login: Optional[pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']]] = None,
+            oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             oidc_conformant: Optional[pulumi.Input[bool]] = None,
             organization_require_behavior: Optional[pulumi.Input[str]] = None,
             organization_usage: Optional[pulumi.Input[str]] = None,
@@ -1421,6 +1457,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClientMobileArgs']] mobile: Additional configuration for native mobile apps.
         :param pulumi.Input[str] name: Name of the client.
         :param pulumi.Input[pulumi.InputType['ClientNativeSocialLoginArgs']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
         :param pulumi.Input[str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -1462,6 +1499,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["mobile"] = mobile
         __props__.__dict__["name"] = name
         __props__.__dict__["native_social_login"] = native_social_login
+        __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
         __props__.__dict__["oidc_conformant"] = oidc_conformant
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
@@ -1689,6 +1727,14 @@ class Client(pulumi.CustomResource):
         Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         """
         return pulumi.get(self, "native_social_login")
+
+    @property
+    @pulumi.getter(name="oidcBackchannelLogoutUrls")
+    def oidc_backchannel_logout_urls(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        return pulumi.get(self, "oidc_backchannel_logout_urls")
 
     @property
     @pulumi.getter(name="oidcConformant")

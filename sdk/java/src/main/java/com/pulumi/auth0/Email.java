@@ -51,7 +51,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .defaultFromAddress(&#34;accounts@example.com&#34;)
  *             .enabled(true)
- *             .name(&#34;ses&#34;)
  *             .build());
  * 
  *         var smtpEmailProvider = new Email(&#34;smtpEmailProvider&#34;, EmailArgs.builder()        
@@ -63,7 +62,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .defaultFromAddress(&#34;accounts@example.com&#34;)
  *             .enabled(true)
- *             .name(&#34;smtp&#34;)
  *             .build());
  * 
  *         var sendgridEmailProvider = new Email(&#34;sendgridEmailProvider&#34;, EmailArgs.builder()        
@@ -72,7 +70,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .defaultFromAddress(&#34;accounts@example.com&#34;)
  *             .enabled(true)
- *             .name(&#34;sendgrid&#34;)
  *             .build());
  * 
  *     }

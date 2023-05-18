@@ -30,7 +30,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var googleOauth2 = new Auth0.Connection("googleOauth2", new()
     ///     {
-    ///         Name = "Google-OAuth2-Connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             AllowedAudiences = new[]
@@ -71,7 +70,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var facebook = new Auth0.Connection("facebook", new()
     ///     {
-    ///         Name = "Facebook-Connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -107,7 +105,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var apple = new Auth0.Connection("apple", new()
     ///     {
-    ///         Name = "Apple-Connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -146,7 +143,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var linkedin = new Auth0.Connection("linkedin", new()
     ///     {
-    ///         Name = "Linkedin-Connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -182,7 +178,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var github = new Auth0.Connection("github", new()
     ///     {
-    ///         Name = "GitHub-Connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -218,7 +213,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var salesforce = new Auth0.Connection("salesforce", new()
     ///     {
-    ///         Name = "Salesforce-Connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -255,7 +249,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var oauth2 = new Auth0.Connection("oauth2", new()
     ///     {
-    ///         Name = "OAuth2-Connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
@@ -305,7 +298,6 @@ namespace Pulumi.Auth0
     ///     var sms = new Auth0.Connection("sms", new()
     ///     {
     ///         IsDomainConnection = false,
-    ///         Name = "custom-sms-gateway",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             BruteForceProtection = true,
@@ -350,7 +342,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var passwordlessEmail = new Auth0.Connection("passwordlessEmail", new()
     ///     {
-    ///         Name = "email",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             AuthParams = 
@@ -390,7 +381,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var windowslive = new Auth0.Connection("windowslive", new()
     ///     {
-    ///         Name = "Windowslive-Connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -426,7 +416,6 @@ namespace Pulumi.Auth0
     ///     var oidc = new Auth0.Connection("oidc", new()
     ///     {
     ///         DisplayName = "OIDC Connection",
-    ///         Name = "oidc-connection",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             AuthorizationEndpoint = "https://www.paypal.com/signin/authorize",
@@ -601,8 +590,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name of the connection.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Configuration settings for connection options.

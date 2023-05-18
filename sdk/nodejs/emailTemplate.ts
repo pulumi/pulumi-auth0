@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myEmailProvider = new auth0.Email("myEmailProvider", {
- *     name: "ses",
  *     enabled: true,
  *     defaultFromAddress: "accounts@example.com",
  *     credentials: {
