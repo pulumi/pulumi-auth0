@@ -16,36 +16,25 @@ __all__ = ['OrganizationArgs', 'Organization']
 @pulumi.input_type
 class OrganizationArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  branding: Optional[pulumi.Input['OrganizationBrandingArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Organization resource.
-        :param pulumi.Input[str] name: The name of this organization.
         :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages.
         :param pulumi.Input[str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[str] name: The name of this organization.
         """
-        pulumi.set(__self__, "name", name)
         if branding is not None:
             pulumi.set(__self__, "branding", branding)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The name of this organization.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -82,6 +71,18 @@ class OrganizationArgs:
     @metadata.setter
     def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -189,8 +190,7 @@ class Organization(pulumi.CustomResource):
                 },
                 logo_url="https://example.com/assets/icons/icon.png",
             ),
-            display_name="Auth0 Inc.",
-            name="auth0-inc")
+            display_name="Auth0 Inc.")
         ```
 
         ## Import
@@ -212,7 +212,7 @@ class Organization(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationArgs,
+                 args: Optional[OrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
@@ -237,8 +237,7 @@ class Organization(pulumi.CustomResource):
                 },
                 logo_url="https://example.com/assets/icons/icon.png",
             ),
-            display_name="Auth0 Inc.",
-            name="auth0-inc")
+            display_name="Auth0 Inc.")
         ```
 
         ## Import
@@ -280,8 +279,6 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["branding"] = branding
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["metadata"] = metadata
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
         super(Organization, __self__).__init__(
             'auth0:index/organization:Organization',

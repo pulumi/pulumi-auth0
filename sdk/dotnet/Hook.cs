@@ -29,7 +29,6 @@ namespace Pulumi.Auth0
     ///             { "auth0", "2.30.0" },
     ///         },
     ///         Enabled = true,
-    ///         Name = "My Pre User Registration Hook",
     ///         Script = @"    function (user, context, callback) {
     ///       callback(null, { user });
     ///     }
@@ -163,8 +162,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name of this hook.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Code to be executed when this hook runs.

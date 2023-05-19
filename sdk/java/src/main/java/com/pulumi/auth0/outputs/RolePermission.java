@@ -6,9 +6,16 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RolePermission {
+    /**
+     * @return Description of the permission.
+     * 
+     */
+    private @Nullable String description;
     /**
      * @return Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      * 
@@ -19,8 +26,20 @@ public final class RolePermission {
      * 
      */
     private String resourceServerIdentifier;
+    /**
+     * @return Name of resource server that the permission is associated with.
+     * 
+     */
+    private @Nullable String resourceServerName;
 
     private RolePermission() {}
+    /**
+     * @return Description of the permission.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
     /**
      * @return Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      * 
@@ -35,6 +54,13 @@ public final class RolePermission {
     public String resourceServerIdentifier() {
         return this.resourceServerIdentifier;
     }
+    /**
+     * @return Name of resource server that the permission is associated with.
+     * 
+     */
+    public Optional<String> resourceServerName() {
+        return Optional.ofNullable(this.resourceServerName);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -45,15 +71,24 @@ public final class RolePermission {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String description;
         private String name;
         private String resourceServerIdentifier;
+        private @Nullable String resourceServerName;
         public Builder() {}
         public Builder(RolePermission defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.name = defaults.name;
     	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
+    	      this.resourceServerName = defaults.resourceServerName;
         }
 
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
@@ -64,10 +99,17 @@ public final class RolePermission {
             this.resourceServerIdentifier = Objects.requireNonNull(resourceServerIdentifier);
             return this;
         }
+        @CustomType.Setter
+        public Builder resourceServerName(@Nullable String resourceServerName) {
+            this.resourceServerName = resourceServerName;
+            return this;
+        }
         public RolePermission build() {
             final var o = new RolePermission();
+            o.description = description;
             o.name = name;
             o.resourceServerIdentifier = resourceServerIdentifier;
+            o.resourceServerName = resourceServerName;
             return o;
         }
     }

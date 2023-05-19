@@ -217,6 +217,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.GlobalClientNativeSocialLogin> NativeSocialLogin { get; private set; } = null!;
 
         /// <summary>
+        /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        /// </summary>
+        [Output("oidcBackchannelLogoutUrls")]
+        public Output<ImmutableArray<string>> OidcBackchannelLogoutUrls { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether this client will conform to strict OIDC specifications.
         /// </summary>
         [Output("oidcConformant")]
@@ -548,6 +554,18 @@ namespace Pulumi.Auth0
         [Input("nativeSocialLogin")]
         public Input<Inputs.GlobalClientNativeSocialLoginArgs>? NativeSocialLogin { get; set; }
 
+        [Input("oidcBackchannelLogoutUrls")]
+        private InputList<string>? _oidcBackchannelLogoutUrls;
+
+        /// <summary>
+        /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        /// </summary>
+        public InputList<string> OidcBackchannelLogoutUrls
+        {
+            get => _oidcBackchannelLogoutUrls ?? (_oidcBackchannelLogoutUrls = new InputList<string>());
+            set => _oidcBackchannelLogoutUrls = value;
+        }
+
         /// <summary>
         /// Indicates whether this client will conform to strict OIDC specifications.
         /// </summary>
@@ -852,6 +870,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("nativeSocialLogin")]
         public Input<Inputs.GlobalClientNativeSocialLoginGetArgs>? NativeSocialLogin { get; set; }
+
+        [Input("oidcBackchannelLogoutUrls")]
+        private InputList<string>? _oidcBackchannelLogoutUrls;
+
+        /// <summary>
+        /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        /// </summary>
+        public InputList<string> OidcBackchannelLogoutUrls
+        {
+            get => _oidcBackchannelLogoutUrls ?? (_oidcBackchannelLogoutUrls = new InputList<string>());
+            set => _oidcBackchannelLogoutUrls = value;
+        }
 
         /// <summary>
         /// Indicates whether this client will conform to strict OIDC specifications.

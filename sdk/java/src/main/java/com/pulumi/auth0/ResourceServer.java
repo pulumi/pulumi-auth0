@@ -47,7 +47,6 @@ import javax.annotation.Nullable;
  *         var myResourceServer = new ResourceServer(&#34;myResourceServer&#34;, ResourceServerArgs.builder()        
  *             .allowOfflineAccess(true)
  *             .identifier(&#34;https://api.example.com&#34;)
- *             .name(&#34;Example Resource Server (Managed by Terraform)&#34;)
  *             .scopes(            
  *                 ResourceServerScopeArgs.builder()
  *                     .description(&#34;Create foos&#34;)
@@ -124,14 +123,14 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", type=String.class, parameters={})
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
      * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * List of permissions (scopes) used by this resource server.

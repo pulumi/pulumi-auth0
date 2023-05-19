@@ -85,6 +85,7 @@ __all__ = [
     'OrganizationBranding',
     'ResourceServerScope',
     'RolePermission',
+    'RolePermissionsPermission',
     'TenantChangePassword',
     'TenantErrorPage',
     'TenantFlags',
@@ -93,6 +94,8 @@ __all__ = [
     'TenantUniversalLogin',
     'TenantUniversalLoginColors',
     'TriggerBindingAction',
+    'UserPermission',
+    'UserPermissionsPermission',
     'GetAttackProtectionBreachedPasswordDetectionResult',
     'GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult',
     'GetAttackProtectionBruteForceProtectionResult',
@@ -157,6 +160,7 @@ __all__ = [
     'GetTenantSessionCookyResult',
     'GetTenantUniversalLoginResult',
     'GetTenantUniversalLoginColorResult',
+    'GetUserPermissionResult',
 ]
 
 @pulumi.output_type
@@ -6064,6 +6068,8 @@ class RolePermission(dict):
         suggest = None
         if key == "resourceServerIdentifier":
             suggest = "resource_server_identifier"
+        elif key == "resourceServerName":
+            suggest = "resource_server_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RolePermission. Access the value via the '{suggest}' property getter instead.")
@@ -6078,13 +6084,21 @@ class RolePermission(dict):
 
     def __init__(__self__, *,
                  name: str,
-                 resource_server_identifier: str):
+                 resource_server_identifier: str,
+                 description: Optional[str] = None,
+                 resource_server_name: Optional[str] = None):
         """
         :param str name: Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
         :param str resource_server_identifier: Unique identifier for the resource server.
+        :param str description: Description of the permission.
+        :param str resource_server_name: Name of resource server that the permission is associated with.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resource_server_name is not None:
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
 
     @property
     @pulumi.getter
@@ -6101,6 +6115,94 @@ class RolePermission(dict):
         Unique identifier for the resource server.
         """
         return pulumi.get(self, "resource_server_identifier")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the permission.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> Optional[str]:
+        """
+        Name of resource server that the permission is associated with.
+        """
+        return pulumi.get(self, "resource_server_name")
+
+
+@pulumi.output_type
+class RolePermissionsPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceServerIdentifier":
+            suggest = "resource_server_identifier"
+        elif key == "resourceServerName":
+            suggest = "resource_server_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolePermissionsPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolePermissionsPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolePermissionsPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_server_identifier: str,
+                 description: Optional[str] = None,
+                 resource_server_name: Optional[str] = None):
+        """
+        :param str name: Name of permission.
+        :param str resource_server_identifier: Resource server identifier associated with the permission.
+        :param str description: Description of the permission.
+        :param str resource_server_name: Name of resource server that the permission is associated with.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resource_server_name is not None:
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of permission.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> str:
+        """
+        Resource server identifier associated with the permission.
+        """
+        return pulumi.get(self, "resource_server_identifier")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the permission.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> Optional[str]:
+        """
+        Name of resource server that the permission is associated with.
+        """
+        return pulumi.get(self, "resource_server_name")
 
 
 @pulumi.output_type
@@ -6682,6 +6784,140 @@ class TriggerBindingAction(dict):
         Action ID.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class UserPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceServerIdentifier":
+            suggest = "resource_server_identifier"
+        elif key == "resourceServerName":
+            suggest = "resource_server_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 name: Optional[str] = None,
+                 resource_server_identifier: Optional[str] = None,
+                 resource_server_name: Optional[str] = None):
+        """
+        :param str name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_server_identifier is not None:
+            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        if resource_server_name is not None:
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> Optional[str]:
+        return pulumi.get(self, "resource_server_identifier")
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> Optional[str]:
+        return pulumi.get(self, "resource_server_name")
+
+
+@pulumi.output_type
+class UserPermissionsPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceServerIdentifier":
+            suggest = "resource_server_identifier"
+        elif key == "resourceServerName":
+            suggest = "resource_server_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserPermissionsPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserPermissionsPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserPermissionsPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_server_identifier: str,
+                 description: Optional[str] = None,
+                 resource_server_name: Optional[str] = None):
+        """
+        :param str name: Name of permission.
+        :param str resource_server_identifier: Resource server identifier associated with the permission.
+        :param str description: Description of the permission.
+        :param str resource_server_name: Name of resource server that the permission is associated with.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resource_server_name is not None:
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of permission.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> str:
+        """
+        Resource server identifier associated with the permission.
+        """
+        return pulumi.get(self, "resource_server_identifier")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the permission.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> Optional[str]:
+        """
+        Name of resource server that the permission is associated with.
+        """
+        return pulumi.get(self, "resource_server_name")
 
 
 @pulumi.output_type
@@ -9325,13 +9561,26 @@ class GetResourceServerScopeResult(dict):
 @pulumi.output_type
 class GetRolePermissionResult(dict):
     def __init__(__self__, *,
+                 description: str,
                  name: str,
-                 resource_server_identifier: str):
+                 resource_server_identifier: str,
+                 resource_server_name: str):
         """
+        :param str description: Description of the role.
         :param str name: The name of the role. If not provided, `role_id` must be set.
         """
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        pulumi.set(__self__, "resource_server_name", resource_server_name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the role.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -9345,6 +9594,11 @@ class GetRolePermissionResult(dict):
     @pulumi.getter(name="resourceServerIdentifier")
     def resource_server_identifier(self) -> str:
         return pulumi.get(self, "resource_server_identifier")
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> str:
+        return pulumi.get(self, "resource_server_name")
 
 
 @pulumi.output_type
@@ -9624,5 +9878,44 @@ class GetTenantUniversalLoginColorResult(dict):
     @pulumi.getter
     def primary(self) -> str:
         return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class GetUserPermissionResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 name: str,
+                 resource_server_identifier: str,
+                 resource_server_name: str):
+        """
+        :param str name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        pulumi.set(__self__, "resource_server_name", resource_server_name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> str:
+        return pulumi.get(self, "resource_server_identifier")
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> str:
+        return pulumi.get(self, "resource_server_name")
 
 

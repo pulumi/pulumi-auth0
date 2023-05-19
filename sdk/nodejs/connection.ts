@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const googleOauth2 = new auth0.Connection("googleOauth2", {
- *     name: "Google-OAuth2-Connection",
  *     options: {
  *         allowedAudiences: [
  *             "example.com",
@@ -52,7 +51,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const facebook = new auth0.Connection("facebook", {
- *     name: "Facebook-Connection",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -78,7 +76,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const apple = new auth0.Connection("apple", {
- *     name: "Apple-Connection",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: `-----BEGIN PRIVATE KEY-----
@@ -107,7 +104,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const linkedin = new auth0.Connection("linkedin", {
- *     name: "Linkedin-Connection",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -133,7 +129,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const github = new auth0.Connection("github", {
- *     name: "GitHub-Connection",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -159,7 +154,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const salesforce = new auth0.Connection("salesforce", {
- *     name: "Salesforce-Connection",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -186,7 +180,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const oauth2 = new auth0.Connection("oauth2", {
- *     name: "OAuth2-Connection",
  *     options: {
  *         authorizationEndpoint: "https://auth.example.com/oauth2/authorize",
  *         clientId: "<client-id>",
@@ -225,7 +218,6 @@ import * as utilities from "./utilities";
  *
  * const sms = new auth0.Connection("sms", {
  *     isDomainConnection: false,
- *     name: "custom-sms-gateway",
  *     options: {
  *         bruteForceProtection: true,
  *         disableSignup: false,
@@ -260,7 +252,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const passwordlessEmail = new auth0.Connection("passwordlessEmail", {
- *     name: "email",
  *     options: {
  *         authParams: {
  *             responseType: "code",
@@ -290,7 +281,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const windowslive = new auth0.Connection("windowslive", {
- *     name: "Windowslive-Connection",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -316,7 +306,6 @@ import * as utilities from "./utilities";
  *
  * const oidc = new auth0.Connection("oidc", {
  *     displayName: "OIDC Connection",
- *     name: "oidc-connection",
  *     options: {
  *         authorizationEndpoint: "https://www.paypal.com/signin/authorize",
  *         clientId: "1234567",
@@ -442,9 +431,6 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["strategy"] = state ? state.strategy : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.strategy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
@@ -524,7 +510,7 @@ export interface ConnectionArgs {
     /**
      * Name of the connection.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Configuration settings for connection options.
      */

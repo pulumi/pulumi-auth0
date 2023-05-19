@@ -36,6 +36,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "auth0:index/connectionClient:ConnectionClient":
 		r = &ConnectionClient{}
+	case "auth0:index/connectionClients:ConnectionClients":
+		r = &ConnectionClients{}
 	case "auth0:index/customDomain:CustomDomain":
 		r = &CustomDomain{}
 	case "auth0:index/customDomainVerification:CustomDomainVerification":
@@ -66,6 +68,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResourceServer{}
 	case "auth0:index/role:Role":
 		r = &Role{}
+	case "auth0:index/rolePermission:RolePermission":
+		r = &RolePermission{}
+	case "auth0:index/rolePermissions:RolePermissions":
+		r = &RolePermissions{}
 	case "auth0:index/rule:Rule":
 		r = &Rule{}
 	case "auth0:index/ruleConfig:RuleConfig":
@@ -76,6 +82,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TriggerBinding{}
 	case "auth0:index/user:User":
 		r = &User{}
+	case "auth0:index/userPermission:UserPermission":
+		r = &UserPermission{}
+	case "auth0:index/userPermissions:UserPermissions":
+		r = &UserPermissions{}
+	case "auth0:index/userRole:UserRole":
+		r = &UserRole{}
+	case "auth0:index/userRoles:UserRoles":
+		r = &UserRoles{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -142,6 +156,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/connectionClient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/connectionClients",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -221,6 +240,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"auth0",
+		"index/rolePermission",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/rolePermissions",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
 		"index/rule",
 		&module{version},
 	)
@@ -242,6 +271,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/userPermission",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/userPermissions",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/userRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/userRoles",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

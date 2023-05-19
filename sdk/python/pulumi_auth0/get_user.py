@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetUserResult',
@@ -21,7 +22,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, app_metadata=None, blocked=None, connection_name=None, email=None, email_verified=None, family_name=None, given_name=None, id=None, name=None, nickname=None, password=None, phone_number=None, phone_verified=None, picture=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
+    def __init__(__self__, app_metadata=None, blocked=None, connection_name=None, email=None, email_verified=None, family_name=None, given_name=None, id=None, name=None, nickname=None, password=None, permissions=None, phone_number=None, phone_verified=None, picture=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
         if app_metadata and not isinstance(app_metadata, str):
             raise TypeError("Expected argument 'app_metadata' to be a str")
         pulumi.set(__self__, "app_metadata", app_metadata)
@@ -55,6 +56,9 @@ class GetUserResult:
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
+        if permissions and not isinstance(permissions, list):
+            raise TypeError("Expected argument 'permissions' to be a list")
+        pulumi.set(__self__, "permissions", permissions)
         if phone_number and not isinstance(phone_number, str):
             raise TypeError("Expected argument 'phone_number' to be a str")
         pulumi.set(__self__, "phone_number", phone_number)
@@ -169,6 +173,14 @@ class GetUserResult:
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter
+    def permissions(self) -> Sequence['outputs.GetUserPermissionResult']:
+        """
+        List of API permissions granted to the user.
+        """
+        return pulumi.get(self, "permissions")
+
+    @property
     @pulumi.getter(name="phoneNumber")
     def phone_number(self) -> str:
         """
@@ -250,6 +262,7 @@ class AwaitableGetUserResult(GetUserResult):
             name=self.name,
             nickname=self.nickname,
             password=self.password,
+            permissions=self.permissions,
             phone_number=self.phone_number,
             phone_verified=self.phone_verified,
             picture=self.picture,
@@ -294,6 +307,7 @@ def get_user(user_id: Optional[str] = None,
         name=__ret__.name,
         nickname=__ret__.nickname,
         password=__ret__.password,
+        permissions=__ret__.permissions,
         phone_number=__ret__.phone_number,
         phone_verified=__ret__.phone_verified,
         picture=__ret__.picture,

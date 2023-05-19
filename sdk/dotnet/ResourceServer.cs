@@ -26,7 +26,6 @@ namespace Pulumi.Auth0
     ///     {
     ///         AllowOfflineAccess = true,
     ///         Identifier = "https://api.example.com",
-    ///         Name = "Example Resource Server (Managed by Terraform)",
     ///         Scopes = new[]
     ///         {
     ///             new Auth0.Inputs.ResourceServerScopeArgs
@@ -81,7 +80,7 @@ namespace Pulumi.Auth0
         /// Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// List of permissions (scopes) used by this resource server.

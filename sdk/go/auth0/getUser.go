@@ -76,6 +76,8 @@ type LookupUserResult struct {
 	Nickname string `pulumi:"nickname"`
 	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password string `pulumi:"password"`
+	// List of API permissions granted to the user.
+	Permissions []GetUserPermissionType `pulumi:"permissions"`
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber string `pulumi:"phoneNumber"`
 	// Indicates whether the phone number has been verified.
@@ -185,6 +187,11 @@ func (o LookupUserResultOutput) Nickname() pulumi.StringOutput {
 // Initial password for this user. Required for non-passwordless connections (SMS and email).
 func (o LookupUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// List of API permissions granted to the user.
+func (o LookupUserResultOutput) Permissions() GetUserPermissionTypeArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []GetUserPermissionType { return v.Permissions }).(GetUserPermissionTypeArrayOutput)
 }
 
 // Phone number for the user; follows the E.164 recommendation. Used for SMS connections.

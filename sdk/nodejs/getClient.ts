@@ -157,6 +157,10 @@ export interface GetClientResult {
      */
     readonly nativeSocialLogins: outputs.GetClientNativeSocialLogin[];
     /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     */
+    readonly oidcBackchannelLogoutUrls: string[];
+    /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
     readonly oidcConformant: boolean;

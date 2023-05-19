@@ -433,6 +433,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    @Import(name="oidcBackchannelLogoutUrls")
+    private @Nullable Output<List<String>> oidcBackchannelLogoutUrls;
+
+    /**
+     * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    public Optional<Output<List<String>>> oidcBackchannelLogoutUrls() {
+        return Optional.ofNullable(this.oidcBackchannelLogoutUrls);
+    }
+
+    /**
      * Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
@@ -597,6 +612,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.mobile = $.mobile;
         this.name = $.name;
         this.nativeSocialLogin = $.nativeSocialLogin;
+        this.oidcBackchannelLogoutUrls = $.oidcBackchannelLogoutUrls;
         this.oidcConformant = $.oidcConformant;
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
@@ -1253,6 +1269,37 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nativeSocialLogin(ClientNativeSocialLoginArgs nativeSocialLogin) {
             return nativeSocialLogin(Output.of(nativeSocialLogin));
+        }
+
+        /**
+         * @param oidcBackchannelLogoutUrls Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcBackchannelLogoutUrls(@Nullable Output<List<String>> oidcBackchannelLogoutUrls) {
+            $.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
+            return this;
+        }
+
+        /**
+         * @param oidcBackchannelLogoutUrls Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcBackchannelLogoutUrls(List<String> oidcBackchannelLogoutUrls) {
+            return oidcBackchannelLogoutUrls(Output.of(oidcBackchannelLogoutUrls));
+        }
+
+        /**
+         * @param oidcBackchannelLogoutUrls Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcBackchannelLogoutUrls(String... oidcBackchannelLogoutUrls) {
+            return oidcBackchannelLogoutUrls(List.of(oidcBackchannelLogoutUrls));
         }
 
         /**

@@ -139,9 +139,8 @@ class ClientGrant(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         # The following example grants a client the "create:foo" permission (scope).
-        my_client = auth0.Client("myClient", name="Example Application - Client Grant (Managed by Terraform)")
+        my_client = auth0.Client("myClient")
         my_resource_server = auth0.ResourceServer("myResourceServer",
-            name="Example Resource Server - Client Grant (Managed by Terraform)",
             identifier="https://api.example.com/client-grant",
             scopes=[
                 auth0.ResourceServerScopeArgs(
@@ -189,9 +188,8 @@ class ClientGrant(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         # The following example grants a client the "create:foo" permission (scope).
-        my_client = auth0.Client("myClient", name="Example Application - Client Grant (Managed by Terraform)")
+        my_client = auth0.Client("myClient")
         my_resource_server = auth0.ResourceServer("myResourceServer",
-            name="Example Resource Server - Client Grant (Managed by Terraform)",
             identifier="https://api.example.com/client-grant",
             scopes=[
                 auth0.ResourceServerScopeArgs(

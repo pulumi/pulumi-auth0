@@ -374,15 +374,15 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      * Name of the client.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Name of the client.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -398,6 +398,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClientNativeSocialLoginArgs>> nativeSocialLogin() {
         return Optional.ofNullable(this.nativeSocialLogin);
+    }
+
+    /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    @Import(name="oidcBackchannelLogoutUrls")
+    private @Nullable Output<List<String>> oidcBackchannelLogoutUrls;
+
+    /**
+     * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    public Optional<Output<List<String>>> oidcBackchannelLogoutUrls() {
+        return Optional.ofNullable(this.oidcBackchannelLogoutUrls);
     }
 
     /**
@@ -548,6 +563,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.mobile = $.mobile;
         this.name = $.name;
         this.nativeSocialLogin = $.nativeSocialLogin;
+        this.oidcBackchannelLogoutUrls = $.oidcBackchannelLogoutUrls;
         this.oidcConformant = $.oidcConformant;
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
@@ -1125,7 +1141,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -1159,6 +1175,37 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nativeSocialLogin(ClientNativeSocialLoginArgs nativeSocialLogin) {
             return nativeSocialLogin(Output.of(nativeSocialLogin));
+        }
+
+        /**
+         * @param oidcBackchannelLogoutUrls Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcBackchannelLogoutUrls(@Nullable Output<List<String>> oidcBackchannelLogoutUrls) {
+            $.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
+            return this;
+        }
+
+        /**
+         * @param oidcBackchannelLogoutUrls Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcBackchannelLogoutUrls(List<String> oidcBackchannelLogoutUrls) {
+            return oidcBackchannelLogoutUrls(Output.of(oidcBackchannelLogoutUrls));
+        }
+
+        /**
+         * @param oidcBackchannelLogoutUrls Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcBackchannelLogoutUrls(String... oidcBackchannelLogoutUrls) {
+            return oidcBackchannelLogoutUrls(List.of(oidcBackchannelLogoutUrls));
         }
 
         /**
@@ -1341,7 +1388,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
 
         public ClientArgs build() {
             $.description = Codegen.stringProp("description").output().arg($.description).def("Managed by Pulumi").getNullable();
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

@@ -18,22 +18,23 @@ class EmailArgs:
     def __init__(__self__, *,
                  credentials: pulumi.Input['EmailCredentialsArgs'],
                  default_from_address: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input['EmailSettingsArgs']] = None):
         """
         The set of arguments for constructing a Email resource.
         :param pulumi.Input['EmailCredentialsArgs'] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[str] default_from_address: Email address to use as the sender when no other "from" address is specified.
-        :param pulumi.Input[str] name: Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         :param pulumi.Input[bool] enabled: Indicates whether the email provider is enabled.
+        :param pulumi.Input[str] name: Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
         :param pulumi.Input['EmailSettingsArgs'] settings: Specific email provider settings.
         """
         pulumi.set(__self__, "credentials", credentials)
         pulumi.set(__self__, "default_from_address", default_from_address)
-        pulumi.set(__self__, "name", name)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
 
@@ -63,18 +64,6 @@ class EmailArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the email provider is enabled.
@@ -84,6 +73,18 @@ class EmailArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -214,8 +215,7 @@ class Email(pulumi.CustomResource):
                 secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             ),
             default_from_address="accounts@example.com",
-            enabled=True,
-            name="ses")
+            enabled=True)
         # This is an example on how to set up the email provider with SMTP.
         smtp_email_provider = auth0.Email("smtpEmailProvider",
             credentials=auth0.EmailCredentialsArgs(
@@ -225,16 +225,14 @@ class Email(pulumi.CustomResource):
                 smtp_user="SMTP Username",
             ),
             default_from_address="accounts@example.com",
-            enabled=True,
-            name="smtp")
+            enabled=True)
         # This is an example on how to set up the email provider with Sendgrid.
         sendgrid_email_provider = auth0.Email("sendgridEmailProvider",
             credentials=auth0.EmailCredentialsArgs(
                 api_key="secretAPIKey",
             ),
             default_from_address="accounts@example.com",
-            enabled=True,
-            name="sendgrid")
+            enabled=True)
         ```
 
         ## Import
@@ -276,8 +274,7 @@ class Email(pulumi.CustomResource):
                 secret_access_key="7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             ),
             default_from_address="accounts@example.com",
-            enabled=True,
-            name="ses")
+            enabled=True)
         # This is an example on how to set up the email provider with SMTP.
         smtp_email_provider = auth0.Email("smtpEmailProvider",
             credentials=auth0.EmailCredentialsArgs(
@@ -287,16 +284,14 @@ class Email(pulumi.CustomResource):
                 smtp_user="SMTP Username",
             ),
             default_from_address="accounts@example.com",
-            enabled=True,
-            name="smtp")
+            enabled=True)
         # This is an example on how to set up the email provider with Sendgrid.
         sendgrid_email_provider = auth0.Email("sendgridEmailProvider",
             credentials=auth0.EmailCredentialsArgs(
                 api_key="secretAPIKey",
             ),
             default_from_address="accounts@example.com",
-            enabled=True,
-            name="sendgrid")
+            enabled=True)
         ```
 
         ## Import
@@ -343,8 +338,6 @@ class Email(pulumi.CustomResource):
                 raise TypeError("Missing required property 'default_from_address'")
             __props__.__dict__["default_from_address"] = default_from_address
             __props__.__dict__["enabled"] = enabled
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["settings"] = settings
         super(Email, __self__).__init__(

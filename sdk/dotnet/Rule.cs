@@ -25,7 +25,6 @@ namespace Pulumi.Auth0
     ///     var myRule = new Auth0.Rule("myRule", new()
     ///     {
     ///         Enabled = true,
-    ///         Name = "empty-rule",
     ///         Script = @"    function (user, context, callback) {
     ///       callback(null, user, context);
     ///     }
@@ -126,8 +125,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Order in which the rule executes relative to other rules. Lower-valued rules execute first.

@@ -28,14 +28,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myConnection, err := auth0.NewConnection(ctx, "myConnection", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("My Connection"),
 //				Strategy: pulumi.String("auth0"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			myOrganization, err := auth0.NewOrganization(ctx, "myOrganization", &auth0.OrganizationArgs{
-//				Name:        pulumi.String("my-organization"),
 //				DisplayName: pulumi.String("My Organization"),
 //			})
 //			if err != nil {

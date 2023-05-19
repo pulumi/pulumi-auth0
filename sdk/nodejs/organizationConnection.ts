@@ -13,14 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * const myConnection = new auth0.Connection("myConnection", {
- *     name: "My Connection",
- *     strategy: "auth0",
- * });
- * const myOrganization = new auth0.Organization("myOrganization", {
- *     name: "my-organization",
- *     displayName: "My Organization",
- * });
+ * const myConnection = new auth0.Connection("myConnection", {strategy: "auth0"});
+ * const myOrganization = new auth0.Organization("myOrganization", {displayName: "My Organization"});
  * const myOrgConn = new auth0.OrganizationConnection("myOrgConn", {
  *     organizationId: myOrganization.id,
  *     connectionId: myConnection.id,

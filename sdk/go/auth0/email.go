@@ -35,7 +35,6 @@ import (
 //				},
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Enabled:            pulumi.Bool(true),
-//				Name:               pulumi.String("ses"),
 //			})
 //			if err != nil {
 //				return err
@@ -49,7 +48,6 @@ import (
 //				},
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Enabled:            pulumi.Bool(true),
-//				Name:               pulumi.String("smtp"),
 //			})
 //			if err != nil {
 //				return err
@@ -60,7 +58,6 @@ import (
 //				},
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Enabled:            pulumi.Bool(true),
-//				Name:               pulumi.String("sendgrid"),
 //			})
 //			if err != nil {
 //				return err
@@ -107,9 +104,6 @@ func NewEmail(ctx *pulumi.Context,
 	}
 	if args.DefaultFromAddress == nil {
 		return nil, errors.New("invalid value for required argument 'DefaultFromAddress'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	var resource Email
 	err := ctx.RegisterResource("auth0:index/email:Email", name, args, &resource, opts...)
@@ -170,7 +164,7 @@ type emailArgs struct {
 	// Indicates whether the email provider is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Specific email provider settings.
 	Settings *EmailSettings `pulumi:"settings"`
 }
@@ -184,7 +178,7 @@ type EmailArgs struct {
 	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Specific email provider settings.
 	Settings EmailSettingsPtrInput
 }

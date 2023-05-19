@@ -37,15 +37,15 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
      * Name of the log stream.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Name of the log stream.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -158,7 +158,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -237,7 +237,6 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LogStreamArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.sink = Objects.requireNonNull($.sink, "expected parameter 'sink' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;

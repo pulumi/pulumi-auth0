@@ -3,7 +3,7 @@ module github.com/auth0/terraform-provider-auth0/shim
 go 1.19
 
 require (
-	github.com/auth0/terraform-provider-auth0 v0.46.0
+	github.com/auth0/terraform-provider-auth0 v0.47.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.26.1
 )
 
@@ -11,7 +11,7 @@ require (
 	github.com/PuerkitoBio/rehttp v1.1.0 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
-	github.com/auth0/go-auth0 v0.17.0 // indirect
+	github.com/auth0/go-auth0 v0.17.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
@@ -38,9 +38,9 @@ require (
 	github.com/vmihailenco/msgpack/v4 v4.3.12 // indirect
 	github.com/vmihailenco/tagparser v0.1.2 // indirect
 	github.com/zclconf/go-cty v1.13.1 // indirect
-	golang.org/x/net v0.9.0 // indirect
-	golang.org/x/oauth2 v0.7.0 // indirect
-	golang.org/x/sys v0.7.0 // indirect
+	golang.org/x/net v0.10.0 // indirect
+	golang.org/x/oauth2 v0.8.0 // indirect
+	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20230306155012-7f2fa6fef1f4 // indirect

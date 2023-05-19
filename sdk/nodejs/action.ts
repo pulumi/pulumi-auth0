@@ -72,10 +72,7 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly secrets!: pulumi.Output<outputs.ActionSecret[] | undefined>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */
     public readonly supportedTriggers!: pulumi.Output<outputs.ActionSupportedTriggers>;
     /**
@@ -108,9 +105,6 @@ export class Action extends pulumi.CustomResource {
             const args = argsOrState as ActionArgs | undefined;
             if ((!args || args.code === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'code'");
-            }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.supportedTriggers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'supportedTriggers'");
@@ -158,10 +152,7 @@ export interface ActionState {
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */
     supportedTriggers?: pulumi.Input<inputs.ActionSupportedTriggers>;
     /**
@@ -189,7 +180,7 @@ export interface ActionArgs {
     /**
      * The name of the action.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
      */
@@ -199,10 +190,7 @@ export interface ActionArgs {
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */
     supportedTriggers: pulumi.Input<inputs.ActionSupportedTriggers>;
 }

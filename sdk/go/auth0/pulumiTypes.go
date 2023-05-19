@@ -15687,110 +15687,252 @@ func (o ResourceServerScopeArrayOutput) Index(i pulumi.IntInput) ResourceServerS
 	}).(ResourceServerScopeOutput)
 }
 
-type RolePermission struct {
+type RolePermissionType struct {
+	// Description of the permission.
+	Description *string `pulumi:"description"`
 	// Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
 	Name string `pulumi:"name"`
 	// Unique identifier for the resource server.
 	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
+	// Name of resource server that the permission is associated with.
+	ResourceServerName *string `pulumi:"resourceServerName"`
 }
 
-// RolePermissionInput is an input type that accepts RolePermissionArgs and RolePermissionOutput values.
-// You can construct a concrete instance of `RolePermissionInput` via:
+// RolePermissionTypeInput is an input type that accepts RolePermissionTypeArgs and RolePermissionTypeOutput values.
+// You can construct a concrete instance of `RolePermissionTypeInput` via:
 //
-//	RolePermissionArgs{...}
-type RolePermissionInput interface {
+//	RolePermissionTypeArgs{...}
+type RolePermissionTypeInput interface {
 	pulumi.Input
 
-	ToRolePermissionOutput() RolePermissionOutput
-	ToRolePermissionOutputWithContext(context.Context) RolePermissionOutput
+	ToRolePermissionTypeOutput() RolePermissionTypeOutput
+	ToRolePermissionTypeOutputWithContext(context.Context) RolePermissionTypeOutput
 }
 
-type RolePermissionArgs struct {
+type RolePermissionTypeArgs struct {
+	// Description of the permission.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Unique identifier for the resource server.
 	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
+	// Name of resource server that the permission is associated with.
+	ResourceServerName pulumi.StringPtrInput `pulumi:"resourceServerName"`
 }
 
-func (RolePermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RolePermission)(nil)).Elem()
+func (RolePermissionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePermissionType)(nil)).Elem()
 }
 
-func (i RolePermissionArgs) ToRolePermissionOutput() RolePermissionOutput {
-	return i.ToRolePermissionOutputWithContext(context.Background())
+func (i RolePermissionTypeArgs) ToRolePermissionTypeOutput() RolePermissionTypeOutput {
+	return i.ToRolePermissionTypeOutputWithContext(context.Background())
 }
 
-func (i RolePermissionArgs) ToRolePermissionOutputWithContext(ctx context.Context) RolePermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionOutput)
+func (i RolePermissionTypeArgs) ToRolePermissionTypeOutputWithContext(ctx context.Context) RolePermissionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionTypeOutput)
 }
 
-// RolePermissionArrayInput is an input type that accepts RolePermissionArray and RolePermissionArrayOutput values.
-// You can construct a concrete instance of `RolePermissionArrayInput` via:
+// RolePermissionTypeArrayInput is an input type that accepts RolePermissionTypeArray and RolePermissionTypeArrayOutput values.
+// You can construct a concrete instance of `RolePermissionTypeArrayInput` via:
 //
-//	RolePermissionArray{ RolePermissionArgs{...} }
-type RolePermissionArrayInput interface {
+//	RolePermissionTypeArray{ RolePermissionTypeArgs{...} }
+type RolePermissionTypeArrayInput interface {
 	pulumi.Input
 
-	ToRolePermissionArrayOutput() RolePermissionArrayOutput
-	ToRolePermissionArrayOutputWithContext(context.Context) RolePermissionArrayOutput
+	ToRolePermissionTypeArrayOutput() RolePermissionTypeArrayOutput
+	ToRolePermissionTypeArrayOutputWithContext(context.Context) RolePermissionTypeArrayOutput
 }
 
-type RolePermissionArray []RolePermissionInput
+type RolePermissionTypeArray []RolePermissionTypeInput
 
-func (RolePermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RolePermission)(nil)).Elem()
+func (RolePermissionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolePermissionType)(nil)).Elem()
 }
 
-func (i RolePermissionArray) ToRolePermissionArrayOutput() RolePermissionArrayOutput {
-	return i.ToRolePermissionArrayOutputWithContext(context.Background())
+func (i RolePermissionTypeArray) ToRolePermissionTypeArrayOutput() RolePermissionTypeArrayOutput {
+	return i.ToRolePermissionTypeArrayOutputWithContext(context.Background())
 }
 
-func (i RolePermissionArray) ToRolePermissionArrayOutputWithContext(ctx context.Context) RolePermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionArrayOutput)
+func (i RolePermissionTypeArray) ToRolePermissionTypeArrayOutputWithContext(ctx context.Context) RolePermissionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionTypeArrayOutput)
 }
 
-type RolePermissionOutput struct{ *pulumi.OutputState }
+type RolePermissionTypeOutput struct{ *pulumi.OutputState }
 
-func (RolePermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RolePermission)(nil)).Elem()
+func (RolePermissionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePermissionType)(nil)).Elem()
 }
 
-func (o RolePermissionOutput) ToRolePermissionOutput() RolePermissionOutput {
+func (o RolePermissionTypeOutput) ToRolePermissionTypeOutput() RolePermissionTypeOutput {
 	return o
 }
 
-func (o RolePermissionOutput) ToRolePermissionOutputWithContext(ctx context.Context) RolePermissionOutput {
+func (o RolePermissionTypeOutput) ToRolePermissionTypeOutputWithContext(ctx context.Context) RolePermissionTypeOutput {
 	return o
+}
+
+// Description of the permission.
+func (o RolePermissionTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolePermissionType) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
-func (o RolePermissionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v RolePermission) string { return v.Name }).(pulumi.StringOutput)
+func (o RolePermissionTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RolePermissionType) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Unique identifier for the resource server.
-func (o RolePermissionOutput) ResourceServerIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v RolePermission) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
+func (o RolePermissionTypeOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v RolePermissionType) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
 }
 
-type RolePermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (RolePermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RolePermission)(nil)).Elem()
+// Name of resource server that the permission is associated with.
+func (o RolePermissionTypeOutput) ResourceServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolePermissionType) *string { return v.ResourceServerName }).(pulumi.StringPtrOutput)
 }
 
-func (o RolePermissionArrayOutput) ToRolePermissionArrayOutput() RolePermissionArrayOutput {
+type RolePermissionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (RolePermissionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolePermissionType)(nil)).Elem()
+}
+
+func (o RolePermissionTypeArrayOutput) ToRolePermissionTypeArrayOutput() RolePermissionTypeArrayOutput {
 	return o
 }
 
-func (o RolePermissionArrayOutput) ToRolePermissionArrayOutputWithContext(ctx context.Context) RolePermissionArrayOutput {
+func (o RolePermissionTypeArrayOutput) ToRolePermissionTypeArrayOutputWithContext(ctx context.Context) RolePermissionTypeArrayOutput {
 	return o
 }
 
-func (o RolePermissionArrayOutput) Index(i pulumi.IntInput) RolePermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolePermission {
-		return vs[0].([]RolePermission)[vs[1].(int)]
-	}).(RolePermissionOutput)
+func (o RolePermissionTypeArrayOutput) Index(i pulumi.IntInput) RolePermissionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolePermissionType {
+		return vs[0].([]RolePermissionType)[vs[1].(int)]
+	}).(RolePermissionTypeOutput)
+}
+
+type RolePermissionsPermission struct {
+	// Description of the permission.
+	Description *string `pulumi:"description"`
+	// Name of permission.
+	Name string `pulumi:"name"`
+	// Resource server identifier associated with the permission.
+	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
+	// Name of resource server that the permission is associated with.
+	ResourceServerName *string `pulumi:"resourceServerName"`
+}
+
+// RolePermissionsPermissionInput is an input type that accepts RolePermissionsPermissionArgs and RolePermissionsPermissionOutput values.
+// You can construct a concrete instance of `RolePermissionsPermissionInput` via:
+//
+//	RolePermissionsPermissionArgs{...}
+type RolePermissionsPermissionInput interface {
+	pulumi.Input
+
+	ToRolePermissionsPermissionOutput() RolePermissionsPermissionOutput
+	ToRolePermissionsPermissionOutputWithContext(context.Context) RolePermissionsPermissionOutput
+}
+
+type RolePermissionsPermissionArgs struct {
+	// Description of the permission.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of permission.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Resource server identifier associated with the permission.
+	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
+	// Name of resource server that the permission is associated with.
+	ResourceServerName pulumi.StringPtrInput `pulumi:"resourceServerName"`
+}
+
+func (RolePermissionsPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePermissionsPermission)(nil)).Elem()
+}
+
+func (i RolePermissionsPermissionArgs) ToRolePermissionsPermissionOutput() RolePermissionsPermissionOutput {
+	return i.ToRolePermissionsPermissionOutputWithContext(context.Background())
+}
+
+func (i RolePermissionsPermissionArgs) ToRolePermissionsPermissionOutputWithContext(ctx context.Context) RolePermissionsPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionsPermissionOutput)
+}
+
+// RolePermissionsPermissionArrayInput is an input type that accepts RolePermissionsPermissionArray and RolePermissionsPermissionArrayOutput values.
+// You can construct a concrete instance of `RolePermissionsPermissionArrayInput` via:
+//
+//	RolePermissionsPermissionArray{ RolePermissionsPermissionArgs{...} }
+type RolePermissionsPermissionArrayInput interface {
+	pulumi.Input
+
+	ToRolePermissionsPermissionArrayOutput() RolePermissionsPermissionArrayOutput
+	ToRolePermissionsPermissionArrayOutputWithContext(context.Context) RolePermissionsPermissionArrayOutput
+}
+
+type RolePermissionsPermissionArray []RolePermissionsPermissionInput
+
+func (RolePermissionsPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolePermissionsPermission)(nil)).Elem()
+}
+
+func (i RolePermissionsPermissionArray) ToRolePermissionsPermissionArrayOutput() RolePermissionsPermissionArrayOutput {
+	return i.ToRolePermissionsPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i RolePermissionsPermissionArray) ToRolePermissionsPermissionArrayOutputWithContext(ctx context.Context) RolePermissionsPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolePermissionsPermissionArrayOutput)
+}
+
+type RolePermissionsPermissionOutput struct{ *pulumi.OutputState }
+
+func (RolePermissionsPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePermissionsPermission)(nil)).Elem()
+}
+
+func (o RolePermissionsPermissionOutput) ToRolePermissionsPermissionOutput() RolePermissionsPermissionOutput {
+	return o
+}
+
+func (o RolePermissionsPermissionOutput) ToRolePermissionsPermissionOutputWithContext(ctx context.Context) RolePermissionsPermissionOutput {
+	return o
+}
+
+// Description of the permission.
+func (o RolePermissionsPermissionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolePermissionsPermission) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of permission.
+func (o RolePermissionsPermissionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RolePermissionsPermission) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Resource server identifier associated with the permission.
+func (o RolePermissionsPermissionOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v RolePermissionsPermission) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
+}
+
+// Name of resource server that the permission is associated with.
+func (o RolePermissionsPermissionOutput) ResourceServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolePermissionsPermission) *string { return v.ResourceServerName }).(pulumi.StringPtrOutput)
+}
+
+type RolePermissionsPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (RolePermissionsPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolePermissionsPermission)(nil)).Elem()
+}
+
+func (o RolePermissionsPermissionArrayOutput) ToRolePermissionsPermissionArrayOutput() RolePermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o RolePermissionsPermissionArrayOutput) ToRolePermissionsPermissionArrayOutputWithContext(ctx context.Context) RolePermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o RolePermissionsPermissionArrayOutput) Index(i pulumi.IntInput) RolePermissionsPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolePermissionsPermission {
+		return vs[0].([]RolePermissionsPermission)[vs[1].(int)]
+	}).(RolePermissionsPermissionOutput)
 }
 
 type TenantChangePassword struct {
@@ -17369,6 +17511,245 @@ func (o TriggerBindingActionArrayOutput) Index(i pulumi.IntInput) TriggerBinding
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBindingAction {
 		return vs[0].([]TriggerBindingAction)[vs[1].(int)]
 	}).(TriggerBindingActionOutput)
+}
+
+type UserPermissionType struct {
+	Description *string `pulumi:"description"`
+	// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+	Name                     *string `pulumi:"name"`
+	ResourceServerIdentifier *string `pulumi:"resourceServerIdentifier"`
+	ResourceServerName       *string `pulumi:"resourceServerName"`
+}
+
+// UserPermissionTypeInput is an input type that accepts UserPermissionTypeArgs and UserPermissionTypeOutput values.
+// You can construct a concrete instance of `UserPermissionTypeInput` via:
+//
+//	UserPermissionTypeArgs{...}
+type UserPermissionTypeInput interface {
+	pulumi.Input
+
+	ToUserPermissionTypeOutput() UserPermissionTypeOutput
+	ToUserPermissionTypeOutputWithContext(context.Context) UserPermissionTypeOutput
+}
+
+type UserPermissionTypeArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+	Name                     pulumi.StringPtrInput `pulumi:"name"`
+	ResourceServerIdentifier pulumi.StringPtrInput `pulumi:"resourceServerIdentifier"`
+	ResourceServerName       pulumi.StringPtrInput `pulumi:"resourceServerName"`
+}
+
+func (UserPermissionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPermissionType)(nil)).Elem()
+}
+
+func (i UserPermissionTypeArgs) ToUserPermissionTypeOutput() UserPermissionTypeOutput {
+	return i.ToUserPermissionTypeOutputWithContext(context.Background())
+}
+
+func (i UserPermissionTypeArgs) ToUserPermissionTypeOutputWithContext(ctx context.Context) UserPermissionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionTypeOutput)
+}
+
+// UserPermissionTypeArrayInput is an input type that accepts UserPermissionTypeArray and UserPermissionTypeArrayOutput values.
+// You can construct a concrete instance of `UserPermissionTypeArrayInput` via:
+//
+//	UserPermissionTypeArray{ UserPermissionTypeArgs{...} }
+type UserPermissionTypeArrayInput interface {
+	pulumi.Input
+
+	ToUserPermissionTypeArrayOutput() UserPermissionTypeArrayOutput
+	ToUserPermissionTypeArrayOutputWithContext(context.Context) UserPermissionTypeArrayOutput
+}
+
+type UserPermissionTypeArray []UserPermissionTypeInput
+
+func (UserPermissionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPermissionType)(nil)).Elem()
+}
+
+func (i UserPermissionTypeArray) ToUserPermissionTypeArrayOutput() UserPermissionTypeArrayOutput {
+	return i.ToUserPermissionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i UserPermissionTypeArray) ToUserPermissionTypeArrayOutputWithContext(ctx context.Context) UserPermissionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionTypeArrayOutput)
+}
+
+type UserPermissionTypeOutput struct{ *pulumi.OutputState }
+
+func (UserPermissionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPermissionType)(nil)).Elem()
+}
+
+func (o UserPermissionTypeOutput) ToUserPermissionTypeOutput() UserPermissionTypeOutput {
+	return o
+}
+
+func (o UserPermissionTypeOutput) ToUserPermissionTypeOutputWithContext(ctx context.Context) UserPermissionTypeOutput {
+	return o
+}
+
+func (o UserPermissionTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+func (o UserPermissionTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o UserPermissionTypeOutput) ResourceServerIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionType) *string { return v.ResourceServerIdentifier }).(pulumi.StringPtrOutput)
+}
+
+func (o UserPermissionTypeOutput) ResourceServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionType) *string { return v.ResourceServerName }).(pulumi.StringPtrOutput)
+}
+
+type UserPermissionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (UserPermissionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPermissionType)(nil)).Elem()
+}
+
+func (o UserPermissionTypeArrayOutput) ToUserPermissionTypeArrayOutput() UserPermissionTypeArrayOutput {
+	return o
+}
+
+func (o UserPermissionTypeArrayOutput) ToUserPermissionTypeArrayOutputWithContext(ctx context.Context) UserPermissionTypeArrayOutput {
+	return o
+}
+
+func (o UserPermissionTypeArrayOutput) Index(i pulumi.IntInput) UserPermissionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPermissionType {
+		return vs[0].([]UserPermissionType)[vs[1].(int)]
+	}).(UserPermissionTypeOutput)
+}
+
+type UserPermissionsPermission struct {
+	// Description of the permission.
+	Description *string `pulumi:"description"`
+	// Name of permission.
+	Name string `pulumi:"name"`
+	// Resource server identifier associated with the permission.
+	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
+	// Name of resource server that the permission is associated with.
+	ResourceServerName *string `pulumi:"resourceServerName"`
+}
+
+// UserPermissionsPermissionInput is an input type that accepts UserPermissionsPermissionArgs and UserPermissionsPermissionOutput values.
+// You can construct a concrete instance of `UserPermissionsPermissionInput` via:
+//
+//	UserPermissionsPermissionArgs{...}
+type UserPermissionsPermissionInput interface {
+	pulumi.Input
+
+	ToUserPermissionsPermissionOutput() UserPermissionsPermissionOutput
+	ToUserPermissionsPermissionOutputWithContext(context.Context) UserPermissionsPermissionOutput
+}
+
+type UserPermissionsPermissionArgs struct {
+	// Description of the permission.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of permission.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Resource server identifier associated with the permission.
+	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
+	// Name of resource server that the permission is associated with.
+	ResourceServerName pulumi.StringPtrInput `pulumi:"resourceServerName"`
+}
+
+func (UserPermissionsPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPermissionsPermission)(nil)).Elem()
+}
+
+func (i UserPermissionsPermissionArgs) ToUserPermissionsPermissionOutput() UserPermissionsPermissionOutput {
+	return i.ToUserPermissionsPermissionOutputWithContext(context.Background())
+}
+
+func (i UserPermissionsPermissionArgs) ToUserPermissionsPermissionOutputWithContext(ctx context.Context) UserPermissionsPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionsPermissionOutput)
+}
+
+// UserPermissionsPermissionArrayInput is an input type that accepts UserPermissionsPermissionArray and UserPermissionsPermissionArrayOutput values.
+// You can construct a concrete instance of `UserPermissionsPermissionArrayInput` via:
+//
+//	UserPermissionsPermissionArray{ UserPermissionsPermissionArgs{...} }
+type UserPermissionsPermissionArrayInput interface {
+	pulumi.Input
+
+	ToUserPermissionsPermissionArrayOutput() UserPermissionsPermissionArrayOutput
+	ToUserPermissionsPermissionArrayOutputWithContext(context.Context) UserPermissionsPermissionArrayOutput
+}
+
+type UserPermissionsPermissionArray []UserPermissionsPermissionInput
+
+func (UserPermissionsPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPermissionsPermission)(nil)).Elem()
+}
+
+func (i UserPermissionsPermissionArray) ToUserPermissionsPermissionArrayOutput() UserPermissionsPermissionArrayOutput {
+	return i.ToUserPermissionsPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i UserPermissionsPermissionArray) ToUserPermissionsPermissionArrayOutputWithContext(ctx context.Context) UserPermissionsPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPermissionsPermissionArrayOutput)
+}
+
+type UserPermissionsPermissionOutput struct{ *pulumi.OutputState }
+
+func (UserPermissionsPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPermissionsPermission)(nil)).Elem()
+}
+
+func (o UserPermissionsPermissionOutput) ToUserPermissionsPermissionOutput() UserPermissionsPermissionOutput {
+	return o
+}
+
+func (o UserPermissionsPermissionOutput) ToUserPermissionsPermissionOutputWithContext(ctx context.Context) UserPermissionsPermissionOutput {
+	return o
+}
+
+// Description of the permission.
+func (o UserPermissionsPermissionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionsPermission) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of permission.
+func (o UserPermissionsPermissionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPermissionsPermission) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Resource server identifier associated with the permission.
+func (o UserPermissionsPermissionOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPermissionsPermission) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
+}
+
+// Name of resource server that the permission is associated with.
+func (o UserPermissionsPermissionOutput) ResourceServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPermissionsPermission) *string { return v.ResourceServerName }).(pulumi.StringPtrOutput)
+}
+
+type UserPermissionsPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (UserPermissionsPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPermissionsPermission)(nil)).Elem()
+}
+
+func (o UserPermissionsPermissionArrayOutput) ToUserPermissionsPermissionArrayOutput() UserPermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o UserPermissionsPermissionArrayOutput) ToUserPermissionsPermissionArrayOutputWithContext(ctx context.Context) UserPermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o UserPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) UserPermissionsPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPermissionsPermission {
+		return vs[0].([]UserPermissionsPermission)[vs[1].(int)]
+	}).(UserPermissionsPermissionOutput)
 }
 
 type GetAttackProtectionBreachedPasswordDetection struct {
@@ -24332,107 +24713,122 @@ func (o GetResourceServerScopeArrayOutput) Index(i pulumi.IntInput) GetResourceS
 	}).(GetResourceServerScopeOutput)
 }
 
-type GetRolePermission struct {
+type GetRolePermissionType struct {
+	// Description of the role.
+	Description string `pulumi:"description"`
 	// The name of the role. If not provided, `roleId` must be set.
 	Name                     string `pulumi:"name"`
 	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
+	ResourceServerName       string `pulumi:"resourceServerName"`
 }
 
-// GetRolePermissionInput is an input type that accepts GetRolePermissionArgs and GetRolePermissionOutput values.
-// You can construct a concrete instance of `GetRolePermissionInput` via:
+// GetRolePermissionTypeInput is an input type that accepts GetRolePermissionTypeArgs and GetRolePermissionTypeOutput values.
+// You can construct a concrete instance of `GetRolePermissionTypeInput` via:
 //
-//	GetRolePermissionArgs{...}
-type GetRolePermissionInput interface {
+//	GetRolePermissionTypeArgs{...}
+type GetRolePermissionTypeInput interface {
 	pulumi.Input
 
-	ToGetRolePermissionOutput() GetRolePermissionOutput
-	ToGetRolePermissionOutputWithContext(context.Context) GetRolePermissionOutput
+	ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput
+	ToGetRolePermissionTypeOutputWithContext(context.Context) GetRolePermissionTypeOutput
 }
 
-type GetRolePermissionArgs struct {
+type GetRolePermissionTypeArgs struct {
+	// Description of the role.
+	Description pulumi.StringInput `pulumi:"description"`
 	// The name of the role. If not provided, `roleId` must be set.
 	Name                     pulumi.StringInput `pulumi:"name"`
 	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
+	ResourceServerName       pulumi.StringInput `pulumi:"resourceServerName"`
 }
 
-func (GetRolePermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRolePermission)(nil)).Elem()
+func (GetRolePermissionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolePermissionType)(nil)).Elem()
 }
 
-func (i GetRolePermissionArgs) ToGetRolePermissionOutput() GetRolePermissionOutput {
-	return i.ToGetRolePermissionOutputWithContext(context.Background())
+func (i GetRolePermissionTypeArgs) ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput {
+	return i.ToGetRolePermissionTypeOutputWithContext(context.Background())
 }
 
-func (i GetRolePermissionArgs) ToGetRolePermissionOutputWithContext(ctx context.Context) GetRolePermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionOutput)
+func (i GetRolePermissionTypeArgs) ToGetRolePermissionTypeOutputWithContext(ctx context.Context) GetRolePermissionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionTypeOutput)
 }
 
-// GetRolePermissionArrayInput is an input type that accepts GetRolePermissionArray and GetRolePermissionArrayOutput values.
-// You can construct a concrete instance of `GetRolePermissionArrayInput` via:
+// GetRolePermissionTypeArrayInput is an input type that accepts GetRolePermissionTypeArray and GetRolePermissionTypeArrayOutput values.
+// You can construct a concrete instance of `GetRolePermissionTypeArrayInput` via:
 //
-//	GetRolePermissionArray{ GetRolePermissionArgs{...} }
-type GetRolePermissionArrayInput interface {
+//	GetRolePermissionTypeArray{ GetRolePermissionTypeArgs{...} }
+type GetRolePermissionTypeArrayInput interface {
 	pulumi.Input
 
-	ToGetRolePermissionArrayOutput() GetRolePermissionArrayOutput
-	ToGetRolePermissionArrayOutputWithContext(context.Context) GetRolePermissionArrayOutput
+	ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput
+	ToGetRolePermissionTypeArrayOutputWithContext(context.Context) GetRolePermissionTypeArrayOutput
 }
 
-type GetRolePermissionArray []GetRolePermissionInput
+type GetRolePermissionTypeArray []GetRolePermissionTypeInput
 
-func (GetRolePermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRolePermission)(nil)).Elem()
+func (GetRolePermissionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolePermissionType)(nil)).Elem()
 }
 
-func (i GetRolePermissionArray) ToGetRolePermissionArrayOutput() GetRolePermissionArrayOutput {
-	return i.ToGetRolePermissionArrayOutputWithContext(context.Background())
+func (i GetRolePermissionTypeArray) ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput {
+	return i.ToGetRolePermissionTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GetRolePermissionArray) ToGetRolePermissionArrayOutputWithContext(ctx context.Context) GetRolePermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionArrayOutput)
+func (i GetRolePermissionTypeArray) ToGetRolePermissionTypeArrayOutputWithContext(ctx context.Context) GetRolePermissionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionTypeArrayOutput)
 }
 
-type GetRolePermissionOutput struct{ *pulumi.OutputState }
+type GetRolePermissionTypeOutput struct{ *pulumi.OutputState }
 
-func (GetRolePermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRolePermission)(nil)).Elem()
+func (GetRolePermissionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolePermissionType)(nil)).Elem()
 }
 
-func (o GetRolePermissionOutput) ToGetRolePermissionOutput() GetRolePermissionOutput {
+func (o GetRolePermissionTypeOutput) ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput {
 	return o
 }
 
-func (o GetRolePermissionOutput) ToGetRolePermissionOutputWithContext(ctx context.Context) GetRolePermissionOutput {
+func (o GetRolePermissionTypeOutput) ToGetRolePermissionTypeOutputWithContext(ctx context.Context) GetRolePermissionTypeOutput {
 	return o
+}
+
+// Description of the role.
+func (o GetRolePermissionTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermissionType) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The name of the role. If not provided, `roleId` must be set.
-func (o GetRolePermissionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRolePermission) string { return v.Name }).(pulumi.StringOutput)
+func (o GetRolePermissionTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermissionType) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetRolePermissionOutput) ResourceServerIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRolePermission) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
+func (o GetRolePermissionTypeOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermissionType) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
 }
 
-type GetRolePermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRolePermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRolePermission)(nil)).Elem()
+func (o GetRolePermissionTypeOutput) ResourceServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermissionType) string { return v.ResourceServerName }).(pulumi.StringOutput)
 }
 
-func (o GetRolePermissionArrayOutput) ToGetRolePermissionArrayOutput() GetRolePermissionArrayOutput {
+type GetRolePermissionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRolePermissionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolePermissionType)(nil)).Elem()
+}
+
+func (o GetRolePermissionTypeArrayOutput) ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput {
 	return o
 }
 
-func (o GetRolePermissionArrayOutput) ToGetRolePermissionArrayOutputWithContext(ctx context.Context) GetRolePermissionArrayOutput {
+func (o GetRolePermissionTypeArrayOutput) ToGetRolePermissionTypeArrayOutputWithContext(ctx context.Context) GetRolePermissionTypeArrayOutput {
 	return o
 }
 
-func (o GetRolePermissionArrayOutput) Index(i pulumi.IntInput) GetRolePermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolePermission {
-		return vs[0].([]GetRolePermission)[vs[1].(int)]
-	}).(GetRolePermissionOutput)
+func (o GetRolePermissionTypeArrayOutput) Index(i pulumi.IntInput) GetRolePermissionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolePermissionType {
+		return vs[0].([]GetRolePermissionType)[vs[1].(int)]
+	}).(GetRolePermissionTypeOutput)
 }
 
 type GetTenantChangePassword struct {
@@ -25258,6 +25654,121 @@ func (o GetTenantUniversalLoginColorArrayOutput) Index(i pulumi.IntInput) GetTen
 	}).(GetTenantUniversalLoginColorOutput)
 }
 
+type GetUserPermissionType struct {
+	Description string `pulumi:"description"`
+	// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+	Name                     string `pulumi:"name"`
+	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
+	ResourceServerName       string `pulumi:"resourceServerName"`
+}
+
+// GetUserPermissionTypeInput is an input type that accepts GetUserPermissionTypeArgs and GetUserPermissionTypeOutput values.
+// You can construct a concrete instance of `GetUserPermissionTypeInput` via:
+//
+//	GetUserPermissionTypeArgs{...}
+type GetUserPermissionTypeInput interface {
+	pulumi.Input
+
+	ToGetUserPermissionTypeOutput() GetUserPermissionTypeOutput
+	ToGetUserPermissionTypeOutputWithContext(context.Context) GetUserPermissionTypeOutput
+}
+
+type GetUserPermissionTypeArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+	Name                     pulumi.StringInput `pulumi:"name"`
+	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
+	ResourceServerName       pulumi.StringInput `pulumi:"resourceServerName"`
+}
+
+func (GetUserPermissionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPermissionType)(nil)).Elem()
+}
+
+func (i GetUserPermissionTypeArgs) ToGetUserPermissionTypeOutput() GetUserPermissionTypeOutput {
+	return i.ToGetUserPermissionTypeOutputWithContext(context.Background())
+}
+
+func (i GetUserPermissionTypeArgs) ToGetUserPermissionTypeOutputWithContext(ctx context.Context) GetUserPermissionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserPermissionTypeOutput)
+}
+
+// GetUserPermissionTypeArrayInput is an input type that accepts GetUserPermissionTypeArray and GetUserPermissionTypeArrayOutput values.
+// You can construct a concrete instance of `GetUserPermissionTypeArrayInput` via:
+//
+//	GetUserPermissionTypeArray{ GetUserPermissionTypeArgs{...} }
+type GetUserPermissionTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetUserPermissionTypeArrayOutput() GetUserPermissionTypeArrayOutput
+	ToGetUserPermissionTypeArrayOutputWithContext(context.Context) GetUserPermissionTypeArrayOutput
+}
+
+type GetUserPermissionTypeArray []GetUserPermissionTypeInput
+
+func (GetUserPermissionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserPermissionType)(nil)).Elem()
+}
+
+func (i GetUserPermissionTypeArray) ToGetUserPermissionTypeArrayOutput() GetUserPermissionTypeArrayOutput {
+	return i.ToGetUserPermissionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserPermissionTypeArray) ToGetUserPermissionTypeArrayOutputWithContext(ctx context.Context) GetUserPermissionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserPermissionTypeArrayOutput)
+}
+
+type GetUserPermissionTypeOutput struct{ *pulumi.OutputState }
+
+func (GetUserPermissionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPermissionType)(nil)).Elem()
+}
+
+func (o GetUserPermissionTypeOutput) ToGetUserPermissionTypeOutput() GetUserPermissionTypeOutput {
+	return o
+}
+
+func (o GetUserPermissionTypeOutput) ToGetUserPermissionTypeOutputWithContext(ctx context.Context) GetUserPermissionTypeOutput {
+	return o
+}
+
+func (o GetUserPermissionTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPermissionType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+func (o GetUserPermissionTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPermissionType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetUserPermissionTypeOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPermissionType) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
+}
+
+func (o GetUserPermissionTypeOutput) ResourceServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPermissionType) string { return v.ResourceServerName }).(pulumi.StringOutput)
+}
+
+type GetUserPermissionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserPermissionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserPermissionType)(nil)).Elem()
+}
+
+func (o GetUserPermissionTypeArrayOutput) ToGetUserPermissionTypeArrayOutput() GetUserPermissionTypeArrayOutput {
+	return o
+}
+
+func (o GetUserPermissionTypeArrayOutput) ToGetUserPermissionTypeArrayOutputWithContext(ctx context.Context) GetUserPermissionTypeArrayOutput {
+	return o
+}
+
+func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermissionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserPermissionType {
+		return vs[0].([]GetUserPermissionType)[vs[1].(int)]
+	}).(GetUserPermissionTypeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -25405,8 +25916,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeInput)(nil)).Elem(), ResourceServerScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeArrayInput)(nil)).Elem(), ResourceServerScopeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionInput)(nil)).Elem(), RolePermissionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionArrayInput)(nil)).Elem(), RolePermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionTypeInput)(nil)).Elem(), RolePermissionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionTypeArrayInput)(nil)).Elem(), RolePermissionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionInput)(nil)).Elem(), RolePermissionsPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionArrayInput)(nil)).Elem(), RolePermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantChangePasswordInput)(nil)).Elem(), TenantChangePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantChangePasswordPtrInput)(nil)).Elem(), TenantChangePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPageInput)(nil)).Elem(), TenantErrorPageArgs{})
@@ -25423,6 +25936,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsPtrInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionInput)(nil)).Elem(), TriggerBindingActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionArrayInput)(nil)).Elem(), TriggerBindingActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionTypeInput)(nil)).Elem(), UserPermissionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionTypeArrayInput)(nil)).Elem(), UserPermissionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionInput)(nil)).Elem(), UserPermissionsPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionArrayInput)(nil)).Elem(), UserPermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
@@ -25535,8 +26052,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeArrayInput)(nil)).Elem(), GetOrganizationConnectionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeInput)(nil)).Elem(), GetResourceServerScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeArrayInput)(nil)).Elem(), GetResourceServerScopeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionInput)(nil)).Elem(), GetRolePermissionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionArrayInput)(nil)).Elem(), GetRolePermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeInput)(nil)).Elem(), GetRolePermissionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeArrayInput)(nil)).Elem(), GetRolePermissionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantChangePasswordInput)(nil)).Elem(), GetTenantChangePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantChangePasswordArrayInput)(nil)).Elem(), GetTenantChangePasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageInput)(nil)).Elem(), GetTenantErrorPageArgs{})
@@ -25551,6 +26068,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginArrayInput)(nil)).Elem(), GetTenantUniversalLoginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginColorInput)(nil)).Elem(), GetTenantUniversalLoginColorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantUniversalLoginColorArrayInput)(nil)).Elem(), GetTenantUniversalLoginColorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionSecretOutput{})
@@ -25697,8 +26216,10 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeArrayOutput{})
-	pulumi.RegisterOutputType(RolePermissionOutput{})
-	pulumi.RegisterOutputType(RolePermissionArrayOutput{})
+	pulumi.RegisterOutputType(RolePermissionTypeOutput{})
+	pulumi.RegisterOutputType(RolePermissionTypeArrayOutput{})
+	pulumi.RegisterOutputType(RolePermissionsPermissionOutput{})
+	pulumi.RegisterOutputType(RolePermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(TenantChangePasswordOutput{})
 	pulumi.RegisterOutputType(TenantChangePasswordPtrOutput{})
 	pulumi.RegisterOutputType(TenantErrorPageOutput{})
@@ -25715,6 +26236,10 @@ func init() {
 	pulumi.RegisterOutputType(TenantUniversalLoginColorsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBindingActionOutput{})
 	pulumi.RegisterOutputType(TriggerBindingActionArrayOutput{})
+	pulumi.RegisterOutputType(UserPermissionTypeOutput{})
+	pulumi.RegisterOutputType(UserPermissionTypeArrayOutput{})
+	pulumi.RegisterOutputType(UserPermissionsPermissionOutput{})
+	pulumi.RegisterOutputType(UserPermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationOutput{})
@@ -25827,8 +26352,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeArrayOutput{})
-	pulumi.RegisterOutputType(GetRolePermissionOutput{})
-	pulumi.RegisterOutputType(GetRolePermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetRolePermissionTypeOutput{})
+	pulumi.RegisterOutputType(GetRolePermissionTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantChangePasswordOutput{})
 	pulumi.RegisterOutputType(GetTenantChangePasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantErrorPageOutput{})
@@ -25843,4 +26368,6 @@ func init() {
 	pulumi.RegisterOutputType(GetTenantUniversalLoginArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantUniversalLoginColorOutput{})
 	pulumi.RegisterOutputType(GetTenantUniversalLoginColorArrayOutput{})
+	pulumi.RegisterOutputType(GetUserPermissionTypeOutput{})
+	pulumi.RegisterOutputType(GetUserPermissionTypeArrayOutput{})
 }

@@ -30,7 +30,6 @@ import (
 //			_, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
 //				AllowOfflineAccess: pulumi.Bool(true),
 //				Identifier:         pulumi.String("https://api.example.com"),
-//				Name:               pulumi.String("Example Resource Server (Managed by Terraform)"),
 //				Scopes: auth0.ResourceServerScopeArray{
 //					&auth0.ResourceServerScopeArgs{
 //						Description: pulumi.String("Create foos"),
@@ -73,7 +72,7 @@ type ResourceServer struct {
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// List of permissions (scopes) used by this resource server.
 	Scopes ResourceServerScopeArrayOutput `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
@@ -339,8 +338,8 @@ func (o ResourceServerOutput) Identifier() pulumi.StringOutput {
 }
 
 // Friendly name for the resource server. Cannot include `<` or `>` characters.
-func (o ResourceServerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceServer) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o ResourceServerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // List of permissions (scopes) used by this resource server.

@@ -25,7 +25,6 @@ namespace Pulumi.Auth0
     ///     var myRule = new Auth0.Rule("myRule", new()
     ///     {
     ///         Enabled = true,
-    ///         Name = "empty-rule",
     ///         Script = @"    function (user, context, callback) {
     ///       callback(null, user, context);
     ///     }

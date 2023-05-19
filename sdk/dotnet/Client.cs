@@ -187,6 +187,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientNativeSocialLogin> NativeSocialLogin { get; private set; } = null!;
 
         /// <summary>
+        /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        /// </summary>
+        [Output("oidcBackchannelLogoutUrls")]
+        public Output<ImmutableArray<string>> OidcBackchannelLogoutUrls { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether this client will conform to strict OIDC specifications.
         /// </summary>
         [Output("oidcConformant")]
@@ -248,7 +254,7 @@ namespace Pulumi.Auth0
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Client(string name, ClientArgs args, CustomResourceOptions? options = null)
+        public Client(string name, ClientArgs? args = null, CustomResourceOptions? options = null)
             : base("auth0:index/client:Client", name, args ?? new ClientArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -486,14 +492,26 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Name of the client.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         /// </summary>
         [Input("nativeSocialLogin")]
         public Input<Inputs.ClientNativeSocialLoginArgs>? NativeSocialLogin { get; set; }
+
+        [Input("oidcBackchannelLogoutUrls")]
+        private InputList<string>? _oidcBackchannelLogoutUrls;
+
+        /// <summary>
+        /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        /// </summary>
+        public InputList<string> OidcBackchannelLogoutUrls
+        {
+            get => _oidcBackchannelLogoutUrls ?? (_oidcBackchannelLogoutUrls = new InputList<string>());
+            set => _oidcBackchannelLogoutUrls = value;
+        }
 
         /// <summary>
         /// Indicates whether this client will conform to strict OIDC specifications.
@@ -784,6 +802,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("nativeSocialLogin")]
         public Input<Inputs.ClientNativeSocialLoginGetArgs>? NativeSocialLogin { get; set; }
+
+        [Input("oidcBackchannelLogoutUrls")]
+        private InputList<string>? _oidcBackchannelLogoutUrls;
+
+        /// <summary>
+        /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        /// </summary>
+        public InputList<string> OidcBackchannelLogoutUrls
+        {
+            get => _oidcBackchannelLogoutUrls ?? (_oidcBackchannelLogoutUrls = new InputList<string>());
+            set => _oidcBackchannelLogoutUrls = value;
+        }
 
         /// <summary>
         /// Indicates whether this client will conform to strict OIDC specifications.

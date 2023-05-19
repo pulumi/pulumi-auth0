@@ -45,7 +45,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var actionFoo = new Action(&#34;actionFoo&#34;, ActionArgs.builder()        
- *             .name(&#34;Test Trigger Binding Foo&#34;)
  *             .code(&#34;&#34;&#34;
  * exports.onContinuePostLogin = async (event, api) =&gt; {
  *   console.log(&#34;foo&#34;);
@@ -59,7 +58,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var actionBar = new Action(&#34;actionBar&#34;, ActionArgs.builder()        
- *             .name(&#34;Test Trigger Binding Bar&#34;)
  *             .code(&#34;&#34;&#34;
  * exports.onContinuePostLogin = async (event, api) =&gt; {
  *   console.log(&#34;bar&#34;);

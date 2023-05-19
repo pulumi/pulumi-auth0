@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With this resource, you can manage enabled clients on a connection.
+// With this resource, you can enable a single client on a connection.
+//
+// !> To prevent issues, avoid using this resource together with the `ConnectionClients` resource.
 //
 // ## Example Usage
 //
@@ -28,15 +30,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myConn, err := auth0.NewConnection(ctx, "myConn", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("My-Auth0-Connection"),
 //				Strategy: pulumi.String("auth0"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myClient, err := auth0.NewClient(ctx, "myClient", &auth0.ClientArgs{
-//				Name: pulumi.String("My-Auth0-Client"),
-//			})
+//			myClient, err := auth0.NewClient(ctx, "myClient", nil)
 //			if err != nil {
 //				return err
 //			}

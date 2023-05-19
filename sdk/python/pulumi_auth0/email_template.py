@@ -334,7 +334,6 @@ class EmailTemplate(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_email_provider = auth0.Email("myEmailProvider",
-            name="ses",
             enabled=True,
             default_from_address="accounts@example.com",
             credentials=auth0.EmailCredentialsArgs(
@@ -390,7 +389,6 @@ class EmailTemplate(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_email_provider = auth0.Email("myEmailProvider",
-            name="ses",
             enabled=True,
             default_from_address="accounts@example.com",
             credentials=auth0.EmailCredentialsArgs(

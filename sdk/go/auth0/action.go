@@ -39,10 +39,7 @@ type Action struct {
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayOutput `pulumi:"secrets"`
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-	// [Retrieving the set of triggers available within
-	// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-	// trigger versions supported.
+	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersOutput `pulumi:"supportedTriggers"`
 	// Version ID of the action. This value is available if `deploy` is set to true.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
@@ -57,9 +54,6 @@ func NewAction(ctx *pulumi.Context,
 
 	if args.Code == nil {
 		return nil, errors.New("invalid value for required argument 'Code'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.SupportedTriggers == nil {
 		return nil, errors.New("invalid value for required argument 'SupportedTriggers'")
@@ -98,10 +92,7 @@ type actionState struct {
 	Runtime *string `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action.
 	Secrets []ActionSecret `pulumi:"secrets"`
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-	// [Retrieving the set of triggers available within
-	// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-	// trigger versions supported.
+	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers *ActionSupportedTriggers `pulumi:"supportedTriggers"`
 	// Version ID of the action. This value is available if `deploy` is set to true.
 	VersionId *string `pulumi:"versionId"`
@@ -120,10 +111,7 @@ type ActionState struct {
 	Runtime pulumi.StringPtrInput
 	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayInput
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-	// [Retrieving the set of triggers available within
-	// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-	// trigger versions supported.
+	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersPtrInput
 	// Version ID of the action. This value is available if `deploy` is set to true.
 	VersionId pulumi.StringPtrInput
@@ -141,15 +129,12 @@ type actionArgs struct {
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy *bool `pulumi:"deploy"`
 	// The name of the action.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
 	Runtime *string `pulumi:"runtime"`
 	// List of secrets that are included in an action or a version of an action.
 	Secrets []ActionSecret `pulumi:"secrets"`
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-	// [Retrieving the set of triggers available within
-	// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-	// trigger versions supported.
+	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggers `pulumi:"supportedTriggers"`
 }
 
@@ -162,15 +147,12 @@ type ActionArgs struct {
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy pulumi.BoolPtrInput
 	// The name of the action.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
 	Runtime pulumi.StringPtrInput
 	// List of secrets that are included in an action or a version of an action.
 	Secrets ActionSecretArrayInput
-	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-	// [Retrieving the set of triggers available within
-	// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-	// trigger versions supported.
+	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersInput
 }
 
@@ -291,10 +273,7 @@ func (o ActionOutput) Secrets() ActionSecretArrayOutput {
 	return o.ApplyT(func(v *Action) ActionSecretArrayOutput { return v.Secrets }).(ActionSecretArrayOutput)
 }
 
-// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-// [Retrieving the set of triggers available within
-// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-// trigger versions supported.
+// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 func (o ActionOutput) SupportedTriggers() ActionSupportedTriggersOutput {
 	return o.ApplyT(func(v *Action) ActionSupportedTriggersOutput { return v.SupportedTriggers }).(ActionSupportedTriggersOutput)
 }

@@ -69,15 +69,15 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the action.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return The name of the action.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -111,20 +111,14 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
     @Import(name="supportedTriggers", required=true)
     private Output<ActionSupportedTriggersArgs> supportedTriggers;
 
     /**
-     * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
     public Output<ActionSupportedTriggersArgs> supportedTriggers() {
@@ -240,7 +234,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -308,10 +302,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-         * [Retrieving the set of triggers available within
-         * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-         * trigger versions supported.
+         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
          * 
          * @return builder
          * 
@@ -322,10 +313,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-         * [Retrieving the set of triggers available within
-         * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-         * trigger versions supported.
+         * @param supportedTriggers List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
          * 
          * @return builder
          * 
@@ -336,7 +324,6 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
 
         public ActionArgs build() {
             $.code = Objects.requireNonNull($.code, "expected parameter 'code' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.supportedTriggers = Objects.requireNonNull($.supportedTriggers, "expected parameter 'supportedTriggers' to be non-null");
             return $;
         }

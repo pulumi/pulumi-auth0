@@ -458,6 +458,20 @@ public class GlobalClient extends com.pulumi.resources.CustomResource {
         return this.nativeSocialLogin;
     }
     /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    @Export(name="oidcBackchannelLogoutUrls", type=List.class, parameters={String.class})
+    private Output<List<String>> oidcBackchannelLogoutUrls;
+
+    /**
+     * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    public Output<List<String>> oidcBackchannelLogoutUrls() {
+        return this.oidcBackchannelLogoutUrls;
+    }
+    /**
      * Indicates whether this client will conform to strict OIDC specifications.
      * 
      */

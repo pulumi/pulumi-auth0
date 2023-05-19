@@ -22,15 +22,9 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var reader = new Auth0.Role("reader", new()
-    ///     {
-    ///         Name = "Reader",
-    ///     });
+    ///     var reader = new Auth0.Role("reader");
     /// 
-    ///     var admin = new Auth0.Role("admin", new()
-    ///     {
-    ///         Name = "Admin",
-    ///     });
+    ///     var admin = new Auth0.Role("admin");
     /// 
     ///     var user = new Auth0.User("user", new()
     ///     {
@@ -42,7 +36,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var myOrg = new Auth0.Organization("myOrg", new()
     ///     {
-    ///         Name = "org-admin",
     ///         DisplayName = "Admin",
     ///     });
     /// 

@@ -150,6 +150,11 @@ public final class GetGlobalClientResult {
      */
     private List<GetGlobalClientNativeSocialLogin> nativeSocialLogins;
     /**
+     * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    private List<String> oidcBackchannelLogoutUrls;
+    /**
      * @return Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
@@ -382,6 +387,13 @@ public final class GetGlobalClientResult {
         return this.nativeSocialLogins;
     }
     /**
+     * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     * 
+     */
+    public List<String> oidcBackchannelLogoutUrls() {
+        return this.oidcBackchannelLogoutUrls;
+    }
+    /**
      * @return Indicates whether this client will conform to strict OIDC specifications.
      * 
      */
@@ -481,6 +493,7 @@ public final class GetGlobalClientResult {
         private List<GetGlobalClientMobile> mobiles;
         private String name;
         private List<GetGlobalClientNativeSocialLogin> nativeSocialLogins;
+        private List<String> oidcBackchannelLogoutUrls;
         private Boolean oidcConformant;
         private String organizationRequireBehavior;
         private String organizationUsage;
@@ -520,6 +533,7 @@ public final class GetGlobalClientResult {
     	      this.mobiles = defaults.mobiles;
     	      this.name = defaults.name;
     	      this.nativeSocialLogins = defaults.nativeSocialLogins;
+    	      this.oidcBackchannelLogoutUrls = defaults.oidcBackchannelLogoutUrls;
     	      this.oidcConformant = defaults.oidcConformant;
     	      this.organizationRequireBehavior = defaults.organizationRequireBehavior;
     	      this.organizationUsage = defaults.organizationUsage;
@@ -697,6 +711,14 @@ public final class GetGlobalClientResult {
             return nativeSocialLogins(List.of(nativeSocialLogins));
         }
         @CustomType.Setter
+        public Builder oidcBackchannelLogoutUrls(List<String> oidcBackchannelLogoutUrls) {
+            this.oidcBackchannelLogoutUrls = Objects.requireNonNull(oidcBackchannelLogoutUrls);
+            return this;
+        }
+        public Builder oidcBackchannelLogoutUrls(String... oidcBackchannelLogoutUrls) {
+            return oidcBackchannelLogoutUrls(List.of(oidcBackchannelLogoutUrls));
+        }
+        @CustomType.Setter
         public Builder oidcConformant(Boolean oidcConformant) {
             this.oidcConformant = Objects.requireNonNull(oidcConformant);
             return this;
@@ -776,6 +798,7 @@ public final class GetGlobalClientResult {
             o.mobiles = mobiles;
             o.name = name;
             o.nativeSocialLogins = nativeSocialLogins;
+            o.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             o.oidcConformant = oidcConformant;
             o.organizationRequireBehavior = organizationRequireBehavior;
             o.organizationUsage = organizationUsage;

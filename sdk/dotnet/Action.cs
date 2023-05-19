@@ -62,10 +62,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<Outputs.ActionSecret>> Secrets { get; private set; } = null!;
 
         /// <summary>
-        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-        /// [Retrieving the set of triggers available within
-        /// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-        /// trigger versions supported.
+        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         /// </summary>
         [Output("supportedTriggers")]
         public Output<Outputs.ActionSupportedTriggers> SupportedTriggers { get; private set; } = null!;
@@ -149,8 +146,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// The name of the action.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
@@ -171,10 +168,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-        /// [Retrieving the set of triggers available within
-        /// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-        /// trigger versions supported.
+        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         /// </summary>
         [Input("supportedTriggers", required: true)]
         public Input<Inputs.ActionSupportedTriggersArgs> SupportedTriggers { get; set; } = null!;
@@ -236,10 +230,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-        /// [Retrieving the set of triggers available within
-        /// actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-        /// trigger versions supported.
+        /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         /// </summary>
         [Input("supportedTriggers")]
         public Input<Inputs.ActionSupportedTriggersGetArgs>? SupportedTriggers { get; set; }

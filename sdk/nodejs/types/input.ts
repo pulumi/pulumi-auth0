@@ -1386,6 +1386,10 @@ export interface ResourceServerScope {
 
 export interface RolePermission {
     /**
+     * Description of the permission.
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      */
     name: pulumi.Input<string>;
@@ -1393,6 +1397,29 @@ export interface RolePermission {
      * Unique identifier for the resource server.
      */
     resourceServerIdentifier: pulumi.Input<string>;
+    /**
+     * Name of resource server that the permission is associated with.
+     */
+    resourceServerName?: pulumi.Input<string>;
+}
+
+export interface RolePermissionsPermission {
+    /**
+     * Description of the permission.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of permission.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Resource server identifier associated with the permission.
+     */
+    resourceServerIdentifier: pulumi.Input<string>;
+    /**
+     * Name of resource server that the permission is associated with.
+     */
+    resourceServerName?: pulumi.Input<string>;
 }
 
 export interface TenantChangePassword {
@@ -1557,4 +1584,33 @@ export interface TriggerBindingAction {
      * Action ID.
      */
     id: pulumi.Input<string>;
+}
+
+export interface UserPermission {
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+     */
+    name?: pulumi.Input<string>;
+    resourceServerIdentifier?: pulumi.Input<string>;
+    resourceServerName?: pulumi.Input<string>;
+}
+
+export interface UserPermissionsPermission {
+    /**
+     * Description of the permission.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of permission.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Resource server identifier associated with the permission.
+     */
+    resourceServerIdentifier: pulumi.Input<string>;
+    /**
+     * Name of resource server that the permission is associated with.
+     */
+    resourceServerName?: pulumi.Input<string>;
 }

@@ -24,7 +24,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myEmailProvider = new Auth0.Email("myEmailProvider", new()
     ///     {
-    ///         Name = "ses",
     ///         Enabled = true,
     ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = new Auth0.Inputs.EmailCredentialsArgs

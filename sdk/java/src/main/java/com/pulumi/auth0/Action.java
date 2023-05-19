@@ -120,20 +120,14 @@ public class Action extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secrets);
     }
     /**
-     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
     @Export(name="supportedTriggers", type=ActionSupportedTriggers.class, parameters={})
     private Output<ActionSupportedTriggers> supportedTriggers;
 
     /**
-     * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read
-     * [Retrieving the set of triggers available within
-     * actions](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/action_triggers) to retrieve the latest
-     * trigger versions supported.
+     * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
     public Output<ActionSupportedTriggers> supportedTriggers() {

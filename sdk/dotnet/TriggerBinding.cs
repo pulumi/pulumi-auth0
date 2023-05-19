@@ -24,7 +24,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var actionFoo = new Auth0.Action("actionFoo", new()
     ///     {
-    ///         Name = "Test Trigger Binding Foo",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
     ///   console.log(""foo"");
     /// };""
@@ -39,7 +38,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var actionBar = new Auth0.Action("actionBar", new()
     ///     {
-    ///         Name = "Test Trigger Binding Bar",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
     ///   console.log(""bar"");
     /// };""

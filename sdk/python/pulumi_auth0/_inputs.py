@@ -84,6 +84,7 @@ __all__ = [
     'OrganizationBrandingArgs',
     'ResourceServerScopeArgs',
     'RolePermissionArgs',
+    'RolePermissionsPermissionArgs',
     'TenantChangePasswordArgs',
     'TenantErrorPageArgs',
     'TenantFlagsArgs',
@@ -92,6 +93,8 @@ __all__ = [
     'TenantUniversalLoginArgs',
     'TenantUniversalLoginColorsArgs',
     'TriggerBindingActionArgs',
+    'UserPermissionArgs',
+    'UserPermissionsPermissionArgs',
 ]
 
 @pulumi.input_type
@@ -6523,13 +6526,21 @@ class ResourceServerScopeArgs:
 class RolePermissionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 resource_server_identifier: pulumi.Input[str]):
+                 resource_server_identifier: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 resource_server_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the permission (scope) configured on the resource server. If referencing a scope from an `ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
         :param pulumi.Input[str] resource_server_identifier: Unique identifier for the resource server.
+        :param pulumi.Input[str] description: Description of the permission.
+        :param pulumi.Input[str] resource_server_name: Name of resource server that the permission is associated with.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resource_server_name is not None:
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
 
     @property
     @pulumi.getter
@@ -6554,6 +6565,99 @@ class RolePermissionArgs:
     @resource_server_identifier.setter
     def resource_server_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_server_identifier", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the permission.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of resource server that the permission is associated with.
+        """
+        return pulumi.get(self, "resource_server_name")
+
+    @resource_server_name.setter
+    def resource_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_server_name", value)
+
+
+@pulumi.input_type
+class RolePermissionsPermissionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_server_identifier: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 resource_server_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of permission.
+        :param pulumi.Input[str] resource_server_identifier: Resource server identifier associated with the permission.
+        :param pulumi.Input[str] description: Description of the permission.
+        :param pulumi.Input[str] resource_server_name: Name of resource server that the permission is associated with.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resource_server_name is not None:
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of permission.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> pulumi.Input[str]:
+        """
+        Resource server identifier associated with the permission.
+        """
+        return pulumi.get(self, "resource_server_identifier")
+
+    @resource_server_identifier.setter
+    def resource_server_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_server_identifier", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the permission.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of resource server that the permission is associated with.
+        """
+        return pulumi.get(self, "resource_server_name")
+
+    @resource_server_name.setter
+    def resource_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_server_name", value)
 
 
 @pulumi.input_type
@@ -7170,5 +7274,133 @@ class TriggerBindingActionArgs:
     @id.setter
     def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class UserPermissionArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_server_identifier: Optional[pulumi.Input[str]] = None,
+                 resource_server_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_server_identifier is not None:
+            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        if resource_server_name is not None:
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_server_identifier")
+
+    @resource_server_identifier.setter
+    def resource_server_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_server_identifier", value)
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_server_name")
+
+    @resource_server_name.setter
+    def resource_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_server_name", value)
+
+
+@pulumi.input_type
+class UserPermissionsPermissionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_server_identifier: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 resource_server_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of permission.
+        :param pulumi.Input[str] resource_server_identifier: Resource server identifier associated with the permission.
+        :param pulumi.Input[str] description: Description of the permission.
+        :param pulumi.Input[str] resource_server_name: Name of resource server that the permission is associated with.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resource_server_name is not None:
+            pulumi.set(__self__, "resource_server_name", resource_server_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of permission.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> pulumi.Input[str]:
+        """
+        Resource server identifier associated with the permission.
+        """
+        return pulumi.get(self, "resource_server_identifier")
+
+    @resource_server_identifier.setter
+    def resource_server_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_server_identifier", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the permission.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="resourceServerName")
+    def resource_server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of resource server that the permission is associated with.
+        """
+        return pulumi.get(self, "resource_server_name")
+
+    @resource_server_name.setter
+    def resource_server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_server_name", value)
 
 

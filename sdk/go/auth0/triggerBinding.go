@@ -28,7 +28,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			actionFoo, err := auth0.NewAction(ctx, "actionFoo", &auth0.ActionArgs{
-//				Name:   pulumi.String("Test Trigger Binding Foo"),
 //				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"foo\");\n};\"\n"),
 //				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
@@ -40,7 +39,6 @@ import (
 //				return err
 //			}
 //			actionBar, err := auth0.NewAction(ctx, "actionBar", &auth0.ActionArgs{
-//				Name:   pulumi.String("Test Trigger Binding Bar"),
 //				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"bar\");\n};\"\n"),
 //				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{

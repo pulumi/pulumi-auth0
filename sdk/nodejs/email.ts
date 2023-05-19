@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  *     },
  *     defaultFromAddress: "accounts@example.com",
  *     enabled: true,
- *     name: "ses",
  * });
  * // This is an example on how to set up the email provider with SMTP.
  * const smtpEmailProvider = new auth0.Email("smtpEmailProvider", {
@@ -36,7 +35,6 @@ import * as utilities from "./utilities";
  *     },
  *     defaultFromAddress: "accounts@example.com",
  *     enabled: true,
- *     name: "smtp",
  * });
  * // This is an example on how to set up the email provider with Sendgrid.
  * const sendgridEmailProvider = new auth0.Email("sendgridEmailProvider", {
@@ -45,7 +43,6 @@ import * as utilities from "./utilities";
  *     },
  *     defaultFromAddress: "accounts@example.com",
  *     enabled: true,
- *     name: "sendgrid",
  * });
  * ```
  *
@@ -132,9 +129,6 @@ export class Email extends pulumi.CustomResource {
             if ((!args || args.defaultFromAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultFromAddress'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             resourceInputs["credentials"] = args ? args.credentials : undefined;
             resourceInputs["defaultFromAddress"] = args ? args.defaultFromAddress : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
@@ -191,7 +185,7 @@ export interface EmailArgs {
     /**
      * Name of the email provider. Options include `mailgun`, `mandrill`, `sendgrid`, `ses`, `smtp`, and `sparkpost`.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specific email provider settings.
      */

@@ -21,7 +21,7 @@ class GetGlobalClientResult:
     """
     A collection of values returned by getGlobalClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_id=None, client_metadata=None, client_secret=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_conformant=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_id=None, client_metadata=None, client_secret=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -103,6 +103,9 @@ class GetGlobalClientResult:
         if native_social_logins and not isinstance(native_social_logins, list):
             raise TypeError("Expected argument 'native_social_logins' to be a list")
         pulumi.set(__self__, "native_social_logins", native_social_logins)
+        if oidc_backchannel_logout_urls and not isinstance(oidc_backchannel_logout_urls, list):
+            raise TypeError("Expected argument 'oidc_backchannel_logout_urls' to be a list")
+        pulumi.set(__self__, "oidc_backchannel_logout_urls", oidc_backchannel_logout_urls)
         if oidc_conformant and not isinstance(oidc_conformant, bool):
             raise TypeError("Expected argument 'oidc_conformant' to be a bool")
         pulumi.set(__self__, "oidc_conformant", oidc_conformant)
@@ -345,6 +348,14 @@ class GetGlobalClientResult:
         return pulumi.get(self, "native_social_logins")
 
     @property
+    @pulumi.getter(name="oidcBackchannelLogoutUrls")
+    def oidc_backchannel_logout_urls(self) -> Sequence[str]:
+        """
+        Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+        """
+        return pulumi.get(self, "oidc_backchannel_logout_urls")
+
+    @property
     @pulumi.getter(name="oidcConformant")
     def oidc_conformant(self) -> bool:
         """
@@ -450,6 +461,7 @@ class AwaitableGetGlobalClientResult(GetGlobalClientResult):
             mobiles=self.mobiles,
             name=self.name,
             native_social_logins=self.native_social_logins,
+            oidc_backchannel_logout_urls=self.oidc_backchannel_logout_urls,
             oidc_conformant=self.oidc_conformant,
             organization_require_behavior=self.organization_require_behavior,
             organization_usage=self.organization_usage,
@@ -506,6 +518,7 @@ def get_global_client(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         mobiles=__ret__.mobiles,
         name=__ret__.name,
         native_social_logins=__ret__.native_social_logins,
+        oidc_backchannel_logout_urls=__ret__.oidc_backchannel_logout_urls,
         oidc_conformant=__ret__.oidc_conformant,
         organization_require_behavior=__ret__.organization_require_behavior,
         organization_usage=__ret__.organization_usage,

@@ -155,6 +155,10 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly nativeSocialLogin!: pulumi.Output<outputs.ClientNativeSocialLogin>;
     /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     */
+    public readonly oidcBackchannelLogoutUrls!: pulumi.Output<string[] | undefined>;
+    /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
     public readonly oidcConformant!: pulumi.Output<boolean>;
@@ -198,7 +202,7 @@ export class Client extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ClientArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ClientArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientArgs | ClientState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -231,6 +235,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["mobile"] = state ? state.mobile : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nativeSocialLogin"] = state ? state.nativeSocialLogin : undefined;
+            resourceInputs["oidcBackchannelLogoutUrls"] = state ? state.oidcBackchannelLogoutUrls : undefined;
             resourceInputs["oidcConformant"] = state ? state.oidcConformant : undefined;
             resourceInputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = state ? state.organizationUsage : undefined;
@@ -242,9 +247,6 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["webOrigins"] = state ? state.webOrigins : undefined;
         } else {
             const args = argsOrState as ClientArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             resourceInputs["addons"] = args ? args.addons : undefined;
             resourceInputs["allowedClients"] = args ? args.allowedClients : undefined;
             resourceInputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
@@ -270,6 +272,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["mobile"] = args ? args.mobile : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nativeSocialLogin"] = args ? args.nativeSocialLogin : undefined;
+            resourceInputs["oidcBackchannelLogoutUrls"] = args ? args.oidcBackchannelLogoutUrls : undefined;
             resourceInputs["oidcConformant"] = args ? args.oidcConformant : undefined;
             resourceInputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
             resourceInputs["organizationUsage"] = args ? args.organizationUsage : undefined;
@@ -402,6 +405,10 @@ export interface ClientState {
      * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      */
     nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin>;
+    /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     */
+    oidcBackchannelLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
@@ -539,11 +546,15 @@ export interface ClientArgs {
     /**
      * Name of the client.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      */
     nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin>;
+    /**
+     * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+     */
+    oidcBackchannelLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */

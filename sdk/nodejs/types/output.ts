@@ -1494,10 +1494,15 @@ export interface GetResourceServerScope {
 
 export interface GetRolePermission {
     /**
+     * Description of the role.
+     */
+    description: string;
+    /**
      * The name of the role. If not provided, `roleId` must be set.
      */
     name: string;
     resourceServerIdentifier: string;
+    resourceServerName: string;
 }
 
 export interface GetTenantChangePassword {
@@ -1556,6 +1561,16 @@ export interface GetTenantUniversalLogin {
 export interface GetTenantUniversalLoginColor {
     pageBackground: string;
     primary: string;
+}
+
+export interface GetUserPermission {
+    description: string;
+    /**
+     * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+     */
+    name: string;
+    resourceServerIdentifier: string;
+    resourceServerName: string;
 }
 
 export interface GlobalClientAddons {
@@ -1959,6 +1974,10 @@ export interface ResourceServerScope {
 
 export interface RolePermission {
     /**
+     * Description of the permission.
+     */
+    description: string;
+    /**
      * Name of the permission (scope) configured on the resource server. If referencing a scope from an `auth0.ResourceServer` resource, use the `value` property, for example `auth0_resource_server.my_resource_server.scopes[0].value`.
      */
     name: string;
@@ -1966,6 +1985,29 @@ export interface RolePermission {
      * Unique identifier for the resource server.
      */
     resourceServerIdentifier: string;
+    /**
+     * Name of resource server that the permission is associated with.
+     */
+    resourceServerName: string;
+}
+
+export interface RolePermissionsPermission {
+    /**
+     * Description of the permission.
+     */
+    description: string;
+    /**
+     * Name of permission.
+     */
+    name: string;
+    /**
+     * Resource server identifier associated with the permission.
+     */
+    resourceServerIdentifier: string;
+    /**
+     * Name of resource server that the permission is associated with.
+     */
+    resourceServerName: string;
 }
 
 export interface TenantChangePassword {
@@ -2130,5 +2172,34 @@ export interface TriggerBindingAction {
      * Action ID.
      */
     id: string;
+}
+
+export interface UserPermission {
+    description: string;
+    /**
+     * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
+     */
+    name: string;
+    resourceServerIdentifier: string;
+    resourceServerName: string;
+}
+
+export interface UserPermissionsPermission {
+    /**
+     * Description of the permission.
+     */
+    description: string;
+    /**
+     * Name of permission.
+     */
+    name: string;
+    /**
+     * Resource server identifier associated with the permission.
+     */
+    resourceServerIdentifier: string;
+    /**
+     * Name of resource server that the permission is associated with.
+     */
+    resourceServerName: string;
 }
 
