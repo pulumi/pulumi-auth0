@@ -8,6 +8,9 @@ import (
 	"path"
 	"testing"
 
+	"encoding/json"
+	"github.com/stretchr/testify/assert"
+
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
