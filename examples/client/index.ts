@@ -22,11 +22,9 @@ let client = new auth0.Client("test", {
     isTokenEndpointIpHeaderTrusted: true,
     oidcConformant: false,
     tokenEndpointAuthMethod: "client_secret_post",
-    clientMetadata: [
-        {
-            foo: "bar"
-        }
-    ],
+    clientMetadata: {
+        foo: "bar"
+    },
     allowedLogoutUrls: [
         "https://example.com"
     ],
