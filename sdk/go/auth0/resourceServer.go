@@ -30,12 +30,12 @@ import (
 //			_, err := auth0.NewResourceServer(ctx, "myResourceServer", &auth0.ResourceServerArgs{
 //				AllowOfflineAccess: pulumi.Bool(true),
 //				Identifier:         pulumi.String("https://api.example.com"),
-//				Scopes: auth0.ResourceServerScopeArray{
-//					&auth0.ResourceServerScopeArgs{
+//				Scopes: auth0.ResourceServerScopeTypeArray{
+//					&auth0.ResourceServerScopeTypeArgs{
 //						Description: pulumi.String("Create foos"),
 //						Value:       pulumi.String("create:foo"),
 //					},
-//					&auth0.ResourceServerScopeArgs{
+//					&auth0.ResourceServerScopeTypeArgs{
 //						Description: pulumi.String("Create bars"),
 //						Value:       pulumi.String("create:bar"),
 //					},
@@ -74,7 +74,9 @@ type ResourceServer struct {
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of permissions (scopes) used by this resource server.
-	Scopes ResourceServerScopeArrayOutput `pulumi:"scopes"`
+	//
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	Scopes ResourceServerScopeTypeArrayOutput `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringOutput `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -132,7 +134,9 @@ type resourceServerState struct {
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
 	// List of permissions (scopes) used by this resource server.
-	Scopes []ResourceServerScope `pulumi:"scopes"`
+	//
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	Scopes []ResourceServerScopeType `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -159,7 +163,9 @@ type ResourceServerState struct {
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
 	// List of permissions (scopes) used by this resource server.
-	Scopes ResourceServerScopeArrayInput
+	//
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	Scopes ResourceServerScopeTypeArrayInput
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringPtrInput
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -190,7 +196,9 @@ type resourceServerArgs struct {
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
 	// List of permissions (scopes) used by this resource server.
-	Scopes []ResourceServerScope `pulumi:"scopes"`
+	//
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	Scopes []ResourceServerScopeType `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -218,7 +226,9 @@ type ResourceServerArgs struct {
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
 	// List of permissions (scopes) used by this resource server.
-	Scopes ResourceServerScopeArrayInput
+	//
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	Scopes ResourceServerScopeTypeArrayInput
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringPtrInput
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -343,8 +353,10 @@ func (o ResourceServerOutput) Name() pulumi.StringOutput {
 }
 
 // List of permissions (scopes) used by this resource server.
-func (o ResourceServerOutput) Scopes() ResourceServerScopeArrayOutput {
-	return o.ApplyT(func(v *ResourceServer) ResourceServerScopeArrayOutput { return v.Scopes }).(ResourceServerScopeArrayOutput)
+//
+// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+func (o ResourceServerOutput) Scopes() ResourceServerScopeTypeArrayOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServerScopeTypeArrayOutput { return v.Scopes }).(ResourceServerScopeTypeArrayOutput)
 }
 
 // Algorithm used to sign JWTs. Options include `HS256` and `RS256`.

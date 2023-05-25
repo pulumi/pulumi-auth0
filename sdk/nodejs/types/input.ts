@@ -428,6 +428,29 @@ export interface ClientAddonsSamlp {
     typedAttributes?: pulumi.Input<boolean>;
 }
 
+export interface ClientCredentialsPrivateKeyJwt {
+    /**
+     * Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+     */
+    credentials: pulumi.Input<pulumi.Input<inputs.ClientCredentialsPrivateKeyJwtCredential>[]>;
+}
+
+export interface ClientCredentialsPrivateKeyJwtCredential {
+    algorithm?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
+    credentialType: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    parseExpiryFromCert?: pulumi.Input<boolean>;
+    pem: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs.
@@ -746,7 +769,7 @@ export interface ConnectionOptions {
      */
     scripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
      */
     setUserRootAttributes?: pulumi.Input<string>;
     /**
@@ -1382,6 +1405,17 @@ export interface ResourceServerScope {
      * Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
      */
     value: pulumi.Input<string>;
+}
+
+export interface ResourceServerScopesScope {
+    /**
+     * User-friendly description of the scope (permission).
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface RolePermission {

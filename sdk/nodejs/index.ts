@@ -30,6 +30,11 @@ export type Client = import("./client").Client;
 export const Client: typeof import("./client").Client = null as any;
 utilities.lazyLoad(exports, ["Client"], () => require("./client"));
 
+export { ClientCredentialsArgs, ClientCredentialsState } from "./clientCredentials";
+export type ClientCredentials = import("./clientCredentials").ClientCredentials;
+export const ClientCredentials: typeof import("./clientCredentials").ClientCredentials = null as any;
+utilities.lazyLoad(exports, ["ClientCredentials"], () => require("./clientCredentials"));
+
 export { ClientGrantArgs, ClientGrantState } from "./clientGrant";
 export type ClientGrant = import("./clientGrant").ClientGrant;
 export const ClientGrant: typeof import("./clientGrant").ClientGrant = null as any;
@@ -179,6 +184,16 @@ export type ResourceServer = import("./resourceServer").ResourceServer;
 export const ResourceServer: typeof import("./resourceServer").ResourceServer = null as any;
 utilities.lazyLoad(exports, ["ResourceServer"], () => require("./resourceServer"));
 
+export { ResourceServerScopeArgs, ResourceServerScopeState } from "./resourceServerScope";
+export type ResourceServerScope = import("./resourceServerScope").ResourceServerScope;
+export const ResourceServerScope: typeof import("./resourceServerScope").ResourceServerScope = null as any;
+utilities.lazyLoad(exports, ["ResourceServerScope"], () => require("./resourceServerScope"));
+
+export { ResourceServerScopesArgs, ResourceServerScopesState } from "./resourceServerScopes";
+export type ResourceServerScopes = import("./resourceServerScopes").ResourceServerScopes;
+export const ResourceServerScopes: typeof import("./resourceServerScopes").ResourceServerScopes = null as any;
+utilities.lazyLoad(exports, ["ResourceServerScopes"], () => require("./resourceServerScopes"));
+
 export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
@@ -263,6 +278,8 @@ const _module = {
                 return new BrandingTheme(name, <any>undefined, { urn })
             case "auth0:index/client:Client":
                 return new Client(name, <any>undefined, { urn })
+            case "auth0:index/clientCredentials:ClientCredentials":
+                return new ClientCredentials(name, <any>undefined, { urn })
             case "auth0:index/clientGrant:ClientGrant":
                 return new ClientGrant(name, <any>undefined, { urn })
             case "auth0:index/connection:Connection":
@@ -299,6 +316,10 @@ const _module = {
                 return new PromptCustomText(name, <any>undefined, { urn })
             case "auth0:index/resourceServer:ResourceServer":
                 return new ResourceServer(name, <any>undefined, { urn })
+            case "auth0:index/resourceServerScope:ResourceServerScope":
+                return new ResourceServerScope(name, <any>undefined, { urn })
+            case "auth0:index/resourceServerScopes:ResourceServerScopes":
+                return new ResourceServerScopes(name, <any>undefined, { urn })
             case "auth0:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
             case "auth0:index/rolePermission:RolePermission":
@@ -333,6 +354,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/attackProtection", _module
 pulumi.runtime.registerResourceModule("auth0", "index/branding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/brandingTheme", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/clientCredentials", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module)
@@ -351,6 +373,8 @@ pulumi.runtime.registerResourceModule("auth0", "index/organizationMember", _modu
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScope", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScopes", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/role", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rolePermission", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rolePermissions", _module)

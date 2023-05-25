@@ -435,7 +435,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+        /// Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
         /// </summary>
         [Input("setUserRootAttributes")]
         public Input<string>? SetUserRootAttributes { get; set; }

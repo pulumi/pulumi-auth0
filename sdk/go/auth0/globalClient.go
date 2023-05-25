@@ -73,9 +73,14 @@ type GlobalClient struct {
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.MapOutput `pulumi:"clientMetadata"`
 	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-	// Terraform client. Otherwise, the attribute will contain an empty string.
+	// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+	// `auth0_client_credentials` resource instead, to allow managing it directly.
+	//
+	// Deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
-	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
+	//
+	// Deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
 	ClientSecretRotationTrigger pulumi.MapOutput `pulumi:"clientSecretRotationTrigger"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth pulumi.BoolOutput `pulumi:"crossOriginAuth"`
@@ -126,6 +131,8 @@ type GlobalClient struct {
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolOutput `pulumi:"ssoDisabled"`
 	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	//
+	// Deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	TokenEndpointAuthMethod pulumi.StringOutput `pulumi:"tokenEndpointAuthMethod"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayOutput `pulumi:"webOrigins"`
@@ -190,9 +197,14 @@ type globalClientState struct {
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
 	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-	// Terraform client. Otherwise, the attribute will contain an empty string.
+	// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+	// `auth0_client_credentials` resource instead, to allow managing it directly.
+	//
+	// Deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
+	//
+	// Deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
 	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
@@ -243,6 +255,8 @@ type globalClientState struct {
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled *bool `pulumi:"ssoDisabled"`
 	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	//
+	// Deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	TokenEndpointAuthMethod *string `pulumi:"tokenEndpointAuthMethod"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
@@ -268,9 +282,14 @@ type GlobalClientState struct {
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.MapInput
 	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-	// Terraform client. Otherwise, the attribute will contain an empty string.
+	// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+	// `auth0_client_credentials` resource instead, to allow managing it directly.
+	//
+	// Deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.
 	ClientSecret pulumi.StringPtrInput
-	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
+	//
+	// Deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
 	ClientSecretRotationTrigger pulumi.MapInput
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth pulumi.BoolPtrInput
@@ -321,6 +340,8 @@ type GlobalClientState struct {
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolPtrInput
 	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	//
+	// Deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	TokenEndpointAuthMethod pulumi.StringPtrInput
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayInput
@@ -350,9 +371,14 @@ type globalClientArgs struct {
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]interface{} `pulumi:"clientMetadata"`
 	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-	// Terraform client. Otherwise, the attribute will contain an empty string.
+	// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+	// `auth0_client_credentials` resource instead, to allow managing it directly.
+	//
+	// Deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
+	//
+	// Deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
 	ClientSecretRotationTrigger map[string]interface{} `pulumi:"clientSecretRotationTrigger"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth *bool `pulumi:"crossOriginAuth"`
@@ -403,6 +429,8 @@ type globalClientArgs struct {
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled *bool `pulumi:"ssoDisabled"`
 	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	//
+	// Deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	TokenEndpointAuthMethod *string `pulumi:"tokenEndpointAuthMethod"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
@@ -429,9 +457,14 @@ type GlobalClientArgs struct {
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.MapInput
 	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-	// Terraform client. Otherwise, the attribute will contain an empty string.
+	// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+	// `auth0_client_credentials` resource instead, to allow managing it directly.
+	//
+	// Deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.
 	ClientSecret pulumi.StringPtrInput
-	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+	// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
+	//
+	// Deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
 	ClientSecretRotationTrigger pulumi.MapInput
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coaToggleEnabled` feature flag to be enabled on the tenant by the support team.
 	CrossOriginAuth pulumi.BoolPtrInput
@@ -482,6 +515,8 @@ type GlobalClientArgs struct {
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolPtrInput
 	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	//
+	// Deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	TokenEndpointAuthMethod pulumi.StringPtrInput
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayInput
@@ -620,12 +655,17 @@ func (o GlobalClientOutput) ClientMetadata() pulumi.MapOutput {
 }
 
 // Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-// Terraform client. Otherwise, the attribute will contain an empty string.
+// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+// `auth0_client_credentials` resource instead, to allow managing it directly.
+//
+// Deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.
 func (o GlobalClientOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
+//
+// Deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.
 func (o GlobalClientOutput) ClientSecretRotationTrigger() pulumi.MapOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.MapOutput { return v.ClientSecretRotationTrigger }).(pulumi.MapOutput)
 }
@@ -751,6 +791,8 @@ func (o GlobalClientOutput) SsoDisabled() pulumi.BoolOutput {
 }
 
 // Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+//
+// Deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 func (o GlobalClientOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalClient) pulumi.StringOutput { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
 }

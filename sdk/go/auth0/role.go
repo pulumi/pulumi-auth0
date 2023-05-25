@@ -32,8 +32,8 @@ import (
 //				TokenLifetime: pulumi.Int(86400),
 //				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
 //				EnforcePolicies: pulumi.Bool(true),
-//				Scopes: auth0.ResourceServerScopeArray{
-//					&auth0.ResourceServerScopeArgs{
+//				Scopes: auth0.ResourceServerScopeTypeArray{
+//					&auth0.ResourceServerScopeTypeArgs{
 //						Value:       pulumi.String("read:something"),
 //						Description: pulumi.String("read something"),
 //					},

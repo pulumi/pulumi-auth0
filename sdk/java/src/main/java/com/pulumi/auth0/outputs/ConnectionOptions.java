@@ -317,7 +317,7 @@ public final class ConnectionOptions {
      */
     private @Nullable Map<String,String> scripts;
     /**
-     * @return Determines whether the &#39;name&#39;, &#39;given*name&#39;, &#39;family*name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using an external IdP. Possible values are &#39;on*each*login&#39; (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), &#39;on*first*login&#39; (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
      * 
      */
     private @Nullable String setUserRootAttributes;
@@ -865,7 +865,7 @@ public final class ConnectionOptions {
         return this.scripts == null ? Map.of() : this.scripts;
     }
     /**
-     * @return Determines whether the &#39;name&#39;, &#39;given*name&#39;, &#39;family*name&#39;, &#39;nickname&#39;, and &#39;picture&#39; attributes can be independently updated when using an external IdP. Possible values are &#39;on*each*login&#39; (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), &#39;on*first*login&#39; (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
      * 
      */
     public Optional<String> setUserRootAttributes() {
