@@ -496,6 +496,21 @@
                     }
                 }
             },
+            "auth0_client_credentials": {
+                "current": "auth0:index/clientCredentials:ClientCredentials",
+                "fields": {
+                    "private_key_jwt": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "credentials": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_client_grant": {
                 "current": "auth0:index/clientGrant:ClientGrant",
                 "fields": {
@@ -1317,6 +1332,17 @@
                     "verification_location": {}
                 }
             },
+            "auth0_resource_server_scope": {
+                "current": "auth0:index/resourceServerScope:ResourceServerScope"
+            },
+            "auth0_resource_server_scopes": {
+                "current": "auth0:index/resourceServerScopes:ResourceServerScopes",
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_role": {
                 "current": "auth0:index/role:Role",
                 "fields": {
@@ -1578,6 +1604,7 @@
             "auth0:index/branding:Branding": "auth0_branding",
             "auth0:index/brandingTheme:BrandingTheme": "auth0_branding_theme",
             "auth0:index/client:Client": "auth0_client",
+            "auth0:index/clientCredentials:ClientCredentials": "auth0_client_credentials",
             "auth0:index/clientGrant:ClientGrant": "auth0_client_grant",
             "auth0:index/connection:Connection": "auth0_connection",
             "auth0:index/connectionClient:ConnectionClient": "auth0_connection_client",
@@ -1596,6 +1623,8 @@
             "auth0:index/prompt:Prompt": "auth0_prompt",
             "auth0:index/promptCustomText:PromptCustomText": "auth0_prompt_custom_text",
             "auth0:index/resourceServer:ResourceServer": "auth0_resource_server",
+            "auth0:index/resourceServerScope:ResourceServerScope": "auth0_resource_server_scope",
+            "auth0:index/resourceServerScopes:ResourceServerScopes": "auth0_resource_server_scopes",
             "auth0:index/role:Role": "auth0_role",
             "auth0:index/rolePermission:RolePermission": "auth0_role_permission",
             "auth0:index/rolePermissions:RolePermissions": "auth0_role_permissions",
@@ -1715,6 +1744,14 @@
                 "signatureAlgorithm": "signature_algorithm",
                 "signingCert": "signing_cert",
                 "typedAttributes": "typed_attributes"
+            },
+            "auth0:index/ClientCredentialsPrivateKeyJwtCredential:ClientCredentialsPrivateKeyJwtCredential": {
+                "createdAt": "created_at",
+                "credentialType": "credential_type",
+                "expiresAt": "expires_at",
+                "keyId": "key_id",
+                "parseExpiryFromCert": "parse_expiry_from_cert",
+                "updatedAt": "updated_at"
             },
             "auth0:index/ClientJwtConfiguration:ClientJwtConfiguration": {
                 "lifetimeInSeconds": "lifetime_in_seconds",
@@ -2063,6 +2100,12 @@
                 "ssoDisabled": "sso_disabled",
                 "tokenEndpointAuthMethod": "token_endpoint_auth_method",
                 "webOrigins": "web_origins"
+            },
+            "auth0:index/clientCredentials:ClientCredentials": {
+                "authenticationMethod": "authentication_method",
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
+                "privateKeyJwt": "private_key_jwt"
             },
             "auth0:index/clientGrant:ClientGrant": {
                 "clientId": "client_id",
@@ -2632,6 +2675,12 @@
                 "tokenLifetime": "token_lifetime",
                 "tokenLifetimeForWeb": "token_lifetime_for_web",
                 "verificationLocation": "verification_location"
+            },
+            "auth0:index/resourceServerScope:ResourceServerScope": {
+                "resourceServerIdentifier": "resource_server_identifier"
+            },
+            "auth0:index/resourceServerScopes:ResourceServerScopes": {
+                "resourceServerIdentifier": "resource_server_identifier"
             },
             "auth0:index/rolePermission:RolePermission": {
                 "resourceServerIdentifier": "resource_server_identifier",

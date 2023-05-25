@@ -5,10 +5,10 @@ github.com/agext/levenshtein v1.2.3/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki
 github.com/apparentlymart/go-textseg/v12 v12.0.0/go.mod h1:S/4uRK2UtaQttw1GenVJEynmyUenKwP++x/+DdGV/Ec=
 github.com/apparentlymart/go-textseg/v13 v13.0.0 h1:Y+KvPE1NYz0xl601PVImeQfFyEy6iT90AvPUL1NNfNw=
 github.com/apparentlymart/go-textseg/v13 v13.0.0/go.mod h1:ZK2fH7c4NqDTLtiYLvIkEghdlcqw7yxLeM89kiTRPUo=
-github.com/auth0/go-auth0 v0.17.1 h1:xfk6Zuit4Tigg985RPZ6tpue5VHako8KfVkjjC+6X5g=
-github.com/auth0/go-auth0 v0.17.1/go.mod h1:CMHBK8TF30dmqCItdcDHVyXg0UbYxT0laf4MGDMseN0=
-github.com/auth0/terraform-provider-auth0 v0.47.0 h1:brFCqwnPlqnPqwnFBsCogNfHix+IRtQ/44+rrhLk94w=
-github.com/auth0/terraform-provider-auth0 v0.47.0/go.mod h1:mXR4vSY/au6uAzPSnjWtT81otL6R4ZU2W7U6V9AUY/M=
+github.com/auth0/go-auth0 v0.17.2 h1:qEttAY4yYeEJl6wu0iOwlet26wUKA2G5YOUomfuxcy4=
+github.com/auth0/go-auth0 v0.17.2/go.mod h1:Hlp4kYcvn2JSD1tAmPQ8DD7MMoiO0bwVJwTHXqJbDDE=
+github.com/auth0/terraform-provider-auth0 v0.48.0 h1:jWSGfNjtFPiCqRySatTqzyMNzU9pmxT3bGR/JCdg/lw=
+github.com/auth0/terraform-provider-auth0 v0.48.0/go.mod h1:4TYOAYzC09+8KRXu0wxqGORxidbOYYrZHsHIK5LBiiU=
 github.com/aybabtme/iocontrol v0.0.0-20150809002002-ad15bcfc95a0 h1:0NmehRCgyk5rljDQLKUO+cRJCnduDyn11+zGZIc9Z48=
 github.com/aybabtme/iocontrol v0.0.0-20150809002002-ad15bcfc95a0/go.mod h1:6L7zgvqo0idzI7IO8de6ZC051AfXb5ipkIJ7bIA2tGA=
 github.com/benbjohnson/clock v1.1.0 h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=
@@ -102,7 +102,7 @@ github.com/rogpeppe/go-internal v1.9.0/go.mod h1:WtVeX8xhTBvf0smdhujwtBcq4Qrzq/f
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.2/go.mod h1:R6va5+xMeoiuVRoj+gSkQ7d3FALtqAAGI1FQKckRals=
-github.com/stretchr/testify v1.8.2 h1:+h33VjcLVPDHtOdpUCuF+7gSuG3yGIftsP1YvFihtJ8=
+github.com/stretchr/testify v1.8.3 h1:RP3t2pwF7cMEbC1dqtB6poj3niw/9gnV4Cjg5oW5gtY=
 github.com/vmihailenco/msgpack v3.3.3+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=
 github.com/vmihailenco/msgpack v4.0.4+incompatible h1:dSLoQfGFAo3F6OoNhwUmLwVgaUXK79GlxNBwueZn0xI=
 github.com/vmihailenco/msgpack v4.0.4+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=
