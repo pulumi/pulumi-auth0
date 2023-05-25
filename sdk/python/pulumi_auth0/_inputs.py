@@ -35,6 +35,8 @@ __all__ = [
     'BrandingUniversalLoginArgs',
     'ClientAddonsArgs',
     'ClientAddonsSamlpArgs',
+    'ClientCredentialsPrivateKeyJwtArgs',
+    'ClientCredentialsPrivateKeyJwtCredentialArgs',
     'ClientJwtConfigurationArgs',
     'ClientMobileArgs',
     'ClientMobileAndroidArgs',
@@ -83,6 +85,7 @@ __all__ = [
     'LogStreamSinkArgs',
     'OrganizationBrandingArgs',
     'ResourceServerScopeArgs',
+    'ResourceServerScopesScopeArgs',
     'RolePermissionArgs',
     'RolePermissionsPermissionArgs',
     'TenantChangePasswordArgs',
@@ -2145,6 +2148,157 @@ class ClientAddonsSamlpArgs:
 
 
 @pulumi.input_type
+class ClientCredentialsPrivateKeyJwtArgs:
+    def __init__(__self__, *,
+                 credentials: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsPrivateKeyJwtCredentialArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClientCredentialsPrivateKeyJwtCredentialArgs']]] credentials: Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> pulumi.Input[Sequence[pulumi.Input['ClientCredentialsPrivateKeyJwtCredentialArgs']]]:
+        """
+        Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsPrivateKeyJwtCredentialArgs']]]):
+        pulumi.set(self, "credentials", value)
+
+
+@pulumi.input_type
+class ClientCredentialsPrivateKeyJwtCredentialArgs:
+    def __init__(__self__, *,
+                 credential_type: pulumi.Input[str],
+                 pem: pulumi.Input[str],
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parse_expiry_from_cert: Optional[pulumi.Input[bool]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The ID of this resource.
+        """
+        pulumi.set(__self__, "credential_type", credential_type)
+        pulumi.set(__self__, "pem", pem)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parse_expiry_from_cert is not None:
+            pulumi.set(__self__, "parse_expiry_from_cert", parse_expiry_from_cert)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "credential_type")
+
+    @credential_type.setter
+    def credential_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "credential_type", value)
+
+    @property
+    @pulumi.getter
+    def pem(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "pem")
+
+    @pem.setter
+    def pem(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pem", value)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parseExpiryFromCert")
+    def parse_expiry_from_cert(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "parse_expiry_from_cert")
+
+    @parse_expiry_from_cert.setter
+    def parse_expiry_from_cert(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "parse_expiry_from_cert", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+@pulumi.input_type
 class ClientJwtConfigurationArgs:
     def __init__(__self__, *,
                  alg: Optional[pulumi.Input[str]] = None,
@@ -2640,7 +2794,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[bool] requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
-        :param pulumi.Input[str] set_user_root_attributes: Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+        :param pulumi.Input[str] set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
         :param pulumi.Input[str] should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param pulumi.Input[str] sign_in_endpoint: SAML single login URL for the connection.
         :param pulumi.Input[str] sign_out_endpoint: SAML single logout URL for the connection.
@@ -3542,7 +3696,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="setUserRootAttributes")
     def set_user_root_attributes(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
         """
         return pulumi.get(self, "set_user_root_attributes")
 
@@ -6514,6 +6668,44 @@ class ResourceServerScopeArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the permission (scope).
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ResourceServerScopesScopeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+        :param pulumi.Input[str] description: User-friendly description of the scope (permission).
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-friendly description of the scope (permission).
         """
         return pulumi.get(self, "description")
 

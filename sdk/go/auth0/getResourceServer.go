@@ -75,7 +75,7 @@ type LookupResourceServerResult struct {
 	// The ID of the resource server. If not provided, `identifier` must be set.
 	ResourceServerId *string `pulumi:"resourceServerId"`
 	// List of permissions (scopes) used by this resource server.
-	Scopes []GetResourceServerScope `pulumi:"scopes"`
+	Scopes []GetResourceServerScopeType `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg string `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -163,8 +163,8 @@ func (o LookupResourceServerResultOutput) ResourceServerId() pulumi.StringPtrOut
 }
 
 // List of permissions (scopes) used by this resource server.
-func (o LookupResourceServerResultOutput) Scopes() GetResourceServerScopeArrayOutput {
-	return o.ApplyT(func(v LookupResourceServerResult) []GetResourceServerScope { return v.Scopes }).(GetResourceServerScopeArrayOutput)
+func (o LookupResourceServerResultOutput) Scopes() GetResourceServerScopeTypeArrayOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) []GetResourceServerScopeType { return v.Scopes }).(GetResourceServerScopeTypeArrayOutput)
 }
 
 // Algorithm used to sign JWTs. Options include `HS256` and `RS256`.

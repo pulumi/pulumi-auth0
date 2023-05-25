@@ -10,6 +10,7 @@ from .attack_protection import *
 from .branding import *
 from .branding_theme import *
 from .client import *
+from .client_credentials import *
 from .client_grant import *
 from .connection import *
 from .connection_client import *
@@ -41,6 +42,8 @@ from .prompt import *
 from .prompt_custom_text import *
 from .provider import *
 from .resource_server import *
+from .resource_server_scope import *
+from .resource_server_scopes import *
 from .role import *
 from .role_permission import *
 from .role_permissions import *
@@ -104,6 +107,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/client:Client": "Client"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/clientCredentials",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/clientCredentials:ClientCredentials": "ClientCredentials"
   }
  },
  {
@@ -248,6 +259,22 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/resourceServer:ResourceServer": "ResourceServer"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/resourceServerScope",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/resourceServerScope:ResourceServerScope": "ResourceServerScope"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/resourceServerScopes",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/resourceServerScopes:ResourceServerScopes": "ResourceServerScopes"
   }
  },
  {

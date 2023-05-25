@@ -79,13 +79,14 @@ namespace Pulumi.Auth0
 
         /// <summary>
         /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-        /// Terraform client. Otherwise, the attribute will contain an empty string.
+        /// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+        /// `auth0_client_credentials` resource instead, to allow managing it directly.
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         /// </summary>
         [Output("clientSecretRotationTrigger")]
         public Output<ImmutableDictionary<string, object>?> ClientSecretRotationTrigger { get; private set; } = null!;
@@ -385,8 +386,9 @@ namespace Pulumi.Auth0
         private InputMap<object>? _clientSecretRotationTrigger;
 
         /// <summary>
-        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         /// </summary>
+        [Obsolete(@"Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.")]
         public InputMap<object> ClientSecretRotationTrigger
         {
             get => _clientSecretRotationTrigger ?? (_clientSecretRotationTrigger = new InputMap<object>());
@@ -671,8 +673,10 @@ namespace Pulumi.Auth0
 
         /// <summary>
         /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-        /// Terraform client. Otherwise, the attribute will contain an empty string.
+        /// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+        /// `auth0_client_credentials` resource instead, to allow managing it directly.
         /// </summary>
+        [Obsolete(@"Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.")]
         public Input<string>? ClientSecret
         {
             get => _clientSecret;
@@ -687,8 +691,9 @@ namespace Pulumi.Auth0
         private InputMap<object>? _clientSecretRotationTrigger;
 
         /// <summary>
-        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         /// </summary>
+        [Obsolete(@"Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.")]
         public InputMap<object> ClientSecretRotationTrigger
         {
             get => _clientSecretRotationTrigger ?? (_clientSecretRotationTrigger = new InputMap<object>());

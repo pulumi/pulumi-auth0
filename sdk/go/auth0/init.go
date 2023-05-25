@@ -30,6 +30,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BrandingTheme{}
 	case "auth0:index/client:Client":
 		r = &Client{}
+	case "auth0:index/clientCredentials:ClientCredentials":
+		r = &ClientCredentials{}
 	case "auth0:index/clientGrant:ClientGrant":
 		r = &ClientGrant{}
 	case "auth0:index/connection:Connection":
@@ -66,6 +68,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PromptCustomText{}
 	case "auth0:index/resourceServer:ResourceServer":
 		r = &ResourceServer{}
+	case "auth0:index/resourceServerScope:ResourceServerScope":
+		r = &ResourceServerScope{}
+	case "auth0:index/resourceServerScopes:ResourceServerScopes":
+		r = &ResourceServerScopes{}
 	case "auth0:index/role:Role":
 		r = &Role{}
 	case "auth0:index/rolePermission:RolePermission":
@@ -141,6 +147,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/client",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/clientCredentials",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -231,6 +242,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/resourceServer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/resourceServerScope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/resourceServerScopes",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

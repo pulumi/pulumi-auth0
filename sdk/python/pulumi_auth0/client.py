@@ -60,7 +60,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -103,6 +103,9 @@ class ClientArgs:
             pulumi.set(__self__, "client_aliases", client_aliases)
         if client_metadata is not None:
             pulumi.set(__self__, "client_metadata", client_metadata)
+        if client_secret_rotation_trigger is not None:
+            warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
+            pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
         if client_secret_rotation_trigger is not None:
             pulumi.set(__self__, "client_secret_rotation_trigger", client_secret_rotation_trigger)
         if cross_origin_auth is not None:
@@ -153,6 +156,9 @@ class ClientArgs:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
             pulumi.set(__self__, "sso_disabled", sso_disabled)
+        if token_endpoint_auth_method is not None:
+            warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
+            pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
         if token_endpoint_auth_method is not None:
             pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
         if web_origins is not None:
@@ -258,7 +264,7 @@ class ClientArgs:
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
@@ -619,8 +625,9 @@ class _ClientState:
         :param pulumi.Input[str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-               Terraform client. Otherwise, the attribute will contain an empty string.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+               Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+               `auth0_client_credentials` resource instead, to allow managing it directly.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -667,7 +674,13 @@ class _ClientState:
         if client_metadata is not None:
             pulumi.set(__self__, "client_metadata", client_metadata)
         if client_secret is not None:
+            warnings.warn("""Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.""", DeprecationWarning)
+            pulumi.log.warn("""client_secret is deprecated: Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.""")
+        if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if client_secret_rotation_trigger is not None:
+            warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
+            pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
         if client_secret_rotation_trigger is not None:
             pulumi.set(__self__, "client_secret_rotation_trigger", client_secret_rotation_trigger)
         if cross_origin_auth is not None:
@@ -720,6 +733,9 @@ class _ClientState:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
             pulumi.set(__self__, "sso_disabled", sso_disabled)
+        if token_endpoint_auth_method is not None:
+            warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
+            pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
         if token_endpoint_auth_method is not None:
             pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
         if web_origins is not None:
@@ -838,7 +854,8 @@ class _ClientState:
     def client_secret(self) -> Optional[pulumi.Input[str]]:
         """
         Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-        Terraform client. Otherwise, the attribute will contain an empty string.
+        Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+        `auth0_client_credentials` resource instead, to allow managing it directly.
         """
         return pulumi.get(self, "client_secret")
 
@@ -850,7 +867,7 @@ class _ClientState:
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 
@@ -1232,7 +1249,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -1342,6 +1359,9 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["callbacks"] = callbacks
             __props__.__dict__["client_aliases"] = client_aliases
             __props__.__dict__["client_metadata"] = client_metadata
+            if client_secret_rotation_trigger is not None and not opts.urn:
+                warnings.warn("""Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""", DeprecationWarning)
+                pulumi.log.warn("""client_secret_rotation_trigger is deprecated: Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.""")
             __props__.__dict__["client_secret_rotation_trigger"] = client_secret_rotation_trigger
             __props__.__dict__["cross_origin_auth"] = cross_origin_auth
             __props__.__dict__["cross_origin_loc"] = cross_origin_loc
@@ -1368,6 +1388,9 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
+            if token_endpoint_auth_method is not None and not opts.urn:
+                warnings.warn("""Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
+                pulumi.log.warn("""token_endpoint_auth_method is deprecated: Managing the authentication method through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
             __props__.__dict__["token_endpoint_auth_method"] = token_endpoint_auth_method
             __props__.__dict__["web_origins"] = web_origins
             __props__.__dict__["client_id"] = None
@@ -1439,8 +1462,9 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, Any]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[str] client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-               Terraform client. Otherwise, the attribute will contain an empty string.
-        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+               Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+               `auth0_client_credentials` resource instead, to allow managing it directly.
+        :param pulumi.Input[Mapping[str, Any]] client_secret_rotation_trigger: Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         :param pulumi.Input[bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`). Requires the `coa_toggle_enabled` feature flag to be enabled on the tenant by the support team.
         :param pulumi.Input[str] cross_origin_loc: URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
         :param pulumi.Input[str] custom_login_page: The content (HTML, CSS, JS) of the custom login page.
@@ -1588,7 +1612,8 @@ class Client(pulumi.CustomResource):
     def client_secret(self) -> pulumi.Output[str]:
         """
         Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
-        Terraform client. Otherwise, the attribute will contain an empty string.
+        Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
+        `auth0_client_credentials` resource instead, to allow managing it directly.
         """
         return pulumi.get(self, "client_secret")
 
@@ -1596,7 +1621,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="clientSecretRotationTrigger")
     def client_secret_rotation_trigger(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: [rotate-client-secret](https://auth0.com/docs/get-started/applications/rotate-client-secret).
+        Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         """
         return pulumi.get(self, "client_secret_rotation_trigger")
 

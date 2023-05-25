@@ -36,6 +36,8 @@ __all__ = [
     'BrandingUniversalLogin',
     'ClientAddons',
     'ClientAddonsSamlp',
+    'ClientCredentialsPrivateKeyJwt',
+    'ClientCredentialsPrivateKeyJwtCredential',
     'ClientJwtConfiguration',
     'ClientMobile',
     'ClientMobileAndroid',
@@ -84,6 +86,7 @@ __all__ = [
     'LogStreamSink',
     'OrganizationBranding',
     'ResourceServerScope',
+    'ResourceServerScopesScope',
     'RolePermission',
     'RolePermissionsPermission',
     'TenantChangePassword',
@@ -1994,6 +1997,140 @@ class ClientAddonsSamlp(dict):
 
 
 @pulumi.output_type
+class ClientCredentialsPrivateKeyJwt(dict):
+    def __init__(__self__, *,
+                 credentials: Sequence['outputs.ClientCredentialsPrivateKeyJwtCredential']):
+        """
+        :param Sequence['ClientCredentialsPrivateKeyJwtCredentialArgs'] credentials: Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Sequence['outputs.ClientCredentialsPrivateKeyJwtCredential']:
+        """
+        Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+        """
+        return pulumi.get(self, "credentials")
+
+
+@pulumi.output_type
+class ClientCredentialsPrivateKeyJwtCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "credentialType":
+            suggest = "credential_type"
+        elif key == "createdAt":
+            suggest = "created_at"
+        elif key == "expiresAt":
+            suggest = "expires_at"
+        elif key == "keyId":
+            suggest = "key_id"
+        elif key == "parseExpiryFromCert":
+            suggest = "parse_expiry_from_cert"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientCredentialsPrivateKeyJwtCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientCredentialsPrivateKeyJwtCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientCredentialsPrivateKeyJwtCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 credential_type: str,
+                 pem: str,
+                 algorithm: Optional[str] = None,
+                 created_at: Optional[str] = None,
+                 expires_at: Optional[str] = None,
+                 id: Optional[str] = None,
+                 key_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 parse_expiry_from_cert: Optional[bool] = None,
+                 updated_at: Optional[str] = None):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "credential_type", credential_type)
+        pulumi.set(__self__, "pem", pem)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parse_expiry_from_cert is not None:
+            pulumi.set(__self__, "parse_expiry_from_cert", parse_expiry_from_cert)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> str:
+        return pulumi.get(self, "credential_type")
+
+    @property
+    @pulumi.getter
+    def pem(self) -> str:
+        return pulumi.get(self, "pem")
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[str]:
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[str]:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[str]:
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[str]:
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parseExpiryFromCert")
+    def parse_expiry_from_cert(self) -> Optional[bool]:
+        return pulumi.get(self, "parse_expiry_from_cert")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[str]:
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
 class ClientJwtConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2644,7 +2781,7 @@ class ConnectionOptions(dict):
         :param bool requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param Sequence[str] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param Mapping[str, str] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
-        :param str set_user_root_attributes: Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+        :param str set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
         :param str should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param str sign_in_endpoint: SAML single login URL for the connection.
         :param str sign_out_endpoint: SAML single logout URL for the connection.
@@ -3314,7 +3451,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="setUserRootAttributes")
     def set_user_root_attributes(self) -> Optional[str]:
         """
-        Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+        Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`. Default value: `on_each_login`.
         """
         return pulumi.get(self, "set_user_root_attributes")
 
@@ -6057,6 +6194,36 @@ class ResourceServerScope(dict):
     def description(self) -> Optional[str]:
         """
         Description of the permission (scope).
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ResourceServerScopesScope(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 description: Optional[str] = None):
+        """
+        :param str name: Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+        :param str description: User-friendly description of the scope (permission).
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        User-friendly description of the scope (permission).
         """
         return pulumi.get(self, "description")
 

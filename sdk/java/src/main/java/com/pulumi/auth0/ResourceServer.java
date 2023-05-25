@@ -135,7 +135,11 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
     /**
      * List of permissions (scopes) used by this resource server.
      * 
+     * @deprecated
+     * Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * 
      */
+    @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
     @Export(name="scopes", type=List.class, parameters={ResourceServerScope.class})
     private Output</* @Nullable */ List<ResourceServerScope>> scopes;
 

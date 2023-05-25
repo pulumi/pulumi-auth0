@@ -5175,6 +5175,296 @@ func (o ClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClientCredentialsPrivateKeyJwt struct {
+	// Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+	Credentials []ClientCredentialsPrivateKeyJwtCredential `pulumi:"credentials"`
+}
+
+// ClientCredentialsPrivateKeyJwtInput is an input type that accepts ClientCredentialsPrivateKeyJwtArgs and ClientCredentialsPrivateKeyJwtOutput values.
+// You can construct a concrete instance of `ClientCredentialsPrivateKeyJwtInput` via:
+//
+//	ClientCredentialsPrivateKeyJwtArgs{...}
+type ClientCredentialsPrivateKeyJwtInput interface {
+	pulumi.Input
+
+	ToClientCredentialsPrivateKeyJwtOutput() ClientCredentialsPrivateKeyJwtOutput
+	ToClientCredentialsPrivateKeyJwtOutputWithContext(context.Context) ClientCredentialsPrivateKeyJwtOutput
+}
+
+type ClientCredentialsPrivateKeyJwtArgs struct {
+	// Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+	Credentials ClientCredentialsPrivateKeyJwtCredentialArrayInput `pulumi:"credentials"`
+}
+
+func (ClientCredentialsPrivateKeyJwtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsPrivateKeyJwt)(nil)).Elem()
+}
+
+func (i ClientCredentialsPrivateKeyJwtArgs) ToClientCredentialsPrivateKeyJwtOutput() ClientCredentialsPrivateKeyJwtOutput {
+	return i.ToClientCredentialsPrivateKeyJwtOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsPrivateKeyJwtArgs) ToClientCredentialsPrivateKeyJwtOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsPrivateKeyJwtOutput)
+}
+
+func (i ClientCredentialsPrivateKeyJwtArgs) ToClientCredentialsPrivateKeyJwtPtrOutput() ClientCredentialsPrivateKeyJwtPtrOutput {
+	return i.ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsPrivateKeyJwtArgs) ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsPrivateKeyJwtOutput).ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(ctx)
+}
+
+// ClientCredentialsPrivateKeyJwtPtrInput is an input type that accepts ClientCredentialsPrivateKeyJwtArgs, ClientCredentialsPrivateKeyJwtPtr and ClientCredentialsPrivateKeyJwtPtrOutput values.
+// You can construct a concrete instance of `ClientCredentialsPrivateKeyJwtPtrInput` via:
+//
+//	        ClientCredentialsPrivateKeyJwtArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCredentialsPrivateKeyJwtPtrInput interface {
+	pulumi.Input
+
+	ToClientCredentialsPrivateKeyJwtPtrOutput() ClientCredentialsPrivateKeyJwtPtrOutput
+	ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(context.Context) ClientCredentialsPrivateKeyJwtPtrOutput
+}
+
+type clientCredentialsPrivateKeyJwtPtrType ClientCredentialsPrivateKeyJwtArgs
+
+func ClientCredentialsPrivateKeyJwtPtr(v *ClientCredentialsPrivateKeyJwtArgs) ClientCredentialsPrivateKeyJwtPtrInput {
+	return (*clientCredentialsPrivateKeyJwtPtrType)(v)
+}
+
+func (*clientCredentialsPrivateKeyJwtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCredentialsPrivateKeyJwt)(nil)).Elem()
+}
+
+func (i *clientCredentialsPrivateKeyJwtPtrType) ToClientCredentialsPrivateKeyJwtPtrOutput() ClientCredentialsPrivateKeyJwtPtrOutput {
+	return i.ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCredentialsPrivateKeyJwtPtrType) ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsPrivateKeyJwtPtrOutput)
+}
+
+type ClientCredentialsPrivateKeyJwtOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsPrivateKeyJwtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsPrivateKeyJwt)(nil)).Elem()
+}
+
+func (o ClientCredentialsPrivateKeyJwtOutput) ToClientCredentialsPrivateKeyJwtOutput() ClientCredentialsPrivateKeyJwtOutput {
+	return o
+}
+
+func (o ClientCredentialsPrivateKeyJwtOutput) ToClientCredentialsPrivateKeyJwtOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtOutput {
+	return o
+}
+
+func (o ClientCredentialsPrivateKeyJwtOutput) ToClientCredentialsPrivateKeyJwtPtrOutput() ClientCredentialsPrivateKeyJwtPtrOutput {
+	return o.ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCredentialsPrivateKeyJwtOutput) ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCredentialsPrivateKeyJwt) *ClientCredentialsPrivateKeyJwt {
+		return &v
+	}).(ClientCredentialsPrivateKeyJwtPtrOutput)
+}
+
+// Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+func (o ClientCredentialsPrivateKeyJwtOutput) Credentials() ClientCredentialsPrivateKeyJwtCredentialArrayOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwt) []ClientCredentialsPrivateKeyJwtCredential {
+		return v.Credentials
+	}).(ClientCredentialsPrivateKeyJwtCredentialArrayOutput)
+}
+
+type ClientCredentialsPrivateKeyJwtPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsPrivateKeyJwtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCredentialsPrivateKeyJwt)(nil)).Elem()
+}
+
+func (o ClientCredentialsPrivateKeyJwtPtrOutput) ToClientCredentialsPrivateKeyJwtPtrOutput() ClientCredentialsPrivateKeyJwtPtrOutput {
+	return o
+}
+
+func (o ClientCredentialsPrivateKeyJwtPtrOutput) ToClientCredentialsPrivateKeyJwtPtrOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtPtrOutput {
+	return o
+}
+
+func (o ClientCredentialsPrivateKeyJwtPtrOutput) Elem() ClientCredentialsPrivateKeyJwtOutput {
+	return o.ApplyT(func(v *ClientCredentialsPrivateKeyJwt) ClientCredentialsPrivateKeyJwt {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCredentialsPrivateKeyJwt
+		return ret
+	}).(ClientCredentialsPrivateKeyJwtOutput)
+}
+
+// Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
+func (o ClientCredentialsPrivateKeyJwtPtrOutput) Credentials() ClientCredentialsPrivateKeyJwtCredentialArrayOutput {
+	return o.ApplyT(func(v *ClientCredentialsPrivateKeyJwt) []ClientCredentialsPrivateKeyJwtCredential {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(ClientCredentialsPrivateKeyJwtCredentialArrayOutput)
+}
+
+type ClientCredentialsPrivateKeyJwtCredential struct {
+	Algorithm      *string `pulumi:"algorithm"`
+	CreatedAt      *string `pulumi:"createdAt"`
+	CredentialType string  `pulumi:"credentialType"`
+	ExpiresAt      *string `pulumi:"expiresAt"`
+	// The ID of this resource.
+	Id                  *string `pulumi:"id"`
+	KeyId               *string `pulumi:"keyId"`
+	Name                *string `pulumi:"name"`
+	ParseExpiryFromCert *bool   `pulumi:"parseExpiryFromCert"`
+	Pem                 string  `pulumi:"pem"`
+	UpdatedAt           *string `pulumi:"updatedAt"`
+}
+
+// ClientCredentialsPrivateKeyJwtCredentialInput is an input type that accepts ClientCredentialsPrivateKeyJwtCredentialArgs and ClientCredentialsPrivateKeyJwtCredentialOutput values.
+// You can construct a concrete instance of `ClientCredentialsPrivateKeyJwtCredentialInput` via:
+//
+//	ClientCredentialsPrivateKeyJwtCredentialArgs{...}
+type ClientCredentialsPrivateKeyJwtCredentialInput interface {
+	pulumi.Input
+
+	ToClientCredentialsPrivateKeyJwtCredentialOutput() ClientCredentialsPrivateKeyJwtCredentialOutput
+	ToClientCredentialsPrivateKeyJwtCredentialOutputWithContext(context.Context) ClientCredentialsPrivateKeyJwtCredentialOutput
+}
+
+type ClientCredentialsPrivateKeyJwtCredentialArgs struct {
+	Algorithm      pulumi.StringPtrInput `pulumi:"algorithm"`
+	CreatedAt      pulumi.StringPtrInput `pulumi:"createdAt"`
+	CredentialType pulumi.StringInput    `pulumi:"credentialType"`
+	ExpiresAt      pulumi.StringPtrInput `pulumi:"expiresAt"`
+	// The ID of this resource.
+	Id                  pulumi.StringPtrInput `pulumi:"id"`
+	KeyId               pulumi.StringPtrInput `pulumi:"keyId"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	ParseExpiryFromCert pulumi.BoolPtrInput   `pulumi:"parseExpiryFromCert"`
+	Pem                 pulumi.StringInput    `pulumi:"pem"`
+	UpdatedAt           pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (ClientCredentialsPrivateKeyJwtCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredential)(nil)).Elem()
+}
+
+func (i ClientCredentialsPrivateKeyJwtCredentialArgs) ToClientCredentialsPrivateKeyJwtCredentialOutput() ClientCredentialsPrivateKeyJwtCredentialOutput {
+	return i.ToClientCredentialsPrivateKeyJwtCredentialOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsPrivateKeyJwtCredentialArgs) ToClientCredentialsPrivateKeyJwtCredentialOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsPrivateKeyJwtCredentialOutput)
+}
+
+// ClientCredentialsPrivateKeyJwtCredentialArrayInput is an input type that accepts ClientCredentialsPrivateKeyJwtCredentialArray and ClientCredentialsPrivateKeyJwtCredentialArrayOutput values.
+// You can construct a concrete instance of `ClientCredentialsPrivateKeyJwtCredentialArrayInput` via:
+//
+//	ClientCredentialsPrivateKeyJwtCredentialArray{ ClientCredentialsPrivateKeyJwtCredentialArgs{...} }
+type ClientCredentialsPrivateKeyJwtCredentialArrayInput interface {
+	pulumi.Input
+
+	ToClientCredentialsPrivateKeyJwtCredentialArrayOutput() ClientCredentialsPrivateKeyJwtCredentialArrayOutput
+	ToClientCredentialsPrivateKeyJwtCredentialArrayOutputWithContext(context.Context) ClientCredentialsPrivateKeyJwtCredentialArrayOutput
+}
+
+type ClientCredentialsPrivateKeyJwtCredentialArray []ClientCredentialsPrivateKeyJwtCredentialInput
+
+func (ClientCredentialsPrivateKeyJwtCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCredentialsPrivateKeyJwtCredential)(nil)).Elem()
+}
+
+func (i ClientCredentialsPrivateKeyJwtCredentialArray) ToClientCredentialsPrivateKeyJwtCredentialArrayOutput() ClientCredentialsPrivateKeyJwtCredentialArrayOutput {
+	return i.ToClientCredentialsPrivateKeyJwtCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i ClientCredentialsPrivateKeyJwtCredentialArray) ToClientCredentialsPrivateKeyJwtCredentialArrayOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsPrivateKeyJwtCredentialArrayOutput)
+}
+
+type ClientCredentialsPrivateKeyJwtCredentialOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsPrivateKeyJwtCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredential)(nil)).Elem()
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) ToClientCredentialsPrivateKeyJwtCredentialOutput() ClientCredentialsPrivateKeyJwtCredentialOutput {
+	return o
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) ToClientCredentialsPrivateKeyJwtCredentialOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtCredentialOutput {
+	return o
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) string { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+// The ID of this resource.
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) ParseExpiryFromCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *bool { return v.ParseExpiryFromCert }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCredentialsPrivateKeyJwtCredential) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type ClientCredentialsPrivateKeyJwtCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientCredentialsPrivateKeyJwtCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCredentialsPrivateKeyJwtCredential)(nil)).Elem()
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialArrayOutput) ToClientCredentialsPrivateKeyJwtCredentialArrayOutput() ClientCredentialsPrivateKeyJwtCredentialArrayOutput {
+	return o
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialArrayOutput) ToClientCredentialsPrivateKeyJwtCredentialArrayOutputWithContext(ctx context.Context) ClientCredentialsPrivateKeyJwtCredentialArrayOutput {
+	return o
+}
+
+func (o ClientCredentialsPrivateKeyJwtCredentialArrayOutput) Index(i pulumi.IntInput) ClientCredentialsPrivateKeyJwtCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientCredentialsPrivateKeyJwtCredential {
+		return vs[0].([]ClientCredentialsPrivateKeyJwtCredential)[vs[1].(int)]
+	}).(ClientCredentialsPrivateKeyJwtCredentialOutput)
+}
+
 type ClientJwtConfiguration struct {
 	// Algorithm used to sign JWTs.
 	Alg *string `pulumi:"alg"`
@@ -6603,7 +6893,7 @@ type ConnectionOptions struct {
 	Scopes []string `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts map[string]string `pulumi:"scripts"`
-	// Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes *string `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
 	ShouldTrustEmailVerifiedConnection *string `pulumi:"shouldTrustEmailVerifiedConnection"`
@@ -6789,7 +7079,7 @@ type ConnectionOptionsArgs struct {
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts pulumi.StringMapInput `pulumi:"scripts"`
-	// Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes pulumi.StringPtrInput `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
 	ShouldTrustEmailVerifiedConnection pulumi.StringPtrInput `pulumi:"shouldTrustEmailVerifiedConnection"`
@@ -7216,7 +7506,7 @@ func (o ConnectionOptionsOutput) Scripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
 }
 
-// Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
 func (o ConnectionOptionsOutput) SetUserRootAttributes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.SetUserRootAttributes }).(pulumi.StringPtrOutput)
 }
@@ -7960,7 +8250,7 @@ func (o ConnectionOptionsPtrOutput) Scripts() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Determines whether the 'name', 'given*name', 'family*name', 'nickname', and 'picture' attributes can be independently updated when using an external IdP. Possible values are 'on*each*login' (default value, it configures the connection to automatically update the root attributes from the external IdP with each user login. When this setting is used, root attributes cannot be independently updated), 'on*first*login' (configures the connection to only set the root attributes on first login, allowing them to be independently updated thereafter).
+// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`. Default value: `onEachLogin`.
 func (o ConnectionOptionsPtrOutput) SetUserRootAttributes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -15581,110 +15871,216 @@ func (o OrganizationBrandingPtrOutput) LogoUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type ResourceServerScope struct {
+type ResourceServerScopeType struct {
 	// Description of the permission (scope).
 	Description *string `pulumi:"description"`
 	// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
 	Value string `pulumi:"value"`
 }
 
-// ResourceServerScopeInput is an input type that accepts ResourceServerScopeArgs and ResourceServerScopeOutput values.
-// You can construct a concrete instance of `ResourceServerScopeInput` via:
+// ResourceServerScopeTypeInput is an input type that accepts ResourceServerScopeTypeArgs and ResourceServerScopeTypeOutput values.
+// You can construct a concrete instance of `ResourceServerScopeTypeInput` via:
 //
-//	ResourceServerScopeArgs{...}
-type ResourceServerScopeInput interface {
+//	ResourceServerScopeTypeArgs{...}
+type ResourceServerScopeTypeInput interface {
 	pulumi.Input
 
-	ToResourceServerScopeOutput() ResourceServerScopeOutput
-	ToResourceServerScopeOutputWithContext(context.Context) ResourceServerScopeOutput
+	ToResourceServerScopeTypeOutput() ResourceServerScopeTypeOutput
+	ToResourceServerScopeTypeOutputWithContext(context.Context) ResourceServerScopeTypeOutput
 }
 
-type ResourceServerScopeArgs struct {
+type ResourceServerScopeTypeArgs struct {
 	// Description of the permission (scope).
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
-func (ResourceServerScopeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceServerScope)(nil)).Elem()
+func (ResourceServerScopeTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerScopeType)(nil)).Elem()
 }
 
-func (i ResourceServerScopeArgs) ToResourceServerScopeOutput() ResourceServerScopeOutput {
-	return i.ToResourceServerScopeOutputWithContext(context.Background())
+func (i ResourceServerScopeTypeArgs) ToResourceServerScopeTypeOutput() ResourceServerScopeTypeOutput {
+	return i.ToResourceServerScopeTypeOutputWithContext(context.Background())
 }
 
-func (i ResourceServerScopeArgs) ToResourceServerScopeOutputWithContext(ctx context.Context) ResourceServerScopeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeOutput)
+func (i ResourceServerScopeTypeArgs) ToResourceServerScopeTypeOutputWithContext(ctx context.Context) ResourceServerScopeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeTypeOutput)
 }
 
-// ResourceServerScopeArrayInput is an input type that accepts ResourceServerScopeArray and ResourceServerScopeArrayOutput values.
-// You can construct a concrete instance of `ResourceServerScopeArrayInput` via:
+// ResourceServerScopeTypeArrayInput is an input type that accepts ResourceServerScopeTypeArray and ResourceServerScopeTypeArrayOutput values.
+// You can construct a concrete instance of `ResourceServerScopeTypeArrayInput` via:
 //
-//	ResourceServerScopeArray{ ResourceServerScopeArgs{...} }
-type ResourceServerScopeArrayInput interface {
+//	ResourceServerScopeTypeArray{ ResourceServerScopeTypeArgs{...} }
+type ResourceServerScopeTypeArrayInput interface {
 	pulumi.Input
 
-	ToResourceServerScopeArrayOutput() ResourceServerScopeArrayOutput
-	ToResourceServerScopeArrayOutputWithContext(context.Context) ResourceServerScopeArrayOutput
+	ToResourceServerScopeTypeArrayOutput() ResourceServerScopeTypeArrayOutput
+	ToResourceServerScopeTypeArrayOutputWithContext(context.Context) ResourceServerScopeTypeArrayOutput
 }
 
-type ResourceServerScopeArray []ResourceServerScopeInput
+type ResourceServerScopeTypeArray []ResourceServerScopeTypeInput
 
-func (ResourceServerScopeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceServerScope)(nil)).Elem()
+func (ResourceServerScopeTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerScopeType)(nil)).Elem()
 }
 
-func (i ResourceServerScopeArray) ToResourceServerScopeArrayOutput() ResourceServerScopeArrayOutput {
-	return i.ToResourceServerScopeArrayOutputWithContext(context.Background())
+func (i ResourceServerScopeTypeArray) ToResourceServerScopeTypeArrayOutput() ResourceServerScopeTypeArrayOutput {
+	return i.ToResourceServerScopeTypeArrayOutputWithContext(context.Background())
 }
 
-func (i ResourceServerScopeArray) ToResourceServerScopeArrayOutputWithContext(ctx context.Context) ResourceServerScopeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeArrayOutput)
+func (i ResourceServerScopeTypeArray) ToResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) ResourceServerScopeTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeTypeArrayOutput)
 }
 
-type ResourceServerScopeOutput struct{ *pulumi.OutputState }
+type ResourceServerScopeTypeOutput struct{ *pulumi.OutputState }
 
-func (ResourceServerScopeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceServerScope)(nil)).Elem()
+func (ResourceServerScopeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerScopeType)(nil)).Elem()
 }
 
-func (o ResourceServerScopeOutput) ToResourceServerScopeOutput() ResourceServerScopeOutput {
+func (o ResourceServerScopeTypeOutput) ToResourceServerScopeTypeOutput() ResourceServerScopeTypeOutput {
 	return o
 }
 
-func (o ResourceServerScopeOutput) ToResourceServerScopeOutputWithContext(ctx context.Context) ResourceServerScopeOutput {
+func (o ResourceServerScopeTypeOutput) ToResourceServerScopeTypeOutputWithContext(ctx context.Context) ResourceServerScopeTypeOutput {
 	return o
 }
 
 // Description of the permission (scope).
-func (o ResourceServerScopeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceServerScope) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ResourceServerScopeTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerScopeType) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-func (o ResourceServerScopeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceServerScope) string { return v.Value }).(pulumi.StringOutput)
+func (o ResourceServerScopeTypeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceServerScopeType) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ResourceServerScopeArrayOutput struct{ *pulumi.OutputState }
+type ResourceServerScopeTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (ResourceServerScopeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceServerScope)(nil)).Elem()
+func (ResourceServerScopeTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerScopeType)(nil)).Elem()
 }
 
-func (o ResourceServerScopeArrayOutput) ToResourceServerScopeArrayOutput() ResourceServerScopeArrayOutput {
+func (o ResourceServerScopeTypeArrayOutput) ToResourceServerScopeTypeArrayOutput() ResourceServerScopeTypeArrayOutput {
 	return o
 }
 
-func (o ResourceServerScopeArrayOutput) ToResourceServerScopeArrayOutputWithContext(ctx context.Context) ResourceServerScopeArrayOutput {
+func (o ResourceServerScopeTypeArrayOutput) ToResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) ResourceServerScopeTypeArrayOutput {
 	return o
 }
 
-func (o ResourceServerScopeArrayOutput) Index(i pulumi.IntInput) ResourceServerScopeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerScope {
-		return vs[0].([]ResourceServerScope)[vs[1].(int)]
-	}).(ResourceServerScopeOutput)
+func (o ResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) ResourceServerScopeTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerScopeType {
+		return vs[0].([]ResourceServerScopeType)[vs[1].(int)]
+	}).(ResourceServerScopeTypeOutput)
+}
+
+type ResourceServerScopesScope struct {
+	// User-friendly description of the scope (permission).
+	Description *string `pulumi:"description"`
+	// Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+	Name string `pulumi:"name"`
+}
+
+// ResourceServerScopesScopeInput is an input type that accepts ResourceServerScopesScopeArgs and ResourceServerScopesScopeOutput values.
+// You can construct a concrete instance of `ResourceServerScopesScopeInput` via:
+//
+//	ResourceServerScopesScopeArgs{...}
+type ResourceServerScopesScopeInput interface {
+	pulumi.Input
+
+	ToResourceServerScopesScopeOutput() ResourceServerScopesScopeOutput
+	ToResourceServerScopesScopeOutputWithContext(context.Context) ResourceServerScopesScopeOutput
+}
+
+type ResourceServerScopesScopeArgs struct {
+	// User-friendly description of the scope (permission).
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ResourceServerScopesScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerScopesScope)(nil)).Elem()
+}
+
+func (i ResourceServerScopesScopeArgs) ToResourceServerScopesScopeOutput() ResourceServerScopesScopeOutput {
+	return i.ToResourceServerScopesScopeOutputWithContext(context.Background())
+}
+
+func (i ResourceServerScopesScopeArgs) ToResourceServerScopesScopeOutputWithContext(ctx context.Context) ResourceServerScopesScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopesScopeOutput)
+}
+
+// ResourceServerScopesScopeArrayInput is an input type that accepts ResourceServerScopesScopeArray and ResourceServerScopesScopeArrayOutput values.
+// You can construct a concrete instance of `ResourceServerScopesScopeArrayInput` via:
+//
+//	ResourceServerScopesScopeArray{ ResourceServerScopesScopeArgs{...} }
+type ResourceServerScopesScopeArrayInput interface {
+	pulumi.Input
+
+	ToResourceServerScopesScopeArrayOutput() ResourceServerScopesScopeArrayOutput
+	ToResourceServerScopesScopeArrayOutputWithContext(context.Context) ResourceServerScopesScopeArrayOutput
+}
+
+type ResourceServerScopesScopeArray []ResourceServerScopesScopeInput
+
+func (ResourceServerScopesScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerScopesScope)(nil)).Elem()
+}
+
+func (i ResourceServerScopesScopeArray) ToResourceServerScopesScopeArrayOutput() ResourceServerScopesScopeArrayOutput {
+	return i.ToResourceServerScopesScopeArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceServerScopesScopeArray) ToResourceServerScopesScopeArrayOutputWithContext(ctx context.Context) ResourceServerScopesScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopesScopeArrayOutput)
+}
+
+type ResourceServerScopesScopeOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerScopesScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerScopesScope)(nil)).Elem()
+}
+
+func (o ResourceServerScopesScopeOutput) ToResourceServerScopesScopeOutput() ResourceServerScopesScopeOutput {
+	return o
+}
+
+func (o ResourceServerScopesScopeOutput) ToResourceServerScopesScopeOutputWithContext(ctx context.Context) ResourceServerScopesScopeOutput {
+	return o
+}
+
+// User-friendly description of the scope (permission).
+func (o ResourceServerScopesScopeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerScopesScope) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
+func (o ResourceServerScopesScopeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceServerScopesScope) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ResourceServerScopesScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerScopesScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerScopesScope)(nil)).Elem()
+}
+
+func (o ResourceServerScopesScopeArrayOutput) ToResourceServerScopesScopeArrayOutput() ResourceServerScopesScopeArrayOutput {
+	return o
+}
+
+func (o ResourceServerScopesScopeArrayOutput) ToResourceServerScopesScopeArrayOutputWithContext(ctx context.Context) ResourceServerScopesScopeArrayOutput {
+	return o
+}
+
+func (o ResourceServerScopesScopeArrayOutput) Index(i pulumi.IntInput) ResourceServerScopesScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerScopesScope {
+		return vs[0].([]ResourceServerScopesScope)[vs[1].(int)]
+	}).(ResourceServerScopesScopeOutput)
 }
 
 type RolePermissionType struct {
@@ -24613,104 +25009,104 @@ func (o GetOrganizationConnectionTypeArrayOutput) Index(i pulumi.IntInput) GetOr
 	}).(GetOrganizationConnectionTypeOutput)
 }
 
-type GetResourceServerScope struct {
+type GetResourceServerScopeType struct {
 	Description string `pulumi:"description"`
 	Value       string `pulumi:"value"`
 }
 
-// GetResourceServerScopeInput is an input type that accepts GetResourceServerScopeArgs and GetResourceServerScopeOutput values.
-// You can construct a concrete instance of `GetResourceServerScopeInput` via:
+// GetResourceServerScopeTypeInput is an input type that accepts GetResourceServerScopeTypeArgs and GetResourceServerScopeTypeOutput values.
+// You can construct a concrete instance of `GetResourceServerScopeTypeInput` via:
 //
-//	GetResourceServerScopeArgs{...}
-type GetResourceServerScopeInput interface {
+//	GetResourceServerScopeTypeArgs{...}
+type GetResourceServerScopeTypeInput interface {
 	pulumi.Input
 
-	ToGetResourceServerScopeOutput() GetResourceServerScopeOutput
-	ToGetResourceServerScopeOutputWithContext(context.Context) GetResourceServerScopeOutput
+	ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput
+	ToGetResourceServerScopeTypeOutputWithContext(context.Context) GetResourceServerScopeTypeOutput
 }
 
-type GetResourceServerScopeArgs struct {
+type GetResourceServerScopeTypeArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	Value       pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetResourceServerScopeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerScope)(nil)).Elem()
+func (GetResourceServerScopeTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerScopeType)(nil)).Elem()
 }
 
-func (i GetResourceServerScopeArgs) ToGetResourceServerScopeOutput() GetResourceServerScopeOutput {
-	return i.ToGetResourceServerScopeOutputWithContext(context.Background())
+func (i GetResourceServerScopeTypeArgs) ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput {
+	return i.ToGetResourceServerScopeTypeOutputWithContext(context.Background())
 }
 
-func (i GetResourceServerScopeArgs) ToGetResourceServerScopeOutputWithContext(ctx context.Context) GetResourceServerScopeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeOutput)
+func (i GetResourceServerScopeTypeArgs) ToGetResourceServerScopeTypeOutputWithContext(ctx context.Context) GetResourceServerScopeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeTypeOutput)
 }
 
-// GetResourceServerScopeArrayInput is an input type that accepts GetResourceServerScopeArray and GetResourceServerScopeArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerScopeArrayInput` via:
+// GetResourceServerScopeTypeArrayInput is an input type that accepts GetResourceServerScopeTypeArray and GetResourceServerScopeTypeArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerScopeTypeArrayInput` via:
 //
-//	GetResourceServerScopeArray{ GetResourceServerScopeArgs{...} }
-type GetResourceServerScopeArrayInput interface {
+//	GetResourceServerScopeTypeArray{ GetResourceServerScopeTypeArgs{...} }
+type GetResourceServerScopeTypeArrayInput interface {
 	pulumi.Input
 
-	ToGetResourceServerScopeArrayOutput() GetResourceServerScopeArrayOutput
-	ToGetResourceServerScopeArrayOutputWithContext(context.Context) GetResourceServerScopeArrayOutput
+	ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput
+	ToGetResourceServerScopeTypeArrayOutputWithContext(context.Context) GetResourceServerScopeTypeArrayOutput
 }
 
-type GetResourceServerScopeArray []GetResourceServerScopeInput
+type GetResourceServerScopeTypeArray []GetResourceServerScopeTypeInput
 
-func (GetResourceServerScopeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerScope)(nil)).Elem()
+func (GetResourceServerScopeTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerScopeType)(nil)).Elem()
 }
 
-func (i GetResourceServerScopeArray) ToGetResourceServerScopeArrayOutput() GetResourceServerScopeArrayOutput {
-	return i.ToGetResourceServerScopeArrayOutputWithContext(context.Background())
+func (i GetResourceServerScopeTypeArray) ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput {
+	return i.ToGetResourceServerScopeTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GetResourceServerScopeArray) ToGetResourceServerScopeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeArrayOutput)
+func (i GetResourceServerScopeTypeArray) ToGetResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeTypeArrayOutput)
 }
 
-type GetResourceServerScopeOutput struct{ *pulumi.OutputState }
+type GetResourceServerScopeTypeOutput struct{ *pulumi.OutputState }
 
-func (GetResourceServerScopeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerScope)(nil)).Elem()
+func (GetResourceServerScopeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerScopeType)(nil)).Elem()
 }
 
-func (o GetResourceServerScopeOutput) ToGetResourceServerScopeOutput() GetResourceServerScopeOutput {
+func (o GetResourceServerScopeTypeOutput) ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput {
 	return o
 }
 
-func (o GetResourceServerScopeOutput) ToGetResourceServerScopeOutputWithContext(ctx context.Context) GetResourceServerScopeOutput {
+func (o GetResourceServerScopeTypeOutput) ToGetResourceServerScopeTypeOutputWithContext(ctx context.Context) GetResourceServerScopeTypeOutput {
 	return o
 }
 
-func (o GetResourceServerScopeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerScope) string { return v.Description }).(pulumi.StringOutput)
+func (o GetResourceServerScopeTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetResourceServerScopeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerScope) string { return v.Value }).(pulumi.StringOutput)
+func (o GetResourceServerScopeTypeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetResourceServerScopeArrayOutput struct{ *pulumi.OutputState }
+type GetResourceServerScopeTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetResourceServerScopeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerScope)(nil)).Elem()
+func (GetResourceServerScopeTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerScopeType)(nil)).Elem()
 }
 
-func (o GetResourceServerScopeArrayOutput) ToGetResourceServerScopeArrayOutput() GetResourceServerScopeArrayOutput {
+func (o GetResourceServerScopeTypeArrayOutput) ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput {
 	return o
 }
 
-func (o GetResourceServerScopeArrayOutput) ToGetResourceServerScopeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeArrayOutput {
+func (o GetResourceServerScopeTypeArrayOutput) ToGetResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeTypeArrayOutput {
 	return o
 }
 
-func (o GetResourceServerScopeArrayOutput) Index(i pulumi.IntInput) GetResourceServerScopeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerScope {
-		return vs[0].([]GetResourceServerScope)[vs[1].(int)]
-	}).(GetResourceServerScopeOutput)
+func (o GetResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) GetResourceServerScopeTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerScopeType {
+		return vs[0].([]GetResourceServerScopeType)[vs[1].(int)]
+	}).(GetResourceServerScopeTypeOutput)
 }
 
 type GetRolePermissionType struct {
@@ -25820,6 +26216,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsPtrInput)(nil)).Elem(), ClientAddonsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsSamlpPtrInput)(nil)).Elem(), ClientAddonsSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtPtrInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredentialInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredentialArrayInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationPtrInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileInput)(nil)).Elem(), ClientMobileArgs{})
@@ -25914,8 +26314,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkPtrInput)(nil)).Elem(), LogStreamSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeInput)(nil)).Elem(), ResourceServerScopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeArrayInput)(nil)).Elem(), ResourceServerScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeTypeInput)(nil)).Elem(), ResourceServerScopeTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeTypeArrayInput)(nil)).Elem(), ResourceServerScopeTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeInput)(nil)).Elem(), ResourceServerScopesScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeArrayInput)(nil)).Elem(), ResourceServerScopesScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionTypeInput)(nil)).Elem(), RolePermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionTypeArrayInput)(nil)).Elem(), RolePermissionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePermissionsPermissionInput)(nil)).Elem(), RolePermissionsPermissionArgs{})
@@ -26050,8 +26452,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingArrayInput)(nil)).Elem(), GetOrganizationBrandingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeInput)(nil)).Elem(), GetOrganizationConnectionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeArrayInput)(nil)).Elem(), GetOrganizationConnectionTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeInput)(nil)).Elem(), GetResourceServerScopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeArrayInput)(nil)).Elem(), GetResourceServerScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeInput)(nil)).Elem(), GetResourceServerScopeTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeInput)(nil)).Elem(), GetRolePermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeArrayInput)(nil)).Elem(), GetRolePermissionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantChangePasswordInput)(nil)).Elem(), GetTenantChangePasswordArgs{})
@@ -26120,6 +26522,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientAddonsPtrOutput{})
 	pulumi.RegisterOutputType(ClientAddonsSamlpOutput{})
 	pulumi.RegisterOutputType(ClientAddonsSamlpPtrOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtPtrOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtCredentialOutput{})
+	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtCredentialArrayOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ClientMobileOutput{})
@@ -26214,8 +26620,10 @@ func init() {
 	pulumi.RegisterOutputType(LogStreamSinkPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationBrandingOutput{})
 	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
-	pulumi.RegisterOutputType(ResourceServerScopeOutput{})
-	pulumi.RegisterOutputType(ResourceServerScopeArrayOutput{})
+	pulumi.RegisterOutputType(ResourceServerScopeTypeOutput{})
+	pulumi.RegisterOutputType(ResourceServerScopeTypeArrayOutput{})
+	pulumi.RegisterOutputType(ResourceServerScopesScopeOutput{})
+	pulumi.RegisterOutputType(ResourceServerScopesScopeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionTypeOutput{})
 	pulumi.RegisterOutputType(RolePermissionTypeArrayOutput{})
 	pulumi.RegisterOutputType(RolePermissionsPermissionOutput{})
@@ -26350,8 +26758,8 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationBrandingArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeOutput{})
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerScopeOutput{})
-	pulumi.RegisterOutputType(GetResourceServerScopeArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerScopeTypeOutput{})
+	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeOutput{})
 	pulumi.RegisterOutputType(GetRolePermissionTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantChangePasswordOutput{})
