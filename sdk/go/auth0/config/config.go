@@ -37,7 +37,11 @@ func GetDebug(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "AUTH0_DEBUG").(bool)
+	var value bool
+	if d := getEnvOrDefault(nil, parseEnvBool, "AUTH0_DEBUG"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
