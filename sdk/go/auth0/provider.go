@@ -44,7 +44,9 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Domain'")
 	}
 	if args.Debug == nil {
-		args.Debug = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "AUTH0_DEBUG").(bool))
+		if d := getEnvOrDefault(nil, parseEnvBool, "AUTH0_DEBUG"); d != nil {
+			args.Debug = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:auth0", name, args, &resource, opts...)
