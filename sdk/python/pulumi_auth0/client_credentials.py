@@ -237,6 +237,8 @@ class ClientCredentials(pulumi.CustomResource):
          $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds AaiyAPdpYdesoKnqjj8HJqRn4T5titww
         ```
 
+         ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated. This is to be expected, because the pem file can't be checked for differences.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT).
@@ -312,6 +314,8 @@ class ClientCredentials(pulumi.CustomResource):
         ```sh
          $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds AaiyAPdpYdesoKnqjj8HJqRn4T5titww
         ```
+
+         ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated. This is to be expected, because the pem file can't be checked for differences.
 
         :param str resource_name: The name of the resource.
         :param ClientCredentialsArgs args: The arguments to use to populate this resource's properties.

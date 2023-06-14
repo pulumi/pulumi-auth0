@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class TriggerBindingAction {
     /**
-     * @return The name of an action.
+     * @return The display name of the action within the flow.
      * 
      */
     private String displayName;
@@ -22,7 +22,7 @@ public final class TriggerBindingAction {
 
     private TriggerBindingAction() {}
     /**
-     * @return The name of an action.
+     * @return The display name of the action within the flow.
      * 
      */
     public String displayName() {

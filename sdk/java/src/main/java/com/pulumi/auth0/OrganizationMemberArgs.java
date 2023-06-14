@@ -34,14 +34,22 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
     /**
      * The role ID(s) to assign to the organization member.
      * 
+     * @deprecated
+     * Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+     * 
      */
+    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that. */
     @Import(name="roles")
     private @Nullable Output<List<String>> roles;
 
     /**
      * @return The role ID(s) to assign to the organization member.
      * 
+     * @deprecated
+     * Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+     * 
      */
+    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that. */
     public Optional<Output<List<String>>> roles() {
         return Optional.ofNullable(this.roles);
     }
@@ -113,7 +121,11 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+         * 
          */
+        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that. */
         public Builder roles(@Nullable Output<List<String>> roles) {
             $.roles = roles;
             return this;
@@ -124,7 +136,11 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+         * 
          */
+        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that. */
         public Builder roles(List<String> roles) {
             return roles(Output.of(roles));
         }
@@ -134,7 +150,11 @@ public final class OrganizationMemberArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+         * 
          */
+        @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that. */
         public Builder roles(String... roles) {
             return roles(List.of(roles));
         }

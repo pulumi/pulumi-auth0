@@ -97,6 +97,8 @@ namespace Pulumi.Auth0
     /// ```sh
     ///  $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds AaiyAPdpYdesoKnqjj8HJqRn4T5titww
     /// ```
+    /// 
+    ///  ~&gt; Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated. This is to be expected, because the pem file can't be checked for differences.
     /// </summary>
     [Auth0ResourceType("auth0:index/clientCredentials:ClientCredentials")]
     public partial class ClientCredentials : global::Pulumi.CustomResource

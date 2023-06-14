@@ -164,7 +164,9 @@ class RolePermission(pulumi.CustomResource):
         """
         With this resource, you can manage role permissions (1-1).
 
-        !> To prevent issues, avoid using this resource together with the `RolePermissions` resource.
+        !> This resource appends a permission to a role. In contrast, the `RolePermissions` resource manages all the
+        permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
+        with the `RolePermissions` resource when managing permissions for the same role id.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -181,7 +183,9 @@ class RolePermission(pulumi.CustomResource):
         """
         With this resource, you can manage role permissions (1-1).
 
-        !> To prevent issues, avoid using this resource together with the `RolePermissions` resource.
+        !> This resource appends a permission to a role. In contrast, the `RolePermissions` resource manages all the
+        permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
+        with the `RolePermissions` resource when managing permissions for the same role id.
 
         :param str resource_name: The name of the resource.
         :param RolePermissionInitArgs args: The arguments to use to populate this resource's properties.

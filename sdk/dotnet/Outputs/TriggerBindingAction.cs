@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class TriggerBindingAction
     {
         /// <summary>
-        /// The name of an action.
+        /// The display name of the action within the flow.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

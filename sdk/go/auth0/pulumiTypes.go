@@ -15871,6 +15871,112 @@ func (o OrganizationBrandingPtrOutput) LogoUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type OrganizationConnectionsEnabledConnection struct {
+	// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+	AssignMembershipOnLogin *bool `pulumi:"assignMembershipOnLogin"`
+	// The ID of the connection to enable for the organization.
+	ConnectionId string `pulumi:"connectionId"`
+}
+
+// OrganizationConnectionsEnabledConnectionInput is an input type that accepts OrganizationConnectionsEnabledConnectionArgs and OrganizationConnectionsEnabledConnectionOutput values.
+// You can construct a concrete instance of `OrganizationConnectionsEnabledConnectionInput` via:
+//
+//	OrganizationConnectionsEnabledConnectionArgs{...}
+type OrganizationConnectionsEnabledConnectionInput interface {
+	pulumi.Input
+
+	ToOrganizationConnectionsEnabledConnectionOutput() OrganizationConnectionsEnabledConnectionOutput
+	ToOrganizationConnectionsEnabledConnectionOutputWithContext(context.Context) OrganizationConnectionsEnabledConnectionOutput
+}
+
+type OrganizationConnectionsEnabledConnectionArgs struct {
+	// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+	AssignMembershipOnLogin pulumi.BoolPtrInput `pulumi:"assignMembershipOnLogin"`
+	// The ID of the connection to enable for the organization.
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+}
+
+func (OrganizationConnectionsEnabledConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConnectionsEnabledConnection)(nil)).Elem()
+}
+
+func (i OrganizationConnectionsEnabledConnectionArgs) ToOrganizationConnectionsEnabledConnectionOutput() OrganizationConnectionsEnabledConnectionOutput {
+	return i.ToOrganizationConnectionsEnabledConnectionOutputWithContext(context.Background())
+}
+
+func (i OrganizationConnectionsEnabledConnectionArgs) ToOrganizationConnectionsEnabledConnectionOutputWithContext(ctx context.Context) OrganizationConnectionsEnabledConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionsEnabledConnectionOutput)
+}
+
+// OrganizationConnectionsEnabledConnectionArrayInput is an input type that accepts OrganizationConnectionsEnabledConnectionArray and OrganizationConnectionsEnabledConnectionArrayOutput values.
+// You can construct a concrete instance of `OrganizationConnectionsEnabledConnectionArrayInput` via:
+//
+//	OrganizationConnectionsEnabledConnectionArray{ OrganizationConnectionsEnabledConnectionArgs{...} }
+type OrganizationConnectionsEnabledConnectionArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationConnectionsEnabledConnectionArrayOutput() OrganizationConnectionsEnabledConnectionArrayOutput
+	ToOrganizationConnectionsEnabledConnectionArrayOutputWithContext(context.Context) OrganizationConnectionsEnabledConnectionArrayOutput
+}
+
+type OrganizationConnectionsEnabledConnectionArray []OrganizationConnectionsEnabledConnectionInput
+
+func (OrganizationConnectionsEnabledConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationConnectionsEnabledConnection)(nil)).Elem()
+}
+
+func (i OrganizationConnectionsEnabledConnectionArray) ToOrganizationConnectionsEnabledConnectionArrayOutput() OrganizationConnectionsEnabledConnectionArrayOutput {
+	return i.ToOrganizationConnectionsEnabledConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationConnectionsEnabledConnectionArray) ToOrganizationConnectionsEnabledConnectionArrayOutputWithContext(ctx context.Context) OrganizationConnectionsEnabledConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConnectionsEnabledConnectionArrayOutput)
+}
+
+type OrganizationConnectionsEnabledConnectionOutput struct{ *pulumi.OutputState }
+
+func (OrganizationConnectionsEnabledConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConnectionsEnabledConnection)(nil)).Elem()
+}
+
+func (o OrganizationConnectionsEnabledConnectionOutput) ToOrganizationConnectionsEnabledConnectionOutput() OrganizationConnectionsEnabledConnectionOutput {
+	return o
+}
+
+func (o OrganizationConnectionsEnabledConnectionOutput) ToOrganizationConnectionsEnabledConnectionOutputWithContext(ctx context.Context) OrganizationConnectionsEnabledConnectionOutput {
+	return o
+}
+
+// When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+func (o OrganizationConnectionsEnabledConnectionOutput) AssignMembershipOnLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *bool { return v.AssignMembershipOnLogin }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the connection to enable for the organization.
+func (o OrganizationConnectionsEnabledConnectionOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+type OrganizationConnectionsEnabledConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationConnectionsEnabledConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationConnectionsEnabledConnection)(nil)).Elem()
+}
+
+func (o OrganizationConnectionsEnabledConnectionArrayOutput) ToOrganizationConnectionsEnabledConnectionArrayOutput() OrganizationConnectionsEnabledConnectionArrayOutput {
+	return o
+}
+
+func (o OrganizationConnectionsEnabledConnectionArrayOutput) ToOrganizationConnectionsEnabledConnectionArrayOutputWithContext(ctx context.Context) OrganizationConnectionsEnabledConnectionArrayOutput {
+	return o
+}
+
+func (o OrganizationConnectionsEnabledConnectionArrayOutput) Index(i pulumi.IntInput) OrganizationConnectionsEnabledConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationConnectionsEnabledConnection {
+		return vs[0].([]OrganizationConnectionsEnabledConnection)[vs[1].(int)]
+	}).(OrganizationConnectionsEnabledConnectionOutput)
+}
+
 type ResourceServerScopeType struct {
 	// Description of the permission (scope).
 	Description *string `pulumi:"description"`
@@ -17803,8 +17909,114 @@ func (o TenantUniversalLoginColorsPtrOutput) Primary() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TriggerActionsAction struct {
+	// The display name of the action within the flow.
+	DisplayName string `pulumi:"displayName"`
+	// Action ID.
+	Id string `pulumi:"id"`
+}
+
+// TriggerActionsActionInput is an input type that accepts TriggerActionsActionArgs and TriggerActionsActionOutput values.
+// You can construct a concrete instance of `TriggerActionsActionInput` via:
+//
+//	TriggerActionsActionArgs{...}
+type TriggerActionsActionInput interface {
+	pulumi.Input
+
+	ToTriggerActionsActionOutput() TriggerActionsActionOutput
+	ToTriggerActionsActionOutputWithContext(context.Context) TriggerActionsActionOutput
+}
+
+type TriggerActionsActionArgs struct {
+	// The display name of the action within the flow.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Action ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (TriggerActionsActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerActionsAction)(nil)).Elem()
+}
+
+func (i TriggerActionsActionArgs) ToTriggerActionsActionOutput() TriggerActionsActionOutput {
+	return i.ToTriggerActionsActionOutputWithContext(context.Background())
+}
+
+func (i TriggerActionsActionArgs) ToTriggerActionsActionOutputWithContext(ctx context.Context) TriggerActionsActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionsActionOutput)
+}
+
+// TriggerActionsActionArrayInput is an input type that accepts TriggerActionsActionArray and TriggerActionsActionArrayOutput values.
+// You can construct a concrete instance of `TriggerActionsActionArrayInput` via:
+//
+//	TriggerActionsActionArray{ TriggerActionsActionArgs{...} }
+type TriggerActionsActionArrayInput interface {
+	pulumi.Input
+
+	ToTriggerActionsActionArrayOutput() TriggerActionsActionArrayOutput
+	ToTriggerActionsActionArrayOutputWithContext(context.Context) TriggerActionsActionArrayOutput
+}
+
+type TriggerActionsActionArray []TriggerActionsActionInput
+
+func (TriggerActionsActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerActionsAction)(nil)).Elem()
+}
+
+func (i TriggerActionsActionArray) ToTriggerActionsActionArrayOutput() TriggerActionsActionArrayOutput {
+	return i.ToTriggerActionsActionArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerActionsActionArray) ToTriggerActionsActionArrayOutputWithContext(ctx context.Context) TriggerActionsActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionsActionArrayOutput)
+}
+
+type TriggerActionsActionOutput struct{ *pulumi.OutputState }
+
+func (TriggerActionsActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerActionsAction)(nil)).Elem()
+}
+
+func (o TriggerActionsActionOutput) ToTriggerActionsActionOutput() TriggerActionsActionOutput {
+	return o
+}
+
+func (o TriggerActionsActionOutput) ToTriggerActionsActionOutputWithContext(ctx context.Context) TriggerActionsActionOutput {
+	return o
+}
+
+// The display name of the action within the flow.
+func (o TriggerActionsActionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerActionsAction) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Action ID.
+func (o TriggerActionsActionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerActionsAction) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type TriggerActionsActionArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerActionsActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerActionsAction)(nil)).Elem()
+}
+
+func (o TriggerActionsActionArrayOutput) ToTriggerActionsActionArrayOutput() TriggerActionsActionArrayOutput {
+	return o
+}
+
+func (o TriggerActionsActionArrayOutput) ToTriggerActionsActionArrayOutputWithContext(ctx context.Context) TriggerActionsActionArrayOutput {
+	return o
+}
+
+func (o TriggerActionsActionArrayOutput) Index(i pulumi.IntInput) TriggerActionsActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerActionsAction {
+		return vs[0].([]TriggerActionsAction)[vs[1].(int)]
+	}).(TriggerActionsActionOutput)
+}
+
 type TriggerBindingAction struct {
-	// The name of an action.
+	// The display name of the action within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// Action ID.
 	Id string `pulumi:"id"`
@@ -17822,7 +18034,7 @@ type TriggerBindingActionInput interface {
 }
 
 type TriggerBindingActionArgs struct {
-	// The name of an action.
+	// The display name of the action within the flow.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Action ID.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -17879,7 +18091,7 @@ func (o TriggerBindingActionOutput) ToTriggerBindingActionOutputWithContext(ctx 
 	return o
 }
 
-// The name of an action.
+// The display name of the action within the flow.
 func (o TriggerBindingActionOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBindingAction) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -26314,6 +26526,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkPtrInput)(nil)).Elem(), LogStreamSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionArrayInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeTypeInput)(nil)).Elem(), ResourceServerScopeTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeTypeArrayInput)(nil)).Elem(), ResourceServerScopeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeInput)(nil)).Elem(), ResourceServerScopesScopeArgs{})
@@ -26336,6 +26550,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginPtrInput)(nil)).Elem(), TenantUniversalLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantUniversalLoginColorsPtrInput)(nil)).Elem(), TenantUniversalLoginColorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerActionsActionInput)(nil)).Elem(), TriggerActionsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerActionsActionArrayInput)(nil)).Elem(), TriggerActionsActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionInput)(nil)).Elem(), TriggerBindingActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBindingActionArrayInput)(nil)).Elem(), TriggerBindingActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionTypeInput)(nil)).Elem(), UserPermissionTypeArgs{})
@@ -26620,6 +26836,8 @@ func init() {
 	pulumi.RegisterOutputType(LogStreamSinkPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationBrandingOutput{})
 	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionOutput{})
+	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionArrayOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeTypeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeTypeArrayOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeOutput{})
@@ -26642,6 +26860,8 @@ func init() {
 	pulumi.RegisterOutputType(TenantUniversalLoginPtrOutput{})
 	pulumi.RegisterOutputType(TenantUniversalLoginColorsOutput{})
 	pulumi.RegisterOutputType(TenantUniversalLoginColorsPtrOutput{})
+	pulumi.RegisterOutputType(TriggerActionsActionOutput{})
+	pulumi.RegisterOutputType(TriggerActionsActionArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBindingActionOutput{})
 	pulumi.RegisterOutputType(TriggerBindingActionArrayOutput{})
 	pulumi.RegisterOutputType(UserPermissionTypeOutput{})

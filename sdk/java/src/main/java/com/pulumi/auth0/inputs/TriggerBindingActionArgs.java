@@ -14,14 +14,14 @@ public final class TriggerBindingActionArgs extends com.pulumi.resources.Resourc
     public static final TriggerBindingActionArgs Empty = new TriggerBindingActionArgs();
 
     /**
-     * The name of an action.
+     * The display name of the action within the flow.
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return The name of an action.
+     * @return The display name of the action within the flow.
      * 
      */
     public Output<String> displayName() {
@@ -69,7 +69,7 @@ public final class TriggerBindingActionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param displayName The name of an action.
+         * @param displayName The display name of the action within the flow.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class TriggerBindingActionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param displayName The name of an action.
+         * @param displayName The display name of the action within the flow.
          * 
          * @return builder
          * 

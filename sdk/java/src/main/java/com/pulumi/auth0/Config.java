@@ -53,7 +53,7 @@ public final class Config {
  * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
  * 
  */
-    public String domain() {
-        return Codegen.stringProp("domain").config(config).require();
+    public Optional<String> domain() {
+        return Codegen.stringProp("domain").config(config).get();
     }
 }

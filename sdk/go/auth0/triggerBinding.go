@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+// With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+//
+// !> This resource has been deprecated in favor of the `TriggerActions` resource.
 //
 // ## Example Usage
 //
@@ -83,7 +85,7 @@ import (
 type TriggerBinding struct {
 	pulumi.CustomResourceState
 
-	// The actions bound to this trigger
+	// The list of actions bound to this trigger.
 	Actions TriggerBindingActionArrayOutput `pulumi:"actions"`
 	// The ID of the trigger to bind with.
 	Trigger pulumi.StringOutput `pulumi:"trigger"`
@@ -124,14 +126,14 @@ func GetTriggerBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TriggerBinding resources.
 type triggerBindingState struct {
-	// The actions bound to this trigger
+	// The list of actions bound to this trigger.
 	Actions []TriggerBindingAction `pulumi:"actions"`
 	// The ID of the trigger to bind with.
 	Trigger *string `pulumi:"trigger"`
 }
 
 type TriggerBindingState struct {
-	// The actions bound to this trigger
+	// The list of actions bound to this trigger.
 	Actions TriggerBindingActionArrayInput
 	// The ID of the trigger to bind with.
 	Trigger pulumi.StringPtrInput
@@ -142,7 +144,7 @@ func (TriggerBindingState) ElementType() reflect.Type {
 }
 
 type triggerBindingArgs struct {
-	// The actions bound to this trigger
+	// The list of actions bound to this trigger.
 	Actions []TriggerBindingAction `pulumi:"actions"`
 	// The ID of the trigger to bind with.
 	Trigger string `pulumi:"trigger"`
@@ -150,7 +152,7 @@ type triggerBindingArgs struct {
 
 // The set of arguments for constructing a TriggerBinding resource.
 type TriggerBindingArgs struct {
-	// The actions bound to this trigger
+	// The list of actions bound to this trigger.
 	Actions TriggerBindingActionArrayInput
 	// The ID of the trigger to bind with.
 	Trigger pulumi.StringInput
@@ -243,7 +245,7 @@ func (o TriggerBindingOutput) ToTriggerBindingOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The actions bound to this trigger
+// The list of actions bound to this trigger.
 func (o TriggerBindingOutput) Actions() TriggerBindingActionArrayOutput {
 	return o.ApplyT(func(v *TriggerBinding) TriggerBindingActionArrayOutput { return v.Actions }).(TriggerBindingActionArrayOutput)
 }

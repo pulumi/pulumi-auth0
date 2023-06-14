@@ -65,6 +65,10 @@ export interface GetOrganizationResult {
      */
     readonly id: string;
     /**
+     * User ID(s) that are members of the organization.
+     */
+    readonly members: string[];
+    /**
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
     readonly metadata: {[key: string]: string};

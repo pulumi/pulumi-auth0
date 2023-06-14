@@ -85,6 +85,7 @@ __all__ = [
     'GuardianWebauthnRoaming',
     'LogStreamSink',
     'OrganizationBranding',
+    'OrganizationConnectionsEnabledConnection',
     'ResourceServerScope',
     'ResourceServerScopesScope',
     'RolePermission',
@@ -96,6 +97,7 @@ __all__ = [
     'TenantSessionCookie',
     'TenantUniversalLogin',
     'TenantUniversalLoginColors',
+    'TriggerActionsAction',
     'TriggerBindingAction',
     'UserPermission',
     'UserPermissionsPermission',
@@ -6169,6 +6171,55 @@ class OrganizationBranding(dict):
 
 
 @pulumi.output_type
+class OrganizationConnectionsEnabledConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionId":
+            suggest = "connection_id"
+        elif key == "assignMembershipOnLogin":
+            suggest = "assign_membership_on_login"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationConnectionsEnabledConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationConnectionsEnabledConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationConnectionsEnabledConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_id: str,
+                 assign_membership_on_login: Optional[bool] = None):
+        """
+        :param str connection_id: The ID of the connection to enable for the organization.
+        :param bool assign_membership_on_login: When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        if assign_membership_on_login is not None:
+            pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> str:
+        """
+        The ID of the connection to enable for the organization.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="assignMembershipOnLogin")
+    def assign_membership_on_login(self) -> Optional[bool]:
+        """
+        When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        """
+        return pulumi.get(self, "assign_membership_on_login")
+
+
+@pulumi.output_type
 class ResourceServerScope(dict):
     def __init__(__self__, *,
                  value: str,
@@ -6908,6 +6959,52 @@ class TenantUniversalLoginColors(dict):
 
 
 @pulumi.output_type
+class TriggerActionsAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerActionsAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerActionsAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerActionsAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 id: str):
+        """
+        :param str display_name: The display name of the action within the flow.
+        :param str id: Action ID.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of the action within the flow.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Action ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class TriggerBindingAction(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6930,7 +7027,7 @@ class TriggerBindingAction(dict):
                  display_name: str,
                  id: str):
         """
-        :param str display_name: The name of an action.
+        :param str display_name: The display name of the action within the flow.
         :param str id: Action ID.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -6940,7 +7037,7 @@ class TriggerBindingAction(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The name of an action.
+        The display name of the action within the flow.
         """
         return pulumi.get(self, "display_name")
 

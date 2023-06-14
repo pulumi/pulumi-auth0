@@ -159,10 +159,30 @@ export type OrganizationConnection = import("./organizationConnection").Organiza
 export const OrganizationConnection: typeof import("./organizationConnection").OrganizationConnection = null as any;
 utilities.lazyLoad(exports, ["OrganizationConnection"], () => require("./organizationConnection"));
 
+export { OrganizationConnectionsArgs, OrganizationConnectionsState } from "./organizationConnections";
+export type OrganizationConnections = import("./organizationConnections").OrganizationConnections;
+export const OrganizationConnections: typeof import("./organizationConnections").OrganizationConnections = null as any;
+utilities.lazyLoad(exports, ["OrganizationConnections"], () => require("./organizationConnections"));
+
 export { OrganizationMemberArgs, OrganizationMemberState } from "./organizationMember";
 export type OrganizationMember = import("./organizationMember").OrganizationMember;
 export const OrganizationMember: typeof import("./organizationMember").OrganizationMember = null as any;
 utilities.lazyLoad(exports, ["OrganizationMember"], () => require("./organizationMember"));
+
+export { OrganizationMemberRoleArgs, OrganizationMemberRoleState } from "./organizationMemberRole";
+export type OrganizationMemberRole = import("./organizationMemberRole").OrganizationMemberRole;
+export const OrganizationMemberRole: typeof import("./organizationMemberRole").OrganizationMemberRole = null as any;
+utilities.lazyLoad(exports, ["OrganizationMemberRole"], () => require("./organizationMemberRole"));
+
+export { OrganizationMemberRolesArgs, OrganizationMemberRolesState } from "./organizationMemberRoles";
+export type OrganizationMemberRoles = import("./organizationMemberRoles").OrganizationMemberRoles;
+export const OrganizationMemberRoles: typeof import("./organizationMemberRoles").OrganizationMemberRoles = null as any;
+utilities.lazyLoad(exports, ["OrganizationMemberRoles"], () => require("./organizationMemberRoles"));
+
+export { OrganizationMembersArgs, OrganizationMembersState } from "./organizationMembers";
+export type OrganizationMembers = import("./organizationMembers").OrganizationMembers;
+export const OrganizationMembers: typeof import("./organizationMembers").OrganizationMembers = null as any;
+utilities.lazyLoad(exports, ["OrganizationMembers"], () => require("./organizationMembers"));
 
 export { PromptArgs, PromptState } from "./prompt";
 export type Prompt = import("./prompt").Prompt;
@@ -223,6 +243,16 @@ export { TenantArgs, TenantState } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
 utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
+
+export { TriggerActionArgs, TriggerActionState } from "./triggerAction";
+export type TriggerAction = import("./triggerAction").TriggerAction;
+export const TriggerAction: typeof import("./triggerAction").TriggerAction = null as any;
+utilities.lazyLoad(exports, ["TriggerAction"], () => require("./triggerAction"));
+
+export { TriggerActionsArgs, TriggerActionsState } from "./triggerActions";
+export type TriggerActions = import("./triggerActions").TriggerActions;
+export const TriggerActions: typeof import("./triggerActions").TriggerActions = null as any;
+utilities.lazyLoad(exports, ["TriggerActions"], () => require("./triggerActions"));
 
 export { TriggerBindingArgs, TriggerBindingState } from "./triggerBinding";
 export type TriggerBinding = import("./triggerBinding").TriggerBinding;
@@ -308,8 +338,16 @@ const _module = {
                 return new Organization(name, <any>undefined, { urn })
             case "auth0:index/organizationConnection:OrganizationConnection":
                 return new OrganizationConnection(name, <any>undefined, { urn })
+            case "auth0:index/organizationConnections:OrganizationConnections":
+                return new OrganizationConnections(name, <any>undefined, { urn })
             case "auth0:index/organizationMember:OrganizationMember":
                 return new OrganizationMember(name, <any>undefined, { urn })
+            case "auth0:index/organizationMemberRole:OrganizationMemberRole":
+                return new OrganizationMemberRole(name, <any>undefined, { urn })
+            case "auth0:index/organizationMemberRoles:OrganizationMemberRoles":
+                return new OrganizationMemberRoles(name, <any>undefined, { urn })
+            case "auth0:index/organizationMembers:OrganizationMembers":
+                return new OrganizationMembers(name, <any>undefined, { urn })
             case "auth0:index/prompt:Prompt":
                 return new Prompt(name, <any>undefined, { urn })
             case "auth0:index/promptCustomText:PromptCustomText":
@@ -332,6 +370,10 @@ const _module = {
                 return new RuleConfig(name, <any>undefined, { urn })
             case "auth0:index/tenant:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
+            case "auth0:index/triggerAction:TriggerAction":
+                return new TriggerAction(name, <any>undefined, { urn })
+            case "auth0:index/triggerActions:TriggerActions":
+                return new TriggerActions(name, <any>undefined, { urn })
             case "auth0:index/triggerBinding:TriggerBinding":
                 return new TriggerBinding(name, <any>undefined, { urn })
             case "auth0:index/user:User":
@@ -369,7 +411,11 @@ pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationConnection", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationConnections", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMember", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRole", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRoles", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationMembers", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
@@ -381,6 +427,8 @@ pulumi.runtime.registerResourceModule("auth0", "index/rolePermissions", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rule", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/triggerAction", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/triggerActions", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerBinding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/user", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/userPermission", _module)

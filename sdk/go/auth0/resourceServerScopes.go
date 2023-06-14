@@ -13,7 +13,10 @@ import (
 
 // With this resource, you can manage scopes (permissions) associated with a resource server (API).
 //
-// !> To prevent issues, avoid using this resource together with the `ResourceServerScope` resource.
+// !> This resource manages all the scopes assigned to a resource server. In contrast, the `ResourceServerScope`
+// resource only appends a scope to a resource server. To avoid potential issues, it is recommended not to use this
+// resource in conjunction with the `ResourceServerScope` resource when managing scopes for the same resource
+// server id.
 //
 // ## Example Usage
 //

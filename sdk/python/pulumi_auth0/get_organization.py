@@ -22,7 +22,7 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, brandings=None, connections=None, display_name=None, id=None, metadata=None, name=None, organization_id=None):
+    def __init__(__self__, brandings=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None):
         if brandings and not isinstance(brandings, list):
             raise TypeError("Expected argument 'brandings' to be a list")
         pulumi.set(__self__, "brandings", brandings)
@@ -35,6 +35,9 @@ class GetOrganizationResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if members and not isinstance(members, list):
+            raise TypeError("Expected argument 'members' to be a list")
+        pulumi.set(__self__, "members", members)
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
         pulumi.set(__self__, "metadata", metadata)
@@ -76,6 +79,14 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter
+    def members(self) -> Sequence[str]:
+        """
+        User ID(s) that are members of the organization.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
     def metadata(self) -> Mapping[str, str]:
         """
         Metadata associated with the organization. Maximum of 10 metadata properties allowed.
@@ -109,6 +120,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             connections=self.connections,
             display_name=self.display_name,
             id=self.id,
+            members=self.members,
             metadata=self.metadata,
             name=self.name,
             organization_id=self.organization_id)
@@ -145,6 +157,7 @@ def get_organization(name: Optional[str] = None,
         connections=__ret__.connections,
         display_name=__ret__.display_name,
         id=__ret__.id,
+        members=__ret__.members,
         metadata=__ret__.metadata,
         name=__ret__.name,
         organization_id=__ret__.organization_id)
