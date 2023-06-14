@@ -1277,6 +1277,14 @@
                     "strategy": {}
                 }
             },
+            "auth0_organization_connections": {
+                "current": "auth0:index/organizationConnections:OrganizationConnections",
+                "fields": {
+                    "enabled_connections": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_organization_member": {
                 "current": "auth0:index/organizationMember:OrganizationMember",
                 "fields": {
@@ -1286,6 +1294,25 @@
                         "elem": {}
                     },
                     "user_id": {}
+                }
+            },
+            "auth0_organization_member_role": {
+                "current": "auth0:index/organizationMemberRole:OrganizationMemberRole"
+            },
+            "auth0_organization_member_roles": {
+                "current": "auth0:index/organizationMemberRoles:OrganizationMemberRoles",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_organization_members": {
+                "current": "auth0:index/organizationMembers:OrganizationMembers",
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
                 }
             },
             "auth0_prompt": {
@@ -1491,6 +1518,17 @@
                     }
                 }
             },
+            "auth0_trigger_action": {
+                "current": "auth0:index/triggerAction:TriggerAction"
+            },
+            "auth0_trigger_actions": {
+                "current": "auth0:index/triggerActions:TriggerActions",
+                "fields": {
+                    "actions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_trigger_binding": {
                 "current": "auth0:index/triggerBinding:TriggerBinding",
                 "fields": {
@@ -1619,7 +1657,11 @@
             "auth0:index/logStream:LogStream": "auth0_log_stream",
             "auth0:index/organization:Organization": "auth0_organization",
             "auth0:index/organizationConnection:OrganizationConnection": "auth0_organization_connection",
+            "auth0:index/organizationConnections:OrganizationConnections": "auth0_organization_connections",
             "auth0:index/organizationMember:OrganizationMember": "auth0_organization_member",
+            "auth0:index/organizationMemberRole:OrganizationMemberRole": "auth0_organization_member_role",
+            "auth0:index/organizationMemberRoles:OrganizationMemberRoles": "auth0_organization_member_roles",
+            "auth0:index/organizationMembers:OrganizationMembers": "auth0_organization_members",
             "auth0:index/prompt:Prompt": "auth0_prompt",
             "auth0:index/promptCustomText:PromptCustomText": "auth0_prompt_custom_text",
             "auth0:index/resourceServer:ResourceServer": "auth0_resource_server",
@@ -1631,6 +1673,8 @@
             "auth0:index/rule:Rule": "auth0_rule",
             "auth0:index/ruleConfig:RuleConfig": "auth0_rule_config",
             "auth0:index/tenant:Tenant": "auth0_tenant",
+            "auth0:index/triggerAction:TriggerAction": "auth0_trigger_action",
+            "auth0:index/triggerActions:TriggerActions": "auth0_trigger_actions",
             "auth0:index/triggerBinding:TriggerBinding": "auth0_trigger_binding",
             "auth0:index/user:User": "auth0_user",
             "auth0:index/userPermission:UserPermission": "auth0_user_permission",
@@ -2000,6 +2044,10 @@
             "auth0:index/OrganizationBranding:OrganizationBranding": {
                 "logoUrl": "logo_url"
             },
+            "auth0:index/OrganizationConnectionsEnabledConnection:OrganizationConnectionsEnabledConnection": {
+                "assignMembershipOnLogin": "assign_membership_on_login",
+                "connectionId": "connection_id"
+            },
             "auth0:index/RolePermission:RolePermission": {
                 "resourceServerIdentifier": "resource_server_identifier",
                 "resourceServerName": "resource_server_name"
@@ -2038,6 +2086,9 @@
             },
             "auth0:index/TenantUniversalLoginColors:TenantUniversalLoginColors": {
                 "pageBackground": "page_background"
+            },
+            "auth0:index/TriggerActionsAction:TriggerActionsAction": {
+                "displayName": "display_name"
             },
             "auth0:index/TriggerBindingAction:TriggerBindingAction": {
                 "displayName": "display_name"
@@ -2656,9 +2707,27 @@
                 "connectionId": "connection_id",
                 "organizationId": "organization_id"
             },
+            "auth0:index/organizationConnections:OrganizationConnections": {
+                "enabledConnections": "enabled_connections",
+                "organizationId": "organization_id"
+            },
             "auth0:index/organizationMember:OrganizationMember": {
                 "organizationId": "organization_id",
                 "userId": "user_id"
+            },
+            "auth0:index/organizationMemberRole:OrganizationMemberRole": {
+                "organizationId": "organization_id",
+                "roleDescription": "role_description",
+                "roleId": "role_id",
+                "roleName": "role_name",
+                "userId": "user_id"
+            },
+            "auth0:index/organizationMemberRoles:OrganizationMemberRoles": {
+                "organizationId": "organization_id",
+                "userId": "user_id"
+            },
+            "auth0:index/organizationMembers:OrganizationMembers": {
+                "organizationId": "organization_id"
             },
             "auth0:index/prompt:Prompt": {
                 "identifierFirst": "identifier_first",
@@ -2708,6 +2777,10 @@
                 "supportEmail": "support_email",
                 "supportUrl": "support_url",
                 "universalLogin": "universal_login"
+            },
+            "auth0:index/triggerAction:TriggerAction": {
+                "actionId": "action_id",
+                "displayName": "display_name"
             },
             "auth0:index/user:User": {
                 "appMetadata": "app_metadata",
