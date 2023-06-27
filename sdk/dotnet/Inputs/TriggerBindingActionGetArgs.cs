@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class TriggerBindingActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of an action.
+        /// The display name of the action within the flow.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;

@@ -16,7 +16,9 @@ import javax.annotation.Nullable;
 /**
  * With this resource, you can manage role permissions (1-1).
  * 
- * !&gt; To prevent issues, avoid using this resource together with the `auth0.RolePermissions` resource.
+ * !&gt; This resource appends a permission to a role. In contrast, the `auth0.RolePermissions` resource manages all the
+ * permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
+ * with the `auth0.RolePermissions` resource when managing permissions for the same role id.
  * 
  */
 @ResourceType(type="auth0:index/rolePermission:RolePermission")

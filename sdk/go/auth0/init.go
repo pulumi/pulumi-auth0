@@ -60,8 +60,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Organization{}
 	case "auth0:index/organizationConnection:OrganizationConnection":
 		r = &OrganizationConnection{}
+	case "auth0:index/organizationConnections:OrganizationConnections":
+		r = &OrganizationConnections{}
 	case "auth0:index/organizationMember:OrganizationMember":
 		r = &OrganizationMember{}
+	case "auth0:index/organizationMemberRole:OrganizationMemberRole":
+		r = &OrganizationMemberRole{}
+	case "auth0:index/organizationMemberRoles:OrganizationMemberRoles":
+		r = &OrganizationMemberRoles{}
+	case "auth0:index/organizationMembers:OrganizationMembers":
+		r = &OrganizationMembers{}
 	case "auth0:index/prompt:Prompt":
 		r = &Prompt{}
 	case "auth0:index/promptCustomText:PromptCustomText":
@@ -84,6 +92,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RuleConfig{}
 	case "auth0:index/tenant:Tenant":
 		r = &Tenant{}
+	case "auth0:index/triggerAction:TriggerAction":
+		r = &TriggerAction{}
+	case "auth0:index/triggerActions:TriggerActions":
+		r = &TriggerActions{}
 	case "auth0:index/triggerBinding:TriggerBinding":
 		r = &TriggerBinding{}
 	case "auth0:index/user:User":
@@ -226,7 +238,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"auth0",
+		"index/organizationConnections",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
 		"index/organizationMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/organizationMemberRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/organizationMemberRoles",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/organizationMembers",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -282,6 +314,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/tenant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/triggerAction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/triggerActions",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

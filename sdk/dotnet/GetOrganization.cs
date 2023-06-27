@@ -137,6 +137,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// User ID(s) that are members of the organization.
+        /// </summary>
+        public readonly ImmutableArray<string> Members;
+        /// <summary>
         /// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
@@ -159,6 +163,8 @@ namespace Pulumi.Auth0
 
             string id,
 
+            ImmutableArray<string> members,
+
             ImmutableDictionary<string, string> metadata,
 
             string? name,
@@ -169,6 +175,7 @@ namespace Pulumi.Auth0
             Connections = connections;
             DisplayName = displayName;
             Id = id;
+            Members = members;
             Metadata = metadata;
             Name = name;
             OrganizationId = organizationId;

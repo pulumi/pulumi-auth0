@@ -14,15 +14,14 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 domain: pulumi.Input[str],
                  api_token: Optional[pulumi.Input[str]] = None,
                  audience: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
-                 debug: Optional[pulumi.Input[bool]] = None):
+                 debug: Optional[pulumi.Input[bool]] = None,
+                 domain: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         :param pulumi.Input[str] api_token: Your Auth0 [management api access
                token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
                the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
@@ -31,8 +30,8 @@ class ProviderArgs:
         :param pulumi.Input[str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
         :param pulumi.Input[bool] debug: Indicates whether to turn on debug mode.
+        :param pulumi.Input[str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
-        pulumi.set(__self__, "domain", domain)
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
         if audience is not None:
@@ -45,18 +44,8 @@ class ProviderArgs:
             debug = _utilities.get_env_bool('AUTH0_DEBUG')
         if debug is not None:
             pulumi.set(__self__, "debug", debug)
-
-    @property
-    @pulumi.getter
-    def domain(self) -> pulumi.Input[str]:
-        """
-        Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-        """
-        return pulumi.get(self, "domain")
-
-    @domain.setter
-    def domain(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domain", value)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
 
     @property
     @pulumi.getter(name="apiToken")
@@ -121,6 +110,18 @@ class ProviderArgs:
     def debug(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "debug", value)
 
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
 
 class Provider(pulumi.ProviderResource):
     @overload
@@ -156,7 +157,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the auth0 package. By default, resources use package-wide configuration
@@ -201,8 +202,6 @@ class Provider(pulumi.ProviderResource):
             if debug is None:
                 debug = _utilities.get_env_bool('AUTH0_DEBUG')
             __props__.__dict__["debug"] = pulumi.Output.from_input(debug).apply(pulumi.runtime.to_json) if debug is not None else None
-            if domain is None and not opts.urn:
-                raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
         super(Provider, __self__).__init__(
             'auth0',
@@ -247,7 +246,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> pulumi.Output[str]:
+    def domain(self) -> pulumi.Output[Optional[str]]:
         """
         Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """

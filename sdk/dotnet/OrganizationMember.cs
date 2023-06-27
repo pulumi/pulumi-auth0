@@ -12,6 +12,10 @@ namespace Pulumi.Auth0
     /// <summary>
     /// This resource is used to manage the assignment of members and their roles within an organization.
     /// 
+    /// !&gt; This resource appends a member to an organization. In contrast, the `auth0.OrganizationMembers` resource manages
+    /// all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
+    /// conjunction with the `auth0.OrganizationMembers` resource when managing members for the same organization id.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,10 +26,6 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var reader = new Auth0.Role("reader");
-    /// 
-    ///     var admin = new Auth0.Role("admin");
-    /// 
     ///     var user = new Auth0.User("user", new()
     ///     {
     ///         Email = "test-user@auth0.com",
@@ -43,11 +43,6 @@ namespace Pulumi.Auth0
     ///     {
     ///         OrganizationId = myOrg.Id,
     ///         UserId = user.Id,
-    ///         Roles = new[]
-    ///         {
-    ///             reader.Id,
-    ///             admin.Id,
-    ///         },
     ///     });
     /// 
     /// });
@@ -140,6 +135,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// The role ID(s) to assign to the organization member.
         /// </summary>
+        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.")]
         public InputList<string> Roles
         {
             get => _roles ?? (_roles = new InputList<string>());
@@ -172,6 +168,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// The role ID(s) to assign to the organization member.
         /// </summary>
+        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.")]
         public InputList<string> Roles
         {
             get => _roles ?? (_roles = new InputList<string>());

@@ -7,7 +7,10 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can enable a single client on a connection.
  *
- * !> To prevent issues, avoid using this resource together with the `auth0.ConnectionClients` resource.
+ * !> This resource appends an enabled client to a connection. In contrast, the `auth0.ConnectionClients` resource
+ * manages all the clients enabled for a connection. To avoid potential issues, it is recommended not to use this
+ * resource in conjunction with the `auth0.ConnectionClients` resource when managing enabled clients for the
+ * same connection id.
  *
  * ## Example Usage
  *

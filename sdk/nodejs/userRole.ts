@@ -7,7 +7,9 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage assigned roles for a user.
  *
- * !> To prevent issues, avoid using this resource together with the `auth0.UserRoles` resource.
+ * !> This resource appends a role to a user. In contrast, the `auth0.UserRoles` resource manages all the roles assigned
+ * to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
+ * `auth0.UserRoles` resource when managing roles for the same user id.
  *
  * ## Example Usage
  *
@@ -31,10 +33,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported using the user ID. # Example
+ * This resource can be imported by specifying the user ID and role ID separated by "::" (note the double colon) <userID>::<roleID> # Example
  *
  * ```sh
- *  $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111"
+ *  $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
  * ```
  */
 export class UserRole extends pulumi.CustomResource {

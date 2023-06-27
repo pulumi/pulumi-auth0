@@ -13,7 +13,9 @@ import (
 
 // With this resource, you can manage all of a user's permissions.
 //
-// !> To prevent issues, avoid using this resource together with the `UserPermission` resource.
+// !> This resource manages all the permissions assigned to a user. In contrast, the `UserPermission` resource only
+// appends a permissions to a user. To avoid potential issues, it is recommended not to use this resource in conjunction
+// with the `UserPermission` resource when managing permissions for the same user id.
 //
 // ## Import
 //

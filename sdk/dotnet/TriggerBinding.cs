@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+    /// With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+    /// 
+    /// !&gt; This resource has been deprecated in favor of the `auth0.TriggerActions` resource.
     /// 
     /// ## Example Usage
     /// 
@@ -83,7 +85,7 @@ namespace Pulumi.Auth0
     public partial class TriggerBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The actions bound to this trigger
+        /// The list of actions bound to this trigger.
         /// </summary>
         [Output("actions")]
         public Output<ImmutableArray<Outputs.TriggerBindingAction>> Actions { get; private set; } = null!;
@@ -144,7 +146,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.TriggerBindingActionArgs>? _actions;
 
         /// <summary>
-        /// The actions bound to this trigger
+        /// The list of actions bound to this trigger.
         /// </summary>
         public InputList<Inputs.TriggerBindingActionArgs> Actions
         {
@@ -170,7 +172,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.TriggerBindingActionGetArgs>? _actions;
 
         /// <summary>
-        /// The actions bound to this trigger
+        /// The list of actions bound to this trigger.
         /// </summary>
         public InputList<Inputs.TriggerBindingActionGetArgs> Actions
         {

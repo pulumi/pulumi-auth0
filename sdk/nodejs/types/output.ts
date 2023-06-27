@@ -1984,6 +1984,17 @@ export interface OrganizationBranding {
     logoUrl?: string;
 }
 
+export interface OrganizationConnectionsEnabledConnection {
+    /**
+     * When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+     */
+    assignMembershipOnLogin?: boolean;
+    /**
+     * The ID of the connection to enable for the organization.
+     */
+    connectionId: string;
+}
+
 export interface ResourceServerScope {
     /**
      * Description of the permission (scope).
@@ -2197,9 +2208,20 @@ export interface TenantUniversalLoginColors {
     primary: string;
 }
 
+export interface TriggerActionsAction {
+    /**
+     * The display name of the action within the flow.
+     */
+    displayName: string;
+    /**
+     * Action ID.
+     */
+    id: string;
+}
+
 export interface TriggerBindingAction {
     /**
-     * The name of an action.
+     * The display name of the action within the flow.
      */
     displayName: string;
     /**

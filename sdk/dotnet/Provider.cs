@@ -49,7 +49,7 @@ namespace Pulumi.Auth0
         /// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         /// </summary>
         [Output("domain")]
-        public Output<string> Domain { get; private set; } = null!;
+        public Output<string?> Domain { get; private set; } = null!;
 
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.Auth0
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("auth0", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -115,8 +115,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         /// </summary>
-        [Input("domain", required: true)]
-        public Input<string> Domain { get; set; } = null!;
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
 
         public ProviderArgs()
         {

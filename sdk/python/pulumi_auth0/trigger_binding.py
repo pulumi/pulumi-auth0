@@ -20,7 +20,7 @@ class TriggerBindingArgs:
                  trigger: pulumi.Input[str]):
         """
         The set of arguments for constructing a TriggerBinding resource.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]] actions: The actions bound to this trigger
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[str] trigger: The ID of the trigger to bind with.
         """
         pulumi.set(__self__, "actions", actions)
@@ -30,7 +30,7 @@ class TriggerBindingArgs:
     @pulumi.getter
     def actions(self) -> pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]]:
         """
-        The actions bound to this trigger
+        The list of actions bound to this trigger.
         """
         return pulumi.get(self, "actions")
 
@@ -58,7 +58,7 @@ class _TriggerBindingState:
                  trigger: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TriggerBinding resources.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]] actions: The actions bound to this trigger
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[str] trigger: The ID of the trigger to bind with.
         """
         if actions is not None:
@@ -70,7 +70,7 @@ class _TriggerBindingState:
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBindingActionArgs']]]]:
         """
-        The actions bound to this trigger
+        The list of actions bound to this trigger.
         """
         return pulumi.get(self, "actions")
 
@@ -100,7 +100,9 @@ class TriggerBinding(pulumi.CustomResource):
                  trigger: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+        With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+
+        !> This resource has been deprecated in favor of the `TriggerActions` resource.
 
         ## Example Usage
 
@@ -152,7 +154,7 @@ class TriggerBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerBindingActionArgs']]]] actions: The actions bound to this trigger
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerBindingActionArgs']]]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[str] trigger: The ID of the trigger to bind with.
         """
         ...
@@ -162,7 +164,9 @@ class TriggerBinding(pulumi.CustomResource):
                  args: TriggerBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+        With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+
+        !> This resource has been deprecated in favor of the `TriggerActions` resource.
 
         ## Example Usage
 
@@ -263,7 +267,7 @@ class TriggerBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerBindingActionArgs']]]] actions: The actions bound to this trigger
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerBindingActionArgs']]]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[str] trigger: The ID of the trigger to bind with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -278,7 +282,7 @@ class TriggerBinding(pulumi.CustomResource):
     @pulumi.getter
     def actions(self) -> pulumi.Output[Sequence['outputs.TriggerBindingAction']]:
         """
-        The actions bound to this trigger
+        The list of actions bound to this trigger.
         """
         return pulumi.get(self, "actions")
 

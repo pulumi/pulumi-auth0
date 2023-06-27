@@ -32,6 +32,11 @@ public final class GetOrganizationResult {
      */
     private String id;
     /**
+     * @return User ID(s) that are members of the organization.
+     * 
+     */
+    private List<String> members;
+    /**
      * @return Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      * 
      */
@@ -73,6 +78,13 @@ public final class GetOrganizationResult {
         return this.id;
     }
     /**
+     * @return User ID(s) that are members of the organization.
+     * 
+     */
+    public List<String> members() {
+        return this.members;
+    }
+    /**
      * @return Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      * 
      */
@@ -107,6 +119,7 @@ public final class GetOrganizationResult {
         private List<GetOrganizationConnection> connections;
         private String displayName;
         private String id;
+        private List<String> members;
         private Map<String,String> metadata;
         private @Nullable String name;
         private @Nullable String organizationId;
@@ -117,6 +130,7 @@ public final class GetOrganizationResult {
     	      this.connections = defaults.connections;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
+    	      this.members = defaults.members;
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
     	      this.organizationId = defaults.organizationId;
@@ -149,6 +163,14 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder members(List<String> members) {
+            this.members = Objects.requireNonNull(members);
+            return this;
+        }
+        public Builder members(String... members) {
+            return members(List.of(members));
+        }
+        @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
@@ -169,6 +191,7 @@ public final class GetOrganizationResult {
             o.connections = connections;
             o.displayName = displayName;
             o.id = id;
+            o.members = members;
             o.metadata = metadata;
             o.name = name;
             o.organizationId = organizationId;

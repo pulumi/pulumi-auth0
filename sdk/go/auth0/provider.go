@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,19 +29,16 @@ type Provider struct {
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-	Domain pulumi.StringOutput `pulumi:"domain"`
+	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.Domain == nil {
-		return nil, errors.New("invalid value for required argument 'Domain'")
-	}
 	if args.Debug == nil {
 		if d := getEnvOrDefault(nil, parseEnvBool, "AUTH0_DEBUG"); d != nil {
 			args.Debug = pulumi.BoolPtr(d.(bool))
@@ -71,7 +67,7 @@ type providerArgs struct {
 	// Indicates whether to turn on debug mode.
 	Debug *bool `pulumi:"debug"`
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-	Domain string `pulumi:"domain"`
+	Domain *string `pulumi:"domain"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -90,7 +86,7 @@ type ProviderArgs struct {
 	// Indicates whether to turn on debug mode.
 	Debug pulumi.BoolPtrInput
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-	Domain pulumi.StringInput
+	Domain pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -154,8 +150,8 @@ func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 }
 
 // Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-func (o ProviderOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+func (o ProviderOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
 func init() {

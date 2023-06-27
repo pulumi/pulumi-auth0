@@ -26,6 +26,9 @@ class OrganizationMemberArgs:
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "user_id", user_id)
         if roles is not None:
+            warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
+            pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
+        if roles is not None:
             pulumi.set(__self__, "roles", roles)
 
     @property
@@ -80,6 +83,9 @@ class _OrganizationMemberState:
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
         if roles is not None:
+            warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
+            pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
+        if roles is not None:
             pulumi.set(__self__, "roles", roles)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
@@ -133,14 +139,16 @@ class OrganizationMember(pulumi.CustomResource):
         """
         This resource is used to manage the assignment of members and their roles within an organization.
 
+        !> This resource appends a member to an organization. In contrast, the `OrganizationMembers` resource manages
+        all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
+        conjunction with the `OrganizationMembers` resource when managing members for the same organization id.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        reader = auth0.Role("reader")
-        admin = auth0.Role("admin")
         user = auth0.User("user",
             email="test-user@auth0.com",
             connection_name="Username-Password-Authentication",
@@ -149,11 +157,7 @@ class OrganizationMember(pulumi.CustomResource):
         my_org = auth0.Organization("myOrg", display_name="Admin")
         my_org_member = auth0.OrganizationMember("myOrgMember",
             organization_id=my_org.id,
-            user_id=user.id,
-            roles=[
-                reader.id,
-                admin.id,
-            ])
+            user_id=user.id)
         ```
 
         ## Import
@@ -179,14 +183,16 @@ class OrganizationMember(pulumi.CustomResource):
         """
         This resource is used to manage the assignment of members and their roles within an organization.
 
+        !> This resource appends a member to an organization. In contrast, the `OrganizationMembers` resource manages
+        all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
+        conjunction with the `OrganizationMembers` resource when managing members for the same organization id.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_auth0 as auth0
 
-        reader = auth0.Role("reader")
-        admin = auth0.Role("admin")
         user = auth0.User("user",
             email="test-user@auth0.com",
             connection_name="Username-Password-Authentication",
@@ -195,11 +201,7 @@ class OrganizationMember(pulumi.CustomResource):
         my_org = auth0.Organization("myOrg", display_name="Admin")
         my_org_member = auth0.OrganizationMember("myOrgMember",
             organization_id=my_org.id,
-            user_id=user.id,
-            roles=[
-                reader.id,
-                admin.id,
-            ])
+            user_id=user.id)
         ```
 
         ## Import
@@ -240,6 +242,9 @@ class OrganizationMember(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            if roles is not None and not opts.urn:
+                warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
+                pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
             __props__.__dict__["roles"] = roles
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")

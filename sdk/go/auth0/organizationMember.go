@@ -13,6 +13,10 @@ import (
 
 // This resource is used to manage the assignment of members and their roles within an organization.
 //
+// !> This resource appends a member to an organization. In contrast, the `OrganizationMembers` resource manages
+// all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
+// conjunction with the `OrganizationMembers` resource when managing members for the same organization id.
+//
 // ## Example Usage
 //
 // ```go
@@ -27,14 +31,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			reader, err := auth0.NewRole(ctx, "reader", nil)
-//			if err != nil {
-//				return err
-//			}
-//			admin, err := auth0.NewRole(ctx, "admin", nil)
-//			if err != nil {
-//				return err
-//			}
 //			user, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
 //				Email:          pulumi.String("test-user@auth0.com"),
 //				ConnectionName: pulumi.String("Username-Password-Authentication"),
@@ -53,10 +49,6 @@ import (
 //			_, err = auth0.NewOrganizationMember(ctx, "myOrgMember", &auth0.OrganizationMemberArgs{
 //				OrganizationId: myOrg.ID(),
 //				UserId:         user.ID(),
-//				Roles: pulumi.StringArray{
-//					reader.ID(),
-//					admin.ID(),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -82,6 +74,8 @@ type OrganizationMember struct {
 	// The ID of the organization to assign the member to.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The role ID(s) to assign to the organization member.
+	//
+	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	// ID of the user to add as an organization member.
 	UserId pulumi.StringOutput `pulumi:"userId"`
@@ -125,6 +119,8 @@ type organizationMemberState struct {
 	// The ID of the organization to assign the member to.
 	OrganizationId *string `pulumi:"organizationId"`
 	// The role ID(s) to assign to the organization member.
+	//
+	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	Roles []string `pulumi:"roles"`
 	// ID of the user to add as an organization member.
 	UserId *string `pulumi:"userId"`
@@ -134,6 +130,8 @@ type OrganizationMemberState struct {
 	// The ID of the organization to assign the member to.
 	OrganizationId pulumi.StringPtrInput
 	// The role ID(s) to assign to the organization member.
+	//
+	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	Roles pulumi.StringArrayInput
 	// ID of the user to add as an organization member.
 	UserId pulumi.StringPtrInput
@@ -147,6 +145,8 @@ type organizationMemberArgs struct {
 	// The ID of the organization to assign the member to.
 	OrganizationId string `pulumi:"organizationId"`
 	// The role ID(s) to assign to the organization member.
+	//
+	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	Roles []string `pulumi:"roles"`
 	// ID of the user to add as an organization member.
 	UserId string `pulumi:"userId"`
@@ -157,6 +157,8 @@ type OrganizationMemberArgs struct {
 	// The ID of the organization to assign the member to.
 	OrganizationId pulumi.StringInput
 	// The role ID(s) to assign to the organization member.
+	//
+	// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 	Roles pulumi.StringArrayInput
 	// ID of the user to add as an organization member.
 	UserId pulumi.StringInput
@@ -255,6 +257,8 @@ func (o OrganizationMemberOutput) OrganizationId() pulumi.StringOutput {
 }
 
 // The role ID(s) to assign to the organization member.
+//
+// Deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
 func (o OrganizationMemberOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationMember) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }

@@ -37,7 +37,11 @@ from .hook import *
 from .log_stream import *
 from .organization import *
 from .organization_connection import *
+from .organization_connections import *
 from .organization_member import *
+from .organization_member_role import *
+from .organization_member_roles import *
+from .organization_members import *
 from .prompt import *
 from .prompt_custom_text import *
 from .provider import *
@@ -50,6 +54,8 @@ from .role_permissions import *
 from .rule import *
 from .rule_config import *
 from .tenant import *
+from .trigger_action import *
+from .trigger_actions import *
 from .trigger_binding import *
 from .user import *
 from .user_permission import *
@@ -231,10 +237,42 @@ _utilities.register(
  },
  {
   "pkg": "auth0",
+  "mod": "index/organizationConnections",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationConnections:OrganizationConnections": "OrganizationConnections"
+  }
+ },
+ {
+  "pkg": "auth0",
   "mod": "index/organizationMember",
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/organizationMember:OrganizationMember": "OrganizationMember"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationMemberRole",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationMemberRole:OrganizationMemberRole": "OrganizationMemberRole"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationMemberRoles",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationMemberRoles:OrganizationMemberRoles": "OrganizationMemberRoles"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationMembers",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationMembers:OrganizationMembers": "OrganizationMembers"
   }
  },
  {
@@ -323,6 +361,22 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/tenant:Tenant": "Tenant"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/triggerAction",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/triggerAction:TriggerAction": "TriggerAction"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/triggerActions",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/triggerActions:TriggerActions": "TriggerActions"
   }
  },
  {

@@ -16,7 +16,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+ * With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+ * 
+ * !&gt; This resource has been deprecated in favor of the `auth0.TriggerActions` resource.
  * 
  * ## Example Usage
  * ```java
@@ -99,14 +101,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/triggerBinding:TriggerBinding")
 public class TriggerBinding extends com.pulumi.resources.CustomResource {
     /**
-     * The actions bound to this trigger
+     * The list of actions bound to this trigger.
      * 
      */
     @Export(name="actions", type=List.class, parameters={TriggerBindingAction.class})
     private Output<List<TriggerBindingAction>> actions;
 
     /**
-     * @return The actions bound to this trigger
+     * @return The list of actions bound to this trigger.
      * 
      */
     public Output<List<TriggerBindingAction>> actions() {

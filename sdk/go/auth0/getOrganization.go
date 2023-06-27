@@ -69,6 +69,8 @@ type LookupOrganizationResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// User ID(s) that are members of the organization.
+	Members []string `pulumi:"members"`
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the organization. If not provided, `organizationId` must be set. For performance, it is advised to use the `organizationId` as a lookup if possible.
@@ -134,6 +136,11 @@ func (o LookupOrganizationResultOutput) DisplayName() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// User ID(s) that are members of the organization.
+func (o LookupOrganizationResultOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // Metadata associated with the organization. Maximum of 10 metadata properties allowed.

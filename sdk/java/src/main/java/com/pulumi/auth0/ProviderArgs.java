@@ -102,15 +102,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      * 
      */
-    @Import(name="domain", required=true)
-    private Output<String> domain;
+    @Import(name="domain")
+    private @Nullable Output<String> domain;
 
     /**
      * @return Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      * 
      */
-    public Output<String> domain() {
-        return this.domain;
+    public Optional<Output<String>> domain() {
+        return Optional.ofNullable(this.domain);
     }
 
     private ProviderArgs() {}
@@ -259,7 +259,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder domain(Output<String> domain) {
+        public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
@@ -276,7 +276,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public ProviderArgs build() {
             $.debug = Codegen.booleanProp("debug").output().arg($.debug).env("AUTH0_DEBUG").getNullable();
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
             return $;
         }
     }

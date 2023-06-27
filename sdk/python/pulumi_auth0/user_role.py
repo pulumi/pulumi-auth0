@@ -132,7 +132,9 @@ class UserRole(pulumi.CustomResource):
         """
         With this resource, you can manage assigned roles for a user.
 
-        !> To prevent issues, avoid using this resource together with the `UserRoles` resource.
+        !> This resource appends a role to a user. In contrast, the `UserRoles` resource manages all the roles assigned
+        to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
+        `UserRoles` resource when managing roles for the same user id.
 
         ## Example Usage
 
@@ -154,10 +156,10 @@ class UserRole(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the user ID. # Example
+        This resource can be imported by specifying the user ID and role ID separated by "::" (note the double colon) <userID>::<roleID> # Example
 
         ```sh
-         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111"
+         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
         ```
 
         :param str resource_name: The name of the resource.
@@ -174,7 +176,9 @@ class UserRole(pulumi.CustomResource):
         """
         With this resource, you can manage assigned roles for a user.
 
-        !> To prevent issues, avoid using this resource together with the `UserRoles` resource.
+        !> This resource appends a role to a user. In contrast, the `UserRoles` resource manages all the roles assigned
+        to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
+        `UserRoles` resource when managing roles for the same user id.
 
         ## Example Usage
 
@@ -196,10 +200,10 @@ class UserRole(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the user ID. # Example
+        This resource can be imported by specifying the user ID and role ID separated by "::" (note the double colon) <userID>::<roleID> # Example
 
         ```sh
-         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111"
+         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
         ```
 
         :param str resource_name: The name of the resource.

@@ -12,7 +12,9 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage user permissions.
     /// 
-    /// !&gt; To prevent issues, avoid using this resource together with the `auth0.UserPermissions` resource.
+    /// !&gt; This resource appends a permission to a user. In contrast, the `auth0.UserPermissions` resource manages all the
+    /// permissions assigned to a user. To avoid potential issues, it is recommended not to use this resource in conjunction
+    /// with the `auth0.UserPermissions` resource when managing permissions for the same user id.
     /// 
     /// ## Import
     /// 

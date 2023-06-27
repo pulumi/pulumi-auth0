@@ -13,6 +13,11 @@ import (
 
 // With this resource, you can manage enabled connections on an organization.
 //
+// !> This resource appends a connection to an organization. In contrast, the `OrganizationConnections` resource
+// manages all the connections enabled for an organization. To avoid potential issues, it is recommended not to use this
+// resource in conjunction with the `OrganizationConnections` resource when managing enabled connections for the
+// same organization id.
+//
 // ## Example Usage
 //
 // ```go

@@ -12,7 +12,9 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage role permissions (1-many).
     /// 
-    /// !&gt; To prevent issues, avoid using this resource together with the `auth0.RolePermission` resource.
+    /// !&gt; This resource manages all the permissions assigned to a role. In contrast, the `auth0.RolePermission` resource only
+    /// appends a permission to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
+    /// with the `auth0.RolePermission` resource when managing permissions for the same role id.
     /// </summary>
     [Auth0ResourceType("auth0:index/rolePermissions:RolePermissions")]
     public partial class RolePermissions : global::Pulumi.CustomResource

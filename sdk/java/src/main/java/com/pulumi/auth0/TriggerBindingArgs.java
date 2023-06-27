@@ -16,14 +16,14 @@ public final class TriggerBindingArgs extends com.pulumi.resources.ResourceArgs 
     public static final TriggerBindingArgs Empty = new TriggerBindingArgs();
 
     /**
-     * The actions bound to this trigger
+     * The list of actions bound to this trigger.
      * 
      */
     @Import(name="actions", required=true)
     private Output<List<TriggerBindingActionArgs>> actions;
 
     /**
-     * @return The actions bound to this trigger
+     * @return The list of actions bound to this trigger.
      * 
      */
     public Output<List<TriggerBindingActionArgs>> actions() {
@@ -71,7 +71,7 @@ public final class TriggerBindingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param actions The actions bound to this trigger
+         * @param actions The list of actions bound to this trigger.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class TriggerBindingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param actions The actions bound to this trigger
+         * @param actions The list of actions bound to this trigger.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class TriggerBindingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param actions The actions bound to this trigger
+         * @param actions The list of actions bound to this trigger.
          * 
          * @return builder
          * 

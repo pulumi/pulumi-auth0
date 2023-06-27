@@ -18,6 +18,10 @@ import javax.annotation.Nullable;
 /**
  * This resource is used to manage the assignment of members and their roles within an organization.
  * 
+ * !&gt; This resource appends a member to an organization. In contrast, the `auth0.OrganizationMembers` resource manages
+ * all the members assigned to an organization. To avoid potential issues, it is recommended not to use this resource in
+ * conjunction with the `auth0.OrganizationMembers` resource when managing members for the same organization id.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -25,7 +29,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.auth0.Role;
  * import com.pulumi.auth0.User;
  * import com.pulumi.auth0.UserArgs;
  * import com.pulumi.auth0.Organization;
@@ -45,10 +48,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var reader = new Role(&#34;reader&#34;);
- * 
- *         var admin = new Role(&#34;admin&#34;);
- * 
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
  *             .email(&#34;test-user@auth0.com&#34;)
  *             .connectionName(&#34;Username-Password-Authentication&#34;)
@@ -63,9 +62,6 @@ import javax.annotation.Nullable;
  *         var myOrgMember = new OrganizationMember(&#34;myOrgMember&#34;, OrganizationMemberArgs.builder()        
  *             .organizationId(myOrg.id())
  *             .userId(user.id())
- *             .roles(            
- *                 reader.id(),
- *                 admin.id())
  *             .build());
  * 
  *     }
@@ -100,7 +96,11 @@ public class OrganizationMember extends com.pulumi.resources.CustomResource {
     /**
      * The role ID(s) to assign to the organization member.
      * 
+     * @deprecated
+     * Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+     * 
      */
+    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that. */
     @Export(name="roles", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> roles;
 

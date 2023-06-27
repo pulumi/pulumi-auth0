@@ -47,7 +47,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      */
-    public readonly domain!: pulumi.Output<string>;
+    public readonly domain!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -56,13 +56,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.domain === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domain'");
-            }
             resourceInputs["apiToken"] = args ? args.apiToken : undefined;
             resourceInputs["audience"] = args ? args.audience : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
@@ -105,5 +102,5 @@ export interface ProviderArgs {
     /**
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      */
-    domain: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
 }

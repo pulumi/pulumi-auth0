@@ -84,6 +84,7 @@ __all__ = [
     'GuardianWebauthnRoamingArgs',
     'LogStreamSinkArgs',
     'OrganizationBrandingArgs',
+    'OrganizationConnectionsEnabledConnectionArgs',
     'ResourceServerScopeArgs',
     'ResourceServerScopesScopeArgs',
     'RolePermissionArgs',
@@ -95,6 +96,7 @@ __all__ = [
     'TenantSessionCookieArgs',
     'TenantUniversalLoginArgs',
     'TenantUniversalLoginColorsArgs',
+    'TriggerActionsActionArgs',
     'TriggerBindingActionArgs',
     'UserPermissionArgs',
     'UserPermissionsPermissionArgs',
@@ -6639,6 +6641,44 @@ class OrganizationBrandingArgs:
 
 
 @pulumi.input_type
+class OrganizationConnectionsEnabledConnectionArgs:
+    def __init__(__self__, *,
+                 connection_id: pulumi.Input[str],
+                 assign_membership_on_login: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] connection_id: The ID of the connection to enable for the organization.
+        :param pulumi.Input[bool] assign_membership_on_login: When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        if assign_membership_on_login is not None:
+            pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the connection to enable for the organization.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter(name="assignMembershipOnLogin")
+    def assign_membership_on_login(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, all users that log in with this connection will be automatically granted membership in the organization. When false, users must be granted membership in the organization before logging in with this connection.
+        """
+        return pulumi.get(self, "assign_membership_on_login")
+
+    @assign_membership_on_login.setter
+    def assign_membership_on_login(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "assign_membership_on_login", value)
+
+
+@pulumi.input_type
 class ResourceServerScopeArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[str],
@@ -7432,12 +7472,12 @@ class TenantUniversalLoginColorsArgs:
 
 
 @pulumi.input_type
-class TriggerBindingActionArgs:
+class TriggerActionsActionArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] display_name: The name of an action.
+        :param pulumi.Input[str] display_name: The display name of the action within the flow.
         :param pulumi.Input[str] id: Action ID.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -7447,7 +7487,44 @@ class TriggerBindingActionArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The name of an action.
+        The display name of the action within the flow.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Action ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class TriggerBindingActionArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] display_name: The display name of the action within the flow.
+        :param pulumi.Input[str] id: Action ID.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the action within the flow.
         """
         return pulumi.get(self, "display_name")
 

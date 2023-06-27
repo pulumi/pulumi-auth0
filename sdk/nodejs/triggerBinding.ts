@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+ * With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
+ *
+ * !> This resource has been deprecated in favor of the `auth0.TriggerActions` resource.
  *
  * ## Example Usage
  *
@@ -89,7 +91,7 @@ export class TriggerBinding extends pulumi.CustomResource {
     }
 
     /**
-     * The actions bound to this trigger
+     * The list of actions bound to this trigger.
      */
     public readonly actions!: pulumi.Output<outputs.TriggerBindingAction[]>;
     /**
@@ -133,7 +135,7 @@ export class TriggerBinding extends pulumi.CustomResource {
  */
 export interface TriggerBindingState {
     /**
-     * The actions bound to this trigger
+     * The list of actions bound to this trigger.
      */
     actions?: pulumi.Input<pulumi.Input<inputs.TriggerBindingAction>[]>;
     /**
@@ -147,7 +149,7 @@ export interface TriggerBindingState {
  */
 export interface TriggerBindingArgs {
     /**
-     * The actions bound to this trigger
+     * The list of actions bound to this trigger.
      */
     actions: pulumi.Input<pulumi.Input<inputs.TriggerBindingAction>[]>;
     /**
