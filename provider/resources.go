@@ -23,10 +23,9 @@ import (
 	auth0Shim "github.com/auth0/terraform-provider-auth0/shim"
 	"github.com/pulumi/pulumi-auth0/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -45,6 +44,9 @@ func makeResource(mod string, res string) tokens.Type {
 }
 
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
+
+//go:embed cmd/pulumi-resource-auth0/bridge-metadata.json
+var metadata []byte
 
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(auth0Shim.NewProvider())
@@ -114,16 +116,10 @@ func Provider() tfbridge.ProviderInfo {
 		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("auth0_", mainMod,
-		x.MakeStandardToken(mainPkg)))
-	contract.AssertNoErrorf(err, "failed to apply default token strategy")
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
-
+	prov.MustComputeTokens(tks.SingleModule("auth0_", mainMod,
+		tks.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
-
-//go:embed cmd/pulumi-resource-auth0/bridge-metadata.json
-var metadata []byte
