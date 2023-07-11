@@ -7,8 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class BrandingUniversalLoginArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +14,18 @@ public final class BrandingUniversalLoginArgs extends com.pulumi.resources.Resou
     public static final BrandingUniversalLoginArgs Empty = new BrandingUniversalLoginArgs();
 
     /**
-     * The body of login pages.
+     * The html template for the New Universal Login Experience.
      * 
      */
-    @Import(name="body")
-    private @Nullable Output<String> body;
+    @Import(name="body", required=true)
+    private Output<String> body;
 
     /**
-     * @return The body of login pages.
+     * @return The html template for the New Universal Login Experience.
      * 
      */
-    public Optional<Output<String>> body() {
-        return Optional.ofNullable(this.body);
+    public Output<String> body() {
+        return this.body;
     }
 
     private BrandingUniversalLoginArgs() {}
@@ -55,18 +53,18 @@ public final class BrandingUniversalLoginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param body The body of login pages.
+         * @param body The html template for the New Universal Login Experience.
          * 
          * @return builder
          * 
          */
-        public Builder body(@Nullable Output<String> body) {
+        public Builder body(Output<String> body) {
             $.body = body;
             return this;
         }
 
         /**
-         * @param body The body of login pages.
+         * @param body The html template for the New Universal Login Experience.
          * 
          * @return builder
          * 
@@ -76,6 +74,7 @@ public final class BrandingUniversalLoginArgs extends com.pulumi.resources.Resou
         }
 
         public BrandingUniversalLoginArgs build() {
+            $.body = Objects.requireNonNull($.body, "expected parameter 'body' to be non-null");
             return $;
         }
     }

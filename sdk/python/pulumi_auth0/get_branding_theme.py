@@ -119,10 +119,10 @@ def get_branding_theme(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
     __ret__ = pulumi.runtime.invoke('auth0:index/getBrandingTheme:getBrandingTheme', __args__, opts=opts, typ=GetBrandingThemeResult).value
 
     return AwaitableGetBrandingThemeResult(
-        borders=__ret__.borders,
-        colors=__ret__.colors,
-        display_name=__ret__.display_name,
-        fonts=__ret__.fonts,
-        id=__ret__.id,
-        page_backgrounds=__ret__.page_backgrounds,
-        widgets=__ret__.widgets)
+        borders=pulumi.get(__ret__, 'borders'),
+        colors=pulumi.get(__ret__, 'colors'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        fonts=pulumi.get(__ret__, 'fonts'),
+        id=pulumi.get(__ret__, 'id'),
+        page_backgrounds=pulumi.get(__ret__, 'page_backgrounds'),
+        widgets=pulumi.get(__ret__, 'widgets'))

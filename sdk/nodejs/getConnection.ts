@@ -72,7 +72,7 @@ export interface GetConnectionResult {
      */
     readonly isDomainConnection: boolean;
     /**
-     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      */
     readonly metadata: {[key: string]: string};
     /**

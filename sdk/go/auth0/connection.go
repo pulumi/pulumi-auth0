@@ -264,7 +264,7 @@ import (
 // ```
 // ### OAuth2 Connection
 //
-// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
+// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 //
 // ```go
 // package main
@@ -512,11 +512,11 @@ type Connection struct {
 
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled.
+	// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
 	EnabledClients pulumi.StringArrayOutput `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolOutput `pulumi:"isDomainConnection"`
-	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -564,11 +564,11 @@ func GetConnection(ctx *pulumi.Context,
 type connectionState struct {
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled.
+	// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
 	EnabledClients []string `pulumi:"enabledClients"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
-	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata map[string]string `pulumi:"metadata"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
@@ -585,11 +585,11 @@ type connectionState struct {
 type ConnectionState struct {
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
-	// IDs of the clients for which the connection is enabled.
+	// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
 	EnabledClients pulumi.StringArrayInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
-	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapInput
 	// Name of the connection.
 	Name pulumi.StringPtrInput
@@ -612,7 +612,7 @@ type connectionArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection *bool `pulumi:"isDomainConnection"`
-	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata map[string]string `pulumi:"metadata"`
 	// Name of the connection.
 	Name *string `pulumi:"name"`
@@ -632,7 +632,7 @@ type ConnectionArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Indicates whether the connection is domain level.
 	IsDomainConnection pulumi.BoolPtrInput
-	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata pulumi.StringMapInput
 	// Name of the connection.
 	Name pulumi.StringPtrInput
@@ -738,7 +738,7 @@ func (o ConnectionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// IDs of the clients for which the connection is enabled.
+// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
 func (o ConnectionOutput) EnabledClients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.EnabledClients }).(pulumi.StringArrayOutput)
 }
@@ -748,7 +748,7 @@ func (o ConnectionOutput) IsDomainConnection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.IsDomainConnection }).(pulumi.BoolOutput)
 }
 
-// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 func (o ConnectionOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }

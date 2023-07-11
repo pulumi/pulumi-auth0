@@ -184,6 +184,11 @@ export type OrganizationMembers = import("./organizationMembers").OrganizationMe
 export const OrganizationMembers: typeof import("./organizationMembers").OrganizationMembers = null as any;
 utilities.lazyLoad(exports, ["OrganizationMembers"], () => require("./organizationMembers"));
 
+export { PagesArgs, PagesState } from "./pages";
+export type Pages = import("./pages").Pages;
+export const Pages: typeof import("./pages").Pages = null as any;
+utilities.lazyLoad(exports, ["Pages"], () => require("./pages"));
+
 export { PromptArgs, PromptState } from "./prompt";
 export type Prompt = import("./prompt").Prompt;
 export const Prompt: typeof import("./prompt").Prompt = null as any;
@@ -348,6 +353,8 @@ const _module = {
                 return new OrganizationMemberRoles(name, <any>undefined, { urn })
             case "auth0:index/organizationMembers:OrganizationMembers":
                 return new OrganizationMembers(name, <any>undefined, { urn })
+            case "auth0:index/pages:Pages":
+                return new Pages(name, <any>undefined, { urn })
             case "auth0:index/prompt:Prompt":
                 return new Prompt(name, <any>undefined, { urn })
             case "auth0:index/promptCustomText:PromptCustomText":
@@ -416,6 +423,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/organizationMember", _modu
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRole", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRoles", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMembers", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/pages", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)

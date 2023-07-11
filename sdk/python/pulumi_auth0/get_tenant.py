@@ -97,9 +97,6 @@ class GetTenantResult:
     @property
     @pulumi.getter(name="changePasswords")
     def change_passwords(self) -> Sequence['outputs.GetTenantChangePasswordResult']:
-        """
-        Configuration settings for change password page.
-        """
         return pulumi.get(self, "change_passwords")
 
     @property
@@ -145,9 +142,6 @@ class GetTenantResult:
     @property
     @pulumi.getter(name="errorPages")
     def error_pages(self) -> Sequence['outputs.GetTenantErrorPageResult']:
-        """
-        Configuration settings for error pages.
-        """
         return pulumi.get(self, "error_pages")
 
     @property
@@ -169,9 +163,6 @@ class GetTenantResult:
     @property
     @pulumi.getter(name="guardianMfaPages")
     def guardian_mfa_pages(self) -> Sequence['outputs.GetTenantGuardianMfaPageResult']:
-        """
-        Configuration settings for the Guardian MFA page.
-        """
         return pulumi.get(self, "guardian_mfa_pages")
 
     @property
@@ -249,9 +240,6 @@ class GetTenantResult:
     @property
     @pulumi.getter(name="universalLogins")
     def universal_logins(self) -> Sequence['outputs.GetTenantUniversalLoginResult']:
-        """
-        Configuration settings for Universal Login.
-        """
         return pulumi.get(self, "universal_logins")
 
 
@@ -302,24 +290,24 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
     __ret__ = pulumi.runtime.invoke('auth0:index/getTenant:getTenant', __args__, opts=opts, typ=GetTenantResult).value
 
     return AwaitableGetTenantResult(
-        allowed_logout_urls=__ret__.allowed_logout_urls,
-        change_passwords=__ret__.change_passwords,
-        default_audience=__ret__.default_audience,
-        default_directory=__ret__.default_directory,
-        default_redirection_uri=__ret__.default_redirection_uri,
-        domain=__ret__.domain,
-        enabled_locales=__ret__.enabled_locales,
-        error_pages=__ret__.error_pages,
-        flags=__ret__.flags,
-        friendly_name=__ret__.friendly_name,
-        guardian_mfa_pages=__ret__.guardian_mfa_pages,
-        id=__ret__.id,
-        idle_session_lifetime=__ret__.idle_session_lifetime,
-        management_api_identifier=__ret__.management_api_identifier,
-        picture_url=__ret__.picture_url,
-        sandbox_version=__ret__.sandbox_version,
-        session_cookies=__ret__.session_cookies,
-        session_lifetime=__ret__.session_lifetime,
-        support_email=__ret__.support_email,
-        support_url=__ret__.support_url,
-        universal_logins=__ret__.universal_logins)
+        allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
+        change_passwords=pulumi.get(__ret__, 'change_passwords'),
+        default_audience=pulumi.get(__ret__, 'default_audience'),
+        default_directory=pulumi.get(__ret__, 'default_directory'),
+        default_redirection_uri=pulumi.get(__ret__, 'default_redirection_uri'),
+        domain=pulumi.get(__ret__, 'domain'),
+        enabled_locales=pulumi.get(__ret__, 'enabled_locales'),
+        error_pages=pulumi.get(__ret__, 'error_pages'),
+        flags=pulumi.get(__ret__, 'flags'),
+        friendly_name=pulumi.get(__ret__, 'friendly_name'),
+        guardian_mfa_pages=pulumi.get(__ret__, 'guardian_mfa_pages'),
+        id=pulumi.get(__ret__, 'id'),
+        idle_session_lifetime=pulumi.get(__ret__, 'idle_session_lifetime'),
+        management_api_identifier=pulumi.get(__ret__, 'management_api_identifier'),
+        picture_url=pulumi.get(__ret__, 'picture_url'),
+        sandbox_version=pulumi.get(__ret__, 'sandbox_version'),
+        session_cookies=pulumi.get(__ret__, 'session_cookies'),
+        session_lifetime=pulumi.get(__ret__, 'session_lifetime'),
+        support_email=pulumi.get(__ret__, 'support_email'),
+        support_url=pulumi.get(__ret__, 'support_url'),
+        universal_logins=pulumi.get(__ret__, 'universal_logins'))

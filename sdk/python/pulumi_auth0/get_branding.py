@@ -122,9 +122,9 @@ def get_branding(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBra
     __ret__ = pulumi.runtime.invoke('auth0:index/getBranding:getBranding', __args__, opts=opts, typ=GetBrandingResult).value
 
     return AwaitableGetBrandingResult(
-        colors=__ret__.colors,
-        favicon_url=__ret__.favicon_url,
-        fonts=__ret__.fonts,
-        id=__ret__.id,
-        logo_url=__ret__.logo_url,
-        universal_logins=__ret__.universal_logins)
+        colors=pulumi.get(__ret__, 'colors'),
+        favicon_url=pulumi.get(__ret__, 'favicon_url'),
+        fonts=pulumi.get(__ret__, 'fonts'),
+        id=pulumi.get(__ret__, 'id'),
+        logo_url=pulumi.get(__ret__, 'logo_url'),
+        universal_logins=pulumi.get(__ret__, 'universal_logins'))

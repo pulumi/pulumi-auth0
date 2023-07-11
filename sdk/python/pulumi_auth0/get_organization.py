@@ -153,14 +153,14 @@ def get_organization(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
     return AwaitableGetOrganizationResult(
-        brandings=__ret__.brandings,
-        connections=__ret__.connections,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        members=__ret__.members,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        organization_id=__ret__.organization_id)
+        brandings=pulumi.get(__ret__, 'brandings'),
+        connections=pulumi.get(__ret__, 'connections'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        members=pulumi.get(__ret__, 'members'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        organization_id=pulumi.get(__ret__, 'organization_id'))
 
 
 @_utilities.lift_output_func(get_organization)

@@ -33,9 +33,6 @@ export interface GetTenantResult {
      * URLs that Auth0 may redirect to after logout.
      */
     readonly allowedLogoutUrls: string[];
-    /**
-     * Configuration settings for change password page.
-     */
     readonly changePasswords: outputs.GetTenantChangePassword[];
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -57,9 +54,6 @@ export interface GetTenantResult {
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
     readonly enabledLocales: string[];
-    /**
-     * Configuration settings for error pages.
-     */
     readonly errorPages: outputs.GetTenantErrorPage[];
     /**
      * Configuration settings for tenant flags.
@@ -69,9 +63,6 @@ export interface GetTenantResult {
      * Friendly name for the tenant.
      */
     readonly friendlyName: string;
-    /**
-     * Configuration settings for the Guardian MFA page.
-     */
     readonly guardianMfaPages: outputs.GetTenantGuardianMfaPage[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -109,8 +100,5 @@ export interface GetTenantResult {
      * Support URL for authenticating users.
      */
     readonly supportUrl: string;
-    /**
-     * Configuration settings for Universal Login.
-     */
     readonly universalLogins: outputs.GetTenantUniversalLogin[];
 }

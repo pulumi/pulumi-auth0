@@ -89,9 +89,12 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Configuration settings for permissions (scopes) attached to the role.
+     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      *
-     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      */
     public readonly permissions!: pulumi.Output<outputs.RolePermission[] | undefined>;
 
@@ -135,9 +138,12 @@ export interface RoleState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Configuration settings for permissions (scopes) attached to the role.
+     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      *
-     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }
@@ -155,9 +161,12 @@ export interface RoleArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Configuration settings for permissions (scopes) attached to the role.
+     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      *
-     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * @deprecated Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.RolePermission>[]>;
 }

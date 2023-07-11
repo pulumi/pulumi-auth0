@@ -103,7 +103,10 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings for change password page.
+        /// Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+        /// it will be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Output("changePassword")]
         public Output<Outputs.TenantChangePassword> ChangePassword { get; private set; } = null!;
@@ -133,7 +136,10 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> EnabledLocales { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings for error pages.
+        /// Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+        /// be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Output("errorPage")]
         public Output<Outputs.TenantErrorPage> ErrorPage { get; private set; } = null!;
@@ -151,7 +157,10 @@ namespace Pulumi.Auth0
         public Output<string> FriendlyName { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings for the Guardian MFA page.
+        /// Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+        /// and it will be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Output("guardianMfaPage")]
         public Output<Outputs.TenantGuardianMfaPage> GuardianMfaPage { get; private set; } = null!;
@@ -199,7 +208,10 @@ namespace Pulumi.Auth0
         public Output<string> SupportUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings for Universal Login.
+        /// Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+        /// settings through the `auth0_branding` resource. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+        /// for more info.
         /// </summary>
         [Output("universalLogin")]
         public Output<Outputs.TenantUniversalLogin> UniversalLogin { get; private set; } = null!;
@@ -263,7 +275,10 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Configuration settings for change password page.
+        /// Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+        /// it will be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Input("changePassword")]
         public Input<Inputs.TenantChangePasswordArgs>? ChangePassword { get; set; }
@@ -299,7 +314,10 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Configuration settings for error pages.
+        /// Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+        /// be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Input("errorPage")]
         public Input<Inputs.TenantErrorPageArgs>? ErrorPage { get; set; }
@@ -317,7 +335,10 @@ namespace Pulumi.Auth0
         public Input<string>? FriendlyName { get; set; }
 
         /// <summary>
-        /// Configuration settings for the Guardian MFA page.
+        /// Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+        /// and it will be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Input("guardianMfaPage")]
         public Input<Inputs.TenantGuardianMfaPageArgs>? GuardianMfaPage { get; set; }
@@ -365,7 +386,10 @@ namespace Pulumi.Auth0
         public Input<string>? SupportUrl { get; set; }
 
         /// <summary>
-        /// Configuration settings for Universal Login.
+        /// Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+        /// settings through the `auth0_branding` resource. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+        /// for more info.
         /// </summary>
         [Input("universalLogin")]
         public Input<Inputs.TenantUniversalLoginArgs>? UniversalLogin { get; set; }
@@ -391,7 +415,10 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Configuration settings for change password page.
+        /// Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+        /// it will be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Input("changePassword")]
         public Input<Inputs.TenantChangePasswordGetArgs>? ChangePassword { get; set; }
@@ -427,7 +454,10 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Configuration settings for error pages.
+        /// Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+        /// be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Input("errorPage")]
         public Input<Inputs.TenantErrorPageGetArgs>? ErrorPage { get; set; }
@@ -445,7 +475,10 @@ namespace Pulumi.Auth0
         public Input<string>? FriendlyName { get; set; }
 
         /// <summary>
-        /// Configuration settings for the Guardian MFA page.
+        /// Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+        /// and it will be removed in a future major version. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        /// info.
         /// </summary>
         [Input("guardianMfaPage")]
         public Input<Inputs.TenantGuardianMfaPageGetArgs>? GuardianMfaPage { get; set; }
@@ -493,7 +526,10 @@ namespace Pulumi.Auth0
         public Input<string>? SupportUrl { get; set; }
 
         /// <summary>
-        /// Configuration settings for Universal Login.
+        /// Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+        /// settings through the `auth0_branding` resource. Check the
+        /// [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+        /// for more info.
         /// </summary>
         [Input("universalLogin")]
         public Input<Inputs.TenantUniversalLoginGetArgs>? UniversalLogin { get; set; }

@@ -72,7 +72,7 @@ type LookupConnectionResult struct {
 	Id string `pulumi:"id"`
 	// Indicates whether the connection is domain level.
 	IsDomainConnection bool `pulumi:"isDomainConnection"`
-	// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+	// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the connection. If not provided, `connectionId` must be set.
 	Name *string `pulumi:"name"`
@@ -151,7 +151,7 @@ func (o LookupConnectionResultOutput) IsDomainConnection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupConnectionResult) bool { return v.IsDomainConnection }).(pulumi.BoolOutput)
 }
 
-// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
 func (o LookupConnectionResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConnectionResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }

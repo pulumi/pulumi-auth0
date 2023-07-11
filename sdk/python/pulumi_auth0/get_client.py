@@ -304,7 +304,7 @@ class GetClientResult:
     @pulumi.getter(name="isTokenEndpointIpHeaderTrusted")
     def is_token_endpoint_ip_header_trusted(self) -> bool:
         """
-        Indicates whether the token endpoint IP header is trusted.
+        Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
         """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
 
@@ -368,7 +368,7 @@ class GetClientResult:
     @pulumi.getter(name="organizationRequireBehavior")
     def organization_require_behavior(self) -> str:
         """
-        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         """
         return pulumi.get(self, "organization_require_behavior")
 
@@ -415,9 +415,6 @@ class GetClientResult:
     @property
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> str:
-        """
-        Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        """
         return pulumi.get(self, "token_endpoint_auth_method")
 
     @property
@@ -501,43 +498,43 @@ def get_client(client_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getClient:getClient', __args__, opts=opts, typ=GetClientResult).value
 
     return AwaitableGetClientResult(
-        addons=__ret__.addons,
-        allowed_clients=__ret__.allowed_clients,
-        allowed_logout_urls=__ret__.allowed_logout_urls,
-        allowed_origins=__ret__.allowed_origins,
-        app_type=__ret__.app_type,
-        callbacks=__ret__.callbacks,
-        client_aliases=__ret__.client_aliases,
-        client_id=__ret__.client_id,
-        client_metadata=__ret__.client_metadata,
-        client_secret=__ret__.client_secret,
-        cross_origin_auth=__ret__.cross_origin_auth,
-        cross_origin_loc=__ret__.cross_origin_loc,
-        custom_login_page=__ret__.custom_login_page,
-        custom_login_page_on=__ret__.custom_login_page_on,
-        description=__ret__.description,
-        encryption_key=__ret__.encryption_key,
-        form_template=__ret__.form_template,
-        grant_types=__ret__.grant_types,
-        id=__ret__.id,
-        initiate_login_uri=__ret__.initiate_login_uri,
-        is_first_party=__ret__.is_first_party,
-        is_token_endpoint_ip_header_trusted=__ret__.is_token_endpoint_ip_header_trusted,
-        jwt_configurations=__ret__.jwt_configurations,
-        logo_uri=__ret__.logo_uri,
-        mobiles=__ret__.mobiles,
-        name=__ret__.name,
-        native_social_logins=__ret__.native_social_logins,
-        oidc_backchannel_logout_urls=__ret__.oidc_backchannel_logout_urls,
-        oidc_conformant=__ret__.oidc_conformant,
-        organization_require_behavior=__ret__.organization_require_behavior,
-        organization_usage=__ret__.organization_usage,
-        refresh_tokens=__ret__.refresh_tokens,
-        signing_keys=__ret__.signing_keys,
-        sso=__ret__.sso,
-        sso_disabled=__ret__.sso_disabled,
-        token_endpoint_auth_method=__ret__.token_endpoint_auth_method,
-        web_origins=__ret__.web_origins)
+        addons=pulumi.get(__ret__, 'addons'),
+        allowed_clients=pulumi.get(__ret__, 'allowed_clients'),
+        allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
+        allowed_origins=pulumi.get(__ret__, 'allowed_origins'),
+        app_type=pulumi.get(__ret__, 'app_type'),
+        callbacks=pulumi.get(__ret__, 'callbacks'),
+        client_aliases=pulumi.get(__ret__, 'client_aliases'),
+        client_id=pulumi.get(__ret__, 'client_id'),
+        client_metadata=pulumi.get(__ret__, 'client_metadata'),
+        client_secret=pulumi.get(__ret__, 'client_secret'),
+        cross_origin_auth=pulumi.get(__ret__, 'cross_origin_auth'),
+        cross_origin_loc=pulumi.get(__ret__, 'cross_origin_loc'),
+        custom_login_page=pulumi.get(__ret__, 'custom_login_page'),
+        custom_login_page_on=pulumi.get(__ret__, 'custom_login_page_on'),
+        description=pulumi.get(__ret__, 'description'),
+        encryption_key=pulumi.get(__ret__, 'encryption_key'),
+        form_template=pulumi.get(__ret__, 'form_template'),
+        grant_types=pulumi.get(__ret__, 'grant_types'),
+        id=pulumi.get(__ret__, 'id'),
+        initiate_login_uri=pulumi.get(__ret__, 'initiate_login_uri'),
+        is_first_party=pulumi.get(__ret__, 'is_first_party'),
+        is_token_endpoint_ip_header_trusted=pulumi.get(__ret__, 'is_token_endpoint_ip_header_trusted'),
+        jwt_configurations=pulumi.get(__ret__, 'jwt_configurations'),
+        logo_uri=pulumi.get(__ret__, 'logo_uri'),
+        mobiles=pulumi.get(__ret__, 'mobiles'),
+        name=pulumi.get(__ret__, 'name'),
+        native_social_logins=pulumi.get(__ret__, 'native_social_logins'),
+        oidc_backchannel_logout_urls=pulumi.get(__ret__, 'oidc_backchannel_logout_urls'),
+        oidc_conformant=pulumi.get(__ret__, 'oidc_conformant'),
+        organization_require_behavior=pulumi.get(__ret__, 'organization_require_behavior'),
+        organization_usage=pulumi.get(__ret__, 'organization_usage'),
+        refresh_tokens=pulumi.get(__ret__, 'refresh_tokens'),
+        signing_keys=pulumi.get(__ret__, 'signing_keys'),
+        sso=pulumi.get(__ret__, 'sso'),
+        sso_disabled=pulumi.get(__ret__, 'sso_disabled'),
+        token_endpoint_auth_method=pulumi.get(__ret__, 'token_endpoint_auth_method'),
+        web_origins=pulumi.get(__ret__, 'web_origins'))
 
 
 @_utilities.lift_output_func(get_client)

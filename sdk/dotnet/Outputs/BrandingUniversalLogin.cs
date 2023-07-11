@@ -14,12 +14,12 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingUniversalLogin
     {
         /// <summary>
-        /// The body of login pages.
+        /// The html template for the New Universal Login Experience.
         /// </summary>
-        public readonly string? Body;
+        public readonly string Body;
 
         [OutputConstructor]
-        private BrandingUniversalLogin(string? body)
+        private BrandingUniversalLogin(string body)
         {
             Body = body;
         }

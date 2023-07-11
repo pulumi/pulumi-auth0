@@ -87,9 +87,13 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * List of permissions (scopes) used by this resource server.
+     * List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+     * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+     * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+     * info.
      *
-     * @deprecated Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * @deprecated Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
      */
     public readonly scopes!: pulumi.Output<outputs.ResourceServerScope[] | undefined>;
     /**
@@ -190,9 +194,13 @@ export interface ResourceServerState {
      */
     name?: pulumi.Input<string>;
     /**
-     * List of permissions (scopes) used by this resource server.
+     * List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+     * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+     * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+     * info.
      *
-     * @deprecated Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * @deprecated Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
      */
     scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScope>[]>;
     /**
@@ -246,9 +254,13 @@ export interface ResourceServerArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * List of permissions (scopes) used by this resource server.
+     * List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+     * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+     * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+     * info.
      *
-     * @deprecated Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * @deprecated Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
      */
     scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScope>[]>;
     /**

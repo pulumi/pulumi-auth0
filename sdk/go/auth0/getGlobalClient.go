@@ -7,8 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieve a tenant's global Auth0 application client.
-//
 // ## Example Usage
 //
 // ```go
@@ -84,7 +82,7 @@ type LookupGlobalClientResult struct {
 	InitiateLoginUri string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty bool `pulumi:"isFirstParty"`
-	// Indicates whether the token endpoint IP header is trusted.
+	// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
 	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
 	// Configuration settings for the JWTs issued for this client.
 	JwtConfigurations []GetGlobalClientJwtConfiguration `pulumi:"jwtConfigurations"`
@@ -100,7 +98,7 @@ type LookupGlobalClientResult struct {
 	OidcBackchannelLogoutUrls []string `pulumi:"oidcBackchannelLogoutUrls"`
 	// Indicates whether this client will conform to strict OIDC specifications.
 	OidcConformant bool `pulumi:"oidcConformant"`
-	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior string `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 	OrganizationUsage string `pulumi:"organizationUsage"`
@@ -111,8 +109,7 @@ type LookupGlobalClientResult struct {
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
-	SsoDisabled bool `pulumi:"ssoDisabled"`
-	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	SsoDisabled             bool   `pulumi:"ssoDisabled"`
 	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`

@@ -12,8 +12,6 @@ namespace Pulumi.Auth0
     public static class GetGlobalClient
     {
         /// <summary>
-        /// Retrieve a tenant's global Auth0 application client.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -123,7 +121,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool IsFirstParty;
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted.
+        /// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
         /// </summary>
         public readonly bool IsTokenEndpointIpHeaderTrusted;
         /// <summary>
@@ -155,7 +153,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool OidcConformant;
         /// <summary>
-        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         /// </summary>
         public readonly string OrganizationRequireBehavior;
         /// <summary>
@@ -178,9 +176,6 @@ namespace Pulumi.Auth0
         /// Indicates whether or not SSO is disabled.
         /// </summary>
         public readonly bool SsoDisabled;
-        /// <summary>
-        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-        /// </summary>
         public readonly string TokenEndpointAuthMethod;
         /// <summary>
         /// URLs that represent valid web origins for use with web message response mode.

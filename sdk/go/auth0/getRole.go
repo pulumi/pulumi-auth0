@@ -67,8 +67,7 @@ type LookupRoleResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the role. If not provided, `roleId` must be set.
-	Name *string `pulumi:"name"`
-	// Configuration settings for permissions (scopes) attached to the role.
+	Name        *string                 `pulumi:"name"`
 	Permissions []GetRolePermissionType `pulumi:"permissions"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId *string `pulumi:"roleId"`
@@ -129,7 +128,6 @@ func (o LookupRoleResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Configuration settings for permissions (scopes) attached to the role.
 func (o LookupRoleResultOutput) Permissions() GetRolePermissionTypeArrayOutput {
 	return o.ApplyT(func(v LookupRoleResult) []GetRolePermissionType { return v.Permissions }).(GetRolePermissionTypeArrayOutput)
 }

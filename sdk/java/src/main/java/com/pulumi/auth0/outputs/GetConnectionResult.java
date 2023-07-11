@@ -41,7 +41,7 @@ public final class GetConnectionResult {
      */
     private Boolean isDomainConnection;
     /**
-     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
     private Map<String,String> metadata;
@@ -108,7 +108,7 @@ public final class GetConnectionResult {
         return this.isDomainConnection;
     }
     /**
-     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
     public Map<String,String> metadata() {

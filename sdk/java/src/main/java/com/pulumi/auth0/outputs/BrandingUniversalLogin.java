@@ -6,24 +6,22 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class BrandingUniversalLogin {
     /**
-     * @return The body of login pages.
+     * @return The html template for the New Universal Login Experience.
      * 
      */
-    private @Nullable String body;
+    private String body;
 
     private BrandingUniversalLogin() {}
     /**
-     * @return The body of login pages.
+     * @return The html template for the New Universal Login Experience.
      * 
      */
-    public Optional<String> body() {
-        return Optional.ofNullable(this.body);
+    public String body() {
+        return this.body;
     }
 
     public static Builder builder() {
@@ -35,7 +33,7 @@ public final class BrandingUniversalLogin {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String body;
+        private String body;
         public Builder() {}
         public Builder(BrandingUniversalLogin defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +41,8 @@ public final class BrandingUniversalLogin {
         }
 
         @CustomType.Setter
-        public Builder body(@Nullable String body) {
-            this.body = body;
+        public Builder body(String body) {
+            this.body = Objects.requireNonNull(body);
             return this;
         }
         public BrandingUniversalLogin build() {

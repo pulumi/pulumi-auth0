@@ -22,10 +22,6 @@ public final class GetTenantResult {
      * 
      */
     private List<String> allowedLogoutUrls;
-    /**
-     * @return Configuration settings for change password page.
-     * 
-     */
     private List<GetTenantChangePassword> changePasswords;
     /**
      * @return API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -52,10 +48,6 @@ public final class GetTenantResult {
      * 
      */
     private List<String> enabledLocales;
-    /**
-     * @return Configuration settings for error pages.
-     * 
-     */
     private List<GetTenantErrorPage> errorPages;
     /**
      * @return Configuration settings for tenant flags.
@@ -67,10 +59,6 @@ public final class GetTenantResult {
      * 
      */
     private String friendlyName;
-    /**
-     * @return Configuration settings for the Guardian MFA page.
-     * 
-     */
     private List<GetTenantGuardianMfaPage> guardianMfaPages;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -117,10 +105,6 @@ public final class GetTenantResult {
      * 
      */
     private String supportUrl;
-    /**
-     * @return Configuration settings for Universal Login.
-     * 
-     */
     private List<GetTenantUniversalLogin> universalLogins;
 
     private GetTenantResult() {}
@@ -131,10 +115,6 @@ public final class GetTenantResult {
     public List<String> allowedLogoutUrls() {
         return this.allowedLogoutUrls;
     }
-    /**
-     * @return Configuration settings for change password page.
-     * 
-     */
     public List<GetTenantChangePassword> changePasswords() {
         return this.changePasswords;
     }
@@ -173,10 +153,6 @@ public final class GetTenantResult {
     public List<String> enabledLocales() {
         return this.enabledLocales;
     }
-    /**
-     * @return Configuration settings for error pages.
-     * 
-     */
     public List<GetTenantErrorPage> errorPages() {
         return this.errorPages;
     }
@@ -194,10 +170,6 @@ public final class GetTenantResult {
     public String friendlyName() {
         return this.friendlyName;
     }
-    /**
-     * @return Configuration settings for the Guardian MFA page.
-     * 
-     */
     public List<GetTenantGuardianMfaPage> guardianMfaPages() {
         return this.guardianMfaPages;
     }
@@ -264,10 +236,6 @@ public final class GetTenantResult {
     public String supportUrl() {
         return this.supportUrl;
     }
-    /**
-     * @return Configuration settings for Universal Login.
-     * 
-     */
     public List<GetTenantUniversalLogin> universalLogins() {
         return this.universalLogins;
     }

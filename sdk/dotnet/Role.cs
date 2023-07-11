@@ -93,7 +93,10 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings for permissions (scopes) attached to the role.
+        /// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+        /// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+        /// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.RolePermission>> Permissions { get; private set; } = null!;
@@ -160,9 +163,12 @@ namespace Pulumi.Auth0
         private InputList<Inputs.RolePermissionArgs>? _permissions;
 
         /// <summary>
-        /// Configuration settings for permissions (scopes) attached to the role.
+        /// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+        /// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+        /// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         /// </summary>
-        [Obsolete(@"Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.")]
+        [Obsolete(@"Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.")]
         public InputList<Inputs.RolePermissionArgs> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<Inputs.RolePermissionArgs>());
@@ -194,9 +200,12 @@ namespace Pulumi.Auth0
         private InputList<Inputs.RolePermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// Configuration settings for permissions (scopes) attached to the role.
+        /// Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+        /// attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+        /// `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         /// </summary>
-        [Obsolete(@"Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.")]
+        [Obsolete(@"Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.")]
         public InputList<Inputs.RolePermissionGetArgs> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<Inputs.RolePermissionGetArgs>());

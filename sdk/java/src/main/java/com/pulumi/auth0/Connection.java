@@ -293,7 +293,7 @@ import javax.annotation.Nullable;
  * ```
  * ### OAuth2 Connection
  * 
- * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
+ * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
  * ```java
  * package generated_program;
  * 
@@ -576,14 +576,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * IDs of the clients for which the connection is enabled.
+     * IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
      * 
      */
     @Export(name="enabledClients", type=List.class, parameters={String.class})
     private Output<List<String>> enabledClients;
 
     /**
-     * @return IDs of the clients for which the connection is enabled.
+     * @return IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
      * 
      */
     public Output<List<String>> enabledClients() {
@@ -604,14 +604,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.isDomainConnection;
     }
     /**
-     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
     @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
-     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
     public Output<Optional<Map<String,String>>> metadata() {

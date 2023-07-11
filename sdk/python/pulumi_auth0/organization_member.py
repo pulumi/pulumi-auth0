@@ -21,13 +21,17 @@ class OrganizationMemberArgs:
         The set of arguments for constructing a OrganizationMember resource.
         :param pulumi.Input[str] organization_id: The ID of the organization to assign the member to.
         :param pulumi.Input[str] user_id: ID of the user to add as an organization member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+               removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+               resource to manage organization member roles instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+               to do that.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "user_id", user_id)
         if roles is not None:
-            warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
-            pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
+            warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""", DeprecationWarning)
+            pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""")
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
 
@@ -59,8 +63,15 @@ class OrganizationMemberArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The role ID(s) to assign to the organization member.
+        The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+        removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+        resource to manage organization member roles instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+        to do that.
         """
+        warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""", DeprecationWarning)
+        pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""")
+
         return pulumi.get(self, "roles")
 
     @roles.setter
@@ -77,14 +88,18 @@ class _OrganizationMemberState:
         """
         Input properties used for looking up and filtering OrganizationMember resources.
         :param pulumi.Input[str] organization_id: The ID of the organization to assign the member to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+               removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+               resource to manage organization member roles instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+               to do that.
         :param pulumi.Input[str] user_id: ID of the user to add as an organization member.
         """
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
         if roles is not None:
-            warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
-            pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
+            warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""", DeprecationWarning)
+            pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""")
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
         if user_id is not None:
@@ -106,8 +121,15 @@ class _OrganizationMemberState:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The role ID(s) to assign to the organization member.
+        The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+        removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+        resource to manage organization member roles instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+        to do that.
         """
+        warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""", DeprecationWarning)
+        pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""")
+
         return pulumi.get(self, "roles")
 
     @roles.setter
@@ -171,7 +193,11 @@ class OrganizationMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] organization_id: The ID of the organization to assign the member to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+               removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+               resource to manage organization member roles instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+               to do that.
         :param pulumi.Input[str] user_id: ID of the user to add as an organization member.
         """
         ...
@@ -243,8 +269,8 @@ class OrganizationMember(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             if roles is not None and not opts.urn:
-                warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""", DeprecationWarning)
-                pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.""")
+                warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""", DeprecationWarning)
+                pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""")
             __props__.__dict__["roles"] = roles
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
@@ -270,7 +296,11 @@ class OrganizationMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] organization_id: The ID of the organization to assign the member to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+               removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+               resource to manage organization member roles instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+               to do that.
         :param pulumi.Input[str] user_id: ID of the user to add as an organization member.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -294,8 +324,15 @@ class OrganizationMember(pulumi.CustomResource):
     @pulumi.getter
     def roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The role ID(s) to assign to the organization member.
+        The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+        removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+        resource to manage organization member roles instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+        to do that.
         """
+        warnings.warn("""Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""", DeprecationWarning)
+        pulumi.log.warn("""roles is deprecated: Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.""")
+
         return pulumi.get(self, "roles")
 
     @property

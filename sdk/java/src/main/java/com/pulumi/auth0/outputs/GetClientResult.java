@@ -122,7 +122,7 @@ public final class GetClientResult {
      */
     private Boolean isFirstParty;
     /**
-     * @return Indicates whether the token endpoint IP header is trusted.
+     * @return Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
      * 
      */
     private Boolean isTokenEndpointIpHeaderTrusted;
@@ -162,7 +162,7 @@ public final class GetClientResult {
      */
     private Boolean oidcConformant;
     /**
-     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
      * 
      */
     private String organizationRequireBehavior;
@@ -191,10 +191,6 @@ public final class GetClientResult {
      * 
      */
     private Boolean ssoDisabled;
-    /**
-     * @return Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-     * 
-     */
     private String tokenEndpointAuthMethod;
     /**
      * @return URLs that represent valid web origins for use with web message response mode.
@@ -347,7 +343,7 @@ public final class GetClientResult {
         return this.isFirstParty;
     }
     /**
-     * @return Indicates whether the token endpoint IP header is trusted.
+     * @return Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
      * 
      */
     public Boolean isTokenEndpointIpHeaderTrusted() {
@@ -403,7 +399,7 @@ public final class GetClientResult {
         return this.oidcConformant;
     }
     /**
-     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default) or `pre_login_prompt`.
+     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
      * 
      */
     public String organizationRequireBehavior() {
@@ -444,10 +440,6 @@ public final class GetClientResult {
     public Boolean ssoDisabled() {
         return this.ssoDisabled;
     }
-    /**
-     * @return Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
-     * 
-     */
     public String tokenEndpointAuthMethod() {
         return this.tokenEndpointAuthMethod;
     }

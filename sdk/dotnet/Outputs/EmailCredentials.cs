@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? ApiKey;
         /// <summary>
-        /// API User for your email service.
+        /// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
         /// </summary>
         public readonly string? ApiUser;
         /// <summary>

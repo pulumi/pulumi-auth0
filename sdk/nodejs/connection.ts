@@ -173,7 +173,7 @@ import * as utilities from "./utilities";
  * ```
  * ### OAuth2 Connection
  *
- * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
+ * Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -375,7 +375,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * IDs of the clients for which the connection is enabled.
+     * IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
      */
     public /*out*/ readonly enabledClients!: pulumi.Output<string[]>;
     /**
@@ -383,7 +383,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly isDomainConnection!: pulumi.Output<boolean>;
     /**
-     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -458,7 +458,7 @@ export interface ConnectionState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * IDs of the clients for which the connection is enabled.
+     * IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
      */
     enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -466,7 +466,7 @@ export interface ConnectionState {
      */
     isDomainConnection?: pulumi.Input<boolean>;
     /**
-     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -504,7 +504,7 @@ export interface ConnectionArgs {
      */
     isDomainConnection?: pulumi.Input<boolean>;
     /**
-     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

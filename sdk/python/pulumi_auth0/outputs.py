@@ -86,6 +86,10 @@ __all__ = [
     'LogStreamSink',
     'OrganizationBranding',
     'OrganizationConnectionsEnabledConnection',
+    'PagesChangePassword',
+    'PagesError',
+    'PagesGuardianMfa',
+    'PagesLogin',
     'ResourceServerScope',
     'ResourceServerScopesScope',
     'RolePermission',
@@ -1502,18 +1506,17 @@ class BrandingThemeWidget(dict):
 @pulumi.output_type
 class BrandingUniversalLogin(dict):
     def __init__(__self__, *,
-                 body: Optional[str] = None):
+                 body: str):
         """
-        :param str body: The body of login pages.
+        :param str body: The html template for the New Universal Login Experience.
         """
-        if body is not None:
-            pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "body", body)
 
     @property
     @pulumi.getter
-    def body(self) -> Optional[str]:
+    def body(self) -> str:
         """
-        The body of login pages.
+        The html template for the New Universal Login Experience.
         """
         return pulumi.get(self, "body")
 
@@ -2801,7 +2804,7 @@ class ConnectionOptions(dict):
         :param 'ConnectionOptionsTotpArgs' totp: Configuration options for one-time passwords.
         :param str twilio_sid: SID for your Twilio account.
         :param str twilio_token: AuthToken for your Twilio account.
-        :param str type: Value can be `back_channel` or `front_channel`.
+        :param str type: Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
         :param str upstream_params: You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         :param bool use_cert_auth: Indicates whether to use cert auth or not.
         :param bool use_kerberos: Indicates whether to use Kerberos or not.
@@ -3597,7 +3600,7 @@ class ConnectionOptions(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Value can be `back_channel` or `front_channel`.
+        Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
         """
         return pulumi.get(self, "type")
 
@@ -4060,7 +4063,7 @@ class EmailCredentials(dict):
         """
         :param str access_key_id: AWS Access Key ID. Used only for AWS.
         :param str api_key: API Key for your email service. Will always be encrypted in our database.
-        :param str api_user: API User for your email service.
+        :param str api_user: API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
         :param str domain: Domain name.
         :param str region: Default region. Used only for AWS, Mailgun, and SparkPost.
         :param str secret_access_key: AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
@@ -4110,8 +4113,11 @@ class EmailCredentials(dict):
     @pulumi.getter(name="apiUser")
     def api_user(self) -> Optional[str]:
         """
-        API User for your email service.
+        API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
         """
+        warnings.warn("""This field is not accepted by the API any more so it will be removed soon.""", DeprecationWarning)
+        pulumi.log.warn("""api_user is deprecated: This field is not accepted by the API any more so it will be removed soon.""")
+
         return pulumi.get(self, "api_user")
 
     @property
@@ -6220,6 +6226,152 @@ class OrganizationConnectionsEnabledConnection(dict):
 
 
 @pulumi.output_type
+class PagesChangePassword(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 html: str):
+        """
+        :param bool enabled: Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+        :param str html: Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def html(self) -> str:
+        """
+        Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        return pulumi.get(self, "html")
+
+
+@pulumi.output_type
+class PagesError(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "showLogLink":
+            suggest = "show_log_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PagesError. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PagesError.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PagesError.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 show_log_link: bool,
+                 html: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param bool show_log_link: Indicates whether to show the link to logs as part of the default error page.
+        :param str html: Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        :param str url: URL to redirect to when an error occurs, instead of showing the default error page.
+        """
+        pulumi.set(__self__, "show_log_link", show_log_link)
+        if html is not None:
+            pulumi.set(__self__, "html", html)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="showLogLink")
+    def show_log_link(self) -> bool:
+        """
+        Indicates whether to show the link to logs as part of the default error page.
+        """
+        return pulumi.get(self, "show_log_link")
+
+    @property
+    @pulumi.getter
+    def html(self) -> Optional[str]:
+        """
+        Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        return pulumi.get(self, "html")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        URL to redirect to when an error occurs, instead of showing the default error page.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class PagesGuardianMfa(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 html: str):
+        """
+        :param bool enabled: Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+        :param str html: Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def html(self) -> str:
+        """
+        Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        return pulumi.get(self, "html")
+
+
+@pulumi.output_type
+class PagesLogin(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 html: str):
+        """
+        :param bool enabled: Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+        :param str html: Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def html(self) -> str:
+        """
+        Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        return pulumi.get(self, "html")
+
+
+@pulumi.output_type
 class ResourceServerScope(dict):
     def __init__(__self__, *,
                  value: str,
@@ -6842,6 +6994,9 @@ class TenantFlags(dict):
         """
         Indicates whether the New Universal Login Experience is enabled.
         """
+        warnings.warn("""This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""", DeprecationWarning)
+        pulumi.log.warn("""universal_login is deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""")
+
         return pulumi.get(self, "universal_login")
 
     @property
@@ -9936,9 +10091,6 @@ class GetTenantFlagResult(dict):
                  revoke_refresh_token_grant: bool,
                  universal_login: bool,
                  use_scope_descriptions_for_consent: bool):
-        """
-        :param bool universal_login: Configuration settings for Universal Login.
-        """
         pulumi.set(__self__, "allow_legacy_delegation_grant_types", allow_legacy_delegation_grant_types)
         pulumi.set(__self__, "allow_legacy_ro_grant_types", allow_legacy_ro_grant_types)
         pulumi.set(__self__, "allow_legacy_tokeninfo_endpoint", allow_legacy_tokeninfo_endpoint)
@@ -10071,9 +10223,6 @@ class GetTenantFlagResult(dict):
     @property
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> bool:
-        """
-        Configuration settings for Universal Login.
-        """
         return pulumi.get(self, "universal_login")
 
     @property

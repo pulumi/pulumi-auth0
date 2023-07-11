@@ -345,7 +345,7 @@ class Branding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def colors(self) -> pulumi.Output[Optional['outputs.BrandingColors']]:
+    def colors(self) -> pulumi.Output['outputs.BrandingColors']:
         """
         Configuration settings for colors for branding.
         """
@@ -361,7 +361,7 @@ class Branding(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def font(self) -> pulumi.Output[Optional['outputs.BrandingFont']]:
+    def font(self) -> pulumi.Output['outputs.BrandingFont']:
         """
         Configuration settings to customize the font.
         """

@@ -66,7 +66,11 @@ namespace Pulumi.Auth0
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// The role ID(s) to assign to the organization member.
+        /// The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+        /// removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+        /// resource to manage organization member roles instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+        /// to do that.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
@@ -133,9 +137,13 @@ namespace Pulumi.Auth0
         private InputList<string>? _roles;
 
         /// <summary>
-        /// The role ID(s) to assign to the organization member.
+        /// The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+        /// removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+        /// resource to manage organization member roles instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+        /// to do that.
         /// </summary>
-        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.")]
+        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.")]
         public InputList<string> Roles
         {
             get => _roles ?? (_roles = new InputList<string>());
@@ -166,9 +174,13 @@ namespace Pulumi.Auth0
         private InputList<string>? _roles;
 
         /// <summary>
-        /// The role ID(s) to assign to the organization member.
+        /// The role ID(s) to assign to the organization member. Managing roles through this attribute is deprecated and it will be
+        /// removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role`
+        /// resource to manage organization member roles instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how
+        /// to do that.
         /// </summary>
-        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.")]
+        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_organization_member_roles` or the `auth0_organization_member_role` resource to manage organization member roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#organization-member-roles) on how to do that.")]
         public InputList<string> Roles
         {
             get => _roles ?? (_roles = new InputList<string>());

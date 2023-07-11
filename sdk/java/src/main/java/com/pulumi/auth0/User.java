@@ -216,14 +216,18 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * List of API permissions granted to the user.
+     * List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
+     * 
+     * @deprecated
+     * Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
      * 
      */
+    @Deprecated /* Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead. */
     @Export(name="permissions", type=List.class, parameters={UserPermission.class})
     private Output<List<UserPermission>> permissions;
 
     /**
-     * @return List of API permissions granted to the user.
+     * @return List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
      * 
      */
     public Output<List<UserPermission>> permissions() {
@@ -272,18 +276,24 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.picture;
     }
     /**
-     * Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
+     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
+     * instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      * 
      * @deprecated
-     * Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+     * Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      * 
      */
-    @Deprecated /* Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that. */
+    @Deprecated /* Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that. */
     @Export(name="roles", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> roles;
 
     /**
-     * @return Set of IDs of roles assigned to the user.
+     * @return Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
+     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
+     * instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      * 
      */
     public Output<Optional<List<String>>> roles() {

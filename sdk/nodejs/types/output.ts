@@ -362,7 +362,7 @@ export interface BrandingThemeWidget {
 
 export interface BrandingUniversalLogin {
     /**
-     * The body of login pages.
+     * The html template for the New Universal Login Experience.
      */
     body: string;
 }
@@ -841,7 +841,7 @@ export interface ConnectionOptions {
      */
     twilioToken?: string;
     /**
-     * Value can be `backChannel` or `frontChannel`.
+     * Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      */
     type?: string;
     /**
@@ -952,7 +952,7 @@ export interface EmailCredentials {
      */
     apiKey?: string;
     /**
-     * API User for your email service.
+     * API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
      *
      * @deprecated This field is not accepted by the API any more so it will be removed soon.
      */
@@ -1561,9 +1561,6 @@ export interface GetTenantFlag {
     mfaShowFactorListOnEnrollment: boolean;
     noDiscloseEnterpriseConnections: boolean;
     revokeRefreshTokenGrant: boolean;
-    /**
-     * Configuration settings for Universal Login.
-     */
     universalLogin: boolean;
     useScopeDescriptionsForConsent: boolean;
 }
@@ -1993,6 +1990,54 @@ export interface OrganizationConnectionsEnabledConnection {
      * The ID of the connection to enable for the organization.
      */
     connectionId: string;
+}
+
+export interface PagesChangePassword {
+    /**
+     * Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+     */
+    enabled: boolean;
+    /**
+     * Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     */
+    html: string;
+}
+
+export interface PagesError {
+    /**
+     * Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     */
+    html?: string;
+    /**
+     * Indicates whether to show the link to logs as part of the default error page.
+     */
+    showLogLink: boolean;
+    /**
+     * URL to redirect to when an error occurs, instead of showing the default error page.
+     */
+    url?: string;
+}
+
+export interface PagesGuardianMfa {
+    /**
+     * Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+     */
+    enabled: boolean;
+    /**
+     * Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     */
+    html: string;
+}
+
+export interface PagesLogin {
+    /**
+     * Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+     */
+    enabled: boolean;
+    /**
+     * Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+     */
+    html: string;
 }
 
 export interface ResourceServerScope {

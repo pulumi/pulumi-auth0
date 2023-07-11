@@ -4060,8 +4060,8 @@ func (o BrandingThemeWidgetPtrOutput) SocialButtonsLayout() pulumi.StringPtrOutp
 }
 
 type BrandingUniversalLogin struct {
-	// The body of login pages.
-	Body *string `pulumi:"body"`
+	// The html template for the New Universal Login Experience.
+	Body string `pulumi:"body"`
 }
 
 // BrandingUniversalLoginInput is an input type that accepts BrandingUniversalLoginArgs and BrandingUniversalLoginOutput values.
@@ -4076,8 +4076,8 @@ type BrandingUniversalLoginInput interface {
 }
 
 type BrandingUniversalLoginArgs struct {
-	// The body of login pages.
-	Body pulumi.StringPtrInput `pulumi:"body"`
+	// The html template for the New Universal Login Experience.
+	Body pulumi.StringInput `pulumi:"body"`
 }
 
 func (BrandingUniversalLoginArgs) ElementType() reflect.Type {
@@ -4157,9 +4157,9 @@ func (o BrandingUniversalLoginOutput) ToBrandingUniversalLoginPtrOutputWithConte
 	}).(BrandingUniversalLoginPtrOutput)
 }
 
-// The body of login pages.
-func (o BrandingUniversalLoginOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BrandingUniversalLogin) *string { return v.Body }).(pulumi.StringPtrOutput)
+// The html template for the New Universal Login Experience.
+func (o BrandingUniversalLoginOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v BrandingUniversalLogin) string { return v.Body }).(pulumi.StringOutput)
 }
 
 type BrandingUniversalLoginPtrOutput struct{ *pulumi.OutputState }
@@ -4186,13 +4186,13 @@ func (o BrandingUniversalLoginPtrOutput) Elem() BrandingUniversalLoginOutput {
 	}).(BrandingUniversalLoginOutput)
 }
 
-// The body of login pages.
+// The html template for the New Universal Login Experience.
 func (o BrandingUniversalLoginPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BrandingUniversalLogin) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Body
+		return &v.Body
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6929,7 +6929,7 @@ type ConnectionOptions struct {
 	TwilioSid *string `pulumi:"twilioSid"`
 	// AuthToken for your Twilio account.
 	TwilioToken *string `pulumi:"twilioToken"`
-	// Value can be `backChannel` or `frontChannel`.
+	// Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
 	Type *string `pulumi:"type"`
 	// You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
 	UpstreamParams *string `pulumi:"upstreamParams"`
@@ -7115,7 +7115,7 @@ type ConnectionOptionsArgs struct {
 	TwilioSid pulumi.StringPtrInput `pulumi:"twilioSid"`
 	// AuthToken for your Twilio account.
 	TwilioToken pulumi.StringPtrInput `pulumi:"twilioToken"`
-	// Value can be `backChannel` or `frontChannel`.
+	// Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
 	UpstreamParams pulumi.StringPtrInput `pulumi:"upstreamParams"`
@@ -7596,7 +7596,7 @@ func (o ConnectionOptionsOutput) TwilioToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TwilioToken }).(pulumi.StringPtrOutput)
 }
 
-// Value can be `backChannel` or `frontChannel`.
+// Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
 func (o ConnectionOptionsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -8430,7 +8430,7 @@ func (o ConnectionOptionsPtrOutput) TwilioToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value can be `backChannel` or `frontChannel`.
+// Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
 func (o ConnectionOptionsPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -10224,7 +10224,7 @@ type EmailCredentials struct {
 	AccessKeyId *string `pulumi:"accessKeyId"`
 	// API Key for your email service. Will always be encrypted in our database.
 	ApiKey *string `pulumi:"apiKey"`
-	// API User for your email service.
+	// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
 	//
 	// Deprecated: This field is not accepted by the API any more so it will be removed soon.
 	ApiUser *string `pulumi:"apiUser"`
@@ -10260,7 +10260,7 @@ type EmailCredentialsArgs struct {
 	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
 	// API Key for your email service. Will always be encrypted in our database.
 	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
-	// API User for your email service.
+	// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
 	//
 	// Deprecated: This field is not accepted by the API any more so it will be removed soon.
 	ApiUser pulumi.StringPtrInput `pulumi:"apiUser"`
@@ -10367,7 +10367,7 @@ func (o EmailCredentialsOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailCredentials) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-// API User for your email service.
+// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
 //
 // Deprecated: This field is not accepted by the API any more so it will be removed soon.
 func (o EmailCredentialsOutput) ApiUser() pulumi.StringPtrOutput {
@@ -10453,7 +10453,7 @@ func (o EmailCredentialsPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// API User for your email service.
+// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
 //
 // Deprecated: This field is not accepted by the API any more so it will be removed soon.
 func (o EmailCredentialsPtrOutput) ApiUser() pulumi.StringPtrOutput {
@@ -15975,6 +15975,649 @@ func (o OrganizationConnectionsEnabledConnectionArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationConnectionsEnabledConnection {
 		return vs[0].([]OrganizationConnectionsEnabledConnection)[vs[1].(int)]
 	}).(OrganizationConnectionsEnabledConnectionOutput)
+}
+
+type PagesChangePassword struct {
+	// Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+	Enabled bool `pulumi:"enabled"`
+	// Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+	Html string `pulumi:"html"`
+}
+
+// PagesChangePasswordInput is an input type that accepts PagesChangePasswordArgs and PagesChangePasswordOutput values.
+// You can construct a concrete instance of `PagesChangePasswordInput` via:
+//
+//	PagesChangePasswordArgs{...}
+type PagesChangePasswordInput interface {
+	pulumi.Input
+
+	ToPagesChangePasswordOutput() PagesChangePasswordOutput
+	ToPagesChangePasswordOutputWithContext(context.Context) PagesChangePasswordOutput
+}
+
+type PagesChangePasswordArgs struct {
+	// Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+	Html pulumi.StringInput `pulumi:"html"`
+}
+
+func (PagesChangePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesChangePassword)(nil)).Elem()
+}
+
+func (i PagesChangePasswordArgs) ToPagesChangePasswordOutput() PagesChangePasswordOutput {
+	return i.ToPagesChangePasswordOutputWithContext(context.Background())
+}
+
+func (i PagesChangePasswordArgs) ToPagesChangePasswordOutputWithContext(ctx context.Context) PagesChangePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesChangePasswordOutput)
+}
+
+func (i PagesChangePasswordArgs) ToPagesChangePasswordPtrOutput() PagesChangePasswordPtrOutput {
+	return i.ToPagesChangePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i PagesChangePasswordArgs) ToPagesChangePasswordPtrOutputWithContext(ctx context.Context) PagesChangePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesChangePasswordOutput).ToPagesChangePasswordPtrOutputWithContext(ctx)
+}
+
+// PagesChangePasswordPtrInput is an input type that accepts PagesChangePasswordArgs, PagesChangePasswordPtr and PagesChangePasswordPtrOutput values.
+// You can construct a concrete instance of `PagesChangePasswordPtrInput` via:
+//
+//	        PagesChangePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesChangePasswordPtrInput interface {
+	pulumi.Input
+
+	ToPagesChangePasswordPtrOutput() PagesChangePasswordPtrOutput
+	ToPagesChangePasswordPtrOutputWithContext(context.Context) PagesChangePasswordPtrOutput
+}
+
+type pagesChangePasswordPtrType PagesChangePasswordArgs
+
+func PagesChangePasswordPtr(v *PagesChangePasswordArgs) PagesChangePasswordPtrInput {
+	return (*pagesChangePasswordPtrType)(v)
+}
+
+func (*pagesChangePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesChangePassword)(nil)).Elem()
+}
+
+func (i *pagesChangePasswordPtrType) ToPagesChangePasswordPtrOutput() PagesChangePasswordPtrOutput {
+	return i.ToPagesChangePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesChangePasswordPtrType) ToPagesChangePasswordPtrOutputWithContext(ctx context.Context) PagesChangePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesChangePasswordPtrOutput)
+}
+
+type PagesChangePasswordOutput struct{ *pulumi.OutputState }
+
+func (PagesChangePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesChangePassword)(nil)).Elem()
+}
+
+func (o PagesChangePasswordOutput) ToPagesChangePasswordOutput() PagesChangePasswordOutput {
+	return o
+}
+
+func (o PagesChangePasswordOutput) ToPagesChangePasswordOutputWithContext(ctx context.Context) PagesChangePasswordOutput {
+	return o
+}
+
+func (o PagesChangePasswordOutput) ToPagesChangePasswordPtrOutput() PagesChangePasswordPtrOutput {
+	return o.ToPagesChangePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o PagesChangePasswordOutput) ToPagesChangePasswordPtrOutputWithContext(ctx context.Context) PagesChangePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesChangePassword) *PagesChangePassword {
+		return &v
+	}).(PagesChangePasswordPtrOutput)
+}
+
+// Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+func (o PagesChangePasswordOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v PagesChangePassword) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+func (o PagesChangePasswordOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v PagesChangePassword) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type PagesChangePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesChangePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesChangePassword)(nil)).Elem()
+}
+
+func (o PagesChangePasswordPtrOutput) ToPagesChangePasswordPtrOutput() PagesChangePasswordPtrOutput {
+	return o
+}
+
+func (o PagesChangePasswordPtrOutput) ToPagesChangePasswordPtrOutputWithContext(ctx context.Context) PagesChangePasswordPtrOutput {
+	return o
+}
+
+func (o PagesChangePasswordPtrOutput) Elem() PagesChangePasswordOutput {
+	return o.ApplyT(func(v *PagesChangePassword) PagesChangePassword {
+		if v != nil {
+			return *v
+		}
+		var ret PagesChangePassword
+		return ret
+	}).(PagesChangePasswordOutput)
+}
+
+// Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+func (o PagesChangePasswordPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PagesChangePassword) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+func (o PagesChangePasswordPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesChangePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
+	}).(pulumi.StringPtrOutput)
+}
+
+type PagesError struct {
+	// Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+	Html *string `pulumi:"html"`
+	// Indicates whether to show the link to logs as part of the default error page.
+	ShowLogLink bool `pulumi:"showLogLink"`
+	// URL to redirect to when an error occurs, instead of showing the default error page.
+	Url *string `pulumi:"url"`
+}
+
+// PagesErrorInput is an input type that accepts PagesErrorArgs and PagesErrorOutput values.
+// You can construct a concrete instance of `PagesErrorInput` via:
+//
+//	PagesErrorArgs{...}
+type PagesErrorInput interface {
+	pulumi.Input
+
+	ToPagesErrorOutput() PagesErrorOutput
+	ToPagesErrorOutputWithContext(context.Context) PagesErrorOutput
+}
+
+type PagesErrorArgs struct {
+	// Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+	Html pulumi.StringPtrInput `pulumi:"html"`
+	// Indicates whether to show the link to logs as part of the default error page.
+	ShowLogLink pulumi.BoolInput `pulumi:"showLogLink"`
+	// URL to redirect to when an error occurs, instead of showing the default error page.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (PagesErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesError)(nil)).Elem()
+}
+
+func (i PagesErrorArgs) ToPagesErrorOutput() PagesErrorOutput {
+	return i.ToPagesErrorOutputWithContext(context.Background())
+}
+
+func (i PagesErrorArgs) ToPagesErrorOutputWithContext(ctx context.Context) PagesErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesErrorOutput)
+}
+
+func (i PagesErrorArgs) ToPagesErrorPtrOutput() PagesErrorPtrOutput {
+	return i.ToPagesErrorPtrOutputWithContext(context.Background())
+}
+
+func (i PagesErrorArgs) ToPagesErrorPtrOutputWithContext(ctx context.Context) PagesErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesErrorOutput).ToPagesErrorPtrOutputWithContext(ctx)
+}
+
+// PagesErrorPtrInput is an input type that accepts PagesErrorArgs, PagesErrorPtr and PagesErrorPtrOutput values.
+// You can construct a concrete instance of `PagesErrorPtrInput` via:
+//
+//	        PagesErrorArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesErrorPtrInput interface {
+	pulumi.Input
+
+	ToPagesErrorPtrOutput() PagesErrorPtrOutput
+	ToPagesErrorPtrOutputWithContext(context.Context) PagesErrorPtrOutput
+}
+
+type pagesErrorPtrType PagesErrorArgs
+
+func PagesErrorPtr(v *PagesErrorArgs) PagesErrorPtrInput {
+	return (*pagesErrorPtrType)(v)
+}
+
+func (*pagesErrorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesError)(nil)).Elem()
+}
+
+func (i *pagesErrorPtrType) ToPagesErrorPtrOutput() PagesErrorPtrOutput {
+	return i.ToPagesErrorPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesErrorPtrType) ToPagesErrorPtrOutputWithContext(ctx context.Context) PagesErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesErrorPtrOutput)
+}
+
+type PagesErrorOutput struct{ *pulumi.OutputState }
+
+func (PagesErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesError)(nil)).Elem()
+}
+
+func (o PagesErrorOutput) ToPagesErrorOutput() PagesErrorOutput {
+	return o
+}
+
+func (o PagesErrorOutput) ToPagesErrorOutputWithContext(ctx context.Context) PagesErrorOutput {
+	return o
+}
+
+func (o PagesErrorOutput) ToPagesErrorPtrOutput() PagesErrorPtrOutput {
+	return o.ToPagesErrorPtrOutputWithContext(context.Background())
+}
+
+func (o PagesErrorOutput) ToPagesErrorPtrOutputWithContext(ctx context.Context) PagesErrorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesError) *PagesError {
+		return &v
+	}).(PagesErrorPtrOutput)
+}
+
+// Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+func (o PagesErrorOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesError) *string { return v.Html }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to show the link to logs as part of the default error page.
+func (o PagesErrorOutput) ShowLogLink() pulumi.BoolOutput {
+	return o.ApplyT(func(v PagesError) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
+}
+
+// URL to redirect to when an error occurs, instead of showing the default error page.
+func (o PagesErrorOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PagesError) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type PagesErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesError)(nil)).Elem()
+}
+
+func (o PagesErrorPtrOutput) ToPagesErrorPtrOutput() PagesErrorPtrOutput {
+	return o
+}
+
+func (o PagesErrorPtrOutput) ToPagesErrorPtrOutputWithContext(ctx context.Context) PagesErrorPtrOutput {
+	return o
+}
+
+func (o PagesErrorPtrOutput) Elem() PagesErrorOutput {
+	return o.ApplyT(func(v *PagesError) PagesError {
+		if v != nil {
+			return *v
+		}
+		var ret PagesError
+		return ret
+	}).(PagesErrorOutput)
+}
+
+// Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+func (o PagesErrorPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Html
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to show the link to logs as part of the default error page.
+func (o PagesErrorPtrOutput) ShowLogLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PagesError) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShowLogLink
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URL to redirect to when an error occurs, instead of showing the default error page.
+func (o PagesErrorPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type PagesGuardianMfa struct {
+	// Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+	Enabled bool `pulumi:"enabled"`
+	// Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+	Html string `pulumi:"html"`
+}
+
+// PagesGuardianMfaInput is an input type that accepts PagesGuardianMfaArgs and PagesGuardianMfaOutput values.
+// You can construct a concrete instance of `PagesGuardianMfaInput` via:
+//
+//	PagesGuardianMfaArgs{...}
+type PagesGuardianMfaInput interface {
+	pulumi.Input
+
+	ToPagesGuardianMfaOutput() PagesGuardianMfaOutput
+	ToPagesGuardianMfaOutputWithContext(context.Context) PagesGuardianMfaOutput
+}
+
+type PagesGuardianMfaArgs struct {
+	// Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+	Html pulumi.StringInput `pulumi:"html"`
+}
+
+func (PagesGuardianMfaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesGuardianMfa)(nil)).Elem()
+}
+
+func (i PagesGuardianMfaArgs) ToPagesGuardianMfaOutput() PagesGuardianMfaOutput {
+	return i.ToPagesGuardianMfaOutputWithContext(context.Background())
+}
+
+func (i PagesGuardianMfaArgs) ToPagesGuardianMfaOutputWithContext(ctx context.Context) PagesGuardianMfaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesGuardianMfaOutput)
+}
+
+func (i PagesGuardianMfaArgs) ToPagesGuardianMfaPtrOutput() PagesGuardianMfaPtrOutput {
+	return i.ToPagesGuardianMfaPtrOutputWithContext(context.Background())
+}
+
+func (i PagesGuardianMfaArgs) ToPagesGuardianMfaPtrOutputWithContext(ctx context.Context) PagesGuardianMfaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesGuardianMfaOutput).ToPagesGuardianMfaPtrOutputWithContext(ctx)
+}
+
+// PagesGuardianMfaPtrInput is an input type that accepts PagesGuardianMfaArgs, PagesGuardianMfaPtr and PagesGuardianMfaPtrOutput values.
+// You can construct a concrete instance of `PagesGuardianMfaPtrInput` via:
+//
+//	        PagesGuardianMfaArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesGuardianMfaPtrInput interface {
+	pulumi.Input
+
+	ToPagesGuardianMfaPtrOutput() PagesGuardianMfaPtrOutput
+	ToPagesGuardianMfaPtrOutputWithContext(context.Context) PagesGuardianMfaPtrOutput
+}
+
+type pagesGuardianMfaPtrType PagesGuardianMfaArgs
+
+func PagesGuardianMfaPtr(v *PagesGuardianMfaArgs) PagesGuardianMfaPtrInput {
+	return (*pagesGuardianMfaPtrType)(v)
+}
+
+func (*pagesGuardianMfaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesGuardianMfa)(nil)).Elem()
+}
+
+func (i *pagesGuardianMfaPtrType) ToPagesGuardianMfaPtrOutput() PagesGuardianMfaPtrOutput {
+	return i.ToPagesGuardianMfaPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesGuardianMfaPtrType) ToPagesGuardianMfaPtrOutputWithContext(ctx context.Context) PagesGuardianMfaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesGuardianMfaPtrOutput)
+}
+
+type PagesGuardianMfaOutput struct{ *pulumi.OutputState }
+
+func (PagesGuardianMfaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesGuardianMfa)(nil)).Elem()
+}
+
+func (o PagesGuardianMfaOutput) ToPagesGuardianMfaOutput() PagesGuardianMfaOutput {
+	return o
+}
+
+func (o PagesGuardianMfaOutput) ToPagesGuardianMfaOutputWithContext(ctx context.Context) PagesGuardianMfaOutput {
+	return o
+}
+
+func (o PagesGuardianMfaOutput) ToPagesGuardianMfaPtrOutput() PagesGuardianMfaPtrOutput {
+	return o.ToPagesGuardianMfaPtrOutputWithContext(context.Background())
+}
+
+func (o PagesGuardianMfaOutput) ToPagesGuardianMfaPtrOutputWithContext(ctx context.Context) PagesGuardianMfaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesGuardianMfa) *PagesGuardianMfa {
+		return &v
+	}).(PagesGuardianMfaPtrOutput)
+}
+
+// Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+func (o PagesGuardianMfaOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v PagesGuardianMfa) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+func (o PagesGuardianMfaOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v PagesGuardianMfa) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type PagesGuardianMfaPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesGuardianMfaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesGuardianMfa)(nil)).Elem()
+}
+
+func (o PagesGuardianMfaPtrOutput) ToPagesGuardianMfaPtrOutput() PagesGuardianMfaPtrOutput {
+	return o
+}
+
+func (o PagesGuardianMfaPtrOutput) ToPagesGuardianMfaPtrOutputWithContext(ctx context.Context) PagesGuardianMfaPtrOutput {
+	return o
+}
+
+func (o PagesGuardianMfaPtrOutput) Elem() PagesGuardianMfaOutput {
+	return o.ApplyT(func(v *PagesGuardianMfa) PagesGuardianMfa {
+		if v != nil {
+			return *v
+		}
+		var ret PagesGuardianMfa
+		return ret
+	}).(PagesGuardianMfaOutput)
+}
+
+// Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+func (o PagesGuardianMfaPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PagesGuardianMfa) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+func (o PagesGuardianMfaPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesGuardianMfa) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
+	}).(pulumi.StringPtrOutput)
+}
+
+type PagesLogin struct {
+	// Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+	Enabled bool `pulumi:"enabled"`
+	// Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+	Html string `pulumi:"html"`
+}
+
+// PagesLoginInput is an input type that accepts PagesLoginArgs and PagesLoginOutput values.
+// You can construct a concrete instance of `PagesLoginInput` via:
+//
+//	PagesLoginArgs{...}
+type PagesLoginInput interface {
+	pulumi.Input
+
+	ToPagesLoginOutput() PagesLoginOutput
+	ToPagesLoginOutputWithContext(context.Context) PagesLoginOutput
+}
+
+type PagesLoginArgs struct {
+	// Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+	Html pulumi.StringInput `pulumi:"html"`
+}
+
+func (PagesLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesLogin)(nil)).Elem()
+}
+
+func (i PagesLoginArgs) ToPagesLoginOutput() PagesLoginOutput {
+	return i.ToPagesLoginOutputWithContext(context.Background())
+}
+
+func (i PagesLoginArgs) ToPagesLoginOutputWithContext(ctx context.Context) PagesLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesLoginOutput)
+}
+
+func (i PagesLoginArgs) ToPagesLoginPtrOutput() PagesLoginPtrOutput {
+	return i.ToPagesLoginPtrOutputWithContext(context.Background())
+}
+
+func (i PagesLoginArgs) ToPagesLoginPtrOutputWithContext(ctx context.Context) PagesLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesLoginOutput).ToPagesLoginPtrOutputWithContext(ctx)
+}
+
+// PagesLoginPtrInput is an input type that accepts PagesLoginArgs, PagesLoginPtr and PagesLoginPtrOutput values.
+// You can construct a concrete instance of `PagesLoginPtrInput` via:
+//
+//	        PagesLoginArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesLoginPtrInput interface {
+	pulumi.Input
+
+	ToPagesLoginPtrOutput() PagesLoginPtrOutput
+	ToPagesLoginPtrOutputWithContext(context.Context) PagesLoginPtrOutput
+}
+
+type pagesLoginPtrType PagesLoginArgs
+
+func PagesLoginPtr(v *PagesLoginArgs) PagesLoginPtrInput {
+	return (*pagesLoginPtrType)(v)
+}
+
+func (*pagesLoginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesLogin)(nil)).Elem()
+}
+
+func (i *pagesLoginPtrType) ToPagesLoginPtrOutput() PagesLoginPtrOutput {
+	return i.ToPagesLoginPtrOutputWithContext(context.Background())
+}
+
+func (i *pagesLoginPtrType) ToPagesLoginPtrOutputWithContext(ctx context.Context) PagesLoginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesLoginPtrOutput)
+}
+
+type PagesLoginOutput struct{ *pulumi.OutputState }
+
+func (PagesLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesLogin)(nil)).Elem()
+}
+
+func (o PagesLoginOutput) ToPagesLoginOutput() PagesLoginOutput {
+	return o
+}
+
+func (o PagesLoginOutput) ToPagesLoginOutputWithContext(ctx context.Context) PagesLoginOutput {
+	return o
+}
+
+func (o PagesLoginOutput) ToPagesLoginPtrOutput() PagesLoginPtrOutput {
+	return o.ToPagesLoginPtrOutputWithContext(context.Background())
+}
+
+func (o PagesLoginOutput) ToPagesLoginPtrOutputWithContext(ctx context.Context) PagesLoginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesLogin) *PagesLogin {
+		return &v
+	}).(PagesLoginPtrOutput)
+}
+
+// Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+func (o PagesLoginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v PagesLogin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+func (o PagesLoginOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v PagesLogin) string { return v.Html }).(pulumi.StringOutput)
+}
+
+type PagesLoginPtrOutput struct{ *pulumi.OutputState }
+
+func (PagesLoginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesLogin)(nil)).Elem()
+}
+
+func (o PagesLoginPtrOutput) ToPagesLoginPtrOutput() PagesLoginPtrOutput {
+	return o
+}
+
+func (o PagesLoginPtrOutput) ToPagesLoginPtrOutputWithContext(ctx context.Context) PagesLoginPtrOutput {
+	return o
+}
+
+func (o PagesLoginPtrOutput) Elem() PagesLoginOutput {
+	return o.ApplyT(func(v *PagesLogin) PagesLogin {
+		if v != nil {
+			return *v
+		}
+		var ret PagesLogin
+		return ret
+	}).(PagesLoginOutput)
+}
+
+// Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+func (o PagesLoginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PagesLogin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+func (o PagesLoginPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesLogin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceServerScopeType struct {
@@ -25667,9 +26310,8 @@ type GetTenantFlag struct {
 	MfaShowFactorListOnEnrollment      bool `pulumi:"mfaShowFactorListOnEnrollment"`
 	NoDiscloseEnterpriseConnections    bool `pulumi:"noDiscloseEnterpriseConnections"`
 	RevokeRefreshTokenGrant            bool `pulumi:"revokeRefreshTokenGrant"`
-	// Configuration settings for Universal Login.
-	UniversalLogin                 bool `pulumi:"universalLogin"`
-	UseScopeDescriptionsForConsent bool `pulumi:"useScopeDescriptionsForConsent"`
+	UniversalLogin                     bool `pulumi:"universalLogin"`
+	UseScopeDescriptionsForConsent     bool `pulumi:"useScopeDescriptionsForConsent"`
 }
 
 // GetTenantFlagInput is an input type that accepts GetTenantFlagArgs and GetTenantFlagOutput values.
@@ -25705,9 +26347,8 @@ type GetTenantFlagArgs struct {
 	MfaShowFactorListOnEnrollment      pulumi.BoolInput `pulumi:"mfaShowFactorListOnEnrollment"`
 	NoDiscloseEnterpriseConnections    pulumi.BoolInput `pulumi:"noDiscloseEnterpriseConnections"`
 	RevokeRefreshTokenGrant            pulumi.BoolInput `pulumi:"revokeRefreshTokenGrant"`
-	// Configuration settings for Universal Login.
-	UniversalLogin                 pulumi.BoolInput `pulumi:"universalLogin"`
-	UseScopeDescriptionsForConsent pulumi.BoolInput `pulumi:"useScopeDescriptionsForConsent"`
+	UniversalLogin                     pulumi.BoolInput `pulumi:"universalLogin"`
+	UseScopeDescriptionsForConsent     pulumi.BoolInput `pulumi:"useScopeDescriptionsForConsent"`
 }
 
 func (GetTenantFlagArgs) ElementType() reflect.Type {
@@ -25845,7 +26486,6 @@ func (o GetTenantFlagOutput) RevokeRefreshTokenGrant() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.RevokeRefreshTokenGrant }).(pulumi.BoolOutput)
 }
 
-// Configuration settings for Universal Login.
 func (o GetTenantFlagOutput) UniversalLogin() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.UniversalLogin }).(pulumi.BoolOutput)
 }
@@ -26528,6 +27168,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionArrayInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesChangePasswordInput)(nil)).Elem(), PagesChangePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesChangePasswordPtrInput)(nil)).Elem(), PagesChangePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesErrorInput)(nil)).Elem(), PagesErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesErrorPtrInput)(nil)).Elem(), PagesErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesGuardianMfaInput)(nil)).Elem(), PagesGuardianMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesGuardianMfaPtrInput)(nil)).Elem(), PagesGuardianMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginInput)(nil)).Elem(), PagesLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginPtrInput)(nil)).Elem(), PagesLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeTypeInput)(nil)).Elem(), ResourceServerScopeTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopeTypeArrayInput)(nil)).Elem(), ResourceServerScopeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeInput)(nil)).Elem(), ResourceServerScopesScopeArgs{})
@@ -26838,6 +27486,14 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionOutput{})
 	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionArrayOutput{})
+	pulumi.RegisterOutputType(PagesChangePasswordOutput{})
+	pulumi.RegisterOutputType(PagesChangePasswordPtrOutput{})
+	pulumi.RegisterOutputType(PagesErrorOutput{})
+	pulumi.RegisterOutputType(PagesErrorPtrOutput{})
+	pulumi.RegisterOutputType(PagesGuardianMfaOutput{})
+	pulumi.RegisterOutputType(PagesGuardianMfaPtrOutput{})
+	pulumi.RegisterOutputType(PagesLoginOutput{})
+	pulumi.RegisterOutputType(PagesLoginPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeTypeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeTypeArrayOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeOutput{})

@@ -12,6 +12,111 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can set up applications that use Auth0 for authentication and configure allowed callback URLs and secrets for these applications.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myClient = new Auth0.Client("myClient", new()
+    ///     {
+    ///         Addons = new Auth0.Inputs.ClientAddonsArgs
+    ///         {
+    ///             Samlp = new Auth0.Inputs.ClientAddonsSamlpArgs
+    ///             {
+    ///                 Audience = "https://example.com/saml",
+    ///                 CreateUpnClaim = false,
+    ///                 Issuer = "https://example.com",
+    ///                 MapIdentities = false,
+    ///                 MapUnknownClaimsAsIs = false,
+    ///                 Mappings = 
+    ///                 {
+    ///                     { "email", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" },
+    ///                     { "name", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
+    ///                 },
+    ///                 NameIdentifierFormat = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+    ///                 NameIdentifierProbes = new[]
+    ///                 {
+    ///                     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+    ///                 },
+    ///                 PassthroughClaimsWithNoMapping = false,
+    ///                 SigningCert = @"-----BEGIN PUBLIC KEY-----
+    /// MIGf...bpP/t3
+    /// +JGNGIRMj1hF1rnb6QIDAQAB
+    /// -----END PUBLIC KEY-----
+    /// 
+    /// ",
+    ///             },
+    ///         },
+    ///         AllowedLogoutUrls = new[]
+    ///         {
+    ///             "https://example.com",
+    ///         },
+    ///         AllowedOrigins = new[]
+    ///         {
+    ///             "https://example.com",
+    ///         },
+    ///         AppType = "non_interactive",
+    ///         Callbacks = new[]
+    ///         {
+    ///             "https://example.com/callback",
+    ///         },
+    ///         ClientMetadata = 
+    ///         {
+    ///             { "foo", "zoo" },
+    ///         },
+    ///         CustomLoginPageOn = true,
+    ///         Description = "Test Applications Long Description",
+    ///         GrantTypes = new[]
+    ///         {
+    ///             "authorization_code",
+    ///             "http://auth0.com/oauth/grant-type/password-realm",
+    ///             "implicit",
+    ///             "password",
+    ///             "refresh_token",
+    ///         },
+    ///         IsFirstParty = true,
+    ///         IsTokenEndpointIpHeaderTrusted = true,
+    ///         JwtConfiguration = new Auth0.Inputs.ClientJwtConfigurationArgs
+    ///         {
+    ///             Alg = "RS256",
+    ///             LifetimeInSeconds = 300,
+    ///             Scopes = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             SecretEncoded = true,
+    ///         },
+    ///         Mobile = new Auth0.Inputs.ClientMobileArgs
+    ///         {
+    ///             Ios = new Auth0.Inputs.ClientMobileIosArgs
+    ///             {
+    ///                 AppBundleIdentifier = "com.my.bundle.id",
+    ///                 TeamId = "9JA89QQLNQ",
+    ///             },
+    ///         },
+    ///         OidcConformant = false,
+    ///         RefreshToken = new Auth0.Inputs.ClientRefreshTokenArgs
+    ///         {
+    ///             ExpirationType = "expiring",
+    ///             Leeway = 0,
+    ///             RotationType = "rotating",
+    ///             TokenLifetime = 2592000,
+    ///         },
+    ///         TokenEndpointAuthMethod = "client_secret_post",
+    ///         WebOrigins = new[]
+    ///         {
+    ///             "https://example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A client can be imported using the client's ID. # Example
@@ -80,7 +185,8 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
         /// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-        /// `auth0_client_credentials` resource instead, to allow managing it directly.
+        /// `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
+        /// this property.
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
@@ -152,7 +258,7 @@ namespace Pulumi.Auth0
         public Output<bool> IsFirstParty { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted.
+        /// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
         /// </summary>
         [Output("isTokenEndpointIpHeaderTrusted")]
         public Output<bool> IsTokenEndpointIpHeaderTrusted { get; private set; } = null!;
@@ -200,7 +306,7 @@ namespace Pulumi.Auth0
         public Output<bool> OidcConformant { get; private set; } = null!;
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         /// </summary>
         [Output("organizationRequireBehavior")]
         public Output<string?> OrganizationRequireBehavior { get; private set; } = null!;
@@ -236,7 +342,13 @@ namespace Pulumi.Auth0
         public Output<bool?> SsoDisabled { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
+        /// client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Managing the authentication method through this attribute is deprecated and it will be removed in a future major
+        /// version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
+        /// the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
+        /// how to do that.
         /// </summary>
         [Output("tokenEndpointAuthMethod")]
         public Output<string> TokenEndpointAuthMethod { get; private set; } = null!;
@@ -388,7 +500,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         /// </summary>
-        [Obsolete(@"Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.")]
+        [Obsolete(@"Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.")]
         public InputMap<object> ClientSecretRotationTrigger
         {
             get => _clientSecretRotationTrigger ?? (_clientSecretRotationTrigger = new InputMap<object>());
@@ -468,7 +580,7 @@ namespace Pulumi.Auth0
         public Input<bool>? IsFirstParty { get; set; }
 
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted.
+        /// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
         /// </summary>
         [Input("isTokenEndpointIpHeaderTrusted")]
         public Input<bool>? IsTokenEndpointIpHeaderTrusted { get; set; }
@@ -522,7 +634,7 @@ namespace Pulumi.Auth0
         public Input<bool>? OidcConformant { get; set; }
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         /// </summary>
         [Input("organizationRequireBehavior")]
         public Input<string>? OrganizationRequireBehavior { get; set; }
@@ -552,7 +664,13 @@ namespace Pulumi.Auth0
         public Input<bool>? SsoDisabled { get; set; }
 
         /// <summary>
-        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
+        /// client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Managing the authentication method through this attribute is deprecated and it will be removed in a future major
+        /// version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
+        /// the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
+        /// how to do that.
         /// </summary>
         [Input("tokenEndpointAuthMethod")]
         public Input<string>? TokenEndpointAuthMethod { get; set; }
@@ -674,9 +792,10 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the
         /// Terraform client. Otherwise, the attribute will contain an empty string. Use this attribute on the
-        /// `auth0_client_credentials` resource instead, to allow managing it directly.
+        /// `auth0_client_credentials` resource instead, to allow managing it directly or use the `auth0_client` data source to read
+        /// this property.
         /// </summary>
-        [Obsolete(@"Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead.")]
+        [Obsolete(@"Reading the client secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead or use the `auth0_client` data source to read this property.")]
         public Input<string>? ClientSecret
         {
             get => _clientSecret;
@@ -693,7 +812,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Custom metadata for the rotation. The contents of this map are arbitrary and are hashed by the provider. When the hash changes, a rotation is triggered. For example, the map could contain the user making the change, the date of the change, and a text reason for the change. For more info: rotate-client-secret for instructions on how to rotate client secrets with zero downtime.
         /// </summary>
-        [Obsolete(@"Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.")]
+        [Obsolete(@"Rotating a client's secret through this attribute is deprecated and it will be removed in a future version. Migrate to the `auth0_client_credentials` resource to manage a client's secret instead. Refer to the [client secret rotation guide](https://registry.terraform.io/providers/auth0/auth0/latest/docs/guides/client_secret_rotation) for instructions on how to rotate client secrets with zero downtime.")]
         public InputMap<object> ClientSecretRotationTrigger
         {
             get => _clientSecretRotationTrigger ?? (_clientSecretRotationTrigger = new InputMap<object>());
@@ -773,7 +892,7 @@ namespace Pulumi.Auth0
         public Input<bool>? IsFirstParty { get; set; }
 
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted.
+        /// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
         /// </summary>
         [Input("isTokenEndpointIpHeaderTrusted")]
         public Input<bool>? IsTokenEndpointIpHeaderTrusted { get; set; }
@@ -827,7 +946,7 @@ namespace Pulumi.Auth0
         public Input<bool>? OidcConformant { get; set; }
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default) or `pre_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         /// </summary>
         [Input("organizationRequireBehavior")]
         public Input<string>? OrganizationRequireBehavior { get; set; }
@@ -873,7 +992,13 @@ namespace Pulumi.Auth0
         public Input<bool>? SsoDisabled { get; set; }
 
         /// <summary>
-        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a
+        /// client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic).
+        /// Managing the authentication method through this attribute is deprecated and it will be removed in a future major
+        /// version. Migrate to the `auth0_client_credentials` resource to manage a client's authentication method instead. Check
+        /// the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#client-authentication-method) on
+        /// how to do that.
         /// </summary>
         [Input("tokenEndpointAuthMethod")]
         public Input<string>? TokenEndpointAuthMethod { get; set; }

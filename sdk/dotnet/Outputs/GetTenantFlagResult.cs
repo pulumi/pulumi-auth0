@@ -34,9 +34,6 @@ namespace Pulumi.Auth0.Outputs
         public readonly bool MfaShowFactorListOnEnrollment;
         public readonly bool NoDiscloseEnterpriseConnections;
         public readonly bool RevokeRefreshTokenGrant;
-        /// <summary>
-        /// Configuration settings for Universal Login.
-        /// </summary>
         public readonly bool UniversalLogin;
         public readonly bool UseScopeDescriptionsForConsent;
 

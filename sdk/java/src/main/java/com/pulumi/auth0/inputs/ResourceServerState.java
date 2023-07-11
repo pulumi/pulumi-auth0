@@ -80,24 +80,32 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of permissions (scopes) used by this resource server.
+     * List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+     * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+     * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+     * info.
      * 
      * @deprecated
-     * Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
      * 
      */
-    @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
+    @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info. */
     @Import(name="scopes")
     private @Nullable Output<List<ResourceServerScopeArgs>> scopes;
 
     /**
-     * @return List of permissions (scopes) used by this resource server.
+     * @return List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+     * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+     * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+     * info.
      * 
      * @deprecated
-     * Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
      * 
      */
-    @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
+    @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info. */
     public Optional<Output<List<ResourceServerScopeArgs>>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
@@ -327,44 +335,56 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param scopes List of permissions (scopes) used by this resource server.
+         * @param scopes List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+         * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+         * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+         * info.
          * 
          * @return builder
          * 
          * @deprecated
-         * Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+         * Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
          * 
          */
-        @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
+        @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info. */
         public Builder scopes(@Nullable Output<List<ResourceServerScopeArgs>> scopes) {
             $.scopes = scopes;
             return this;
         }
 
         /**
-         * @param scopes List of permissions (scopes) used by this resource server.
+         * @param scopes List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+         * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+         * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+         * info.
          * 
          * @return builder
          * 
          * @deprecated
-         * Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+         * Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
          * 
          */
-        @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
+        @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info. */
         public Builder scopes(List<ResourceServerScopeArgs> scopes) {
             return scopes(Output.of(scopes));
         }
 
         /**
-         * @param scopes List of permissions (scopes) used by this resource server.
+         * @param scopes List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+         * and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+         * `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+         * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+         * info.
          * 
          * @return builder
          * 
          * @deprecated
-         * Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+         * Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
          * 
          */
-        @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
+        @Deprecated /* Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info. */
         public Builder scopes(ResourceServerScopeArgs... scopes) {
             return scopes(List.of(scopes));
         }

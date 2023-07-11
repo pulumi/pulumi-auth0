@@ -28,10 +28,6 @@ public final class GetRoleResult {
      * 
      */
     private @Nullable String name;
-    /**
-     * @return Configuration settings for permissions (scopes) attached to the role.
-     * 
-     */
     private List<GetRolePermission> permissions;
     /**
      * @return The ID of the role. If not provided, `name` must be set.
@@ -61,10 +57,6 @@ public final class GetRoleResult {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Configuration settings for permissions (scopes) attached to the role.
-     * 
-     */
     public List<GetRolePermission> permissions() {
         return this.permissions;
     }

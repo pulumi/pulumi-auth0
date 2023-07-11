@@ -85,6 +85,10 @@ __all__ = [
     'LogStreamSinkArgs',
     'OrganizationBrandingArgs',
     'OrganizationConnectionsEnabledConnectionArgs',
+    'PagesChangePasswordArgs',
+    'PagesErrorArgs',
+    'PagesGuardianMfaArgs',
+    'PagesLoginArgs',
     'ResourceServerScopeArgs',
     'ResourceServerScopesScopeArgs',
     'RolePermissionArgs',
@@ -1521,23 +1525,22 @@ class BrandingThemeWidgetArgs:
 @pulumi.input_type
 class BrandingUniversalLoginArgs:
     def __init__(__self__, *,
-                 body: Optional[pulumi.Input[str]] = None):
+                 body: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] body: The body of login pages.
+        :param pulumi.Input[str] body: The html template for the New Universal Login Experience.
         """
-        if body is not None:
-            pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "body", body)
 
     @property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[str]]:
+    def body(self) -> pulumi.Input[str]:
         """
-        The body of login pages.
+        The html template for the New Universal Login Experience.
         """
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[str]]):
+    def body(self, value: pulumi.Input[str]):
         pulumi.set(self, "body", value)
 
 
@@ -2814,7 +2817,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input['ConnectionOptionsTotpArgs'] totp: Configuration options for one-time passwords.
         :param pulumi.Input[str] twilio_sid: SID for your Twilio account.
         :param pulumi.Input[str] twilio_token: AuthToken for your Twilio account.
-        :param pulumi.Input[str] type: Value can be `back_channel` or `front_channel`.
+        :param pulumi.Input[str] type: Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
         :param pulumi.Input[str] upstream_params: You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         :param pulumi.Input[bool] use_cert_auth: Indicates whether to use cert auth or not.
         :param pulumi.Input[bool] use_kerberos: Indicates whether to use Kerberos or not.
@@ -3914,7 +3917,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Value can be `back_channel` or `front_channel`.
+        Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
         """
         return pulumi.get(self, "type")
 
@@ -4393,7 +4396,7 @@ class EmailCredentialsArgs:
         """
         :param pulumi.Input[str] access_key_id: AWS Access Key ID. Used only for AWS.
         :param pulumi.Input[str] api_key: API Key for your email service. Will always be encrypted in our database.
-        :param pulumi.Input[str] api_user: API User for your email service.
+        :param pulumi.Input[str] api_user: API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
         :param pulumi.Input[str] domain: Domain name.
         :param pulumi.Input[str] region: Default region. Used only for AWS, Mailgun, and SparkPost.
         :param pulumi.Input[str] secret_access_key: AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
@@ -4454,8 +4457,11 @@ class EmailCredentialsArgs:
     @pulumi.getter(name="apiUser")
     def api_user(self) -> Optional[pulumi.Input[str]]:
         """
-        API User for your email service.
+        API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
         """
+        warnings.warn("""This field is not accepted by the API any more so it will be removed soon.""", DeprecationWarning)
+        pulumi.log.warn("""api_user is deprecated: This field is not accepted by the API any more so it will be removed soon.""")
+
         return pulumi.get(self, "api_user")
 
     @api_user.setter
@@ -6679,6 +6685,171 @@ class OrganizationConnectionsEnabledConnectionArgs:
 
 
 @pulumi.input_type
+class PagesChangePasswordArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 html: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] enabled: Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+        :param pulumi.Input[str] html: Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def html(self) -> pulumi.Input[str]:
+        """
+        Customized content for the Reset Password page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        return pulumi.get(self, "html")
+
+    @html.setter
+    def html(self, value: pulumi.Input[str]):
+        pulumi.set(self, "html", value)
+
+
+@pulumi.input_type
+class PagesErrorArgs:
+    def __init__(__self__, *,
+                 show_log_link: pulumi.Input[bool],
+                 html: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] show_log_link: Indicates whether to show the link to logs as part of the default error page.
+        :param pulumi.Input[str] html: Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        :param pulumi.Input[str] url: URL to redirect to when an error occurs, instead of showing the default error page.
+        """
+        pulumi.set(__self__, "show_log_link", show_log_link)
+        if html is not None:
+            pulumi.set(__self__, "html", html)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="showLogLink")
+    def show_log_link(self) -> pulumi.Input[bool]:
+        """
+        Indicates whether to show the link to logs as part of the default error page.
+        """
+        return pulumi.get(self, "show_log_link")
+
+    @show_log_link.setter
+    def show_log_link(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "show_log_link", value)
+
+    @property
+    @pulumi.getter
+    def html(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        return pulumi.get(self, "html")
+
+    @html.setter
+    def html(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "html", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to redirect to when an error occurs, instead of showing the default error page.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class PagesGuardianMfaArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 html: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] enabled: Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+        :param pulumi.Input[str] html: Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Indicates whether to use the custom Guardian MFA HTML (`true`) or the default Auth0 page (`false`).
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def html(self) -> pulumi.Input[str]:
+        """
+        Customized content for the Guardian MFA page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        return pulumi.get(self, "html")
+
+    @html.setter
+    def html(self, value: pulumi.Input[str]):
+        pulumi.set(self, "html", value)
+
+
+@pulumi.input_type
+class PagesLoginArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 html: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] enabled: Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+        :param pulumi.Input[str] html: Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def html(self) -> pulumi.Input[str]:
+        """
+        Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
+        """
+        return pulumi.get(self, "html")
+
+    @html.setter
+    def html(self, value: pulumi.Input[str]):
+        pulumi.set(self, "html", value)
+
+
+@pulumi.input_type
 class ResourceServerScopeArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[str],
@@ -7340,6 +7511,9 @@ class TenantFlagsArgs:
         """
         Indicates whether the New Universal Login Experience is enabled.
         """
+        warnings.warn("""This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""", DeprecationWarning)
+        pulumi.log.warn("""universal_login is deprecated: This attribute is deprecated. Use the `universal_login_experience` attribute on the `auth0_prompt` resource to toggle the new or classic experience instead.""")
+
         return pulumi.get(self, "universal_login")
 
     @universal_login.setter

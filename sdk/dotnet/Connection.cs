@@ -237,7 +237,7 @@ namespace Pulumi.Auth0
     /// ```
     /// ### OAuth2 Connection
     /// 
-    /// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
+    /// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -470,7 +470,7 @@ namespace Pulumi.Auth0
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// IDs of the clients for which the connection is enabled.
+        /// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
         /// </summary>
         [Output("enabledClients")]
         public Output<ImmutableArray<string>> EnabledClients { get; private set; } = null!;
@@ -482,7 +482,7 @@ namespace Pulumi.Auth0
         public Output<bool> IsDomainConnection { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
@@ -579,7 +579,7 @@ namespace Pulumi.Auth0
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -641,7 +641,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _enabledClients;
 
         /// <summary>
-        /// IDs of the clients for which the connection is enabled.
+        /// IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
         /// </summary>
         public InputList<string> EnabledClients
         {
@@ -659,7 +659,7 @@ namespace Pulumi.Auth0
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        /// Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         /// </summary>
         public InputMap<string> Metadata
         {

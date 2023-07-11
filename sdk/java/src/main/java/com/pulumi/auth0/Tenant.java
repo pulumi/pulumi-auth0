@@ -130,14 +130,24 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.allowedLogoutUrls;
     }
     /**
-     * Configuration settings for change password page.
+     * Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+     * it will be removed in a future major version. Check the
+     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+     * info.
+     * 
+     * @deprecated
+     * This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
      * 
      */
+    @Deprecated /* This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info. */
     @Export(name="changePassword", type=TenantChangePassword.class, parameters={})
     private Output<TenantChangePassword> changePassword;
 
     /**
-     * @return Configuration settings for change password page.
+     * @return Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+     * it will be removed in a future major version. Check the
+     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+     * info.
      * 
      */
     public Output<TenantChangePassword> changePassword() {
@@ -200,14 +210,24 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.enabledLocales;
     }
     /**
-     * Configuration settings for error pages.
+     * Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+     * be removed in a future major version. Check the
+     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+     * info.
+     * 
+     * @deprecated
+     * This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
      * 
      */
+    @Deprecated /* This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info. */
     @Export(name="errorPage", type=TenantErrorPage.class, parameters={})
     private Output<TenantErrorPage> errorPage;
 
     /**
-     * @return Configuration settings for error pages.
+     * @return Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+     * be removed in a future major version. Check the
+     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+     * info.
      * 
      */
     public Output<TenantErrorPage> errorPage() {
@@ -242,14 +262,24 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.friendlyName;
     }
     /**
-     * Configuration settings for the Guardian MFA page.
+     * Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+     * and it will be removed in a future major version. Check the
+     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+     * info.
+     * 
+     * @deprecated
+     * This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.
      * 
      */
+    @Deprecated /* This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info. */
     @Export(name="guardianMfaPage", type=TenantGuardianMfaPage.class, parameters={})
     private Output<TenantGuardianMfaPage> guardianMfaPage;
 
     /**
-     * @return Configuration settings for the Guardian MFA page.
+     * @return Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+     * and it will be removed in a future major version. Check the
+     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+     * info.
      * 
      */
     public Output<TenantGuardianMfaPage> guardianMfaPage() {
@@ -354,14 +384,24 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.supportUrl;
     }
     /**
-     * Configuration settings for Universal Login.
+     * Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+     * settings through the `auth0_branding` resource. Check the
+     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+     * for more info.
+     * 
+     * @deprecated
+     * These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.
      * 
      */
+    @Deprecated /* These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info. */
     @Export(name="universalLogin", type=TenantUniversalLogin.class, parameters={})
     private Output<TenantUniversalLogin> universalLogin;
 
     /**
-     * @return Configuration settings for Universal Login.
+     * @return Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+     * settings through the `auth0_branding` resource. Check the
+     * [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+     * for more info.
      * 
      */
     public Output<TenantUniversalLogin> universalLogin() {
