@@ -19,7 +19,6 @@ let client = new auth0.Client("test", {
     appType: "non_interactive",
     customLoginPageOn: true,
     isFirstParty: true,
-    isTokenEndpointIpHeaderTrusted: true,
     oidcConformant: false,
     tokenEndpointAuthMethod: "client_secret_post",
     clientMetadata: {
