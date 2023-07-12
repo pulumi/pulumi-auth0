@@ -7,8 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Retrieve a tenant's global Auth0 application client.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -111,7 +109,7 @@ export interface GetGlobalClientResult {
      */
     readonly isFirstParty: boolean;
     /**
-     * Indicates whether the token endpoint IP header is trusted.
+     * Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
      */
     readonly isTokenEndpointIpHeaderTrusted: boolean;
     /**
@@ -143,7 +141,7 @@ export interface GetGlobalClientResult {
      */
     readonly oidcConformant: boolean;
     /**
-     * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+     * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
     readonly organizationRequireBehavior: string;
     /**
@@ -166,9 +164,6 @@ export interface GetGlobalClientResult {
      * Indicates whether or not SSO is disabled.
      */
     readonly ssoDisabled: boolean;
-    /**
-     * Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
-     */
     readonly tokenEndpointAuthMethod: string;
     /**
      * URLs that represent valid web origins for use with web message response mode.

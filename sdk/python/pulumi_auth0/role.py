@@ -23,7 +23,10 @@ class RoleArgs:
         The set of arguments for constructing a Role resource.
         :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] name: Name for this role.
-        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Configuration settings for permissions (scopes) attached to the role.
+        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+               attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+               `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         """
         if description is None:
             description = 'Managed by Pulumi'
@@ -32,8 +35,8 @@ class RoleArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if permissions is not None:
-            warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""", DeprecationWarning)
-            pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""")
+            warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""")
         if permissions is not None:
             pulumi.set(__self__, "permissions", permissions)
 
@@ -65,8 +68,14 @@ class RoleArgs:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]]:
         """
-        Configuration settings for permissions (scopes) attached to the role.
+        Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+        attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+        `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         """
+        warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""")
+
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -84,7 +93,10 @@ class _RoleState:
         Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] name: Name for this role.
-        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Configuration settings for permissions (scopes) attached to the role.
+        :param pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]] permissions: Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+               attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+               `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         """
         if description is None:
             description = 'Managed by Pulumi'
@@ -93,8 +105,8 @@ class _RoleState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if permissions is not None:
-            warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""", DeprecationWarning)
-            pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""")
+            warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""")
         if permissions is not None:
             pulumi.set(__self__, "permissions", permissions)
 
@@ -126,8 +138,14 @@ class _RoleState:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionArgs']]]]:
         """
-        Configuration settings for permissions (scopes) attached to the role.
+        Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+        attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+        `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         """
+        warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""")
+
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -191,7 +209,10 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] name: Name for this role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Configuration settings for permissions (scopes) attached to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+               attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+               `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         """
         ...
     @overload
@@ -274,8 +295,8 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if permissions is not None and not opts.urn:
-                warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""", DeprecationWarning)
-                pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""")
+                warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""", DeprecationWarning)
+                pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""")
             __props__.__dict__["permissions"] = permissions
         super(Role, __self__).__init__(
             'auth0:index/role:Role',
@@ -299,7 +320,10 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the role.
         :param pulumi.Input[str] name: Name for this role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Configuration settings for permissions (scopes) attached to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RolePermissionArgs']]]] permissions: Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+               attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+               `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -330,7 +354,13 @@ class Role(pulumi.CustomResource):
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Optional[Sequence['outputs.RolePermission']]]:
         """
-        Configuration settings for permissions (scopes) attached to the role.
+        Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+        attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+        `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
         """
+        warnings.warn("""Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""permissions is deprecated: Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.""")
+
         return pulumi.get(self, "permissions")
 

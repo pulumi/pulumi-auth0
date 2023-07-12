@@ -407,7 +407,7 @@ public final class ConnectionOptions {
      */
     private @Nullable String twilioToken;
     /**
-     * @return Value can be `back_channel` or `front_channel`.
+     * @return Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      * 
      */
     private @Nullable String type;
@@ -991,7 +991,7 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.twilioToken);
     }
     /**
-     * @return Value can be `back_channel` or `front_channel`.
+     * @return Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      * 
      */
     public Optional<String> type() {

@@ -13,10 +13,10 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingUniversalLoginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The body of login pages.
+        /// The html template for the New Universal Login Experience.
         /// </summary>
-        [Input("body")]
-        public Input<string>? Body { get; set; }
+        [Input("body", required: true)]
+        public Input<string> Body { get; set; } = null!;
 
         public BrandingUniversalLoginGetArgs()
         {

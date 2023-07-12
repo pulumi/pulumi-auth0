@@ -75,14 +75,14 @@ public class Branding extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="colors", type=BrandingColors.class, parameters={})
-    private Output</* @Nullable */ BrandingColors> colors;
+    private Output<BrandingColors> colors;
 
     /**
      * @return Configuration settings for colors for branding.
      * 
      */
-    public Output<Optional<BrandingColors>> colors() {
-        return Codegen.optional(this.colors);
+    public Output<BrandingColors> colors() {
+        return this.colors;
     }
     /**
      * URL for the favicon.
@@ -103,14 +103,14 @@ public class Branding extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="font", type=BrandingFont.class, parameters={})
-    private Output</* @Nullable */ BrandingFont> font;
+    private Output<BrandingFont> font;
 
     /**
      * @return Configuration settings to customize the font.
      * 
      */
-    public Output<Optional<BrandingFont>> font() {
-        return Codegen.optional(this.font);
+    public Output<BrandingFont> font() {
+        return this.font;
     }
     /**
      * URL of logo for branding.

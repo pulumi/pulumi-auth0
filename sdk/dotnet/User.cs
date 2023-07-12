@@ -118,7 +118,7 @@ namespace Pulumi.Auth0
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// List of API permissions granted to the user.
+        /// List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.UserPermission>> Permissions { get; private set; } = null!;
@@ -142,7 +142,10 @@ namespace Pulumi.Auth0
         public Output<string> Picture { get; private set; } = null!;
 
         /// <summary>
-        /// Set of IDs of roles assigned to the user.
+        /// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
+        /// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
+        /// instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
@@ -313,9 +316,12 @@ namespace Pulumi.Auth0
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Set of IDs of roles assigned to the user.
+        /// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
+        /// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
+        /// instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
         /// </summary>
-        [Obsolete(@"Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.")]
+        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.")]
         public InputList<string> Roles
         {
             get => _roles ?? (_roles = new InputList<string>());
@@ -428,8 +434,9 @@ namespace Pulumi.Auth0
         private InputList<Inputs.UserPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// List of API permissions granted to the user.
+        /// List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
         /// </summary>
+        [Obsolete(@"Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.")]
         public InputList<Inputs.UserPermissionGetArgs> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<Inputs.UserPermissionGetArgs>());
@@ -458,9 +465,12 @@ namespace Pulumi.Auth0
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Set of IDs of roles assigned to the user.
+        /// Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
+        /// a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
+        /// instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
         /// </summary>
-        [Obsolete(@"Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.")]
+        [Obsolete(@"Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.")]
         public InputList<string> Roles
         {
             get => _roles ?? (_roles = new InputList<string>());

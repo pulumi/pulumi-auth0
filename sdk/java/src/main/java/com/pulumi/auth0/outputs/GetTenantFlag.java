@@ -30,10 +30,6 @@ public final class GetTenantFlag {
     private Boolean mfaShowFactorListOnEnrollment;
     private Boolean noDiscloseEnterpriseConnections;
     private Boolean revokeRefreshTokenGrant;
-    /**
-     * @return Configuration settings for Universal Login.
-     * 
-     */
     private Boolean universalLogin;
     private Boolean useScopeDescriptionsForConsent;
 
@@ -101,10 +97,6 @@ public final class GetTenantFlag {
     public Boolean revokeRefreshTokenGrant() {
         return this.revokeRefreshTokenGrant;
     }
-    /**
-     * @return Configuration settings for Universal Login.
-     * 
-     */
     public Boolean universalLogin() {
         return this.universalLogin;
     }

@@ -98,7 +98,7 @@ def get_attack_protection(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     __ret__ = pulumi.runtime.invoke('auth0:index/getAttackProtection:getAttackProtection', __args__, opts=opts, typ=GetAttackProtectionResult).value
 
     return AwaitableGetAttackProtectionResult(
-        breached_password_detections=__ret__.breached_password_detections,
-        brute_force_protections=__ret__.brute_force_protections,
-        id=__ret__.id,
-        suspicious_ip_throttlings=__ret__.suspicious_ip_throttlings)
+        breached_password_detections=pulumi.get(__ret__, 'breached_password_detections'),
+        brute_force_protections=pulumi.get(__ret__, 'brute_force_protections'),
+        id=pulumi.get(__ret__, 'id'),
+        suspicious_ip_throttlings=pulumi.get(__ret__, 'suspicious_ip_throttlings'))

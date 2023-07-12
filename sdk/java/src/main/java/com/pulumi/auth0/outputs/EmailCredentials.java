@@ -23,7 +23,7 @@ public final class EmailCredentials {
      */
     private @Nullable String apiKey;
     /**
-     * @return API User for your email service.
+     * @return API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
      * 
      * @deprecated
      * This field is not accepted by the API any more so it will be removed soon.
@@ -83,7 +83,7 @@ public final class EmailCredentials {
         return Optional.ofNullable(this.apiKey);
     }
     /**
-     * @return API User for your email service.
+     * @return API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
      * 
      * @deprecated
      * This field is not accepted by the API any more so it will be removed soon.

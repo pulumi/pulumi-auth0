@@ -1315,6 +1315,23 @@
                     }
                 }
             },
+            "auth0_pages": {
+                "current": "auth0:index/pages:Pages",
+                "fields": {
+                    "change_password": {
+                        "maxItemsOne": true
+                    },
+                    "error": {
+                        "maxItemsOne": true
+                    },
+                    "guardian_mfa": {
+                        "maxItemsOne": true
+                    },
+                    "login": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "auth0_prompt": {
                 "current": "auth0:index/prompt:Prompt",
                 "fields": {
@@ -1598,40 +1615,465 @@
         },
         "datasources": {
             "auth0_attack_protection": {
-                "current": "auth0:index/getAttackProtection:getAttackProtection"
+                "current": "auth0:index/getAttackProtection:getAttackProtection",
+                "fields": {
+                    "breached_password_detection": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "admin_notification_frequency": {
+                                    "maxItemsOne": false
+                                },
+                                "pre_user_registration": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "shields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "shields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "brute_force_protection": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowlist": {
+                                    "maxItemsOne": false
+                                },
+                                "shields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "suspicious_ip_throttling": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowlist": {
+                                    "maxItemsOne": false
+                                },
+                                "pre_login": {
+                                    "maxItemsOne": false
+                                },
+                                "pre_user_registration": {
+                                    "maxItemsOne": false
+                                },
+                                "shields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "auth0_branding": {
-                "current": "auth0:index/getBranding:getBranding"
+                "current": "auth0:index/getBranding:getBranding",
+                "fields": {
+                    "colors": {
+                        "maxItemsOne": false
+                    },
+                    "font": {
+                        "maxItemsOne": false
+                    },
+                    "universal_login": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_branding_theme": {
-                "current": "auth0:index/getBrandingTheme:getBrandingTheme"
+                "current": "auth0:index/getBrandingTheme:getBrandingTheme",
+                "fields": {
+                    "borders": {
+                        "maxItemsOne": false
+                    },
+                    "colors": {
+                        "maxItemsOne": false
+                    },
+                    "fonts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "body_text": {
+                                    "maxItemsOne": false
+                                },
+                                "buttons_text": {
+                                    "maxItemsOne": false
+                                },
+                                "input_labels": {
+                                    "maxItemsOne": false
+                                },
+                                "links": {
+                                    "maxItemsOne": false
+                                },
+                                "subtitle": {
+                                    "maxItemsOne": false
+                                },
+                                "title": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "page_background": {
+                        "maxItemsOne": false
+                    },
+                    "widget": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_client": {
-                "current": "auth0:index/getClient:getClient"
+                "current": "auth0:index/getClient:getClient",
+                "fields": {
+                    "addons": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "samlp": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "name_identifier_probes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "allowed_clients": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_logout_urls": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_origins": {
+                        "maxItemsOne": false
+                    },
+                    "callbacks": {
+                        "maxItemsOne": false
+                    },
+                    "client_aliases": {
+                        "maxItemsOne": false
+                    },
+                    "grant_types": {
+                        "maxItemsOne": false
+                    },
+                    "jwt_configuration": {
+                        "maxItemsOne": false
+                    },
+                    "mobile": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "android": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "sha256_cert_fingerprints": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ios": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "native_social_login": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "apple": {
+                                    "maxItemsOne": false
+                                },
+                                "facebook": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "oidc_backchannel_logout_urls": {
+                        "maxItemsOne": false
+                    },
+                    "refresh_token": {
+                        "maxItemsOne": false
+                    },
+                    "signing_keys": {
+                        "maxItemsOne": false
+                    },
+                    "web_origins": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_connection": {
-                "current": "auth0:index/getConnection:getConnection"
+                "current": "auth0:index/getConnection:getConnection",
+                "fields": {
+                    "enabled_clients": {
+                        "maxItemsOne": false
+                    },
+                    "options": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_audiences": {
+                                    "maxItemsOne": false
+                                },
+                                "domain_aliases": {
+                                    "maxItemsOne": false
+                                },
+                                "gateway_authentication": {
+                                    "maxItemsOne": false
+                                },
+                                "idp_initiated": {
+                                    "maxItemsOne": false
+                                },
+                                "ips": {
+                                    "maxItemsOne": false
+                                },
+                                "mfa": {
+                                    "maxItemsOne": false
+                                },
+                                "non_persistent_attrs": {
+                                    "maxItemsOne": false
+                                },
+                                "password_complexity_options": {
+                                    "maxItemsOne": false
+                                },
+                                "password_dictionary": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "dictionary": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "password_history": {
+                                    "maxItemsOne": false
+                                },
+                                "password_no_personal_info": {
+                                    "maxItemsOne": false
+                                },
+                                "scopes": {
+                                    "maxItemsOne": false
+                                },
+                                "signing_key": {
+                                    "maxItemsOne": false
+                                },
+                                "totp": {
+                                    "maxItemsOne": false
+                                },
+                                "validation": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "username": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "realms": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_custom_domain": {
-                "current": "auth0:index/getCustomDomain:getCustomDomain"
+                "current": "auth0:index/getCustomDomain:getCustomDomain",
+                "fields": {
+                    "verification": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "methods": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "auth0_global_client": {
-                "current": "auth0:index/getGlobalClient:getGlobalClient"
+                "current": "auth0:index/getGlobalClient:getGlobalClient",
+                "fields": {
+                    "addons": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "samlp": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "name_identifier_probes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "allowed_clients": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_logout_urls": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_origins": {
+                        "maxItemsOne": false
+                    },
+                    "callbacks": {
+                        "maxItemsOne": false
+                    },
+                    "client_aliases": {
+                        "maxItemsOne": false
+                    },
+                    "grant_types": {
+                        "maxItemsOne": false
+                    },
+                    "jwt_configuration": {
+                        "maxItemsOne": false
+                    },
+                    "mobile": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "android": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "sha256_cert_fingerprints": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ios": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "native_social_login": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "apple": {
+                                    "maxItemsOne": false
+                                },
+                                "facebook": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "oidc_backchannel_logout_urls": {
+                        "maxItemsOne": false
+                    },
+                    "refresh_token": {
+                        "maxItemsOne": false
+                    },
+                    "signing_keys": {
+                        "maxItemsOne": false
+                    },
+                    "web_origins": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_organization": {
-                "current": "auth0:index/getOrganization:getOrganization"
+                "current": "auth0:index/getOrganization:getOrganization",
+                "fields": {
+                    "branding": {
+                        "maxItemsOne": false
+                    },
+                    "connections": {
+                        "maxItemsOne": false
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_resource_server": {
-                "current": "auth0:index/getResourceServer:getResourceServer"
+                "current": "auth0:index/getResourceServer:getResourceServer",
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_role": {
-                "current": "auth0:index/getRole:getRole"
+                "current": "auth0:index/getRole:getRole",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_tenant": {
-                "current": "auth0:index/getTenant:getTenant"
+                "current": "auth0:index/getTenant:getTenant",
+                "fields": {
+                    "allowed_logout_urls": {
+                        "maxItemsOne": false
+                    },
+                    "change_password": {
+                        "maxItemsOne": false
+                    },
+                    "enabled_locales": {
+                        "maxItemsOne": false
+                    },
+                    "error_page": {
+                        "maxItemsOne": false
+                    },
+                    "flags": {
+                        "maxItemsOne": false
+                    },
+                    "guardian_mfa_page": {
+                        "maxItemsOne": false
+                    },
+                    "session_cookie": {
+                        "maxItemsOne": false
+                    },
+                    "universal_login": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "colors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "auth0_user": {
-                "current": "auth0:index/getUser:getUser"
+                "current": "auth0:index/getUser:getUser",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    },
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },
@@ -1662,6 +2104,7 @@
             "auth0:index/organizationMemberRole:OrganizationMemberRole": "auth0_organization_member_role",
             "auth0:index/organizationMemberRoles:OrganizationMemberRoles": "auth0_organization_member_roles",
             "auth0:index/organizationMembers:OrganizationMembers": "auth0_organization_members",
+            "auth0:index/pages:Pages": "auth0_pages",
             "auth0:index/prompt:Prompt": "auth0_prompt",
             "auth0:index/promptCustomText:PromptCustomText": "auth0_prompt_custom_text",
             "auth0:index/resourceServer:ResourceServer": "auth0_resource_server",
@@ -2047,6 +2490,9 @@
             "auth0:index/OrganizationConnectionsEnabledConnection:OrganizationConnectionsEnabledConnection": {
                 "assignMembershipOnLogin": "assign_membership_on_login",
                 "connectionId": "connection_id"
+            },
+            "auth0:index/PagesError:PagesError": {
+                "showLogLink": "show_log_link"
             },
             "auth0:index/RolePermission:RolePermission": {
                 "resourceServerIdentifier": "resource_server_identifier",
@@ -2728,6 +3174,10 @@
             },
             "auth0:index/organizationMembers:OrganizationMembers": {
                 "organizationId": "organization_id"
+            },
+            "auth0:index/pages:Pages": {
+                "changePassword": "change_password",
+                "guardianMfa": "guardian_mfa"
             },
             "auth0:index/prompt:Prompt": {
                 "identifierFirst": "identifier_first",

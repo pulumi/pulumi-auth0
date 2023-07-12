@@ -135,9 +135,6 @@ namespace Pulumi.Auth0
         /// The name of the role. If not provided, `role_id` must be set.
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Configuration settings for permissions (scopes) attached to the role.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetRolePermissionResult> Permissions;
         /// <summary>
         /// The ID of the role. If not provided, `name` must be set.

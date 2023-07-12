@@ -101,7 +101,7 @@ class GetConnectionResult:
     @pulumi.getter
     def metadata(self) -> Mapping[str, str]:
         """
-        Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         """
         return pulumi.get(self, "metadata")
 
@@ -192,17 +192,17 @@ def get_connection(connection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult).value
 
     return AwaitableGetConnectionResult(
-        connection_id=__ret__.connection_id,
-        display_name=__ret__.display_name,
-        enabled_clients=__ret__.enabled_clients,
-        id=__ret__.id,
-        is_domain_connection=__ret__.is_domain_connection,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        options=__ret__.options,
-        realms=__ret__.realms,
-        show_as_button=__ret__.show_as_button,
-        strategy=__ret__.strategy)
+        connection_id=pulumi.get(__ret__, 'connection_id'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enabled_clients=pulumi.get(__ret__, 'enabled_clients'),
+        id=pulumi.get(__ret__, 'id'),
+        is_domain_connection=pulumi.get(__ret__, 'is_domain_connection'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        options=pulumi.get(__ret__, 'options'),
+        realms=pulumi.get(__ret__, 'realms'),
+        show_as_button=pulumi.get(__ret__, 'show_as_button'),
+        strategy=pulumi.get(__ret__, 'strategy'))
 
 
 @_utilities.lift_output_func(get_connection)

@@ -121,18 +121,24 @@ public class Role extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Configuration settings for permissions (scopes) attached to the role.
+     * Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      * 
      * @deprecated
-     * Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+     * Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      * 
      */
-    @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info. */
+    @Deprecated /* Managing permissions through the `permissions` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info. */
     @Export(name="permissions", type=List.class, parameters={RolePermission.class})
     private Output</* @Nullable */ List<RolePermission>> permissions;
 
     /**
-     * @return Configuration settings for permissions (scopes) attached to the role.
+     * @return Configuration settings for permissions (scopes) attached to the role. Managing permissions through the `permissions`
+     * attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_role_permission` or
+     * `auth0_role_permissions` resource to manage role permissions instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#role-permissions) for more info.
      * 
      */
     public Output<Optional<List<RolePermission>>> permissions() {

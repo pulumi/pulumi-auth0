@@ -55,7 +55,7 @@ namespace Pulumi.Auth0
         /// Configuration settings for colors for branding.
         /// </summary>
         [Output("colors")]
-        public Output<Outputs.BrandingColors?> Colors { get; private set; } = null!;
+        public Output<Outputs.BrandingColors> Colors { get; private set; } = null!;
 
         /// <summary>
         /// URL for the favicon.
@@ -67,7 +67,7 @@ namespace Pulumi.Auth0
         /// Configuration settings to customize the font.
         /// </summary>
         [Output("font")]
-        public Output<Outputs.BrandingFont?> Font { get; private set; } = null!;
+        public Output<Outputs.BrandingFont> Font { get; private set; } = null!;
 
         /// <summary>
         /// URL of logo for branding.

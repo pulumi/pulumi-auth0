@@ -100,10 +100,6 @@ class TriggerBinding(pulumi.CustomResource):
                  trigger: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
-
-        !> This resource has been deprecated in favor of the `TriggerActions` resource.
-
         ## Example Usage
 
         ```python
@@ -164,10 +160,6 @@ class TriggerBinding(pulumi.CustomResource):
                  args: TriggerBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
-
-        !> This resource has been deprecated in favor of the `TriggerActions` resource.
-
         ## Example Usage
 
         ```python

@@ -67,7 +67,7 @@ export class Branding extends pulumi.CustomResource {
     /**
      * Configuration settings for colors for branding.
      */
-    public readonly colors!: pulumi.Output<outputs.BrandingColors | undefined>;
+    public readonly colors!: pulumi.Output<outputs.BrandingColors>;
     /**
      * URL for the favicon.
      */
@@ -75,7 +75,7 @@ export class Branding extends pulumi.CustomResource {
     /**
      * Configuration settings to customize the font.
      */
-    public readonly font!: pulumi.Output<outputs.BrandingFont | undefined>;
+    public readonly font!: pulumi.Output<outputs.BrandingFont>;
     /**
      * URL of logo for branding.
      */

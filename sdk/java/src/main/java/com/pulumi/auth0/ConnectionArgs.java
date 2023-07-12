@@ -50,14 +50,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
     /**
-     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -213,7 +213,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+         * @param metadata Metadata associated with the connection, in the form of a map of string values (max 255 chars).
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+         * @param metadata Metadata associated with the connection, in the form of a map of string values (max 255 chars).
          * 
          * @return builder
          * 

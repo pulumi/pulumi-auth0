@@ -1171,14 +1171,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Value can be `back_channel` or `front_channel`.
+     * Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Value can be `back_channel` or `front_channel`.
+     * @return Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -3086,7 +3086,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Value can be `back_channel` or `front_channel`.
+         * @param type Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
          * 
          * @return builder
          * 
@@ -3097,7 +3097,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Value can be `back_channel` or `front_channel`.
+         * @param type Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
          * 
          * @return builder
          * 

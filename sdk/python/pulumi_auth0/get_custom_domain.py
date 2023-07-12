@@ -149,12 +149,12 @@ def get_custom_domain(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     __ret__ = pulumi.runtime.invoke('auth0:index/getCustomDomain:getCustomDomain', __args__, opts=opts, typ=GetCustomDomainResult).value
 
     return AwaitableGetCustomDomainResult(
-        custom_client_ip_header=__ret__.custom_client_ip_header,
-        domain=__ret__.domain,
-        id=__ret__.id,
-        origin_domain_name=__ret__.origin_domain_name,
-        primary=__ret__.primary,
-        status=__ret__.status,
-        tls_policy=__ret__.tls_policy,
-        type=__ret__.type,
-        verifications=__ret__.verifications)
+        custom_client_ip_header=pulumi.get(__ret__, 'custom_client_ip_header'),
+        domain=pulumi.get(__ret__, 'domain'),
+        id=pulumi.get(__ret__, 'id'),
+        origin_domain_name=pulumi.get(__ret__, 'origin_domain_name'),
+        primary=pulumi.get(__ret__, 'primary'),
+        status=pulumi.get(__ret__, 'status'),
+        tls_policy=pulumi.get(__ret__, 'tls_policy'),
+        type=pulumi.get(__ret__, 'type'),
+        verifications=pulumi.get(__ret__, 'verifications'))

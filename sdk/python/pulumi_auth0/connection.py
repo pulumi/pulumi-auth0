@@ -29,7 +29,7 @@ class ConnectionArgs:
         :param pulumi.Input[str] strategy: Type of the connection, which indicates the identity provider.
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
@@ -91,7 +91,7 @@ class ConnectionArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         """
         return pulumi.get(self, "metadata")
 
@@ -163,9 +163,9 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[str] display_name: Name used in login screen.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
@@ -207,7 +207,7 @@ class _ConnectionState:
     @pulumi.getter(name="enabledClients")
     def enabled_clients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        IDs of the clients for which the connection is enabled.
+        IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
         """
         return pulumi.get(self, "enabled_clients")
 
@@ -231,7 +231,7 @@ class _ConnectionState:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         """
         return pulumi.get(self, "metadata")
 
@@ -475,7 +475,7 @@ class Connection(pulumi.CustomResource):
         ```
         ### OAuth2 Connection
 
-        Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
+        Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 
         ```python
         import pulumi
@@ -643,7 +643,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used in login screen.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
@@ -817,7 +817,7 @@ class Connection(pulumi.CustomResource):
         ```
         ### OAuth2 Connection
 
-        Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `discord`, `imgur`, `spotify`, `shopify`, `figma`, `slack-oauth-2`, `digitalocean`, `twitch`, `vimeo`, `custom`
+        Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
 
         ```python
         import pulumi
@@ -1051,9 +1051,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used in login screen.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
         :param pulumi.Input[bool] is_domain_connection: Indicates whether the connection is domain level.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[str] name: Name of the connection.
         :param pulumi.Input[pulumi.InputType['ConnectionOptionsArgs']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
@@ -1087,7 +1087,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="enabledClients")
     def enabled_clients(self) -> pulumi.Output[Sequence[str]]:
         """
-        IDs of the clients for which the connection is enabled.
+        IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `Connection` data source instead.
         """
         return pulumi.get(self, "enabled_clients")
 
@@ -1103,7 +1103,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+        Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         """
         return pulumi.get(self, "metadata")
 

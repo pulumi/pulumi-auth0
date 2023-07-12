@@ -228,20 +228,20 @@ def get_resource_server(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getResourceServer:getResourceServer', __args__, opts=opts, typ=GetResourceServerResult).value
 
     return AwaitableGetResourceServerResult(
-        allow_offline_access=__ret__.allow_offline_access,
-        enforce_policies=__ret__.enforce_policies,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        name=__ret__.name,
-        resource_server_id=__ret__.resource_server_id,
-        scopes=__ret__.scopes,
-        signing_alg=__ret__.signing_alg,
-        signing_secret=__ret__.signing_secret,
-        skip_consent_for_verifiable_first_party_clients=__ret__.skip_consent_for_verifiable_first_party_clients,
-        token_dialect=__ret__.token_dialect,
-        token_lifetime=__ret__.token_lifetime,
-        token_lifetime_for_web=__ret__.token_lifetime_for_web,
-        verification_location=__ret__.verification_location)
+        allow_offline_access=pulumi.get(__ret__, 'allow_offline_access'),
+        enforce_policies=pulumi.get(__ret__, 'enforce_policies'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_server_id=pulumi.get(__ret__, 'resource_server_id'),
+        scopes=pulumi.get(__ret__, 'scopes'),
+        signing_alg=pulumi.get(__ret__, 'signing_alg'),
+        signing_secret=pulumi.get(__ret__, 'signing_secret'),
+        skip_consent_for_verifiable_first_party_clients=pulumi.get(__ret__, 'skip_consent_for_verifiable_first_party_clients'),
+        token_dialect=pulumi.get(__ret__, 'token_dialect'),
+        token_lifetime=pulumi.get(__ret__, 'token_lifetime'),
+        token_lifetime_for_web=pulumi.get(__ret__, 'token_lifetime_for_web'),
+        verification_location=pulumi.get(__ret__, 'verification_location'))
 
 
 @_utilities.lift_output_func(get_resource_server)

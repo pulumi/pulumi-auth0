@@ -103,7 +103,7 @@ type LookupClientResult struct {
 	InitiateLoginUri string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty bool `pulumi:"isFirstParty"`
-	// Indicates whether the token endpoint IP header is trusted.
+	// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
 	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
 	// Configuration settings for the JWTs issued for this client.
 	JwtConfigurations []GetClientJwtConfiguration `pulumi:"jwtConfigurations"`
@@ -119,7 +119,7 @@ type LookupClientResult struct {
 	OidcBackchannelLogoutUrls []string `pulumi:"oidcBackchannelLogoutUrls"`
 	// Indicates whether this client will conform to strict OIDC specifications.
 	OidcConformant bool `pulumi:"oidcConformant"`
-	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior string `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 	OrganizationUsage string `pulumi:"organizationUsage"`
@@ -130,8 +130,7 @@ type LookupClientResult struct {
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
-	SsoDisabled bool `pulumi:"ssoDisabled"`
-	// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
+	SsoDisabled             bool   `pulumi:"ssoDisabled"`
 	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
@@ -281,7 +280,7 @@ func (o LookupClientResultOutput) IsFirstParty() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the token endpoint IP header is trusted.
+// Indicates whether the token endpoint IP header is trusted. This attribute can only be updated after the client gets created.
 func (o LookupClientResultOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
 }
@@ -321,7 +320,7 @@ func (o LookupClientResultOutput) OidcConformant() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.OidcConformant }).(pulumi.BoolOutput)
 }
 
-// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default) or `preLoginPrompt`.
+// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 func (o LookupClientResultOutput) OrganizationRequireBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.OrganizationRequireBehavior }).(pulumi.StringOutput)
 }
@@ -351,7 +350,6 @@ func (o LookupClientResultOutput) SsoDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.SsoDisabled }).(pulumi.BoolOutput)
 }
 
-// Defines the requested authentication method for the token endpoint. Options include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic).
 func (o LookupClientResultOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
 }

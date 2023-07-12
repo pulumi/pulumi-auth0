@@ -66,9 +66,6 @@ class GetRoleResult:
     @property
     @pulumi.getter
     def permissions(self) -> Sequence['outputs.GetRolePermissionResult']:
-        """
-        Configuration settings for permissions (scopes) attached to the role.
-        """
         return pulumi.get(self, "permissions")
 
     @property
@@ -120,11 +117,11 @@ def get_role(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        permissions=__ret__.permissions,
-        role_id=__ret__.role_id)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        permissions=pulumi.get(__ret__, 'permissions'),
+        role_id=pulumi.get(__ret__, 'role_id'))
 
 
 @_utilities.lift_output_func(get_role)

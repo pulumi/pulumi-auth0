@@ -34,7 +34,11 @@ class ResourceServerArgs:
         :param pulumi.Input[bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]] scopes: List of permissions (scopes) used by this resource server.
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]] scopes: List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+               and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+               `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+               info.
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
@@ -51,8 +55,8 @@ class ResourceServerArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scopes is not None:
-            warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""", DeprecationWarning)
-            pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""")
+            warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""")
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if signing_alg is not None:
@@ -122,8 +126,15 @@ class ResourceServerArgs:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]]]:
         """
-        List of permissions (scopes) used by this resource server.
+        List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+        and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+        `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+        info.
         """
+        warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""")
+
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -236,7 +247,11 @@ class _ResourceServerState:
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]] scopes: List of permissions (scopes) used by this resource server.
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]] scopes: List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+               and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+               `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+               info.
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
@@ -254,8 +269,8 @@ class _ResourceServerState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scopes is not None:
-            warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""", DeprecationWarning)
-            pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""")
+            warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""")
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if signing_alg is not None:
@@ -325,8 +340,15 @@ class _ResourceServerState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopeArgs']]]]:
         """
-        List of permissions (scopes) used by this resource server.
+        List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+        and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+        `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+        info.
         """
+        warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""")
+
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -477,7 +499,11 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: List of permissions (scopes) used by this resource server.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+               and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+               `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+               info.
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
@@ -570,8 +596,8 @@ class ResourceServer(pulumi.CustomResource):
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
             if scopes is not None and not opts.urn:
-                warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""", DeprecationWarning)
-                pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.""")
+                warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""", DeprecationWarning)
+                pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""")
             __props__.__dict__["scopes"] = scopes
             __props__.__dict__["signing_alg"] = signing_alg
             __props__.__dict__["signing_secret"] = signing_secret
@@ -613,7 +639,11 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: List of permissions (scopes) used by this resource server.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceServerScopeArgs']]]] scopes: List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+               and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+               `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+               GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+               info.
         :param pulumi.Input[str] signing_alg: Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
         :param pulumi.Input[str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
@@ -676,8 +706,15 @@ class ResourceServer(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Optional[Sequence['outputs.ResourceServerScope']]]:
         """
-        List of permissions (scopes) used by this resource server.
+        List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+        and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+        `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+        GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+        info.
         """
+        warnings.warn("""Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""scopes is deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.""")
+
         return pulumi.get(self, "scopes")
 
     @property

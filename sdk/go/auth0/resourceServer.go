@@ -73,9 +73,13 @@ type ResourceServer struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of permissions (scopes) used by this resource server.
+	// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+	// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+	// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+	// info.
 	//
-	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
 	Scopes ResourceServerScopeTypeArrayOutput `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringOutput `pulumi:"signingAlg"`
@@ -133,9 +137,13 @@ type resourceServerState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
-	// List of permissions (scopes) used by this resource server.
+	// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+	// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+	// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+	// info.
 	//
-	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
 	Scopes []ResourceServerScopeType `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
@@ -162,9 +170,13 @@ type ResourceServerState struct {
 	Identifier pulumi.StringPtrInput
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
-	// List of permissions (scopes) used by this resource server.
+	// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+	// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+	// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+	// info.
 	//
-	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
 	Scopes ResourceServerScopeTypeArrayInput
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringPtrInput
@@ -195,9 +207,13 @@ type resourceServerArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
-	// List of permissions (scopes) used by this resource server.
+	// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+	// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+	// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+	// info.
 	//
-	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
 	Scopes []ResourceServerScopeType `pulumi:"scopes"`
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
@@ -225,9 +241,13 @@ type ResourceServerArgs struct {
 	Identifier pulumi.StringInput
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
-	// List of permissions (scopes) used by this resource server.
+	// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+	// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+	// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+	// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+	// info.
 	//
-	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+	// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
 	Scopes ResourceServerScopeTypeArrayInput
 	// Algorithm used to sign JWTs. Options include `HS256` and `RS256`.
 	SigningAlg pulumi.StringPtrInput
@@ -352,9 +372,13 @@ func (o ResourceServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of permissions (scopes) used by this resource server.
+// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+// info.
 //
-// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.
+// Deprecated: Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.
 func (o ResourceServerOutput) Scopes() ResourceServerScopeTypeArrayOutput {
 	return o.ApplyT(func(v *ResourceServer) ResourceServerScopeTypeArrayOutput { return v.Scopes }).(ResourceServerScopeTypeArrayOutput)
 }

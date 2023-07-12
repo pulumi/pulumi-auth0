@@ -68,11 +68,11 @@ type Branding struct {
 	pulumi.CustomResourceState
 
 	// Configuration settings for colors for branding.
-	Colors BrandingColorsPtrOutput `pulumi:"colors"`
+	Colors BrandingColorsOutput `pulumi:"colors"`
 	// URL for the favicon.
 	FaviconUrl pulumi.StringOutput `pulumi:"faviconUrl"`
 	// Configuration settings to customize the font.
-	Font BrandingFontPtrOutput `pulumi:"font"`
+	Font BrandingFontOutput `pulumi:"font"`
 	// URL of logo for branding.
 	LogoUrl pulumi.StringOutput `pulumi:"logoUrl"`
 	// Configuration settings for Universal Login.
@@ -252,8 +252,8 @@ func (o BrandingOutput) ToBrandingOutputWithContext(ctx context.Context) Brandin
 }
 
 // Configuration settings for colors for branding.
-func (o BrandingOutput) Colors() BrandingColorsPtrOutput {
-	return o.ApplyT(func(v *Branding) BrandingColorsPtrOutput { return v.Colors }).(BrandingColorsPtrOutput)
+func (o BrandingOutput) Colors() BrandingColorsOutput {
+	return o.ApplyT(func(v *Branding) BrandingColorsOutput { return v.Colors }).(BrandingColorsOutput)
 }
 
 // URL for the favicon.
@@ -262,8 +262,8 @@ func (o BrandingOutput) FaviconUrl() pulumi.StringOutput {
 }
 
 // Configuration settings to customize the font.
-func (o BrandingOutput) Font() BrandingFontPtrOutput {
-	return o.ApplyT(func(v *Branding) BrandingFontPtrOutput { return v.Font }).(BrandingFontPtrOutput)
+func (o BrandingOutput) Font() BrandingFontOutput {
+	return o.ApplyT(func(v *Branding) BrandingFontOutput { return v.Font }).(BrandingFontOutput)
 }
 
 // URL of logo for branding.

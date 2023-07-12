@@ -106,7 +106,9 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * List of API permissions granted to the user.
+     * List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
+     *
+     * @deprecated Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
      */
     public /*out*/ readonly permissions!: pulumi.Output<outputs.UserPermission[]>;
     /**
@@ -122,9 +124,12 @@ export class User extends pulumi.CustomResource {
      */
     public readonly picture!: pulumi.Output<string>;
     /**
-     * Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
+     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
+     * instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      *
-     * @deprecated Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+     * @deprecated Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
@@ -253,7 +258,9 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * List of API permissions granted to the user.
+     * List of API permissions granted to the user. Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.User` data source instead.
+     *
+     * @deprecated Reading permissions through this attribute is deprecated and it will be removed in a future major version. Use the `auth0_user` data source instead.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.UserPermission>[]>;
     /**
@@ -269,9 +276,12 @@ export interface UserState {
      */
     picture?: pulumi.Input<string>;
     /**
-     * Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
+     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
+     * instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      *
-     * @deprecated Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+     * @deprecated Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -349,9 +359,12 @@ export interface UserArgs {
      */
     picture?: pulumi.Input<string>;
     /**
-     * Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user. Managing roles through this attribute is deprecated and it will be removed in
+     * a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles
+     * instead. Check the [MIGRATION
+     * GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      *
-     * @deprecated Managing roles through this attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) on how to do that.
+     * @deprecated Managing roles through this attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_user_roles` or the `auth0_user_role` resource to manage user roles instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#user-roles) on how to do that.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**

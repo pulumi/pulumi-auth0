@@ -35,14 +35,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IDs of the clients for which the connection is enabled.
+     * IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
      * 
      */
     @Import(name="enabledClients")
     private @Nullable Output<List<String>> enabledClients;
 
     /**
-     * @return IDs of the clients for which the connection is enabled.
+     * @return IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
      * 
      */
     public Optional<Output<List<String>>> enabledClients() {
@@ -65,14 +65,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
     /**
-     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+     * @return Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -208,7 +208,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledClients IDs of the clients for which the connection is enabled.
+         * @param enabledClients IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledClients IDs of the clients for which the connection is enabled.
+         * @param enabledClients IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledClients IDs of the clients for which the connection is enabled.
+         * @param enabledClients IDs of the clients for which the connection is enabled. Reading the enabled clients through this attribute is deprecated and it will be removed in a future major version. Use the `auth0.Connection` data source instead.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+         * @param metadata Metadata associated with the connection, in the form of a map of string values (max 255 chars).
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata associated with the connection, in the form of a map of string values (max 255 chars). Maximum of 10 metadata properties allowed.
+         * @param metadata Metadata associated with the connection, in the form of a map of string values (max 255 chars).
          * 
          * @return builder
          * 

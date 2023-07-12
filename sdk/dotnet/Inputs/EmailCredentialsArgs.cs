@@ -45,7 +45,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// API User for your email service.
+        /// API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
         /// </summary>
         [Input("apiUser")]
         public Input<string>? ApiUser { get; set; }

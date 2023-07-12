@@ -47,7 +47,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * API User for your email service.
+     * API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
      * 
      * @deprecated
      * This field is not accepted by the API any more so it will be removed soon.
@@ -58,7 +58,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> apiUser;
 
     /**
-     * @return API User for your email service.
+     * @return API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
      * 
      * @deprecated
      * This field is not accepted by the API any more so it will be removed soon.
@@ -250,7 +250,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apiUser API User for your email service.
+         * @param apiUser API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class EmailCredentialsArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apiUser API User for your email service.
+         * @param apiUser API User for your email service. This field is not accepted by the API any more so it will be removed in a future major version.
          * 
          * @return builder
          * 

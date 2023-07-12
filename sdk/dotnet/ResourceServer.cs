@@ -83,7 +83,11 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// List of permissions (scopes) used by this resource server.
+        /// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+        /// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+        /// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+        /// info.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<Outputs.ResourceServerScope>> Scopes { get; private set; } = null!;
@@ -204,9 +208,13 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ResourceServerScopeArgs>? _scopes;
 
         /// <summary>
-        /// List of permissions (scopes) used by this resource server.
+        /// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+        /// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+        /// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+        /// info.
         /// </summary>
-        [Obsolete(@"Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.")]
+        [Obsolete(@"Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.")]
         public InputList<Inputs.ResourceServerScopeArgs> Scopes
         {
             get => _scopes ?? (_scopes = new InputList<Inputs.ResourceServerScopeArgs>());
@@ -291,9 +299,13 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ResourceServerScopeGetArgs>? _scopes;
 
         /// <summary>
-        /// List of permissions (scopes) used by this resource server.
+        /// List of permissions (scopes) used by this resource server. Managing scopes through the `scopes` attribute is deprecated
+        /// and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or
+        /// `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION
+        /// GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more
+        /// info.
         /// </summary>
-        [Obsolete(@"Managing scopes through the `scopes` attribute is deprecated and it will be changed to read-only in a future version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md) for more info.")]
+        [Obsolete(@"Managing scopes through the `scopes` attribute is deprecated and it will be removed in a future major version. Migrate to the `auth0_resource_server_scope` or `auth0_resource_server_scopes` resources to manage role scopes instead. Check the [MIGRATION GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#resource-server-scopes) for more info.")]
         public InputList<Inputs.ResourceServerScopeGetArgs> Scopes
         {
             get => _scopes ?? (_scopes = new InputList<Inputs.ResourceServerScopeGetArgs>());

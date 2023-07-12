@@ -1183,8 +1183,6 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieve a tenant&#39;s global Auth0 application client.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1217,8 +1215,6 @@ public final class Auth0Functions {
         return getGlobalClient(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieve a tenant&#39;s global Auth0 application client.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1251,8 +1247,6 @@ public final class Auth0Functions {
         return getGlobalClientPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieve a tenant&#39;s global Auth0 application client.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1285,8 +1279,6 @@ public final class Auth0Functions {
         return getGlobalClient(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieve a tenant&#39;s global Auth0 application client.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1319,8 +1311,6 @@ public final class Auth0Functions {
         return getGlobalClientPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieve a tenant&#39;s global Auth0 application client.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1353,8 +1343,6 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getGlobalClient:getGlobalClient", TypeShape.of(GetGlobalClientResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieve a tenant&#39;s global Auth0 application client.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;

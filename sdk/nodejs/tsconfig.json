@@ -53,6 +53,7 @@
         "organizationMemberRole.ts",
         "organizationMemberRoles.ts",
         "organizationMembers.ts",
+        "pages.ts",
         "prompt.ts",
         "promptCustomText.ts",
         "provider.ts",

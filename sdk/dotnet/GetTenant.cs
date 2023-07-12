@@ -45,9 +45,6 @@ namespace Pulumi.Auth0
         /// URLs that Auth0 may redirect to after logout.
         /// </summary>
         public readonly ImmutableArray<string> AllowedLogoutUrls;
-        /// <summary>
-        /// Configuration settings for change password page.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantChangePasswordResult> ChangePasswords;
         /// <summary>
         /// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -69,9 +66,6 @@ namespace Pulumi.Auth0
         /// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         /// </summary>
         public readonly ImmutableArray<string> EnabledLocales;
-        /// <summary>
-        /// Configuration settings for error pages.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantErrorPageResult> ErrorPages;
         /// <summary>
         /// Configuration settings for tenant flags.
@@ -81,9 +75,6 @@ namespace Pulumi.Auth0
         /// Friendly name for the tenant.
         /// </summary>
         public readonly string FriendlyName;
-        /// <summary>
-        /// Configuration settings for the Guardian MFA page.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantGuardianMfaPageResult> GuardianMfaPages;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -121,9 +112,6 @@ namespace Pulumi.Auth0
         /// Support URL for authenticating users.
         /// </summary>
         public readonly string SupportUrl;
-        /// <summary>
-        /// Configuration settings for Universal Login.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantUniversalLoginResult> UniversalLogins;
 
         [OutputConstructor]

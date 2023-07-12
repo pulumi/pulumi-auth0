@@ -37,15 +37,24 @@ class TenantArgs:
         """
         The set of arguments for constructing a Tenant resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
-        :param pulumi.Input['TenantChangePasswordArgs'] change_password: Configuration settings for change password page.
+        :param pulumi.Input['TenantChangePasswordArgs'] change_password: Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+               it will be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
-        :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration settings for error pages.
+        :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+               be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
-        :param pulumi.Input['TenantGuardianMfaPageArgs'] guardian_mfa_page: Configuration settings for the Guardian MFA page.
+        :param pulumi.Input['TenantGuardianMfaPageArgs'] guardian_mfa_page: Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+               and it will be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -53,10 +62,16 @@ class TenantArgs:
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
-        :param pulumi.Input['TenantUniversalLoginArgs'] universal_login: Configuration settings for Universal Login.
+        :param pulumi.Input['TenantUniversalLoginArgs'] universal_login: Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+               settings through the `auth0_branding` resource. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+               for more info.
         """
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if change_password is not None:
+            warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""change_password is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
         if change_password is not None:
             pulumi.set(__self__, "change_password", change_password)
         if default_audience is not None:
@@ -68,11 +83,17 @@ class TenantArgs:
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
         if error_page is not None:
+            warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""error_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+        if error_page is not None:
             pulumi.set(__self__, "error_page", error_page)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if guardian_mfa_page is not None:
+            warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""guardian_mfa_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
         if guardian_mfa_page is not None:
             pulumi.set(__self__, "guardian_mfa_page", guardian_mfa_page)
         if idle_session_lifetime is not None:
@@ -89,6 +110,9 @@ class TenantArgs:
             pulumi.set(__self__, "support_email", support_email)
         if support_url is not None:
             pulumi.set(__self__, "support_url", support_url)
+        if universal_login is not None:
+            warnings.warn("""These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""universal_login is deprecated: These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""")
         if universal_login is not None:
             pulumi.set(__self__, "universal_login", universal_login)
 
@@ -108,8 +132,14 @@ class TenantArgs:
     @pulumi.getter(name="changePassword")
     def change_password(self) -> Optional[pulumi.Input['TenantChangePasswordArgs']]:
         """
-        Configuration settings for change password page.
+        Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+        it will be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""change_password is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "change_password")
 
     @change_password.setter
@@ -168,8 +198,14 @@ class TenantArgs:
     @pulumi.getter(name="errorPage")
     def error_page(self) -> Optional[pulumi.Input['TenantErrorPageArgs']]:
         """
-        Configuration settings for error pages.
+        Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+        be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""error_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "error_page")
 
     @error_page.setter
@@ -204,8 +240,14 @@ class TenantArgs:
     @pulumi.getter(name="guardianMfaPage")
     def guardian_mfa_page(self) -> Optional[pulumi.Input['TenantGuardianMfaPageArgs']]:
         """
-        Configuration settings for the Guardian MFA page.
+        Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+        and it will be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""guardian_mfa_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "guardian_mfa_page")
 
     @guardian_mfa_page.setter
@@ -300,8 +342,14 @@ class TenantArgs:
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[pulumi.Input['TenantUniversalLoginArgs']]:
         """
-        Configuration settings for Universal Login.
+        Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+        settings through the `auth0_branding` resource. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+        for more info.
         """
+        warnings.warn("""These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""universal_login is deprecated: These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""")
+
         return pulumi.get(self, "universal_login")
 
     @universal_login.setter
@@ -333,15 +381,24 @@ class _TenantState:
         """
         Input properties used for looking up and filtering Tenant resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
-        :param pulumi.Input['TenantChangePasswordArgs'] change_password: Configuration settings for change password page.
+        :param pulumi.Input['TenantChangePasswordArgs'] change_password: Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+               it will be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
-        :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration settings for error pages.
+        :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+               be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
-        :param pulumi.Input['TenantGuardianMfaPageArgs'] guardian_mfa_page: Configuration settings for the Guardian MFA page.
+        :param pulumi.Input['TenantGuardianMfaPageArgs'] guardian_mfa_page: Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+               and it will be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -349,10 +406,16 @@ class _TenantState:
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
-        :param pulumi.Input['TenantUniversalLoginArgs'] universal_login: Configuration settings for Universal Login.
+        :param pulumi.Input['TenantUniversalLoginArgs'] universal_login: Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+               settings through the `auth0_branding` resource. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+               for more info.
         """
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if change_password is not None:
+            warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""change_password is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
         if change_password is not None:
             pulumi.set(__self__, "change_password", change_password)
         if default_audience is not None:
@@ -364,11 +427,17 @@ class _TenantState:
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
         if error_page is not None:
+            warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""error_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+        if error_page is not None:
             pulumi.set(__self__, "error_page", error_page)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if guardian_mfa_page is not None:
+            warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""guardian_mfa_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
         if guardian_mfa_page is not None:
             pulumi.set(__self__, "guardian_mfa_page", guardian_mfa_page)
         if idle_session_lifetime is not None:
@@ -385,6 +454,9 @@ class _TenantState:
             pulumi.set(__self__, "support_email", support_email)
         if support_url is not None:
             pulumi.set(__self__, "support_url", support_url)
+        if universal_login is not None:
+            warnings.warn("""These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""", DeprecationWarning)
+            pulumi.log.warn("""universal_login is deprecated: These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""")
         if universal_login is not None:
             pulumi.set(__self__, "universal_login", universal_login)
 
@@ -404,8 +476,14 @@ class _TenantState:
     @pulumi.getter(name="changePassword")
     def change_password(self) -> Optional[pulumi.Input['TenantChangePasswordArgs']]:
         """
-        Configuration settings for change password page.
+        Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+        it will be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""change_password is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "change_password")
 
     @change_password.setter
@@ -464,8 +542,14 @@ class _TenantState:
     @pulumi.getter(name="errorPage")
     def error_page(self) -> Optional[pulumi.Input['TenantErrorPageArgs']]:
         """
-        Configuration settings for error pages.
+        Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+        be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""error_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "error_page")
 
     @error_page.setter
@@ -500,8 +584,14 @@ class _TenantState:
     @pulumi.getter(name="guardianMfaPage")
     def guardian_mfa_page(self) -> Optional[pulumi.Input['TenantGuardianMfaPageArgs']]:
         """
-        Configuration settings for the Guardian MFA page.
+        Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+        and it will be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""guardian_mfa_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "guardian_mfa_page")
 
     @guardian_mfa_page.setter
@@ -596,8 +686,14 @@ class _TenantState:
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> Optional[pulumi.Input['TenantUniversalLoginArgs']]:
         """
-        Configuration settings for Universal Login.
+        Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+        settings through the `auth0_branding` resource. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+        for more info.
         """
+        warnings.warn("""These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""universal_login is deprecated: These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""")
+
         return pulumi.get(self, "universal_login")
 
     @universal_login.setter
@@ -695,15 +791,24 @@ class Tenant(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
-        :param pulumi.Input[pulumi.InputType['TenantChangePasswordArgs']] change_password: Configuration settings for change password page.
+        :param pulumi.Input[pulumi.InputType['TenantChangePasswordArgs']] change_password: Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+               it will be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
-        :param pulumi.Input[pulumi.InputType['TenantErrorPageArgs']] error_page: Configuration settings for error pages.
+        :param pulumi.Input[pulumi.InputType['TenantErrorPageArgs']] error_page: Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+               be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
-        :param pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']] guardian_mfa_page: Configuration settings for the Guardian MFA page.
+        :param pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']] guardian_mfa_page: Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+               and it will be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -711,7 +816,10 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
-        :param pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']] universal_login: Configuration settings for Universal Login.
+        :param pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']] universal_login: Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+               settings through the `auth0_branding` resource. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+               for more info.
         """
         ...
     @overload
@@ -825,14 +933,23 @@ class Tenant(pulumi.CustomResource):
             __props__ = TenantArgs.__new__(TenantArgs)
 
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
+            if change_password is not None and not opts.urn:
+                warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+                pulumi.log.warn("""change_password is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
             __props__.__dict__["change_password"] = change_password
             __props__.__dict__["default_audience"] = default_audience
             __props__.__dict__["default_directory"] = default_directory
             __props__.__dict__["default_redirection_uri"] = default_redirection_uri
             __props__.__dict__["enabled_locales"] = enabled_locales
+            if error_page is not None and not opts.urn:
+                warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+                pulumi.log.warn("""error_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
             __props__.__dict__["error_page"] = error_page
             __props__.__dict__["flags"] = flags
             __props__.__dict__["friendly_name"] = friendly_name
+            if guardian_mfa_page is not None and not opts.urn:
+                warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+                pulumi.log.warn("""guardian_mfa_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
             __props__.__dict__["guardian_mfa_page"] = guardian_mfa_page
             __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
             __props__.__dict__["picture_url"] = picture_url
@@ -841,6 +958,9 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["session_lifetime"] = session_lifetime
             __props__.__dict__["support_email"] = support_email
             __props__.__dict__["support_url"] = support_url
+            if universal_login is not None and not opts.urn:
+                warnings.warn("""These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""", DeprecationWarning)
+                pulumi.log.warn("""universal_login is deprecated: These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""")
             __props__.__dict__["universal_login"] = universal_login
         super(Tenant, __self__).__init__(
             'auth0:index/tenant:Tenant',
@@ -878,15 +998,24 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
-        :param pulumi.Input[pulumi.InputType['TenantChangePasswordArgs']] change_password: Configuration settings for change password page.
+        :param pulumi.Input[pulumi.InputType['TenantChangePasswordArgs']] change_password: Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+               it will be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
-        :param pulumi.Input[pulumi.InputType['TenantErrorPageArgs']] error_page: Configuration settings for error pages.
+        :param pulumi.Input[pulumi.InputType['TenantErrorPageArgs']] error_page: Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+               be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[pulumi.InputType['TenantFlagsArgs']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[str] friendly_name: Friendly name for the tenant.
-        :param pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']] guardian_mfa_page: Configuration settings for the Guardian MFA page.
+        :param pulumi.Input[pulumi.InputType['TenantGuardianMfaPageArgs']] guardian_mfa_page: Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+               and it will be removed in a future major version. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+               info.
         :param pulumi.Input[float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -894,7 +1023,10 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[float] session_lifetime: Number of hours during which a session will stay valid.
         :param pulumi.Input[str] support_email: Support email address for authenticating users.
         :param pulumi.Input[str] support_url: Support URL for authenticating users.
-        :param pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']] universal_login: Configuration settings for Universal Login.
+        :param pulumi.Input[pulumi.InputType['TenantUniversalLoginArgs']] universal_login: Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+               settings through the `auth0_branding` resource. Check the
+               [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+               for more info.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -932,8 +1064,14 @@ class Tenant(pulumi.CustomResource):
     @pulumi.getter(name="changePassword")
     def change_password(self) -> pulumi.Output['outputs.TenantChangePassword']:
         """
-        Configuration settings for change password page.
+        Configuration settings for change password page. This attribute is deprecated in favor of the `auth0_pages` resource and
+        it will be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""change_password is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "change_password")
 
     @property
@@ -972,8 +1110,14 @@ class Tenant(pulumi.CustomResource):
     @pulumi.getter(name="errorPage")
     def error_page(self) -> pulumi.Output['outputs.TenantErrorPage']:
         """
-        Configuration settings for error pages.
+        Configuration settings for error pages. This attribute is deprecated in favor of the `auth0_pages` resource and it will
+        be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""error_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "error_page")
 
     @property
@@ -996,8 +1140,14 @@ class Tenant(pulumi.CustomResource):
     @pulumi.getter(name="guardianMfaPage")
     def guardian_mfa_page(self) -> pulumi.Output['outputs.TenantGuardianMfaPage']:
         """
-        Configuration settings for the Guardian MFA page.
+        Configuration settings for the Guardian MFA page. This attribute is deprecated in favor of the `auth0_pages` resource
+        and it will be removed in a future major version. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more
+        info.
         """
+        warnings.warn("""This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""guardian_mfa_page is deprecated: This attribute is deprecated in favor of the `auth0_pages` resource and it will be removed in a future major version. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-pages) for more info.""")
+
         return pulumi.get(self, "guardian_mfa_page")
 
     @property
@@ -1060,7 +1210,13 @@ class Tenant(pulumi.CustomResource):
     @pulumi.getter(name="universalLogin")
     def universal_login(self) -> pulumi.Output['outputs.TenantUniversalLogin']:
         """
-        Configuration settings for Universal Login.
+        Configuration settings for Universal Login. These configuration settings have been deprecated. Migrate to managing these
+        settings through the `auth0_branding` resource. Check the
+        [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login)
+        for more info.
         """
+        warnings.warn("""These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""", DeprecationWarning)
+        pulumi.log.warn("""universal_login is deprecated: These configuration settings have been deprecated. Migrate to managing these settings through the `auth0_branding` resource. Check the [MIGRATION_GUIDE](https://github.com/auth0/terraform-provider-auth0/blob/main/MIGRATION_GUIDE.md#tenant-universal-login) for more info.""")
+
         return pulumi.get(self, "universal_login")
 

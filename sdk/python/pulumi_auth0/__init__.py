@@ -42,6 +42,7 @@ from .organization_member import *
 from .organization_member_role import *
 from .organization_member_roles import *
 from .organization_members import *
+from .pages import *
 from .prompt import *
 from .prompt_custom_text import *
 from .provider import *
@@ -273,6 +274,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/organizationMembers:OrganizationMembers": "OrganizationMembers"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/pages",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/pages:Pages": "Pages"
   }
  },
  {

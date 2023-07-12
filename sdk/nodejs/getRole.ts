@@ -63,9 +63,6 @@ export interface GetRoleResult {
      * The name of the role. If not provided, `roleId` must be set.
      */
     readonly name?: string;
-    /**
-     * Configuration settings for permissions (scopes) attached to the role.
-     */
     readonly permissions: outputs.GetRolePermission[];
     /**
      * The ID of the role. If not provided, `name` must be set.
