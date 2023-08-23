@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -98,6 +99,7 @@ func NewHook(ctx *pulumi.Context,
 		"secrets",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Hook
 	err := ctx.RegisterResource("auth0:index/hook:Hook", name, args, &resource, opts...)
 	if err != nil {

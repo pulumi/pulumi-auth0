@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.InvokeOption) (*LookupClientResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClientResult
 	err := ctx.Invoke("auth0:index/getClient:getClient", args, &rv, opts...)
 	if err != nil {

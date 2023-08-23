@@ -4,6 +4,7 @@
 package auth0
 
 import (
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +32,7 @@ import (
 //
 // ```
 func LookupGlobalClient(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupGlobalClientResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalClientResult
 	err := ctx.Invoke("auth0:index/getGlobalClient:getGlobalClient", nil, &rv, opts...)
 	if err != nil {

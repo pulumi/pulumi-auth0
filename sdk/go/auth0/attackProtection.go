@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -110,6 +111,7 @@ func NewAttackProtection(ctx *pulumi.Context,
 		args = &AttackProtectionArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AttackProtection
 	err := ctx.RegisterResource("auth0:index/attackProtection:AttackProtection", name, args, &resource, opts...)
 	if err != nil {

@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Your Auth0 [management api access
 // token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
@@ -38,7 +41,7 @@ func GetDebug(ctx *pulumi.Context) bool {
 		return v
 	}
 	var value bool
-	if d := getEnvOrDefault(nil, parseEnvBool, "AUTH0_DEBUG"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "AUTH0_DEBUG"); d != nil {
 		value = d.(bool)
 	}
 	return value

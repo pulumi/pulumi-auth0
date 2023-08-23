@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,10 +41,11 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.Debug == nil {
-		if d := getEnvOrDefault(nil, parseEnvBool, "AUTH0_DEBUG"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "AUTH0_DEBUG"); d != nil {
 			args.Debug = pulumi.BoolPtr(d.(bool))
 		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:auth0", name, args, &resource, opts...)
 	if err != nil {

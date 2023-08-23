@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewEmail(ctx *pulumi.Context,
 	if args.DefaultFromAddress == nil {
 		return nil, errors.New("invalid value for required argument 'DefaultFromAddress'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Email
 	err := ctx.RegisterResource("auth0:index/email:Email", name, args, &resource, opts...)
 	if err != nil {
