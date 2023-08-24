@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,6 +91,7 @@ func NewResourceServerScopes(ctx *pulumi.Context,
 	if args.Scopes == nil {
 		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ResourceServerScopes
 	err := ctx.RegisterResource("auth0:index/resourceServerScopes:ResourceServerScopes", name, args, &resource, opts...)
 	if err != nil {

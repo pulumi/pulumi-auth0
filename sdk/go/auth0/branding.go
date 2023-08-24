@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,6 +87,7 @@ func NewBranding(ctx *pulumi.Context,
 		args = &BrandingArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Branding
 	err := ctx.RegisterResource("auth0:index/branding:Branding", name, args, &resource, opts...)
 	if err != nil {

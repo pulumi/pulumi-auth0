@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,6 +110,7 @@ func NewRole(ctx *pulumi.Context,
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Role
 	err := ctx.RegisterResource("auth0:index/role:Role", name, args, &resource, opts...)
 	if err != nil {

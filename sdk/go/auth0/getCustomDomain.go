@@ -4,11 +4,13 @@
 package auth0
 
 import (
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source to retrieve the custom domain configuration.
 func LookupCustomDomain(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomDomainResult
 	err := ctx.Invoke("auth0:index/getCustomDomain:getCustomDomain", nil, &rv, opts...)
 	if err != nil {

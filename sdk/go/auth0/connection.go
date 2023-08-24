@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -540,6 +541,7 @@ func NewConnection(ctx *pulumi.Context,
 	if args.Strategy == nil {
 		return nil, errors.New("invalid value for required argument 'Strategy'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Connection
 	err := ctx.RegisterResource("auth0:index/connection:Connection", name, args, &resource, opts...)
 	if err != nil {

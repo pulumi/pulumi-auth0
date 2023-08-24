@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func LookupResourceServer(ctx *pulumi.Context, args *LookupResourceServerArgs, opts ...pulumi.InvokeOption) (*LookupResourceServerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceServerResult
 	err := ctx.Invoke("auth0:index/getResourceServer:getResourceServer", args, &rv, opts...)
 	if err != nil {

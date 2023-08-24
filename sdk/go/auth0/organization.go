@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewOrganization(ctx *pulumi.Context,
 		args = &OrganizationArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Organization
 	err := ctx.RegisterResource("auth0:index/organization:Organization", name, args, &resource, opts...)
 	if err != nil {

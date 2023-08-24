@@ -4,6 +4,7 @@
 package auth0
 
 import (
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,7 @@ import (
 //
 // ```
 func LookupAttackProtection(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupAttackProtectionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttackProtectionResult
 	err := ctx.Invoke("auth0:index/getAttackProtection:getAttackProtection", nil, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -125,6 +126,7 @@ func NewGuardian(ctx *pulumi.Context,
 	if args.Policy == nil {
 		return nil, errors.New("invalid value for required argument 'Policy'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Guardian
 	err := ctx.RegisterResource("auth0:index/guardian:Guardian", name, args, &resource, opts...)
 	if err != nil {

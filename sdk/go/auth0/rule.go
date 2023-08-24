@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +78,7 @@ func NewRule(ctx *pulumi.Context,
 	if args.Script == nil {
 		return nil, errors.New("invalid value for required argument 'Script'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Rule
 	err := ctx.RegisterResource("auth0:index/rule:Rule", name, args, &resource, opts...)
 	if err != nil {

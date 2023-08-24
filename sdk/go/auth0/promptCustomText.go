@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -106,6 +107,7 @@ func NewPromptCustomText(ctx *pulumi.Context,
 	if args.Prompt == nil {
 		return nil, errors.New("invalid value for required argument 'Prompt'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PromptCustomText
 	err := ctx.RegisterResource("auth0:index/promptCustomText:PromptCustomText", name, args, &resource, opts...)
 	if err != nil {

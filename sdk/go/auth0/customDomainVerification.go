@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ func NewCustomDomainVerification(ctx *pulumi.Context,
 		"cnameApiKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomDomainVerification
 	err := ctx.RegisterResource("auth0:index/customDomainVerification:CustomDomainVerification", name, args, &resource, opts...)
 	if err != nil {

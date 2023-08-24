@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,6 +91,7 @@ func NewTriggerAction(ctx *pulumi.Context,
 	if args.Trigger == nil {
 		return nil, errors.New("invalid value for required argument 'Trigger'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TriggerAction
 	err := ctx.RegisterResource("auth0:index/triggerAction:TriggerAction", name, args, &resource, opts...)
 	if err != nil {

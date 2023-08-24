@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -151,6 +152,7 @@ func NewBrandingTheme(ctx *pulumi.Context,
 	if args.Widget == nil {
 		return nil, errors.New("invalid value for required argument 'Widget'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BrandingTheme
 	err := ctx.RegisterResource("auth0:index/brandingTheme:BrandingTheme", name, args, &resource, opts...)
 	if err != nil {

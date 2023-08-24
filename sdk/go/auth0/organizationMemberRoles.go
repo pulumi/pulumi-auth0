@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,6 +110,7 @@ func NewOrganizationMemberRoles(ctx *pulumi.Context,
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OrganizationMemberRoles
 	err := ctx.RegisterResource("auth0:index/organizationMemberRoles:OrganizationMemberRoles", name, args, &resource, opts...)
 	if err != nil {
