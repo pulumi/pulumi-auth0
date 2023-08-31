@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-auth0/provider/v2
 
-go 1.20
+go 1.21
 
 replace (
 	github.com/auth0/terraform-provider-auth0/shim => ./shim
