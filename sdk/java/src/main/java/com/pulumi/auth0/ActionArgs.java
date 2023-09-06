@@ -81,14 +81,14 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
      * 
      */
     @Import(name="runtime")
     private @Nullable Output<String> runtime;
 
     /**
-     * @return The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+     * @return The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
      * 
      */
     public Optional<Output<String>> runtime() {
@@ -250,7 +250,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+         * @param runtime The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+         * @param runtime The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
          * 
          * @return builder
          * 

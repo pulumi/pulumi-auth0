@@ -92,14 +92,14 @@ public class Action extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
      * 
      */
     @Export(name="runtime", type=String.class, parameters={})
     private Output<String> runtime;
 
     /**
-     * @return The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+     * @return The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
      * 
      */
     public Output<String> runtime() {

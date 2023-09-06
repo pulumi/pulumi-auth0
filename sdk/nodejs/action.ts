@@ -64,7 +64,7 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export interface ActionState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -182,7 +182,7 @@ export interface ActionArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.
+     * The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).
      */
     runtime?: pulumi.Input<string>;
     /**
