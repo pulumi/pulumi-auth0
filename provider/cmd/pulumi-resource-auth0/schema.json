@@ -5825,7 +5825,7 @@
                 },
                 "runtime": {
                     "type": "string",
-                    "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.\n"
+                    "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).\n"
                 },
                 "secrets": {
                     "type": "array",
@@ -5872,7 +5872,7 @@
                 },
                 "runtime": {
                     "type": "string",
-                    "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.\n"
+                    "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).\n"
                 },
                 "secrets": {
                     "type": "array",
@@ -5914,7 +5914,7 @@
                     },
                     "runtime": {
                         "type": "string",
-                        "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16` or `node18`.\n"
+                        "description": "The Node runtime. Defaults to `node12`. Possible values are: `node12`, `node16`, `node18` (beta) or `node18-actions` (GA).\n"
                     },
                     "secrets": {
                         "type": "array",

@@ -3,8 +3,8 @@ module github.com/auth0/terraform-provider-auth0/shim
 go 1.21
 
 require (
-	github.com/auth0/terraform-provider-auth0 v0.50.1
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.27.0
+	github.com/auth0/terraform-provider-auth0 v0.50.2
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.28.0
 )
 
 require (
@@ -37,7 +37,7 @@ require (
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
-	github.com/zclconf/go-cty v1.13.2 // indirect
+	github.com/zclconf/go-cty v1.13.3 // indirect
 	golang.org/x/net v0.14.0 // indirect
 	golang.org/x/oauth2 v0.11.0 // indirect
 	golang.org/x/sys v0.11.0 // indirect

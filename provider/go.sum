@@ -811,8 +811,8 @@ github.com/asaskevich/govalidator v0.0.0-20200907205600-7a23bdc65eef/go.mod h1:W
 github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d/go.mod h1:WaHUgvxTVq04UNunO+XhnAqY/wQc+bxr74GqbsZ/Jqw=
 github.com/auth0/go-auth0 v0.17.3 h1:HjepTdrzDo3hPe6W/y+IbQfgs0414JGdQKOzgAYr+Nc=
 github.com/auth0/go-auth0 v0.17.3/go.mod h1:gQV9wI/TEqcxQ5FKQhImNbNl5+fL3fSpEfsl76I0Nd4=
-github.com/auth0/terraform-provider-auth0 v0.50.1 h1:/N/KtJTSqMJtA7qk4bMpeXBEIh4sv0BErs4WA+AhWus=
-github.com/auth0/terraform-provider-auth0 v0.50.1/go.mod h1:S7OqEVTsw+g/P8OJsKFIM1AlooPBQl4jXjvEuX+D5Yg=
+github.com/auth0/terraform-provider-auth0 v0.50.2 h1:16WX32G0gx4E95ZUqzOhjQSZY+UcZleSksCXGeDt7eI=
+github.com/auth0/terraform-provider-auth0 v0.50.2/go.mod h1:I5/fpnmlPSnisnzofRzCO7/FWIvb69692529TBRdyFA=
 github.com/aws/aws-lambda-go v1.13.3/go.mod h1:4UKl9IzQMoD+QF79YdCuzCwp8VbmG4VAQwij/eHl5CU=
 github.com/aws/aws-sdk-go v1.15.11/go.mod h1:mFuSZ37Z9YOHbQEwBWztmVzqXrEkub65tZoCYDt7FT0=
 github.com/aws/aws-sdk-go v1.15.27/go.mod h1:mFuSZ37Z9YOHbQEwBWztmVzqXrEkub65tZoCYDt7FT0=
@@ -1656,8 +1656,8 @@ github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwU
 github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.3.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
-github.com/hashicorp/terraform-plugin-testing v1.4.0 h1:DVIXxw7VHZvnwWVik4HzhpC2yytaJ5FpiHxz5debKmE=
-github.com/hashicorp/terraform-plugin-testing v1.4.0/go.mod h1:b7Bha24iGrbZQjT+ZE8m9crck1YjdVOZ8mfGCQ19OxA=
+github.com/hashicorp/terraform-plugin-testing v1.5.1 h1:T4aQh9JAhmWo4+t1A7x+rnxAJHCDIYW9kXyo4sVO92c=
+github.com/hashicorp/terraform-plugin-testing v1.5.1/go.mod h1:dg8clO6K59rZ8w9EshBmDp1CxTIPu3yA4iaDpX1h5u0=
 github.com/hashicorp/terraform-registry-address v0.2.1 h1:QuTf6oJ1+WSflJw6WYOHhLgwUiQ0FrROpHPYFtwTYWM=
 github.com/hashicorp/terraform-registry-address v0.2.1/go.mod h1:BSE9fIFzp0qWsJUUyGquo4ldV9k2n+psif6NYkBRS3Y=
 github.com/hashicorp/terraform-svchost v0.0.0-20191011084731-65d371908596/go.mod h1:kNDNcF7sN4DocDLBkQYz73HGKwN1ANB1blq4lIYLYvg=
@@ -2164,8 +2164,8 @@ github.com/pulumi/pulumi-java/pkg v0.9.4 h1:gIQZmlUI1o9ye8CL2XFqtmAX6Lwr9uj/+Hzj
 github.com/pulumi/pulumi-java/pkg v0.9.4/go.mod h1:c6rSw/+q4O0IImgJ9axxoC6QesbPYWBaG5gimbHouUQ=
 github.com/pulumi/pulumi-terraform-bridge/testing v0.0.1 h1:SCg1gjfY9N4yn8U8peIUYATifjoDABkyR7H9lmefsfc=
 github.com/pulumi/pulumi-terraform-bridge/testing v0.0.1/go.mod h1:7OeUPH8rpt5ipyj9EFcnXpuzQ8SHL0dyqdfa8nOacdk=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.57.0 h1:munOxi56glme47MT8/wI29o9wrRBJrEQuwjAgm1zviI=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.57.0/go.mod h1:ykaml8e6XS/yI9JOcNZ+6gLirs6EWTB0FmjbT+JyEdU=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.58.0 h1:1vQokJDOEQQuPAsvIHoqb0x7yGflfmXYcjkHrT5tkXg=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.58.0/go.mod h1:ykaml8e6XS/yI9JOcNZ+6gLirs6EWTB0FmjbT+JyEdU=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 h1:rIzMmtcVpPX8ynaz6/nW5AHNY63DiNfCohqmxWvMpM4=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4/go.mod h1:Kt8RIZWa/N8rW3+0g6NrqCBmF3o+HuIhFaZpssEkG6w=
 github.com/pulumi/pulumi-yaml v1.1.1 h1:8pyBNIU8+ym0wYpjhsCqN+cutygfK1XbhY2YEeNfyXY=
@@ -2399,8 +2399,9 @@ github.com/zclconf/go-cty v1.2.1/go.mod h1:hOPWgoHbaTUnI5k4D2ld+GRpFJSCe6bCM7m1q
 github.com/zclconf/go-cty v1.10.0/go.mod h1:vVKLxnk3puL4qRAv72AO+W99LUD4da90g3uUAzyuvAk=
 github.com/zclconf/go-cty v1.13.0/go.mod h1:YKQzy/7pZ7iq2jNFzy5go57xdxdWoLLpaEp4u238AE0=
 github.com/zclconf/go-cty v1.13.1/go.mod h1:YKQzy/7pZ7iq2jNFzy5go57xdxdWoLLpaEp4u238AE0=
-github.com/zclconf/go-cty v1.13.2 h1:4GvrUxe/QUDYuJKAav4EYqdM47/kZa672LwmXFmEKT0=
 github.com/zclconf/go-cty v1.13.2/go.mod h1:YKQzy/7pZ7iq2jNFzy5go57xdxdWoLLpaEp4u238AE0=
+github.com/zclconf/go-cty v1.13.3 h1:m+b9q3YDbg6Bec5rr+KGy1MzEVzY/jC2X+YX4yqKtHI=
+github.com/zclconf/go-cty v1.13.3/go.mod h1:YKQzy/7pZ7iq2jNFzy5go57xdxdWoLLpaEp4u238AE0=
 github.com/zclconf/go-cty-debug v0.0.0-20191215020915-b22d67c1ba0b h1:FosyBZYxY34Wul7O/MSKey3txpPYyCqVO5ZyceuQJEI=
 github.com/zclconf/go-cty-debug v0.0.0-20191215020915-b22d67c1ba0b/go.mod h1:ZRKQfBXbGkpdV6QMzT3rU1kSTAnfu1dO8dPKjYprgj8=
 github.com/zclconf/go-cty-yaml v1.0.1 h1:up11wlgAaDvlAGENcFDnZgkn0qUJurso7k6EpURKNF8=
@@ -2576,6 +2577,8 @@ golang.org/x/exp v0.0.0-20200119233911-0405dc783f0a/go.mod h1:2RIsYlXP63K8oxa1u0
 golang.org/x/exp v0.0.0-20200207192155-f17229e696bd/go.mod h1:J/WKrq2StrnmMY6+EHIKF9dgMWnmCNThgcyBT1FY9mM=
 golang.org/x/exp v0.0.0-20200224162631-6cc2880d07d6/go.mod h1:3jZMyOhIsHpP37uCMkUooju7aAi5cS1Q23tOzKc+0MU=
 golang.org/x/exp v0.0.0-20220827204233-334a2380cb91/go.mod h1:cyybsKvd6eL0RnXn6p/Grxp8F5bW7iYuBgsNCOHpMYE=
+golang.org/x/exp v0.0.0-20230809150735-7b3493d9a819 h1:EDuYyU/MkFXllv9QF9819VlI9a4tzGuCbhG0ExK9o1U=
+golang.org/x/exp v0.0.0-20230809150735-7b3493d9a819/go.mod h1:FXUEEKJgO7OQYeo8N01OfiKP8RXMtf6e8aTskBGqWdc=
 golang.org/x/image v0.0.0-20180708004352-c73c2afc3b81/go.mod h1:ux5Hcp/YLpHSI86hEcLt0YII63i6oz57MZXIpbrjZUs=
 golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMxlp+ypCbDeSB+sBbTgSJuh5dn5js=
 golang.org/x/image v0.0.0-20190802002840-cff245a6509b/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
