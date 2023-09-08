@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can configure the method to use when making requests to any endpoint that requires this client to authenticate.
@@ -246,6 +247,12 @@ func (i *ClientCredentials) ToClientCredentialsOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsOutput)
 }
 
+func (i *ClientCredentials) ToOutput(ctx context.Context) pulumix.Output[*ClientCredentials] {
+	return pulumix.Output[*ClientCredentials]{
+		OutputState: i.ToClientCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClientCredentialsArrayInput is an input type that accepts ClientCredentialsArray and ClientCredentialsArrayOutput values.
 // You can construct a concrete instance of `ClientCredentialsArrayInput` via:
 //
@@ -269,6 +276,12 @@ func (i ClientCredentialsArray) ToClientCredentialsArrayOutput() ClientCredentia
 
 func (i ClientCredentialsArray) ToClientCredentialsArrayOutputWithContext(ctx context.Context) ClientCredentialsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsArrayOutput)
+}
+
+func (i ClientCredentialsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClientCredentials] {
+	return pulumix.Output[[]*ClientCredentials]{
+		OutputState: i.ToClientCredentialsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClientCredentialsMapInput is an input type that accepts ClientCredentialsMap and ClientCredentialsMapOutput values.
@@ -296,6 +309,12 @@ func (i ClientCredentialsMap) ToClientCredentialsMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClientCredentialsMapOutput)
 }
 
+func (i ClientCredentialsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientCredentials] {
+	return pulumix.Output[map[string]*ClientCredentials]{
+		OutputState: i.ToClientCredentialsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClientCredentialsOutput struct{ *pulumi.OutputState }
 
 func (ClientCredentialsOutput) ElementType() reflect.Type {
@@ -308,6 +327,12 @@ func (o ClientCredentialsOutput) ToClientCredentialsOutput() ClientCredentialsOu
 
 func (o ClientCredentialsOutput) ToClientCredentialsOutputWithContext(ctx context.Context) ClientCredentialsOutput {
 	return o
+}
+
+func (o ClientCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientCredentials] {
+	return pulumix.Output[*ClientCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT).
@@ -347,6 +372,12 @@ func (o ClientCredentialsArrayOutput) ToClientCredentialsArrayOutputWithContext(
 	return o
 }
 
+func (o ClientCredentialsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClientCredentials] {
+	return pulumix.Output[[]*ClientCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClientCredentialsArrayOutput) Index(i pulumi.IntInput) ClientCredentialsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClientCredentials {
 		return vs[0].([]*ClientCredentials)[vs[1].(int)]
@@ -365,6 +396,12 @@ func (o ClientCredentialsMapOutput) ToClientCredentialsMapOutput() ClientCredent
 
 func (o ClientCredentialsMapOutput) ToClientCredentialsMapOutputWithContext(ctx context.Context) ClientCredentialsMapOutput {
 	return o
+}
+
+func (o ClientCredentialsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClientCredentials] {
+	return pulumix.Output[map[string]*ClientCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClientCredentialsMapOutput) MapIndex(k pulumi.StringInput) ClientCredentialsOutput {

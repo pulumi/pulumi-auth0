@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
@@ -129,6 +130,12 @@ func (i *CustomDomainVerification) ToCustomDomainVerificationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationOutput)
 }
 
+func (i *CustomDomainVerification) ToOutput(ctx context.Context) pulumix.Output[*CustomDomainVerification] {
+	return pulumix.Output[*CustomDomainVerification]{
+		OutputState: i.ToCustomDomainVerificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomDomainVerificationArrayInput is an input type that accepts CustomDomainVerificationArray and CustomDomainVerificationArrayOutput values.
 // You can construct a concrete instance of `CustomDomainVerificationArrayInput` via:
 //
@@ -152,6 +159,12 @@ func (i CustomDomainVerificationArray) ToCustomDomainVerificationArrayOutput() C
 
 func (i CustomDomainVerificationArray) ToCustomDomainVerificationArrayOutputWithContext(ctx context.Context) CustomDomainVerificationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationArrayOutput)
+}
+
+func (i CustomDomainVerificationArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomDomainVerification] {
+	return pulumix.Output[[]*CustomDomainVerification]{
+		OutputState: i.ToCustomDomainVerificationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CustomDomainVerificationMapInput is an input type that accepts CustomDomainVerificationMap and CustomDomainVerificationMapOutput values.
@@ -179,6 +192,12 @@ func (i CustomDomainVerificationMap) ToCustomDomainVerificationMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainVerificationMapOutput)
 }
 
+func (i CustomDomainVerificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomDomainVerification] {
+	return pulumix.Output[map[string]*CustomDomainVerification]{
+		OutputState: i.ToCustomDomainVerificationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomDomainVerificationOutput struct{ *pulumi.OutputState }
 
 func (CustomDomainVerificationOutput) ElementType() reflect.Type {
@@ -191,6 +210,12 @@ func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutput() Custo
 
 func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutputWithContext(ctx context.Context) CustomDomainVerificationOutput {
 	return o
+}
+
+func (o CustomDomainVerificationOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDomainVerification] {
+	return pulumix.Output[*CustomDomainVerification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain
@@ -223,6 +248,12 @@ func (o CustomDomainVerificationArrayOutput) ToCustomDomainVerificationArrayOutp
 	return o
 }
 
+func (o CustomDomainVerificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomDomainVerification] {
+	return pulumix.Output[[]*CustomDomainVerification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomDomainVerificationArrayOutput) Index(i pulumi.IntInput) CustomDomainVerificationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomDomainVerification {
 		return vs[0].([]*CustomDomainVerification)[vs[1].(int)]
@@ -241,6 +272,12 @@ func (o CustomDomainVerificationMapOutput) ToCustomDomainVerificationMapOutput()
 
 func (o CustomDomainVerificationMapOutput) ToCustomDomainVerificationMapOutputWithContext(ctx context.Context) CustomDomainVerificationMapOutput {
 	return o
+}
+
+func (o CustomDomainVerificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomDomainVerification] {
+	return pulumix.Output[map[string]*CustomDomainVerification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomDomainVerificationMapOutput) MapIndex(k pulumi.StringInput) CustomDomainVerificationOutput {

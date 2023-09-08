@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can manage custom text on your Auth0 prompts. You can read more about custom texts [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts).
@@ -193,6 +194,12 @@ func (i *PromptCustomText) ToPromptCustomTextOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PromptCustomTextOutput)
 }
 
+func (i *PromptCustomText) ToOutput(ctx context.Context) pulumix.Output[*PromptCustomText] {
+	return pulumix.Output[*PromptCustomText]{
+		OutputState: i.ToPromptCustomTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PromptCustomTextArrayInput is an input type that accepts PromptCustomTextArray and PromptCustomTextArrayOutput values.
 // You can construct a concrete instance of `PromptCustomTextArrayInput` via:
 //
@@ -216,6 +223,12 @@ func (i PromptCustomTextArray) ToPromptCustomTextArrayOutput() PromptCustomTextA
 
 func (i PromptCustomTextArray) ToPromptCustomTextArrayOutputWithContext(ctx context.Context) PromptCustomTextArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PromptCustomTextArrayOutput)
+}
+
+func (i PromptCustomTextArray) ToOutput(ctx context.Context) pulumix.Output[[]*PromptCustomText] {
+	return pulumix.Output[[]*PromptCustomText]{
+		OutputState: i.ToPromptCustomTextArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PromptCustomTextMapInput is an input type that accepts PromptCustomTextMap and PromptCustomTextMapOutput values.
@@ -243,6 +256,12 @@ func (i PromptCustomTextMap) ToPromptCustomTextMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PromptCustomTextMapOutput)
 }
 
+func (i PromptCustomTextMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PromptCustomText] {
+	return pulumix.Output[map[string]*PromptCustomText]{
+		OutputState: i.ToPromptCustomTextMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PromptCustomTextOutput struct{ *pulumi.OutputState }
 
 func (PromptCustomTextOutput) ElementType() reflect.Type {
@@ -255,6 +274,12 @@ func (o PromptCustomTextOutput) ToPromptCustomTextOutput() PromptCustomTextOutpu
 
 func (o PromptCustomTextOutput) ToPromptCustomTextOutputWithContext(ctx context.Context) PromptCustomTextOutput {
 	return o
+}
+
+func (o PromptCustomTextOutput) ToOutput(ctx context.Context) pulumix.Output[*PromptCustomText] {
+	return pulumix.Output[*PromptCustomText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
@@ -286,6 +311,12 @@ func (o PromptCustomTextArrayOutput) ToPromptCustomTextArrayOutputWithContext(ct
 	return o
 }
 
+func (o PromptCustomTextArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PromptCustomText] {
+	return pulumix.Output[[]*PromptCustomText]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PromptCustomTextArrayOutput) Index(i pulumi.IntInput) PromptCustomTextOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PromptCustomText {
 		return vs[0].([]*PromptCustomText)[vs[1].(int)]
@@ -304,6 +335,12 @@ func (o PromptCustomTextMapOutput) ToPromptCustomTextMapOutput() PromptCustomTex
 
 func (o PromptCustomTextMapOutput) ToPromptCustomTextMapOutputWithContext(ctx context.Context) PromptCustomTextMapOutput {
 	return o
+}
+
+func (o PromptCustomTextMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PromptCustomText] {
+	return pulumix.Output[map[string]*PromptCustomText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PromptCustomTextMapOutput) MapIndex(k pulumi.StringInput) PromptCustomTextOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can set up APIs that can be consumed from your authorized applications.
@@ -290,6 +291,12 @@ func (i *ResourceServer) ToResourceServerOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerOutput)
 }
 
+func (i *ResourceServer) ToOutput(ctx context.Context) pulumix.Output[*ResourceServer] {
+	return pulumix.Output[*ResourceServer]{
+		OutputState: i.ToResourceServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResourceServerArrayInput is an input type that accepts ResourceServerArray and ResourceServerArrayOutput values.
 // You can construct a concrete instance of `ResourceServerArrayInput` via:
 //
@@ -313,6 +320,12 @@ func (i ResourceServerArray) ToResourceServerArrayOutput() ResourceServerArrayOu
 
 func (i ResourceServerArray) ToResourceServerArrayOutputWithContext(ctx context.Context) ResourceServerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerArrayOutput)
+}
+
+func (i ResourceServerArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceServer] {
+	return pulumix.Output[[]*ResourceServer]{
+		OutputState: i.ToResourceServerArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ResourceServerMapInput is an input type that accepts ResourceServerMap and ResourceServerMapOutput values.
@@ -340,6 +353,12 @@ func (i ResourceServerMap) ToResourceServerMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerMapOutput)
 }
 
+func (i ResourceServerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceServer] {
+	return pulumix.Output[map[string]*ResourceServer]{
+		OutputState: i.ToResourceServerMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceServerOutput struct{ *pulumi.OutputState }
 
 func (ResourceServerOutput) ElementType() reflect.Type {
@@ -352,6 +371,12 @@ func (o ResourceServerOutput) ToResourceServerOutput() ResourceServerOutput {
 
 func (o ResourceServerOutput) ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput {
 	return o
+}
+
+func (o ResourceServerOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceServer] {
+	return pulumix.Output[*ResourceServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates whether refresh tokens can be issued for this resource server.
@@ -434,6 +459,12 @@ func (o ResourceServerArrayOutput) ToResourceServerArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ResourceServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceServer] {
+	return pulumix.Output[[]*ResourceServer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceServerArrayOutput) Index(i pulumi.IntInput) ResourceServerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourceServer {
 		return vs[0].([]*ResourceServer)[vs[1].(int)]
@@ -452,6 +483,12 @@ func (o ResourceServerMapOutput) ToResourceServerMapOutput() ResourceServerMapOu
 
 func (o ResourceServerMapOutput) ToResourceServerMapOutputWithContext(ctx context.Context) ResourceServerMapOutput {
 	return o
+}
+
+func (o ResourceServerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceServer] {
+	return pulumix.Output[map[string]*ResourceServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceServerMapOutput) MapIndex(k pulumi.StringInput) ResourceServerOutput {

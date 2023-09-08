@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can manage scopes (permissions) associated with a resource server (API).
@@ -165,6 +166,12 @@ func (i *ResourceServerScopes) ToResourceServerScopesOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopesOutput)
 }
 
+func (i *ResourceServerScopes) ToOutput(ctx context.Context) pulumix.Output[*ResourceServerScopes] {
+	return pulumix.Output[*ResourceServerScopes]{
+		OutputState: i.ToResourceServerScopesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResourceServerScopesArrayInput is an input type that accepts ResourceServerScopesArray and ResourceServerScopesArrayOutput values.
 // You can construct a concrete instance of `ResourceServerScopesArrayInput` via:
 //
@@ -188,6 +195,12 @@ func (i ResourceServerScopesArray) ToResourceServerScopesArrayOutput() ResourceS
 
 func (i ResourceServerScopesArray) ToResourceServerScopesArrayOutputWithContext(ctx context.Context) ResourceServerScopesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopesArrayOutput)
+}
+
+func (i ResourceServerScopesArray) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceServerScopes] {
+	return pulumix.Output[[]*ResourceServerScopes]{
+		OutputState: i.ToResourceServerScopesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ResourceServerScopesMapInput is an input type that accepts ResourceServerScopesMap and ResourceServerScopesMapOutput values.
@@ -215,6 +228,12 @@ func (i ResourceServerScopesMap) ToResourceServerScopesMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopesMapOutput)
 }
 
+func (i ResourceServerScopesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceServerScopes] {
+	return pulumix.Output[map[string]*ResourceServerScopes]{
+		OutputState: i.ToResourceServerScopesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceServerScopesOutput struct{ *pulumi.OutputState }
 
 func (ResourceServerScopesOutput) ElementType() reflect.Type {
@@ -227,6 +246,12 @@ func (o ResourceServerScopesOutput) ToResourceServerScopesOutput() ResourceServe
 
 func (o ResourceServerScopesOutput) ToResourceServerScopesOutputWithContext(ctx context.Context) ResourceServerScopesOutput {
 	return o
+}
+
+func (o ResourceServerScopesOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceServerScopes] {
+	return pulumix.Output[*ResourceServerScopes]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of the resource server that the scopes (permission) are associated with.
@@ -252,6 +277,12 @@ func (o ResourceServerScopesArrayOutput) ToResourceServerScopesArrayOutputWithCo
 	return o
 }
 
+func (o ResourceServerScopesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ResourceServerScopes] {
+	return pulumix.Output[[]*ResourceServerScopes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceServerScopesArrayOutput) Index(i pulumi.IntInput) ResourceServerScopesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ResourceServerScopes {
 		return vs[0].([]*ResourceServerScopes)[vs[1].(int)]
@@ -270,6 +301,12 @@ func (o ResourceServerScopesMapOutput) ToResourceServerScopesMapOutput() Resourc
 
 func (o ResourceServerScopesMapOutput) ToResourceServerScopesMapOutputWithContext(ctx context.Context) ResourceServerScopesMapOutput {
 	return o
+}
+
+func (o ResourceServerScopesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ResourceServerScopes] {
+	return pulumix.Output[map[string]*ResourceServerScopes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceServerScopesMapOutput) MapIndex(k pulumi.StringInput) ResourceServerScopesOutput {

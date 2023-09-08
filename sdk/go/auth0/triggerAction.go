@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow.
@@ -177,6 +178,12 @@ func (i *TriggerAction) ToTriggerActionOutputWithContext(ctx context.Context) Tr
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionOutput)
 }
 
+func (i *TriggerAction) ToOutput(ctx context.Context) pulumix.Output[*TriggerAction] {
+	return pulumix.Output[*TriggerAction]{
+		OutputState: i.ToTriggerActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerActionArrayInput is an input type that accepts TriggerActionArray and TriggerActionArrayOutput values.
 // You can construct a concrete instance of `TriggerActionArrayInput` via:
 //
@@ -200,6 +207,12 @@ func (i TriggerActionArray) ToTriggerActionArrayOutput() TriggerActionArrayOutpu
 
 func (i TriggerActionArray) ToTriggerActionArrayOutputWithContext(ctx context.Context) TriggerActionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionArrayOutput)
+}
+
+func (i TriggerActionArray) ToOutput(ctx context.Context) pulumix.Output[[]*TriggerAction] {
+	return pulumix.Output[[]*TriggerAction]{
+		OutputState: i.ToTriggerActionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TriggerActionMapInput is an input type that accepts TriggerActionMap and TriggerActionMapOutput values.
@@ -227,6 +240,12 @@ func (i TriggerActionMap) ToTriggerActionMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionMapOutput)
 }
 
+func (i TriggerActionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TriggerAction] {
+	return pulumix.Output[map[string]*TriggerAction]{
+		OutputState: i.ToTriggerActionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerActionOutput struct{ *pulumi.OutputState }
 
 func (TriggerActionOutput) ElementType() reflect.Type {
@@ -239,6 +258,12 @@ func (o TriggerActionOutput) ToTriggerActionOutput() TriggerActionOutput {
 
 func (o TriggerActionOutput) ToTriggerActionOutputWithContext(ctx context.Context) TriggerActionOutput {
 	return o
+}
+
+func (o TriggerActionOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerAction] {
+	return pulumix.Output[*TriggerAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the action to bind to the trigger.
@@ -270,6 +295,12 @@ func (o TriggerActionArrayOutput) ToTriggerActionArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o TriggerActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TriggerAction] {
+	return pulumix.Output[[]*TriggerAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TriggerActionArrayOutput) Index(i pulumi.IntInput) TriggerActionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TriggerAction {
 		return vs[0].([]*TriggerAction)[vs[1].(int)]
@@ -288,6 +319,12 @@ func (o TriggerActionMapOutput) ToTriggerActionMapOutput() TriggerActionMapOutpu
 
 func (o TriggerActionMapOutput) ToTriggerActionMapOutputWithContext(ctx context.Context) TriggerActionMapOutput {
 	return o
+}
+
+func (o TriggerActionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TriggerAction] {
+	return pulumix.Output[map[string]*TriggerAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerActionMapOutput) MapIndex(k pulumi.StringInput) TriggerActionOutput {

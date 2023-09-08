@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -179,6 +180,12 @@ func (i *TriggerBinding) ToTriggerBindingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingOutput)
 }
 
+func (i *TriggerBinding) ToOutput(ctx context.Context) pulumix.Output[*TriggerBinding] {
+	return pulumix.Output[*TriggerBinding]{
+		OutputState: i.ToTriggerBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerBindingArrayInput is an input type that accepts TriggerBindingArray and TriggerBindingArrayOutput values.
 // You can construct a concrete instance of `TriggerBindingArrayInput` via:
 //
@@ -202,6 +209,12 @@ func (i TriggerBindingArray) ToTriggerBindingArrayOutput() TriggerBindingArrayOu
 
 func (i TriggerBindingArray) ToTriggerBindingArrayOutputWithContext(ctx context.Context) TriggerBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingArrayOutput)
+}
+
+func (i TriggerBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*TriggerBinding] {
+	return pulumix.Output[[]*TriggerBinding]{
+		OutputState: i.ToTriggerBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TriggerBindingMapInput is an input type that accepts TriggerBindingMap and TriggerBindingMapOutput values.
@@ -229,6 +242,12 @@ func (i TriggerBindingMap) ToTriggerBindingMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBindingMapOutput)
 }
 
+func (i TriggerBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TriggerBinding] {
+	return pulumix.Output[map[string]*TriggerBinding]{
+		OutputState: i.ToTriggerBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBindingOutput struct{ *pulumi.OutputState }
 
 func (TriggerBindingOutput) ElementType() reflect.Type {
@@ -241,6 +260,12 @@ func (o TriggerBindingOutput) ToTriggerBindingOutput() TriggerBindingOutput {
 
 func (o TriggerBindingOutput) ToTriggerBindingOutputWithContext(ctx context.Context) TriggerBindingOutput {
 	return o
+}
+
+func (o TriggerBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBinding] {
+	return pulumix.Output[*TriggerBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of actions bound to this trigger.
@@ -267,6 +292,12 @@ func (o TriggerBindingArrayOutput) ToTriggerBindingArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o TriggerBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TriggerBinding] {
+	return pulumix.Output[[]*TriggerBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TriggerBindingArrayOutput) Index(i pulumi.IntInput) TriggerBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TriggerBinding {
 		return vs[0].([]*TriggerBinding)[vs[1].(int)]
@@ -285,6 +316,12 @@ func (o TriggerBindingMapOutput) ToTriggerBindingMapOutput() TriggerBindingMapOu
 
 func (o TriggerBindingMapOutput) ToTriggerBindingMapOutputWithContext(ctx context.Context) TriggerBindingMapOutput {
 	return o
+}
+
+func (o TriggerBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TriggerBinding] {
+	return pulumix.Output[map[string]*TriggerBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBindingMapOutput) MapIndex(k pulumi.StringInput) TriggerBindingOutput {

@@ -54,3 +54,18 @@ export interface GetBrandingResult {
      */
     readonly universalLogins: outputs.GetBrandingUniversalLogin[];
 }
+/**
+ * Use this data source to access information about the tenant's branding settings.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myBranding = auth0.getBranding({});
+ * ```
+ */
+export function getBrandingOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBrandingResult> {
+    return pulumi.output(getBranding(opts))
+}

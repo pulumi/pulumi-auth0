@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
@@ -181,6 +182,12 @@ func (i *Action) ToActionOutputWithContext(ctx context.Context) ActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionOutput)
 }
 
+func (i *Action) ToOutput(ctx context.Context) pulumix.Output[*Action] {
+	return pulumix.Output[*Action]{
+		OutputState: i.ToActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ActionArrayInput is an input type that accepts ActionArray and ActionArrayOutput values.
 // You can construct a concrete instance of `ActionArrayInput` via:
 //
@@ -204,6 +211,12 @@ func (i ActionArray) ToActionArrayOutput() ActionArrayOutput {
 
 func (i ActionArray) ToActionArrayOutputWithContext(ctx context.Context) ActionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionArrayOutput)
+}
+
+func (i ActionArray) ToOutput(ctx context.Context) pulumix.Output[[]*Action] {
+	return pulumix.Output[[]*Action]{
+		OutputState: i.ToActionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ActionMapInput is an input type that accepts ActionMap and ActionMapOutput values.
@@ -231,6 +244,12 @@ func (i ActionMap) ToActionMapOutputWithContext(ctx context.Context) ActionMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ActionMapOutput)
 }
 
+func (i ActionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Action] {
+	return pulumix.Output[map[string]*Action]{
+		OutputState: i.ToActionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ActionOutput struct{ *pulumi.OutputState }
 
 func (ActionOutput) ElementType() reflect.Type {
@@ -243,6 +262,12 @@ func (o ActionOutput) ToActionOutput() ActionOutput {
 
 func (o ActionOutput) ToActionOutputWithContext(ctx context.Context) ActionOutput {
 	return o
+}
+
+func (o ActionOutput) ToOutput(ctx context.Context) pulumix.Output[*Action] {
+	return pulumix.Output[*Action]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The source code of the action.
@@ -299,6 +324,12 @@ func (o ActionArrayOutput) ToActionArrayOutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o ActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Action] {
+	return pulumix.Output[[]*Action]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ActionArrayOutput) Index(i pulumi.IntInput) ActionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Action {
 		return vs[0].([]*Action)[vs[1].(int)]
@@ -317,6 +348,12 @@ func (o ActionMapOutput) ToActionMapOutput() ActionMapOutput {
 
 func (o ActionMapOutput) ToActionMapOutputWithContext(ctx context.Context) ActionMapOutput {
 	return o
+}
+
+func (o ActionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Action] {
+	return pulumix.Output[map[string]*Action]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ActionMapOutput) MapIndex(k pulumi.StringInput) ActionOutput {

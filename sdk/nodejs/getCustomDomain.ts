@@ -57,3 +57,9 @@ export interface GetCustomDomainResult {
      */
     readonly verifications: outputs.GetCustomDomainVerification[];
 }
+/**
+ * Data source to retrieve the custom domain configuration.
+ */
+export function getCustomDomainOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainResult> {
+    return pulumi.output(getCustomDomain(opts))
+}
