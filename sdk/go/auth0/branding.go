@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
@@ -189,6 +190,12 @@ func (i *Branding) ToBrandingOutputWithContext(ctx context.Context) BrandingOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BrandingOutput)
 }
 
+func (i *Branding) ToOutput(ctx context.Context) pulumix.Output[*Branding] {
+	return pulumix.Output[*Branding]{
+		OutputState: i.ToBrandingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BrandingArrayInput is an input type that accepts BrandingArray and BrandingArrayOutput values.
 // You can construct a concrete instance of `BrandingArrayInput` via:
 //
@@ -212,6 +219,12 @@ func (i BrandingArray) ToBrandingArrayOutput() BrandingArrayOutput {
 
 func (i BrandingArray) ToBrandingArrayOutputWithContext(ctx context.Context) BrandingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrandingArrayOutput)
+}
+
+func (i BrandingArray) ToOutput(ctx context.Context) pulumix.Output[[]*Branding] {
+	return pulumix.Output[[]*Branding]{
+		OutputState: i.ToBrandingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BrandingMapInput is an input type that accepts BrandingMap and BrandingMapOutput values.
@@ -239,6 +252,12 @@ func (i BrandingMap) ToBrandingMapOutputWithContext(ctx context.Context) Brandin
 	return pulumi.ToOutputWithContext(ctx, i).(BrandingMapOutput)
 }
 
+func (i BrandingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Branding] {
+	return pulumix.Output[map[string]*Branding]{
+		OutputState: i.ToBrandingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BrandingOutput struct{ *pulumi.OutputState }
 
 func (BrandingOutput) ElementType() reflect.Type {
@@ -251,6 +270,12 @@ func (o BrandingOutput) ToBrandingOutput() BrandingOutput {
 
 func (o BrandingOutput) ToBrandingOutputWithContext(ctx context.Context) BrandingOutput {
 	return o
+}
+
+func (o BrandingOutput) ToOutput(ctx context.Context) pulumix.Output[*Branding] {
+	return pulumix.Output[*Branding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration settings for colors for branding.
@@ -292,6 +317,12 @@ func (o BrandingArrayOutput) ToBrandingArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o BrandingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Branding] {
+	return pulumix.Output[[]*Branding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BrandingArrayOutput) Index(i pulumi.IntInput) BrandingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Branding {
 		return vs[0].([]*Branding)[vs[1].(int)]
@@ -310,6 +341,12 @@ func (o BrandingMapOutput) ToBrandingMapOutput() BrandingMapOutput {
 
 func (o BrandingMapOutput) ToBrandingMapOutputWithContext(ctx context.Context) BrandingMapOutput {
 	return o
+}
+
+func (o BrandingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Branding] {
+	return pulumix.Output[map[string]*Branding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BrandingMapOutput) MapIndex(k pulumi.StringInput) BrandingOutput {

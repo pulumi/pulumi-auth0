@@ -170,3 +170,16 @@ export interface GetGlobalClientResult {
      */
     readonly webOrigins: string[];
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const global = auth0.getGlobalClient({});
+ * ```
+ */
+export function getGlobalClientOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalClientResult> {
+    return pulumi.output(getGlobalClient(opts))
+}

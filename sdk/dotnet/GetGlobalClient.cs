@@ -33,6 +33,29 @@ namespace Pulumi.Auth0
         /// </summary>
         public static Task<GetGlobalClientResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalClientResult>("auth0:index/getGlobalClient:getGlobalClient", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @global = Auth0.GetGlobalClient.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGlobalClientResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalClientResult>("auth0:index/getGlobalClient:getGlobalClient", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

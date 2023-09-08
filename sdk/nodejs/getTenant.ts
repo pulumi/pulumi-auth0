@@ -102,3 +102,18 @@ export interface GetTenantResult {
     readonly supportUrl: string;
     readonly universalLogins: outputs.GetTenantUniversalLogin[];
 }
+/**
+ * Use this data source to access information about the tenant this provider is configured to access.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myTenant = auth0.getTenant({});
+ * ```
+ */
+export function getTenantOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetTenantResult> {
+    return pulumi.output(getTenant(opts))
+}

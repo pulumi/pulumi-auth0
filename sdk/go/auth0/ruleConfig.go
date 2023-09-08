@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With Auth0, you can create custom Javascript snippets that run in a secure, isolated sandbox as part of your authentication pipeline, which are otherwise known as rules. This resource allows you to create and manage variables that are available to all rules via Auth0's global configuration object. Used in conjunction with configured rules.
@@ -164,6 +165,12 @@ func (i *RuleConfig) ToRuleConfigOutputWithContext(ctx context.Context) RuleConf
 	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigOutput)
 }
 
+func (i *RuleConfig) ToOutput(ctx context.Context) pulumix.Output[*RuleConfig] {
+	return pulumix.Output[*RuleConfig]{
+		OutputState: i.ToRuleConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuleConfigArrayInput is an input type that accepts RuleConfigArray and RuleConfigArrayOutput values.
 // You can construct a concrete instance of `RuleConfigArrayInput` via:
 //
@@ -187,6 +194,12 @@ func (i RuleConfigArray) ToRuleConfigArrayOutput() RuleConfigArrayOutput {
 
 func (i RuleConfigArray) ToRuleConfigArrayOutputWithContext(ctx context.Context) RuleConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigArrayOutput)
+}
+
+func (i RuleConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*RuleConfig] {
+	return pulumix.Output[[]*RuleConfig]{
+		OutputState: i.ToRuleConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RuleConfigMapInput is an input type that accepts RuleConfigMap and RuleConfigMapOutput values.
@@ -214,6 +227,12 @@ func (i RuleConfigMap) ToRuleConfigMapOutputWithContext(ctx context.Context) Rul
 	return pulumi.ToOutputWithContext(ctx, i).(RuleConfigMapOutput)
 }
 
+func (i RuleConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuleConfig] {
+	return pulumix.Output[map[string]*RuleConfig]{
+		OutputState: i.ToRuleConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuleConfigOutput struct{ *pulumi.OutputState }
 
 func (RuleConfigOutput) ElementType() reflect.Type {
@@ -226,6 +245,12 @@ func (o RuleConfigOutput) ToRuleConfigOutput() RuleConfigOutput {
 
 func (o RuleConfigOutput) ToRuleConfigOutputWithContext(ctx context.Context) RuleConfigOutput {
 	return o
+}
+
+func (o RuleConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*RuleConfig] {
+	return pulumix.Output[*RuleConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key for a rules configuration variable.
@@ -252,6 +277,12 @@ func (o RuleConfigArrayOutput) ToRuleConfigArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o RuleConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RuleConfig] {
+	return pulumix.Output[[]*RuleConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuleConfigArrayOutput) Index(i pulumi.IntInput) RuleConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RuleConfig {
 		return vs[0].([]*RuleConfig)[vs[1].(int)]
@@ -270,6 +301,12 @@ func (o RuleConfigMapOutput) ToRuleConfigMapOutput() RuleConfigMapOutput {
 
 func (o RuleConfigMapOutput) ToRuleConfigMapOutputWithContext(ctx context.Context) RuleConfigMapOutput {
 	return o
+}
+
+func (o RuleConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuleConfig] {
+	return pulumix.Output[map[string]*RuleConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuleConfigMapOutput) MapIndex(k pulumi.StringInput) RuleConfigOutput {

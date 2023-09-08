@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -589,6 +590,12 @@ func (i *GlobalClient) ToGlobalClientOutputWithContext(ctx context.Context) Glob
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientOutput)
 }
 
+func (i *GlobalClient) ToOutput(ctx context.Context) pulumix.Output[*GlobalClient] {
+	return pulumix.Output[*GlobalClient]{
+		OutputState: i.ToGlobalClientOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GlobalClientArrayInput is an input type that accepts GlobalClientArray and GlobalClientArrayOutput values.
 // You can construct a concrete instance of `GlobalClientArrayInput` via:
 //
@@ -612,6 +619,12 @@ func (i GlobalClientArray) ToGlobalClientArrayOutput() GlobalClientArrayOutput {
 
 func (i GlobalClientArray) ToGlobalClientArrayOutputWithContext(ctx context.Context) GlobalClientArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientArrayOutput)
+}
+
+func (i GlobalClientArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalClient] {
+	return pulumix.Output[[]*GlobalClient]{
+		OutputState: i.ToGlobalClientArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GlobalClientMapInput is an input type that accepts GlobalClientMap and GlobalClientMapOutput values.
@@ -639,6 +652,12 @@ func (i GlobalClientMap) ToGlobalClientMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalClientMapOutput)
 }
 
+func (i GlobalClientMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalClient] {
+	return pulumix.Output[map[string]*GlobalClient]{
+		OutputState: i.ToGlobalClientMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GlobalClientOutput struct{ *pulumi.OutputState }
 
 func (GlobalClientOutput) ElementType() reflect.Type {
@@ -651,6 +670,12 @@ func (o GlobalClientOutput) ToGlobalClientOutput() GlobalClientOutput {
 
 func (o GlobalClientOutput) ToGlobalClientOutputWithContext(ctx context.Context) GlobalClientOutput {
 	return o
+}
+
+func (o GlobalClientOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalClient] {
+	return pulumix.Output[*GlobalClient]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Addons enabled for this client and their associated configurations.
@@ -867,6 +892,12 @@ func (o GlobalClientArrayOutput) ToGlobalClientArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GlobalClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalClient] {
+	return pulumix.Output[[]*GlobalClient]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalClientArrayOutput) Index(i pulumi.IntInput) GlobalClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalClient {
 		return vs[0].([]*GlobalClient)[vs[1].(int)]
@@ -885,6 +916,12 @@ func (o GlobalClientMapOutput) ToGlobalClientMapOutput() GlobalClientMapOutput {
 
 func (o GlobalClientMapOutput) ToGlobalClientMapOutputWithContext(ctx context.Context) GlobalClientMapOutput {
 	return o
+}
+
+func (o GlobalClientMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalClient] {
+	return pulumix.Output[map[string]*GlobalClient]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalClientMapOutput) MapIndex(k pulumi.StringInput) GlobalClientOutput {

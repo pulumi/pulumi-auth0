@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
@@ -242,6 +243,12 @@ func (i *BrandingTheme) ToBrandingThemeOutputWithContext(ctx context.Context) Br
 	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeOutput)
 }
 
+func (i *BrandingTheme) ToOutput(ctx context.Context) pulumix.Output[*BrandingTheme] {
+	return pulumix.Output[*BrandingTheme]{
+		OutputState: i.ToBrandingThemeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BrandingThemeArrayInput is an input type that accepts BrandingThemeArray and BrandingThemeArrayOutput values.
 // You can construct a concrete instance of `BrandingThemeArrayInput` via:
 //
@@ -265,6 +272,12 @@ func (i BrandingThemeArray) ToBrandingThemeArrayOutput() BrandingThemeArrayOutpu
 
 func (i BrandingThemeArray) ToBrandingThemeArrayOutputWithContext(ctx context.Context) BrandingThemeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeArrayOutput)
+}
+
+func (i BrandingThemeArray) ToOutput(ctx context.Context) pulumix.Output[[]*BrandingTheme] {
+	return pulumix.Output[[]*BrandingTheme]{
+		OutputState: i.ToBrandingThemeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BrandingThemeMapInput is an input type that accepts BrandingThemeMap and BrandingThemeMapOutput values.
@@ -292,6 +305,12 @@ func (i BrandingThemeMap) ToBrandingThemeMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeMapOutput)
 }
 
+func (i BrandingThemeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BrandingTheme] {
+	return pulumix.Output[map[string]*BrandingTheme]{
+		OutputState: i.ToBrandingThemeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BrandingThemeOutput struct{ *pulumi.OutputState }
 
 func (BrandingThemeOutput) ElementType() reflect.Type {
@@ -304,6 +323,12 @@ func (o BrandingThemeOutput) ToBrandingThemeOutput() BrandingThemeOutput {
 
 func (o BrandingThemeOutput) ToBrandingThemeOutputWithContext(ctx context.Context) BrandingThemeOutput {
 	return o
+}
+
+func (o BrandingThemeOutput) ToOutput(ctx context.Context) pulumix.Output[*BrandingTheme] {
+	return pulumix.Output[*BrandingTheme]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BrandingThemeOutput) Borders() BrandingThemeBordersOutput {
@@ -345,6 +370,12 @@ func (o BrandingThemeArrayOutput) ToBrandingThemeArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o BrandingThemeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BrandingTheme] {
+	return pulumix.Output[[]*BrandingTheme]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BrandingThemeArrayOutput) Index(i pulumi.IntInput) BrandingThemeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BrandingTheme {
 		return vs[0].([]*BrandingTheme)[vs[1].(int)]
@@ -363,6 +394,12 @@ func (o BrandingThemeMapOutput) ToBrandingThemeMapOutput() BrandingThemeMapOutpu
 
 func (o BrandingThemeMapOutput) ToBrandingThemeMapOutputWithContext(ctx context.Context) BrandingThemeMapOutput {
 	return o
+}
+
+func (o BrandingThemeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BrandingTheme] {
+	return pulumix.Output[map[string]*BrandingTheme]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BrandingThemeMapOutput) MapIndex(k pulumi.StringInput) BrandingThemeOutput {

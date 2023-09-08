@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-auth0/sdk/v2/go/auth0/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
@@ -178,6 +179,12 @@ func (i *Pages) ToPagesOutputWithContext(ctx context.Context) PagesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PagesOutput)
 }
 
+func (i *Pages) ToOutput(ctx context.Context) pulumix.Output[*Pages] {
+	return pulumix.Output[*Pages]{
+		OutputState: i.ToPagesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PagesArrayInput is an input type that accepts PagesArray and PagesArrayOutput values.
 // You can construct a concrete instance of `PagesArrayInput` via:
 //
@@ -201,6 +208,12 @@ func (i PagesArray) ToPagesArrayOutput() PagesArrayOutput {
 
 func (i PagesArray) ToPagesArrayOutputWithContext(ctx context.Context) PagesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PagesArrayOutput)
+}
+
+func (i PagesArray) ToOutput(ctx context.Context) pulumix.Output[[]*Pages] {
+	return pulumix.Output[[]*Pages]{
+		OutputState: i.ToPagesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PagesMapInput is an input type that accepts PagesMap and PagesMapOutput values.
@@ -228,6 +241,12 @@ func (i PagesMap) ToPagesMapOutputWithContext(ctx context.Context) PagesMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(PagesMapOutput)
 }
 
+func (i PagesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Pages] {
+	return pulumix.Output[map[string]*Pages]{
+		OutputState: i.ToPagesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PagesOutput struct{ *pulumi.OutputState }
 
 func (PagesOutput) ElementType() reflect.Type {
@@ -240,6 +259,12 @@ func (o PagesOutput) ToPagesOutput() PagesOutput {
 
 func (o PagesOutput) ToPagesOutputWithContext(ctx context.Context) PagesOutput {
 	return o
+}
+
+func (o PagesOutput) ToOutput(ctx context.Context) pulumix.Output[*Pages] {
+	return pulumix.Output[*Pages]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration settings for customizing the Password Reset page.
@@ -276,6 +301,12 @@ func (o PagesArrayOutput) ToPagesArrayOutputWithContext(ctx context.Context) Pag
 	return o
 }
 
+func (o PagesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Pages] {
+	return pulumix.Output[[]*Pages]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PagesArrayOutput) Index(i pulumi.IntInput) PagesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Pages {
 		return vs[0].([]*Pages)[vs[1].(int)]
@@ -294,6 +325,12 @@ func (o PagesMapOutput) ToPagesMapOutput() PagesMapOutput {
 
 func (o PagesMapOutput) ToPagesMapOutputWithContext(ctx context.Context) PagesMapOutput {
 	return o
+}
+
+func (o PagesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Pages] {
+	return pulumix.Output[map[string]*Pages]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PagesMapOutput) MapIndex(k pulumi.StringInput) PagesOutput {
