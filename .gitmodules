@@ -1,0 +1,4 @@
+[submodule "upstream"]
+	path = upstream
+	url = https://github.com/auth0/terraform-provider-auth0.git
+	ignore = dirty

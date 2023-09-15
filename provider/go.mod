@@ -3,6 +3,7 @@ module github.com/pulumi/pulumi-auth0/provider/v2
 go 1.21
 
 replace (
+	github.com/auth0/terraform-provider-auth0 => ../upstream
 	github.com/auth0/terraform-provider-auth0/shim => ./shim
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230710100801-03a71d0fca3d
 	github.com/hashicorp/terraform-plugin-test => github.com/hashicorp/terraform-plugin-test v1.3.0
