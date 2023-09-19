@@ -61,6 +61,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "auth0",
 		Repository:       "https://github.com/pulumi/pulumi-auth0",
 		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"debug": {
 				Default: &tfbridge.DefaultInfo{

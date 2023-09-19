@@ -3,68 +3,42 @@
         "resources": {
             "auth0_action": {
                 "current": "auth0:index/action:Action",
+                "majorVersion": 2,
                 "fields": {
-                    "code": {},
                     "dependencies": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "name": {},
-                                "version": {}
-                            }
-                        }
+                        "maxItemsOne": false
                     },
-                    "deploy": {},
-                    "name": {},
-                    "runtime": {},
                     "secrets": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "name": {},
-                                "value": {}
-                            }
-                        }
+                        "maxItemsOne": false
                     },
                     "supported_triggers": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "id": {},
-                                "version": {}
-                            }
-                        }
-                    },
-                    "version_id": {}
+                        "maxItemsOne": true
+                    }
                 }
             },
             "auth0_attack_protection": {
                 "current": "auth0:index/attackProtection:AttackProtection",
+                "majorVersion": 2,
                 "fields": {
                     "breached_password_detection": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "admin_notification_frequency": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "enabled": {},
-                                "method": {},
                                 "pre_user_registration": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
                                             "shields": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
                                 },
                                 "shields": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -74,15 +48,10 @@
                         "elem": {
                             "fields": {
                                 "allowlist": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "enabled": {},
-                                "max_attempts": {},
-                                "mode": {},
                                 "shields": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -92,31 +61,16 @@
                         "elem": {
                             "fields": {
                                 "allowlist": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "enabled": {},
                                 "pre_login": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "max_attempts": {},
-                                            "rate": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "pre_user_registration": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "max_attempts": {},
-                                            "rate": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "shields": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -125,292 +79,104 @@
             },
             "auth0_branding": {
                 "current": "auth0:index/branding:Branding",
+                "majorVersion": 2,
                 "fields": {
                     "colors": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "page_background": {},
-                                "primary": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "favicon_url": {},
                     "font": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "url": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "logo_url": {},
                     "universal_login": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "body": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     }
                 }
             },
             "auth0_branding_theme": {
                 "current": "auth0:index/brandingTheme:BrandingTheme",
+                "majorVersion": 2,
                 "fields": {
                     "borders": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "button_border_radius": {},
-                                "button_border_weight": {},
-                                "buttons_style": {},
-                                "input_border_radius": {},
-                                "input_border_weight": {},
-                                "inputs_style": {},
-                                "show_widget_shadow": {},
-                                "widget_border_weight": {},
-                                "widget_corner_radius": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
                     "colors": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "base_focus_color": {},
-                                "base_hover_color": {},
-                                "body_text": {},
-                                "error": {},
-                                "header": {},
-                                "icons": {},
-                                "input_background": {},
-                                "input_border": {},
-                                "input_filled_text": {},
-                                "input_labels_placeholders": {},
-                                "links_focused_components": {},
-                                "primary_button": {},
-                                "primary_button_label": {},
-                                "secondary_button_border": {},
-                                "secondary_button_label": {},
-                                "success": {},
-                                "widget_background": {},
-                                "widget_border": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "display_name": {},
                     "fonts": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "body_text": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "bold": {},
-                                            "size": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "buttons_text": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "bold": {},
-                                            "size": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "font_url": {},
                                 "input_labels": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "bold": {},
-                                            "size": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "links": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "bold": {},
-                                            "size": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "links_style": {},
-                                "reference_text_size": {},
                                 "subtitle": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "bold": {},
-                                            "size": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "title": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "page_background": {
+                        "maxItemsOne": true
+                    },
+                    "widget": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "auth0_client": {
+                "current": "auth0:index/client:Client",
+                "majorVersion": 2,
+                "fields": {
+                    "addons": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "samlp": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
-                                            "bold": {},
-                                            "size": {}
+                                            "name_identifier_probes": {
+                                                "maxItemsOne": false
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     },
-                    "page_background": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "background_color": {},
-                                "background_image_url": {},
-                                "page_layout": {}
-                            }
-                        }
-                    },
-                    "widget": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "header_text_alignment": {},
-                                "logo_height": {},
-                                "logo_position": {},
-                                "logo_url": {},
-                                "social_buttons_layout": {}
-                            }
-                        }
-                    }
-                }
-            },
-            "auth0_client": {
-                "current": "auth0:index/client:Client",
-                "fields": {
-                    "addons": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "aws": {},
-                                "azure_blob": {},
-                                "azure_sb": {},
-                                "box": {},
-                                "cloudbees": {},
-                                "concur": {},
-                                "dropbox": {},
-                                "echosign": {},
-                                "egnyte": {},
-                                "firebase": {},
-                                "layer": {},
-                                "mscrm": {},
-                                "newrelic": {},
-                                "office365": {},
-                                "rms": {},
-                                "salesforce": {},
-                                "salesforce_api": {},
-                                "salesforce_sandbox_api": {},
-                                "samlp": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "audience": {},
-                                            "authn_context_class_ref": {},
-                                            "binding": {},
-                                            "create_upn_claim": {},
-                                            "destination": {},
-                                            "digest_algorithm": {},
-                                            "include_attribute_name_format": {},
-                                            "issuer": {},
-                                            "lifetime_in_seconds": {},
-                                            "logout": {},
-                                            "map_identities": {},
-                                            "map_unknown_claims_as_is": {},
-                                            "mappings": {},
-                                            "name_identifier_format": {},
-                                            "name_identifier_probes": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
-                                            },
-                                            "passthrough_claims_with_no_mapping": {},
-                                            "recipient": {},
-                                            "sign_response": {},
-                                            "signature_algorithm": {},
-                                            "signing_cert": {},
-                                            "typed_attributes": {}
-                                        }
-                                    }
-                                },
-                                "sap_api": {},
-                                "sentry": {},
-                                "sharepoint": {},
-                                "slack": {},
-                                "springcm": {},
-                                "wams": {},
-                                "wsfed": {},
-                                "zendesk": {},
-                                "zoom": {}
-                            }
-                        }
-                    },
                     "allowed_clients": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "allowed_logout_urls": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "allowed_origins": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "app_type": {},
                     "callbacks": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "client_aliases": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "client_id": {},
-                    "client_metadata": {},
-                    "client_secret": {},
-                    "client_secret_rotation_trigger": {},
-                    "cross_origin_auth": {},
-                    "cross_origin_loc": {},
-                    "custom_login_page": {},
-                    "custom_login_page_on": {},
-                    "description": {},
-                    "encryption_key": {
-                        "elem": {}
-                    },
-                    "form_template": {},
                     "grant_types": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "initiate_login_uri": {},
-                    "is_first_party": {},
-                    "is_token_endpoint_ip_header_trusted": {},
                     "jwt_configuration": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "alg": {},
-                                "lifetime_in_seconds": {},
-                                "scopes": {
-                                    "elem": {}
-                                },
-                                "secret_encoded": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "logo_uri": {},
                     "mobile": {
                         "maxItemsOne": true,
                         "elem": {
@@ -419,46 +185,27 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
-                                            "app_package_name": {},
                                             "sha256_cert_fingerprints": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
                                 },
                                 "ios": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "app_bundle_identifier": {},
-                                            "team_id": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 }
                             }
                         }
                     },
-                    "name": {},
                     "native_social_login": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "apple": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "enabled": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "facebook": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "enabled": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -466,38 +213,20 @@
                     "oidc_backchannel_logout_urls": {
                         "maxItemsOne": false
                     },
-                    "oidc_conformant": {},
-                    "organization_require_behavior": {},
-                    "organization_usage": {},
                     "refresh_token": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "expiration_type": {},
-                                "idle_token_lifetime": {},
-                                "infinite_idle_token_lifetime": {},
-                                "infinite_token_lifetime": {},
-                                "leeway": {},
-                                "rotation_type": {},
-                                "token_lifetime": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
                     "signing_keys": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "sso": {},
-                    "sso_disabled": {},
-                    "token_endpoint_auth_method": {},
                     "web_origins": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     }
                 }
             },
             "auth0_client_credentials": {
                 "current": "auth0:index/clientCredentials:ClientCredentials",
+                "majorVersion": 2,
                 "fields": {
                     "private_key_jwt": {
                         "maxItemsOne": true,
@@ -513,253 +242,98 @@
             },
             "auth0_client_grant": {
                 "current": "auth0:index/clientGrant:ClientGrant",
+                "majorVersion": 2,
                 "fields": {
-                    "audience": {},
-                    "client_id": {},
                     "scope": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     }
                 }
             },
             "auth0_connection": {
                 "current": "auth0:index/connection:Connection",
+                "majorVersion": 2,
                 "fields": {
-                    "display_name": {},
                     "enabled_clients": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "is_domain_connection": {},
-                    "metadata": {
-                        "elem": {}
-                    },
-                    "name": {},
                     "options": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
-                                "adfs_server": {},
                                 "allowed_audiences": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "api_enable_users": {},
-                                "app_id": {},
-                                "auth_params": {
-                                    "elem": {}
-                                },
-                                "authorization_endpoint": {},
-                                "brute_force_protection": {},
-                                "client_id": {},
-                                "client_secret": {},
-                                "community_base_url": {},
-                                "configuration": {},
-                                "custom_scripts": {
-                                    "elem": {}
-                                },
-                                "debug": {},
-                                "digest_algorithm": {},
-                                "disable_cache": {},
-                                "disable_self_service_change_password": {},
-                                "disable_sign_out": {},
-                                "disable_signup": {},
-                                "discovery_url": {},
-                                "domain": {},
                                 "domain_aliases": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "enable_script_context": {},
-                                "enabled_database_customization": {},
-                                "entity_id": {},
-                                "fed_metadata_xml": {},
-                                "fields_map": {},
-                                "forward_request_info": {},
-                                "from": {},
                                 "gateway_authentication": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "audience": {},
-                                            "method": {},
-                                            "secret": {},
-                                            "secret_base64_encoded": {},
-                                            "subject": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "gateway_url": {},
-                                "icon_url": {},
-                                "identity_api": {},
                                 "idp_initiated": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "client_authorize_query": {},
-                                            "client_id": {},
-                                            "client_protocol": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "import_mode": {},
                                 "ips": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "issuer": {},
-                                "jwks_uri": {},
-                                "key_id": {},
-                                "max_groups_to_retrieve": {},
-                                "messaging_service_sid": {},
-                                "metadata_url": {},
-                                "metadata_xml": {},
                                 "mfa": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "active": {},
-                                            "return_enroll_settings": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "name": {},
                                 "non_persistent_attrs": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
                                 "password_complexity_options": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "min_length": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "password_dictionary": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
                                             "dictionary": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
-                                            },
-                                            "enable": {}
+                                                "maxItemsOne": false
+                                            }
                                         }
                                     }
                                 },
                                 "password_history": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "enable": {},
-                                            "size": {}
-                                        }
-                                    }
+                                    "maxItemsOne": false
                                 },
                                 "password_no_personal_info": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "enable": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "password_policy": {},
-                                "ping_federate_base_url": {},
-                                "pkce_enabled": {},
-                                "protocol_binding": {},
-                                "provider": {},
-                                "request_template": {},
-                                "requires_username": {},
                                 "scopes": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "scripts": {
-                                    "elem": {}
-                                },
-                                "set_user_root_attributes": {},
-                                "should_trust_email_verified_connection": {},
-                                "sign_in_endpoint": {},
-                                "sign_out_endpoint": {},
-                                "sign_saml_request": {},
-                                "signature_algorithm": {},
-                                "signing_cert": {},
                                 "signing_key": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "cert": {},
-                                            "key": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "strategy_version": {},
-                                "subject": {},
-                                "syntax": {},
-                                "team_id": {},
-                                "template": {},
-                                "tenant_domain": {},
-                                "token_endpoint": {},
                                 "totp": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "length": {},
-                                            "time_step": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "twilio_sid": {},
-                                "twilio_token": {},
-                                "type": {},
-                                "upstream_params": {},
-                                "use_cert_auth": {},
-                                "use_kerberos": {},
-                                "use_wsfed": {},
-                                "user_id_attribute": {},
-                                "userinfo_endpoint": {},
                                 "validation": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
                                             "username": {
-                                                "maxItemsOne": true,
-                                                "elem": {
-                                                    "fields": {
-                                                        "max": {},
-                                                        "min": {}
-                                                    }
-                                                }
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
-                                },
-                                "waad_common_endpoint": {},
-                                "waad_protocol": {}
+                                }
                             }
                         }
                     },
                     "realms": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "show_as_button": {},
-                    "strategy": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "auth0_connection_client": {
                 "current": "auth0:index/connectionClient:ConnectionClient",
-                "fields": {
-                    "client_id": {},
-                    "connection_id": {},
-                    "name": {},
-                    "strategy": {}
-                }
+                "majorVersion": 2
             },
             "auth0_connection_clients": {
                 "current": "auth0:index/connectionClients:ConnectionClients",
+                "majorVersion": 2,
                 "fields": {
                     "enabled_clients": {
                         "maxItemsOne": false
@@ -768,14 +342,8 @@
             },
             "auth0_custom_domain": {
                 "current": "auth0:index/customDomain:CustomDomain",
+                "majorVersion": 2,
                 "fields": {
-                    "custom_client_ip_header": {},
-                    "domain": {},
-                    "origin_domain_name": {},
-                    "primary": {},
-                    "status": {},
-                    "tls_policy": {},
-                    "type": {},
                     "verification": {
                         "maxItemsOne": false,
                         "elem": {
@@ -790,56 +358,24 @@
             },
             "auth0_custom_domain_verification": {
                 "current": "auth0:index/customDomainVerification:CustomDomainVerification",
-                "fields": {
-                    "cname_api_key": {},
-                    "custom_domain_id": {},
-                    "origin_domain_name": {}
-                }
+                "majorVersion": 2
             },
             "auth0_email": {
                 "current": "auth0:index/email:Email",
+                "majorVersion": 2,
                 "fields": {
                     "credentials": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "access_key_id": {},
-                                "api_key": {},
-                                "api_user": {},
-                                "domain": {},
-                                "region": {},
-                                "secret_access_key": {},
-                                "smtp_host": {},
-                                "smtp_pass": {},
-                                "smtp_port": {},
-                                "smtp_user": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "default_from_address": {},
-                    "enabled": {},
-                    "name": {},
                     "settings": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "headers": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "x_mc_view_content_link": {},
-                                            "x_ses_configuration_set": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "message": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "configuration_set_name": {},
-                                            "view_content_link": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -848,141 +384,50 @@
             },
             "auth0_email_template": {
                 "current": "auth0:index/emailTemplate:EmailTemplate",
-                "fields": {
-                    "body": {},
-                    "enabled": {},
-                    "from": {},
-                    "include_email_in_redirect": {},
-                    "result_url": {},
-                    "subject": {},
-                    "syntax": {},
-                    "template": {},
-                    "url_lifetime_in_seconds": {}
-                }
+                "majorVersion": 2
             },
             "auth0_global_client": {
                 "current": "auth0:index/globalClient:GlobalClient",
+                "majorVersion": 2,
                 "fields": {
                     "addons": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
-                                "aws": {},
-                                "azure_blob": {},
-                                "azure_sb": {},
-                                "box": {},
-                                "cloudbees": {},
-                                "concur": {},
-                                "dropbox": {},
-                                "echosign": {},
-                                "egnyte": {},
-                                "firebase": {},
-                                "layer": {},
-                                "mscrm": {},
-                                "newrelic": {},
-                                "office365": {},
-                                "rms": {},
-                                "salesforce": {},
-                                "salesforce_api": {},
-                                "salesforce_sandbox_api": {},
                                 "samlp": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
-                                            "audience": {},
-                                            "authn_context_class_ref": {},
-                                            "binding": {},
-                                            "create_upn_claim": {},
-                                            "destination": {},
-                                            "digest_algorithm": {},
-                                            "include_attribute_name_format": {},
-                                            "issuer": {},
-                                            "lifetime_in_seconds": {},
-                                            "logout": {},
-                                            "map_identities": {},
-                                            "map_unknown_claims_as_is": {},
-                                            "mappings": {},
-                                            "name_identifier_format": {},
                                             "name_identifier_probes": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
-                                            },
-                                            "passthrough_claims_with_no_mapping": {},
-                                            "recipient": {},
-                                            "sign_response": {},
-                                            "signature_algorithm": {},
-                                            "signing_cert": {},
-                                            "typed_attributes": {}
+                                                "maxItemsOne": false
+                                            }
                                         }
                                     }
-                                },
-                                "sap_api": {},
-                                "sentry": {},
-                                "sharepoint": {},
-                                "slack": {},
-                                "springcm": {},
-                                "wams": {},
-                                "wsfed": {},
-                                "zendesk": {},
-                                "zoom": {}
+                                }
                             }
                         }
                     },
                     "allowed_clients": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "allowed_logout_urls": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "allowed_origins": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "app_type": {},
                     "callbacks": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "client_aliases": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "client_id": {},
-                    "client_metadata": {},
-                    "client_secret": {},
-                    "client_secret_rotation_trigger": {},
-                    "cross_origin_auth": {},
-                    "cross_origin_loc": {},
-                    "custom_login_page": {},
-                    "custom_login_page_on": {},
-                    "description": {},
-                    "encryption_key": {
-                        "elem": {}
-                    },
-                    "form_template": {},
                     "grant_types": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "initiate_login_uri": {},
-                    "is_first_party": {},
-                    "is_token_endpoint_ip_header_trusted": {},
                     "jwt_configuration": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "alg": {},
-                                "lifetime_in_seconds": {},
-                                "scopes": {
-                                    "elem": {}
-                                },
-                                "secret_encoded": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "logo_uri": {},
                     "mobile": {
                         "maxItemsOne": true,
                         "elem": {
@@ -991,46 +436,27 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
-                                            "app_package_name": {},
                                             "sha256_cert_fingerprints": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
                                 },
                                 "ios": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "app_bundle_identifier": {},
-                                            "team_id": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 }
                             }
                         }
                     },
-                    "name": {},
                     "native_social_login": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "apple": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "enabled": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "facebook": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "enabled": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -1038,247 +464,103 @@
                     "oidc_backchannel_logout_urls": {
                         "maxItemsOne": false
                     },
-                    "oidc_conformant": {},
-                    "organization_require_behavior": {},
-                    "organization_usage": {},
                     "refresh_token": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "expiration_type": {},
-                                "idle_token_lifetime": {},
-                                "infinite_idle_token_lifetime": {},
-                                "infinite_token_lifetime": {},
-                                "leeway": {},
-                                "rotation_type": {},
-                                "token_lifetime": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
                     "signing_keys": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "sso": {},
-                    "sso_disabled": {},
-                    "token_endpoint_auth_method": {},
                     "web_origins": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     }
                 }
             },
             "auth0_guardian": {
                 "current": "auth0:index/guardian:Guardian",
+                "majorVersion": 2,
                 "fields": {
                     "duo": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "enabled": {},
-                                "hostname": {},
-                                "integration_key": {},
-                                "secret_key": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "email": {},
-                    "otp": {},
                     "phone": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
-                                "enabled": {},
                                 "message_types": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
                                 "options": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "auth_token": {},
-                                            "enrollment_message": {},
-                                            "from": {},
-                                            "messaging_service_sid": {},
-                                            "sid": {},
-                                            "verification_message": {}
-                                        }
-                                    }
-                                },
-                                "provider": {}
+                                    "maxItemsOne": true
+                                }
                             }
                         }
                     },
-                    "policy": {},
                     "push": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "amazon_sns": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "aws_access_key_id": {},
-                                            "aws_region": {},
-                                            "aws_secret_access_key": {},
-                                            "sns_apns_platform_application_arn": {},
-                                            "sns_gcm_platform_application_arn": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "custom_app": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "app_name": {},
-                                            "apple_app_link": {},
-                                            "google_app_link": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "direct_apns": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "bundle_id": {},
-                                            "enabled": {},
-                                            "p12": {},
-                                            "sandbox": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
                                 "direct_fcm": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "server_key": {}
-                                        }
-                                    }
-                                },
-                                "enabled": {},
-                                "provider": {}
+                                    "maxItemsOne": true
+                                }
                             }
                         }
                     },
-                    "recovery_code": {},
                     "webauthn_platform": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "enabled": {},
-                                "override_relying_party": {},
-                                "relying_party_identifier": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
                     "webauthn_roaming": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "enabled": {},
-                                "override_relying_party": {},
-                                "relying_party_identifier": {},
-                                "user_verification": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     }
                 }
             },
             "auth0_hook": {
                 "current": "auth0:index/hook:Hook",
-                "fields": {
-                    "dependencies": {},
-                    "enabled": {},
-                    "name": {},
-                    "script": {},
-                    "secrets": {},
-                    "trigger_id": {}
-                }
+                "majorVersion": 2
             },
             "auth0_log_stream": {
                 "current": "auth0:index/logStream:LogStream",
+                "majorVersion": 2,
                 "fields": {
                     "filters": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "elem": {}
-                        }
+                        "maxItemsOne": false
                     },
-                    "name": {},
                     "sink": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
-                                "aws_account_id": {},
-                                "aws_partner_event_source": {},
-                                "aws_region": {},
-                                "azure_partner_topic": {},
-                                "azure_region": {},
-                                "azure_resource_group": {},
-                                "azure_subscription_id": {},
-                                "datadog_api_key": {},
-                                "datadog_region": {},
-                                "http_authorization": {},
-                                "http_content_format": {},
-                                "http_content_type": {},
                                 "http_custom_headers": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "elem": {}
-                                    }
-                                },
-                                "http_endpoint": {},
-                                "mixpanel_project_id": {},
-                                "mixpanel_region": {},
-                                "mixpanel_service_account_password": {},
-                                "mixpanel_service_account_username": {},
-                                "segment_write_key": {},
-                                "splunk_domain": {},
-                                "splunk_port": {},
-                                "splunk_secure": {},
-                                "splunk_token": {},
-                                "sumo_source_address": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
-                    },
-                    "status": {},
-                    "type": {}
+                    }
                 }
             },
             "auth0_organization": {
                 "current": "auth0:index/organization:Organization",
+                "majorVersion": 2,
                 "fields": {
                     "branding": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "colors": {
-                                    "elem": {}
-                                },
-                                "logo_url": {}
-                            }
-                        }
-                    },
-                    "display_name": {},
-                    "metadata": {
-                        "elem": {}
-                    },
-                    "name": {}
+                        "maxItemsOne": true
+                    }
                 }
             },
             "auth0_organization_connection": {
                 "current": "auth0:index/organizationConnection:OrganizationConnection",
-                "fields": {
-                    "assign_membership_on_login": {},
-                    "connection_id": {},
-                    "name": {},
-                    "organization_id": {},
-                    "strategy": {}
-                }
+                "majorVersion": 2
             },
             "auth0_organization_connections": {
                 "current": "auth0:index/organizationConnections:OrganizationConnections",
+                "majorVersion": 2,
                 "fields": {
                     "enabled_connections": {
                         "maxItemsOne": false
@@ -1287,20 +569,20 @@
             },
             "auth0_organization_member": {
                 "current": "auth0:index/organizationMember:OrganizationMember",
+                "majorVersion": 2,
                 "fields": {
-                    "organization_id": {},
                     "roles": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "user_id": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "auth0_organization_member_role": {
-                "current": "auth0:index/organizationMemberRole:OrganizationMemberRole"
+                "current": "auth0:index/organizationMemberRole:OrganizationMemberRole",
+                "majorVersion": 2
             },
             "auth0_organization_member_roles": {
                 "current": "auth0:index/organizationMemberRoles:OrganizationMemberRoles",
+                "majorVersion": 2,
                 "fields": {
                     "roles": {
                         "maxItemsOne": false
@@ -1309,6 +591,7 @@
             },
             "auth0_organization_members": {
                 "current": "auth0:index/organizationMembers:OrganizationMembers",
+                "majorVersion": 2,
                 "fields": {
                     "members": {
                         "maxItemsOne": false
@@ -1317,6 +600,7 @@
             },
             "auth0_pages": {
                 "current": "auth0:index/pages:Pages",
+                "majorVersion": 2,
                 "fields": {
                     "change_password": {
                         "maxItemsOne": true
@@ -1334,53 +618,28 @@
             },
             "auth0_prompt": {
                 "current": "auth0:index/prompt:Prompt",
-                "fields": {
-                    "identifier_first": {},
-                    "universal_login_experience": {},
-                    "webauthn_platform_first_factor": {}
-                }
+                "majorVersion": 2
             },
             "auth0_prompt_custom_text": {
                 "current": "auth0:index/promptCustomText:PromptCustomText",
-                "fields": {
-                    "body": {},
-                    "language": {},
-                    "prompt": {}
-                }
+                "majorVersion": 2
             },
             "auth0_resource_server": {
                 "current": "auth0:index/resourceServer:ResourceServer",
+                "majorVersion": 2,
                 "fields": {
-                    "allow_offline_access": {},
-                    "enforce_policies": {},
-                    "identifier": {},
-                    "name": {},
-                    "options": {
-                        "elem": {}
-                    },
                     "scopes": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "description": {},
-                                "value": {}
-                            }
-                        }
-                    },
-                    "signing_alg": {},
-                    "signing_secret": {},
-                    "skip_consent_for_verifiable_first_party_clients": {},
-                    "token_dialect": {},
-                    "token_lifetime": {},
-                    "token_lifetime_for_web": {},
-                    "verification_location": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "auth0_resource_server_scope": {
-                "current": "auth0:index/resourceServerScope:ResourceServerScope"
+                "current": "auth0:index/resourceServerScope:ResourceServerScope",
+                "majorVersion": 2
             },
             "auth0_resource_server_scopes": {
                 "current": "auth0:index/resourceServerScopes:ResourceServerScopes",
+                "majorVersion": 2,
                 "fields": {
                     "scopes": {
                         "maxItemsOne": false
@@ -1389,25 +648,20 @@
             },
             "auth0_role": {
                 "current": "auth0:index/role:Role",
+                "majorVersion": 2,
                 "fields": {
-                    "description": {},
-                    "name": {},
                     "permissions": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "name": {},
-                                "resource_server_identifier": {}
-                            }
-                        }
+                        "maxItemsOne": false
                     }
                 }
             },
             "auth0_role_permission": {
-                "current": "auth0:index/rolePermission:RolePermission"
+                "current": "auth0:index/rolePermission:RolePermission",
+                "majorVersion": 2
             },
             "auth0_role_permissions": {
                 "current": "auth0:index/rolePermissions:RolePermissions",
+                "majorVersion": 2,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -1416,119 +670,43 @@
             },
             "auth0_rule": {
                 "current": "auth0:index/rule:Rule",
-                "fields": {
-                    "enabled": {},
-                    "name": {},
-                    "order": {},
-                    "script": {}
-                }
+                "majorVersion": 2
             },
             "auth0_rule_config": {
                 "current": "auth0:index/ruleConfig:RuleConfig",
-                "fields": {
-                    "key": {},
-                    "value": {}
-                }
+                "majorVersion": 2
             },
             "auth0_tenant": {
                 "current": "auth0:index/tenant:Tenant",
+                "majorVersion": 2,
                 "fields": {
                     "allowed_logout_urls": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "change_password": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "enabled": {},
-                                "html": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "default_audience": {},
-                    "default_directory": {},
-                    "default_redirection_uri": {},
                     "enabled_locales": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "error_page": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "html": {},
-                                "show_log_link": {},
-                                "url": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
                     "flags": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "allow_legacy_delegation_grant_types": {},
-                                "allow_legacy_ro_grant_types": {},
-                                "allow_legacy_tokeninfo_endpoint": {},
-                                "dashboard_insights_view": {},
-                                "dashboard_log_streams_next": {},
-                                "disable_clickjack_protection_headers": {},
-                                "disable_fields_map_fix": {},
-                                "disable_management_api_sms_obfuscation": {},
-                                "enable_adfs_waad_email_verification": {},
-                                "enable_apis_section": {},
-                                "enable_client_connections": {},
-                                "enable_custom_domain_in_emails": {},
-                                "enable_dynamic_client_registration": {},
-                                "enable_idtoken_api2": {},
-                                "enable_legacy_logs_search_v2": {},
-                                "enable_legacy_profile": {},
-                                "enable_pipeline2": {},
-                                "enable_public_signup_user_exists_error": {},
-                                "mfa_show_factor_list_on_enrollment": {},
-                                "no_disclose_enterprise_connections": {},
-                                "revoke_refresh_token_grant": {},
-                                "universal_login": {},
-                                "use_scope_descriptions_for_consent": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "friendly_name": {},
                     "guardian_mfa_page": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "enabled": {},
-                                "html": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "idle_session_lifetime": {},
-                    "picture_url": {},
-                    "sandbox_version": {},
                     "session_cookie": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "mode": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "session_lifetime": {},
-                    "support_email": {},
-                    "support_url": {},
                     "universal_login": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "colors": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "page_background": {},
-                                            "primary": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -1536,10 +714,12 @@
                 }
             },
             "auth0_trigger_action": {
-                "current": "auth0:index/triggerAction:TriggerAction"
+                "current": "auth0:index/triggerAction:TriggerAction",
+                "majorVersion": 2
             },
             "auth0_trigger_actions": {
                 "current": "auth0:index/triggerActions:TriggerActions",
+                "majorVersion": 2,
                 "fields": {
                     "actions": {
                         "maxItemsOne": false
@@ -1548,53 +728,32 @@
             },
             "auth0_trigger_binding": {
                 "current": "auth0:index/triggerBinding:TriggerBinding",
+                "majorVersion": 2,
                 "fields": {
                     "actions": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "display_name": {},
-                                "id": {}
-                            }
-                        }
-                    },
-                    "trigger": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "auth0_user": {
                 "current": "auth0:index/user:User",
+                "majorVersion": 2,
                 "fields": {
-                    "app_metadata": {},
-                    "blocked": {},
-                    "connection_name": {},
-                    "email": {},
-                    "email_verified": {},
-                    "family_name": {},
-                    "given_name": {},
-                    "name": {},
-                    "nickname": {},
-                    "password": {},
                     "permissions": {
                         "maxItemsOne": false
                     },
-                    "phone_number": {},
-                    "phone_verified": {},
-                    "picture": {},
                     "roles": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "user_id": {},
-                    "user_metadata": {},
-                    "username": {},
-                    "verify_email": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "auth0_user_permission": {
-                "current": "auth0:index/userPermission:UserPermission"
+                "current": "auth0:index/userPermission:UserPermission",
+                "majorVersion": 2
             },
             "auth0_user_permissions": {
                 "current": "auth0:index/userPermissions:UserPermissions",
+                "majorVersion": 2,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -1602,10 +761,12 @@
                 }
             },
             "auth0_user_role": {
-                "current": "auth0:index/userRole:UserRole"
+                "current": "auth0:index/userRole:UserRole",
+                "majorVersion": 2
             },
             "auth0_user_roles": {
                 "current": "auth0:index/userRoles:UserRoles",
+                "majorVersion": 2,
                 "fields": {
                     "roles": {
                         "maxItemsOne": false
@@ -1616,6 +777,7 @@
         "datasources": {
             "auth0_attack_protection": {
                 "current": "auth0:index/getAttackProtection:getAttackProtection",
+                "majorVersion": 2,
                 "fields": {
                     "breached_password_detection": {
                         "maxItemsOne": false,
@@ -1676,6 +838,7 @@
             },
             "auth0_branding": {
                 "current": "auth0:index/getBranding:getBranding",
+                "majorVersion": 2,
                 "fields": {
                     "colors": {
                         "maxItemsOne": false
@@ -1690,6 +853,7 @@
             },
             "auth0_branding_theme": {
                 "current": "auth0:index/getBrandingTheme:getBrandingTheme",
+                "majorVersion": 2,
                 "fields": {
                     "borders": {
                         "maxItemsOne": false
@@ -1732,6 +896,7 @@
             },
             "auth0_client": {
                 "current": "auth0:index/getClient:getClient",
+                "majorVersion": 2,
                 "fields": {
                     "addons": {
                         "maxItemsOne": false,
@@ -1820,6 +985,7 @@
             },
             "auth0_connection": {
                 "current": "auth0:index/getConnection:getConnection",
+                "majorVersion": 2,
                 "fields": {
                     "enabled_clients": {
                         "maxItemsOne": false
@@ -1897,6 +1063,7 @@
             },
             "auth0_custom_domain": {
                 "current": "auth0:index/getCustomDomain:getCustomDomain",
+                "majorVersion": 2,
                 "fields": {
                     "verification": {
                         "maxItemsOne": false,
@@ -1912,6 +1079,7 @@
             },
             "auth0_global_client": {
                 "current": "auth0:index/getGlobalClient:getGlobalClient",
+                "majorVersion": 2,
                 "fields": {
                     "addons": {
                         "maxItemsOne": false,
@@ -2000,6 +1168,7 @@
             },
             "auth0_organization": {
                 "current": "auth0:index/getOrganization:getOrganization",
+                "majorVersion": 2,
                 "fields": {
                     "branding": {
                         "maxItemsOne": false
@@ -2014,6 +1183,7 @@
             },
             "auth0_resource_server": {
                 "current": "auth0:index/getResourceServer:getResourceServer",
+                "majorVersion": 2,
                 "fields": {
                     "scopes": {
                         "maxItemsOne": false
@@ -2022,6 +1192,7 @@
             },
             "auth0_role": {
                 "current": "auth0:index/getRole:getRole",
+                "majorVersion": 2,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -2030,6 +1201,7 @@
             },
             "auth0_tenant": {
                 "current": "auth0:index/getTenant:getTenant",
+                "majorVersion": 2,
                 "fields": {
                     "allowed_logout_urls": {
                         "maxItemsOne": false
@@ -2066,6 +1238,7 @@
             },
             "auth0_user": {
                 "current": "auth0:index/getUser:getUser",
+                "majorVersion": 2,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false

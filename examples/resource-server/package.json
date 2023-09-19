@@ -1,0 +1,18 @@
+{
+  "name": "resourceServer",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@pulumi/auth0": "dev"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.26",
+    "typescript": "^3.0.0"
+  },
+  "license": "MIT"
+}

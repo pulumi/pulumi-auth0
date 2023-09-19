@@ -4,13 +4,12 @@ go 1.21
 
 replace (
 	github.com/auth0/terraform-provider-auth0 => ../upstream
-	github.com/auth0/terraform-provider-auth0/shim => ./shim
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230710100801-03a71d0fca3d
 	github.com/hashicorp/terraform-plugin-test => github.com/hashicorp/terraform-plugin-test v1.3.0
 )
 
 require (
-	github.com/auth0/terraform-provider-auth0/shim v0.0.0
+	github.com/auth0/terraform-provider-auth0 v0.50.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.59.0
 	github.com/pulumi/pulumi/sdk/v3 v3.81.0
 )
@@ -58,7 +57,6 @@ require (
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/auth0/go-auth0 v0.17.3 // indirect
-	github.com/auth0/terraform-provider-auth0 v0.50.2 // indirect
 	github.com/aws/aws-sdk-go v1.44.298 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.17.3 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.3 // indirect

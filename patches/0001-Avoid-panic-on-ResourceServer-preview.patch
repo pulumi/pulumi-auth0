@@ -1,7 +1,7 @@
-From 8581342a3675a62458727fa4063d1dca1c538fdd Mon Sep 17 00:00:00 2001
+From a8d4a047af2e1aaed6b2329fcbe560fff1abb4f7 Mon Sep 17 00:00:00 2001
 From: Mikhail Shilkov <github@mikhail.io>
 Date: Fri, 15 Sep 2023 17:59:18 +0200
-Subject: [PATCH] Avoid panic on ResourceServer preview
+Subject: [PATCH 1/2] Avoid panic on ResourceServer preview
 
 ---
  internal/auth0/resourceserver/resource.go | 3 ++-
