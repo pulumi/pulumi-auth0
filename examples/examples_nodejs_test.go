@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"encoding/json"
+
 	"github.com/stretchr/testify/assert"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
@@ -18,6 +19,15 @@ func TestAccClient(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "client"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccResourceServer(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "resource-server"),
 		})
 
 	integration.ProgramTest(t, &test)

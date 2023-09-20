@@ -817,8 +817,6 @@ github.com/atotto/clipboard v0.1.4 h1:EH0zSVneZPSuFR11BlR9YppQTVDbh5+16AmcJi4g1z
 github.com/atotto/clipboard v0.1.4/go.mod h1:ZY9tmq7sm5xIbd9bOK4onWV4S6X0u6GY7Vn0Yu86PYI=
 github.com/auth0/go-auth0 v0.17.3 h1:HjepTdrzDo3hPe6W/y+IbQfgs0414JGdQKOzgAYr+Nc=
 github.com/auth0/go-auth0 v0.17.3/go.mod h1:gQV9wI/TEqcxQ5FKQhImNbNl5+fL3fSpEfsl76I0Nd4=
-github.com/auth0/terraform-provider-auth0 v0.50.2 h1:16WX32G0gx4E95ZUqzOhjQSZY+UcZleSksCXGeDt7eI=
-github.com/auth0/terraform-provider-auth0 v0.50.2/go.mod h1:I5/fpnmlPSnisnzofRzCO7/FWIvb69692529TBRdyFA=
 github.com/aws/aws-lambda-go v1.13.3/go.mod h1:4UKl9IzQMoD+QF79YdCuzCwp8VbmG4VAQwij/eHl5CU=
 github.com/aws/aws-sdk-go v1.15.11/go.mod h1:mFuSZ37Z9YOHbQEwBWztmVzqXrEkub65tZoCYDt7FT0=
 github.com/aws/aws-sdk-go v1.15.27/go.mod h1:mFuSZ37Z9YOHbQEwBWztmVzqXrEkub65tZoCYDt7FT0=

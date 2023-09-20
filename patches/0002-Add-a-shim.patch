@@ -1,0 +1,29 @@
+From b4d9e22f2b6213a22a2b39790902aa5e147786a6 Mon Sep 17 00:00:00 2001
+From: Mikhail Shilkov <github@mikhail.io>
+Date: Tue, 19 Sep 2023 17:21:23 +0200
+Subject: [PATCH 2/2] Add a shim
+
+---
+ shim/shim.go | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+ create mode 100644 shim/shim.go
+
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 00000000..3c127eb3
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,10 @@
++package shim
++
++import (
++	"github.com/auth0/terraform-provider-auth0/internal/provider"
++	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++)
++
++func NewProvider() *schema.Provider {
++	return provider.New()
++}
+-- 
+2.39.2 (Apple Git-143)
+

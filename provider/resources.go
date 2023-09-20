@@ -52,14 +52,16 @@ func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(auth0Shim.NewProvider())
 
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "auth0",
-		Description: "A Pulumi package for creating and managing auth0 cloud resources.",
-		Keywords:    []string{"pulumi", "auth0"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		GitHubOrg:   "auth0",
-		Repository:  "https://github.com/pulumi/pulumi-auth0",
+		P:                p,
+		Name:             "auth0",
+		Description:      "A Pulumi package for creating and managing auth0 cloud resources.",
+		Keywords:         []string{"pulumi", "auth0"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		GitHubOrg:        "auth0",
+		Repository:       "https://github.com/pulumi/pulumi-auth0",
+		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"debug": {
 				Default: &tfbridge.DefaultInfo{
