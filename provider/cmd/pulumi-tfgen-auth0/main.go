@@ -17,8 +17,8 @@ package main
 import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 
-	auth0 "github.com/pulumi/pulumi-auth0/provider/v2"
-	"github.com/pulumi/pulumi-auth0/provider/v2/pkg/version"
+	auth0 "github.com/pulumi/pulumi-auth0/provider/v3"
+	"github.com/pulumi/pulumi-auth0/provider/v3/pkg/version"
 )
 
 func main() {

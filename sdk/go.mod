@@ -1,9 +1,10 @@
-module github.com/pulumi/pulumi-auth0/sdk/v2
+module github.com/pulumi/pulumi-auth0/sdk/v3
 
 go 1.21
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
+	github.com/pulumi/pulumi-auth0/sdk/v2 v2.24.3
 	github.com/pulumi/pulumi/sdk/v3 v3.81.0
 )
 
@@ -62,7 +63,7 @@ require (
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.7.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/stretchr/testify v1.8.3 // indirect
+	github.com/stretchr/objx v0.5.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
@@ -82,6 +83,5 @@ require (
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
-	pgregory.net/rapid v0.6.1 // indirect
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600 // indirect
 )

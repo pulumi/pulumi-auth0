@@ -3,7 +3,7 @@
         "resources": {
             "auth0_action": {
                 "current": "auth0:index/action:Action",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "dependencies": {
                         "maxItemsOne": false
@@ -18,7 +18,7 @@
             },
             "auth0_attack_protection": {
                 "current": "auth0:index/attackProtection:AttackProtection",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "breached_password_detection": {
                         "maxItemsOne": true,
@@ -79,7 +79,7 @@
             },
             "auth0_branding": {
                 "current": "auth0:index/branding:Branding",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "colors": {
                         "maxItemsOne": true
@@ -94,7 +94,7 @@
             },
             "auth0_branding_theme": {
                 "current": "auth0:index/brandingTheme:BrandingTheme",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "borders": {
                         "maxItemsOne": true
@@ -137,21 +137,115 @@
             },
             "auth0_client": {
                 "current": "auth0:index/client:Client",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "addons": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "aws": {
+                                    "maxItemsOne": true
+                                },
+                                "azure_blob": {
+                                    "maxItemsOne": true
+                                },
+                                "azure_sb": {
+                                    "maxItemsOne": true
+                                },
+                                "box": {
+                                    "maxItemsOne": true
+                                },
+                                "cloudbees": {
+                                    "maxItemsOne": true
+                                },
+                                "concur": {
+                                    "maxItemsOne": true
+                                },
+                                "dropbox": {
+                                    "maxItemsOne": true
+                                },
+                                "echosign": {
+                                    "maxItemsOne": true
+                                },
+                                "egnyte": {
+                                    "maxItemsOne": true
+                                },
+                                "firebase": {
+                                    "maxItemsOne": true
+                                },
+                                "layer": {
+                                    "maxItemsOne": true
+                                },
+                                "mscrm": {
+                                    "maxItemsOne": true
+                                },
+                                "newrelic": {
+                                    "maxItemsOne": true
+                                },
+                                "office365": {
+                                    "maxItemsOne": true
+                                },
+                                "rms": {
+                                    "maxItemsOne": true
+                                },
+                                "salesforce": {
+                                    "maxItemsOne": true
+                                },
+                                "salesforce_api": {
+                                    "maxItemsOne": true
+                                },
+                                "salesforce_sandbox_api": {
+                                    "maxItemsOne": true
+                                },
                                 "samlp": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "logout": {
+                                                "maxItemsOne": true
+                                            },
                                             "name_identifier_probes": {
                                                 "maxItemsOne": false
                                             }
                                         }
                                     }
+                                },
+                                "sap_api": {
+                                    "maxItemsOne": true
+                                },
+                                "sentry": {
+                                    "maxItemsOne": true
+                                },
+                                "sharepoint": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "external_url": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "slack": {
+                                    "maxItemsOne": true
+                                },
+                                "springcm": {
+                                    "maxItemsOne": true
+                                },
+                                "sso_integration": {
+                                    "maxItemsOne": true
+                                },
+                                "wams": {
+                                    "maxItemsOne": true
+                                },
+                                "wsfed": {
+                                    "maxItemsOne": true
+                                },
+                                "zendesk": {
+                                    "maxItemsOne": true
+                                },
+                                "zoom": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -226,7 +320,7 @@
             },
             "auth0_client_credentials": {
                 "current": "auth0:index/clientCredentials:ClientCredentials",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "private_key_jwt": {
                         "maxItemsOne": true,
@@ -242,26 +336,32 @@
             },
             "auth0_client_grant": {
                 "current": "auth0:index/clientGrant:ClientGrant",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
-                    "scope": {
+                    "scopes": {
                         "maxItemsOne": false
                     }
                 }
             },
             "auth0_connection": {
                 "current": "auth0:index/connection:Connection",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
-                    "enabled_clients": {
-                        "maxItemsOne": false
-                    },
                     "options": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "allowed_audiences": {
                                     "maxItemsOne": false
+                                },
+                                "attribute_map": {
+                                    "maxItemsOne": true
+                                },
+                                "connection_settings": {
+                                    "maxItemsOne": true
+                                },
+                                "decryption_key": {
+                                    "maxItemsOne": true
                                 },
                                 "domain_aliases": {
                                     "maxItemsOne": false
@@ -329,11 +429,11 @@
             },
             "auth0_connection_client": {
                 "current": "auth0:index/connectionClient:ConnectionClient",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_connection_clients": {
                 "current": "auth0:index/connectionClients:ConnectionClients",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "enabled_clients": {
                         "maxItemsOne": false
@@ -342,7 +442,7 @@
             },
             "auth0_custom_domain": {
                 "current": "auth0:index/customDomain:CustomDomain",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "verification": {
                         "maxItemsOne": false,
@@ -358,7 +458,7 @@
             },
             "auth0_custom_domain_verification": {
                 "current": "auth0:index/customDomainVerification:CustomDomainVerification",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_email": {
                 "current": "auth0:index/email:Email",
@@ -382,9 +482,31 @@
                     }
                 }
             },
+            "auth0_email_provider": {
+                "current": "auth0:index/emailProvider:EmailProvider",
+                "majorVersion": 3,
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": true
+                    },
+                    "settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "headers": {
+                                    "maxItemsOne": true
+                                },
+                                "message": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_email_template": {
                 "current": "auth0:index/emailTemplate:EmailTemplate",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_global_client": {
                 "current": "auth0:index/globalClient:GlobalClient",
@@ -477,7 +599,7 @@
             },
             "auth0_guardian": {
                 "current": "auth0:index/guardian:Guardian",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "duo": {
                         "maxItemsOne": true
@@ -524,11 +646,11 @@
             },
             "auth0_hook": {
                 "current": "auth0:index/hook:Hook",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_log_stream": {
                 "current": "auth0:index/logStream:LogStream",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "filters": {
                         "maxItemsOne": false
@@ -547,7 +669,7 @@
             },
             "auth0_organization": {
                 "current": "auth0:index/organization:Organization",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "branding": {
                         "maxItemsOne": true
@@ -556,11 +678,11 @@
             },
             "auth0_organization_connection": {
                 "current": "auth0:index/organizationConnection:OrganizationConnection",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_organization_connections": {
                 "current": "auth0:index/organizationConnections:OrganizationConnections",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "enabled_connections": {
                         "maxItemsOne": false
@@ -569,20 +691,15 @@
             },
             "auth0_organization_member": {
                 "current": "auth0:index/organizationMember:OrganizationMember",
-                "majorVersion": 2,
-                "fields": {
-                    "roles": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 3
             },
             "auth0_organization_member_role": {
                 "current": "auth0:index/organizationMemberRole:OrganizationMemberRole",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_organization_member_roles": {
                 "current": "auth0:index/organizationMemberRoles:OrganizationMemberRoles",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "roles": {
                         "maxItemsOne": false
@@ -591,7 +708,7 @@
             },
             "auth0_organization_members": {
                 "current": "auth0:index/organizationMembers:OrganizationMembers",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "members": {
                         "maxItemsOne": false
@@ -600,7 +717,7 @@
             },
             "auth0_pages": {
                 "current": "auth0:index/pages:Pages",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "change_password": {
                         "maxItemsOne": true
@@ -618,28 +735,23 @@
             },
             "auth0_prompt": {
                 "current": "auth0:index/prompt:Prompt",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_prompt_custom_text": {
                 "current": "auth0:index/promptCustomText:PromptCustomText",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_resource_server": {
                 "current": "auth0:index/resourceServer:ResourceServer",
-                "majorVersion": 2,
-                "fields": {
-                    "scopes": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 3
             },
             "auth0_resource_server_scope": {
                 "current": "auth0:index/resourceServerScope:ResourceServerScope",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_resource_server_scopes": {
                 "current": "auth0:index/resourceServerScopes:ResourceServerScopes",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "scopes": {
                         "maxItemsOne": false
@@ -648,20 +760,15 @@
             },
             "auth0_role": {
                 "current": "auth0:index/role:Role",
-                "majorVersion": 2,
-                "fields": {
-                    "permissions": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 3
             },
             "auth0_role_permission": {
                 "current": "auth0:index/rolePermission:RolePermission",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_role_permissions": {
                 "current": "auth0:index/rolePermissions:RolePermissions",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -670,56 +777,40 @@
             },
             "auth0_rule": {
                 "current": "auth0:index/rule:Rule",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_rule_config": {
                 "current": "auth0:index/ruleConfig:RuleConfig",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_tenant": {
                 "current": "auth0:index/tenant:Tenant",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "allowed_logout_urls": {
                         "maxItemsOne": false
                     },
-                    "change_password": {
-                        "maxItemsOne": true
-                    },
                     "enabled_locales": {
                         "maxItemsOne": false
                     },
-                    "error_page": {
-                        "maxItemsOne": true
-                    },
                     "flags": {
-                        "maxItemsOne": true
-                    },
-                    "guardian_mfa_page": {
                         "maxItemsOne": true
                     },
                     "session_cookie": {
                         "maxItemsOne": true
                     },
-                    "universal_login": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "colors": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
+                    "sessions": {
+                        "maxItemsOne": true
                     }
                 }
             },
             "auth0_trigger_action": {
                 "current": "auth0:index/triggerAction:TriggerAction",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_trigger_actions": {
                 "current": "auth0:index/triggerActions:TriggerActions",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "actions": {
                         "maxItemsOne": false
@@ -737,23 +828,15 @@
             },
             "auth0_user": {
                 "current": "auth0:index/user:User",
-                "majorVersion": 2,
-                "fields": {
-                    "permissions": {
-                        "maxItemsOne": false
-                    },
-                    "roles": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 3
             },
             "auth0_user_permission": {
                 "current": "auth0:index/userPermission:UserPermission",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_user_permissions": {
                 "current": "auth0:index/userPermissions:UserPermissions",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -762,11 +845,11 @@
             },
             "auth0_user_role": {
                 "current": "auth0:index/userRole:UserRole",
-                "majorVersion": 2
+                "majorVersion": 3
             },
             "auth0_user_roles": {
                 "current": "auth0:index/userRoles:UserRoles",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "roles": {
                         "maxItemsOne": false
@@ -777,7 +860,7 @@
         "datasources": {
             "auth0_attack_protection": {
                 "current": "auth0:index/getAttackProtection:getAttackProtection",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "breached_password_detection": {
                         "maxItemsOne": false,
@@ -838,7 +921,7 @@
             },
             "auth0_branding": {
                 "current": "auth0:index/getBranding:getBranding",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "colors": {
                         "maxItemsOne": false
@@ -853,7 +936,7 @@
             },
             "auth0_branding_theme": {
                 "current": "auth0:index/getBrandingTheme:getBrandingTheme",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "borders": {
                         "maxItemsOne": false
@@ -896,21 +979,115 @@
             },
             "auth0_client": {
                 "current": "auth0:index/getClient:getClient",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "addons": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "aws": {
+                                    "maxItemsOne": false
+                                },
+                                "azure_blob": {
+                                    "maxItemsOne": false
+                                },
+                                "azure_sb": {
+                                    "maxItemsOne": false
+                                },
+                                "box": {
+                                    "maxItemsOne": false
+                                },
+                                "cloudbees": {
+                                    "maxItemsOne": false
+                                },
+                                "concur": {
+                                    "maxItemsOne": false
+                                },
+                                "dropbox": {
+                                    "maxItemsOne": false
+                                },
+                                "echosign": {
+                                    "maxItemsOne": false
+                                },
+                                "egnyte": {
+                                    "maxItemsOne": false
+                                },
+                                "firebase": {
+                                    "maxItemsOne": false
+                                },
+                                "layer": {
+                                    "maxItemsOne": false
+                                },
+                                "mscrm": {
+                                    "maxItemsOne": false
+                                },
+                                "newrelic": {
+                                    "maxItemsOne": false
+                                },
+                                "office365": {
+                                    "maxItemsOne": false
+                                },
+                                "rms": {
+                                    "maxItemsOne": false
+                                },
+                                "salesforce": {
+                                    "maxItemsOne": false
+                                },
+                                "salesforce_api": {
+                                    "maxItemsOne": false
+                                },
+                                "salesforce_sandbox_api": {
+                                    "maxItemsOne": false
+                                },
                                 "samlp": {
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "logout": {
+                                                "maxItemsOne": false
+                                            },
                                             "name_identifier_probes": {
                                                 "maxItemsOne": false
                                             }
                                         }
                                     }
+                                },
+                                "sap_api": {
+                                    "maxItemsOne": false
+                                },
+                                "sentry": {
+                                    "maxItemsOne": false
+                                },
+                                "sharepoint": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "external_url": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "slack": {
+                                    "maxItemsOne": false
+                                },
+                                "springcm": {
+                                    "maxItemsOne": false
+                                },
+                                "sso_integration": {
+                                    "maxItemsOne": false
+                                },
+                                "wams": {
+                                    "maxItemsOne": false
+                                },
+                                "wsfed": {
+                                    "maxItemsOne": false
+                                },
+                                "zendesk": {
+                                    "maxItemsOne": false
+                                },
+                                "zoom": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -985,7 +1162,7 @@
             },
             "auth0_connection": {
                 "current": "auth0:index/getConnection:getConnection",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "enabled_clients": {
                         "maxItemsOne": false
@@ -995,6 +1172,15 @@
                         "elem": {
                             "fields": {
                                 "allowed_audiences": {
+                                    "maxItemsOne": false
+                                },
+                                "attribute_map": {
+                                    "maxItemsOne": false
+                                },
+                                "connection_settings": {
+                                    "maxItemsOne": false
+                                },
+                                "decryption_key": {
                                     "maxItemsOne": false
                                 },
                                 "domain_aliases": {
@@ -1063,7 +1249,7 @@
             },
             "auth0_custom_domain": {
                 "current": "auth0:index/getCustomDomain:getCustomDomain",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "verification": {
                         "maxItemsOne": false,
@@ -1168,7 +1354,7 @@
             },
             "auth0_organization": {
                 "current": "auth0:index/getOrganization:getOrganization",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "branding": {
                         "maxItemsOne": false
@@ -1181,9 +1367,27 @@
                     }
                 }
             },
+            "auth0_pages": {
+                "current": "auth0:index/getPages:getPages",
+                "majorVersion": 3,
+                "fields": {
+                    "change_password": {
+                        "maxItemsOne": false
+                    },
+                    "error": {
+                        "maxItemsOne": false
+                    },
+                    "guardian_mfa": {
+                        "maxItemsOne": false
+                    },
+                    "login": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_resource_server": {
                 "current": "auth0:index/getResourceServer:getResourceServer",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "scopes": {
                         "maxItemsOne": false
@@ -1192,53 +1396,49 @@
             },
             "auth0_role": {
                 "current": "auth0:index/getRole:getRole",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "permissions": {
+                        "maxItemsOne": false
+                    },
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_signing_keys": {
+                "current": "auth0:index/getSigningKeys:getSigningKeys",
+                "majorVersion": 3,
+                "fields": {
+                    "signing_keys": {
                         "maxItemsOne": false
                     }
                 }
             },
             "auth0_tenant": {
                 "current": "auth0:index/getTenant:getTenant",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "allowed_logout_urls": {
-                        "maxItemsOne": false
-                    },
-                    "change_password": {
                         "maxItemsOne": false
                     },
                     "enabled_locales": {
                         "maxItemsOne": false
                     },
-                    "error_page": {
-                        "maxItemsOne": false
-                    },
                     "flags": {
-                        "maxItemsOne": false
-                    },
-                    "guardian_mfa_page": {
                         "maxItemsOne": false
                     },
                     "session_cookie": {
                         "maxItemsOne": false
                     },
-                    "universal_login": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "colors": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                    "sessions": {
+                        "maxItemsOne": false
                     }
                 }
             },
             "auth0_user": {
                 "current": "auth0:index/getUser:getUser",
-                "majorVersion": 2,
+                "majorVersion": 3,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -1264,9 +1464,8 @@
             "auth0:index/connectionClients:ConnectionClients": "auth0_connection_clients",
             "auth0:index/customDomain:CustomDomain": "auth0_custom_domain",
             "auth0:index/customDomainVerification:CustomDomainVerification": "auth0_custom_domain_verification",
-            "auth0:index/email:Email": "auth0_email",
+            "auth0:index/emailProvider:EmailProvider": "auth0_email_provider",
             "auth0:index/emailTemplate:EmailTemplate": "auth0_email_template",
-            "auth0:index/globalClient:GlobalClient": "auth0_global_client",
             "auth0:index/guardian:Guardian": "auth0_guardian",
             "auth0:index/hook:Hook": "auth0_hook",
             "auth0:index/logStream:LogStream": "auth0_log_stream",
@@ -1291,7 +1490,6 @@
             "auth0:index/tenant:Tenant": "auth0_tenant",
             "auth0:index/triggerAction:TriggerAction": "auth0_trigger_action",
             "auth0:index/triggerActions:TriggerActions": "auth0_trigger_actions",
-            "auth0:index/triggerBinding:TriggerBinding": "auth0_trigger_binding",
             "auth0:index/user:User": "auth0_user",
             "auth0:index/userPermission:UserPermission": "auth0_user_permission",
             "auth0:index/userPermissions:UserPermissions": "auth0_user_permissions",
@@ -1305,10 +1503,11 @@
             "auth0:index/getClient:getClient": "auth0_client",
             "auth0:index/getConnection:getConnection": "auth0_connection",
             "auth0:index/getCustomDomain:getCustomDomain": "auth0_custom_domain",
-            "auth0:index/getGlobalClient:getGlobalClient": "auth0_global_client",
             "auth0:index/getOrganization:getOrganization": "auth0_organization",
+            "auth0:index/getPages:getPages": "auth0_pages",
             "auth0:index/getResourceServer:getResourceServer": "auth0_resource_server",
             "auth0:index/getRole:getRole": "auth0_role",
+            "auth0:index/getSigningKeys:getSigningKeys": "auth0_signing_keys",
             "auth0:index/getTenant:getTenant": "auth0_tenant",
             "auth0:index/getUser:getUser": "auth0_user"
         },
@@ -1387,7 +1586,54 @@
                 "azureSb": "azure_sb",
                 "salesforceApi": "salesforce_api",
                 "salesforceSandboxApi": "salesforce_sandbox_api",
-                "sapApi": "sap_api"
+                "sapApi": "sap_api",
+                "ssoIntegration": "sso_integration"
+            },
+            "auth0:index/ClientAddonsAws:ClientAddonsAws": {
+                "lifetimeInSeconds": "lifetime_in_seconds"
+            },
+            "auth0:index/ClientAddonsAzureBlob:ClientAddonsAzureBlob": {
+                "accountName": "account_name",
+                "blobDelete": "blob_delete",
+                "blobName": "blob_name",
+                "blobRead": "blob_read",
+                "blobWrite": "blob_write",
+                "containerDelete": "container_delete",
+                "containerList": "container_list",
+                "containerName": "container_name",
+                "containerRead": "container_read",
+                "containerWrite": "container_write",
+                "signedIdentifier": "signed_identifier",
+                "storageAccessKey": "storage_access_key"
+            },
+            "auth0:index/ClientAddonsAzureSb:ClientAddonsAzureSb": {
+                "entityPath": "entity_path",
+                "sasKey": "sas_key",
+                "sasKeyName": "sas_key_name"
+            },
+            "auth0:index/ClientAddonsFirebase:ClientAddonsFirebase": {
+                "clientEmail": "client_email",
+                "lifetimeInSeconds": "lifetime_in_seconds",
+                "privateKey": "private_key",
+                "privateKeyId": "private_key_id"
+            },
+            "auth0:index/ClientAddonsLayer:ClientAddonsLayer": {
+                "keyId": "key_id",
+                "privateKey": "private_key",
+                "providerId": "provider_id"
+            },
+            "auth0:index/ClientAddonsSalesforce:ClientAddonsSalesforce": {
+                "entityId": "entity_id"
+            },
+            "auth0:index/ClientAddonsSalesforceApi:ClientAddonsSalesforceApi": {
+                "clientId": "client_id",
+                "communityName": "community_name",
+                "communityUrlSection": "community_url_section"
+            },
+            "auth0:index/ClientAddonsSalesforceSandboxApi:ClientAddonsSalesforceSandboxApi": {
+                "clientId": "client_id",
+                "communityName": "community_name",
+                "communityUrlSection": "community_url_section"
             },
             "auth0:index/ClientAddonsSamlp:ClientAddonsSamlp": {
                 "authnContextClassRef": "authn_context_class_ref",
@@ -1404,6 +1650,32 @@
                 "signatureAlgorithm": "signature_algorithm",
                 "signingCert": "signing_cert",
                 "typedAttributes": "typed_attributes"
+            },
+            "auth0:index/ClientAddonsSamlpLogout:ClientAddonsSamlpLogout": {
+                "sloEnabled": "slo_enabled"
+            },
+            "auth0:index/ClientAddonsSapApi:ClientAddonsSapApi": {
+                "clientId": "client_id",
+                "nameIdentifierFormat": "name_identifier_format",
+                "servicePassword": "service_password",
+                "tokenEndpointUrl": "token_endpoint_url",
+                "usernameAttribute": "username_attribute"
+            },
+            "auth0:index/ClientAddonsSentry:ClientAddonsSentry": {
+                "baseUrl": "base_url",
+                "orgSlug": "org_slug"
+            },
+            "auth0:index/ClientAddonsSharepoint:ClientAddonsSharepoint": {
+                "externalUrls": "external_url"
+            },
+            "auth0:index/ClientAddonsSpringcm:ClientAddonsSpringcm": {
+                "acsUrl": "acs_url"
+            },
+            "auth0:index/ClientAddonsWams:ClientAddonsWams": {
+                "masterKey": "master_key"
+            },
+            "auth0:index/ClientAddonsZendesk:ClientAddonsZendesk": {
+                "accountName": "account_name"
             },
             "auth0:index/ClientCredentialsPrivateKeyJwtCredential:ClientCredentialsPrivateKeyJwtCredential": {
                 "createdAt": "created_at",
@@ -1438,13 +1710,16 @@
                 "allowedAudiences": "allowed_audiences",
                 "apiEnableUsers": "api_enable_users",
                 "appId": "app_id",
+                "attributeMap": "attribute_map",
                 "authParams": "auth_params",
                 "authorizationEndpoint": "authorization_endpoint",
                 "bruteForceProtection": "brute_force_protection",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "communityBaseUrl": "community_base_url",
+                "connectionSettings": "connection_settings",
                 "customScripts": "custom_scripts",
+                "decryptionKey": "decryption_key",
                 "digestAlgorithm": "digest_algorithm",
                 "disableCache": "disable_cache",
                 "disableSelfServiceChangePassword": "disable_self_service_change_password",
@@ -1466,6 +1741,7 @@
                 "importMode": "import_mode",
                 "jwksUri": "jwks_uri",
                 "keyId": "key_id",
+                "mapUserIdToId": "map_user_id_to_id",
                 "maxGroupsToRetrieve": "max_groups_to_retrieve",
                 "messagingServiceSid": "messaging_service_sid",
                 "metadataUrl": "metadata_url",
@@ -1504,6 +1780,10 @@
                 "waadCommonEndpoint": "waad_common_endpoint",
                 "waadProtocol": "waad_protocol"
             },
+            "auth0:index/ConnectionOptionsAttributeMap:ConnectionOptionsAttributeMap": {
+                "mappingMode": "mapping_mode",
+                "userinfoScope": "userinfo_scope"
+            },
             "auth0:index/ConnectionOptionsGatewayAuthentication:ConnectionOptionsGatewayAuthentication": {
                 "secretBase64Encoded": "secret_base64_encoded"
             },
@@ -1524,66 +1804,26 @@
             "auth0:index/ConnectionOptionsTotp:ConnectionOptionsTotp": {
                 "timeStep": "time_step"
             },
-            "auth0:index/EmailCredentials:EmailCredentials": {
+            "auth0:index/EmailProviderCredentials:EmailProviderCredentials": {
                 "accessKeyId": "access_key_id",
                 "apiKey": "api_key",
-                "apiUser": "api_user",
+                "azureCsConnectionString": "azure_cs_connection_string",
+                "ms365ClientId": "ms365_client_id",
+                "ms365ClientSecret": "ms365_client_secret",
+                "ms365TenantId": "ms365_tenant_id",
                 "secretAccessKey": "secret_access_key",
                 "smtpHost": "smtp_host",
                 "smtpPass": "smtp_pass",
                 "smtpPort": "smtp_port",
                 "smtpUser": "smtp_user"
             },
-            "auth0:index/EmailSettingsHeaders:EmailSettingsHeaders": {
+            "auth0:index/EmailProviderSettingsHeaders:EmailProviderSettingsHeaders": {
                 "xMcViewContentLink": "x_mc_view_content_link",
                 "xSesConfigurationSet": "x_ses_configuration_set"
             },
-            "auth0:index/EmailSettingsMessage:EmailSettingsMessage": {
+            "auth0:index/EmailProviderSettingsMessage:EmailProviderSettingsMessage": {
                 "configurationSetName": "configuration_set_name",
                 "viewContentLink": "view_content_link"
-            },
-            "auth0:index/GlobalClientAddons:GlobalClientAddons": {
-                "azureBlob": "azure_blob",
-                "azureSb": "azure_sb",
-                "salesforceApi": "salesforce_api",
-                "salesforceSandboxApi": "salesforce_sandbox_api",
-                "sapApi": "sap_api"
-            },
-            "auth0:index/GlobalClientAddonsSamlp:GlobalClientAddonsSamlp": {
-                "authnContextClassRef": "authn_context_class_ref",
-                "createUpnClaim": "create_upn_claim",
-                "digestAlgorithm": "digest_algorithm",
-                "includeAttributeNameFormat": "include_attribute_name_format",
-                "lifetimeInSeconds": "lifetime_in_seconds",
-                "mapIdentities": "map_identities",
-                "mapUnknownClaimsAsIs": "map_unknown_claims_as_is",
-                "nameIdentifierFormat": "name_identifier_format",
-                "nameIdentifierProbes": "name_identifier_probes",
-                "passthroughClaimsWithNoMapping": "passthrough_claims_with_no_mapping",
-                "signResponse": "sign_response",
-                "signatureAlgorithm": "signature_algorithm",
-                "signingCert": "signing_cert",
-                "typedAttributes": "typed_attributes"
-            },
-            "auth0:index/GlobalClientJwtConfiguration:GlobalClientJwtConfiguration": {
-                "lifetimeInSeconds": "lifetime_in_seconds",
-                "secretEncoded": "secret_encoded"
-            },
-            "auth0:index/GlobalClientMobileAndroid:GlobalClientMobileAndroid": {
-                "appPackageName": "app_package_name",
-                "sha256CertFingerprints": "sha256_cert_fingerprints"
-            },
-            "auth0:index/GlobalClientMobileIos:GlobalClientMobileIos": {
-                "appBundleIdentifier": "app_bundle_identifier",
-                "teamId": "team_id"
-            },
-            "auth0:index/GlobalClientRefreshToken:GlobalClientRefreshToken": {
-                "expirationType": "expiration_type",
-                "idleTokenLifetime": "idle_token_lifetime",
-                "infiniteIdleTokenLifetime": "infinite_idle_token_lifetime",
-                "infiniteTokenLifetime": "infinite_token_lifetime",
-                "rotationType": "rotation_type",
-                "tokenLifetime": "token_lifetime"
             },
             "auth0:index/GuardianDuo:GuardianDuo": {
                 "integrationKey": "integration_key",
@@ -1667,16 +1907,9 @@
             "auth0:index/PagesError:PagesError": {
                 "showLogLink": "show_log_link"
             },
-            "auth0:index/RolePermission:RolePermission": {
-                "resourceServerIdentifier": "resource_server_identifier",
-                "resourceServerName": "resource_server_name"
-            },
             "auth0:index/RolePermissionsPermission:RolePermissionsPermission": {
                 "resourceServerIdentifier": "resource_server_identifier",
                 "resourceServerName": "resource_server_name"
-            },
-            "auth0:index/TenantErrorPage:TenantErrorPage": {
-                "showLogLink": "show_log_link"
             },
             "auth0:index/TenantFlags:TenantFlags": {
                 "allowLegacyDelegationGrantTypes": "allow_legacy_delegation_grant_types",
@@ -1699,22 +1932,15 @@
                 "enablePublicSignupUserExistsError": "enable_public_signup_user_exists_error",
                 "mfaShowFactorListOnEnrollment": "mfa_show_factor_list_on_enrollment",
                 "noDiscloseEnterpriseConnections": "no_disclose_enterprise_connections",
+                "requirePushedAuthorizationRequests": "require_pushed_authorization_requests",
                 "revokeRefreshTokenGrant": "revoke_refresh_token_grant",
-                "universalLogin": "universal_login",
                 "useScopeDescriptionsForConsent": "use_scope_descriptions_for_consent"
             },
-            "auth0:index/TenantUniversalLoginColors:TenantUniversalLoginColors": {
-                "pageBackground": "page_background"
+            "auth0:index/TenantSessions:TenantSessions": {
+                "oidcLogoutPromptEnabled": "oidc_logout_prompt_enabled"
             },
             "auth0:index/TriggerActionsAction:TriggerActionsAction": {
                 "displayName": "display_name"
-            },
-            "auth0:index/TriggerBindingAction:TriggerBindingAction": {
-                "displayName": "display_name"
-            },
-            "auth0:index/UserPermission:UserPermission": {
-                "resourceServerIdentifier": "resource_server_identifier",
-                "resourceServerName": "resource_server_name"
             },
             "auth0:index/UserPermissionsPermission:UserPermissionsPermission": {
                 "resourceServerIdentifier": "resource_server_identifier",
@@ -1746,8 +1972,6 @@
                 "clientAliases": "client_aliases",
                 "clientId": "client_id",
                 "clientMetadata": "client_metadata",
-                "clientSecret": "client_secret",
-                "clientSecretRotationTrigger": "client_secret_rotation_trigger",
                 "crossOriginAuth": "cross_origin_auth",
                 "crossOriginLoc": "cross_origin_loc",
                 "customLoginPage": "custom_login_page",
@@ -1766,9 +1990,9 @@
                 "organizationRequireBehavior": "organization_require_behavior",
                 "organizationUsage": "organization_usage",
                 "refreshToken": "refresh_token",
+                "requirePushedAuthorizationRequests": "require_pushed_authorization_requests",
                 "signingKeys": "signing_keys",
                 "ssoDisabled": "sso_disabled",
-                "tokenEndpointAuthMethod": "token_endpoint_auth_method",
                 "webOrigins": "web_origins"
             },
             "auth0:index/clientCredentials:ClientCredentials": {
@@ -1778,12 +2002,10 @@
                 "privateKeyJwt": "private_key_jwt"
             },
             "auth0:index/clientGrant:ClientGrant": {
-                "clientId": "client_id",
-                "scopes": "scope"
+                "clientId": "client_id"
             },
             "auth0:index/connection:Connection": {
                 "displayName": "display_name",
-                "enabledClients": "enabled_clients",
                 "isDomainConnection": "is_domain_connection",
                 "showAsButton": "show_as_button"
             },
@@ -1806,7 +2028,7 @@
                 "customDomainId": "custom_domain_id",
                 "originDomainName": "origin_domain_name"
             },
-            "auth0:index/email:Email": {
+            "auth0:index/emailProvider:EmailProvider": {
                 "defaultFromAddress": "default_from_address"
             },
             "auth0:index/emailTemplate:EmailTemplate": {
@@ -1929,18 +2151,84 @@
                 "organizationRequireBehavior": "organization_require_behavior",
                 "organizationUsage": "organization_usage",
                 "refreshTokens": "refresh_token",
+                "requirePushedAuthorizationRequests": "require_pushed_authorization_requests",
                 "signingKeys": "signing_keys",
                 "ssoDisabled": "sso_disabled",
                 "tokenEndpointAuthMethod": "token_endpoint_auth_method",
                 "webOrigins": "web_origins"
             },
             "auth0:index/getClientAddon:getClientAddon": {
-                "azureBlob": "azure_blob",
-                "azureSb": "azure_sb",
-                "salesforceApi": "salesforce_api",
-                "salesforceSandboxApi": "salesforce_sandbox_api",
+                "azureBlobs": "azure_blob",
+                "azureSbs": "azure_sb",
+                "boxes": "box",
+                "concurs": "concur",
+                "dropboxes": "dropbox",
+                "echosigns": "echosign",
+                "egnytes": "egnyte",
+                "firebases": "firebase",
+                "layers": "layer",
+                "mscrms": "mscrm",
+                "newrelics": "newrelic",
+                "office365s": "office365",
+                "salesforceApis": "salesforce_api",
+                "salesforceSandboxApis": "salesforce_sandbox_api",
+                "salesforces": "salesforce",
                 "samlps": "samlp",
-                "sapApi": "sap_api"
+                "sapApis": "sap_api",
+                "sentries": "sentry",
+                "sharepoints": "sharepoint",
+                "slacks": "slack",
+                "springcms": "springcm",
+                "ssoIntegrations": "sso_integration",
+                "wsfeds": "wsfed",
+                "zendesks": "zendesk",
+                "zooms": "zoom"
+            },
+            "auth0:index/getClientAddonAw:getClientAddonAw": {
+                "lifetimeInSeconds": "lifetime_in_seconds"
+            },
+            "auth0:index/getClientAddonAzureBlob:getClientAddonAzureBlob": {
+                "accountName": "account_name",
+                "blobDelete": "blob_delete",
+                "blobName": "blob_name",
+                "blobRead": "blob_read",
+                "blobWrite": "blob_write",
+                "containerDelete": "container_delete",
+                "containerList": "container_list",
+                "containerName": "container_name",
+                "containerRead": "container_read",
+                "containerWrite": "container_write",
+                "signedIdentifier": "signed_identifier",
+                "storageAccessKey": "storage_access_key"
+            },
+            "auth0:index/getClientAddonAzureSb:getClientAddonAzureSb": {
+                "entityPath": "entity_path",
+                "sasKey": "sas_key",
+                "sasKeyName": "sas_key_name"
+            },
+            "auth0:index/getClientAddonFirebase:getClientAddonFirebase": {
+                "clientEmail": "client_email",
+                "lifetimeInSeconds": "lifetime_in_seconds",
+                "privateKey": "private_key",
+                "privateKeyId": "private_key_id"
+            },
+            "auth0:index/getClientAddonLayer:getClientAddonLayer": {
+                "keyId": "key_id",
+                "privateKey": "private_key",
+                "providerId": "provider_id"
+            },
+            "auth0:index/getClientAddonSalesforce:getClientAddonSalesforce": {
+                "entityId": "entity_id"
+            },
+            "auth0:index/getClientAddonSalesforceApi:getClientAddonSalesforceApi": {
+                "clientId": "client_id",
+                "communityName": "community_name",
+                "communityUrlSection": "community_url_section"
+            },
+            "auth0:index/getClientAddonSalesforceSandboxApi:getClientAddonSalesforceSandboxApi": {
+                "clientId": "client_id",
+                "communityName": "community_name",
+                "communityUrlSection": "community_url_section"
             },
             "auth0:index/getClientAddonSamlp:getClientAddonSamlp": {
                 "authnContextClassRef": "authn_context_class_ref",
@@ -1948,6 +2236,7 @@
                 "digestAlgorithm": "digest_algorithm",
                 "includeAttributeNameFormat": "include_attribute_name_format",
                 "lifetimeInSeconds": "lifetime_in_seconds",
+                "logouts": "logout",
                 "mapIdentities": "map_identities",
                 "mapUnknownClaimsAsIs": "map_unknown_claims_as_is",
                 "nameIdentifierFormat": "name_identifier_format",
@@ -1957,6 +2246,32 @@
                 "signatureAlgorithm": "signature_algorithm",
                 "signingCert": "signing_cert",
                 "typedAttributes": "typed_attributes"
+            },
+            "auth0:index/getClientAddonSamlpLogout:getClientAddonSamlpLogout": {
+                "sloEnabled": "slo_enabled"
+            },
+            "auth0:index/getClientAddonSapApi:getClientAddonSapApi": {
+                "clientId": "client_id",
+                "nameIdentifierFormat": "name_identifier_format",
+                "servicePassword": "service_password",
+                "tokenEndpointUrl": "token_endpoint_url",
+                "usernameAttribute": "username_attribute"
+            },
+            "auth0:index/getClientAddonSentry:getClientAddonSentry": {
+                "baseUrl": "base_url",
+                "orgSlug": "org_slug"
+            },
+            "auth0:index/getClientAddonSharepoint:getClientAddonSharepoint": {
+                "externalUrls": "external_url"
+            },
+            "auth0:index/getClientAddonSpringcm:getClientAddonSpringcm": {
+                "acsUrl": "acs_url"
+            },
+            "auth0:index/getClientAddonWam:getClientAddonWam": {
+                "masterKey": "master_key"
+            },
+            "auth0:index/getClientAddonZendesk:getClientAddonZendesk": {
+                "accountName": "account_name"
             },
             "auth0:index/getClientJwtConfiguration:getClientJwtConfiguration": {
                 "lifetimeInSeconds": "lifetime_in_seconds",
@@ -1997,13 +2312,16 @@
                 "allowedAudiences": "allowed_audiences",
                 "apiEnableUsers": "api_enable_users",
                 "appId": "app_id",
+                "attributeMaps": "attribute_map",
                 "authParams": "auth_params",
                 "authorizationEndpoint": "authorization_endpoint",
                 "bruteForceProtection": "brute_force_protection",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "communityBaseUrl": "community_base_url",
+                "connectionSettings": "connection_settings",
                 "customScripts": "custom_scripts",
+                "decryptionKeys": "decryption_key",
                 "digestAlgorithm": "digest_algorithm",
                 "disableCache": "disable_cache",
                 "disableSelfServiceChangePassword": "disable_self_service_change_password",
@@ -2025,6 +2343,7 @@
                 "importMode": "import_mode",
                 "jwksUri": "jwks_uri",
                 "keyId": "key_id",
+                "mapUserIdToId": "map_user_id_to_id",
                 "maxGroupsToRetrieve": "max_groups_to_retrieve",
                 "messagingServiceSid": "messaging_service_sid",
                 "metadataUrl": "metadata_url",
@@ -2066,6 +2385,10 @@
                 "waadCommonEndpoint": "waad_common_endpoint",
                 "waadProtocol": "waad_protocol"
             },
+            "auth0:index/getConnectionOptionAttributeMap:getConnectionOptionAttributeMap": {
+                "mappingMode": "mapping_mode",
+                "userinfoScope": "userinfo_scope"
+            },
             "auth0:index/getConnectionOptionGatewayAuthentication:getConnectionOptionGatewayAuthentication": {
                 "secretBase64Encoded": "secret_base64_encoded"
             },
@@ -2095,90 +2418,6 @@
                 "tlsPolicy": "tls_policy",
                 "verifications": "verification"
             },
-            "auth0:index/getGlobalClient:getGlobalClient": {
-                "allowedClients": "allowed_clients",
-                "allowedLogoutUrls": "allowed_logout_urls",
-                "allowedOrigins": "allowed_origins",
-                "appType": "app_type",
-                "clientAliases": "client_aliases",
-                "clientId": "client_id",
-                "clientMetadata": "client_metadata",
-                "clientSecret": "client_secret",
-                "crossOriginAuth": "cross_origin_auth",
-                "crossOriginLoc": "cross_origin_loc",
-                "customLoginPage": "custom_login_page",
-                "customLoginPageOn": "custom_login_page_on",
-                "encryptionKey": "encryption_key",
-                "formTemplate": "form_template",
-                "grantTypes": "grant_types",
-                "initiateLoginUri": "initiate_login_uri",
-                "isFirstParty": "is_first_party",
-                "isTokenEndpointIpHeaderTrusted": "is_token_endpoint_ip_header_trusted",
-                "jwtConfigurations": "jwt_configuration",
-                "logoUri": "logo_uri",
-                "mobiles": "mobile",
-                "nativeSocialLogins": "native_social_login",
-                "oidcBackchannelLogoutUrls": "oidc_backchannel_logout_urls",
-                "oidcConformant": "oidc_conformant",
-                "organizationRequireBehavior": "organization_require_behavior",
-                "organizationUsage": "organization_usage",
-                "refreshTokens": "refresh_token",
-                "signingKeys": "signing_keys",
-                "ssoDisabled": "sso_disabled",
-                "tokenEndpointAuthMethod": "token_endpoint_auth_method",
-                "webOrigins": "web_origins"
-            },
-            "auth0:index/getGlobalClientAddon:getGlobalClientAddon": {
-                "azureBlob": "azure_blob",
-                "azureSb": "azure_sb",
-                "salesforceApi": "salesforce_api",
-                "salesforceSandboxApi": "salesforce_sandbox_api",
-                "samlps": "samlp",
-                "sapApi": "sap_api"
-            },
-            "auth0:index/getGlobalClientAddonSamlp:getGlobalClientAddonSamlp": {
-                "authnContextClassRef": "authn_context_class_ref",
-                "createUpnClaim": "create_upn_claim",
-                "digestAlgorithm": "digest_algorithm",
-                "includeAttributeNameFormat": "include_attribute_name_format",
-                "lifetimeInSeconds": "lifetime_in_seconds",
-                "mapIdentities": "map_identities",
-                "mapUnknownClaimsAsIs": "map_unknown_claims_as_is",
-                "nameIdentifierFormat": "name_identifier_format",
-                "nameIdentifierProbes": "name_identifier_probes",
-                "passthroughClaimsWithNoMapping": "passthrough_claims_with_no_mapping",
-                "signResponse": "sign_response",
-                "signatureAlgorithm": "signature_algorithm",
-                "signingCert": "signing_cert",
-                "typedAttributes": "typed_attributes"
-            },
-            "auth0:index/getGlobalClientJwtConfiguration:getGlobalClientJwtConfiguration": {
-                "lifetimeInSeconds": "lifetime_in_seconds",
-                "secretEncoded": "secret_encoded"
-            },
-            "auth0:index/getGlobalClientMobile:getGlobalClientMobile": {
-                "androids": "android"
-            },
-            "auth0:index/getGlobalClientMobileAndroid:getGlobalClientMobileAndroid": {
-                "appPackageName": "app_package_name",
-                "sha256CertFingerprints": "sha256_cert_fingerprints"
-            },
-            "auth0:index/getGlobalClientMobileIo:getGlobalClientMobileIo": {
-                "appBundleIdentifier": "app_bundle_identifier",
-                "teamId": "team_id"
-            },
-            "auth0:index/getGlobalClientNativeSocialLogin:getGlobalClientNativeSocialLogin": {
-                "apples": "apple",
-                "facebooks": "facebook"
-            },
-            "auth0:index/getGlobalClientRefreshToken:getGlobalClientRefreshToken": {
-                "expirationType": "expiration_type",
-                "idleTokenLifetime": "idle_token_lifetime",
-                "infiniteIdleTokenLifetime": "infinite_idle_token_lifetime",
-                "infiniteTokenLifetime": "infinite_token_lifetime",
-                "rotationType": "rotation_type",
-                "tokenLifetime": "token_lifetime"
-            },
             "auth0:index/getOrganization:getOrganization": {
                 "brandings": "branding",
                 "displayName": "display_name",
@@ -2190,6 +2429,15 @@
             "auth0:index/getOrganizationConnection:getOrganizationConnection": {
                 "assignMembershipOnLogin": "assign_membership_on_login",
                 "connectionId": "connection_id"
+            },
+            "auth0:index/getPages:getPages": {
+                "changePasswords": "change_password",
+                "errors": "error",
+                "guardianMfas": "guardian_mfa",
+                "logins": "login"
+            },
+            "auth0:index/getPagesError:getPagesError": {
+                "showLogLink": "show_log_link"
             },
             "auth0:index/getResourceServer:getResourceServer": {
                 "allowOfflineAccess": "allow_offline_access",
@@ -2210,16 +2458,17 @@
                 "resourceServerIdentifier": "resource_server_identifier",
                 "resourceServerName": "resource_server_name"
             },
+            "auth0:index/getSigningKeys:getSigningKeys": {
+                "signingKeys": "signing_keys"
+            },
             "auth0:index/getTenant:getTenant": {
+                "allowOrganizationNameInAuthenticationApi": "allow_organization_name_in_authentication_api",
                 "allowedLogoutUrls": "allowed_logout_urls",
-                "changePasswords": "change_password",
                 "defaultAudience": "default_audience",
                 "defaultDirectory": "default_directory",
                 "defaultRedirectionUri": "default_redirection_uri",
                 "enabledLocales": "enabled_locales",
-                "errorPages": "error_page",
                 "friendlyName": "friendly_name",
-                "guardianMfaPages": "guardian_mfa_page",
                 "idleSessionLifetime": "idle_session_lifetime",
                 "managementApiIdentifier": "management_api_identifier",
                 "pictureUrl": "picture_url",
@@ -2227,11 +2476,7 @@
                 "sessionCookies": "session_cookie",
                 "sessionLifetime": "session_lifetime",
                 "supportEmail": "support_email",
-                "supportUrl": "support_url",
-                "universalLogins": "universal_login"
-            },
-            "auth0:index/getTenantErrorPage:getTenantErrorPage": {
-                "showLogLink": "show_log_link"
+                "supportUrl": "support_url"
             },
             "auth0:index/getTenantFlag:getTenantFlag": {
                 "allowLegacyDelegationGrantTypes": "allow_legacy_delegation_grant_types",
@@ -2254,12 +2499,12 @@
                 "enablePublicSignupUserExistsError": "enable_public_signup_user_exists_error",
                 "mfaShowFactorListOnEnrollment": "mfa_show_factor_list_on_enrollment",
                 "noDiscloseEnterpriseConnections": "no_disclose_enterprise_connections",
+                "requirePushedAuthorizationRequests": "require_pushed_authorization_requests",
                 "revokeRefreshTokenGrant": "revoke_refresh_token_grant",
-                "universalLogin": "universal_login",
                 "useScopeDescriptionsForConsent": "use_scope_descriptions_for_consent"
             },
-            "auth0:index/getTenantUniversalLoginColor:getTenantUniversalLoginColor": {
-                "pageBackground": "page_background"
+            "auth0:index/getTenantSession:getTenantSession": {
+                "oidcLogoutPromptEnabled": "oidc_logout_prompt_enabled"
             },
             "auth0:index/getUser:getUser": {
                 "appMetadata": "app_metadata",
@@ -2276,39 +2521,6 @@
             "auth0:index/getUserPermission:getUserPermission": {
                 "resourceServerIdentifier": "resource_server_identifier",
                 "resourceServerName": "resource_server_name"
-            },
-            "auth0:index/globalClient:GlobalClient": {
-                "allowedClients": "allowed_clients",
-                "allowedLogoutUrls": "allowed_logout_urls",
-                "allowedOrigins": "allowed_origins",
-                "appType": "app_type",
-                "clientAliases": "client_aliases",
-                "clientId": "client_id",
-                "clientMetadata": "client_metadata",
-                "clientSecret": "client_secret",
-                "clientSecretRotationTrigger": "client_secret_rotation_trigger",
-                "crossOriginAuth": "cross_origin_auth",
-                "crossOriginLoc": "cross_origin_loc",
-                "customLoginPage": "custom_login_page",
-                "customLoginPageOn": "custom_login_page_on",
-                "encryptionKey": "encryption_key",
-                "formTemplate": "form_template",
-                "grantTypes": "grant_types",
-                "initiateLoginUri": "initiate_login_uri",
-                "isFirstParty": "is_first_party",
-                "isTokenEndpointIpHeaderTrusted": "is_token_endpoint_ip_header_trusted",
-                "jwtConfiguration": "jwt_configuration",
-                "logoUri": "logo_uri",
-                "nativeSocialLogin": "native_social_login",
-                "oidcBackchannelLogoutUrls": "oidc_backchannel_logout_urls",
-                "oidcConformant": "oidc_conformant",
-                "organizationRequireBehavior": "organization_require_behavior",
-                "organizationUsage": "organization_usage",
-                "refreshToken": "refresh_token",
-                "signingKeys": "signing_keys",
-                "ssoDisabled": "sso_disabled",
-                "tokenEndpointAuthMethod": "token_endpoint_auth_method",
-                "webOrigins": "web_origins"
             },
             "auth0:index/guardian:Guardian": {
                 "recoveryCode": "recovery_code",
@@ -2383,23 +2595,20 @@
                 "roleId": "role_id"
             },
             "auth0:index/tenant:Tenant": {
+                "allowOrganizationNameInAuthenticationApi": "allow_organization_name_in_authentication_api",
                 "allowedLogoutUrls": "allowed_logout_urls",
-                "changePassword": "change_password",
                 "defaultAudience": "default_audience",
                 "defaultDirectory": "default_directory",
                 "defaultRedirectionUri": "default_redirection_uri",
                 "enabledLocales": "enabled_locales",
-                "errorPage": "error_page",
                 "friendlyName": "friendly_name",
-                "guardianMfaPage": "guardian_mfa_page",
                 "idleSessionLifetime": "idle_session_lifetime",
                 "pictureUrl": "picture_url",
                 "sandboxVersion": "sandbox_version",
                 "sessionCookie": "session_cookie",
                 "sessionLifetime": "session_lifetime",
                 "supportEmail": "support_email",
-                "supportUrl": "support_url",
-                "universalLogin": "universal_login"
+                "supportUrl": "support_url"
             },
             "auth0:index/triggerAction:TriggerAction": {
                 "actionId": "action_id",
