@@ -20,7 +20,6 @@ let client = new auth0.Client("test", {
     customLoginPageOn: true,
     isFirstParty: true,
     oidcConformant: false,
-    tokenEndpointAuthMethod: "client_secret_post",
     clientMetadata: {
         foo: "bar"
     },
@@ -43,6 +42,11 @@ let client = new auth0.Client("test", {
     webOrigins: [
         "https://example.com"
     ]
+});
+
+let creds = new auth0.ClientCredentials("creds", {
+    clientId: client.clientId,
+    authenticationMethod: "client_secret_post",
 });
 
 export let clientId = client.clientId;
